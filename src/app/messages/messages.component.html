@@ -1,8 +1,9 @@
 <p>Messages</p>
 <div class="messages">
-    <li *ngFor="let message of messages" 
-    [class.selected]="message === selectedMessage"    
-    (click)="onSelect(message)">{{message.description}}</li>
+    <li *ngFor="let message of messages">
+    <a routerLink="/message/{{message.id}}">
+        {{message.description}}</a>
+    </li>
 </div>
 
 <app-message-detail [message]="selectedMessage"></app-message-detail>
