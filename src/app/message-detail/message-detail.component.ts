@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Message } from "../message";
+import { Message } from '../message';
 
 @Component({
   selector: 'app-message-detail',
@@ -9,7 +9,7 @@ import { Message } from "../message";
 })
 export class MessageDetailComponent implements OnInit {
 
-  @Input() message : Message;
+  @Input() message: Message;
 
   constructor() { }
 

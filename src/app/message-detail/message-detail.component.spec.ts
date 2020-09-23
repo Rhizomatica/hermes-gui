@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessageDetailComponent } from './message-detail.component';
 
-import { Message } from "../message";
+import { Message } from '../message';
 
 describe('MessageDetailComponent', () => {
   let component: MessageDetailComponent;

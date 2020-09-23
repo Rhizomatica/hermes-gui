@@ -7,11 +7,11 @@ export class AlertService {
 
   alerts: string[] = [];
 
-  add(alert: string) {
+  add(alert: string): void {
     this.alerts.push(alert);
   }
 
-  clear() {
+  clear(): void {
     this.alerts = [];
   }
 }
