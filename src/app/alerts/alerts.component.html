@@ -1,0 +1,7 @@
+<div *ngIf="alertService.alerts.length">
+
+<h5>Alerta</h5>
+<button class="clear" (click)="alertService.clear()">clear</button>
+<div *ngFor='let alert of alertService.alerts'>{{alert}}</div>
+
+</div>

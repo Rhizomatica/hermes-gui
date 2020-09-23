@@ -1,0 +1,8 @@
+<div *ngIf="message">
+    <h5>{{message.description}}</h5>
+    <p>{{message.url}}</p>
+    <p>{{message.location}}</p>
+    <label>destino:
+        <input [(ngModel)]="message.destination" placeholder="destino da mensagem"/>
+    </label>
+</div>
