@@ -21,11 +21,6 @@ export class MessagesComponent implements OnInit {
 
   selectedMessage: Message;
 
-
-
-  
- 
-
   ngOnInit() {
     this.getMessages();
   }

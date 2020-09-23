@@ -46,22 +46,19 @@
 
 
 
-<app-hmheader></app-hmheader>
+<app-hmheader>
+
+</app-hmheader>
     <span>{{ title }}</span>
+    <nav>
+      <a routerLink="/stations">Estações</a>
+      <a routerLink="/messages">Mensagens</a>
+      <a routerLink="/admin">Admin</a>
+    </nav>
 
-    <app-stations></app-stations>
-
-<app-messages></app-messages>
+    <router-outlet></router-outlet>
 
 <app-alerts></app-alerts>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
-
-<router-outlet></router-outlet>
