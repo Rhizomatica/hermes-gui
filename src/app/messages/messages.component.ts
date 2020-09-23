@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Message } from "../message";
-
+import { Message } from '../message';
 import { MESSAGES } from '../mock-messages';
-
-import { MessageService } from "../message.service";
-import { AlertService } from "../alert.service";
+import { MessageService } from '../message.service';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-messages',
@@ -21,12 +19,7 @@ export class MessagesComponent implements OnInit {
 
   selectedMessage: Message;
 
-
-
-  
- 
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.getMessages();
   }
 
@@ -40,6 +33,4 @@ export class MessagesComponent implements OnInit {
 
   }
   constructor(private messageService: MessageService, private alertService: AlertService) { }
-
-
 }

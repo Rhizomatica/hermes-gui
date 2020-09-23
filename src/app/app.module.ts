@@ -8,8 +8,7 @@ import { HmheaderComponent } from './hmheader/hmheader.component';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
-import { AlertsComponent } from './alerts/alerts.component'; 
-
+import { AlertsComponent } from './alerts/alerts.component';
 
 @NgModule({
   declarations: [
