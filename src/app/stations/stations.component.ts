@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Observable, of } from 'rxjs';
 import { Station } from '../station';
+import { StationService } from "../station.service";
 
 
 
@@ -17,6 +18,8 @@ export class StationsComponent implements OnInit {
     name: 'Una',
     location: 'Alto do Xingú'
   };
+
+ 
 
   constructor() { }
 

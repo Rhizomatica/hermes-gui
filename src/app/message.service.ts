@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
 import { Message } from './message';
 import { MESSAGES } from './mock-messages';
 import { AlertService } from './alert.service';
