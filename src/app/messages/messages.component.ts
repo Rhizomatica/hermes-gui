@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { Message } from '../message';
 import { MESSAGES } from '../mock-messages';
 import { MessageService } from '../message.service';

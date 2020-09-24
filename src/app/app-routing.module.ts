@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: 'admin', component: SysadminComponent},
   { path: 'stations', component: StationsComponent},
   { path: 'message/:id', component: MessageDetailComponent}
-
-
+  
 ];
 
 @NgModule({

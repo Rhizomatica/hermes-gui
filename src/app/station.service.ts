@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertService } from "./alert.service";
 import { Observable, of } from 'rxjs';
+import { Station } from './station';
 
 
 @Injectable({
