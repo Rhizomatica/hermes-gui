@@ -4,7 +4,6 @@ import { Station } from '../station';
 import { StationService } from "../station.service";
 //import { map, catchError } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-stations',
   templateUrl: './stations.component.html',
@@ -15,27 +14,29 @@ export class StationsComponent implements OnInit {
   error='';
   success='';
   //TODO
-  station: Station = {
+  /*station: Station = {
     id: 1,
     name: 'Una',
     location: 'Alto do Xingú'
-  };
-
-  //stations:Station[];
-  constructor(private stationService: StationService) {}
-           
+  };*/
+  
+ station:Station[];
+  
+  constructor(private stationService: StationService) { }             
   getStations(): void {
-    this.stationService.getAll().subscribe(
+    this.stationService.getStations().subscribe(
       (res: Station[]) => {
-        this.station = res;
+        //forcing on element 0 of array 
+        this.station = res[0];
+        console.log("debugger station.component")
+        console.log(this.station);
+        
       },
       (err) => {
         this.error = err;
       }
     );
   }
-
-//constructor() { }
 
   ngOnInit() {
     this.getStations();

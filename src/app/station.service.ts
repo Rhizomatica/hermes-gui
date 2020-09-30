@@ -8,26 +8,24 @@ import { map, catchError } from 'rxjs/operators';
 import { Station } from './station';
 import { StationsComponent } from './stations/stations.component';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class StationService {
 
-  baseURL = "http://floresta.hermes.radio/api.php?p=1";
+  baseURL = "http://floresta.hermes.radio/api.php?p=2";
   station:Station[];
 
   constructor(
     private http: HttpClient,
     private alertService: AlertService) { }
   
-    getAll(): Observable<Station[]> {
+    getStations(): Observable<Station[]> {
       return this.http.get(this.baseURL).pipe(
         map((res) => {
-          this.station = res['data'];
-          console.log(res[0][0]);
-          return this.station[0][0];
+          this.station = res[0];
+          console.log(this.station);
+          return this.station;
       }),
       catchError(this.handleError));
       }
