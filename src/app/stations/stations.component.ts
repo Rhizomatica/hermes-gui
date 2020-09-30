@@ -12,11 +12,10 @@ import { StationService } from "../station.service";
 })
 export class StationsComponent implements OnInit {
 
-  station:Station[];
   error='';
   success='';
   //TODO
-  stationsample: Station = {
+  station: Station = {
     id: 1,
     name: 'Una',
     location: 'Alto do Xingú'
