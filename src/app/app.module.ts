@@ -9,11 +9,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { SysadminComponent } from './sysadmin/sysadmin.component'; 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
-
-
 
 @NgModule({
   declarations: [
@@ -31,15 +29,18 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
 
-// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+// It's a TRAP! 
+//The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
 // Remove it when a real server is ready to receive requests.
-HttpClientInMemoryWebApiModule.forRoot(
-  InMemoryDataService, { dataEncapsulation: false }
-)
+//HttpClientInMemoryWebApiModule.forRoot(
+//  InMemoryDataService, { dataEncapsulation: false }
+//)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 
 export class AppModule { }
