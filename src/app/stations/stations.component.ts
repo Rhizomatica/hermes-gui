@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
+
 import { Station } from '../station';
-import { StationService } from "../station.service";
-//import { map, catchError } from 'rxjs/operators';
+import { StationService } from '../station.service';
 
 @Component({
   selector: 'app-stations',
@@ -10,27 +11,16 @@ import { StationService } from "../station.service";
   styleUrls: ['./stations.component.less']
 })
 export class StationsComponent implements OnInit {
+  error = '';
+  success = '';
+  test = '';
+  stations: Station[];
 
-  error='';
-  success='';
-  //TODO
-  /*station: Station = {
-    id: 1,
-    name: 'Una',
-    location: 'Alto do Xingú'
-  };*/
-  
- station:Station[];
-  
-  constructor(private stationService: StationService) { }             
+  constructor(private stationService: StationService) { }
   getStations(): void {
     this.stationService.getStations().subscribe(
-      (res: Station[]) => {
-        //forcing on element 0 of array 
-        this.station = res[0];
-        console.log("debugger station.component")
-        console.log(this.station);
-        
+      (res: any) => {
+        this.stations = res;
       },
       (err) => {
         this.error = err;
@@ -38,7 +28,8 @@ export class StationsComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.getStations();
   }
 }

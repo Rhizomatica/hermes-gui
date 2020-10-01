@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Data } from '@angular/router';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Station } from './station';
 
@@ -6,7 +7,7 @@ import { Station } from './station';
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
+  createDb: any() {
     const stations = [
       { id: 11, name: 'una',   location: 'altamira' },
       { id: 12, name: 'barca', location: 'alter do chao' },

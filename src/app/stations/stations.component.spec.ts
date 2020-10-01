@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Station } from '../station';
 
 import { StationsComponent } from './stations.component';
 
 describe('StationsComponent', () => {
   let component: StationsComponent;
   let fixture: ComponentFixture<StationsComponent>;
+  const stations: Station[];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

@@ -1,9 +1,16 @@
 
 
-<p>estacao {{station.id}}</p>
-<p>{{station.name}}</p>
-<p>{{station.location | titlecase}}</p>
-<label>
-    name: <input [(ngModel)]="station.name" placeholder="nome da estação" />
-</label>
+<ng-container *ngIf="stations">
+    <ul *ngIf="stations">
+        <li *ngFor="let station of stations">{{station.id}} | {{station.name}} | {{station.location}}
+        
+
+        <label>
+            name: <input [(ngModel)]="station.name" placeholder="nome da estação" />
+        </label>
+    </li>
+    </ul>   
+    </ng-container>
+
+        
 

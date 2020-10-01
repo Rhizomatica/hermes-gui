@@ -17,7 +17,7 @@ getMessages(): Observable<Message[]> {
   return of(MESSAGES);
 }
 
-getMessage(id:number): Observable<Message> {
+getMessage(id: number): Observable<Message> {
   this.alertService.add('selecionada mensagem id=${id}');
   return of (MESSAGES.find(message => message.id === id));
 }
