@@ -13,6 +13,11 @@ import { SysadminComponent } from './sysadmin/sysadmin.component';
 // import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LogComponent } from './log/log.component';
+import { MailadminComponent } from './mailadmin/mailadmin.component';
+import { NetadminComponent } from './netadmin/netadmin.component';
+import { ManagementComponent } from './management/management.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
+import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { LogComponent } from './log/log.component';
     MessageDetailComponent,
     AlertsComponent,
     SysadminComponent,
-    LogComponent
+    LogComponent,
+    MailadminComponent,
+    NetadminComponent,
+    ManagementComponent,
+    UpgradeComponent,
+    MessagecomposeComponent
   ],
   imports: [
     BrowserModule,
