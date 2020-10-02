@@ -25,7 +25,7 @@ export class StationService {
     getStations(): Observable<Station[]> {
       return this.http.get(this.baseURL).pipe(
         map((res) => {
-          this.station = res[0];
+          this.station = res;
           console.log(this.station);
           return this.station;
       }),

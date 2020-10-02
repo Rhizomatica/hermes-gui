@@ -12,6 +12,7 @@ import { SysadminComponent } from './sysadmin/sysadmin.component';
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LogComponent } from './log/log.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     MessagesComponent,
     MessageDetailComponent,
     AlertsComponent,
-    SysadminComponent
+    SysadminComponent,
+    LogComponent
   ],
   imports: [
     BrowserModule,
