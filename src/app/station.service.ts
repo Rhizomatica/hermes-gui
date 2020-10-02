@@ -19,15 +19,15 @@ export class StationService {
     private http: HttpClient,
     private alertService: AlertService) { }
 
-    station: Station[];
+    stations: Station[];
     private baseURL = 'http://floresta.hermes.radio/api.php?p=2';
   
     getStations(): Observable<Station[]> {
       return this.http.get(this.baseURL).pipe(
-        map((res) => {
-          this.station = res;
-          console.log(this.station);
-          return this.station;
+        map((res:any) => {
+          this.stations = res;
+          console.log(this.stations);
+          return this.stations;
       }),
       catchError(this.handleError));
     }
