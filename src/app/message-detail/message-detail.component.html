@@ -1,9 +1,7 @@
 <div *ngIf="message" class="formfield">
     <h5>{{message.description}}</h5>
     <p>{{message.url}}</p>
-    <p>{{message.location}}</p>
-    <label>destino:
-        <input [(ngModel)]="message.destination" placeholder="destino da mensagem"/>
-    </label>
+    <p><span i18n>Origem:</span>{{message.location}}</p>
+    <button i18n>Repply</button>
 
 </div>
