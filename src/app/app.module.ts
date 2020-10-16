@@ -18,6 +18,7 @@ import { NetadminComponent } from './netadmin/netadmin.component';
 import { ManagementComponent } from './management/management.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MessagecomposeComponent } from './messagecompose/messagecompose.compone
     NetadminComponent,
     ManagementComponent,
     UpgradeComponent,
-    MessagecomposeComponent
+    MessagecomposeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
