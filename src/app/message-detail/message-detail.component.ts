@@ -5,6 +5,10 @@ import { Location } from '@angular/common';
 import { Message } from '../message';
 import { MessageService } from '../message.service';
 
+
+
+
+
 @Component({
   selector: 'app-message-detail',
   templateUrl: './message-detail.component.html',
