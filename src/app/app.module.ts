@@ -19,6 +19,7 @@ import { ManagementComponent } from './management/management.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
 import { LoginComponent } from './login/login.component';
+import { LanguagesComponent } from './languages/languages.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LoginComponent } from './login/login.component';
     ManagementComponent,
     UpgradeComponent,
     MessagecomposeComponent,
-    LoginComponent
+    LoginComponent,
+    LanguagesComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { MessagecomposeComponent } from './messagecompose/messagecompose.compone
 import { NetadminComponent } from './netadmin/netadmin.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { LoginComponent } from './login/login.component';
+import { LanguagesComponent } from './languages/languages.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -24,7 +25,9 @@ const routes: Routes = [
   { path: 'compose', component: MessagecomposeComponent},
   { path: 'netadmin', component: NetadminComponent},
   { path: 'upgrade', component: UpgradeComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'languages', component: LanguagesComponent}
+
 
 
 

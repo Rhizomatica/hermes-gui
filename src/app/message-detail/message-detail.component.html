@@ -1,7 +1,13 @@
 <div *ngIf="message" class="formfield">
     <h5>{{message.description}}</h5>
     <p>{{message.url}}</p>
-    <p><span i18n>Origem:</span>{{message.location}}</p>
-    <button i18n>Repply</button>
+    <p><span i18n>origin: </span>{{message.location}}</p>
+    <span class="icon">
+        <a i18n routerLink="/compose">
+            <img title="messages" src="/assets/svg/edit.svg">
+            compose
+        </a>
+    </span>
+    
 
 </div>

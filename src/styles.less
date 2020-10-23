@@ -1,17 +1,124 @@
 /* You can add global styles to this file, and also import other style files */
+
+@boxw: 280px;
+@clr: #f60;
+
+body {
+    max-width: 350px;
+    margin: 20px auto auto auto;
+}
+
+button {
+    border: 0;
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 2px;
+    margin-right: 4px;
+    margin-top: 4px;
+}
+
+button:hover {
+    background-color: @clr;
+}
+
+nav {
+    border-bottom: 2px solid #000;
+    max-width: 322px;
+    a {
+        text-decoration: none;
+    border-top: 3px solid #000;
+    padding-bottom: 4px;
+    }
+    a:hover {
+        border-top: 3px solid @clr;
+
+    }
+
+}
+
+.sitetitle {
+    color:@clr;
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+a:visited {
+    color:#888;
+}
+
+.logo {
+    position: relative;
+    left: -25px;
+}
+
+.bordered {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 0 0 0 0;
+    margin: 0px;
+}
+
 label{
     display: block;
-    text-align: right;
+    text-align: left;
 }
 
 .formfield {
-    max-width: 300px;
+    max-width: @boxw;
+    .bordered();
+    
+    .textarea{
+        width: 100%;
+    }
 }
 
-.formfield textarea{
-    width: 100%;
+nav {
+    padding-top: 35px;
+    a {
+        margin-right: 15px;
+        position: relative;
+
+    }
+    img {
+        width: 30px;
+        position: absolute;
+        top: -35px;
+
+
+    }
+    img:hover {
+        fill: @clr;
+    }
 }
 
-nav a {
-    margin-right: 15px;
+.icon {
+
+    img {
+        width: 25px;
+        position: relative;
+        top: 5px;
+        margin-right: 5px;
+    }
+
+   
+
+
+}
+
+.lock.lock img{
+    width: 20px;
+}
+
+.flags {
+    margin-top: 25px;
+    border-bottom: 0;
+}
+
+.flags img{
+    width: 30px;
 }

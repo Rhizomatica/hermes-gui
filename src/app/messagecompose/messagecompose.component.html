@@ -1,13 +1,26 @@
-<h2 i18n>send your public message to another station</h2>
 <div class="formfield">
+    <h2 i18n>send your public message to another station</h2>
+
 <label>
-    <span i18n>description</span>: <br><textarea  placeholder="descreva sua mensagem" ></textarea><br>
+    <span i18n>description</span>: <br><textarea  placeholder="describe your message" ></textarea><br>
     
 </label>
+
+<p>
+    <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
+        <span i18n>select station
+        </span>: 
+        <input type="checkbox"/>
+    </span> 
+</p>
+
 <label>
-    <span i18n>protect with password</span>: <input type="checkbox"/>
-    
+    <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
+        <span i18n>protect with password</span>: 
+        <input type="checkbox"/>
+    </span>    
 </label>
+
     <button i18n>record</button>
     <button i18n>select file</button>
 </div>
