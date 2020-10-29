@@ -10,7 +10,13 @@
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
         <span i18n>select station
         </span>: 
-        <input type="checkbox"/>
+        <ng-container *ngIf="stations">
+
+            <select ng-model="selected">
+                <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+        
+            </select> 
+            </ng-container>
     </span> 
 </p>
 
@@ -25,13 +31,4 @@
     <button i18n>select file</button>
 </div>
 
-<ng-container *ngIf="stations">
-    <ul *ngIf="stations">
-        <li *ngFor="let station of stations">{{station.id}} | {{station.name}} | {{station.location}}
-        
-        <label>
-            <span i18n>name</span>: <input [(ngModel)]="station.name" placeholder="nome da estação" />
-        </label>
-    </li>
-    </ul>   
-    </ng-container>
+
