@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StationsComponent } from './stations/stations.component';
@@ -20,8 +20,19 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
 import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
+//import {TranslateModule} from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
+//import { CLIENT_RENEG_LIMIT } from 'tls';
+
+/*export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}*/
 
 @NgModule({
+  exports: [
+    CommonModule,
+  //  TranslateModule
+  ],
   declarations: [
     AppComponent,
     StationsComponent,
@@ -44,6 +55,14 @@ import { LanguagesComponent } from './languages/languages.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    /*TranslateModule.forRoot({
+      defaultLanguage: 'pt',
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+    })*/
 
 // It's a TRAP!
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -54,9 +73,12 @@ import { LanguagesComponent } from './languages/languages.component';
 // )
 
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt' }
+  ],
   bootstrap: [AppComponent]
 })
 
 
 export class AppModule { }
+//export class SharedModule { }
