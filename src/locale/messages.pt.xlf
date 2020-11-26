@@ -3,28 +3,28 @@
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="aae4578bfef75e973852da5a9f7280e534358aeb" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>messages</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/comment.svg&quot;&gt;"/>messages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cb21aa309f1dc8d3bb93b0be496cd0db8967629e" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>admin</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;admin&quot; src=&quot;/assets/svg/tools.svg&quot;&gt;"/>admin</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="69e49e43866177fd6c8649033c13a476bc7df775" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>email</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/envelope.svg&quot;&gt;"/>email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f56172fc5082c552a19465473d4425bb95cd26b7" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>language</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/globe-americas.svg&quot;&gt;"/>language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">56</context>
@@ -43,6 +43,7 @@
       </trans-unit>
       <trans-unit id="9f8b51bfe84d5554007f0986803f192342167ef6" datatype="html">
         <source>messages</source>
+        <target>mensagens</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/messages/messages.component.html</context>
           <context context-type="linenumber">3</context>
@@ -63,13 +64,11 @@
         </context-group>
       </trans-unit>
       <trans-unit id="03dadd26b9040e713058a5a65d0e4e45d2a51741" datatype="html">
-        <source>
-            <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
-            compose
-        </source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/edit.svg&quot;&gt;
+            "/> compose </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5325a902a67ef92006b6d48337b18ddde9d3a424" datatype="html">
@@ -228,11 +227,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c86d890eef81a89b1dba318735947a190f20a2d5" datatype="html">
-        <source>select station
-        </source>
+        <source>select station </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="31d1af308cb28e4552f5d2a143c78f38227a34ba" datatype="html">
@@ -270,6 +268,15 @@
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="adminlogin" datatype="html">
+        <source><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Log in<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <target><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Login<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2e2e1ac6e94efc8857c002c8ea7aac9f643d75db" datatype="html">
         <source>Forgot my password</source>
         <context-group purpose="location">
@@ -285,21 +292,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="92d06129d89529c92af0b731a963f9bec8161742" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>Português</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/brasil.svg&quot;&gt;"/>Português</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/languages/languages.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4be3177641479abb09563e36f4b532a3221a1808" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>Español</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/espanha.svg&quot;&gt;"/>Español</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/languages/languages.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3c00dcbd2ab28dab6ee34cae1a652d19dc9d569c" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>English</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/reino-unido.svg&quot;&gt;"/>English</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/languages/languages.component.html</context>
           <context context-type="linenumber">5</context>
