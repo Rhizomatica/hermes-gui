@@ -8,7 +8,9 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "pt": "src/locale/messages.pt.xlf"
+          "pt": "src/locale/messages.pt.xlf",
+          "es": "src/locale/messages.es.xlf",
+          "en": "src/locale/messages.xlf"
         }},
       "schematics": {
         "@schematics/angular:component": {
@@ -93,7 +95,64 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                },
+              ],
+              "localize": ["es"],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "en": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                },
+              ],
+              "localize": ["en"],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
+
           }
         },
         "serve": {
@@ -107,8 +166,13 @@
             },
             "pt": {
               "browserTarget": "hermes:build:pt"
+            },
+            "es": {
+              "browserTarget": "hermes:build:es"
+            },
+            "en": {
+              "browserTarget": "hermes:build:en"
             }
-            
           }
         },
         "extract-i18n": {
