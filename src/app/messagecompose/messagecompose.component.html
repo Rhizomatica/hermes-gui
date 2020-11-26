@@ -2,13 +2,13 @@
     <h2 i18n>send your public message to another station</h2>
 
 <label>
-    <span i18n>description</span>: <br><textarea  placeholder="describe your message" ></textarea><br>
+    <span i18n="@@description">description</span>: <br><textarea  placeholder="describe your message" ></textarea><br>
     
 </label>
 
 <p>
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
-        <span i18n>select station
+        <span i18n="@@selectstation">select station
         </span>: 
         <ng-container *ngIf="stations">
 
@@ -22,13 +22,15 @@
 
 <label>
     <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
-        <span i18n>protect with password</span>: 
+        <span i18n="@@protectpssw">protect with password</span>: 
         <input type="checkbox"/>
     </span>    
 </label>
 
-    <button i18n>record</button>
-    <button i18n>select file</button>
+    <button i18n="@@record">record</button>
+    <button i18n="@@selectfile">select file</button><br/>
+    <button i18n="@@send">send</button>
+
 </div>
 
 
