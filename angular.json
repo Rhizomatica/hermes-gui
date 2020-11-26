@@ -9,8 +9,7 @@
         "sourceLocale": "en-US",
         "locales": {
           "pt": "src/locale/messages.pt.xlf",
-          "es": "src/locale/messages.es.xlf",
-          "en": "src/locale/messages.xlf"
+          "es": "src/locale/messages.es.xlf"
         }},
       "schematics": {
         "@schematics/angular:component": {
@@ -131,7 +130,7 @@
                   "with": "src/environments/environment.prod.ts"
                 },
               ],
-              "localize": ["en"],
+              "localize": ["en-US"],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
