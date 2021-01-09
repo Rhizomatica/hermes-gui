@@ -2,6 +2,9 @@
 
 @boxw: 280px;
 @clr: #f60;
+@actvclr: #f00;
+@vstclr:#c96;
+@mclr:#000;
 
 body {
     max-width: 350px;
@@ -23,6 +26,18 @@ button:hover {
     background-color: @clr;
 }
 
+a {
+    color: @clr;
+}
+
+a:active {
+    color: @actvclr;
+}
+
+a:visited {
+    color: @mclr;
+}
+
 nav {
     border-bottom: 2px solid #000;
     max-width: 322px;
@@ -38,6 +53,11 @@ nav {
     }
 }
 
+nav a:hover{
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+
+}
+
 .sitetitle {
     color:@clr;
     font-size: 20px;
@@ -47,9 +67,6 @@ h2 {
     font-size: 18px;
 }
 
-a:visited {
-    color:#888;
-}
 
 .logo {
     position: relative;
@@ -112,4 +129,34 @@ nav {
 
 .flags img{
     width: 30px;
+}
+
+.btn {
+    margin-top: 15px;
+    width: 30px;
+    display: block;
+    img {
+        display: block;
+        width: 30px;
+        clear: both;
+        margin-bottom: 8px;
+    }
+
+    a {
+        text-decoration: none;
+        border-top: 3px solid #000;
+        padding-bottom: 4px;
+        
+    }
+
+    a:visited {
+        color: @mclr;
+    }
+
+
+
+}
+
+.btn:hover {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
