@@ -20,7 +20,7 @@ export class StationService {
     private alertService: AlertService) { }
 
     stations: Station[];
-    private baseURL = 'http://floresta.hermes.radio/api.php?p=2';
+    private baseURL = 'http://floresta.hermes.radio:1011/api.php?p=2';
   
     getStations(): Observable<Station[]> {
       return this.http.get(this.baseURL).pipe(
