@@ -2,7 +2,7 @@
 
 <ng-container *ngIf="users"> <ul *ngIf="users">
 
-        <li *ngFor="let user of users">{{user.id}} | {{user.name}} | {{user.location}}
+        <li *ngFor="let user">
         <label>
             <span i18n>name</span>: <input [(ngModel)]="user.name" placeholder="nome de usuario" />
         </label>

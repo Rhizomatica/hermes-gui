@@ -1,16 +1,18 @@
 
 <div class="formfield">
     <h2 i18n="@@admmanage">User Management</h2>
-<button i18n="@@selectuser">select user</button>
 
 <ng-container *ngIf="users">
 
-    <select ng-model="selected">
-        <option *ngFor="let user of ussers">{{user.name}} | {{user.location}}</option>
+    <select ng-model="selecteduser">
+        <option *ngFor="let user of users">{{user.name}} | {{user.location}}</option>
 
     </select> 
     </ng-container>
 
 <button i18n="@@createadm"><a routerLink="/user">create user</a></button>
+
+<app-user></app-user>
+
 </div>
 
