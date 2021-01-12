@@ -17,18 +17,19 @@ export class UserService {
 
     users: User[];
     user: User;
-    //private baseURL = 'http://floresta.hermes.radio:1011/api.php?p=2';
-    private baseURL = 'http://localhost:8000/';
-    
+
+    private baseURL = 'http://pu2uit.hermes.radio:1011/api/';
+    //private baseURL = 'http://localhost:8000/';
+
     private httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         Authorization: 'my-auth-token'
       })
     };
-  
+
     getUsers(): Observable<User[]> {
-      return this.http.get(this.baseURL + 'user/').pipe(
+      return this.http.get(this.baseURL + 'users').pipe(
         map((res:any) => {
           this.users = res;
           console.log(this.users);
@@ -37,7 +38,8 @@ export class UserService {
       catchError(this.handleError));
     }
 
-    getUser(): Observable<User[]> {
+    getUser(id: number): Observable<User[]> {
+      const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
       return this.http.get(this.baseURL).pipe(
         map((res:any) => {
           this.user = res;
@@ -52,31 +54,31 @@ export class UserService {
       const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
       return this.http.delete(url, this.httpOptions)
         .pipe(
-          //catchError(this.handleError('deleteUser'))
-          catchError(this.handleError)
-        );
+          catchError(this.handleError));
     }
 
     /** POST: add a new user to the database */
-    /*
     createUser(user: User): Observable<User> {
       const url = `${this.baseURL}/user`; // POST api/users
-      return this.http.post<User>(url, user, httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    );
-}
-
-    createUser(): Observable<User[]>{
-    //post
-    return this.users;
-
+      //return this.http.post<User>(url, user, httpOptions)
+      return this.http.post<User>(url, user, this.httpOptions)
+       .pipe(
+        catchError(this.handleError)
+      );
     }
 
-    updateUser(): Observable<User[]>{
-      //put
-      }
+
+/** PUT: update a user  */
+/*
+    updateUser(user: User): Observable<User> {
+      const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
+      return this.http.put<User>(url, user, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 */
+
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.

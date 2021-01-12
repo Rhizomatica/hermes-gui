@@ -20,10 +20,8 @@ export class StationService {
     private alertService: AlertService) { }
 
     stations: Station[];
-    //private baseURL = 'http://pu2uit.hermes.radio:1011/api'; 
-    private baseURL = 'http://localhost:8000'; 
-
-
+    private baseURL = 'http://pu2uit.hermes.radio:1011/api/';
+    
     getStations(): Observable<Station[]> {
       console.log(this.http.get(this.baseURL + '/sys/getstations'));
       return this.http.get(this.baseURL + '/sys/getstations').pipe(
