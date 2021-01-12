@@ -11,9 +11,20 @@ import { StationService } from '../station.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
-
+  
+  users: User[];
+  stations: Station[];
+  constructor(private stationService: StationService, private userService: UserService) {}
+  
+  
   ngOnInit(): void {
+    this.stationService.getStations()
+    .subscribe(stations =>  this.stations = stations)
+
+    this.userService.getUsers()
+    .subscribe(users =>  this.users = users)
+
+
   }
 
 }

@@ -24,13 +24,7 @@
 
         <span i18n="@@selectstation">select station
         </span>:
-        <ng-container *ngIf="stations">
-
-            <select ng-model="selected">
-                <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
-
-            </select>
-            </ng-container>
+       
 
 
         <label>
@@ -38,6 +32,14 @@
         </label>
     </li>
     </ul>
+
+    <ng-container *ngIf="stations">
+
+        <select ng-model="selected">
+            <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+
+        </select>
+    </ng-container>
 
     <button>Update User</button>
 
