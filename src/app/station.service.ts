@@ -20,13 +20,15 @@ export class StationService {
     private alertService: AlertService) { }
 
     stations: Station[];
-    private baseURL = 'http://floresta.hermes.radio:1011/api.php?p=2';
-  
+    //private baseURL = 'http://pu2uit.hermes.radio:1011/api'; 
+    private baseURL = 'http://localhost:8000'; 
+
+
     getStations(): Observable<Station[]> {
-      return this.http.get(this.baseURL).pipe(
+      console.log(this.http.get(this.baseURL + '/sys/getstations'));
+      return this.http.get(this.baseURL + '/sys/getstations').pipe(
         map((res:any) => {
           this.stations = res;
-          console.log(this.stations);
           return this.stations;
       }),
       catchError(this.handleError));
@@ -38,11 +40,9 @@ export class StationService {
       return throwError('Error! something went wrong: ');
     }
 
-    private log (message: string) {
+    private log (message: string)  {
       this.alertService.add(`Station: ${message}`);
     }
-
-
 
 
 /*  private stationsUrl = 'api/stations';  // URL to web api

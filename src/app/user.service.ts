@@ -16,10 +16,18 @@ export class UserService {
     private alertService: AlertService) { }
 
     users: User[];
+    user: User;
     private baseURL = 'http://floresta.hermes.radio:1011/api.php?p=2';
+    
+    private httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: 'my-auth-token'
+      })
+    };
   
     getUsers(): Observable<User[]> {
-      return this.http.get(this.baseURL).pipe(
+      return this.http.get(this.baseURL + 'user/').pipe(
         map((res:any) => {
           this.users = res;
           console.log(this.users);
@@ -28,16 +36,37 @@ export class UserService {
       catchError(this.handleError));
     }
 
-    getUser(): {}
-
-    deleteUser(): Observable<User[]>{
-      //delete
-      return;
-
+    getUser(): Observable<User[]> {
+      return this.http.get(this.baseURL).pipe(
+        map((res:any) => {
+          this.user = res;
+          console.log(this.user);
+          return this.users;
+      }),
+      catchError(this.handleError));
     }
 
+    /** DELETE: delete the hero from the server */
+    deleteUser(id: number): Observable<{}> {
+      const url = `${this.baseURL}/${id}`; // DELETE api/heroes/42
+      return this.http.delete(url, this.httpOptions)
+        .pipe(
+          //catchError(this.handleError('deleteUser'))
+          catchError(this.handleError)
+        );
+    }
+
+    /** POST: add a new hero to the database */
+    createUser(user: User): Observable<Hero> {
+      return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+    .pipe(
+      //catchError(this.handleError('createUser', hero))
+      catchError(this.handleError)
+    );
+}
+/*
     createUser(): Observable<User[]>{
-    //post          
+    //post
     return this.users;
 
     }
@@ -45,12 +74,21 @@ export class UserService {
     updateUser(): Observable<User[]>{
       //put
       }
-
-
+*/
     private handleError(error: HttpErrorResponse) {
-      console.log(error);
-      // return an observable with a user friendly message
-      return throwError('Error! something went wrong: ');
+      if (error.error instanceof ErrorEvent) {
+        // A client-side or network error occurred. Handle it accordingly.
+        console.error('An error occurred:', error.error.message);
+      } else {
+        // The backend returned an unsuccessful response code.
+        // The response body may contain clues as to what went wrong.
+        console.error(
+          `Backend returned code ${error.status}, ` +
+          `body was: ${error.error}`);
+      }
+      // Return an observable with a user-facing error message.
+      return throwError(
+        'Something bad happened; please try again later.');
     }
 
     private log (message: string) {
