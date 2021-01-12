@@ -1,2 +1,45 @@
 <p>user works!</p>
 
+<ng-container *ngIf="users">
+    <ul *ngIf="users">
+        <li *ngFor="let user of users">{{statiuseron.id}} | {{user.name}} | {{user.location}}
+        <label>
+            <span i18n>name</span>: <input [(ngModel)]="user.name" placeholder="nome de usuario" />
+        </label>
+        <label>
+            <span i18n>password</span>: <input type="password" [(ngModel)]="user.password" placeholder="password" />    
+        </label>
+        <label>
+            <span i18n>recovery prase</span>: <input [(ngModel)]="user.recoveryprase" placeholder="write a question to recover your password" />    
+        </label>
+        <label>
+            <span i18n>recovery answer</span>: <input [(ngModel)]="user.recoveryprase" placeholder="answer to your recovery question" />    
+        </label>
+        <label>
+            <span i18n>phone number</span>: <input [(ngModel)]="user.phone" placeholder="phone number" />    
+        </label>
+        <label>
+            <span i18n>local site</span>: <input [(ngModel)]="user.site" placeholder="website" />    
+        </label>
+
+        <span i18n="@@selectstation">select station
+        </span>: 
+        <ng-container *ngIf="stations">
+
+            <select ng-model="selected">
+                <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+        
+            </select> 
+            </ng-container>
+
+
+        <label>
+            <span i18n>is admin</span>: <input type="checkbox" [(ngModel)]="user.admin"  />    
+        </label>
+    </li>
+    </ul>   
+
+    <button>Update User</button>
+    
+</ng-container>
+

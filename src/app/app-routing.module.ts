@@ -13,6 +13,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'upgrade', component: UpgradeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'languages', component: LanguagesComponent},
-  { path: 'messageadm', component: MessageadmComponent}
+  { path: 'messageadm', component: MessageadmComponent},
+  { path: 'user', component: UserComponent}
 
 
 
