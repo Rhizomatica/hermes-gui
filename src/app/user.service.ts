@@ -17,7 +17,8 @@ export class UserService {
 
     users: User[];
     user: User;
-    private baseURL = 'http://floresta.hermes.radio:1011/api.php?p=2';
+    //private baseURL = 'http://floresta.hermes.radio:1011/api.php?p=2';
+    private baseURL = 'http://localhost:8000/';
     
     private httpOptions = {
       headers: new HttpHeaders({
@@ -46,9 +47,9 @@ export class UserService {
       catchError(this.handleError));
     }
 
-    /** DELETE: delete the hero from the server */
+    /** DELETE: delete the user from the server */
     deleteUser(id: number): Observable<{}> {
-      const url = `${this.baseURL}/${id}`; // DELETE api/heroes/42
+      const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
       return this.http.delete(url, this.httpOptions)
         .pipe(
           //catchError(this.handleError('deleteUser'))
@@ -56,15 +57,16 @@ export class UserService {
         );
     }
 
-    /** POST: add a new hero to the database */
-    createUser(user: User): Observable<Hero> {
-      return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+    /** POST: add a new user to the database */
+    /*
+    createUser(user: User): Observable<User> {
+      const url = `${this.baseURL}/user`; // POST api/users
+      return this.http.post<User>(url, user, httpOptions)
     .pipe(
-      //catchError(this.handleError('createUser', hero))
       catchError(this.handleError)
     );
 }
-/*
+
     createUser(): Observable<User[]>{
     //post
     return this.users;
