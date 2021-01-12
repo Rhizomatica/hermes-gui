@@ -3,6 +3,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { Station } from '../station';
 import { StationService } from '../station.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -14,6 +15,7 @@ export class UserComponent implements OnInit {
   
   users: User[];
   stations: Station[];
+  user: User;
   constructor(private stationService: StationService, private userService: UserService) {}
   
   
@@ -23,6 +25,9 @@ export class UserComponent implements OnInit {
 
     this.userService.getUsers()
     .subscribe(users =>  this.users = users)
+
+    this.userService.getUser(selectedid)
+    .subscribe(user =>  this.users = users)
 
 
   }

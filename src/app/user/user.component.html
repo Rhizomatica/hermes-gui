@@ -2,7 +2,7 @@
 
 <ng-container *ngIf="users"> <ul *ngIf="users">
 
-        <li *ngFor="let user of users">
+        <li *ngFor="let user of users">{{user.id}} | {{user.name}} | {{user.location}}
         <label>
             <span i18n>name</span>: <input [(ngModel)]="user.name" placeholder="nome de usuario" />
         </label>
@@ -39,7 +39,7 @@
             <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
 
         </select>
-    </ng-container>
+        </ng-container>
 
     <button>Update User</button>
 

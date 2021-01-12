@@ -4,15 +4,58 @@
 
 <ng-container *ngIf="users">
 
-    <select ng-model="selecteduser">
-        <option *ngFor="let user of users">{{user.name}} | {{user.location}}</option>
-
-    </select> 
+    <ul ng-model="selectedUser">
+        <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
+    </ul> 
     </ng-container>
+
+
+<ng-container *ngIf="selectedUser">
+<form>
+
+<label>
+    <span i18n>name</span>: <input [(ngModel)]="selectedUser.name" placeholder="nome de usuario" />
+</label>
+<label>
+    <span i18n>password</span>: <input type="password" [(ngModel)]="selectedUser.password" placeholder="password" />
+</label>
+<label>
+    <span i18n>recovery prase</span>: <input [(ngModel)]="selectedUser.recoveryprase" placeholder="write a question to recover your password" />
+</label>
+<label>
+    <span i18n>recovery answer</span>: <input [(ngModel)]="selectedUser.recoveryprase" placeholder="answer to your recovery question" />
+</label>
+<label>
+    <span i18n>phone number</span>: <input [(ngModel)]="selectedUser.phone" placeholder="phone number" />
+</label>
+<label>
+    <span i18n>local site</span>: <input [(ngModel)]="selectedUser.site" placeholder="website" />
+</label>
+
+<label>
+    <span i18n>is admin</span>: <input type="checkbox" [(ngModel)]="user.admin"  />
+</label>
+
+<span i18n="@@selectstation">select station
+</span>:
+<ng-container *ngIf="stations">
+
+    <select ng-model="selected">
+        <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+
+    </select>
+    </ng-container>
+
+
+</br>
+<input type="submit">
+
+</form>
+
+</ng-container>
 
 <button i18n="@@createadm"><a routerLink="/user">create user</a></button>
 
-<app-user></app-user>
 
 </div>
 
