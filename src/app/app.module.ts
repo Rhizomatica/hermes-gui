@@ -24,6 +24,7 @@ import { LanguagesComponent } from './languages/languages.component';
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './help/help.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
+import { UserComponent } from './user/user.component';
 //import { CLIENT_RENEG_LIMIT } from 'tls';
 
 /*export function createTranslateLoader(http: HttpClient) {
@@ -52,7 +53,8 @@ import { MessageadmComponent } from './messageadm/messageadm.component';
     LoginComponent,
     LanguagesComponent,
     HelpComponent,
-    MessageadmComponent
+    MessageadmComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
