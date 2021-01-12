@@ -1,7 +1,7 @@
 <p>user works!</p>
 
-<ng-container *ngIf="users">
-    <ul *ngIf="users">
+<ng-container *ngIf="users"> <ul *ngIf="users">
+   
         <li *ngFor="let user of users">{{statiuseron.id}} | {{user.name}} | {{user.location}}
         <label>
             <span i18n>name</span>: <input [(ngModel)]="user.name" placeholder="nome de usuario" />
@@ -40,6 +40,6 @@
     </ul>   
 
     <button>Update User</button>
-    
+
 </ng-container>
 
