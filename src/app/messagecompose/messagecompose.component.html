@@ -3,21 +3,19 @@
 
 <label>
     <span i18n="@@description">description</span>: <br><textarea  placeholder="describe your message" ></textarea><br>
-    
 </label>
 
 <p>
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
         <span i18n="@@selectstation">select station
-        </span>: 
+        </span>:
         <ng-container *ngIf="stations">
 
             <select ng-model="selected">
                 <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
-        
-            </select> 
+            </select>
             </ng-container>
-    </span> 
+    </span>
 </p>
 
 
@@ -27,7 +25,7 @@
     <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
         <span i18n="@@protectpssw">protect with password</span>: 
         <input type="checkbox"/>
-    </span>    
+    </span>
 </label>
 
     <button i18n="@@record">record</button>

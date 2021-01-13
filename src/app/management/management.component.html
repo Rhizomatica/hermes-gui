@@ -3,16 +3,16 @@
     <h2 i18n="@@admmanage">User Management</h2>
 
 <ng-container *ngIf="users">
-
     <ul ng-model="selectedUser">
         <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
-    </ul> 
+    </ul>
     </ng-container>
-
-
 <ng-container *ngIf="selectedUser">
 <form>
 
+<label>
+    <span i18n>ID</span>: <input [(ngModel)]="selectedUser.id" placeholder="id" />
+</label>
 <label>
     <span i18n>name</span>: <input [(ngModel)]="selectedUser.name" placeholder="nome de usuario" />
 </label>
@@ -45,9 +45,6 @@
 
     </select>
     </ng-container>
-
-
-</br>
 <input type="submit">
 
 </form>

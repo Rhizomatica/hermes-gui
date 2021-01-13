@@ -24,20 +24,14 @@ const routes: Routes = [
   { path: 'log', component: LogComponent},
   { path: 'mailadmin', component: MailadminComponent},
   { path: 'manage', component: ManagementComponent},
+  { path: 'manage/:id', component: ManagementComponent},
   { path: 'compose', component: MessagecomposeComponent},
   { path: 'netadmin', component: NetadminComponent},
   { path: 'upgrade', component: UpgradeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'languages', component: LanguagesComponent},
   { path: 'messageadm', component: MessageadmComponent},
-  { path: 'user', component: UserComponent}
-
-
-
-
-
-
-
+  { path: 'users', component: UserComponent}
 ];
 
 @NgModule({

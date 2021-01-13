@@ -16,7 +16,7 @@ import { StationService } from '../station.service';
 export class MessagecomposeComponent implements OnInit {
   stations: Station[];
   constructor(private stationService: StationService) {}
-  
+
   ngOnInit(): void {
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations)

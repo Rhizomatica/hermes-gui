@@ -31,9 +31,10 @@ export class ManagementComponent implements OnInit {
   }
 
   selectedUser: User;
-onSelect(user: User): void {
-  this.selectedUser = user;
-}
+
+  onSelect(user: User): void {
+    this.selectedUser = user;
+  }
 
   ngOnInit(): void {
     this.getUsers();

@@ -12,13 +12,11 @@ import { from } from 'rxjs';
 })
 export class UserComponent implements OnInit {
 
-  
   users: User[];
   stations: Station[];
   user: User;
   constructor(private stationService: StationService, private userService: UserService) {}
-  
-  
+
   ngOnInit(): void {
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations)
@@ -26,9 +24,8 @@ export class UserComponent implements OnInit {
     this.userService.getUsers()
     .subscribe(users =>  this.users = users)
 
-    this.userService.getUser(selectedid)
-    .subscribe(user =>  this.users = users)
-
+    this.userService.getUser(this.user.id)
+    .subscribe(user =>  this.users = user)
 
   }
 

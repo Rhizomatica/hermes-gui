@@ -1,15 +1,9 @@
-
-
 <ng-container *ngIf="stations">
     <ul *ngIf="stations">
         <li *ngFor="let station of stations">{{station.id}} | {{station.name}} | {{station.location}}
-        
         <label>
             <span i18n>name</span>: <input [(ngModel)]="station.name" placeholder="nome da estação" />
         </label>
     </li>
-    </ul>   
+    </ul>
     </ng-container>
-
-        
-
