@@ -33,7 +33,11 @@ export class ManagementComponent implements OnInit {
 
   onSelect(user): void {
     this.selectedUser = user;
-    console.log(this.selectedUser);
+  }
+
+  onSubmit(user): void {
+    console.log("TODO testedebug: ", user );
+    this.selectedUser = user;
   }
 
 
