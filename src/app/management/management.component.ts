@@ -36,6 +36,7 @@ export class ManagementComponent implements OnInit {
     console.log(this.selectedUser);
   }
 
+
   ngOnInit(): void {
     this.getUsers();
 
