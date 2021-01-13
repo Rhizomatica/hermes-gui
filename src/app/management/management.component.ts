@@ -19,6 +19,7 @@ export class ManagementComponent implements OnInit {
   selectedUser: User[];
 
   constructor(private userService: UserService, private stationService: StationService) { }
+
   getUsers(): void {
     this.userService.getUsers().subscribe(
       (res: any) => {
@@ -32,7 +33,7 @@ export class ManagementComponent implements OnInit {
 
   onSelect(user): void {
     this.selectedUser = user;
-    console.log(selectedUser);
+    console.log(this.selectedUser);
   }
 
   ngOnInit(): void {
