@@ -19,13 +19,14 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.stationService.getStations()
-    .subscribe(stations =>  this.stations = stations)
+    .subscribe(stations =>  this.stations = stations);
 
     this.userService.getUsers()
-    .subscribe(users =>  this.users = users)
+    .subscribe(users =>  this.users = users);
 
-    this.userService.getUser(this.user.id)
+/*    this.userService.getUser(this.user.id)
     .subscribe(user =>  this.users = user)
+*/
 
   }
 

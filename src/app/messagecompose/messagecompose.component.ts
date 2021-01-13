@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { Station } from '../station';
 import { StationService } from '../station.service';
-//import { StationsComponent } from '../stations/stations.component';
+// import { StationsComponent } from '../stations/stations.component';
 
 @Component({
   selector: 'app-messagecompose',
@@ -19,7 +19,7 @@ export class MessagecomposeComponent implements OnInit {
 
   ngOnInit(): void {
     this.stationService.getStations()
-    .subscribe(stations =>  this.stations = stations)
+    .subscribe(stations =>  this.stations = stations);
   }
 
 }

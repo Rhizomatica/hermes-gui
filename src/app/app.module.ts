@@ -20,12 +20,12 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
 import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
-//import {TranslateModule} from '@ngx-translate/core';
+// import {TranslateModule} from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './help/help.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
 import { UserComponent } from './user/user.component';
-//import { CLIENT_RENEG_LIMIT } from 'tls';
+// import { CLIENT_RENEG_LIMIT } from 'tls';
 
 /*export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -87,4 +87,4 @@ import { UserComponent } from './user/user.component';
 
 
 export class AppModule { }
-//export class SharedModule { }
+// export class SharedModule { }

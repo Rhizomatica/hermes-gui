@@ -21,11 +21,11 @@ export class StationService {
 
     stations: Station[];
     private baseURL = 'http://pu2uit.hermes.radio:1011/api/';
-    
+
     getStations(): Observable<Station[]> {
       console.log(this.http.get(this.baseURL + '/sys/getstations'));
       return this.http.get(this.baseURL + '/sys/getstations').pipe(
-        map((res:any) => {
+        map((res: any) => {
           this.stations = res;
           return this.stations;
       }),
@@ -38,7 +38,7 @@ export class StationService {
       return throwError('Error! something went wrong: ');
     }
 
-    private log (message: string)  {
+    private log(message: string)  {
       this.alertService.add(`Station: ${message}`);
     }
 

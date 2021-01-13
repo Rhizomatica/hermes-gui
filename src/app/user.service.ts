@@ -19,7 +19,7 @@ export class UserService {
     user: User;
 
     private baseURL = 'http://pu2uit.hermes.radio:1011/api/';
-    //private baseURL = 'http://localhost:8000/';
+    // private baseURL = 'http://localhost:8000/';
 
     private httpOptions = {
       headers: new HttpHeaders({
@@ -30,7 +30,7 @@ export class UserService {
 
     getUsers(): Observable<User[]> {
       return this.http.get(this.baseURL + 'users').pipe(
-        map((res:any) => {
+        map((res: any) => {
           this.users = res;
           console.log(this.users);
           return this.users;
@@ -41,7 +41,7 @@ export class UserService {
     getUser(id: number): Observable<User[]> {
       const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
       return this.http.get(this.baseURL).pipe(
-        map((res:any) => {
+        map((res: any) => {
           this.user = res;
           console.log(this.user);
           return this.users;
@@ -60,7 +60,7 @@ export class UserService {
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
       const url = `${this.baseURL}/user`; // POST api/users
-      //return this.http.post<User>(url, user, httpOptions)
+      // return this.http.post<User>(url, user, httpOptions)
       return this.http.post<User>(url, user, this.httpOptions)
        .pipe(
         catchError(this.handleError)
@@ -95,10 +95,8 @@ export class UserService {
         'Something bad happened; please try again later.');
     }
 
-    private log (message: string) {
+    private log(message: string) {
       this.alertService.add(`Users: ${message}`);
     }
-
-
 
 }

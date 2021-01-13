@@ -16,9 +16,9 @@ export class ManagementComponent implements OnInit {
   test = '';
   users: User[];
   stations: Station[];
+  selectedUser: User;
 
-
-  constructor(private userService: UserService, private stationService: StationService,) { }
+  constructor(private userService: UserService, private stationService: StationService) { }
   getUsers(): void {
     this.userService.getUsers().subscribe(
       (res: any) => {
@@ -30,8 +30,6 @@ export class ManagementComponent implements OnInit {
     );
   }
 
-  selectedUser: User;
-
   onSelect(user: User): void {
     this.selectedUser = user;
   }
@@ -40,7 +38,7 @@ export class ManagementComponent implements OnInit {
     this.getUsers();
 
     this.stationService.getStations()
-    .subscribe(stations =>  this.stations = stations)
+    .subscribe(stations =>  this.stations = stations);
 
   }
 }

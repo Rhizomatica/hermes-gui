@@ -1,14 +1,14 @@
 export interface User {
-    id: number; 
+    id: number;
     name: string;
-    //password: string;
-    //recoverphrase: string;
-    //recoveranswer: string;
     email: string;
-    //phone: number;
-    //admin: boolean;
-    //site: string;
+    phone: string;
+    site: string;
     location: string;
+    password: string;
+    recoverphrase: string;
+    recoveranswer: string;
+    admin: boolean;
     updated_at: string;
     created_at: string;
   }

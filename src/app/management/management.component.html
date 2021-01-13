@@ -6,7 +6,7 @@
     <ul ng-model="selectedUser">
         <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
     </ul>
-    </ng-container>
+</ng-container>
 <ng-container *ngIf="selectedUser">
 <form>
 
@@ -20,10 +20,10 @@
     <span i18n>password</span>: <input type="password" [(ngModel)]="selectedUser.password" placeholder="password" />
 </label>
 <label>
-    <span i18n>recovery prase</span>: <input [(ngModel)]="selectedUser.recoveryprase" placeholder="write a question to recover your password" />
+    <span i18n>recovery prase</span>: <input [(ngModel)]="selectedUser.recoveryphrase" placeholder="write a question to recover your password" />
 </label>
 <label>
-    <span i18n>recovery answer</span>: <input [(ngModel)]="selectedUser.recoveryprase" placeholder="answer to your recovery question" />
+    <span i18n>recovery answer</span>: <input [(ngModel)]="selectedUser.recoveryphrase" placeholder="answer to your recovery question" />
 </label>
 <label>
     <span i18n>phone number</span>: <input [(ngModel)]="selectedUser.phone" placeholder="phone number" />

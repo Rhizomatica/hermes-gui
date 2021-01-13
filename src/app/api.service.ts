@@ -18,10 +18,10 @@ export class ApiService {
 
   apis: Api[];
     private baseURL = 'http://floresta.hermes.radio:1011/api.php';
-  
+
     getApi(): Observable<Api[]> {
       return this.http.get(this.baseURL).pipe(
-        map((res:any) => {
+        map((res: any) => {
           this.apis = res;
           console.log(this.apis);
           return this.apis;
@@ -35,7 +35,7 @@ export class ApiService {
       return throwError('Error! something went wrong: ');
     }
 
-    private log (message: string) {
+    private log(message: string) {
       this.alertService.add(`Api: ${message}`);
     }
 }

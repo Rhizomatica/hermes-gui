@@ -6,4 +6,3 @@ export interface Api {
     url: string;
     destination: string;
   }
-  

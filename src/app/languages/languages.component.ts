@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-  siteLanguage: string = 'English';
+  siteLanguage = 'English';
   siteLocale: string;
   languageList = [
     { code: 'pt', label: 'Português' },
