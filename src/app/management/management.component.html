@@ -2,48 +2,55 @@
 <div class="formfield">
     <h2 i18n="@@admmanage">User Management</h2>
 
+    <button i18n="@@createadm"><a routerLink="/user">create user</a></button>
+    <h2>Users</h2>
+
     <ng-container *ngIf="users">
         <ul ng-model="selectedUser">
             <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
-        <form (ngSubmit)="onSubmit(selectedUser)">
+        <form id="userdata" (ngSubmit)="onSubmit(selectedUser)">
+            <label>
+                <span i18n>ID</span>:  {{selectedUser.id}}
+            </label>
+            <label>
+                <span i18n>name</span>:
+                <br/><input  placeholder="nome de usuario" value={{selectedUser.name}}/>
+            </label>
+            <label>
+                <span i18n>password</span>:
+                <br/><input type="password"  placeholder="password" value={{selectedUser.password}} />
+            </label>
+            <label>
+                <span i18n>recovery phrase</span>:
+                <br/><input  placeholder="write a question to recover your password" value={{selectedUser.password}} />
+            </label>
+            <label>
+                <span i18n>recovery answer</span>:
+                <br/><input  placeholder="answer to your recovery question" value={{selectedUser.recover_answer}} />
+            </label>
+            <label>
+                <span i18n>phone number</span>:
+                <br/><input  placeholder="phone number" value={{selectedUser.phone}} />
+            </label>
+            <label>
+                <span i18n>local site</span>:
+                <br/><input  placeholder="website"  value={{selectedUser.site}}/>
+            </label>
+
+            <hr>
+                <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
+                <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
+            <hr>
 
             <label>
-                <span i18n>ID</span>:   <input  placeholder="id" value={{selectedUser.id}}/>
-            </label>
-            <label>
-                <span i18n>name</span>: <input  placeholder="nome de usuario" value={{selectedUser.name}}/>
-            </label>
-            <label>
-                <span i18n>password</span>: <input type="password"  placeholder="password" value={{selectedUser.password}} />
-            </label>
-            <label>
-                <span i18n>recovery prase</span>: <input  placeholder="write a question to recover your password" value={{selectedUser.password}} />
-            </label>
-            <label>
-                <span i18n>recovery answer</span>: <input  placeholder="answer to your recovery question" value={{selectedUser.recover_answer}} />
-            </label>
-            <label>
-                <span i18n>phone number</span>: <input  placeholder="phone number" value={{selectedUser.phone}} />
-            </label>
-            <label>
-                <span i18n>local site</span>: <input  placeholder="website"  value={{selectedUser.site}}/>
+                <span i18n>is admin</span>:
+                <br/><input class="ckbx" type="checkbox" value="{{selectedUser.admin}}"  />
             </label>
 
-            <label>
-                <span i18n>is admin</span>: <input type="checkbox" value="{{selectedUser.admin}}"  />
-            </label>
-            <HR>
-            <label>
-                <span i18n>updated at:</span> <span>{{selectedUser.updated_at}}</span>
-            </label>
-            <label>
-                <span i18n>created at:</span>: <span>{{selectedUser.created_at}}</span>
-            </label>
-            <HR>
-            <span i18n="@@selectstation">select station
+            <span i18n="@@selectstation">station
             </span>:
             <ng-container *ngIf="stations">
 
@@ -52,12 +59,13 @@
 
                 </select>
                 </ng-container>
-            <input type="submit">
 
+                <button>delete user</button>
+                <button>update user</button>
+
+        <input type="submit" class="sbmbtn">
         </form>
     </ng-container>
-
-    <button i18n="@@createadm"><a routerLink="/user">create user</a></button>
 
 </div>
 
