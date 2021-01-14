@@ -20,6 +20,12 @@ button {
     border-radius: 2px;
     margin-right: 4px;
     margin-top: 4px;
+    a{
+        text-decoration:none;
+    }
+    a:visited {
+        color: #ddd;
+    }
 }
 
 button:hover {
@@ -37,6 +43,8 @@ a:active {
 a:visited {
     color: @mclr;
 }
+
+
 
 nav {
     border-bottom: 2px solid #000;
@@ -180,4 +188,12 @@ nav {
         background-color: @clr;
         color: @mclr;
     }
+}
+
+#userlist {
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #888;
+    list-style: none;
+    list-style-position: inside;
 }

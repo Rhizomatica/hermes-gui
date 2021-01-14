@@ -3,10 +3,12 @@
     <h2 i18n="@@admmanage">User Management</h2>
 
     <button i18n="@@createadm"><a routerLink="/user">create user</a></button>
-    <h2>Users</h2>
+    <h3>Users</h3>
+
+    <input ng-model="search"/>
 
     <ng-container *ngIf="users">
-        <ul ng-model="selectedUser">
+        <ul id="userlist" ng-model="selectedUser">
             <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
@@ -41,7 +43,6 @@
             </label>
 
             <hr>
-                <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
                 <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
             <hr>
 
