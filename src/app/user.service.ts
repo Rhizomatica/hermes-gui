@@ -18,7 +18,7 @@ export class UserService {
     users: User[];
     user: User;
 
-    private baseURL = 'http://pu2uit.hermes.radio:1011/api/';
+    private baseURL = 'http://pu2uit.hermes.radio:1011/api';
     // private baseURL = 'http://localhost:8000/';
 
     private httpOptions = {
@@ -29,7 +29,7 @@ export class UserService {
     };
 
     getUsers(): Observable<User[]> {
-      return this.http.get(this.baseURL + 'users').pipe(
+      return this.http.get(this.baseURL + '/users').pipe(
         map((res: any) => {
           this.users = res;
           console.log(this.users);
@@ -52,6 +52,7 @@ export class UserService {
     /** DELETE: delete the user from the server */
     deleteUser(id: number): Observable<{}> {
       const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
+      console.log(url);
       return this.http.delete(url, this.httpOptions)
         .pipe(
           catchError(this.handleError));
@@ -69,15 +70,16 @@ export class UserService {
 
 
 /** PUT: update a user  */
-/*
+
     updateUser(user: User): Observable<User> {
-      const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
-      return this.http.put<User>(url, user, httpOptions)
+      console.log('debug update', user);
+      const url = `${this.baseURL}/user/${user.id}`; // DELETE api/users/42
+      return this.http.put<User>(url, user, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
-*/
+
 
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {

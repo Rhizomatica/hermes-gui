@@ -11,13 +11,13 @@
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
-        <form id="userdata" (ngSubmit)="onSubmit(selectedUser)">
+        <form id="userdata"  (ngSubmit)="createUser(selectedUser)">
             <label>
                 <span i18n>ID</span>:  {{selectedUser.id}}
             </label>
-            <label>
+            <label for="name">
                 <span i18n>name</span>:
-                <br/><input  placeholder="nome de usuario" value={{selectedUser.name}}/>
+                <br/><input id="name" placeholder="nome de usuario" value={{selectedUser.name}}/>
             </label>
             <label>
                 <span i18n>password</span>:
@@ -54,14 +54,14 @@
             </span>:
             <ng-container *ngIf="stations">
 
-                <select ng-model="selected">
+                <select ng-model="selectedStation">
                     <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
 
                 </select>
                 </ng-container>
 
-                <button>delete user</button>
-                <button>update user</button>
+                <button type="submit" (click)="onSubmit('delete',selectedUser)">delete user</button>
+                <button type="submit" (click)="onSubmit('update',selectedUser,selectedStation)">update user</button>
 
         <input type="submit" class="sbmbtn">
         </form>
