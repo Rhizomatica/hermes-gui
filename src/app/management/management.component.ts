@@ -20,7 +20,8 @@ export class ManagementComponent implements OnInit {
   stations: Station[];
   selectedUser: User[];
   control: any;
-  
+  public isadmin = true;
+
 
   
 
