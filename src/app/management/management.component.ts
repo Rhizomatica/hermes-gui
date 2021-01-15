@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { NgForm} from '@angular/forms';
-
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Station } from '../station';
@@ -12,6 +10,7 @@ import { StationService } from '../station.service';
   templateUrl: './management.component.html',
   styleUrls: ['./management.component.less']
 })
+
 export class ManagementComponent implements OnInit {
 
   error = '';
@@ -21,6 +20,9 @@ export class ManagementComponent implements OnInit {
   stations: Station[];
   selectedUser: User[];
   control: any;
+  
+
+  
 
   //constructor(private userService: UserService, private stationService: StationService, private fb: FormBuilder) {
     constructor(private userService: UserService, private stationService: StationService) {
@@ -33,6 +35,8 @@ export class ManagementComponent implements OnInit {
     });
     */
   }
+
+
 
   getUsers(): void {
     this.userService.getUsers().subscribe(

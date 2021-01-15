@@ -2,6 +2,9 @@
 <div class="formfield">
     <h2 i18n="@@admmanage">User Management</h2>
 
+    <div *ngIf="isadmin">teste</div>  
+    {{isadmin}}  
+
     <button i18n="@@createadm"><a routerLink="/user">create user</a></button>
     <h3>Users</h3>
 
@@ -12,7 +15,7 @@
             <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
-    <ng-container *ngIf="selectedUser">
+    <ng-container *ngIf="selectedUser ">
         <form #f="ngForm"  (ngSubmit)="createUser(f)" novalidate>
             <label>
                 <span i18n>ID</span>:
