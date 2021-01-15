@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule} from '@angular/forms';
+
+import { NgForm} from '@angular/forms';
 
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -48,23 +49,21 @@ export class ManagementComponent implements OnInit {
     this.selectedUser = user;
   }
 
-  onSubmit(type, user, station):void {
-    if (!type ){
-      this.userService.createUser(user).subscribe();
-    }
-    else if (type === 'delete'){
-      console.log('delete', user, station);
-      this.userService.deleteUser(user.id).subscribe();
-    }
-    else if (type == 'update'){
-      console.log('update', user, station);
-      this.userService.updateUser(user).subscribe();
+  onSubmitUpdate(f: NgForm):void {
+      console.log('update', f.value);
+      this.userService.updateUser(f.value).subscribe();
       //window.location.reload();
-    }
   }
-  
-  createUser(user): void {
-    this.userService.createUser(user).subscribe();
+
+  onSubmitDelete(id):void {
+    console.log(id);
+        this.userService.deleteUser(id).subscribe();
+        //window.location.reload();
+  }
+
+
+  createUser(f: NgForm): void {
+    this.userService.createUser(f.value).subscribe();
   }
 
 

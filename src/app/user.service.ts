@@ -32,28 +32,28 @@ export class UserService {
       return this.http.get(this.baseURL + '/users').pipe(
         map((res: any) => {
           this.users = res;
-          console.log(this.users);
           return this.users;
       }),
       catchError(this.handleError));
     }
 
-    getUser(id: number): Observable<User[]> {
+/*    getUser(id: number): Observable<User[]> {
       const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
       return this.http.get(this.baseURL).pipe(
         map((res: any) => {
           this.user = res;
-          console.log(this.user);
           return this.users;
       }),
       catchError(this.handleError));
     }
+  */
 
     /** DELETE: delete the user from the server */
-    deleteUser(id: number): Observable<{}> {
+    deleteUser(id): Observable<{}> {
+      
       const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
       console.log(url);
-      return this.http.delete(url, this.httpOptions)
+      return this.http.delete(url)
         .pipe(
           catchError(this.handleError));
     }
@@ -61,6 +61,8 @@ export class UserService {
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
       const url = `${this.baseURL}/user`; // POST api/users
+      //console.log(url);
+      //console.log(user);
       // return this.http.post<User>(url, user, httpOptions)
       return this.http.post<User>(url, user, this.httpOptions)
        .pipe(
@@ -73,7 +75,7 @@ export class UserService {
 
     updateUser(user: User): Observable<User> {
       console.log('debug update', user);
-      const url = `${this.baseURL}/user/${user.id}`; // DELETE api/users/42
+      const url = `${this.baseURL}/user/${user.id}`; // PUT api/users/42
       return this.http.put<User>(url, user, this.httpOptions)
       .pipe(
         catchError(this.handleError)

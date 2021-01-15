@@ -13,42 +13,53 @@
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
-        <form id="userdata"  (ngSubmit)="createUser(selectedUser)">
+        <form #f="ngForm"  (ngSubmit)="createUser(f)" novalidate>
             <label>
-                <span i18n>ID</span>:  {{selectedUser.id}}
+                <span i18n>ID</span>:
+                <br/><input name="id" [(ngModel)]="selectedUser.id" required #name="ngModel" placeholder="write the username" />
             </label>
             <label for="name">
                 <span i18n>name</span>:
-                <br/><input id="name" placeholder="nome de usuario" value={{selectedUser.name}}/>
+                <br/><input name="name" [(ngModel)]="selectedUser.name" required #name="ngModel" placeholder="write the username" />
             </label>
-            <label>
-                <span i18n>password</span>:
-                <br/><input type="password"  placeholder="password" value={{selectedUser.password}} />
-            </label>
-            <label>
-                <span i18n>recovery phrase</span>:
-                <br/><input  placeholder="write a question to recover your password" value={{selectedUser.password}} />
-            </label>
-            <label>
-                <span i18n>recovery answer</span>:
-                <br/><input  placeholder="answer to your recovery question" value={{selectedUser.recover_answer}} />
+            <label for="email">
+                <span i18n>name</span>:
+                <br/><input name="email" [(ngModel)]="selectedUser.email" required #name="ngModel" placeholder="write the username" />
             </label>
             <label>
                 <span i18n>phone number</span>:
-                <br/><input  placeholder="phone number" value={{selectedUser.phone}} />
+                <br/><input name="phone" [(ngModel)]="selectedUser.phone"  placeholder="phone number"  />
             </label>
             <label>
-                <span i18n>local site</span>:
-                <br/><input  placeholder="website"  value={{selectedUser.site}}/>
+                <span i18n>site</span>:
+                <br/><input name="site" [(ngModel)]="selectedUser.site" placeholder="website"  />
             </label>
+            <label>
+                <span i18n>location</span>:
+                <br/><input name="location" [(ngModel)]="selectedUser.location"  placeholder="location"  />
+            </label>
+            <label>
+                <span i18n>password</span>:
+                <br/><input name="password"  [(ngModel)]="selectedUser.password" required  placeholder="password"   />
+            </label>
+            <label>
+                <span i18n>recovery phrase</span>:
+                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
+            </label>
+            <label>
+                <span i18n>recovery answer</span>:
+                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" placeholder="answer to your recovery question"  />
+            </label>
+            
 
             <hr>
                 <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
+                <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
             <hr>
 
             <label>
                 <span i18n>is admin</span>:
-                <br/><input class="ckbx" type="checkbox" value="{{selectedUser.admin}}"  />
+                <br/><input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
             </label>
 
             <span i18n="@@selectstation">station
@@ -61,8 +72,8 @@
                 </select>
                 </ng-container>
 
-                <button type="submit" (click)="onSubmit('delete',selectedUser)">delete user</button>
-                <button type="submit" (click)="onSubmit('update',selectedUser,selectedStation)">update user</button>
+                <button type="submit" (click)="onSubmitDelete(f.value.id)">delete user</button>
+                <button type="submit" (click)="onSubmitUpdate(f)">update user</button>
 
         <input type="submit" class="sbmbtn">
         </form>
