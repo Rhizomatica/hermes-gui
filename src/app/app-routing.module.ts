@@ -13,8 +13,8 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
-import { UserComponent } from './user/user.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -32,8 +32,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'languages', component: LanguagesComponent},
   { path: 'messageadm', component: MessageadmComponent},
-  { path: 'users', component: UserComponent},
-  { path: 'recovery', component: ForgotpasswordComponent}
+  { path: 'recovery', component: ForgotpasswordComponent},
+  { path: 'users', component: UserComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,8 @@
 
 <div class="formfield login">
+
+   
+
 <p i18n="@@instructions">To access mail, put your name and password</p>
 <label>
     <p i18n="@@username">username:</p> <input  placeholder="username" />
@@ -7,15 +10,15 @@
  <label>
     <p i18n="@@password">password:</p> <input type="password" placeholder="password" />
  </label>
-  <a i18n="@@login" routerLink="/admin" i18n="@@adminlogin"><button>Log in</button></a>
+  <a i18n="@@login" routerLink="/admin" ><button>Log in</button></a>
   <br>
 
 
+  <a i18n="@@forgot" routerLink="/recovery" ><button>Forgot my password</button></a>
 
+  <p i18n="@@noaccount">Doesn't have an account?</p> 
+ 
+  <a i18n="@@create" routerLink="/users" ><button >create an account</button></a>
   
-  <a routerlink="/recovery" i18n="@@forgot"><p >Forgot my password</p></a>
-
- <p i18n="@@noaccount">Doesn't have an account?</p> 
-
- <button i18n="@@create"><a routerlink="/users" >create an account</a></button>
+  
 </div>
