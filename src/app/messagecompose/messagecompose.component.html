@@ -1,36 +1,42 @@
 <div class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
+<form id="messagecompose">
+
 <label>
     <span i18n="@@description">description</span>: <br><textarea  placeholder="describe your message" ></textarea><br>
 </label>
 
-<p>
+<label class="selstation">
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
         <span i18n="@@selectstation">select station
-        </span>:
+        :<br>
+        <br>
         <ng-container *ngIf="stations">
 
             <select ng-model="selected">
                 <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
             </select>
             </ng-container>
+        </span>
     </span>
-</p>
+</label>
 
 
 
 
-<label>
+<label class="passprotect">
     <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
         <span i18n="@@protectpssw">protect with password</span>: 
         <input type="checkbox"/>
     </span>
 </label>
 
-    <button i18n="@@record">record</button>
+    <!--button i18n="@@record">record</button>-->
     <button i18n="@@selectfile">select file</button><br/>
     <button i18n="@@send">send</button>
+
+</form>
 
 </div>
 

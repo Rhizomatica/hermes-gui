@@ -31,3 +31,31 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Interface Roadmap
+
+Messages:
+- record audio
+- delete messages
+- ifinite scroll and results pagination
+- browse in messages
+
+admin:
+
+- authentication
+
+- network administration
+
+- detailed log (what is that?)
+
+- admin management
+    - change what is visible with each status
+    - feedback when submit action
+    - validate username
+    - validate e-mail
+
+    (question - automatic email when creating username)
+
+- message administration 
+    - bulk delete messages

@@ -20,24 +20,16 @@ export class ManagementComponent implements OnInit {
   stations: Station[];
   selectedUser: User[];
   control: any;
-  public isadmin = true;
 
+  isadmin = this.userService.isadmin;
 
-  
-
-  //constructor(private userService: UserService, private stationService: StationService, private fb: FormBuilder) {
     constructor(private userService: UserService, private stationService: StationService) {
-    /*
-    this.control = this.fb.group({
-      name: ['', Validators.required],
-      password: ['', Validators.required],
-      //email: ['', [Validators.required]], //TODO validation
-      site: ['', [Validators.required, Validators.minLength(5)]] //TODO validation
-    });
-    */
+
   }
 
-
+ loggedin(): void {
+   this.userService.loggedin();
+ }
 
   getUsers(): void {
     this.userService.getUsers().subscribe(

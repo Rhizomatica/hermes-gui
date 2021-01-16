@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
 import { HelpComponent } from './help/help.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
 import { UserComponent } from './user/user.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 // import { CLIENT_RENEG_LIMIT } from 'tls';
 
 /*export function createTranslateLoader(http: HttpClient) {
@@ -54,7 +55,8 @@ import { UserComponent } from './user/user.component';
     LanguagesComponent,
     HelpComponent,
     MessageadmComponent,
-    UserComponent
+    UserComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,25 +1,25 @@
-<p>user works!</p>
+<h2>Create New User</h2>
 
-<ng-container *ngIf="users"> <ul *ngIf="users">
+ <form class="formdata">
 
-        <li *ngFor="let user of users">{{user.id}} | {{user.name}} | {{user.location}}
+        
         <label>
-            <span i18n>name</span>: <input [(ngModel)]="user.name" placeholder="nome de usuario" />
+            <span i18n>name</span>: <input  placeholder="nome de usuario" />
         </label>
         <label>
-            <span i18n>password</span>: <input type="password" [(ngModel)]="user.password" placeholder="password" />
+            <span i18n>password</span>: <input type="password" placeholder="password" />
         </label>
         <label>
-            <span i18n>recovery prase</span>: <input [(ngModel)]="user.recoveryprase" placeholder="write a question to recover your password" />
+            <span i18n>recovery prase</span>: <input placeholder="write a question to recover your password" />
         </label>
         <label>
-            <span i18n>recovery answer</span>: <input [(ngModel)]="user.recoveryprase" placeholder="answer to your recovery question" />
+            <span i18n>recovery answer</span>: <input placeholder="answer to your recovery question" />
         </label>
         <label>
-            <span i18n>phone number</span>: <input [(ngModel)]="user.phone" placeholder="phone number" />
+            <span i18n>phone number</span>: <input placeholder="phone number" />
         </label>
         <label>
-            <span i18n>local site</span>: <input [(ngModel)]="user.site" placeholder="website" />
+            <span i18n>local site</span>: <input placeholder="website" />
         </label>
 
         <span i18n="@@selectstation">select station
@@ -28,10 +28,9 @@
 
 
         <label>
-            <span i18n>is admin</span>: <input type="checkbox" [(ngModel)]="user.admin"  />
+            <span i18n>is admin</span>: <input type="checkbox"   />
         </label>
-    </li>
-    </ul>
+    
 
     <ng-container *ngIf="stations">
 
@@ -41,7 +40,7 @@
         </select>
         </ng-container>
 
-    <button>Update User</button>
+    <button>Create User</button>
 
-</ng-container>
+</form>
 
