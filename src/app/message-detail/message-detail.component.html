@@ -1,6 +1,10 @@
 <div *ngIf="message" class="formfield">
     <h5>{{message.description}}</h5>
     <p>{{message.url}}</p>
+    <p>{{message.id}}</p>
+    <p>{{message.name}}</p>
+    <p>{{message.origin}}</p>
+
     <p><span i18n="@@origin">origin: </span>{{message.location}}</p>
     <span class="icon">
         <a i18n="compose" routerLink="/compose">
@@ -8,6 +12,5 @@
             compose
         </a>
     </span>
-    
 
 </div>

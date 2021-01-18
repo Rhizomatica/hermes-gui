@@ -4,7 +4,8 @@
 <div class="messages">
     <li *ngFor="let message of messages">
     <a routerLink="/message/{{message.id}}">
-        {{message.description}}</a>
+        {{message.name}}</a>
+        {{message.origin}}
     </li>
 </div>
 

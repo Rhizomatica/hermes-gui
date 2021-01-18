@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../message';
-import { MESSAGES } from '../mock-messages';
+import { Observable, throwError } from 'rxjs';
 import { MessageService } from '../message.service';
 import { AlertService } from '../alert.service';
+import { GlobalConstants } from '../global-constants';
 
 @Component({
   selector: 'app-messages',
@@ -11,16 +12,17 @@ import { AlertService } from '../alert.service';
 })
 export class MessagesComponent implements OnInit {
 
-  @Input() message: Message;
+  //@Input() message: Message;
 
-
+  error = '';
+  success = '';
+  test = '';
   messages: Message[];
-
+  message: Message;
   selectedMessage: Message;
+  //this.GlobalConstants.teste = true
 
-  ngOnInit(): void {
-    this.getMessages();
-  }
+  constructor(private messageService: MessageService, private alertService: AlertService) { }
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
@@ -28,8 +30,17 @@ export class MessagesComponent implements OnInit {
   }
 
   getMessages(): void {
-    this.messageService.getMessages().subscribe(messages => this.messages = messages);
-
+    this.messageService.getMessages().subscribe(
+      (res: any) => {
+        this.messages = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
   }
-  constructor(private messageService: MessageService, private alertService: AlertService) { }
+
+  ngOnInit(): void {
+    this.getMessages();
+  }
 }

@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User } from './user';
 import { isBoolean } from 'util';
+import { GlobalConstants } from './global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,6 @@ export class UserService {
     users: User[];
     user: User;
 
-    private baseURL = 'http://pu2uit.hermes.radio:1011/api';
-    // private baseURL = 'http://localhost:8000/';
-
     private httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -29,7 +27,7 @@ export class UserService {
     };
 
     getUsers(): Observable<User[]> {
-      return this.http.get(this.baseURL + '/users').pipe(
+      return this.http.get(GlobalConstants.apiURL + '/users').pipe(
         map((res: any) => {
           this.users = res;
           return this.users;
@@ -37,21 +35,19 @@ export class UserService {
       catchError(this.handleError));
     }
 
-/*    getUser(id: number): Observable<User[]> {
-      const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
-      return this.http.get(this.baseURL).pipe(
+    /* getUser(id: number): Observable<User[]> {
+      const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
+      return this.http.get(this.url.pipe(
         map((res: any) => {
           this.user = res;
           return this.users;
       }),
       catchError(this.handleError));
-    }
-  */
+    }*/
 
     /** DELETE: delete the user from the server */
     deleteUser(id): Observable<{}> {
-      
-      const url = `${this.baseURL}/user/${id}`; // DELETE api/users/42
+      const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
       console.log(url);
       return this.http.delete(url)
         .pipe(
@@ -60,7 +56,7 @@ export class UserService {
 
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
-      const url = `${this.baseURL}/user`; // POST api/users
+      const url = `${GlobalConstants.apiURL}/user`; // POST api/users
       //console.log(url);
       //console.log(user);
       // return this.http.post<User>(url, user, httpOptions)
@@ -75,7 +71,7 @@ export class UserService {
 
     updateUser(user: User): Observable<User> {
       console.log('debug update', user);
-      const url = `${this.baseURL}/user/${user.id}`; // PUT api/users/42
+      const url = `${GlobalConstants.apiURL}/user/${user.id}`; // PUT api/users/42
       return this.http.put<User>(url, user, this.httpOptions)
       .pipe(
         catchError(this.handleError)
