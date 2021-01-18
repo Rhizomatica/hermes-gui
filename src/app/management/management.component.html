@@ -11,10 +11,31 @@
     
     <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
 
-    <input ng-model="search" [hidden]="isadmin" />
+    <!-- test zone
+    <div>{{isadmin}}</div>
+    <div>{{isadmin}}</div>
+
+    <div [hidden]="isadmin&&!isEditing">teste1</div>
+    <div [hidden]="isadmin||!isEditing">teste2</div>
+    <div [hidden]="isadmin&&isEditing">teste3</div>
+    <div [hidden]="!isadmin&&isEditing">teste4</div>
+    <div [hidden]="!isadmin||isEditing">teste5</div>
+
+<hr>
+    <div [hidden]="isadmi==true&&isEditing==false">teste1</div>
+    <div [hidden]="isadmin==true||isEditing==false">teste2</div>
+    <div [hidden]="isadmin==true&&isEditing==true">teste3</div>
+    <div [hidden]="isadmin==false&&isEditing==false">teste4</div>
+    <div [hidden]="isadmin==false||isEditing==false">teste5</div>
+
+    -->
+
 
     <ng-container *ngIf="users" >
-        <ul id="userlist" ng-model="selectedUser" [hidden]="isEditing==true">
+
+        <input ng-model="search" [hidden]="isEditing==true||isadmin==false" />
+
+        <ul id="userlist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
@@ -64,7 +85,7 @@
                 <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
             <hr>
 
-            <label>
+            <label >
                 <span i18n>is admin</span>:
                 <br/><input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
             </label>
