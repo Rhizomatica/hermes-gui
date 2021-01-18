@@ -4,6 +4,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { Station } from '../station';
 import { StationService } from '../station.service';
+import { Observable, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-management',
@@ -20,16 +21,22 @@ export class ManagementComponent implements OnInit {
   stations: Station[];
   selectedUser: User[];
   control: any;
-
-  isadmin = this.userService.isadmin;
+  isadmin = true;
+  isEditing = false;
 
     constructor(private userService: UserService, private stationService: StationService) {
 
   }
 
- loggedin(): void {
-   this.userService.loggedin();
- }
+loggedin() {
+    if(this.isadmin) {
+      this.isadmin = false;
+      console.log(this.isadmin);
+    } else {
+      this.isadmin = true;
+      console.log(this.isadmin);
+    }
+  }
 
   getUsers(): void {
     this.userService.getUsers().subscribe(
@@ -44,23 +51,34 @@ export class ManagementComponent implements OnInit {
 
   onSelect(user): void {
     this.selectedUser = user;
+    this.isEditing = true;
+    console.log(this.isEditing);
   }
 
   onSubmitUpdate(f: NgForm):void {
       console.log('update', f.value);
       this.userService.updateUser(f.value).subscribe();
+      this.isEditing = false;
+      console.log(this.isEditing);
+
       //window.location.reload();
   }
 
   onSubmitDelete(id):void {
     console.log(id);
         this.userService.deleteUser(id).subscribe();
+        this.isEditing = false;
+      console.log(this.isEditing);
+
         //window.location.reload();
   }
 
 
   createUser(f: NgForm): void {
-    this.userService.createUser(f.value).subscribe();
+    this.userService.createUser(f.value).subscribe()
+    this.isEditing = false;
+    console.log(this.isEditing);
+
   }
 
 

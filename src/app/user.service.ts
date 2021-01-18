@@ -17,17 +17,6 @@ export class UserService {
 
     users: User[];
     user: User;
-    public isadmin = true;
-
-    public loggedin() {
-      if(this.isadmin) {
-        this.isadmin = false;
-        console.log(this.isadmin);
-      } else {
-        this.isadmin = true;
-        console.log(this.isadmin);
-      }
-    }
 
     private baseURL = 'http://pu2uit.hermes.radio:1011/api';
     // private baseURL = 'http://localhost:8000/';

@@ -2,28 +2,25 @@
 <div class="formfield">
     <h2 i18n="@@admmanage">User Management</h2>
 
-    <div *ngIf="isadmin">teste</div>  
-    {{isadmin}}  
+    
+
+    <h3>Users</h3>
 
     <label >is admin: <input type="checkbox"  (change)="loggedin()" name="isadmin" checked>
     </label>
     
-    {{isadmin}}
-    <div *ngif="isadmin">teste</div>
-
     <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
 
-    <h3>Users</h3>
+    <input ng-model="search" [hidden]="isadmin" />
 
-    <input ng-model="search"/>
-
-    <ng-container *ngIf="users">
-        <ul id="userlist" ng-model="selectedUser">
+    <ng-container *ngIf="users" >
+        <ul id="userlist" ng-model="selectedUser" [hidden]="isEditing==true">
             <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
-    <ng-container *ngIf="selectedUser ">
-        <form #f="ngForm" id="userdata" class="formdata" (ngSubmit)="createUser(f)" novalidate>
+    <ng-container *ngIf="selectedUser">
+                
+        <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" (ngSubmit)="createUser(f)" novalidate>
             <label>
                 <span i18n>ID</span>: {{selectedUser.id}}
                 <br/>
@@ -83,6 +80,7 @@
                 </ng-container>
 
                 <button type="submit" (click)="onSubmitDelete(f.value.id)">delete user</button>
+                <button type="submit" (click)="onSubmitUpdate(f)">update user</button>
                 <button type="submit" (click)="onSubmitUpdate(f)">update user</button>
 
         <input type="submit" class="sbmbtn">

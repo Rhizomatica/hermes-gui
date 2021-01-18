@@ -23,14 +23,12 @@ export class UserComponent implements OnInit {
   selectedUser: User[];
   control: any;
 
-  isadmin = this.userService.isadmin;
 
     constructor(private userService: UserService, private stationService: StationService) {
 
   }
 
  loggedin(): void {
-   this.userService.loggedin();
  }
 
   getUsers(): void {
@@ -70,6 +68,7 @@ export class UserComponent implements OnInit {
     this.getUsers();
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
-
+    
+  
   }
 }
