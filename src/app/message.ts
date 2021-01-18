@@ -1,8 +1,8 @@
 export interface Message {
   id: number;
-  description: string;
-  location: string;
-  time: number;
-  url: string;
-  destination: string;
+  name: string;
+  origin: string;
+  destin: number;
+  text: string;
+  sent_at: boolean;
 }

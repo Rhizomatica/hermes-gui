@@ -3,7 +3,7 @@ import { Message } from '../message';
 import { Observable, throwError } from 'rxjs';
 import { MessageService } from '../message.service';
 import { AlertService } from '../alert.service';
-import { GlobalConstants } from '../global-constants';
+// import { GlobalConstants } from '../global-constants';
 
 @Component({
   selector: 'app-messages',
@@ -12,15 +12,15 @@ import { GlobalConstants } from '../global-constants';
 })
 export class MessagesComponent implements OnInit {
 
-  //@Input() message: Message;
+//  @Input() message: Message;
 
   error = '';
   success = '';
   test = '';
   messages: Message[];
-  message: Message;
+   message: Message;
   selectedMessage: Message;
-  //this.GlobalConstants.teste = true
+
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 
