@@ -1,8 +1,9 @@
 export interface Message {
   id: number;
   name: string;
-  origin: string;
-  destin: number;
+  orig: string;
+  dest: number;
   text: string;
+  draft: boolean;
   sent_at: boolean;
 }

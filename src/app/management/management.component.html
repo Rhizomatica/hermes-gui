@@ -40,7 +40,6 @@
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
-                
         <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" (ngSubmit)="createUser(f)" novalidate>
             <label>
                 <span i18n>ID</span>: {{selectedUser.id}}
@@ -78,7 +77,6 @@
                 <span i18n>recovery answer</span>:
                 <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" placeholder="answer to your recovery question"  />
             </label>
-            
 
             <hr>
                 <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
