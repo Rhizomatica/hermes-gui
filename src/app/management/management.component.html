@@ -11,7 +11,7 @@
     
     <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
 
-    <!-- test zone
+    <!-- test
     <div>{{isadmin}}</div>
     <div>{{isadmin}}</div>
 
@@ -31,12 +31,12 @@
     -->
 
 
-    <ng-container *ngIf="users" >
+    <ng-container  >
 
-        <input ng-model="search" [hidden]="isEditing==true||isadmin==false" />
+        <input [hidden]="isEditing==true||isadmin==false" [(ngModel)]="searchUser"/>
 
         <ul id="userlist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
-            <li *ngFor="let user of users" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
+            <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
@@ -85,7 +85,7 @@
                 <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
             <hr>
 
-            <label >
+            <label>
                 <span i18n>is admin</span>:
                 <br/><input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
             </label>

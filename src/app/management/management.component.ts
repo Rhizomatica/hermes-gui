@@ -5,6 +5,8 @@ import { UserService } from '../user.service';
 import { Station } from '../station';
 import { StationService } from '../station.service';
 import { Observable, throwError } from 'rxjs';
+import { NgSearchFilterService } from 'ng-search-filter';
+
 
 @Component({
   selector: 'app-management',
@@ -13,6 +15,8 @@ import { Observable, throwError } from 'rxjs';
 })
 
 export class ManagementComponent implements OnInit {
+
+  searchUser: string;
 
   error = '';
   success = '';

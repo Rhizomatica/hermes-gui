@@ -26,6 +26,10 @@ import { HelpComponent } from './help/help.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
 import { UserComponent } from './user/user.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
+
 // import { CLIENT_RENEG_LIMIT } from 'tls';
 
 /*export function createTranslateLoader(http: HttpClient) {
@@ -57,12 +61,15 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     MessageadmComponent,
     UserComponent,
     ForgotpasswordComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule
     /*TranslateModule.forRoot({
       defaultLanguage: 'pt',
         loader: {
