@@ -74,7 +74,7 @@ loggedin() {
         this.isEditing = false;
       console.log(this.isEditing);
 
-        //window.location.reload();
+      window.location.reload();
   }
 
 
@@ -90,6 +90,5 @@ loggedin() {
     this.getUsers();
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
-
   }
 }

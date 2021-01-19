@@ -1,11 +1,37 @@
 <div class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-<form id="messagecompose">
+<form #f="ngForm" (ngSubmit)="onSubmitCreateMessage(f)" novalidate >
 
-<label>
-    <span i18n="@@description">description</span>: <br><textarea  placeholder="describe your message" ></textarea><br>
-</label>
+    <label for="id">
+        <span i18n>id</span>: {{message.id}}
+    
+    </label>
+    
+    <label for="name">
+        <span i18n>name</span>:
+        <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
+    </label>
+
+    <label for="name">
+        <span i18n="@@message">Message</span>:
+        <br/><input name="text" [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message" />
+    </label>
+
+    <label for="dest">
+        <span i18n="@@destination">destination</span>:
+        <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
+    </label>
+
+    <label for="orig">
+        <span i18n="@@origin">origin</span>:
+        <br/><input name="orig" [(ngModel)]="message.orig" required #name="ngModel" placeholder="stationo of origin" />
+    </label>
+    <label for="draft">
+        <span i18n="@@origin">draft</span>:
+        <br/><input name="draft" [(ngModel)]="message.draft" required #name="ngModel" placeholder="stationo of origin" />
+    </label>
+
 
 <label class="selstation">
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">

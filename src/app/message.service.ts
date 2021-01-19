@@ -80,7 +80,7 @@ export class MessageService {
 
 /** PUT: update a message  */
   updateMessage(message: Message): Observable<Message> {
-    console.log('debug update', message);
+    //console.log('debug update', message);
     const url = `${GlobalConstants.apiURL}/message/${message.id}`; // PUT api/message/42
     return this.http.put<Message>(url, message, this.httpOptions)
     .pipe(
