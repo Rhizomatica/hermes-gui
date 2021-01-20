@@ -1,7 +1,7 @@
 <div class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-<form #f="ngForm" (ngSubmit)="onSubmitCreateMessage(f)" novalidate >
+<form #f="ngForm" class="formdata" (ngSubmit)="onSubmitCreateMessage(f)" novalidate >
 
     <label for="id">
         <span i18n>id</span>: {{message.id}}
