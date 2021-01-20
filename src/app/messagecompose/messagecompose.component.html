@@ -1,14 +1,14 @@
-<div class="formfield">
+<div id="compose" class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
 <form #f="ngForm" class="formdata" (ngSubmit)="onSubmitCreateMessage(f)" novalidate >
 
-    <label for="id">
+    
+    <label for="id" class="mssgid">
         <span i18n>id</span>: {{message.id}}
-
     </label>
     <label for="name">
-        <span i18n>name</span>:
+        <span i18n>Description</span>:
         <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
     </label>
 
@@ -18,11 +18,12 @@
         <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text"     required #name="ngModel" placeholder="write the message"></textarea>
     </label>
 
+    <!--
     <label for="dest">
         <span i18n="@@destination">destination</span>:
         <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
     </label>
-
+-->
     
 
 <label class="selstation">
@@ -40,20 +41,18 @@
     </span>
 </label>
 
-<hr>
 
-    <label for="orig">
+    <label for="orig" class="origin">
         <p>orig: {{message.orig}}</p>
     </label>
     
 
-<hr>
 <label class="file">
    <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
 </label>
 
 <hr>
-<label>
+<div class="uploader">
 <!--
         test with angular-file-uploader
 
@@ -70,8 +69,7 @@
 
     </ng-container>    
     
-</label>
-
+</div>
 
 
 <label class="passprotect">
@@ -82,7 +80,7 @@
 </label>
 
 
-    <button i18n="@@send">send</button>
+    <!--<button i18n="@@send">send</button>-->
     <input type="submit" class="sbmbtn">
 
 </form>
