@@ -5,17 +5,17 @@
 
     <label for="id">
         <span i18n>id</span>: {{message.id}}
-    
+
     </label>
-    
     <label for="name">
         <span i18n>name</span>:
         <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
     </label>
 
-    <label for="name">
+    <label for="text">
         <span i18n="@@message">Message</span>:
-        <br/><input name="text" [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message" />
+        <br/>
+        <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text"     required #name="ngModel" placeholder="write the message"></textarea>
     </label>
 
     <label for="dest">
@@ -23,15 +23,7 @@
         <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
     </label>
 
-    <label for="orig">
-        <span i18n="@@origin">origin</span>:
-        <br/><input name="orig" [(ngModel)]="message.orig" required #name="ngModel" placeholder="stationo of origin" />
-    </label>
-    <label for="draft">
-        <span i18n="@@origin">draft</span>:
-        <br/><input name="draft" [(ngModel)]="message.draft" required #name="ngModel" placeholder="stationo of origin" />
-    </label>
-
+    
 
 <label class="selstation">
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
@@ -40,7 +32,7 @@
         <br>
         <ng-container *ngIf="stations">
 
-            <select ng-model="selected">
+            <select [(ngModel)]="message.dest">
                 <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
             </select>
             </ng-container>
@@ -48,19 +40,50 @@
     </span>
 </label>
 
+<hr>
+
+    <label for="orig">
+        <p>orig: {{message.orig}}</p>
+    </label>
+    
+
+<hr>
+<label class="file">
+   <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
+</label>
+
+<hr>
+<label>
+<!--
+        test with angular-file-uploader
+
+       https://www.npmjs.com/package/angular-file-uploader
+       [resetUpload]=resetVar
+    -->
+    <angular-file-uploader  #fileUpload1
+      [config]="afuConfig"
+      (ApiResponse)="DocUpload($event)">
+    </angular-file-uploader>
+
+    <ng-container *ngIf="fileUpload1">
+        <p>arquivos:</p>{{fileUpload1.currentUploads}}
+
+    </ng-container>    
+    
+</label>
 
 
 
 <label class="passprotect">
     <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
-        <span i18n="@@protectpssw">protect with password</span>: 
+        <span i18n="@@protectpssw">protect with password</span>:
         <input type="checkbox"/>
     </span>
 </label>
 
-    <!--button i18n="@@record">record</button>-->
-    <button i18n="@@selectfile">select file</button><br/>
+
     <button i18n="@@send">send</button>
+    <input type="submit" class="sbmbtn">
 
 </form>
 

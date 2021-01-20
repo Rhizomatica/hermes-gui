@@ -20,7 +20,7 @@ export class MessageService {
     ) { }
 
     messages: Message[];
-    message: Message;
+    message: Message[];
     httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -51,7 +51,7 @@ export class MessageService {
 
   getMessage(id: number): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE api/message/42
-    console.log ("debug" + url);
+    //console.log ("debug" + url);
       return this.http.get(url).pipe(
       map((res: any) => {
         this.message = res;
@@ -69,14 +69,37 @@ export class MessageService {
         catchError(this.handleError));
   }
 
+  /*postFile(fileToUpload: File): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
+    const formData: FormData = new FormData();
+    formData.append('fileKey', fileToUpload, fileToUpload.name);
+    //formData.append('fileKey', message.orig);
+    //formData.append('id', message.id);
+    console.log("debug" + formData);
+    
+    this.http.post<any>(url, formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+}*/
+
   // POST: add a new message to the database
   createMessage(message: Message): Observable<Message> {
+    //console.log(message);
     const url = `${GlobalConstants.apiURL}/message`; // POST api/message
+    message.draft = true;
+    message.sent_at = false;
+    if ( message.orig ){
+      //this.postFile(message.orig: File);
+    }
+
     return this.http.post<Message>(url, message, this.httpOptions)
     .pipe(
-      catchError(this.handleError)
+      catchError(this.handleError),
+
     );
-  }
+
+}
 
 /** PUT: update a message  */
   updateMessage(message: Message): Observable<Message> {
