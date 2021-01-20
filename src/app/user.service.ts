@@ -46,7 +46,7 @@ export class UserService {
     }*/
 
     /** DELETE: delete the user from the server */
-    deleteUser(id): Observable<{}> {
+    deleteUser(id: number): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
       console.log(url);
       return this.http.delete(url)
@@ -69,9 +69,9 @@ export class UserService {
 
 /** PUT: update a user  */
 
-    updateUser(user: User): Observable<User> {
+    updateUser(id: number, user: User): Observable<User> {
       console.log('debug update', user);
-      const url = `${GlobalConstants.apiURL}/user/${user.id}`; // PUT api/users/42
+      const url = `${GlobalConstants.apiURL}/user/${id}`; // PUT api/users/42
       return this.http.put<User>(url, user, this.httpOptions)
       .pipe(
         catchError(this.handleError)

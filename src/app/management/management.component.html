@@ -40,14 +40,15 @@
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
-        <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" (ngSubmit)="createUser(f)" novalidate>
+        <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata"  novalidate>
             <label>
-                <span i18n>ID</span>: {{selectedUser.id}}
+                <span i18n>ID</span>
+                {{selectedUser.id}}
                 <br/>
             </label>
             <label for="name">
                 <span i18n>name</span>:
-                <br/><input name="name" [(ngModel)]="selectedUser.name" required #name="ngModel" placeholder="write the username" />
+                <input name="name" [(ngModel)]="selectedUser.name" required #name="ngModel" placeholder="write the username" />
             </label>
             <label for="email">
                 <span i18n>name</span>:
@@ -98,11 +99,9 @@
                 </select>
                 </ng-container>
 
-                <button type="submit" (click)="onSubmitDelete(f.value.id)">delete user</button>
-                <button type="submit" (click)="onSubmitUpdate(f)">update user</button>
-                <button type="submit" (click)="onSubmitUpdate(f)">update user</button>
-
-        <input type="submit" class="sbmbtn">
+                <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" >delete user</button>
+                <button type="submit" (click)="onSubmitCreate(f)">New user from this one</button>
+                <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid">update</button>
         </form>
     </ng-container>
 

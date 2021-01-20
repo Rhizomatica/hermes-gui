@@ -6,6 +6,7 @@ import { Station } from '../station';
 import { StationService } from '../station.service';
 import { Observable, throwError } from 'rxjs';
 import { NgSearchFilterService } from 'ng-search-filter';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -59,32 +60,21 @@ loggedin() {
     console.log(this.isEditing);
   }
 
-  onSubmitUpdate(f: NgForm):void {
-      console.log('update', f.value);
-      this.userService.updateUser(f.value).subscribe();
-      this.isEditing = false;
-      console.log(this.isEditing);
-
+  onSubmitUpdate(id: number, f: NgForm):void {
+      this.userService.updateUser(id, f.value).subscribe();
       //window.location.reload();
   }
 
-  onSubmitDelete(id):void {
-    console.log(id);
-        this.userService.deleteUser(id).subscribe();
-        this.isEditing = false;
-      console.log(this.isEditing);
-
-      window.location.reload();
+  onSubmitDelete(id: number):void {
+      this.userService.deleteUser(id).subscribe();
+       //window.location.reload();
   }
 
-
-  createUser(f: NgForm): void {
+  onSubmitCreate(f: NgForm): void {
     this.userService.createUser(f.value).subscribe()
     this.isEditing = false;
     console.log(this.isEditing);
-
   }
-
 
   ngOnInit(): void {
     this.getUsers();
