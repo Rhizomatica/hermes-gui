@@ -35,7 +35,7 @@
 
         <input [hidden]="isEditing==true||isadmin==false" [(ngModel)]="searchUser"/>
 
-        <ul id="userlist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
+        <ul id="userlist" class="multiplist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>

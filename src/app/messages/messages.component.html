@@ -2,11 +2,13 @@
 
 <h2 i18n="@@messages">messages</h2>
 <div class="messages">
+    <ul class="multiplist">
     <li *ngFor="let message of messages">
     <a routerLink="/message/{{message.id}}">
         {{message.name}}</a>
         {{message.origin}}
     </li>
+</ul>
 </div>
 
 <div class="btn" ><a routerLink="/compose" i18n="@@compose"><img title="help" src="/assets/svg/edit.svg">compose</a></div>
