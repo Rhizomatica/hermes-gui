@@ -1,89 +1,103 @@
 <div id="compose" class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-<form #f="ngForm" class="formdata" (ngSubmit)="sendMessage($event.target.files, f)" novalidate >
+<form #f="ngForm" class="formdata" novalidate >
 
-    <label for="id" class="mssgid">
-        <span i18n>id</span>: {{message.id}}
-    </label>
-    <label for="name">
-        <span i18n>Description</span>:
-        <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
-    </label>
+    <div [hidden]="isProcessing==true">
 
-    <label for="text">
-        <span i18n="@@message">Message</span>:
-        <br/>
-        <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message"></textarea>
-    </label>
+        <label for="id" class="mssgid">
+            <span i18n>id</span>: {{message.id}}
+        </label>
+        <label for="name">
+            <span i18n>Description</span>:
+            <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
+        </label>
 
-    <!--
-    <label for="dest">
-        <span i18n="@@destination">destination</span>:
-        <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
-    </label>
--->
+        <label for="text">
+            <span i18n="@@message">Message</span>:
+            <br/>
+            <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message"></textarea>
+        </label>
 
-<label class="selstation">
-    <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
-        <span i18n="@@selectstation">select station
-        :<br>
-        <br>
-        <ng-container *ngIf="stations">
-
-            <select [(ngModel)]="message.dest">
-                <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
-            </select>
-            </ng-container>
-        </span>
-    </span>
-</label>
-
-
-    <label for="orig" class="origin">
-        <p>orig: {{message.orig}}</p>
-    </label>
-
-
-
-<hr>
-<div class="uploader">
-<!--
-        test with angular-file-uploader
-
-       https://www.npmjs.com/package/angular-file-uploader
-       [resetUpload]=resetVar
+        <!--
+        <label for="dest">
+            <span i18n="@@destination">destination</span>:
+            <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
+        </label>
     -->
-<!--
-    <angular-file-uploader  #fileUpload1
-      [config]="afuConfig"
-      (ApiResponse)="DocUpload($event)">
-    </angular-file-uploader>
-    <ng-container *ngIf="fileUpload1">
-        <p>arquivos:</p>{{fileUpload1.currentUploads}}
-    </ng-container>
--->
+
+    <label class="selstation">
+        <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
+            <span i18n="@@selectstation">select station
+            :<br>
+            <br>
+            <ng-container *ngIf="stations">
+
+                <select [(ngModel)]="message.dest">
+                    <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+                </select>
+                </ng-container>
+            </span>
+        </span>
+    </label>
 
 
-    <ng-container >
-        <label class="file">
-            <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
-            <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" >
-         </label>
-    </ng-container>
+        <label for="orig" class="origin">
+            <p>orig: {{message.orig}}</p>
+        </label>
 
 
+
+    <hr>
+    <div class="uploader">
+    <!--
+            test with angular-file-uploader
+
+        https://www.npmjs.com/package/angular-file-uploader
+        [resetUpload]=resetVar
+        -->
+    <!--
+        <angular-file-uploader  #fileUpload1
+        [config]="afuConfig"
+        (ApiResponse)="DocUpload($event)">
+        </angular-file-uploader>
+        <ng-container *ngIf="fileUpload1">
+            <p>arquivos:</p>{{fileUpload1.currentUploads}}
+        </ng-container>
+    -->
+
+
+        <ng-container >
+            <label class="file">
+                <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
+                <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" >
+            </label>
+        </ng-container>
+
+
+    </div>
+
+    <label class="passprotect">
+        <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
+            <span i18n="@@protectpssw">protect with password</span>:
+            <input type="checkbox"/>
+        </span>
+    </label>
+
+    <button type="submit" (click)="sendMessage($event.target.files, f)" [disabled]="f.invalid" >Send Message</button>
+ 
 </div>
 
-<label class="passprotect">
-    <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
-        <span i18n="@@protectpssw">protect with password</span>:
-        <input type="checkbox"/>
-    </span>
-</label>
+<div class="processing alert" [hidden]="isProcessing==false">
+    Your message is been processed
+</div>
+
+<div class="alert" [hidden]="!processed">
+    Your message was sent to the transmission list
+    <app-messages></app-messages>
+</div>
 
     <!--<button i18n="@@send">send</button>-->
-    <input type="submit" class="sbmbtn">
 
 </form>
 

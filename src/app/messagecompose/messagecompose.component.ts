@@ -11,6 +11,7 @@ import { Station } from '../station';
 import { StationService } from '../station.service';
 import { StationsComponent } from '../stations/stations.component';
 import { GlobalConstants } from '../global-constants';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-messagecompose',
@@ -26,6 +27,8 @@ export class MessagecomposeComponent implements OnInit {
   
   public stations: Station[];
   private error: String;
+  public isProcessing: boolean = false;
+  public processed: boolean = false;
   fileToUpload: File = null;
   afuConfig = {
     multiple: false,
@@ -66,8 +69,13 @@ export class MessagecomposeComponent implements OnInit {
 
   sendMessage(file: any, f: NgForm): void {
     this.messageService.createMessage(file, f.value).subscribe();
+    this.isProcessing = true;
     console.log(f.value);
+    console.log(file);
+    this.processed = true;
   }
+
+
 
   DocUpload($event): void{
     console.log($event);
