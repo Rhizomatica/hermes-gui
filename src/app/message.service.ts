@@ -33,6 +33,16 @@ export class MessageService {
     return of(MESSAGES);
   }*/
 
+  postFile(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/messages`; // DELETE api/message/42
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        this.messages = res;
+        return this.messages;
+    }),
+    catchError(this.handleError));
+  }
+
   getMessages(): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/messages`; // DELETE api/message/42
     return this.http.get(url).pipe(
@@ -83,8 +93,9 @@ export class MessageService {
     );
 }*/
 
+
   // POST: add a new message to the database
-  createMessage(message: Message): Observable<Message> {
+  createMessage($event, message: Message): Observable<Message> {
     //console.log(message);
     const url = `${GlobalConstants.apiURL}/message`; // POST api/message
     message.draft = true;

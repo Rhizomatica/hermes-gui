@@ -5,8 +5,6 @@ import { NgForm} from '@angular/forms';
 import { Message } from '../message';
 import { MessageService } from '../message.service';
 import { ViewChild } from '@angular/core';
-import { AngularFileUploaderComponent } from "angular-file-uploader";
-
 
 
 import { Station } from '../station';
@@ -22,11 +20,6 @@ import { GlobalConstants } from '../global-constants';
 
 
 export class MessagecomposeComponent implements OnInit {
-
-  @ViewChild('fileUpload1')
-  public fileUpload1:  AngularFileUploaderComponent;
-
-  //CHeck it
 
   public messages: Message[];
   public message: Message;
@@ -71,14 +64,14 @@ export class MessagecomposeComponent implements OnInit {
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
-  onSubmitCreateMessage(f: NgForm): void {
-    this.messageService.createMessage(f.value).subscribe();
+  sendMessage(file: any, f: NgForm): void {
+    this.messageService.createMessage(file, f.value).subscribe();
     console.log(f.value);
   }
 
   DocUpload($event): void{
     console.log($event);
-    console.log(this.fileUpload1.currentUploads);
+
   }
 
   getMessage(id: number): void {

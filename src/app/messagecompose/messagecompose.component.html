@@ -1,9 +1,8 @@
 <div id="compose" class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-<form #f="ngForm" class="formdata" (ngSubmit)="onSubmitCreateMessage(f)" novalidate >
+<form #f="ngForm" class="formdata" (ngSubmit)="sendMessage($event.target.files, f)" novalidate >
 
-    
     <label for="id" class="mssgid">
         <span i18n>id</span>: {{message.id}}
     </label>
@@ -15,7 +14,7 @@
     <label for="text">
         <span i18n="@@message">Message</span>:
         <br/>
-        <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text"     required #name="ngModel" placeholder="write the message"></textarea>
+        <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message"></textarea>
     </label>
 
     <!--
@@ -24,7 +23,6 @@
         <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
     </label>
 -->
-    
 
 <label class="selstation">
     <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
@@ -45,11 +43,8 @@
     <label for="orig" class="origin">
         <p>orig: {{message.orig}}</p>
     </label>
-    
 
-<label class="file">
-   <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
-</label>
+
 
 <hr>
 <div class="uploader">
@@ -59,18 +54,26 @@
        https://www.npmjs.com/package/angular-file-uploader
        [resetUpload]=resetVar
     -->
+<!--
     <angular-file-uploader  #fileUpload1
       [config]="afuConfig"
       (ApiResponse)="DocUpload($event)">
     </angular-file-uploader>
-
     <ng-container *ngIf="fileUpload1">
         <p>arquivos:</p>{{fileUpload1.currentUploads}}
+    </ng-container>
+-->
 
-    </ng-container>    
-    
+
+    <ng-container >
+        <label class="file">
+            <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
+            <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" >
+         </label>
+    </ng-container>
+
+
 </div>
-
 
 <label class="passprotect">
     <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
@@ -79,12 +82,9 @@
     </span>
 </label>
 
-
     <!--<button i18n="@@send">send</button>-->
     <input type="submit" class="sbmbtn">
 
 </form>
 
 </div>
-
-

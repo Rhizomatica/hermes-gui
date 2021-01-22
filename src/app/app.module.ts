@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StationsComponent } from './stations/stations.component';
 import { HmheaderComponent } from './hmheader/hmheader.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { AlertsComponent } from './alerts/alerts.component';
@@ -69,6 +69,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
     AngularFileUploaderModule

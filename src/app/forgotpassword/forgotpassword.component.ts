@@ -41,9 +41,9 @@ export class ForgotpasswordComponent implements OnInit {
       this.selectedUser = user;
     }
   
-    onSubmitUpdate(f: NgForm):void {
+    onSubmitUpdate(id, f: NgForm):void {
         console.log('update', f.value);
-        this.userService.updateUser(f.value).subscribe();
+        this.userService.updateUser(id, f.value).subscribe();
         //window.location.reload();
     }
   

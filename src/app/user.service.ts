@@ -70,7 +70,6 @@ export class UserService {
 /** PUT: update a user  */
 
     updateUser(id: number, user: User): Observable<User> {
-      console.log('debug update', user);
       const url = `${GlobalConstants.apiURL}/user/${id}`; // PUT api/users/42
       return this.http.put<User>(url, user, this.httpOptions)
       .pipe(

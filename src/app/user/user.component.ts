@@ -46,9 +46,9 @@ export class UserComponent implements OnInit {
     this.selectedUser = user;
   }
 
-  onSubmitUpdate(f: NgForm):void {
+  onSubmitUpdate(id: number, f: NgForm):void {
       console.log('update', f.value);
-      this.userService.updateUser(f.value).subscribe();
+      this.userService.updateUser(id, f.value).subscribe();
       //window.location.reload();
   }
 
