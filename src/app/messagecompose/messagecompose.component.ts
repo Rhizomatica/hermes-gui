@@ -24,63 +24,34 @@ export class MessagecomposeComponent implements OnInit {
 
   public messages: Message[];
   public message: Message;
-  
+  public error: any;
+  public id: any;
   public stations: Station[];
-  private error: String;
-  public isProcessing: boolean = false;
-  public processed: boolean = false;
-  fileToUpload: File = null;
-  afuConfig = {
-    multiple: false,
-    formatsAllowed: ".jpg,.png,.txt,.pdf",
-    maxSize: "0.1",
-    uploadAPI:  {
-      url: GlobalConstants.apiURL+"/file",
-      method:"POST",
-      //"Authorization" : `Bearer ${token}`
-      headers: {
-     "Content-Type" : "text/plain;charset=UTF-8",
-      },
-      params: {
-        'id': '1'
-      },
-      responseType: 'blob',
-    },
-    theme: "dragNDrop",
-    hideProgressBar: false,
-    hideResetBtn: false,
-    fileNameIndex: false,
-    hideSelectBtn: false,
-    replaceTexts: {
-      selectFileBtn: 'Select Files',
-      resetBtn: 'Reset',
-      uploadBtn: 'Upload',
-      dragNDropBox: 'Drag N Drop',
-      attachPinBtn: 'Attach Files...',
-      afterUploadMsg_success: 'Successfully Uploaded !',
-      afterUploadMsg_error: 'Upload Failed !',
-      sizeLimit: 'Size Limit'
-    }
-};
-
-  //private isEditing: boolean = true;
+  private fileProcessed: boolean = true;
+  public fileIsProcessing: boolean;
+  public fileIsProcessed: boolean;
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
-  sendMessage(file: any, f: NgForm): void {
-    this.messageService.createMessage(file, f.value).subscribe();
-    this.isProcessing = true;
-    console.log(f.value);
-    console.log(file);
-    this.processed = true;
+  sendMessage(f: NgForm): void {
+    this.messageService.createMessage(f.value).subscribe();
   }
 
-
-
-  DocUpload($event): void{
-    console.log($event);
-
-  }
+  DocUpload($files): void{
+    console.log(this.messageService.postFile($files[0]));
+    /*
+    this.messageService.postFile($files[0]).subscribe(
+      this.messageService.postFile($files[0]).subscribe(
+      (res: any) => {
+        this.id = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  */
+    }
+  
 
   getMessage(id: number): void {
     this.messageService.getMessage(id).subscribe(
@@ -95,7 +66,6 @@ export class MessagecomposeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMessage(1);
-
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
   }

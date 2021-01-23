@@ -1,9 +1,9 @@
 <div id="compose" class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-<form #f="ngForm" class="formdata" novalidate >
+<form #f="ngForm" class="formdata" novalidate enctype="multipart/form-data" >
 
-    <div [hidden]="isProcessing==true">
+    <div [hidden]="fileIsProcessing==true">
 
         <label for="id" class="mssgid">
             <span i18n>id</span>: {{message.id}}
@@ -46,35 +46,22 @@
             <p>orig: {{message.orig}}</p>
         </label>
 
-
-
-    <hr>
+    <label for="orig" class="origin">
+        <p>orig: {{message.orig}}</p>
+    </label>
+<hr>
     <div class="uploader">
-    <!--
-            test with angular-file-uploader
-
-        https://www.npmjs.com/package/angular-file-uploader
-        [resetUpload]=resetVar
-        -->
-    <!--
-        <angular-file-uploader  #fileUpload1
-        [config]="afuConfig"
-        (ApiResponse)="DocUpload($event)">
-        </angular-file-uploader>
-        <ng-container *ngIf="fileUpload1">
-            <p>arquivos:</p>{{fileUpload1.currentUploads}}
-        </ng-container>
-    -->
-
-
         <ng-container >
             <label class="file">
-                <!-- <input type="file" name="orig"  [(ngModel)]="message.orig" i18n="@@selectfile"  (change)="handleFileInput($event.target.files)"><br/>-->
-                <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" >
+                <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" accept="image/*" >
             </label>
         </ng-container>
+        <div *ngIf="id" >
+            <br>
+            {{id}}
+            <br>
 
-
+        </div>
     </div>
 
     <label class="passprotect">
@@ -84,20 +71,21 @@
         </span>
     </label>
 
-    <button type="submit" (click)="sendMessage($event.target.files, f)" [disabled]="f.invalid" >Send Message</button>
+    <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" >Send Message</button>
  
 </div>
 
-<div class="processing alert" [hidden]="isProcessing==false">
+<div class="processing alert" [hidden]="fileIsProcessing==false">
     Your message is been processed
 </div>
 
-<div class="alert" [hidden]="!processed">
+<div class="alert" [hidden]="!fileIsProcessed">
     Your message was sent to the transmission list
     <app-messages></app-messages>
 </div>
 
     <!--<button i18n="@@send">send</button>-->
+    <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" >Send Message</button>
 
 </form>
 

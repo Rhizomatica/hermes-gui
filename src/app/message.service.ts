@@ -23,8 +23,8 @@ export class MessageService {
     message: Message[];
     httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'my-auth-token'
+        Authorization: 'my-auth-token',
+        'Content-Disposition': 'multipart/form-data',
       })
     };
 
@@ -33,15 +33,38 @@ export class MessageService {
     return of(MESSAGES);
   }*/
 
-  postFile(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/messages`; // DELETE api/message/42
-    return this.http.get(url).pipe(
-      map((res: any) => {
-        this.messages = res;
-        return this.messages;
-    }),
-    catchError(this.handleError));
+  postFile(file: any) {
+    console.log("debug" + file);
+    const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
+    //const  url = "//httpbin.org/post";
+
+    const formData: FormData = new FormData();
+
+    formData.append('name', 'teste');
+    formData.append('fileup', file);
+
+    let params = new HttpParams();
+    let headers = new HttpHeaders();
+    headers.set('Content-Type', null);
+    headers.set('Accept', "multipart/form-data");
+    //  //Authorization: 'my-auth-token'
+
+    //console.log("debug formdata: " + formData);
+    //return this.http.put(url, formData,{headers: { 'Content-Type': 'undefined'}}).subscribe(
+      return this.http.post(url, formData, {params, headers}).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
   }
+
+  deleteUser(id: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
+    console.log(url);
+    return this.http.delete(url)
+      .pipe(
+        catchError(this.handleError));
+  }
+
 
   getMessages(): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/messages`; // DELETE api/message/42
@@ -79,23 +102,10 @@ export class MessageService {
         catchError(this.handleError));
   }
 
-  /*postFile(fileToUpload: File): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
-    //formData.append('fileKey', message.orig);
-    //formData.append('id', message.id);
-    console.log("debug" + formData);
-    
-    this.http.post<any>(url, formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-}*/
 
 
   // POST: add a new message to the database
-  createMessage($event, message: Message): Observable<Message> {
+  createMessage(message: Message): Observable<Message> {
     //console.log(message);
     const url = `${GlobalConstants.apiURL}/message`; // POST api/message
     message.draft = true;
@@ -104,12 +114,11 @@ export class MessageService {
       //this.postFile(message.orig: File);
     }
 
-    return this.http.post<Message>(url, message, this.httpOptions)
+    return this.http.put<Message>(url, message, this.httpOptions)
     .pipe(
       catchError(this.handleError),
 
     );
-
 }
 
 /** PUT: update a message  */
