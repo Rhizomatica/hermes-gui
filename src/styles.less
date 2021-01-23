@@ -52,32 +52,51 @@ a:visited {
 nav {
     border-bottom: 2px solid #000;
     max-width: @boxw;
-
+    padding-top: 35px;
     a {
         text-decoration: none;
     border-top: 3px solid #000;
     padding-bottom: 4px;
+    margin-right: 15px;
+        position: relative;
     }
-
     a:hover {
         border-top: 3px solid @clr;
     }
+    img {
+        width: 30px;
+        position: absolute;
+        top: -35px;
+    }
+    img:hover {
+        fill: @clr;
+    }
 }
+
 
 nav a:hover{
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
 
+
+h2 {
+    font-size: 18px;
+}
+
+label{
+    display: block;
+    text-align: left;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
 }
 
 .sitetitle {
     color:@clr;
     font-size: 20px;
 }
-
-h2 {
-    font-size: 18px;
-}
-
 
 .logo {
     position: relative;
@@ -91,10 +110,7 @@ h2 {
     margin: 0px;
 }
 
-label{
-    display: block;
-    text-align: left;
-}
+
 
 .formfield {
     max-width: @boxw;
@@ -104,21 +120,6 @@ label{
     }
 }
 
-nav {
-    padding-top: 35px;
-    a {
-        margin-right: 15px;
-        position: relative;
-    }
-    img {
-        width: 30px;
-        position: absolute;
-        top: -35px;
-    }
-    img:hover {
-        fill: @clr;
-    }
-}
 
 .icon {
     img {
@@ -163,9 +164,6 @@ nav {
     a:visited {
         color: @mclr;
     }
-
-
-
 }
 
 .btn:hover {
@@ -278,4 +276,8 @@ nav {
     background-color: #eee;
     color: #aaa;
     cursor: auto;
+  }
+
+  input.ng-invalid {
+      border: 1px solid red;
   }
