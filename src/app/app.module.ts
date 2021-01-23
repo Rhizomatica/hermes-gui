@@ -28,6 +28,7 @@ import { MessageadmComponent } from './messageadm/messageadm.component';
 import { UserComponent } from './user/user.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SameUsernameDirective } from './same-username.directive';
 
 
 
@@ -61,7 +62,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HelpComponent,
     MessageadmComponent,
     UserComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    SameUsernameDirective
 
 
   ],

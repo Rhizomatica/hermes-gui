@@ -30,8 +30,7 @@
 
     -->
 
-
-    <ng-container  >
+    <ng-container >
 
         <input [hidden]="isEditing==true||isadmin==false" [(ngModel)]="searchUser"/>
 
@@ -48,7 +47,7 @@
             </label>
             <label for="name">
                 <span i18n>name</span>:
-                <input name="name" [(ngModel)]="selectedUser.name" required #name="ngModel" placeholder="write the username" />
+                <input name="name" [(ngModel)]="selectedUser.name" required appSameUsername #name="ngModel" placeholder="write the username" />
             </label>
             <label for="email">
                 <span i18n>name</span>:
@@ -96,11 +95,11 @@
                 <select ng-model="selectedStation">
                     <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
 
-                </select>
+                </select> 
                 </ng-container>
 
                 <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" >delete user</button>
-                <button type="submit" (click)="onSubmitCreate(f)">New user from this one</button>
+                <button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid">New user from this one</button>
                 <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid">update</button>
         </form>
     </ng-container>
