@@ -118,6 +118,7 @@ textarea {
     .textarea{
         width: 100%;
     }
+    position: relative;
 }
 
 
@@ -280,4 +281,24 @@ textarea {
 
   input.ng-invalid {
       border: 1px solid red;
+  }
+
+  .overall {
+      position: fixed;
+      top:0;
+      margin:0 auto;
+      background-color:#fff;
+      height: 100%;
+      width: 280px;  
+      color: @clr;
+      font-weight: bold;
+      text-align: center;
+      .cv {
+          width: 100%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
   }

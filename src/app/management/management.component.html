@@ -9,9 +9,11 @@
     <label >is admin: <input type="checkbox"  (change)="loggedin()" name="isadmin" checked>
     </label>
     
-    <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
+    <button i18n="@@createadm" (click)="newUser()">create user</button>
+
 
     <!-- test
+        <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
     <div>{{isadmin}}</div>
     <div>{{isadmin}}</div>
 
@@ -97,10 +99,31 @@
 
                 </select> 
                 </ng-container>
+                <button (click)="deleteAlert()" [disabled]="f.invalid" >delete user</button>
+                <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">update</button>
+                <button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>
 
-                <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" >delete user</button>
-                <button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid">New user from this one</button>
-                <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid">update</button>
+                <div class="overall" [hidden]="deleteUser">
+                    <div class="cv">
+                    Are you sure you wanna delete {{selectedUser.name}}?<br/>
+                    this action cannot be undone!
+                    <br/>
+                    <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" >delete user</button>
+                    <button type="submit" (click)="deleteAlert()" [disabled]="f.invalid" >cancel</button>
+    
+                </div>
+                </div>
+
+                <div class="overall" [hidden]="updateUser">
+                    <div class="cv">
+                    Are you sure you wanna update {{selectedUser.name}}?<br/>
+                    this action cannot be undone!
+                    <br/>
+                    <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid">update</button>
+                    <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">cancel</button>
+    
+                </div>
+                </div>
         </form>
     </ng-container>
 

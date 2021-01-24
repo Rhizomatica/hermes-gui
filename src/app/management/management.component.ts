@@ -28,6 +28,9 @@ export class ManagementComponent implements OnInit {
   control: any;
   isadmin = true;
   isEditing = false;
+  deleteUser = true;
+  updateUser = true;
+  newUsername = false;
 
     constructor(private userService: UserService, private stationService: StationService) {
 
@@ -42,6 +45,32 @@ loggedin() {
       console.log(this.isadmin);
     }
   }
+
+  deleteAlert() {
+    if(this.deleteUser) {
+      this.deleteUser = false;
+      //console.log(this.deleteUser);
+    } else {
+      this.deleteUser = true;
+      //console.log(this.deleteUser);
+    }
+   } 
+
+   newUser() {
+     this.selectedUser = [];
+     this.isEditing = true;
+     this.newUsername = true;
+   }
+
+   updateAlert() {
+    if(this.updateUser) {
+      this.updateUser = false;
+      //console.log(this.deleteUser);
+    } else {
+      this.updateUser = true;
+      //console.log(this.deleteUser);
+    }
+   } 
 
   getUsers(): void {
     this.userService.getUsers().subscribe(
@@ -62,12 +91,16 @@ loggedin() {
 
   onSubmitUpdate(id: number, f: NgForm):void {
       this.userService.updateUser(id, f.value).subscribe();
-      //window.location.reload();
+      this.updateUser = false;
+      this.isEditing = false;
+      window.location.reload();
   }
 
   onSubmitDelete(id: number):void {
       this.userService.deleteUser(id).subscribe();
-       //window.location.reload();
+      this.deleteUser = false;
+      this.isEditing = false;
+      window.location.reload();
   }
 
   onSubmitCreate(f: NgForm): void {
@@ -81,4 +114,6 @@ loggedin() {
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
   }
+
+   
 }

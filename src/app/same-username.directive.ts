@@ -40,15 +40,18 @@ export class SameUsernameDirective implements Validator {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.userList = res;
+        console.log("pegou");
       },
       (err) => {
         this.userList = err;
+        console.log("npegou");
       }
     );
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {
     console.log(this.userList);
+    console.log("npeparigou");
     return this.userList ? compareUsername(this.userList)(control) : null;
   }
 }
