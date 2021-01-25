@@ -25,7 +25,7 @@ export class MessagecomposeComponent implements OnInit {
   public messages: Message[];
   public message: Message;
   public error: any;
-  public id: any;
+  public serverReturn: any;
   public stations: Station[];
   private fileProcessed: boolean = true;
   public fileIsProcessing: boolean;
@@ -33,25 +33,33 @@ export class MessagecomposeComponent implements OnInit {
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
-  sendMessage(f: NgForm): void {
-    this.messageService.createMessage(f.value).subscribe();
-  }
-
-  DocUpload($files): void{
-    console.log(this.messageService.postFile($files[0]));
-    /*
-    this.messageService.postFile($files[0]).subscribe(
-      this.messageService.postFile($files[0]).subscribe(
+  createMessage(f: NgForm): void {
+    console.log(f.value);
+    this.messageService.createMessage(f.value).subscribe(
       (res: any) => {
-        this.id = res;
+        this.serverReturn = res;
+        console.log( "componente");
       },
       (err) => {
         this.error = err;
       }
     );
-  */
-    }
-  
+  }
+
+  DocUpload($files): void{
+    //this.messageService.postFile($files[0]);
+
+    this.messageService.postFile($files[0]).subscribe(
+      (res: any) => {
+        this.message.id = res[2];
+        this.message.file = res[1];
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
 
   getMessage(id: number): void {
     this.messageService.getMessage(id).subscribe(

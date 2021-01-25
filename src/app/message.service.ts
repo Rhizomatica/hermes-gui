@@ -34,7 +34,7 @@ export class MessageService {
   }*/
 
   postFile(file: any) {
-    console.log("debug" + file);
+    //console.log("debug" + file);
     const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
     //const  url = "//httpbin.org/post";
 
@@ -49,20 +49,31 @@ export class MessageService {
     headers.set('Accept', "multipart/form-data");
     //  //Authorization: 'my-auth-token'
 
-    //console.log("debug formdata: " + formData);
-    //return this.http.put(url, formData,{headers: { 'Content-Type': 'undefined'}}).subscribe(
+    return this.http.post(url, formData, {params, headers})
+    .pipe(
+      map((res: any) => {
+        this.messages = res;
+        return this.messages;
+      }),
+      catchError(this.handleError)
+      );
+
+    /*
       return this.http.post(url, formData, {params, headers}).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
-    );
+    );*/
   }
 
   deleteUser(id: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
     console.log(url);
-    return this.http.delete(url)
-      .pipe(
-        catchError(this.handleError));
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        this.messages = res;
+        return this.messages;
+      }),
+      catchError(this.handleError));
   }
 
 
@@ -73,7 +84,7 @@ export class MessageService {
         this.messages = res;
         return this.messages;
     }),
-    catchError(this.handleError));
+      catchError(this.handleError));
   }
 
   /*getMessageOld(id: number): Observable<Message> {
@@ -84,46 +95,51 @@ export class MessageService {
 
   getMessage(id: number): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE api/message/42
-    //console.log ("debug" + url);
-      return this.http.get(url).pipe(
+    // console.log ("debug" + url);
+    return this.http.get(url).pipe(
       map((res: any) => {
         this.message = res;
         return res;
     }),
-    catchError(this.handleError));
+      catchError(this.handleError));
   }
 
   /** DELETE: delete the message from the server */
   deleteMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE api/message/42
     console.log(url);
-    return this.http.delete(url)
-      .pipe(
-        catchError(this.handleError));
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        this.messages = res;
+        return this.messages;
+    }),
+     catchError(this.handleError));
   }
 
 
 
   // POST: add a new message to the database
   createMessage(message: Message): Observable<Message> {
-    //console.log(message);
+    // console.log(message);
     const url = `${GlobalConstants.apiURL}/message`; // POST api/message
     message.draft = true;
     message.sent_at = false;
+
+    // validadate
     if ( message.orig ){
-      //this.postFile(message.orig: File);
+      // this.postFile(message.orig: File);
     }
 
     return this.http.put<Message>(url, message, this.httpOptions)
     .pipe(
+      
       catchError(this.handleError),
-
     );
 }
 
 /** PUT: update a message  */
   updateMessage(message: Message): Observable<Message> {
-    //console.log('debug update', message);
+    // console.log('debug update', message);
     const url = `${GlobalConstants.apiURL}/message/${message.id}`; // PUT api/message/42
     return this.http.put<Message>(url, message, this.httpOptions)
     .pipe(

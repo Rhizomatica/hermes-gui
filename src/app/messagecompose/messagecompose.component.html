@@ -1,92 +1,92 @@
 <div id="compose" class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-<form #f="ngForm" class="formdata" novalidate enctype="multipart/form-data" >
-
-    <div [hidden]="fileIsProcessing==true">
-
-        <label for="id" class="mssgid">
-            <span i18n>id</span>: {{message.id}}
-        </label>
-        <label for="name">
-            <span i18n>Description</span>:
-            <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
-        </label>
-
-        <label for="text">
-            <span i18n="@@message">Message</span>:
-            <br/>
-            <textarea matInput rows="5" cols="35" name="text" [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message"></textarea>
-        </label>
-
-        <!--
-        <label for="dest">
-            <span i18n="@@destination">destination</span>:
-            <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
-        </label>
-    -->
-
-    <label class="selstation">
-        <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
-            <span i18n="@@selectstation">select station
-            :<br>
-            <br>
-            <ng-container *ngIf="stations">
-
-                <select [(ngModel)]="message.dest">
-                    <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
-                </select>
-                </ng-container>
-            </span>
-        </span>
-    </label>
-
-
-        <label for="orig" class="origin">
-            <p>orig: {{message.orig}}</p>
-        </label>
-
-    <label for="orig" class="origin">
-        <p>orig: {{message.orig}}</p>
-    </label>
-<hr>
-    <div class="uploader">
-        <ng-container >
-            <label class="file">
-                <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" accept="image/*" >
+    <form #f="ngForm" class="formdata" novalidate enctype="multipart/form-data" >
+        <div [hidden]="fileIsProcessing==true">
+            <label for="id" class="mssgid">
+                <span i18n>id</span>: {{message.id}}
             </label>
-        </ng-container>
-        <div *ngIf="id" >
-            <br>
-            {{id}}
-            <br>
+            <label for="name">
+                <span i18n>Description</span>:
+                <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
+            </label>
 
+            <label for="text">
+                <span i18n="@@message">Message</span>:
+                <br/>
+                <textarea matInput rows="5" cols="35" name="text" required [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message"></textarea>
+            </label>
+
+            <!--
+            <label for="dest">
+                <span i18n="@@destination">destination</span>:
+                <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
+            </label>
+            -->
+
+            <label class="selstation">
+                <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
+                    <span i18n="@@selectstation">select station
+                    :<br>
+                    <br>
+                    <ng-container *ngIf="stations">
+
+                        <select [(ngModel)]="message.dest">
+                            <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+                        </select>
+                        </ng-container>
+                    </span>
+                </span>
+            </label>
+
+            <label for="orig" class="origin">
+                <p>orig: {{message.orig}}</p>
+            </label>
+
+            <label for="orig" class="origin">
+                <p>orig: {{message.orig}}</p>
+            </label>
+            <hr>
+            <div class="uploader">
+                <ng-container >
+                    <label class="file">
+                        <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" accept="image/*" >
+                    </label>
+                </ng-container>
+
+                <!-- test to display image-->
+                <div *ngIf="message.id && message.file" >
+                    <br>
+                    file server id:{{message.id}}
+                    <br>
+                    file server path:{{message.file}}
+                    <br>
+                    Img: 
+                    <img src={{$event.target.files[0].content}}>
+                </div>
+            </div>
+
+            <label class="passprotect">
+                <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
+                    <span i18n="@@protectpssw">protect with password</span>:
+                    <input type="checkbox" disabled/>
+                </span>
+            </label>
+
+            <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >Send Message</button>
         </div>
-    </div>
 
-    <label class="passprotect">
-        <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
-            <span i18n="@@protectpssw">protect with password</span>:
-            <input type="checkbox"/>
-        </span>
-    </label>
+        <div class="processing alert" [hidden]="fileIsProcessing==false">
+            Your message is been processed
+        </div>
 
-    <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" >Send Message</button>
- 
-</div>
+        <div class="alert" [hidden]="!fileIsProcessed">
+            Your message was sent to the transmission list
+            <app-messages></app-messages>
+        </div>
 
-<div class="processing alert" [hidden]="fileIsProcessing==false">
-    Your message is been processed
-</div>
+        <!--<button i18n="@@send">send</button>-->
+        <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid" >Send Message</button>
 
-<div class="alert" [hidden]="!fileIsProcessed">
-    Your message was sent to the transmission list
-    <app-messages></app-messages>
-</div>
-
-    <!--<button i18n="@@send">send</button>-->
-    <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" >Send Message</button>
-
-</form>
-
+    </form>
 </div>

@@ -4,9 +4,6 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { Station } from '../station';
 import { StationService } from '../station.service';
-import { Observable, throwError } from 'rxjs';
-import { NgSearchFilterService } from 'ng-search-filter';
-import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -18,10 +15,8 @@ import { delay } from 'rxjs/operators';
 export class ManagementComponent implements OnInit {
 
   searchUser: string;
-
   error = '';
   success = '';
-  test = '';
   users: User[];
   stations: Station[];
   selectedUser: User[];
@@ -54,7 +49,7 @@ loggedin() {
       this.deleteUser = true;
       //console.log(this.deleteUser);
     }
-   } 
+   }
 
    newUser() {
      this.selectedUser = [];
@@ -70,7 +65,7 @@ loggedin() {
       this.updateUser = true;
       //console.log(this.deleteUser);
     }
-   } 
+   }
 
   getUsers(): void {
     this.userService.getUsers().subscribe(
@@ -114,6 +109,4 @@ loggedin() {
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
   }
-
-   
 }

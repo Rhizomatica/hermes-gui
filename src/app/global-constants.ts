@@ -6,6 +6,8 @@ export class GlobalConstants {
     //TODO this must be fix to localhost in stations!
     //public static apiURL: string = "http://localhost/api";
 
+    //TODO get stationname
+    public static stationName = "local";
     public  httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
