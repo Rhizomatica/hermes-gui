@@ -12,6 +12,7 @@ import { StationService } from '../station.service';
 import { StationsComponent } from '../stations/stations.component';
 import { GlobalConstants } from '../global-constants';
 import { delay } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-messagecompose',
@@ -22,8 +23,8 @@ import { delay } from 'rxjs/operators';
 
 export class MessagecomposeComponent implements OnInit {
 
-  public messages: Message[];
   public message: Message;
+
   public error: any;
   public serverReturn: any;
   public stations: Station[];
@@ -46,10 +47,10 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-  DocUpload($files): void{
+  DocUpload(files): void{
     //this.messageService.postFile($files[0]);
-
-    this.messageService.postFile($files[0]).subscribe(
+    console.log(files);
+    this.messageService.postFile(files[0]).subscribe(
       (res: any) => {
         this.message.id = res[2];
         this.message.file = res[1];

@@ -11,7 +11,6 @@
     
     <button i18n="@@createadm" (click)="newUser()">create user</button>
 
-
     <!-- test
         <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
     <div>{{isadmin}}</div>
@@ -47,13 +46,13 @@
                 {{selectedUser.id}}
                 <br/>
             </label>
+            <label for="login">
+                <span i18n>username</span>:
+                <br/><input name="email" [(ngModel)]="selectedUser.email" appSameUsername required  placeholder="write the username" />
+            </label>
             <label for="name">
                 <span i18n>name</span>:
-                <input name="name" [(ngModel)]="selectedUser.name" required appSameUsername #name="ngModel" placeholder="write the username" />
-            </label>
-            <label for="email">
-                <span i18n>name</span>:
-                <br/><input name="email" [(ngModel)]="selectedUser.email" required #name="ngModel" placeholder="write the username" />
+                <input name="name" [(ngModel)]="selectedUser.name" required placeholder="write the username" />
             </label>
             <label>
                 <span i18n>phone number</span>:
@@ -110,7 +109,6 @@
                     <br/>
                     <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" >delete user</button>
                     <button type="submit" (click)="deleteAlert()" [disabled]="f.invalid" >cancel</button>
-    
                 </div>
                 </div>
 
@@ -121,7 +119,6 @@
                     <br/>
                     <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid">update</button>
                     <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">cancel</button>
-    
                 </div>
                 </div>
         </form>

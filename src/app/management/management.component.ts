@@ -41,6 +41,11 @@ loggedin() {
     }
   }
 
+  Alert(param, ): boolean {
+      //param=!param;
+      return !param;
+   }
+
   deleteAlert() {
     if(this.deleteUser) {
       this.deleteUser = false;
@@ -49,12 +54,6 @@ loggedin() {
       this.deleteUser = true;
       //console.log(this.deleteUser);
     }
-   }
-
-   newUser() {
-     this.selectedUser = [];
-     this.isEditing = true;
-     this.newUsername = true;
    }
 
    updateAlert() {
@@ -66,6 +65,13 @@ loggedin() {
       //console.log(this.deleteUser);
     }
    }
+
+   newUser() {
+     this.selectedUser = [];
+     this.isEditing = true;
+     this.newUsername = true;
+   }
+
 
   getUsers(): void {
     this.userService.getUsers().subscribe(
@@ -85,7 +91,15 @@ loggedin() {
   }
 
   onSubmitUpdate(id: number, f: NgForm):void {
-      this.userService.updateUser(id, f.value).subscribe();
+    console.log(f.value);
+      this.userService.updateUser(id, f.value).subscribe(
+        (res: any) => {
+          this.users = res;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );
       this.updateUser = false;
       this.isEditing = false;
       window.location.reload();
@@ -99,6 +113,7 @@ loggedin() {
   }
 
   onSubmitCreate(f: NgForm): void {
+    console.log(f.value);
     this.userService.createUser(f.value).subscribe()
     this.isEditing = false;
     console.log(this.isEditing);
