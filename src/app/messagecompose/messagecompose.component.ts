@@ -23,7 +23,7 @@ import { Location } from '@angular/common';
 
 export class MessagecomposeComponent implements OnInit {
 
-  public message: Message;
+  //public message: Message[];
 
   public error: any;
   public serverReturn: any;
@@ -31,6 +31,18 @@ export class MessagecomposeComponent implements OnInit {
   private fileProcessed: boolean = true;
   public fileIsProcessing: boolean;
   public fileIsProcessed: boolean;
+
+  message = {
+    id: "",
+    name: "",
+    orig: "casa",
+    dest: "",
+    text: "",
+    file: "",
+    draft: "",
+    sent_at: ""
+  }
+
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
@@ -62,19 +74,10 @@ export class MessagecomposeComponent implements OnInit {
   }
 
 
-  getMessage(id: number): void {
-    this.messageService.getMessage(id).subscribe(
-      (res: any) => {
-        this.message = res;
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
-  }
+  
 
   ngOnInit(): void {
-    this.getMessage(1);
+    //this.getMessage(1);
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
   }

@@ -3,9 +3,7 @@
 
     <form #f="ngForm" class="formdata" novalidate enctype="multipart/form-data" >
         <div [hidden]="fileIsProcessing==true">
-            <label for="id" class="mssgid">
-                <span i18n>id</span>: {{message.id}}
-            </label>
+    
             <label for="name">
                 <span i18n>Description</span>:
                 <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
@@ -31,7 +29,7 @@
                     <br>
                     <ng-container *ngIf="stations">
 
-                        <select [(ngModel)]="message.dest">
+                        <select [(ngModel)]="message.dest" required>
                             <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
                         </select>
                         </ng-container>
@@ -43,10 +41,9 @@
                 <p>orig: {{message.orig}}</p>
             </label>
 
-            <label for="orig" class="origin">
-                <p>orig: {{message.orig}}</p>
-            </label>
             <hr>
+           
+           <!-- 
             <div class="uploader">
                 <ng-container >
                     <label class="file">
@@ -54,7 +51,7 @@
                     </label>
                 </ng-container>
 
-                <!-- test to display image-->
+                test to display image
                 <div *ngIf="message.id && message.file" >
                     <br>
                     file server id:{{message.id}}
@@ -65,11 +62,11 @@
                     <img src={{$event.target.files[0].content}}>
                 </div>
             </div>
-
+-->
             <label class="passprotect">
                 <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
                     <span i18n="@@protectpssw">protect with password</span>:
-                    <input type="checkbox" disabled/>
+                    <input type="checkbox" unckecked/>
                 </span>
             </label>
 
@@ -82,7 +79,6 @@
 
         <div class="alert" [hidden]="!fileIsProcessed">
             Your message was sent to the transmission list
-            <app-messages></app-messages>
         </div>
 
         <!--<button i18n="@@send">send</button>-->
