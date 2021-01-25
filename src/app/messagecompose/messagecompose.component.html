@@ -6,13 +6,13 @@
     
             <label for="name">
                 <span i18n>Description</span>:
-                <br/><input name="name" [(ngModel)]="message.name" required #name="ngModel" placeholder="write the username" />
+                <br/><input name="name" [(ngModel)]="message.name" required  placeholder="write the username" />
             </label>
 
             <label for="text">
                 <span i18n="@@message">Message</span>:
                 <br/>
-                <textarea matInput rows="5" cols="35" name="text" required [(ngModel)]="message.text" required #name="ngModel" placeholder="write the message"></textarea>
+                <textarea rows="5" cols="35" name="text" required [(ngModel)]="message.text" required placeholder="write the message"></textarea>
             </label>
 
             <!--
@@ -29,7 +29,7 @@
                     <br>
                     <ng-container *ngIf="stations">
 
-                        <select [(ngModel)]="message.dest" required>
+                        <select name="dest" [(ngModel)]="message.dest" required>
                             <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
                         </select>
                         </ng-container>
@@ -37,32 +37,32 @@
                 </span>
             </label>
 
-            <label for="orig" class="origin">
-                <p>orig: {{message.orig}}</p>
-            </label>
+            <div *ngIf="message.dest">
+                <label for="orig" class="origin">
+                    <p>orig: {{message.orig}}</p>
+                </label>
+                <label  class="origin">
+                    <p>orig: {{message.dest}}</p>
+                </label>
+            </div>
 
             <hr>
-           
-           <!-- 
+
             <div class="uploader">
                 <ng-container >
                     <label class="file">
-                        <input type="file" formControlName="uploadFile" (change)="DocUpload($event.target.files)" accept="image/*" >
+                        <input type="file" (change)="DocUpload($event.target.files)" accept="image/*" >
                     </label>
                 </ng-container>
 
-                test to display image
                 <div *ngIf="message.id && message.file" >
                     <br>
-                    file server id:{{message.id}}
+                    file server id:{{message.id}} /  {{message.file}}
                     <br>
-                    file server path:{{message.file}}
-                    <br>
-                    Img: 
+                    Img:
                     <img src={{$event.target.files[0].content}}>
                 </div>
             </div>
--->
             <label class="passprotect">
                 <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
                     <span i18n="@@protectpssw">protect with password</span>:

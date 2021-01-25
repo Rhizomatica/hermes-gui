@@ -4,6 +4,7 @@
 <div class="messages">
     <ul class="multiplist">
     <li *ngFor="let message of messages">
+        {{message.id}}
     <a routerLink="/message/{{message.id}}">
         {{message.name}}</a>
         {{message.origin}}

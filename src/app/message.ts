@@ -6,5 +6,7 @@ export interface Message {
   text: string;
   file: string;
   draft: boolean;
-  sent_at: boolean;
+  //crypt: boolean;
+  sent_at: string;
+
 }

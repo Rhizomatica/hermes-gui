@@ -119,20 +119,26 @@ export class MessageService {
 
 
   // POST: add a new message to the database
-  createMessage(message: Message): Observable<Message> {
-    // console.log(message);
+  createMessage(message: Message, file, id) {
+
     const url = `${GlobalConstants.apiURL}/message`; // POST api/message
     message.draft = true;
-    message.sent_at = false;
+    message.sent_at = null;
+    //message.sent_at = "";
+    if (id){ 
+      message.id=id;
+      message.file = file;
+    };
+    
 
-    // validadate
-    if ( message.orig ){
-      // this.postFile(message.orig: File);
-    }
+    console.log(message)
 
-    return this.http.put<Message>(url, message, this.httpOptions)
-    .pipe(
-      
+    return this.http.put(url, message, this.httpOptions).pipe(
+      map((res: any) => {
+        this.messages = res;
+        console.log(res);
+        return this.messages;
+    }),
       catchError(this.handleError),
     );
 }

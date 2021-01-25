@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HmheaderComponent } from '../hmheader/hmheader.component';
-import { Observable, of, throwError } from 'rxjs';
 import { NgForm} from '@angular/forms';
 import { Message } from '../message';
 import { MessageService } from '../message.service';
-import { ViewChild } from '@angular/core';
-
 
 import { Station } from '../station';
 import { StationService } from '../station.service';
-import { StationsComponent } from '../stations/stations.component';
 import { GlobalConstants } from '../global-constants';
-import { delay } from 'rxjs/operators';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-messagecompose',
@@ -32,14 +25,14 @@ export class MessagecomposeComponent implements OnInit {
   public fileIsProcessing: boolean;
   public fileIsProcessed: boolean;
 
-  message = {
-    id: "",
+  public message:Message = {
+    id: null,
     name: "",
-    orig: "casa",
+    orig: GlobalConstants.stationName,
     dest: "",
     text: "",
     file: "",
-    draft: "",
+    draft: true,
     sent_at: ""
   }
 
@@ -47,11 +40,10 @@ export class MessagecomposeComponent implements OnInit {
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
   createMessage(f: NgForm): void {
-    console.log(f.value);
-    this.messageService.createMessage(f.value).subscribe(
+      this.messageService.createMessage(f.value,  this.message.file, this.message.id,).subscribe(
       (res: any) => {
         this.serverReturn = res;
-        console.log( "componente");
+        console.log(res);
       },
       (err) => {
         this.error = err;
