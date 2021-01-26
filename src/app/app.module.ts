@@ -12,7 +12,7 @@ import { SysadminComponent } from './sysadmin/sysadmin.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService } from './in-memory-data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './log/log.component';
 import { MailadminComponent } from './mailadmin/mailadmin.component';
 import { NetadminComponent } from './netadmin/netadmin.component';
@@ -30,6 +30,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './same-username.directive';
 import { RetypeDirective } from './retype.directive';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor} from './_helpers/error.interceptor';
 
 
 
@@ -96,7 +98,9 @@ import { RetypeDirective } from './retype.directive';
 
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

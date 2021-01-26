@@ -30,17 +30,13 @@
     margin: 0;
   }
 
-  
-
-
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
-   
   }
 
   @media screen and (max-width: 575px) {
-    
+
   }
 </style>
 
@@ -49,6 +45,15 @@
 <app-hmheader>
 
 </app-hmheader>
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+      <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
+      <a class="nav-item nav-link" >{{currentUser}}</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </div>
+
+</nav>
     <nav>
       <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
       <a routerLink="/login" i18n="@admin"><img title="admin" src="/assets/svg/tools.svg">admin</a>

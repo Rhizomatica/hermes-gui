@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StationsComponent } from '../stations/stations.component';
-import { MessagesComponent } from '../messages/messages.component';
-import { HmheaderComponent } from '../hmheader/hmheader.component';
-import { MessageService } from '../message.service';
+
+import { User } from '../user';
+import { AuthenticationService } from '../authentication.service';
+
 
 @Component({
   selector: 'app-sysadmin',
@@ -10,8 +10,12 @@ import { MessageService } from '../message.service';
   styleUrls: ['./sysadmin.component.less']
 })
 export class SysadminComponent implements OnInit {
+  currentUser:User;
 
-  constructor() { }
+  constructor( private authenticationService: AuthenticationService){
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
 
   ngOnInit(): void {
   }
