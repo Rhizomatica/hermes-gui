@@ -24,6 +24,7 @@ export class MessagecomposeComponent implements OnInit {
   private fileProcessed: boolean = true;
   public fileIsProcessing: boolean;
   public fileIsProcessed: boolean;
+  public isEncrypted;
 
   public message:Message = {
     id: null,
@@ -44,11 +45,26 @@ export class MessagecomposeComponent implements OnInit {
       (res: any) => {
         this.serverReturn = res;
         console.log(res);
+        this.fileIsProcessing = true;
       },
       (err) => {
         this.error = err;
       }
     );
+  }
+
+  encrypted() {
+    if(this.isEncrypted) {
+      this.isEncrypted = false;
+      //console.log(this.isEncrypted);
+    } else {
+      this.isEncrypted = true;
+      //console.log(this.isEncrypted);
+    }
+  }
+
+  retry() {
+    this.error = false;
   }
 
   DocUpload(files): void{
@@ -70,6 +86,8 @@ export class MessagecomposeComponent implements OnInit {
 
   ngOnInit(): void {
     //this.getMessage(1);
+    this.isEncrypted = false;
+    this.fileIsProcessing = false;
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
   }

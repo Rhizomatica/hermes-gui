@@ -1,7 +1,7 @@
 <div id="compose" class="formfield">
     <h2 i18n>send your public message to another station</h2>
 
-    <form #f="ngForm" class="formdata" novalidate enctype="multipart/form-data" >
+    <form #f="ngForm" class="formdata" novalidate retypeenctype="multipart/form-data" >
         <div [hidden]="fileIsProcessing==true">
     
             <label for="name">
@@ -66,23 +66,38 @@
             <label class="passprotect">
                 <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
                     <span i18n="@@protectpssw">protect with password</span>:
-                    <input type="checkbox" unckecked/>
+                    <input type="checkbox" unckecked (change)="encrypted()"/>
                 </span>
             </label>
+            <div id="cryptopass" [hidden]=!isEncrypted>
+                <label for="passw" > 
+                    Type the password
+                    <input type="password" minlength="4"/>
+                </label>
+                <label for="repassw" > 
+                    Retype the password
+                    <input type="password"/>
+                </label>
+            </div>
 
             <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >Send Message</button>
         </div>
 
-        <div class="processing alert" [hidden]="fileIsProcessing==false">
+        <div class="overall alert" [hidden]="fileIsProcessing==false">
             Your message is been processed
         </div>
 
         <div class="alert" [hidden]="!fileIsProcessed">
             Your message was sent to the transmission list
         </div>
+        <div class="overall alert" [hidden]="!error">
+            <div class="cv">
+                There was an error on sending your message
+                <button (click)="retry()" >try again</button>
 
+            </div>
+        </div>
         <!--<button i18n="@@send">send</button>-->
-        <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid" >Send Message</button>
 
     </form>
 </div>
