@@ -1,9 +1,11 @@
 <div *ngIf="message" class="formfield">
     <h5>{{message.description}}</h5>
-    <p>{{message.url}}</p>
-    <p>{{message.id}}</p>
-    <p>{{message.name}}</p>
-    <p>{{message.origin}}</p>
+    
+    <p>Id: {{message.id}}</p>
+    <p>Name: {{message.name}}</p>
+    <p>Orig: {{message.origin}}</p>
+    <p>Dest: {{message.dest}}</p>
+    <p>File: {{message.file}}</p>
 
     <p><span i18n="@@origin">origin: </span>{{message.location}}</p>
     <span class="icon">

@@ -16,36 +16,34 @@ import { GlobalConstants } from '../global-constants';
 
 export class MessagecomposeComponent implements OnInit {
 
-  //public message: Message[];
-
   public error: any;
-  public serverReturn: any;
+  public res: any;
   public stations: Station[];
   private fileProcessed: boolean = true;
   public fileIsProcessing: boolean = false;
   public fileIsProcessed: boolean = false;
   public isEncrypted: boolean = false;
+  public message: Message;
 
-  public message:Message = {
+  /*public message:Message = {
     id: null,
     name: "",
-    orig: GlobalConstants.stationName,
+    orig: "",
     dest: "",
     text: "",
     file: "",
-    draft: true,
+    draft: null,
     sent_at: ""
-  }
-
+  }*/
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
   createMessage(f: NgForm): void {
       this.messageService.createMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
-        this.serverReturn = res;
+        this.res = res;
         console.log(res);
-        this.fileIsProcessing = true;
+        //this.fileIsProcessing = true;
       },
       (err) => {
         this.error = err;
@@ -82,7 +80,17 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getMessage(1);
+    this.message = {
+      id: null,
+      name: "",
+      orig: "",
+      dest: "",
+      text: "",
+      file: "",
+      draft: null,
+      sent_at: ""
+    }
+
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()

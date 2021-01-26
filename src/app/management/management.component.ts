@@ -113,7 +113,6 @@ loggedin() {
   }
 
   onSubmitCreate(f: NgForm): void {
-    console.log(f.value);
     this.userService.createUser(f.value).subscribe()
     this.isEditing = false;
     console.log(this.isEditing);

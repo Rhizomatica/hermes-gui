@@ -5,8 +5,7 @@ import { Observable, throwError, of  } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Message } from './message';
 
-import{ GlobalConstants } from './global-constants';
-//import { MESSAGES } from './mock-messages';
+import { GlobalConstants } from './global-constants';
 
 
 @Injectable({
@@ -116,26 +115,24 @@ export class MessageService {
      catchError(this.handleError));
   }
 
-
-
   // POST: add a new message to the database
-  createMessage(message: Message, file, id) {
-
+  createMessage(message: Message, file, id):Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message`; // POST api/message
+
     message.draft = true;
     message.sent_at = null;
-    //message.sent_at = "";
-    if (id){ 
+    message.orig = GlobalConstants.stationName;
+
+    if (id){
       message.id=id;
       message.file = file;
     };
-    console.log(message)
+    //console.log("debug createmessage service: ", message)
 
-    return this.http.put(url, message, this.httpOptions).pipe(
+    return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
-        this.messages = res;
-        console.log(res);
-        return this.messages;
+        this.message = res;
+        return this.message;
     }),
       catchError(this.handleError),
     );

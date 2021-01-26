@@ -5,22 +5,15 @@
         <div [hidden]="fileIsProcessing==true">
     
             <label for="name">
-                <span i18n>Description</span>:
-                <br/><input name="name" [(ngModel)]="message.name" required  placeholder="write the username" />
+                <span i18n>Subject</span>:
+                <br/><input name="name" [(ngModel)]="message.name" required  placeholder="write the subject" />
             </label>
 
             <label for="text">
                 <span i18n="@@message">Message</span>:
                 <br/>
-                <textarea rows="5" cols="35" name="text" required [(ngModel)]="message.text" required placeholder="write the message"></textarea>
+                <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35"  placeholder="write the message"></textarea>
             </label>
-
-            <!--
-            <label for="dest">
-                <span i18n="@@destination">destination</span>:
-                <br/><input name="dest" [(ngModel)]="message.dest" required #name="ngModel" placeholder="write the message" />
-            </label>
-            -->
 
             <label class="selstation">
                 <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
@@ -37,14 +30,6 @@
                 </span>
             </label>
 
-            <div *ngIf="message.dest">
-                <label for="orig" class="origin">
-                    <p>orig: {{message.orig}}</p>
-                </label>
-                <label  class="origin">
-                    <p>orig: {{message.dest}}</p>
-                </label>
-            </div>
 
             <hr>
 
@@ -70,11 +55,11 @@
                 </span>
             </label>
             <div id="cryptopass" [hidden]=!isEncrypted>
-                <label for="passw" > 
+                <label for="passw" >
                     Type the password
                     <input type="password" minlength="4"/>
                 </label>
-                <label for="repassw" > 
+                <label for="repassw" >
                     Retype the password
                     <input type="password"/>
                 </label>
