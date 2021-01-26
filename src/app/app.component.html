@@ -40,30 +40,29 @@
   }
 </style>
 
-
-
 <app-hmheader>
-
 </app-hmheader>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav">
       <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
-      <a class="nav-item nav-link" >{{currentUser}}</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <button *ngIf="currentUser.login">❓{{currentUser.login}}</button>
+      <button *ngIf="currentUser.admin === true">👑</button>
+      <button *ngIf="currentUser.res === ok">ok</button>
+      <button  (click)="logout()">🙋</button>
   </div>
+</nav>
+
+<nav>
+  <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
+  <a routerLink="/login" i18n="@admin"><img title="admin" src="/assets/svg/tools.svg">admin</a>
+  <a href="" i18n="@@email"><img title="mail" src="/assets/svg/envelope.svg">email</a>
+  <a routerLink="/languages" i18n="@@languages"><img title="languages" src="/assets/svg/globe-americas.svg">language</a>
+  <a routerLink="/help" i18n="@@help"><img title="help" src="/assets/svg/question-circle-regular.svg">help</a>
 
 </nav>
-    <nav>
-      <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
-      <a routerLink="/login" i18n="@admin"><img title="admin" src="/assets/svg/tools.svg">admin</a>
-      <a href="https://hermes.radio/mail/" i18n="@@email"><img title="mail" src="/assets/svg/envelope.svg">email</a>
-      <a routerLink="/languages" i18n="@@languages"><img title="languages" src="/assets/svg/globe-americas.svg">language</a>
-      <a routerLink="/help" i18n="@@help"><img title="help" src="/assets/svg/question-circle-regular.svg">help</a>
 
-    </nav>
-
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
