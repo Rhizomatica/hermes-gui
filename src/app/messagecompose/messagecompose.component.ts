@@ -22,9 +22,9 @@ export class MessagecomposeComponent implements OnInit {
   public serverReturn: any;
   public stations: Station[];
   private fileProcessed: boolean = true;
-  public fileIsProcessing: boolean;
-  public fileIsProcessed: boolean;
-  public isEncrypted;
+  public fileIsProcessing: boolean = false;
+  public fileIsProcessed: boolean = false;
+  public isEncrypted: boolean = false;
 
   public message:Message = {
     id: null,
@@ -41,7 +41,7 @@ export class MessagecomposeComponent implements OnInit {
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
   createMessage(f: NgForm): void {
-      this.messageService.createMessage(f.value,  this.message.file, this.message.id,).subscribe(
+      this.messageService.createMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
         this.serverReturn = res;
         console.log(res);
@@ -80,9 +80,6 @@ export class MessagecomposeComponent implements OnInit {
       }
     );
   }
-
-
-  
 
   ngOnInit(): void {
     //this.getMessage(1);

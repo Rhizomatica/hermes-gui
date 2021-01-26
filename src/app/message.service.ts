@@ -129,8 +129,6 @@ export class MessageService {
       message.id=id;
       message.file = file;
     };
-    
-
     console.log(message)
 
     return this.http.put(url, message, this.httpOptions).pipe(

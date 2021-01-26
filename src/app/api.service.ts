@@ -4,29 +4,45 @@ import { AlertService } from './alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Api } from './api';
+import { GlobalConstants } from './global-constants';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  login=false;
+  apis: Api[];
+  serverReturn = "";
 
   constructor(
     private http: HttpClient,
     private alertService: AlertService
   ) { }
 
-  apis: Api[];
-    private baseURL = 'http://floresta.hermes.radio:1011/api.php';
 
     getApi(): Observable<Api[]> {
-      return this.http.get(this.baseURL).pipe(
+      let url = GlobalConstants.apiURL+'/api';
+      return this.http.get(url).pipe(
         map((res: any) => {
           this.apis = res;
           console.log(this.apis);
           return this.apis;
       }),
       catchError(this.handleError));
+    }
+
+    getLogin(login, password): Observable<{}> {
+      let url = GlobalConstants.apiURL+'login';
+      let data =  {'login': login, 'password': password};
+
+            return this.http.post(url, data[0]).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          return this.serverReturn;
+        }),
+        catchError(this.handleError)
+        );
     }
 
     private handleError(error: HttpErrorResponse) {

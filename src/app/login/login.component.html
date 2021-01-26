@@ -1,24 +1,27 @@
 
 <div class="formfield login">
+   <form #f="ngForm" id="loginform" novalidate>
+      <p i18n="@@instructions">To access mail, put your name and password</p>
+      <label>
+         <p i18n="@@username">Login:</p>
+         <input name="login"  ngModel required placeholder="username" />
+      </label>
+      <label>
+         <p i18n="@@password">password:</p>
+          <input name="password" type="password" ngModel required placeholder="password" />
+      </label>
+      <a i18n="@@login"  >
+         <button (click)="submitLogin(f)" [disabled]="f.invalid" >Log in</button></a>
+      <br>
+      <button type="submit"  >Send Message</button>
 
-   
+      <a i18n="@@login" routerLink="/admin" ><button>Bypass Log in</button></a>
 
-<p i18n="@@instructions">To access mail, put your name and password</p>
-<label>
-    <p i18n="@@username">username:</p> <input  placeholder="username" />
- </label>
- <label>
-    <p i18n="@@password">password:</p> <input type="password" placeholder="password" />
- </label>
-  <a i18n="@@login" routerLink="/admin" ><button>Log in</button></a>
-  <br>
+      <a i18n="@@forgot" routerLink="/recovery" ><button>Forgot my password</button></a>
 
+      <p i18n="@@noaccount">Doesn't have an account?</p>
 
-  <a i18n="@@forgot" routerLink="/recovery" ><button>Forgot my password</button></a>
+      <a i18n="@@create" routerLink="/users" ><button >create an account</button></a>
 
-  <p i18n="@@noaccount">Doesn't have an account?</p> 
- 
-  <a i18n="@@create" routerLink="/users" ><button >create an account</button></a>
-  
-  
+   </form>
 </div>
