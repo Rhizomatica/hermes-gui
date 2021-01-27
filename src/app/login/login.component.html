@@ -1,25 +1,30 @@
 
-<div class="formfield login">
+<div class="formfield login" >
    <form #f="ngForm" id="loginform" novalidate>
-      <p i18n="@@instructions">To access mail, put your name and password</p>
-      <label>
+      <p i18n="@@instructions">To access features, put your Login and password</p>
+      <label >
          <p i18n="@@username">Login:</p>
-         <input name="login"  ngModel required placeholder="username" />
+         <input name="login"  ngModel required placeholder="Login" />
       </label>
-      <label>
+      <label >
          <p i18n="@@password">password:</p>
-          <input name="password" type="password" ngModel required placeholder="password" />
+          <input name="password" type="password" ngModel required placeholder="Password" />
       </label>
-      <a i18n="@@login"  >
+
+      <a i18n="@@login" >
          <button (click)="submitLogin(f)" [disabled]="f.invalid" >Log in</button></a>
       <br>
-      
-      <button (click)="submitTeste(f)">logout test</button>
+
+      <button (click)="submitLogout()"  >logout test</button>
 
 
-      <a i18n="@@login" routerLink="/admin" ><button>Bypass Log in</button></a>
+      <a i18n="@@login" routerLink="/admin"  >
+         <button>DBG: Bypass Log in</button>
+      </a>
 
-      <a i18n="@@forgot" routerLink="/recovery" ><button>Forgot my password</button></a>
+      <a i18n="@@forgot" routerLink="/recovery" >
+         <button>Forgot my password</button>
+      </a>
 
       <p i18n="@@noaccount">Doesn't have an account?</p>
 
