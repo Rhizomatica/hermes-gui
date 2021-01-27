@@ -1,16 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../message';import { MessageService } from '../message.service';
 import { AlertService } from '../alert.service';
-// import { GlobalConstants } from '../global-constants';
-
 @Component({
-  selector: 'app-messages',
-  templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.less']
+  selector: 'app-sent-messages',
+  templateUrl: './sent-messages.component.html',
+  styleUrls: ['./sent-messages.component.less']
 })
-export class MessagesComponent implements OnInit {
-
-//  @Input() message: Message;
+export class SentMessagesComponent implements OnInit {
 
   error = '';
   success = '';
@@ -18,7 +14,6 @@ export class MessagesComponent implements OnInit {
   messages: Message[];
    message: Message;
   selectedMessage: Message;
-
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 
@@ -41,4 +36,10 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     this.getMessages();
   }
+
 }
+
+
+
+
+
