@@ -43,15 +43,16 @@
 <app-hmheader>
 </app-hmheader>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+<div class="userstatus" *ngIf="currentUser">
   <div class="navbar-nav">
       <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
-      <button *ngIf="currentUser.login">❓{{currentUser.login}}</button>
-      <button *ngIf="currentUser.admin === true">👑</button>
-      <button *ngIf="currentUser.res === ok">ok</button>
-      <button  (click)="logout()">🙋</button>
+      <span *ngIf="currentUser.login">Logged in as:<br/> {{currentUser.login}}</span>
+      <span *ngIf="currentUser.admin === true">administrator</span><br/>
+      <!--<span *ngIf="currentUser.res === ok">ok</span><br/>-->
+      <button *ngIf="currentUser.login" (click)="logout()">logout</button>
+      <button *ngIf="!currentUser.login" routerLink="/login">login</button>
   </div>
-</nav>
+</div>
 
 <nav>
   <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>

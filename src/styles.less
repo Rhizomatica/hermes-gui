@@ -12,6 +12,11 @@ body {
     max-width: 380px;
     margin: 20px auto 0 auto;
     padding: 0 30px;
+    position: relative;
+}
+
+p {
+    margin: 1px 0;
 }
 
 button {
@@ -191,6 +196,15 @@ textarea {
         background-color: @clr;
         color: @mclr;
     }
+    .forgot {
+        position: relative;
+        height: 0;
+    }
+    .forgot a {
+        position: absolute;
+        right: 0px;
+        top: -20px;
+    }
 }
 
 .multiplist {
@@ -319,5 +333,16 @@ textarea {
         top: 50%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
+      }
+  }
+
+  .userstatus {
+      position: absolute;
+      top:5px;
+      right:27px;
+      text-align: right;
+      font-size: 10px;
+      button {
+          background-color: #666
       }
   }
