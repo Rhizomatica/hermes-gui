@@ -60,3 +60,4 @@ admin:
 
 - message administration 
     - bulk delete messages
+

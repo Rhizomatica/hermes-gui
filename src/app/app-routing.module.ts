@@ -15,6 +15,7 @@ import { LanguagesComponent } from './languages/languages.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { UserComponent } from './user/user.component';
+import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -33,7 +34,9 @@ const routes: Routes = [
   { path: 'languages', component: LanguagesComponent},
   { path: 'messageadm', component: MessageadmComponent},
   { path: 'recovery', component: ForgotpasswordComponent},
-  { path: 'users', component: UserComponent}
+  { path: 'users', component: UserComponent},
+  { path: 'sent', component: SentMessagesComponent}
+
 ];
 
 @NgModule({

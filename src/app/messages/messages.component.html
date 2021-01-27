@@ -1,18 +1,33 @@
 <div class="formfield">
 
-<h2 i18n="@@messages">messages</h2>
-<div class="messages">
-    <div class="multiplist">
-    <p *ngFor="let message of messages.slice().reverse()">
-       <span class="date">12/1/2021</span><!--{{message.id}}--> 
-    <a routerLink="/message/{{message.id}}">
-        {{message.name}}</a>
-       <!-- {{message.dest}}-->
-    </p>
-</div>
+<h2 i18n="@@messages">Messages</h2>
+    <div class="messages">
+        <div class="multiplist">
+            <p *ngFor="let message of messages.slice().reverse()">
+            <span class="date">12/1/2021</span><!--{{message.id}}--> 
+            <a routerLink="/message/{{message.id}}">
+                {{message.name}}
+            </a>
+            <!-- {{message.dest}}-->
+            </p>
+        </div>
+    </div>  
+
+    <div class="navicons">
+        <div class="btn" >
+            <a routerLink="/compose" i18n="@@compose">
+                <img title="help" src="/assets/svg/edit.svg">compose
+            </a>
+        </div>
+        <div class="btn sent" >
+            <a routerLink="/sent" i18n="@@sent">
+                <img title="help" src="/assets/svg/cloud-upload-alt-solid.svg">sent messages
+            </a>
+        </div>
+    </div>
+    
 </div>
 
-<div class="btn" ><a routerLink="/compose" i18n="@@compose"><img title="help" src="/assets/svg/edit.svg">compose</a></div>
-</div>
+
 
 <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->
