@@ -1,5 +1,5 @@
 <div id="compose" class="formfield">
-    <h2 i18n>send your public message to another station</h2>
+    <h2 i18n><div class="icon"><img title="send" src="/assets/svg/paper-plane.svg"></div>send your public message to another station</h2>
 
     <form #f="ngForm" class="formdata" novalidate  >
         <div [hidden]="fileIsProcessing==true">
@@ -64,12 +64,19 @@
                     <input type="password"/>
                 </label>
             </div>
-
-            <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >Send Message</button>
+            <span></span>
+            <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >send message<br/><img class="btnicon" title="send" src="/assets/svg/paper-plane.svg"></button>
         </div>
 
         <div class="overall alert" [hidden]="fileIsProcessing==false">
-            Your message is been processed
+            <div class="cv">
+                Your message is been processed <br/><br/>
+                <div class="icon" ><a (click)="newMessage()" i18n="@@compose"><img title="compose" src="/assets/svg/edit.svg"><button>compose</button></a></div>
+                <div class="icon" ><a routerLink='/messages' routerLinkActive="active" i18n="@@compose"><img title="help" src="/assets/svg/comment.svg"><button>messages</button></a></div>
+
+                
+
+            </div>
         </div>
 
         <div class="alert" [hidden]="!fileIsProcessed">

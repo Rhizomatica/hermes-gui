@@ -51,9 +51,10 @@ admin:
 
 - admin management
     - change what is visible with each status
+        - ok
     - feedback when submit action
+        - ok
     - validate username
-    - validate e-mail
 
     (question - automatic email when creating username)
 

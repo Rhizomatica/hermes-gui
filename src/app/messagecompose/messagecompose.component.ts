@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { Message } from '../message';
 import { MessageService } from '../message.service';
-
 import { Station } from '../station';
 import { StationService } from '../station.service';
 import { GlobalConstants } from '../global-constants';
@@ -39,6 +38,7 @@ export class MessagecomposeComponent implements OnInit {
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
   createMessage(f: NgForm): void {
+      this.fileIsProcessing = true;
       this.messageService.createMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
         this.res = res;
@@ -49,6 +49,21 @@ export class MessagecomposeComponent implements OnInit {
         this.error = err;
       }
     );
+  }
+
+  newMessage() {
+    //this.router.navigate(['/compose']);
+    this.fileIsProcessing = false;
+    this.message.name = "";
+    this.message.text = "";
+    this.message.file = "";
+    console.log('yeah')
+
+  }
+
+  messageList() {
+    //this.router.navigate(['/compose']);
+
   }
 
   encrypted() {
