@@ -47,7 +47,7 @@
   <div class="navbar-nav">
       <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
       <span *ngIf="currentUser.login">Logged in as:<br/> {{currentUser.login}}</span>
-      <span *ngIf="currentUser.admin === true">administrator</span><br/>
+      <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
       <!--<span *ngIf="currentUser.res === ok">ok</span><br/>-->
       <button *ngIf="currentUser.login" (click)="logout()">logout</button>
       <button *ngIf="!currentUser.login" routerLink="/login">login</button>

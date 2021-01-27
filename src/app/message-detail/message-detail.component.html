@@ -7,6 +7,7 @@
     <small><p>Origin: {{message.orig}}</p>
     <p>Destination: {{message.dest}}</p>
     <p [hidden]="!message.file">File: {{message.file}}</p>
+    <img [src]="messageImage"/>
     <p>Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
     <p>Id: {{message.id}}</p></small>
 

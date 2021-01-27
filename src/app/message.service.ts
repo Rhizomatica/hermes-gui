@@ -93,7 +93,7 @@ export class MessageService {
   */
 
   getMessage(id: number): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE api/message/42
+    const url = `${GlobalConstants.apiURL}/message/${id}`; // get /message/42
     // console.log ("debug" + url);
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -103,9 +103,16 @@ export class MessageService {
       catchError(this.handleError));
   }
 
+  getMessageImage(id: number): Observable<Blob> {
+    const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
+     console.log ("debug " + url);
+     return this.http.get(url, {responseType: 'blob'});
+  }
+
+
   /** DELETE: delete the message from the server */
   deleteMessage(id): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE api/message/42
+    const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
     console.log(url);
     return this.http.delete(url).pipe(
       map((res: any) => {
@@ -117,17 +124,18 @@ export class MessageService {
 
   // POST: add a new message to the database
   createMessage(message: Message, file, id):Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message`; // POST api/message
+    const url = `${GlobalConstants.apiURL}/message`; // POST /message
 
     message.draft = true;
     message.sent_at = null;
     message.orig = GlobalConstants.stationName;
+    messageImage: File;
 
     if (id){
       message.id=id;
       message.file = file;
     };
-    //console.log("debug createmessage service: ", message)
+    console.log("debug createmessage service: ", message)
 
     return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
@@ -147,7 +155,6 @@ export class MessageService {
       catchError(this.handleError)
     );
 }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

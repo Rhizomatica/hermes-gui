@@ -14,6 +14,7 @@ export class MessageDetailComponent implements OnInit {
 
   @Input() message: Message;
   private error: String;
+  public messageImage: Blob;
 
 
   constructor(
@@ -24,28 +25,57 @@ export class MessageDetailComponent implements OnInit {
   ) { }
 
   getMessageOld(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    let id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessage(id).subscribe(message => this.message);
   }
 
   getMessage(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    let id = +this.route.snapshot.paramMap.get('id');
 
-  this.messageService.getMessage(id).subscribe(
-    (res: any) => {
-      this.message = res;
-      console.log("debug componente service " + res);
-    },
-    (err) => {
-      this.error = err;
-    }
-  );
+    this.messageService.getMessage(id).subscribe(
+      (res: any) => {
+        this.message = res;
+        console.log("debug componente service " + res);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+  getMessageImage(): void {
+    let id = +this.route.snapshot.paramMap.get('id');
+      this.messageService.getMessageImage(id).subscribe(
+      (res: any) => {
+        this.messageImage = res;
+        console.log("debug componente service " + res);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+
+  }
+
+  getImageFromService() {
+    //this.isImageLoading = true;
+    let id = +this.route.snapshot.paramMap.get('id');
+    this.messageService.getMessageImage(id).subscribe(
+      data => {
+      this.messageImage = data;
+      //this.isImageLoading = false;
+    }, error => {
+      //this.isImageLoading = false;
+      console.log(error);
+    });
 }
+
 
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getMessage();
+    this.getImageFromService();
   }
 
 }
