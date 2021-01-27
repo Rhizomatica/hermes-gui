@@ -4,6 +4,8 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { Station } from '../station';
 import { StationService } from '../station.service';
+import { AuthenticationService } from '../authentication.service';
+
 
 
 @Component({
@@ -14,6 +16,7 @@ import { StationService } from '../station.service';
 
 export class ManagementComponent implements OnInit {
 
+  currentUser: User;
   searchUser: string;
   error = '';
   success = '';
@@ -21,14 +24,14 @@ export class ManagementComponent implements OnInit {
   stations: Station[];
   selectedUser: User[];
   control: any;
-  isadmin = true;
+  isadmin = false;
   isEditing = false;
   deleteUser = true;
   updateUser = true;
   newUsername = false;
 
-    constructor(private userService: UserService, private stationService: StationService) {
-
+    constructor(private userService: UserService, private stationService: StationService, private authenticationService: AuthenticationService) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
 loggedin() {
@@ -122,5 +125,7 @@ loggedin() {
     this.getUsers();
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
+    this.isadmin = this.currentUser.admin;
+
   }
 }
