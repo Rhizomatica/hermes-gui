@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from './user';
-import { GlobalConstants } from './global-constants';
+import { User } from '../user';
+import { GlobalConstants } from '../global-constants';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {

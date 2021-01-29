@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { Message } from '../message';
-import { MessageService } from '../message.service';
+import { MessageService } from '../_services/message.service';
 import { Station } from '../station';
-import { StationService } from '../station.service';
+import { StationService } from '../_services/station.service';
 import { GlobalConstants } from '../global-constants';
 
 @Component({

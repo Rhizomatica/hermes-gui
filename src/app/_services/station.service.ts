@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { AlertService } from './alert.service';
+import { AlertService } from '../alert.service';
 // import { Observable, of } from 'rxjs';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Station } from './station';
-import { StationsComponent } from './stations/stations.component';
+import { Station } from '../station';
+import { StationsComponent } from '../stations/stations.component';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../message';import { MessageService } from '../message.service';
+import { Message } from '../message';import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 @Component({
   selector: 'app-sent-messages',

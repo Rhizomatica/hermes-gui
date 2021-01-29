@@ -1,7 +1,7 @@
 import { Directive, Input } from '@angular/core';
 import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 import { User } from './user';
-import { UserService } from './user.service';
+import { UserService } from './_services/user.service';
 
 
 

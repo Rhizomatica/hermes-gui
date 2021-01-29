@@ -3,7 +3,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 
 import { Station } from '../station';
-import { StationService } from '../station.service';
+import { StationService } from '../_services/station.service';
 
 @Component({
   selector: 'app-stations',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { User } from '../user';
-import { UserService } from '../user.service';
+import { UserService } from '../_services/user.service';
 import { Station } from '../station';
-import { StationService } from '../station.service';
+import { StationService } from '../_services/station.service';
 import { from } from 'rxjs';
 
 @Component({

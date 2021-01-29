@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { AlertService } from './alert.service';
+import { AlertService } from '../alert.service';
 import { Observable, throwError, of  } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Message } from './message';
+import { Message } from '../message';
 
-import { GlobalConstants } from './global-constants';
+import { GlobalConstants } from '../global-constants';
 
 
 @Injectable({

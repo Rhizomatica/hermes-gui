@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Message } from '../message';
-import { MessageService } from '../message.service';
+import { MessageService } from '../_services/message.service';
 
 @Component({
   selector: 'app-message-detail',
