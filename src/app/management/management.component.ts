@@ -29,6 +29,7 @@ export class ManagementComponent implements OnInit {
   deleteUser = true;
   updateUser = true;
   newUsername = false;
+  emptyUser = false;
 
     constructor(private userService: UserService, private stationService: StationService, private authenticationService: AuthenticationService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -62,9 +63,11 @@ loggedin() {
    updateAlert() {
     if(this.updateUser) {
       this.updateUser = false;
+      this.emptyUser = false;
       //console.log(this.deleteUser);
     } else {
       this.updateUser = true;
+      this.emptyUser = false;
       //console.log(this.deleteUser);
     }
    }
@@ -73,6 +76,7 @@ loggedin() {
      this.selectedUser = [];
      this.isEditing = true;
      this.newUsername = true;
+     this.emptyUser= true;
    }
 
 
