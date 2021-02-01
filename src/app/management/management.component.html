@@ -50,7 +50,8 @@
             </label>
             <label for="login">
                 <span i18n>username</span>:
-                <br/><input name="email" [(ngModel)]="selectedUser.email" appSameUsername required  placeholder="write the username" />
+                <br/><input [hidden]="isEditing" name="email" [(ngModel)]="selectedUser.email" appSameUsername required  placeholder="write the username" />
+                <span [hidden]="!isEditing"> {{selectedUser.email}} </span>
             </label>
             <label for="name">
                 <span i18n>name</span>:
@@ -115,7 +116,7 @@
             
                 <button (click)="deleteAlert()" [disabled]="f.invalid" >delete user</button>
                 <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">update</button>
-                <button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>
+                <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 
                 <div class="overall" [hidden]="deleteUser">
                     <div class="cv">

@@ -12,7 +12,7 @@ import { User } from './user';
 })
 export class AppComponent {
   currentUser: User;
-  systemStatus: boolean = true; 
+  systemStatus: boolean = false; 
 
   title = 'hermes.radio';
   constructor( private router: Router, private authenticationService: AuthenticationService){

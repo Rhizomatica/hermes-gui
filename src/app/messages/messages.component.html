@@ -4,11 +4,12 @@
     <div class="messages">
         <div class="multiplist">
             <p *ngFor="let message of messages.slice().reverse()">
+            <a ><img class="inlineicon" title="trash" src="/assets/svg/trash-alt.svg" [hidden]="!isAdmin"></a>
+    
             <span class="date">12/1/2021</span><!--{{message.id}}--> 
             <a routerLink="/message/{{message.id}}">
                 {{message.name}}
             </a>
-            <a ><img class="inlineicon" title="trash" src="/assets/svg/trash-alt.svg" [hidden]="!isAdmin"></a>
             <!-- {{message.dest}}-->
             </p>
         </div>

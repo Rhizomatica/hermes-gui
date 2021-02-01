@@ -45,20 +45,43 @@
 
 <div class="userstatus" *ngIf="currentUser">
   <div class="navbar-nav">
-    <span class="icon" [hidden]="systemStatus">
-      server on<br><img title="server on" src="/assets/svg/broadcast-tower.svg" >
-    </span>
-      
-    <span class="icon" [hidden]="!systemStatus">
-      server off<br><img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
+    <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
+      <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
+    <div class="serverstatus">
+      <span class="icon" [hidden]="systemStatus">
+        server on
+      </span>
+        
+      <span class="icon" [hidden]="!systemStatus">
+        server off
+      </span>
+    </div>
+
+    <span class="serverstatus">
+      <span class="icon" [hidden]="!systemStatus">
+        <img title="server on" src="/assets/svg/broadcast-tower.svg" >
+      </span>
+        
+      <span class="icon" [hidden]="systemStatus">
+       <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
+      </span>
     </span>
 
+    <a class="icon" routerLink="/login" [hidden]="!currentUser.login">
+      <img title="server off" src="/assets/svg/sign-in-alt-solid.svg" >
+    </a>
+
+     <a class="icon" (click)="logout()" [hidden]="currentUser.login">
+      <img title="server off" src="/assets/svg/sign-out-alt-solid.svg" >
+     </a>
+    
+    <br>
+
       <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
-      <span *ngIf="currentUser.login">Logged in as:<br/> {{currentUser.login}}</span>
-      <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
-      <!--<span *ngIf="currentUser.res === ok">ok</span><br/>-->
+      
+      <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
       <button *ngIf="currentUser.login" (click)="logout()">logout</button>
-      <button *ngIf="!currentUser.login" routerLink="/login">login</button>
+      <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
   </div>
 </div>
 
