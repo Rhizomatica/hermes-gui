@@ -18,7 +18,7 @@ export class MessagesComponent implements OnInit {
   messages: Message[];
    message: Message;
   selectedMessage: Message;
-
+  isAdmin: boolean = true;
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 

@@ -8,6 +8,7 @@
             <a routerLink="/message/{{message.id}}">
                 {{message.name}}
             </a>
+            <a ><img class="inlineicon" title="trash" src="/assets/svg/trash-alt.svg" [hidden]="!isAdmin"></a>
             <!-- {{message.dest}}-->
             </p>
         </div>

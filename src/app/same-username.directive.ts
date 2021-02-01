@@ -50,8 +50,9 @@ export class SameUsernameDirective implements Validator {
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {
+    this.getUsers();
     console.log(this.userList);
-    console.log("npeparigou");
+    //console.log("npeparigou");
     return this.userList ? compareUsername(this.userList)(control) : null;
   }
 }
