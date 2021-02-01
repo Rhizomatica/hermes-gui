@@ -45,6 +45,14 @@
 
 <div class="userstatus" *ngIf="currentUser">
   <div class="navbar-nav">
+    <span class="icon" [hidden]="systemStatus">
+      server on<br><img title="server on" src="/assets/svg/broadcast-tower.svg" >
+    </span>
+      
+    <span class="icon" [hidden]="!systemStatus">
+      server off<br><img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
+    </span>
+
       <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
       <span *ngIf="currentUser.login">Logged in as:<br/> {{currentUser.login}}</span>
       <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
