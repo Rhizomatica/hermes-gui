@@ -31,11 +31,16 @@ export class ManagementComponent implements OnInit {
   newUsername = false;
   emptyUser = false;
 
-    constructor(private userService: UserService, private stationService: StationService, private authenticationService: AuthenticationService) {
+  constructor(
+      private userService: UserService,
+      private stationService: StationService,
+      private authenticationService: AuthenticationService
+    )
+    {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
+    }
 
-loggedin() {
+  loggedin() {
     if(this.isadmin) {
       this.isadmin = false;
       console.log(this.isadmin);

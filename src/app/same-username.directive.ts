@@ -8,8 +8,8 @@ import { UserService } from './_services/user.service';
 export function compareUsername(userList: any): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     let alreadyExist = false;
-    for (let user of userList.email) {
-      if (user === control.value) {
+    for (let user of userList) {
+      if (user.email === control.value) {
         alreadyExist = true;
       }
     }
@@ -21,6 +21,7 @@ export function compareUsername(userList: any): ValidatorFn {
 
 @Directive({
   selector: '[appSameUsername]',
+  exportAs: 'sameUser',
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -30,9 +31,9 @@ export function compareUsername(userList: any): ValidatorFn {
   ]
 })
 export class SameUsernameDirective implements Validator {
-  //@Input() userList: any;
-  
+  @Input('appSameUsername') userFound: string; 
   userList: User[];
+
 
   constructor(private userService: UserService) {}
 
@@ -40,19 +41,19 @@ export class SameUsernameDirective implements Validator {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.userList = res;
-        //console.log("pegou");
       },
       (err) => {
         this.userList = err;
-        //console.log("npegou");
       }
     );
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    this.getUsers();
-    console.log(this.userList);
-    console.log(control.value);
     return this.userList ? compareUsername(this.userList)(control) : null;
   }
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
 }

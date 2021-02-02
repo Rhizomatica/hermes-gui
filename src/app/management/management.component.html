@@ -2,15 +2,13 @@
 <div class="formfield">
     <h2 i18n="@@admmanage">User Management</h2>
 
-    
-
     <h3 [hidden]="isEditing">Users</h3>
     <h3 [hidden]="!isEditing">Edit user</h3>
     <!--
     <label >is admin: <input type="checkbox"  (change)="loggedin()" name="isadmin" checked>
     </label>
     -->
-    
+
     <button i18n="@@createadm" (click)="newUser()" [hidden]="isEditing">create user</button>
 
     <!-- test
@@ -53,6 +51,7 @@
                 <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
             </label>
+
             <label for="name">
                 <span i18n>name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" required placeholder="write the username" />
@@ -61,11 +60,10 @@
                 <span i18n>phone number</span>:
                 <br/><input name="phone" [(ngModel)]="selectedUser.phone"  placeholder="phone number"  />
             </label>
+
             <label >
-                
                 <span i18n>site</span>:
                 <br/><input name="site" [(ngModel)]="selectedUser.site" placeholder="website"  />
-            
             </label>
 
             <div class="selector">
@@ -76,16 +74,17 @@
                 <select ng-model="selectedUser.location">
                     <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
 
-                </select> 
+                </select>
                 </ng-container>
             </div>
-<!--
+
+            <!--
             <label>
                 <span i18n>location</span>:
                 <br/><input name="location" [(ngModel)]="selectedUser.location"  placeholder="location"  />
             </label>
-
             -->
+
             <label>
                 <span i18n>password</span>:
                 <br/><input name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"   />
@@ -103,17 +102,15 @@
             <hr>
                 <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
                 <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
-                -->
+            -->
+
             <hr>
 
-            
             <label>
                 <span i18n>is admin</span>:
                 <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
             </label>
             <br/>
-
-            
                 <button (click)="deleteAlert()" [disabled]="f.invalid" >delete user</button>
                 <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">update</button>
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
@@ -141,4 +138,3 @@
     </ng-container>
 
 </div>
-
