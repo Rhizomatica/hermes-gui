@@ -6,8 +6,7 @@ import { AlertService } from '../alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Station } from '../station';
-import { StationsComponent } from '../stations/stations.component';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { GlobalConstants } from '../global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +19,13 @@ export class StationService {
     private alertService: AlertService) { }
 
     stations: Station[];
-    private baseURL = 'http://pu2uit.hermes.radio:1011/api/';
+
+
 
     getStations(): Observable<Station[]> {
-      console.log(this.http.get(this.baseURL + '/sys/getstations'));
-      return this.http.get(this.baseURL + '/sys/getstations').pipe(
+      const url = `${GlobalConstants.apiURL}/sys/stations`; // get /message/42
+
+      return this.http.get(url).pipe(
         map((res: any) => {
           this.stations = res;
           return this.stations;

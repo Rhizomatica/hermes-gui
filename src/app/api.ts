@@ -1,8 +1,7 @@
 export interface Api {
-    id: number;
-    description: string;
-    location: string;
-    time: number;
-    url: string;
-    destination: string;
+    status: boolean;
+    name: string;
+    piduu: number;
+    pidar: number;
+    pidtst: number;
   }

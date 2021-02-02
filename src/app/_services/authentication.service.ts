@@ -30,7 +30,6 @@ export class AuthenticationService {
                 this.currentUserSubject.next(user);
                 return user;
               }
-
             ));
     }
 

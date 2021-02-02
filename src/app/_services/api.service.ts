@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AlertService } from '../alert.service';
 import { Observable, throwError } from 'rxjs';
@@ -12,8 +12,7 @@ import { GlobalConstants } from '../global-constants';
 })
 export class ApiService {
   login=false;
-  apis: Api[];
-  serverReturn = "";
+  serverReturn: any;
 
   constructor(
     private http: HttpClient,
@@ -21,19 +20,20 @@ export class ApiService {
   ) { }
 
 
-    getApi(): Observable<Api[]> {
-      let url = GlobalConstants.apiURL+'/api';
+    public getStatus(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}sys/status`; // get api:sys/status
+      let output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
-          this.apis = res;
-          console.log(this.apis);
-          return this.apis;
+          this.serverReturn = res;
+          console.log ("Hermes System Status:", res);
+          return this.serverReturn;
       }),
       catchError(this.handleError));
     }
 
     getLogin(login, password): Observable<{}> {
-      let url = GlobalConstants.apiURL+'login';
+      const url = `${GlobalConstants.apiURL}login`; // get api:sys/status
       let data =  {'login': login, 'password': password};
 
             return this.http.post(url, data[0]).pipe(

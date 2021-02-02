@@ -27,10 +27,11 @@ export class MessagesComponent implements OnInit {
     this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
-  getMessages(): void {
-    this.messageService.getMessages().subscribe(
+  getInboxMessages(): void {
+    this.messageService.getInboxMessages().subscribe(
       (res: any) => {
         this.messages = res;
+        console.log("getinbox messages ret: ", res);
       },
       (err) => {
         this.error = err;
@@ -38,11 +39,32 @@ export class MessagesComponent implements OnInit {
     );
   }
 
-  deleteMessage(message: Message): void {
-    console.log(message);
+  getInboxMessage(message: Message): void {
+      this.messageService.getInboxMessage(message.id).subscribe(
+      (res: any) => {
+        this.messages = res;
+        console.log("getinbox messages ret: ", res);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
   }
 
+  deleteInboxMessage(message: Message): void {
+    this.messageService.getInboxMessage(message.id).subscribe(
+      (res: any) => {
+        this.messages = res;
+        console.log("getinbox messages ret: ", res);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+
   ngOnInit(): void {
-    this.getMessages();
+    this.getInboxMessages();
   }
 }

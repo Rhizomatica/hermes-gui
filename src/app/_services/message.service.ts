@@ -19,7 +19,10 @@ export class MessageService {
     ) { }
 
     messages: Message[];
-    message: Message[];
+    // message: Message[];
+    message: any[];
+
+
     httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'my-auth-token',
@@ -64,16 +67,6 @@ export class MessageService {
     );*/
   }
 
-  deleteUser(id: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
-    console.log(url);
-    return this.http.delete(url).pipe(
-      map((res: any) => {
-        this.messages = res;
-        return this.messages;
-      }),
-      catchError(this.handleError));
-  }
 
 
   getMessages(): Observable<Message[]> {
@@ -86,15 +79,32 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-  /*getMessageOld(id: number): Observable<Message> {
-    this.alertService.add('selecionada mensagem id=${id}');
-    return of (MESSAGES.find(message => message.id === id));
+  getInboxMessages(): Observable<Message[]> {
+    const url = `${GlobalConstants.apiURL}/inbox`; // DELETE api/message/42
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        this.messages = res;
+        return this.messages;
+    }),
+      catchError(this.handleError));
   }
-  */
+
+ getInboxMessage(id: number)  {
+  id = 1612182259;
+  const url = `${GlobalConstants.apiURL}inbox/${id}`; // get /message/42
+
+  console.log ("TODO fixed id - debug url", url);
+
+  return this.http.get(url).pipe(
+    map((res: any) => {
+      this.message = res.value;
+      return res;
+  }),
+    catchError(this.handleError));
+}
 
   getMessage(id: number): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // get /message/42
-    // console.log ("debug" + url);
     return this.http.get(url).pipe(
       map((res: any) => {
         this.message = res;
@@ -103,15 +113,14 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-  getMessageImage(id: number): Observable<Blob> {
+  getInboxMessageImage(id: number): Observable<Blob> {
     const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
      console.log ("debug " + url);
      return this.http.get(url, {responseType: 'blob'});
   }
 
-
-  /** DELETE: delete the message from the server */
-  deleteMessage(id): Observable<{}> {
+  /** DELETE: delete the inbox message from the server */
+  deleteInboxMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
     console.log(url);
     return this.http.delete(url).pipe(

@@ -40,64 +40,65 @@
   }
 </style>
 
-<app-hmheader>
-</app-hmheader>
+<!--<app-hmheader>
+</app-hmheader>-->
+
+<header>
+  <h1 class="sitetitle logo" *ngIf="system.name">{{system.name}}.hermes.radio</h1>
+  <a routerLink='/messages' class="logo"><img title="Hermes logo" src="/assets/img/logohermes.png"></a>
+</header>
 
 <div class="userstatus" >
 
-  <div class="logged" *ngIf="currentUser; else isLoggedOut">
+  <!-- TODO ERROR else: <div class="logged" *ngIf="currentUser; else isLoggedOut"> -->
 
-    <div class="navbar-nav">
-      <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
-        <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
-      <div class="serverstatus">
-        <span class="icon" [hidden]="systemStatus">
-          server on
+    <div class="logged" *ngIf="currentUser">
+      <div class="navbar-nav">
+        <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
+          <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
+        <div class="serverstatus">
+          <span class="icon" [hidden]="systemStatus">
+            server on: {{system.name}}<br>
+            user: {{system.email}} / {{system.administrator}} <br>
+            PID uucp: {{system.piduu}} / ar: {{system.pidar}} / vara: <br>
+            TODO: more colors for PIDs?
+          </span>
+          <span class="icon" [hidden]="!systemStatus">
+            server off
+          </span>
+        </div>
+
+        <span class="serverstatus">
+          <span class="icon" *ngIf="system.status">
+            <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" > 
+          </span>
+          <span class="icon" *ngIf="!system.status">
+          <img title="server status off" src="/assets/svg/broadcast-tower-off.svg" >
+          </span>
         </span>
-          
-        <span class="icon" [hidden]="!systemStatus">
-          server off
-        </span>
+
+        <a class="icon" routerLink="/login" *ngIf="!currentUser.login" >
+          <img title="Log In" src="/assets/svg/sign-in-alt-solid.svg" >
+        </a>
+
+        <a class="icon" (click)="logout()" *ngIf="currentUser.login">
+          <img title="logged as {{currentUser.login}} /  {{currentUser.administrator}}  -> click to logout" src="/assets/svg/sign-out-alt-solid.svg" >
+        </a>
+        <br>
+
+          <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
+          <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
+          <button *ngIf="currentUser.login" (click)="logout()">logout</button>
+          <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
       </div>
-
-      <span class="serverstatus">
-        <span class="icon" [hidden]="!systemStatus">
-          <img title="server on" src="/assets/svg/broadcast-tower.svg" >
-        </span>
-          
-        <span class="icon" [hidden]="systemStatus">
-        <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
-        </span>
-      </span>
-
-      <a class="icon" routerLink="/login" [hidden]="!currentUser.login">
-        <img title="server off" src="/assets/svg/sign-in-alt-solid.svg" >
-      </a>
-
-      <a class="icon" (click)="logout()" [hidden]="currentUser.login">
-        <img title="server off" src="/assets/svg/sign-out-alt-solid.svg" >
-      </a>
-      
-      <br>
-
-        <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
-        
-        <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
-        <button *ngIf="currentUser.login" (click)="logout()">logout</button>
-        <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
     </div>
-  </div>
 
+    <!-- 
   <div #isLoggedOut>
-
-
-    
-
     <span class="serverstatus">
       <span class="icon" [hidden]="!systemStatus">
         <img title="server on" src="/assets/svg/broadcast-tower.svg" >
       </span>
-        
       <span class="icon" [hidden]="systemStatus">
       <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
       </span>
@@ -106,14 +107,10 @@
     <a class="icon" routerLink="/login">
       <img title="server off" src="/assets/svg/sign-in-alt-solid.svg" >
     </a>
-
   </div>
 
-
+-->
 </div>
-
-  
-
 <nav>
   <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
   <a *ngIf="currentUser" routerLink="/admin" i18n="@admin" [hidden]="currentUser.admin"><img title="admin" src="/assets/svg/tools.svg">admin</a>
@@ -125,7 +122,7 @@
 
 </nav>
 
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!systemStatus"></router-outlet>
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
