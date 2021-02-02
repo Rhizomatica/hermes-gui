@@ -8,7 +8,7 @@ import { UserService } from './_services/user.service';
 export function compareUsername(userList: any): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     let alreadyExist = false;
-    for (let user of userList) {
+    for (let user of userList.email) {
       if (user === control.value) {
         alreadyExist = true;
       }
@@ -40,11 +40,11 @@ export class SameUsernameDirective implements Validator {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.userList = res;
-        console.log("pegou");
+        //console.log("pegou");
       },
       (err) => {
         this.userList = err;
-        console.log("npegou");
+        //console.log("npegou");
       }
     );
   }
@@ -52,7 +52,7 @@ export class SameUsernameDirective implements Validator {
   validate(control: AbstractControl): { [key: string]: any } | null {
     this.getUsers();
     console.log(this.userList);
-    //console.log("npeparigou");
+    console.log(control.value);
     return this.userList ? compareUsername(this.userList)(control) : null;
   }
 }

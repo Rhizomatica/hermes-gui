@@ -50,7 +50,7 @@
             </label>
             <label for="login">
                 <span i18n>username</span>:
-                <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" appSameUsername required  placeholder="write the username" />
+                <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
             </label>
             <label for="name">
