@@ -12,7 +12,7 @@ import { User } from './user';
 })
 export class AppComponent {
   currentUser: User;
-  systemStatus: boolean = false; 
+  systemStatus: boolean = true; 
 
   title = 'hermes.radio';
   constructor( private router: Router, private authenticationService: AuthenticationService){
@@ -24,5 +24,6 @@ export class AppComponent {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+    this.currentUser = null;
   }
 }

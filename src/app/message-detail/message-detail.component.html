@@ -11,12 +11,20 @@
     <p>Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
     <p>Id: {{message.id}}</p></small>
 
+<div class="navicons">
 
-    <span class="icon">
-        <a i18n="compose" routerLink="/compose">
-            <img title="messages" src="/assets/svg/reply-solid.svg">
-           <button> Reply</button>
+    <div class="btn" >
+        <a i18n="reply" routerLink="/compose" i18n="@@compose">
+            <img title="help" src="/assets/svg/reply-solid.svg">reply
         </a>
-    </span>
+    </div>
+
+    <div class="btn sent" >
+        <a i18n="sent messages" routerLink="/sent" i18n="@@sent">
+            <img title="help" src="/assets/svg/cloud-upload-alt-solid.svg">sent messages
+        </a>
+    </div>
+
+</div> 
 
 </div>

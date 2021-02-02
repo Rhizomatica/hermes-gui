@@ -43,19 +43,55 @@
 <app-hmheader>
 </app-hmheader>
 
-<div class="userstatus" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
-      <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
-    <div class="serverstatus">
-      <span class="icon" [hidden]="systemStatus">
-        server on
+<div class="userstatus" >
+
+  <div class="logged" *ngIf="currentUser; else isLoggedOut">
+
+    <div class="navbar-nav">
+      <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
+        <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
+      <div class="serverstatus">
+        <span class="icon" [hidden]="systemStatus">
+          server on
+        </span>
+          
+        <span class="icon" [hidden]="!systemStatus">
+          server off
+        </span>
+      </div>
+
+      <span class="serverstatus">
+        <span class="icon" [hidden]="!systemStatus">
+          <img title="server on" src="/assets/svg/broadcast-tower.svg" >
+        </span>
+          
+        <span class="icon" [hidden]="systemStatus">
+        <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
+        </span>
       </span>
+
+      <a class="icon" routerLink="/login" [hidden]="!currentUser.login">
+        <img title="server off" src="/assets/svg/sign-in-alt-solid.svg" >
+      </a>
+
+      <a class="icon" (click)="logout()" [hidden]="currentUser.login">
+        <img title="server off" src="/assets/svg/sign-out-alt-solid.svg" >
+      </a>
+      
+      <br>
+
+        <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
         
-      <span class="icon" [hidden]="!systemStatus">
-        server off
-      </span>
+        <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
+        <button *ngIf="currentUser.login" (click)="logout()">logout</button>
+        <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
     </div>
+  </div>
+
+  <div #isLoggedOut>
+
+
+    
 
     <span class="serverstatus">
       <span class="icon" [hidden]="!systemStatus">
@@ -63,31 +99,26 @@
       </span>
         
       <span class="icon" [hidden]="systemStatus">
-       <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
+      <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
       </span>
     </span>
 
-    <a class="icon" routerLink="/login" [hidden]="!currentUser.login">
+    <a class="icon" routerLink="/login">
       <img title="server off" src="/assets/svg/sign-in-alt-solid.svg" >
     </a>
 
-     <a class="icon" (click)="logout()" [hidden]="currentUser.login">
-      <img title="server off" src="/assets/svg/sign-out-alt-solid.svg" >
-     </a>
-    
-    <br>
-
-      <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
-      
-      <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
-      <button *ngIf="currentUser.login" (click)="logout()">logout</button>
-      <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
   </div>
+
+
 </div>
+
+  
 
 <nav>
   <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
-  <a routerLink="/login" i18n="@admin"><img title="admin" src="/assets/svg/tools.svg">admin</a>
+  <a *ngIf="currentUser" routerLink="/admin" i18n="@admin" [hidden]="currentUser.admin"><img title="admin" src="/assets/svg/tools.svg">admin</a>
+  <a #isLoggedOut routerLink="/login" i18n="@admin" [hidden]="currentUser"><img title="admin" src="/assets/svg/tools.svg">admin</a>
+
   <a href="" i18n="@@email"><img title="mail" src="/assets/svg/envelope.svg">email</a>
   <a routerLink="/languages" i18n="@@languages"><img title="languages" src="/assets/svg/globe-americas.svg">language</a>
   <a routerLink="/help" i18n="@@help"><img title="help" src="/assets/svg/question-circle-regular.svg">help</a>

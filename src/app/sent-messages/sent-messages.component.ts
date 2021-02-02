@@ -23,6 +23,10 @@ export class SentMessagesComponent implements OnInit {
     this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
+  cancelTransmission(message: Message): void {
+    console.log(message);
+  }
+
   getMessages(): void {
     this.messageService.getMessages().subscribe(
       (res: any) => {

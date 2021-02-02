@@ -38,6 +38,10 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+  deleteMessage(message: Message): void {
+    console.log(message);
+  }
+
   ngOnInit(): void {
     this.getMessages();
   }
