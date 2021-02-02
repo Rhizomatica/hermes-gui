@@ -90,7 +90,7 @@ export class MessageService {
 
  getInboxMessage(id: number)  {
   id = 1612182259;
-  const url = `${GlobalConstants.apiURL}inbox/${id}`; // get /message/42
+  const url = `${GlobalConstants.apiURL}/inbox/${id}`; // get /message/42
 
   console.log ("TODO fixed id - debug url", url);
 

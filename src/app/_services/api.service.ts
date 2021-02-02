@@ -21,7 +21,7 @@ export class ApiService {
 
 
     public getStatus(): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}sys/status`; // get api:sys/status
+      const url = `${GlobalConstants.apiURL}/sys/status`; // get api:sys/status
       let output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
@@ -33,7 +33,7 @@ export class ApiService {
     }
 
     getLogin(login, password): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}login`; // get api:sys/status
+      const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
       let data =  {'login': login, 'password': password};
 
             return this.http.post(url, data[0]).pipe(
