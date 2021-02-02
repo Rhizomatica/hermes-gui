@@ -16,6 +16,7 @@ import { GlobalConstants } from '../global-constants';
 export class MessagecomposeComponent implements OnInit {
 
   public error: any;
+  public fileError: any;
   public res: any;
   public stations: Station[];
   private fileProcessed: boolean = true;
@@ -89,7 +90,7 @@ export class MessagecomposeComponent implements OnInit {
         this.message.file = res[1];
       },
       (err) => {
-        this.error = err;
+        this.fileError = err;
       }
     );
   }

@@ -55,6 +55,7 @@ export class MessageService {
     .pipe(
       map((res: any) => {
         this.messages = res;
+        console.log(res);
         return this.messages;
       }),
       catchError(this.handleError)
@@ -66,8 +67,6 @@ export class MessageService {
       (err) => console.log(err)
     );*/
   }
-
-
 
   getMessages(): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/messages`; // DELETE api/message/42
@@ -113,7 +112,7 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-  getInboxMessageImage(id: number): Observable<Blob> {
+  getMessageImage(id: number): Observable<Blob> {
     const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
      console.log ("debug " + url);
      return this.http.get(url, {responseType: 'blob'});

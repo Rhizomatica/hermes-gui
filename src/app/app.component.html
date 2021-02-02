@@ -57,13 +57,13 @@
         <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
           <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
         <div class="serverstatus">
-          <span class="icon" [hidden]="systemStatus">
+          <span class="icon" [hidden]="system.status">
             server on: {{system.name}}<br>
             user: {{system.email}} / {{system.administrator}} <br>
             PID uucp: {{system.piduu}} / ar: {{system.pidar}} / vara: <br>
             TODO: more colors for PIDs?
           </span>
-          <span class="icon" [hidden]="!systemStatus">
+          <span class="icon" [hidden]="!system.status">
             server off
           </span>
         </div>
@@ -122,7 +122,7 @@
 
 </nav>
 
-<router-outlet *ngIf="!systemStatus"></router-outlet>
+<router-outlet *ngIf="system.status"></router-outlet>
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

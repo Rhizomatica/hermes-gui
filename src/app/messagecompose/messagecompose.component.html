@@ -3,7 +3,6 @@
 
     <form #f="ngForm" class="formdata" novalidate  >
         <div [hidden]="fileIsProcessing==true">
-    
             <label for="name">
                 <span i18n>Subject</span>:
                 <br/><input name="name" [(ngModel)]="message.name" required  placeholder="write the subject" />
@@ -29,8 +28,6 @@
                     </span>
                 </span>
             </label>
-
-
             <hr>
 
             <div class="uploader">
