@@ -10,6 +10,8 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class SysadminComponent implements OnInit {
   currentUser:User;
+  isAdmin: boolean = true;
+
 
   constructor( private authenticationService: AuthenticationService){
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -17,7 +19,12 @@ export class SysadminComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.currentUser)
+    console.log(this.currentUser);
+    if (this.currentUser) {
+      this.isAdmin = this.currentUser.admin;
+    } else {
+      this.currentUser.admin = false;
+    }
   }
 
 }
