@@ -21,7 +21,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        let data =  {'login': username, 'password': password};
+        const data =  {'login': username, 'password': password};
         return this.http.post<any>(`${GlobalConstants.apiURL}/login`, data)
             .pipe(map(
               user => {

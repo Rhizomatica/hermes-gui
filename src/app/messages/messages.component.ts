@@ -3,6 +3,18 @@ import { Message } from '../message';import { MessageService } from '../_service
 import { AlertService } from '../alert.service';
 // import { GlobalConstants } from '../global-constants';
 
+export interface MessageInbox {
+  id: number;
+  name: string;
+  orig: string;
+  dest: string;
+  text: string;
+  file: string;
+  draft: boolean;
+  //crypt: boolean;
+  sent_at: string;
+
+}
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -16,9 +28,10 @@ export class MessagesComponent implements OnInit {
   success = '';
   test = '';
   messages: Message[];
-   message: Message;
+//  message: Message;
   selectedMessage: Message;
   isAdmin: boolean = true;
+  inboxMessages: any[];
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 
@@ -31,7 +44,7 @@ export class MessagesComponent implements OnInit {
     this.messageService.getInboxMessages().subscribe(
       (res: any) => {
         this.messages = res;
-        console.log("getinbox messages ret: ", res);
+        console.log("getinbox messages ret: ", res[0]);
       },
       (err) => {
         this.error = err;
@@ -39,11 +52,11 @@ export class MessagesComponent implements OnInit {
     );
   }
 
-  getInboxMessage(message: Message): void {
-      this.messageService.getInboxMessage(message.id).subscribe(
+  getInboxMessage($id): void {
+      this.messageService.getInboxMessage($id).subscribe(
       (res: any) => {
         this.messages = res;
-        console.log("getinbox messages ret: ", res);
+        console.log("getinbox message ret: ", res);
       },
       (err) => {
         this.error = err;
@@ -51,11 +64,12 @@ export class MessagesComponent implements OnInit {
     );
   }
 
-  deleteInboxMessage(message: Message): void {
-    this.messageService.getInboxMessage(message.id).subscribe(
+  deleteInboxMessage($id): void {
+    console.log("debug delete", $id);
+    this.messageService.getInboxMessage($id).subscribe(
       (res: any) => {
         this.messages = res;
-        console.log("getinbox messages ret: ", res);
+        console.log("delete inbox message ret: ", res);
       },
       (err) => {
         this.error = err;

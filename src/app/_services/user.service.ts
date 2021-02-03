@@ -57,8 +57,8 @@ export class UserService {
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
       const url = `${GlobalConstants.apiURL}/user`; // POST api/users
-      //console.log(url);
-      //console.log(user);
+      // console.log(url);
+      // console.log(user);
       // return this.http.post<User>(url, user, httpOptions)
       return this.http.post<User>(url, user, this.httpOptions)
        .pipe(

@@ -58,13 +58,13 @@
         <span *ngIf="currentUser.login">Logged in as: {{currentUser.login}}</span>
           <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
         <div class="serverstatus">
-          <span class="icon" [hidden]="system.status">
+          <span class="icon" *ngIf="system.status">
             server on: {{system.name}}<br>
             user: {{system.email}} / {{system.administrator}} <br>
             PID uucp: {{system.piduu}} / ar: {{system.pidar}} / vara: <br>
             TODO: more colors for PIDs?
           </span>
-          <span class="icon" [hidden]="!system.status">
+          <span class="icon" *ngIf="!system.status">
             server off
           </span>
         </div>
@@ -97,10 +97,10 @@
     <!-- 
   <div #isLoggedOut>
     <span class="serverstatus">
-      <span class="icon" [hidden]="!systemStatus">
+      <span class="icon" [hidden]="!system.status">
         <img title="server on" src="/assets/svg/broadcast-tower.svg" >
       </span>
-      <span class="icon" [hidden]="systemStatus">
+      <span class="icon" [hidden]="system.status">
       <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
       </span>
     </span>

@@ -11,7 +11,7 @@ import { GlobalConstants } from '../global-constants';
   providedIn: 'root'
 })
 export class ApiService {
-  login=false;
+  login = false;
   serverReturn: any;
 
   constructor(
@@ -22,11 +22,11 @@ export class ApiService {
 
     public getStatus(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/status`; // get api:sys/status
-      let output = this.http.get(url);
+      const output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log ("Hermes System Status:", res);
+          console.log ('Hermes System Status:', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -34,9 +34,8 @@ export class ApiService {
 
     getLogin(login, password): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
-      let data =  {'login': login, 'password': password};
-
-            return this.http.post(url, data[0]).pipe(
+      const data =  {'login': login, 'password': password};
+      return this.http.post(url, data[0]).pipe(
         map((res: any) => {
           this.serverReturn = res;
           return this.serverReturn;

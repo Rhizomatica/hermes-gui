@@ -9,7 +9,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { SysadminComponent } from './sysadmin/sysadmin.component';
-import { AngularFileUploaderModule } from "angular-file-uploader";
+import { AngularFileUploaderModule } from 'angular-file-uploader';
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
