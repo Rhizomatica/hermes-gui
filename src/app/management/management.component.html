@@ -1,6 +1,8 @@
 
-<div class="formfield">
+<div class="">
     <h2 i18n="@@admmanage">User Management</h2>
+
+
 
     <h3 [hidden]="isEditing">Users</h3>
     <h3 [hidden]="!isEditing">Edit user</h3>
@@ -111,7 +113,9 @@
                 <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
             </label>
             <br/>
-                <button (click)="deleteAlert()" [disabled]="f.invalid" >delete user</button>
+                <button (click)="cancelCreate()" >cancel</button>
+
+                <button (click)="deleteAlert()" [disabled]="selectedUser.admin" >delete user</button>
                 <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">update</button>
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 

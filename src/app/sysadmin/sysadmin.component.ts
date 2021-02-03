@@ -17,6 +17,11 @@ export class SysadminComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.currentUser)
   }
 
 }
+
+
+
+

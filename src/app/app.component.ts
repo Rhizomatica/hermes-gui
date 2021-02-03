@@ -48,6 +48,7 @@ export class AppComponent {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
+    console.log(this.currentUser);
   }
 
   ngOnInit(): void {

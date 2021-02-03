@@ -38,6 +38,9 @@ export class ManagementComponent implements OnInit {
     )
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      
+
+
     }
 
   loggedin() {
@@ -75,6 +78,10 @@ export class ManagementComponent implements OnInit {
       this.emptyUser = false;
       //console.log(this.deleteUser);
     }
+   }
+
+   cancelCreate() {
+    this.isEditing = false;
    }
 
    newUser() {
@@ -135,6 +142,7 @@ export class ManagementComponent implements OnInit {
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
     this.isadmin = this.currentUser.admin;
+
 
   }
 }
