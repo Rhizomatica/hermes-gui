@@ -28,7 +28,7 @@ export class MessagesComponent implements OnInit {
   success = '';
   test = '';
   messages: Message[];
-//  message: Message;
+  message: Message;
   selectedMessage: Message;
   isAdmin: boolean = true;
   inboxMessages: any[];
@@ -44,8 +44,7 @@ export class MessagesComponent implements OnInit {
     this.messageService.getInboxMessages().subscribe(
       (res: any) => {
         this.messages = res;
-        console.log("getinbox messages ret: ", res[0]);
-      },
+     },
       (err) => {
         this.error = err;
       }
@@ -55,7 +54,7 @@ export class MessagesComponent implements OnInit {
   getInboxMessage($id): void {
       this.messageService.getInboxMessage($id).subscribe(
       (res: any) => {
-        this.messages = res;
+        this.message = res;
         console.log("getinbox message ret: ", res);
       },
       (err) => {
@@ -73,6 +72,7 @@ export class MessagesComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        console.error (err);
       }
     );
   }
