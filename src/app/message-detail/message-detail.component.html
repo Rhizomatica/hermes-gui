@@ -1,15 +1,28 @@
-<div *ngIf="message" class="formfield messages">
+<div *ngIf="message" class=" messages">
     <h3>{{message.name}}</h3>
+
+    <div class="formdata" [hidden]="!isEncrypted">
+        <p>Encrypted message, type the password:</p>
+        <input type="password">
+        
+
+    </div>
     
-    <p>Message:</p><br>
-    <p>{{message.text}}</p>
+    <div class="messagebody" [hidden]="isEncrypted">
+        <p>{{message.text}}</p>
+        <p [hidden]="!message.file">File: {{message.file}}</p>
+    </div>
+        <hr>
+        <small><p class="msginf">Origin: {{message.orig}}</p>
+        <p class="msginf">Destination: {{message.dest}}</p>
+       
+        <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
+        <p class="msgdate">Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
+        <p class="msgid">Id: {{message.id}}</p></small>
+
+    
     <hr>
-    <small><p>Origin: {{message.orig}}</p>
-    <p>Destination: {{message.dest}}</p>
-    <p [hidden]="!message.file">File: {{message.file}}</p>
-    <img [src]="messageImage"/>
-    <p>Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
-    <p>Id: {{message.id}}</p></small>
+    
 
 <div class="navicons">
 
@@ -24,6 +37,10 @@
             <img title="help" src="/assets/svg/cloud-upload-alt-solid.svg">sent messages
         </a>
     </div>
+
+    <label>is encrypted
+        <input type="checkbox" (change)="changeEnc()">
+    </label>
 
 </div> 
 

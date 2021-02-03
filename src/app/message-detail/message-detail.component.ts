@@ -15,6 +15,7 @@ export class MessageDetailComponent implements OnInit {
   @Input() message: Message;
   private error: String;
   public messageImage: Blob;
+  public isEncrypted: boolean = false;
 
 
   constructor(
@@ -23,6 +24,16 @@ export class MessageDetailComponent implements OnInit {
     private location: Location,
 
   ) { }
+
+  changeEnc() {
+    if(this.isEncrypted) {
+      this.isEncrypted = false;
+      console.log(this.isEncrypted);
+    } else {
+      this.isEncrypted = true;
+      console.log(this.isEncrypted);
+    }
+  }
 
   getMessageOld(): void {
     let id = +this.route.snapshot.paramMap.get('id');
