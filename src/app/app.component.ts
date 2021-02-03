@@ -22,6 +22,8 @@ export class AppComponent {
   error: any;
   public system: any;
 
+  //system = [];
+
   title = 'hermes.radio';
   constructor(
      private router: Router,
