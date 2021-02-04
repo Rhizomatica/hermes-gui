@@ -170,8 +170,10 @@ export class MessageService {
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
+
     }
     // Return an observable with a user-facing error message.
+    this.message =[];
     return throwError(
       'Something bad happened; please try again later.');
   }

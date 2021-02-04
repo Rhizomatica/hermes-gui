@@ -90,6 +90,7 @@ export class UserService {
           `body was: ${error.error}`);
       }
       // Return an observable with a user-facing error message.
+      this.users = [];
       return throwError(
         'Something bad happened; please try again later.');
     }
