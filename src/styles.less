@@ -58,6 +58,8 @@ nav {
     border-bottom: 2px solid #000;
     max-width: @boxw;
     padding-top: 35px;
+    display: flex;
+    justify-content: flex-start;
     a {
         text-decoration: none;
     border-top: 3px solid #000;
@@ -112,6 +114,8 @@ textarea {
     
 }
 
+
+
 .bordered {
     border: 1px solid black;
     padding: 20px;
@@ -127,12 +131,16 @@ textarea {
 
 
 .formfield {
+    position: relative;
+
     max-width: @boxw;
     .bordered();
     .textarea{
         width: 100%;
     }
-    position: relative;
+    input {
+        width: 100%;
+    }
 }
 
 

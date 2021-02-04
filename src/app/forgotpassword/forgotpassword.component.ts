@@ -19,6 +19,7 @@ export class ForgotpasswordComponent implements OnInit {
     stations: Station[];
     selectedUser: User[];
     control: any;
+    uName: string;
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -35,7 +36,10 @@ export class ForgotpasswordComponent implements OnInit {
 
     onSelect(user): void {
       this.selectedUser = user;
+      console.log(user);
     }
+
+ 
 
     onSubmitUpdate(id, f: NgForm):void {
         console.log('update', f.value);

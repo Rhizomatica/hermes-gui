@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 // import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
 import { AuthenticationService } from './_services/authentication.service';
 import { ApiService } from './_services/api.service';
-
 import { User } from './user';
 import { Api } from './api';
 

@@ -33,6 +33,7 @@ import { RetypeDirective } from './retype.directive';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor} from './_helpers/error.interceptor';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
+import { UserExistDirective } from './user-exist.directive';
 
 
 
@@ -69,7 +70,8 @@ import { SentMessagesComponent } from './sent-messages/sent-messages.component';
     ForgotpasswordComponent,
     SameUsernameDirective,
     RetypeDirective,
-    SentMessagesComponent
+    SentMessagesComponent,
+    UserExistDirective
 
 
   ],
