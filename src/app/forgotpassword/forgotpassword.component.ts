@@ -20,6 +20,7 @@ export class ForgotpasswordComponent implements OnInit {
     selectedUser: User[];
     control: any;
     uName: string;
+    selTest: boolean = false;
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -34,9 +35,14 @@ export class ForgotpasswordComponent implements OnInit {
       );
     }
 
+    onBtn(){
+      console.log('lalala');
+    }
+
     onSelect(user): void {
       this.selectedUser = user;
-      console.log(user);
+      this.selTest = true;
+      console.log(this.selTest);
     }
 
  
