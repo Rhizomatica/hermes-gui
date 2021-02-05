@@ -32,9 +32,9 @@ export class ApiService {
       catchError(this.handleError));
     }
 
-    getLogin(login, password): Observable<{}> {
+    getLogin(plogin, ppassword): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
-      const data =  {'login': login, 'password': password};
+      const data =  {login: plogin, password: ppassword};
       return this.http.post(url, data[0]).pipe(
         map((res: any) => {
           this.serverReturn = res;

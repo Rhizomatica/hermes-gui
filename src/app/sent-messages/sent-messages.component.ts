@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../message';import { MessageService } from '../_services/message.service';
+import { Message } from '../message';
+import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 @Component({
   selector: 'app-sent-messages',
@@ -12,9 +13,9 @@ export class SentMessagesComponent implements OnInit {
   success = '';
   test = '';
   messages: Message[];
-   message: Message;
+  message: Message;
   selectedMessage: Message;
-  isAdmin: boolean = true;
+  isAdmin = true;
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 

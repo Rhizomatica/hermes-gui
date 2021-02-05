@@ -20,7 +20,7 @@ export class ForgotpasswordComponent implements OnInit {
     selectedUser: User[];
     control: any;
     uName: string;
-    selTest: boolean = false;
+    selTest = false;
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -45,18 +45,14 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(this.selTest);
     }
 
- 
-
-    onSubmitUpdate(id, f: NgForm):void {
-        console.log('update', f.value);
-        this.userService.updateUser(id, f.value).subscribe();
-        //window.location.reload();
+    onSubmitUpdate(id, f: NgForm): void {
+      console.log('update', f.value);
+      this.userService.updateUser(id, f.value).subscribe();
     }
 
-    onSubmitDelete(id):void {
+    onSubmitDelete(id): void {
       console.log(id);
-          this.userService.deleteUser(id).subscribe();
-          //window.location.reload();
+      this.userService.deleteUser(id).subscribe();
     }
 
     createUser(f: NgForm): void {
@@ -67,6 +63,5 @@ export class ForgotpasswordComponent implements OnInit {
       this.getUsers();
       this.stationService.getStations()
       .subscribe(stations =>  this.stations = stations);
-
     }
   }

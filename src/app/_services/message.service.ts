@@ -35,7 +35,7 @@ export class MessageService {
 
   postFile(file: any) {
     const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
-    // const  url = "//httpbin.org/post";
+    // const  url = '//httpbin.org/post';
 
     const formData: FormData = new FormData();
 
@@ -85,11 +85,10 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-
   getMessageImage(id: number): Observable<Blob> {
     const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
-     console.log ("debug " + url);
-     return this.http.get(url, {responseType: 'blob'});
+    console.log ('debug ' + url);
+    return this.http.get(url, {responseType: 'blob'});
   }
 
   getInboxMessages(): Observable<Message[]> {
@@ -139,7 +138,7 @@ export class MessageService {
       message.id = id;
       message.file = file;
     }
-    console.log('debug createmessage service: ', message)
+    console.log('debug createmessage service: ', message);
 
     return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
@@ -173,7 +172,7 @@ export class MessageService {
 
     }
     // Return an observable with a user-facing error message.
-    this.message =[];
+    this.message = [];
     return throwError(
       'Something bad happened; please try again later.');
   }

@@ -17,22 +17,19 @@ import { User } from '../user';
 export class LoginComponent implements OnInit {
   res = '';
   error = '';
-  currentUser:User;
+  currentUser: User;
 
   //  constructor(private ApiService: ApiService) { }
-  constructor(private  router: Router, private AuthenticationService: AuthenticationService) {
-     //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  constructor(private  router: Router, private authenticationService: AuthenticationService) {
+     // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  //TODO must be ngForm!!!
   submitLogin(f: any): void{
-    this.AuthenticationService.login(f.value.login, f.value.password).subscribe(
+    this.authenticationService.login(f.value.login, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
         console.log(res);
         return res;
-
-
       },
       (err) => {
         this.error = err;
@@ -47,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogout() {
-    this.AuthenticationService.logout();
+    this.authenticationService.logout();
     this.router.navigate(['/login']);
 }
 

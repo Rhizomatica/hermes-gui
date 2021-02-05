@@ -5,8 +5,10 @@ export interface Message {
   dest: string;
   text: string;
   file: string;
+  image: string;
+  audio: string;
   draft: boolean;
-  //crypt: boolean;
+  secure: boolean;
+  inbox: boolean;
   sent_at: string;
-
 }
