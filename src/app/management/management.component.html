@@ -125,7 +125,7 @@
 
                 <button (click)="deleteAlert()" [disabled]="selectedUser.admin" [hidden]="emptyUser">delete user</button>
                 <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" [disabled]="f.invalid">update</button>
-                <button type="submit" [hidden]="!emptyUser" (click)="updateAlert()" [disabled]="f.invalid">create user</button>
+                <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid">create user</button>
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 
                 <div class="overall" [hidden]="deleteUser">
