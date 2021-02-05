@@ -22,6 +22,8 @@ export class ForgotpasswordComponent implements OnInit {
     uName: string;
     selTest = false;
     cAnsw: boolean = false;
+    iAnsw: boolean = false;
+    noUser: true;
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -29,7 +31,6 @@ export class ForgotpasswordComponent implements OnInit {
       this.userService.getUsers().subscribe(
         (res: any) => {
           this.users = res;
-          console.log(res);
         },
         (err) => {
           this.error = err;
@@ -45,8 +46,13 @@ export class ForgotpasswordComponent implements OnInit {
       this.selectedUser = this.users.find(obj => {
         return obj.email === input
       });
+      if (this.selectedUser) {
+        this.selTest = false;
+      } else {
+        this.selTest = true;
+      }
       //this.selectedUser = user;
-      this.selTest = true;
+      
       console.log(input);
       console.log(this.users);
       console.log(this.selectedUser);
@@ -56,11 +62,10 @@ export class ForgotpasswordComponent implements OnInit {
     checkAnswer(answ) {
       if (this.selectedUser.recoveranswer === answ) {
         this.cAnsw = true;
-        
-
-
+        this.iAnsw = false;
       } else {
         this.cAnsw = false;
+        this.iAnsw = true;
       }
       console.log(this.selectedUser.recoveranswer);
         console.log(this.selectedUser.recoveranswer);
