@@ -21,6 +21,7 @@ export class ForgotpasswordComponent implements OnInit {
     control: any;
     uName: string;
     selTest = false;
+    cAnsw: boolean = false;
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -41,10 +42,28 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     onSelect(input): void {
-      
+      this.selectedUser = this.users.find(obj => {
+        return obj.email === input
+      });
       //this.selectedUser = user;
       this.selTest = true;
       console.log(input);
+      console.log(this.users);
+      console.log(this.selectedUser);
+
+    }
+
+    checkAnswer(answ) {
+      if (this.selectedUser.recoveranswer === answ) {
+        this.cAnsw = true;
+        
+
+
+      } else {
+        this.cAnsw = false;
+      }
+      console.log(this.selectedUser.recoveranswer);
+        console.log(this.selectedUser.recoveranswer);
     }
 
     onSubmitUpdate(id, f: NgForm): void {
