@@ -4,8 +4,11 @@
     <div class="formdata" [hidden]="!isEncrypted">
         <p>Encrypted message, type the password:</p>
         <input type="password">
-        
+    </div>
 
+    <div class="blobber">
+        <span>decifrando mensagem...</span>
+        <div class="square"></div>
     </div>
     
     <div class="messagebody" [hidden]="isEncrypted">

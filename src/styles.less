@@ -426,3 +426,26 @@ textarea {
   .footer div {
       display:inline-block;
   }
+
+  .blobber {
+      width: 100%;
+      height:50px;
+      position: relative;
+  }
+
+  .blobber .square {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: @clr;
+      position: absolute;
+      animation-name: blobber;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+  }
+
+  @keyframes blobber {
+      0% {left: 0px;}
+      50% {left: 240px;}
+      100% {left: 0px;}
+  }
