@@ -1,15 +1,16 @@
 
 import { Directive, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
+
 import { User } from './user';
 import { UserService } from './_services/user.service';
 
 export function compareUsername(userList: any): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
-    let alreadyExist = false;
+    let alreadyExist = true;
     for (const user of userList) {
       if (user.email === control.value) {
-        alreadyExist = true;
+        alreadyExist = false;
       }
     }
     return alreadyExist ? { Username: { value: control.value } } : null;
@@ -49,7 +50,7 @@ export class UserExistDirective implements Validator {
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    return this.userList ? null : compareUsername(this.userList)(control);
+    return this.userList ?  compareUsername(this.userList)(control): null;
   }
 
   // TODO double check!
