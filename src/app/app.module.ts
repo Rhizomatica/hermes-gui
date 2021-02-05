@@ -34,6 +34,7 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor} from './_helpers/error.interceptor';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 import { UserExistDirective } from './user-exist.directive';
+import { EmailComponent } from './email/email.component';
 
 
 
@@ -71,7 +72,8 @@ import { UserExistDirective } from './user-exist.directive';
     SameUsernameDirective,
     RetypeDirective,
     SentMessagesComponent,
-    UserExistDirective
+    UserExistDirective,
+    EmailComponent
 
 
   ],

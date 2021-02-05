@@ -16,6 +16,7 @@ import { MessageadmComponent } from './messageadm/messageadm.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { UserComponent } from './user/user.component';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
+import { EmailComponent } from './email/email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'messageadm', component: MessageadmComponent},
   { path: 'recovery', component: ForgotpasswordComponent},
   { path: 'users', component: UserComponent},
-  { path: 'sent', component: SentMessagesComponent}
+  { path: 'sent', component: SentMessagesComponent},
+  { path: 'email', component: EmailComponent}
 
 ];
 
