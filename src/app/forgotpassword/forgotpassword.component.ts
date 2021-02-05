@@ -20,10 +20,11 @@ export class ForgotpasswordComponent implements OnInit {
     selectedUser: User;
     control: any;
     uName: string;
-    selTest = false;
+    selTest = true;
     cAnsw: boolean = false;
-    iAnsw: boolean = false;
+    iAnsw: boolean = true;
     noUser: true;
+    passMatch: boolean = true;
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -46,10 +47,12 @@ export class ForgotpasswordComponent implements OnInit {
       this.selectedUser = this.users.find(obj => {
         return obj.email === input
       });
-      if (this.selectedUser) {
+      if (typeof(this.selectedUser) == 'undefined') {
         this.selTest = false;
+        console.log('titit');
       } else {
         this.selTest = true;
+        console.log('toooo');
       }
       //this.selectedUser = user;
       
@@ -62,18 +65,28 @@ export class ForgotpasswordComponent implements OnInit {
     checkAnswer(answ) {
       if (this.selectedUser.recoveranswer === answ) {
         this.cAnsw = true;
-        this.iAnsw = false;
+        this.iAnsw = true;
       } else {
         this.cAnsw = false;
-        this.iAnsw = true;
+        this.iAnsw = false;
       }
-      console.log(this.selectedUser.recoveranswer);
-        console.log(this.selectedUser.recoveranswer);
+      // console.log(this.selectedUser.recoveranswer);
+      // console.log(this.iAnsw);
     }
 
     onSubmitUpdate(id, f: NgForm): void {
       console.log('update', f.value);
       this.userService.updateUser(id, f.value).subscribe();
+    }
+
+    checkPassw(passw, repassw) {
+      if (passw == repassw) {
+        this.passMatch = true;
+
+      } else {
+        this.passMatch = false
+      }
+      
     }
 
     onSubmitDelete(id): void {
