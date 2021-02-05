@@ -440,7 +440,7 @@ textarea {
       background-color: @clr;
       position: absolute;
       animation-name: blobber;
-      animation-duration: 3s;
+      animation-duration: 6s;
       animation-iteration-count: infinite;
   }
 
@@ -449,3 +449,15 @@ textarea {
       50% {left: 240px;}
       100% {left: 0px;}
   }
+
+  .blobber .tx {
+      animation-name: fade;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+  }
+
+  @keyframes fade {
+    0% {color: @clr;}
+    50% {color: #fff;}
+    100% {color: @clr;}
+}
