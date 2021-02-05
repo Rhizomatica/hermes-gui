@@ -10,18 +10,16 @@
     
     <div class="messagebody" [hidden]="isEncrypted">
         <p>{{message.text}}</p>
-        <p [hidden]="!message.file">File: {{message.file}}</p>
+        <p [hidden]="!message.file">File: {{message.file}} TOD0 link</p>
     </div>
-        <hr>
+<hr>
         <small><p class="msginf">Origin: {{message.orig}}</p>
         <p class="msginf">Destination: {{message.dest}}</p>
-       
         <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
         <p class="msgdate">Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
         <p class="msgid">Id: {{message.id}}</p></small>
-
-    
-    <hr>
+  
+<hr>
     
 
 <div class="navicons">

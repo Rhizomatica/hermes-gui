@@ -17,7 +17,7 @@ export class ForgotpasswordComponent implements OnInit {
     test = '';
     users: User[];
     stations: Station[];
-    selectedUser: User[];
+    selectedUser: User;
     control: any;
     uName: string;
     selTest: boolean = false;
@@ -28,6 +28,7 @@ export class ForgotpasswordComponent implements OnInit {
       this.userService.getUsers().subscribe(
         (res: any) => {
           this.users = res;
+          console.log(res);
         },
         (err) => {
           this.error = err;
@@ -39,10 +40,11 @@ export class ForgotpasswordComponent implements OnInit {
       console.log('lalala');
     }
 
-    onSelect(user): void {
-      this.selectedUser = user;
+    onSelect(input): void {
+      
+      //this.selectedUser = user;
       this.selTest = true;
-      console.log(this.selTest);
+      console.log(input);
     }
 
  
