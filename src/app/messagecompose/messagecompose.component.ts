@@ -19,21 +19,21 @@ export class MessagecomposeComponent implements OnInit {
   public fileError: any;
   public res: any;
   public stations: Station[];
-  private fileProcessed: boolean = true;
-  public fileIsProcessing: boolean = false;
-  public fileIsProcessed: boolean = false;
-  public isEncrypted: boolean = false;
+  private fileProcessed = true;
+  public fileIsProcessing = false;
+  public fileIsProcessed = false;
+  public isEncrypted = false;
   public message: Message;
 
   /*public message:Message = {
     id: null,
-    name: "",
-    orig: "",
-    dest: "",
-    text: "",
-    file: "",
+    name: '',
+    orig: '',
+    dest: '',
+    text: '',
+    file: '',
     draft: null,
-    sent_at: ""
+    sent_at: ''
   }*/
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
@@ -44,7 +44,7 @@ export class MessagecomposeComponent implements OnInit {
       (res: any) => {
         this.res = res;
         console.log(res);
-        //this.fileIsProcessing = true;
+        // this.fileIsProcessing = true;
       },
       (err) => {
         this.error = err;
@@ -53,27 +53,27 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   newMessage() {
-    //this.router.navigate(['/compose']);
+    // this.router.navigate(['/compose']);
     this.fileIsProcessing = false;
-    this.message.name = "";
-    this.message.text = "";
-    this.message.file = "";
-    console.log('yeah')
+    this.message.name = '';
+    this.message.text = '';
+    this.message.file = '';
+    console.log('yeah');
 
   }
 
   messageList() {
-    //this.router.navigate(['/compose']);
+    // this.router.navigate(['/compose']);
 
   }
 
   encrypted() {
-    if(this.isEncrypted) {
+    if (this.isEncrypted) {
       this.isEncrypted = false;
-      //console.log(this.isEncrypted);
+      // console.log(this.isEncrypted);
     } else {
       this.isEncrypted = true;
-      //console.log(this.isEncrypted);
+      // console.log(this.isEncrypted);
     }
   }
 
@@ -82,7 +82,7 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   DocUpload(files): void{
-    //this.messageService.postFile($files[0]);
+    // this.messageService.postFile($files[0]);
     console.log(files);
     this.messageService.postFile(files[0]).subscribe(
       (res: any) => {
@@ -95,17 +95,22 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
+  // TODO double check start params on inbox
   ngOnInit(): void {
     this.message = {
       id: null,
-      name: "",
-      orig: "",
-      dest: "",
-      text: "",
-      file: "",
+      name: '',
+      orig: '',
+      dest: '',
+      text: '',
+      file: '',
+      image: '',
+      audio: '',
+      secure: false,
+      inbox: false,
       draft: null,
-      sent_at: ""
-    }
+      sent_at: ''
+    };
 
     this.isEncrypted = false;
     this.fileIsProcessing = false;

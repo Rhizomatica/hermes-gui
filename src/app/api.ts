@@ -1,7 +1,7 @@
 export interface Api {
     status: boolean;
     name: string;
-    piduu: number;
-    pidar: number;
+    piduucp: number;
+    pidmodem: number;
     pidtst: number;
   }

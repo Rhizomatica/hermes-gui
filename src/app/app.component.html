@@ -55,7 +55,7 @@
 
     <div class="logged" *ngIf="currentUser; else loggedOut">
       <div class="navbar-nav">
-        <span>{{currentUser.login}}</span>
+        <span>{{currentUser.email}}</span>
           <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
         <div class="servericon">
           <span class="icon" *ngIf="!system.status">
@@ -65,62 +65,44 @@
 
         <span class="servericon">
           <span class="icon" *ngIf="system.status">
-            <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" > 
+            <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" >
           </span>
           <span class="icon" *ngIf="!system.status">
           <img title="server status off" src="/assets/svg/broadcast-tower-off.svg" >
           </span>
         </span>
 
-        <a class="icon" routerLink="/login" *ngIf="!currentUser.login" >
+        <a class="icon" routerLink="/login" *ngIf="!currentUser.email" >
           <img title="Log In" src="/assets/svg/sign-in-alt-solid.svg" >
         </a>
 
-        <a class="icon" (click)="logout()" *ngIf="currentUser.login">
-          <img title="logged as {{currentUser.login}} /  {{currentUser.administrator}}  -> click to logout" src="/assets/svg/sign-out-alt-solid.svg" >
+        <a class="icon" (click)="logout()" *ngIf="currentUser.email">
+          <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout" src="/assets/svg/sign-out-alt-solid.svg" >
         </a>
         <br>
 
           <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
           <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
-          <button *ngIf="currentUser.login" (click)="logout()">logout</button>
-          <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
+          <button *ngIf="currentUser.email" (click)="logout()">logout</button>
+          <button *ngIf="!currentUser.email" routerLink="/login">login</button>-->
       </div>
     </div>
 
     <ng-template #loggedOut>
       <span class="servericon">
         <span class="icon" *ngIf="system.status">
-          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" > 
+          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" >
         </span>
         <span class="icon" *ngIf="!system.status">
         <img title="server status off" src="/assets/svg/broadcast-tower-off.svg" >
         </span>
       </span>
-      
+
       <a class="icon" routerLink="/login" >
         <img title="Log In" src="/assets/svg/sign-in-alt-solid.svg" >
       </a>
-
     </ng-template>
 
-    <!-- 
-  <div #isLoggedOut>
-    <span class="serverstatus">
-      <span class="icon" [hidden]="!system.status">
-        <img title="server on" src="/assets/svg/broadcast-tower.svg" >
-      </span>
-      <span class="icon" [hidden]="system.status">
-      <img title="server off" src="/assets/svg/broadcast-tower-off.svg" >
-      </span>
-    </span>
-
-    <a class="icon" routerLink="/login">
-      <img title="server off" src="/assets/svg/sign-in-alt-solid.svg" >
-    </a>
-  </div>
-
--->
 </div>
 <nav id="mainnav">
   <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
@@ -141,15 +123,20 @@
 
 
 <div class="footer">
-  <span *ngIf="system.status">
-    server name: {{system.name}} <figure class="greencircle"></figure> 
-    &#124;  PID uucp: <div [ngClass]="{'redcircle' : !system.piduu , 'greencircle' : system.piduu }"></div>
-    &#124; ar: <div [ngClass]="{'redcircle' : !system.pidar , 'greencircle' : system.piduu }"></div> 
-    &#124; vara: <div [ngClass]="{'redcircle' : !system.vara , 'greencircle' : system.vara }"></div> &#124;
+  <ng-container *ngIf="system.status">
+  <span >
+    Station: {{system.name}}  <figure class="greencircle"></figure>
+    &#124; UUCP: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }"></div>
+    &#124; ar: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.piduucp }"></div>
+    &#124; Modem: <div [ngClass]="{'redcircle' : !system.modem , 'greencircle' : system.modem }"></div> &#124;
     <br>
-    user: {{system.email}} / {{system.administrator}}
+    user: {{currentUser.email}} / {{currentUser.admin}}
   </span>
-  <span *ngIf="!system.status"> server offline <figure class="redcircle"></figure> </span>
+</ng-container>
+
+  <span *ngIf="!system.status">
+     Hermes station offline <figure class="redcircle"></figure>
+  </span>
 
 </div>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

@@ -46,29 +46,25 @@ export class UserComponent implements OnInit {
     this.selectedUser = user;
   }
 
-  onSubmitUpdate(id: number, f: NgForm):void {
+  onSubmitUpdate(id: number, f: NgForm): void {
       console.log('update', f.value);
       this.userService.updateUser(id, f.value).subscribe();
-      //window.location.reload();
+      // window.location.reload();
   }
 
-  onSubmitDelete(id):void {
+  onSubmitDelete(id): void {
     console.log(id);
-        this.userService.deleteUser(id).subscribe();
-        //window.location.reload();
+    this.userService.deleteUser(id).subscribe();
+    // window.location.reload();
   }
-
 
   createUser(f: NgForm): void {
     this.userService.createUser(f.value).subscribe();
   }
 
-
   ngOnInit(): void {
     this.getUsers();
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
-    
-  
   }
 }

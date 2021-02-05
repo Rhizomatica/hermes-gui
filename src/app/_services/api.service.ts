@@ -13,6 +13,7 @@ import { GlobalConstants } from '../global-constants';
 export class ApiService {
   login = false;
   serverReturn: any;
+  error = Error;
 
   constructor(
     private http: HttpClient,
@@ -26,15 +27,14 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log ('Hermes System Status:', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
     }
 
-    getLogin(login, password): Observable<{}> {
+    getLogin(plogin, ppassword): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
-      const data =  {'login': login, 'password': password};
+      const data =  {login: plogin, password: ppassword};
       return this.http.post(url, data[0]).pipe(
         map((res: any) => {
           this.serverReturn = res;
@@ -45,9 +45,9 @@ export class ApiService {
     }
 
     private handleError(error: HttpErrorResponse) {
-      console.log(error);
+      console.log("api service handleerror", error);
       // return an observable with a user friendly message
-      return throwError('Error! something went wrong: ');
+      return throwError('api service Error! something went wrong: ');
     }
 
     private log(message: string) {

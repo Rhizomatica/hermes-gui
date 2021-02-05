@@ -34,7 +34,6 @@ export class StationService {
     }
 
     private handleError(error: HttpErrorResponse) {
-      console.log(error);
       this.stations = [];
 
       // return an observable with a user friendly message

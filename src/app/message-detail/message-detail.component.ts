@@ -13,9 +13,9 @@ import { MessageService } from '../_services/message.service';
 export class MessageDetailComponent implements OnInit {
 
   @Input() message: Message;
-  private error: String;
+  private error: string;
   public messageImage: Blob;
-  public isEncrypted: boolean = false;
+  public isEncrypted = false;
 
 
   constructor(
@@ -26,7 +26,7 @@ export class MessageDetailComponent implements OnInit {
   ) { }
 
   changeEnc() {
-    if(this.isEncrypted) {
+    if (this.isEncrypted) {
       this.isEncrypted = false;
       console.log(this.isEncrypted);
     } else {
@@ -36,17 +36,17 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getMessageOld(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessage(id).subscribe(message => this.message);
   }
 
   getMessage(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
 
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
-        console.log("debug componente service " + res);
+        console.log('debug componente service ' + res);
       },
       (err) => {
         this.error = err;
@@ -55,11 +55,11 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getMessageImage(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
-      this.messageService.getMessageImage(id).subscribe(
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.messageService.getMessageImage(id).subscribe(
       (res: any) => {
         this.messageImage = res;
-        console.log("debug componente service " + res);
+        console.log('debug componente service ' + res);
       },
       (err) => {
         this.error = err;
@@ -69,14 +69,14 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getImageFromService() {
-    //this.isImageLoading = true;
-    let id = +this.route.snapshot.paramMap.get('id');
+    // this.isImageLoading = true;
+    const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessageImage(id).subscribe(
       data => {
       this.messageImage = data;
-      //this.isImageLoading = false;
+      // this.isImageLoading = false;
     }, error => {
-      //this.isImageLoading = false;
+      // this.isImageLoading = false;
       console.log(error);
     });
 }

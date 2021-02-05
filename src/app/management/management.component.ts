@@ -38,45 +38,36 @@ export class ManagementComponent implements OnInit {
     )
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-      
-
-
     }
 
   loggedin() {
-    if(this.isadmin) {
+    if (this.isadmin) {
       this.isadmin = false;
-      console.log(this.isadmin);
     } else {
       this.isadmin = true;
-      console.log(this.isadmin);
     }
   }
 
   Alert(param, ): boolean {
-      //param=!param;
+      // param=!param;
       return !param;
    }
 
   deleteAlert() {
-    if(this.deleteUser) {
+    if (this.deleteUser) {
       this.deleteUser = false;
-      //console.log(this.deleteUser);
     } else {
       this.deleteUser = true;
-      //console.log(this.deleteUser);
     }
    }
 
    updateAlert() {
-    if(this.updateUser) {
+    if (this.updateUser) {
       this.updateUser = false;
       this.emptyUser = false;
-      //console.log(this.deleteUser);
     } else {
       this.updateUser = true;
       this.emptyUser = false;
-      //console.log(this.deleteUser);
     }
    }
 
@@ -88,7 +79,7 @@ export class ManagementComponent implements OnInit {
      this.selectedUser = [];
      this.isEditing = true;
      this.newUsername = true;
-     this.emptyUser= true;
+     this.emptyUser = true;
    }
 
 
@@ -109,22 +100,22 @@ export class ManagementComponent implements OnInit {
     console.log(this.isEditing);
   }
 
-  onSubmitUpdate(id: number, f: NgForm):void {
+  onSubmitUpdate(id: number, f: NgForm): void {
     console.log(f.value);
-      this.userService.updateUser(id, f.value).subscribe(
-        (res: any) => {
-          this.users = res;
-        },
-        (err) => {
-          this.error = err;
-        }
-      );
-      this.updateUser = false;
-      this.isEditing = false;
-      window.location.reload();
+    this.userService.updateUser(id, f.value).subscribe(
+      (res: any) => {
+        this.users = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+    this.updateUser = false;
+    this.isEditing = false;
+    window.location.reload();
   }
 
-  onSubmitDelete(id: number):void {
+  onSubmitDelete(id: number): void {
       this.userService.deleteUser(id).subscribe();
       this.deleteUser = false;
       this.isEditing = false;
@@ -132,7 +123,7 @@ export class ManagementComponent implements OnInit {
   }
 
   onSubmitCreate(f: NgForm): void {
-    this.userService.createUser(f.value).subscribe()
+    this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
     console.log(this.isEditing);
   }
