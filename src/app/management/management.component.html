@@ -10,10 +10,10 @@
     </label>
     -->
 
-    <button i18n="@@createadm" (click)="newUser()" [hidden]="isEditing">create user</button>
+    <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     <br>
-
-    <!-- test
+<!--
+     test
         <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
     <div>{{isadmin}}</div>
     <div>{{isadmin}}</div>
@@ -30,10 +30,11 @@
     <div [hidden]="isadmin==true&&isEditing==true">teste3</div>
     <div [hidden]="isadmin==false&&isEditing==false">teste4</div>
     <div [hidden]="isadmin==false||isEditing==false">teste5</div>
+-->
 
-    -->
+    
     <h3 [hidden]="isEditing">Users</h3>
-    <h3 [hidden]="!isEditing">Edit user</h3>
+    <h3 [hidden]="!isEditing"><span [hidden]="emptyUser">Edit user</span><span [hidden]="!emptyUser">Create User</span></h3>
     <ng-container >
 
         <span>Search users: </span><input [hidden]="isEditing==true||isadmin==false" class="searchbox" [(ngModel)]="searchUser"/>
@@ -123,7 +124,8 @@
                 <button (click)="cancelCreate()" >cancel</button>
 
                 <button (click)="deleteAlert()" [disabled]="selectedUser.admin" [hidden]="emptyUser">delete user</button>
-                <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">update</button>
+                <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" [disabled]="f.invalid">update</button>
+                <button type="submit" [hidden]="!emptyUser" (click)="updateAlert()" [disabled]="f.invalid">create user</button>
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 
                 <div class="overall" [hidden]="deleteUser">
