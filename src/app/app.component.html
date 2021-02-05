@@ -72,19 +72,19 @@
           </span>
         </span>
 
-        <a class="icon" routerLink="/login" *ngIf="!currentUser.login" >
+        <a class="icon" routerLink="/login" *ngIf="!currentUser.email" >
           <img title="Log In" src="/assets/svg/sign-in-alt-solid.svg" >
         </a>
 
-        <a class="icon" (click)="logout()" *ngIf="currentUser.login">
+        <a class="icon" (click)="logout()" *ngIf="currentUser.email">
           <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout" src="/assets/svg/sign-out-alt-solid.svg" >
         </a>
         <br>
 
           <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
           <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
-          <button *ngIf="currentUser.login" (click)="logout()">logout</button>
-          <button *ngIf="!currentUser.login" routerLink="/login">login</button>-->
+          <button *ngIf="currentUser.email" (click)="logout()">logout</button>
+          <button *ngIf="!currentUser.email" routerLink="/login">login</button>-->
       </div>
     </div>
 
@@ -123,15 +123,20 @@
 
 
 <div class="footer">
-  <span *ngIf="system.status">
+  <ng-container *ngIf="system.status">
+  <span >
     server name: {{system.name}} <figure class="greencircle"></figure>
-    &#124;  PID uucp: <div [ngClass]="{'redcircle' : !system.piduu , 'greencircle' : system.piduu }"></div>
-    &#124; ar: <div [ngClass]="{'redcircle' : !system.pidar , 'greencircle' : system.piduu }"></div>
-    &#124; vara: <div [ngClass]="{'redcircle' : !system.vara , 'greencircle' : system.vara }"></div> &#124;
+    &#124;  PID uucp: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }"></div>
+    &#124; ar: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.piduucp }"></div>
+    &#124; modem: <div [ngClass]="{'redcircle' : !system.modem , 'greencircle' : system.modem }"></div> &#124;
     <br>
     user: {{system.email}} / {{system.administrator}}
   </span>
-  <span *ngIf="!system.status"> server offline <figure class="redcircle"></figure> </span>
+</ng-container>
+
+  <span *ngIf="!system.status">
+     Hermes station offline <figure class="redcircle"></figure>
+  </span>
 
 </div>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

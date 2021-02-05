@@ -36,7 +36,7 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     onBtn(){
-      console.log('lalala');
+      console.log('debug onBtn lalala');
     }
 
     onSelect(user): void {

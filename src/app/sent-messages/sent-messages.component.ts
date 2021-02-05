@@ -25,7 +25,7 @@ export class SentMessagesComponent implements OnInit {
   }
 
   cancelTransmission(message: Message): void {
-    console.log(message);
+    console.log("sent-messages component, cancel transmission, message:  ", message);
   }
 
   getMessages(): void {

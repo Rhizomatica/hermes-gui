@@ -6,7 +6,6 @@ import { AuthenticationService } from './_services/authentication.service';
 import { ApiService } from './_services/api.service';
 import { User } from './user';
 import { Api } from './api';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,9 +15,8 @@ export class AppComponent {
   currentUser: User;
   serverRes: any;
   error: any;
-  public system: any;
+  system: any;
 
-  // system = [];
 
   title = 'hermes.radio';
   constructor(

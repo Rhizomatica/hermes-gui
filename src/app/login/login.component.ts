@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(f.value.login, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
-        console.log(res);
         return res;
       },
       (err) => {

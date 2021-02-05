@@ -32,13 +32,13 @@ export class MessagesComponent implements OnInit {
   message: Message;
   selectedMessage: Message;
   isAdmin = true;
-  inboxMessages: any[];
+  inboxMessages:  [];
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
-    this.alertService.add('mensagem lida: id=$' + message.id);
+    this.alertService.add('read message: id=$' + message.id);
   }
 
   getInboxMessages(): void {
@@ -73,7 +73,7 @@ export class MessagesComponent implements OnInit {
       },
       (err) => {
         this.error = err;
-        console.error (err);
+        // console.error (err);
       }
     );
   }

@@ -43,10 +43,8 @@ export class ManagementComponent implements OnInit {
   loggedin() {
     if (this.isadmin) {
       this.isadmin = false;
-      console.log(this.isadmin);
     } else {
       this.isadmin = true;
-      console.log(this.isadmin);
     }
   }
 
@@ -58,10 +56,8 @@ export class ManagementComponent implements OnInit {
   deleteAlert() {
     if (this.deleteUser) {
       this.deleteUser = false;
-      // console.log(this.deleteUser);
     } else {
       this.deleteUser = true;
-      // console.log(this.deleteUser);
     }
    }
 
@@ -69,11 +65,9 @@ export class ManagementComponent implements OnInit {
     if (this.updateUser) {
       this.updateUser = false;
       this.emptyUser = false;
-      // console.log(this.deleteUser);
     } else {
       this.updateUser = true;
       this.emptyUser = false;
-      // console.log(this.deleteUser);
     }
    }
 
