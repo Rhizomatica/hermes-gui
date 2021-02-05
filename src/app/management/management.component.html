@@ -4,14 +4,14 @@
 
 
 
-    <h3 [hidden]="isEditing">Users</h3>
-    <h3 [hidden]="!isEditing">Edit user</h3>
+    
     <!--
     <label >is admin: <input type="checkbox"  (change)="loggedin()" name="isadmin" checked>
     </label>
     -->
 
     <button i18n="@@createadm" (click)="newUser()" [hidden]="isEditing">create user</button>
+    <br>
 
     <!-- test
         <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
@@ -32,10 +32,11 @@
     <div [hidden]="isadmin==false||isEditing==false">teste5</div>
 
     -->
-
+    <h3 [hidden]="isEditing">Users</h3>
+    <h3 [hidden]="!isEditing">Edit user</h3>
     <ng-container >
 
-        <input [hidden]="isEditing==true||isadmin==false" [(ngModel)]="searchUser"/>
+        <span>Search users: </span><input [hidden]="isEditing==true||isadmin==false" class="searchbox" [(ngModel)]="searchUser"/>
 
         <ul id="userlist" class="multiplist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
@@ -52,6 +53,11 @@
                 <span i18n>username</span>:
                 <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
+            </label>
+
+            <label for="email">
+                <span i18n>email</span>: {{selectedUser.email}}@TODO.hermes.radio
+                
             </label>
 
             <label for="name">
@@ -91,7 +97,8 @@
                 <span i18n>password</span>:
                 <br/><input name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"   />
             </label>
-            <label>
+
+            <label for="recovery">
                 <span i18n>recovery phrase</span>:
                 <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
             </label>
@@ -115,7 +122,7 @@
             <br/>
                 <button (click)="cancelCreate()" >cancel</button>
 
-                <button (click)="deleteAlert()" [disabled]="selectedUser.admin" >delete user</button>
+                <button (click)="deleteAlert()" [disabled]="selectedUser.admin" [hidden]="emptyUser">delete user</button>
                 <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">update</button>
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 

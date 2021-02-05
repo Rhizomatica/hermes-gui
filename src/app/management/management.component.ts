@@ -98,6 +98,8 @@ export class ManagementComponent implements OnInit {
     this.selectedUser = user;
     this.isEditing = true;
     console.log(this.isEditing);
+    this.emptyUser = false;
+
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
