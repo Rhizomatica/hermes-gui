@@ -117,7 +117,11 @@
 
 <div class="formfield">
 
-<router-outlet *ngIf="system"></router-outlet>
+<router-outlet *ngIf="system; else serverOff"></router-outlet>
+
+<ng-template #serverOff>
+  Hermes server is offline, please turn the station on.
+</ng-template>
 
 </div>
 
