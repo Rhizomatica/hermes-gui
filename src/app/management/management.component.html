@@ -1,5 +1,6 @@
 
 <div class="">
+   
     <h2 i18n="@@admmanage">User Management</h2>
 
 
@@ -40,7 +41,7 @@
         <span>Search users: </span><input [hidden]="isEditing==true||isadmin==false" class="searchbox" [(ngModel)]="searchUser"/>
 
         <ul id="userlist" class="multiplist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
-            <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.name}} | {{user.location}}</li>
+            <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
     <ng-container *ngIf="selectedUser">
@@ -57,7 +58,7 @@
             </label>
 
             <label for="email">
-                <span i18n>email</span>: {{selectedUser.email}}@TODO.hermes.radio
+                <span i18n>email</span>: {{selectedUser.email}}@pu2uit.hermes.radio
                 
             </label>
 

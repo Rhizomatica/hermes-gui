@@ -4,10 +4,9 @@
 
 <div *ngIf="currentUser.admin; else notADM">
 <a routerLink="/manage" i18n="@@adminmanage">user management</a>
-<a routerLink="/netadmin" i18n="@@networkadmin">network administration</a>
 <a routerLink="/messageadm" i18n="@@messageadm">messages administration</a>
+<a routerLink="/netadmin" i18n="@@networkadmin">network information</a>
 <a routerLink="/stations" i18n="@@stations">stations</a>
-
 <a routerLink="/log" i18n="@@detailedlog">detailed log</a>
 <a routerLink="/upgrade" i18n="@@systemupgrade">system upgrade</a>
 </div>
@@ -17,7 +16,7 @@
 
     </app-login>
 
-    <a routerLink="/manage" i18n="@@adminmanage">user management</a>
+   <!-- <a routerLink="/manage" i18n="@@adminmanage">user management</a> -->
 
 </ng-template>
 

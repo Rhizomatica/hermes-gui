@@ -7,10 +7,12 @@
     </div>
 
     <div class="blobber">
-        <div class="tx">decifrando mensagem...</div>
+        <div class="tx">decoding message...</div>
         <div class="square"></div>
     </div>
-    
+
+  
+  
     <div class="messagebody" [hidden]="isEncrypted">
         <p>{{message.text}}</p>
         <p [hidden]="!message.file">File: {{message.file}} TOD0 link</p>
@@ -38,11 +40,11 @@
             <img title="help" src="/assets/svg/cloud-upload-alt-solid.svg">sent messages
         </a>
     </div>
-
+<!--
     <label>is encrypted
         <input type="checkbox" (change)="changeEnc()">
     </label>
-
+-->
 </div> 
 
 </div>
