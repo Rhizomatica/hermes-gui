@@ -20,8 +20,8 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(llogin: string, ppassword: string) {
-        const data =  {login: llogin, password: ppassword};
+    login(femail: string, fpassword: string) {
+        const data =  {email: femail, password: fpassword};
         return this.http.post<any>(`${GlobalConstants.apiURL}/login`, data)
             .pipe(map(
               user => {
