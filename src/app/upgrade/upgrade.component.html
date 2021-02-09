@@ -3,6 +3,25 @@
 <div class="">
     <h2 i18n="@@systemupgrade">system upgrade</h2>
 
-<button i18n="@@restorefac">Restore Factory Configuration</button>
+<button i18n="@@restorefac" (click)="restoreAlert()">Restore Factory Configuration</button>
 <button i18n="@@upgradewfile">System Upgrade with file</button>
+
+<div [hidden]=>
+    Are you sure you wanna restore the factory system?
+    this will delete all users, emails and messages!!!
+
+    <button (click)="cancelRestore()">cancel</button >
+    <button (click)="restoreConfirm()">confirm</button>
+</div>
+
+<div>
+    <form >
+        Please type your password again to confirm factory restore: <br/>
+        <input type="password">
+        <button (click)="cancelRestore()">cancel</button >
+        <button type="submit">submit</button>
+    </form> 
+</div>
+
+
 </div>
