@@ -44,7 +44,7 @@
 </app-hmheader>-->
 
 <header>
-  <a routerLink='/messages' class="logo"><img title="Hermes logo" src="/assets/img/logohermes.png"></a>
+  <a routerLink='/messages' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
 
   <h1 class="sitetitle"><span *ngIf="system">{{system.name}}.</span>hermes.radio</h1>
 </header>
@@ -65,19 +65,19 @@
 
         <span class="servericon">
           <span class="icon" *ngIf="system">
-            <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" >
+            <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="assets/svg/broadcast-tower.svg" >
           </span>
           <span class="icon" *ngIf="!system">
-          <img title="server status off" src="/assets/svg/broadcast-tower-off.svg" >
+          <img title="server status off" src="assets/svg/broadcast-tower-off.svg" >
           </span>
         </span>
 
         <a class="icon" routerLink="/login" *ngIf="!currentUser.email" >
-          <img title="Log In" src="/assets/svg/sign-in-alt-solid.svg" >
+          <img title="Log In" src="assets/svg/sign-in-alt-solid.svg" >
         </a>
 
         <a class="icon" (click)="logout()" *ngIf="currentUser.email">
-          <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout" src="/assets/svg/sign-out-alt-solid.svg" >
+          <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout" src="assets/svg/sign-out-alt-solid.svg" >
         </a>
         <br>
 
@@ -91,27 +91,27 @@
     <ng-template #loggedOut>
       <span class="servericon">
         <span class="icon" *ngIf="system">
-          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="/assets/svg/broadcast-tower.svg" >
+          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="assets/svg/broadcast-tower.svg" >
         </span>
         <span class="icon" *ngIf="!system">
-        <img title="server status off" src="/assets/svg/broadcast-tower-off.svg" >
+        <img title="server status off" src="assets/svg/broadcast-tower-off.svg" >
         </span>
       </span>
 
       <a class="icon" routerLink="/login" >
-        <img title="Log In" src="/assets/svg/sign-in-alt-solid.svg" >
+        <img title="Log In" src="assets/svg/sign-in-alt-solid.svg" >
       </a>
     </ng-template>
 
 </div>
 <nav id="mainnav">
-  <a routerLink="/messages" i18n="@@messages"><img title="messages" src="/assets/svg/comment.svg">messages</a>
+  <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
   <a routerLink="/admin" i18n="@admin" >
-    <img title="admin" src="/assets/svg/tools.svg">admin
+    <img title="admin" src="assets/svg/tools.svg">admin
   </a>
-  <a routerLink="/email" i18n="@@email"><img title="mail" src="/assets/svg/envelope.svg">email</a>
-  <a routerLink="/languages" i18n="@@languages"><img title="languages" src="/assets/svg/globe-americas.svg">language</a>
-  <a routerLink="/help" i18n="@@help"><img title="help" src="/assets/svg/question-circle-regular.svg">help</a>
+  <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
+  <a routerLink="/languages" i18n="@@languages"><img title="languages" src="assets/svg/globe-americas.svg">language</a>
+  <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
 
 </nav>
 

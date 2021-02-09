@@ -6,7 +6,7 @@
         <div class="multiplist">
             <p *ngFor="let message of messages">
             <a>
-                <img class="inlineicon" title="trash" src="/assets/svg/trash-alt.svg" [hidden]="!isAdmin" (click)="deleteInboxMessage(message)">
+                <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isAdmin" (click)="deleteInboxMessage(message)">
             </a>
             <span (click)="getInboxMessage(message)">{{message}}</span>
             </p>
@@ -16,12 +16,12 @@
     <div class="navicons">
         <div class="btn" >
             <a routerLink="/compose" i18n="@@compose">
-                <img title="help" src="/assets/svg/edit.svg">compose
+                <img title="help" src="assets/svg/edit.svg">compose
             </a>
         </div>
         <div class="btn sent" >
             <a routerLink="/sent" i18n="@@sent">
-                <img title="help" src="/assets/svg/cloud-upload-alt-solid.svg">sent messages
+                <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
             </a>
         </div>
     </div>

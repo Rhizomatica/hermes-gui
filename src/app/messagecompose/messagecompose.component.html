@@ -1,5 +1,5 @@
 <div id="compose" class="">
-    <h2 i18n><div class="icon"><img title="send" src="/assets/svg/paper-plane.svg"></div>send your public message to another station</h2>
+    <h2 i18n><div class="icon"><img title="send" src="assets/svg/paper-plane.svg"></div>send your public message to another station</h2>
 
     <form #f="ngForm" class="formdata" novalidate  >
         <div [hidden]="fileIsProcessing==true">
@@ -15,7 +15,7 @@
             </label>
 
             <label class="selstation">
-                <span class="icon"><img title="messages" src="/assets/svg/broadcast-tower.svg">
+                <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
                     <span i18n="@@selectstation">select station
                     :<br>
                     <br>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <label class="passprotect">
-                <span class="icon lock"><img title="messages" src="/assets/svg/lock.svg">
+                <span class="icon lock"><img title="messages" src="assets/svg/lock.svg">
                     <span i18n="@@protectpssw">protect with password</span>:
                     <input type="checkbox" unckecked (change)="encrypted()"/>
                 </span>
@@ -62,14 +62,14 @@
                 </label>
             </div>
             <span></span>
-            <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >send message<br/><img class="btnicon" title="send" src="/assets/svg/paper-plane.svg"></button>
+            <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >send message<br/><img class="btnicon" title="send" src="assets/svg/paper-plane.svg"></button>
         </div>
 
         <div class="overall alert" [hidden]="fileIsProcessing==false">
             <div class="cv">
                 Your message is been processed <br/><br/>
-                <div class="icon" ><a (click)="newMessage()" i18n="@@compose"><img title="compose" src="/assets/svg/edit.svg"><button>compose</button></a></div>
-                <div class="icon" ><a routerLink='/messages' routerLinkActive="active" i18n="@@compose"><img title="help" src="/assets/svg/comment.svg"><button>messages</button></a></div>
+                <div class="icon" ><a (click)="newMessage()" i18n="@@compose"><img title="compose" src="assets/svg/edit.svg"><button>compose</button></a></div>
+                <div class="icon" ><a routerLink='/messages' routerLinkActive="active" i18n="@@compose"><img title="help" src="assets/svg/comment.svg"><button>messages</button></a></div>
 
                 
 

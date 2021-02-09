@@ -5,8 +5,8 @@
     <div class="messages">
         <div class="multiplist">
             <p *ngFor="let message of messages">
-            <a ><img class="inlineicon" title="cancel" src="/assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
-            <!--<a ><img class="inlineicon" title="priorize" src="/assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
+            <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
+            <!--<a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
    
             <span class="date">12/1/2021</span><!--{{message.id}}--> 
             <a routerLink="/message/{{message.id}}">
@@ -34,12 +34,12 @@
         <div class="navicons">
             <div class="btn" >
                 <a routerLink="/compose" i18n="@@compose">
-                    <img title="help" src="/assets/svg/edit.svg">compose
+                    <img title="help" src="assets/svg/edit.svg">compose
                 </a>
             </div>
             <div class="btn sent" >
                 <a routerLink="/sent" i18n="@@sent">
-                    <img title="help" src="/assets/svg/cloud-upload-alt-solid.svg">sent messages
+                    <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
                 </a>
             </div>
         </div>

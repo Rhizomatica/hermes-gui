@@ -41,7 +41,7 @@ import { EmailComponent } from './email/email.component';
 // import { CLIENT_RENEG_LIMIT } from 'tls';
 
 /*export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, '.assets/i18n/', '.json');
 }*/
 
 @NgModule({
