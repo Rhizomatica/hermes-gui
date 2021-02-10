@@ -16,13 +16,14 @@ restoreConf: boolean = false;
 
   restoreConfirm() {
     this.restoreConf = true;
+    this.restore = false;
   }
 
   cancelRestore() {
     this.restore = false;
     this.restoreConf = false;
   }
-  
+
 
   constructor() { }
 

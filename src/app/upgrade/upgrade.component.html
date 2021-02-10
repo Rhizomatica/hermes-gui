@@ -2,20 +2,29 @@
 
 <div class="">
     <h2 i18n="@@systemupgrade">system upgrade</h2>
+<div *ngIf="restore == false && restoreConf == false" >
 
 <button i18n="@@restorefac" (click)="restoreAlert()">Restore Factory Configuration</button>
 <button i18n="@@upgradewfile">System Upgrade with file</button>
 
-<div >
-    Are you sure you wanna restore the factory system?
-    this will delete all users, emails and messages!!!
-
+</div>    
+   
+<div *ngIf="restore" class="overall">
+    <div class="cv">
+    Are you sure you wanna restore the factory system?<br>
+    this will delete all users, emails and messages
+    !!!
+    <br/>
+    <br/>
     <button (click)="cancelRestore()">cancel</button >
     <button (click)="restoreConfirm()">confirm</button>
+
+    </div>
+    
 </div>
 
-<div>
-    <form >
+<div *ngIf="restoreConf">
+    <form  >
         Please type your password again to confirm factory restore: <br/>
         <input type="password">
         <button (click)="cancelRestore()">cancel</button >
