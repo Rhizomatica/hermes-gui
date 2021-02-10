@@ -17,6 +17,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { UserComponent } from './user/user.component';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 import { EmailComponent } from './email/email.component';
+import {HelpComponent} from './help/help.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'recovery', component: ForgotpasswordComponent},
   { path: 'users', component: UserComponent},
   { path: 'sent', component: SentMessagesComponent},
-  { path: 'email', component: EmailComponent}
+  { path: 'email', component: EmailComponent},
+  { path: 'help', component: HelpComponent}
 
 ];
 
