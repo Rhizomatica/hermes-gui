@@ -6,8 +6,6 @@ import { Station } from '../station';
 import { StationService } from '../_services/station.service';
 import { AuthenticationService } from '../_services/authentication.service';
 
-
-
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',

@@ -126,10 +126,10 @@ export class MessageService {
   }
 
   // POST: add a new message to the database
-  createMessage(message: Message, file, id): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message`; // POST /message
+  sendMessage(message: Message, file, id): Observable<Message[]> {
 
-    message.draft = true;
+    const url = `${GlobalConstants.apiURL}/message`; // POST /message
+    message.draft = false;
     message.sent_at = null;
     message.orig = GlobalConstants.stationName;
     // messageImage: File;

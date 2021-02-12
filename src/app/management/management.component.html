@@ -1,11 +1,7 @@
 
 <div class="">
-   
     <h2 i18n="@@admmanage">User Management</h2>
 
-
-
-    
     <!--
     <label >is admin: <input type="checkbox"  (change)="loggedin()" name="isadmin" checked>
     </label>
@@ -33,7 +29,6 @@
     <div [hidden]="isadmin==false||isEditing==false">teste5</div>
 -->
 
-    
     <h3 [hidden]="isEditing">Users</h3>
     <h3 [hidden]="!isEditing"><span [hidden]="emptyUser">Edit user</span><span [hidden]="!emptyUser">Create User</span></h3>
     <ng-container >
@@ -81,7 +76,7 @@
             <ng-container *ngIf="stations">
 
                 <select ng-model="selectedUser.location">
-                    <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+                    <option *ngFor="let station of stations" >{{station.alias}} | {{station.location}}</option>
 
                 </select>
                 </ng-container>

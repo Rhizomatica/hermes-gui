@@ -22,7 +22,7 @@
                     <ng-container *ngIf="stations">
 
                         <select name="dest" [(ngModel)]="message.dest" required>
-                            <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
+                            <option *ngFor="let station of stations" value="{{station.name}}">{{station.name}} | {{station.location}}</option>
                         </select>
                         </ng-container>
                     </span>
@@ -62,7 +62,7 @@
                 </label>
             </div>
             <span></span>
-            <button type="submit" (click)="createMessage(f)" [disabled]="f.invalid"  >send message<br/><img class="btnicon" title="send" src="assets/svg/paper-plane.svg"></button>
+            <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid"  >send message<br/><img class="btnicon" title="send" src="assets/svg/paper-plane.svg"></button>
         </div>
 
         <div class="overall alert" [hidden]="fileIsProcessing==false">
@@ -70,9 +70,6 @@
                 Your message is been processed <br/><br/>
                 <div class="icon" ><a (click)="newMessage()" i18n="@@compose"><img title="compose" src="assets/svg/edit.svg"><button>compose</button></a></div>
                 <div class="icon" ><a routerLink='/messages' routerLinkActive="active" i18n="@@compose"><img title="help" src="assets/svg/comment.svg"><button>messages</button></a></div>
-
-                
-
             </div>
         </div>
 

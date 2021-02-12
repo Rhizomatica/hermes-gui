@@ -31,6 +31,7 @@ export class AppComponent {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
+        console.log('Hermes server status: ',  res);
         return res;
       },
       (err) => {
