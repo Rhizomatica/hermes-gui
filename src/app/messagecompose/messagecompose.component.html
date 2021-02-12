@@ -1,5 +1,16 @@
 <div id="compose" class="">
-    <h2 i18n><div class="icon"><img title="send" src="assets/svg/paper-plane.svg"></div>send your public message to another station</h2>
+
+    <div class="supicons">
+        
+        <div class="" >
+            <a routerLink="/sent" i18n="@@sent">
+                <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">
+            </a>
+        </div>
+    </div>
+    
+    
+    <h2 i18n><div class="icon"></div>send your public message to another station</h2>
 
     <form #f="ngForm" class="formdata" novalidate  >
         <div [hidden]="fileIsProcessing==true">

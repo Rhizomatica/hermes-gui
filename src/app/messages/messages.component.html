@@ -2,6 +2,19 @@
 
 <h2 i18n="@@messages">Inbox Messages </h2>
 
+    <div class="supicons">
+        <div class="" >
+            <a routerLink="/compose" i18n="@@compose">
+                <img title="help" src="assets/svg/edit.svg">
+            </a>
+        </div>
+        <div class="" >
+            <a routerLink="/sent" i18n="@@sent">
+                <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">
+            </a>
+        </div>
+    </div>
+
     <div class="messages">
         <div class="multiplist">
             <p *ngFor="let message of messages">
