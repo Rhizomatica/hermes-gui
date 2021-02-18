@@ -13,6 +13,7 @@ export class SentMessagesComponent implements OnInit {
   success = '';
   test = '';
   messages: Message[];
+  filteredMessages: Message[];
   message: Message;
   selectedMessage: Message;
   isAdmin = true;
@@ -32,6 +33,24 @@ export class SentMessagesComponent implements OnInit {
     this.messageService.getMessages().subscribe(
       (res: any) => {
         this.messages = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+  selectAll(): void {
+    
+  }
+
+
+  getSentMessages(): void {
+    this.messageService.getMessages().subscribe(
+      (res: any) => {
+        this.messages = res;
+        this.filteredMessages = res.filter(a => a.inbox == true);
+        console.log(this.filteredMessages);
       },
       (err) => {
         this.error = err;

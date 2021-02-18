@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Message } from '../message';
+import { MessageService } from '../_services/message.service';
+import { AlertService } from '../alert.service';
+
+
 
 @Component({
   selector: 'app-messageadm',
@@ -7,9 +12,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageadmComponent implements OnInit {
 
-  constructor() { }
+  error = '';
+  success = '';
+  test = '';
+  messages: Message[];
+  filteredMessages: Message[];
+  message: Message;
+  selectedMessage: Message;
+  isAdmin = true;
+
+  constructor(private messageService: MessageService, private alertService: AlertService) { }
+
+  getMessages(): void {
+    this.messageService.getMessages().subscribe(
+      (res: any) => {
+        this.messages = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
 
   ngOnInit(): void {
+    this.getMessages();
+
   }
 
 }
