@@ -109,7 +109,9 @@ export class MessagecomposeComponent implements OnInit {
       secure: false,
       inbox: false,
       draft: null,
-      sent_at: ''
+      sent_at: '',
+      created_at: '',
+      updated_at: '',
     };
 
     this.isEncrypted = false;

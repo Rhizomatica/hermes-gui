@@ -66,7 +66,7 @@ export class MessageService {
   }
 
   getMessages(): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/messages`; // DELETE api/message/42
+    const url = `${GlobalConstants.apiURL}/messages`; // get api/message/42
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;

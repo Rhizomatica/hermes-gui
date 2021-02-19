@@ -14,6 +14,8 @@ export class SentMessagesComponent implements OnInit {
   test = '';
   messages: Message[];
   filteredMessages: Message[];
+  draftMessages: Message[];
+  sentMessages: Message[];
   message: Message;
   selectedMessage: Message;
   isAdmin = true;
@@ -32,7 +34,9 @@ export class SentMessagesComponent implements OnInit {
   getMessages(): void {
     this.messageService.getMessages().subscribe(
       (res: any) => {
-        this.messages = res;
+        this.draftMessages = res.filter(a => a.draft == true && a.inbox == false);
+        this.sentMessages = res.filter(a => a.draft == false  && a.inbox == false);
+        //console.log(this.filteredMessages);
       },
       (err) => {
         this.error = err;

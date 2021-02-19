@@ -14,36 +14,34 @@
 
 
     <h2 i18n="@@messages">Transmission list</h2>
-        
+
     <div class="messages">
         <div class="multiplist">
-            <p *ngFor="let message of messages">
+            <p *ngFor="let message of draftMessages">
             <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
             <!--<a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
-   
-            <span class="date">12/1/2021</span><!--{{message.id}}--> 
+            <span class="date">12/1/2021</span><!--{{message.id}}-->
             <a routerLink="/message/{{message.id}}">
                 {{message.name}}
             </a>
-            
             <!-- {{message.dest}}-->
             </p>
         </div>
-    </div>  
-    
+    </div>
+
     <h2 i18n="@@messages">Sent Messages </h2>
     <div class="messages">
             <div class="multiplist">
-                <p *ngFor="let message of messages.slice().reverse()">
-                <span class="date">12/1/2021</span><!--{{message.id}}--> 
+                <p *ngFor="let message of sentMessages.slice().reverse()">
+                <span class="date">12/1/2021</span><!--{{message.id}}-->
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}
                 </a>
                 <!-- {{message.dest}}-->
                 </p>
             </div>
-        </div>  
-    
+        </div>
+
         <div class="navicons">
             <div class="btn" >
                 <a routerLink="/compose" i18n="@@compose">
@@ -56,9 +54,8 @@
                 </a>
             </div>
         </div>
-        
     </div>
-    
+
     <button (click)="getSentMessages()">oioi</button>
-    
+
     <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->

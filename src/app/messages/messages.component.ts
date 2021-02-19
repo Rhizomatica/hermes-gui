@@ -28,11 +28,10 @@ export class MessagesComponent implements OnInit {
   error = '';
   success = '';
   test = '';
-  messages: Message[];
+  inboxMessages: Message[];
   message: Message;
   selectedMessage: Message;
   isAdmin = true;
-  inboxMessages:  [];
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 
@@ -42,9 +41,11 @@ export class MessagesComponent implements OnInit {
   }
 
   getInboxMessages(): void {
-    this.messageService.getInboxMessages().subscribe(
+    this.messageService.getMessages().subscribe(
       (res: any) => {
-        this.messages = res;
+        //this.messages = res;
+        this.inboxMessages = res.filter(a => a.inbox == true);
+        console.log(this.inboxMessages);
      },
       (err) => {
         this.error = err;
@@ -68,7 +69,7 @@ export class MessagesComponent implements OnInit {
     console.log('debug delete', $id);
     this.messageService.getInboxMessage($id).subscribe(
       (res: any) => {
-        this.messages = res;
+        this.message = res;
         console.log('delete inbox message ret: ', res);
       },
       (err) => {

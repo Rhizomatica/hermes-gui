@@ -55,7 +55,7 @@ export class ForgotpasswordComponent implements OnInit {
         console.log('toooo');
       }
       //this.selectedUser = user;
-      
+
       console.log(input);
       console.log(this.users);
       console.log(this.selectedUser);
@@ -74,6 +74,7 @@ export class ForgotpasswordComponent implements OnInit {
       // console.log(this.iAnsw);
     }
 
+    //TODO CH alterar a senha
     onSubmitUpdate(id, f: NgForm): void {
       console.log('update', f.value);
       this.userService.updateUser(id, f.value).subscribe();
@@ -86,17 +87,8 @@ export class ForgotpasswordComponent implements OnInit {
       } else {
         this.passMatch = false
       }
-      
     }
 
-    onSubmitDelete(id): void {
-      console.log(id);
-      this.userService.deleteUser(id).subscribe();
-    }
-
-    createUser(f: NgForm): void {
-      this.userService.createUser(f.value).subscribe();
-    }
 
     ngOnInit(): void {
       this.getUsers();
