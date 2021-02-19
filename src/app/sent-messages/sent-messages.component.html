@@ -20,7 +20,7 @@
             <p *ngFor="let message of draftMessages">
             <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
             <!--<a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
-            <span class="date">12/1/2021</span><!--{{message.id}}-->
+            <span class="date"><!--{{message.id}}--></span>
             <a routerLink="/message/{{message.id}}">
                 {{message.name}}
             </a>
@@ -33,7 +33,8 @@
     <div class="messages">
             <div class="multiplist">
                 <p *ngFor="let message of sentMessages.slice().reverse()">
-                <span class="date">12/1/2021</span><!--{{message.id}}-->
+                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
+                <span class="date">{{message.created_at}}</span>
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}
                 </a>

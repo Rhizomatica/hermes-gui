@@ -45,7 +45,6 @@ export class MessagesComponent implements OnInit {
       (res: any) => {
         //this.messages = res;
         this.inboxMessages = res.filter(a => a.inbox == true);
-        console.log(this.inboxMessages);
      },
       (err) => {
         this.error = err;
@@ -57,7 +56,6 @@ export class MessagesComponent implements OnInit {
       this.messageService.getInboxMessage($id).subscribe(
       (res: any) => {
         this.message = res;
-        console.log('getinbox message ret: ', res);
       },
       (err) => {
         this.error = err;
@@ -65,9 +63,11 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+
+  
   deleteInboxMessage($id): void {
     console.log('debug delete', $id);
-    this.messageService.getInboxMessage($id).subscribe(
+    this.messageService.deleteInboxMessage($id).subscribe(
       (res: any) => {
         this.message = res;
         console.log('delete inbox message ret: ', res);

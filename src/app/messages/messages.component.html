@@ -21,7 +21,12 @@
             <a>
                 <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isAdmin" (click)="deleteInboxMessage(message)">
             </a>
-            <span (click)="getInboxMessage(message)">{{message.id}} - {{message.name}}  {{message.name}} {{message.dest}} </span>
+            <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
+                <span (click)="getInboxMessage(message)">  - </span>
+                {{message.name}}
+                <span *ngIf="message.file">💮</span>
+            </a>
+
             </p>
         </div>
     </div>

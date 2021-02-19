@@ -125,6 +125,19 @@ export class MessageService {
      catchError(this.handleError));
   }
 
+  /** DELETE: consume server to delete message  */
+  deleteMessage(id): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
+    console.log(url);
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        this.messages = res;
+        console.log(res);
+        return this.messages;
+    }),
+     catchError(this.handleError));
+  }
+
   // POST: add a new message to the database
   sendMessage(message: Message, file, id): Observable<Message[]> {
 

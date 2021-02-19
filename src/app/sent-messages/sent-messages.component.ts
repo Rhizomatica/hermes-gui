@@ -13,7 +13,6 @@ export class SentMessagesComponent implements OnInit {
   success = '';
   test = '';
   messages: Message[];
-  filteredMessages: Message[];
   draftMessages: Message[];
   sentMessages: Message[];
   message: Message;
@@ -28,7 +27,17 @@ export class SentMessagesComponent implements OnInit {
   }
 
   cancelTransmission(message: Message): void {
-    console.log("sent-messages component, cancel transmission, message:  ", message);
+    this.messageService.deleteMessage(message.id).subscribe(
+      (res: any) => {
+        this.message = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+    console.log("cancel");
+    this.getMessages();
+    this.getSentMessages();
   }
 
   getMessages(): void {
@@ -53,8 +62,7 @@ export class SentMessagesComponent implements OnInit {
     this.messageService.getMessages().subscribe(
       (res: any) => {
         this.messages = res;
-        this.filteredMessages = res.filter(a => a.inbox == true);
-        console.log(this.filteredMessages);
+        this.sentMessages = res.filter(a => a.inbox == true);
       },
       (err) => {
         this.error = err;
