@@ -18,10 +18,22 @@ export class MessageadmComponent implements OnInit {
   messages: Message[];
   filteredMessages: Message[];
   message: Message;
-  selectedMessage: Message;
-  isAdmin = true;
+  selectedMessages: boolean = false;
+  
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
+
+  confirmDelete() {
+    if (this.selectedMessages) {
+      this.selectedMessages = false;
+    } else {
+      this.selectedMessages = true;
+    }
+    console.log(this.selectedMessages);
+ 
+  }
+
+  
 
   getMessages(): void {
     this.messageService.getMessages().subscribe(

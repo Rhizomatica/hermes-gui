@@ -45,7 +45,7 @@ export class SentMessagesComponent implements OnInit {
   }
 
   selectAll(): void {
-    
+
   }
 
 

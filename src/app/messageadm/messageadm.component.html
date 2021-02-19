@@ -30,7 +30,16 @@
     <input type="checkbox" class="ckbx" > Select all
     <br/>
 
-    <button>Delete selected</button>
+    <button (click)="confirmDelete()" *ngIf="!selectedMessages">delete selected</button>
 
+    <div class="overall" *ngIf="selectedMessages">
+        <div class="cv">
+            Are you sure you wanna delete all selected messages? 
+            this cannot be undone!!!<br>
+            <button (click)="confirmDelete()">cancel</button>
+            <button (click)="confirmDelete()">delete messages</button>
+        </div>
+        
+    </div>
    
 </div>  
