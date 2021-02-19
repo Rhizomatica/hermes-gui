@@ -4,7 +4,7 @@ import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { Station } from '../station';
 import { StationService } from '../_services/station.service';
-import { GlobalConstants } from '../global-constants';
+// import { GlobalConstants } from '../global-constants';
 
 @Component({
   selector: 'app-messagecompose',

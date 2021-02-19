@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
-// import { GlobalConstants } from '../global-constants';
+//import { GlobalConstants } from '../global-constants';
 
 export interface MessageInbox {
   id: number;
@@ -32,6 +32,7 @@ export class MessagesComponent implements OnInit {
   message: Message;
   selectedMessage: Message;
   isAdmin = true;
+  
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 

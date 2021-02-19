@@ -4,6 +4,9 @@ import { Location } from '@angular/common';
 
 import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
+import { GlobalConstants } from '../global-constants';
+
+
 
 @Component({
   selector: 'app-message-detail',
@@ -16,7 +19,7 @@ export class MessageDetailComponent implements OnInit {
   private error: string;
   public messageImage: Blob;
   public isEncrypted = false;
-
+  url =  GlobalConstants.apiURL;
 
   constructor(
     private route: ActivatedRoute,

@@ -11,21 +11,19 @@
         <div class="square"></div>
     </div>
 
-  
-  
     <div class="messagebody" [hidden]="isEncrypted">
         <p>{{message.text}}</p>
-        <p [hidden]="!message.file">File: {{message.file}} TODO link</p>
+        <p *ngIf="message.file && message.inbox" [hidden]="!message.file">File: <a target="_new" href="{{url}}/downloads/{{message.id}}.image" >  {{message.file}}</a></p>
+        <p *ngIf="message.file && !message.inbox" [hidden]="!message.file">File: <a target="_new" href="{{url}}/uploads/{{message.id}}" >  {{message.file}}</a></p>
     </div>
 <hr>
-        <small><p class="msginf">Origin: {{message.orig}}</p>
-        <p class="msginf">Destination: {{message.dest}}</p>
-        <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
-        <p class="msgdate">Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
-        <p class="msgid">Id: {{message.id}}</p></small>
-  
+    <small><p class="msginf">Origin: {{message.orig}}</p>
+    <p class="msginf">Destination: {{message.dest}}</p>
+    <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
+    <p class="msgdate">Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
+    <p class="msgid">Id: {{message.id}}</p></small>
+
 <hr>
-    
 
 <div class="navicons">
 
