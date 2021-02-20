@@ -85,6 +85,7 @@ export class ManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
+        console.log("debug");
       },
       (err) => {
         this.error = err;

@@ -24,7 +24,7 @@
             <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                 <span (click)="getInboxMessage(message)">  - </span>
                 {{message.name}}
-                <span *ngIf="message.file">💮</span>
+                <span *ngIf="message.file"> 💮</span>
             </a>
 
             </p>

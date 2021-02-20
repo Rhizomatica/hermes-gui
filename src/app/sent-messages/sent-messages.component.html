@@ -23,6 +23,7 @@
             <span class="date"><!--{{message.id}}--></span>
             <a routerLink="/message/{{message.id}}">
                 {{message.name}}
+                <span *ngIf="message.file"> 💮</span>
             </a>
             <!-- {{message.dest}}-->
             </p>
@@ -37,6 +38,7 @@
                 <span class="date">{{message.created_at}}</span>
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}
+                    <span *ngIf="message.file"> 💮</span>
                 </a>
                 <!-- {{message.dest}}-->
                 </p>

@@ -27,9 +27,10 @@ export class UserService {
     };
 
     getUsers(): Observable<User[]> {
-      return this.http.get(GlobalConstants.apiURL + '/users').pipe(
+      return this.http.get(GlobalConstants.apiURL + '/user').pipe(
         map((res: any) => {
           this.users = res;
+          console.log("⚚ user service: ", this.users);
           return this.users;
       }),
       catchError(this.handleError));

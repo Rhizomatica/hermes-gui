@@ -27,7 +27,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('Hermes server status: ', res);
+          console.log('⚚ Hermes ⚚\n⚚ api service - status:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -46,12 +46,12 @@ export class ApiService {
     }
 
     private handleError(error: HttpErrorResponse) {
-      console.log("api service handleerror", error);
+      console.log("⚚ api service handleerror", error);
       // return an observable with a user friendly message
-      return throwError('api service Error! something went wrong: ');
+      return throwError('⚚ api service Error! something went wrong: ');
     }
 
     private log(message: string) {
-      this.alertService.add(`Api: ${message}`);
+      this.alertService.add(`⚚ Api: ${message}`);
     }
 }
