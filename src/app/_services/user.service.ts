@@ -4,7 +4,7 @@ import { AlertService } from '../alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User } from '../user';
-import { isBoolean } from 'util';
+// import { isBoolean } from 'util';
 import { GlobalConstants } from '../global-constants';
 
 @Injectable({
@@ -68,8 +68,7 @@ export class UserService {
     }
 
 
-/** PUT: update a user  */
-
+  /** PUT: update a user  */
     updateUser(id: number, user: User): Observable<User> {
       const url = `${GlobalConstants.apiURL}/user/${id}`; // PUT api/users/42
       return this.http.put<User>(url, user, this.httpOptions)
@@ -82,7 +81,7 @@ export class UserService {
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.
-        console.error('An error occurred:', error.error.message);
+        console.error('⚚An error occurred:', error.error.message);
       } else {
         // The backend returned an unsuccessful response code.
         // The response body may contain clues as to what went wrong.
