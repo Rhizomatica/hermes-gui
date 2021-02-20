@@ -31,13 +31,12 @@ export class MessageDetailComponent implements OnInit {
   changeEnc() {
     if (this.isEncrypted) {
       this.isEncrypted = false;
-      console.log(this.isEncrypted);
     } else {
       this.isEncrypted = true;
-      console.log(this.isEncrypted);
     }
+    console.log('⚚ message-detail - changeEnc: isEncrypted? ', this.isEncrypted);
   }
-
+  
   getMessageOld(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessage(id).subscribe(message => this.message);
@@ -80,7 +79,7 @@ export class MessageDetailComponent implements OnInit {
       // this.isImageLoading = false;
     }, error => {
       // this.isImageLoading = false;
-      console.log(error);
+      console.log('⚚ message-detail - getImageFromService error ', error);
     });
 }
 

@@ -19,7 +19,6 @@ export class MessageadmComponent implements OnInit {
   filteredMessages: Message[];
   message: Message;
   selectedMessages: boolean = false;
-  
 
   constructor(private messageService: MessageService, private alertService: AlertService) { }
 
@@ -29,11 +28,8 @@ export class MessageadmComponent implements OnInit {
     } else {
       this.selectedMessages = true;
     }
-    console.log(this.selectedMessages);
- 
+    console.log('⚚ messageadm - confirmDelete selectMessages: ', this.selectedMessages);
   }
-
-  
 
   getMessages(): void {
     this.messageService.getMessages().subscribe(
@@ -45,7 +41,6 @@ export class MessageadmComponent implements OnInit {
       }
     );
   }
-
 
   ngOnInit(): void {
     this.getMessages();

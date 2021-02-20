@@ -49,16 +49,16 @@ export class ForgotpasswordComponent implements OnInit {
       });
       if (typeof(this.selectedUser) == 'undefined') {
         this.selTest = false;
-        console.log('titit');
+        console.log('⚚ forgotpassword - onSelect: ','titit');
       } else {
         this.selTest = true;
-        console.log('toooo');
+        console.log('⚚ forgotpassword: -onSelect: ','toooo');
       }
       //this.selectedUser = user;
 
-      console.log(input);
-      console.log(this.users);
-      console.log(this.selectedUser);
+      console.log('⚚ forgotpassword - onSelect: input: ',input);
+      console.log('⚚ forgotpassword - onSelect: users: ',this.users);
+      console.log('⚚ forgotpassword - onSelect: selecteduser: ',this.selectedUser);
 
     }
 
@@ -70,13 +70,11 @@ export class ForgotpasswordComponent implements OnInit {
         this.cAnsw = false;
         this.iAnsw = false;
       }
-      // console.log(this.selectedUser.recoveranswer);
-      // console.log(this.iAnsw);
     }
 
     //TODO CH alterar a senha
     onSubmitUpdate(id, f: NgForm): void {
-      console.log('update', f.value);
+      console.log('⚚ forgotpassword - onSubmitUpdate: ', 'update', f.value);
       this.userService.updateUser(id, f.value).subscribe();
     }
 

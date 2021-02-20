@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(f: any): void{
-    console.log(f.value);
+    console.log('⚚ login - submitLogin: f.value: ', f.value);
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('res', res);
+        console.log('⚚ login - submitLogin: res: ', res);
         return res;
       },
       (err) => {
@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
   }
 
 
-  submitTeste(f: any): void{
-    console.log(f.value);
+  submitTest(f: any): void{
+    console.log('⚚ login - submitTest: res: ', f.value);
   }
 
   submitLogout() {

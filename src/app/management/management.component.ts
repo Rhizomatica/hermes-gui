@@ -85,7 +85,7 @@ export class ManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
-        console.log("debug");
+        console.log('⚚ management - getUsers: res ', res);
       },
       (err) => {
         this.error = err;
@@ -96,13 +96,13 @@ export class ManagementComponent implements OnInit {
   onSelect(user): void {
     this.selectedUser = user;
     this.isEditing = true;
-    console.log(this.isEditing);
+    console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptyUser = false;
 
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
-    console.log(f.value);
+    console.log('⚚ management - onSubmitUpdate, f.value: ', f.value);
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -126,7 +126,7 @@ export class ManagementComponent implements OnInit {
   onSubmitCreate(f: NgForm): void {
     this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
-    console.log(this.isEditing);
+    console.log('⚚ management - onSubmitCreate: isEditing? ', this.isEditing);
   }
 
   ngOnInit(): void {

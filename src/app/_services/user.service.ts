@@ -49,7 +49,7 @@ export class UserService {
     /** DELETE: delete the user from the server */
     deleteUser(id: number): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
-      console.log(url);
+      console.log('⚚ message service - deleteUser: ',url);
       return this.http.delete(url)
         .pipe(
           catchError(this.handleError));
@@ -58,9 +58,6 @@ export class UserService {
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
       const url = `${GlobalConstants.apiURL}/user`; // POST api/users
-      // console.log(url);
-      // console.log(user);
-      // return this.http.post<User>(url, user, httpOptions)
       return this.http.post<User>(url, user, this.httpOptions)
        .pipe(
         catchError(this.handleError)

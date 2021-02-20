@@ -43,7 +43,7 @@ export class AppComponent {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
-    console.log(this.currentUser);
+    console.log('⚚ app: user logout', this.currentUser);
   }
 
   // TODO double check

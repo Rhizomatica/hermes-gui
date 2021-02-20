@@ -35,7 +35,7 @@ export class SentMessagesComponent implements OnInit {
         this.error = err;
       }
     );
-    console.log("cancel");
+    console.log("⚚ sent-messages component cancelTransmission:", message.id);
     this.getMessages();
     this.getSentMessages();
   }
@@ -45,7 +45,7 @@ export class SentMessagesComponent implements OnInit {
       (res: any) => {
         this.draftMessages = res.filter(a => a.draft == true && a.inbox == false);
         this.sentMessages = res.filter(a => a.draft == false  && a.inbox == false);
-        //console.log(this.filteredMessages);
+        // console.log("⚚ sent-messages messages:", this.filteredMessages);
       },
       (err) => {
         this.error = err;

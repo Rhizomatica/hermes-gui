@@ -52,7 +52,7 @@ export class MessageService {
     .pipe(
       map((res: any) => {
         this.messages = res;
-        console.log(res);
+        console.log('⚚ message service - postFile: ',res);
         return this.messages;
       }),
       catchError(this.handleError)
@@ -87,7 +87,7 @@ export class MessageService {
 
   getMessageImage(id: number): Observable<Blob> {
     const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
-    console.log ('debug ' + url);
+    console.log ('⚚ message service - getMessageImage: ' + url);
     return this.http.get(url, {responseType: 'blob'});
   }
 
@@ -96,7 +96,7 @@ export class MessageService {
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
-        console.log(res);
+        console.log('⚚ message service - getInboxMessages: ', res);
         return this.messages;
     }),
       catchError(this.handleError));
@@ -115,11 +115,10 @@ export class MessageService {
   /** DELETE: delete the inbox message from the server */
   deleteInboxMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/inbox/${id}`; // DELETE /message/42
-    console.log(url);
     return this.http.delete(url).pipe(
       map((res: any) => {
         this.messages = res;
-        console.log(res);
+        console.log('⚚ message service - deleteInboxMessage: ',res);
         return this.messages;
     }),
      catchError(this.handleError));
@@ -128,11 +127,10 @@ export class MessageService {
   /** DELETE: consume server to delete message  */
   deleteMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
-    console.log(url);
     return this.http.delete(url).pipe(
       map((res: any) => {
         this.messages = res;
-        console.log(res);
+        console.log('⚚ message service - deleteMessage: ',res);
         return this.messages;
     }),
      catchError(this.handleError));
@@ -140,7 +138,6 @@ export class MessageService {
 
   // POST: add a new message to the database
   sendMessage(message: Message, file, id): Observable<Message[]> {
-
     const url = `${GlobalConstants.apiURL}/message`; // POST /message
     message.draft = false;
     message.sent_at = null;
@@ -151,7 +148,7 @@ export class MessageService {
       message.id = id;
       message.file = file;
     }
-    console.log('debug createmessage service: ', message);
+    console.log('⚚ message service - sendMessage: ', message);
 
     return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
@@ -164,7 +161,6 @@ export class MessageService {
 
 /** POST: update a message  */
   updateMessage(message: Message): Observable<Message> {
-    // console.log('debug update', message);
     const url = `${GlobalConstants.apiURL}/message/${message.id}`; // PUT api/message/42
     return this.http.post<Message>(url, message, this.httpOptions)
     .pipe(
@@ -175,7 +171,7 @@ export class MessageService {
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+      console.error('⚚ message service - error occurred:', error.error.message);
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.

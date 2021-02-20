@@ -67,11 +67,11 @@ export class MessagesComponent implements OnInit {
 
   
   deleteInboxMessage($id): void {
-    console.log('debug delete', $id);
+    console.log('⚚ messages - delete id: ', $id);
     this.messageService.deleteInboxMessage($id).subscribe(
       (res: any) => {
         this.message = res;
-        console.log('delete inbox message ret: ', res);
+        console.log('⚚ messages - deleteInboxMessage -  res: ', res);
       },
       (err) => {
         this.error = err;

@@ -47,13 +47,13 @@ export class UserComponent implements OnInit {
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
-      console.log('update', f.value);
+      console.log('⚚ user - onSubmitUpdate f.value: ', f.value);
       this.userService.updateUser(id, f.value).subscribe();
       // window.location.reload();
   }
 
   onSubmitDelete(id): void {
-    console.log(id);
+    console.log('⚚ user - onSubmitDelete f.value: ', id);
     this.userService.deleteUser(id).subscribe();
     // window.location.reload();
   }

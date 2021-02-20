@@ -43,7 +43,7 @@ export class MessagecomposeComponent implements OnInit {
       this.messageService.sendMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
         this.res = res;
-        console.log(res);
+        console.log('⚚ messagecompose - sendMessage: res: ', res);
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -58,7 +58,7 @@ export class MessagecomposeComponent implements OnInit {
     this.message.name = '';
     this.message.text = '';
     this.message.file = '';
-    console.log('yeah');
+        console.log('⚚ message-detail - newMessage - TODO yeah! ', this.message);
 
   }
 
@@ -70,11 +70,10 @@ export class MessagecomposeComponent implements OnInit {
   encrypted() {
     if (this.isEncrypted) {
       this.isEncrypted = false;
-      // console.log(this.isEncrypted);
     } else {
       this.isEncrypted = true;
-      // console.log(this.isEncrypted);
     }
+    // console.log('⚚ messages - delete id: ', this.isEncrypted);
   }
 
   retry() {
@@ -83,7 +82,7 @@ export class MessagecomposeComponent implements OnInit {
 
   DocUpload(files): void{
     // this.messageService.postFile($files[0]);
-    console.log(files);
+    console.log('⚚ messagecompose - docUpload ', files);
     this.messageService.postFile(files[0]).subscribe(
       (res: any) => {
         this.message.id = res[2];
