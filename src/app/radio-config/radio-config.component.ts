@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RadioConfigComponent implements OnInit {
 
+  alterFreq: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeFreq() {
+    if (this.alterFreq == false) {
+      this.alterFreq = true; 
+    } else {
+      this.alterFreq = false;
+    }
   }
 
 }

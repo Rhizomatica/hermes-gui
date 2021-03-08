@@ -3,10 +3,22 @@
 
 <form>
 
-    <p> Radio frequency:</p>
-    <input>
-    <button>change radio frequency</button>
+    <p> Cuurent Radio frequency: 7000 kHz LSB</p> 
+    
+    <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
+
+    <div class="radio" *ngIf="alterFreq">
+        <br/>
+    <p><span>new frequency:</span><input></p>
+
+    <label>USB</label><input type="radio">
+    <label>LSB</label><input type="radio">
+    <button>change frequency</button>
     <button>add to pressets</button>
+
+
+    </div>
+    
     <button>reset to default</button>
 
     <p>
