@@ -35,6 +35,7 @@ import { ErrorInterceptor} from './_helpers/error.interceptor';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 import { UserExistDirective } from './user-exist.directive';
 import { EmailComponent } from './email/email.component';
+import { RadioConfigComponent } from './radio-config/radio-config.component';
 
 
 
@@ -73,7 +74,8 @@ import { EmailComponent } from './email/email.component';
     RetypeDirective,
     SentMessagesComponent,
     UserExistDirective,
-    EmailComponent
+    EmailComponent,
+    RadioConfigComponent
 
 
   ],
