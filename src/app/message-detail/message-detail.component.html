@@ -6,10 +6,12 @@
         <input type="password">
     </div>
 
+    <!--
     <div class="blobber">
         <div class="tx">decoding message...</div>
         <div class="square"></div>
     </div>
+-->
 
     <div class="messagebody" [hidden]="isEncrypted">
         <p>{{message.text}}</p>
@@ -20,7 +22,7 @@
     <small><p class="msginf">Origin: {{message.orig}}</p>
     <p class="msginf">Destination: {{message.dest}}</p>
     <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
-    <p class="msgdate">Sent at: 12/1/2021 <!--{{message.sent_at}}--></p>
+    <p class="msgdate">Sent at: 12/1/2021 {{message.sent_at}}</p>
     <p class="msgid">Id: {{message.id}}</p></small>
 
 <hr>

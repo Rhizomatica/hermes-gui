@@ -61,3 +61,17 @@ admin:
 - message administration 
     - bulk delete messages
 
+
+- data do sistema
+- aviso de pré-falha de disco
+- aviso de revisão
+- habilitar e desabiitar upa
+
+- consertar stations
+- botão de apagar só com admin
+- infos na mensagem
+
+- reload user list
+
+
+
