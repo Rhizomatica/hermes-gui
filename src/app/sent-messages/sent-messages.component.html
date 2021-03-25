@@ -32,14 +32,18 @@
 
     <h2 i18n="@@messages">Sent Messages </h2>
     <div class="messages">
+        
             <div class="multiplist">
                 <p *ngFor="let message of sentMessages.slice().reverse()">
                     <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
-                <span class="date">{{message.created_at}}</span>
+                <span class="inlineicon" class="date">{{message.created_at}}</span>
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}
-                    <span *ngIf="message.file"> 💮</span>
+                    <span *ngIf="message.file">                     
+                        <img class="inlineicon" title="file" src="assets/svg/paperclip-solid.svg">
+                    </span>
                 </a>
+
                 <!-- {{message.dest}}-->
                 </p>
             </div>
@@ -59,6 +63,9 @@
         </div>
     </div>
 
-    <button (click)="getSentMessages()">.</button>
-
+    <div (click)="getSentMessages()" class="btn" >
+        <a i18n="@@compose">
+            <img title="reload" src="assets/svg/redo.svg">
+        </a>
+    </div>
     <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->
