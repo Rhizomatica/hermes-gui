@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../message';
+import { User } from '../user';
+import { AuthenticationService } from '../_services/authentication.service';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 
@@ -12,6 +14,7 @@ import { AlertService } from '../alert.service';
 })
 export class MessageadmComponent implements OnInit {
 
+  currentUser: User;
   error = '';
   success = '';
   test = '';
@@ -19,8 +22,19 @@ export class MessageadmComponent implements OnInit {
   filteredMessages: Message[];
   message: Message;
   selectedMessages: boolean = false;
+  isadmin = false;
 
-  constructor(private messageService: MessageService, private alertService: AlertService) { }
+
+  constructor(private messageService: MessageService, private alertService: AlertService,
+      private authenticationService: AuthenticationService) { }
+
+    loggedin() {
+        if (this.isadmin) {
+          this.isadmin = false;
+        } else {
+          this.isadmin = true;
+        }
+      }
 
   confirmDelete() {
     if (this.selectedMessages) {

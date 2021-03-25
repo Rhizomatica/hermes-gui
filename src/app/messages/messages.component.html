@@ -19,7 +19,7 @@
         <div class="multiplist">
             <p *ngFor="let message of inboxMessages">
             <a>
-                <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isAdmin" (click)="deleteInboxMessage(message)">
+                <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="deleteInboxMessage(message)">
             </a>
             <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                 <span (click)="getInboxMessage(message)"> &nbsp;  {{message.name}}</span>

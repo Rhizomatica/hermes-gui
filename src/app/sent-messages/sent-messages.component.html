@@ -35,7 +35,7 @@
         
             <div class="multiplist">
                 <p *ngFor="let message of sentMessages.slice().reverse()">
-                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)"></a>
+                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(message)"></a>
                 <span class="inlineicon" class="date">{{message.created_at}}</span>
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}
@@ -56,8 +56,8 @@
                 </a>
             </div>
             <div class="btn sent" >
-                <a routerLink="/sent" i18n="@@sent">
-                    <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
+                <a routerLink="/" i18n="@@sent">
+                    <img title="help" src="assets/svg/comment.svg"> messages
                 </a>
             </div>
         </div>

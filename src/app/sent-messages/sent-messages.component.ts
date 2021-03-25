@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../message';
+import { User } from '../user';
+import { UserService } from '../_services/user.service';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
+import { AuthenticationService } from '../_services/authentication.service';
+
 @Component({
   selector: 'app-sent-messages',
   templateUrl: './sent-messages.component.html',
@@ -9,6 +13,7 @@ import { AlertService } from '../alert.service';
 })
 export class SentMessagesComponent implements OnInit {
 
+  currentUser: User;
   error = '';
   success = '';
   test = '';
@@ -17,9 +22,19 @@ export class SentMessagesComponent implements OnInit {
   sentMessages: Message[];
   message: Message;
   selectedMessage: Message;
-  isAdmin = true;
+  isadmin = false;
 
-  constructor(private messageService: MessageService, private alertService: AlertService) { }
+  constructor(
+    private messageService: MessageService, 
+    private alertService: AlertService,
+    private authenticationService: AuthenticationService,  
+    private userService: UserService
+    ) 
+    {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+  
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
@@ -72,6 +87,9 @@ export class SentMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMessages();
+    this.isadmin = this.currentUser.admin;
+    //console.log( this.isadmin + '22222');
+
   }
 
 }
