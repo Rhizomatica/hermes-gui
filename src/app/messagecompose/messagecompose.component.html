@@ -32,7 +32,7 @@
                     <ng-container *ngIf="stations">
 
                         <select name="dest" [(ngModel)]="message.dest" required>
-                            <option *ngFor="let station of stations" value="{{station.name}}">{{station.name}} | {{station.location}}</option>
+                            <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}} | {{station.name}} - {{station.location}}</option>
                         </select>
                         </ng-container>
                     </span>

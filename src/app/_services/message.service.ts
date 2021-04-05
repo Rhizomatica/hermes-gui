@@ -140,7 +140,7 @@ export class MessageService {
   sendMessage(message: Message, file, id): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message`; // POST /message
     message.draft = false;
-    message.sent_at = null;
+    message.sent_at = Date();
     message.orig = GlobalConstants.stationName;
     // messageImage: File;
 
