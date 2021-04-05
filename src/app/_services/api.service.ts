@@ -13,6 +13,10 @@ import { GlobalConstants } from '../global-constants';
 export class ApiService {
   login = false;
   serverReturn: any;
+  radioFrequency: any;
+  radioMode: any;
+  radioOffset: any;
+
   error = Error;
 
   constructor(
@@ -27,7 +31,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - status:\n ', res);
+          console.log('⚚ Hermes ⚚\n⚚ api service - system status:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -44,6 +48,66 @@ export class ApiService {
         catchError(this.handleError)
         );
     }
+
+    public setRadioMode(frequency: number, mode: string, offset: number) {
+      const url = `${GlobalConstants.apiURL}/radio/mode`; 
+        const data =  {frequency: frequency, mode: mode, offset: offset };
+      return this.http.post<any(url, data )
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+    public getRadioStatus(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/radio/status`; // get api:sys/status
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+    public getRadioFrequency(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/radio/freq`; // get api:sys/status
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+   
+
+    public getRadioMode(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/radio/freq`; // get api:sys/status
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+
+    public getRadioBfo(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/radio/bfo`; // get api:sys/status
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
 
     private handleError(error: HttpErrorResponse) {
       console.log("⚚ api service handleerror", error);
