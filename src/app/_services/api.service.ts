@@ -52,7 +52,7 @@ export class ApiService {
     public setRadioMode(frequency: number, mode: string, offset: number) {
       const url = `${GlobalConstants.apiURL}/radio/mode`; 
         const data =  {frequency: frequency, mode: mode, offset: offset };
-      return this.http.post<any(url, data )
+      return this.http.post<any>(url, data )
       .pipe(
         catchError(this.handleError)
       );
