@@ -25,6 +25,8 @@ export class MessagecomposeComponent implements OnInit {
   public isEncrypted = false;
   public message: Message;
   public passMatch: boolean = true;
+  public passw;
+  public repassw;
 
   /*public message:Message = {
     id: null,
