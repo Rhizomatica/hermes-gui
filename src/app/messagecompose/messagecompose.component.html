@@ -62,24 +62,30 @@
                 </span>
             </label>
             <div id="cryptopass" [hidden]=!isEncrypted>
-                <label for="passw" >
+                <label for="passwd" >
                     Type the password
-                    <input type="password" [(ngModel)]="passw" minlength="4"/>
+                    <input type="password"  [(ngModel)]="passwd"  minlength="4" (change)="checkpwd(passwd,repasswd)" />
                 </label>
-                <label for="repassw" >
+                <label for="repasswd" >
                     Retype the password
-                    <input type="password" [(ngModel)]="repassw"/>
+                    <input type="password" [(ngModel)]="repasswd" minlength="4" (change)="checkpwd(passwd,repasswd)"/>
                 </label>
             </div>
             <span></span>
-            <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid"  >send message<br/><img class="btnicon" title="send" src="assets/svg/paper-plane.svg"></button>
+            <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid && !passMatch" >send message<br/>
+                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+            </button>
         </div>
 
         <div class="overall alert" [hidden]="fileIsProcessing==false">
             <div class="cv">
                 Your message is been processed <br/><br/>
-                <div class="icon" ><a (click)="newMessage()" i18n="@@compose"><img title="compose" src="assets/svg/edit.svg"><button>compose</button></a></div>
-                <div class="icon" ><a routerLink='/messages' routerLinkActive="active" i18n="@@compose"><img title="help" src="assets/svg/comment.svg"><button>messages</button></a></div>
+                <div class="icon" ><a (click)="newMessage()" i18n="@@compose">
+                    <img title="compose" src="assets/svg/edit.svg"><button>compose</button></a>
+                </div>
+                <div class="icon" ><a routerLink='/messages' routerLinkActive="active" i18n="@@compose">
+                    <img title="help" src="assets/svg/comment.svg"><button>messages</button></a>
+                </div>
             </div>
         </div>
 

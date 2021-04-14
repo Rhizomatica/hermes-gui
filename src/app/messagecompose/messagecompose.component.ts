@@ -24,9 +24,9 @@ export class MessagecomposeComponent implements OnInit {
   public fileIsProcessed = false;
   public isEncrypted = false;
   public message: Message;
-  public passMatch: boolean = true;
-  public passw;
-  public repassw;
+  public passMatch: boolean = false;
+  public passwd;
+  public repasswd;
 
   /*public message:Message = {
     id: null,
@@ -45,6 +45,8 @@ export class MessagecomposeComponent implements OnInit {
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
   sendMessage(f: NgForm): void {
+      console.log(f.value);
+      return;
       this.fileIsProcessing = true;
       this.messageService.sendMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
@@ -82,6 +84,15 @@ export class MessagecomposeComponent implements OnInit {
     // console.log('⚚ messages - delete id: ', this.isEncrypted);
   }
 
+  checkpwd(passwd, repasswd ) {
+    if (passwd == repasswd) {
+      this.passMatch = true;
+    } else {
+      this.passMatch = false
+    }
+    console.log("passMatch: ", this.passMatch);
+  }
+
   retry() {
     this.error = false;
   }
@@ -98,15 +109,6 @@ export class MessagecomposeComponent implements OnInit {
         this.fileError = err;
       }
     );
-  }
-
-  checkPassw(passw, repassw) {
-    if (passw == repassw) {
-      this.passMatch = true;
-
-    } else {
-      this.passMatch = false
-    }
   }
 
   // TODO double check start params on inbox
