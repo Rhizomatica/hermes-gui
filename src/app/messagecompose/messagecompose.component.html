@@ -64,11 +64,11 @@
             <div id="cryptopass" [hidden]=!isEncrypted>
                 <label for="passw" >
                     Type the password
-                    <input type="password" minlength="4"/>
+                    <input type="password" [(ngModel)]="passw" minlength="4"/>
                 </label>
                 <label for="repassw" >
                     Retype the password
-                    <input type="password"/>
+                    <input type="password" [(ngModel)]="repassw"/>
                 </label>
             </div>
             <span></span>

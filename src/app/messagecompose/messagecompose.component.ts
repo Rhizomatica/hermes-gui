@@ -24,6 +24,7 @@ export class MessagecomposeComponent implements OnInit {
   public fileIsProcessed = false;
   public isEncrypted = false;
   public message: Message;
+  public passMatch: boolean = true;
 
   /*public message:Message = {
     id: null,
@@ -33,7 +34,10 @@ export class MessagecomposeComponent implements OnInit {
     text: '',
     file: '',
     draft: null,
-    sent_at: ''
+    sent_at: '',  
+    secure: boolean;
+
+
   }*/
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
@@ -92,6 +96,15 @@ export class MessagecomposeComponent implements OnInit {
         this.fileError = err;
       }
     );
+  }
+
+  checkPassw(passw, repassw) {
+    if (passw == repassw) {
+      this.passMatch = true;
+
+    } else {
+      this.passMatch = false
+    }
   }
 
   // TODO double check start params on inbox
