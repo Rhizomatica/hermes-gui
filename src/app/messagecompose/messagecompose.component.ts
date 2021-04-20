@@ -39,7 +39,6 @@ export class MessagecomposeComponent implements OnInit {
     sent_at: '',  
     secure: boolean;
 
-
   }*/
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
