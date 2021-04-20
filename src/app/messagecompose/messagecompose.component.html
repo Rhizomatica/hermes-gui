@@ -72,7 +72,10 @@
                 </label>
             </div>
             <span></span>
-            <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid && !passMatch" >send message<br/>
+            <button type="submit" *ngIf="!passMatch" (click)="sendMessage(f)" [disabled]="f.invalid" >send message<br/>
+                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+            </button>
+            <button type="submit" *ngIf="passMatch" (click)="sendMessage(f)" [disabled]="f.invalid" >send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
         </div>
