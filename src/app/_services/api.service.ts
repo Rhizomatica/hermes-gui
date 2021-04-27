@@ -13,6 +13,7 @@ import { GlobalConstants } from '../global-constants';
 export class ApiService {
   login = false;
   serverReturn: any;
+  radioReturn: any;
   radioFrequency: any;
   radioMode: any;
   radioOffset: any;
@@ -52,17 +53,17 @@ export class ApiService {
     public setRadioMode(frequency: number, mode: string, offset: number) {
       const url = `${GlobalConstants.apiURL}/radio/mode`; 
         const data =  {frequency: frequency, mode: mode, offset: offset };
-      return this.http.post<any>(url, data )
+      return this.http.post<any>(url, data)
       .pipe(
         catchError(this.handleError)
       );
   }
     public getRadioStatus(): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/radio/status`; // get api:sys/status
+      const url = `${GlobalConstants.apiURL}/radio`; // get api:sys/status
       const output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
-          this.serverReturn = res;
+          this.serverReturn= res;
           console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
           return this.serverReturn;
       }),

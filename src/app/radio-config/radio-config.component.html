@@ -1,32 +1,40 @@
 <div class="">
 <h2>Radio Configuration</h2>
-
-<form>
-
-    <p> Cuurent Radio frequency: 7000 kHz LSB</p> 
+<div> </div>
+<div *ngIf="radio">
+    <form>
+        <div *ngIf="radio.led">{{radio.led}} </div>
+        <div *ngIf="radio.protection">{{radio.protection}} </div>
+        <div>txrx: {{radio.txrx}} </div>
+        <hr>
+        <p> Current Radio frequency: {{radio.freq}} Hz {{radio.mode}}</p> 
+        <hr>
+        <p> bfo: {{radio.bfo}} / mastercal: {{radio.mastercal}}</p>
+        <p> ref: {{radio.ref}} / fwd: {{radio.fwd}}  </p>
     
-    <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
+        <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
 
-    <div class="radio" *ngIf="alterFreq">
-        <br/>
-    <p><span>new frequency:</span><input></p>
+        <div class="radio" *ngIf="alterFreq">
+            <br/>
+        <p><span>new frequency:</span><input></p>
 
-    <label><input class="inl" type="radio">USB</label>
-    <label><input class="inl" type="radio">LSB</label>
-    <button>change frequency</button>
-    <button>add to pressets</button>
+        <label><input class="inl" type="radio">USB</label>
+        <label><input class="inl" type="radio">LSB</label>
+        <button>change frequency</button>
+        <button>add to pressets</button>
 
 
-    </div>
+        </div>
     
-    <button>reset to default</button>
-<!--
-    <p>
-        Pressets:
-    </p>
--->
+        <button>reset to default</button>
+    <!--
+        <p>
+            Pressets:
+        </p>
+    -->
 
-</form>
+    </form>
+</div>
 
 
 
