@@ -6,11 +6,15 @@
         <div *ngIf="radio.led">{{radio.led}} </div>
         <div *ngIf="radio.protection">{{radio.protection}} </div>
         <div>txrx: {{radio.txrx}} </div>
+        <!--arrow coming or going trasmitting/recieving-->
         <hr>
         <p> Current Radio frequency: {{radio.freq}} Hz {{radio.mode}}</p> 
         <hr>
-        <p> bfo: {{radio.bfo}} / mastercal: {{radio.mastercal}}</p>
-        <p> ref: {{radio.ref}} / fwd: {{radio.fwd}}  </p>
+
+        <p>beat frequency oscillator: {{radio.bfo}} </p>
+        <p>mastercal: {{radio.mastercal}}</p>
+        <p>reference: {{radio.ref}} </p>
+        <p>forward: {{radio.fwd}} </p>
     
         <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
 
@@ -21,6 +25,7 @@
         <label><input class="inl" type="radio">USB</label>
         <label><input class="inl" type="radio">LSB</label>
         <button>change frequency</button>
+        <button>change radio settings</button>
         <button>add to pressets</button>
 
 

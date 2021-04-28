@@ -83,7 +83,11 @@ export class MessagecomposeComponent implements OnInit {
     // console.log('⚚ messages - delete id: ', this.isEncrypted);
   }
 
-  checkpwd(passwd, repasswd ) {
+  
+  checkpass() {
+    let passwd = document.getElementById("passw").value;
+    let repasswd = document.getElementById("repassw").value;
+    //console.log(passwd);
     if (passwd == repasswd) {
       this.passMatch = true;
     } else {
