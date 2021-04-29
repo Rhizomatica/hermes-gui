@@ -10,23 +10,38 @@
         <hr>
         <p> Current Radio frequency: {{radio.freq}} Hz {{radio.mode}}</p> 
         <hr>
-
         <p>beat frequency oscillator: {{radio.bfo}} </p>
         <p>mastercal: {{radio.mastercal}}</p>
         <p>reference: {{radio.ref}} </p>
         <p>forward: {{radio.fwd}} </p>
     
         <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
+        <button (click)="changeSet()" *ngIf="!alterSet">change radio settings</button>
 
         <div class="radio" *ngIf="alterFreq">
             <br/>
-        <p><span>new frequency:</span><input></p>
+            <p><span>new frequency:</span><input></p>
 
-        <label><input class="inl" type="radio">USB</label>
-        <label><input class="inl" type="radio">LSB</label>
-        <button>change frequency</button>
-        <button>change radio settings</button>
-        <button>add to pressets</button>
+            <label><input class="inl" type="radio">USB</label>
+            <label><input class="inl" type="radio">LSB</label>
+            <button>change frequency</button>
+
+            <button>add to pressets</button>
+
+
+        </div>
+
+        <div class="radio" *ngIf="alterSet">
+            <br/>
+
+            <p><span>beat frequency oscillator:</span> <input></p>
+            <p><span>mastercal:</span> <input></p>
+            <p><span>forward:</span> <input></p>
+            <label><input class="inl" type="radio">USB</label>
+            <label><input class="inl" type="radio">LSB</label>
+            <button>change frequency</button>
+
+            <button>add to pressets</button>
 
 
         </div>

@@ -85,8 +85,9 @@ export class MessagecomposeComponent implements OnInit {
 
   
   checkpass() {
-    let passwd = document.getElementById("passw").value;
-    let repasswd = document.getElementById("repassw").value;
+    let passwd = (<HTMLInputElement>document.getElementById("passw")).value;
+    let repasswd = (<HTMLInputElement>document.getElementById("repassw")).value;
+    
     //console.log(passwd);
     if (passwd == repasswd) {
       this.passMatch = true;

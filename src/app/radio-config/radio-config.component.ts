@@ -15,6 +15,7 @@ export class RadioConfigComponent implements OnInit {
   error: any;
   alterFreq: boolean = false;
   teste = "teste";
+  aleterSet: boolean = false;
 
   constructor    ( private apiService: ApiService) { }
   getRadioStatus(): void{
@@ -35,6 +36,14 @@ export class RadioConfigComponent implements OnInit {
       this.alterFreq = true; 
     } else {
       this.alterFreq = false;
+    }
+  }
+
+  changeSet() {
+    if (this.aleterSet == false) {
+      this.aleterSet = true; 
+    } else {
+      this.aleterSet = false;
     }
   }
 
