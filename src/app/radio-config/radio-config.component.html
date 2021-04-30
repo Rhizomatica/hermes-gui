@@ -1,62 +1,69 @@
 <div class="">
-<h2>Radio Configuration</h2>
-<div> </div>
-<div *ngIf="radio">
-    <form>
-        <div *ngIf="radio.led">{{radio.led}} </div>
-        <div *ngIf="radio.protection">{{radio.protection}} </div>
-        <div>txrx: {{radio.txrx}} </div>
-        <!--arrow coming or going trasmitting/recieving-->
-        <hr>
-        <p> Current Radio frequency: {{radio.freq}} Hz {{radio.mode}}</p> 
-        <hr>
-        <p>beat frequency oscillator: {{radio.bfo}} </p>
-        <p>mastercal: {{radio.mastercal}}</p>
-        <p>reference: {{radio.ref}} </p>
-        <p>forward: {{radio.fwd}} </p>
-    
-        <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
-        <button (click)="changeSet()" *ngIf="!alterSet">change radio settings</button>
+    <h2>Radio Configuration</h2>
 
-        <div class="radio" *ngIf="alterFreq">
-            <br/>
-            <p><span>new frequency:</span><input></p>
+    <div *ngIf="radio">
+    <!--<div>-->
+        <form>
+            <div *ngIf="radio.led">{{radio.led}} </div>
+            <div *ngIf="radio.protection">{{radio.protection}} </div>
+            <div>txrx: {{radio.txrx}} </div>
+            <!--arrow coming or going trasmitting/recieving-->
+            <hr>
+            <p> Current Radio frequency: {{radio.freq}} Hz {{radio.mode}}</p> 
+            <hr>
+            <p>beat frequency oscillator: {{radio.bfo}} </p>
+            <p>mastercal: {{radio.mastercal}}</p>
+            <p>reference: {{radio.ref}} </p>
+            <p>forward: {{radio.fwd}} </p>
+        
+            <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
+            <button (click)="changeSet()" *ngIf="!alterSet">change radio settings</button>
 
-            <label><input class="inl" type="radio">USB</label>
-            <label><input class="inl" type="radio">LSB</label>
-            <button>change frequency</button>
+            <div class="radio" *ngIf="alterFreq">
+                <br/>
+                <p><span>new frequency:</span><input></p>
 
-            <button>add to pressets</button>
+                <label><input class="inl" type="radio">USB</label>
+                <label><input class="inl" type="radio">LSB</label>
+                <button>change frequency</button>
 
-
-        </div>
-
-        <div class="radio" *ngIf="alterSet">
-            <br/>
-
-            <p><span>beat frequency oscillator:</span> <input></p>
-            <p><span>mastercal:</span> <input></p>
-            <p><span>forward:</span> <input></p>
-            <label><input class="inl" type="radio">USB</label>
-            <label><input class="inl" type="radio">LSB</label>
-            <button>change frequency</button>
-
-            <button>add to pressets</button>
+                <button>add to pressets</button>
 
 
-        </div>
-    
-        <button>reset to default</button>
-    <!--
-        <p>
-            Pressets:
-        </p>
-    -->
+            </div>
 
-    </form>
+            <div class="radio" *ngIf="alterSet">
+                <br/>
+
+                <p><span>beat frequency oscillator:</span> <input></p>
+                <p><span>mastercal:</span> <input></p>
+                <p><span>forward:</span> <input></p>
+                <label><input class="inl" type="radio">USB</label>
+                <label><input class="inl" type="radio">LSB</label>
+                <button (click)="submitSet()">change settings</button>
+
+                <div class="overall" [hidden]="!confirmSet">
+                    <div class="cv">
+                    Are you sure you wanna change radio settings? <br/>this may cause the system to stop
+                    <br/>
+                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid">update</button>
+                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid">cancel</button>
+                    </div>
+                </div>
+
+                <button>add to pressets</button>
+
+
+            </div>
+        
+            <button>reset to default</button>
+        
+
+        </form>
+    </div>
 </div>
 
 
 
 
-</div>
+

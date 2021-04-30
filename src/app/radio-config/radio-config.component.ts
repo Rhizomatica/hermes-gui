@@ -15,7 +15,8 @@ export class RadioConfigComponent implements OnInit {
   error: any;
   alterFreq: boolean = false;
   teste = "teste";
-  aleterSet: boolean = false;
+  alterSet: boolean = false;
+  confirmSet: boolean = false;
 
   constructor    ( private apiService: ApiService) { }
   getRadioStatus(): void{
@@ -39,13 +40,24 @@ export class RadioConfigComponent implements OnInit {
     }
   }
 
+
   changeSet() {
-    if (this.aleterSet == false) {
-      this.aleterSet = true; 
+    if (this.alterSet == false) {
+      this.alterSet = true; 
     } else {
-      this.aleterSet = false;
+      this.alterSet = false;
     }
   }
+
+  submitSet() {
+    if (this.confirmSet == false) {
+      this.confirmSet = true; 
+    } else {
+      this.confirmSet = false;
+    }
+  }
+
+  
 
   ngOnInit(): void {
      this.radio=this.getRadioStatus();
