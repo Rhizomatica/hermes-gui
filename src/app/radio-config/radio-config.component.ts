@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
+import { NgForm } from '@angular/forms';
 //import { Router } from '@angular/router';
 //import { GlobalConstants } from '../global-constants';
 
-// import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-radio-config',
@@ -17,8 +17,10 @@ export class RadioConfigComponent implements OnInit {
   teste = "teste";
   alterSet: boolean = false;
   confirmSet: boolean = false;
+  res: any;
 
   constructor    ( private apiService: ApiService) { }
+
   getRadioStatus(): void{
     this.apiService.getRadioStatus().subscribe(
       (res: any) => {
@@ -32,12 +34,26 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeFreq() {
+  changeFreq(f: NgForm):void {
     if (this.alterFreq == false) {
       this.alterFreq = true; 
     } else {
       this.alterFreq = false;
     }
+    console.log("test", f.value);
+    return;
+
+    this.apiService.setRadioFreq(f.value.freq).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ messagecompose - sendMessage: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+      }
+    )
+
   }
 
 
@@ -61,7 +77,6 @@ export class RadioConfigComponent implements OnInit {
 
   ngOnInit(): void {
      this.radio=this.getRadioStatus();
-     console.log(this.teste);
   }
 
 }

@@ -38,7 +38,7 @@ export class ApiService {
       catchError(this.handleError));
     }
 
-    getLogin(plogin, ppassword): Observable<{}> {
+    public getLogin(plogin, ppassword): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
       const data =  {login: plogin, password: ppassword};
       return this.http.post(url, data[0]).pipe(
@@ -50,6 +50,15 @@ export class ApiService {
         );
     }
 
+    public setRadioFreq(frequency: number) {
+      const url = `${GlobalConstants.apiURL}/radio/mode`; 
+        const data =  {frequency: frequency};
+      return this.http.post<any>(url, data)
+      .pipe(
+        catchError(this.handleError)
+      );
+    }
+
     public setRadioMode(frequency: number, mode: string, offset: number) {
       const url = `${GlobalConstants.apiURL}/radio/mode`; 
         const data =  {frequency: frequency, mode: mode, offset: offset };
@@ -57,7 +66,8 @@ export class ApiService {
       .pipe(
         catchError(this.handleError)
       );
-  }
+    }
+
     public getRadioStatus(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/radio`; // get api:sys/status
       const output = this.http.get(url);
@@ -81,8 +91,6 @@ export class ApiService {
       }),
       catchError(this.handleError));
     }
-
-   
 
     public getRadioMode(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/radio/freq`; // get api:sys/status

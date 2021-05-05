@@ -43,9 +43,7 @@ export class MessagecomposeComponent implements OnInit {
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
-  sendMessage(f: NgForm): void {
-      console.log(f.value);
-      return;
+  sendMessage(f: NgForm, pass): void {
       this.fileIsProcessing = true;
       this.messageService.sendMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
