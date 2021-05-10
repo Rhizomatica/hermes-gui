@@ -64,18 +64,18 @@
             <div id="cryptopass" [hidden]=!isEncrypted>
                 <label for="passwd" >
                     Type the password
-                    <input type="password"  name="pass" [(ngModel)]="passwd"  minlength="4" (change)="checkpwd(passwd,repasswd)" />
+                    <input type="password" name="pass" [(ngModel)]="passwd"  minlength="4" (change)="checkpwd(passwd,repasswd)" />
                 </label>
                 <label for="repasswd" >
                     Retype the password
-                    <input type="password" name="repass" [(ngModel)]="repasswd" minlength="4" (change)="checkpwd(passwd,repasswd)"/>
+                    <input type="password"  [(ngModel)]="repasswd" minlength="4" (change)="checkpwd(passwd,repasswd)"/>
                 </label>
             </div>
             <span></span>
             <button type="submit" *ngIf="!passMatch" (click)="sendMessage(f,pass)" [disabled]="f.invalid" >send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
-            <button type="submit" *ngIf="passMatch" (click)="sendMessage(f)" [disabled]="f.invalid" >send message<br/>
+            <button type="submit" *ngIf="passMatch" (click)="sendMessage(f,pass)" [disabled]="f.invalid" >send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
         </div>

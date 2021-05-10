@@ -43,8 +43,9 @@ export class MessagecomposeComponent implements OnInit {
 
   constructor(private messageService: MessageService, private stationService: StationService) {}
 
-  sendMessage(f: NgForm, pass): void {
+  sendMessage(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
+      console.log(passwd)
       this.messageService.sendMessage(f.value,  this.message.file, this.message.id).subscribe(
       (res: any) => {
         this.res = res;
@@ -82,11 +83,10 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   
-  checkpass() {
-    let passwd = (<HTMLInputElement>document.getElementById("passw")).value;
-    let repasswd = (<HTMLInputElement>document.getElementById("repassw")).value;
+  checkpwd(passwd,repasswd) {
+    //let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
+    //let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
     
-    //console.log(passwd);
     if (passwd == repasswd) {
       this.passMatch = true;
     } else {
