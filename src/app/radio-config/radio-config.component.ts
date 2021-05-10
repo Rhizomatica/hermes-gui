@@ -14,7 +14,6 @@ export class RadioConfigComponent implements OnInit {
   radio: any;
   error: any;
   alterFreq: boolean = false;
-  teste = "teste";
   alterSet: boolean = false;
   confirmSet: boolean = false;
   res: any;
@@ -34,19 +33,44 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeFreq(f: NgForm):void {
+  screenFreq():void {
     if (this.alterFreq == false) {
       this.alterFreq = true; 
     } else {
       this.alterFreq = false;
     }
-    console.log("test", f.value);
-    return;
+  }
 
+  changeRadioFreqMode(f:NgForm){
+    console.log(f.value);
     this.apiService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ messagecompose - sendMessage: res: ', res);
+        console.log('⚚ changeFreqMode- setRadioFreq: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+      }
+    )
+
+  }
+
+  screenSet() {
+    if (this.alterSet == false) {
+      this.alterSet = true; 
+    } else {
+      this.alterSet = false;
+    }
+  }
+
+
+changeRadioSettings(f:NgForm){
+    console.log(f.value);
+    this.apiService.setRadioFreq(f.value.freq).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ changeFreqMode- setRadioFreq: res: ', res);
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -57,14 +81,6 @@ export class RadioConfigComponent implements OnInit {
   }
 
 
-  changeSet() {
-    if (this.alterSet == false) {
-      this.alterSet = true; 
-    } else {
-      this.alterSet = false;
-    }
-  }
-
   submitSet() {
     if (this.confirmSet == false) {
       this.confirmSet = true; 
@@ -72,8 +88,6 @@ export class RadioConfigComponent implements OnInit {
       this.confirmSet = false;
     }
   }
-
-  
 
   ngOnInit(): void {
      this.radio=this.getRadioStatus();
