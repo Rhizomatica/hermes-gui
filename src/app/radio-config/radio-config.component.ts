@@ -42,19 +42,55 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeRadioFreqMode(f:NgForm){
-    console.log(f.value);
     this.apiService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeFreqMode- setRadioFreq: res: ', res);
+        console.log('⚚ changeRadio- setRadioFreq: res: ', res);
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = err;
+        this.error = "alo" + err;
+      }
+    )
+
+    this.apiService.setRadioMode(f.value.mode).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = '⚚ changeFreqMode-' +  err;
       }
     )
 
   }
+
+  changeRadioSettings(f:NgForm){
+    this.apiService.setRadioBfo(f.value.bfo).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ radio config changeRadioSettings - Bfo: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = "changebfo" + err;
+      }
+    )
+
+    this.apiService.setRadioMastercal(f.value.mastercal).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ radio config changeRadioSettings - mastercal: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = '⚚ changemastercal-' +  err;
+      }
+    )
+
+  }
+
 
   screenSet() {
     if (this.alterSet == false) {
@@ -64,21 +100,6 @@ export class RadioConfigComponent implements OnInit {
     }
   }
 
-
-changeRadioSettings(f:NgForm){
-    console.log(f.value);
-    this.apiService.setRadioFreq(f.value.freq).subscribe(
-      (res: any) => {
-        this.res = res;
-        console.log('⚚ changeFreqMode- setRadioFreq: res: ', res);
-        // this.fileIsProcessing = true;
-      },
-      (err) => {
-        this.error = err;
-      }
-    )
-
-  }
 
 
   submitSet() {

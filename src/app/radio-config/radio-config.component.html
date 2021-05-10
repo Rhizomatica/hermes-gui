@@ -22,7 +22,7 @@
             <p>forward: {{radio.fwd}} </p>
         
             <button (click)="screenFreq()" *ngIf="!alterFreq">change radio frequency</button>
-            <button (click)="screenSet()" *ngIf="!alterSet">change radio settings</button>
+            <button (click)="screenSet()" *ngIf="!alterSet">change radio settings...</button>
 
             <div class="radio" *ngIf="alterFreq">
                 <br/>
@@ -43,8 +43,6 @@
                 <form #fs="ngForm" class="formdata" novalidate  >
                     <p><span>BFO beat frequency oscillator:</span> <input name="bfo" [(ngModel)]="bfo"></p>
                     <p><span>mastercal:</span> <input name="mastercal" [(ngModel)]="mastercal"></p>
-                    <p><span>reference:</span> <input name="reference" [(ngModel)]="reference"></p>
-                    <p><span>forward:</span> <input name="forward" [(ngModel)]="forward"></p>
                     <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid">change settings</button>
                 </form>
 

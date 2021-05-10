@@ -50,22 +50,40 @@ export class ApiService {
         );
     }
 
-    public setRadioFreq(frequency: number) {
-      const url = `${GlobalConstants.apiURL}/radio/mode`; 
-        const data =  {frequency: frequency};
-      return this.http.post<any>(url, data)
-      .pipe(
-        catchError(this.handleError)
-      );
+    public setRadioFreq (freq: number): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/freq/${freq}`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
     }
 
-    public setRadioMode(frequency: number, mode: string, offset: number) {
-      const url = `${GlobalConstants.apiURL}/radio/mode`; 
-        const data =  {frequency: frequency, mode: mode, offset: offset };
-      return this.http.post<any>(url, data)
-      .pipe(
-        catchError(this.handleError)
-      );
+    public setRadioMode (mode: string): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/mode/${mode}`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
+    public setRadioBfo (bfo: number): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
+    public setRadioMastercal(mastercal: number): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
     }
 
     public getRadioStatus(): Observable<{}> {
@@ -119,7 +137,7 @@ export class ApiService {
 
 
     private handleError(error: HttpErrorResponse) {
-      console.log("⚚ api service handleerror", error);
+      console.log("⚚ api service - handleerror:", error);
       // return an observable with a user friendly message
       return throwError('⚚ api service Error! something went wrong: ');
     }
