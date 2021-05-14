@@ -70,6 +70,9 @@
                     Retype the password
                     <input id="repassw" type="password" minlength="4" (change)="checkpass()"/>
                 </label>
+                <div [hidden]=passMatch class="error">
+                    passwords don't match
+                </div>
             </div>
             <span></span>
             <button type="submit" *ngIf="!passMatch" (click)="sendMessage(f)" [disabled]="f.invalid" >send message<br/>
