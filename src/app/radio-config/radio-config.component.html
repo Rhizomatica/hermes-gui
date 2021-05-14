@@ -4,43 +4,47 @@
     <div *ngIf="radio">
     <!--<div>-->
         <form>
-            <div *ngIf="radio.led">{{radio.led}} </div>
-            <div *ngIf="radio.protection">{{radio.protection}} </div>
-            <div>txrx: {{radio.txrx}} </div>
+            <div *ngIf="radio.led">led: on </div>
+            <div *ngIf="!radio.led">led: off</div>
+            <div *ngIf="radio.protection">protection: on </div>
+            <div *ngIf="!radio.protection">protection: off </div>
+            <div *ngIf="radio.bypass">bypass: on </div>
+            <div *ngIf="!radio.bypass">bypass: off </div>
+            <div *ngIf="radio.tx">RXTX: TX </div>
+            <div *ngIf="radio.rx">RXTX: RX </div>
             <!--arrow coming or going trasmitting/recieving-->
             <hr>
             <p> Current Radio frequency: {{radio.freq}} Hz {{radio.mode}}</p> 
             <hr>
-            <p>beat frequency oscillator: {{radio.bfo}} </p>
+            <p>BFO: {{radio.bfo}} </p>
             <p>mastercal: {{radio.mastercal}}</p>
             <p>reference: {{radio.ref}} </p>
             <p>forward: {{radio.fwd}} </p>
         
-            <button (click)="changeFreq()" *ngIf="!alterFreq">change radio frequency</button>
-            <button (click)="changeSet()" *ngIf="!alterSet">change radio settings</button>
+            <button (click)="screenFreq()" *ngIf="!alterFreq">change radio frequency</button>
+            <button (click)="screenSet()" *ngIf="!alterSet">change radio settings...</button>
 
             <div class="radio" *ngIf="alterFreq">
                 <br/>
-                <p><span>new frequency:</span><input></p>
+                <form #f="ngForm" class="formdata"  novalidate  >
+                    <p><span>new frequency and mode:</span><input  name="freq" [(ngModel)]="freq">
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" checked >USB</label>
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB">LSB</label>
 
-                <label><input class="inl" type="radio">USB</label>
-                <label><input class="inl" type="radio">LSB</label>
-                <button>change frequency</button>
+                    <button type="submit" (click)="changeRadioFreqMode(f)" [disabled]="fs.invalid">change frequency</button>
 
-                <button>add to pressets</button>
-
-
+                    <button>add to presets</button>
+                </form>
             </div>
+
 
             <div class="radio" *ngIf="alterSet">
                 <br/>
-
-                <p><span>beat frequency oscillator:</span> <input></p>
-                <p><span>mastercal:</span> <input></p>
-                <p><span>forward:</span> <input></p>
-                <label><input class="inl" type="radio">USB</label>
-                <label><input class="inl" type="radio">LSB</label>
-                <button (click)="submitSet()">change settings</button>
+                <form #fs="ngForm" class="formdata" novalidate  >
+                    <p><span>BFO beat frequency oscillator:</span> <input name="bfo" [(ngModel)]="bfo"></p>
+                    <p><span>mastercal:</span> <input name="mastercal" [(ngModel)]="mastercal"></p>
+                    <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid">change settings</button>
+                </form>
 
                 <div class="overall" [hidden]="!confirmSet">
                     <div class="cv">
@@ -50,20 +54,13 @@
                     <button type="submit" (click)="submitSet()" [disabled]="f.invalid">cancel</button>
                     </div>
                 </div>
-
                 <button>add to pressets</button>
-
-
             </div>
-        
+
+            <hr>
             <button>reset to default</button>
         
 
         </form>
     </div>
 </div>
-
-
-
-
-
