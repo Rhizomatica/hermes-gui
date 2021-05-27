@@ -1,7 +1,7 @@
 
 
 <div class=" login formdata" >
-    <h2>E-mail</h2>
+    <h2 i18n="@@email">E-mail</h2>
     <form #f="ngForm" id="loginform" novalidate>
        <p i18n="@@instructions">to access email, put your username and password</p>
        <hr>
@@ -14,10 +14,10 @@
            <span></span><input name="password" type="password" ngModel required placeholder="Password" />
        </label>
  
-       <a i18n="@@login" href="http://hermes.radio/mail" >
-          <button >Log in</button></a>
-          <a i18n="@@forgot" routerLink="/recovery" >
-             <div class="forgot"><a>Forgot my password</a></div>
+       <a href="http://hermes.radio/mail" >
+          <button i18n="@@login" >Log in</button></a>
+          <a routerLink="/recovery" >
+             <div class="forgot"><a i18n="@@forgotmypassword">Forgot my password</a></div>
           </a>
        <br>
  

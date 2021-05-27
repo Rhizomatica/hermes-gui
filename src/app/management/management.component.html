@@ -29,11 +29,11 @@
     <div [hidden]="isadmin==false||isEditing==false">teste5</div>
 -->
 
-    <h3 [hidden]="isEditing">Users</h3>
-    <h3 [hidden]="!isEditing"><span [hidden]="emptyUser">Edit user</span><span [hidden]="!emptyUser">Create User</span></h3>
+    <h3 [hidden]="isEditing" i18n="@@Users">Users</h3>
+    <h3 [hidden]="!isEditing"><span [hidden]="emptyUser" i18n="@@edtusers">Edit user</span><span [hidden]="!emptyUser" i18n="@@createusers">Create User</span></h3>
     <ng-container >
 
-        <span>Search users: </span><input [hidden]="isEditing==true||isadmin==false" class="searchbox" [(ngModel)]="searchUser"/>
+        <span i18n="@@searchusers">Search users: </span><input [hidden]="isEditing==true||isadmin==false" class="searchbox" [(ngModel)]="searchUser"/>
 
         <ul id="userlist" class="multiplist" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
@@ -47,7 +47,7 @@
                 <br/>
             </label>
             <label for="login">
-                <span i18n>username</span>:
+                <span i18n="@@username">username</span>:
                 <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
             </label>
@@ -57,11 +57,11 @@
             </label>
 
             <label for="name">
-                <span i18n>name</span>:
+                <span i18n="@@name">name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" required placeholder="write the username" />
             </label>
             <label>
-                <span i18n>phone number</span>:
+                <span i18n="@@phonenumber">phone number</span>:
                 <br/><input name="phone" [(ngModel)]="selectedUser.phone"  placeholder="phone number"  />
             </label>
 
@@ -124,22 +124,22 @@
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 
                 <div class="overall" [hidden]="deleteUser">
-                    <div class="cv">
-                    Are you sure you wanna delete {{selectedUser.name}}?<br/>
-                    this action cannot be undone!
+                    <div class="cv" >
+                    <span i18n="@@areyousuredelete">Are you sure you wanna delete </span>{{selectedUser.name}}?<br/>
+                    <span i18n="@@thisactioncannot">this action cannot be undone!</span>
                     <br/>
-                    <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" >delete user</button>
-                    <button type="submit" (click)="deleteAlert()" [disabled]="f.invalid" >cancel</button>
+                    <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" i18n="@@deleteuser">delete user</button>
+                    <button type="submit" (click)="deleteAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
                 </div>
 
                 <div class="overall" [hidden]="updateUser">
-                    <div class="cv">
-                    Are you sure you wanna update {{selectedUser.name}}?<br/>
-                    this action cannot be undone!
+                    <div class="cv" >
+                    <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br/>
+                    <span i18n="@@thisactioncannot">this action cannot be undone!</span>
                     <br/>
-                    <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid">update</button>
-                    <button type="submit" (click)="updateAlert()" [disabled]="f.invalid">cancel</button>
+                    <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid" i18n="@@update">update</button>
+                    <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
                 </div>
         </form>

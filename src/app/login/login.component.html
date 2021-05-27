@@ -1,6 +1,6 @@
 
 <div class=" login formdata" >
-   <h2>Login</h2>
+   <h2 i18n="@@login">Login</h2>
    <form #f="ngForm" id="loginform" novalidate>
       <p i18n="@@instructions">to access admin features, put your username and password</p>
       <hr>
@@ -13,9 +13,10 @@
           <span></span><input name="password" type="password" ngModel required placeholder="Password" />
       </label>
 
-      <a i18n="@@login" >
-         <button (click)="submitLogin(f)" [disabled]="f.invalid" >Log in</button></a><a i18n="@@forgot" routerLink="/recovery" >
-            <div class="forgot"><a>Forgot my password</a></div>
+      <a >
+         <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in" >Log in</button></a>
+         <a  routerLink="/recovery" >
+            <div class="forgot"><a i18n="@@forgotmypassword">Forgot my password</a></div>
          </a>
       <br>
 
@@ -32,7 +33,7 @@
 
       <p i18n="@@noaccount">Doesn't have an account?</p>
 
-      <a i18n="@@create" routerLink="/users" ><button >create an account</button></a>
+      <a routerLink="/users" ><button i18n="@@create">create an account</button></a>
 
    </form>
 </div>

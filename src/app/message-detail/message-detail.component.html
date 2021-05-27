@@ -2,7 +2,7 @@
     <h3>{{message.name}}</h3>
 
     <div class="formdata" [hidden]="!isEncrypted">
-        <p>Encrypted message, type the password:</p>
+        <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
         <input type="password">
     </div>
 
@@ -15,14 +15,19 @@
 
     <div class="messagebody" [hidden]="isEncrypted">
         <p>{{message.text}}</p>
-        <p *ngIf="message.file && message.inbox" [hidden]="!message.file">File: <a target="_new" href="{{url}}/downloads/{{message.id}}.image" >  {{message.file}}</a></p>
-        <p *ngIf="message.file && !message.inbox" [hidden]="!message.file">File: <a target="_new" href="{{url}}/uploads/{{message.id}}" >  {{message.file}}</a></p>
+        <p *ngIf="message.file && message.inbox" [hidden]="!message.file">
+            <span i18n="@@File">File: </span>
+            <a target="_new" href="{{url}}/downloads/{{message.id}}.image" >  {{message.file}}</a></p>
+        <p *ngIf="message.file && !message.inbox" [hidden]="!message.file">
+            <span i18n="@@File">File: </span>
+            <a target="_new" href="{{url}}/uploads/{{message.id}}" >  {{message.file}}</a>
+        </p>
     </div>
 <hr>
-    <small><p class="msginf">Origin: {{message.orig}}</p>
-    <p class="msginf">Destination: {{message.dest}}</p>
+    <small><p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
+    <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
     <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
-    <p class="msgdate">Sent at: 12/1/2021 {{message.sent_at}}</p>
+    <p class="msgdate" i18n="@@sentat">Sent at: 12/1/2021 {{message.sent_at}}</p>
     <p class="msgid">Id: {{message.id}}</p></small>
 
 <hr>
