@@ -74,6 +74,7 @@ admin:
 - reload user list
 
 - configure who can send messages
+    - allowFile : all, user, admin
 
 
 

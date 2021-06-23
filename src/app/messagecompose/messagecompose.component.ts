@@ -4,6 +4,8 @@ import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { Station } from '../station';
 import { StationService } from '../_services/station.service';
+import { AuthenticationService } from '../_services/authentication.service';
+
 // import { GlobalConstants } from '../global-constants';
 
 @Component({
@@ -41,7 +43,9 @@ export class MessagecomposeComponent implements OnInit {
 
   }*/
 
-  constructor(private messageService: MessageService, private stationService: StationService) {}
+  constructor(
+    private messageService: MessageService, 
+    private stationService: StationService) {}
 
   sendMessage(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
