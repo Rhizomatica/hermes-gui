@@ -2,33 +2,819 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="aae4578bfef75e973852da5a9f7280e534358aeb" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/comment.svg&quot;&gt;"/>messages</source>
+      <trans-unit id="messages" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;&gt;"/>messages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cb21aa309f1dc8d3bb93b0be496cd0db8967629e" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;admin&quot; src=&quot;/assets/svg/tools.svg&quot;&gt;"/>admin</source>
+      <trans-unit id="1161e2d0c314daa57b74e0e34abe013767acbc7e" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;admin&quot; src=&quot;assets/svg/tools.svg&quot;&gt;"/>admin </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">110,111</context>
+        </context-group>
+        <note priority="1" from="description">@admin</note>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;mail&quot; src=&quot;assets/svg/envelope.svg&quot;&gt;"/>email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="69e49e43866177fd6c8649033c13a476bc7df775" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/envelope.svg&quot;&gt;"/>email</source>
+      <trans-unit id="languages" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;languages&quot; src=&quot;assets/svg/globe-americas.svg&quot;&gt;"/>language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f56172fc5082c552a19465473d4425bb95cd26b7" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/globe-americas.svg&quot;&gt;"/>language</source>
+      <trans-unit id="help" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot;&gt;"/>help</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e_mail" datatype="html">
+        <source>E-mail</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/email/email.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noaccount" datatype="html">
+        <source>Doesn&apos;t have an account?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/email/email.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createbtn" datatype="html">
+        <source>create an account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/email/email.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
+        <source>Username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4d6d45c858a51deebb1882b682aa09354f069f4a" datatype="html">
+        <source> Username does not exist! </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8d7cacdcd29d4e83364b872f0ea71884f7447115" datatype="html">
+        <source>Recovery Question:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b543c464189d1740071a141909a9318db2582993" datatype="html">
+        <source>Recovery Answer:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb404ce7946580ac95258bece0ad46caa0b99f37" datatype="html">
+        <source>Answer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="895d8557b2d848e05037628f57a8f406221bcc13" datatype="html">
+        <source> Answer is not correct </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c7014c6360e94b236286b869c3fe0ea9911c0387" datatype="html">
+        <source>New Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="96b633a0ed88be0cd49c41fc797bb4dde50f61c4" datatype="html">
+        <source>Repeat new password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eef9d4ca3a1aa2fc5ace62d43ebf17be5128c82b" datatype="html">
+        <source> Passwords doesn&apos;t match! </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">63,64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="submit" datatype="html">
+        <source>submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portugues" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/brasil.svg&quot;&gt;"/>Português</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/languages/languages.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="espanhol" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/espanha.svg&quot;&gt;"/>Español</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/languages/languages.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="english" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/reino-unido.svg&quot;&gt;"/>English</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/languages/languages.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="instructions" datatype="html">
+        <source>to access admin features, put your username and password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="username:" datatype="html">
+        <source>username:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password" datatype="html">
+        <source>password:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="log_in" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="forgotmypassword" datatype="html">
+        <source>Forgot my password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="create" datatype="html">
+        <source>create an account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mailadmin" datatype="html">
+        <source>Mail Administration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userlist" datatype="html">
+        <source>user list</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectuser" datatype="html">
+        <source>select user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="username1" datatype="html">
+        <source>username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password1" datatype="html">
+        <source>password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmpassw" datatype="html">
+        <source>confirm password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="admmanage" datatype="html">
+        <source>User Management</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createadm" datatype="html">
+        <source>create user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Users" datatype="html">
+        <source>Users</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="edtusers" datatype="html">
+        <source>Edit user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createusers" datatype="html">
+        <source>Create User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="searchusers" datatype="html">
+        <source>Search users: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45cc8ca94b5a50842a9a8ef804a5ab089a38ae5c" datatype="html">
+        <source>ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="username2" datatype="html">
+        <source>username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0b15bf6fa1e5bdabc9fde97a14bee63a5d5e62f6" datatype="html">
+        <source>email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
           <context context-type="linenumber">56</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="name" datatype="html">
+        <source>name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phonenumber" datatype="html">
+        <source>phone number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d65ba3531bf8c8373e78e275a120320920e3defe" datatype="html">
+        <source>site</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectstation" datatype="html">
+        <source>station </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">74,75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
+        <source>password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e3efc7a3547061e950279c969fbadf63c3593fb8" datatype="html">
+        <source>recovery phrase</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="78640e5a46b4366fb2a62caae8d8eb897904d2e3" datatype="html">
+        <source>recovery answer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ef7a291605e9e7e220cbcab94ab0d486ee74117f" datatype="html">
+        <source>is admin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="areyousuredelete" datatype="html">
+        <source>Are you sure you wanna delete </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="thisactioncannot" datatype="html">
+        <source>this action cannot be undone!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteuser" datatype="html">
+        <source>delete user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">131</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source>cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="areyousureupdate" datatype="html">
+        <source>Are you sure you wanna update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="update" datatype="html">
+        <source>update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="encryptedmessage" datatype="html">
+        <source>Encrypted message, type the password:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="File" datatype="html">
+        <source>File: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Origin" datatype="html">
+        <source>Origin: <x id="INTERPOLATION" equiv-text="{{message.orig}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="desnitation" datatype="html">
+        <source>Destination: <x id="INTERPOLATION" equiv-text="{{message.dest}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sentat" datatype="html">
+        <source>Sent at: 12/1/2021 <x id="INTERPOLATION" equiv-text="{{message.sent_at}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="715eb2444816b0eb18f025b5ee1e478d890feb90" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;&gt;"/>reply </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+        <note priority="1" from="description">reply</note>
+      </trans-unit>
+      <trans-unit id="b3614d05a42a4cfa260e6b85a1e6ec975e00babe" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;&gt;"/>sent messages </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+        <note priority="1" from="description">sent messages</note>
+      </trans-unit>
+      <trans-unit id="aconfigmessages" datatype="html">
+        <source>Messages Configuration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectwho" datatype="html">
+        <source>select who can attach files to messages:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="everyone" datatype="html">
+        <source>everyone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registeredusers" datatype="html">
+        <source>registered users</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminusers" datatype="html">
+        <source>admin users</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminmessages" datatype="html">
+        <source>Admin Messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="totalmessages" datatype="html">
+        <source>Total messages: TODO SIZE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="totalfiles" datatype="html">
+        <source>Total files: TODO SIZE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deletefiles" datatype="html">
+        <source>Delete files</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="messages:" datatype="html">
+        <source>Messages:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="822094d851ada9e0f1412cc321349e54fec6265d" datatype="html">
+        <source>delete selected</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">deleteselected</note>
+      </trans-unit>
+      <trans-unit id="areyousuredeleteall" datatype="html">
+        <source> Are you sure you wanna delete all selected messages? this cannot be undone!!!<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deletemessages" datatype="html">
+        <source>delete messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messageadm/messageadm.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sent1" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sendpublic" datatype="html">
+        <source> send your public message to another station</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="description" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="message" datatype="html">
+        <source>Message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectstation1" datatype="html">
+        <source>select station :<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="protectpssw" datatype="html">
+        <source>protect with password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a8f03e623334cc080b4ae5f61a71e80d5ffd69dc" datatype="html">
+        <source> Type the password <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;password&quot; name=&quot;pass&quot; [(ngModel)]=&quot;passwd&quot;  minlength=&quot;4&quot; (change)=&quot;checkpwd(passwd,repasswd)&quot; /&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">68,69</context>
+        </context-group>
+        <note priority="1" from="description">typethepassword</note>
+      </trans-unit>
+      <trans-unit id="retypethepassword" datatype="html">
+        <source> Retype the password <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;password&quot;  [(ngModel)]=&quot;repasswd&quot; minlength=&quot;4&quot; (change)=&quot;checkpwd(passwd,repasswd)&quot;/&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">72,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passdontmatch" datatype="html">
+        <source> passwords don&apos;t match </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">76,77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sendmessage" datatype="html">
+        <source>send message<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img class=&quot;btnicon&quot; title=&quot;send&quot; src=&quot;assets/svg/paper-plane.svg&quot;&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">80,81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">83,84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yourmessageprocessed" datatype="html">
+        <source>Your message is been processed <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="compose2" datatype="html">
+        <source>compose</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="messagesbtn" datatype="html">
+        <source>messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="messagesenttolist" datatype="html">
+        <source> Your message was sent to the transmission list </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">102,103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="errorsending" datatype="html">
+        <source>There was an error on sending your message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tryagain" datatype="html">
+        <source>try again</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="publicmessages" datatype="html">
+        <source>Public Messages </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="compose1" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/edit.svg&quot;&gt;"/>compose </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sent" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;&gt;"/>sent messages </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="networkadmin" datatype="html">
+        <source>network information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ip" datatype="html">
+        <source>IP / Netmask adress</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ssid" datatype="html">
+        <source>SSID NEtwork name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wifi" datatype="html">
+        <source>Wifi Channel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hostname" datatype="html">
+        <source>Hostname</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="alias" datatype="html">
+        <source>Alias</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sent2" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/comment.svg&quot;&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="transmissionlist" datatype="html">
+        <source>Transmission list</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sentmessages" datatype="html">
+        <source>Sent Messages </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="compose3" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/edit.svg&quot;&gt;"/>compose </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="messages2" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/comment.svg&quot;&gt; "/> messages </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">60,61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="abb0ab6dd9866d83f026f05ebdda54b53db244a9" datatype="html">
+        <source>Stations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/stations/stations.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Stations</note>
       </trans-unit>
       <trans-unit id="6fc2c1a8969bb0645d798d2066d264882d206fcc" datatype="html">
         <source>name</source>
@@ -37,277 +823,134 @@
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="sourcefile">src/app/stations/stations.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9f8b51bfe84d5554007f0986803f192342167ef6" datatype="html">
-        <source>messages</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2bcb0c2bcf1554dcb7cf1ed199b2526489b0ebcf" datatype="html">
-        <source>compose</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b5900d28b1275d63e75ffc05fb3839264c9486a1" datatype="html">
-        <source>origin: </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="03dadd26b9040e713058a5a65d0e4e45d2a51741" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/edit.svg&quot;&gt;
-            "/> compose </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">7,9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5325a902a67ef92006b6d48337b18ddde9d3a424" datatype="html">
-        <source>email administration</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="adbce8243d8e109be06d383a3bb11863b417f451" datatype="html">
-        <source>network administration</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="141bc5ce46f88bc1092163afbe65a0f01bb7d62e" datatype="html">
-        <source>system upgrade</source>
+      <trans-unit id="adminmanage" datatype="html">
+        <source>user management</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="375a4aba749e3d4c0309d60d14ebb8d8a296d203" datatype="html">
-        <source>detailed log</source>
+      <trans-unit id="messageadm" datatype="html">
+        <source>messages administration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="986a103ecd564d3d793f8285237b842d0a631d6f" datatype="html">
-        <source>admin management</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="009577731c3454df4526520b3d8a8c16a2bee60b" datatype="html">
+      <trans-unit id="stations" datatype="html">
         <source>stations</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0e3a4abb08e149f20d241b7d4e8ff26b3c680ad9" datatype="html">
-        <source>user list</source>
+      <trans-unit id="detailedlog" datatype="html">
+        <source>detailed log</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d15017188c8ab0dc9706ee5a0ea475ec9f44d088" datatype="html">
-        <source>select user</source>
+      <trans-unit id="systemupgrade" datatype="html">
+        <source>system upgrade</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">11</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
-        <source>password</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="966ca7c5a5c2a131698322a3eaa54d88336950b2" datatype="html">
-        <source>confirm password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mailadmin/mailadmin.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7ea06e2f27455be7d6a79671ef022925d1c97a75" datatype="html">
-        <source>IP / Netmask adress</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="eb45e2dca3ac2ae8b905b3485d97d40a901fff58" datatype="html">
-        <source>SSID NEtwork name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="de4b0eb13b1203a5008434089bc9c57584b29541" datatype="html">
-        <source>Wifi Channel</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9a541ec1a4319fffc16ad3b3ab2c2b6d251a829d" datatype="html">
-        <source>Hostname</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fbaaeb297e70b9a800acf841b9d26c19d60651ef" datatype="html">
-        <source>Alias</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2ea9a4bd22a64d8743f0c60c55aaef392169cf0a" datatype="html">
-        <source>Select User</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="aa943ba2cb827963a4b1c42b49ee87b6570f0699" datatype="html">
-        <source>Create Admin User</source>
+      <trans-unit id="radioconfig" datatype="html">
+        <source>radio configuration</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/management/management.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bd35ae363d8a98f8cfd39270159070b2e40a69e8" datatype="html">
+      <trans-unit id="restorefac" datatype="html">
         <source>Restore Factory Configuration</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9bb8895fde116e51e96b28eca195e25daea00869" datatype="html">
-        <source>System Upgrade with file</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="123ce5fb0a4204376e12133a201a34321c0b83ff" datatype="html">
-        <source>send your public message to another station</source>
+      <trans-unit id="upgradewfile" datatype="html">
+        <source>System Upgrade with file</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f5fb76b5c7e146dc251edbfaa4847004a81af582" datatype="html">
-        <source>description</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c86d890eef81a89b1dba318735947a190f20a2d5" datatype="html">
-        <source>select station </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">11,12</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="31d1af308cb28e4552f5d2a143c78f38227a34ba" datatype="html">
-        <source>protect with password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="04444276c272885f5c77f8513414b3c2b095c49e" datatype="html">
-        <source>record</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9333e6ddb72bd95755ef622fbc1611c12e106cd1" datatype="html">
-        <source>select file</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2986fe1f84147c0ea9b92af728090f0e16167662" datatype="html">
-        <source>username:</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/login/login.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7ff2c7461da76a22bd0f81b3712092aef0edc494" datatype="html">
-        <source>password:</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="adminlogin" datatype="html">
-        <source><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Log in<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+      <trans-unit id="1a860d3c1804cc268ac8408abf8c8813cd8c2a46" datatype="html">
+        <source> Are you sure you wanna restore the factory system?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> this will delete all users, emails and messages !!! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/></source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/login/login.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
+          <context context-type="linenumber">15,19</context>
+        </context-group>
+        <note priority="1" from="description">areyousurerestore</note>
+      </trans-unit>
+      <trans-unit id="confirm" datatype="html">
+        <source>confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2e2e1ac6e94efc8857c002c8ea7aac9f643d75db" datatype="html">
-        <source>Forgot my password</source>
+      <trans-unit id="pleasetypeyour" datatype="html">
+        <source>Please type your password again to confirm factory restore:</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordu" datatype="html">
+        <source>password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="recoveryprase" datatype="html">
+        <source>recovery prase</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4b19641b4997919ff2e6f15dd9d35d3e8829aa32" datatype="html">
-        <source>create an account</source>
+      <trans-unit id="recoveryanswer" datatype="html">
+        <source>recovery answer</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/login/login.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="92d06129d89529c92af0b731a963f9bec8161742" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/brasil.svg&quot;&gt;"/>Português</source>
+      <trans-unit id="localsite" datatype="html">
+        <source>local site</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/languages/languages.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4be3177641479abb09563e36f4b532a3221a1808" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/espanha.svg&quot;&gt;"/>Español</source>
+      <trans-unit id="selectstationu" datatype="html">
+        <source>select station </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/languages/languages.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">25,26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3c00dcbd2ab28dab6ee34cae1a652d19dc9d569c" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;/assets/svg/reino-unido.svg&quot;&gt;"/>English</source>
+      <trans-unit id="b4fa582934423ff841473bc5297edb6bf681b1f0" datatype="html">
+        <source>Create User</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/languages/languages.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="sourcefile">src/app/user/user.component.html</context>
+          <context context-type="linenumber">43</context>
         </context-group>
+        <note priority="1" from="description">createuser</note>
       </trans-unit>
     </body>
   </file>

@@ -1,19 +1,19 @@
 <div class="">
     <div class="supicons">
         <div class="" >
-            <a routerLink="/compose" i18n="@@compose">
+            <a routerLink="/compose" >
                 <img title="help" src="assets/svg/edit.svg">
             </a>
         </div>
         <div class="" >
-            <a routerLink="/sent" i18n="@@sent">
+            <a routerLink="/sent" i18n="@@sent2">
                 <img title="help" src="assets/svg/comment.svg">
             </a>
         </div>
     </div>
 
 
-    <h2 i18n="@@messages">Transmission list</h2>
+    <h2 i18n="@@transmissionlist">Transmission list</h2>
 
     <div class="messages">
         <div class="multiplist">
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <h2 i18n="@@messages">Sent Messages </h2>
+    <h2 i18n="@@sentmessages">Sent Messages </h2>
     <div class="messages">
         
             <div class="multiplist">
@@ -51,12 +51,12 @@
 
         <div class="navicons">
             <div class="btn" >
-                <a routerLink="/compose" i18n="@@compose">
+                <a routerLink="/compose" i18n="@@compose3">
                     <img title="help" src="assets/svg/edit.svg">compose
                 </a>
             </div>
             <div class="btn sent" >
-                <a routerLink="/" i18n="@@sent">
+                <a routerLink="/" i18n="@@messages2">
                     <img title="help" src="assets/svg/comment.svg"> messages
                 </a>
             </div>
@@ -64,7 +64,7 @@
     </div>
 
     <div (click)="getSentMessages()" class="btn" >
-        <a i18n="@@compose">
+        <a >
             <img title="reload" src="assets/svg/redo.svg">
         </a>
     </div>

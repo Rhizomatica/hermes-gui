@@ -3,7 +3,7 @@
     <div class="supicons">
         
         <div class="" >
-            <a routerLink="/sent" i18n="@@sent">
+            <a routerLink="/sent" i18n="@@sent1">
                 <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">
             </a>
         </div>
@@ -28,8 +28,8 @@
 
             <label class="selstation">
                 <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-                    <span i18n="@@selectstation" i18n="@@selectstation">select station
-                    :<br>
+                    <span i18n="@@selectstation1">select station
+                    :<br></span>
                     <br>
                     <ng-container *ngIf="stations">
 
@@ -37,7 +37,7 @@
                             <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}} | {{station.name}} - {{station.location}}</option>
                         </select>
                         </ng-container>
-                    </span>
+                    
                 </span>
             </label>
             <hr>
@@ -90,10 +90,10 @@
                 <span i18n="@@yourmessageprocessed">Your message is been processed <br/><br/></span>
                 
                 <div class="icon" ><a (click)="newMessage()" >
-                    <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose">compose</button></a>
+                    <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
                 </div>
                 <div class="icon" ><a routerLink='/messages' routerLinkActive="active" >
-                    <img title="help" src="assets/svg/comment.svg"><button i18n="@@messages">messages</button></a>
+                    <img title="help" src="assets/svg/comment.svg"><button i18n="@@messagesbtn">messages</button></a>
                 </div>
             </div>
         </div>

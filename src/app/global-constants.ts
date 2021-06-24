@@ -5,7 +5,8 @@ export class GlobalConstants {
    //public static apiURL = 'https://pu4gnu.hermes.radio:4443/api';
    //public static apiURL = 'http://localhost:8000';
    // TODO this must be fix to localhost in stations!
-   public static apiURL = 'http://201.80.171.109:8000/api';
+   //public static apiURL = 'http://201.80.171.109:8000/api';
+   public static apiURL = 'http://10.8.0.2/api';
 
    // TODO get stationname
     public static stationName = 'local';

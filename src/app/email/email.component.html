@@ -1,9 +1,11 @@
 
 
 <div class=" login formdata" >
-    <h2 i18n="@@email">E-mail</h2>
+    <h2 i18n="@@e_mail">E-mail</h2>
+
     <form #f="ngForm" id="loginform" novalidate>
-       <p i18n="@@instructions">to access email, put your username and password</p>
+<!--
+      <p i18n="@@instructions">to access email, put your username and password</p>
        <hr>
        <label >
           <p i18n="@@username">username:</p>
@@ -21,7 +23,7 @@
           </a>
        <br>
  
-      <!-- <button (click)="submitLogout()"  >logout test</button>
+       <button (click)="submitLogout()"  >logout test</button>
  
  
        <a i18n="@@login" routerLink="/admin"  >
@@ -34,7 +36,7 @@
  
        <p i18n="@@noaccount">Doesn't have an account?</p>
  
-       <a i18n="@@create" routerLink="/users" ><button >create an account</button></a>
+       <a  routerLink="/users" ><button i18n="@@createbtn">create an account</button></a>
  
     </form>
  </div>
