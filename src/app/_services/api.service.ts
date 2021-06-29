@@ -38,6 +38,27 @@ export class ApiService {
       catchError(this.handleError));
     }
 
+    public getSysConfig(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/sys/config`; // get api:sys/status
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - system config:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+    public setSysConfig(allowfile: string): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/sys/config`; 
+      return this.http.post(url,allowfile).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
     public getLogin(plogin, ppassword): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
       const data =  {login: plogin, password: ppassword};

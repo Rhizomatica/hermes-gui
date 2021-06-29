@@ -4,6 +4,7 @@ import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { Station } from '../station';
 import { StationService } from '../_services/station.service';
+import { ApiService } from '../_services/api.service';
 import { AuthenticationService } from '../_services/authentication.service';
 
 // import { GlobalConstants } from '../global-constants';
@@ -29,6 +30,8 @@ export class MessagecomposeComponent implements OnInit {
   public passMatch: boolean = false;
   public passwd;
   public repasswd;
+  public serverConfig: any;
+
 
   /*public message:Message = {
     id: null,
@@ -45,7 +48,21 @@ export class MessagecomposeComponent implements OnInit {
 
   constructor(
     private messageService: MessageService, 
+    private apiService: ApiService,
     private stationService: StationService) {}
+
+
+  getSysConfig(): void{
+    this.apiService.getSysConfig().subscribe(
+      (res: any) => {
+        this.serverConfig= res;
+        return res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
 
   sendMessage(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
@@ -62,6 +79,7 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
+  //TODO check to remove
   newMessage() {
     // this.router.navigate(['/compose']);
     this.fileIsProcessing = false;
@@ -135,6 +153,8 @@ export class MessagecomposeComponent implements OnInit {
       created_at: '',
       updated_at: '',
     };
+
+    this.getSysConfig();
 
     this.isEncrypted = false;
     this.fileIsProcessing = false;
