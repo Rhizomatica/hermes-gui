@@ -56,9 +56,9 @@
     <div class="logged" *ngIf="currentUser; else loggedOut">
       <div class="navbar-nav">
         <span>{{currentUser.email}}</span>
-          <span *ngIf="currentUser.admin === true"> is administrator</span><br/>
+          <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/>
         <div class="servericon">
-          <span class="icon" *ngIf="!system">
+          <span class="icon" *ngIf="!system" i18n="@@serveroff0">
             server off
           </span>
         </div>
@@ -119,7 +119,7 @@
 
 <router-outlet *ngIf="system; else serverOff"></router-outlet>
 
-<ng-template #serverOff>
+<ng-template #serverOff i18n="hermesoffline">
   Hermes server is offline, please turn the station on.
 </ng-template>
 
@@ -129,7 +129,7 @@
 <div class="footer">
   <ng-container *ngIf="system">
   <span >
-    Station: {{system.name}}  <figure class="greencircle"></figure>
+    <span i18n="stationa">Station:</span> {{system.name}}  <figure class="greencircle"></figure>
     &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
     &#124; DB: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
     &#124; AR: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
@@ -142,7 +142,7 @@
   </span>
 </ng-container>
 
-  <span *ngIf="!system">
+  <span *ngIf="!system" i18n="@@stationoffline">
      Hermes station offline <figure class="redcircle"></figure>
   </span>
 
