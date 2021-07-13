@@ -47,11 +47,11 @@
                 </form>
 
                 <div class="overall" [hidden]="!confirmSet">
-                    <div class="cv" i18n="@@areyousurechangesett">
-                    Are you sure you wanna change radio settings? <br/>this may cause the system to stop
+                    <div class="cv" >
+                    <span i18n="@@areyousurechangesett">Are you sure you wanna change radio settings? <br/>this may cause the system to stop</span>
                     <br/>
-                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid">update</button>
-                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid">cancel</button>
+                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid" i18n="@@updater">update</button>
+                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid" i18n="@@cancelr">cancel</button>
                     </div>
                 </div>
                 <button i18n="@@addtopresets1">add to pressets</button>
