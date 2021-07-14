@@ -56,9 +56,15 @@ export class MessageadmComponent implements OnInit {
     );
   }
 
+  setUploadPermission(value: string) {
+    console.log(value);
+  }
+
   ngOnInit(): void {
     this.getMessages();
 
   }
+
+
 
 }

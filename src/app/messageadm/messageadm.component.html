@@ -4,10 +4,10 @@
 <p i18n=@@selectwho>select who can attach files to messages:</p>
 
 <form>
-<select name="allowfile">
-    <option i18n="@@everyone">everyone</option>
-    <option i18n="@@registeredusers">registered users</option>
-    <option i18n="@@adminusers">admin users</option>
+<select name="allowfile" (change)="setUploadPermission($event.target.value)">
+    <option value="all" i18n="@@everyone">everyone</option>
+    <option value="users" i18n="@@registeredusers">registered users</option>
+    <option value="admin" i18n="@@adminusers">admin users</option>
 </select>
 <br/>
 <button i18n="@@updatema">update</button>
