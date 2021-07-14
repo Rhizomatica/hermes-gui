@@ -1,7 +1,7 @@
 <div class="">
     <h2>Radio Configuration</h2>
 
-    <div *ngIf="radio">
+    <div >
     <!--<div>-->
         <form>
             <div *ngIf="radio.led" i18n="@@radioledon">led: on </div>
@@ -27,7 +27,7 @@
             <div class="radio" *ngIf="alterFreq">
                 <br/>
                 <form #f="ngForm" class="formdata"  novalidate  >
-                    <p><span i18n="@@newfrequencyandmode">new frequency and mode:</span><input  name="freq" [(ngModel)]="freq">
+                    <p><span i18n="@@newfrequencyandmode">new frequency and mode:</span><input  name="freq" [(ngModel)]="freq" value={{radio.freq}}>
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" checked >USB</label>
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB">LSB</label>
 
@@ -41,8 +41,8 @@
             <div class="radio" *ngIf="alterSet">
                 <br/>
                 <form #fs="ngForm" class="formdata" novalidate  >
-                    <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> <input name="bfo" [(ngModel)]="bfo"></p>
-                    <p><span i18n="@@mastercall">mastercal:</span> <input name="mastercal" [(ngModel)]="mastercal"></p>
+                    <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> <input name="bfo" value={{radio.bfo}} [(ngModel)]="bfo" ></p>
+                    <p><span i18n="@@mastercall">mastercal:</span> <input name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}></p>
                     <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid" i18n="@@changesettings">change settings</button>
                 </form>
 

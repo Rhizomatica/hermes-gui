@@ -32,6 +32,8 @@ export class MessagecomposeComponent implements OnInit {
   public repasswd;
   public serverConfig: any;
 
+  //allowfile : users, admin, all
+
 
   /*public message:Message = {
     id: null,

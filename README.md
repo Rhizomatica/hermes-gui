@@ -76,6 +76,13 @@ admin:
 - configure who can send messages
     - allowFile : all, user, admin
 
+- set radio conf  pegar valor atual  
+- shutdownw /reboot (quem?)
+- reset to default alert
+- range values for frequency, bfo and masteracal
+
+
+
 
 
 

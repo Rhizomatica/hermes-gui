@@ -17,6 +17,9 @@ export class RadioConfigComponent implements OnInit {
   alterSet: boolean = false;
   confirmSet: boolean = false;
   res: any;
+  bfo: any;
+  mastercal: any;
+  freq: any;
 
   constructor    ( private apiService: ApiService) { }
 
@@ -25,7 +28,11 @@ export class RadioConfigComponent implements OnInit {
       (res: any) => {
         this.radio= res;
         this.radio.extra=false;
+        this.bfo = this.radio.bfo;
+        this.mastercal = this.radio.mastercal;
+        this.freq = this.radio.freq;
         return res;
+        
       },
       (err) => {
         this.error = err;
