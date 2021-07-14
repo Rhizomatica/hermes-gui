@@ -31,6 +31,11 @@ export class MessagecomposeComponent implements OnInit {
   public passwd;
   public repasswd;
   public serverConfig: any;
+  public allowfile: any;
+  public allowUpload: boolean = false;
+  public currentUser: any;
+  public isLoggedIn: boolean;
+  public isAdmin: boolean = false;
 
   //allowfile : users, admin, all
 
@@ -51,19 +56,58 @@ export class MessagecomposeComponent implements OnInit {
   constructor(
     private messageService: MessageService, 
     private apiService: ApiService,
-    private stationService: StationService) {}
+    private stationService: StationService,
+    private authenticationService: AuthenticationService) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      if (this.currentUser) {
+        this.isAdmin =  this.currentUser.admin;
+      }
+      
+    }
 
 
   getSysConfig(): void{
     this.apiService.getSysConfig().subscribe(
       (res: any) => {
         this.serverConfig= res;
+        this.allowfile = res.allowfile;
+        console.log(this.currentUser);
+
+        switch(this.allowfile) {
+          case 'users':
+            if (this.currentUser) {
+              this.allowUpload = true;
+            } else {   
+            }
+            //console.log('haha');  
+            break;
+            case 'admin':
+            if (this.isAdmin) {
+              this.allowUpload = true;
+            }  
+            //console.log('huhu');
+            break; 
+            case 'all': 
+            this.allowUpload = true;
+            //console.log('yeyey');
+            break;
+            default: 
+            this.allowUpload = false;
+            //console.log('sorry');
+          }
+
+
         return res;
       },
       (err) => {
         this.error = err;
       }
     );
+  }
+
+  setFileUpload(): any {
+    
+    
   }
 
   sendMessage(f: NgForm, passwd): void {

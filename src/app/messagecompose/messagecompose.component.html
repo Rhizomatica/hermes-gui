@@ -40,9 +40,11 @@
                     
                 </span>
             </label>
-            <hr>
+           
 
-            <div class="uploader">
+
+            <div class="uploader" *ngIf="allowUpload">
+                <hr>
                 <ng-container >
                     <label class="file">
                         <input type="file" (change)="DocUpload($event.target.files)" accept="image/*" >
