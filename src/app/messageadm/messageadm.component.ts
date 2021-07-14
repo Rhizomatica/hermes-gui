@@ -4,6 +4,8 @@ import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
+import { ApiService } from '../_services/api.service';
+
 
 
 
@@ -23,10 +25,28 @@ export class MessageadmComponent implements OnInit {
   message: Message;
   selectedMessages: boolean = false;
   isadmin = false;
+  allowfile: any;
+  serverConfig: any;
 
 
   constructor(private messageService: MessageService, private alertService: AlertService,
-      private authenticationService: AuthenticationService) { }
+      private authenticationService: AuthenticationService,
+      private apiService: ApiService
+      ) { }
+
+      getSysConfig(): void{
+        this.apiService.getSysConfig().subscribe(
+          (res: any) => {
+            this.serverConfig= res;
+            this.allowfile = res.allowfile;
+            console.log(this.allowfile);
+            return res;
+          },
+          (err) => {
+            this.error = err;
+          }
+        );
+      }  
 
     loggedin() {
         if (this.isadmin) {
@@ -58,6 +78,7 @@ export class MessageadmComponent implements OnInit {
 
   setUploadPermission(value: string) {
     console.log(value);
+    console.log(this.allowfile);
   }
 
   ngOnInit(): void {
