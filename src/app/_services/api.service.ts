@@ -51,13 +51,27 @@ export class ApiService {
     }
 
     public setSysConfig(allowfile: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/sys/config`; 
-      return this.http.post(url,allowfile).pipe(
-        map((res: any) => {
-          return res;
-        }),
-        catchError(this.handleError));
-    }
+      const url = `${GlobalConstants.apiURL}/sys/config`; 
+
+      const formData: FormData = new FormData();
+
+      formData.append('allowfile', allowfile);
+
+      const params = new HttpParams();
+      const headers = new HttpHeaders();
+      headers.set('Content-Type', null);
+      headers.set('Accept', 'multipart/form-data');
+      // Authorization: 'my-auth-token'
+
+    return this.http.post(url, formData, {params, headers})
+    .pipe(
+      map((res: any) => {
+        console.log('⚚ sys server setting - allowfile: ',res.allowfile);
+        return res.allowfile;
+      }),
+      catchError(this.handleError)
+      );
+  }
 
     public getLogin(plogin, ppassword): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status

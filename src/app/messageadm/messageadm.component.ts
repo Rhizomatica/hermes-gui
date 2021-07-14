@@ -78,6 +78,15 @@ export class MessageadmComponent implements OnInit {
 
   setUploadPermission(value: string) {
     console.log(value);
+      this.apiService.setSysConfig(value).subscribe(
+      (res: any) => {
+        this.allowfile= res.allowfile;
+        console.log('⚚ messagecompose - sendMessage: res: ', res);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
     console.log(this.allowfile);
   }
 
