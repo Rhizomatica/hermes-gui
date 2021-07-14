@@ -3,11 +3,11 @@
 
 <p i18n=@@selectwho>select who can attach files to messages:</p>
 
-<form>
+<form [formGroup]="allowUp">
 <select name="allowfile" (change)="setUploadPermission($event.target.value)">
-    <option value="all" i18n="@@everyone">everyone</option>
-    <option value="users" i18n="@@registeredusers">registered users</option>
-    <option value="admin" i18n="@@adminusers">admin users</option>
+    <option ng-selected='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
+    <option ng-selected='allowfile=="users"' value="users" selected i18n="@@registeredusers">registered users</option>
+    <option ng-selected='allowfile=="admin"' value="admin" i18n="@@adminusers">admin users</option>
 </select>
 <br/>
 <!--<button i18n="@@updatema">update</button>-->
@@ -21,7 +21,7 @@
 <p i18n="@@totalfiles">Total files: TODO SIZE</p>
 <button i18n="@@deletefiles">Delete files</button>
 
-
+<!--
 <div class="messages ">
 
     <h3 i18n="@@messages:">Messages:</h3>
@@ -32,15 +32,15 @@
             <img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isAdmin" (click)="cancelTransmission(message)">
         
         </a>
-        <!--<a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
+        <a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>
         <input type="checkbox" class="ckbx">  
 
-        <span class="date">12/1/2021</span><!--{{message.id}}--> 
+        <span class="date">12/1/2021</span>
         <a routerLink="/message/{{message.id}}">
             {{message.name}}
         </a>
         
-        <!-- {{message.dest}}-->
+       
         </p>
     </div>
     <input type="checkbox" class="ckbx" i18n="@@selectall"> Select all
@@ -58,7 +58,9 @@
             <button (click)="confirmDelete()" i18n="@@cancel">cancel</button>
             <button (click)="confirmDelete()" i18n="@@deletemessages">delete messages</button>
         </div>
-        
+       
     </div>
+
    
 </div>  
+ -->

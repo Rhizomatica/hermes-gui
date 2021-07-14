@@ -53,6 +53,7 @@ export class SentMessagesComponent implements OnInit {
     console.log("⚚ sent-messages component cancelTransmission:", message.id);
     this.getMessages();
     this.getSentMessages();
+    window.location.reload();
   }
 
   getMessages(): void {

@@ -6,6 +6,8 @@ import { Station } from '../station';
 import { StationService } from '../_services/station.service';
 import { ApiService } from '../_services/api.service';
 import { AuthenticationService } from '../_services/authentication.service';
+import { User } from '../user';
+
 
 // import { GlobalConstants } from '../global-constants';
 
@@ -33,7 +35,7 @@ export class MessagecomposeComponent implements OnInit {
   public serverConfig: any;
   public allowfile: any;
   public allowUpload: boolean = false;
-  public currentUser: any;
+  public currentUser: User;
   public isLoggedIn: boolean;
   public isAdmin: boolean = false;
 
@@ -71,7 +73,7 @@ export class MessagecomposeComponent implements OnInit {
       (res: any) => {
         this.serverConfig= res;
         this.allowfile = res.allowfile;
-        console.log(this.currentUser);
+        console.log('messagecompose' , this.currentUser);
 
         switch(this.allowfile) {
           case 'users':

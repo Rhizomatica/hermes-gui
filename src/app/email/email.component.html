@@ -11,18 +11,12 @@
           <p i18n="@@username">username:</p>
           <input name="login"  ngModel required placeholder="Login" />
        </label>
-       <label >
-          <p i18n="@@password">password:</p>
-           <span></span><input name="password" type="password" ngModel required placeholder="Password" />
-       </label>
- 
+      
+ -->
        <a href="http://hermes.radio/mail" >
-          <button i18n="@@login" >Log in</button></a>
-          <a routerLink="/recovery" >
-             <div class="forgot"><a i18n="@@forgotmypassword">Forgot my password</a></div>
-          </a>
+          <button >Webmail</button></a>
        <br>
- 
+ <!--
        <button (click)="submitLogout()"  >logout test</button>
  
  
@@ -37,6 +31,11 @@
        <p i18n="@@noaccount">Doesn't have an account?</p>
  
        <a  routerLink="/users" ><button i18n="@@createbtn">create an account</button></a>
+       <br/>
+       <a  routerLink="/recovery" >
+         <div class="forgot"><a i18n="@@forgotmypassworde">Forgot my password</a></div>
+      </a>
+       
  
     </form>
  </div>

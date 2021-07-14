@@ -37,7 +37,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Messages:
 - record audio
-- delete messages
+ok - delete messages
 - ifinite scroll and results pagination
 - browse in messages
 
@@ -68,7 +68,7 @@ admin:
 - habilitar e desabiitar upa
 
 - consertar stations
-- botão de apagar só com admin
+ok - botão de apagar só com admin
 - infos na mensagem
 
 - reload user list
@@ -76,10 +76,12 @@ admin:
 - configure who can send messages
     - allowFile : all, user, admin
 
-- set radio conf  pegar valor atual  
+ok - set radio conf  pegar valor atual  
 - shutdownw /reboot (quem?)
 - reset to default alert
-- range values for frequency, bfo and masteracal
+ok - range values for frequency, bfo and masteracal
+
+- message too big
 
 
 

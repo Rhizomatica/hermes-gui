@@ -5,6 +5,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 import { ApiService } from '../_services/api.service';
+import { FormGroup } from '@angular/forms';
 
 
 
@@ -27,6 +28,8 @@ export class MessageadmComponent implements OnInit {
   isadmin = false;
   allowfile: any;
   serverConfig: any;
+  allowUp: FormGroup;
+
 
 
   constructor(private messageService: MessageService, private alertService: AlertService,
@@ -77,6 +80,7 @@ export class MessageadmComponent implements OnInit {
   }
 
   setUploadPermission(value: string) {
+    
     console.log(value);
       this.apiService.setSysConfig(value).subscribe(
       (res: any) => {
@@ -92,7 +96,7 @@ export class MessageadmComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMessages();
-
+    this.getSysConfig();
   }
 
 
