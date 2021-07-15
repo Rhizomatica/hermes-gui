@@ -58,8 +58,24 @@
             </div>
 
             <hr>
-            <button i18n="@@resettodefault">reset to default</button>
+            <button i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
         
+            <div class="overall alert" [hidden]="reseting==false">
+                <div class="cv" >
+                    <span i18n="@@confirmreset"> Are you sure you want to reset the radio to the default configuration?
+                        <br/>
+                        <br/>
+            
+                    </span>
+                    
+                    <span class="icon" ><a (click)="confirmReset()" >
+                        <button i18n="@@cancelr">cancel</button></a>
+                    </span>
+                    <span class="icon" ><a (click)="resetRadio()" >
+                        <button i18n="@@reset1">reset</button></a>
+                    </span>
+                </div>
+            </div>
 
         </form>
     </div>

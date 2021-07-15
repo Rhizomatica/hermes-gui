@@ -52,8 +52,8 @@ export class SentMessagesComponent implements OnInit {
     );
     console.log("⚚ sent-messages component cancelTransmission:", message.id);
     this.getMessages();
-    this.getSentMessages();
-    window.location.reload();
+    //setTimeout(function(){ window.location.reload(); }, 500);
+    
   }
 
   getMessages(): void {
@@ -61,7 +61,7 @@ export class SentMessagesComponent implements OnInit {
       (res: any) => {
         this.draftMessages = res.filter(a => a.draft == true && a.inbox == false);
         this.sentMessages = res.filter(a => a.draft == false  && a.inbox == false);
-        // console.log("⚚ sent-messages messages:", this.filteredMessages);
+         //console.log("⚚ sent-messages messages:", this.filteredMessages);
       },
       (err) => {
         this.error = err;
@@ -69,27 +69,11 @@ export class SentMessagesComponent implements OnInit {
     );
   }
 
-  selectAll(): void {
-
-  }
-
-
-  getSentMessages(): void {
-    this.messageService.getMessages().subscribe(
-      (res: any) => {
-        this.messages = res;
-        this.sentMessages = res.filter(a => a.inbox == true);
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
-  }
+  
 
   ngOnInit(): void {
     this.getMessages();
     this.isadmin = this.currentUser.admin;
-    //console.log( this.isadmin + '22222');
 
   }
 

@@ -20,6 +20,7 @@ export class RadioConfigComponent implements OnInit {
   bfo: any;
   mastercal: any;
   freq: any;
+  reseting: boolean = false;
 
   constructor    ( private apiService: ApiService) { }
 
@@ -38,6 +39,20 @@ export class RadioConfigComponent implements OnInit {
         this.error = err;
       }
     );
+  }
+
+  confirmReset() {
+    if (this.reseting) {
+      this.reseting = false;
+    } else {
+      this.reseting = true;
+    }
+    //console.log('⚚ radio-config - confirmReset: ', this.reseting);
+
+  }
+
+  resetRadio() {
+    console.log('⚚ radio-config - reset to defaults ');
   }
 
   screenFreq():void {

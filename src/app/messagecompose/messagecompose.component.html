@@ -82,10 +82,13 @@
                 </div>
             </div>
             <span></span>
-            <button type="submit" *ngIf="!passMatch" (click)="sendMessage(f,pass)" disabled i18n="@@sendmessage">send message<br/>
+            <button type="submit" *ngIf="!passMatch && isEncrypted" (click)="sendMessage(f,pass)" disabled i18n="@@sendmessage">send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
             <button type="submit" *ngIf="passMatch" (click)="sendMessage(f,pass)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
+                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+            </button>
+            <button type="submit" *ngIf="!isEncrypted" (click)="sendMessage(f,pass)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
         </div>
