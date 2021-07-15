@@ -67,17 +67,17 @@ admin:
 - aviso de revisão
 - habilitar e desabiitar upa
 
-- consertar stations
+ok - consertar stations
 ok - botão de apagar só com admin
 - infos na mensagem
 
 - reload user list
 
-- configure who can send messages
+ok - configure who can send messages
     - allowFile : all, user, admin
 
 ok - set radio conf  pegar valor atual  
-- shutdownw /reboot (quem?)
+ok - shutdownw /reboot
 - reset to default alert
 ok - range values for frequency, bfo and masteracal
 

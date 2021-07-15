@@ -11,11 +11,13 @@
 <a routerLink="/upgrade" i18n="@@systemupgrade">system upgrade</a>
 <a routerLink="/radioconfig" i18n="@@radioconfig">radio configuration</a>
 
+<br/>
+
 <button (click)="confirmShutDown()" ><span i18n="@@shutdown">shut down</span><br/>
-    <img class="btnicon" title="send" src="assets/svg/times-circle-solid.svg">
+    <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
 </button>
 <button (click)="confirmRestart()" ><span i18n="@@reboot">reboot</span><br/>
-    <img class="btnicon" title="send" src="assets/svg/redo.svg">
+    <img class="btnicon" title="send" src="assets/svg/undo-alt-solid.svg">
 </button>
 
 <div class="overall alert" [hidden]="shuttingDown==false">
