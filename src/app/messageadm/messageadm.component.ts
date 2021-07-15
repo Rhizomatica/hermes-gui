@@ -7,9 +7,6 @@ import { AlertService } from '../alert.service';
 import { ApiService } from '../_services/api.service';
 import { FormGroup } from '@angular/forms';
 
-
-
-
 @Component({
   selector: 'app-messageadm',
   templateUrl: './messageadm.component.html',
@@ -29,8 +26,6 @@ export class MessageadmComponent implements OnInit {
   allowfile: any;
   serverConfig: any;
   allowUp: FormGroup;
-
-
 
   constructor(private messageService: MessageService, private alertService: AlertService,
       private authenticationService: AuthenticationService,

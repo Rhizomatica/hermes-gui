@@ -5,6 +5,7 @@ import { UserService } from '../_services/user.service';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 import { AuthenticationService } from '../_services/authentication.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sent-messages',
@@ -41,24 +42,25 @@ export class SentMessagesComponent implements OnInit {
     this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
-  cancelTransmission(message: Message): void {
+  cancelTransmission(message: Message): void{
+    this.sentMessages= this.sentMessages.filter(obj => obj !== message);
+    this.draftMessages= this.draftMessages.filter(obj => obj !== message);
     this.messageService.deleteMessage(message.id).subscribe(
       (res: any) => {
         this.message = res;
+
       },
       (err) => {
         this.error = err;
       }
     );
     console.log("⚚ sent-messages component cancelTransmission:", message.id);
-    this.getMessages();
-    //setTimeout(function(){ window.location.reload(); }, 500);
     
   }
 
-  getMessages(): void {
+  getMessages(): void{
     this.messageService.getMessages().subscribe(
-      (res: any) => {
+      res => {
         this.draftMessages = res.filter(a => a.draft == true && a.inbox == false);
         this.sentMessages = res.filter(a => a.draft == false  && a.inbox == false);
          //console.log("⚚ sent-messages messages:", this.filteredMessages);
@@ -74,7 +76,6 @@ export class SentMessagesComponent implements OnInit {
   ngOnInit(): void {
     this.getMessages();
     this.isadmin = this.currentUser.admin;
-
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
+import { ApiService } from '../_services/api.service';
+import { Api } from '../api';
 
 @Component({
   selector: 'app-sysadmin',
@@ -13,7 +15,8 @@ export class SysadminComponent implements OnInit {
   shuttingDown = false;
   restarting = false;
 
-  constructor( private authenticationService: AuthenticationService){
+  constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
+    
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -39,10 +42,12 @@ export class SysadminComponent implements OnInit {
 
   shutDown() {
     console.log('⚚ sysadmin - shutdown: ');
+    this.apiService.sysReboot();
   }
 
   reBoot() {
     console.log('⚚ sysadmin - reboot: ');
+    this.apiService.sysShutdown();
   }
 
   ngOnInit(): void {
