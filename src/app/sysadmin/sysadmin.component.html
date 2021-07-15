@@ -10,7 +10,53 @@
 <a routerLink="/log" i18n="@@detailedlog">detailed log</a>
 <a routerLink="/upgrade" i18n="@@systemupgrade">system upgrade</a>
 <a routerLink="/radioconfig" i18n="@@radioconfig">radio configuration</a>
+
+<button (click)="confirmShutDown()" ><span i18n="@@shutdown">shut down</span><br/>
+    <img class="btnicon" title="send" src="assets/svg/times-circle-solid.svg">
+</button>
+<button (click)="confirmRestart()" ><span i18n="@@reboot">reboot</span><br/>
+    <img class="btnicon" title="send" src="assets/svg/redo.svg">
+</button>
+
+<div class="overall alert" [hidden]="shuttingDown==false">
+    <div class="cv" >
+        <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
+            <br/>
+            This will stop messages transmission and reception.
+            <br/>
+
+        </span>
+        
+        <span class="icon" ><a (click)="confirmShutDown()" >
+            <img title="compose" src="assets/svg/edit.svg"><button i18n="@@cancels">cancel</button></a>
+        </span>
+        <span class="icon" ><a (click)="shutDown()" >
+            <img title="help" src="assets/svg/comment.svg"><button i18n="@@shutdown1">shut down</button></a>
+        </span>
+    </div>
 </div>
+
+<div class="overall alert" [hidden]="restarting==false">
+    <div class="cv" >
+        <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
+            <br/>
+            This will stop messages transmission and reception.
+            <br/>
+
+        </span>
+        
+        <span class="icon" ><a (click)="confirmRestart()" >
+            <img title="compose" src="assets/svg/edit.svg"><button i18n="@@cancels1">cancel</button></a>
+        </span>
+        <span class="icon" ><a (click)="reBoot()" >
+            <img title="help" src="assets/svg/comment.svg"><button i18n="@@reboot1">reboot</button></a>
+        </span>
+    </div>
+</div>
+
+</div>
+
+
 
 <ng-template #notADM>
     <app-login>
