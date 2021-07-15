@@ -68,11 +68,11 @@
             <div id="cryptopass" [hidden]=!isEncrypted>
                 <label for="passwd" i18n="typethepassword">
                     Type the password
-                    <input type="password" name="pass" [(ngModel)]="passwd"  minlength="4" (change)="checkpwd(passwd,repasswd)" />
+                    <input type="password" name="pass" [(ngModel)]="passwd"  minlength="4" (input)="checkpwd(passwd,repasswd)" />
                 </label>
                 <label for="repasswd" i18n="@@retypethepassword">
                     Retype the password
-                    <input type="password"  [(ngModel)]="repasswd" minlength="4" (change)="checkpwd(passwd,repasswd)"/>
+                    <input type="password"  [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"/>
                 </label>
                 <div [hidden]=passMatch class="error" i18n="@@passdontmatch">
                     passwords don't match
