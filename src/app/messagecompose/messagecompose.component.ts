@@ -38,6 +38,8 @@ export class MessagecomposeComponent implements OnInit {
   public currentUser: User;
   public isLoggedIn: boolean;
   public isAdmin: boolean = false;
+  public passunMatch: boolean = false;
+  public passMin: boolean = false;
 
   //allowfile : users, admin, all
 
@@ -156,13 +158,26 @@ export class MessagecomposeComponent implements OnInit {
   checkpwd(passwd,repasswd) {
     //let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
     //let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
-    
-    if (passwd == repasswd) {
-      this.passMatch = true;
+    if (passwd) {
+      if (passwd == repasswd) {
+        this.passMatch = true;
+        this.passMin = false;
+        this.passunMatch = false;
+      } else {
+        this.passMatch = false;
+        this.passMin = false;
+        this.passunMatch = true;
+      }
+      console.log("passMatch: ", this.passMatch);
+      //console.log(this.passwd, this.repasswd);
+
     } else {
-      this.passMatch = false
+      this.passMin = true;
+      this.passunMatch = false;
+
     }
-    console.log("passMatch: ", this.passMatch);
+
+    
   }
 
   retry() {

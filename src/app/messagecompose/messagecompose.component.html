@@ -74,8 +74,11 @@
                     Retype the password
                     <input type="password"  [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"/>
                 </label>
-                <div [hidden]=passMatch class="error" i18n="@@passdontmatch">
+                <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
                     passwords don't match
+                </div>
+                <div [hidden]=!passMin class="error" i18n="@@passempty">
+                    passwords can't be empty
                 </div>
             </div>
             <span></span>
