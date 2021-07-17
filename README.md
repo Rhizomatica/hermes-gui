@@ -82,6 +82,7 @@ ok - shutdownw /reboot
 ok - range values for frequency, bfo and masteracal
 
 - message too big
+- shut down button to the right
 
 
 
