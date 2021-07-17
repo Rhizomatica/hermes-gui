@@ -720,8 +720,8 @@
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">74</context></context-group></trans-unit>
       <trans-unit id="passdontmatch" datatype="html">
-        <source> passwords don't match </source>
-         <target>as senhas não conferem</target>
+        <source> passwords doesn't match </source>
+         <target state="final"> passwords doesn't match </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">78</context></context-group></trans-unit><trans-unit id="passempty" datatype="html">
         <source> passwords can't be empty </source><target state="final"> passwords can't be empty </target>
@@ -757,8 +757,8 @@
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">110</context></context-group></trans-unit>
       <trans-unit id="errorsending" datatype="html">
-        <source>There was an error on sending your message</source>
-         <target>Houve um erro no envio da mensagem</target>
+        <source>There was an error to send your message</source>
+         <target state="final">There was an error to send your message</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit>
       <trans-unit id="tryagain" datatype="html">
@@ -803,16 +803,16 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ip" datatype="html">
-        <source>IP / Netmask adress</source>
-         <target>IP/ Endereço de Netmask </target>
+        <source>IP / Netmask address</source>
+         <target state="final">IP / Netmask address</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ssid" datatype="html">
-        <source>SSID NEtwork name</source>
-         <target>Nome da rede SSID </target>
+        <source>SSID Network name</source>
+         <target state="final">SSID Network name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context>
           <context context-type="linenumber">9</context>
@@ -939,8 +939,8 @@
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit><trans-unit id="areyousurechangesett" datatype="html">
-        <source>Are you sure you wanna change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>this may cause the system to stop</source>
-        <target state="final">Tem certeza que quer atualizar as configurações do rádio? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>isso pode fazer o sistema parar</target>
+        <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>this may cause the system to stop</source>
+        <target state="final">Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>this may cause the system to stop</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">51,54</context>
@@ -1154,16 +1154,15 @@
           <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="1a860d3c1804cc268ac8408abf8c8813cd8c2a46" datatype="html">
-        <source> Are you sure you wanna restore the factory system?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> this will delete all users, emails and messages !!! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source>
-         <target>Tem certeza que deseja restaurar as configurações de fábrica?</target>
+      </trans-unit><trans-unit id="52343549f4807002d5b79388940089c67da5a890" datatype="html">
+        <source> Are you sure you want to restore the factory system?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> this will delete all users, emails and messages !!! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="final"> Are you sure you want to restore the factory system?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> this will delete all users, emails and messages !!! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">15,19</context>
         </context-group>
         <note priority="1" from="description">areyousurerestore</note>
       </trans-unit>
+      
       <trans-unit id="confirm" datatype="html">
         <source>confirm</source>
          <target>confirmar</target>
@@ -1189,8 +1188,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="recoveryprase" datatype="html">
-        <source>recovery prase</source>
-         <target>frase de recuperação</target>
+        <source>recovery phrase</source>
+         <target state="final">recovery phrase</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/user/user.component.html</context>
           <context context-type="linenumber">13</context>

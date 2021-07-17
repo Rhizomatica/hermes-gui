@@ -75,7 +75,7 @@
                     <input type="password"  [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"/>
                 </label>
                 <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
-                    passwords don't match
+                    passwords doesn't match
                 </div>
                 <div [hidden]=!passMin class="error" i18n="@@passempty">
                     passwords can't be empty
@@ -111,7 +111,7 @@
         </div>
         <div class="overall alert" [hidden]="!error">
             <div class="cv" >
-                <span i18n="@@errorsending">There was an error on sending your message</span>
+                <span i18n="@@errorsending">There was an error to send your message</span>
                 <button (click)="retry()" i18n="@@tryagain">try again</button>
 
             </div>
