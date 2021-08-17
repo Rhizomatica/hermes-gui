@@ -2,7 +2,7 @@
 
 <div class="menu ">
 
-<div *ngIf="currentUser.admin; else notADM">
+<div *ngIf="currentUser and currentUser.admin; else notADM">
 <a routerLink="/manage" i18n="@@adminmanage">user management</a>
 <a routerLink="/messageadm" i18n="@@messageadm">messages administration</a>
 <a routerLink="/netadmin" i18n="@@networkadmin">network information</a>
@@ -13,12 +13,15 @@
 
 <br/>
 
-<button (click)="confirmShutDown()" ><span i18n="@@shutdown">shut down</span><br/>
+<div class="shut">
+
+<button class="midbt" (click)="confirmShutDown()" ><span i18n="@@shutdown">shut down</span><br/>
     <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
 </button>
-<button (click)="confirmRestart()" ><span i18n="@@reboot">reboot</span><br/>
+<button class="midbt" (click)="confirmRestart()" ><span i18n="@@reboot">reboot</span><br/>
     <img class="btnicon" title="send" src="assets/svg/undo-alt-solid.svg">
 </button>
+</div>
 
 <div class="overall alert" [hidden]="shuttingDown==false">
     <div class="cv" >

@@ -22,24 +22,10 @@
             <span i18n="@@localsite">local site</span>: <input placeholder="website" />
         </label>
 
-        <span i18n="@@selectstationu">select station
-        </span>:
-       
-
-
         <label>
             <span i18n="isadmin">is admin</span>: <input type="checkbox"   />
         </label>
     
-
-    <ng-container *ngIf="stations">
-
-        <select ng-model="selected">
-            <option *ngFor="let station of stations">{{station.name}} | {{station.location}}</option>
-
-        </select>
-        </ng-container>
-
     <button i18n="createuser">Create User</button>
 
 </form>

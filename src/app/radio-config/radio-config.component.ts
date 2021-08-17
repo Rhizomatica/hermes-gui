@@ -21,6 +21,7 @@ export class RadioConfigComponent implements OnInit {
   mastercal: any;
   freq: any;
   reseting: boolean = false;
+  usb: boolean = true;
 
   constructor    ( private apiService: ApiService) { }
 
@@ -88,7 +89,93 @@ export class RadioConfigComponent implements OnInit {
 
   }
 
+  changeFrequency(f:NgForm) {
+    this.apiService.setRadioFreq(f.value.freq).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ changeRadio- setRadioFreq: res: ', res);
+        this.radio.freq = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = "alo" + err;
+      }
+    )
+
+    //filter if is number
+    //filter range 
+
+  }
+
+  changeMode(f:NgForm) {
+    this.apiService.setRadioMode(f.value.mode).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = '⚚ changeFreqMode-' +  err;
+      }
+    )
+
+  }
+
+  changeBfo(f:NgForm){
+    this.apiService.setRadioBfo(f.value.mode).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ changeBfo- setRadioBfo: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = '⚚ changeBfo-' +  err;
+      }
+    )
+  }
+
+  changeMasterCall(f:NgForm){
+    this.apiService.setRadioMastercal(f.value.mode).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ changeMastercall- setRadioMastercal: res: ', res);
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = '⚚ setRadioMastercal-' +  err;
+      }
+    )
+  }
+
+  confirmChange(){
+    if (this.confirmSet) {
+      this.confirmSet = false;
+    } else {
+      this.confirmSet = true;
+    }
+console.log(this.confirmSet)
+  }
+
+  screenSet() {
+    if (this.alterSet == false) {
+      this.alterSet = true; 
+    } else {
+      this.alterSet = false;
+    }
+    if (this.confirmSet) {
+      this.confirmSet = false;
+    } else {
+      this.confirmSet = true;
+    }
+    console.log(this.alterSet)
+
+  }
+
+
+
   changeRadioSettings(f:NgForm){
+    
+    
     this.apiService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
@@ -114,14 +201,11 @@ export class RadioConfigComponent implements OnInit {
   }
 
 
-  screenSet() {
-    if (this.alterSet == false) {
-      this.alterSet = true; 
-    } else {
-      this.alterSet = false;
-    }
+  changeFreq() {
+
   }
 
+  
 
 
   submitSet() {
@@ -134,6 +218,16 @@ export class RadioConfigComponent implements OnInit {
 
   ngOnInit(): void {
      this.radio=this.getRadioStatus();
+
+    if (this.radio.mode=="USB") {
+      this.usb = true;
+    } else {
+      this.usb = false;
+    }
+
+
+     this.usb= this.radio.mode;
+     console.log(this.usb)
   }
 
 }

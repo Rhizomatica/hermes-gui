@@ -43,7 +43,7 @@ ok - delete messages
 
 admin:
 
-- authentication
+ok - authentication
 
 - network administration
 
@@ -82,7 +82,40 @@ ok - shutdownw /reboot
 ok - range values for frequency, bfo and masteracal
 
 - message too big
-- shut down button to the right
+ok - shut down button to the right
+- remove stations from create users
+
+- range para frequencias
+
+- senha forte min 8 char;
+- review dos logs do console;
+- network info https://192.168.0.109/api/sys/status
+
+
+* comandos para atualizar frontend na estação
+10.8.0.3 kurupira2 k2.hermes.radio (VPN) 
+192.168.0.103? kurupira2 (rede local ariane)
+
+** atualizar web-gui angular por ssh (tem ansible)
+
+ ssh hermes@ip rede local ou vpn
+ cd ~/install/angular
+ npm run build
+ sudo cp dist/hermes/* /var/www/station-api
+
+
+* atualizar web-gui 
+ compilar local e copiar por sftp todo o conteúdo da pasta local dist/hermes/ para a pasta /var/www/html/ da estação
+
+ npm run build 
+ gera arquivos em dist/hermes
+ 
+ * identificar ip interno da rede
+ - ssh por vpn: 
+ ssh hermes@10.8.0.3
+ - listar as interfaces de rede (procurar pelo ip da enp3s0)
+ ip a
+
 
 
 

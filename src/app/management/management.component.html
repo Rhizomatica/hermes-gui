@@ -71,15 +71,14 @@
             </label>
 
             <div class="selector">
-            <span i18n="@@selectstation">station
-            </span>:
-            <ng-container *ngIf="stations">
+            <!--<ng-container *ngIf="stations">
 
                 <select ng-model="selectedUser.location">
                     <option *ngFor="let station of stations" >{{station.alias}} | {{station.location}}</option>
 
                 </select>
                 </ng-container>
+            -->
             </div>
 
             <!--
@@ -125,7 +124,7 @@
 
                 <div class="overall" [hidden]="deleteUser">
                     <div class="cv" >
-                    <span i18n="@@areyousuredelete">Are you sure you wanna delete </span>{{selectedUser.name}}?<br/>
+                    <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br/>
                     <span i18n="@@thisactioncannot">this action cannot be undone!</span>
                     <br/>
                     <button type="submit" (click)="onSubmitDelete(selectedUser.id)" [disabled]="f.invalid" i18n="@@deleteuser">delete user</button>

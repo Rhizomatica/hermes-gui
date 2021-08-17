@@ -103,6 +103,7 @@ export class ManagementComponent implements OnInit {
 
   onSubmitUpdate(id: number, f: NgForm): void {
     console.log('⚚ management - onSubmitUpdate, f.value: ', f.value);
+    f.value.location = "local";
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -124,9 +125,25 @@ export class ManagementComponent implements OnInit {
   }
 
   onSubmitCreate(f: NgForm): void {
+    console.log(f.value);
+    f.value.location = "local";
     this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
     console.log('⚚ management - onSubmitCreate: isEditing? ', this.isEditing);
+    this.users = [];
+    
+    this.userService.getUsers().subscribe(
+      (res: any) => {
+        this.users = res;
+        console.log('⚚ management - getUsers: res ', res);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+    
+
+
   }
 
   ngOnInit(): void {

@@ -59,6 +59,7 @@ export class UserComponent implements OnInit {
   }
 
   createUser(f: NgForm): void {
+    f.value.location = "local";
     this.userService.createUser(f.value).subscribe();
   }
 

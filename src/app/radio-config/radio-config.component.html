@@ -19,48 +19,75 @@
             <p><span>BFO:</span> {{radio.bfo}} </p>
             <p><span>mastercal: </span>{{radio.mastercal}}</p>
             <p><span>reference: </span>{{radio.ref}} </p>
-            <p> {{radio.fwd}} </p>
+            <p> <span>forward: </span>{{radio.fwd}} </p>
         
-            <button (click)="screenFreq()" *ngIf="!alterFreq" i18n="@@changeradiofreq">change radio frequency</button>
-            <button (click)="screenSet()" *ngIf="!alterSet" i18n="@@changeradiosettings">change radio settings...</button>
+            
+            <button (click)="confirmChange()" *ngIf="!confirmSet" i18n="@@changeradiosettings">change radio settings...</button>
 
-            <div class="radio" *ngIf="alterFreq">
+
+            <div class="overall" *ngIf="confirmSet">
+                <div class="cv" >
+                <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings? <br/>this may cause the system to stop</span>
                 <br/>
-                <form #f="ngForm" class="formdata"  novalidate  >
-                    <p><span i18n="@@newfrequencyandmode">new frequency and mode:</span><input  name="freq" [(ngModel)]="freq" value={{radio.freq}}>
-                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" checked >USB</label>
-                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB">LSB</label>
-
-                    <button type="submit" (click)="changeRadioFreqMode(f)" [disabled]="fs.invalid" i18n="changefreq">change frequency</button>
-
-                    <button i18n="addtopressets">add to presets</button>
-                </form>
+                <button (click)="screenSet()" [disabled]="f.invalid" i18n="@@changer">change</button>
+                <button (click)="confirmChange()" [disabled]="f.invalid" i18n="@@cancelr">cancel</button>
+                </div>
             </div>
 
 
             <div class="radio" *ngIf="alterSet">
                 <br/>
-                <form #fs="ngForm" class="formdata" novalidate  >
-                    <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> <input name="bfo" value={{radio.bfo}} [(ngModel)]="bfo" ></p>
-                    <p><span i18n="@@mastercall">mastercal:</span> <input name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}></p>
-                    <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid" i18n="@@changesettings">change settings</button>
+                <form #f="ngForm" class="formdata"   >
+                    <p><span i18n="@@newfrequencyandmode">Radio frequency:</span></p>
+                    <input class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}}>
+                    <button class="midbt" (click)="changeFrequency(f)" [disabled]="f.invalid" i18n="@@cancelr">change frequency</button>
+                </form>
+                <hr>
+
+                <form #fmode="ngForm" class="formdata" >
+
+                    <p><span i18n="@@newradiomode">Radio mode:</span></p>
+
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="usb=='true'" >USB</label>
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="usb=='false'">LSB</label>
+
+                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changefreq">change mode</button>
                 </form>
 
-                <div class="overall" [hidden]="!confirmSet">
-                    <div class="cv" >
-                    <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings? <br/>this may cause the system to stop</span>
-                    <br/>
-                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid" i18n="@@updater">update</button>
-                    <button type="submit" (click)="submitSet()" [disabled]="f.invalid" i18n="@@cancelr">cancel</button>
-                    </div>
-                </div>
+               
+                    <!--<button i18n="addtopressets">add to presets</button>-->
+                
+            </div>
+
+
+            <div class="radio" *ngIf="alterSet">
+                <br/>
+                <form #fbfo="ngForm" class="formdata" novalidate  >
+                    <hr>
+                    <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> </p>
+                    <input class="midbt" name="bfo" value={{radio.bfo}} [(ngModel)]="bfo" >
+                    <button class="midbt" type="submit" (click)="changeBfo(fbfo)" [disabled]="fbfo.invalid" i18n="changefreq">change bfo</button>
+                </form>
+
+                <form #fmaster="ngForm" class="formdata" novalidate>
+                    <hr>
+                    <p><span i18n="@@mastercall">mastercal:</span> </p>
+                    <input class="midbt" name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}>
+                    <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="changefreq">change mastercall</button>
+                </form>
+
+                  <!--  <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid" i18n="@@changesettings">change settings</button>
+                
+
+                
                 <button i18n="@@addtopresets1">add to pressets</button>
+                -->
             </div>
 
             <hr>
             <button i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
         
-            <div class="overall alert" [hidden]="reseting==false">
+            <div class="overall alert" *ngIf="!reseting==false">
                 <div class="cv" >
                     <span i18n="@@confirmreset"> Are you sure you want to reset the radio to the default configuration?
                         <br/>

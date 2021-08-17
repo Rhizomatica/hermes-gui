@@ -68,11 +68,11 @@ nav {
     display: flex;
     justify-content: flex-start;
     a {
-        text-decoration: none;
+    text-decoration: none;
     border-top: 3px solid #000;
     padding-bottom: 4px;
     margin-right: 15px;
-        position: relative;
+    position: relative;
     }
     a:hover {
         border-top: 3px solid @clr;
@@ -138,13 +138,11 @@ textarea {
 
 .footer {
     font-size: 10px;
-
 }
 
 
 .formfield {
     position: relative;
-
     max-width: @boxw;
     .bordered();
     .textarea{
@@ -250,6 +248,18 @@ textarea {
         width: 60px;
 
     }
+    input.midbt {
+        width: 100px; 
+        margin-right: 5px;
+    }
+
+    button.midbt {
+        text-align: right;
+        float: right;
+        position: relative;
+        top:-5px
+    }
+
     input.sbmbtn {
         margin-bottom: 5px;
         background-color: @clr;
@@ -268,6 +278,10 @@ textarea {
         display: block;
         margin-top: 10px;
     }
+}
+
+.shut {
+    text-align: right;
 }
 
 .alert {
