@@ -39,8 +39,9 @@
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
+    
     <ng-container *ngIf="selectedUser">
-        <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata"  novalidate>
+        <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" novalidate>
             <label>
                 <span i18n>ID</span>
                 {{selectedUser.id}}
@@ -50,6 +51,7 @@
                 <span i18n="@@username2">username</span>:
                 <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
+                <span *ngIf="f.invalid" class="alert">username must be unique</span>
             </label>
 
             <label for="email">
@@ -91,11 +93,13 @@
             <label>
                 <span i18n>password</span>:
                 <br/><input name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"   />
+            <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters, one uppercase letter and one number </span>
             </label>
 
             <label for="recovery">
                 <span i18n>recovery phrase</span>:
                 <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
+                <div *ngIf="f.invalid">Title is required</div>
             </label>
             <label>
                 <span i18n>recovery answer</span>:

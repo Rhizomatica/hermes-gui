@@ -4,6 +4,8 @@ import { User } from './user';
 import { UserService } from './_services/user.service';
 import { Api } from './api';
 
+
+
 export function compareUsername(userList: any): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     let alreadyExist = false;
@@ -15,6 +17,7 @@ export function compareUsername(userList: any): ValidatorFn {
     return alreadyExist ? { Username: { value: control.value } } : null;
   };
 }
+
 
 // stackoverflow.com/questions/51114853/angular-6-template-driven-form-check-if-email-already-exist
 
@@ -48,6 +51,7 @@ export class SameUsernameDirective implements Validator {
 
   validate(control: AbstractControl): { [key: string]: any } | null {
     return this.userList ? compareUsername(this.userList)(control) : null;
+
   }
 
   // TODO double check!
@@ -58,3 +62,4 @@ export class SameUsernameDirective implements Validator {
   }
 
 }
+

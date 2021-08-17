@@ -83,9 +83,12 @@ ok - range values for frequency, bfo and masteracal
 
 - message too big
 ok - shut down button to the right
-- remove stations from create users
+ok - remove stations from create users
 
-- range para frequencias
+ok - range para frequencias
+
+- don't update username
+- pegar email do aip service no create user
 
 - senha forte min 8 char;
 - review dos logs do console;
