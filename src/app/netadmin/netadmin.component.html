@@ -2,23 +2,27 @@
 
 <form class="">
 <p>
-   <span i18n="@@ip">IP / Netmask address</span> : <span>192.168.1.1/24</span>
+   <span i18n="@@ip">IP / Netmask address</span> : <span>{{system.ipaddress}}</span>
 </p>
 
 <p>
-   <span i18n="@@ssid">SSID Network name</span>: <span>floresta</span>
+   <span i18n="@@ssid">SSID Network name</span>: <span></span>
 </p>
 
 <p>
-   <span i18n="@@wifi">Wifi Channel</span>: <span  placeholder="wifi"> 7 </span>
+   <span i18n="@@wifi">Wifi Channel</span>: <span  placeholder="wifi"> </span>
 </p>
 
  <p>
-   <span i18n="@@hostname">Hostname</span>: PU4GNU
+   <span i18n="@@hostname">Hostname</span>: {{system.nodename}}
  </p>
 
  <p>
-   <span i18n="@@alias">Alias</span>: Juba
+   <span i18n="@@alias">Alias</span>: {{system.name}}
+ </p>
+
+ <p>
+   <span i18n="@@hostname">Piddb</span>: {{system.piddb}}
  </p>
 
  <!--<button>Update</button>-->
