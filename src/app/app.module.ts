@@ -36,6 +36,12 @@ import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 import { UserExistDirective } from './user-exist.directive';
 import { EmailComponent } from './email/email.component';
 import { RadioConfigComponent } from './radio-config/radio-config.component';
+import { FrequencyPipe } from './frequency.pipe';
+import {DecimalPipe} from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/fr';
+
+registerLocaleData(localePt);
 
 
 
@@ -75,7 +81,8 @@ import { RadioConfigComponent } from './radio-config/radio-config.component';
     SentMessagesComponent,
     UserExistDirective,
     EmailComponent,
-    RadioConfigComponent
+    RadioConfigComponent,
+    FrequencyPipe
 
 
   ],
@@ -87,6 +94,7 @@ import { RadioConfigComponent } from './radio-config/radio-config.component';
     HttpClientModule,
     Ng2SearchPipeModule,
     AngularFileUploaderModule
+
     /*TranslateModule.forRoot({
       defaultLanguage: 'pt',
         loader: {
@@ -106,9 +114,11 @@ import { RadioConfigComponent } from './radio-config/radio-config.component';
 
   ],
   providers: [
+    DecimalPipe,
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
   ],
   bootstrap: [AppComponent]
 })

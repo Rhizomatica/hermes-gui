@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { NgForm } from '@angular/forms';
+import {DecimalPipe} from '@angular/common';
+
+
 //import { Router } from '@angular/router';
 //import { GlobalConstants } from '../global-constants';
 
@@ -8,8 +11,11 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
-  styleUrls: ['./radio-config.component.less']
+  styleUrls: ['./radio-config.component.less'],
+  providers: [DecimalPipe],
+
 })
+
 export class RadioConfigComponent implements OnInit {
   radio: any;
   error: any;
@@ -22,8 +28,12 @@ export class RadioConfigComponent implements OnInit {
   freq: any;
   reseting: boolean = false;
   usb: boolean = true;
+  public realValue : number;
+  public min : number = 500000;
+  public max : number = 300000000;
 
-  constructor    ( private apiService: ApiService) { }
+
+  constructor    ( private apiService: ApiService, private decimalPipe: DecimalPipe) { }
 
   getRadioStatus(): void{
     this.apiService.getRadioStatus().subscribe(
@@ -40,6 +50,27 @@ export class RadioConfigComponent implements OnInit {
         this.error = err;
       }
     );
+  }
+
+  get value() : number {
+    this.realValue = this.radio.freq;
+    return this.realValue;
+}
+
+set value(newValue : number) {
+  this.realValue = newValue;
+  if(this.realValue < this.min){
+      this.realValue = undefined;
+      setTimeout(() => {this.realValue = this.min;});
+  }
+  else if(this.realValue > this.max){
+      this.realValue = undefined;
+      setTimeout(() => {this.realValue = this.max;});
+  }
+}
+
+  changeCallback(){
+    
   }
 
   confirmReset() {
@@ -153,7 +184,6 @@ export class RadioConfigComponent implements OnInit {
     } else {
       this.confirmSet = true;
     }
-console.log(this.confirmSet)
   }
 
   screenSet() {
@@ -167,7 +197,6 @@ console.log(this.confirmSet)
     } else {
       this.confirmSet = true;
     }
-    console.log(this.alterSet)
 
   }
 
