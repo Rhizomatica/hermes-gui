@@ -14,6 +14,8 @@ export function compareUsername(userList: any): ValidatorFn {
         alreadyExist = true;
       }
     }
+    console.log(alreadyExist);
+
     return alreadyExist ? { Username: { value: control.value } } : null;
   };
 }
@@ -49,7 +51,11 @@ export class SameUsernameDirective implements Validator {
     );
   }
 
+
+
+
   validate(control: AbstractControl): { [key: string]: any } | null {
+    console.log('ai');
     return this.userList ? compareUsername(this.userList)(control) : null;
 
   }

@@ -141,7 +141,8 @@ export class ManagementComponent implements OnInit {
         this.error = err;
       }
     );
-    
+    window.location.reload();
+
 
 
   }

@@ -51,7 +51,7 @@
                 <span i18n="@@username2">username</span>:
                 <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
-                <span *ngIf="f.invalid" class="alert">username must be unique</span>
+                <span *ngIf="alreadyExist" class="alert">username must be unique</span>
             </label>
 
             <label for="email">
