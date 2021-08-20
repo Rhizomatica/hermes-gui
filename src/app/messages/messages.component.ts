@@ -10,6 +10,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 
 export interface MessageInbox {
   id: number;
+  searchMessages: string;
   name: string;
   orig: string;
   dest: string;

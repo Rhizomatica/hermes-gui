@@ -28,6 +28,7 @@ export class ManagementComponent implements OnInit {
   updateUser = true;
   newUsername = false;
   emptyUser = false;
+  searchMessages: string;
 
   constructor(
       private userService: UserService,

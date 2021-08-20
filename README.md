@@ -39,13 +39,13 @@ Messages:
 - record audio
 ok - delete messages
 - ifinite scroll and results pagination
-- browse in messages
+ok - browse in messages
 
 admin:
 
 ok - authentication
 
-- network administration
+ok - network administration
 
 - detailed log (what is that?)
 
@@ -71,7 +71,7 @@ ok - consertar stations
 ok - botão de apagar só com admin
 - infos na mensagem
 
-- reload user list
+ok - reload user list
 
 ok - configure who can send messages
     - allowFile : all, user, admin
@@ -87,8 +87,8 @@ ok - remove stations from create users
 
 ok - range para frequencias
 
-- don't update username
-- pegar email do aip service no create user
+ok - don't update username
+ok - pegar email do aip service no create user
 
 - senha forte min 8 char;
 - review dos logs do console;

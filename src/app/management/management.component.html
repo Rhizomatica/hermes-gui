@@ -92,9 +92,9 @@
 
             <label>
                 <span i18n>password</span>:
-                <br/><input name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"   />
+                <br/><input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />
             <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters, one uppercase letter and one number </span>
-            </label>
+        </label>
 
             <label for="recovery">
                 <span i18n>recovery phrase</span>:

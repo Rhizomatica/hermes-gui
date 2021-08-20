@@ -16,8 +16,10 @@
     </div>
 
     <div class="messages">
+
+        <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox" [(ngModel)]="searchMessages"/>
         <div class="multiplist">
-            <p *ngFor="let message of inboxMessages">
+            <p *ngFor="let message of inboxMessages | filter:searchMessages">
             <a>
                 <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="deleteInboxMessage(message.id)">
             </a>
