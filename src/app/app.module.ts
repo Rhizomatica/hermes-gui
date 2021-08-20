@@ -39,7 +39,7 @@ import { RadioConfigComponent } from './radio-config/radio-config.component';
 import { FrequencyPipe } from './frequency.pipe';
 import {DecimalPipe} from '@angular/common';
 import { registerLocaleData } from '@angular/common';
-import localePt from '@angular/common/locales/fr';
+import localePt from '@angular/common/locales/pt';
 
 registerLocaleData(localePt);
 

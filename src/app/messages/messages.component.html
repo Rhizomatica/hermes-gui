@@ -17,7 +17,7 @@
 
     <div class="messages">
 
-        <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox" [(ngModel)]="searchMessages"/>
+        <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
         <div class="multiplist">
             <p *ngFor="let message of inboxMessages | filter:searchMessages">
             <a>
