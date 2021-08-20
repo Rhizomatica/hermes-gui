@@ -23,6 +23,7 @@
             <a>
                 <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="deleteInboxMessage(message.id)">
             </a>
+            <span class="inlineicon" class="date">{{message.sent_at | date:'h:mm'}}</span>
             <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                 <span (click)="getInboxMessage(message)"> &nbsp;  {{message.name}}</span>
                

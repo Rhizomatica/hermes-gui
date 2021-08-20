@@ -23,7 +23,7 @@
             <a >
                 <img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(message)"></a>
             <!--<a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
-            <span class="date">{{message.sent_at}}</span>
+            <span class="date">{{message.sent_at | date:'h:mm'}}</span>
             <a routerLink="/message/{{message.id}}">
                 {{message.name}}
                 <span *ngIf="message.file"> 💮</span>

@@ -74,9 +74,15 @@ export class MessagesComponent implements OnInit {
   }
 
 
+
+
+
+
   
   deleteInboxMessage($id): void {
     console.log('⚚ messages - delete id: ', $id);
+    this.inboxMessages= this.inboxMessages.filter(obj => obj !== this.message);
+
     this.messageService.deleteMessage($id).subscribe(
       (res: any) => {
         this.message = res;
