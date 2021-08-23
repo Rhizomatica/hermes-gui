@@ -55,8 +55,8 @@
 
     <div class="logged" *ngIf="currentUser; else loggedOut">
       <div class="navbar-nav">
-        <span>{{currentUser.email}}</span>
-          <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/>
+       <!-- <span>{{currentUser.email}}</span>
+          <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/> -->
         <div class="servericon">
           <span class="icon" *ngIf="!system" i18n="@@serveroff0">
             server off
@@ -130,16 +130,23 @@
   <ng-container *ngIf="system">
   <span >
     <span i18n="stationa">Station:</span> {{system.name}}  <figure class="greencircle"></figure>
+    <span> &#124; {{currentUser.email}}</span>
+    <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/>
+  
+    <span *ngIf="!system" i18n="@@serveroff0">
+      &#124;  server off
+    </span>
+    </span>
+    <!--
     &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
     &#124; DB: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
     &#124; AR: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
     &#124; IRM: <div [ngClass]="{'redcircle' : !system.pidirm , 'greencircle' : system.pidirm }"></div>
     &#124; PF: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
-
+-->
     
-    <br><br>
     <!--user: {{currentUser.email}} / {{currentUser.admin}}-->
-  </span>
+  
 </ng-container>
 
   <span *ngIf="!system" i18n="@@stationoffline">

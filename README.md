@@ -93,6 +93,7 @@ ok - pegar email do aip service no create user
 - senha forte min 8 char;
 - review dos logs do console;
 - network info https://192.168.0.109/api/sys/status
+- standalone download for deltachat
 
 
 * comandos para atualizar frontend na estação

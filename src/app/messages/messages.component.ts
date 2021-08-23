@@ -37,6 +37,7 @@ export class MessagesComponent implements OnInit {
   message: Message;
   selectedMessage: Message;
   isadmin = false;
+  searchMessages: string;
   
 
   constructor(private messageService: MessageService,  private alertService: AlertService, 
