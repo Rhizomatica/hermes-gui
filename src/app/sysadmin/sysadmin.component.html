@@ -32,7 +32,7 @@
 
         </span>
         
-        <span class="icon" ><a (click)="confirmShutDown()" >
+        <span class="icon" ><a (click)="cancelShutDown()" >
             <img title="compose" src="assets/svg/edit.svg"><button i18n="@@cancels">cancel</button></a>
         </span>
         <span class="icon" ><a (click)="shutDown()" >
@@ -50,7 +50,7 @@
 
         </span>
         
-        <span class="icon" ><a (click)="confirmRestart()" >
+        <span class="icon" ><a (click)="cancelRestart()" >
             <img title="compose" src="assets/svg/edit.svg"><button i18n="@@cancels1">cancel</button></a>
         </span>
         <span class="icon" ><a (click)="reBoot()" >
@@ -58,6 +58,11 @@
         </span>
     </div>
 </div>
+
+<div class="overall alert" [hidden]="shuttingDownNow==false">
+    Shutting Down System
+</div>
+
 
 </div>
 

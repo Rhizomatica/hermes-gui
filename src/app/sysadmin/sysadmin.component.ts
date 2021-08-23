@@ -14,6 +14,7 @@ export class SysadminComponent implements OnInit {
   isAdmin = true;
   shuttingDown = false;
   restarting = false;
+  shuttingDownNow = false;
 
   constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
     
@@ -21,33 +22,41 @@ export class SysadminComponent implements OnInit {
   }
 
   confirmShutDown() {
-
-    if (this.shuttingDown) {
-      this.shuttingDown = false;
-    } else {
-      this.shuttingDown = true;
-    }
+    this.shuttingDown = true;
     console.log('⚚ sysadmin - confirmShutdown: ', this.shuttingDown);
   }
 
-  confirmRestart() {
-    if (this.restarting) {
-      this.restarting = false;
-    } else {
-      this.restarting = true;
-    }
-    console.log('⚚ sysadmin - confirmShutdown: ', this.restarting);
+  cancelShutDown() {
+    this.shuttingDown = false;
+    this.shuttingDownNow = false;
 
+  }
+
+  confirmRestart() {
+
+      this.restarting = true;
+
+    console.log('⚚ sysadmin - confirmShutdown: ', this.restarting);
+  }
+
+  cancelRestart() {
+    this.restarting = false;
+    this.shuttingDownNow = false;
   }
 
   shutDown() {
     console.log('⚚ sysadmin - shutdown: ');
-    this.apiService.sysReboot();
+    this.shuttingDownNow = true;
+    this.apiService.sysShutdown();
+
   }
 
   reBoot() {
+    this.shuttingDownNow = true;
     console.log('⚚ sysadmin - reboot: ');
-    this.apiService.sysShutdown();
+    console.log('⚚ sysadmin - shuttingDownNow: ', this.shuttingDownNow);
+    this.apiService.sysReboot();
+
   }
 
   ngOnInit(): void {
