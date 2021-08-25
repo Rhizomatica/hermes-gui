@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../_services/api.service';
+import { AuthenticationService } from '../_services/authentication.service';
+
 
 @Component({
   selector: 'app-upgrade',
@@ -9,6 +12,13 @@ export class UpgradeComponent implements OnInit {
 
 restore: boolean = false;
 restoreConf: boolean = false;
+restoring: any;
+error: any;
+
+constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
+    
+  //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+}
 
   restoreAlert() {
   this.restore =true;
@@ -24,8 +34,21 @@ restoreConf: boolean = false;
     this.restoreConf = false;
   }
 
+  sysRestore() {
+    console.log('restoring');
+    this.apiService.sysRestore().subscribe(
+      (res: any) => {
+        this.restoring = res;
+        return res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
 
-  constructor() { }
+  }
+
+
 
   ngOnInit(): void {
   }

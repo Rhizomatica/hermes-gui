@@ -18,9 +18,7 @@
 <button class="midbt" (click)="confirmShutDown()" ><span i18n="@@shutdown">shut down</span><br/>
     <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
 </button>
-<button class="midbt" (click)="confirmRestart()" ><span i18n="@@reboot">reboot</span><br/>
-    <img class="btnicon" title="send" src="assets/svg/undo-alt-solid.svg">
-</button>
+
 </div>
 
 <div class="overall alert" [hidden]="shuttingDown==false">
@@ -33,31 +31,15 @@
         </span>
         
         <span class="icon" ><a (click)="cancelShutDown()" >
-            <img title="compose" src="assets/svg/edit.svg"><button i18n="@@cancels">cancel</button></a>
+            <img title="compose" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
         </span>
         <span class="icon" ><a (click)="shutDown()" >
-            <img title="help" src="assets/svg/comment.svg"><button i18n="@@shutdown1">shut down</button></a>
+            <img title="help" src="assets/svg/power-off-solid.svg"><button i18n="@@shutdown1">shut down</button></a>
         </span>
     </div>
 </div>
 
-<div class="overall alert" [hidden]="restarting==false">
-    <div class="cv" >
-        <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
-            <br/>
-            This will stop messages transmission and reception.
-            <br/>
 
-        </span>
-        
-        <span class="icon" ><a (click)="cancelRestart()" >
-            <img title="compose" src="assets/svg/edit.svg"><button i18n="@@cancels1">cancel</button></a>
-        </span>
-        <span class="icon" ><a (click)="reBoot()" >
-            <img title="help" src="assets/svg/comment.svg"><button i18n="@@reboot1">reboot</button></a>
-        </span>
-    </div>
-</div>
 
 <div class="overall alert" [hidden]="shuttingDownNow==false">
     Shutting Down System

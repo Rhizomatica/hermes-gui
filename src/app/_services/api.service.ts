@@ -49,30 +49,30 @@ export class ApiService {
       }),
       catchError(this.handleError));
     }
-    public sysShutdown(): Observable<{}> {
+    public sysShutdown(): void {
       const url = `${GlobalConstants.apiURL}/sys/shutdown`; // get api:sys/status
-      const output = this.http.get(url);
-      return this.http.get(url).pipe(
-        map((res: any) => {
-          this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - system shutdown:\n ', res);
-          return this.serverReturn;
-      }),
-      catchError(this.handleError));
+      console.log('shutting down');
+      this.http.get(url);
     }
 
-    public sysReboot(): Observable<{}> {
+    public sysReboot(): void {
       const url = `${GlobalConstants.apiURL}/sys/reboot`; // get api:sys/status
-      const output = this.http.get(url);
+      console.log('rebooting');
+      this.http.get(url);
+    }
+
+    public sysRestore(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/sys/restore`; // get api:sys/restore
+      //console.log(this.http.get(url));
+      console.log(url);
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - system reboot:\n ', res);
+          console.log('⚚ Hermes ⚚\n⚚ api service - system restore:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
     }
-
 
     public setSysConfig(allowfile: string): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/config`; 

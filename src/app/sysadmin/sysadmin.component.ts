@@ -51,13 +51,6 @@ export class SysadminComponent implements OnInit {
 
   }
 
-  reBoot() {
-    this.shuttingDownNow = true;
-    console.log('⚚ sysadmin - reboot: ');
-    console.log('⚚ sysadmin - shuttingDownNow: ', this.shuttingDownNow);
-    this.apiService.sysReboot();
-
-  }
 
   ngOnInit(): void {
     console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);

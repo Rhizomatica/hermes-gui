@@ -38,13 +38,16 @@ export class MessagesComponent implements OnInit {
   selectedMessage: Message;
   isadmin = false;
   searchMessages: string;
-  
+  today = Date();
+
 
   constructor(private messageService: MessageService,  private alertService: AlertService, 
     private authenticationService: AuthenticationService, private userService: UserService
     ) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
+
+
 
   onSelect(message: Message): void {
     this.selectedMessage = message;

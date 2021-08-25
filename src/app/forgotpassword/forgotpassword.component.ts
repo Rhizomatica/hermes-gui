@@ -40,7 +40,7 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     onBtn(){
-      console.log('debug onBtn lalala');
+      //console.log('debug onBtn lalala');
     }
 
     onSelect(input): void {
@@ -49,16 +49,16 @@ export class ForgotpasswordComponent implements OnInit {
       });
       if (typeof(this.selectedUser) == 'undefined') {
         this.selTest = false;
-        console.log('⚚ forgotpassword - onSelect: ','titit');
+        //console.log('⚚ forgotpassword - onSelect: ','titit');
       } else {
         this.selTest = true;
-        console.log('⚚ forgotpassword: -onSelect: ','toooo');
+        //console.log('⚚ forgotpassword: -onSelect: ','toooo');
       }
       //this.selectedUser = user;
 
-      console.log('⚚ forgotpassword - onSelect: input: ',input);
-      console.log('⚚ forgotpassword - onSelect: users: ',this.users);
-      console.log('⚚ forgotpassword - onSelect: selecteduser: ',this.selectedUser);
+      //console.log('⚚ forgotpassword - onSelect: input: ',input);
+      //console.log('⚚ forgotpassword - onSelect: users: ',this.users);
+      //console.log('⚚ forgotpassword - onSelect: selecteduser: ',this.selectedUser);
 
     }
 
