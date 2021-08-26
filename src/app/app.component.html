@@ -129,15 +129,18 @@
 <div class="footer">
   <ng-container *ngIf="system">
   <span >
-    <span i18n="stationa">Station:</span> {{system.name}}  <figure class="greencircle"></figure>
-    <span> &#124; {{currentUser.email}}</span>
-    <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/>
+    <span i18n="stationa">Station:</span> {{system.name}}  
+   
+    <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span>
   
     <span *ngIf="!system" i18n="@@serveroff0">
       &#124;  server off
     </span>
+    | Status: <div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>
     </span>
+    <span> &#124; {{currentUser.email}}</span>
     <!--
+      
     &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
     &#124; DB: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
     &#124; AR: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>

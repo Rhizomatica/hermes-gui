@@ -3,11 +3,11 @@
 <div class="">
     <h2 i18n="@@systemupgrade">system upgrade</h2>
 <div *ngIf="restore == false && restoreConf == false" >
-
-<button i18n="@@restorefac" (click)="restoreAlert()">Restore Factory Configuration</button>
-<button i18n="@@upgradewfile">System Upgrade with file</button>
-
-</div>    
+<div *ngIf="upgrade == false && upgradeConf == false">
+        <button i18n="@@restorefac" (click)="restoreAlert()" >Restore Factory Configuration</button>
+        <button i18n="@@upgradewfile" (click)="upgradeAlert()" >System Upgrade with file</button>     
+</div>
+</div>  
    
 <div *ngIf="restore" class="overall">
     <div class="cv">
@@ -28,11 +28,42 @@
 </div>
 
 <div *ngIf="restoreConf">
-    <form  >
+    <form  #r="ngForm" class="formdata" novalidate>
         <span i18n="@@pleasetypeyour">Please type your password again to confirm factory restore:</span> <br/>
         <input type="password">
         <button (click)="cancelRestore()" i18n="@@cancel">cancel</button >
         <button type="submit" i18n="@@submit" (click)="sysRestore()">submit</button>
+    </form> 
+</div>
+
+<div *ngIf="upgrade" class="overall">
+    <div class="cv">
+    <span i18n="@@areyousurupgrade">
+    Are you sure you want to upgrade the system?<br>
+    this may cause the sytem to break
+    !!!
+    <br/>
+    <br/>
+
+     </span>
+    
+    <button (click)="cancelUpgrade()" i18n="@@canceluu">cancel</button >
+    <button (click)="upgradeConfirm()" i18n="@@confirmu">confirm</button>
+
+    </div>
+    
+</div>
+
+<div *ngIf="upgradeConf">
+    <form  #u="ngForm" class="formdata" novalidate>
+        <span i18n="@@selectfile">Select file for system upload</span>
+        <label class="file">
+            <input type="file" (change)="DocUpload($event.target.files)" accept="" >
+        </label>
+        <span i18n="@@pleasetypeyouru">Please type your password again to confirm upgrade:</span> <br/>
+        <input type="password">
+        <button (click)="cancelUpgrade()" i18n="@@cancelu">cancel</button >
+        <button type="submit" i18n="@@submitu" (click)="sysUpgrade()">submit</button>
     </form> 
 </div>
 

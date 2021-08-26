@@ -12,8 +12,10 @@ export class UpgradeComponent implements OnInit {
 
 restore: boolean = false;
 restoreConf: boolean = false;
+upgradeConf:boolean = false;
 restoring: any;
 error: any;
+upgrade: boolean = false;
 
 constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
     
@@ -24,14 +26,28 @@ constructor( private authenticationService: AuthenticationService, private apiSe
   this.restore =true;
   }
 
+  upgradeAlert() {
+    this.upgrade =true;
+    }
+
   restoreConfirm() {
     this.restoreConf = true;
     this.restore = false;
   }
 
+  upgradeConfirm() {
+    this.upgradeConf = true;
+    this.upgrade = false;
+  }
+
   cancelRestore() {
     this.restore = false;
     this.restoreConf = false;
+  }
+
+  cancelUpgrade() {
+    this.upgrade = false;
+    this.upgradeConf = false;
   }
 
   sysRestore() {
@@ -48,7 +64,9 @@ constructor( private authenticationService: AuthenticationService, private apiSe
 
   }
 
-
+  sysUpgrade() {
+    console.log('upgrading');
+  }
 
   ngOnInit(): void {
   }
