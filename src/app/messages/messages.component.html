@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="messages"> {{today}}
+    <div class="messages"> 
 
         <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
         <div class="multiplist">
@@ -23,7 +23,7 @@
             <a>
                 <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="deleteInboxMessage(message.id)">
             </a>
-            <span class="inlineicon" class="date">{{message.sent_at | date:'h:mm'}}</span>
+            <span class="inlineicon" class="date">{{message.sent_at | date:'d/M/yy, h:mm'}}</span>
             <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                 <span (click)="getInboxMessage(message)"> &nbsp;  {{message.name}}</span>
                

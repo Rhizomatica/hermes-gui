@@ -25,6 +25,7 @@ export class SentMessagesComponent implements OnInit {
   selectedMessage: Message;
   isadmin = false;
   searchMessages: string;
+  confirmTransmit: boolean = false;
 
   constructor(
     private messageService: MessageService, 
@@ -56,6 +57,31 @@ export class SentMessagesComponent implements OnInit {
       }
     );
     console.log("⚚ sent-messages component cancelTransmission:", message.id);
+    
+  }
+
+confTransmit(){
+  if (this.confirmTransmit == false) {
+    this.confirmTransmit = true; 
+  } else {
+    this.confirmTransmit = false;
+  }
+}
+  
+
+ transmitNow(): void{
+    //this.sentMessages= this.sentMessages.filter(obj => obj !== message);
+    //this.draftMessages= this.draftMessages.filter(obj => obj !== message);
+    this.messageService.transmitNow().subscribe(
+      (res: any) => {
+        //this.message = res;
+
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+    console.log("⚚ sent-messages component transmit now:");
     
   }
 

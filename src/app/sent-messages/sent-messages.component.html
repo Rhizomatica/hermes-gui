@@ -28,8 +28,26 @@
                 {{message.name}}
                 <span *ngIf="message.file"> 💮</span>
             </a>
+
             <!-- {{message.dest}}-->
             </p>
+        </div>
+        <p i18n="@@listsize">Total size of files to transmit: TODO total size</p>
+        <button (click)="confTransmit()">
+            transmit now <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
+        </button>
+    </div>
+
+    <div class="overall alert" [hidden]="confirmTransmit==false">
+        <div class="cv" >
+            <span i18n="@@yourmessageprocessed">Are you sure you want to syncronize now? <br/><br/></span>
+            
+            <div class="icon" ><a (click)="confTransmit()" >
+                <img title="compose" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
+            </div>
+            <div class="icon" ><a (click)="transmitNow()" >
+                <img title="help" src="assets/svg/arrow-right.svg"><button i18n="@@transmits">transmit now</button></a>
+            </div>
         </div>
     </div>
 
