@@ -47,8 +47,6 @@ export class MessagesComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
-
-
   onSelect(message: Message): void {
     this.selectedMessage = message;
     this.alertService.add('read message: id=$' + message.id);
