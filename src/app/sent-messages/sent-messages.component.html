@@ -12,26 +12,16 @@
         </div>
     </div>
 
-    <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox2" [(ngModel)]="searchMessages"/>
 
+    <h2 i18n="@@transmissionlist">Transmission list UUCP</h2>
 
-    <h2 i18n="@@transmissionlist">Transmission list</h2>
-
-    <div class="messages">
+    <div class="queue">
         <div class="multiplist">
-            <p *ngFor="let message of draftMessages | filter:searchMessages">
+            <p *ngFor="let job of queue | filter:searchMessages">
             <a >
-                <img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(message)"></a>
-            <!--<a ><img class="inlineicon" title="priorize" src="assets/svg/arrow-up.svg" [hidden]="!isAdmin"></a>-->
-            <span class="date">{{message.sent_at | date:'h:mm'}}</span>
-            <a routerLink="/message/{{message.id}}">
-                {{message.name}}
-                <span *ngIf="message.file"> 💮</span>
-            </a>
-
-            <!-- {{message.dest}}-->
-            </p>
-        </div>
+                <img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
+            <span class="date">{{job.date}} {{job.time}} {{job.type}} {{job.uuidhost}}.{{job.uuiduucp}} {{job.size}}</span>
+		</div>
         <p i18n="@@listsize">Total size of files to transmit: TODO total size</p>
         <button (click)="confTransmit()">
             transmit now <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
@@ -51,12 +41,14 @@
         </div>
     </div>
 
+    <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox2" [(ngModel)]="searchMessages"/>
+
     <h2 i18n="@@sentmessages">Sent Messages </h2>
     <div class="messages">
         
             <div class="multiplist">
                 <p *ngFor="let message of sentMessages.slice().reverse() | filter:searchMessages">
-                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(message)"></a>
+                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="removeMesage(message)"></a>
                 <span class="inlineicon" class="date">{{message.sent_at | date:'h:mm'}}</span>
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}
