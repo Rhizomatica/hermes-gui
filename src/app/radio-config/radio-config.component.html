@@ -30,7 +30,7 @@
                 <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings? <br/>this may cause the system to stop</span>
                 <br/>
                 <button (click)="screenSet()" i18n="@@changer">change</button>
-                <button (click)="confirmChange()" i18n="@@cancelr">cancel</button>
+                <button (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
                 <form #f="ngForm" class="formdata field"   >
                     <p><span i18n="@@newfrequencyandmode">Radio frequency:</span></p>
                     <input type="number" [min]="min" [max]="max" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} (ngModelChange)="changeCallback()">
-                    <button class="midbt" (click)="changeFrequency(f)" [disabled]="f.invalid" i18n="@@cancelr">change frequency</button>
+                    <button class="midbt" (click)="changeFrequency(f)" [disabled]="f.invalid" i18n="@@cancelr1">change frequency</button>
                 </form>
 
                 <form #fmode="ngForm" class="formdata field" >
