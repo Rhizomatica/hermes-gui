@@ -1,18 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-@boxw: 21.6em;
+@boxw: 24em;
 @clr: #f60;
 @actvclr: #f00;
 @vstclr:#c96;
 @mclr:#000;
 
-*{box-sizing: border-box;}
+*{box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  font-size: 16px;
+}
 
 body {    
-    max-width: 22em;
+    max-width: 25em;
+    min-width: 18em;
     width: 100%;
-    margin: 0.2em auto 0 auto;
-    padding: 0 1em;
+    margin: 0.2em auto 1em auto;
+    padding: 0 0.5em;
     position: relative;
     font-size: 1em;
 }
@@ -142,8 +153,9 @@ textarea {
 }
 
 .bordered {
-    border: 1px solid black;
-    padding: 0.5em;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 0.5em 0;
     border-radius: 0 0 0 0;
     margin: 0px;
 }
@@ -156,7 +168,7 @@ textarea {
 
 .formfield {
     position: relative;
-    max-width: @boxw;
+    max-width: calc(100% - 1.5em);
     .bordered();
     .textarea{
         width: 100%;
