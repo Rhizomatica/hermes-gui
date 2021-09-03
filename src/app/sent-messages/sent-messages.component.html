@@ -20,7 +20,15 @@
             <p *ngFor="let job of queue | filter:searchMessages">
             <a >
                 <img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
-            <span class="date">{{job.date}} {{job.time}} {{job.type}} {{job.uuidhost}}.{{job.uuiduucp}} {{job.size}}</span>
+            <span class="date">{{job.date}}</span>
+            <span class="date">{{job.time}}</span> 
+            <span >
+                <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
+                <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'"> 
+
+            </span>
+            <span>{{job.type}} {{job.uuidhost}}.{{job.uuiduucp}} {{job.size}}</span>
+            </p>
 		</div>
         <p i18n="@@listsize">Total size of files to transmit: TODO total size</p>
         <button (click)="confTransmit()">
