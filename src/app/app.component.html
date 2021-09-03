@@ -10,7 +10,6 @@
 <style>
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
     color: #333;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -46,7 +45,7 @@
 <header>
   <a routerLink='/messages' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
 
-  <h1 class="sitetitle"><span *ngIf="system">{{system.name}}.</span>hermes.radio</h1>
+  <h1 class="sitetitle" *ngIf="system"><span >{{system.domain}}</span></h1>
 </header>
 
 <div class="userstatus" >
