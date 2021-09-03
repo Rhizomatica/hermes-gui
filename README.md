@@ -102,11 +102,16 @@ ok - pegar email do aip service no create user
 
 ** atualizar web-gui angular por ssh (tem ansible)
 
- ssh hermes@ip rede local ou vpn
- cd ~/install/angular
- npm run build
- sudo cp dist/hermes/* /var/www/station-api
 
+ ssh hermes@ip rede local ou vpn (10.8.0.3)
+ entra na pasta:
+ cd ~/install/angular
+
+ compila o código angular:
+ npm run build
+
+ copia para a pasta www
+sudo cp -r dist/hermes/* /var/www/html
 
 * atualizar web-gui 
  compilar local e copiar por sftp todo o conteúdo da pasta local dist/hermes/ para a pasta /var/www/html/ da estação

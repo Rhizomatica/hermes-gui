@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@boxw: 350px;
+@boxw: 21.6em;
 @clr: #f60;
 @actvclr: #f00;
 @vstclr:#c96;
@@ -9,14 +9,26 @@
 *{box-sizing: border-box;}
 
 body {    
-    max-width: 380px;
-    margin: 5px auto 0 auto;
-    padding: 0 30px;
+    max-width: 22em;
+    width: 100%;
+    margin: 0.2em auto 0 auto;
+    padding: 0 1em;
     position: relative;
+    font-size: 1em;
 }
 
 p {
     margin: 1px 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: 1px @vstclr;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
 }
 
 hr {
@@ -64,23 +76,24 @@ a:visited {
 nav {
     border-bottom: 2px solid #000;
     max-width: @boxw;
-    padding-top: 35px;
+    width: 100%;
+    padding-top: 1.6em;
     display: flex;
     justify-content: flex-start;
     a {
     text-decoration: none;
     border-top: 3px solid #000;
     padding-bottom: 4px;
-    margin-right: 15px;
+    margin-right: 0.3em;
     position: relative;
     }
     a:hover {
         border-top: 3px solid @clr;
     }
     img {
-        width: 30px;
+        width: 2em;
         position: absolute;
-        top: -35px;
+        top: -2.3em;
     }
     img:hover {
         fill: @clr;
@@ -94,7 +107,7 @@ nav a:hover{
 
 
 h2 {
-    font-size: 18px;
+    font-size: 1.4em;
 }
 
 label{
@@ -130,7 +143,7 @@ textarea {
 
 .bordered {
     border: 1px solid black;
-    padding: 20px;
+    padding: 0.5em;
     border-radius: 0 0 0 0;
     margin: 0px;
 }
@@ -177,7 +190,7 @@ textarea {
 }
 
 .flags img{
-    width: 30px;
+    width: 2em;
 }
 
 .btn {
