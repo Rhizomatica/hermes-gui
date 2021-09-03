@@ -17,13 +17,13 @@
         <div [hidden]="fileIsProcessing==true">
             <label for="name">
                 <span i18n="@@description">Description</span>:
-                <br/><input name="name" [(ngModel)]="message.name" required maxlength="140" placeholder="Describe your message" />
+                <br/><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140" placeholder="Describe your message" />
             </label>
 
             <label for="text">
                 <span i18n="@@message">Message</span>:
                 <br/>
-                <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35" maxlength="1400" placeholder="write the message"></textarea>
+                <textarea i18n="@@writemessage" name="text" [(ngModel)]="message.text" required rows="5" cols="35" maxlength="1400" placeholder="write the message"></textarea>
             </label>
 
             <label class="selstation">
@@ -46,6 +46,7 @@
             <div class="uploader" *ngIf="allowUpload">
                 <hr>
                 <ng-container >
+                    <p i18n="@@attachfiles">Attach Files:</p>
                     <label class="file">
                         <input type="file" (change)="DocUpload($event.target.files)" accept="image/*" >
                     </label>
