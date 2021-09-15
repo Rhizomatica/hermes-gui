@@ -28,9 +28,10 @@
 
             <label class="selstation">
                 <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-                    <span i18n="@@selectstation1">select station
-                    :<br></span>
+                    <span i18n="@@selectstation1" class="space">select station
+                    :</span><br>
                     <br>
+    
                     <ng-container *ngIf="stations">
 
                         <select name="dest" [(ngModel)]="message.dest" required>

@@ -5,28 +5,77 @@
 @actvclr: #f00;
 @vstclr:#c96;
 @mclr:#000;
+@desktop: ~"only screen and (min-width: 992px)";
+
 
 *{box-sizing: border-box; 
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;}
-
-input,
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="tel"],
-input[type="password"],
-input[type="search"],
-option,
-textarea
- {
-  font-size: 1.5em;
+    -moz-box-sizing: border-box;
 }
 
-input[type="file"] {
-    font-size: 1.2em;
 
+@media screen {
+    body,
+    input,
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="search"],
+    option,
+    select,
+    textarea,
+    button
+     {
+      font-size: 1.5em;
+    }
+    
+    input[type="file"] {
+        font-size: 1.2em;
+    
+    }
+
+    .space {
+        line-height: 2.5em;
+    }
+
+    h1, h2, h3, h4 {
+        font-size: 1.5em;
+    }
+    
+    
+    @media (min-width:720px) {
+    body,
+    input,
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="search"],
+    option,
+    select,
+    textarea,
+    button
+        {
+        font-size: 1em;
+        }
+    
+    input[type="file"] {
+            font-size: 1em;
+        }
+
+    .space {
+            line-height: 1.5em;
+        }    
+
+    }
+
+  
+    
 }
+
 
 body {    
     max-width: 30em;
@@ -35,12 +84,13 @@ body {
     margin: 0.2em auto 1em auto;
     padding: 0 0.5em;
     position: relative;
-    font-size: 1.2em;
+    color:#fff;
 }
 
 p {
     margin: 1px 0;
 }
+
 
 input:focus,
 select:focus,
@@ -57,6 +107,10 @@ hr {
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
+}
+
+h2 {
+    max-width: 80%;
 }
 
 button {
@@ -109,7 +163,7 @@ nav {
     border-top: 3px solid #000;
     padding-bottom: 4px;
     margin-right: 0.3em;
-    margin-top: 0.5em;
+    margin-top: 0.8em;
     position: relative;
     }
     a:hover {
@@ -131,9 +185,7 @@ nav a:hover{
 }
 
 
-h2 {
-    font-size: 1.4em;
-}
+
 
 label{
     display: block;
@@ -175,7 +227,7 @@ textarea {
 
 
 .footer {
-    font-size: 10px;
+    font-size: 0.6em;
 }
 
 
@@ -264,7 +316,7 @@ textarea {
     right: 20px;
     
     img {
-        width: 24px;
+        width: 2em;
     }
 }
 
