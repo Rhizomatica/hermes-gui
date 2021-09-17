@@ -21,6 +21,7 @@ export class MessageDetailComponent implements OnInit {
   public isEncrypted = false;
   url =  GlobalConstants.apiURL;
   noMessage = false;
+  noImage = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -67,6 +68,7 @@ export class MessageDetailComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.noImage = true;
       }
     );
 
