@@ -30,7 +30,7 @@ export class MessagesComponent implements OnInit {
 
 // @Input() message: Message;
   currentUser: User;
-  error = '';
+  error = Error;
   success = '';
   test = '';
   inboxMessages: Message[];
@@ -39,6 +39,7 @@ export class MessagesComponent implements OnInit {
   isadmin = false;
   searchMessages: string;
   today = Date();
+  noMessages = false;
 
 
   constructor(private messageService: MessageService,  private alertService: AlertService, 
@@ -71,6 +72,7 @@ export class MessagesComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.noMessages = true;
       }
     );
   }

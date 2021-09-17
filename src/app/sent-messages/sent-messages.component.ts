@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 export class SentMessagesComponent implements OnInit {
 
   currentUser: User;
-  error = '';
+  error = Error;
   success = '';
   test = '';
   messages: Message[];
@@ -29,6 +29,9 @@ export class SentMessagesComponent implements OnInit {
   isadmin = false;
   searchMessages: string;
   confirmTransmit: boolean = false;
+  errorAlert: boolean = false;
+  noMessages = false;
+  noUUcp = false;
 
   constructor(
     private messageService: MessageService, 
@@ -41,6 +44,9 @@ export class SentMessagesComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
+  closeError() {
+      this.errorAlert = false;
+  }  
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
@@ -56,6 +62,7 @@ export class SentMessagesComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
     console.log("⚚ sent-messages component cancelTransmission:", host, id);
@@ -70,6 +77,7 @@ export class SentMessagesComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
     console.log("⚚ sent-messages component cancelTransmission:", message.id);
@@ -91,6 +99,8 @@ confTransmit(){
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
+
       }
     );
     console.log("⚚ sent-messages component transmit now:");
@@ -105,6 +115,7 @@ confTransmit(){
       },
       (err) => {
         this.error = err;
+        this.noMessages = true;
       }
     );
   }
@@ -117,6 +128,7 @@ confTransmit(){
       },
       (err) => {
         this.error = err;
+        this.noUUcp = true;
       }
     );
   }

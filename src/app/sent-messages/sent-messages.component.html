@@ -30,6 +30,10 @@
 
 
     <h2 i18n="@@sentmessages">Sent Messages </h2>
+
+    <div class="alert" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br/></div>
+
+    <div *ngIf="!noMessages">
     <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
 
     <div class="messages">
@@ -49,8 +53,10 @@
                 </p>
             </div>
         </div>
-
+    </div>
         <h2 i18n="@@transmissionlist">Transmission list</h2>
+
+        <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br/></div>
 
     <div class="queue messages">
         <div class="multiplist">
@@ -86,6 +92,17 @@
                 <a routerLink="/" i18n="@@messages2">
                     <img title="help" src="assets/svg/comment.svg"> messages
                 </a>
+            </div>
+        </div>
+
+        <div class="overall alert" *ngIf="errorAlert==true">
+            <div class="cv" >
+                <span i18n="@@errorsending">There was an error on processing your request <br/><br/></span>
+                <span>{{error}}</span>
+                <div class="icon" ><a (click)="closeError()" >
+                    <img title="compose" src="assets/svg/x.svg"></a>
+                </div>
+        
             </div>
         </div>
     </div>

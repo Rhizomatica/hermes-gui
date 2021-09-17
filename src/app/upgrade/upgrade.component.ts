@@ -14,12 +14,17 @@ restore: boolean = false;
 restoreConf: boolean = false;
 upgradeConf:boolean = false;
 restoring: any;
-error: any;
+error: Error;
 upgrade: boolean = false;
+errorAlert: boolean = false;
 
 constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
     
   //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+}
+
+closeError() {
+  this.errorAlert = false;
 }
 
   restoreAlert() {
@@ -59,6 +64,8 @@ constructor( private authenticationService: AuthenticationService, private apiSe
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
+
       }
     );
 

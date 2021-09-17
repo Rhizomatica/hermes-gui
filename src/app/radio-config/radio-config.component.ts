@@ -18,8 +18,8 @@ import {DecimalPipe} from '@angular/common';
 })
 
 export class RadioConfigComponent implements OnInit {
-  radio: any;
-  error: any = '';
+  radio: any = [];
+  error: Error;
   alterFreq: boolean = false;
   alterSet: boolean = false;
   confirmSet: boolean = false;
@@ -29,10 +29,16 @@ export class RadioConfigComponent implements OnInit {
   freq: any;
   reseting: boolean = false;
   usb: boolean = true;
+  mode: any;
+  led: any;
+  protection: any;
+  bypass: any;
   public realValue : number;
   public min : number = 500000;
   public max : number = 300000000;
   errorAlert: boolean = false;
+  radioError: boolean = false;
+
 
 
   constructor    ( private apiService: ApiService, private decimalPipe: DecimalPipe) { }
@@ -45,14 +51,22 @@ export class RadioConfigComponent implements OnInit {
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
         this.freq = this.radio.freq;
+        this.mode = this.radio.mode;
+        this.led = this.radio.led;
+        this.protection = this.radio.protection;
+        this.bypass = this.radio.bypass;
         return res;
         
       },
       (err) => {
         this.error = err;
+        this.radioError = true;
+        console.log(this.error);
       }
     );
   }
+
+  
 
   get value() : number {
     this.realValue = this.radio.freq;
@@ -117,7 +131,7 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = '⚚ changeFreqMode-' +  err;
+        this.error =  err;
         this.errorAlert = true;
       }
     )
@@ -151,7 +165,7 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = '⚚ changeFreqMode-' +  err;
+        this.error =  err;
         this.errorAlert = true;
       }
     )
@@ -166,7 +180,7 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = '⚚ changeBfo-' +  err;
+        this.error = err;
         this.errorAlert = true;
       }
     )
@@ -180,7 +194,7 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = '⚚ setRadioMastercal-' +  err;
+        this.error = err;
         this.errorAlert = true;
       }
     )
@@ -220,7 +234,7 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = "changebfo" + err;
+        this.error = err;
         this.errorAlert = true;
       }
     )
@@ -232,7 +246,7 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = '⚚ changemastercal-' +  err;
+        this.error =  err;
         this.errorAlert = true;
       }
     )
@@ -266,9 +280,10 @@ set value(newValue : number) {
       this.usb = false;
     }
 
-
-     this.usb= this.radio.mode;
-     console.log(this.usb)
+    if (this.radio) {
+      this.usb= this.radio.mode;
+    }
+     //console.log(this.usb)
   }
 
 }

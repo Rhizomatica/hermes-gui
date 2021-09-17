@@ -145,6 +145,17 @@
                     <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
                 </div>
+                <div class="overall alert" [hidden]="errorAlert==false">
+                    <div class="cv" >
+                        <span i18n="@@errormanagemet">There was an error on precessing your request <br/><br/></span>
+                        <span>{{error}}</span>
+                        <div class="icon" ><a (click)="closeError()" >
+                            <img title="compose" src="assets/svg/x.svg"></a>
+                        </div>
+        
+                    </div>
+                </div>
+            
         </form>
     </ng-container>
 

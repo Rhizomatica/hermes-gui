@@ -14,7 +14,7 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
   res = '';
-  error = '';
+  error = Error;
   currentUser: User;
 
   //  constructor(private ApiService: ApiService) { }
@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       (err) => {
         this.error = err;
         this.router.navigate(['/login']);
-
       }
     );
     this.router.navigate(['/admin']);

@@ -15,7 +15,9 @@
         </div>
     </div>
 
-    <div class="messages"> 
+    <div class="alert" *ngIf="noMessages" i18n="cannotaccessmessages">Alert: Cannot access public messages<br/></div>
+
+    <div class="messages" *ngIf="!noMessages"> 
 
         <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
         <div class="multiplist">

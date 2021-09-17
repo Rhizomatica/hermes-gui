@@ -20,7 +20,7 @@ import { User } from '../user';
 
 export class MessagecomposeComponent implements OnInit {
 
-  public error: any = "";
+  public error: Error;
   public fileError: any = "";
   public res: any;
   public stations: Station[];
@@ -187,9 +187,7 @@ export class MessagecomposeComponent implements OnInit {
     
   }
 
-  retry() {
-    this.error = false;
-  }
+ 
 
   DocUpload(files): void{
     // this.messageService.postFile($files[0]);

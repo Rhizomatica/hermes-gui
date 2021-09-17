@@ -15,7 +15,7 @@ import { FormGroup } from '@angular/forms';
 export class MessageadmComponent implements OnInit {
 
   currentUser: User;
-  error = '';
+  error = Error;
   success = '';
   test = '';
   messages: Message[];
@@ -26,6 +26,8 @@ export class MessageadmComponent implements OnInit {
   allowfile: any;
   serverConfig: any;
   allowUp: FormGroup;
+  errorAlert: boolean = false;
+  noSystem: boolean = false;
 
   constructor(private messageService: MessageService, private alertService: AlertService,
       private authenticationService: AuthenticationService,
@@ -42,9 +44,15 @@ export class MessageadmComponent implements OnInit {
           },
           (err) => {
             this.error = err;
+            this.noSystem = true;
+
           }
         );
       }  
+
+      closeError() {
+        this.errorAlert = false;
+      }
 
     loggedin() {
         if (this.isadmin) {
@@ -70,6 +78,7 @@ export class MessageadmComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        
       }
     );
   }
@@ -84,6 +93,7 @@ export class MessageadmComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
     console.log(this.allowfile);

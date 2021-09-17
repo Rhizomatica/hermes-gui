@@ -16,10 +16,11 @@ import { GlobalConstants } from '../global-constants';
 export class MessageDetailComponent implements OnInit {
 
   @Input() message: Message;
-  private error: string;
+  error: Error;
   public messageImage: Blob;
   public isEncrypted = false;
   url =  GlobalConstants.apiURL;
+  noMessage = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,6 +53,7 @@ export class MessageDetailComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.noMessage = true;
       }
     );
   }

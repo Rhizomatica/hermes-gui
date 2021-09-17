@@ -1,20 +1,21 @@
 <div class="">
     <h2>Radio Configuration</h2>
 
+    <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br/></div>
     <div >
     <!--<div>-->
         <form>
-            <div *ngIf="radio.led" i18n="@@radioledon">led: on </div>
-            <div *ngIf="!radio.led" i18n="@@radioledoff">led: off</div>
-            <div *ngIf="radio.protection" i18n="@@protectionon">protection: on </div>
-            <div *ngIf="!radio.protection" i18n="@@protectionoff">protection: off </div>
-            <div *ngIf="radio.bypass" i18n="@@bypasson">bypass: on </div>
-            <div *ngIf="!radio.bypass" i18n="@@bypassoff">bypass: off </div>
+            <div *ngIf="led" i18n="@@radioledon">led: on </div>
+            <div *ngIf="!led" i18n="@@radioledoff">led: off</div>
+            <div *ngIf="protection" i18n="@@protectionon">protection: on </div>
+            <div *ngIf="protection" i18n="@@protectionoff">protection: off </div>
+            <div *ngIf="bypass" i18n="@@bypasson">bypass: on </div>
+            <div *ngIf="!bypass" i18n="@@bypassoff">bypass: off </div>
             <div *ngIf="radio.tx" >RXTX: TX </div>
             <div *ngIf="radio.rx" >RXTX: RX </div>
             <!--arrow coming or going trasmitting/recieving-->
             <hr>
-            <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq}} Hz {{radio.mode}}</p> 
+            <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq}} Hz {{mode}}</p> 
             <hr>
             <p><span>BFO:</span> {{radio.bfo}} </p>
             <p><span>mastercal: </span>{{radio.mastercal}}</p>

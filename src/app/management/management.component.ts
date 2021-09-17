@@ -16,7 +16,7 @@ export class ManagementComponent implements OnInit {
 
   currentUser: User;
   searchUser: string;
-  error = '';
+  error = Error;
   success = '';
   users: User[];
   stations: Station[];
@@ -29,6 +29,7 @@ export class ManagementComponent implements OnInit {
   newUsername = false;
   emptyUser = false;
   searchMessages: string;
+  errorAlert: boolean = false;
 
   constructor(
       private userService: UserService,
@@ -51,6 +52,10 @@ export class ManagementComponent implements OnInit {
       // param=!param;
       return !param;
    }
+
+   closeError() {
+    this.errorAlert = false;
+  }
 
   deleteAlert() {
     if (this.deleteUser) {
@@ -90,6 +95,7 @@ export class ManagementComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   }
@@ -111,6 +117,7 @@ export class ManagementComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
     this.updateUser = false;
@@ -140,6 +147,7 @@ export class ManagementComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
     window.location.reload();

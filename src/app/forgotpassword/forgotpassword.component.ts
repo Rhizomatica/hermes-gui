@@ -12,7 +12,7 @@ import { StationService } from '../_services/station.service';
 })
 export class ForgotpasswordComponent implements OnInit {
 
-    error = '';
+    error = Error;
     success = '';
     test = '';
     users: User[];
@@ -25,6 +25,8 @@ export class ForgotpasswordComponent implements OnInit {
     iAnsw: boolean = true;
     noUser: true;
     passMatch: boolean = true;
+    errorAlert: boolean = false;
+
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
@@ -35,6 +37,7 @@ export class ForgotpasswordComponent implements OnInit {
         },
         (err) => {
           this.error = err;
+          this.errorAlert = true;
         }
       );
     }

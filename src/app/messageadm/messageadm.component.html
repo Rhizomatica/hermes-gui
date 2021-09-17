@@ -1,7 +1,9 @@
 <h2 i18n="@@aconfigmessages">Messages Configuration</h2>
 
+<div class="alert" *ngIf="noSystem" i18n="cannotaccessuucp">Alert: Cannot access Hermes System<br/></div>
 
-<p i18n=@@selectwho>select who can attach files to messages:</p>
+<div *ngIf="!noSystem" >
+    <p i18n=@@selectwho>select who can attach files to messages:</p>
 
 <form [formGroup]="allowUp">
 <select name="allowfile" (change)="setUploadPermission($event.target.value)">
@@ -12,6 +14,19 @@
 <br/>
 <!--<button i18n="@@updatema">update</button>-->
 </form>
+
+</div>
+
+<div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv" >
+        <span i18n="@@errorsending">There was an error on sending your message <br/><br/></span>
+        <span>{{error}}</span>
+        <div class="icon" ><a (click)="closeError()" >
+            <img title="compose" src="assets/svg/x.svg"></a>
+        </div>
+    </div>
+</div>
+
 
 
 <!--<h2 i18n="@@adminmessages">Admin Messages</h2>-->
