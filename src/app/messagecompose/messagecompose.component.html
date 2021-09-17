@@ -124,11 +124,8 @@
         </div>
         <div class="overall alert" [hidden]="!error">
             <div class="cv" >
-                <span i18n="@@errorsending">There was an error to send your message</span><br/><br/>
-                <span>{{error}}</span>
-                <div class="icon" ><a (click)="closeError()" >
-                    <img title="compose" src="assets/svg/x.svg"></a>
-                </div>
+                <span i18n="@@errorsending">There was an error to send your message</span> <br/>
+                <button (click)="retry()" i18n="@@tryagain"><img title="compose" src="assets/svg/x.svg"></button>
             </div>
         </div>
         <!--<button i18n="@@send">send</button>-->
