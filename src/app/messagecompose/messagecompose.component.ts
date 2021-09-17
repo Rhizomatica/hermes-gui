@@ -20,8 +20,8 @@ import { User } from '../user';
 
 export class MessagecomposeComponent implements OnInit {
 
-  public error: any;
-  public fileError: any;
+  public error: any = "";
+  public fileError: any = "";
   public res: any;
   public stations: Station[];
   private fileProcessed = true;
@@ -40,6 +40,7 @@ export class MessagecomposeComponent implements OnInit {
   public isAdmin: boolean = false;
   public passunMatch: boolean = false;
   public passMin: boolean = false;
+  public errorAlert: boolean = false;
 
   //allowfile : users, admin, all
 
@@ -105,6 +106,7 @@ export class MessagecomposeComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   }
@@ -125,8 +127,13 @@ export class MessagecomposeComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
+  }
+
+  closeError() {
+    this.errorAlert = false;
   }
 
   //TODO check to remove
@@ -194,6 +201,7 @@ export class MessagecomposeComponent implements OnInit {
       },
       (err) => {
         this.fileError = err;
+        this.errorAlert = true;
       }
     );
   }

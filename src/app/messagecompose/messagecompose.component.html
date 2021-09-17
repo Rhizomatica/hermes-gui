@@ -108,6 +108,17 @@
             </div>
         </div>
 
+        <div class="overall alert" [hidden]="errorAlert==false">
+            <div class="cv" >
+                <span i18n="@@errorsending">There was an error on sending your message <br/><br/></span>
+                <span>{{error}}</span>
+                <div class="icon" ><a (click)="closeError()" >
+                    <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
+                </div>
+
+            </div>
+        </div>
+
         <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
             Your message was sent to the transmission list
         </div>
