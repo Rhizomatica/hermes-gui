@@ -113,7 +113,7 @@
                 <span i18n="@@errorsending">There was an error on sending your message <br/><br/></span>
                 <span>{{error}}</span>
                 <div class="icon" ><a (click)="closeError()" >
-                    <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
+                    <img title="compose" src="assets/svg/x.svg"></a>
                 </div>
 
             </div>
@@ -124,9 +124,11 @@
         </div>
         <div class="overall alert" [hidden]="!error">
             <div class="cv" >
-                <span i18n="@@errorsending">There was an error to send your message</span>
-                <button (click)="retry()" i18n="@@tryagain">try again</button>
-
+                <span i18n="@@errorsending">There was an error to send your message</span><br/><br/>
+                <span>{{error}}</span>
+                <div class="icon" ><a (click)="closeError()" >
+                    <img title="compose" src="assets/svg/x.svg"></a>
+                </div>
             </div>
         </div>
         <!--<button i18n="@@send">send</button>-->

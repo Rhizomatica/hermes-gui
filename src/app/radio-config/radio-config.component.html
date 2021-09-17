@@ -84,6 +84,17 @@
             <hr>
             <button i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
         
+            <div class="overall alert" *ngIf="errorAlert==true">
+                <div class="cv" >
+                    <span i18n="@@errorsending">There was an error on changing configuration <br/><br/></span>
+                    <span>{{error}}</span>
+                    <div class="icon" ><a (click)="closeError()" >
+                        <img title="compose" src="assets/svg/x.svg"></a>
+                    </div>
+    
+                </div>
+            </div>
+
             <div class="overall alert" *ngIf="!reseting==false">
                 <div class="cv" >
                     <span i18n="@@confirmreset"> Are you sure you want to reset the radio to the default configuration?

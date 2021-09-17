@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
+//import { truncateSync } from 'fs';
 
 
 //import { Router } from '@angular/router';
@@ -18,7 +19,7 @@ import {DecimalPipe} from '@angular/common';
 
 export class RadioConfigComponent implements OnInit {
   radio: any;
-  error: any;
+  error: any = '';
   alterFreq: boolean = false;
   alterSet: boolean = false;
   confirmSet: boolean = false;
@@ -31,6 +32,7 @@ export class RadioConfigComponent implements OnInit {
   public realValue : number;
   public min : number = 500000;
   public max : number = 300000000;
+  errorAlert: boolean = false;
 
 
   constructor    ( private apiService: ApiService, private decimalPipe: DecimalPipe) { }
@@ -103,7 +105,8 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = "alo" + err;
+        this.error =  err;
+        this.errorAlert = true;
       }
     )
 
@@ -115,6 +118,7 @@ set value(newValue : number) {
       },
       (err) => {
         this.error = '⚚ changeFreqMode-' +  err;
+        this.errorAlert = true;
       }
     )
 
@@ -129,7 +133,8 @@ set value(newValue : number) {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = "alo" + err;
+        this.error = err;
+        this.errorAlert = true;
       }
     )
 
@@ -147,6 +152,7 @@ set value(newValue : number) {
       },
       (err) => {
         this.error = '⚚ changeFreqMode-' +  err;
+        this.errorAlert = true;
       }
     )
 
@@ -161,6 +167,7 @@ set value(newValue : number) {
       },
       (err) => {
         this.error = '⚚ changeBfo-' +  err;
+        this.errorAlert = true;
       }
     )
   }
@@ -174,6 +181,7 @@ set value(newValue : number) {
       },
       (err) => {
         this.error = '⚚ setRadioMastercal-' +  err;
+        this.errorAlert = true;
       }
     )
   }
@@ -213,6 +221,7 @@ set value(newValue : number) {
       },
       (err) => {
         this.error = "changebfo" + err;
+        this.errorAlert = true;
       }
     )
 
@@ -224,6 +233,7 @@ set value(newValue : number) {
       },
       (err) => {
         this.error = '⚚ changemastercal-' +  err;
+        this.errorAlert = true;
       }
     )
 
@@ -234,7 +244,9 @@ set value(newValue : number) {
 
   }
 
-  
+  closeError() {
+    this.errorAlert = false;
+  }
 
 
   submitSet() {
