@@ -11,7 +11,8 @@ import { StationService } from '../_services/station.service';
   styleUrls: ['./stations.component.less']
 })
 export class StationsComponent implements OnInit {
-  error = '';
+  //error = '';
+  error: Error;
   success = '';
   test = '';
   stations: Station[];
@@ -24,6 +25,7 @@ export class StationsComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+		console.log(this.error);
       }
     );
   }

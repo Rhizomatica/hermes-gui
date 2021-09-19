@@ -36,8 +36,7 @@ export class StationService {
     private handleError(error: HttpErrorResponse) {
       this.stations = [];
 
-      // return an observable with a user friendly message
-      return throwError('Error! something went wrong: ');
+	  return throwError(error);
     }
 
     private log(message: string)  {
@@ -45,10 +44,4 @@ export class StationService {
     }
 
 
-/*  private stationsUrl = 'api/stations';  // URL to web api
-
-    getStations(): Observable<Station[]> {
-      return this.http.get<Station[]>(this.stationsUrl)
-    }
-*/
 }
