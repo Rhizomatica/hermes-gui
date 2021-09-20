@@ -36,19 +36,9 @@ export class UserService {
       catchError(this.handleError));
     }
 
-    /* getUser(id: number): Observable<User[]> {
-      const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
-      return this.http.get(this.url.pipe(
-        map((res: any) => {
-          this.user = res;
-          return this.users;
-      }),
-      catchError(this.handleError));
-    }*/
-
     /** DELETE: delete the user from the server */
     deleteUser(id: number): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/user/${id}`; // DELETE api/users/42
+      const url = `${GlobalConstants.apiURL}/user/${id}`; 
       console.log('⚚ message service - deleteUser: ',url);
       return this.http.delete(url)
         .pipe(
@@ -57,7 +47,7 @@ export class UserService {
 
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
-      const url = `${GlobalConstants.apiURL}/user`; // POST api/users
+      const url = `${GlobalConstants.apiURL}/user`; 
       return this.http.post<User>(url, user, this.httpOptions)
        .pipe(
         catchError(this.handleError)
@@ -67,33 +57,17 @@ export class UserService {
 
   /** POST: update a user  */
     updateUser(id: number, user: User): Observable<User> {
-      const url = `${GlobalConstants.apiURL}/user/${id}`; // PUT api/users/42
+      const url = `${GlobalConstants.apiURL}/user/${id}`; 
       return this.http.post<User>(url, user, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-
     private handleError(error: HttpErrorResponse) {
-      if (error.error instanceof ErrorEvent) {
-        // A client-side or network error occurred. Handle it accordingly.
-        console.error('⚚An error occurred:', error.error.message);
-      } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong.
-        console.error(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.error}`);
-      }
-      // Return an observable with a user-facing error message.
       this.users = [];
-      return throwError(
-        'Something bad happened; please try again later.');
-    }
-
-    private log(message: string) {
-      this.alertService.add(`Users: ${message}`);
+	  console.log('⚚ Hermes ⚚\n⚚ user service  error - :\n ', error);
+	  return throwError(error);
     }
 
 }

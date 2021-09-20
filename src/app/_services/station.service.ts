@@ -13,17 +13,14 @@ import { GlobalConstants } from '../global-constants';
 })
 export class StationService {
 
-
   constructor(
     private http: HttpClient,
     private alertService: AlertService) { }
 
     stations: Station[];
 
-
-
     getStations(): Observable<Station[]> {
-      const url = `${GlobalConstants.apiURL}/sys/stations`; // get /message/42
+      const url = `${GlobalConstants.apiURL}/sys/stations`; 
 
       return this.http.get(url).pipe(
         map((res: any) => {
@@ -35,13 +32,7 @@ export class StationService {
 
     private handleError(error: HttpErrorResponse) {
       this.stations = [];
-
+      console.log('⚚ Hermes ⚚\n⚚ station service  error - :\n ', error);
 	  return throwError(error);
     }
-
-    private log(message: string)  {
-      this.alertService.add(`Station: ${message}`);
-    }
-
-
 }

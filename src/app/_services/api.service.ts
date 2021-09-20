@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { AlertService } from '../alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Api } from '../api';
+// import { Api } from '../api';
 import { GlobalConstants } from '../global-constants';
 
 
@@ -181,7 +181,6 @@ export class ApiService {
       catchError(this.handleError));
     }
 
-
     public getRadioBfo(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/radio/bfo`; // get api:sys/status
       const output = this.http.get(url);
@@ -194,14 +193,8 @@ export class ApiService {
       catchError(this.handleError));
     }
 
-
     private handleError(error: HttpErrorResponse) {
-      console.log("⚚ api service - handleerror:", error);
-      // return an observable with a user friendly message
-      return throwError('⚚ api service Error! something went wrong: ');
-    }
-
-    private log(message: string) {
-      this.alertService.add(`⚚ Api: ${message}`);
+      console.log('⚚ Hermes ⚚\n⚚ api service  error - :\n ', error);
+	  return throwError(error);
     }
 }
