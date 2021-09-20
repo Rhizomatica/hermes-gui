@@ -63,7 +63,7 @@ export class SentMessagesComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    console.log("⚚ sent-messages component cancelTransmission:", host, id);
+    console.log("⚚ cancelTransmission:", host, id);
   }
 
   removeMessage(message: Message): void{
@@ -89,17 +89,20 @@ confTransmit(){
 }
 
  transmitNow(): void{
-    this.messageService.transmitNow().subscribe(
+    this.uucpService.callSystems().subscribe(
       (res: any) => {
         //this.message = res;
+    	console.log("⚚ sent-messages component transmit now:");
+    	this.confirmTransmit = false;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+    	console.log("⚚ sent-messages component transmit now fail:");
       }
     );
-    console.log("⚚ sent-messages component transmit now:");
   }
+
 
   getMessages(): void{
     this.messageService.getMessages().subscribe(

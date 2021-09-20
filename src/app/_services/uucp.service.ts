@@ -48,6 +48,16 @@ export class UUCPService{
      catchError(this.handleError));
   }
 
+  callSystems(): Observable<UUCPQueue[]> {
+    const url = `${GlobalConstants.apiURL}/sys/uucall`; 
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return this.queue;
+    }),
+      catchError(this.handleError));
+  }
+
+
   private handleError(error: HttpErrorResponse) {
 	  this.queue = [];
       console.log('⚚ Hermes ⚚\n⚚ uucp service  error - :\n ', error);
