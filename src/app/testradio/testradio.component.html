@@ -1,0 +1,132 @@
+<div class="">
+    <h2>Radio Configuration</h2>
+
+    <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br/></div>
+    <div >
+    <!--<div>-->
+        <form>
+            <div *ngIf="led" i18n="@@radioledon">led: on </div>
+            <div *ngIf="!led" i18n="@@radioledoff">led: off</div>
+            <div *ngIf="protection" i18n="@@protectionon">protection: on </div>
+            <div *ngIf="protection" i18n="@@protectionoff">protection: off </div>
+            <div *ngIf="bypass" i18n="@@bypasson">bypass: on </div>
+            <div *ngIf="!bypass" i18n="@@bypassoff">bypass: off </div>
+            <div *ngIf="radio.tx" >RXTX: TX </div>
+            <div *ngIf="radio.rx" >RXTX: RX </div>
+            <!--arrow coming or going trasmitting/recieving-->
+            <hr>
+            <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq}} Hz {{mode}}</p> 
+            <hr>
+            <p><span>BFO:</span> {{radio.bfo}} </p>
+            <p><span>mastercal: </span>{{radio.mastercal}}</p>
+            <p><span>reference: </span>{{radio.ref}} </p>
+            <p> <span>forward: </span>{{radio.fwd}} </p>
+            <p> <span>Potencia direta: </span>{{radio.fwd}} </p>
+            <p> <span>Potencia refletida: </span>{{radio.fwd}} </p>
+            <p> <span>Limiar da proteção relfetida: </span>{{radio.fwd}} </p>
+
+            <button click="resetProtection()">Reset Protection</button>
+
+
+
+
+          
+
+
+            <div class="radio" >
+                <br/>
+                <form #f="ngForm" class="formdata field"   >
+                    <p><span i18n="@@newfrequencyandmode">Radio frequency:</span></p>
+                    <input type="number" [min]="min" [max]="max" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} (ngModelChange)="changeCallback(f)">
+                    <button class="midbt" (click)="changeFrequency(f)" [disabled]="f.invalid" i18n="@@cancelr1">change frequency</button>
+                </form>
+
+                <form #f="ngForm" class="formdata field"   >
+                    <p><span >PTT:</span></p>
+                    <input type="checkbox" class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.freq}} (ngModelChange)="changePtt(f)">
+                    <button class="midbt" (click)="changePtt(f)" [disabled]="f.invalid" i18n="@@cancelr1">change ptt</button>
+                </form>
+
+                <form #f="ngForm" class="formdata field"   >
+                    <p><span >Bypass:</span></p>
+                    <input type="checkbox"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.freq}} (ngModelChange)="changeBypass(f)">
+                    <button class="midbt" (click)="changeBypass(f)" [disabled]="f.invalid" i18n="@@cancelr1">change bypass</button>
+                </form>
+
+                <form #f="ngForm" class="formdata field"   >
+                    <p><span >Limiar de proteção:</span></p>
+                    <input type="number"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.freq}} (ngModelChange)="changeTheshold(f)">
+                    <button class="midbt" (click)="changeTheshold(f)" [disabled]="f.invalid" i18n="@@cancelr1">change treshold</button>
+                </form>
+
+                <form #fmode="ngForm" class="formdata field" >
+
+                    <p><span i18n="@@newradiomode">Radio mode:</span></p>
+
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="usb==true" >USB</label>
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="usb==false">LSB</label>
+
+                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changefreq">change mode</button>
+                </form>
+
+               
+                    <!--<button i18n="addtopressets">add to presets</button>-->
+                
+            </div>
+
+
+            <div class="radio" *ngIf="alterSet">
+                <br/>
+                <form #fbfo="ngForm" class="formdata field" novalidate  >
+                    <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> </p>
+                    <input class="midbt" name="bfo" value={{radio.bfo}} [(ngModel)]="bfo" >
+                    <button class="midbt" type="submit" (click)="changeBfo(fbfo)" [disabled]="fbfo.invalid" i18n="changefreq">change bfo</button>
+                </form>
+
+                <form #fmaster="ngForm" class="formdata field" novalidate>
+                    <p><span i18n="@@mastercall">mastercal:</span> </p>
+                    <input class="midbt" name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}>
+                    <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="changefreq">change mastercall</button>
+                </form>
+
+                  <!--  <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid" i18n="@@changesettings">change settings</button>
+                
+
+                
+                <button i18n="@@addtopresets1">add to pressets</button>
+                -->
+            </div>
+
+            <hr>
+            <button i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
+        
+            <div class="overall alert" *ngIf="errorAlert==true">
+                <div class="cv" >
+                    <span i18n="@@errorsending">There was an error on changing configuration <br/><br/></span>
+                    <span>{{error}}</span>
+                    <div class="icon" ><a (click)="closeError()" >
+                        <img title="compose" src="assets/svg/x.svg"></a>
+                    </div>
+    
+                </div>
+            </div>
+
+            <div class="overall alert" *ngIf="!reseting==false">
+                <div class="cv" >
+                    <span i18n="@@confirmreset"> Are you sure you want to reset the radio to the default configuration?
+                        <br/>
+                        <br/>
+                    </span>
+                    
+                    <span class="icon" ><a (click)="confirmReset()" >
+                        <button i18n="@@cancelr">cancel</button></a>
+                    </span>
+                    <span class="icon" ><a (click)="resetRadio()" >
+                        <button i18n="@@reset1">reset</button></a>
+                    </span>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
