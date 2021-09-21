@@ -40,7 +40,7 @@
         
             <div class="multiplist">
                 <p *ngFor="let message of sentMessages.slice().reverse() | filter:searchMessages">
-                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="removeMesage(message)"></a>
+                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="removeMessage(message)"></a>
                 <span class="inlineicon" class="date">{{message.sent_at | date:'h:mm'}}</span>
                 <a routerLink="/message/{{message.id}}">
                     {{message.name}}

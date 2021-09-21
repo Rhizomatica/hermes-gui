@@ -48,21 +48,20 @@ export class UUCPService{
      catchError(this.handleError));
   }
 
+  callSystems(): Observable<UUCPQueue[]> {
+    const url = `${GlobalConstants.apiURL}/sys/uucall`; 
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return this.queue;
+    }),
+      catchError(this.handleError));
+  }
+
+
   private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('⚚ uucp service - error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // Return an observable with a user-facing error message.
-    this.queue = [];
-    return throwError(
-      'Something bad happened; please try again later.');
+	  this.queue = [];
+      console.log('⚚ Hermes ⚚\n⚚ uucp service  error - :\n ', error);
+	  return throwError(error);
   }
 
 }

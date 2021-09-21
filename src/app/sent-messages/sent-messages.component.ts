@@ -54,18 +54,16 @@ export class SentMessagesComponent implements OnInit {
   }
 
   cancelTransmission(host,id): void{
-    //this.queue = this.sentMessages.filter(obj => obj !== job);
-    //this.queue = this.sentMessages.filter(obj => obj !== job);
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
-        this.queue = res;
+    	this.queue = this.queue.filter(obj=> obj.uuiduucp !== id);
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
-    console.log("⚚ sent-messages component cancelTransmission:", host, id);
+    console.log("⚚ cancelTransmission:", host, id);
   }
 
   removeMessage(message: Message): void{
@@ -73,7 +71,6 @@ export class SentMessagesComponent implements OnInit {
     this.messageService.deleteMessage(message.id).subscribe(
       (res: any) => {
         this.message = res;
-
       },
       (err) => {
         this.error = err;
@@ -92,26 +89,25 @@ confTransmit(){
 }
 
  transmitNow(): void{
-    this.messageService.transmitNow().subscribe(
+    this.uucpService.callSystems().subscribe(
       (res: any) => {
         //this.message = res;
-
+    	console.log("⚚ sent-messages component transmit now:");
+    	this.confirmTransmit = false;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
-
+    	console.log("⚚ sent-messages component transmit now fail:");
       }
     );
-    console.log("⚚ sent-messages component transmit now:");
-    
   }
+
 
   getMessages(): void{
     this.messageService.getMessages().subscribe(
       res => {
         this.sentMessages = res.filter(a => a.draft == false  && a.inbox == false);
-         //console.log("⚚ sent-messages messages:", this.filteredMessages);
       },
       (err) => {
         this.error = err;
