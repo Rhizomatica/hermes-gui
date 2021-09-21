@@ -32,6 +32,8 @@ export class SentMessagesComponent implements OnInit {
   errorAlert: boolean = false;
   noMessages = false;
   noUUcp = false;
+  noQueue = false;
+
 
   constructor(
     private messageService: MessageService, 

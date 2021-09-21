@@ -57,6 +57,7 @@
         <h2 i18n="@@transmissionlist">Transmission list</h2>
 
         <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br/></div>
+        <div class="alert" *ngIf="noQueue" i18n="noqueue">There are no messages to transmit<br/></div>
 
     <div class="queue messages">
         <div class="multiplist">
@@ -71,7 +72,7 @@
                 <span class="date">{{job.date}} </span> 
             <span class="date">{{job.time}}</span> 
            
-            <span> {{job.uuidhost}}.{{job.uuiduucp}} <span class="date">{{job.size}} kb</span> </span>
+            <span> {{job.uuidhost}}.{{job.uuiduucp}} <span class="date">{{job.size}} B</span> </span>
             </p>
 		</div>
         <p i18n="@@listsize" class="date">Total size of files to transmit: TODO total size</p>
