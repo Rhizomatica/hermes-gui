@@ -114,7 +114,7 @@
 
             <hr>
 
-            <label>
+            <label *ngIf="currentUser.admin">
                 <span i18n>is admin</span>:
                 <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
             </label>

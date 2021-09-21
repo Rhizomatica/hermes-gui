@@ -1,8 +1,7 @@
+<div *ngIf="currentUser">
 
-
+<div *ngIf="currentUser.admin">
 <div class="menu ">
-
-<div *ngIf="currentUser and currentUser.admin; else notADM">
 <a routerLink="/manage" i18n="@@adminmanage">user management</a>
 <a routerLink="/messageadm" i18n="@@messageadm">messages administration</a>
 <a routerLink="/netadmin" i18n="@@networkadmin">network information</a>
@@ -50,11 +49,26 @@
 
 
 
-<ng-template #notADM>
+
+</div>
+
+<div *ngIf="!currentUser.admin">
+    <span i18n="@@needtobeadmin">
+        Need to be an admin to access admin features
+    </span>
+    <br>
+    <br>
+    <a routerLink="/manage" i18n="@@adminmanage">Create User</a>
+</div>
+
+<div *ngIf="!currentUser">
+    Need to be an admin to access admin features
     <app-login>
     </app-login>
-   <!-- <a routerLink="/manage" i18n="@@adminmanage">user management</a> -->
-</ng-template>
+    
+</div>
+
+
 
 <!--<a routerLink="/mailadmin" i18n="@@mailadmin">email administration</a>-->
 

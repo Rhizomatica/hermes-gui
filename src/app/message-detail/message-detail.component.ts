@@ -50,6 +50,11 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
+        console.log("hihi" + res);
+        if (res == []) {
+          this.noMessage = true;
+        }
+
         console.log('debug componente service ' + res);
       },
       (err) => {
