@@ -71,7 +71,7 @@
                 <form #fmaster="ngForm" class="formdata field" novalidate>
                     <p><span i18n="@@mastercall">mastercal:</span> </p>
                     <input class="midbt" name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}>
-                    <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="changefreq">change mastercall</button>
+                    <button class="midbt" type="submit" (click)="changeMasterCal(fmaster)" [disabled]="fmaster.invalid" i18n="changefreq">change mastercall</button>
                 </form>
 
                   <!--  <button type="submit" (click)="changeRadioSettings(fs)"  [disabled]="fs.invalid" i18n="@@changesettings">change settings</button>

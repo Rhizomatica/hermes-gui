@@ -115,6 +115,7 @@ set value(newValue : number) {
     this.apiService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
+		this.radio.freq = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
         // this.fileIsProcessing = true;
       },
@@ -142,7 +143,7 @@ set value(newValue : number) {
     this.apiService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeRadio- setRadioFreq: res: ', res);
+        //console.log('⚚ changeRadio- setRadioFreq: res: ', res);
         this.radio.freq = res;
         // this.fileIsProcessing = true;
       },
@@ -151,7 +152,6 @@ set value(newValue : number) {
         this.errorAlert = true;
       }
     )
-
     //filter if is number
     //filter range 
 
@@ -161,7 +161,8 @@ set value(newValue : number) {
     this.apiService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+		this.radio.mode = res;
+        //console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -169,14 +170,13 @@ set value(newValue : number) {
         this.errorAlert = true;
       }
     )
-
   }
 
   changeBfo(f:NgForm){
-    this.apiService.setRadioBfo(f.value.mode).subscribe(
+    this.apiService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeBfo- setRadioBfo: res: ', res);
+		this.radio.bfo = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -186,11 +186,12 @@ set value(newValue : number) {
     )
   }
 
-  changeMasterCall(f:NgForm){
-    this.apiService.setRadioMastercal(f.value.mode).subscribe(
+  changeMasterCal(f:NgForm){
+    this.apiService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeMastercall- setRadioMastercal: res: ', res);
+        //console.log('⚚ radio config - set MasterCal- : res: ', res);
+		this.radio.mastercal = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -222,46 +223,9 @@ set value(newValue : number) {
 
   }
 
-
-
-  changeRadioSettings(f:NgForm){
-    
-    
-    this.apiService.setRadioBfo(f.value.bfo).subscribe(
-      (res: any) => {
-        this.res = res;
-        console.log('⚚ radio config changeRadioSettings - Bfo: res: ', res);
-        // this.fileIsProcessing = true;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    )
-
-    this.apiService.setRadioMastercal(f.value.mastercal).subscribe(
-      (res: any) => {
-        this.res = res;
-        console.log('⚚ radio config changeRadioSettings - mastercal: res: ', res);
-        // this.fileIsProcessing = true;
-      },
-      (err) => {
-        this.error =  err;
-        this.errorAlert = true;
-      }
-    )
-
-  }
-
-
-  changeFreq() {
-
-  }
-
   closeError() {
     this.errorAlert = false;
   }
-
 
   submitSet() {
     if (this.confirmSet == false) {
@@ -285,5 +249,4 @@ set value(newValue : number) {
     }
      //console.log(this.usb)
   }
-
 }
