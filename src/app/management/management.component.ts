@@ -30,6 +30,9 @@ export class ManagementComponent implements OnInit {
   emptyUser = false;
   searchMessages: string;
   errorAlert: boolean = false;
+  passMatch: boolean = false;
+  passunMatch: boolean = false;
+  passMin: boolean = false;
 
   constructor(
       private userService: UserService,
@@ -52,6 +55,32 @@ export class ManagementComponent implements OnInit {
       // param=!param;
       return !param;
    }
+
+
+   checkpwd(passwd,repasswd) {
+    //let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
+    //let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
+    if (passwd) {
+      if (passwd == repasswd) {
+        this.passMatch = true;
+        this.passMin = false;
+        this.passunMatch = false;
+      } else {
+        this.passMatch = false;
+        this.passMin = false;
+        this.passunMatch = true;
+      }
+      console.log("passMatch: ", this.passMatch);
+      //console.log(this.passwd, this.repasswd);
+
+    } else {
+      this.passMin = true;
+      this.passunMatch = false;
+
+    }
+
+    
+  } 
 
    closeError() {
     this.errorAlert = false;
