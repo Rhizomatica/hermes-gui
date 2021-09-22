@@ -39,8 +39,6 @@ export class RadioConfigComponent implements OnInit {
   errorAlert: boolean = false;
   radioError: boolean = false;
 
-
-
   constructor    ( private apiService: ApiService, private decimalPipe: DecimalPipe) { }
 
   getRadioStatus(): void{
@@ -56,34 +54,30 @@ export class RadioConfigComponent implements OnInit {
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
         return res;
-        
-      },
+        },
       (err) => {
         this.error = err;
         this.radioError = true;
         console.log(this.error);
-      }
-    );
-  }
-
-  
-
-  get value() : number {
-    this.realValue = this.radio.freq;
+        }
+      );
+    }
+     get value() : number {
+     this.realValue = this.radio.freq;
     return this.realValue;
-}
+    }
 
-set value(newValue : number) {
-  this.realValue = newValue;
-  if(this.realValue < this.min){
-      this.realValue = undefined;
-      setTimeout(() => {this.realValue = this.min;});
+  set value(newValue : number) {
+    this.realValue = newValue;
+      if(this.realValue < this.min){
+        this.realValue = undefined;
+        setTimeout(() => {this.realValue = this.min;});
+      }
+      else if(this.realValue > this.max){
+        this.realValue = undefined;
+        setTimeout(() => {this.realValue = this.max;});
+      }
   }
-  else if(this.realValue > this.max){
-      this.realValue = undefined;
-      setTimeout(() => {this.realValue = this.max;});
-  }
-}
 
   changeCallback(){
     
@@ -221,6 +215,21 @@ set value(newValue : number) {
       this.confirmSet = true;
     }
 
+  }
+
+
+  radioReset(){
+	this.apiService.radioReset().subscribe(
+	  (res: any) => {
+		this.res = res;
+		console.log('⚚ radio config - reset radio: res: ', res);
+		// this.fileIsProcessing = true;
+	  },
+	  (err) => {
+		this.error = err;
+		this.errorAlert = true;
+	  }
+	)
   }
 
   closeError() {
