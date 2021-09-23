@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
+import { RadioService } from '../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
 //import { truncateSync } from 'fs';
@@ -39,12 +40,14 @@ export class TestradioComponent implements OnInit {
   errorAlert: boolean = false;
   radioError: boolean = false;
 
+  constructor    ( 
+	private apiService: ApiService,
+	private radioService: RadioService,
 
-
-  constructor    ( private apiService: ApiService, private decimalPipe: DecimalPipe) { }
+	private decimalPipe: DecimalPipe) { }
 
   getRadioStatus(): void{
-    this.apiService.getRadioStatus().subscribe(
+    this.radioService.getRadioStatus().subscribe(
       (res: any) => {
         this.radio= res;
         this.radio.extra=false;
@@ -65,25 +68,21 @@ export class TestradioComponent implements OnInit {
       }
     );
   }
-
-  
-
   get value() : number {
     this.realValue = this.radio.freq;
     return this.realValue;
-}
-
-set value(newValue : number) {
-  this.realValue = newValue;
-  if(this.realValue < this.min){
+	}
+  set value(newValue : number) {
+    this.realValue = newValue;
+    if(this.realValue < this.min){
       this.realValue = undefined;
       setTimeout(() => {this.realValue = this.min;});
-  }
-  else if(this.realValue > this.max){
+    }
+    else if(this.realValue > this.max){
       this.realValue = undefined;
       setTimeout(() => {this.realValue = this.max;});
+    }
   }
-}
 
   changeCallback(f:NgForm){
     
@@ -120,7 +119,7 @@ set value(newValue : number) {
   }
 
   changeRadioFreqMode(f:NgForm){
-    this.apiService.setRadioFreq(f.value.freq).subscribe(
+    this.radioService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
@@ -132,7 +131,7 @@ set value(newValue : number) {
       }
     )
 
-    this.apiService.setRadioMode(f.value.mode).subscribe(
+    this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
@@ -147,7 +146,7 @@ set value(newValue : number) {
   }
 
   changeFrequency(f:NgForm) {
-    this.apiService.setRadioFreq(f.value.freq).subscribe(
+    this.radioService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
@@ -166,7 +165,7 @@ set value(newValue : number) {
   }
 
   changeMode(f:NgForm) {
-    this.apiService.setRadioMode(f.value.mode).subscribe(
+    this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
@@ -181,7 +180,7 @@ set value(newValue : number) {
   }
 
   changeBfo(f:NgForm){
-    this.apiService.setRadioBfo(f.value.mode).subscribe(
+    this.radioService.setRadioBfo(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeBfo- setRadioBfo: res: ', res);
@@ -195,7 +194,7 @@ set value(newValue : number) {
   }
 
   changeMasterCall(f:NgForm){
-    this.apiService.setRadioMastercal(f.value.mode).subscribe(
+    this.radioService.setRadioMastercal(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeMastercall- setRadioMastercal: res: ', res);
@@ -244,8 +243,7 @@ resetProtection(f:NgForm) {
 
   changeRadioSettings(f:NgForm){
     
-    
-    this.apiService.setRadioBfo(f.value.bfo).subscribe(
+    this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ radio config changeRadioSettings - Bfo: res: ', res);
@@ -257,7 +255,7 @@ resetProtection(f:NgForm) {
       }
     )
 
-    this.apiService.setRadioMastercal(f.value.mastercal).subscribe(
+    this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ radio config changeRadioSettings - mastercal: res: ', res);
@@ -268,12 +266,6 @@ resetProtection(f:NgForm) {
         this.errorAlert = true;
       }
     )
-
-  }
-
-
-  changeFreq() {
-
   }
 
   closeError() {
