@@ -19,7 +19,7 @@ import {DecimalPipe} from '@angular/common';
 })
 
 export class TestradioComponent implements OnInit {
-  radio: any = [];
+  public radio: any = [];
   error: Error;
   alterFreq: boolean = false;
   alterSet: boolean = false;
@@ -36,8 +36,8 @@ export class TestradioComponent implements OnInit {
   protection: any;
   bypass: any;
   public realValue : number;
-  public min : number = 500000;
-  public max : number = 300000000;
+  public freqmin = 500000;
+  public freqmax =30000000;
   errorAlert: boolean = false;
   radioError: boolean = false;
 
@@ -50,7 +50,7 @@ export class TestradioComponent implements OnInit {
   getRadioStatus(): void{
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
-        this.radio= res;
+        this.radio = res;
         this.radio.extra=false;
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
@@ -75,13 +75,13 @@ export class TestradioComponent implements OnInit {
 	}
   set value(newValue : number) {
     this.realValue = newValue;
-    if(this.realValue < this.min){
+    if(this.realValue < this.freqmin){
       this.realValue = undefined;
-      setTimeout(() => {this.realValue = this.min;});
+      setTimeout(() => {this.realValue = this.freqmin;});
     }
-    else if(this.realValue > this.max){
+    else if(this.realValue > this.freqmax){
       this.realValue = undefined;
-      setTimeout(() => {this.realValue = this.max;});
+      setTimeout(() => {this.realValue = this.freqmax;});
     }
   }
 
@@ -90,11 +90,34 @@ export class TestradioComponent implements OnInit {
   }
 
   changePtt(f:NgForm){
-    
+    this.radioService.setRadioPTT(f.value.ptt).subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.ptt = res;
+		this.ptt = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
   }
 
-  changeRefThreshold(f:NgForm) {
-
+  changeRefThreshold(f:NgForm){
+    this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.refthreshold = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
   }
 
   confirmReset() {
