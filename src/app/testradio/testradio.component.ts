@@ -207,11 +207,33 @@ export class TestradioComponent implements OnInit {
     )
   }
 
-changeBypass(f:NgForm) {
-
-}
+  changeByPass(f:NgForm){
+    this.radioService.setRadioBypass(f.value.bypass).subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.bypass = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
+  }
 
 resetProtection(f:NgForm) {
+  this.radioService.radioReset().subscribe(
+	  (res: any) => {
+		this.res = res;
+		console.log('⚚ radio config - reset radio: res: ', res);
+		// this.fileIsProcessing = true;
+	  },
+	  (err) => {
+		this.error = err;
+		this.errorAlert = true;
+	  }
+	)
 
 }
 

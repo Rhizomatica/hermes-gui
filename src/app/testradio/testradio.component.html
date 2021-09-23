@@ -11,8 +11,8 @@
             <div *ngIf="protection" i18n="@@protectionoff">protection: off </div>
             <div *ngIf="bypass" i18n="@@bypasson">bypass: on </div>
             <div *ngIf="!bypass" i18n="@@bypassoff">bypass: off </div>
-            <div *ngIf="radio.tx" >RXTX: TX </div>
-            <div *ngIf="radio.rx" >RXTX: RX </div>
+            <div *ngIf="radio.tx" >RX/TX: TX </div>
+            <div *ngIf="radio.rx" >RX/TX: RX </div>
             <!--arrow coming or going trasmitting/recieving-->
             <hr>
             <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq}} Hz {{mode}}</p> 
@@ -21,9 +21,9 @@
             <p><span>mastercal: </span>{{radio.mastercal}}</p>
             <p><span>reference: </span>{{radio.ref}} </p>
             <p> <span>forward: </span>{{radio.fwd}} </p>
-            <p> <span>Potencia direta: </span>{{radio.fwd}} </p>
-            <p> <span>Potencia refletida: </span>{{radio.fwd}} </p>
-            <p> <span>Limiar da proteção relfetida: </span>{{radio.fwd}} </p>
+            <p> <span>Potencia direta: </span>TODO </p>
+            <p> <span>Potencia refletida: </span>TODO</p>
+            <p> <span>Limiar da proteção relfetida: </span>TODO </p>
 
             <button click="resetProtection()">Reset Protection</button>
 
@@ -49,8 +49,8 @@
 
                 <form #f="ngForm" class="formdata field"   >
                     <p><span >Bypass:</span></p>
-                    <input type="checkbox"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.freq}} (ngModelChange)="changeBypass(f)">
-                    <button class="midbt" (click)="changeBypass(f)" [disabled]="f.invalid" i18n="@@cancelr1">change bypass</button>
+                    <input type="number"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.bypass}} >
+                    <button class="midbt" (click)="changeByPass(f)" [disabled]="f.invalid" i18n="@@cancelr1">change bypass</button>
                 </form>
 
                 <form #f="ngForm" class="formdata field"   >
@@ -66,7 +66,7 @@
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="usb==true" >USB</label>
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="usb==false">LSB</label>
 
-                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changefreq">change mode</button>
+                    <button class="midbt" type="submit" (click)="changeMode(fmode)" i18n="changefreq">change mode</button>
                 </form>
 
                
