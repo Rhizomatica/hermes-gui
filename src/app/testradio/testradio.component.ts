@@ -40,11 +40,11 @@ export class TestradioComponent implements OnInit {
   public freqmax =30000000;
   errorAlert: boolean = false;
   radioError: boolean = false;
+  testtone= 0;
 
   constructor    ( 
 	private apiService: ApiService,
 	private radioService: RadioService,
-
 	private decimalPipe: DecimalPipe) { }
 
   getRadioStatus(): void{
@@ -59,6 +59,7 @@ export class TestradioComponent implements OnInit {
         this.led = this.radio.led;
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
+		this.ptt = false;
         return res;
         
       },
@@ -90,6 +91,7 @@ export class TestradioComponent implements OnInit {
   }
 
   changePtt(f:NgForm){
+	  console.log (f.value.ptt);
     this.radioService.setRadioPTT(f.value.ptt).subscribe(
       (res: any) => {
         this.res = res;
@@ -182,10 +184,8 @@ export class TestradioComponent implements OnInit {
         this.errorAlert = true;
       }
     )
-
     //filter if is number
     //filter range 
-
   }
 
   changeMode(f:NgForm) {
@@ -328,7 +328,8 @@ resetProtection(f:NgForm) {
   }
 
   ngOnInit(): void {
-     this.radio=this.getRadioStatus();
+
+    this.radio=this.getRadioStatus();
 
     if (this.radio.mode=="USB") {
       this.usb = true;

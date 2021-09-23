@@ -23,41 +23,50 @@
 
             <div class="radio" >
                 <br/>
-                <form #ffreq="ngForm" class="formdata field"   >
-                    <p><span i18n="@@newfrequencyandmode">VFO - Radio frequency:</span></p>
-                    <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} (ngModelChange)="changeCallback(ffreq)">
-                    <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreq">change frequency</button>
-                </form>
-
-                <form #frefthreshold="ngForm" class="formdata field"   >
-                    <p><span >Limiar de proteção:</span></p>
-                    <input type="number"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.refthreshold}} (ngModelChange)="changeRefThreshold(frefthreshold)">
-                    <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" i18n="@@changeRefThreshold">change threshold</button>
-					<span>TODO: REmove {{radio.refthreshold}} </span>
-                </form>
-
                 <form #fptt="ngForm" class="formdata field"   >
                     <p><span >PTT:</span></p>
-                    <label><input class="inl" type="radio" name="ptt" [(ngModel)]="ptt" value="ON" [checked]="radio.ptt==true" >ON - Ligado</label>
-                    <label><input class="inl" type="radio" name="ptt" [(ngModel)]="ptt"  value="OFF" [checked]="radio.ptt==false">OFF - Desligado</label>
-                    <button class="midbt" type="submit" (click)="changePtt(fptt)" [disabled]="radio.ptt.invalid" i18n="changeptt">change PTT</button>
+                    <button class="midbt" type="submit" (click)="changePtt(fptt)" [disabled]="fptt.invalid" i18n="changeptt">change PTT</button>
+                    <label><input class="inl" type="radio" name="ptt" [(ngModel)]="ptt" value="ON" [checked]="radio.tx=='true'" >ON - Ligado</label>
+                    <label><input class="inl" type="radio" name="ptt" [(ngModel)]="ptt"  value="OFF" [checked]="radio.tx=='false'">OFF - Desligado</label>
+                </form>
+
+                <form #ftesttone="ngForm" class="formdata field"   >
+                    <p><span >Tom de teste:</span></p>
+                    <button class="midbt" type="submit" (click)="changePtt(ftesttone)"  i18n="changetone">change Tone</button>
+                    <label><input class="inl" type="radio" name="testtone" [(ngModel)]="testtone" value="0" [checked]="testtone==0" >OFF - desligado</label>
+                    <label><input class="inl" type="radio" name="testtone" [(ngModel)]="testtone"  value="600" [checked]="testtone==600">ON - 600 Hertz</label>
+                    <label><input class="inl" type="radio" name="testtone" [(ngModel)]="testtone"  value="1500" [checked]="testtone==1500">ON - 1500 Hertz</label>
+					<label>{{testtone}}</label>
                 </form>
 
                 <form #fbypass="ngForm" class="formdata field"   >
                     <p><span >ByPass:</span></p>
-                    <label><input class="inl" type="radio" name="bypass" [(ngModel)]="mode" value="ON" [checked]="radio.tx==true" >ON - Ligado</label>
-                    <label><input class="inl" type="radio" name="bypass" [(ngModel)]="mode"  value="OFF" [checked]="radio.rx==true">OFF - Desligado</label>
                     <button class="midbt" type="submit" (click)="changePtt(fbypass)" [disabled]="radio.bypass.invalid" i18n="changeptt">change ByPass</button>
+                    <label><input class="inl" type="radio" name="bypass" [(ngModel)]="bypass" value="ON" [checked]="radio.bypass=='true'" >ON - Ligado</label>
+                    <label><input class="inl" type="radio" name="bypass" [(ngModel)]="bypass"  value="OFF" [checked]="radio.bypass=='true'">OFF - Desligado</label>
                 </form>
 
                 <form #fmode="ngForm" class="formdata field" >
-                    <p><span i18n="@@newradiomode">Radio mode:</span></p>
-                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="usb==true" >USB - Modulaçao em Banda Superior </label>
-                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="usb==false">LSB - Modulacao em Banda Inferior</label>
-                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changefreq">change mode</button>
+                    <p><span i18n="@@changeradiomode">Radio mode:</span></p>
+                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changemode">change mode</button>
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB - Modulaçao em Banda Superior </label>
+                    <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="radio.mode=='LSB'">LSB - Modulacao em Banda Inferior </label>
                 </form>
-            </div>
 
+                <form #ffreq="ngForm" class="formdata field"   >
+				<p><span i18n="@@changefrequency">VFO - Radio frequency:</span></p>
+                    <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreq">change frequency</button>
+                    <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} (ngModelChange)="changeCallback(ffreq)">
+                </form>
+
+                <form #frefthreshold="ngForm" class="formdata field"   >
+                    <p><span >Limiar de proteção:</span></p>
+                    <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" i18n="@@changeRefThreshold">change threshold</button>
+                    <input type="number"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.refthreshold}} (ngModelChange)="changeRefThreshold(frefthreshold)">
+					<span>TODO: REmove {{radio.refthreshold}} </span>
+                </form>
+
+            </div>
 
             <div class="radio" *ngIf="alterSet">
                 <br/>
