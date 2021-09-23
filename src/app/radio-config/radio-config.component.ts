@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
+import { RadioService } from '../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
 //import { truncateSync } from 'fs';
@@ -39,10 +40,13 @@ export class RadioConfigComponent implements OnInit {
   errorAlert: boolean = false;
   radioError: boolean = false;
 
-  constructor    ( private apiService: ApiService, private decimalPipe: DecimalPipe) { }
+  constructor    (
+	private apiService: ApiService,
+	private radioService: RadioService,
+	private decimalPipe: DecimalPipe) { }
 
   getRadioStatus(): void{
-    this.apiService.getRadioStatus().subscribe(
+    this.radioService.getRadioStatus().subscribe(
       (res: any) => {
         this.radio= res;
         this.radio.extra=false;
@@ -106,7 +110,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeRadioFreqMode(f:NgForm){
-    this.apiService.setRadioFreq(f.value.freq).subscribe(
+    this.radioService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
 		this.radio.freq = res;
@@ -119,7 +123,7 @@ export class RadioConfigComponent implements OnInit {
       }
     )
 
-    this.apiService.setRadioMode(f.value.mode).subscribe(
+    this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
@@ -134,7 +138,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeFrequency(f:NgForm) {
-    this.apiService.setRadioFreq(f.value.freq).subscribe(
+    this.radioService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
         //console.log('⚚ changeRadio- setRadioFreq: res: ', res);
@@ -148,11 +152,10 @@ export class RadioConfigComponent implements OnInit {
     )
     //filter if is number
     //filter range 
-
   }
 
   changeMode(f:NgForm) {
-    this.apiService.setRadioMode(f.value.mode).subscribe(
+    this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
 		this.radio.mode = res;
@@ -167,7 +170,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeBfo(f:NgForm){
-    this.apiService.setRadioBfo(f.value.bfo).subscribe(
+    this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
 		this.radio.bfo = res;
@@ -181,7 +184,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeMasterCal(f:NgForm){
-    this.apiService.setRadioMastercal(f.value.mastercal).subscribe(
+    this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
         this.res = res;
         //console.log('⚚ radio config - set MasterCal- : res: ', res);
@@ -194,6 +197,38 @@ export class RadioConfigComponent implements OnInit {
       }
     )
   }
+
+  changeByPass(f:NgForm){
+    this.radioService.setRadioBypass(f.value.bypass).subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.bypass = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
+  }
+
+  changeRefThreshold(f:NgForm){
+    this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.refthreshold = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
+  }
+
+
 
   confirmChange(){
     if (this.confirmSet) {
@@ -214,12 +249,10 @@ export class RadioConfigComponent implements OnInit {
     } else {
       this.confirmSet = true;
     }
-
   }
 
-
   radioReset(){
-	this.apiService.radioReset().subscribe(
+	this.radioService.radioReset().subscribe(
 	  (res: any) => {
 		this.res = res;
 		console.log('⚚ radio config - reset radio: res: ', res);
