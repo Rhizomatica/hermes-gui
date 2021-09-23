@@ -25,6 +25,7 @@ export class TestradioComponent implements OnInit {
   alterSet: boolean = false;
   confirmSet: boolean = false;
   res: any;
+  ptt: any;
   bfo: any;
   mastercal: any;
   freq: any;
@@ -92,7 +93,7 @@ export class TestradioComponent implements OnInit {
     
   }
 
-  changeTheshold(f:NgForm) {
+  changeRefThreshold(f:NgForm) {
 
   }
 
