@@ -72,16 +72,16 @@
                 </form>
 
                 <form #ffreq="ngForm" class="formdata field"   >
-				<p><span i18n="@@changefrequency">VFO - Radio frequency:</span></p>
+				<p><span i18n="@@changefrequency">VFO - Radio frequency: {{radio.freq}}</span></p>
                     <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreq">change frequency</button>
                     <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} >
                 </form>
 
                 <form #frefthreshold="ngForm" class="formdata field"   >
-                    <p><span >Limiar de proteção:</span></p>
+                    <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
                     <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" i18n="@@changeRefThreshold">change threshold</button>
                     <input type="number"  class="midbt" name="bypass" [(ngModel)]="bypass" value={{radio.refthreshold}} >
-					<span>TODO: REmove {{radio.refthreshold}} </span>
+		
                 </form>
 
             </div>
