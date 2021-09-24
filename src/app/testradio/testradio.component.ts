@@ -253,11 +253,11 @@ export class TestradioComponent implements OnInit {
   }
 
   changeBfo(f:NgForm){
-    this.radioService.setRadioBfo(f.value.mode).subscribe(
+    this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeBfo- setRadioBfo: res: ', res);
-        // this.fileIsProcessing = true;
+        this.radio.bfo = res;
       },
       (err) => {
         this.error = err;
@@ -271,6 +271,7 @@ export class TestradioComponent implements OnInit {
       (res: any) => {
         this.res = res;
         console.log('⚚ changeMastercall- setRadioMastercal: res: ', res);
+        this.radio.mastercal = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
