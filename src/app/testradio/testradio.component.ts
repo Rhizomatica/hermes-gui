@@ -132,9 +132,6 @@ export class TestradioComponent implements OnInit {
 
     console.log(f);
     console.log(this.toneOn);
-
-    
-
     this.radioService.setRadioTone(f).subscribe(
       (res: any) => {
         this.res = res;
@@ -270,7 +267,7 @@ export class TestradioComponent implements OnInit {
   }
 
   changeMasterCall(f:NgForm){
-    this.radioService.setRadioMastercal(f.value.mode).subscribe(
+    this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeMastercall- setRadioMastercal: res: ', res);
@@ -287,6 +284,8 @@ export class TestradioComponent implements OnInit {
     this.radioService.setRadioBypass(f).subscribe(
       (res: any) => {
         this.res = res;
+
+
         if (res=="BYPASS_ON") {
           this.bypass = true;
           this.radio.bypass = true;
@@ -295,9 +294,9 @@ export class TestradioComponent implements OnInit {
           this.radio.bypass = false;
 
         }
-        //console.log('⚚ hihih ', res);
+        console.log('⚚ hihih ', res);
         console.log('⚚ radio config - set radio bypass- :' ,this.radio.bypass)
-        //console.log('⚚ radio config - set bypass- :' ,this.bypass)
+        console.log('⚚ radio config - set bypass- :' ,this.bypass)
 
         // this.fileIsProcessing = true;
       },
@@ -393,16 +392,12 @@ resetProtection(f:NgForm) {
 
     this.radio=this.getRadioStatus();
 
-    if (this.radio.mode=="USB") {
-      this.usb = true;
-    } else {
-      this.usb = false;
-    }
 
     if (this.radio) {
-      this.usb= this.radio.mode;
+      this.usb = this.radio.mode;
     }
-     //console.log(this.usb)
-  }
+    
+  
+    }
 
 }

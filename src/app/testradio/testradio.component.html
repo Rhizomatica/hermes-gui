@@ -4,8 +4,8 @@
     <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br/></div>
     <div >
     <!--<div>-->
-        <form>
-            <div *ngIf="radio">
+        <form *ngIf="radio">
+            <div >
 
             
             <p><span i18n="@@currentradiofreq">VFO - Frequencia: </span>  {{radio.freq}} Hz {{radio.mode}}</p> 
@@ -23,6 +23,7 @@
             <div *ngIf="!bypass" i18n="@@bypassoff">bypass: OFF - desligado</div>
             <div *ngIf="radio.tx" >Modo de operaçao: TX </div>
             <div *ngIf="radio.rx" >Modo de operaçao: RX </div>
+            <div >TXRX: {{radio.txrx}}</div>
         </div>
             <div class="radio" >
                 <br/>
@@ -33,10 +34,8 @@
                 </form>
 
                 <form #ftesttone="ngForm" class="formdata field"   >
-                    <p><span >Tom de teste:</span> <label>{{testtone}}</label></p>
-					{{radio.testtone}}
+                    <p><span >Tom de teste:</span> <span>{{radio.testtone}}</span></p>
 					
-
                     <div *ngIf="!toneOn">
                         <button name="testtone" value="600" (click)="testTone(600)">600hz</button>
                         <button name="testtone" value="1500" (click)="testTone(1500)">1500hz</button>
@@ -66,7 +65,7 @@
                     
                 </form>
 
-                <form #fmode="ngForm" class="formdata field" >
+                <form *ngIf="radio" #fmode="ngForm" class="formdata field" >
                     <p><span i18n="@@changeradiomode">Radio mode: {{radio.mode}}</span></p>
                     <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changemode">change mode</button>
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB - Modulaçao em Banda Superior </label>
