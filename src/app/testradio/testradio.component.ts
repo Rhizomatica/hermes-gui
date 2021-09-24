@@ -40,7 +40,8 @@ export class TestradioComponent implements OnInit {
   public freqmax =30000000;
   errorAlert: boolean = false;
   radioError: boolean = false;
-  testtone= 0;
+  testtone= '0';
+  toneOn: boolean = false;
 
   constructor    ( 
 	private apiService: ApiService,
@@ -59,7 +60,7 @@ export class TestradioComponent implements OnInit {
         this.led = this.radio.led;
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
-		this.ptt = false;
+		    this.ptt = 'OFF';
         return res;
         
       },
@@ -90,9 +91,10 @@ export class TestradioComponent implements OnInit {
     
   }
 
-  changePtt(f:NgForm){
-	  console.log (f.value.ptt);
-    this.radioService.setRadioPTT(f.value.ptt).subscribe(
+  changePtt(f){
+	  console.log (f);
+    this.ptt = f;
+    this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
         //console.log('⚚ radio config - set bypass- : res: ', res);
@@ -101,10 +103,28 @@ export class TestradioComponent implements OnInit {
         // this.fileIsProcessing = true;
       },
       (err) => {
-        this.error = err;
+       this.error = err;
         this.errorAlert = true;
       }
     )
+  }
+
+
+  testTone(f) {
+
+    this.testtone = f;
+
+    console.log(f);
+    console.log(this.toneOn);
+
+    if (f == '0') {
+      this.toneOn = false;
+      
+    } else {
+      this.toneOn = true;
+    }
+
+
   }
 
   changeRefThreshold(f:NgForm){

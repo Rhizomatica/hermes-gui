@@ -24,19 +24,26 @@
             <div class="radio" >
                 <br/>
                 <form #fptt="ngForm" class="formdata field"   >
-                    <p><span >PTT:</span></p>
-                    <button class="midbt" type="submit" (click)="changePtt(fptt)" [disabled]="fptt.invalid" i18n="changeptt">change PTT</button>
-                    <label><input class="inl" type="radio" name="ptt" [(ngModel)]="ptt" value="ON" [checked]="radio.tx=='true'" >ON - Ligado</label>
-                    <label><input class="inl" type="radio" name="ptt" [(ngModel)]="ptt"  value="OFF" [checked]="radio.tx=='false'">OFF - Desligado</label>
+                    <p><span >PTT:</span></p>                    
+                    <button type="submit" name="ptt" value="ON" *ngIf="ptt=='OFF'" (click)="changePtt('ON')" >Ligar</button>
+                    <button type="submit" name="ptt" value="OFF" *ngIf="ptt=='ON'" (click)="changePtt('OFF')" >Desligar</button>
                 </form>
 
                 <form #ftesttone="ngForm" class="formdata field"   >
-                    <p><span >Tom de teste:</span></p>
-                    <button class="midbt" type="submit" (click)="changePtt(ftesttone)"  i18n="changetone">change Tone</button>
-                    <label><input class="inl" type="radio" name="testtone" [(ngModel)]="testtone" value="0" [checked]="testtone==0" >OFF - desligado</label>
-                    <label><input class="inl" type="radio" name="testtone" [(ngModel)]="testtone"  value="600" [checked]="testtone==600">ON - 600 Hertz</label>
-                    <label><input class="inl" type="radio" name="testtone" [(ngModel)]="testtone"  value="1500" [checked]="testtone==1500">ON - 1500 Hertz</label>
-					<label>{{testtone}}</label>
+                    <p><span >Tom de teste:</span> <label>{{testtone}}</label></p>
+
+                    <div *ngIf="!toneOn">
+                        <button name="testtone" value="600" (click)="testTone(600)">600hz</button>
+                        <button name="testtone" value="1500" (click)="testTone(1500)">1500hz</button>
+
+                    </div>
+
+                    <div *ngIf="toneOn">
+                        <button name="testtone" *ngIf="toneOn " value="0" (click)="testTone(0)">desligar</button>
+                        <button name="testtone" [hidden]="testtone=='600'"  value="600" (click)="testTone(600)">600hz</button>
+                        <button name="testtone" [hidden]="testtone=='1500'" value="1500" (click)="testTone(1500)">1500hz</button>
+                    </div>
+					
                 </form>
 
                 <form #fbypass="ngForm" class="formdata field"   >
