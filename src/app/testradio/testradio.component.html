@@ -17,8 +17,8 @@
             <p><span>Serial: </span>{{radio.serial}} </p>
             <div *ngIf="led" i18n="@@radioledon">LED de status: on </div>
             <div *ngIf="!led" i18n="@@radioledoff">LED de status: off</div>
-            <div *ngIf="protection" i18n="@@protectionon">protection: ON</div>
-            <div *ngIf="!protection" i18n="@@protectionoff">protection: OFF </div>
+            <div *ngIf="radio.protection" i18n="@@protectionon">protection: ON</div>
+            <div *ngIf="!radio.protection" i18n="@@protectionoff">protection: OFF </div>
             <div *ngIf="bypass" i18n="@@bypasson">bypass: ON - ligado</div>
             <div *ngIf="!bypass" i18n="@@bypassoff">bypass: OFF - desligado</div>
             <div *ngIf="radio.tx" >Modo de operaçao: TX </div>
@@ -106,7 +106,7 @@
 
             <hr>
             
-            <button (click)="resetProtection()">reset protection</button>
+            <button *ngIf="radio.protection" (click)="resetProtection()">reset protection</button>
             <br/>
 
           <!--  <button i18n="@@resettodefault" (click)="resetRadio()">reset to default</button>-->
