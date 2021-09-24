@@ -4,7 +4,8 @@
 @clr: #f60;
 @actvclr: #f00;
 @vstclr:#c96;
-@mclr:#000;
+@mclr:#333;
+@bkclr:#fff;
 @desktop: ~"only screen and (min-width: 992px)";
 
 
@@ -97,7 +98,8 @@ body {
     margin: 0.2em auto 1em auto;
     padding: 0 0.5em;
     position: relative;
-    color:#fff;
+    background-color:@bkclr;
+    color: @mclr;
 }
 
 p {
@@ -128,7 +130,7 @@ h2 {
 
 button {
     border: 0;
-    background-color: #000;
+    background-color: @clr;
     color: white;
     font-weight: bold;
     border-radius: 0.1em;
@@ -162,7 +164,7 @@ a:visited {
 
 nav {
     font-size: 0.8em;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid @mclr;
     max-width: calc(100% - 1.5em);
     width: 100%;
     padding-top: 1.6em;
@@ -170,7 +172,7 @@ nav {
     justify-content: flex-start;
     a {
     text-decoration: none;
-    border-top: 3px solid #000;
+    border-top: 3px solid @mclr;
     padding-bottom: 4px;
     margin-right: 0.3em;
     margin-top: 0.8em;

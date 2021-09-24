@@ -304,7 +304,7 @@ export class TestradioComponent implements OnInit {
     )
   }
 
-resetProtection() {
+  resetProtection() {
 	console.log("teste");
   this.radioService.radioResetProtection().subscribe(
 	  (res: any) => {
@@ -321,6 +321,7 @@ resetProtection() {
 }
 
   resetRadio() {
+    console.log("reset");
   this.radioService.radioResetDefaults().subscribe(
 	  (res: any) => {
 		this.res = res;
