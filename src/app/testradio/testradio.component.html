@@ -34,6 +34,8 @@
 
                 <form #ftesttone="ngForm" class="formdata field"   >
                     <p><span >Tom de teste:</span> <label>{{testtone}}</label></p>
+					{{radio.testtone}}
+					
 
                     <div *ngIf="!toneOn">
                         <button name="testtone" value="600" (click)="testTone(600)">600hz</button>
