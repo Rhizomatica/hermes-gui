@@ -165,7 +165,7 @@ export class RadioService {
     }
 
     public radioResetDefaults(): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/reset}`; 
+      var url = `${GlobalConstants.apiURL}/radio/reset`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
