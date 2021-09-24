@@ -133,17 +133,17 @@ export class TestradioComponent implements OnInit {
     console.log(f);
     console.log(this.toneOn);
 
-    if (f == '0') {
-      this.toneOn = false;
-
-    } else {
-      this.toneOn = true;
-    }
+    
 
     this.radioService.setRadioTone(f).subscribe(
       (res: any) => {
         this.res = res;
-		this.radio.refthreshold = res;
+		this.radio.testtone = res;
+    if (res == '0') {
+      this.toneOn = false;
+    } else {
+      this.toneOn = true;
+    }
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -287,18 +287,18 @@ export class TestradioComponent implements OnInit {
     this.radioService.setRadioBypass(f).subscribe(
       (res: any) => {
         this.res = res;
-
-        if (this.radio.bypass=="ON") {
+        if (res=="BYPASS_ON") {
           this.bypass = true;
+          this.radio.bypass = true;
         } else {
           this.bypass = false;
-        }
-        console.log('⚚ radio config - set bypass- : res: ', res);
-        console.log('⚚ radio config - set radio bypass- :' ,this.radio.bypass)
-        console.log('⚚ radio config - set bypass- :' ,this.bypass)
+          this.radio.bypass = false;
 
-        this.bypass = res;
-		this.radio.bypass = res;
+        }
+        //console.log('⚚ hihih ', res);
+        console.log('⚚ radio config - set radio bypass- :' ,this.radio.bypass)
+        //console.log('⚚ radio config - set bypass- :' ,this.bypass)
+
         // this.fileIsProcessing = true;
       },
       (err) => {

@@ -18,7 +18,7 @@
             <div *ngIf="led" i18n="@@radioledon">LED de status: on </div>
             <div *ngIf="!led" i18n="@@radioledoff">LED de status: off</div>
             <div *ngIf="protection" i18n="@@protectionon">protection: ON</div>
-            <div *ngIf="protection" i18n="@@protectionoff">protection: off </div>
+            <div *ngIf="!protection" i18n="@@protectionoff">protection: OFF </div>
             <div *ngIf="bypass" i18n="@@bypasson">bypass: ON - ligado</div>
             <div *ngIf="!bypass" i18n="@@bypassoff">bypass: OFF - desligado</div>
             <div *ngIf="radio.tx" >Modo de operaçao: TX </div>
@@ -53,8 +53,8 @@
 
                 <form #fbypass="ngForm" class="formdata field"   >
                     <p><span >ByPass:</span></p>
-                    <button name="bypass" value="ON" *ngIf="!bypass" (click)="changeByPass('ON')" >Ligar</button>
-                    <button name="bypass" value="OFF" *ngIf="bypass" (click)="changeByPass('OFF')" >Desligar</button>
+                    <button name="bypass" value="ON" [hidden]="bypass" (click)="changeByPass('ON')" >Ligar</button>
+                    <button name="bypass" value="OFF" [hidden]="!bypass" (click)="changeByPass('OFF')" >Desligar</button>
 
 
                     <!--
