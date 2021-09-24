@@ -66,8 +66,7 @@ export class TestradioComponent implements OnInit {
         } else {
           this.bypass = false;
         }
-
-		    this.ptt = 'OFF';
+		this.ptt = 'OFF';
         //console.log('hahah' + this.ptt);
 
         return res;
@@ -133,6 +132,18 @@ export class TestradioComponent implements OnInit {
     } else {
       this.toneOn = true;
     }
+
+    this.radioService.setRadioTone(f).subscribe(
+      (res: any) => {
+        this.res = res;
+		this.radio.refthreshold = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
 
 
   }
