@@ -156,7 +156,7 @@ export class RadioService {
     }
 
     public radioResetProtection(): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/protection}`; 
+      var url = `${GlobalConstants.apiURL}/radio/protection`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
