@@ -61,6 +61,7 @@ export class TestradioComponent implements OnInit {
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
         
+        this.testtone = this.radio.testtone;
 
         if (this.radio.testtone > 0) {
           this.toneOn = true;
