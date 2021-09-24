@@ -252,7 +252,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   radioReset(){
-	this.radioService.radioReset().subscribe(
+	this.radioService.radioResetDefaults().subscribe(
 	  (res: any) => {
 		this.res = res;
 		console.log('⚚ radio config - reset radio: res: ', res);

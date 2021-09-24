@@ -331,7 +331,7 @@ export class TestradioComponent implements OnInit {
 
 }
 
-  resetRadio() {
+resetRadio() {
     console.log("reset");
   this.radioService.radioResetDefaults().subscribe(
 	  (res: any) => {
