@@ -60,13 +60,26 @@ export class TestradioComponent implements OnInit {
         this.led = this.radio.led;
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
+        
 
-        if (this.radio.bypass=='ON') {
+        if (this.radio.testtone > 0) {
+          this.toneOn = true;
+        } else {
+          this.toneOn = false;
+        }
+
+        if (this.radio.bypass==true) {
           this.bypass = true;
         } else {
           this.bypass = false;
         }
-		this.ptt = 'OFF';
+
+        if (this.radio.tx) {
+          this.ptt = 'ON';
+        } else {
+          this.ptt = 'OFF';
+        }
+		
         //console.log('hahah' + this.ptt);
 
         return res;
@@ -281,9 +294,7 @@ export class TestradioComponent implements OnInit {
     this.radioService.setRadioBypass(f).subscribe(
       (res: any) => {
         this.res = res;
-
-
-        if (res=="BYPASS_ON") {
+        if (res==true) {
           this.bypass = true;
           this.radio.bypass = true;
         } else {
@@ -291,7 +302,6 @@ export class TestradioComponent implements OnInit {
           this.radio.bypass = false;
 
         }
-        console.log('⚚ hihih ', res);
         console.log('⚚ radio config - set radio bypass- :' ,this.radio.bypass)
         console.log('⚚ radio config - set bypass- :' ,this.bypass)
 
