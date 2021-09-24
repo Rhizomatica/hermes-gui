@@ -78,10 +78,10 @@
                     <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} >
                 </form>
 
-                <form #frefthreshold="ngForm" class="formdata field"   >
+                <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
                     <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
                     <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" i18n="@@changeRefThreshold">change threshold</button>
-                    <input type="number"  class="midbt" name="refthreshold" [(ngModel)]="bypass" value={{radio.refthreshold}} >
+                    <input type="number"  class="midbt" name="refthreshold" [(ngModel)]="radio.refthreshold" value={{radio.refthreshold}} >
 		
                 </form>
 
