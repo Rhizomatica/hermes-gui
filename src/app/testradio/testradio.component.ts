@@ -177,10 +177,6 @@ export class TestradioComponent implements OnInit {
 
   }
 
-  resetRadio() {
-    console.log('⚚ radio-config - reset to defaults ');
-  }
-
   screenFreq():void {
     if (this.alterFreq == false) {
       this.alterFreq = true; 
@@ -308,8 +304,9 @@ export class TestradioComponent implements OnInit {
     )
   }
 
-resetProtection(f:NgForm) {
-  this.radioService.radioReset().subscribe(
+resetProtection() {
+	console.log("teste");
+  this.radioService.radioResetProtection().subscribe(
 	  (res: any) => {
 		this.res = res;
 		console.log('⚚ radio config - reset radio: res: ', res);
@@ -322,6 +319,22 @@ resetProtection(f:NgForm) {
 	)
 
 }
+
+  resetRadio() {
+  this.radioService.radioResetDefaults().subscribe(
+	  (res: any) => {
+		this.res = res;
+		console.log('⚚ radio config - reset radio: res: ', res);
+		// this.fileIsProcessing = true;
+	  },
+	  (err) => {
+		this.error = err;
+		this.errorAlert = true;
+	  }
+	)
+
+    console.log('⚚ radio-config - reset to defaults ');
+  }
 
 
 

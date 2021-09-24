@@ -155,16 +155,22 @@ export class RadioService {
         catchError(this.handleError));
     }
 
-    public radioReset(): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/radio/reset`; 
-      const output = this.http.get(url);
+    public radioResetProtection(): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/protection}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
-          this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - radio reset:\n ', res);
-          return this.serverReturn;
-      }),
-      catchError(this.handleError));
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
+    public radioResetDefaults(): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/reset}`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
     }
 
     private handleError(error: HttpErrorResponse) {
