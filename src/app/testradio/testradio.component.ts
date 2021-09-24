@@ -60,7 +60,16 @@ export class TestradioComponent implements OnInit {
         this.led = this.radio.led;
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
+
+        if (this.radio.bypass=='ON') {
+          this.bypass = true;
+        } else {
+          this.bypass = false;
+        }
+
 		    this.ptt = 'OFF';
+        //console.log('hahah' + this.ptt);
+
         return res;
         
       },
@@ -93,14 +102,15 @@ export class TestradioComponent implements OnInit {
 
   changePtt(f){
 	  console.log (f);
-    this.ptt = f;
+    
     this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
-		this.radio.ptt = res;
-		this.ptt = res;
-        // this.fileIsProcessing = true;
+        console.log('⚚ radio config - set ptt- : res: ', res);
+        console.log (this.ptt);
+        this.radio.ptt = res;
+        this.ptt = f;
+                // this.fileIsProcessing = true;
       },
       (err) => {
        this.error = err;
@@ -119,7 +129,7 @@ export class TestradioComponent implements OnInit {
 
     if (f == '0') {
       this.toneOn = false;
-      
+
     } else {
       this.toneOn = true;
     }
@@ -251,11 +261,21 @@ export class TestradioComponent implements OnInit {
     )
   }
 
-  changeByPass(f:NgForm){
-    this.radioService.setRadioBypass(f.value.bypass).subscribe(
+  changeByPass(f){
+    this.radioService.setRadioBypass(f).subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
+
+        if (this.radio.bypass=='ON') {
+          this.bypass = true;
+        } else {
+          this.bypass = false;
+        }
+        console.log('⚚ radio config - set bypass- : res: ', res);
+        console.log('⚚ radio config - set radio bypass- :' ,this.radio.bypass)
+        console.log('⚚ radio config - set bypass- :' ,this.bypass)
+
+        this.bypass = res;
 		this.radio.bypass = res;
         // this.fileIsProcessing = true;
       },
