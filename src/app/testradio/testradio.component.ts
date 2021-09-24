@@ -191,6 +191,9 @@ export class TestradioComponent implements OnInit {
       (res: any) => {
         this.res = res;
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+        console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+        window.location.reload();
+
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -222,7 +225,8 @@ export class TestradioComponent implements OnInit {
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+        console.log('⚚ changeFreqMode-: res: ', res);
+        this.radio.mode = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -266,7 +270,7 @@ export class TestradioComponent implements OnInit {
       (res: any) => {
         this.res = res;
 
-        if (this.radio.bypass=='ON') {
+        if (this.radio.bypass=="ON") {
           this.bypass = true;
         } else {
           this.bypass = false;
