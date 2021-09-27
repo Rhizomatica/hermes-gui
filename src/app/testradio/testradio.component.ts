@@ -29,6 +29,8 @@ export class TestradioComponent implements OnInit {
   bfo: any;
   mastercal: any;
   freq: any;
+  frek: any;
+  realfreq: any;
   reseting: boolean = false;
   usb: boolean = true;
   mode: any;
@@ -56,6 +58,7 @@ export class TestradioComponent implements OnInit {
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
         this.freq = this.radio.freq;
+        this.frek = this.radio.freq /1000;
         this.mode = this.radio.mode;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
@@ -201,7 +204,10 @@ export class TestradioComponent implements OnInit {
 
   changeRadioFreqMode(f:NgForm){
 
-    this.radioService.setRadioFreq(f.value.freq * 1000).subscribe(
+  
+    this.realfreq = Math.round(f.value.freq * 1000);
+
+    this.radioService.setRadioFreq(this.realfreq).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);

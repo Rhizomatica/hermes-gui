@@ -8,9 +8,9 @@
             <div >
 
             
-            <p><span i18n="@@currentradiofreq">VFO - Frequencia: </span>  {{radio.freq}} kHz {{radio.mode}}</p> 
-            <p><span>BFO (Beat Freq Osc):</span> {{radio.bfo}} </p>
-            <p><span>FWD - Potência direta  : </span>{{radio.fwd}} </p>
+            <p><span i18n="@@currentradiofreq">VFO - Frequencia: </span>  {{frek}} kHz {{radio.mode}}</p> 
+            <p><span>BFO (Beat Freq Osc):</span> {{radio.bfo}} Hz </p>
+            <p><span>FWD - Potência direta  : </span>{{radio.fwd}}  </p>
             <p><span>REF - Potência refletida: </span>{{radio.ref}} </p>
             <p><span>Limiar da proteção refletida: </span>{{radio.refthreshold}} </p>
             <p><span>Mastercal: </span>{{radio.mastercal}}</p>
@@ -83,20 +83,20 @@
 
                 <form *ngIf="radio" #fmode="ngForm" class="formdata field" >
                     <p><span i18n="@@changeradiomode">Radio mode: {{radio.mode}}</span></p>
-                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="changemode">change mode</button>
+                    <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" >change mode</button>
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB - Modulaçao em Banda Superior </label>
                     <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="radio.mode=='LSB'">LSB - Modulacao em Banda Inferior </label>
                 </form>
 
                 <form #ffreq="ngForm" class="formdata field"   >
-				<p><span i18n="@@changefrequency">VFO - Radio frequency: {{radio.freq}}</span></p>
-                    <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreq">change frequency</button>
-                    <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="freq" [(ngModel)]="freq" value={{radio.freq}} >
+				<p><span i18n="@@changefrequency">VFO - Radio frequency: {{frek}} kHz</span></p>
+                    <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" >change frequency</button>
+                    <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frek" [(ngModel)]="frek" value={{frek}} >
                 </form>
 
                 <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
                     <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
-                    <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" i18n="@@changeRefThreshold">change threshold</button>
+                    <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" >change threshold</button>
                     <input type="number"  class="midbt" name="refthreshold" [(ngModel)]="radio.refthreshold" value={{radio.refthreshold}} >
 		
                 </form>
