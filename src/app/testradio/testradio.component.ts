@@ -315,6 +315,30 @@ export class TestradioComponent implements OnInit {
     )
   }
 
+  changeLed(f){
+    this.radioService.ledOff(f).subscribe(
+      (res: any) => {
+        this.res = res;
+        if (res==true) {
+          this.led = true;
+          this.radio.led = true;
+        } else {
+          this.led = false;
+          this.radio.led = false;
+
+        }
+        console.log('⚚ testradio - set led- :' ,this.radio.bypass)
+
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
+  }
+
+
+
   resetProtection() {
 	console.log("teste");
   this.radioService.radioResetProtection().subscribe(

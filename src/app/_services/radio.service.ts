@@ -173,6 +173,15 @@ export class RadioService {
         catchError(this.handleError));
     }
 
+    public ledOff(value: string): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/led`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
     private handleError(error: HttpErrorResponse) {
       console.log('⚚ Hermes ⚚\n⚚ radio service  error - :\n ', error);
 	  return throwError(error);
