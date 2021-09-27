@@ -36,25 +36,16 @@
                     <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF')" >Desligar</button>
                 </form>
 
-                
-
                 <form #fbypass="ngForm" class="formdata field"   >
                     <p><span >ByPass:</span></p>
                     <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" >Ligar bypass</button>
                     <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" >Desligar</button>
-
-
-        
-                    
                 </form>
 
                 <form #fled="ngForm" class="formdata field"   >
                     <p><span >Led:</span></p>
                     <button name="bypass" value="true" [hidden]="radio.led" (click)="changeLed('ON')" >Ligar led</button>
                     <button name="bypass" value="false" [hidden]="!radio.led" (click)="changeLed('OFF')" >Desligar</button>
-
-
-                    
                 </form>
 
                 <form #ftesttone="ngForm" class="formdata field"   >

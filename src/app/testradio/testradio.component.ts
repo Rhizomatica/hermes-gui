@@ -203,14 +203,12 @@ export class TestradioComponent implements OnInit {
   }
 
   changeRadioFreqMode(f:NgForm){
-
   
-    this.realfreq = Math.round(f.value.freq * 1000);
-
     this.radioService.setRadioFreq(this.realfreq).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeRadio- setRadioFreq: res: ', res);
+        console.log('⚚ changeRadio- setRadioFreq: reS: ', res);
+    	this.realfreq = Math.round(f.value.freq * 1000);
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -222,7 +220,6 @@ export class TestradioComponent implements OnInit {
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
         window.location.reload();
 
@@ -237,7 +234,9 @@ export class TestradioComponent implements OnInit {
   }
 
   changeFrequency(f:NgForm) {
-    this.radioService.setRadioFreq(f.value.freq).subscribe(
+	let realfreq = f.value.frek * 1000;
+	console.log(realfreq);
+    this.radioService.setRadioFreq(realfreq).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
@@ -310,9 +309,7 @@ export class TestradioComponent implements OnInit {
           this.radio.bypass = false;
 
         }
-        console.log('⚚ radio config - set radio bypass- :' ,this.radio.bypass)
         console.log('⚚ radio config - set bypass- :' ,this.bypass)
-
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -323,7 +320,8 @@ export class TestradioComponent implements OnInit {
   }
 
   changeLed(f){
-    this.radioService.ledOff(f).subscribe(
+
+    this.radioService.setRadioLed(f).subscribe(
       (res: any) => {
         this.res = res;
         if (res==true) {
@@ -332,10 +330,8 @@ export class TestradioComponent implements OnInit {
         } else {
           this.led = false;
           this.radio.led = false;
-
         }
-        console.log('⚚ testradio - set led- :' ,this.radio.bypass)
-
+        console.log('⚚ testradio - set led- :' ,this.radio.led)
       },
       (err) => {
         this.error = err;
