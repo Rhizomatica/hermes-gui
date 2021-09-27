@@ -8,7 +8,7 @@
             <div >
 
             
-            <p><span i18n="@@currentradiofreq">VFO - Frequencia: </span>  {{radio.freq}} KHz {{radio.mode}}</p> 
+            <p><span i18n="@@currentradiofreq">VFO - Frequencia: </span>  {{radio.freq}} kHz {{radio.mode}}</p> 
             <p><span>BFO (Beat Freq Osc):</span> {{radio.bfo}} </p>
             <p><span>FWD - Potência direta  : </span>{{radio.fwd}} </p>
             <p><span>REF - Potência refletida: </span>{{radio.ref}} </p>
@@ -32,7 +32,7 @@
                 <br/>
                 <form #fptt="ngForm" class="formdata field"   >
                     <p><span >PTT:</span></p>                    
-                    <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON')" >Ligar</button>
+                    <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON')" >Ligar ptt</button>
                     <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF')" >Desligar</button>
                 </form>
 
@@ -40,7 +40,7 @@
 
                 <form #fbypass="ngForm" class="formdata field"   >
                     <p><span >ByPass:</span></p>
-                    <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" >Ligar</button>
+                    <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" >Ligar bypass</button>
                     <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" >Desligar</button>
 
 
@@ -50,7 +50,7 @@
 
                 <form #fled="ngForm" class="formdata field"   >
                     <p><span >Led:</span></p>
-                    <button name="bypass" value="true" [hidden]="radio.led" (click)="changeLed('ON')" >Ligar</button>
+                    <button name="bypass" value="true" [hidden]="radio.led" (click)="changeLed('ON')" >Ligar led</button>
                     <button name="bypass" value="false" [hidden]="!radio.led" (click)="changeLed('OFF')" >Desligar</button>
 
 

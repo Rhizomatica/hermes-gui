@@ -36,8 +36,8 @@ export class TestradioComponent implements OnInit {
   protection: any;
   bypass: any;
   public realValue : number;
-  public freqmin = 500000;
-  public freqmax =30000000;
+  public freqmin = 500;
+  public freqmax =30000;
   errorAlert: boolean = false;
   radioError: boolean = false;
   testtone= '0';
@@ -200,7 +200,8 @@ export class TestradioComponent implements OnInit {
   }
 
   changeRadioFreqMode(f:NgForm){
-    this.radioService.setRadioFreq(f.value.freq).subscribe(
+
+    this.radioService.setRadioFreq(f.value.freq * 1000).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);

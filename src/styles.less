@@ -353,7 +353,7 @@ textarea {
 
     }
     input.midbt {
-        width: 100px; 
+        width: 50%; 
         margin-right: 5px;
     }
 
@@ -361,7 +361,8 @@ textarea {
         text-align: right;
         float: right;
         position: relative;
-        top:-5px
+        top:-5px;
+        max-width: 50%; 
     }
 
     input.sbmbtn {
@@ -387,17 +388,33 @@ textarea {
 .selectors {
     form {
         width: 25%;
-        display: block;
+        display: flex;
+        flex-direction: column;
         float: left;
         border-right: 1px solid @mclr  ;
         font-size: 0.7em;
         margin:0.2em;
+        height: auto;
+        justify-content: space-between;
+        position: relative;
         
     }
     .row {
         height: auto;
         display: flex;
+        flex-direction: row;
 
+    }
+    p {
+        margin-bottom: auto;
+        display: flex;
+        justify-content: space-between;
+        height: auto;
+    }
+
+    button {
+        margin-top: auto;
+        margin-bottom: 0.2em;
     }
 }
 
