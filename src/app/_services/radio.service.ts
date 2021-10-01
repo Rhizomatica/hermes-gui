@@ -173,11 +173,12 @@ export class RadioService {
         catchError(this.handleError));
     }
 
-    public ledOff(value: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/led`; 
+    public setRadioLed(value: string): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/led/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
+
         }),
         catchError(this.handleError));
     }
