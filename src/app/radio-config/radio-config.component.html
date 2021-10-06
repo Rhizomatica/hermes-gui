@@ -6,7 +6,7 @@
     <!--<div>-->
         <form *ngIf="radio">
 
-            <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq}} kHz {{radio.mode}}</p> 
+            <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq / 1000}} kHz {{radio.mode}}</p> 
             <hr>
             <p><span i18n="@serial">Serial Number: </span>{{radio.mastercal}}</p>
             <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>
@@ -51,7 +51,7 @@
                     <div class="radio" *ngIf="radio">
 
                         <form #ffreq="ngForm" class="formdata field"   >
-                            <p><span i18n="@@changefrequency">VFO - Radio frequency: {{frek}} kHz</span></p>
+                            <p><span i18n="@@changefrequency">VFO - Radio frequency: {{radio.freq / 1000}} kHz</span></p>
                                 <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" >change frequency</button>
                                 <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frek" [(ngModel)]="frek" value={{frek}} >
                         </form>                        
@@ -78,15 +78,15 @@
                         </form>
         
                         <form #fmaster="ngForm" class="formdata field" novalidate>
-                            <p><span i18n="@@mastercall">mastercal:</span> </p>
+                            <p><span i18n="@@mastercall2">mastercal:</span> </p>
                             <input class="midbt" name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}>
                             <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="changefreq">change mastercall</button>
                         </form>
 
                         <form #fbypass="ngForm" class="formdata field"   >
-                            <p><span i18n="@@mastercall">ByPass:</span></p>
-                            <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" i18n="@@bypassin" >Turn on bypass</button>
-                            <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" i18n="@@bypassoff">Turn off bypass</button>
+                            <p><span i18n="@@bypass2">ByPass:</span></p>
+                            <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" i18n="@@bypassin2" >Turn on bypass</button>
+                            <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" i18n="@@bypassoff2">Turn off bypass</button>
                         </form>
         
                     </div>
@@ -133,7 +133,7 @@
         
             <div class="overall alert" *ngIf="errorAlert==true">
                 <div class="cv" >
-                    <span i18n="@@errorsending">There was an error on changing configuration <br/><br/></span>
+                    <span i18n="@@errorchangingconfig">There was an error on changing configuration <br/><br/></span>
                     <span>{{error}}</span>
                     <div class="icon" ><a (click)="closeError()" >
                         <img title="compose" src="assets/svg/x.svg"></a>
