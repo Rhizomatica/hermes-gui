@@ -86,7 +86,7 @@
                 </form>
 
                 <form #frefthresholdv="ngForm" class="formdata field"  *ngIf="radio" >
-                    <p><span >Limiar de proteção:</span> {{radio.refthresholdv}} V (0-4.5)</p>
+                    <p><span >Limiar de proteção:</span> {{radio.refthresholdv}} V (0-5 V)</p>
                     <button class="midbt" (click)="changeRefThresholdv(frefthresholdv)" [disabled]="frefthresholdv.invalid" >change threshold</button>
                     <input type="number"  class="midbt" name="refthresholdv" [(ngModel)]="radio.refthresholdv" value={{radio.refthresholdv}} >
                 </form>
