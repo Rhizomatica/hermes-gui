@@ -101,7 +101,6 @@ export class RadioService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -113,7 +112,6 @@ export class RadioService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - radio ref threshol:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -121,6 +119,15 @@ export class RadioService {
 
     public setRadioRefThreshold(value: number): Observable<{}> {
       var url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
+    public setRadioRefThresholdv(value: number): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/refthresholdv/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;

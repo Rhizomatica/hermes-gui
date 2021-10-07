@@ -12,7 +12,7 @@
             <p><span>BFO (Beat Freq Osc):</span> {{radio.bfo}} Hz </p>
             <p><span>FWD - Potência direta  : </span>{{radio.fwd}}  </p>
             <p><span>REF - Potência refletida: </span>{{radio.ref}} </p>
-            <p><span>Limiar da proteção refletida: </span>{{radio.refthreshold}} </p>
+            <p><span>Limiar da proteção refletida: </span>{{radio.refthresholdv}} V ({{radio.refthreshold}}/1023) </p>
             <p><span>Mastercal: </span>{{radio.mastercal}}</p>
             <p><span>Serial Number: </span>{{radio.serial}} </p>
             <div *ngIf="radio.led" >LED de status: on </div>
@@ -85,10 +85,10 @@
                     <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frek" [(ngModel)]="frek" value={{frek}} >
                 </form>
 
-                <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
-                    <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
-                    <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" >change threshold</button>
-                    <input type="number"  class="midbt" name="refthreshold" [(ngModel)]="radio.refthreshold" value={{radio.refthreshold}} >
+                <form #frefthresholdv="ngForm" class="formdata field"  *ngIf="radio" >
+                    <p><span >Limiar de proteção:</span> {{radio.refthresholdv}} V (0-4.5)</p>
+                    <button class="midbt" (click)="changeRefThresholdv(frefthresholdv)" [disabled]="frefthresholdv.invalid" >change threshold</button>
+                    <input type="number"  class="midbt" name="refthresholdv" [(ngModel)]="radio.refthresholdv" value={{radio.refthresholdv}} >
                 </form>
                
                 <form #fbfo="ngForm" class="formdata field" novalidate  >

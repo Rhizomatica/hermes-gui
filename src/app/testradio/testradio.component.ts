@@ -169,20 +169,28 @@ export class TestradioComponent implements OnInit {
 
   }
 
-  changeRefThreshold(f:NgForm){
-    this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
+  changeRefThresholdv(f:NgForm){
+    this.radioService.setRadioRefThresholdv(f.value.refthresholdv).subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
-		this.radio.refthreshold = res;
+        console.log('⚚ radio config - set threshold in volts- : res: ', res);
+		this.radio.refthresholdv = res;
+    	//this.radio=this.getRadioStatus();
         // this.fileIsProcessing = true;
+    	this.radioService.getRadioRefThreshold().subscribe(
+       	(res: any) => {
+           	this.radio.refthreshold= res;
+         	}
+     	);
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     )
+
   }
+
 
   confirmReset() {
     if (this.reseting) {
