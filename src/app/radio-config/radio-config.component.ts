@@ -49,6 +49,7 @@ export class RadioConfigComponent implements OnInit {
   toneOn: boolean = false;
   currentUser: User;
   isAdmin = false;
+  refthreshold: any;
   public min : number = 500000;
   public max : number = 300000000;
   
@@ -75,6 +76,7 @@ export class RadioConfigComponent implements OnInit {
         this.led = this.radio.led;
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
+        this.refthreshold = this.radio.refthreshold;
   
 
         if (this.radio.bypass==true) {

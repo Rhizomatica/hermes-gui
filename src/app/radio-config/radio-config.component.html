@@ -68,7 +68,7 @@
                         <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
                             <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
                             <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" >change threshold</button>
-                            <input type="number" [max]="1023"  class="midbt" name="refthreshold" [(ngModel)]="radio.refthreshold" value={{radio.refthreshold}} >
+                            <input type="number" [max]="1023"  class="midbt" name="refthreshold" [(ngModel)]="refthreshold" value={{refthreshold}} >
                         </form>
                        
                         <form #fbfo="ngForm" class="formdata field" novalidate  >
