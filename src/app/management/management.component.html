@@ -90,6 +90,28 @@
             </label>
             -->
 
+
+            <label for="recovery">
+                <span i18n>recovery phrase</span>:
+                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
+                <div *ngIf="f.invalid">Title is required</div>
+            </label>
+            <label>
+                <span i18n>recovery answer</span>:
+                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" placeholder="answer to your recovery question"  />
+            </label>
+
+            <!--
+            <hr>
+                <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
+                <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
+            -->
+
+            <hr>
+
+           
+
+
             <label>
                 <span i18n>password</span>:
                 <br/>
@@ -115,28 +137,10 @@
         
         </label>
 
-            <label for="recovery">
-                <span i18n>recovery phrase</span>:
-                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
-                <div *ngIf="f.invalid">Title is required</div>
-            </label>
-            <label>
-                <span i18n>recovery answer</span>:
-                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" placeholder="answer to your recovery question"  />
-            </label>
-
-            <!--
-            <hr>
-                <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
-                <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
-            -->
-
-            <hr>
-
-            <label *ngIf="currentUser.admin">
-                <span i18n>is admin</span>:
-                <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
-            </label>
+        <label *ngIf="currentUser.admin">
+            <span i18n>is admin</span>:
+            <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
+        </label>
             <br/>
                 <button (click)="cancelCreate()" >cancel</button>
 
