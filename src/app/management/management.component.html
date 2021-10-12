@@ -118,11 +118,11 @@
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
                 <label for="passwd" i18n="typethepassword">
                     Type the password
-                    <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" (input)="checkpwd(selectedUser.password,repasswd)" />
+                    <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" (input)="checkpass(selectedUser.password,repasswd)" />
                 </label>
                 <label for="repasswd" i18n="@@retypethepassword">
                     Retype the password
-                    <input type="password"  [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(selectedUser.password,repasswd)"/>
+                    <input type="password"  [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="4" (input)="checkpass(selectedUser.password,repasswd)"/>
                 </label>
                 <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
                     passwords doesn't match
@@ -131,7 +131,7 @@
                     passwords can't be empty
                 </div>
         
-                <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters, one uppercase letter and one number </span>
+                <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters</span>
         
         
         

@@ -55,7 +55,7 @@ export class SameUsernameDirective implements Validator {
 
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    console.log('ai');
+    //console.log('ai');
     return this.userList ? compareUsername(this.userList)(control) : null;
 
   }
