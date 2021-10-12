@@ -5,6 +5,8 @@ import { UserService } from '../_services/user.service';
 import { Station } from '../station';
 import { StationService } from '../_services/station.service';
 import { AuthenticationService } from '../_services/authentication.service';
+import { ApiService } from '../_services/api.service';
+
 
 @Component({
   selector: 'app-management',
@@ -34,14 +36,30 @@ export class ManagementComponent implements OnInit {
   passunMatch: boolean = false;
   passMin: boolean = false;
   repasswd: any;
+  system: any;
 
   constructor(
       private userService: UserService,
       private stationService: StationService,
-      private authenticationService: AuthenticationService
+      private authenticationService: AuthenticationService,
+      private apiService: ApiService 
     )
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+    getSystemStatus(): void{
+      this.apiService.getStatus().subscribe(
+        (res: any) => {
+          this.system = res;
+          return res;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );
+
+      //console.log('system:', this.system);
     }
 
   loggedin() {
@@ -189,6 +207,7 @@ export class ManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
+    this.getSystemStatus();
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
     this.isadmin = this.currentUser.admin;
