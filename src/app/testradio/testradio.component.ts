@@ -3,6 +3,8 @@ import { ApiService } from '../_services/api.service';
 import { RadioService } from '../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
+import { interval } from 'rxjs';
+
 //import { truncateSync } from 'fs';
 
 
@@ -44,6 +46,12 @@ export class TestradioComponent implements OnInit {
   radioError: boolean = false;
   testtone= '0';
   toneOn: boolean = false;
+  public timer: any;
+  updated: boolean = false;
+  public intervallTimer = interval(1000);
+  private subscription;
+
+  
 
   constructor    ( 
 	private apiService: ApiService,
@@ -96,21 +104,10 @@ export class TestradioComponent implements OnInit {
       }
     );
   }
-  getRadioPower(): void{
-    this.radioService.getRadioPower().subscribe(
-      (res: any) => {
-        this.radio.ref= res.ref;
-        this.radio.refv = res.refv;
-        this.radio.fwd = res.fwd;
-		this.radio.fwdv = res.fwdv;
-      },
-      (err) => {
-        this.error = err;
-        this.radioError = true;
-        console.log(this.error);
-      }
-    );
-  }
+
+
+
+
 
   get value() : number {
     this.realValue = this.radio.freq;
@@ -133,9 +130,8 @@ export class TestradioComponent implements OnInit {
     
   }
 
-  changePtt(f){
+  public changePtt(f){
 	  console.log (f);
-    
     this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
@@ -146,6 +142,8 @@ export class TestradioComponent implements OnInit {
         if (this.ptt == "ON") {
           this.radio.tx = true;
           this.radio.rx = false;
+          //myVar = setInterval(this.testTest, 1000);
+
         } else {
           this.radio.tx = false;
           this.radio.rx = true;
@@ -158,6 +156,89 @@ export class TestradioComponent implements OnInit {
       }
     )
   }
+
+
+  public pttOn(f) {
+    this.radioService.setRadioPTT(f).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ radio config - set ptt- : res: ', res);
+        console.log (this.ptt);
+        this.radio.ptt = res;
+        this.ptt = f;
+        this.radio.tx = true;
+        this.radio.rx = false;
+        console.log('on')
+
+      },
+      (err) => {
+       this.error = err;
+        this.errorAlert = true;
+      }
+    );
+    
+    
+    this.getRadioPower();
+
+    }
+
+    updateFwd() {
+      
+      this.subscription = this.intervallTimer.subscribe(() => this.testTest());
+
+    }
+
+    stopUpdate() {
+      this.subscription.unsubscribe()
+
+    }
+
+  public testTest() {
+    console.log('aaaa');
+  }
+
+  public getRadioPower() {
+    this.radioService.getRadioPower().subscribe(
+      (res: any) => {
+        this.radio.ref= res.ref;
+        this.radio.refv = res.refv;
+        this.radio.fwd = res.fwd;
+		    this.radio.fwdv = res.fwdv;
+        this.updated = true;
+
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+        console.log(this.error);
+        console.log('hahaha');
+
+      }
+    );
+  }
+
+  public pttOff(f) {
+    this.radioService.setRadioPTT(f).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ radio config - set ptt- : res: ', res);
+        console.log (this.ptt);
+        this.radio.ptt = res;
+        this.ptt = f;
+        this.radio.tx = false;
+        this.radio.rx = true;
+        console.log('off')
+        clearInterval(this.timer);
+
+      },
+      (err) => {
+       this.error = err;
+        this.errorAlert = true;
+      }
+    )
+  }
+
+ 
 
 
   testTone(f) {
@@ -474,6 +555,9 @@ resetRadio() {
 
     this.radio=this.getRadioStatus();
 
+    
+
+    this.testTest();
 
     if (this.radio) {
       this.usb = this.radio.mode;

@@ -27,15 +27,20 @@
             <div >TXRX: {{radio.txrx}}</div>
             <div>gerador de tom: {{radio.testtone}} </div>
         </div>
+
+      
+
             <div class="radio selectors" >
                 <div class="row">
 
                 <br/>
                 <form #fptt="ngForm" class="formdata field"   >
                     <p><span >PTT:</span></p>                    
-                    <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON')" >Ligar ptt</button>
-                    <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF')" >Desligar</button>
+                    <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON');updateFwd()" >Ligar ptt</button>
+                    <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF');stopUpdate()" >Desligar</button>
                 </form>
+
+                
 
                 <form #fbypass="ngForm" class="formdata field"   >
                     <p><span >ByPass:</span></p>
