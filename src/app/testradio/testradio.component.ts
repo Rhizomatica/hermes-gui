@@ -96,10 +96,27 @@ export class TestradioComponent implements OnInit {
       }
     );
   }
+  getRadioPower(): void{
+    this.radioService.getRadioPower().subscribe(
+      (res: any) => {
+        this.radio.ref= res.ref;
+        this.radio.refv = res.refv;
+        this.radio.fwd = res.fwd;
+		this.radio.fwdv = res.fwdv;
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+        console.log(this.error);
+      }
+    );
+  }
+
   get value() : number {
     this.realValue = this.radio.freq;
     return this.realValue;
 	}
+
   set value(newValue : number) {
     this.realValue = newValue;
     if(this.realValue < this.freqmin){

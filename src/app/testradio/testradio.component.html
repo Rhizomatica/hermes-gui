@@ -10,8 +10,9 @@
             
             <p><span >VFO - Frequencia: </span>  {{frek}} kHz {{radio.mode}}</p> 
             <p><span>BFO (Beat Freq Osc):</span> {{radio.bfo}} Hz </p>
-            <p><span>FWD - Potência direta  : </span>{{radio.fwd}}  </p>
-            <p><span>REF - Potência refletida: </span>{{radio.ref}} </p>
+            <p><button name="update" value="false" (click)="getRadioPower()" >update power</button></p>
+            <p><span>FWD - Potência direta  : </span>{{radio.fwdv}} V ({{radio.fwd}}/1023) </p>
+            <p><span>REF - Potência refletida: </span>{{radio.refv}} V ({{radio.ref}}/1023)  </p>
             <p><span>Limiar da proteção refletida: </span>{{radio.refthresholdv}} V ({{radio.refthreshold}}/1023) </p>
             <p><span>Mastercal: </span>{{radio.mastercal}}</p>
             <p><span>Serial Number: </span>{{radio.serial}} </p>

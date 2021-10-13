@@ -65,7 +65,19 @@ export class RadioService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn= res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+        //   console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+    public getRadioPower(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/radio/power`;
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn= res;
+          //console.log('⚚ Hermes ⚚\n⚚ api service - radio power status:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
