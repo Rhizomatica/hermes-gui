@@ -44,12 +44,11 @@
         <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" novalidate>
             <label>
                 <span i18n>ID</span>
-                {{selectedUser.id}}
+                {{selectedUser.emailid}}
                 <br/>
             </label>
             <label for="login">
                 <span i18n="@@username2">username</span>:
-                <br/><input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" ngControl="userName" appSameUsername required  placeholder="write the username" />
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
                 <span *ngIf="alreadyExist" class="alert">username must be unique</span>
             </label>
@@ -164,7 +163,7 @@
                     <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br/>
                     <span i18n="@@thisactioncannot">this action cannot be undone!</span>
                     <br/>
-                    <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid" i18n="@@update">update</button>
+                    <button type="submit" (click)="onSubmitUpdate(selectedUser.emailid,f)" [disabled]="f.invalid" i18n="@@update">update</button>
                     <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
                 </div>
