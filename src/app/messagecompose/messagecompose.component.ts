@@ -87,9 +87,13 @@ export class MessagecomposeComponent implements OnInit {
             //console.log('haha');  
             break;
             case 'admin':
+
+            if (this.currentUser) {
             if (this.isAdmin) {
               this.allowUpload = true;
-            }  
+            }
+            }
+              
             //console.log('huhu');
             break; 
             case 'all': 

@@ -55,9 +55,12 @@
 
                 <div *ngIf="message.id && message.file" >
                     <br>
-                    <span i18n="@@fileserverid">file server id:</span>{{message.id}} /  {{message.file}}
+                <!--    <span i18n="@@fileserverid">file server id:</span>{{message.id}} /  {{message.file}} </span>-->
+                
+                        <span >{{message.file}} </span>
+
                     <br>
-                    <span i18n="@@Img">Img:</span>
+                    <span i18n="@@Img" >Img:</span>
                     <img src={{$event.target.files[0].content}}>
                 </div>
             </div>

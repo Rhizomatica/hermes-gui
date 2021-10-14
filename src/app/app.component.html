@@ -70,11 +70,11 @@
           </span>
         </span>
 
-        <a class="icon" routerLink="/login" *ngIf="!currentUser.email" >
+        <a class="icon" routerLink="/login" *ngIf="!currentUser" >
           <img title="Log In" src="assets/svg/sign-in-alt-solid.svg" >
         </a>
 
-        <a class="icon" (click)="logout()" *ngIf="currentUser.email">
+        <a class="icon" (click)="logout()" *ngIf="currentUser">
           <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout" src="assets/svg/sign-out-alt-solid.svg" >
         </a>
         <br>
@@ -129,14 +129,15 @@
   <span >
     <span i18n="stationa">Station:</span> {{system.name}}  
    
-    <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span>
+    <span *ngIf="currentUser">
+    <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
   
     <span *ngIf="!system" i18n="@@serveroff0">
       &#124;  server off
     </span>
     | Status: <div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>
     </span>
-    <span> &#124; {{currentUser.email}}</span>
+    <span *ngIf="currentUser"> &#124; {{currentUser.email}}</span>
     <!--
       
     &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
