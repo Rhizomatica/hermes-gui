@@ -57,7 +57,7 @@ export class SysadminComponent implements OnInit {
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
-      this.currentUser.admin = false;
+      this.isAdmin = false;
     }
   }
 

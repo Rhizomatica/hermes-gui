@@ -2,32 +2,12 @@
 <div class="">
     <h2 i18n="@@admmanage">User Management</h2>
 
-    <!--
-    <label >is admin: <input type="checkbox"  (change)="loggedin()" name="isadmin" checked>
-    </label>
-    -->
 
     <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     <br>
-<!--
-     test
-        <button i18n="@@createadm"><a routerLink="/users">create user</a></button>
-    <div>{{isadmin}}</div>
-    <div>{{isadmin}}</div>
 
-    <div [hidden]="isadmin&&!isEditing">teste1</div>
-    <div [hidden]="isadmin||!isEditing">teste2</div>
-    <div [hidden]="isadmin&&isEditing">teste3</div>
-    <div [hidden]="!isadmin&&isEditing">teste4</div>
-    <div [hidden]="!isadmin||isEditing">teste5</div>
 
-<hr>
-    <div [hidden]="isadmi==true&&isEditing==false">teste1</div>
-    <div [hidden]="isadmin==true||isEditing==false">teste2</div>
-    <div [hidden]="isadmin==true&&isEditing==true">teste3</div>
-    <div [hidden]="isadmin==false&&isEditing==false">teste4</div>
-    <div [hidden]="isadmin==false||isEditing==false">teste5</div>
--->
+<div *ngIf="currentUser || isadmin">
 
     <h3 [hidden]="isEditing" i18n="@@Users">Users</h3>
     <h3 [hidden]="!isEditing"><span [hidden]="emptyUser" i18n="@@edtusers">Edit user</span><span [hidden]="!emptyUser" i18n="@@createusers">Create User</span></h3>
@@ -39,6 +19,10 @@
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
         </ul>
     </ng-container>
+
+</div>
+
+    
     
     <ng-container *ngIf="selectedUser">
         <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" novalidate>
@@ -137,19 +121,19 @@
         
         </label>
 
-        <label *ngIf="currentUser.admin">
+        <label *ngIf="isadmin">
             <span i18n>is admin</span>:
-            <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="selectedUser.admin"  />
+            <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="isadmin"  />
         </label>
             <br/>
                 <button (click)="cancelCreate()" >cancel</button>
 
-                <button (click)="deleteAlert()" [disabled]="selectedUser.admin" [hidden]="emptyUser">delete user</button>
+                <button (click)="deleteAlert()" [disabled]="admin" [hidden]="emptyUser">delete user</button>
                 <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" [disabled]="f.invalid">update</button>
                 <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch">create user</button>
                 <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
 
-                <div class="overall" [hidden]="deleteUser">
+                <div class="overall" *ngIf="deleteUser">
                     <div class="cv" >
                     <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br/>
                     <span i18n="@@thisactioncannot">this action cannot be undone!</span>
@@ -159,7 +143,7 @@
                 </div>
                 </div>
 
-                <div class="overall" [hidden]="updateUser">
+                <div class="overall" *ngIf="updateUser">
                     <div class="cv" >
                     <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br/>
                     <span i18n="@@thisactioncannot">this action cannot be undone!</span>
@@ -168,6 +152,7 @@
                     <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
                 </div>
+
                 <div class="overall alert" [hidden]="errorAlert==false">
                     <div class="cv" >
                         <span i18n="@@errormanagemet">There was an error on precessing your request <br/><br/></span>
@@ -178,6 +163,7 @@
         
                     </div>
                 </div>
+                
             
         </form>
     </ng-container>

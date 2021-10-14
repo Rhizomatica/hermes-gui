@@ -27,7 +27,6 @@ export class ManagementComponent implements OnInit {
   isadmin = false;
   isEditing = false;
   deleteUser = true;
-  updateUser = true;
   newUsername = false;
   emptyUser = false;
   searchMessages: string;
@@ -37,6 +36,7 @@ export class ManagementComponent implements OnInit {
   passMin: boolean = false;
   repasswd: any;
   system: any;
+  updateUser: boolean = false;
 
   constructor(
       private userService: UserService,
@@ -129,10 +129,18 @@ export class ManagementComponent implements OnInit {
    }
 
    newUser() {
+     if (this.currentUser) {
+       this.isadmin = this.currentUser.admin
+     } else {
+       this.isadmin = false;
+     }
      this.selectedUser = [];
      this.isEditing = true;
      this.newUsername = true;
      this.emptyUser = true;
+     this.updateUser = false;
+     this.deleteUser = false;
+     
    }
 
 
@@ -210,7 +218,11 @@ export class ManagementComponent implements OnInit {
     this.getSystemStatus();
     this.stationService.getStations()
     .subscribe(stations =>  this.stations = stations);
+    if (this.currentUser) {
     this.isadmin = this.currentUser.admin;
+    } else {
+      this.isadmin = false;
+    }
 
 
   }
