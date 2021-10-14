@@ -51,8 +51,6 @@ export class TestradioComponent implements OnInit {
   public intervallTimer = interval(1000);
   private subscription;
 
-  
-
   constructor    ( 
 	private apiService: ApiService,
 	private radioService: RadioService,
@@ -104,10 +102,6 @@ export class TestradioComponent implements OnInit {
       }
     );
   }
-
-
-
-
 
   get value() : number {
     this.realValue = this.radio.freq;
@@ -184,7 +178,8 @@ export class TestradioComponent implements OnInit {
 
     updateFwd() {
       
-      this.subscription = this.intervallTimer.subscribe(() => this.testTest());
+      //;this.subscription = this.intervallTimer.subscribe(() => this.testTest());
+      this.subscription = this.intervallTimer.subscribe(() => this.getRadioPower());
 
     }
 
@@ -203,9 +198,8 @@ export class TestradioComponent implements OnInit {
         this.radio.ref= res.ref;
         this.radio.refv = res.refv;
         this.radio.fwd = res.fwd;
-		    this.radio.fwdv = res.fwdv;
+		this.radio.fwdv = res.fwdv;
         this.updated = true;
-
       },
       (err) => {
         this.error = err;
