@@ -41,8 +41,6 @@
                     
                 </span>
             </label>
-           
-
 
             <div class="uploader" *ngIf="allowUpload">
                 <hr>
@@ -70,7 +68,7 @@
                     <input type="checkbox" unckecked (change)="encrypted()"/>
                 </span>
             </label>
-            <div id="cryptopass" [hidden]=!isEncrypted>
+            <div id="cryptopass" *ngIf=isEncrypted>
                 <label for="passwd" i18n="typethepassword">
                     Type the password
                     <input type="password" name="pass" [(ngModel)]="passwd"  minlength="4" (input)="checkpwd(passwd,repasswd)" />
@@ -125,7 +123,6 @@
         <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
             Your message was sent to the transmission list
         </div>
-
 
     </form>
 </div>
