@@ -337,8 +337,8 @@ export class RadioConfigComponent implements OnInit {
   }
   
   resetRadio() {
-      console.log("reset");
-    this.radioService.radioResetDefaults().subscribe(
+    console.log("reset");
+    this.radioService.radioRestoreDefaults().subscribe(
       (res: any) => {
       this.res = res;
       console.log('⚚ radio reset: ', res);
@@ -353,8 +353,6 @@ export class RadioConfigComponent implements OnInit {
   
       console.log('⚚ testradio - reset to defaults ');
     }
-
-  
 
   closeError() {
     this.errorAlert = false;
