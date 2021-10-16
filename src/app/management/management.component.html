@@ -33,6 +33,8 @@
             </label>
             <label for="login">
                 <span i18n="@@username2">username</span>:
+                <input [hidden]="!emptyUser" [(ngModel)]="selectedUser.email"> 
+
                 <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
                 <span *ngIf="alreadyExist" class="alert">username must be unique</span>
             </label>
