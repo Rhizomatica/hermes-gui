@@ -183,8 +183,17 @@ export class RadioService {
         catchError(this.handleError));
     }
 
-    public radioResetDefaults(): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/reset`; 
+    public radioSetDefaults(): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/setdefaults`; 
+      return this.http.post(url,null).pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError(this.handleError));
+    }
+
+    public radioRestoreDefaults(): Observable<{}> {
+      var url = `${GlobalConstants.apiURL}/radio/restoredefaults`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
