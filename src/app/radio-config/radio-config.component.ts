@@ -330,8 +330,6 @@ export class RadioConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     )
-
-
   }
 
   resetProtection() {
