@@ -184,7 +184,7 @@ export class TestradioComponent implements OnInit {
 
     updateFwd() {
       
-      this.subscription = this.intervallTimer.subscribe(() => this.testTest());
+      this.subscription = this.intervallTimer.subscribe(() => this.getRadioPower());
 
     }
 

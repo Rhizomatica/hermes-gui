@@ -111,6 +111,7 @@ export class MessagecomposeComponent implements OnInit {
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.allowUpload = false;
       }
     );
   }
