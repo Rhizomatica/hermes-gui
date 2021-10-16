@@ -52,9 +52,9 @@ export class UserComponent implements OnInit {
       // window.location.reload();
   }
 
-  onSubmitDelete(id): void {
+  onSubmitDelete(id: number, email: string): void {
     console.log('⚚ user - onSubmitDelete f.value: ', id);
-    this.userService.deleteUser(id).subscribe();
+    this.userService.deleteUser(id, email).subscribe();
     // window.location.reload();
   }
 
