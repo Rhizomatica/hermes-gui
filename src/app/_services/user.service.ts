@@ -37,8 +37,8 @@ export class UserService {
     }
 
     /** DELETE: delete the user from the server */
-    deleteUser(id: number): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/user/${id}`; 
+    deleteUser(id: number, email: string): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/user/${id}/${email}`; 
       console.log('⚚ message service - deleteUser: ',url);
       return this.http.delete(url)
         .pipe(

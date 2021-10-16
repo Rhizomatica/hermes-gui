@@ -137,7 +137,7 @@
                     <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br/>
                     <span i18n="@@thisactioncannot">this action cannot be undone!</span>
                     <br/>
-                    <button type="submit" (click)="onSubmitDelete(selectedUser.id)" i18n="@@deleteuser">delete user</button>
+                    <button type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)" i18n="@@deleteuser">delete user</button>
                     <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
                 </div>
                 </div>
