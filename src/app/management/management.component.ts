@@ -174,7 +174,7 @@ export class ManagementComponent implements OnInit {
   onSubmitUpdate(id: number, f: NgForm): void {
     console.log('sel', this.selectedUser);
     //console.log('⚚ management - onSubmitUpdate, f.value: ', f.value); 
-    f.value.email = this.selectedUser.email;
+    //f.value.email = this.selectedUser.email;
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
