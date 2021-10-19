@@ -178,6 +178,7 @@ export class ManagementComponent implements OnInit {
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
+        this.getUsers();
         
       },
       (err) => {
@@ -186,9 +187,11 @@ export class ManagementComponent implements OnInit {
 
       }
     );
+    this.selectedUser = [];
     this.updateUser = false;
     this.isEditing = false;
-    //this.getUsers();
+   
+    
   }
 
   onSubmitDelete(id: number, email:string): void {
