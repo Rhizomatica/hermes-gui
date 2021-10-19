@@ -317,6 +317,23 @@ export class RadioConfigComponent implements OnInit {
   }
 
 
+  setDefaults() {
+    this.radioService.radioSetDefaults().subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.refthreshold = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
+
+
+  }
+
   resetProtection() {
     console.log("teste");
     this.radioService.radioResetProtection().subscribe(

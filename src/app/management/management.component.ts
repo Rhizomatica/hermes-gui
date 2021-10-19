@@ -26,7 +26,7 @@ export class ManagementComponent implements OnInit {
   control: any;
   isadmin = false;
   isEditing = false;
-  deleteUser = true;
+  deleteUser = false;
   newUsername = false;
   emptyUser = false;
   searchMessages: string;
@@ -179,14 +179,14 @@ export class ManagementComponent implements OnInit {
     );
     this.updateUser = false;
     this.isEditing = false;
-    window.location.reload();
+    //window.location.reload();
   }
 
   onSubmitDelete(id: number, email:string): void {
       this.userService.deleteUser(id, email).subscribe();
       this.deleteUser = false;
       this.isEditing = false;
-      window.location.reload();
+      //window.location.reload();
   }
 
   onSubmitCreate(f: NgForm): void {
@@ -207,7 +207,7 @@ export class ManagementComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    window.location.reload();
+    //window.location.reload();
 
 
 

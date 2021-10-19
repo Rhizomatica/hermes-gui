@@ -178,7 +178,6 @@ export class TestradioComponent implements OnInit {
 
     updateFwd() {
       
-      //;this.subscription = this.intervallTimer.subscribe(() => this.testTest());
       this.subscription = this.intervallTimer.subscribe(() => this.getRadioPower());
 
     }
@@ -543,6 +542,21 @@ resetRadio() {
     } else {
       this.confirmSet = false;
     }
+  }
+
+  setDefaults() {
+    this.radioService.radioSetDefaults().subscribe(
+      (res: any) => {
+        this.res = res;
+        //console.log('⚚ radio config - set bypass- : res: ', res);
+		this.radio.refthreshold = res;
+        // this.fileIsProcessing = true;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    )
   }
 
   ngOnInit(): void {
