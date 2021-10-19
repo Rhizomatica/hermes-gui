@@ -28,11 +28,6 @@ export class MessageService {
       })
     };
 
-    /*getMessagesOld(): Observable<Message[]> {
-    this.alertService.add('mensagem selecionada');
-    return of(MESSAGES);
-  }*/
-
   postFile(file: any) {
     const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
     // const  url = '//httpbin.org/post';
@@ -57,12 +52,16 @@ export class MessageService {
       }),
       catchError(this.handleError)
       );
+  }
 
-    /*
-      return this.http.post(url, formData, {params, headers}).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );*/
+  getMessagesByType($type): Observable<Message[]> {
+    const url = `${GlobalConstants.apiURL}/messages/${$type}`; // get api/message/42
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        this.messages = res;
+        return this.messages;
+    }),
+      catchError(this.handleError));
   }
 
   getMessages(): Observable<Message[]> {
