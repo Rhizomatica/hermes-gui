@@ -167,11 +167,14 @@ export class ManagementComponent implements OnInit {
     this.isEditing = true;
     console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptyUser = false;
+    console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
 
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
-    console.log('⚚ management - onSubmitUpdate, f.value: ', f.value);   
+    console.log('sel', this.selectedUser);
+    //console.log('⚚ management - onSubmitUpdate, f.value: ', f.value); 
+    f.value.email = this.selectedUser.email;
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -185,7 +188,7 @@ export class ManagementComponent implements OnInit {
     );
     this.updateUser = false;
     this.isEditing = false;
-    window.location.reload();
+    //this.getUsers();
   }
 
   onSubmitDelete(id: number, email:string): void {
@@ -196,7 +199,7 @@ export class ManagementComponent implements OnInit {
   }
 
   onSubmitCreate(f: NgForm): void {
-    console.log('form', f.value);
+    //console.log('form', f.value);
     f.value.location = "local";
     this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
@@ -213,9 +216,8 @@ export class ManagementComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    window.location.reload();
-
-
+    
+    this.getUsers();
 
   }
 

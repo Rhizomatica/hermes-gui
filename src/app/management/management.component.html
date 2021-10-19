@@ -36,7 +36,8 @@
             </label>-->
 
             <label for="email">
-                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
+                <input [hidden]="!emptyUser" name="email" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
+                
             </label>
 
                 <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
