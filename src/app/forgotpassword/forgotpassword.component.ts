@@ -13,7 +13,7 @@ import { StationService } from '../_services/station.service';
 export class ForgotpasswordComponent implements OnInit {
 
     error = Error;
-    success = '';
+    success: boolean = false;
     test = '';
     users: User[];
     stations: Station[];
@@ -26,6 +26,7 @@ export class ForgotpasswordComponent implements OnInit {
     noUser: true;
     passMatch: boolean = true;
     errorAlert: boolean = false;
+    sucess: boolean = false;
 
 
     constructor(private userService: UserService, private stationService: StationService) { }
@@ -65,6 +66,26 @@ export class ForgotpasswordComponent implements OnInit {
 
     }
 
+    onSubmitUpdate(f:NgForm): void {
+      console.log('⚚ management - onSubmitUpdate, f.value: ', f.value);
+      var id = this.selectedUser.emailid;
+      this.userService.updateUser(id, f.value).subscribe(
+        (res: any) => {
+          this.users = res;
+          this.success = true;
+        },
+        (err) => {
+          this.error = err;
+          this.errorAlert = true;
+          this.success = false;
+
+
+        }
+      );
+      //window.location.reload();
+    }
+  
+
     checkAnswer(answ) {
       if (this.selectedUser.recoveranswer === answ) {
         this.cAnsw = true;
@@ -76,10 +97,7 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     //TODO CH alterar a senha
-    onSubmitUpdate(id, f: NgForm): void {
-      console.log('⚚ forgotpassword - onSubmitUpdate: ', 'update', f.value);
-      this.userService.updateUser(id, f.value).subscribe();
-    }
+
 
     checkPassw(passw, repassw) {
       if (passw == repassw) {

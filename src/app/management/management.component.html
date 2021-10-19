@@ -36,7 +36,7 @@
             </label>-->
 
             <label for="email">
-                <input *ngIf="emptyUser" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
+                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
             </label>
 
                 <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
@@ -115,8 +115,6 @@
                 </div>
                 <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters</span>
         
-        
-        
         </label>
 
         <label *ngIf="isadmin">
@@ -128,7 +126,6 @@
                 <button (click)="deleteAlert()" [disabled]="admin" [hidden]="emptyUser">delete user</button>
                 <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" [disabled]="f.invalid">update</button>
                 <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch">create user</button>
-                
 
                 <div class="overall" *ngIf="deleteUser">
                     <div class="cv" >
