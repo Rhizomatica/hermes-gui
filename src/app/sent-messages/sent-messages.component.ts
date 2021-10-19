@@ -107,9 +107,9 @@ confTransmit(){
 
 
   getMessages(): void{
-    this.messageService.getMessages().subscribe(
+    this.messageService.getMessagesByType('sent').subscribe(
       res => {
-        this.sentMessages = res.filter(a => a.draft == false  && a.inbox == false);
+        this.sentMessages = res;
       },
       (err) => {
         this.error = err;

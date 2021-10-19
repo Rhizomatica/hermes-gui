@@ -72,7 +72,7 @@ export class MessageadmComponent implements OnInit {
   }
 
   getMessages(): void {
-    this.messageService.getMessages().subscribe(
+    this.messageService.getMessagesByType('inbox').subscribe(
       (res: any) => {
         this.messages = res;
       },

@@ -54,10 +54,9 @@ export class MessagesComponent implements OnInit {
   }
 
   getInboxMessages(): void {
-    this.messageService.getMessages().subscribe(
+    this.messageService.getMessagesByType('inbox').subscribe(
       (res: any) => {
-        //this.messages = res;
-        this.inboxMessages = res.filter(a => a.inbox == true);
+        this.inboxMessages = res;
      },
       (err) => {
         this.error = err;
