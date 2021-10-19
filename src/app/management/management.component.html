@@ -1,11 +1,8 @@
 
 <div class="">
     <h2 i18n="@@admmanage">User Management</h2>
-
-
     <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     <br>
-
 
 <div *ngIf="currentUser || isadmin">
 
@@ -25,27 +22,28 @@
     
     
     <ng-container *ngIf="selectedUser">
-        <form [hidden]="isEditing==false" #f="ngForm" id="userdata" class="formdata" novalidate>
+        <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
             <label>
                 <span i18n>ID</span>
                 {{selectedUser.emailid}}
                 <br/>
             </label>
-            <label for="login">
+            <!--<label for="login">
                 <span i18n="@@username2">username</span>:
-                <input [hidden]="!emptyUser" [(ngModel)]="selectedUser.email"> 
-
-                <span [hidden]="emptyUser"> {{selectedUser.email}} </span>
+                <input *ngIf="emptyUser" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
+                <span *ngIf="!emptyUser" [(ngModel)]="selectedUser.email" > {{selectedUser.email}} </span>
                 <span *ngIf="alreadyExist" class="alert">username must be unique</span>
-            </label>
+            </label>-->
 
             <label for="email">
-                <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
+                <input *ngIf="emptyUser" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
             </label>
 
+                <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
+           
             <label for="name">
                 <span i18n="@@name">name</span>:
-                <input name="name" [(ngModel)]="selectedUser.name" required placeholder="write the username" />
+                <input name="name" [(ngModel)]="selectedUser.name" required placeholder="write your name" />
             </label>
             <label>
                 <span i18n="@@phonenumber">phone number</span>:
@@ -115,7 +113,6 @@
                 <div [hidden]=!passMin class="error" i18n="@@passempty">
                     passwords can't be empty
                 </div>
-        
                 <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters</span>
         
         
@@ -124,15 +121,14 @@
 
         <label *ngIf="isadmin">
             <span i18n>is admin</span>:
-            <input name="admin" class="ckbx" type="checkbox" [(ngModel)]="isadmin"  />
+            <input name="admin" class="ckbx" type="checkbox" checked="false" [(ngModel)]="selectedUser.admin"  />
         </label>
             <br/>
                 <button (click)="cancelCreate()" >cancel</button>
-
                 <button (click)="deleteAlert()" [disabled]="admin" [hidden]="emptyUser">delete user</button>
                 <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" [disabled]="f.invalid">update</button>
                 <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch">create user</button>
-                <!--<button type="submit" (click)="onSubmitCreate(f)" [disabled]="f.invalid"><span [hidden]="newUsername==true">New user from this one</span><span [hidden]="newUsername==false">create user</span></button>-->
+                
 
                 <div class="overall" *ngIf="deleteUser">
                     <div class="cv" >

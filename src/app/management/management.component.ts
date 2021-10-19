@@ -135,11 +135,16 @@ export class ManagementComponent implements OnInit {
        this.isadmin = false;
      }
      this.selectedUser = [];
+     //opens the user edit form
      this.isEditing = true;
+     //for showing the username input
      this.newUsername = true;
      this.emptyUser = true;
      this.updateUser = false;
+     //for showing the delete button
      this.deleteUser = false;
+     console.log ('object', this.selectedUser);
+  
      
    }
 
@@ -168,6 +173,8 @@ export class ManagementComponent implements OnInit {
   onSubmitUpdate(id: number, f: NgForm): void {
     console.log('⚚ management - onSubmitUpdate, f.value: ', f.value);
     f.value.location = "local";
+    //gambiarra pra mandar o user
+    f.value.email = f.value.null;
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -190,12 +197,16 @@ export class ManagementComponent implements OnInit {
   }
 
   onSubmitCreate(f: NgForm): void {
-    console.log(f.value);
+    console.log('form', f.value);
     f.value.location = "local";
-    this.userService.createUser(f.value).subscribe();
+
+    //gambiarra pra consertar o formulário
+    f.value.email = f.value.null;
+    //this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
     console.log('⚚ management - onSubmitCreate: isEditing? ', this.isEditing);
     this.users = [];
+    
     
     this.userService.getUsers().subscribe(
       (res: any) => {
