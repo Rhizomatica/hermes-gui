@@ -67,12 +67,15 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     onSubmitUpdate(f:NgForm): void {
-      console.log('⚚ management - onSubmitUpdate, f.value: ', f.value);
+      console.log('⚚ management - passreset ');
       var id = this.selectedUser.emailid;
+      
+
       this.userService.updateUser(id, f.value).subscribe(
         (res: any) => {
           this.users = res;
           this.success = true;
+          console.log(this.success);
         },
         (err) => {
           this.error = err;
@@ -85,6 +88,9 @@ export class ForgotpasswordComponent implements OnInit {
       //window.location.reload();
     }
   
+    closeError() {
+      this.errorAlert = false;
+    }
 
     checkAnswer(answ) {
       if (this.selectedUser.recoveranswer === answ) {

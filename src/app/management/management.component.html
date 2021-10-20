@@ -106,7 +106,7 @@
                 </label>
                 <label for="repasswd" i18n="@@retypethepassword">
                     Retype the password
-                    <input type="password"  [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="4" (input)="checkpass(selectedUser.password,repasswd)"/>
+                    <input type="password"  [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="8" (input)="checkpass(selectedUser.password,repasswd)"/>
                 </label>
                 <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
                     passwords doesn't match
