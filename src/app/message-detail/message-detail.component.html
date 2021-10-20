@@ -2,9 +2,15 @@
 <div *ngIf="message" class=" messages">
     <h3>{{message.name}}</h3>
 
-    <div class="formdata" [hidden]="!isEncrypted">
+    <div class="formdata" *ngIf="message.secure">
         <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
-        <input type="password">
+        <form #e="ngForm">
+            <input name="password" type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" >
+            <button type="submit" (click)="sendPassword(message.id,password)">submit</button>
+        </form>
+       
+
+        
     </div>
 
     <!--
@@ -14,7 +20,7 @@
     </div>
 -->
 
-    <div class="messagebody" [hidden]="isEncrypted">
+    <div class="messagebody" *ngIf="!message.secure">
         <p>{{message.text}}</p>
         <p *ngIf="message.file && message.inbox" [hidden]="!message.file">
             <span i18n="@@File">File: </span>

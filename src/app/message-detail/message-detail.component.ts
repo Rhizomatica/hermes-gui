@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { GlobalConstants } from '../global-constants';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -44,6 +44,11 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessage(id).subscribe(message => this.message);
   }
 
+  sendPassword(id, pass) {
+    console.log(id);
+    console.log(pass);
+  }
+
   getMessage(): void {
     const id = +this.route.snapshot.paramMap.get('id');
 
@@ -55,7 +60,7 @@ export class MessageDetailComponent implements OnInit {
           this.noMessage = true;
         }
 
-        console.log('debug componente service ' + res);
+        console.log(res);
       },
       (err) => {
         this.error = err;
