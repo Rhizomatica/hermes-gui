@@ -47,11 +47,20 @@ export class MessageDetailComponent implements OnInit {
   sendPassword(id, pass) {
     console.log(id);
     console.log(pass);
+    this.messageService.uncrypt(id, pass).subscribe(
+      (res: any) => {
+        this.message.text = res;
+        this.message.secure = false;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+
   }
 
   getMessage(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;

@@ -20,6 +20,7 @@ export class MessageService {
     messages: Message[];
     // message: Message[];
     message: any[];
+    text: string;
 
     httpOptions = {
       headers: new HttpHeaders({
@@ -147,6 +148,19 @@ export class MessageService {
      catchError(this.handleError));
   }
 
+   //uncrypt message test by ariane
+   uncrypt(id:number, pass: Message): Observable<{}> {
+    var url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`; // DELETE /message/42
+    return this.http.post<Message>(url,null).pipe(
+      map((res: any) => {
+        this.text = res;
+        console.log('⚚ message service - uncypting: ',res);
+        return this.text;
+    }),
+     catchError(this.handleError));
+  }
+
+
   // POST: add a new message to the database
   sendMessage(message: Message, file, id): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message`; // POST /message
@@ -185,3 +199,4 @@ export class MessageService {
 	return throwError(error);
   }
 }
+
