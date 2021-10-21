@@ -56,7 +56,7 @@ export class MessageService {
   }
 
   getMessagesByType($type): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/messages/${$type}`; // get api/message/42
+    const url = `${GlobalConstants.apiURL}/messages/${$type}`; // get api/messages/{inbox/outbox/draft}
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
@@ -66,7 +66,7 @@ export class MessageService {
   }
 
   getMessages(): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/messages`; // get api/message/42
+    const url = `${GlobalConstants.apiURL}/messages`; // get api/messages
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
@@ -103,7 +103,7 @@ export class MessageService {
   }
 
   getInboxMessage(id: number)  {
-    const url = `${GlobalConstants.apiURL}/inbox/${id}`; // get /message/42
+    const url = `${GlobalConstants.apiURL}/inbox/${id}`; // get /inbox/42
     return this.http.get(url).pipe(
       map((res: any) => {
         this.message = res.value;
@@ -114,10 +114,9 @@ export class MessageService {
 
   /** DELETE: delete the inbox message from the server */
   deleteInboxMessage(id): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/inbox/${id}`; // DELETE /message/42
+    const url = `${GlobalConstants.apiURL}/inbox/${id}`; // DELETE /inbox/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        this.messages = res;
         console.log('⚚ message service - deleteInboxMessage: ',res);
         return this.messages;
     }),
@@ -129,24 +128,12 @@ export class MessageService {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        this.messages = res;
         console.log('⚚ message service - deleteMessage: ',res);
         return this.messages;
     }),
      catchError(this.handleError));
   }
 
-   /** DELETE: consume server to delete message  */
-   transmitNow(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/message/`; // DELETE /message/42
-    return this.http.delete(url).pipe(
-      map((res: any) => {
-        this.messages = res;
-        console.log('⚚ message service - transmitNow: ',res);
-        return this.messages;
-    }),
-     catchError(this.handleError));
-  }
 
    //uncrypt message test by ariane
    uncrypt(id:number, values): Observable<{}> {
