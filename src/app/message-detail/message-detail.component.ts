@@ -44,13 +44,13 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessage(id).subscribe(message => this.message);
   }
 
-  sendPassword(id, pass) {
-    console.log(id);
-    console.log(pass);
-    this.messageService.uncrypt(id, pass).subscribe(
+  sendPassword(id: number, f: NgForm): void {
+    this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
-        this.message.text = res;
-        this.message.secure = false;
+		  if (res.text != ""){
+        	this.message.text = res.text;
+        	this.message.secure = false;
+		  }
       },
       (err) => {
         this.error = err;

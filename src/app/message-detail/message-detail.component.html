@@ -4,11 +4,10 @@
 
     <div class="formdata" *ngIf="message.secure">
         <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
-        <form #e="ngForm">
-            <input name="password" type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" >
-            <button type="submit" (click)="sendPassword(message.id,password)">submit</button>
+        <form #e="ngForm" id="secureform" novalidate>
+            <input name="pass" type="password" ngModel required >
+            <button type="submit" (click)="sendPassword(message.id,e)">submit</button>
         </form>
-       
 
         
     </div>

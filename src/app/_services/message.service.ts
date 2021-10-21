@@ -149,12 +149,11 @@ export class MessageService {
   }
 
    //uncrypt message test by ariane
-   uncrypt(id:number, pass: Message): Observable<{}> {
-    var url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`; // DELETE /message/42
-    return this.http.post<Message>(url,null).pipe(
+   uncrypt(id:number, values): Observable<{}> {
+    var url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`; 
+    return this.http.post<Message>(url, values).pipe(
       map((res: any) => {
         this.text = res;
-        console.log('⚚ message service - uncypting: ',res);
         return this.text;
     }),
      catchError(this.handleError));

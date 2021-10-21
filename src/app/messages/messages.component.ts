@@ -75,12 +75,6 @@ export class MessagesComponent implements OnInit {
       }
     );
   }
-
-
-
-
-
-
   
   deleteInboxMessage($id): void {
     console.log('⚚ messages - delete id: ', $id);
