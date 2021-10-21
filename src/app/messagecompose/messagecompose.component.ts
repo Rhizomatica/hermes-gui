@@ -8,13 +8,11 @@ import { ApiService } from '../_services/api.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../user';
 
-
-// import { GlobalConstants } from '../global-constants';
-
 @Component({
   selector: 'app-messagecompose',
   templateUrl: './messagecompose.component.html',
   styleUrls: ['./messagecompose.component.less']
+
 })
 
 
@@ -82,30 +80,21 @@ export class MessagecomposeComponent implements OnInit {
           case 'users':
             if (this.currentUser) {
               this.allowUpload = true;
-            } else {   
-            }
-            //console.log('haha');  
+            }    
             break;
             case 'admin':
-
             if (this.currentUser) {
-            if (this.isAdmin) {
-              this.allowUpload = true;
+            	if (this.isAdmin) {
+              	this.allowUpload = true;
+            	}
             }
-            }
-              
-            //console.log('huhu');
             break; 
             case 'all': 
             this.allowUpload = true;
-            //console.log('yeyey');
             break;
             default: 
             this.allowUpload = false;
-            //console.log('sorry');
           }
-
-
         return res;
       },
       (err) => {
@@ -124,7 +113,7 @@ export class MessagecomposeComponent implements OnInit {
   sendMessage(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
       console.log(passwd)
-      this.messageService.sendMessage(f.value,  this.message.file, this.message.id).subscribe(
+      this.messageService.sendMessage(f.value,  this.message.file, this.message.id, this.serverConfig.host).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ messagecompose - sendMessage: res: ', res);
