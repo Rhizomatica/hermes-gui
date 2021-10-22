@@ -39,10 +39,10 @@
     <div class="messages">
         
             <div class="multiplist">
-                <p *ngFor="let message of sentMessages | filter:searchMessages">
-                    <a ><img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="removeMessage(message)"></a>
-                <span class="inlineicon" class="date">{{message.sent_at | date:'h:mm'}}</span>
-                <a routerLink="/message/{{message.id}}">
+                <div *ngFor="let message of sentMessages | filter:searchMessages">
+                    <a ><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="removeMessage(message)"></a>
+                    
+                    <a routerLink="/message/{{message.id}}">
                     {{message.name}}
                     <span *ngIf="message.file">                     
                         <img class="inlineicon" title="file" src="assets/svg/paperclip-solid.svg">
@@ -50,12 +50,12 @@
                     <span *ngIf="message.secure">                     
                         <img class="inlineicon" title="file" src="assets/svg/lock.svg">
                     </span>
-                </a>
-
+                    <div class="inlineicon" class="date">{{message.sent_at | date:'d/M/yy, h:mm'}}</div>
+                    </a>
+                </div>
                 <!-- {{message.dest}}-->
-                </p>
             </div>
-        </div>
+            </div>
     </div>
         <h2 i18n="@@transmissionlist">Transmission list</h2>
 
@@ -64,20 +64,25 @@
 
     <div class="queue messages">
         <div class="multiplist">
-            <p *ngFor="let job of queue | filter:searchMessages">
+            <div *ngFor="let job of queue | filter:searchMessages">
             <a >
-                <img class="inlineicon" title="cancel" src="assets/svg/x.svg" [hidden]="!isadmin" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
-            
+                <img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
+                <span> {{job.uuidhost}}.{{job.uuiduucp}} </span>
                 <span >
                     <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
                     <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'"> 
                 </span>
+                <div class= "date">
                 <span class="date">{{job.date}} </span> 
-            <span class="date">{{job.time}}</span> 
-           
-            <span> {{job.uuidhost}}.{{job.uuiduucp}} <span class="date">{{job.size}} B</span> </span>
-            </p>
+            <span class="date">{{job.time}}</span>
+            <span class="date">{{job.size}} B</span> 
+        
+            
+            
+        
 		</div>
+     </div>  
+     </div> 
         <p i18n="@@listsize" class="date">Total size of files to transmit: {{ getQueueSize() }} total size</p>
         <a (click)="confTransmit()">
             transmit now <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
