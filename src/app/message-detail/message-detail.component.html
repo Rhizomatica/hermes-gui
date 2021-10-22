@@ -29,21 +29,28 @@
             <a target="_new" href="{{url}}/uploads/{{message.id}}" >  {{message.file}}</a>
         </p>
     </div>
-<hr>
+
+<div *ngIf="!noMessage">
+    <hr>
     <small><p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
     <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
     <div class="alert" i18n="noimage" *ngIf="noImage">Cant find image</div>
     <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
     <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
     <p class="msgid">Id: {{message.id}}</p></small>
-
+</div>
 <hr>
 
 <div class="navicons">
 
     <div class="btn" >
-        <a i18n="reply" routerLink="/compose" i18n="@@compose">
-            <img title="help" src="assets/svg/reply-solid.svg">reply
+        <a  routerLink="/compose" >
+            <span *ngIf="noMessage" i18n="@@compose"><img title="help" src="assets/svg/edit.svg">compose</span>
+            <span *ngIf="!noMessage" i18n="@@compose"><img title="help" src="assets/svg/reply-solid.svg">reply</span>
+        </a>
+
+        <a *ngIf="!noMessage" i18n="@@reply" routerLink="/compose" i18n="@@compose">
+            <img title="help" src="assets/svg/reply-solid.svg">compose
         </a>
     </div>
 
