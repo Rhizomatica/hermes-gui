@@ -29,6 +29,7 @@
     textarea
      {
       font-size: 1.5em;
+      line-height: 1.1em;
     }
 
     button {
@@ -56,38 +57,7 @@
     }
     
     
-    @media (min-width:720px) {
-    body,
-    input,
-    input[type="text"],
-    input[type="number"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="password"],
-    input[type="search"],
-    option,
-    select,
-    textarea        
-        {
-        font-size: 1em;
-        }
-    button {
-            font-size: 1em;
-            padding: 0.3em 0.5em;
-            margin-top: 0.5em;
-            margin-right: 0.5em;
-
-        }    
     
-    input[type="file"] {
-            font-size: 1em;
-        }
-
-    .space {
-            line-height: 1.5em;
-        }    
-
-    }
 
   
     
@@ -165,10 +135,14 @@ a:visited {
     font-weight: bold;
 }
 
+.ls {
+margin-left: 2px;
+}
+
 nav {
     font-size: 0.8em;
     border-bottom: 2px solid @mclr;
-    max-width: calc(100% - 1.5em);
+    max-width: calc(100%-4px);
     width: 100%;
     padding-top: 1.6em;
     display: flex;
@@ -248,7 +222,7 @@ textarea {
 
 .formfield {
     position: relative;
-    max-width: calc(100% - 1.5em);
+    max-width: calc(100% - 4px);
     padding-bottom: 1.5em;
     .bordered();
     .textarea{
@@ -346,6 +320,7 @@ textarea {
     input {
         width:100%;
         border: 1px solid #888;
+        
     }
     label{
         margin-top: 5px;
@@ -356,16 +331,26 @@ textarea {
 
     }
     input.midbt {
-        width: 50%; 
+        width: 52%; 
         margin-right: 5px;
     }
 
     button.midbt {
-        text-align: right;
+        text-align: left;
         float: right;
         position: relative;
-        top:-5px;
-        max-width: 50%; 
+        top:-0.5em;
+        padding: 0.35em 0.35em;
+        width:42%; 
+        font-size: 0.7em;
+        line-height: 0.85em;
+        min-height: 2em;
+        height: 2.8em;
+        margin-left: 0.1em;
+    }
+
+    p {
+        margin-bottom: 0.2em;
     }
 
     input.sbmbtn {
@@ -386,6 +371,10 @@ textarea {
         display: block;
         margin-top: 10px;
     }
+}
+
+#radioconf .fomdata button.midbt {
+    margin-bottom: 1em;
 }
 
 .selectors {
@@ -697,3 +686,54 @@ input.searchbox2 {
     50% {color: #fff;}
     100% {color: @clr;}
 }
+
+
+@media (min-width:720px) {
+    body,
+    input,
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="search"],
+    option,
+    select,
+    textarea        
+        {
+        font-size: 1em;
+        }
+    button {
+            font-size: 1em;
+            padding: 0.3em 0.5em;
+            margin-top: 0.5em;
+            margin-right: 0.5em;
+
+        }    
+    
+    input[type="file"] {
+            font-size: 1em;
+        }
+
+    .space {
+            line-height: 1.5em;
+        }
+        
+    .formdata {
+        button.midbt {
+            font-size: 1em;
+            line-height: 0.85em;
+            height: 0.8em;
+            margin-left: 0.1em;
+            padding: 0 0.3em 0 0.3;
+        } 
+
+        input.midbt {
+            height: 1.85em;
+        }
+
+    }
+    
+     
+
+    }
