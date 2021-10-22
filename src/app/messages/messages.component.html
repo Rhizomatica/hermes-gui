@@ -21,23 +21,27 @@
     
             <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
             <div class="multiplist">
-                <p *ngFor="let message of inboxMessages | filter:searchMessages">
+                <div *ngFor="let message of inboxMessages | filter:searchMessages">
+                    
+
                 <a>
                     <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="deleteInboxMessage(message.id)">
 
                 </a>
-                <span class="inlineicon" class="date">{{message.sent_at | date:'d/M/yy, h:mm'}}</span>
                 <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
-                    <span (click)="getInboxMessage(message)"> &nbsp;  {{message.name}}</span>
+                    <span class="ls" (click)="getInboxMessage(message)">{{message.name}}</span>
+
                     <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure" (click)="deleteInboxMessage(message.id)">
 
                    
                     <span *ngIf="message.file">                     
                          <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
                     </span>
+                    
+
                 </a>
-    
-                </p>
+                <div class="date ls" >{{message.sent_at | date:'d/M/yy, h:mm'}}</div>
+            </div>
             </div>
         </div>
     

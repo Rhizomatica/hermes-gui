@@ -518,15 +518,24 @@ input.searchbox2 {
 
 
     .messages {
-        p {
-            margin: 1px;
-        }
-        .date {
-            color:#555;
-            font-size: 0.5em;
-            line-height: 1.2em;
+        div {
+            margin: 0.1em;
             position: relative;
-            top:-3px;
+            display: block;
+        }
+
+        a {text-decoration: none;}
+
+        .date {
+
+            position: absolute;
+            color:#555;
+            font-size: 0.35em;
+            line-height: 0.5em;
+            position: relative;
+            top:0.25em;
+            right: 0;
+            
         }
        .ckbx {
         width: 15px;
@@ -559,9 +568,8 @@ input.searchbox2 {
 
 .inlineicon {
     width: 12px;
-    position: relative;
-    top:2px;
     filter: invert(27%) brightness(200%) ;
+    margin-right: 0.1em;
 
 }
 
@@ -734,6 +742,18 @@ input.searchbox2 {
 
     }
     
+    .messages {
+    
+        .date {
+            font-size: 0.5em;
+            line-height: 0.4em;
+            position: relative;
+            top:-0.5px;
+            
+            
+        }
+     
+    }
      
 
     }
