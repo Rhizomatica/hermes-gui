@@ -22,6 +22,7 @@ export class MessageDetailComponent implements OnInit {
   url =  GlobalConstants.apiURL;
   noMessage = false;
   noImage = false;
+  wrongPass = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,9 +49,9 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
 		  if (res.text != ""){
-        	this.message.text = "🔓 " + res.text;
+        	this.message.text = res.text;
         	this.message.secure = false;
-		  }
+		  } 
       },
       (err) => {
         this.error = err;

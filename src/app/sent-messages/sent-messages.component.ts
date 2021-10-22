@@ -131,9 +131,26 @@ confTransmit(){
     );
   }
 
+  getQueueSize() {
+  let sum = 0
+    if (this.queue) {
+      if (this.queue !== []) {
+        let sum = 0;
+        for(let i = 0; i < this.queue.length; i++) {
+        sum += parseInt(this.queue[i].size);
+        console.log(sum);
+        return sum;
+      }
+    }
+    
+    }
+  }
+
+
   ngOnInit(): void {
     this.getMessages();
     this.getQueue();
+    this.getQueueSize();
     this.isadmin = this.currentUser.admin;
   }
 }

@@ -1,9 +1,11 @@
 <div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br/></div>
 <div *ngIf="message" class=" messages">
-    <h3>{{message.name}}</h3>
+    <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg"/></span>
+        {{message.name}}</h3>
 
     <div class="formdata" *ngIf="message.secure">
         <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
+        <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required >
             <button type="submit" (click)="sendPassword(message.id,e)">submit</button>
