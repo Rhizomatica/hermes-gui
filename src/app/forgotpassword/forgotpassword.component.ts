@@ -27,6 +27,7 @@ export class ForgotpasswordComponent implements OnInit {
     passMatch: boolean = true;
     errorAlert: boolean = false;
     sucess: boolean = false;
+    answ: string;
 
 
     constructor(private userService: UserService, private stationService: StationService) { }
