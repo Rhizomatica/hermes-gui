@@ -23,6 +23,7 @@ export class MessageDetailComponent implements OnInit {
   noMessage = false;
   noImage = false;
   wrongPass = false;
+  uncrypted = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,8 +51,11 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
 		  if (res.text != ""){
         	this.message.text = res.text;
-        	this.message.secure = false;
-		  } 
+        	this.uncrypted = true;
+		  } else {
+        this.uncrypted = false;
+        this.wrongPass = true;
+      }
       },
       (err) => {
         this.error = err;
@@ -65,10 +69,13 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
-        if (!this.message.text) {
+        if (this.message.text == "") {
           this.noMessage = true;
+        } else {
+          this.noMessage = false;
         }
 
+        console.log(this.noMessage);
         console.log(res);
       },
       (err) => {

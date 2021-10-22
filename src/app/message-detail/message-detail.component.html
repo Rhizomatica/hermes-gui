@@ -3,7 +3,7 @@
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg"/></span>
         {{message.name}}</h3>
 
-    <div class="formdata" *ngIf="message.secure">
+    <div class="formdata" *ngIf="message.secure && !uncrypted">
         <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
@@ -20,8 +20,7 @@
         <div class="square"></div>
     </div>
 -->
-
-    <div class="messagebody" *ngIf="!message.secure">
+    <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <p *ngIf="message.file && message.inbox" [hidden]="!message.file">
             <span i18n="@@File">File: </span>
@@ -47,13 +46,13 @@
 
     <div class="btn" >
         <a  routerLink="/compose" >
-            <span *ngIf="noMessage" i18n="@@compose"><img title="help" src="assets/svg/edit.svg">compose</span>
-            <span *ngIf="!noMessage" i18n="@@compose"><img title="help" src="assets/svg/reply-solid.svg">reply</span>
+            <span *ngIf="noMessage" i18n="@@composea"><img title="help" src="assets/svg/edit.svg">compose</span>
+            <span *ngIf="!noMessage" i18n="@@reply"><img title="help" src="assets/svg/reply-solid.svg">reply</span>
         </a>
 
-        <a *ngIf="!noMessage" i18n="@@reply" routerLink="/compose" i18n="@@compose">
+        <!--<a *ngIf="!noMessage" i18n="@@reply" routerLink="/compose" i18n="@@compose">
             <img title="help" src="assets/svg/reply-solid.svg">compose
-        </a>
+        </a>-->
     </div>
 
     <div class="btn sent" >
@@ -66,6 +65,9 @@
         <input type="checkbox" (change)="changeEnc()">
     </label>
 -->
+
+
+
 </div> 
 
 </div>
