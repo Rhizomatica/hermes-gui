@@ -17,7 +17,7 @@
          <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in" >Log in</button></a>
          <br/>
          <br/>
-         <a  routerLink="/recovery" >
+         <a  routerLink="/recovery" *ngIf="!success">
             <div ><a i18n="@@forgotmypassword">Forgot my password</a></div>
          </a>
       <br>

@@ -77,7 +77,7 @@ export class ForgotpasswordComponent implements OnInit {
         (res: any) => {
           this.users = res;
           this.success = true;
-          console.log(this.success);
+
         },
         (err) => {
           this.error = err;
