@@ -84,14 +84,13 @@ export class MessagesComponent implements OnInit {
       (res: any) => {
         this.message = res;
         console.log('⚚ messages - deleteInboxMessage -  res: ', res);
-        
+        this.getInboxMessages();
       },
       (err) => {
         this.error = err;
         // console.error (err);
       }
     );
-    this.getInboxMessages();
   }
 
 

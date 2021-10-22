@@ -137,7 +137,7 @@
     </span>
     | Status: <div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>
     </span>
-    <span *ngIf="currentUser"> &#124; {{currentUser.email}}</span>
+    <span *ngIf="currentUser"> user: &#124; {{currentUser.email}}</span>
     <!--
       
     &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
