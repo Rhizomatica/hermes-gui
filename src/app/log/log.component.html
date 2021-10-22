@@ -1,1 +1,22 @@
-<p>LOG</p>
+<h2>Logs</h2>
+
+<a (click)="showUucpLog()" i18n="@@uucplog">UUcp Log</a><br>
+
+
+<a (click)="showEmailLog()"i18n="@@emaillog">Email Log </a>
+
+
+<div class="footer" *ngIf="uLog">
+
+    aqui vai o log do uucp
+
+    <br>
+    <button (click)="closeLogs()">close</button>
+    
+</div>
+
+<div class="footer" *ngIf="eLog">
+    aqui vai o log do email
+    <br>
+    <button (click)="closeLogs()">close</button>
+</div>
