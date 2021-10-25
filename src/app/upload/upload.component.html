@@ -1,0 +1,14 @@
+<p>upload works!</p>
+
+<form #f="ngForm" class="formdata" novalidate  >
+
+<input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+
+<button (click)="fileUpload.click()">select file</button>
+
+
+<input i18n="@@describemessage" name="description" [(ngModel)]="description" required maxlength="140" placeholder="Describe your message" />
+
+<button type="submit" (click)="uploadFile(f)">manda</button>
+
+</form>

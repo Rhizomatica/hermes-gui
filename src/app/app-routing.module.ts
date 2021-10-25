@@ -20,6 +20,7 @@ import { EmailComponent } from './email/email.component';
 import {HelpComponent} from './help/help.component';
 import { RadioConfigComponent } from './radio-config/radio-config.component';
 import { TestradioComponent } from './testradio/testradio.component';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent},
   { path: 'help', component: HelpComponent},
   { path: 'radioconfig', component: RadioConfigComponent},
-  { path: 'testradio', component: TestradioComponent}
+  { path: 'testradio', component: TestradioComponent},
+  { path: 'upload', component: UploadComponent}
 
 
 ];
