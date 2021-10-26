@@ -29,14 +29,13 @@ export class MessageService {
       })
     };
 
-  postFile(file: any) {
-    const url = `${GlobalConstants.apiURL}/file/`; // DELETE api/message/42
-    // const  url = '//httpbin.org/post';
+  postFile(file: File, pass) {
+    const url = `${GlobalConstants.apiURL}/file/`; // POST api/file
 
     const formData: FormData = new FormData();
 
-    formData.append('name', 'teste');
     formData.append('fileup', file);
+    formData.append('pass', pass);
 
     const params = new HttpParams();
     const headers = new HttpHeaders();
@@ -48,10 +47,10 @@ export class MessageService {
     .pipe(
       map((res: any) => {
         this.messages = res;
-        console.log('⚚ message service - postFile: ',res);
+        // console.log('⚚ message service - postFile: ',res);
         return this.messages;
       }),
-      catchError(this.handleError)
+       catchError(this.handleError)
       );
   }
 
@@ -148,17 +147,13 @@ export class MessageService {
 
 
   // POST: add a new message to the database
-  sendMessage(message: Message, file, id, cs_origin): Observable<Message[]> {
+  sendMessage(message: Message, origin: any): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message`; // POST /message
     message.draft = false;
     message.sent_at = Date();
-    message.orig = cs_origin;  
+    message.orig = origin;  
     // messageImage: File;
 
-    if (id){
-      message.id = id;
-      message.file = file;
-    }
     console.log('⚚ message service - sendMessage: ', message);
 
     return this.http.post<Message>(url, message).pipe(
@@ -166,7 +161,8 @@ export class MessageService {
         this.message = res;
         return this.message;
     }),
-      catchError(this.handleError),
+	// TODO wtf?
+    //   catchError(this.handleError),
     );
 }
 
@@ -184,5 +180,6 @@ export class MessageService {
 	console.log('⚚ Hermes ⚚\n⚚ message service  error - :\n ', error);
 	return throwError(error);
   }
+
 }
 

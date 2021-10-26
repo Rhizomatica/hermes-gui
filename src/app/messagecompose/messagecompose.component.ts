@@ -177,19 +177,16 @@ export class MessagecomposeComponent implements OnInit {
       this.passunMatch = false;
 
     }
-
-    
   }
 
- 
-
-  DocUpload(files): void{
+  fileUpload(files): void{
     // this.messageService.postFile($files[0]);
-    console.log('⚚ messagecompose - docUpload ', files);
+    console.log('⚚ messagecompose - fileupload: ', files);
     this.messageService.postFile(files[0]).subscribe(
       (res: any) => {
-        this.message.id = res[2];
-        this.message.file = res[1];
+        this.message.file = res.filename;
+        this.message.image = res.timestamp;
+		console.log(this.message);
       },
       (err) => {
         this.fileError = err;
