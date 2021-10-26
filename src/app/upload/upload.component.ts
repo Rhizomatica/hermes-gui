@@ -7,6 +7,8 @@ import { StationService } from '../_services/station.service';
 import { ApiService } from '../_services/api.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../user';
+import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -16,7 +18,8 @@ import { User } from '../user';
 })
 export class UploadComponent implements OnInit {
 
-  public error: Error;
+  public errorfile: Error;
+  public errormsg: Error;
   public fileError: any = "";
   public res: any;
   public stations: Station[];
@@ -24,7 +27,7 @@ export class UploadComponent implements OnInit {
   public fileIsProcessing = false;
   public fileIsProcessed = false;
   public isEncrypted = false;
-  public message: Message;
+  public message: Message ;
   public passMatch: boolean = false;
   public passwd;
   public repasswd;
@@ -40,48 +43,68 @@ export class UploadComponent implements OnInit {
   public fileName: any;
   public description: any;
   public file: any;
+  public test: any;
+  public fileid: any;
 
 
   constructor(
     private messageService: MessageService, 
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService) {
-      
-    }
+    private authenticationService: AuthenticationService) {}
 
 
 handleFile() {
   console.log()
 }    
 
-
 onFileSelected(event) {
 
-  const file:File = event.target.files[0];
+  let file:File = event.target.files[0];
   console.log(event)
 
   if (file) {
     this.file = file;
       this.fileName = file.name;
-      const formData = new FormData();
-      formData.append("thumbnail", file);
-      //const upload$ = this.http.post("/api/thumbnail-upload", formData);
-      const upload$ = formData;
-      //upload$.subscribe();
-      console.log(formData);
       return file;
   }
-  
 }
 
 
-uploadFile(f: NgForm) {
-  console.log(f.value.description);
-  console.log(this.file);
-  console.log(this.fileName);
-}
+sendMessage(f: NgForm): void {
+	//TODO set from message and remove
+    f.value.text = 'mensagem teste';
+    f.value.dest = 'PU4GNU';
 
+	// File exists? 
+	if (this.file != null) {
+    	// this.fileIsProcessing = true;
+    	f.value.image = this.messageService.postFile(this.file, f.value.pass).subscribe(
+      		(res: any) => {
+        		this.res = res;
+        		console.log('⚚ messagecompose - sendMessage: res: ', res);
+        		// this.fileIsProcessing = true;
+      		},
+      		 (err) => {
+        		this.errorfile = err;
+        	 	this.errorAlert = true;
+      		}
+		);
+    }
+
+
+    this.messageService.sendMessage(f.value,  'localdebughost').subscribe(
+    	(res: any) => {
+    		this.res = res;
+    		console.log('⚚ messagecompose - sendMessage: res: ', res);
+    		// this.fileIsProcessing = true;
+    	},
+    	 (err) => {
+    	 	this.errormsg = err;
+    	 	this.errorAlert = true;
+    	 }
+    	);
+	}
 
   ngOnInit(): void {
   }
