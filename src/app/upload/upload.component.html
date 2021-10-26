@@ -4,11 +4,13 @@
 
 <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
 
+<input type="text" name="pass" ngModel  #fileUpload>
+
 <button (click)="fileUpload.click()">select file</button>
 
 
-<input i18n="@@describemessage" name="description" [(ngModel)]="description" required maxlength="140" placeholder="Describe your message" />
+<input i18n="@@describemessage" name="name" [(ngModel)]="description" required maxlength="140" placeholder="Describe your message" />
 
-<button type="submit" (click)="uploadFile(f)">manda</button>
+<button type="submit" (click)="sendMessage(f)">manda</button>
 
 </form>
