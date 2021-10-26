@@ -43,12 +43,12 @@
             </label>
 
             <div class="uploader" *ngIf="allowUpload">
-                <hr>
+               
                 <ng-container >
-                    <p i18n="@@attachfiles">Attach Files:</p>
-                    <label class="file">
-                        <input type="file" (change)="DocUpload($event.target.files)" accept="image/*" >
-                    </label>
+                    <span i18n="@@attachfile">Attach File:</span>
+                        <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+                        <button (click)="fileUpload.click()">select file</button>
+                        <!--<input type="file" (change)="DocUpload($event.target.files)" accept="image/*" >-->
                 </ng-container>
 
                 <div *ngIf="message.id && message.file" >

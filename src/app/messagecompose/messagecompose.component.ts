@@ -39,6 +39,10 @@ export class MessagecomposeComponent implements OnInit {
   public passunMatch: boolean = false;
   public passMin: boolean = false;
   public errorAlert: boolean = false;
+  public file: any;
+  public errorfile: any;
+  public fileName: any;
+  public errormsg: any;
 
   //allowfile : users, admin, all
 
@@ -110,7 +114,7 @@ export class MessagecomposeComponent implements OnInit {
     
   }
 
-  sendMessage(f: NgForm, passwd): void {
+  sendMessag(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
       console.log(passwd)
       this.messageService.sendMessage(f.value,  this.serverConfig.nodename).subscribe(
@@ -125,6 +129,54 @@ export class MessagecomposeComponent implements OnInit {
       }
     );
   }
+
+  onFileSelected(event) {
+
+    let file:File = event.target.files[0];
+    console.log(event)
+  
+    if (file) {
+      this.file = file;
+        this.fileName = file.name;
+        return file;
+    }
+  }
+
+  sendMessage(f: NgForm): void {
+    //TODO set from message and remove  
+    // File exists? 
+    if (this.file != null) {
+        // this.fileIsProcessing = true;
+        f.value.image = this.messageService.postFile(this.file, f.value.pass).subscribe(
+            (res: any) => {
+              this.res = res;
+              console.log('⚚ messagecompose - sendMessage: res: ', res);
+              // this.fileIsProcessing = true;
+            },
+             (err) => {
+              this.errorfile = err;
+               this.errorAlert = true;
+            }
+      );
+      }
+  
+  
+      this.messageService.sendMessage(f.value,  'localdebughost').subscribe(
+        (res: any) => {
+          this.res = res;
+          console.log('⚚ messagecompose - sendMessage: res: ', res);
+          // this.fileIsProcessing = true;
+        },
+         (err) => {
+           this.errormsg = err;
+           this.errorAlert = true;
+         }
+        );
+    }
+
+
+
+
 
   closeError() {
     this.errorAlert = false;
