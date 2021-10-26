@@ -113,7 +113,7 @@ export class MessagecomposeComponent implements OnInit {
   sendMessage(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
       console.log(passwd)
-      this.messageService.sendMessage(f.value,  this.message.file, this.message.id, this.serverConfig.nodename).subscribe(
+      this.messageService.sendMessage(f.value,  this.serverConfig.nodename).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ messagecompose - sendMessage: res: ', res);
@@ -182,17 +182,17 @@ export class MessagecomposeComponent implements OnInit {
   fileUpload(files): void{
     // this.messageService.postFile($files[0]);
     console.log('⚚ messagecompose - fileupload: ', files);
-    this.messageService.postFile(files[0]).subscribe(
-      (res: any) => {
-        this.message.file = res.filename;
-        this.message.image = res.timestamp;
-		console.log(this.message);
-      },
-      (err) => {
-        this.fileError = err;
-        this.errorAlert = true;
-      }
-    );
+    // this.messageService.postFile(files[0]).subscribe(
+    //   (res: any) => {
+    //     this.message.file = res.filename;
+    //     this.message.image = res.timestamp;
+	// 	console.log(this.message);
+    //   },
+    //   (err) => {
+    //     this.fileError = err;
+    //     this.errorAlert = true;
+    //   }
+    // );
   }
 
   // TODO double check start params on inbox
