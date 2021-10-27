@@ -29,7 +29,7 @@ export class MessageService {
       })
     };
 
-  postFile(file: File, pass) {
+  async postFile(file: File, pass) {
     const url = `${GlobalConstants.apiURL}/file/`; // POST api/file
 
     const formData: FormData = new FormData();
@@ -41,17 +41,24 @@ export class MessageService {
     const headers = new HttpHeaders();
     headers.set('Content-Type', null);
     headers.set('Accept', 'multipart/form-data');
+
+
+    return this.http.post(url, formData, {params, headers}).toPromise();
+    // this.http.post(url, formData, {params, headers}).toPromise().then(
+		// res => {
+		// 	return res;
+		// });
+
     // Authorization: 'my-auth-token'
 
-    return this.http.post(url, formData, {params, headers})
-    .pipe(
-      map((res: any) => {
-        this.messages = res;
-        // console.log('⚚ message service - postFile: ',res);
-        return this.messages;
-      }),
-       catchError(this.handleError)
-      );
+    // return this.http.post(url, formData, {params, headers})
+    // .pipe(
+    //   map((res: any) => {
+    //     // console.log('⚚ message service - postFile: ',res);
+    //     return res;
+    //   }),
+    //    catchError(this.handleError)
+    //   );
   }
 
   getMessagesByType($type): Observable<Message[]> {
