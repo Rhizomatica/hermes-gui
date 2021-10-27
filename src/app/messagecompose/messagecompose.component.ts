@@ -147,17 +147,8 @@ export class MessagecomposeComponent implements OnInit {
     // File exists? 
     if (this.file != null) {
         // this.fileIsProcessing = true;
-        f.value.image = this.messageService.postFile(this.file, f.value.pass).subscribe(
-            (res: any) => {
-              this.res = res;
-              console.log('⚚ messagecompose - sendMessage: res: ', res);
-              // this.fileIsProcessing = true;
-            },
-             (err) => {
-              this.errorfile = err;
-               this.errorAlert = true;
-            }
-      );
+        let res = this.messageService.postFile(this.file, f.value.pass);
+		// console.log("send message debug TODO ", res)
       }
   
   
