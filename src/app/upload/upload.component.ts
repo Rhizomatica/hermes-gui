@@ -74,25 +74,25 @@ onFileSelected(event) {
 sendMessage(f: NgForm): void {
 	//TODO set from message and remove
     f.value.text = 'mensagem teste';
-    f.value.dest = 'PU4GNU';
+    f.value.dest = 'local';
 
 	// File exists? 
 	if (this.file != null) {
     	// this.fileIsProcessing = true;
-    	f.value.image = this.messageService.postFile(this.file, f.value.pass).subscribe(
-      		(res: any) => {
-        		this.res = res;
-        		console.log('⚚ messagecompose - sendMessage: res: ', res);
-        		// this.fileIsProcessing = true;
-      		},
-      		 (err) => {
-        		this.errorfile = err;
-        	 	this.errorAlert = true;
-      		}
-		);
+    	this.messageService.postFile(this.file, f.value.pass).then(value => {
+			f.value.file = value['id'] ; // gona change  to this default instead of image
+			f.value.image = value['id'] ; // this wil gona die, repeated for compatibility
+			f.value.filename = value['filename'];
+			let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
+			console.log(value);
+			let res  = this.sendMessageContinue(f);
+		});
+	}
+	else{
+			let res  = this.sendMessageContinue(f);
     }
-
-
+}
+  sendMessageContinue(f: NgForm){
     this.messageService.sendMessage(f.value,  'localdebughost').subscribe(
     	(res: any) => {
     		this.res = res;
