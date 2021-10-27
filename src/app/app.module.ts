@@ -42,7 +42,6 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './testradio/testradio.component';
 import { UploadComponent } from './upload/upload.component';
-import { WebmailComponent } from './webmail/webmail.component';
 
 registerLocaleData(localePt);
 
@@ -87,8 +86,7 @@ registerLocaleData(localePt);
     RadioConfigComponent,
     FrequencyPipe,
     TestradioComponent,
-    UploadComponent,
-    WebmailComponent
+    UploadComponent
 
 
   ],
