@@ -79,6 +79,9 @@ p {
     margin: 1px 0;
 }
 
+.color{
+    color: @clr;
+}
 
 input:focus,
 select:focus,
@@ -168,6 +171,7 @@ nav {
 }
 
 
+
 nav a:hover{
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
@@ -240,6 +244,28 @@ textarea {
         top: 5px;
         margin-right: 0.1em;
     }
+}
+
+
+
+ .userstatus {
+    position: absolute;
+    top:0;
+    right:1em;
+    text-align: right;
+    font-size: 0.5em;
+
+    .icon {
+        img {
+            height: 2.8em; 
+            
+        }
+    }
+
+    button {
+        background-color: #666
+    }
+
 }
 
 .error {
@@ -424,6 +450,7 @@ textarea {
 .alert {
     color: red;
 }
+
 
 .multiplist {
     max-height: 10em;
@@ -619,16 +646,7 @@ input.searchbox2 {
       }
   }
 
-  .userstatus {
-      position: absolute;
-      top:0;
-      right:3em;
-      text-align: right;
-      font-size: 0.5em;
-      button {
-          background-color: #666
-      }
-  }
+  
 
   .redcircle {
     display: inline-block;
@@ -678,6 +696,11 @@ input.searchbox2 {
  .help {
      h2, h3, p {
          margin-top: 1em;
+     }
+
+     li {
+         margin: 0;         
+         padding: 0;
      }
 
  } 

@@ -151,7 +151,7 @@ export class MessagecomposeComponent implements OnInit {
             (res: any) => {
               this.res = res;
               console.log('⚚ messagecompose - sendMessage: res: ', res);
-              // this.fileIsProcessing = true;
+              this.fileIsProcessing = true;
             },
              (err) => {
               this.errorfile = err;
@@ -165,7 +165,7 @@ export class MessagecomposeComponent implements OnInit {
         (res: any) => {
           this.res = res;
           console.log('⚚ messagecompose - sendMessage: res: ', res);
-          // this.fileIsProcessing = true;
+          this.fileIsProcessing = true;
         },
          (err) => {
            this.errormsg = err;
