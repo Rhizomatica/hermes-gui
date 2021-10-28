@@ -46,9 +46,23 @@
                
                 <ng-container >
                     <span i18n="@@attachfile">Attach File:</span>
+
+<p i18n="@@nofile">{{fileName || "no file selected"}}</p>
+
+<button *ngIf="!fileSelected" (click)="fileUpload.click()">select file</button>
+<button *ngIf="fileSelected" (click)="removeFile()">remove file</button>
+
+
                         <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-                        <button (click)="fileUpload.click()">select file</button>
-                        <!--<input type="file" (change)="DocUpload($event.target.files)" accept="image/*" >-->
+                        
+
+                        <div *ngIf="sending">
+                            <div class="blobber">
+                                <div class="tx">uploading file...</div>
+                                <div class="square"></div>
+                            </div>
+                            </div>
+                        
                 </ng-container>
 
                 <div *ngIf="message.id && message.file" >
@@ -85,6 +99,11 @@
                 </div>
             </div>
             <span></span>
+
+
+
+           <!-- 
+
             <button type="submit" *ngIf="!passMatch && isEncrypted" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
@@ -94,6 +113,30 @@
             <button type="submit" *ngIf="!isEncrypted" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
                 <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
             </button>
+
+        -->
+
+        <div *ngIf="isEncrypted">
+
+            <div *ngIf="passMatch" >
+                <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
+                    <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+                </button>
+            </div>
+            <div *ngIf="!passMatch" >
+                <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br/>
+                    <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+                </button>
+                
+            </div>
+        </div>
+        
+        <div *ngIf="!isEncrypted">
+            <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
+                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+            </button>
+        </div>
+
         </div>
 
         <div class="overall alert" [hidden]="fileIsProcessing==false">

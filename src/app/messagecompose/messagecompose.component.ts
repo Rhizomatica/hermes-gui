@@ -43,6 +43,10 @@ export class MessagecomposeComponent implements OnInit {
   public errorfile: any;
   public fileName: any;
   public errormsg: any;
+  public test: any;
+  public fileid: any;
+  public fileSelected: boolean = false;
+  public sending: boolean = false;
 
   //allowfile : users, admin, all
 
@@ -135,27 +139,68 @@ export class MessagecomposeComponent implements OnInit {
     console.log(event)
   
     if (file) {
-      this.file = file;
+        
+      //comparador de tamanho;
+  
+      if(file.size < 3145728) {
+  
+        this.file = file;
         this.fileName = file.name;
+        console.log(file);
+        this.fileSelected = true;
         return file;
-    }
+      }
+      else {
+        this.fileName = "file too big";
+      }
+      
+        }
   }
 
-  sendMessage(f: NgForm): void {
-    //TODO set from message and remove  
+  removeFile() {
+    let file = [];
+    this.fileName = '';
+    this.file = [];
+    this.fileSelected = false;
+    return file;
+  }
+
+  async sendMessage(f: NgForm): Promise<void> {
+
+    //turn on animation
+    this.sending = true;
+
+
     // File exists? 
+
     if (this.file != null) {
         // this.fileIsProcessing = true;
-        let res = this.messageService.postFile(this.file, f.value.pass);
-		// console.log("send message debug TODO ", res)
+        // this.fileIsProcessing = true;
+
+    	await this.messageService.postFile(this.file, f.value.pass).then(value => {
+        f.value.file = value['id'] ; // gona change  to this default instead of image
+        f.value.image = value['id'] ; // this wil gona die, repeated for compatibility
+        f.value.filename = value['filename'];
+        let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
+        this.sending = false;
+        console.log(value);
+        let res  = this.sendMessageContinue(f);
+      });
+    }
+    else{
+        let res  = this.sendMessageContinue(f);
+        this.sending = false;
       }
-  
+    }
+
+    sendMessageContinue(f: NgForm){
+      this.sending = false;
   
       this.messageService.sendMessage(f.value,  'localdebughost').subscribe(
         (res: any) => {
           this.res = res;
           console.log('⚚ messagecompose - sendMessage: res: ', res);
-          // this.fileIsProcessing = true;
+          this.fileIsProcessing = true;
         },
          (err) => {
            this.errormsg = err;
@@ -163,8 +208,6 @@ export class MessagecomposeComponent implements OnInit {
          }
         );
     }
-
-
 
 
 

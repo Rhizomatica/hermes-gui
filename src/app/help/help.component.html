@@ -4,6 +4,7 @@
 <ul class="color">
 <li  (click)="scrollToElement(webint)" i18n="@@webintefa" >Web Interface</li>
 <li (click)="scrollToElement(publicm)"i18n="@@publicma" >Public messages</li>
+<li (click)="scrollToElement(private)"i18n="@@privatemsg" >Private messages</li>
 <li (click)="scrollToElement(transm)" i18n="@@tranmissionlista" >Transmission List</li>
 <li (click)="scrollToElement(sysa)" i18n="@@sysadmh">System Administration</li>
 <li href="#">How to contact support</li>
@@ -13,17 +14,22 @@
 <h2 #introduction i18n="@@intro">Introduction</h2>
 
 <p i18n="@@p1">
-    Hermes system provides a telecommunication system trough the use of short wave HF radio.
+    HERMES provides a telecommunication system through the use of shortwave / HF radio.
 </p>
+
 
 <p i18n="@@p2">
     Hermes system allows transmission of text and files between connected stations, through public messages, sent through this interface or private messages, though Deltachat application or webmail interface.
 </p>
 
+<p i18n="@@p2a">
+    The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All communication between stations are encrypted and happen outside the internet.
+</p>
+
 <h2 #webint i18n="@@webinterface">Web Interface</h2>
 
 <p i18n="@@p3">
-    When accessing the Hermes wifi radio through a cellphone or computer, you will be directed to the Hermes web interface. With that you can send public messages between stations and read messages sent to you community. It's also possible to create users for email accounts and also to administrate the system.
+    When accessing the local Hermes WiFi network through a cellphone or computer, you will be directed to the HERMES web interface. From there you can send public messages between stations and read messages sent to your station/community. It's also possible to create users for email accounts and manage and administer the system from the web interface.
 </p>
 
 <h3 #publicm i18n="@@publicmessagesh">Public Messages</h3>
@@ -46,6 +52,44 @@
     A system administrator can change who can attach files on messages between stations: everyone withe access to the network, only registered users, or only administrators.
 </p>
 
+<h3 #private i18n="@@p01">Private messages</h3>
+
+<p i18n="@@q02">
+    Private messages in the HERMES system work through personal e-mails. A system administrator can create users to have a system e-mail account.
+</p>
+
+<p i18n="@@q02a">
+    Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain {{system.domain}} and will look like this:
+user_name@({{system.domain}}. Where username is the username used when creating the user.
+</p>
+
+<p i18n="@@q02b">
+    Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is a limitation when attaching data due to the limitations of data transmission capacity over radio.
+</p>
+
+<h2 #deltachat>Deltachat</h2>
+
+<p i18n="@@q03">
+    Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the transmitters' hours of operation.
+</p>
+
+<p i18n="@@q03a">
+    To download Deltachat, select one of the packages below, according to your phone's operating system:
+</p>
+
+<p >
+    <a href="#">Android</a>
+    <a href="#">Windows</a>
+    <a href="#">Ubuntu/Debian</a>
+</p>
+
+
+<p i18n="@@q04">
+    On Iphone, ipad and mac OSX you will need to download the app from the App Store in a place with internet.
+</p>
+
+<h5 i18n="@@dconfig">Configuration</h5>
+
 <h3 #transm i18n="@@tranmissionlist">Transmission List</h3>
 
 <p i18n="@@p11">
@@ -53,7 +97,7 @@
 </p>
 
 <p i18n="@@p12">
-    As the communication between the stations are unidirectional, the transmissions are schedules to happen every (()))hour, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
+    As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
 </p>
 
 <h3 #sysa i18n="@@sysadmh">System Administration</h3>
@@ -70,10 +114,18 @@
     Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername <span *ngIf="system">On this station the server name will be <span class="alert">{{system.domain}}</span></span></p>
 
 <p i18n="@@p16">
-    Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface</p>
+    Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface
+</p>
+
+
+<p i18n="@@p16a">
+    Message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators.
+
+</p>
 
 <p i18n="@@p17">
-    Network info: displays some information about the system, such as network adresses, calsign, servername etc
+    Network info: displays information about the system, such as network addresses, call sign, server name, etc.
+</p>
 
 <p i18n="@@p18">
     Stations: provides a list of the connected stations on the system
@@ -84,6 +136,42 @@
 </p>
 <p i18n="@@p20">
     Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore factory configuration. 
+</p>
+
+<h2 #trouble>Troubleshooting</h2>
+
+<p i18n="@@t01">
+    To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter.
+</p>
+
+<p i18n="@@t02">
+    To know what to do in case of an error, you first need to know which component is causing the problem.
+</p>
+
+<p i18n="@@t03">
+    To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network:
+</p>
+
+<p i18n="@@t04">
+    If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network.
+</p>
+
+<p i18n="@@t05">
+    In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter.
+</p>
+
+
+
+<p i18n="@@t07">
+    If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings.
+</p>
+
+<p i18n="@@t08">
+    If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration.
+</p>
+
+<p i18n="@@t09">
+    If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take ypur equipment to a place with internet for online maintanance.
 </p>
 
 </div>
