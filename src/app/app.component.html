@@ -102,7 +102,7 @@
     </ng-template>
 
 </div>
-<nav id="mainnav">
+<nav id="mainnav" *ngIf="system">
   <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
   <a routerLink="/admin" i18n="@admin" >
     <img title="admin" src="assets/svg/tools.svg">admin
@@ -118,6 +118,7 @@
 <router-outlet *ngIf="system; else serverOff"></router-outlet>
 
 <ng-template #serverOff >
+  <hr>
   <p i18n="hermesoffline">Hermes server is offline, please turn the station on.</p>
 <br>
 <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">If your server is already on click here</div>
