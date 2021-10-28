@@ -117,8 +117,19 @@
 
 <router-outlet *ngIf="system; else serverOff"></router-outlet>
 
-<ng-template #serverOff i18n="hermesoffline">
-  Hermes server is offline, please turn the station on.
+<ng-template #serverOff >
+  <p i18n="hermesoffline">Hermes server is offline, please turn the station on.</p>
+<br>
+<div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">If your server is already on click here</div>
+
+<div *ngIf="serverError" i18n="@@areadyon">
+  If you are having server offline message, and your server is already on, it's possible that your system is corrupted, if you already tried to access Hermes from other devices and the problem persist, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance.
+<br>
+<button (click)="showServerAlert()">Close message</button>  
+</div>
+
+
+
 </ng-template>
 
 </div>
@@ -135,17 +146,23 @@
     <span *ngIf="!system" i18n="@@serveroff0">
       &#124;  server off
     </span>
-    | Status: <div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>
+    | Status: 
+    <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
+    <div *ngIf="system.status" class="greencircle"> </div>
+    
+    
+    <!--<div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>-->
     </span>
     <span *ngIf="currentUser"> | user: {{currentUser.email}}</span>
-    <!--
+    
+    <div *ngIf="fullStats">
       
     &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
     &#124; DB: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
     &#124; AR: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
     &#124; IRM: <div [ngClass]="{'redcircle' : !system.pidirm , 'greencircle' : system.pidirm }"></div>
     &#124; PF: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
--->
+  </div>
     
     <!--user: {{currentUser.email}} / {{currentUser.admin}}-->
   

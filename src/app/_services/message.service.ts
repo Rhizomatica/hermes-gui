@@ -39,11 +39,26 @@ export class MessageService {
 
     const params = new HttpParams();
     const headers = new HttpHeaders();
+    
+    //add this to be able to show progress on interface
+    params.set('reportProgress', 'true');
+    params.set('observe', 'events');
+    //
+    headers.set('Access-Control-Allow-Origin', '*');
+    //try to fix cors error
+
     headers.set('Content-Type', null);
     headers.set('Accept', 'multipart/form-data');
 
+    const response = await this.http.post(url, formData, {params, headers});
 
-    return this.http.post(url, formData, {params, headers}).toPromise();
+    return response.toPromise();
+
+
+    //removi essa linha aqui
+    //return this.http.post(url, formData, {params, headers}).toPromise();
+    
+    
     // this.http.post(url, formData, {params, headers}).toPromise().then(
 		// res => {
 		// 	return res;

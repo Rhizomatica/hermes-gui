@@ -6,8 +6,20 @@
 
 <input type="text" name="pass" ngModel  #fileUpload>
 
-<button (click)="fileUpload.click()">select file</button>
+<div class="fileupload">
 
+    {{fileName || "no file selected"}}
+
+<button *ngIf="!fileSelected" (click)="fileUpload.click()">select file</button>
+<button *ngIf="fileSelected" (click)="removeFile()">remove file</button>
+
+</div>
+<div *ngIf="sending">
+<div class="blobber">
+    <div class="tx">uploading file...</div>
+    <div class="square"></div>
+</div>
+</div>
 
 <input i18n="@@describemessage" name="name" [(ngModel)]="description" required maxlength="140" placeholder="Describe your message" />
 

@@ -17,6 +17,8 @@ export class AppComponent {
   serverRes: any;
   error: any;
   system: any;
+  fullStats: boolean = false;
+  serverError: boolean = false;
 
 
   title = 'hermes.radio';
@@ -39,6 +41,27 @@ export class AppComponent {
       }
     );
   }
+
+  showFullStatus(){
+    if (!this.fullStats) {
+      this.fullStats = true;
+      //console.log(this.fullStats);
+    } else {
+      this.fullStats  = false;
+      //console.log(this.fullStats);
+      }
+    }
+  
+
+ showServerAlert() {
+  if (!this.serverError) {
+    this.serverError = true;
+    //console.log(this.serverError);
+  } else {
+    this.serverError  = false;
+    //console.log(this.serverError);
+    }
+ }   
 
   logout() {
     this.authenticationService.logout();

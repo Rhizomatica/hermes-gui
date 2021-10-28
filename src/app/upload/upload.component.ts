@@ -45,6 +45,9 @@ export class UploadComponent implements OnInit {
   public file: any;
   public test: any;
   public fileid: any;
+  public fileSelected: boolean = false;
+  public sending: boolean = false;
+  
 
 
   constructor(
@@ -64,35 +67,63 @@ onFileSelected(event) {
   console.log(event)
 
   if (file) {
-    this.file = file;
+      
+    //comparador de tamanho;
+
+    if(file.size < 3145728) {
+
+      this.file = file;
       this.fileName = file.name;
+      console.log(file);
+      this.fileSelected = true;
       return file;
-  }
+    }
+    else {
+      this.fileName = "file too big";
+    }
+    
+      }
 }
 
+removeFile() {
+  let file = [];
+  this.fileName = '';
+  this.file = [];
+  this.fileSelected = false;
+  return file;
+}
 
-sendMessage(f: NgForm): void {
+async sendMessage(f: NgForm): Promise<void> {
 	//TODO set from message and remove
     f.value.text = 'mensagem teste';
     f.value.dest = 'local';
-
+    this.sending = true;
 	// File exists? 
 	if (this.file != null) {
     	// this.fileIsProcessing = true;
-    	this.messageService.postFile(this.file, f.value.pass).then(value => {
+
+    	await this.messageService.postFile(this.file, f.value.pass).then(value => {
 			f.value.file = value['id'] ; // gona change  to this default instead of image
 			f.value.image = value['id'] ; // this wil gona die, repeated for compatibility
 			f.value.filename = value['filename'];
 			let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
-			console.log(value);
+			this.sending = false;
+      console.log(value);
 			let res  = this.sendMessageContinue(f);
 		});
 	}
 	else{
 			let res  = this.sendMessageContinue(f);
+      this.sending = false;
     }
 }
+
+
+
+
   sendMessageContinue(f: NgForm){
+    this.sending = false;
+
     this.messageService.sendMessage(f.value,  'localdebughost').subscribe(
     	(res: any) => {
     		this.res = res;
