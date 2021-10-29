@@ -1,22 +1,41 @@
 <h2>Logs</h2>
 
-<a (click)="showUucpLog()" i18n="@@uucplog">UUcp Log</a><br>
+<a (click)="showUucpLog()" i18n="@@uucplog" *ngIf="!uLog">UUcp Log</a><br>
+<a (click)="showDebugLog()"i18n="@@debuglog" *ngIf="!dLog">Uucp Debug Log </a><br>
+<a (click)="showEmailLog()"i18n="@@emaillog" *ngIf="!eLog">Email Log </a>
 
 
-<a (click)="showEmailLog()"i18n="@@emaillog">Email Log </a>
+<div class="formdata" *ngIf="uLog">
+<h3>uucp Log</h3>
+<div class="footer multiplist" >
 
-
-<div class="footer" *ngIf="uLog">
-
-    aqui vai o log do uucp
+    {{uucpLog}}
 
     <br>
     <button (click)="closeLogs()">close</button>
     
 </div>
+</div>
 
-<div class="footer" *ngIf="eLog">
-    aqui vai o log do email
+<div class="formdata" *ngIf="dLog">
+    <h3>uucp debug Log</h3>
+    <div class="footer multiplist" >
+    
+        {{uucpDebugLog}}
+    
+        <br>
+        <button (click)="closeLogs()">close</button>
+        
+    </div>
+    </div>
+
+<div class="formdata" *ngIf="eLog">
+    <h3>mail Log</h3>
+    <hr>
+<div class="footer multiplist" >
+
+   {{mailLog}} 
     <br>
     <button (click)="closeLogs()">close</button>
+</div>
 </div>

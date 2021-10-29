@@ -104,6 +104,42 @@ export class ApiService {
         );
     }
 
+    public getMailLog(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/sys/maillog`; // get api:/sys/maillog
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - mail log:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+    public getUucpLog(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/sys/uulog`; // get api:/sys/uulog
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - uucp log:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+    public getUucpDebugLog(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/sys/uudebug`; // get api:/sys/uulog
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - uucp debug log:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
     private handleError(error: HttpErrorResponse) {
       console.log('⚚ Hermes ⚚\n⚚ api service  error - :\n ', error);
 	  return throwError(error);
