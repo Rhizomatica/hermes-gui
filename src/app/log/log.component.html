@@ -1,13 +1,15 @@
 <h2>Logs</h2>
 
-<a (click)="showUucpLog()" i18n="@@uucplog" *ngIf="!uLog">UUcp Log</a><br>
-<a (click)="showDebugLog()"i18n="@@debuglog" *ngIf="!dLog">Uucp Debug Log </a><br>
-<a (click)="showEmailLog()"i18n="@@emaillog" *ngIf="!eLog">Email Log </a>
-
+<div class="color">
+<div (click)="showUucpLog()" i18n="@@uucplog" >UUcp Log</div>
+<div (click)="showDebugLog()"i18n="@@debuglog" >Uucp Debug Log<br></div>
+<div (click)="showEmailLog()"i18n="@@emaillog" >Email Log </div>
+</div>
 
 <div class="formdata" *ngIf="uLog">
-<h3>uucp Log</h3>
-<div class="footer multiplist" >
+    <hr>
+<h3 i18n="@@uucplog2">uucp log</h3>
+<div class="footer logs" >
 
     {{uucpLog}}
 
@@ -18,8 +20,9 @@
 </div>
 
 <div class="formdata" *ngIf="dLog">
-    <h3>uucp debug Log</h3>
-    <div class="footer multiplist" >
+    <hr>
+    <h3 i18n="@@debuglog2">uucp debug log</h3>
+    <div class="footer logs" >
     
         {{uucpDebugLog}}
     
@@ -30,9 +33,9 @@
     </div>
 
 <div class="formdata" *ngIf="eLog">
-    <h3>mail Log</h3>
     <hr>
-<div class="footer multiplist" >
+    <h3 i18n="@@emaillog2">email log</h3>
+    <div class="footer logs" >
 
    {{mailLog}} 
     <br>
