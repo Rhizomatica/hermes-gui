@@ -165,15 +165,36 @@
         </context-group>
       </trans-unit><trans-unit id="uucplog" datatype="html">
         <source>UUcp Log</source><target state="new">UUcp Log</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/log/log.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="debuglog" datatype="html">
+        <source>Uucp Debug Log<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></source><target state="new">Uucp Debug Log<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/log/log.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit><trans-unit id="emaillog" datatype="html">
         <source>Email Log </source><target state="new">Email Log </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/log/log.component.html</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit><trans-unit id="uucplog2" datatype="html">
+        <source>uucp log</source><target state="new">uucp log</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/log/log.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit><trans-unit id="debuglog2" datatype="html">
+        <source>uucp debug log</source><target state="new">uucp debug log</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/log/log.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit><trans-unit id="emaillog2" datatype="html">
+        <source>email log</source><target state="new">email log</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/log/log.component.html</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login" datatype="html">
@@ -566,76 +587,70 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
         <target state="new"> Los administradores también pueden dar el poder de administración a otros usuarios simplemente seleccionando la opción "es administrador" (()) en la interfaz de creación de usuarios.</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">117</context></context-group></trans-unit><trans-unit id="p16a" datatype="html">
-        <source> message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators.
-</source>
+        <source> Message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators. </source>
 <target state="new">Administración de mensajes: En esta sección un administrador puede determinar quién puede adjuntar archivos en los mensajes públicos entre estaciones: todos, sólo los usuarios registrados o sólo los administradores </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">122</context></context-group></trans-unit><trans-unit id="p17" datatype="html">
-        <source> Network info: displays some information about the system, such as network adresses, calsign, servername etc
+        <source> Network info: displays information about the system, such as network addresses, call sign, server name, etc.
 </source><target state="new"> Información de red: muestra información sobre el sistema, como las direcciones de red, call sign, el nombre del servidor, etc. </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">126</context></context-group></trans-unit><trans-unit id="p18" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">127</context></context-group></trans-unit><trans-unit id="p18" datatype="html">
         <source> Stations: provides a list of the connected stations on the system
 </source><target state="new"> Estaciones: una lista de estaciones HERMES conectadas a su red
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">130</context></context-group></trans-unit><trans-unit id="p19" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">131</context></context-group></trans-unit><trans-unit id="p19" datatype="html">
         <source> Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system
 </source>
 <target state="new">Registro detallado: proporciona acceso a los registros del sistema, como los registros de correo electrónico y los registros uucp, que registran toda la actividad del sistema
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">134</context></context-group></trans-unit><trans-unit id="p20" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">135</context></context-group></trans-unit><trans-unit id="p20" datatype="html">
         <source> Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore factory configuration. </source>
         <target state="new">Configurações de rádio: uma interace para acessar as informações de frequência e modo de transmissão do rádio. Também permite alterar e restauras as configurações de fábrica. </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">137</context></context-group></trans-unit><trans-unit id="t01" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">138</context></context-group></trans-unit><trans-unit id="t01" datatype="html">
         <source> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter.
 </source><target state="new"> Para acceder al sistema se necesitan tres componentes principales: un teléfono móvil o un ordenador, un servidor HERMES y una antena con un transmisor. 
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">143</context></context-group></trans-unit><trans-unit id="t02" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">144</context></context-group></trans-unit><trans-unit id="t02" datatype="html">
         <source> To know what to do in case of an error, you first need to know which component is causing the problem.
 </source><target state="new"> Para saber qué hacer en caso de error, primero hay que saber en cuál de los componentes está el problema.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">147</context></context-group></trans-unit><trans-unit id="t03" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">148</context></context-group></trans-unit><trans-unit id="t03" datatype="html">
         <source> To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network:
 </source><target state="new"> Para saber si el problema está en el móvil u ordenador, lo más fácil es probar el acceso por otro dispositivo, o por otro navegador en el mismo dispositivo. Si el problema es sólo tuyo, es posible que el problema esté en la configuración de la red. Compruebe a continuación los ajustes necesarios para acceder a la red Hermes:
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">151</context></context-group></trans-unit><trans-unit id="t04" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">152</context></context-group></trans-unit><trans-unit id="t04" datatype="html">
         <source> If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network.
 </source><target state="new"> Si eso no resuelve el problema, prueba a limpiar el historial de navegación y a volver a conectarte, o cambia de navegador. Si nada de eso lo resuelve, es posible que su dispositivo sea incompatible con la red.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">155</context></context-group></trans-unit><trans-unit id="t05" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">156</context></context-group></trans-unit><trans-unit id="t05" datatype="html">
         <source> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter.
 </source><target state="new"> En caso de problema en la antena, se encenderá un LED en la caja del servidor, en este caso, compruebe la posición correcta de los cables de la fuente de alimentación y compruebe la posición e integridad de la antena, cable coaxial y del transmisor.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">159</context></context-group></trans-unit><trans-unit id="t06" datatype="html">
-        <source> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter.
-</source><target state="new"> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter.
-</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">163</context></context-group></trans-unit><trans-unit id="t07" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">160</context></context-group></trans-unit><trans-unit id="t07" datatype="html">
         <source> If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings.
 </source><target state="new">Si los mensajes de la lista de transmisión no se transmiten a lo largo del tiempo, compruebe si los ajustes de la radio han sido modificados, en cuyo caso, puede ser que las otras estaciones estén desconectadas, debe restablecer los ajustes de fábrica.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">167</context></context-group></trans-unit><trans-unit id="t08" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">166</context></context-group></trans-unit><trans-unit id="t08" datatype="html">
         <source> If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration.
 </source><target state="new">Si el problema está en la radio digital, habrá un mensaje de error cuando el administrador entre en Administración -> configuración de la radio. 
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">171</context></context-group></trans-unit><trans-unit id="t09" datatype="html">
-        <source> If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take ypur equipment to a place with internet for online maintanance.
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">170</context></context-group></trans-unit><trans-unit id="t09" datatype="html">
+        <source> If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance.
 </source><target state="new"> Si recibes un mensaje diciendo que el servidor está desconectado, probablemente tu equipo esté apagado. Si el mensaje persiste, puede ser que alguna parte del sistema esté dañada. 
  En este caso, es posible que deba llevar su equipo a un lugar con Internet para el mantenimiento en línea.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">175</context></context-group></trans-unit><trans-unit id="05671fbfbfff8da378f94e768e6f2b2b5a200701" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">174</context></context-group></trans-unit><trans-unit id="05671fbfbfff8da378f94e768e6f2b2b5a200701" datatype="html">
         <source>Alert: cannot access this message<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="new">Alerta: no se puede acceder a este mensaje<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
@@ -669,11 +684,14 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
         <source>Destination: <x id="INTERPOLATION" equiv-text="{{message.dest}}"/></source>
          <target>Destino: <x id="INTERPOLATION" equiv-text="{{message.dest}}"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="26f8ffce16cbf6232bcbec8c72feb5733bdb3112" datatype="html">
-        <source>Cant find image</source><target state="new">Imagen no encontrada</target>
-        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="f25394ab830440f63213abe2c69634e044a0b26a" datatype="html">
+        <source>Can't find image</source><target state="new">Can't find image</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
         <note priority="1" from="description">noimage</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">38</context></context-group></trans-unit>
+      </trans-unit>
       <trans-unit id="sentat" datatype="html">
         <source>Sent at: <x id="INTERPOLATION" equiv-text="{{message.sent_at}}"/></source>
          <target>Enviado el:<x id="INTERPOLATION" equiv-text="{{message.sent_at}}"/></target>
@@ -685,7 +703,7 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit><trans-unit id="reply" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/>responder</source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/></target>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/>reply</source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">50</context>
@@ -1039,8 +1057,8 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
           <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">@mastercal</note>
-      </trans-unit><trans-unit id="3e748d86b9efdf139ebdeb471dd05a0b4b4e9795" datatype="html">
-        <source>FWD Treshold: </source><target state="new">Umbral FWD: </target>
+      </trans-unit><trans-unit id="3f112d854292dabecc368bf9305bc9a7fb3170f9" datatype="html">
+        <source>FWD Threshold: </source><target state="new">FWD Threshold: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">16</context>
@@ -1129,7 +1147,7 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit><trans-unit id="ysyncronizenow" datatype="html">
-        <source>Are you sure you want to syncronize now? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> This should be use only in case of emergency<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source>
+        <source>Are you sure you want to synchronize now? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> This should be used only in case of emergency<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source>
         <target state="new">¿Estás seguro de que deseas sincronizar ahora?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> Esto debe usarse solo en caso de emergencia<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context>
