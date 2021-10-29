@@ -32,6 +32,17 @@ export class SysadminComponent implements OnInit {
 
   }
 
+  confirmReboot() {
+    this.restarting = true;
+    console.log('⚚ sysadmin - confirmShutdown: ', this.shuttingDown);
+  }
+
+  cancelReboot() {
+    this.restarting = false;
+    this.shuttingDownNow = false;
+
+  }
+
   confirmRestart() {
 
       this.restarting = true;
@@ -48,6 +59,13 @@ export class SysadminComponent implements OnInit {
     console.log('⚚ sysadmin - shutdown: ');
     this.shuttingDownNow = true;
     this.apiService.sysShutdown();
+
+  }
+
+  reboot() {
+    console.log('⚚ sysadmin - reboot: ');
+    this.shuttingDownNow = true;
+    this.apiService.sysReboot();
 
   }
 

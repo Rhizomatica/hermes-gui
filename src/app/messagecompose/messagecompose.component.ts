@@ -47,6 +47,7 @@ export class MessagecomposeComponent implements OnInit {
   public fileid: any;
   public fileSelected: boolean = false;
   public sending: boolean = false;
+  public nodename: any;
 
   //allowfile : users, admin, all
 
@@ -81,7 +82,10 @@ export class MessagecomposeComponent implements OnInit {
       (res: any) => {
         this.serverConfig= res;
         this.allowfile = res.allowfile;
-        console.log('messagecompose' , this.currentUser);
+        this.nodename = res.nodename;
+        //console.log('messagecompose' , this.currentUser);
+        //console.log('hahaha', this.serverConfig)
+
 
         switch(this.allowfile) {
           case 'users':
@@ -196,7 +200,7 @@ export class MessagecomposeComponent implements OnInit {
     sendMessageContinue(f: NgForm){
       this.sending = false;
   
-      this.messageService.sendMessage(f.value,  'localdebughost').subscribe(
+      this.messageService.sendMessage(f.value,  this.nodename).subscribe(
         (res: any) => {
           this.res = res;
           console.log('⚚ messagecompose - sendMessage: res: ', res);
