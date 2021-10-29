@@ -366,7 +366,17 @@
         <source>password</source>
          <target>contraseña</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit><trans-unit id="strongpassword" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit><trans-unit id="typethepassword" datatype="html">
+        <source>Type the password</source><target state="new">Type the password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/management/management.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit><trans-unit id="strongpassword" datatype="html">
         <source>passwords must have at least 8 characters</source><target state="new">las contraseñas deben tener al menos 8 caracteres  </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context><context context-type="linenumber">78</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">117</context></context-group></trans-unit>
@@ -445,7 +455,13 @@
         <source>System Administration</source><target state="new">Administracion del sistema </target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">103</context></context-group></trans-unit><trans-unit id="intro" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">105</context></context-group></trans-unit><trans-unit id="Troubleshooting" datatype="html">
+        <source>Troubleshooting</source><target state="new">Troubleshooting</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit><trans-unit id="intro" datatype="html">
         <source>Introduction</source><target state="new">Introducción</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="p1" datatype="html">
@@ -549,114 +565,111 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
           <context context-type="linenumber">77,78</context>
         </context-group>
       </trans-unit><trans-unit id="q04" datatype="html">
-        <source> On Iphone, ipad and mac OSX you will need to download the app from the App Store in a place with internet.
+        <source> On Iphone and ipad you will need to download the app from the App Store in a place with internet.
 </source><target state="new">En Iphone, ipad y mac OSX, deberá descargar la aplicación de la App Store en un lugar con Internet.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">88</context></context-group></trans-unit><trans-unit id="dconfig" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">90</context></context-group></trans-unit><trans-unit id="dconfig" datatype="html">
         <source>Configuration</source><target state="new">Configuración</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">91</context>
-        </context-group>
-      </trans-unit><trans-unit id="tranmissionlist" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">93</context></context-group></trans-unit><trans-unit id="tranmissionlist" datatype="html">
         <source>Transmission List</source><target state="new">Lista de transmisión</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">93</context></context-group></trans-unit><trans-unit id="p11" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">95</context></context-group></trans-unit><trans-unit id="p11" datatype="html">
         <source> Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends.
 </source>
 <target state="new"> Una vez enviados los mensajes, entran en una cola de transmisión antes de llegar a su destino final. Los paquetes se identifican según el tipo de mensaje: los mensajes públicos tienen un icono (()) y los correos electrónicos un icono (()). Un administrador del sistema puede cancelar los paquetes antes de que se envíen, y también puede eliminar los mensajes entrantes o salientes. Esta es una tarea importante que debe realizarse con frecuencia, para evitar que se agote el espacio en el servidor de la estación de trabajo.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">96</context></context-group></trans-unit><trans-unit id="p12" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">98</context></context-group></trans-unit><trans-unit id="p12" datatype="html">
         <source> As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
 </source><target state="new"> Como la comunicación por radio es unidireccional, las transmisiones están programadas por el sistema a pasar acomodándose a lo determinado por la estación central, alternando momentos de recepción y transmisión. En casos de emergencia, el administrador del sistema puede forzar la transmisión de los mensajes en la cola utilizando el botón "transmitir ahora". Esto puede interrumpir la recepción de mensajes de otras estaciones.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit><trans-unit id="p13" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">102</context></context-group></trans-unit><trans-unit id="p13" datatype="html">
         <source> To access admin features, you need an admin password, while anyone can create an user account, and only the system's admins can create new administrator users.
 </source><target state="new"> Para acceder a las funciones de administración de la interfaz, es necesario tener una contraseña de administración del sistema, sólo los administradores pueden crear otros usuarios con poder de administración, mientras que cualquiera puede crear usuarios ordinarios.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">106</context></context-group></trans-unit><trans-unit id="p14" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit><trans-unit id="p14" datatype="html">
         <source> Inside the admin section, an admin user will find the following options:
 </source><target state="new"> Dentro de la sección de administración, un administrador de red encontrará las siguientes opciones:
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">110</context></context-group></trans-unit><trans-unit id="p15" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">112</context></context-group></trans-unit><trans-unit id="p15" datatype="html">
         <source> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername <x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span *ngIf=&quot;system&quot;>"/>On this station the server name will be <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
         <target state="new"> Gestión de usuarios: permite crear nuevos usuarios y modificar los datos de los usuarios registrados y eliminarlos. A cada usuarioregistrado se le asigna también una cuenta de correo electrónico de Hermes del tipo username@servidor.com. En el caso de esta estación de trabajo, el servidor es <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="p16" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">116</context></context-group></trans-unit><trans-unit id="p16" datatype="html">
         <source> Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface
 </source>
         <target state="new"> Los administradores también pueden dar el poder de administración a otros usuarios simplemente seleccionando la opción "es administrador" (()) en la interfaz de creación de usuarios.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">117</context></context-group></trans-unit><trans-unit id="p16a" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">119</context></context-group></trans-unit><trans-unit id="p16a" datatype="html">
         <source> Message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators. </source>
 <target state="new">Administración de mensajes: En esta sección un administrador puede determinar quién puede adjuntar archivos en los mensajes públicos entre estaciones: todos, sólo los usuarios registrados o sólo los administradores </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">122</context></context-group></trans-unit><trans-unit id="p17" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">124</context></context-group></trans-unit><trans-unit id="p17" datatype="html">
         <source> Network info: displays information about the system, such as network addresses, call sign, server name, etc.
 </source><target state="new"> Información de red: muestra información sobre el sistema, como las direcciones de red, call sign, el nombre del servidor, etc. </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">127</context></context-group></trans-unit><trans-unit id="p18" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">129</context></context-group></trans-unit><trans-unit id="p18" datatype="html">
         <source> Stations: provides a list of the connected stations on the system
 </source><target state="new"> Estaciones: una lista de estaciones HERMES conectadas a su red
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">131</context></context-group></trans-unit><trans-unit id="p19" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">133</context></context-group></trans-unit><trans-unit id="p19" datatype="html">
         <source> Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system
 </source>
 <target state="new">Registro detallado: proporciona acceso a los registros del sistema, como los registros de correo electrónico y los registros uucp, que registran toda la actividad del sistema
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">135</context></context-group></trans-unit><trans-unit id="p20" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">137</context></context-group></trans-unit><trans-unit id="p20" datatype="html">
         <source> Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore factory configuration. </source>
         <target state="new">Configurações de rádio: uma interace para acessar as informações de frequência e modo de transmissão do rádio. Também permite alterar e restauras as configurações de fábrica. </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">138</context></context-group></trans-unit><trans-unit id="t01" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">140</context></context-group></trans-unit><trans-unit id="t01" datatype="html">
         <source> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter.
 </source><target state="new"> Para acceder al sistema se necesitan tres componentes principales: un teléfono móvil o un ordenador, un servidor HERMES y una antena con un transmisor. 
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">144</context></context-group></trans-unit><trans-unit id="t02" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">146</context></context-group></trans-unit><trans-unit id="t02" datatype="html">
         <source> To know what to do in case of an error, you first need to know which component is causing the problem.
 </source><target state="new"> Para saber qué hacer en caso de error, primero hay que saber en cuál de los componentes está el problema.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">148</context></context-group></trans-unit><trans-unit id="t03" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">150</context></context-group></trans-unit><trans-unit id="t03" datatype="html">
         <source> To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network:
 </source><target state="new"> Para saber si el problema está en el móvil u ordenador, lo más fácil es probar el acceso por otro dispositivo, o por otro navegador en el mismo dispositivo. Si el problema es sólo tuyo, es posible que el problema esté en la configuración de la red. Compruebe a continuación los ajustes necesarios para acceder a la red Hermes:
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">152</context></context-group></trans-unit><trans-unit id="t04" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">154</context></context-group></trans-unit><trans-unit id="t04" datatype="html">
         <source> If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network.
 </source><target state="new"> Si eso no resuelve el problema, prueba a limpiar el historial de navegación y a volver a conectarte, o cambia de navegador. Si nada de eso lo resuelve, es posible que su dispositivo sea incompatible con la red.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">156</context></context-group></trans-unit><trans-unit id="t05" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">158</context></context-group></trans-unit><trans-unit id="t05" datatype="html">
         <source> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter.
 </source><target state="new"> En caso de problema en la antena, se encenderá un LED en la caja del servidor, en este caso, compruebe la posición correcta de los cables de la fuente de alimentación y compruebe la posición e integridad de la antena, cable coaxial y del transmisor.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">160</context></context-group></trans-unit><trans-unit id="t07" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">162</context></context-group></trans-unit><trans-unit id="t07" datatype="html">
         <source> If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings.
 </source><target state="new">Si los mensajes de la lista de transmisión no se transmiten a lo largo del tiempo, compruebe si los ajustes de la radio han sido modificados, en cuyo caso, puede ser que las otras estaciones estén desconectadas, debe restablecer los ajustes de fábrica.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">166</context></context-group></trans-unit><trans-unit id="t08" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">168</context></context-group></trans-unit><trans-unit id="t08" datatype="html">
         <source> If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration.
 </source><target state="new">Si el problema está en la radio digital, habrá un mensaje de error cuando el administrador entre en Administración -> configuración de la radio. 
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">170</context></context-group></trans-unit><trans-unit id="t09" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">172</context></context-group></trans-unit><trans-unit id="t09" datatype="html">
         <source> If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance.
 </source><target state="new"> Si recibes un mensaje diciendo que el servidor está desconectado, probablemente tu equipo esté apagado. Si el mensaje persiste, puede ser que alguna parte del sistema esté dañada. 
  En este caso, es posible que deba llevar su equipo a un lugar con Internet para el mantenimiento en línea.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">174</context></context-group></trans-unit><trans-unit id="05671fbfbfff8da378f94e768e6f2b2b5a200701" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">176</context></context-group></trans-unit><trans-unit id="05671fbfbfff8da378f94e768e6f2b2b5a200701" datatype="html">
         <source>Alert: cannot access this message<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="new">Alerta: no se puede acceder a este mensaje<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
@@ -707,12 +720,6 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit><trans-unit id="reply" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/>reply</source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       
@@ -830,18 +837,19 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
         <source>protect with password</source>
          <target>proteger con contraseña</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">81</context></context-group></trans-unit>
-      <trans-unit id="a8f03e623334cc080b4ae5f61a71e80d5ffd69dc" datatype="html">
-        <source> Type the password <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input id=&quot;password&quot; name=&quot;password&quot; type=&quot;password&quot; [(ngModel)]=&quot;selectedUser.password&quot; required  placeholder=&quot;password&quot;  minlength=&quot;8&quot; (input)=&quot;checkpass(selectedUser.password,repasswd)&quot; />"/></source>
-         <target> Escribir la contraseña</target>
-        
-        <note priority="1" from="description">typethepassword</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">104</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">87</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="retypethepassword2" datatype="html">
+        <source>Retype the password</source><target state="new">Escribir de nuevo la contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      
       <trans-unit id="retypethepassword" datatype="html">
-        <source> Retype the password <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;password&quot;  [(ngModel)]=&quot;repasswd&quot; [ngModelOptions]=&quot;{standalone: true}&quot; minlength=&quot;8&quot; (input)=&quot;checkpass(selectedUser.password,repasswd)&quot;/>"/></source>
+        <source>Retype the password</source>
          <target>Escribir de nuevo la contraseña</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">108</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">91</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit>
       <trans-unit id="passdontmatch" datatype="html">
         <source> passwords doesn't match </source>
          <target>Las contraseñas no coinciden</target>

@@ -83,12 +83,12 @@
                 </span>
             </label>
             <div id="cryptopass" *ngIf=isEncrypted>
-                <label for="passwd" i18n="typethepassword">
-                    Type the password
+                <label for="passwd" >
+                    <span i18n="@@typethepassword">Type the password</span>
                     <input type="password" name="pass" [(ngModel)]="passwd"  minlength="4" (input)="checkpwd(passwd,repasswd)" />
                 </label>
-                <label for="repasswd" i18n="@@retypethepassword">
-                    Retype the password
+                <label for="repasswd" >
+                    <span i18n="@@retypethepassword2">Retype the password</span>
                     <input type="password"  [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)" [ngModelOptions]="{standalone: true}" />
                 </label>
                 <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">

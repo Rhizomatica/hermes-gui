@@ -100,12 +100,12 @@
                 <span i18n>password</span>:
                 <br/>
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
-                <label for="passwd" i18n="typethepassword">
-                    Type the password
+                <label for="passwd" >
+                    <span i18n="@@typethepassword">Type the password</span>
                     <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" (input)="checkpass(selectedUser.password,repasswd)" />
                 </label>
-                <label for="repasswd" i18n="@@retypethepassword">
-                    Retype the password
+                <label for="repasswd" >
+                    <span i18n="@@retypethepassword">Retype the password</span>
                     <input type="password"  [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="8" (input)="checkpass(selectedUser.password,repasswd)"/>
                 </label>
                 <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">

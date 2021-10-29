@@ -201,10 +201,10 @@ export class ManagementComponent implements OnInit {
       //window.location.reload();
   }
 
-  onSubmitCreate(f: NgForm): void {
+  async onSubmitCreate(f: NgForm): Promise<void> {
     //console.log('form', f.value);
     f.value.location = "local";
-    this.userService.createUser(f.value).subscribe();
+    await this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
     //console.log('⚚ management - onSubmitCreate: isEditing? ', this.isEditing);
     this.users = [];
