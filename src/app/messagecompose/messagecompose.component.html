@@ -49,8 +49,8 @@
 
 <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
 
-<button *ngIf="!fileSelected" (click)="fileUpload.click()">select file</button>
-<button *ngIf="fileSelected" (click)="removeFile()">remove file</button>
+<button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
+<button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
 
 
                         <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>

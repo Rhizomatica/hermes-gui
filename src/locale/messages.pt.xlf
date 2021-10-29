@@ -453,7 +453,7 @@
         
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">105</context></context-group></trans-unit><trans-unit id="Troubleshooting" datatype="html">
-        <source>Troubleshooting</source><target state="final">Troubleshooting</target>
+        <source>Troubleshooting</source><target state="final">Solução de problemas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
           <context context-type="linenumber">10</context>
@@ -620,7 +620,13 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">137</context></context-group></trans-unit><trans-unit id="p20" datatype="html">
         <source> Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore factory configuration. </source><target state="final"> configurações de rádio: uma interace para acessar as informações de frequência e modo de transmissão do rádio. Também permite alterar e restauras as configurações de fábrica. </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">140</context></context-group></trans-unit><trans-unit id="t01" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">140</context></context-group></trans-unit><trans-unit id="truble2" datatype="html">
+        <source>Troubleshooting</source><target state="final">Solução de problemas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit><trans-unit id="t01" datatype="html">
         <source> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter.
 </source><target state="final"> Para acessar o sistema, são necessários três componentes principais: um celular, ou computador, um servidor Hermes e uma antena com transmissor. 
 </target>
@@ -803,7 +809,7 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
       </trans-unit>
       <trans-unit id="selectstation1" datatype="html">
         <source>select station :</source>
-         <target state="final">select station :</target>
+         <target state="final">sselecione a estação:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">31,32</context>
@@ -815,10 +821,23 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
           <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit><trans-unit id="nofile" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{fileName || &quot;no file selected&quot;}}"/></source><target state="final"><x id="INTERPOLATION" equiv-text="{{fileName || &quot;no file selected&quot;}}"/></target>
+        <source><x id="INTERPOLATION" equiv-text="{{fileName || &quot;no file selected&quot;}}"/></source>
+        <target state="final"><x id="INTERPOLATION" equiv-text="{{fileName || &quot;nenhum arquivo selecionado&quot;}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit><trans-unit id="selfile" datatype="html">
+        <source>select file</source><target state="final">select file</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit><trans-unit id="remfile" datatype="html">
+        <source>remove file</source><target state="final">remove file</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit><trans-unit id="Img" datatype="html">
         <source>Img:</source><target state="final">Imagem:</target>
@@ -970,7 +989,14 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
       <context-group purpose="location"><context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="piddb" datatype="html">
         <source>Piddb: </source><target state="final">Piddb: </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context><context context-type="linenumber">64</context></context-group></trans-unit><trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/netadmin/netadmin.component.html</context><context context-type="linenumber">64</context></context-group></trans-unit><trans-unit id="91c490e15ccd6f7ef0081d92a6bb12dc28f6bc5c" datatype="html">
+        <source>Radio Configuration</source><target state="final">Configurações de rádio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">@radioconft</note>
+      </trans-unit><trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
         <source>Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="final">Alerta: Não foi possíve acessar o rádio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
@@ -1011,8 +1037,8 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
       <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="bypassoff" datatype="html">
         <source>bypass: off </source><target state="final">bypass: desligado </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="operationtx" datatype="html">
-        <source>Operation mode: TX </source><target state="final">Operation mode: TX </target>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="operationtx1" datatype="html">
+        <source>Operation mode: TX </source><target state="final">Modo de operação: TX </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">25</context>
@@ -1077,15 +1103,27 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
         <source>BFO beat frequency oscillator:</source>
         <target state="final">BFO oscilador de frequência de batida:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">75</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/testradio/testradio.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit><trans-unit id="8b526bec596eae3b0ccc4c1cdf8c474e54cdc0e8" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">75</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/testradio/testradio.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit><trans-unit id="changebfo1" datatype="html">
+        <source>change bfo</source><target state="final">mudar bfo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit><trans-unit id="8b526bec596eae3b0ccc4c1cdf8c474e54cdc0e8" datatype="html">
         <source>change bfo</source><target state="final">mudar bfo</target>
         
         <note priority="1" from="description">changefreq</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">77</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/testradio/testradio.component.html</context><context context-type="linenumber">102</context></context-group></trans-unit><trans-unit id="mastercall2" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/testradio/testradio.component.html</context><context context-type="linenumber">102</context></context-group></trans-unit><trans-unit id="mastercall2" datatype="html">
         <source>mastercal:</source><target state="final">mastercal:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit><trans-unit id="changemast" datatype="html">
+        <source>change mastercall</source><target state="final">mudar mastercall</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit><trans-unit id="mastercall" datatype="html">
         <source>mastercal:</source><target state="final">mastercal:</target>
@@ -1107,7 +1145,7 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
         <source>change mastercall</source><target state="final">mudar mastercall</target>
         
         <note priority="1" from="description">changefreq</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context><context context-type="linenumber">83</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/testradio/testradio.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit><trans-unit id="areyousurechangesett" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/testradio/testradio.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit><trans-unit id="areyousurechangesett" datatype="html">
         <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>this may cause the system to stop</source>
         <target state="final">Tem certeza que quer mudar os ajustes de rádio? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>isto pode fazer seu sistema parar</target>
         
@@ -1128,6 +1166,18 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit><trans-unit id="changemode1" datatype="html">
+        <source>change mode</source><target state="final">change mode</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit><trans-unit id="changetre1" datatype="html">
+        <source>change threshold</source><target state="final">mudar limiar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit><trans-unit id="cancelr" datatype="html">
         <source>cancel</source><target state="final">cancelar</target>

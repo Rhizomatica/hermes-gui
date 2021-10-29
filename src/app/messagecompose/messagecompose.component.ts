@@ -166,7 +166,7 @@ export class MessagecomposeComponent implements OnInit {
     this.fileName = '';
     this.file = [];
     this.fileSelected = false;
-    return file;
+    return this.file;
   }
 
   async sendMessage(f: NgForm): Promise<void> {
@@ -177,19 +177,25 @@ export class MessagecomposeComponent implements OnInit {
 
     // File exists? 
 
+
+
     if (this.file != null) {
+
+      if (this.file !== []) {
+        await this.messageService.postFile(this.file, f.value.pass).then(value => {
+          f.value.file = value['id'] ; // gona change  to this default instead of image
+          f.value.image = value['id'] ; // this wil gona die, repeated for compatibility
+          f.value.filename = value['filename'];
+          let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
+          this.sending = false;
+          console.log(value);
+          let res  = this.sendMessageContinue(f);
+        });
+      }
         // this.fileIsProcessing = true;
         // this.fileIsProcessing = true;
 
-    	await this.messageService.postFile(this.file, f.value.pass).then(value => {
-        f.value.file = value['id'] ; // gona change  to this default instead of image
-        f.value.image = value['id'] ; // this wil gona die, repeated for compatibility
-        f.value.filename = value['filename'];
-        let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
-        this.sending = false;
-        console.log(value);
-        let res  = this.sendMessageContinue(f);
-      });
+    	
     }
     else{
         let res  = this.sendMessageContinue(f);

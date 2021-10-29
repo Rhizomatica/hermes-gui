@@ -536,6 +536,13 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">140,141</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="truble2" datatype="html">
+        <source>Troubleshooting</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="t01" datatype="html">
         <source> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter.
 </source>
@@ -1152,6 +1159,20 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="selfile" datatype="html">
+        <source>select file</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="remfile" datatype="html">
+        <source>remove file</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="Img" datatype="html">
         <source>Img:</source>
         <context-group purpose="location">
@@ -1400,6 +1421,14 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="91c490e15ccd6f7ef0081d92a6bb12dc28f6bc5c" datatype="html">
+        <source>Radio Configuration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">@radioconft</note>
+      </trans-unit>
       <trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
         <source>Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source>
         <context-group purpose="location">
@@ -1509,7 +1538,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="operationtx" datatype="html">
+      <trans-unit id="operationtx1" datatype="html">
         <source>Operation mode: TX </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
@@ -1565,6 +1594,20 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="changemode1" datatype="html">
+        <source>change mode</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="changetre1" datatype="html">
+        <source>change threshold</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="bfobeatfreq" datatype="html">
         <source>BFO beat frequency oscillator:</source>
         <context-group purpose="location">
@@ -1576,17 +1619,12 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8b526bec596eae3b0ccc4c1cdf8c474e54cdc0e8" datatype="html">
+      <trans-unit id="changebfo1" datatype="html">
         <source>change bfo</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">77</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/testradio/testradio.component.html</context>
-          <context context-type="linenumber">102</context>
-        </context-group>
-        <note priority="1" from="description">changefreq</note>
       </trans-unit>
       <trans-unit id="mastercall2" datatype="html">
         <source>mastercal:</source>
@@ -1595,17 +1633,12 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="13e5f337ca4efa67641417fb729f580eeb3d27e5" datatype="html">
+      <trans-unit id="changemast" datatype="html">
         <source>change mastercall</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">83</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/testradio/testradio.component.html</context>
-          <context context-type="linenumber">108</context>
-        </context-group>
-        <note priority="1" from="description">changefreq</note>
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
         <source>reset to default</source>
@@ -1864,12 +1897,28 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
           <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="8b526bec596eae3b0ccc4c1cdf8c474e54cdc0e8" datatype="html">
+        <source>change bfo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/testradio/testradio.component.html</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+        <note priority="1" from="description">changefreq</note>
+      </trans-unit>
       <trans-unit id="mastercall" datatype="html">
         <source>mastercal:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/testradio/testradio.component.html</context>
           <context context-type="linenumber">106</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="13e5f337ca4efa67641417fb729f580eeb3d27e5" datatype="html">
+        <source>change mastercall</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/testradio/testradio.component.html</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <note priority="1" from="description">changefreq</note>
       </trans-unit>
       <trans-unit id="122ab90d656822c9886305a3c651a6481a84ad3f" datatype="html">
         <source>set defauts</source>

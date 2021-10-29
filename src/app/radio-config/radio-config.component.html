@@ -1,5 +1,5 @@
 <div id="radioconf">
-    <h2>Radio Configuration</h2> 
+    <h2 i18n="@@radioconft">Radio Configuration</h2> 
 
     <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br/></div>
     <div >
@@ -22,7 +22,7 @@
             <div *ngIf="radio.protection" i18n="@@protectionoff">protection: off </div>
             <div *ngIf="radio.bypass" i18n="@@bypasson">bypass: on </div>
             <div *ngIf="!radio.bypass" i18n="@@bypassoff">bypass: off </div>
-            <div *ngIf="radio.tx" i18n="@@operationtx">Operation mode: TX </div>
+            <div *ngIf="radio.tx" i18n="@@operationtx1">Operation mode: TX </div>
             <div *ngIf="radio.rx" i18n="@@operationrx" >Operation mode: RX </div>
             <div >TXRX: {{radio.txrx}}</div>
 
@@ -58,7 +58,7 @@
 
                         <form *ngIf="radio" #fmode="ngForm" class="formdata field" >
                             <p><span i18n="@@changeradiomode">Radio mode: {{radio.mode}}</span></p>
-                            <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" >change mode</button>
+                            <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="@@changemode1">change mode</button>
                             <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB - Modulaçao em Banda Superior </label>
                             <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="radio.mode=='LSB'">LSB - Modulacao em Banda Inferior </label>
                         </form>
@@ -67,20 +67,20 @@
         
                         <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
                             <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
-                            <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid" >change threshold</button>
+                            <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"i18n="@@changetre1" >change threshold</button>
                             <input type="number" [max]="1023"  class="midbt" name="refthreshold" [(ngModel)]="refthreshold" value={{refthreshold}} >
                         </form>
                        
                         <form #fbfo="ngForm" class="formdata field" novalidate  >
                             <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> </p>
                             <input type="number" class="midbt" name="bfo" value={{radio.bfo}} [(ngModel)]="radio.bfo" >
-                            <button class="midbt" type="submit" (click)="changeBfo(fbfo)" [disabled]="fbfo.invalid" i18n="changefreq">change bfo</button>
+                            <button class="midbt" type="submit" i18n="@@changebfo1" (click)="changeBfo(fbfo)" [disabled]="fbfo.invalid" >change bfo</button>
                         </form>
         
                         <form #fmaster="ngForm" class="formdata field" novalidate>
                             <p><span i18n="@@mastercall2">mastercal:</span> </p>
                             <input class="midbt" name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}>
-                            <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="changefreq">change mastercall</button>
+                            <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="@@changemast">change mastercall</button>
                         </form>
 <!--
                         <form #fbypass="ngForm" class="formdata field"   >
