@@ -7,7 +7,7 @@
 <li (click)="scrollToElement(private)"i18n="@@privatemsg" >Private messages</li>
 <li (click)="scrollToElement(transm)" i18n="@@tranmissionlista" >Transmission List</li>
 <li (click)="scrollToElement(sysa)" i18n="@@sysadmh">System Administration</li>
-<li href="#">How to contact support</li>
+<li (click)="scrollToElement(trouble)" i18n="@@Troubleshooting">Troubleshooting</li>
 </ul>
 
 
@@ -78,14 +78,18 @@ user_name@({{system.domain}}. Where username is the username used when creating 
 </p>
 
 <p >
-    <a href="/dowloads/deltachat-gplay-release-1.22.1.apk">Android</a>
-    <a href="/dowloads/DeltaChat_Setup_1_22_2.exe">Windows</a>
-    <a href="/dowloads/deltachat-desktop_1.22.2_amd64.deb">Ubuntu/Debian</a>
+    <a href="../dowloads/deltachat.apk" target="_blank" download>Android</a><br>
+    <a href="../dowloads/deltachat.exe" target="_blank" download>Windows</a><br>
+    <a href="../dowloads/deltachat.deb" target="_blank" download>Ubuntu/Debian</a><br>
+    <a href="../dowloads/deltachat.deb" target="_blank" download>Mac OSX</a><br>
+    <a href="/dowloads/deltachat.deb" target="_blank" download>test 1</a><br>
+    <a href="/dowloads" target="_blank">test</a><br>
+
 </p>
 
 
 <p i18n="@@q04">
-    On Iphone, ipad and mac OSX you will need to download the app from the App Store in a place with internet.
+    On Iphone and ipad you will need to download the app from the App Store in a place with internet.
 </p>
 
 <h5 i18n="@@dconfig">Configuration</h5>

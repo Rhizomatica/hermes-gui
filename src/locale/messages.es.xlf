@@ -139,7 +139,13 @@
         <target>enviar</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context><context context-type="linenumber">95</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context><context context-type="linenumber">35</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context><context context-type="linenumber">95</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/upgrade/upgrade.component.html</context><context context-type="linenumber">35</context></context-group></trans-unit><trans-unit id="errormanagement" datatype="html">
+        <source>There was an error on processing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="new">There was an error on processing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="portugues" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/brasil.svg&quot;>"/>Português</source>
         <target><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;mensagens&quot; src=&quot;assets/svg/brasil.svg&quot;>"/>Portugués</target>
@@ -417,7 +423,7 @@
       <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">146</context></context-group></trans-unit><trans-unit id="errormanagemet" datatype="html">
         <source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="new">Hubo un error al procesar su solicitud. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/forgotpassword/forgotpassword.component.html</context><context context-type="linenumber">103</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">153</context></context-group></trans-unit><trans-unit id="helpa" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/management/management.component.html</context><context context-type="linenumber">153</context></context-group></trans-unit><trans-unit id="helpa" datatype="html">
         <source>Help</source><target state="new">Help</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">2</context></context-group></trans-unit><trans-unit id="webintefa" datatype="html">
@@ -1240,29 +1246,47 @@ nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde 
         <source>radio configuration</source>
          <target>configuración de la radio</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="shutdown" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="reboot" datatype="html">
+        <source>reboot</source><target state="new">reiniciar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit><trans-unit id="shutdown" datatype="html">
         <source>shut down</source><target state="new">apagar</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="confirmshutdown" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="confirmshutdown" datatype="html">
         <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source>
         <target state="new"> ¿Está seguro de que desea apagar el sistema Hermes? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="cancels" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">31</context></context-group></trans-unit><trans-unit id="cancels" datatype="html">
         <source>cancel</source><target state="new">cancelar</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">34</context></context-group></trans-unit><trans-unit id="transmits" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">39</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">57</context></context-group></trans-unit><trans-unit id="transmits" datatype="html">
         <source>transmit now</source><target state="new">transmitir ahora</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/sent-messages/sent-messages.component.html</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="shutdown1" datatype="html">
         <source>shut down</source><target state="new">desligar</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="needtobeadmin" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">42</context></context-group></trans-unit><trans-unit id="confirmreboot" datatype="html">
+        <source> Are you sure you want to reboot Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></source><target state="new"> ¿Está seguro de que desea reiniciar el sistema Hermes? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/> Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">49,52</context>
+        </context-group>
+      </trans-unit><trans-unit id="reboot1" datatype="html">
+        <source>reboot</source><target state="new">reiniciar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit><trans-unit id="needtobeadmin" datatype="html">
         <source> Need to be an admin to access admin features </source><target state="new"> Necesita ser un administrador para acceder a las funciones de administrador </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">53</context></context-group></trans-unit><trans-unit id="createuser" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">75</context></context-group></trans-unit><trans-unit id="createuser" datatype="html">
         <source>Create User</source><target state="new">Crear usuario</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">57</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/sysadmin/sysadmin.component.html</context><context context-type="linenumber">79</context></context-group></trans-unit>
       <trans-unit id="restorefac" datatype="html">
         <source>Restore Factory Configuration</source>
          <target>Restaurar la configuración de fábrica</target>
