@@ -17,10 +17,12 @@ restoring: any;
 error: Error;
 upgrade: boolean = false;
 errorAlert: boolean = false;
+currentUser: any;
+isAdmin: boolean = false;
 
 constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
     
-  //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 }
 
 closeError() {
@@ -76,6 +78,13 @@ closeError() {
   }
 
   ngOnInit(): void {
+
+    console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);
+    if (this.currentUser) {
+      this.isAdmin = this.currentUser.admin;
+    } else {
+      this.isAdmin = false;
+    }
   }
 
 }

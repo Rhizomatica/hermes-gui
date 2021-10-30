@@ -2,10 +2,11 @@
 
 <div class="alert" *ngIf="noSystem" i18n="cannotaccessuucp">Alert: Cannot access Hermes System<br/></div>
 
+<div *ngIf="isAdmin">
 <div *ngIf="!noSystem" >
     <p i18n=@@selectwho>select who can attach files to messages:</p>
 
-<form [formGroup]="allowUp">
+<form #f="ngForm" >
 <select name="allowfile" (change)="setUploadPermission($event.target.value)">
     <option ng-selected='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
     <option ng-selected='allowfile=="users"' value="users" selected i18n="@@registeredusers">registered users</option>
@@ -27,6 +28,13 @@
     </div>
 </div>
 
+</div>
+<div *ngIf="!isAdmin">
+    <span i18n="@@needtobeadmin2">
+        Need to be an admin to access this
+    </span>
+   
+</div>
 
 
 <!--<h2 i18n="@@adminmessages">Admin Messages</h2>-->

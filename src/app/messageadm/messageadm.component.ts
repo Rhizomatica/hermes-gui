@@ -28,6 +28,7 @@ export class MessageadmComponent implements OnInit {
   allowUp: FormGroup;
   errorAlert: boolean = false;
   noSystem: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private messageService: MessageService, private alertService: AlertService,
       private authenticationService: AuthenticationService,
@@ -102,6 +103,11 @@ export class MessageadmComponent implements OnInit {
   ngOnInit(): void {
     this.getMessages();
     this.getSysConfig();
+    if (this.currentUser) {
+      this.isAdmin = this.currentUser.admin;
+    } else {
+      this.isAdmin = false;
+    }
   }
 
 

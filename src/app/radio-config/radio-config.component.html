@@ -33,14 +33,17 @@
                 <button *ngIf="radio.protection" (click)="resetProtection()">reset protection</button>
 
 
-                <button (click)="confirmChange()" *ngIf="!alterSet" i18n="@@changeradiosettings">change radio settings...</button>
+                <div *ngIf="isAdmin">
 
+                
+                <button (click)="confirmChange()" *ngIf="!alterSet" i18n="@@changeradiosettings">change radio settings...</button>
+                </div>
 
                 <div class="overall" *ngIf="confirmSet">
                     <div class="cv" >
                     <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings? <br/>this may cause the system to stop</span>
                     <br/>
-                    <button (click)="screenSet()" i18n="@@changer">change</button>
+                    <button (click)="screenSet()" *ngIf="isAdmin" i18n="@@changer">change</button>
                     <button (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
                     </div>
                 </div>
@@ -98,7 +101,7 @@
                 
 
                 <hr>
-            <button i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
+            <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
 
             <div class="overall alert" *ngIf="!reseting==false">
                 <div class="cv" >
@@ -111,7 +114,7 @@
                     <span class="icon" ><a (click)="confirmReset()" >
                         <button i18n="@@cancelr">cancel</button></a>
                     </span>
-                    <span class="icon" ><a (click)="resetRadio()" >
+                    <span class="icon" *ngIf="isAdmin" ><a (click)="resetRadio()" >
                         <button i18n="@@reset1">reset</button></a>
                     </span>
                 </div>

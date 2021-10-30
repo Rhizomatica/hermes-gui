@@ -143,17 +143,17 @@
     <span *ngIf="currentUser">
     <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
   
-    <span *ngIf="!system" i18n="@@serveroff0">
-      &#124;  server off
+    <span *ngIf="!system" >
+      &#124;  <span i18n="@@serveroff0">server off</span>
     </span>
-    | Status: 
+    | <span i18n="@@statusa0">Status: </span>
     <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
     <div *ngIf="system.status" class="greencircle"> </div>
     
     
     <!--<div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>-->
     </span>
-    <span *ngIf="currentUser"> | user: {{currentUser.email}}</span>
+    <span *ngIf="currentUser"> | <span i18n="@@usera">user:</span> {{currentUser.email}}</span>
     
     <div *ngIf="fullStats">
       
