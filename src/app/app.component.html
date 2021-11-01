@@ -154,16 +154,21 @@
     <!--<div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>-->
     </span>
     <span *ngIf="currentUser"> | <span i18n="@@usera">user:</span> {{currentUser.email}}</span>
+
+    <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 | number}} GB</span>
+    
     
     <div *ngIf="fullStats">
       
-    &#124; UU: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
-    &#124; DB: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
-    &#124; AR: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
-    &#124; IRM: <div [ngClass]="{'redcircle' : !system.pidirm , 'greencircle' : system.pidirm }"></div>
-    &#124; PF: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
+    &#124; Uucp: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
+    &#124; Uuardop: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }" title='uuardop {{system.piduucp}}'></div>
+    &#124; Database: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
+    &#124; Modem: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
+    &#124; Radio: <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }" title='uuardop {{system.piduucp}}'></div>
+    &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
+    &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
   </div>
-    
+  <br><span *ngIf="criticSpace" class="alert">System storage is low! please delete messages and files</span>
     <!--user: {{currentUser.email}} / {{currentUser.admin}}-->
   
 </ng-container>

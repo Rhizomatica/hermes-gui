@@ -110,7 +110,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - mail log:\n ', res);
+          //console.log('⚚ Hermes ⚚\n⚚ api service - mail log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -122,7 +122,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - uucp log:\n ', res);
+          //console.log('⚚ Hermes ⚚\n⚚ api service - uucp log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -134,7 +134,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - uucp debug log:\n ', res);
+          //console.log('⚚ Hermes ⚚\n⚚ api service - uucp debug log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));

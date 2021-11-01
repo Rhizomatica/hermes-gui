@@ -78,10 +78,10 @@
             <label for="recovery">
                 <span i18n>recovery phrase</span>:
                 <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
-                <div *ngIf="f.invalid">Title is required</div>
+                <div *ngIf="f.invalid" i18n="@@titlereq">Title is required</div>
             </label>
             <label>
-                <span i18n>recovery answer</span>:
+                <span i18n="@@recovans2">recovery answer</span>:
                 <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" placeholder="answer to your recovery question"  />
             </label>
 

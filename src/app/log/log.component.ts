@@ -3,6 +3,11 @@ import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
 
+export interface LogList {
+  line: string;
+  content: string;
+}
+
 @Component({
   selector: 'app-log',
   templateUrl: './log.component.html',
@@ -13,7 +18,6 @@ export class LogComponent implements OnInit {
   uLog: boolean = false;
   eLog: boolean = false;
   dLog: boolean = false;
-
   edLog: boolean = false;
   currentUser: User;
   isAdmin = true;
@@ -21,7 +25,10 @@ export class LogComponent implements OnInit {
   mailLog: any;
   uucpDebugLog: any;
   error = Error;
+  log: LogList;
 
+
+ 
   constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
     
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -50,6 +57,8 @@ export class LogComponent implements OnInit {
     this.apiService.getUucpLog().subscribe(
       (res: any) => {
         this.uucpLog = res;
+        //console.log(this.uucpLog);
+
         return res;
       },
       (err) => {
@@ -62,6 +71,7 @@ export class LogComponent implements OnInit {
     this.apiService.getMailLog().subscribe(
       (res: any) => {
         this.mailLog = res;
+        //console.log(this.mailLog);
         return res;
       },
       (err) => {

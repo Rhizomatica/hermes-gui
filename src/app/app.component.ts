@@ -19,6 +19,7 @@ export class AppComponent {
   system: any;
   fullStats: boolean = false;
   serverError: boolean = false;
+  criticSpace: boolean = false;
 
 
   title = 'hermes.radio';
@@ -34,12 +35,18 @@ export class AppComponent {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
+        //console.log('hhhh', this.system.diskfree);
+    if (this.system.diskfree < 10485760) {
+      this.criticSpace = true;
+    }
         return res;
       },
       (err) => {
         this.error = err;
       }
     );
+
+    
   }
 
   showFullStatus(){
