@@ -59,6 +59,7 @@ export class MessagecomposeComponent implements OnInit {
     dest: '',
     text: '',
     file: '',
+    fileid: '',
     draft: null,
     sent_at: '',  
     secure: boolean;
@@ -123,6 +124,7 @@ export class MessagecomposeComponent implements OnInit {
 
   sendMessag(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
+	  f.value.orig = this.nodename;
       console.log(passwd)
       this.messageService.sendMessage(f.value,  this.serverConfig.nodename).subscribe(
       (res: any) => {
@@ -146,7 +148,7 @@ export class MessagecomposeComponent implements OnInit {
         
       //comparador de tamanho;
   
-      if(file.size < 3145728) {
+      if(file.size < 9145728) {
   
         this.file = file;
         this.fileName = file.name;
@@ -157,8 +159,7 @@ export class MessagecomposeComponent implements OnInit {
       else {
         this.fileName = "file too big";
       }
-      
-        }
+    }
   }
 
   removeFile() {
@@ -176,26 +177,15 @@ export class MessagecomposeComponent implements OnInit {
 
 
     // File exists? 
-
-
-
-    if (this.file != null) {
-
-      if (this.file !== []) {
-        await this.messageService.postFile(this.file, f.value.pass).then(value => {
-          f.value.file = value['id'] ; // gona change  to this default instead of image
-          f.value.image = value['id'] ; // this wil gona die, repeated for compatibility
-          f.value.filename = value['filename'];
-          let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
-          this.sending = false;
-          console.log(value);
-          let res  = this.sendMessageContinue(f);
-        });
-      }
-        // this.fileIsProcessing = true;
-        // this.fileIsProcessing = true;
-
-    	
+    if (this.file != null && this.file !== [] ) {
+      await this.messageService.postFile(this.file, f.value.pass).then(value => {
+        f.value.file = value['filename'] ; // gona change  to this default instead of image
+        f.value.fileid = value['id'];
+        let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
+        this.sending = false;
+        console.log(value);
+        let res  = this.sendMessageContinue(f);
+      });
     }
     else{
         let res  = this.sendMessageContinue(f);
@@ -299,8 +289,7 @@ export class MessagecomposeComponent implements OnInit {
       dest: '',
       text: '',
       file: '',
-      image: '',
-      audio: '',
+      fileid: '',
       secure: false,
       inbox: false,
       draft: null,

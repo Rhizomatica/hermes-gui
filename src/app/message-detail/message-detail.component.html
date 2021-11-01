@@ -22,13 +22,10 @@
 -->
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
-        <p *ngIf="message.file && message.inbox" [hidden]="!message.file">
+        <p *ngIf="message.file && message.inbox" >
             <span i18n="@@File">File: </span>
-            <a target="_new" href="{{url}}/downloads/{{message.id}}.image" >  {{message.file}}</a></p>
-        <p *ngIf="message.file && !message.inbox" [hidden]="!message.file">
-            <span i18n="@@File">File: </span>
-            <a target="_new" href="{{url}}/uploads/{{message.id}}" >  {{message.file}}</a>
-        </p>
+            <a target="_new" href="{{url}}/file/{{message.fileid}}?name={{message.file}}&pass='teste'" >  {{message.file}}</a>
+		</p>
     </div>
 
 <div *ngIf="!noMessage">

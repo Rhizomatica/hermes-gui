@@ -5,8 +5,7 @@ export interface Message {
   dest: string;
   text: string;
   file: string;
-  image: string;
-  audio: string;
+  fileid: string;
   draft: boolean;
   secure: boolean;
   inbox: boolean;
