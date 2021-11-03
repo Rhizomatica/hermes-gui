@@ -181,6 +181,7 @@ export class MessagecomposeComponent implements OnInit {
       await this.messageService.postFile(this.file, f.value.pass).then(value => {
         f.value.file = value['filename'] ; // gona change  to this default instead of image
         f.value.fileid = value['id'];
+        f.value.mimetype = value['mimetype'];
         let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
         this.sending = false;
         console.log(value);
