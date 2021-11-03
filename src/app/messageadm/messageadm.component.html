@@ -15,6 +15,11 @@
 <br/>
 <!--<button i18n="@@updatema">update</button>-->
 </form>
+<hr>
+<form #f="ngForm" >
+<p i18n="@@cleanuptext">When sending messages it's possible that broken files are stored in the server, please click here to clean up the system:</p>
+    <button i18n="@@cleanup" type="submit" (click)="cleanUp()">Clean up lost files</button>
+</form>
 
 </div>
 

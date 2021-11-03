@@ -33,7 +33,10 @@ export class MessageadmComponent implements OnInit {
   constructor(private messageService: MessageService, private alertService: AlertService,
       private authenticationService: AuthenticationService,
       private apiService: ApiService
-      ) { }
+      ) { 
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
+      }
 
       getSysConfig(): void{
         this.apiService.getSysConfig().subscribe(
@@ -56,10 +59,10 @@ export class MessageadmComponent implements OnInit {
       }
 
     loggedin() {
-        if (this.isadmin) {
-          this.isadmin = false;
+        if (this.isAdmin) {
+          this.isAdmin = false;
         } else {
-          this.isadmin = true;
+          this.isAdmin = true;
         }
       }
 

@@ -296,6 +296,7 @@ export class MessagecomposeComponent implements OnInit {
       sent_at: '',
       created_at: '',
       updated_at: '',
+      mimetype: ''
     };
 
     this.getSysConfig();

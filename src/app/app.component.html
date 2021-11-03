@@ -160,8 +160,8 @@
     
     <div *ngIf="fullStats">
       
-    &#124; Uucp: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>
-    &#124; Uuardop: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }" title='uuardop {{system.piduucp}}'></div>
+    <!--Uucp bridge: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>-->
+    UUCP: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }" title='uuardop {{system.piduucp}}'></div>
     &#124; Database: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }" title='mysql {{system.piddb}}'></div>
     &#124; Modem: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
     &#124; Radio: <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }" title='uuardop {{system.piduucp}}'></div>
