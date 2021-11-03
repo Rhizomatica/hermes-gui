@@ -28,7 +28,18 @@
             <a target="_new" href="{{url}}/file/{{message.fileid}}">
 				{{message.file}}
 				<hr>
-				<img width=50% src="{{url}}/file/{{message.fileid}}" />
+
+                <div *ngIf="isImage">
+                <img class="messageImg" src="{{url}}/file/{{message.fileid}}" />
+                </div>
+
+                <div *ngIf="isAudio">
+                    <audio controls class="messageAudio">
+                        <source src="{{url}}/file/{{message.fileid}}" type="{{message.mimetype}}"/>
+                        your browser does not support this type of audio
+                    </audio> 
+                </div>
+
 			</a>
 
 			<!-- TODO insert password-->
@@ -40,7 +51,6 @@
     <hr>
     <small><p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
     <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
-    <div class="alert" i18n="noimage" *ngIf="noImage">Can't find image</div>
     <img class="msgimg" [hidden]="!messageImage" [src]="messageImage"/>
     <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
     <p class="msgid">Id: {{message.id}}</p></small>

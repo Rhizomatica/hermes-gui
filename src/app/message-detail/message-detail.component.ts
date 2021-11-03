@@ -24,6 +24,8 @@ export class MessageDetailComponent implements OnInit {
   noImage = false;
   wrongPass = false;
   uncrypted = false;
+  isAudio = false;
+  isImage = false;
 
 
   constructor(
@@ -68,6 +70,7 @@ export class MessageDetailComponent implements OnInit {
   getMessage(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     const file = +this.route.snapshot.paramMap.get('file');
+    const mime = "";
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
@@ -80,7 +83,42 @@ export class MessageDetailComponent implements OnInit {
         if (this.message.file == "") {
           this.noImage = true;
         } else {
-          
+          console.log(this.message.mimetype)
+          switch (this.message.mimetype) {
+            
+            case '':
+              this.noImage = true;
+              this.isAudio = false;
+              
+              break;
+            case 'image/bmp':
+            case 'image/gif':
+            case 'image/jpeg':  
+            case 'image/png':
+            case 'image/tiff':
+            case 'image/webp':  
+            case 'image/svg+xml': 
+            this.noImage = true;
+            this.isImage = true;
+            this.isAudio = false;
+              break;
+            case 'audio/aac':
+            case 'audio/mpeg':
+            case 'audio/ogg':  
+            case 'audio/opus':
+            case 'audio/wav':
+            case 'audio/webm':
+            case 'audio/3gpp':
+            case 'audio/3gpp2':  
+              this.noImage = false;
+              this.isImage = false;
+              this.isAudio = true;
+              break;
+            default:
+              this.noImage = false;
+              this.isAudio = false;
+              this.isImage = false;
+          }
         }
 
         console.log(this.noMessage);
