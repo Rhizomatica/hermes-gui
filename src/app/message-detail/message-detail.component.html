@@ -23,8 +23,16 @@
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <p *ngIf="message.file && message.inbox" >
+			<!-- TODO test for type (image or audio)-->
             <span i18n="@@File">File: </span>
-            <a target="_new" href="{{url}}/file/{{message.fileid}}?name={{message.file}}&pass='teste'" >  {{message.file}}</a>
+            <a target="_new" href="{{url}}/file/{{message.fileid}}">
+				{{message.file}}
+				<hr>
+				<img width=50% src="{{url}}/file/{{message.fileid}}" />
+			</a>
+
+			<!-- TODO insert password-->
+            <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->
 		</p>
     </div>
 
