@@ -28,15 +28,10 @@
                 {{selectedUser.emailid}}
                 <br/>
             </label>
-            <!--<label for="login">
-                <span i18n="@@username2">username</span>:
-                <input *ngIf="emptyUser" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
-                <span *ngIf="!emptyUser" [(ngModel)]="selectedUser.email" > {{selectedUser.email}} </span>
-                <span *ngIf="alreadyExist" class="alert">username must be unique</span>
-            </label>-->
+ 
 
             <label for="email">
-                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" placeholder="write the username"> 
+                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" i18n="@@mwusern"  placeholder="write the username"> 
                 
             </label>
 
@@ -44,52 +39,35 @@
            
             <label for="name">
                 <span i18n="@@name">name</span>:
-                <input name="name" [(ngModel)]="selectedUser.name" required placeholder="write your name" />
+                <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required placeholder="write your name" />
             </label>
             <label>
                 <span i18n="@@phonenumber">phone number</span>:
-                <br/><input name="phone" [(ngModel)]="selectedUser.phone"  placeholder="phone number"  />
+                <br/><input name="phone" [(ngModel)]="selectedUser.phone" i18n="@@mwpn"  placeholder="phone number"  />
             </label>
 
             <label >
                 <span i18n>site</span>:
-                <br/><input name="site" [(ngModel)]="selectedUser.site" placeholder="website"  />
+                <br/><input name="site" [(ngModel)]="selectedUser.site" i18n="@@mwws"  placeholder="website"  />
             </label>
 
             <div class="selector">
-            <!--<ng-container *ngIf="stations">
-
-                <select ng-model="selectedUser.location">
-                    <option *ngFor="let station of stations" >{{station.alias}} | {{station.location}}</option>
-
-                </select>
-                </ng-container>
-            -->
+    
             </div>
 
-            <!--
-            <label>
-                <span i18n>location</span>:
-                <br/><input name="location" [(ngModel)]="selectedUser.location"  placeholder="location"  />
-            </label>
-            -->
-
+        
 
             <label for="recovery">
                 <span i18n>recovery phrase</span>:
-                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" required placeholder="write a question to recover your password" />
+                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr"  required placeholder="write a question to recover your password" />
                 <div *ngIf="f.invalid" i18n="@@titlereq">Title is required</div>
             </label>
             <label>
                 <span i18n="@@recovans2">recovery answer</span>:
-                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" placeholder="answer to your recovery question"  />
+                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" i18n="@@mwarq" placeholder="answer to your recovery question"  />
             </label>
 
-            <!--
-            <hr>
-                <span i18n>created at</span>: <span> {{selectedUser.created_at}}</span>
-                <span i18n>updated at</span>: <span> {{selectedUser.updated_at}}</span>
-            -->
+        
 
             <hr>
 
@@ -102,7 +80,7 @@
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
                 <label for="passwd" >
                     <span i18n="@@typethepassword">Type the password</span>
-                    <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" (input)="checkpass(selectedUser.password,repasswd)" />
+                    <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required i18n="@@mwpass"  placeholder="password"  minlength="8" (input)="checkpass(selectedUser.password,repasswd)" />
                 </label>
                 <label for="repasswd" >
                     <span i18n="@@retypethepassword">Retype the password</span>
@@ -123,9 +101,9 @@
             <input name="admin" class="ckbx" type="checkbox" checked="false" [(ngModel)]="selectedUser.admin"  />
         </label>
             <br/>
-                <button (click)="cancelCreate()" >cancel</button>
-                <button (click)="deleteAlert()" [disabled]="admin" [hidden]="emptyUser">delete user</button>
-                <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" [disabled]="f.invalid">update</button>
+                <button (click)="cancelCreate()" i18n="@@mwcancel" >cancel</button>
+                <button (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete user</button>
+                <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd" [disabled]="f.invalid">update</button>
                 <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch">create user</button>
 
                 <div class="overall" *ngIf="deleteUser">
