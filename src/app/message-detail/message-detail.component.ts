@@ -25,6 +25,7 @@ export class MessageDetailComponent implements OnInit {
   wrongPass = false;
   uncrypted = false;
 
+
   constructor(
     private route: ActivatedRoute,
     private messageService: MessageService,
@@ -66,6 +67,7 @@ export class MessageDetailComponent implements OnInit {
 
   getMessage(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    const file = +this.route.snapshot.paramMap.get('file');
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
@@ -73,6 +75,12 @@ export class MessageDetailComponent implements OnInit {
           this.noMessage = true;
         } else {
           this.noMessage = false;
+        }
+
+        if (this.message.file == "") {
+          this.noImage = true;
+        } else {
+          
         }
 
         console.log(this.noMessage);
