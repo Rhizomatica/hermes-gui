@@ -97,16 +97,20 @@ export class MessageDetailComponent implements OnInit {
             case 'image/png':
             case 'image/tiff':
             case 'image/webp':  
-            case 'image/svg+xml': 
+            case 'image/svg+xml':
+            case 'image/pjpeg': 
+            case 'image/x-jps':  
             this.noImage = true;
             this.isImage = true;
             this.isAudio = false;
               break;
             case 'audio/aac':
             case 'audio/mpeg':
-            case 'audio/ogg':  
+            case 'audio/ogg': 
+            case 'audio/ogx':  
             case 'audio/opus':
             case 'audio/wav':
+            case 'audio/x-wav':
             case 'audio/webm':
             case 'audio/3gpp':
             case 'audio/3gpp2':  
