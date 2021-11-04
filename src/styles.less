@@ -108,9 +108,7 @@ hr {
     border-left: 0;
     border-right: 0;
 }
-hr.dark-mode{
-	border-top: 1px solid @bkclr;
-}
+
 
 h2 {
     max-width: 80%;
@@ -824,5 +822,64 @@ input.searchbox2 {
      
     }
      
+
+    }
+
+    .dr {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        overflow: hidden;
+        outline: 1px solid #333;
+        margin-right: 0.5em;
+        
+        .drb {
+            display: block;
+            border-top: 2em solid black;
+            border-right: 2em solid white;
+        }
+    }
+
+
+    .dark-mode {
+        a:visited {
+            color: #ccc;
+        }
+
+        hr {
+            border-top: 1px solid #fff;
+        }
+
+        .supicons img, nav img, .btn img, .icon img{
+            filter: invert(100%);
+        }
+
+        nav .flag img {
+            filter: invert(0);
+        }
+
+        .formfield {
+            border-bottom: 1px solid #fff;
+        }
+
+        nav a {
+            border-top: 3px solid #ccc;
+        }
+        
+        nav a:hover{
+            filter: invert(27%) sepia(51%) saturate(3078%) hue-rotate(330deg) brightness(110%) contrast(100%);
+        }
+
+        .dr {
+            display: block;
+            width: 2em;
+            height: 2em;
+            
+            .drb {
+                display: block;
+                border-top: 2em solid white;
+                border-right: 2em solid #333;
+            }
+        }
 
     }

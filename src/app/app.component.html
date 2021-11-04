@@ -137,10 +137,16 @@
 
 <div class="footer">
   <ng-container *ngIf="system">
-<span>
+
+<div class="dr">
+  <div class="drb" (click)="onToggle('HR')"></div>
+</div>
+
+
+<!--<span>
   	<button *ngIf="!(darkMode$|async)" (click)="onToggle('HR')">🌚</button>
   	<button *ngIf="(darkMode$|async)" (click)="onToggle('HR')">🌞</button>
-</span>
+</span>-->
   <span >
     <span i18n="stationa">Station:</span> {{system.name}}  
    
