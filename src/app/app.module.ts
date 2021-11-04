@@ -42,10 +42,9 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './testradio/testradio.component';
 import { UploadComponent } from './upload/upload.component';
+import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
 
 registerLocaleData(localePt);
-
-
 
 // import { CLIENT_RENEG_LIMIT } from 'tls';
 
@@ -98,35 +97,15 @@ registerLocaleData(localePt);
     HttpClientModule,
     Ng2SearchPipeModule,
     AngularFileUploaderModule
-
-    /*TranslateModule.forRoot({
-      defaultLanguage: 'pt',
-        loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
-      }
-    })*/
-
-// It's a TRAP!
-// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-// and returns simulated server responses.
-// Remove it when a real server is ready to receive requests.
-// HttpClientInMemoryWebApiModule.forRoot(
-//  InMemoryDataService, { dataEncapsulation: false }
-// )
-
   ],
   providers: [
     DecimalPipe,
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  	],
 
-  ],
   bootstrap: [AppComponent]
 })
 
-
 export class AppModule { }
-// export class SharedModule { }

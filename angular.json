@@ -37,7 +37,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+				"./node_modules/angular-dark-mode/angular-dark-mode.js" 
+			]
           },
           "configurations": {
             "production": {
@@ -45,7 +47,7 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
+                }
               ],
               "optimization": true,
               "outputHashing": "all",
@@ -72,7 +74,7 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
+                }
               ],
               "localize": ["pt"],
               "optimization": true,
@@ -100,7 +102,7 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
+                }
               ],
               "localize": ["es"],
               "optimization": true,
@@ -128,7 +130,7 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
+                }
               ],
               "localize": ["en-US"],
               "optimization": false,

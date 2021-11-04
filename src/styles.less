@@ -75,6 +75,15 @@ body {
     color: @mclr;
 }
 
+body.dark-mode {
+  background-color: #2d3436;
+  color: #dfe6e9;
+}
+body:not(.dark-mode-preloading) {
+  transition: all 0.3s linear;
+}
+
+
 p {
     margin: 1px 0;
 }
@@ -98,6 +107,9 @@ hr {
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
+}
+hr.dark-mode{
+	border-top: 1px solid @bkclr;
 }
 
 h2 {
@@ -126,12 +138,20 @@ a {
     color: @clr;
 }
 
+
 a:active {
-    color: @actvclr;
+    color: #c96;
 }
+
 
 a:visited {
     color: @mclr;
+}
+a:visited.light-mode {
+    color: #ccc;
+}
+a:visited.dark-mode {
+    color: #ccc;
 }
 
 .b {

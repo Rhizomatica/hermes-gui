@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from './_services/authentication.service';
 import { ApiService } from './_services/api.service';
 import { User } from './user';
+import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
+
 import { Api } from './api';
 
 @Component({
@@ -20,13 +22,17 @@ export class AppComponent {
   fullStats: boolean = false;
   serverError: boolean = false;
   criticSpace: boolean = false;
+  toggleButton = document.querySelector('.dark-button');
+  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
+
 
 
   title = 'hermes.radio';
   constructor(
      private router: Router,
      private authenticationService: AuthenticationService,
-     private apiService: ApiService
+     private apiService: ApiService,
+  	 private darkModeService: DarkModeService
     ){
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -59,22 +65,24 @@ export class AppComponent {
       }
     }
   
-
- showServerAlert() {
-  if (!this.serverError) {
-    this.serverError = true;
-    //console.log(this.serverError);
-  } else {
-    this.serverError  = false;
-    //console.log(this.serverError);
-    }
- }   
+  showServerAlert() {
+   if (!this.serverError) {
+     this.serverError = true;
+     //console.log(this.serverError);
+   } else {
+     this.serverError  = false;
+     //console.log(this.serverError);
+     }
+  }   
 
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
     console.log('⚚ app: user logout', this.currentUser);
+  }
+  onToggle(): void {
+    this.darkModeService.toggle();
   }
 
   // TODO double check
