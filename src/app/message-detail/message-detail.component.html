@@ -19,7 +19,14 @@
         <div class="tx">decoding message...</div>
         <div class="square"></div>
     </div>
+
+    
 -->
+<div class="date">
+    
+</div>
+
+
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <hr>
@@ -32,12 +39,12 @@
 				
 
                 <div *ngIf="isImage">
-                <img class="messageImg" src="{{url}}/file/{{message.fileid}}" />
+                <img class="messageImg" src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
 
                 <div *ngIf="isAudio">
                     <audio controls class="messageAudio">
-                        <source src="{{url}}/file/{{message.fileid}}" type="{{message.mimetype}}"/>
+                        <source src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" type="{{message.mimetype}}"/>
                         your browser does not support this type of audio
                     </audio> 
                 </div>

@@ -26,6 +26,8 @@ export class MessageDetailComponent implements OnInit {
   uncrypted = false;
   isAudio = false;
   isImage = false;
+  pass: string = '';
+  passString: string = '';
 
 
   constructor(
@@ -50,14 +52,17 @@ export class MessageDetailComponent implements OnInit {
   }
 
   sendPassword(id: number, f: NgForm): void {
+    console.log(f.value);
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
 		  if (res.text != ""){
         	this.message.text = res.text;
         	this.uncrypted = true;
+          this.passString = '&pass=\'' + f.value.pass + '\'';
 		  } else {
         this.uncrypted = false;
         this.wrongPass = true;
+        this.passString = '';
       }
       },
       (err) => {
