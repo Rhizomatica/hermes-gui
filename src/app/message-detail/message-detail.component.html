@@ -34,7 +34,7 @@
 			
             
             <span i18n="@@File">File: </span>
-            <a target="_new" href="{{url}}/file/{{message.fileid}}">
+            <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
 				{{message.file}}
 				
 

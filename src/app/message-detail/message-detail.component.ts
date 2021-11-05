@@ -58,7 +58,7 @@ export class MessageDetailComponent implements OnInit {
 		  if (res.text != ""){
         	this.message.text = res.text;
         	this.uncrypted = true;
-          this.passString = '&i=\'' + f.value.pass + '\'';
+          this.passString = '?i=\'' + f.value.pass + '\'';
 		  } else {
         this.uncrypted = false;
         this.wrongPass = true;
