@@ -15,7 +15,7 @@
 
     
 
-    <div class="overall alert" [hidden]="confirmTransmit==false">
+    <div class="overall alert" *ngIf="confirmTransmit">
         <div class="cv" >
             <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br/> This should be used only in case of emergency<br/></span>
             
@@ -40,7 +40,7 @@
         
             <div class="multiplist">
                 <div *ngFor="let message of sentMessages | filter:searchMessages">
-                    <a ><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="removeMessage(message)"></a>
+                    <a ><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin" (click)="removeMessage(message)"></a>
                     
                     <a routerLink="/message/{{message.id}}">
                     {{message.name}}
@@ -66,7 +66,7 @@
         <div class="multiplist">
             <div *ngFor="let job of queue | filter:searchMessages">
             <a >
-                <img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
+                <img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
                 <span> {{job.uuidhost}}.{{job.uuiduucp}} </span>
                 <span >
                     <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
