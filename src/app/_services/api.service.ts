@@ -39,7 +39,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - system config:\n ', res);
+          console.log('⚚ Hermes ⚚\n⚚ api service - system config');
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -59,11 +59,11 @@ export class ApiService {
     public sysRestore(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/restore`; // get api:sys/restore
       //console.log(this.http.get(url));
-      console.log(url);
+      //console.log(url);
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - system restore:\n ', res);
+          //console.log('⚚ Hermes ⚚\n⚚ api service - system restore:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));

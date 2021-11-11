@@ -5,7 +5,6 @@ import { SysadminComponent } from './sysadmin/sysadmin.component';
 import { StationsComponent } from './stations/stations.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { LogComponent } from './log/log.component';
-import { MailadminComponent } from './mailadmin/mailadmin.component';
 import { ManagementComponent } from './management/management.component';
 import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
 import { NetadminComponent } from './netadmin/netadmin.component';
@@ -14,7 +13,6 @@ import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { UserComponent } from './user/user.component';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 import { EmailComponent } from './email/email.component';
 import {HelpComponent} from './help/help.component';
@@ -29,7 +27,6 @@ const routes: Routes = [
   { path: 'stations', component: StationsComponent},
   { path: 'message/:id', component: MessageDetailComponent},
   { path: 'log', component: LogComponent},
-  { path: 'mailadmin', component: MailadminComponent},
   { path: 'manage', component: ManagementComponent},
   { path: 'manage/:id', component: ManagementComponent},
   { path: 'compose', component: MessagecomposeComponent},
@@ -39,14 +36,12 @@ const routes: Routes = [
   { path: 'languages', component: LanguagesComponent},
   { path: 'messageadm', component: MessageadmComponent},
   { path: 'recovery', component: ForgotpasswordComponent},
-  { path: 'users', component: UserComponent},
   { path: 'sent', component: SentMessagesComponent},
   { path: 'email', component: EmailComponent},
   { path: 'help', component: HelpComponent},
   { path: 'radioconfig', component: RadioConfigComponent},
   { path: 'testradio', component: TestradioComponent},
   { path: 'upload', component: UploadComponent}
-
 
 ];
 

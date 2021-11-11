@@ -30,7 +30,7 @@ export class UserService {
       return this.http.get(GlobalConstants.apiURL + '/user').pipe(
         map((res: any) => {
           this.users = res;
-          console.log("⚚ user service: ", this.users);
+          console.log("⚚ user service: ");
           return this.users;
       }),
       catchError(this.handleError));
@@ -39,7 +39,7 @@ export class UserService {
     /** DELETE: delete the user from the server */
     deleteUser(id: number, email: string): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/user/${id}/${email}`; 
-      console.log('⚚ message service - deleteUser: ',url);
+      console.log('⚚ message service - deleteUser');
       return this.http.delete(url)
         .pipe(
           catchError(this.handleError));

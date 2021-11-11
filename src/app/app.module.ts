@@ -7,25 +7,21 @@ import { HmheaderComponent } from './hmheader/hmheader.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
-import { AlertsComponent } from './alerts/alerts.component';
 import { SysadminComponent } from './sysadmin/sysadmin.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './log/log.component';
-import { MailadminComponent } from './mailadmin/mailadmin.component';
 import { NetadminComponent } from './netadmin/netadmin.component';
 import { ManagementComponent } from './management/management.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
 import { LoginComponent } from './login/login.component';
 import { LanguagesComponent } from './languages/languages.component';
-// import {TranslateModule} from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './help/help.component';
 import { MessageadmComponent } from './messageadm/messageadm.component';
-import { UserComponent } from './user/user.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './same-username.directive';
@@ -63,10 +59,8 @@ registerLocaleData(localePt);
     HmheaderComponent,
     MessagesComponent,
     MessageDetailComponent,
-    AlertsComponent,
     SysadminComponent,
     LogComponent,
-    MailadminComponent,
     NetadminComponent,
     ManagementComponent,
     UpgradeComponent,
@@ -75,7 +69,6 @@ registerLocaleData(localePt);
     LanguagesComponent,
     HelpComponent,
     MessageadmComponent,
-    UserComponent,
     ForgotpasswordComponent,
     SameUsernameDirective,
     RetypeDirective,
@@ -86,7 +79,6 @@ registerLocaleData(localePt);
     FrequencyPipe,
     TestradioComponent,
     UploadComponent
-
 
   ],
   imports: [

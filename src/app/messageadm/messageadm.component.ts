@@ -43,7 +43,7 @@ export class MessageadmComponent implements OnInit {
           (res: any) => {
             this.serverConfig= res;
             this.allowfile = res.allowfile;
-            console.log(this.allowfile);
+            //console.log(this.allowfile);
             return res;
           },
           (err) => {
@@ -72,7 +72,7 @@ export class MessageadmComponent implements OnInit {
     } else {
       this.selectedMessages = true;
     }
-    console.log('⚚ messageadm - confirmDelete selectMessages: ', this.selectedMessages);
+    console.log('⚚ messageadm - confirmDelete selectMessages');
   }
 
   getMessages(): void {
@@ -89,18 +89,18 @@ export class MessageadmComponent implements OnInit {
 
   setUploadPermission(value: string) {
     
-    console.log(value);
+    //console.log(value);
       this.apiService.setSysConfig(value).subscribe(
       (res: any) => {
         this.allowfile= res.allowfile;
-        console.log('⚚ messagecompose - sendMessage: res: ', res);
+        console.log('⚚ messagecompose - sendMessage');
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
-    console.log(this.allowfile);
+    //console.log(this.allowfile);
   }
 
   ngOnInit(): void {

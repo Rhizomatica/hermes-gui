@@ -108,7 +108,6 @@ export class MessageService {
 
   getMessageImage(id: number): Observable<Blob> {
     const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
-    console.log ('⚚ message service - getMessageImage: ' + url);
     return this.http.get(url, {responseType: 'blob'});
   }
 
@@ -117,7 +116,7 @@ export class MessageService {
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
-        console.log('⚚ message service - getInboxMessages: ', res);
+        console.log('⚚ message service - getInboxMessages');
         return this.messages;
     }),
       catchError(this.handleError));
@@ -138,7 +137,7 @@ export class MessageService {
     const url = `${GlobalConstants.apiURL}/inbox/${id}`; // DELETE /inbox/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        console.log('⚚ message service - deleteInboxMessage: ',res);
+        console.log('⚚ message service - deleteInboxMessage');
         return this.messages;
     }),
      catchError(this.handleError));
@@ -149,7 +148,8 @@ export class MessageService {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        console.log('⚚ message service - deleteMessage: ',res);
+        console.log('⚚ message service - deleteMessage');
+
         return this.messages;
     }),
      catchError(this.handleError));
@@ -175,9 +175,7 @@ export class MessageService {
     message.sent_at = Date();
     message.orig = origin;  
     // messageImage: File;
-
-    console.log('⚚ message service - sendMessage: ', message);
-
+    console.log('⚚ message service - sendMessage');
     return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
         this.message = res;

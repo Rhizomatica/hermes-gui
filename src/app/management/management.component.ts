@@ -153,7 +153,7 @@ export class ManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
-        console.log('⚚ management - getUsers: res ', res);
+        console.log('⚚ management - getUsers');
       },
       (err) => {
         this.error = err;
@@ -165,16 +165,14 @@ export class ManagementComponent implements OnInit {
   onSelect(user): void {
     this.selectedUser = user;
     this.isEditing = true;
-    console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
+    //console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptyUser = false;
-    console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
+    //console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
 
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
-    console.log('sel', this.selectedUser);
-    //console.log('⚚ management - onSubmitUpdate, f.value: ', f.value); 
-    //f.value.email = this.selectedUser.email;
+    //console.log('sel', this.selectedUser);
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -202,17 +200,15 @@ export class ManagementComponent implements OnInit {
   }
 
   async onSubmitCreate(f: NgForm): Promise<void> {
-    //console.log('form', f.value);
     f.value.location = "local";
     await this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
-    //console.log('⚚ management - onSubmitCreate: isEditing? ', this.isEditing);
     this.users = [];
     
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
-        console.log('⚚ management - getUsers: res ', res);
+        console.log('⚚ management - getUsers');
       },
       (err) => {
         this.error = err;

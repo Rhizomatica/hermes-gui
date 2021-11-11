@@ -41,7 +41,6 @@ export class AppComponent {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
-        //console.log('hhhh', this.system.diskfree);
     if (this.system.diskfree < 10485760) {
       this.criticSpace = true;
     }
@@ -79,7 +78,7 @@ export class AppComponent {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
-    console.log('⚚ app: user logout', this.currentUser);
+    console.log('⚚ app: user logout');
   }
   onToggle(): void {
     this.darkModeService.toggle();

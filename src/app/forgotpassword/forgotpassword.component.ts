@@ -55,17 +55,10 @@ export class ForgotpasswordComponent implements OnInit {
       });
       if (typeof(this.selectedUser) == 'undefined') {
         this.selTest = false;
-        //console.log('⚚ forgotpassword - onSelect: ','titit');
       } else {
         this.selTest = true;
-        //console.log('⚚ forgotpassword: -onSelect: ','toooo');
       }
-      //this.selectedUser = user;
-
-      //console.log('⚚ forgotpassword - onSelect: input: ',input);
-      //console.log('⚚ forgotpassword - onSelect: users: ',this.users);
-      //console.log('⚚ forgotpassword - onSelect: selecteduser: ',this.selectedUser);
-
+      
     }
 
     onSubmitUpdate(f:NgForm): void {
@@ -104,7 +97,6 @@ export class ForgotpasswordComponent implements OnInit {
       }
     }
 
-    //TODO CH alterar a senha
 
 
     checkPassw(passw, repassw) {

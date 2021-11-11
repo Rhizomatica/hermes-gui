@@ -42,7 +42,7 @@ export class UUCPService{
     return this.http.delete(url).pipe(
       map((res: any) => {
         this.queue= res;
-        console.log('⚚ uucp service - canceltransmission: ',res);
+        console.log('⚚ uucp service - canceltransmission');
         return this.queue;
     }),
      catchError(this.handleError));
@@ -60,7 +60,7 @@ export class UUCPService{
 
   private handleError(error: HttpErrorResponse) {
 	  this.queue = [];
-      console.log('⚚ Hermes ⚚\n⚚ uucp service  error - :\n ', error);
+      console.log('⚚ Hermes ⚚\n⚚ uucp service  error ');
 	  return throwError(error);
   }
 

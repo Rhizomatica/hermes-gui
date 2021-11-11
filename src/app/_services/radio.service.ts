@@ -65,7 +65,7 @@ export class RadioService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn= res;
-        //   console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+        console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ');
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -89,7 +89,7 @@ export class RadioService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          console.log('⚚ Hermes ⚚\n⚚ api service - radio frequency ');
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -101,7 +101,7 @@ export class RadioService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - radio status:\n ', res);
+          console.log('⚚ Hermes ⚚\n⚚ api service - radio mode' );
           return this.serverReturn;
       }),
       catchError(this.handleError));

@@ -29,13 +29,11 @@ export class HelpComponent implements OnInit {
   }
 
   scrollToElement($element): void {
-    //console.log($element);
     $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 
   ngOnInit(): void {
     this.getSystemStatus();
-    //console.log(this.system);
   }
 
 }
