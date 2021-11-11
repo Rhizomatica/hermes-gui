@@ -43,8 +43,14 @@
                 </div>
 
                 <div *ngIf="isAudio">
-                    <audio controls class="messageAudio">
-                        <source src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" type="{{message.mimetype}}"/>
+                    <!--
+                    <div class="blobber" *ngIf="audioLoading">
+                        <div class="tx"i18n="@@loadingaudio">decrypting audio...</div>
+                        <div class="square"></div>
+                    </div>
+                   -->
+                    <audio controls class="messageAudio" #audioplayer>
+                        <source src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" canplaythrough="loadingAudio()" type="{{message.mimetype}}"/>
                         your browser does not support this type of audio
                     </audio> 
                 </div>

@@ -28,6 +28,8 @@ export class MessageDetailComponent implements OnInit {
   isImage = false;
   pass: string = '';
   passString: string = '';
+  audioLoading: boolean = false;
+
 
 
   constructor(
@@ -72,6 +74,17 @@ export class MessageDetailComponent implements OnInit {
 
   }
 
+
+  loadingAudio() {
+  if (this.audioLoading) {
+  this.audioLoading = false;
+  console.log('fdfdgdg');
+  } else {
+    console.log('ffffff');
+  }
+
+  }
+
   getMessage(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     const file = +this.route.snapshot.paramMap.get('file');
@@ -108,6 +121,7 @@ export class MessageDetailComponent implements OnInit {
             this.noImage = true;
             this.isImage = true;
             this.isAudio = false;
+            
               break;
             case 'audio/aac':
             case 'audio/mpeg':
@@ -122,6 +136,7 @@ export class MessageDetailComponent implements OnInit {
               this.noImage = false;
               this.isImage = false;
               this.isAudio = true;
+              this.audioLoading = true;
               break;
             default:
               this.noImage = false;
