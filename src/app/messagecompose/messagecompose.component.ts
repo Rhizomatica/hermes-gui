@@ -48,6 +48,7 @@ export class MessagecomposeComponent implements OnInit {
   public fileSelected: boolean = false;
   public sending: boolean = false;
   public nodename: any;
+  public maxSize: any = 31457280;
 
   //allowfile : users, admin, all
 
@@ -147,10 +148,42 @@ export class MessagecomposeComponent implements OnInit {
     if (file) {
         
       //comparador de tamanho;
+      this.file = file;
+
+      console.log(this.file);
+
+      switch(this.file.type) {
+            case 'image/bmp':
+            case 'image/gif':
+            case 'image/jpeg':  
+            case 'image/png':
+            case 'image/webp':  
+            case 'image/svg+xml':
+            case 'image/pjpeg': 
+            case 'image/x-jps': 
+            case 'audio/aac':
+            case 'audio/mpeg':
+            case 'audio/ogg': 
+            case 'audio/ogx':  
+            case 'audio/opus':
+            case 'audio/wav':
+            case 'audio/x-wav':
+            case 'audio/webm':
+            case 'audio/3gpp':
+            case 'audio/3gpp2':  
+            this.maxSize = 31457280;
+            break;
+            default:
+              this.maxSize = 2097152;
+
+      }
+
+
   
-      if(file.size < 9145728) {
+      if(file.size < this.maxSize) {
+
+        
   
-        this.file = file;
         this.fileName = file.name;
         console.log(file);
         this.fileSelected = true;
@@ -158,6 +191,10 @@ export class MessagecomposeComponent implements OnInit {
       }
       else {
         this.fileName = "file too big";
+        console.log(file);
+        this.file = null;
+        file = null;
+        return file;
       }
     }
   }

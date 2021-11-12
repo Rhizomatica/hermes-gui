@@ -19,8 +19,8 @@
             <div *ngIf="!radio.led" >LED de status: off</div>
             <div *ngIf="radio.protection" >protection: ON</div>
             <div *ngIf="!radio.protection" >protection: OFF </div>
-            <div *ngIf="bypass" >bypass: ON - ligado</div>
-            <div *ngIf="!bypass" >bypass: OFF - desligado</div>
+            <div *ngIf="bypass" >conected: ON - ligado</div>
+            <div *ngIf="!bypass" >conected: OFF - desligado</div>
             <div *ngIf="radio.tx" >Modo de operaçao: TX </div>
             <div *ngIf="radio.rx" >Modo de operaçao: RX </div>
             <div >TXRX: {{radio.txrx}}</div>

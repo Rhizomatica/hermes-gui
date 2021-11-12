@@ -4,7 +4,7 @@
         
         <div class="" >
             <a routerLink="/sent" i18n="@@sent1">
-                <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">
+                <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">
             </a>
         </div>
     </div>
@@ -45,7 +45,7 @@
             <div class="uploader" *ngIf="allowUpload">
                
                 <ng-container >
-                    <span i18n="@@attachfile">Attach File:</span>
+                    <span i18n="@@attachfile">Attach File: </span>
 
 <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
 
@@ -148,6 +148,9 @@
                 </div>
                 <div class="icon" ><a routerLink='/messages' routerLinkActive="active" >
                     <img title="help" src="assets/svg/comment.svg"><button i18n="@@messagesbtn">messages</button></a>
+                </div>
+                <div class="icon" ><a routerLink='/sent' routerLinkActive="active" >
+                    <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg"><button i18n="@@sentmessagesbtn">sent messages</button></a>
                 </div>
             </div>
         </div>
