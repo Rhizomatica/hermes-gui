@@ -74,8 +74,8 @@
                 </span>
                 <div class= "date">
                 <span >{{job.date}} </span> 
-            <span >{{job.time}}</span>
-            <span >{{job.size}} B</span> 
+            <span >{{job.time}}</span> 
+            <span > {{job.size}} B</span> 
         
             
             
@@ -83,7 +83,7 @@
 		</div>
      </div>  
      </div> 
-        <p i18n="@@listsize" class="date">Total size of files to transmit: {{ getQueueSize() }} total size</p>
+        <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} total size</p>
         <a (click)="confTransmit()">
             transmit now <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
         </a>
