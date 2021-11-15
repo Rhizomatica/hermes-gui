@@ -84,7 +84,7 @@
                 </label>
                 <label for="repasswd" >
                     <span i18n="@@retypethepassword">Retype the password</span>
-                    <input type="password"  [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="8" (input)="checkpass(selectedUser.password,repasswd)"/>
+                    <input type="password"  [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="6" (input)="checkpass(selectedUser.password,repasswd)"/>
                 </label>
                 <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
                     passwords doesn't match
@@ -92,7 +92,7 @@
                 <div [hidden]=!passMin class="error" i18n="@@passempty">
                     passwords can't be empty
                 </div>
-                <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 8 characters</span>
+                <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword>passwords must have at least 6 characters</span>
         
         </label>
 
