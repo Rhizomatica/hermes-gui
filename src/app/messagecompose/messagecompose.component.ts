@@ -239,6 +239,8 @@ export class MessagecomposeComponent implements OnInit {
           this.res = res;
           console.log('⚚ messagecompose - sendMessage: res: ', res);
           this.fileIsProcessing = true;
+          this.file = [];
+          this.fileName = '';
         },
          (err) => {
            this.errormsg = err;
