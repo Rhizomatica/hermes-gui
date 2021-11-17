@@ -31,7 +31,7 @@
  
 
             <label for="email">
-                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" i18n="@@mwusern"  placeholder="write the username"> 
+                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" i18n-placeholder  placeholder="write the username"> 
                 
             </label>
 
@@ -43,12 +43,12 @@
             </label>
             <label>
                 <span i18n="@@phonenumber">phone number</span>:
-                <br/><input name="phone" [(ngModel)]="selectedUser.phone" i18n="@@mwpn"  placeholder="phone number"  />
+                <br/><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder  placeholder="phone number"  />
             </label>
 
             <label >
                 <span i18n>site</span>:
-                <br/><input name="site" [(ngModel)]="selectedUser.site" i18n="@@mwws"  placeholder="website"  />
+                <br/><input name="site" [(ngModel)]="selectedUser.site" i18n-placeholder  placeholder="website"  />
             </label>
 
             <div class="selector">
@@ -59,12 +59,12 @@
 
             <label for="recovery">
                 <span i18n>recovery phrase</span>:
-                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr"  required placeholder="write a question to recover your password" />
+                <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr"  required placeholder="write a question to recover your password" i18n-placeholder />
                 <div *ngIf="f.invalid" i18n="@@titlereq">Title is required</div>
             </label>
             <label>
                 <span i18n="@@recovans2">recovery answer</span>:
-                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" i18n="@@mwarq" placeholder="answer to your recovery question"  />
+                <br/><input  name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" i18n="@@mwarq" placeholder="answer to your recovery question" i18n-placeholder />
             </label>
 
         
@@ -80,7 +80,7 @@
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
                 <label for="passwd" >
                     <span i18n="@@typethepassword">Type the password</span>
-                    <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required i18n="@@mwpass"  placeholder="password"  minlength="8" (input)="checkpass(selectedUser.password,repasswd)" />
+                    <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required ii18n-placeholder  placeholder="password"  minlength="8" (input)="checkpass(selectedUser.password,repasswd)" />
                 </label>
                 <label for="repasswd" >
                     <span i18n="@@retypethepassword">Retype the password</span>

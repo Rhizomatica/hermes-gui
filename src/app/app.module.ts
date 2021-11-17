@@ -37,7 +37,6 @@ import {DecimalPipe} from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './testradio/testradio.component';
-import { UploadComponent } from './upload/upload.component';
 import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
 
 registerLocaleData(localePt);
@@ -77,8 +76,7 @@ registerLocaleData(localePt);
     EmailComponent,
     RadioConfigComponent,
     FrequencyPipe,
-    TestradioComponent,
-    UploadComponent
+    TestradioComponent
 
   ],
   imports: [
