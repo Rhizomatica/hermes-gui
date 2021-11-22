@@ -51,6 +51,12 @@
 
   <!-- TODO ERROR else: <div class="logged" *ngIf="currentUser; else isLoggedOut"> -->
 
+    <a class="radioprot" i18n="@@radioprot" *ngIf="!protection" (click)="resetProtection()">
+      protection off
+    </a>
+
+    
+
     <div class="logged" *ngIf="currentUser; else loggedOut">
       <div class="navbar-nav">
        <span class="topuser">{{currentUser.email}}</span>
@@ -130,6 +136,30 @@
   If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session.
 <br>
 <span class="icon"><img (click)="showServerAlert()"  title="close" src="assets/svg/times.svg"> </span>
+</div>
+
+<div class="overall alert" *ngIf="resetting">
+  <div class="cv" >
+      <span i18n="@@resetprotection">Please check your antenna and Reset radio protection <br/></span>
+      <button ><a (click)="confirmReset()" >
+          reset</a>
+      </button>
+      <button  ><a (click)="resetProtection()" >
+        cancel</a>
+    </button>
+
+  </div>
+</div>
+
+<div class="overall alert" *ngIf="errorAlert==true">
+  <div class="cv" >
+      <span i18n="@@errorchangingconfig">There was an error on changing configuration <br/><br/></span>
+      <span>{{error}}</span>
+      <div class="icon" ><a (click)="closeError()" >
+          <img title="compose" src="assets/svg/x.svg"></a>
+      </div>
+
+  </div>
 </div>
 
 

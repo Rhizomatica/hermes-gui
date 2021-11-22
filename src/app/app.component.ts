@@ -6,6 +6,8 @@ import { AuthenticationService } from './_services/authentication.service';
 import { ApiService } from './_services/api.service';
 import { User } from './user';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
+import { RadioService } from './_services/radio.service';
+
 
 import { Api } from './api';
 
@@ -24,6 +26,13 @@ export class AppComponent {
   criticSpace: boolean = false;
   toggleButton = document.querySelector('.dark-button');
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
+  radio: any;
+  protection: boolean = true;
+  radioError: boolean = false;
+  res: any;
+  errorAlert: boolean = false;
+  resetting: boolean = false;
+
 
 
 
@@ -32,6 +41,7 @@ export class AppComponent {
      private router: Router,
      private authenticationService: AuthenticationService,
      private apiService: ApiService,
+     private radioService: RadioService,
   	 private darkModeService: DarkModeService
     ){
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -52,6 +62,53 @@ export class AppComponent {
     );
 
     
+  }
+
+  resetProtection() {
+    if (this.resetting == true)
+    {
+      this.resetting = false
+    } else {
+      this.resetting = true;
+    }
+  }
+
+
+  confirmReset() {
+    this.radioService.radioResetProtection().subscribe(
+      (res: any) => {
+      this.res = res;
+      if (this.res = 1) {
+        this.radio.protection = false;
+        this.protection = this.radio.protection;
+      } 
+      // this.fileIsProcessing = true;
+      },
+      (err) => {
+      this.error = err;
+      this.errorAlert = true;
+      }
+    )
+  
+  }
+
+  getRadioStatus(): void{
+    this.radioService.getRadioStatus().subscribe(
+      (res: any) => {
+        this.radio = res;
+        this.protection = this.radio.protection;
+        
+        //console.log('hahah' + this.ptt);
+
+        return res;
+        
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+        console.log(this.error);
+      }
+    );
   }
 
   showFullStatus(){
@@ -89,5 +146,6 @@ export class AppComponent {
   //  Lifecycle interface OnInit should be implemented for method ngOnInit. (https://angular.io/styleguide#style-09-01)
   ngOnInit(): void {
      this.getSystemStatus();
+     this.getRadioStatus();
   }
 }

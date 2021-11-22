@@ -6,6 +6,11 @@ import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 import { ApiService } from '../_services/api.service';
 import { FormGroup } from '@angular/forms';
+import { GlobalConstants } from '../global-constants';
+import { HttpClient } from '@angular/common/http';
+import { catchError, retry } from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-messageadm',
@@ -32,7 +37,8 @@ export class MessageadmComponent implements OnInit {
 
   constructor(private messageService: MessageService, private alertService: AlertService,
       private authenticationService: AuthenticationService,
-      private apiService: ApiService
+      private apiService: ApiService,
+      private http: HttpClient
       ) { 
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
@@ -73,6 +79,15 @@ export class MessageadmComponent implements OnInit {
       this.selectedMessages = true;
     }
     console.log('⚚ messageadm - confirmDelete selectMessages');
+  }
+
+
+
+
+
+  cleanUp() {
+    const url = `${GlobalConstants.apiURL}/api/file`; // DELETE api/message/42
+    return this.http.delete(url);
   }
 
   getMessages(): void {
