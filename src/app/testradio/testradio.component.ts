@@ -442,12 +442,12 @@ export class TestradioComponent implements OnInit {
 
 
   resetProtection() {
-	console.log("teste");
+	//console.log("teste");
   this.radioService.radioResetProtection().subscribe(
 	  (res: any) => {
 		this.res = res;
 		console.log('⚚ radio config - reset radio: res: ', res);
-    if (this.res = 1) {
+    if (this.res == 1) {
       this.radio.protection = false;
     } 
 		// this.fileIsProcessing = true;

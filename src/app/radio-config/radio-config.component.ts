@@ -338,7 +338,7 @@ export class RadioConfigComponent implements OnInit {
       (res: any) => {
       this.res = res;
       console.log('⚚ radio config - reset radio: res: ', res);
-      if (this.res = 1) {
+      if (this.res == 1) {
         this.radio.protection = false;
       } 
       // this.fileIsProcessing = true;
