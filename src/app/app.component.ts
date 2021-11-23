@@ -79,7 +79,7 @@ export class AppComponent {
       (res: any) => {
       this.res = res;
       if (this.res = 1) {
-        this.radio.protection = false;
+        this.radio.protection = true;
         this.protection = this.radio.protection;
       } 
       // this.fileIsProcessing = true;
