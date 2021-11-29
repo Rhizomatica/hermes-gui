@@ -578,30 +578,37 @@ Poque a propagação de dados via rádio é bem lenta, o tamanho dos arquivos an
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="q02" datatype="html">
         <source> Private messages in the HERMES system work through personal e-mails. Any user can create an Hermes email account by clicking on the "create user" option on the login screen.
-</source><target state="final"> Mensagens privadas no sistema HERMES funcionam através de e-mails pessoais. Qualquer usuario do sistema pode criar uma conta de email clicando na opção "criar usuário" na tela de login do sistema.
+</source><target state="final"> 
+Mensagens privadas no sistema HERMES funcionam através de e-mails pessoais. Qualquer usuario do sistema pode criar uma conta de email clicando na opção "criar usuário" na tela de login do sistema.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">63</context></context-group></trans-unit><trans-unit id="q02a" datatype="html">
-        <source> Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> and will look like this:
+        <source> 
+        Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> and will look like this:
 user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
 </source>
-<target state="final"> Cada estação tem um domínio diferente, que pode ser visto no topo dessa interface. Nesta estação, todos emails serão criados dentro do domínio  <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> e ficarão assim:
+<target state="final"> 
+Cada estação tem um domínio diferente, que pode ser visto no topo dessa interface. Nesta estação, todos emails serão criados dentro do domínio  <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> e ficarão assim:
 nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o nome_de_usuário é o username utilizado na criação do usuário.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">66</context></context-group></trans-unit><trans-unit id="q02b" datatype="html">
         <source> Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is a limitation when attaching data due to the limitations of data transmission capacity over radio.
-</source><target state="final"> Através de um redirecionamento, emails Hermes podem ser enviados e recebidos de servidores externos, mas tenha em vista que existe uma limitação ao anexar dados devido às limitações de capacidade de transmissão de dados por rádio.
+</source><target state="final"> 
+Através de um redirecionamento, emails Hermes podem ser enviados e recebidos de servidores externos, mas tenha em vista que existe uma limitação ao anexar dados devido às limitações de capacidade de transmissão de dados por rádio.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="q03" datatype="html">
-        <source> Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the transmitters' hours of operation.
-</source><target state="final"> Através do aplicativo Deltachat, pode-se utilizar os emails hermes para realizar comunicações pessoais de troca de mensagens; este aplicativo funciona nos smartphones mais comuns e tem uma aparência semelhante ao whatsapp ou telegram. Tenham em mente que devido ao agendamento de transmissão das mensagens, elas podem demorar a chegar, dependendo da quantidade de mensagens na fila e dos horários de funcionamento dos transmissores.
+        <source> 
+        Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the transmitters' hours of operation.
+</source><target state="final"> 
+Através do aplicativo Deltachat, pode-se utilizar os emails hermes para realizar comunicações pessoais de troca de mensagens; este aplicativo funciona nos smartphones mais comuns e tem uma aparência semelhante ao whatsapp ou telegram. Tenham em mente que devido ao agendamento de transmissão das mensagens, elas podem demorar a chegar, dependendo da quantidade de mensagens na fila e dos horários de funcionamento dos transmissores.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">78</context></context-group></trans-unit><trans-unit id="q03a" datatype="html">
         <source> To download Deltachat, select one of the packages below, according to your phone's operating system:
-</source><target state="final"> Para baixar o sistema Hermes, clique em um dos links abaixo, de acordo com o seu sistema iperacional:
+</source><target state="final"> 
+Para baixar o sistema Hermes, clique em um dos links abaixo, de acordo com o seu sistema iperacional:
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">82</context></context-group></trans-unit><trans-unit id="q04" datatype="html">
@@ -622,7 +629,7 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">103</context></context-group></trans-unit><trans-unit id="p12" datatype="html">
         <source> As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
-</source><target state="final">Como a comunicação por rádio é unidirecional, as transmissões são agendadas pelo sistema para acontecerem de acordo com o estabelecido pela estação central, alternando momentos de recepção e transmissão. Em casos de emergência, o administrador do sistema pode forçar a transmissão das mensagens na fila, utilizando o botão ((())) "transmitir agora". Isto pode interromper o recebimento de mensagens de outras estações.
+</source><target state="final">Como a comunicação por rádio é unidirecional, as transmissões são agendadas pelo sistema para acontecerem de acordo com o estabelecido pela estação central, alternando momentos de recepção e transmissão. Em casos de emergência, o administrador do sistema pode forçar a transmissão das mensagens na fila, utilizando o botão "transmitir agora". Isto pode interromper o recebimento de mensagens de outras estações.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">107</context></context-group></trans-unit><trans-unit id="p13" datatype="html">
@@ -632,7 +639,7 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">113</context></context-group></trans-unit><trans-unit id="p14" datatype="html">
         <source> Inside the admin section, an admin user will find the following options:
-</source><target state="final">Dentro da seção de administração, um administrador da rede vai encontrar as seguintes opções::
+</source><target state="final">Dentro da seção de administração, um administrador da rede vai encontrar as seguintes opções:
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">117</context></context-group></trans-unit><trans-unit id="p15" datatype="html">
@@ -644,7 +651,7 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">124</context></context-group></trans-unit><trans-unit id="p16a" datatype="html">
-        <source> Message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators. </source><target state="final">Administração de Mensagens: Nesta sessão, um administrador pode determinar que tem permissão de anexar arquivos nas mensagens públicas entre estações, se todo mundo, somente usuários registrados ou somente administradores.</target>
+        <source> Message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators. </source><target state="final">Administração de Mensagens: Nesta sessão, um administrador pode determinar que tem permissão de anexar arquivos nas mensagens públicas entre estações: todo mundo, somente usuários registrados ou somente administradores.</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">129</context></context-group></trans-unit><trans-unit id="p17" datatype="html">
         <source> Network info: displays information about the system, such as network addresses, call sign, server name, etc.
@@ -699,7 +706,7 @@ nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o n
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">173</context></context-group></trans-unit><trans-unit id="t08" datatype="html">
         <source> If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration.
-</source><target state="final">Caso o problema seja no rádio digital, haverá uma mensagem de erro quando o administrador entrar em Administração -> configuração do rádio. .
+</source><target state="final">Caso o problema seja no rádio digital, haverá uma mensagem de erro quando o administrador entrar em Administração -> configuração do rádio.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">177</context></context-group></trans-unit><trans-unit id="t09" datatype="html">

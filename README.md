@@ -10,7 +10,7 @@ Run 'npm install' inside the project path
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --configuration=en` for a dev server in english, you can change the language to spanish (ng serve --configuration=es) or portuguese (ng serve --configuration=pt) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -18,7 +18,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
@@ -33,97 +33,21 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-## Interface Roadmap
+## Interface Contents
 
-Messages:
-- record audio
-ok - delete messages
-- ifinite scroll and results pagination
-ok - browse in messages
+Inside the folder `src` you will find the angular templates for the system's interface. 
 
-admin:
+On style.less there are the styling code, writen in [less](https://lesscss.org/).
 
-ok - authentication
+Inside the app folder, you will find the template components. The app-routing module.ts file is responsible for linking the templates to url adressess. and the app.component, the aplication root template.
 
-ok - network administration
+For every system component, there will be a folder with the component.html, component.less, and component.ts. On the .html file there is the html angular template, and on the component.ts you will find typescript code related to that component.
 
-- detailed log (what is that?)
+Also inside the app folder, there is the _services foder, where you can find common services shared between the components to access the [station-api] (https://github.com/DigitalHERMES/station-api).
 
-- admin management
-    - change what is visible with each status
-        - ok
-    - feedback when submit action
-        - ok
-    - validate username
+On assets folder you find links to svgs and image files used on the interface design.
 
-    (question - automatic email when creating username)
-
-- message administration 
-    - bulk delete messages
-
-
-- data do sistema
-- aviso de pré-falha de disco
-- aviso de revisão
-- habilitar e desabiitar upa
-
-ok - consertar stations
-ok - botão de apagar só com admin
-- infos na mensagem
-
-ok - reload user list
-
-ok - configure who can send messages
-    - allowFile : all, user, admin
-
-ok - set radio conf  pegar valor atual  
-ok - shutdownw /reboot
-- reset to default alert
-ok - range values for frequency, bfo and masteracal
-
-- message too big
-ok - shut down button to the right
-ok - remove stations from create users
-
-ok - range para frequencias
-
-ok - don't update username
-ok - pegar email do aip service no create user
-
-- senha forte min 8 char;
-- review dos logs do console;
-- network info https://192.168.0.109/api/sys/status
-- standalone download for deltachat
-
-
-* comandos para atualizar frontend na estação
-10.8.0.3 kurupira2 k2.hermes.radio (VPN) 
-192.168.0.103? kurupira2 (rede local ariane)
-
-** atualizar web-gui angular por ssh (tem ansible)
-
-
- ssh hermes@ip rede local ou vpn (10.8.0.3)
- entra na pasta:
- cd ~/install/angular
-
- compila o código angular:
- npm run build
-
- copia para a pasta www
-sudo cp -r dist/hermes/* /var/www/html
-
-* atualizar web-gui 
- compilar local e copiar por sftp todo o conteúdo da pasta local dist/hermes/ para a pasta /var/www/html/ da estação
-
- npm run build 
- gera arquivos em dist/hermes
- 
- * identificar ip interno da rede
- - ssh por vpn: 
- ssh hermes@10.8.0.3
- - listar as interfaces de rede (procurar pelo ip da enp3s0)
- ip a
+On the locale folder there are the xlf files for translation. For the translations, we are using i18n angular module. To generate translations, you need to use `ng extract-i18n --output-path src/locale/` to generate the messages,xlf file and then `xliffmerge --profile xliffmerge.json pt es` to transpose the new data to both messages.es.xlf and messages.pt.xlf, where you can input the new tranlation tokens. 
 
 
 
