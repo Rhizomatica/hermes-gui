@@ -397,7 +397,7 @@ export class RadioConfigComponent implements OnInit {
     } else {
       this.currentUser.admin = false;
     }
-    console.log('ahahaha');
+    //console.log('ahahaha');
 
      console.log(this.isAdmin);
   }
