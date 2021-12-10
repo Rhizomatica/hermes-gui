@@ -4,6 +4,7 @@ import { AlertService } from '../alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { GlobalConstants } from '../global-constants';
+import { interval } from 'rxjs';
 
 
 @Injectable({
@@ -16,13 +17,16 @@ export class RadioService {
 	radioFrequency: any;
 	radioMode: any;
 	radioOffset: any;
-  
+
 	error = Error;
   
   constructor(
 	private http: HttpClient,
 	private alertService: AlertService
   ) { }
+
+
+
     public setRadioFreq (freq: number): Observable<{}> {
       var url = `${GlobalConstants.apiURL}/radio/freq/${freq}`; 
       return this.http.post(url,null).pipe(
@@ -215,5 +219,7 @@ export class RadioService {
       console.log('⚚ Hermes ⚚\n⚚ radio service  error - :\n ', error);
 	  return throwError(error);
     }
+
+
 
 }

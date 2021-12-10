@@ -5,7 +5,6 @@
     <div >
     <!--<div>-->
         <form *ngIf="radio">
-
             <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq / 1000}} kHz {{radio.mode}}</p> 
             <hr>
             <p><span i18n="@serial">Serial Number: </span>{{radio.mastercal}}</p>
@@ -14,8 +13,6 @@
             <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwd}} </p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
             <p><span i18n="@Treshold">FWD Threshold: </span>{{radio.refthreshold}} </p>
-
-            
             <div *ngIf="radio.led" i18n="@@radioledon">led: on </div>
             <div *ngIf="!radio.led" i18n="@@radioledoff">led: off</div>
             <div *ngIf="radio.protection" i18n="@@protectionon">protection: on </div>

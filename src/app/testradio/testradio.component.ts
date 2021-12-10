@@ -64,6 +64,8 @@ export class TestradioComponent implements OnInit {
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
         this.freq = this.radio.freq;
+        
+        //frequency in MegaHz
         this.frek = this.radio.freq /1000;
         this.mode = this.radio.mode;
         this.led = this.radio.led;
@@ -177,9 +179,7 @@ export class TestradioComponent implements OnInit {
     }
 
     updateFwd() {
-      
       this.subscription = this.intervallTimer.subscribe(() => this.getRadioPower());
-
     }
 
     stopUpdate() {

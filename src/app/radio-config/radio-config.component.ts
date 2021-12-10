@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../user';
+import { interval } from 'rxjs';
 
 //import { truncateSync } from 'fs';
 
@@ -52,7 +53,9 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min : number = 500000;
   public max : number = 300000000;
-  
+  public intervallTimer = interval(1000);
+  private subscription;
+
 
   constructor    (
 	private apiService: ApiService,
@@ -382,7 +385,8 @@ export class RadioConfigComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.radio=this.getRadioStatus();
+
+    this.subscription = this.intervallTimer.subscribe(() => this.getRadioStatus());
 
     if (this.radio) {
       this.usb= this.radio.mode;
