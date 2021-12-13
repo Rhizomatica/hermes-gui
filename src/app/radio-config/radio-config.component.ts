@@ -127,7 +127,7 @@ export class RadioConfigComponent implements OnInit {
         this.radio.fwdinwatts = this.power.fwdinwatts;
         this.radio.refinvolts = this.power.refinvolts;
         this.radio.txrx = this.power.txrx;
-        console.log(this.power);
+        //console.log(this.power);
         //console.log(this.radio.refinvolts);
         //console.log(this.radio.fwdinwatts);
 
