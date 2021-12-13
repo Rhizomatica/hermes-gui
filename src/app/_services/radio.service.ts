@@ -87,6 +87,18 @@ export class RadioService {
       catchError(this.handleError));
     }
 
+    public getRadioPttswr(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/radio/pttswr`;
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn= res;
+          //console.log('⚚ Hermes ⚚\n⚚ api service - radio power status:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
     public getRadioFrequency(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/radio/freq`; 
       const output = this.http.get(url);

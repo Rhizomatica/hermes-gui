@@ -53,8 +53,13 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min : number = 500000;
   public max : number = 300000000;
-  public intervallTimer = interval(1000);
+  public intervallTimer = interval(2000);
   private subscription;
+  fwdw: any;
+  refv: any;
+  tx: boolean = false;
+  rx: boolean = false;
+  power: any;
 
 
   constructor    (
@@ -80,7 +85,10 @@ export class RadioConfigComponent implements OnInit {
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
         this.refthreshold = this.radio.refthreshold;
-  
+        this.radio.fwdiwatts = this.radio.fwdiwatts;
+        this.fwdw = this.radio.fwdiwatts;
+        this.radio.refinvolts = this.radio.refinvolts;
+        this.refv = this.radio.refinvolts;
 
         if (this.radio.bypass==true) {
           this.bypass = true;
@@ -106,6 +114,47 @@ export class RadioConfigComponent implements OnInit {
       }
     );
   }
+
+  getPttswr(): void{
+    this.radioService.getRadioPttswr().subscribe(
+      (res: any) => {
+        this.power = res;
+        this.radio.tx = this.power.tx;
+        this.radio.led = this.power.led;
+        this.led = this.radio.led;
+        this.radio.protection = this.power.protection;
+        this.radio.bypass = this.power.bypass;
+        this.radio.fwdinwatts = this.power.fwdinwatts;
+        this.radio.refinvolts = this.power.refinvolts;
+        this.radio.txrx = this.power.txrx;
+        //console.log(this.power);
+        //console.log(this.radio.refinvolts);
+        //console.log(this.radio.fwdinwatts);
+
+        if (this.radio.bypass==true) {
+          this.bypass = true;
+        } else {
+          this.bypass = false;
+        }
+
+        if (this.radio.tx) {
+          this.ptt = 'ON';
+        } else {
+          this.ptt = 'OFF';
+        }
+		
+        return res;
+        
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+        console.log(this.error);
+      }
+    );
+  }
+
+
   get value() : number {
     this.realValue = this.radio.freq;
     return this.realValue;
@@ -386,7 +435,9 @@ export class RadioConfigComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.subscription = this.intervallTimer.subscribe(() => this.getRadioStatus());
+    this.getRadioStatus();
+    this.getPttswr();
+    this.subscription = this.intervallTimer.subscribe(() => this.getPttswr());
 
     if (this.radio) {
       this.usb= this.radio.mode;
