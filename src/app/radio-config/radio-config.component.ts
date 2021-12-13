@@ -53,7 +53,7 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min : number = 500000;
   public max : number = 300000000;
-  public intervallTimer = interval(2000);
+  public intervallTimer = interval(500);
   private subscription;
   fwdw: any;
   refv: any;
@@ -220,9 +220,6 @@ export class RadioConfigComponent implements OnInit {
       this.alterFreq = false;
     }
   }
-
-
-
   
   changeRadioFreqMode(f:NgForm){
     this.radioService.setRadioFreq(f.value.freq).subscribe(
@@ -450,6 +447,6 @@ export class RadioConfigComponent implements OnInit {
     }
     //console.log('ahahaha');
 
-     console.log(this.isAdmin);
+     //console.log(this.isAdmin);
   }
 }
