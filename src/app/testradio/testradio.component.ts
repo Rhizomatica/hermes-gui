@@ -50,6 +50,13 @@ export class TestradioComponent implements OnInit {
   updated: boolean = false;
   public intervallTimer = interval(1000);
   private subscription;
+  fwdw: any;
+  refv: any;
+  tx: boolean = false;
+  rx: boolean = false;
+  power: any;
+  refthreshold: any;
+
 
   constructor    ( 
 	private apiService: ApiService,
@@ -64,15 +71,20 @@ export class TestradioComponent implements OnInit {
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
         this.freq = this.radio.freq;
-        
         //frequency in MegaHz
         this.frek = this.radio.freq /1000;
         this.mode = this.radio.mode;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
-        
         this.testtone = this.radio.testtone;
+        this.mode = this.radio.mode;
+        this.refthreshold = this.radio.refthreshold;
+        this.radio.fwdiwatts = this.radio.fwdiwatts;
+        this.fwdw = this.radio.fwdiwatts;
+        this.radio.refinvolts = this.radio.refinvolts;
+        this.refv = this.radio.refinvolts;
+
 
         if (this.radio.testtone > 0) {
           this.toneOn = true;
@@ -94,6 +106,45 @@ export class TestradioComponent implements OnInit {
 		
         //console.log('hahah' + this.ptt);
 
+        return res;
+        
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+        console.log(this.error);
+      }
+    );
+  }
+
+  getPttswr(): void{
+    this.radioService.getRadioPttswr().subscribe(
+      (res: any) => {
+        this.power = res;
+        this.radio.tx = this.power.tx;
+        this.radio.led = this.power.led;
+        this.led = this.radio.led;
+        this.radio.protection = this.power.protection;
+        this.radio.bypass = this.power.bypass;
+        this.radio.fwdinwatts = this.power.fwdinwatts;
+        this.radio.refinvolts = this.power.refinvolts;
+        this.radio.txrx = this.power.txrx;
+        //console.log(this.power);
+        //console.log(this.radio.refinvolts);
+        //console.log(this.radio.fwdinwatts);
+
+        if (this.radio.bypass==true) {
+          this.bypass = true;
+        } else {
+          this.bypass = false;
+        }
+
+        if (this.radio.tx) {
+          this.ptt = 'ON';
+        } else {
+          this.ptt = 'OFF';
+        }
+		
         return res;
         
       },
@@ -562,6 +613,9 @@ resetRadio() {
   ngOnInit(): void {
 
     this.radio=this.getRadioStatus();
+    this.getPttswr();
+    this.subscription = this.intervallTimer.subscribe(() => this.getPttswr());
+
 
     
 
