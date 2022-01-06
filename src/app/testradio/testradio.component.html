@@ -57,16 +57,15 @@
                 <form #ftesttone="ngForm" class="formdata field"   >
                     <p><span >Tom de teste:</span> <span> {{radio.testtone}}</span></p>
 					
-                    <div *ngIf="!toneOn">
-                        <button name="testtone" value="600" (click)="testTone(600)">600hz</button>
-                        <button name="testtone" value="1500" (click)="testTone(1500)">1500hz</button>
+                    <div *ngIf="!toneOn" style="align-self: center;">
+                        <button name="testtone" value="600" (click)="testTone(600)" title="600hz" >A</button>
+                        <button name="testtone" value="1500" (click)="testTone(1500)" title="1500hz">B</button>
+                        <button name="testtone" value="3000" (click)="testTone(3000)" title="300hz+2700hz">C</button>
 
                     </div>
 
-                    <div *ngIf="toneOn">
+                    <div *ngIf="toneOn" style="align-self: center;">
                         <button name="testtone" *ngIf="toneOn " value="0" (click)="testTone(0)">desligar</button>
-                        <button name="testtone" [hidden]="testtone=='600'"  value="600" (click)="testTone(600)">600hz</button>
-                        <button name="testtone" [hidden]="testtone=='1500'" value="1500" (click)="testTone(1500)">1500hz</button>
                     </div>
 					
                 </form>
