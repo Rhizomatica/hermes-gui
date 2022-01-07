@@ -61,14 +61,14 @@
                         <form *ngIf="radio" #fmode="ngForm" class="formdata field" >
                             <p><span i18n="@@changeradiomode">Radio mode: {{radio.mode}}</span></p>
                             <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="@@changemode1">change mode</button>
-                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB - Modulaçao em Banda Superior </label>
-                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="radio.mode=='LSB'">LSB - Modulacao em Banda Inferior </label>
+                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB</label>
+                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="radio.mode=='LSB'">LSB</label>
                         </form>
         
 
         
                         <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
-                            <p><span >Limiar de proteção:</span> {{radio.refthreshold}}</p>
+                            <p><span i18n="@@prottheshold">Protection activtion threshold level:</span> {{radio.refthreshold}}</p>
                             <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"i18n="@@changetre1" >change threshold</button>
                             <input type="number" [max]="1023"  class="midbt" name="refthreshold" [(ngModel)]="refthreshold" value={{refthreshold}} >
                         </form>

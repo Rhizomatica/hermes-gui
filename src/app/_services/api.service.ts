@@ -45,15 +45,27 @@ export class ApiService {
       catchError(this.handleError));
     }
     public sysShutdown(): void {
-      const url = `${GlobalConstants.apiURL}/sys/shutdown`; // get api:sys/status
+      const url = `${GlobalConstants.apiURL}/sys/shutdown`; // get api:sys/shutdown
       console.log('shutting down');
-      this.http.get(url);
+      this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - system shutdown\n ', res);
+          //return this.serverReturn;
+      }),
+      catchError(this.handleError));
     }
 
     public sysReboot(): void {
-      const url = `${GlobalConstants.apiURL}/sys/reboot`; // get api:sys/status
+      const url = `${GlobalConstants.apiURL}/sys/reboot`; // get api:sys/reboot
       console.log('rebooting');
-      this.http.get(url);
+      this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - system reboot\n ', res);
+          //return this.serverReturn;
+      }),
+      catchError(this.handleError));
     }
 
     public sysRestore(): Observable<{}> {
