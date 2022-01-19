@@ -25,30 +25,30 @@ export class SentMessagesComponent implements OnInit {
   job: UUCPQueue;
   sentMessages: Message[];
   message: Message;
-  selectedMessage: Message; //redundant?
+  selectedMessage: Message; // redundant?
   isadmin = false;
   searchMessages: string;
-  confirmTransmit: boolean = false;
-  errorAlert: boolean = false;
+  confirmTransmit = false;
+  errorAlert = false;
   noMessages = false;
   noUUcp = false;
   noQueue = false;
 
 
   constructor(
-    private messageService: MessageService, 
-    private uucpService: UUCPService, 
+    private messageService: MessageService,
+    private uucpService: UUCPService,
     private alertService: AlertService,
-    private authenticationService: AuthenticationService,  
+    private authenticationService: AuthenticationService,
     // private userService: UserService
-    ) 
+    )
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
   closeError() {
       this.errorAlert = false;
-  }  
+  }
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
@@ -58,14 +58,14 @@ export class SentMessagesComponent implements OnInit {
   cancelTransmission(host,id): void{
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
-    	this.queue = this.queue.filter(obj=> obj.uuiduucp !== id);
+    	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
-    console.log("⚚ cancelTransmission:", host, id);
+    console.log('⚚ cancelTransmission:', host, id);
   }
 
   removeMessage(message: Message): void{
@@ -79,11 +79,11 @@ export class SentMessagesComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    console.log("⚚ sent-messages component cancelTransmission:", message.id);
+    console.log('⚚ sent-messages component cancelTransmission:', message.id);
   }
 
 confTransmit(){
-  if (this.confirmTransmit == false) {
+  if (this.confirmTransmit === false) {
     this.confirmTransmit = true; 
   } else {
     this.confirmTransmit = false;
@@ -93,14 +93,14 @@ confTransmit(){
  transmitNow(): void{
     this.uucpService.callSystems().subscribe(
       (res: any) => {
-        //this.message = res;
-    	console.log("⚚ sent-messages component transmit now:");
+        // this.message = res;
+    	console.log('⚚ sent-messages component transmit now:');
     	this.confirmTransmit = false;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
-    	console.log("⚚ sent-messages component transmit now fail:");
+    	console.log('⚚ sent-messages component transmit now fail:');
       }
     );
   }
@@ -122,7 +122,7 @@ confTransmit(){
     this.uucpService.getQueue().subscribe(
       res => {
         this.queue = res;
-         console.log("⚚ uucp queue:", this.queue);
+         console.log('⚚ uucp queue:', this.queue);
       },
       (err) => {
         this.error = err;
@@ -132,17 +132,15 @@ confTransmit(){
   }
 
   getQueueSize() {
-  let sum = 0
     if (this.queue) {
       if (this.queue !== []) {
-        let sum = 0;
+        let soma = 0;
         for(let i = 0; i < this.queue.length; i++) {
-        sum += parseInt(this.queue[i].size);
-        console.log(sum);
-        return sum;
+          soma += parseInt(this.queue[i].size);
+          console.log(soma);
+          return soma;
       }
-    }
-    
+    } 
     }
   }
 

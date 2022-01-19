@@ -26,9 +26,9 @@ export class MessageDetailComponent implements OnInit {
   uncrypted = false;
   isAudio = false;
   isImage = false;
-  pass: string = '';
-  passString: string = '';
-  audioLoading: boolean = false;
+  pass= '';
+  passString = '';
+  audioLoading = false;
 
 
 
@@ -57,7 +57,7 @@ export class MessageDetailComponent implements OnInit {
     console.log(f.value);
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
-		  if (res.text != ""){
+		  if (res.text !== ''){
         	this.message.text = res.text;
         	this.uncrypted = true;
           this.passString = '?i=' + f.value.pass;
@@ -88,22 +88,21 @@ export class MessageDetailComponent implements OnInit {
   getMessage(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     const file = +this.route.snapshot.paramMap.get('file');
-    const mime = "";
+    const mime = '';
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
-        if (this.message.text == "") {
+        if (this.message.text === '') {
           this.noMessage = true;
         } else {
           this.noMessage = false;
         }
 
-        if (this.message.file == "") {
+        if (this.message.file === '') {
           this.noImage = true;
         } else {
-          console.log(this.message.mimetype)
+          console.log(this.message.mimetype);
           switch (this.message.mimetype) {
-            
             case '':
               this.noImage = true;
               this.isAudio = false;
@@ -111,13 +110,13 @@ export class MessageDetailComponent implements OnInit {
               break;
             case 'image/bmp':
             case 'image/gif':
-            case 'image/jpeg':  
+            case 'image/jpeg':
             case 'image/png':
             case 'image/tiff':
-            case 'image/webp':  
+            case 'image/webp':
             case 'image/svg+xml':
-            case 'image/pjpeg': 
-            case 'image/x-jps':  
+            case 'image/pjpeg':
+            case 'image/x-jps':
             this.noImage = true;
             this.isImage = true;
             this.isAudio = false;
@@ -188,7 +187,7 @@ export class MessageDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getMessage();
-    //this.getImageFromService();
+    // this.getImageFromService();
   }
 
 }

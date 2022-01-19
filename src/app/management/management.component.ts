@@ -30,19 +30,19 @@ export class ManagementComponent implements OnInit {
   newUsername = false;
   emptyUser = false;
   searchMessages: string;
-  errorAlert: boolean = false;
-  passMatch: boolean = false;
-  passunMatch: boolean = false;
-  passMin: boolean = false;
+  errorAlert = false;
+  passMatch = false;
+  passunMatch = false;
+  passMin = false;
   repasswd: any;
   system: any;
-  updateUser: boolean = false;
+  updateUser = false;
 
   constructor(
       private userService: UserService,
       private stationService: StationService,
       private authenticationService: AuthenticationService,
-      private apiService: ApiService 
+      private apiService: ApiService
     )
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -59,7 +59,7 @@ export class ManagementComponent implements OnInit {
         }
       );
 
-      //console.log('system:', this.system);
+      // console.log('system:', this.system);
     }
 
   loggedin() {
@@ -76,11 +76,11 @@ export class ManagementComponent implements OnInit {
    }
 
 
-   checkpass(passwd,repasswd) {
-    //let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
-    //let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
+   checkpass(passwd, repasswd) {
+    // let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
+    // let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
     if (passwd) {
-      if (passwd == repasswd) {
+      if (passwd === repasswd) {
         this.passMatch = true;
         this.passMin = false;
         this.passunMatch = false;
@@ -89,17 +89,15 @@ export class ManagementComponent implements OnInit {
         this.passMin = false;
         this.passunMatch = true;
       }
-      //console.log("pass: ", this.passMatch);
-      //console.log(passwd, repasswd);
-      //console.log(this.passwd, this.repasswd);
+      // console.log("pass: ", this.passMatch);
+      // console.log(passwd, repasswd);
+      // console.log(this.passwd, this.repasswd);
 
     } else {
       this.passMin = true;
       this.passunMatch = false;
 
     }
-
-    
   } 
 
    closeError() {
@@ -130,18 +128,18 @@ export class ManagementComponent implements OnInit {
 
    newUser() {
      if (this.currentUser) {
-       this.isadmin = this.currentUser.admin
+       this.isadmin = this.currentUser.admin;
      } else {
        this.isadmin = false;
      }
      this.selectedUser = [];
-     //opens the user edit form
+     // opens the user edit form
      this.isEditing = true;
-     //for showing the username input
+     // for showing the username input
      this.newUsername = true;
      this.emptyUser = true;
      this.updateUser = false;
-     //for showing the delete button
+     // for showing the delete button
      this.deleteUser = false;
      console.log ('object', this.selectedUser);
   
@@ -165,9 +163,9 @@ export class ManagementComponent implements OnInit {
   onSelect(user): void {
     this.selectedUser = user;
     this.isEditing = true;
-    //console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
+    // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptyUser = false;
-    //console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
+    // console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
 
   }
 

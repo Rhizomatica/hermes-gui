@@ -30,7 +30,7 @@ export class UserService {
       return this.http.get(GlobalConstants.apiURL + '/user').pipe(
         map((res: any) => {
           this.users = res;
-          console.log("⚚ user service: ");
+          console.log('⚚ user service: ');
           return this.users;
       }),
       catchError(this.handleError));

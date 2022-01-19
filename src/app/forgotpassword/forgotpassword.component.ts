@@ -13,7 +13,7 @@ import { StationService } from '../_services/station.service';
 export class ForgotpasswordComponent implements OnInit {
 
     error = Error;
-    success: boolean = false;
+    success = false;
     test = '';
     users: User[];
     stations: Station[];
@@ -21,12 +21,12 @@ export class ForgotpasswordComponent implements OnInit {
     control: any;
     uName: string;
     selTest = true;
-    cAnsw: boolean = false;
-    iAnsw: boolean = true;
+    cAnsw = false;
+    iAnsw = true;
     noUser: true;
-    passMatch: boolean = true;
-    errorAlert: boolean = false;
-    sucess: boolean = false;
+    passMatch = true;
+    errorAlert = false;
+    sucess = false;
     answ: string;
 
 
@@ -51,9 +51,9 @@ export class ForgotpasswordComponent implements OnInit {
 
     onSelect(input): void {
       this.selectedUser = this.users.find(obj => {
-        return obj.email === input
+        return obj.email === input;
       });
-      if (typeof(this.selectedUser) == 'undefined') {
+      if (typeof(this.selectedUser) === 'undefined') {
         this.selTest = false;
       } else {
         this.selTest = true;
@@ -61,9 +61,9 @@ export class ForgotpasswordComponent implements OnInit {
       
     }
 
-    onSubmitUpdate(f:NgForm): void {
+    onSubmitUpdate(f: NgForm): void {
       console.log('⚚ management - passreset ');
-      var id = this.selectedUser.emailid;
+      const id = this.selectedUser.emailid;
       
 
       this.userService.updateUser(id, f.value).subscribe(
@@ -76,13 +76,11 @@ export class ForgotpasswordComponent implements OnInit {
           this.error = err;
           this.errorAlert = true;
           this.success = false;
-
-
         }
       );
-      //window.location.reload();
+      // window.location.reload();
     }
-  
+
     closeError() {
       this.errorAlert = false;
     }
@@ -100,11 +98,11 @@ export class ForgotpasswordComponent implements OnInit {
 
 
     checkPassw(passw, repassw) {
-      if (passw == repassw) {
+      if (passw === repassw) {
         this.passMatch = true;
 
       } else {
-        this.passMatch = false
+        this.passMatch = false;
       }
     }
 

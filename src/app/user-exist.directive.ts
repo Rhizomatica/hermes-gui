@@ -31,7 +31,7 @@ export function compareUsername(userList: any): ValidatorFn {
   ]
 })
 
-export class UserExistDirective implements Validator {
+export class UserExistDirective implements Validator, OnInit {
   @Input('appUserExist') userFound: string;
   userList: User[];
 
@@ -50,7 +50,7 @@ export class UserExistDirective implements Validator {
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    return this.userList ?  compareUsername(this.userList)(control): null;
+    return this.userList ? compareUsername(this.userList)(control) : null;
   }
 
   // TODO double check!

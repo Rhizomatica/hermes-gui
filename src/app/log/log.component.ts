@@ -15,10 +15,10 @@ export interface LogList {
 })
 export class LogComponent implements OnInit {
 
-  uLog: boolean = false;
-  eLog: boolean = false;
-  dLog: boolean = false;
-  edLog: boolean = false;
+  uLog = false;
+  eLog = false;
+  dLog = false;
+  edLog = false;
   currentUser: User;
   isAdmin = true;
   uucpLog: any;
@@ -27,10 +27,7 @@ export class LogComponent implements OnInit {
   error = Error;
   log: LogList;
 
-
- 
-  constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
-    
+  constructor( private authenticationService: AuthenticationService, private apiService: ApiService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -57,7 +54,7 @@ export class LogComponent implements OnInit {
     this.apiService.getUucpLog().subscribe(
       (res: any) => {
         this.uucpLog = res;
-        //console.log(this.uucpLog);
+        // console.log(this.uucpLog);
 
         return res;
       },
@@ -71,7 +68,7 @@ export class LogComponent implements OnInit {
     this.apiService.getMailLog().subscribe(
       (res: any) => {
         this.mailLog = res;
-        //console.log(this.mailLog);
+        // console.log(this.mailLog);
         return res;
       },
       (err) => {

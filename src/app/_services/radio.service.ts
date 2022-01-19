@@ -17,7 +17,6 @@ export class RadioService {
 	radioFrequency: any;
 	radioMode: any;
 	radioOffset: any;
-
 	error = Error;
   
   constructor(
@@ -28,7 +27,7 @@ export class RadioService {
 
 
     public setRadioFreq (freq: number): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/freq/${freq}`; 
+      const url = `${GlobalConstants.apiURL}/radio/freq/${freq}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -37,7 +36,7 @@ export class RadioService {
     }
 
     public setRadioMode (mode: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/mode/${mode}`; 
+      const url = `${GlobalConstants.apiURL}/radio/mode/${mode}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -46,7 +45,7 @@ export class RadioService {
     }
 
     public setRadioBfo (bfo: number): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}`; 
+      const url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -55,7 +54,7 @@ export class RadioService {
     }
 
     public setRadioMastercal(mastercal: number): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}`; 
+      const url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -146,7 +145,7 @@ export class RadioService {
     }
 
     public setRadioRefThreshold(value: number): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}`; 
+      const url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -155,7 +154,7 @@ export class RadioService {
     }
 
     public setRadioRefThresholdv(value: number): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/refthresholdv/${value}`; 
+      const url = `${GlobalConstants.apiURL}/radio/refthresholdv/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -164,7 +163,7 @@ export class RadioService {
     }
 
     public setRadioPTT(value: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/ptt/${value}`; 
+      const url = `${GlobalConstants.apiURL}/radio/ptt/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -173,7 +172,7 @@ export class RadioService {
     }
 
     public setRadioTone(value: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/tone/${value}`; 
+      const url = `${GlobalConstants.apiURL}/radio/tone/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -182,7 +181,7 @@ export class RadioService {
     }
 
     public setRadioBypass(value: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/bypass/${value}`; 
+      const url = `${GlobalConstants.apiURL}/radio/bypass/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -191,7 +190,7 @@ export class RadioService {
     }
 
     public radioResetProtection(): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/protection`; 
+      const url = `${GlobalConstants.apiURL}/radio/protection`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -200,7 +199,7 @@ export class RadioService {
     }
 
     public radioSetDefaults(): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/setdefaults`; 
+      const url = `${GlobalConstants.apiURL}/radio/setdefaults`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -209,7 +208,7 @@ export class RadioService {
     }
 
     public radioRestoreDefaults(): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/restoredefaults`; 
+      const url = `${GlobalConstants.apiURL}/radio/restoredefaults`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -218,7 +217,7 @@ export class RadioService {
     }
 
     public setRadioLed(value: string): Observable<{}> {
-      var url = `${GlobalConstants.apiURL}/radio/led/${value}`; 
+      const url = `${GlobalConstants.apiURL}/radio/led/${value}`; 
       return this.http.post(url,null).pipe(
         map((res: any) => {
           return res;
@@ -229,7 +228,7 @@ export class RadioService {
 
     private handleError(error: HttpErrorResponse) {
       console.log('⚚ Hermes ⚚\n⚚ radio service  error - :\n ', error);
-	  return throwError(error);
+	    return throwError(error);
     }
 
 

@@ -3,7 +3,7 @@ import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 import { User } from '../user';
-//import { GlobalConstants } from '../global-constants';
+// import { GlobalConstants } from '../global-constants';
 import { UserService } from '../_services/user.service';
 import { AuthenticationService } from '../_services/authentication.service';
 
@@ -42,9 +42,11 @@ export class MessagesComponent implements OnInit {
   noMessages = false;
 
 
-  constructor(private messageService: MessageService,  private alertService: AlertService, 
-    private authenticationService: AuthenticationService, private userService: UserService
-    ) {
+  constructor(
+    private messageService: MessageService,
+    private alertService: AlertService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
@@ -78,7 +80,7 @@ export class MessagesComponent implements OnInit {
   
   deleteInboxMessage($id): void {
     console.log('⚚ messages - delete id: ', $id);
-    this.inboxMessages= this.inboxMessages.filter(obj => obj !== this.message);
+    this.inboxMessages = this.inboxMessages.filter(obj => obj !== this.message);
 
     this.messageService.deleteMessage($id).subscribe(
       (res: any) => {

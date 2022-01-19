@@ -16,12 +16,10 @@ export class StationService {
   constructor(
     private http: HttpClient,
     private alertService: AlertService) { }
-
     stations: Station[];
 
     getStations(): Observable<Station[]> {
       const url = `${GlobalConstants.apiURL}/sys/stations`; 
-
       return this.http.get(url).pipe(
         map((res: any) => {
           this.stations = res;
@@ -33,6 +31,6 @@ export class StationService {
     private handleError(error: HttpErrorResponse) {
       this.stations = [];
       console.log('⚚ Hermes ⚚\n⚚ station service  error - :\n ', error);
-	  return throwError(error);
+	    return throwError(error);
     }
 }

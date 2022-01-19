@@ -49,7 +49,6 @@ export class ApiService {
       console.log('shutting down');
       this.http.get(url).subscribe();
     }
-    
 
     public sysReboot() {
       const url = `${GlobalConstants.apiURL}/sys/reboot`; // get api:sys/reboot
@@ -60,12 +59,12 @@ export class ApiService {
 
     public sysRestore(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/restore`; // get api:sys/restore
-      //console.log(this.http.get(url));
-      //console.log(url);
+      // console.log(this.http.get(url));
+      // console.log(url);
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          //console.log('⚚ Hermes ⚚\n⚚ api service - system restore:\n ', res);
+          // console.log('⚚ Hermes ⚚\n⚚ api service - system restore:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -73,7 +72,6 @@ export class ApiService {
 
     public setSysConfig(allowfile: string): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/config`; 
-
       const formData: FormData = new FormData();
 
       formData.append('allowfile', allowfile);
@@ -112,7 +110,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          //console.log('⚚ Hermes ⚚\n⚚ api service - mail log:\n ', res);
+          // console.log('⚚ Hermes ⚚\n⚚ api service - mail log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -124,7 +122,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          //console.log('⚚ Hermes ⚚\n⚚ api service - uucp log:\n ', res);
+          // console.log('⚚ Hermes ⚚\n⚚ api service - uucp log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -136,7 +134,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          //console.log('⚚ Hermes ⚚\n⚚ api service - uucp debug log:\n ', res);
+          // console.log('⚚ Hermes ⚚\n⚚ api service - uucp debug log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));

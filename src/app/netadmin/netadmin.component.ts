@@ -31,7 +31,7 @@ export class NetadminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSystemStatus();
-    //console.log(this.system);
+    // console.log(this.system);
   }
 
 }

@@ -16,34 +16,34 @@ import { Api } from './api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   currentUser: User;
   serverRes: any;
   error: any;
   system: any;
-  fullStats: boolean = false;
-  serverError: boolean = false;
-  criticSpace: boolean = false;
+  fullStats = false;
+  serverError = false;
+  criticSpace = false;
   toggleButton = document.querySelector('.dark-button');
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   radio: any;
-  protection: boolean = true;
-  radioError: boolean = false;
+  protection = true;
+  radioError = false;
   res: any;
-  errorAlert: boolean = false;
-  resetting: boolean = false;
+  errorAlert = false;
+  resetting = false;
 
 
 
 
   title = 'hermes.radio';
-  constructor(
+    constructor(
      private router: Router,
      private authenticationService: AuthenticationService,
      private apiService: ApiService,
      private radioService: RadioService,
   	 private darkModeService: DarkModeService
-    ){
+    ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -51,23 +51,21 @@ export class AppComponent {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
-    if (this.system.diskfree < 10485760) {
-      this.criticSpace = true;
-    }
+        if (this.system.diskfree < 10485760) {
+          this.criticSpace = true;
+        }
         return res;
       },
       (err) => {
         this.error = err;
       }
     );
-
-    
   }
 
   resetProtection() {
-    if (this.resetting == true)
+    if (this.resetting === true)
     {
-      this.resetting = false
+      this.resetting = false;
     } else {
       this.resetting = true;
     }
@@ -78,18 +76,17 @@ export class AppComponent {
     this.radioService.radioResetProtection().subscribe(
       (res: any) => {
       this.res = res;
-      if (this.res = 1) {
+      if (this.res === 1) {
         this.radio.protection = true;
         this.protection = this.radio.protection;
-      } 
+      }
       // this.fileIsProcessing = true;
       },
       (err) => {
       this.error = err;
       this.errorAlert = true;
       }
-    )
-  
+    );
   }
 
   getRadioStatus(): void{
@@ -97,11 +94,8 @@ export class AppComponent {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
-        
-        //console.log('hahah' + this.ptt);
-
+        // console.log('hahah' + this.ptt);
         return res;
-        
       },
       (err) => {
         this.error = err;
@@ -114,22 +108,22 @@ export class AppComponent {
   showFullStatus(){
     if (!this.fullStats) {
       this.fullStats = true;
-      //console.log(this.fullStats);
+      // console.log(this.fullStats);
     } else {
       this.fullStats  = false;
-      //console.log(this.fullStats);
+      // console.log(this.fullStats);
       }
     }
-  
+
   showServerAlert() {
    if (!this.serverError) {
      this.serverError = true;
-     //console.log(this.serverError);
+     // console.log(this.serverError);
    } else {
      this.serverError  = false;
-     //console.log(this.serverError);
+     // console.log(this.serverError);
      }
-  }   
+  }
 
   logout() {
     this.authenticationService.logout();

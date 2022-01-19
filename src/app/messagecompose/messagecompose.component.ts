@@ -19,7 +19,7 @@ import { User } from '../user';
 export class MessagecomposeComponent implements OnInit {
 
   public error: Error;
-  public fileError: any = "";
+  public fileError: any = '';
   public res: any;
   public stations: Station[];
   private fileProcessed = true;
@@ -27,30 +27,30 @@ export class MessagecomposeComponent implements OnInit {
   public fileIsProcessed = false;
   public isEncrypted = false;
   public message: Message;
-  public passMatch: boolean = false;
+  public passMatch = false;
   public passwd;
   public repasswd;
   public serverConfig: any;
   public allowfile: any;
-  public allowUpload: boolean = false;
+  public allowUpload = false;
   public currentUser: User;
   public isLoggedIn: boolean;
-  public isAdmin: boolean = false;
-  public passunMatch: boolean = false;
-  public passMin: boolean = false;
-  public errorAlert: boolean = false;
+  public isAdmin = false;
+  public passunMatch = false;
+  public passMin = false;
+  public errorAlert = false;
   public file: any;
   public errorfile: any;
   public fileName: any;
   public errormsg: any;
   public test: any;
   public fileid: any;
-  public fileSelected: boolean = false;
-  public sending: boolean = false;
+  public fileSelected = false;
+  public sending = false;
   public nodename: any;
   public maxSize: any = 31457280;
 
-  //allowfile : users, admin, all
+  // allowfile : users, admin, all
 
 
   /*public message:Message = {
@@ -62,12 +62,12 @@ export class MessagecomposeComponent implements OnInit {
     file: '',
     fileid: '',
     draft: null,
-    sent_at: '',  
+    sent_at: '',
     secure: boolean;
   }*/
 
   constructor(
-    private messageService: MessageService, 
+    private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
     private authenticationService: AuthenticationService) {
@@ -75,7 +75,6 @@ export class MessagecomposeComponent implements OnInit {
       if (this.currentUser) {
         this.isAdmin =  this.currentUser.admin;
       }
-      
     }
 
 
@@ -85,8 +84,8 @@ export class MessagecomposeComponent implements OnInit {
         this.serverConfig= res;
         this.allowfile = res.allowfile;
         this.nodename = res.nodename;
-        //console.log('messagecompose' , this.currentUser);
-        //console.log('hahaha', this.serverConfig)
+        // console.log('messagecompose' , this.currentUser);
+        // console.log('hahaha', this.serverConfig)
 
 
         switch(this.allowfile) {
@@ -101,11 +100,11 @@ export class MessagecomposeComponent implements OnInit {
               	this.allowUpload = true;
             	}
             }
-            break; 
-            case 'all': 
+            break;
+            case 'all':
             this.allowUpload = true;
             break;
-            default: 
+            default:
             this.allowUpload = false;
           }
         return res;
@@ -125,8 +124,7 @@ export class MessagecomposeComponent implements OnInit {
 
   sendMessag(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
-	  f.value.orig = this.nodename;
-      console.log(passwd)
+	    f.value.orig = this.nodename;
       this.messageService.sendMessage(f.value,  this.serverConfig.nodename).subscribe(
       (res: any) => {
         this.res = res;
@@ -143,7 +141,7 @@ export class MessagecomposeComponent implements OnInit {
   onFileSelected(event) {
 
     let file:File = event.target.files[0];
-    console.log(event)
+    // console.log(event);
   
     if (file) {
         
@@ -153,24 +151,24 @@ export class MessagecomposeComponent implements OnInit {
       console.log(this.file);
 
       switch(this.file.type) {
-            case 'image/bmp':
+            case 'image/bmp':           
             case 'image/gif':
-            case 'image/jpeg':  
+            case 'image/jpeg':
             case 'image/png':
-            case 'image/webp':  
+            case 'image/webp':
             case 'image/svg+xml':
-            case 'image/pjpeg': 
-            case 'image/x-jps': 
+            case 'image/pjpeg':
+            case 'image/x-jps':
             case 'audio/aac':
             case 'audio/mpeg':
-            case 'audio/ogg': 
-            case 'audio/ogx':  
+            case 'audio/ogg':
+            case 'audio/ogx':
             case 'audio/opus':
             case 'audio/wav':
             case 'audio/x-wav':
             case 'audio/webm':
             case 'audio/3gpp':
-            case 'audio/3gpp2':  
+            case 'audio/3gpp2':
             this.maxSize = 31457280;
             break;
             default:
@@ -181,16 +179,13 @@ export class MessagecomposeComponent implements OnInit {
 
   
       if(file.size < this.maxSize) {
-
-        
-  
         this.fileName = file.name;
         console.log(file);
         this.fileSelected = true;
         return file;
       }
       else {
-        this.fileName = "file too big";
+        this.fileName = 'file too big | archivo muy grande ';
         console.log(file);
         this.file = null;
         file = null;
@@ -200,7 +195,7 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   removeFile() {
-    let file = [];
+    const file = [];
     this.fileName = '';
     this.file = [];
     this.fileSelected = false;
@@ -219,14 +214,14 @@ export class MessagecomposeComponent implements OnInit {
         f.value.file = value['filename'] ; // gona change  to this default instead of image
         f.value.fileid = value['id'];
         f.value.mimetype = value['mimetype'];
-        let filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
+        const filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
         this.sending = false;
         console.log(value);
-        let res  = this.sendMessageContinue(f);
+        const res  = this.sendMessageContinue(f);
       });
     }
     else{
-        let res  = this.sendMessageContinue(f);
+        const res  = this.sendMessageContinue(f);
         this.sending = false;
       }
     }
@@ -255,7 +250,7 @@ export class MessagecomposeComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  //TODO check to remove
+  // TODO check to remove
   newMessage() {
     // this.router.navigate(['/compose']);
     this.fileIsProcessing = false;
@@ -281,11 +276,11 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   
-  checkpwd(passwd,repasswd) {
-    //let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
-    //let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
+  checkpwd(passwd, repasswd) {
+    // let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
+    // let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
     if (passwd) {
-      if (passwd == repasswd) {
+      if (passwd === repasswd) {
         this.passMatch = true;
         this.passMin = false;
         this.passunMatch = false;
@@ -294,8 +289,8 @@ export class MessagecomposeComponent implements OnInit {
         this.passMin = false;
         this.passunMatch = true;
       }
-      console.log("passMatch: ", this.passMatch);
-      //console.log(this.passwd, this.repasswd);
+      console.log('passMatch: ', this.passMatch);
+      // console.log(this.passwd, this.repasswd);
 
     } else {
       this.passMin = true;

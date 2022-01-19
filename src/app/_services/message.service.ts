@@ -39,13 +39,12 @@ export class MessageService {
 
     const params = new HttpParams();
     const headers = new HttpHeaders();
-    
-    //add this to be able to show progress on interface
+    // add this to be able to show progress on interface
     params.set('reportProgress', 'true');
     params.set('observe', 'events');
     //
     headers.set('Access-Control-Allow-Origin', '*');
-    //try to fix cors error
+    // try to fix cors error
 
     headers.set('Content-Type', null);
     headers.set('Accept', 'multipart/form-data');
@@ -53,12 +52,8 @@ export class MessageService {
     const response = await this.http.post(url, formData, {params, headers});
 
     return response.toPromise();
-
-
     //removi essa linha aqui
     //return this.http.post(url, formData, {params, headers}).toPromise();
-    
-    
     // this.http.post(url, formData, {params, headers}).toPromise().then(
 		// res => {
 		// 	return res;
@@ -146,19 +141,19 @@ export class MessageService {
   /** DELETE: consume server to delete message  */
   deleteMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
-    return this.http.delete(url).pipe(
-      map((res: any) => {
-        console.log('⚚ message service - deleteMessage');
+      return this.http.delete(url).pipe(
+        map((res: any) => {
+          console.log('⚚ message service - deleteMessage');
 
-        return this.messages;
-    }),
+          return this.messages;
+      }),
      catchError(this.handleError));
   }
 
 
-   //uncrypt message test by ariane
+   // uncrypt message test by ariane
    uncrypt(id:number, values): Observable<{}> {
-    var url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`; 
+    const url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`; 
     return this.http.post<Message>(url, values).pipe(
       map((res: any) => {
         this.text = res;
@@ -181,7 +176,7 @@ export class MessageService {
         this.message = res;
         return this.message;
     }),
-	// TODO wtf?
+	  // TODO wtf?
     //   catchError(this.handleError),
     );
 }
@@ -197,8 +192,8 @@ export class MessageService {
 
   private handleError(error: HttpErrorResponse) {
     this.message = [];
-	console.log('⚚ Hermes ⚚\n⚚ message service  error - :\n ', error);
-	return throwError(error);
+	  console.log('⚚ Hermes ⚚\n⚚ message service  error - :\n ', error);
+	  return throwError(error);
   }
 
 }

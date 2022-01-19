@@ -7,11 +7,11 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../user';
 import { interval } from 'rxjs';
 
-//import { truncateSync } from 'fs';
+// import { truncateSync } from 'fs';
 
 
-//import { Router } from '@angular/router';
-//import { GlobalConstants } from '../global-constants';
+// import { Router } from '@angular/router';
+// import { GlobalConstants } from '../global-constants';
 
 
 @Component({
@@ -25,9 +25,9 @@ import { interval } from 'rxjs';
 export class RadioConfigComponent implements OnInit {
   public radio: any = [];
   error: Error;
-  alterFreq: boolean = false;
-  alterSet: boolean = false;
-  confirmSet: boolean = false;
+  alterFreq = false;
+  alterSet = false;
+  confirmSet = false;
   res: any;
   ptt: any;
   bfo: any;
@@ -35,8 +35,8 @@ export class RadioConfigComponent implements OnInit {
   freq: any;
   frek: any;
   realfreq: any;
-  reseting: boolean = false;
-  usb: boolean = true;
+  reseting = false;
+  usb = true;
   mode: any;
   led: any;
   protection: any;
@@ -44,21 +44,21 @@ export class RadioConfigComponent implements OnInit {
   public realValue : number;
   public freqmin = 500;
   public freqmax =30000;
-  errorAlert: boolean = false;
-  radioError: boolean = false;
-  testtone= '0';
-  toneOn: boolean = false;
+  errorAlert = false;
+  radioError= false;
+  testtone = '0';
+  toneOn = false;
   currentUser: User;
   isAdmin = false;
   refthreshold: any;
-  public min : number = 500000;
-  public max : number = 300000000;
+  public min = 500000;
+  public max = 300000000;
   public intervallTimer = interval(500);
   private subscription;
   fwdw: any;
   refv: any;
-  tx: boolean = false;
-  rx: boolean = false;
+  tx = false;
+  rx = false;
   power: any;
 
 
@@ -68,18 +68,17 @@ export class RadioConfigComponent implements OnInit {
 	private radioService: RadioService,
 	private decimalPipe: DecimalPipe) { 
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-
   }
 
   getRadioStatus(): void{
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
         this.radio = res;
-        this.radio.extra=false;
+        this.radio.extra = false;
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
         this.freq = this.radio.freq;
-        this.frek = this.radio.freq /1000;
+        this.frek = this.radio.freq / 1000;
         this.mode = this.radio.mode;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
@@ -90,7 +89,7 @@ export class RadioConfigComponent implements OnInit {
         this.radio.refinvolts = this.radio.refinvolts;
         this.refv = this.radio.refinvolts;
 
-        if (this.radio.bypass==true) {
+        if (this.radio.bypass === true) {
           this.bypass = true;
         } else {
           this.bypass = false;
@@ -127,11 +126,11 @@ export class RadioConfigComponent implements OnInit {
         this.radio.fwdinwatts = this.power.fwdinwatts;
         this.radio.refinvolts = this.power.refinvolts;
         this.radio.txrx = this.power.txrx;
-        //console.log(this.power);
-        //console.log(this.radio.refinvolts);
-        //console.log(this.radio.fwdinwatts);
+        // console.log(this.power);
+        // console.log(this.radio.refinvolts);
+        // console.log(this.radio.fwdinwatts);
 
-        if (this.radio.bypass==true) {
+        if (this.radio.bypass===true) {
           this.bypass = true;
         } else {
           this.bypass = false;
@@ -172,7 +171,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
 
-  changePtt(f){
+  changePtt(f) {
 	  console.log (f);
     
     this.radioService.setRadioPTT(f).subscribe(
@@ -182,7 +181,7 @@ export class RadioConfigComponent implements OnInit {
         console.log (this.ptt);
         this.radio.ptt = res;
         this.ptt = f;
-        if (this.ptt == "ON") {
+        if (this.ptt === "ON") {
           this.radio.tx = true;
           this.radio.rx = false;
         } else {
@@ -198,7 +197,7 @@ export class RadioConfigComponent implements OnInit {
     )
   }
 
-  changeCallback(){
+  changeCallback() {
     
   }
 
@@ -208,20 +207,20 @@ export class RadioConfigComponent implements OnInit {
     } else {
       this.reseting = true;
     }
-    //console.log('⚚ radio-config - confirmReset: ', this.reseting);
+    // console.log('⚚ radio-config - confirmReset: ', this.reseting);
 
   }
 
   
-  screenFreq():void {
-    if (this.alterFreq == false) {
+  screenFreq(): void {
+    if (this.alterFreq === false) {
       this.alterFreq = true; 
     } else {
       this.alterFreq = false;
     }
   }
   
-  changeRadioFreqMode(f:NgForm){
+  changeRadioFreqMode(f: NgForm) {
     this.radioService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
@@ -249,9 +248,9 @@ export class RadioConfigComponent implements OnInit {
 
   }
 
-  changeFrequency(f:NgForm) {
-    let realfreq = f.value.frek * 1000;
-	console.log(realfreq);
+  changeFrequency(f: NgForm) {
+    const realfreq = f.value.frek * 1000;
+	  console.log(realfreq);
     this.radioService.setRadioFreq(realfreq).subscribe(
       (res: any) => {
         this.res = res;
@@ -264,16 +263,16 @@ export class RadioConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     )
-    //filter if is number
-    //filter range 
+    // filter if is number
+    // filter range 
   }
 
-  changeMode(f:NgForm) {
+  changeMode(f: NgForm) {
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
 		this.radio.mode = res;
-        //console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
+        // console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -283,11 +282,11 @@ export class RadioConfigComponent implements OnInit {
     )
   }
 
-  changeBfo(f:NgForm){
+  changeBfo(f:NgForm) {
     this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
-		this.radio.bfo = res;
+		    this.radio.bfo = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -316,8 +315,8 @@ export class RadioConfigComponent implements OnInit {
     this.radioService.setRadioBypass(f.value.bypass).subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
-		this.radio.bypass = res;
+        // console.log('⚚ radio config - set bypass- : res: ', res);
+		    this.radio.bypass = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -331,8 +330,8 @@ export class RadioConfigComponent implements OnInit {
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
-		this.radio.refthreshold = res;
+        // console.log('⚚ radio config - set bypass- : res: ', res);
+		    this.radio.refthreshold = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -353,7 +352,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   screenSet() {
-    if (this.alterSet == false) {
+    if (this.alterSet === false) {
       this.alterSet = true; 
     } else {
       this.alterSet = false;
@@ -370,8 +369,8 @@ export class RadioConfigComponent implements OnInit {
     this.radioService.radioSetDefaults().subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
-		this.radio.refthreshold = res;
+        // console.log('⚚ radio config - set bypass- : res: ', res);
+		    this.radio.refthreshold = res;
         // this.fileIsProcessing = true;
       },
       (err) => {
@@ -387,7 +386,7 @@ export class RadioConfigComponent implements OnInit {
       (res: any) => {
       this.res = res;
       console.log('⚚ radio config - reset radio: res: ', res);
-      if (this.res == 1) {
+      if (this.res === 1) {
         this.radio.protection = false;
       } 
       // this.fileIsProcessing = true;
@@ -401,12 +400,11 @@ export class RadioConfigComponent implements OnInit {
   }
   
   resetRadio() {
-    console.log("reset");
+    console.log('reset');
     this.radioService.radioRestoreDefaults().subscribe(
       (res: any) => {
       this.res = res;
       console.log('⚚ radio reset: ', res);
-      
       // this.fileIsProcessing = true;
       },
       (err) => {
@@ -423,7 +421,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   submitSet() {
-    if (this.confirmSet == false) {
+    if (this.confirmSet === false) {
       this.confirmSet = true; 
     } else {
       this.confirmSet = false;

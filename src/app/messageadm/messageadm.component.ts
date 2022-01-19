@@ -26,14 +26,14 @@ export class MessageadmComponent implements OnInit {
   messages: Message[];
   filteredMessages: Message[];
   message: Message;
-  selectedMessages: boolean = false;
+  selectedMessages = false;
   isadmin = false;
   allowfile: any;
   serverConfig: any;
   allowUp: FormGroup;
-  errorAlert: boolean = false;
-  noSystem: boolean = false;
-  isAdmin: boolean = false;
+  errorAlert = false;
+  noSystem = false;
+  isAdmin = false;
 
   constructor(private messageService: MessageService, private alertService: AlertService,
       private authenticationService: AuthenticationService,

@@ -17,9 +17,10 @@ export class SysadminComponent implements OnInit {
   shuttingDownNow = false;
   rebootingDownNow = false;
 
-  constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
-    
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  constructor(
+    private authenticationService: AuthenticationService,
+    private apiService: ApiService) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   confirmShutDown() {
@@ -45,10 +46,8 @@ export class SysadminComponent implements OnInit {
   }
 
   confirmRestart() {
-
       this.restarting = true;
-
-    console.log('⚚ sysadmin - confirmShutdown: ', this.restarting);
+      console.log('⚚ sysadmin - confirmShutdown: ', this.restarting);
   }
 
   cancelRestart() {

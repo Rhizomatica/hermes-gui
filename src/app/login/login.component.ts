@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   res = '';
   error = Error;
   currentUser: User;
-  success: boolean = false;
+  success = false;
 
   //  constructor(private ApiService: ApiService) { }
   constructor(private  router: Router, private authenticationService: AuthenticationService) {

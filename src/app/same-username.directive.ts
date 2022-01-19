@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 import { User } from './user';
 import { UserService } from './_services/user.service';
@@ -34,7 +34,7 @@ export function compareUsername(userList: any): ValidatorFn {
     }
   ]
 })
-export class SameUsernameDirective implements Validator {
+export class SameUsernameDirective implements Validator, OnInit {
   @Input('appSameUsername') userFound: string;
   userList: User[];
 
@@ -55,7 +55,6 @@ export class SameUsernameDirective implements Validator {
 
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    //console.log('ai');
     return this.userList ? compareUsername(this.userList)(control) : null;
 
   }

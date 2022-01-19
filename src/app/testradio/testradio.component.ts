@@ -5,11 +5,11 @@ import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
 import { interval } from 'rxjs';
 
-//import { truncateSync } from 'fs';
+// import { truncateSync } from 'fs';
 
 
-//import { Router } from '@angular/router';
-//import { GlobalConstants } from '../global-constants';
+// import { Router } from '@angular/router';
+// import { GlobalConstants } from '../global-constants';
 
 
 @Component({
@@ -23,9 +23,9 @@ import { interval } from 'rxjs';
 export class TestradioComponent implements OnInit {
   public radio: any = [];
   error: Error;
-  alterFreq: boolean = false;
-  alterSet: boolean = false;
-  confirmSet: boolean = false;
+  alterFreq = false;
+  alterSet = false;
+  confirmSet = false;
   res: any;
   ptt: any;
   bfo: any;
@@ -33,46 +33,46 @@ export class TestradioComponent implements OnInit {
   freq: any;
   frek: any;
   realfreq: any;
-  reseting: boolean = false;
-  usb: boolean = true;
+  reseting = false;
+  usb = true;
   mode: any;
   led: any;
   protection: any;
   bypass: any;
-  public realValue : number;
+  public realValue: number;
   public freqmin = 500;
-  public freqmax =30000;
-  errorAlert: boolean = false;
-  radioError: boolean = false;
-  testtone= '0';
-  toneOn: boolean = false;
+  public freqmax = 30000;
+  errorAlert = false;
+  radioError = false;
+  testtone = '0';
+  toneOn = false;
   public timer: any;
-  updated: boolean = false;
+  updated = false;
   public intervallTimer = interval(1000);
   private subscription;
   fwdw: any;
   refv: any;
-  tx: boolean = false;
-  rx: boolean = false;
+  tx = false;
+  rx = false;
   power: any;
   refthreshold: any;
 
 
-  constructor    ( 
+constructor(
 	private apiService: ApiService,
 	private radioService: RadioService,
-	private decimalPipe: DecimalPipe) { }
+	private decimalPipe: DecimalPipe) {}
 
   getRadioStatus(): void{
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
         this.radio = res;
-        this.radio.extra=false;
+        this.radio.extra = false;
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
         this.freq = this.radio.freq;
-        //frequency in MegaHz
-        this.frek = this.radio.freq /1000;
+        // frequency in MegaHz
+        this.frek = this.radio.freq / 1000;
         this.mode = this.radio.mode;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
@@ -92,7 +92,7 @@ export class TestradioComponent implements OnInit {
           this.toneOn = false;
         }
 
-        if (this.radio.bypass==true) {
+        if (this.radio.bypass === true) {
           this.bypass = true;
         } else {
           this.bypass = false;
@@ -103,8 +103,7 @@ export class TestradioComponent implements OnInit {
         } else {
           this.ptt = 'OFF';
         }
-		
-        //console.log('hahah' + this.ptt);
+        // console.log('hahah' + this.ptt);
 
         return res;
         
@@ -129,11 +128,11 @@ export class TestradioComponent implements OnInit {
         this.radio.fwdinwatts = this.power.fwdinwatts;
         this.radio.refinvolts = this.power.refinvolts;
         this.radio.txrx = this.power.txrx;
-        //console.log(this.power);
-        //console.log(this.radio.refinvolts);
-        //console.log(this.radio.fwdinwatts);
+        // console.log(this.power);
+        // console.log(this.radio.refinvolts);
+        // console.log(this.radio.fwdinwatts);
 
-        if (this.radio.bypass==true) {
+        if (this.radio.bypass===true) {
           this.bypass = true;
         } else {
           this.bypass = false;
@@ -156,24 +155,24 @@ export class TestradioComponent implements OnInit {
     );
   }
 
-  get value() : number {
+  get value(): number {
     this.realValue = this.radio.freq;
     return this.realValue;
 	}
 
-  set value(newValue : number) {
+  set value(newValue: number) {
     this.realValue = newValue;
     if(this.realValue < this.freqmin){
       this.realValue = undefined;
-      setTimeout(() => {this.realValue = this.freqmin;});
+      setTimeout(() => {this.realValue = this.freqmin; });
     }
     else if(this.realValue > this.freqmax){
       this.realValue = undefined;
-      setTimeout(() => {this.realValue = this.freqmax;});
+      setTimeout(() => {this.realValue = this.freqmax; });
     }
   }
 
-  changeCallback(f:NgForm){
+  changeCallback(f: NgForm) {
     
   }
 
@@ -186,10 +185,10 @@ export class TestradioComponent implements OnInit {
         console.log (this.ptt);
         this.radio.ptt = res;
         this.ptt = f;
-        if (this.ptt == "ON") {
+        if (this.ptt === 'ON') {
           this.radio.tx = true;
           this.radio.rx = false;
-          //myVar = setInterval(this.testTest, 1000);
+          // myVar = setInterval(this.testTest, 1000);
 
         } else {
           this.radio.tx = false;
@@ -201,7 +200,7 @@ export class TestradioComponent implements OnInit {
        this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
 
@@ -215,7 +214,7 @@ export class TestradioComponent implements OnInit {
         this.ptt = f;
         this.radio.tx = true;
         this.radio.rx = false;
-        console.log('on')
+        console.log('on');
 
       },
       (err) => {
@@ -271,7 +270,7 @@ export class TestradioComponent implements OnInit {
         this.ptt = f;
         this.radio.tx = false;
         this.radio.rx = true;
-        console.log('off')
+        console.log('off');
         clearInterval(this.timer);
 
       },
@@ -295,7 +294,7 @@ export class TestradioComponent implements OnInit {
       (res: any) => {
         this.res = res;
 		this.radio.testtone = res;
-    if (res == '0') {
+    if (res === '0') {
       this.toneOn = false;
     } else {
       this.toneOn = true;
@@ -306,7 +305,7 @@ export class TestradioComponent implements OnInit {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
 
 
   }
@@ -316,12 +315,12 @@ export class TestradioComponent implements OnInit {
       (res: any) => {
         this.res = res;
         console.log('⚚ radio config - set threshold in volts- : res: ', res);
-		this.radio.refthresholdv = res;
-    	//this.radio=this.getRadioStatus();
+		    this.radio.refthresholdv = res;
+    	  // this.radio=this.getRadioStatus();
         // this.fileIsProcessing = true;
-    	this.radioService.getRadioRefThreshold().subscribe(
-       	(res: any) => {
-           	this.radio.refthreshold= res;
+    	  this.radioService.getRadioRefThreshold().subscribe(
+       	(resp: any) => {
+           	this.radio.refthreshold = resp;
          	}
      	);
       },
@@ -329,7 +328,7 @@ export class TestradioComponent implements OnInit {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
 
   }
 
@@ -345,14 +344,14 @@ export class TestradioComponent implements OnInit {
   }
 
   screenFreq():void {
-    if (this.alterFreq == false) {
+    if (this.alterFreq === false) {
       this.alterFreq = true; 
     } else {
       this.alterFreq = false;
     }
   }
 
-  changeRadioFreqMode(f:NgForm){
+  changeRadioFreqMode(f:NgForm) {
   
     this.radioService.setRadioFreq(this.realfreq).subscribe(
       (res: any) => {
@@ -384,7 +383,7 @@ export class TestradioComponent implements OnInit {
   }
 
   changeFrequency(f:NgForm) {
-	let realfreq = f.value.frek * 1000;
+	const realfreq = f.value.frek * 1000;
 	console.log(realfreq);
     this.radioService.setRadioFreq(realfreq).subscribe(
       (res: any) => {
@@ -398,11 +397,11 @@ export class TestradioComponent implements OnInit {
         this.errorAlert = true;
       }
     )
-    //filter if is number
-    //filter range 
+    // filter if is number
+    // filter range 
   }
 
-  changeMode(f:NgForm) {
+  changeMode(f:NgForm) { 
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
@@ -414,11 +413,10 @@ export class TestradioComponent implements OnInit {
         this.error =  err;
         this.errorAlert = true;
       }
-    )
-
+    );
   }
 
-  changeBfo(f:NgForm){
+  changeBfo(f: NgForm) {
     this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
@@ -429,10 +427,10 @@ export class TestradioComponent implements OnInit {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
-  changeMasterCall(f:NgForm){
+  changeMasterCall(f: NgForm) {
     this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
         this.res = res;
@@ -444,14 +442,14 @@ export class TestradioComponent implements OnInit {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
   changeByPass(f){
     this.radioService.setRadioBypass(f).subscribe(
       (res: any) => {
         this.res = res;
-        if (res==true) {
+        if (res === true) {
           this.bypass = true;
           this.radio.bypass = true;
         } else {
@@ -459,14 +457,14 @@ export class TestradioComponent implements OnInit {
           this.radio.bypass = false;
 
         }
-        console.log('⚚ radio config - set bypass- :' ,this.bypass)
+        console.log('⚚ radio config - set bypass- :' , this.bypass);
         // this.fileIsProcessing = true;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
   changeLed(f){
@@ -474,62 +472,58 @@ export class TestradioComponent implements OnInit {
     this.radioService.setRadioLed(f).subscribe(
       (res: any) => {
         this.res = res;
-        if (res==true) {
+        if (res === true) {
           this.led = true;
           this.radio.led = true;
         } else {
           this.led = false;
           this.radio.led = false;
         }
-        console.log('⚚ testradio - set led- :' ,this.radio.led)
+        console.log('⚚ testradio - set led- :' , this.radio.led);
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
 
 
   resetProtection() {
-	//console.log("teste");
+	// console.log("teste");
   this.radioService.radioResetProtection().subscribe(
 	  (res: any) => {
-		this.res = res;
-		console.log('⚚ radio config - reset radio: res: ', res);
-    if (this.res == 1) {
-      this.radio.protection = false;
-    } 
-		// this.fileIsProcessing = true;
+		  this.res = res;
+		  console.log('⚚ radio config - reset radio: res: ', res);
+      if (this.res === 1) {
+        this.radio.protection = false;
+      }
+		  // this.fileIsProcessing = true;
 	  },
 	  (err) => {
-		this.error = err;
-		this.errorAlert = true;
+      this.error = err;
+      this.errorAlert = true;
 	  }
-	)
-
+	);
 }
 
 resetRadio() {
-    console.log("reset");
-  this.radioService.radioRestoreDefaults().subscribe(
-	  (res: any) => {
-		this.res = res;
-		console.log('⚚ radio reset: ', res);
-    
-		// this.fileIsProcessing = true;
-	  },
-	  (err) => {
-		this.error = err;
-		this.errorAlert = true;
-	  }
-	)
+    console.log('reset');
+    this.radioService.radioRestoreDefaults().subscribe(
+	    (res: any) => {
+        this.res = res;
+        console.log('⚚ radio reset: ', res)
+        // this.fileIsProcessing = true;
+      } ,
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+	    }
+	  );
 
     console.log('⚚ testradio - reset to defaults ');
   }
-
-
 
   confirmChange(){
     if (this.confirmSet) {
@@ -540,8 +534,8 @@ resetRadio() {
   }
 
   screenSet() {
-    if (this.alterSet == false) {
-      this.alterSet = true; 
+    if (this.alterSet === false) {
+      this.alterSet = true;
     } else {
       this.alterSet = false;
     }
@@ -550,13 +544,10 @@ resetRadio() {
     } else {
       this.confirmSet = true;
     }
-
   }
 
 
-
-  changeRadioSettings(f:NgForm){
-    
+  changeRadioSettings(f: NgForm) {
     this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
@@ -567,7 +558,7 @@ resetRadio() {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
 
     this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
@@ -579,17 +570,16 @@ resetRadio() {
         this.error =  err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
   closeError() {
     this.errorAlert = false;
   }
 
-
   submitSet() {
-    if (this.confirmSet == false) {
-      this.confirmSet = true; 
+    if (this.confirmSet === false) {
+      this.confirmSet = true;   
     } else {
       this.confirmSet = false;
     }
@@ -599,33 +589,24 @@ resetRadio() {
     this.radioService.radioSetDefaults().subscribe(
       (res: any) => {
         this.res = res;
-        //console.log('⚚ radio config - set bypass- : res: ', res);
-		this.radio.refthreshold = res;
+        //  console.log('⚚ radio config - set bypass- : res: ', res);
+		    this.radio.refthreshold = res;
         // this.fileIsProcessing = true;
-      },
-      (err) => {
+      },(err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
   ngOnInit(): void {
-
-    this.radio=this.getRadioStatus();
+    this.radio = this.getRadioStatus();
     this.getPttswr();
     this.subscription = this.intervallTimer.subscribe(() => this.getPttswr());
-
-
-    
-
     this.testTest();
-
     if (this.radio) {
-      this.usb = this.radio.mode;
+        this.usb = this.radio.mode;
+      }
     }
-    
-  
-    }
-
 }
+

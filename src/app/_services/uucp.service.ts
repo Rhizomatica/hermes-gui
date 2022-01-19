@@ -28,10 +28,10 @@ export class UUCPService{
     };
 
   getQueue(): Observable<UUCPQueue[]> {
-    const url = `${GlobalConstants.apiURL}/sys/uuls`; 
+    const url = `${GlobalConstants.apiURL}/sys/uuls`;
     return this.http.get(url).pipe(
       map((res: any) => {
-        this.queue= res;
+        this.queue = res;
         return this.queue;
     }),
       catchError(this.handleError));
@@ -41,7 +41,7 @@ export class UUCPService{
     const url = `${GlobalConstants.apiURL}/sys/uuk/${uuhost}/${id}`; // DELETE /message/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        this.queue= res;
+        this.queue = res;
         console.log('⚚ uucp service - canceltransmission');
         return this.queue;
     }),
@@ -49,7 +49,7 @@ export class UUCPService{
   }
 
   callSystems(): Observable<UUCPQueue[]> {
-    const url = `${GlobalConstants.apiURL}/sys/uucall`; 
+    const url = `${GlobalConstants.apiURL}/sys/uucall`;
     return this.http.get(url).pipe(
       map((res: any) => {
         return this.queue;
@@ -60,7 +60,7 @@ export class UUCPService{
 
   private handleError(error: HttpErrorResponse) {
 	  this.queue = [];
-      console.log('⚚ Hermes ⚚\n⚚ uucp service  error ');
+    console.log('⚚ Hermes ⚚\n⚚ uucp service  error ');
 	  return throwError(error);
   }
 

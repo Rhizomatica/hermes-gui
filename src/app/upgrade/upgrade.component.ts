@@ -9,19 +9,17 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./upgrade.component.less']
 })
 export class UpgradeComponent implements OnInit {
-
-restore: boolean = false;
-restoreConf: boolean = false;
-upgradeConf:boolean = false;
+restore = false;
+restoreConf = false;
+upgradeConf = false;
 restoring: any;
 error: Error;
-upgrade: boolean = false;
-errorAlert: boolean = false;
+upgrade = false;
+errorAlert = false;
 currentUser: any;
-isAdmin: boolean = false;
+isAdmin = false;
 
-constructor( private authenticationService: AuthenticationService, private apiService: ApiService){
-    
+constructor( private authenticationService: AuthenticationService, private apiService: ApiService) {
   this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 }
 
@@ -30,11 +28,11 @@ closeError() {
 }
 
   restoreAlert() {
-  this.restore =true;
+  this.restore = true;
   }
 
   upgradeAlert() {
-    this.upgrade =true;
+    this.upgrade = true;
     }
 
   restoreConfirm() {
