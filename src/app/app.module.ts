@@ -38,6 +38,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './testradio/testradio.component';
 import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
+import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
 
 registerLocaleData(localePt);
 
@@ -76,7 +77,8 @@ registerLocaleData(localePt);
     EmailComponent,
     RadioConfigComponent,
     FrequencyPipe,
-    TestradioComponent
+    TestradioComponent,
+    GatewayConfigComponent
 
   ],
   imports: [
