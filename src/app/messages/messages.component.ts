@@ -98,12 +98,10 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInboxMessages();
-    if(this.currentUser) {
+    if ( this.currentUser ) {
     this.isadmin = this.currentUser.admin;
-
     } else {
-     this.isadmin = false; 
-    }
-    //console.log(this.isadmin);
+     this.isadmin = false;
+    }// console.log(this.isadmin);
   }
 }

@@ -19,7 +19,7 @@ export class StationService {
     stations: Station[];
 
     getStations(): Observable<Station[]> {
-      const url = `${GlobalConstants.apiURL}/sys/stations`; 
+      const url = `${GlobalConstants.apiURL}/sys/stations`;
       return this.http.get(url).pipe(
         map((res: any) => {
           this.stations = res;

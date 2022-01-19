@@ -46,7 +46,7 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     onBtn(){
-      //console.log('debug onBtn lalala');
+      // console.log('debug onBtn lalala');
     }
 
     onSelect(input): void {
@@ -58,14 +58,11 @@ export class ForgotpasswordComponent implements OnInit {
       } else {
         this.selTest = true;
       }
-      
     }
 
     onSubmitUpdate(f: NgForm): void {
       console.log('⚚ management - passreset ');
       const id = this.selectedUser.emailid;
-      
-
       this.userService.updateUser(id, f.value).subscribe(
         (res: any) => {
           this.users = res;

@@ -59,8 +59,7 @@ export class SentMessagesComponent implements OnInit {
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
     	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
-      },
-      (err) => {
+      }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
@@ -84,7 +83,7 @@ export class SentMessagesComponent implements OnInit {
 
 confTransmit(){
   if (this.confirmTransmit === false) {
-    this.confirmTransmit = true; 
+    this.confirmTransmit = true;
   } else {
     this.confirmTransmit = false;
   }
@@ -135,12 +134,12 @@ confTransmit(){
     if (this.queue) {
       if (this.queue !== []) {
         let soma = 0;
-        for(let i = 0; i < this.queue.length; i++) {
-          soma += parseInt(this.queue[i].size);
+        for( let i = 0; i < this.queue.length; i++) {
+          soma += parseInt(this.queue[i].size, 10);
           console.log(soma);
           return soma;
       }
-    } 
+    }
     }
   }
 

@@ -38,7 +38,7 @@ export class UserService {
 
     /** DELETE: delete the user from the server */
     deleteUser(id: number, email: string): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/user/${id}/${email}`; 
+      const url = `${GlobalConstants.apiURL}/user/${id}/${email}`;
       console.log('⚚ message service - deleteUser');
       return this.http.delete(url)
         .pipe(
@@ -47,7 +47,7 @@ export class UserService {
 
     /** POST: add a new user to the database */
     createUser(user: User): Observable<User> {
-      const url = `${GlobalConstants.apiURL}/user`; 
+      const url = `${GlobalConstants.apiURL}/user`;
       return this.http.post<User>(url, user, this.httpOptions)
        .pipe(
         catchError(this.handleError)
@@ -57,7 +57,7 @@ export class UserService {
 
   /** POST: update a user  */
     updateUser(id: number, user: User): Observable<User> {
-      const url = `${GlobalConstants.apiURL}/user/${id}`; 
+      const url = `${GlobalConstants.apiURL}/user/${id}`;
       return this.http.post<User>(url, user, this.httpOptions)
       .pipe(
         catchError(this.handleError)
@@ -67,7 +67,7 @@ export class UserService {
     private handleError(error: HttpErrorResponse) {
       this.users = [];
 	  console.log('⚚ Hermes ⚚\n⚚ user service  error - :\n ', error);
-	  return throwError(error);
+	    return throwError(error);
     }
 
 }

@@ -33,9 +33,6 @@ export class AppComponent implements OnInit {
   errorAlert = false;
   resetting = false;
 
-
-
-
   title = 'hermes.radio';
     constructor(
      private router: Router,
@@ -43,8 +40,9 @@ export class AppComponent implements OnInit {
      private apiService: ApiService,
      private radioService: RadioService,
   	 private darkModeService: DarkModeService
-    ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+     )
+    {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   getSystemStatus(): void{

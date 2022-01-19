@@ -52,23 +52,7 @@ export class MessageService {
     const response = await this.http.post(url, formData, {params, headers});
 
     return response.toPromise();
-    //removi essa linha aqui
-    //return this.http.post(url, formData, {params, headers}).toPromise();
-    // this.http.post(url, formData, {params, headers}).toPromise().then(
-		// res => {
-		// 	return res;
-		// });
-
-    // Authorization: 'my-auth-token'
-
-    // return this.http.post(url, formData, {params, headers})
-    // .pipe(
-    //   map((res: any) => {
-    //     // console.log('⚚ message service - postFile: ',res);
-    //     return res;
-    //   }),
-    //    catchError(this.handleError)
-    //   );
+    
   }
 
   getMessagesByType($type): Observable<Message[]> {
@@ -141,10 +125,9 @@ export class MessageService {
   /** DELETE: consume server to delete message  */
   deleteMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
-      return this.http.delete(url).pipe(
-        map((res: any) => {
-          console.log('⚚ message service - deleteMessage');
-
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        console.log('⚚ message service - deleteMessage');
           return this.messages;
       }),
      catchError(this.handleError));
@@ -152,8 +135,8 @@ export class MessageService {
 
 
    // uncrypt message test by ariane
-   uncrypt(id:number, values): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`; 
+   uncrypt(id: number, values): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/inbox/uncrypt/${id}`;
     return this.http.post<Message>(url, values).pipe(
       map((res: any) => {
         this.text = res;
@@ -168,7 +151,7 @@ export class MessageService {
     const url = `${GlobalConstants.apiURL}/message`; // POST /message
     message.draft = false;
     message.sent_at = Date();
-    message.orig = origin;  
+    message.orig = origin;
     // messageImage: File;
     console.log('⚚ message service - sendMessage');
     return this.http.post<Message>(url, message).pipe(
@@ -184,16 +167,15 @@ export class MessageService {
 /** POST: update a message  */
   updateMessage(message: Message): Observable<Message> {
     const url = `${GlobalConstants.apiURL}/message/${message.id}`; // PUT api/message/42
-    return this.http.post<Message>(url, message, this.httpOptions)
-    .pipe(
-      catchError(this.handleError)
+      return this.http.post<Message>(url, message, this.httpOptions).pipe(
+        catchError(this.handleError)
     );
 }
 
   private handleError(error: HttpErrorResponse) {
     this.message = [];
 	  console.log('⚚ Hermes ⚚\n⚚ message service  error - :\n ', error);
-	  return throwError(error);
+	    return throwError(error);
   }
 
 }

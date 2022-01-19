@@ -26,7 +26,7 @@ export class MessageDetailComponent implements OnInit {
   uncrypted = false;
   isAudio = false;
   isImage = false;
-  pass= '';
+  pass = '';
   passString = '';
   audioLoading = false;
 
@@ -47,7 +47,7 @@ export class MessageDetailComponent implements OnInit {
     }
     console.log('⚚ message-detail - changeEnc: isEncrypted? ', this.isEncrypted);
   }
-  
+
   getMessageOld(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessage(id).subscribe(message => this.message);
@@ -58,10 +58,11 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
 		  if (res.text !== ''){
-        	this.message.text = res.text;
-        	this.uncrypted = true;
-          this.passString = '?i=' + f.value.pass;
-		  } else {
+        this.message.text = res.text;
+        this.uncrypted = true;
+        this.passString = '?i=' + f.value.pass;
+		  }
+      else {
         this.uncrypted = false;
         this.wrongPass = true;
         this.passString = '';
@@ -106,7 +107,6 @@ export class MessageDetailComponent implements OnInit {
             case '':
               this.noImage = true;
               this.isAudio = false;
-              
               break;
             case 'image/bmp':
             case 'image/gif':
@@ -120,18 +120,17 @@ export class MessageDetailComponent implements OnInit {
             this.noImage = true;
             this.isImage = true;
             this.isAudio = false;
-            
-              break;
+            break;
             case 'audio/aac':
             case 'audio/mpeg':
-            case 'audio/ogg': 
-            case 'audio/ogx':  
+            case 'audio/ogg':
+            case 'audio/ogx':
             case 'audio/opus':
             case 'audio/wav':
             case 'audio/x-wav':
             case 'audio/webm':
             case 'audio/3gpp':
-            case 'audio/3gpp2':  
+            case 'audio/3gpp2':
               this.noImage = false;
               this.isImage = false;
               this.isAudio = true;

@@ -35,11 +35,13 @@ export class MessageadmComponent implements OnInit {
   noSystem = false;
   isAdmin = false;
 
-  constructor(private messageService: MessageService, private alertService: AlertService,
-      private authenticationService: AuthenticationService,
-      private apiService: ApiService,
-      private http: HttpClient
-      ) { 
+  constructor(
+    private messageService: MessageService,
+    private alertService: AlertService,
+    private authenticationService: AuthenticationService,
+    private apiService: ApiService,
+    private http: HttpClient
+    ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
       }
@@ -47,9 +49,9 @@ export class MessageadmComponent implements OnInit {
       getSysConfig(): void{
         this.apiService.getSysConfig().subscribe(
           (res: any) => {
-            this.serverConfig= res;
+            this.serverConfig = res;
             this.allowfile = res.allowfile;
-            //console.log(this.allowfile);
+            // console.log(this.allowfile);
             return res;
           },
           (err) => {
@@ -58,9 +60,9 @@ export class MessageadmComponent implements OnInit {
 
           }
         );
-      }  
-
-      closeError() {
+      }
+      
+    closeError() {
         this.errorAlert = false;
       }
 
@@ -97,17 +99,15 @@ export class MessageadmComponent implements OnInit {
       },
       (err) => {
         this.error = err;
-        
       }
     );
   }
 
   setUploadPermission(value: string) {
-    
-    //console.log(value);
+    // console.log(value);
       this.apiService.setSysConfig(value).subscribe(
       (res: any) => {
-        this.allowfile= res.allowfile;
+        this.allowfile = res.allowfile;
         console.log('⚚ messagecompose - sendMessage');
       },
       (err) => {
@@ -115,7 +115,7 @@ export class MessageadmComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    //console.log(this.allowfile);
+    // console.log(this.allowfile);
   }
 
   ngOnInit(): void {

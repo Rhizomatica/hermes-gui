@@ -22,10 +22,10 @@ export class StationsComponent implements OnInit {
     this.stationService.getStations().subscribe(
       (res: any) => {
         this.stations = res;
-      },(err) => {
-        this.error = err;
-		    console.log(this.error);
-      }
+      }, (err) => {
+          this.error = err;
+		      console.log(this.error);
+        }
     );
   }
 

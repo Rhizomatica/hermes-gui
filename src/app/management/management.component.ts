@@ -98,7 +98,7 @@ export class ManagementComponent implements OnInit {
       this.passunMatch = false;
 
     }
-  } 
+  }
 
    closeError() {
     this.errorAlert = false;
@@ -142,8 +142,6 @@ export class ManagementComponent implements OnInit {
      // for showing the delete button
      this.deleteUser = false;
      console.log ('object', this.selectedUser);
-  
-     
    }
 
 
@@ -170,12 +168,11 @@ export class ManagementComponent implements OnInit {
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
-    //console.log('sel', this.selectedUser);
+    // console.log('sel', this.selectedUser);
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
         this.getUsers();
-        
       },
       (err) => {
         this.error = err;
@@ -186,23 +183,20 @@ export class ManagementComponent implements OnInit {
     this.selectedUser = [];
     this.updateUser = false;
     this.isEditing = false;
-   
-    
   }
 
-  onSubmitDelete(id: number, email:string): void {
+  onSubmitDelete( id: number, email:string ): void {
       this.userService.deleteUser(id, email).subscribe();
       this.deleteUser = false;
       this.isEditing = false;
-      //window.location.reload();
+      // window.location.reload();
   }
 
   async onSubmitCreate(f: NgForm): Promise<void> {
-    f.value.location = "local";
+    f.value.location = 'local';
     await this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
     this.users = [];
-    
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
@@ -213,7 +207,6 @@ export class ManagementComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    
     this.getUsers();
 
   }

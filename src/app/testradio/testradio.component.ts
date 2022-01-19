@@ -4,10 +4,7 @@ import { RadioService } from '../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
 import { interval } from 'rxjs';
-
 // import { truncateSync } from 'fs';
-
-
 // import { Router } from '@angular/router';
 // import { GlobalConstants } from '../global-constants';
 
@@ -104,9 +101,7 @@ constructor(
           this.ptt = 'OFF';
         }
         // console.log('hahah' + this.ptt);
-
         return res;
-        
       },
       (err) => {
         this.error = err;
@@ -162,11 +157,11 @@ constructor(
 
   set value(newValue: number) {
     this.realValue = newValue;
-    if(this.realValue < this.freqmin){
+    if( this.realValue < this.freqmin ){
       this.realValue = undefined;
       setTimeout(() => {this.realValue = this.freqmin; });
     }
-    else if(this.realValue > this.freqmax){
+    else if( this.realValue > this.freqmax ){
       this.realValue = undefined;
       setTimeout(() => {this.realValue = this.freqmax; });
     }
@@ -233,7 +228,7 @@ constructor(
     }
 
     stopUpdate() {
-      this.subscription.unsubscribe()
+      this.subscription.unsubscribe();
 
     }
 
@@ -278,30 +273,24 @@ constructor(
        this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
   }
 
- 
-
-
   testTone(f) {
-
     this.testtone = f;
-
     console.log(f);
     console.log(this.toneOn);
     this.radioService.setRadioTone(f).subscribe(
       (res: any) => {
         this.res = res;
 		this.radio.testtone = res;
-    if (res === '0') {
-      this.toneOn = false;
-    } else {
-      this.toneOn = true;
-    }
+      if (res === '0') {
+          this.toneOn = false;
+        } else {
+          this.toneOn = true;
+        }
         // this.fileIsProcessing = true;
-      },
-      (err) => {
+      }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
@@ -310,7 +299,7 @@ constructor(
 
   }
 
-  changeRefThresholdv(f:NgForm){
+  changeRefThresholdv(f: NgForm){
     this.radioService.setRadioRefThresholdv(f.value.refthresholdv).subscribe(
       (res: any) => {
         this.res = res;
@@ -322,7 +311,7 @@ constructor(
        	(resp: any) => {
            	this.radio.refthreshold = resp;
          	}
-     	);
+        );
       },
       (err) => {
         this.error = err;
@@ -339,32 +328,30 @@ constructor(
     } else {
       this.reseting = true;
     }
-    //console.log('⚚ radio-config - confirmReset: ', this.reseting);
+    // console.log('⚚ radio-config - confirmReset: ', this.reseting);
 
   }
 
-  screenFreq():void {
+  screenFreq(): void {
     if (this.alterFreq === false) {
-      this.alterFreq = true; 
+      this.alterFreq = true;
     } else {
       this.alterFreq = false;
     }
   }
 
-  changeRadioFreqMode(f:NgForm) {
-  
+  changeRadioFreqMode(f: NgForm) {
     this.radioService.setRadioFreq(this.realfreq).subscribe(
       (res: any) => {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: reS: ', res);
-    	this.realfreq = Math.round(f.value.freq * 1000);
+    	  this.realfreq = Math.round(f.value.freq * 1000);
         // this.fileIsProcessing = true;
-      },
-      (err) => {
+      }, (err) => {
         this.error =  err;
         this.errorAlert = true;
       }
-    )
+    );
 
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
@@ -378,30 +365,29 @@ constructor(
         this.error =  err;
         this.errorAlert = true;
       }
-    )
+    );
 
   }
 
-  changeFrequency(f:NgForm) {
+  changeFrequency(f: NgForm) {
 	const realfreq = f.value.frek * 1000;
 	console.log(realfreq);
-    this.radioService.setRadioFreq(realfreq).subscribe(
-      (res: any) => {
-        this.res = res;
-        console.log('⚚ changeRadio- setRadioFreq: res: ', res);
+  this.radioService.setRadioFreq(realfreq).subscribe(
+    (res: any) => {
+      this.res = res;
+      console.log('⚚ changeRadio- setRadioFreq: res: ', res);
         this.radio.freq = res;
         // this.fileIsProcessing = true;
-      },
-      (err) => {
+      }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    );
     // filter if is number
-    // filter range 
+    // filter range
   }
 
-  changeMode(f:NgForm) { 
+  changeMode(f: NgForm) {
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
@@ -494,35 +480,35 @@ constructor(
 	// console.log("teste");
   this.radioService.radioResetProtection().subscribe(
 	  (res: any) => {
-		  this.res = res;
-		  console.log('⚚ radio config - reset radio: res: ', res);
-      if (this.res === 1) {
-        this.radio.protection = false;
-      }
+		    this.res = res;
+		    console.log('⚚ radio config - reset radio: res: ', res);
+        if (this.res === 1) {
+          this.radio.protection = false;
+        }
 		  // this.fileIsProcessing = true;
-	  },
-	  (err) => {
+	  }, (err) => {
       this.error = err;
       this.errorAlert = true;
 	  }
 	);
 }
 
+
 resetRadio() {
-    console.log('reset');
-    this.radioService.radioRestoreDefaults().subscribe(
+      console.log('reset');
+      this.radioService.radioRestoreDefaults().subscribe(
 	    (res: any) => {
         this.res = res;
-        console.log('⚚ radio reset: ', res)
+        console.log('⚚ radio reset: ', res);
         // this.fileIsProcessing = true;
       } ,
       (err) => {
         this.error = err;
         this.errorAlert = true;
 	    }
-	  );
+	    );
 
-    console.log('⚚ testradio - reset to defaults ');
+      console.log('⚚ testradio - reset to defaults ');
   }
 
   confirmChange(){
@@ -579,7 +565,7 @@ resetRadio() {
 
   submitSet() {
     if (this.confirmSet === false) {
-      this.confirmSet = true;   
+      this.confirmSet = true;
     } else {
       this.confirmSet = false;
     }
@@ -588,13 +574,13 @@ resetRadio() {
   setDefaults() {
     this.radioService.radioSetDefaults().subscribe(
       (res: any) => {
-        this.res = res;
-        //  console.log('⚚ radio config - set bypass- : res: ', res);
-		    this.radio.refthreshold = res;
-        // this.fileIsProcessing = true;
-      },(err) => {
-        this.error = err;
-        this.errorAlert = true;
+          this.res = res;
+          //  console.log('⚚ radio config - set bypass- : res: ', res);
+		      this.radio.refthreshold = res;
+          // this.fileIsProcessing = true;
+        }, (err) => {
+          this.error = err;
+          this.errorAlert = true;
       }
     );
   }

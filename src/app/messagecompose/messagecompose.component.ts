@@ -92,14 +92,14 @@ export class MessagecomposeComponent implements OnInit {
           case 'users':
             if (this.currentUser) {
               this.allowUpload = true;
-            }    
+            }
             break;
             case 'admin':
-            if (this.currentUser) {
-            	if (this.isAdmin) {
-              	this.allowUpload = true;
-            	}
-            }
+              if (this.currentUser) {
+                if (this.isAdmin) {
+                  this.allowUpload = true;
+                }
+              }
             break;
             case 'all':
             this.allowUpload = true;
@@ -117,10 +117,6 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-  setFileUpload(): any {
-    
-    
-  }
 
   sendMessag(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
@@ -140,7 +136,7 @@ export class MessagecomposeComponent implements OnInit {
 
   onFileSelected(event) {
 
-    let file:File = event.target.files[0];
+    let file: File = event.target.files[0];
     // console.log(event);
   
     if (file) {
@@ -203,12 +199,9 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   async sendMessage(f: NgForm): Promise<void> {
-
     //turn on animation
     this.sending = true;
-
-
-    // File exists? 
+    // File exists?
     if (this.file != null && this.file !== [] ) {
       await this.messageService.postFile(this.file, f.value.pass).then(value => {
         f.value.file = value['filename'] ; // gona change  to this default instead of image
@@ -295,24 +288,13 @@ export class MessagecomposeComponent implements OnInit {
     } else {
       this.passMin = true;
       this.passunMatch = false;
-
     }
   }
 
   fileUpload(files): void{
     // this.messageService.postFile($files[0]);
     console.log('⚚ messagecompose - fileupload: ', files);
-    // this.messageService.postFile(files[0]).subscribe(
-    //   (res: any) => {
-    //     this.message.file = res.filename;
-    //     this.message.image = res.timestamp;
-	// 	console.log(this.message);
-    //   },
-    //   (err) => {
-    //     this.fileError = err;
-    //     this.errorAlert = true;
-    //   }
-    // );
+
   }
 
   // TODO double check start params on inbox

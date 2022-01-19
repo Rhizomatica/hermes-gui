@@ -71,21 +71,17 @@ export class ApiService {
     }
 
     public setSysConfig(allowfile: string): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/sys/config`; 
+      const url = `${GlobalConstants.apiURL}/sys/config`;
       const formData: FormData = new FormData();
-
       formData.append('allowfile', allowfile);
-
       const params = new HttpParams();
       const headers = new HttpHeaders();
       headers.set('Content-Type', null);
       headers.set('Accept', 'multipart/form-data');
       // Authorization: 'my-auth-token'
-
-    return this.http.post(url, formData, {params, headers})
-    .pipe(
+      return this.http.post(url, formData, {params, headers}).pipe(
       map((res: any) => {
-        console.log('⚚ sys server setting - allowfile: ',res.allowfile);
+        console.log('⚚ sys server setting - allowfile: ', res.allowfile);
         return res.allowfile;
       }),
       catchError(this.handleError)
@@ -142,6 +138,5 @@ export class ApiService {
 
     private handleError(error: HttpErrorResponse) {
       console.log('⚚ Hermes ⚚\n⚚ api service  error - :\n ', error);
-	  return throwError(error);
-    }
+	      return throwError(error);}
 }
