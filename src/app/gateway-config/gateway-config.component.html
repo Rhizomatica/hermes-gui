@@ -1,1 +1,35 @@
-<p>gateway-config works!</p>
+<h2 i18n="@@gatewayconf">Gateway Scheduling</h2>
+
+<div class="gateway" *ngIf="isAdmin">
+    <form #f="ngForm" id="timeform" class="formdata" novalidate>
+
+        <label >
+            <p>
+            </p>
+            <button *ngIf="!enabled">enable</button><button *ngIf="enabled">disable</button>
+
+       </label>
+
+       <div *ngIf="enabled">
+
+<hr>
+        <label >
+            <p i18n="@@initialtime:">Start transmission hour:</p>
+            <input type="time" id="starttime" required/>
+         </label>
+         <label >
+            <p i18n="@@finatime:">Stop transmission hour:</p>
+            <input type="time" id="stoptime" />
+         </label>
+
+         <button type="submit" i18n="@@changetime">change scheduling time</button>
+
+        </div>
+<br/>
+         
+
+    </form>
+</div>
+<div>
+    <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">You need admin privileges to access this page</p>
+</div>
