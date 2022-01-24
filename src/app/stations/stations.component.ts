@@ -22,6 +22,7 @@ export class StationsComponent implements OnInit {
     this.stationService.getStations().subscribe(
       (res: any) => {
         this.stations = res;
+        // console.log(this.stations);
       }, (err) => {
           this.error = err;
 		      console.log(this.error);

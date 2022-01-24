@@ -1,15 +1,14 @@
 <div class="">
   <ng-container *ngIf="stations">
-    <h2 i18n="Stations">Stations</h2>
-    <ul *ngIf="stations">
-        <li *ngFor="let station of stations">{{station.id}} 
-        <label>
-            <span i18n>name</span>: {{station.name}}<br>
+    <h2 i18n="@@stationlist">Station list</h2>
+    <div *ngIf="stations">
+      <p><b class="stname" i18n="@@stname">Name </b><b i18n="@@stalias">Alias</b></p>
+        <p *ngFor="let station of stations">
+           <b class="stname">{{station.name}} </b> {{station.alias}}
+         <!--{{station.id}} <span i18n="@@stname">name</span>: {{station.name}} <span i18n="@@stalias">alias:</span> {{station.alias}}--> 
             <!--<span i18n>location</span>: {{station.location}}<br>-->
-
-        </label>
-    </li>
-    </ul>
+        </p>
+  </div>
 
   </ng-container>
   <!-- error example-->
