@@ -1,10 +1,11 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AlertService } from '../alert.service';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Scheduler, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 // import { Api } from '../api';
 import { GlobalConstants } from '../global-constants';
+import { Schedule } from '../schedule';
 
 
 @Injectable({
@@ -14,6 +15,8 @@ export class ApiService {
   login = false;
   serverReturn: any;
   error = Error;
+  schedules: Schedule[];
+  schedule: any[];
 
   constructor(
     private http: HttpClient,
@@ -136,7 +139,67 @@ export class ApiService {
       catchError(this.handleError));
     }
 
+    public getSchedules(): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/caller`; // get api:/caller
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - caller schedulles:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+    public getSchedule(id: number): Observable<{}> {
+      const url = `${GlobalConstants.apiURL}/caller/${id}`; // get api:/caller
+      const output = this.http.get(url);
+      return this.http.get(url).pipe(
+        map((res: any) => {
+          this.serverReturn = res;
+          console.log('⚚ Hermes ⚚\n⚚ api service - caller schedule:\n ', res);
+          return this.serverReturn;
+      }),
+      catchError(this.handleError));
+    }
+
+
+  public createSchedule(schedule: Schedule): Observable<Schedule[]> {
+    const url = `${GlobalConstants.apiURL}/caller`; // POST /message
+    schedule.id = 1;
+    schedule.delay = "00:30:00";
+    // messageImage: File;
+    console.log('⚚ gateway scheduller - created');
+    return this.http.post<Schedule>(url, schedule).pipe(
+      map((res: any) => {
+        this.schedule = res;
+        return this.schedule;
+    }),
+     catchError(this.handleError),
+    );
+}
+
+
+// need to verify this
+public updateSchedule(schedule: Schedule) {
+  const url = `${GlobalConstants.apiURL}/caller`; // POST /message
+  console.log('⚚ gateway scheduller - updated');
+  this.http.put<Schedule>(url, schedule).subscribe();
+}
+
+public deleteSchedule(id) {
+  const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
+  console.log('⚚ gateway scheduller - deleted');
+  return this.http.delete(url).pipe(
+    map((res: any) => {
+      console.log('⚚ api service - deleteSchedule');
+        return this.schedules;
+    }),
+   catchError(this.handleError));
+}
+
     private handleError(error: HttpErrorResponse) {
       console.log('⚚ Hermes ⚚\n⚚ api service  error - :\n ', error);
 	      return throwError(error);}
 }
+
