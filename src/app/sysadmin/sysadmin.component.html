@@ -9,7 +9,10 @@
         <a routerLink="/log" i18n="@@detailedlog">detailed log</a>
        <!-- <a routerLink="/upgrade" i18n="@@systemupgrade">system restoration</a>-->
         <a routerLink="/radioconfig" i18n="@@radioconfig">radio configuration</a>
-        </div>
+        <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">central station</a>
+
+    
+    </div>
 
         <br/>
 
