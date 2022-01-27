@@ -22,8 +22,7 @@
             <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
             <div class="multiplist">
                 <div *ngFor="let message of inboxMessages | filter:searchMessages">
-                    
-
+        
                 <a>
                     <img class="inlineicon" title="trash" src="assets/svg/trash-alt.svg" [hidden]="!isadmin" (click)="deleteInboxMessage(message.id)">
 

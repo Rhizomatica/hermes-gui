@@ -1,6 +1,21 @@
 <h2 i18n="@@gatewayconf">Gateway Scheduling</h2>
 
-<div class="gateway" *ngIf="isAdmin">
+<div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br/></div>
+
+<hr>
+<h3>Current Schedules</h3>
+
+<ul id="schedulelist" class="multiplist" ng-model="schedules" >
+    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.station}}</li>
+</ul>
+
+<button>create schedule</button>
+
+
+
+
+<div class="gateway" *ngIf="isEditing">
+    <hr>
     <form #f="ngForm" id="timeform" class="formdata" novalidate>
 
         <label >
@@ -12,7 +27,6 @@
 
        <div *ngIf="enabled">
 
-<hr>
         <label >
             <p i18n="@@initialtime:">Start transmission hour:</p>
             <input type="time" id="starttime" required/>

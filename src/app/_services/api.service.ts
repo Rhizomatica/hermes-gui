@@ -139,24 +139,24 @@ export class ApiService {
       catchError(this.handleError));
     }
 
-    public getSchedules(): Observable<{}> {
+    public getSchedules(): Observable<Schedule[]> {
       const url = `${GlobalConstants.apiURL}/caller`; // get api:/caller
-      const output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
-          this.serverReturn = res;
+          this.schedules = res || [];
           console.log('⚚ Hermes ⚚\n⚚ api service - caller schedulles:\n ', res);
-          return this.serverReturn;
+          return this.schedules;
       }),
       catchError(this.handleError));
     }
+
 
     public getSchedule(id: number): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/caller/${id}`; // get api:/caller
       const output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
-          this.serverReturn = res;
+          this.serverReturn = res || [];
           console.log('⚚ Hermes ⚚\n⚚ api service - caller schedule:\n ', res);
           return this.serverReturn;
       }),

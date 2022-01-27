@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
+import { Schedule } from '../schedule';
 
 @Component({
   selector: 'app-gateway-config',
@@ -13,8 +14,12 @@ export class GatewayConfigComponent implements OnInit {
   currentUser: User;
   isAdmin = true;
   enabled = true;
-  schedules: any;
   error: any;
+  noSchedules = true;
+  isEditing = false;
+  selectedSchedule: Schedule[];
+  schedules: Schedule[];
+  emptySchedule = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -22,12 +27,12 @@ export class GatewayConfigComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getSchedules() {
+  getSchedules():void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
         this.schedules = res;
-        console.log(this.schedules);
-
+        this.noSchedules = false;
+        console.log(this.schedules, 'aaaaa');
         return res;
       },
       (err) => {
@@ -35,12 +40,14 @@ export class GatewayConfigComponent implements OnInit {
       }
     );
   }
+
+  
 
   getSchedule($id) {
     this.apiService.getSchedule($id).subscribe(
       (res: any) => {
         this.schedules = res;
-        console.log(this.schedules);
+        console.log(this.schedules, 'iiiii');
 
         return res;
       },
@@ -49,6 +56,17 @@ export class GatewayConfigComponent implements OnInit {
       }
     );
   }
+
+  onSelect(schedule): void {
+    this.selectedSchedule = schedule;
+    this.isEditing = true;
+    // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
+    this.emptySchedule = false;
+    // console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
+
+  }
+
+  
 
   ngOnInit(): void {
     console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);
