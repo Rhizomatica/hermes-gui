@@ -30,6 +30,11 @@ export class GatewayConfigComponent implements OnInit {
   showSt = false;
   data: any;
   connected: any;
+  deftitle: string;
+  defstart: boolean;
+  defstop: boolean;
+  defenable: boolean;
+  defid:number;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -66,6 +71,33 @@ export class GatewayConfigComponent implements OnInit {
 
   }
 
+selectStation(ev, index){
+  if(ev.target.checked == true) {
+    this.enabledStations.push(ev.target.value);
+  } else {
+    for(let i = 0; i < this.enabledStations.lenght; i++) {
+      this.enabledStations.splice(i,1);
+    }
+  }
+
+  console.log(this.enabledStations);
+
+}
+
+  updateStations(id: number, f:NgForm):void {
+    f.value.stations = this.enabledStations;
+    this.apiService.updateSchedule(id, f.value ).subscribe(
+      (res: any) => {
+        this.stations = res;
+        // console.log(this.stations);
+      }, (err) => {
+          this.error = err;
+		      console.log(this.error);
+        }
+    );
+
+  }
+
 
   public getSchedules():void {
     this.apiService.getSchedules().subscribe(
@@ -74,6 +106,11 @@ export class GatewayConfigComponent implements OnInit {
         this.noSchedules = false;
         console.log(this.schedules, 'aaaaa');
         this.enabledStations = this.schedules[0].stations;
+        this.deftitle = this.schedules[0].title;
+        this.defstart = this.schedules[0].starttime;
+        this.defstop = this.schedules[0].stoptime;
+        this.defenable = this.schedules[0].enable;
+        this.defid = this.schedules[0].id;
         console.log(this.enabledStations, 'uuuu');
         return res;
       },

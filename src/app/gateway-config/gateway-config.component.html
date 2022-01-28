@@ -17,8 +17,8 @@
   <button>change connected stations</button>
 
   <p><b>Stations on this network:</b></p>
-  <div *ngFor="let station of stations">
-      <b class="stname">{{station.name}} </b> {{station.alias}}
+  <div *ngFor="let station of stations; let i = index">
+      <input type="checkbox" class=".beforelist" value="{{station.alias}}" (change)="selectStation($event, i)"> <b class="stname">{{station.name}} </b> {{station.alias}}
 
 
   </div>
