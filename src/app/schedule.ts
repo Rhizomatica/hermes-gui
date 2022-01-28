@@ -1,8 +1,8 @@
 export interface Schedule {
-    id: number;
-    station: string;
-    starttime: string;
-    stoptime: string;
-    delay: string;
     enable: boolean;
+    id: number;
+    starttime: string;
+    stations: Array<string>;
+    stoptime: string;
+    title: string;
 }

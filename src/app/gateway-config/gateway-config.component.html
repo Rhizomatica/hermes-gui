@@ -1,48 +1,77 @@
-<h2 i18n="@@gatewayconf">Gateway Scheduling</h2>
+<h2 i18n="@@gatewayconf">Central Station</h2>
 
 <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br/></div>
+<hr>
+
+<a (click)="showStations()">Connected Stations</a>
+<div *ngIf="showSt">
+<br>
+<div >
+      <p *ngFor="let station of enabledStations">
+          {{station}} 
+       <!--{{station.id}} <span i18n="@@stname">name</span>: {{station.name}} <span i18n="@@stalias">alias:</span> {{station.alias}}--> 
+          <!--<span i18n>location</span>: {{station.location}}<br>-->
+         </p>
+  </div>
+
+  <button>change connected stations</button>
+
+  <p><b>Stations on this network:</b></p>
+  <div *ngFor="let station of stations">
+      <b class="stname">{{station.name}} </b> {{station.alias}}
+
+
+  </div>
+  
+</div>
+  <hr>
+<b>Current Schedules</b>
+<ul *ngIf="schedules" id="schedulelist" class="multiplist" ng-model="schedules" >
+    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )</li>
+</ul>
+
+
 
 <hr>
-<h3>Current Schedules</h3>
-
-<ul id="schedulelist" class="multiplist" ng-model="schedules" >
-    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.station}}</li>
-</ul>
 
 <button>create schedule</button>
 
 
-
-
 <div class="gateway" *ngIf="isEditing">
     <hr>
-    <form #f="ngForm" id="timeform" class="formdata" novalidate>
+
+    <form #f="ngForm" id="timeform"  novalidate>
 
         <label >
             <p>
             </p>
-            <button *ngIf="!enabled">enable</button><button *ngIf="enabled">disable</button>
 
        </label>
 
-       <div *ngIf="enabled">
-
+       <div >
         <label >
-            <p i18n="@@initialtime:">Start transmission hour:</p>
-            <input type="time" id="starttime" required/>
+            <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
+            <p i18n="@@initialtime">Start transmission hour: </p>
+            <input name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required value="selectedSchedule.starttime"/>
+            <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
          </label>
          <label >
-            <p i18n="@@finatime:">Stop transmission hour:</p>
-            <input type="time" id="stoptime" />
-         </label>
+            <p i18n="@@finatime">Stop transmission hour:</p> 
+            <input type="time" name="stoptime" id="stoptime" [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
+        </label>
 
-         <button type="submit" i18n="@@changetime">change scheduling time</button>
-
+        <label >
+            <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
+            
+        </label>
+         <button type="submit" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button>
         </div>
 <br/>
          
 
     </form>
+
+
 </div>
 <div>
     <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">You need admin privileges to access this page</p>

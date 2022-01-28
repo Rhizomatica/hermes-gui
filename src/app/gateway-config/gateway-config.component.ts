@@ -3,6 +3,10 @@ import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
 import { Schedule } from '../schedule';
+import { Station } from '../station';
+import { StationService } from '../_services/station.service';
+import { NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-gateway-config',
@@ -12,27 +16,65 @@ import { Schedule } from '../schedule';
 export class GatewayConfigComponent implements OnInit {
 
   currentUser: User;
+  stations: any;
   isAdmin = true;
   enabled = true;
   error: any;
   noSchedules = true;
   isEditing = false;
-  selectedSchedule: Schedule[];
-  schedules: Schedule[];
+  selectedSchedule: any;
+  schedules: any;
+  schedule: any;
   emptySchedule = false;
+  enabledStations: any;
+  showSt = false;
+  data: any;
+  connected: any;
 
   constructor(
     private authenticationService: AuthenticationService,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    private stationService: StationService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getSchedules():void {
+  getStations(): void {
+    this.stationService.getStations().subscribe(
+      
+      
+      (res: any) => {
+        this.stations = res;
+        // console.log(this.stations);
+      }, (err) => {
+          this.error = err;
+		      console.log(this.error);
+        }
+    );
+  }
+
+  updateSchedule(id: number, f:NgForm):void {
+    f.value.stations = this.enabledStations;
+    this.apiService.updateSchedule(id, f.value ).subscribe(
+      (res: any) => {
+        this.stations = res;
+        // console.log(this.stations);
+      }, (err) => {
+          this.error = err;
+		      console.log(this.error);
+        }
+    );
+
+  }
+
+
+  public getSchedules():void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
         this.schedules = res;
         this.noSchedules = false;
         console.log(this.schedules, 'aaaaa');
+        this.enabledStations = this.schedules[0].stations;
+        console.log(this.enabledStations, 'uuuu');
         return res;
       },
       (err) => {
@@ -43,13 +85,11 @@ export class GatewayConfigComponent implements OnInit {
 
   
 
-  getSchedule($id) {
+  getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(
-      (res: any) => {
-        this.schedules = res;
-        console.log(this.schedules, 'iiiii');
-
-        return res;
+      (data:any) => {
+        this.schedule = data;
+        console.log(this.schedule, 'iiiii');
       },
       (err) => {
         this.error = err;
@@ -59,6 +99,7 @@ export class GatewayConfigComponent implements OnInit {
 
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
+    console.log(this.selectedSchedule, 'dadaada');
     this.isEditing = true;
     // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptySchedule = false;
@@ -66,10 +107,22 @@ export class GatewayConfigComponent implements OnInit {
 
   }
 
+  showStations() {
+    if (this.showSt === false) {
+      this.showSt = true;
+      console.log(this.showSt);
+    }
+    else {
+      this.showSt = false;
+      console.log(this.showSt);
+    }
+  }
   
 
   ngOnInit(): void {
-    console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);
+    this.schedules = [];
+    this.selectedSchedule = [];
+    this.getStations();
     this.getSchedules();
     this.getSchedule('1');
     if (this.currentUser) {
@@ -77,6 +130,7 @@ export class GatewayConfigComponent implements OnInit {
     } else {
       this.isAdmin = false;
     }
+    
   }
 
 }

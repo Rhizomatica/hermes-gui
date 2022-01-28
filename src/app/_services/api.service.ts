@@ -156,7 +156,7 @@ export class ApiService {
       const output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
-          this.serverReturn = res || [];
+          this.serverReturn = res;
           console.log('⚚ Hermes ⚚\n⚚ api service - caller schedule:\n ', res);
           return this.serverReturn;
       }),
@@ -166,8 +166,6 @@ export class ApiService {
 
   public createSchedule(schedule: Schedule): Observable<Schedule[]> {
     const url = `${GlobalConstants.apiURL}/caller`; // POST /message
-    schedule.id = 1;
-    schedule.delay = "00:30:00";
     // messageImage: File;
     console.log('⚚ gateway scheduller - created');
     return this.http.post<Schedule>(url, schedule).pipe(
@@ -181,11 +179,14 @@ export class ApiService {
 
 
 // need to verify this
-public updateSchedule(schedule: Schedule) {
-  const url = `${GlobalConstants.apiURL}/caller`; // POST /message
+public updateSchedule(id: number, schedule: Schedule): Observable<Schedule>{
+  const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
   console.log('⚚ gateway scheduller - updated');
-  this.http.put<Schedule>(url, schedule).subscribe();
+  return this.http.put<Schedule>(url, schedule).pipe(
+   catchError(this.handleError),
+  );
 }
+
 
 public deleteSchedule(id) {
   const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
