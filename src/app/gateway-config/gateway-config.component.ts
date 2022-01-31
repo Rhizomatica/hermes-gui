@@ -45,8 +45,6 @@ export class GatewayConfigComponent implements OnInit {
 
   getStations(): void {
     this.stationService.getStations().subscribe(
-      
-      
       (res: any) => {
         this.stations = res;
         // console.log(this.stations);
@@ -76,9 +74,8 @@ selectStations(ev, index){
     //this.enabledStations.push(ev.target.value);
     if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
   } else {
-    for(let i = 0; i < this.enabledStations.lenght; i++) {
-      this.enabledStations.splice(i,1);
-    }
+    this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
+    //for(let i = 0; i < this.enabledStations.lenght; i++) {this.enabledStations.splice(i,1);}
   }
 
   console.log(this.enabledStations);
