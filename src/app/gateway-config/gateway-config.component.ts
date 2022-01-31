@@ -71,9 +71,10 @@ export class GatewayConfigComponent implements OnInit {
 
   }
 
-selectStation(ev, index){
+selectStations(ev, index){
   if(ev.target.checked == true) {
-    this.enabledStations.push(ev.target.value);
+    //this.enabledStations.push(ev.target.value);
+    if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
   } else {
     for(let i = 0; i < this.enabledStations.lenght; i++) {
       this.enabledStations.splice(i,1);
