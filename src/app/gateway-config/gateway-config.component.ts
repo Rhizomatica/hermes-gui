@@ -35,6 +35,8 @@ export class GatewayConfigComponent implements OnInit {
   defstop: boolean;
   defenable: boolean;
   defid:number;
+  stationedit = false;
+  updateAlert = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -77,13 +79,16 @@ selectStations(ev, index){
     this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
     //for(let i = 0; i < this.enabledStations.lenght; i++) {this.enabledStations.splice(i,1);}
   }
-
   console.log(this.enabledStations);
-
 }
 
   updateStations(id: number, f:NgForm):void {
+    this.updateAlert = false;
     f.value.stations = this.enabledStations;
+    f.value.title = this.deftitle;
+    f.value.starttime = this.defstart;
+    f.value.stoptime =this.defstop;
+    f.value.enable = this.defenable;
     this.apiService.updateSchedule(id, f.value ).subscribe(
       (res: any) => {
         this.stations = res;
@@ -94,8 +99,20 @@ selectStations(ev, index){
         }
     );
 
+    this.getSchedules();
   }
 
+  stationChange() {
+    if (this.stationedit === true) {
+      this.stationedit = false
+    } else {
+      this.stationedit = true;
+    }
+  }
+
+  confirmChange() {
+  this.updateAlert = true;
+  }
 
   public getSchedules():void {
     this.apiService.getSchedules().subscribe(
