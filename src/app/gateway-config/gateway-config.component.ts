@@ -27,6 +27,7 @@ export class GatewayConfigComponent implements OnInit {
   schedule: any;
   emptySchedule = false;
   enabledStations: any;
+  comparedStations: any;
   showSt = false;
   data: any;
   connected: any;
@@ -49,13 +50,37 @@ export class GatewayConfigComponent implements OnInit {
     this.stationService.getStations().subscribe(
       (res: any) => {
         this.stations = res;
+        this.comparedStations = [];
+        for (var i in this.stations) {
+          var ismatch = false;
+          for (var j in this.enabledStations) {
+            if (this.stations.alias == this.enabledStations[j]) {
+              var ismatch = true;
+              console.log(this.stations.alias, this.enabledStations[j], 'k');
+              this.stations.checked = true;
+              console.log(this.stations[i])
+              this.comparedStations.push(this.stations[i]);
+              break;
+            }
+            if (!ismatch) {
+              console.log(this.stations[i])
+              this.stations.checked = false;
+              this.comparedStations.push(this.stations[i]);
+            }
+          }
+        }
+        //console.log(this.comparedStations, 'eeeeee');
+
         // console.log(this.stations);
       }, (err) => {
           this.error = err;
 		      console.log(this.error);
         }
+        
     );
+
   }
+
 
   updateSchedule(id: number, f:NgForm):void {
     f.value.stations = this.enabledStations;
@@ -174,9 +199,9 @@ selectStations(ev, index){
   ngOnInit(): void {
     this.schedules = [];
     this.selectedSchedule = [];
-    this.getStations();
     this.getSchedules();
     this.getSchedule('1');
+    this.getStations();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
