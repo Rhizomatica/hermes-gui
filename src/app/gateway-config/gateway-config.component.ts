@@ -48,14 +48,14 @@ export class GatewayConfigComponent implements OnInit {
 
   getStations(): void {
     this.stationService.getStations().subscribe(
-      (res: any) => {
-        this.stations = res;
-        console.log(this.stations);
+      (data: any) => {
+        this.stations = data;
+        // console.log(this.stations);
         this.comparedStations = [];
         for (var i in this.stations) {
           // console.log(this.stations[i]);
           for (var j in this.enabledStations) {
-            console.log(this.enabledStations[j], 'kkk');
+            // console.log(this.enabledStations[j], 'kkk');
             if (this.stations[i].alias == this.enabledStations[j]) {
               this.stations[i].checked = true;
               //this.comparedStations.push(this.stations[i]);
@@ -65,10 +65,7 @@ export class GatewayConfigComponent implements OnInit {
             }
           }
         }
-
-        
-        console.log(this.stations, 'eeeeee');
-
+        // console.log(this.stations, 'eeeeee');
         // console.log(this.stations);
       }, (err) => {
           this.error = err;
@@ -83,8 +80,8 @@ export class GatewayConfigComponent implements OnInit {
   updateSchedule(id: number, f:NgForm):void {
     f.value.stations = this.enabledStations;
     this.apiService.updateSchedule(id, f.value ).subscribe(
-      (res: any) => {
-        this.stations = res;
+      (data: any) => {
+        this.stations = data;
         // console.log(this.stations);
       }, (err) => {
           this.error = err;
@@ -112,18 +109,20 @@ selectStations(ev, index){
     f.value.starttime = this.defstart;
     f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
-    console.log(f.value, 'hihihi');
+    // console.log(f.value, 'hihihi');
     this.apiService.updateSchedule(id, f.value ).subscribe(
-      (res: any) => {
-        this.stations = res;
+      (data:any) => {
+        this.stations = data;
         // console.log(this.stations);
       }, (err) => {
           this.error = err;
 		      console.log(this.error);
         }
     );
-
-    this.getSchedules();
+    this.stationedit = false;
+    this.getSchedule('1');
+    // console.log(this.stations);
+    // console.log(this.enabledStations, 'wwww');
   }
 
   stationChange() {
@@ -143,14 +142,14 @@ selectStations(ev, index){
       (res: any) => {
         this.schedules = res;
         this.noSchedules = false;
-        console.log(this.schedules, 'aaaaa');
+        // console.log(this.schedules, 'aaaaa');
         this.enabledStations = this.schedules[0].stations;
         this.deftitle = this.schedules[0].title;
         this.defstart = this.schedules[0].starttime;
         this.defstop = this.schedules[0].stoptime;
         this.defenable = this.schedules[0].enable;
         this.defid = this.schedules[0].id;
-        console.log(this.enabledStations, 'uuuu');
+        // console.log(this.enabledStations, 'uuuu');
         return res;
       },
       (err) => {
