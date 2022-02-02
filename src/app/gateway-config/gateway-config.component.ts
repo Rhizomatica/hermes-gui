@@ -50,26 +50,24 @@ export class GatewayConfigComponent implements OnInit {
     this.stationService.getStations().subscribe(
       (res: any) => {
         this.stations = res;
+        console.log(this.stations);
         this.comparedStations = [];
         for (var i in this.stations) {
-          var ismatch = false;
+          // console.log(this.stations[i]);
           for (var j in this.enabledStations) {
-            if (this.stations.alias == this.enabledStations[j]) {
-              var ismatch = true;
-              console.log(this.stations.alias, this.enabledStations[j], 'k');
-              this.stations.checked = true;
-              console.log(this.stations[i])
-              this.comparedStations.push(this.stations[i]);
+            console.log(this.enabledStations[j], 'kkk');
+            if (this.stations[i].alias == this.enabledStations[j]) {
+              this.stations[i].checked = true;
+              //this.comparedStations.push(this.stations[i]);
               break;
-            }
-            if (!ismatch) {
-              console.log(this.stations[i])
-              this.stations.checked = false;
-              this.comparedStations.push(this.stations[i]);
+            } else {
+              this.stations[i].checked = false;
             }
           }
         }
-        //console.log(this.comparedStations, 'eeeeee');
+
+        
+        console.log(this.stations, 'eeeeee');
 
         // console.log(this.stations);
       }, (err) => {
@@ -112,8 +110,9 @@ selectStations(ev, index){
     f.value.stations = this.enabledStations;
     f.value.title = this.deftitle;
     f.value.starttime = this.defstart;
-    f.value.stoptime =this.defstop;
+    f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
+    console.log(f.value, 'hihihi');
     this.apiService.updateSchedule(id, f.value ).subscribe(
       (res: any) => {
         this.stations = res;
@@ -166,7 +165,7 @@ selectStations(ev, index){
     this.apiService.getSchedule($id).subscribe(
       (data:any) => {
         this.schedule = data;
-        console.log(this.schedule, 'iiiii');
+        // console.log(this.schedule, 'iiiii');
       },
       (err) => {
         this.error = err;
@@ -176,7 +175,7 @@ selectStations(ev, index){
 
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
-    console.log(this.selectedSchedule, 'dadaada');
+    // console.log(this.selectedSchedule, 'dadaada');
     this.isEditing = true;
     // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptySchedule = false;

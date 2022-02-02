@@ -6,9 +6,9 @@
 <a (click)="showStations()">Connected Stations</a>
 <div *ngIf="showSt">
 <br>
-<div >
+<div class="formfield">
       <span *ngFor="let station of enabledStations">
-          {{station}}, 
+          {{station}} |  
        <!--{{station.id}} <span i18n="@@stname">name</span>: {{station.name}} <span i18n="@@stalias">alias:</span> {{station.alias}}--> 
           <!--<span i18n>location</span>: {{station.location}}<br>-->
       </span>
@@ -18,29 +18,29 @@
 
   <div>
 
-    <div class="overall" *ngIf="updateAlert">
-        <div class="cv" >
-        <span i18n="@@areyousurestations">Are you sure you want to change the list of connected stations?</span><br/>
-        <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
-        <br/>
-        <button type="submit" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
-        <button type="submit" (click)="stationChange()" i18n="@@cancelg">cancel</button>
-    </div>
-    </div>
+    
 
   
 
-  <form #g="ngForm" *ngIf="stationedit">
+  <form #g="ngForm" *ngIf="stationedit" class="formfield">
     <p><b>Stations on this network:</b></p>
 
   <div *ngFor="let station of stations; let i = index">
-      <input type="checkbox" class=".beforelist" value="{{station.alias}}" (change)="selectStations($event, i)"> <b class="stname">{{station.name}} </b> {{station.alias}}
+      <input type="checkbox" class="beforelist" value="{{station.alias}}" (change)="selectStations($event, i)" [checked]="station.checked"> <b class="stname">{{station.name}} </b> {{station.alias}}
   </div>
 
   <button type="submit" (click)="confirmChange()">
       Update Connected Stations
   </button>
-
+  <div class="overall" *ngIf="updateAlert">
+    <div class="cv" >
+    <span i18n="@@areyousurestations">Are you sure you want to change the list of connected stations?</span><br/>
+    <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
+    <br/>
+    <button type="submit" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
+    <button type="submit" (click)="stationChange()" i18n="@@cancelg">cancel</button>
+</div>
+</div>
 </form>
   
 </div>
