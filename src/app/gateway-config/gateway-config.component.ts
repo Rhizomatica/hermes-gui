@@ -52,6 +52,7 @@ export class GatewayConfigComponent implements OnInit {
    this.stationService.getStations().subscribe(
       (data: any) => {
         this.stations = data;
+        this.stations = this.stations.filter(e => e.alias !== 'central');
         console.log(this.stations, 'bibibi');
        // this.comparedStations = [];
         for (var i in this.stations) {
