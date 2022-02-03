@@ -48,11 +48,11 @@ export class GatewayConfigComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getStations(): void {
-    this.stationService.getStations().subscribe(
+  public getStations(): void {
+   this.stationService.getStations().subscribe(
       (data: any) => {
         this.stations = data;
-        // console.log(this.stations);
+        console.log(this.stations, 'bibibi');
        // this.comparedStations = [];
         for (var i in this.stations) {
           // console.log(this.stations[i]);
@@ -73,8 +73,10 @@ export class GatewayConfigComponent implements OnInit {
           this.error = err;
 		      console.log(this.error);
         }
-        
     );
+
+    
+    //this.stations = this.stations.filter( e => e['alias'] !== 'central');
 
   }
 
@@ -84,15 +86,16 @@ export class GatewayConfigComponent implements OnInit {
     this.apiService.updateSchedule(id, f.value ).subscribe(
       (data: any) => {
         this.stations = data;
-        // console.log(this.stations);
+        console.log(this.stations, 'lllll');
+        this.getStations();
       }, (err) => {
-          this.error = err;
+          this.error = err;  
 		      console.log(this.error);
         }
     );
   }
 
-selectStations(ev, index){
+selectStations(ev){
   if(ev.target.checked == true) {
     //this.enabledStations.push(ev.target.value);
     if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
@@ -116,12 +119,14 @@ async updateStations(id: number, f:NgForm): Promise<void> {
         this.stations = data;
         this.getSchedules();
         this.getSchedule('1');
+        this.getStations();
         // console.log(this.stations);
       }, (err) => {
           this.error = err;
 		      console.log(this.error);
         }
     );
+
     this.stationedit = false;
     console.log(this.stations);
     console.log(this.enabledStations, 'wwww');
@@ -169,10 +174,9 @@ async updateStations(id: number, f:NgForm): Promise<void> {
   async deleteSchedule($id): Promise<void> {
     if ($id > 1) {
       await this.apiService.deleteSchedule($id).subscribe();
-    } else {
-
-    }
-    
+      this.isEditing = false;
+      this.getSchedules();
+    } 
   }
 
   async createSchedule(f:NgForm): Promise<void> {

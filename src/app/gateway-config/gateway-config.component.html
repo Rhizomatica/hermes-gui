@@ -22,10 +22,10 @@
   <form #g="ngForm" *ngIf="stationedit" class="formfield">
     <p><b>Stations on this network:</b></p>
 
-  <div *ngFor="let station of stations; let i = index">
-      <input type="checkbox" class="beforelist" value="{{station.alias}}" (change)="selectStations($event, i)" [checked]="station.checked"> <b class="stname">{{station.name}} </b> {{station.alias}}
+  <div *ngFor="let station of stations">
+      <input type="checkbox" class="beforelist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> <b class="stname">{{station.name}} </b> {{station.alias}}
   </div>
-
+ 
   <button type="submit" (click)="confirmChange()">
       Update Connected Stations
   </button>
@@ -83,9 +83,9 @@
             <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
             
         </label>
-         <button *ngIf="!emptySchedule" type="submit" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
-         <button  *ngIf="emptySchedule" type="submit" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
-         <span *ngIf="!emptySchedule"><button type="submit" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> {{selectedSchedule.id}}
+         <button *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
+         <button  *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
+         <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> {{selectedSchedule.id}}
         </div>
 <br/>
          
