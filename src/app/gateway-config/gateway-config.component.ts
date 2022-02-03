@@ -38,6 +38,8 @@ export class GatewayConfigComponent implements OnInit {
   defid:number;
   stationedit = false;
   updateAlert = false;
+  canDelete = true;
+
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -51,7 +53,7 @@ export class GatewayConfigComponent implements OnInit {
       (data: any) => {
         this.stations = data;
         // console.log(this.stations);
-        this.comparedStations = [];
+       // this.comparedStations = [];
         for (var i in this.stations) {
           // console.log(this.stations[i]);
           for (var j in this.enabledStations) {
@@ -88,7 +90,6 @@ export class GatewayConfigComponent implements OnInit {
 		      console.log(this.error);
         }
     );
-
   }
 
 selectStations(ev, index){
@@ -102,7 +103,7 @@ selectStations(ev, index){
   console.log(this.enabledStations);
 }
 
-  updateStations(id: number, f:NgForm):void {
+async updateStations(id: number, f:NgForm): Promise<void> {
     this.updateAlert = false;
     f.value.stations = this.enabledStations;
     f.value.title = this.deftitle;
@@ -110,9 +111,11 @@ selectStations(ev, index){
     f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
     // console.log(f.value, 'hihihi');
-    this.apiService.updateSchedule(id, f.value ).subscribe(
+    await this.apiService.updateSchedule(id, f.value ).subscribe(
       (data:any) => {
         this.stations = data;
+        this.getSchedules();
+        this.getSchedule('1');
         // console.log(this.stations);
       }, (err) => {
           this.error = err;
@@ -120,9 +123,8 @@ selectStations(ev, index){
         }
     );
     this.stationedit = false;
-    this.getSchedule('1');
-    // console.log(this.stations);
-    // console.log(this.enabledStations, 'wwww');
+    console.log(this.stations);
+    console.log(this.enabledStations, 'wwww');
   }
 
   stationChange() {
@@ -158,7 +160,27 @@ selectStations(ev, index){
     );
   }
 
-  
+  newSchedule() {
+  this.isEditing = true;
+  this.selectedSchedule = [];
+  this.emptySchedule = true;
+  }
+
+  async deleteSchedule($id): Promise<void> {
+    if ($id > 1) {
+      await this.apiService.deleteSchedule($id).subscribe();
+    } else {
+
+    }
+    
+  }
+
+  async createSchedule(f:NgForm): Promise<void> {
+    f.value.stations = this.enabledStations;
+    await this.apiService.createSchedule(f.value).subscribe();
+    this.getSchedules();
+    this.isEditing = false;
+  }
 
   getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(
@@ -178,6 +200,12 @@ selectStations(ev, index){
     this.isEditing = true;
     // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptySchedule = false;
+
+    if (this.selectedSchedule.id === '1') {
+      this.canDelete = false;
+    } else {
+      this.canDelete = true;
+    }
     // console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
 
   }

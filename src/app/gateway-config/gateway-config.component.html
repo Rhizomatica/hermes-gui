@@ -18,9 +18,6 @@
 
   <div>
 
-    
-
-  
 
   <form #g="ngForm" *ngIf="stationedit" class="formfield">
     <p><b>Stations on this network:</b></p>
@@ -56,7 +53,7 @@
 
 <hr>
 
-<button>create schedule</button>
+<button (click)="newSchedule()">create schedule</button>
 
 
 <div class="gateway" *ngIf="isEditing">
@@ -79,14 +76,16 @@
          </label>
          <label >
             <p i18n="@@finatime">Stop transmission hour:</p> 
-            <input type="time" name="stoptime" id="stoptime" [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
+            <input type="time" name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
         </label>
 
         <label >
             <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
             
         </label>
-         <button type="submit" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button>
+         <button *ngIf="!emptySchedule" type="submit" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
+         <button  *ngIf="emptySchedule" type="submit" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
+         <span *ngIf="!emptySchedule"><button type="submit" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> {{selectedSchedule.id}}
         </div>
 <br/>
          
