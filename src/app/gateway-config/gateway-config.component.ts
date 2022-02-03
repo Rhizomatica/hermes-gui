@@ -53,7 +53,7 @@ export class GatewayConfigComponent implements OnInit {
       (data: any) => {
         this.stations = data;
         this.stations = this.stations.filter(e => e.alias !== 'central');
-        console.log(this.stations, 'bibibi');
+        // console.log(this.stations, 'bibibi');
        // this.comparedStations = [];
         for (var i in this.stations) {
           // console.log(this.stations[i]);
@@ -98,11 +98,9 @@ export class GatewayConfigComponent implements OnInit {
 
 selectStations(ev){
   if(ev.target.checked == true) {
-    //this.enabledStations.push(ev.target.value);
     if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
   } else {
     this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
-    //for(let i = 0; i < this.enabledStations.lenght; i++) {this.enabledStations.splice(i,1);}
   }
   console.log(this.enabledStations);
 }
@@ -129,8 +127,8 @@ async updateStations(id: number, f:NgForm): Promise<void> {
     );
 
     this.stationedit = false;
-    console.log(this.stations);
-    console.log(this.enabledStations, 'wwww');
+    // console.log(this.stations);
+    // console.log(this.enabledStations, 'wwww');
   }
 
   stationChange() {
@@ -218,11 +216,11 @@ async updateStations(id: number, f:NgForm): Promise<void> {
   showStations() {
     if (this.showSt === false) {
       this.showSt = true;
-      console.log(this.showSt);
+      // console.log(this.showSt);
     }
     else {
       this.showSt = false;
-      console.log(this.showSt);
+      // console.log(this.showSt);
     }
   }
   
