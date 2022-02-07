@@ -1,5 +1,7 @@
 <h2 i18n="@@gatewayconf">Central Station</h2>
 
+<div *ngIf="isAdmin">
+
 <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br/></div>
 <hr>
 
@@ -14,7 +16,7 @@
       </span>
   </div>
 
-  <button (click)="stationChange()">change connected stations</button>
+  <button  (click)="stationChange()">change connected stations</button>
 
   <div>
 
@@ -37,6 +39,20 @@
     <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
     <button type="button" (click)="stationChange()" i18n="@@cancelg">cancel</button>
 </div>
+</div>
+
+<div class="overall alert" *ngIf="errorAlert==true">
+    <div class="cv" >
+        <span>There was an error on changing the scheduling time <br/>
+            - end time must be bigger then start time <br/>
+            - all fields are required <br/>
+            </span>
+        <span>{{error}}</span>
+        <div class="icon" ><a (click)="closeError()" >
+            <img title="close" src="assets/svg/x.svg"></a>
+        </div>
+
+    </div>
 </div>
 </form>
   
@@ -69,6 +85,7 @@
 
        <div >
         <label >
+            <p i18n="@@initialtime">Schedule Title</p>
             <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
             <p i18n="@@initialtime">Start transmission hour: </p>
             <input name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required value="selectedSchedule.starttime"/>
@@ -77,21 +94,24 @@
          <label >
             <p i18n="@@finatime">Stop transmission hour:</p> 
             <input type="time" name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
+            <p class="alert">Stop transmission hour must be bigger than start time</p>
         </label>
 
         <label >
             <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
             
         </label>
-         <button *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
-         <button  *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
-         <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> {{selectedSchedule.id}}
+         <button [disabled]="f.invalid" *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
+         <button [disabled]="f.invalid" *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
+         <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> 
         </div>
 <br/>
          
 
     </form>
 
+
+</div>
 
 </div>
 <div>

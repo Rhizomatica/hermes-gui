@@ -20,6 +20,7 @@ export class GatewayConfigComponent implements OnInit {
   isAdmin = true;
   enabled = true;
   error: any;
+  errorAlert = false;
   noSchedules = true;
   isEditing = false;
   selectedSchedule: any;
@@ -123,6 +124,7 @@ async updateStations(id: number, f:NgForm): Promise<void> {
       }, (err) => {
           this.error = err;
 		      console.log(this.error);
+          this.errorAlert = true;
         }
     );
 
