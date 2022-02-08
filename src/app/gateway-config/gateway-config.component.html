@@ -41,7 +41,19 @@
 </div>
 </div>
 
-<div class="overall alert" *ngIf="errorAlert==true">
+
+</form>
+  
+</div>
+
+</div>
+  <hr>
+<b>Current Schedules</b>
+<ul *ngIf="schedules" id="schedulelist" class="multiplist" ng-model="schedules" >
+    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )</li>
+</ul>
+
+<div class="overall alert" *ngIf="errorAlert">
     <div class="cv" >
         <span>There was an error on changing the scheduling time <br/>
             - end time must be bigger then start time <br/>
@@ -54,18 +66,6 @@
 
     </div>
 </div>
-</form>
-  
-</div>
-
-</div>
-  <hr>
-<b>Current Schedules</b>
-<ul *ngIf="schedules" id="schedulelist" class="multiplist" ng-model="schedules" >
-    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )</li>
-</ul>
-
-
 
 <hr>
 
@@ -88,21 +88,21 @@
             <p i18n="@@initialtime">Schedule Title</p>
             <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
             <p i18n="@@initialtime">Start transmission hour: </p>
-            <input name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required value="selectedSchedule.starttime"/>
+            <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required value="selectedSchedule.starttime"/>
             <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
          </label>
          <label >
             <p i18n="@@finatime">Stop transmission hour:</p> 
-            <input type="time" name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
-            <p class="alert">Stop transmission hour must be bigger than start time</p>
+            <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time" name="stoptime" id="stoptime" step="5"  [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
+            <p class="alert" *ngIf="timeerror">Stop transmission hour must be bigger than start time</p>
         </label>
 
         <label >
             <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
             
         </label>
-         <button [disabled]="f.invalid" *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
-         <button [disabled]="f.invalid" *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
+         <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
+         <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
          <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> 
         </div>
 <br/>

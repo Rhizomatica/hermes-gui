@@ -6,6 +6,7 @@ import { Schedule } from '../schedule';
 import { Station } from '../station';
 import { StationService } from '../_services/station.service';
 import { NgForm} from '@angular/forms';
+import { map, catchError } from 'rxjs/operators';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class GatewayConfigComponent implements OnInit {
   stations: any;
   isAdmin = true;
   enabled = true;
-  error: any;
+  error = Error;
   errorAlert = false;
   noSchedules = true;
   isEditing = false;
@@ -40,6 +41,8 @@ export class GatewayConfigComponent implements OnInit {
   stationedit = false;
   updateAlert = false;
   canDelete = true;
+  errormessage: any;
+  timeerror = false;
 
 
   constructor(
@@ -82,13 +85,21 @@ export class GatewayConfigComponent implements OnInit {
 
   }
 
+  public compareTime(start: Date, stop: Date) {
+    if (start > stop) {
+      this.timeerror = true;
+    } else {
+      this.timeerror = false;
+    }
+  }
+
 
   updateSchedule(id: number, f:NgForm):void {
     f.value.stations = this.enabledStations;
     this.apiService.updateSchedule(id, f.value ).subscribe(
-      (data: any) => {
-        this.stations = data;
-        console.log(this.stations, 'lllll');
+      (res: any) => {
+        this.stations = res;
+        //console.log(this.stations, 'lllll');
         this.getStations();
       }, (err) => {
           this.error = err;  
@@ -120,9 +131,11 @@ async updateStations(id: number, f:NgForm): Promise<void> {
         this.getSchedules();
         this.getSchedule('1');
         this.getStations();
-        // console.log(this.stations);
+        console.log(this.stations, 'kkkkkkk');
+
+        console.log(this.stations);
       }, (err) => {
-          this.error = err;
+          this.errormessage = err;
 		      console.log(this.error);
           this.errorAlert = true;
         }
