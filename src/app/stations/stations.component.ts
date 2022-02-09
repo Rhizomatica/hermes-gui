@@ -55,7 +55,7 @@ export class StationsComponent implements OnInit {
     );
   }
 
-  stationChange() {
+  confirmChange() {
     if (this.stationedit === true) {
       this.stationedit = false
     } else {
@@ -105,9 +105,7 @@ export class StationsComponent implements OnInit {
     console.log(this.enabledStations);
   }
 
-  confirmChange() {
-    this.updateAlert = true;
-    }
+
 
    getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(

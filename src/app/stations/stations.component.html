@@ -9,15 +9,15 @@
   </div>
  
   <button type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()">
-      Update Connected Stations
+      Update Enabled Stations
   </button>
-  <div class="overall" *ngIf="updateAlert">
+  <div class="overall" *ngIf="stationedit">
     <div class="cv" >
-    <span i18n="@@areyousurestations">Are you sure you want to change the list of connected stations?</span><br/>
+    <span i18n="@@areyousurestations">Are you sure you want to change the list of enabled stations?</span><br/>
     <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
     <br/>
     <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
-    <button type="button" (click)="stationChange()" i18n="@@cancelg">cancel</button>
+    <button type="button" (click)="confirmChange()" i18n="@@cancelg">cancel</button>
 </div>
 </div>
 
