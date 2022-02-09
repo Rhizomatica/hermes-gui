@@ -1,4 +1,4 @@
-<h2 i18n="@@gatewayconf">Central Station</h2>
+<h2 i18n="@@gatewayconf">Transmission Schedules</h2>
 
 <div *ngIf="isAdmin">
 
@@ -10,7 +10,7 @@
 <br>
 <div class="formfield">
       <span *ngFor="let station of enabledStations">
-          {{station}} |  
+         - {{station}}   
        <!--{{station.id}} <span i18n="@@stname">name</span>: {{station.name}} <span i18n="@@stalias">alias:</span> {{station.alias}}--> 
           <!--<span i18n>location</span>: {{station.location}}<br>-->
       </span>
@@ -87,6 +87,7 @@
         <label >
             <p i18n="@@initialtime">Schedule Title</p>
             <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
+            <p class="alert" *ngIf="!canDelete">Can't delete default schedule</p>
             <p i18n="@@initialtime">Start transmission hour: </p>
             <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required value="selectedSchedule.starttime"/>
             <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
@@ -99,11 +100,11 @@
 
         <label >
             <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
-            
         </label>
+
          <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
          <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
-         <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" *ngIf="canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> 
+         <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" [disabled]="!canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> 
         </div>
 <br/>
          

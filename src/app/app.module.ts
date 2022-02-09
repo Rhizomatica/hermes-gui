@@ -40,6 +40,7 @@ import { TestradioComponent } from './testradio/testradio.component';
 import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
 import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
 
+
 registerLocaleData(localePt);
 
 // import { CLIENT_RENEG_LIMIT } from 'tls';

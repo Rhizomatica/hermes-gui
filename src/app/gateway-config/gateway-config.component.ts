@@ -187,16 +187,33 @@ async updateStations(id: number, f:NgForm): Promise<void> {
 
   async deleteSchedule($id): Promise<void> {
     if ($id > 1) {
-      await this.apiService.deleteSchedule($id).subscribe();
-      this.isEditing = false;
-      this.getSchedules();
+      await this.apiService.deleteSchedule($id).subscribe(
+        (data:any) => {
+          this.getSchedules();
+          console.log('schedule deleted');
+        }, (err) => {
+            this.errormessage = err;
+            console.log(this.error);
+            this.errorAlert = true;
+          } 
+      );
+      
     } 
   }
 
   async createSchedule(f:NgForm): Promise<void> {
     f.value.stations = this.enabledStations;
-    await this.apiService.createSchedule(f.value).subscribe();
-    this.getSchedules();
+    await this.apiService.createSchedule(f.value).subscribe(
+      (data:any) => {
+        this.getSchedules();
+        console.log('schedule created');
+      }, (err) => {
+          this.errormessage = err;
+		      console.log(this.error);
+          this.errorAlert = true;
+        }
+    );
+    
     this.isEditing = false;
   }
 
@@ -210,6 +227,8 @@ async updateStations(id: number, f:NgForm): Promise<void> {
         this.error = err;
       }
     );
+    
+
   }
 
   onSelect(schedule): void {
@@ -219,7 +238,7 @@ async updateStations(id: number, f:NgForm): Promise<void> {
     // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptySchedule = false;
 
-    if (this.selectedSchedule.id === '1') {
+    if (this.selectedSchedule.id == '1') {
       this.canDelete = false;
     } else {
       this.canDelete = true;
