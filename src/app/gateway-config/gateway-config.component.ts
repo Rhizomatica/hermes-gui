@@ -85,6 +85,10 @@ export class GatewayConfigComponent implements OnInit {
 
   }
 
+  public closeError() {
+    this.errorAlert = false;
+  }
+
   public compareTime(start: Date, stop: Date) {
     if (start > stop) {
       this.timeerror = true;
@@ -136,7 +140,7 @@ async updateStations(id: number, f:NgForm): Promise<void> {
         console.log(this.stations);
       }, (err) => {
           this.errormessage = err;
-		      console.log(this.error);
+		      console.log(this.errormessage);
           this.errorAlert = true;
         }
     );
@@ -193,7 +197,7 @@ async updateStations(id: number, f:NgForm): Promise<void> {
           console.log('schedule deleted');
         }, (err) => {
             this.errormessage = err;
-            console.log(this.error);
+            console.log(this.errormessage);
             this.errorAlert = true;
           } 
       );
