@@ -5,50 +5,7 @@
 <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br/></div>
 <hr>
 
-<a (click)="showStations()">Connected Stations</a>
-<div *ngIf="showSt">
-<br>
-<div class="formfield">
-      <span *ngFor="let station of enabledStations">
-         - {{station}}   
-       <!--{{station.id}} <span i18n="@@stname">name</span>: {{station.name}} <span i18n="@@stalias">alias:</span> {{station.alias}}--> 
-          <!--<span i18n>location</span>: {{station.location}}<br>-->
-      </span>
-  </div>
-
-  <button  (click)="stationChange()">change connected stations</button>
-
-  <div>
-
-
-  <form #g="ngForm" *ngIf="stationedit" class="formfield">
-    <p><b>Stations on this network:</b></p>
-
-  <div *ngFor="let station of stations">
-      <input type="checkbox" class="beforelist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> <b class="stname">{{station.name}} </b> {{station.alias}}
-  </div>
- 
-  <button type="submit" (click)="confirmChange()">
-      Update Connected Stations
-  </button>
-  <div class="overall" *ngIf="updateAlert">
-    <div class="cv" >
-    <span i18n="@@areyousurestations">Are you sure you want to change the list of connected stations?</span><br/>
-    <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
-    <br/>
-    <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
-    <button type="button" (click)="stationChange()" i18n="@@cancelg">cancel</button>
-</div>
-</div>
-
-
-</form>
-  
-</div>
-
-</div>
-  <hr>
-<b>Current Schedules</b>
+<b>Current Schedules:</b>
 <ul *ngIf="schedules" id="schedulelist" class="multiplist" ng-model="schedules" >
     <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )</li>
 </ul>

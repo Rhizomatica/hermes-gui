@@ -231,8 +231,6 @@ async updateStations(id: number, f:NgForm): Promise<void> {
         this.error = err;
       }
     );
-    
-
   }
 
   onSelect(schedule): void {

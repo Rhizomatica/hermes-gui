@@ -1,16 +1,30 @@
 <div class="">
   <ng-container *ngIf="stations">
-    <h2 i18n="@@stationlist">Station list</h2>
-    <div *ngIf="stations">
-      <p><b class="stname" i18n="@@stname">Name </b><b i18n="@@stalias">Alias</b></p>
-        <p *ngFor="let station of stations">
-           <b class="stname">{{station.name}} </b> {{station.alias}}
-         <!--{{station.id}} <span i18n="@@stname">name</span>: {{station.name}} <span i18n="@@stalias">alias:</span> {{station.alias}}--> 
-            <!--<span i18n>location</span>: {{station.location}}<br>-->
-        </p>
+    
+  <form #g="ngForm" *ngIf="stations" class="formfield">
+    <p><b>Stations on this network:</b></p>
+
+  <div *ngFor="let station of stations">
+      <input *ngIf="isGateway && isAdmin" type="checkbox" class="beforelist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> <span [ngClass]="{'neutral' : !station.checked}"><b class="stname">{{station.name}} </b> {{station.alias}}</span>
   </div>
+ 
+  <button type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()">
+      Update Connected Stations
+  </button>
+  <div class="overall" *ngIf="updateAlert">
+    <div class="cv" >
+    <span i18n="@@areyousurestations">Are you sure you want to change the list of connected stations?</span><br/>
+    <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
+    <br/>
+    <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
+    <button type="button" (click)="stationChange()" i18n="@@cancelg">cancel</button>
+</div>
+</div>
+
+
+</form>
 
   </ng-container>
   <!-- error example-->
-  <div *ngIf="error">{{error}}</div>
 </div>
+
