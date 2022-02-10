@@ -39,6 +39,7 @@ import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './testradio/testradio.component';
 import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
 import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 registerLocaleData(localePt);
@@ -80,7 +81,6 @@ registerLocaleData(localePt);
     FrequencyPipe,
     TestradioComponent,
     GatewayConfigComponent
-
   ],
   imports: [
     BrowserModule,
@@ -89,7 +89,8 @@ registerLocaleData(localePt);
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    NgSelectModule
   ],
   providers: [
     DecimalPipe,

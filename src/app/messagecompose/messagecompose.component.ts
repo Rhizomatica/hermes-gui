@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm} from '@angular/forms';
+import { NgForm, NgModel} from '@angular/forms';
 import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { Station } from '../station';
@@ -49,6 +49,8 @@ export class MessagecomposeComponent implements OnInit {
   public sending = false;
   public nodename: any;
   public maxSize: any = 31457280;
+  public isGateway: boolean;
+  public system: any;
 
   // allowfile : users, admin, all
 
@@ -117,6 +119,19 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
+  getSystemStatus(): void{
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+        this.system = res;
+        this.isGateway = this.system.gateway;
+        console.log(this.system);
+        return res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
 
   sendMessag(f: NgForm, passwd): void {
       this.fileIsProcessing = true;
@@ -297,6 +312,7 @@ export class MessagecomposeComponent implements OnInit {
 
   }
 
+ 
   // TODO double check start params on inbox
   ngOnInit(): void {
     this.message = {
@@ -317,7 +333,7 @@ export class MessagecomposeComponent implements OnInit {
     };
 
     this.getSysConfig();
-
+    this.getSystemStatus();
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()

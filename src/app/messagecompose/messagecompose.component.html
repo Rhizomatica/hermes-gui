@@ -28,15 +28,29 @@
 
             <label class="selstation">
                 <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-                    <span i18n="@@selectstation1" class="space">select station
+                    <span i18n="@@selectstation1" class="space">select station<span *ngIf="isGateway">s</span>
                     :</span><br>
                     <br>
     
                     <ng-container *ngIf="stations">
 
-                        <select name="dest" [(ngModel)]="message.dest" required>
+                        <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
                             <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}} | {{station.name}} - {{station.location}}</option>
                         </select>
+
+                        <!--
+                        <ng-select *ngIf="isGateway" name="dest" [(ngModel)]="message.dest" multiple=true required>
+                            <ng-option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}} - {{station.name}}</ng-option>
+                        </ng-select>
+
+                        -->
+
+                        <ng-select *ngIf="isGateway" name="dest" [items]="stations" bindValue="alias" bindLabel="alias" [(ngModel)]="message.dest" multiple=true required 
+                        >
+                
+                        </ng-select>
+
+
                         </ng-container>
                     
                 </span>
