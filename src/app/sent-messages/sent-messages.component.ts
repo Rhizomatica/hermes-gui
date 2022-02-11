@@ -67,6 +67,18 @@ export class SentMessagesComponent implements OnInit {
     console.log('⚚ cancelTransmission:', host, id);
   }
 
+  cancelMail(host,id): void{
+    this.uucpService.cancelMail(host, id).subscribe(
+      (res: any) => {
+    	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+    console.log('⚚ cancelMail:', host, id);
+  }
+
   removeMessage(message: Message): void{
     this.sentMessages = this.sentMessages.filter(obj => obj !== message);
     this.messageService.deleteMessage(message.id).subscribe(

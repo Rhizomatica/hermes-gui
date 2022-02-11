@@ -48,6 +48,17 @@ export class UUCPService{
      catchError(this.handleError));
   }
 
+  cancelMail(uuhost, id): Observable<UUCPQueue[]> {
+    const url = `${GlobalConstants.apiURL}/sys/mail/${uuhost}/${id}`; 
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        this.queue = res;
+        console.log('⚚ uucp service - cancelmail');
+        return this.queue;
+    }),
+     catchError(this.handleError));
+  }
+
   callSystems(): Observable<UUCPQueue[]> {
     const url = `${GlobalConstants.apiURL}/sys/uucall`;
     return this.http.get(url).pipe(
