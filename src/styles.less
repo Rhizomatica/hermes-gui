@@ -1077,7 +1077,42 @@ input.searchbox2 {
       }
       
  
-@import "~@ng-select/ng-select/themes/default.theme.css";
       
       
-      
+#selmult {
+    border-radius: 0;
+    border: 1px solid black;
+    min-height: 2.25em;
+    line-height: 1.75em;
+    .ng-option-selected {
+        background-color: #eee;
+    }
+} 
+
+.ng-select .ng-arrow-wrapper {
+    width: 1em;
+    height: 0;
+    border-right: 1em solid black;
+    border-bottom: 1em solid white;
+}
+
+.ng-dropdown-panel {
+    background-color: #fff;
+    border: 1px solid @mclr;
+    
+}
+
+.ng-option {
+    padding: 0 0.25em;
+}
+.ng-value {
+    border: 1px soldi @mclr;
+    background-color: #eee;
+    padding: 0.25em;
+    margin: 0.25em;
+    line-height: 1em;
+    .ng-value-icon {
+        margin: 0 0.25em;
+
+    }
+}

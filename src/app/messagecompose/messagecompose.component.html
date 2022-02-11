@@ -45,7 +45,7 @@
 
                         -->
 
-                        <ng-select *ngIf="isGateway" name="dest" [items]="stations" bindValue="alias" bindLabel="alias" [(ngModel)]="message.dest" multiple=true required 
+                        <ng-select id="selmult" *ngIf="isGateway" name="dest" [items]="stations" bindValue="alias" bindLabel="alias" [(ngModel)]="message.dest" multiple=true required 
                         >
                 
                         </ng-select>

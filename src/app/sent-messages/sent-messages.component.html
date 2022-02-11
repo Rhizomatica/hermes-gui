@@ -67,8 +67,8 @@
             <div *ngFor="let job of queue | filter:searchMessages">
             <a >
                 <span *ngIf="isadmin" ></span>
-                <img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
-                <img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
+                <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
+                <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
                 <span> {{job.uuidhost}}.{{job.uuiduucp}} </span>
                 <span >
                     <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
