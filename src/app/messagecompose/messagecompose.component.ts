@@ -51,6 +51,7 @@ export class MessagecomposeComponent implements OnInit {
   public maxSize: any = 31457280;
   public isGateway: boolean;
   public system: any;
+  public selectedStations = [];
 
   // allowfile : users, admin, all
 
@@ -253,6 +254,10 @@ export class MessagecomposeComponent implements OnInit {
     }
 
 
+   
+    
+    
+
 
   closeError() {
     this.errorAlert = false;
@@ -312,6 +317,16 @@ export class MessagecomposeComponent implements OnInit {
 
   }
 
+
+  selectAllForDropdownItems(items: any[]) {
+    let allSelect = items => {
+      items.forEach(element => {
+        element['selectedAllGroup'] = 'selectedAllGroup';
+      });
+    };
+
+    allSelect(items);
+  }
  
   // TODO double check start params on inbox
   ngOnInit(): void {
@@ -337,7 +352,11 @@ export class MessagecomposeComponent implements OnInit {
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()
-    .subscribe(stations =>  this.stations = stations);
+    .subscribe(stations =>  {this.stations = stations;
+      this.selectedStations = [this.stations[0].id];
+        this.selectAllForDropdownItems(this.stations
+        );
+    });
   }
 
 }

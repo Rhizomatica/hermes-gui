@@ -44,12 +44,25 @@
                         </ng-select>
 
                         -->
-
-                        <ng-select id="selmult" *ngIf="isGateway" name="dest" [items]="stations" bindValue="alias" bindLabel="alias" [(ngModel)]="message.dest" multiple=true required 
+<!--
+                        <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [items]="stations" bindValue="alias" bindLabel="alias" formControlName="stations" [(ngModel)]="message.dest" multiple=true required 
                         >
                 
                         </ng-select>
+-->
 
+<ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true" [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true required >
+
+    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox"
+        [ngModel] ="item$.selected"/> Select All
+      </ng-template>
+
+      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />{{item.name}} {{item.alias}}
+      </ng-template>
+                
+                        </ng-select>
 
                         </ng-container>
                     
