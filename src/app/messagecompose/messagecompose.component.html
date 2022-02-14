@@ -28,8 +28,7 @@
 
             <label class="selstation">
                 <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-                    <span i18n="@@selectstation1" class="space">select station<span *ngIf="isGateway">s</span>
-                    :</span><br>
+                    <span i18n="@@selectstation1" class="space">select station:</span><br>
                     <br>
     
                     <ng-container *ngIf="stations">
@@ -55,11 +54,11 @@
 
     <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
         <input id="item-{{index}}" type="checkbox"
-        [ngModel] ="item$.selected"/> Select All
+        [ngModel] ="item$.selected" [ngModelOptions]="{standalone: true}"/> Select All
       </ng-template>
 
       <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />{{item.name}} {{item.alias}}
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.name}} {{item.alias}}
       </ng-template>
                 
                         </ng-select>
