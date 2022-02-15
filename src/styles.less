@@ -1099,8 +1099,33 @@ input.searchbox2 {
 .ng-select .ng-arrow-wrapper {
     width: 1em;
     height: 0;
-    border-right: 1em solid black;
+    border-right: 1em solid @mclr;
     border-bottom: 1em solid white;
+}
+
+.dark-mode {
+    .ng-select .ng-arrow-wrapper {
+        border-bottom: 1em solid @mclr;
+        border-right: 1em solid white;
+    }
+
+    .ng-option {
+        color: @bkclr;
+    }
+
+    .ng-option-selected {
+        background-color: #666;
+        color: @mclr;
+    }
+
+    .ng-dropdown-panel {
+        background-color: @mclr;
+    }
+
+    .ng-value {
+        color: @mclr;
+    }
+
 }
 
 .ng-dropdown-panel {
