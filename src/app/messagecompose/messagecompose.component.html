@@ -50,15 +50,15 @@
                         </ng-select>
 -->
 
-<ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true" [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true required >
+<ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true" [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true required [ngModelOptions]="{standalone: true}">
 
     <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
         <input id="item-{{index}}" type="checkbox"
-        [ngModel] ="item$.selected" [ngModelOptions]="{standalone: true}"/> Select All
+        [(ngModel)] ="item$.selected" [ngModelOptions]="{standalone: true}"/> Select All
       </ng-template>
 
       <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.name}} {{item.alias}}
+        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.name}} {{item.alias}}
       </ng-template>
                 
                         </ng-select>
