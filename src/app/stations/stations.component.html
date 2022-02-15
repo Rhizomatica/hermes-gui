@@ -4,8 +4,13 @@
   <form #g="ngForm" *ngIf="stations" class="formfield">
     <p><b>Stations on this network:</b></p>
 
-  <div *ngFor="let station of stations">
-      <input *ngIf="isGateway && isAdmin" type="checkbox" class="beforelist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> <span [ngClass]="{'neutral' : !station.checked}"><b class="stname">{{station.name}} </b> {{station.alias}}</span>
+    <div><b><span class="stname">Name</span><span  class="stname">Alias</span><span>Enabled for transmission</span></b></div>
+
+  <div *ngFor="let station of stations" class="itemlist">
+       <span>
+         <span [ngClass]="{'neutral' : !station.checked}"><b class="stname">{{station.name}} </b> </span>
+         <span  class="stname">{{station.alias}}</span></span>
+       <input *ngIf="isGateway && isAdmin" type="checkbox" class="afterlist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked">
   </div>
  
   <button type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()">
