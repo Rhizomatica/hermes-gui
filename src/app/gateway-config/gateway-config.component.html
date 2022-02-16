@@ -7,7 +7,13 @@
 
 <b>Current Schedules:</b>
 <ul *ngIf="schedules" id="schedulelist" class="multiplist" ng-model="schedules" >
-    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">{{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )</li>
+    <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)"> 
+        
+        <small>
+        <div [ngClass]="{'redcircle' : !schedule.enable , 'greencircle' : schedule.enable }" title='enabled'></div>
+    </small>
+       
+        {{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )</li>
 </ul>
 
 <div class="overall alert" *ngIf="errorAlert">
