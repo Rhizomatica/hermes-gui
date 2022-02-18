@@ -31,12 +31,9 @@ export class MessageService {
 
   async postFile(file: File, pass) {
     const url = `${GlobalConstants.apiURL}/file/`; // POST api/file
-
     const formData: FormData = new FormData();
-
     formData.append('fileup', file);
     formData.append('pass', pass);
-
     const params = new HttpParams();
     const headers = new HttpHeaders();
     // add this to be able to show progress on interface
@@ -45,14 +42,15 @@ export class MessageService {
     //
     headers.set('Access-Control-Allow-Origin', '*');
     // try to fix cors error
-
     headers.set('Content-Type', null);
     headers.set('Accept', 'multipart/form-data');
+      try {
+          const response = await this.http.post(url, formData, {params, headers});
 
-    const response = await this.http.post(url, formData, {params, headers});
-
-    return response.toPromise();
-    
+          return response.toPromise();
+      } catch (error) {
+          await this.handleError(error);
+      }
   }
 
   getMessagesByType($type): Observable<Message[]> {

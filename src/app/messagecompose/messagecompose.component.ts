@@ -218,10 +218,12 @@ export class MessagecomposeComponent implements OnInit {
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
     this.sending = true;
-    console.log(f.value, 'eeee')
+    // console.log(f.value, 'eeee')
     // File exists?
     if (this.file != null && this.file !== [] ) {
-      await this.messageService.postFile(this.file, f.value.pass).then(value => {
+      await this.messageService.postFile(this.file, f.value.pass).then(
+  
+        (value:any) => {
         f.value.file = value['filename'] ; // gona change  to this default instead of image
         f.value.fileid = value['id'];
         f.value.mimetype = value['mimetype'];
@@ -229,7 +231,13 @@ export class MessagecomposeComponent implements OnInit {
         this.sending = false;
         console.log(value);
         const res  = this.sendMessageContinue(f);
-      });
+      },
+      (err) => {
+        this.errormsg = err;
+        this.errorAlert = true;
+        this.sending = false;
+      }
+      );
     }
     else{
         const res  = this.sendMessageContinue(f);
