@@ -40,7 +40,7 @@
 
 <!--<app-hmheader>
 </app-hmheader>-->
-
+<div class="fullpage">
 <header>
   <a routerLink='/messages' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
 
@@ -176,27 +176,18 @@
   <div class="drb" (click)="onToggle('HR')"></div>
 </div>
 
-
-<!--<span>
-  	<button *ngIf="!(darkMode$|async)" (click)="onToggle('HR')">🌚</button>
-  	<button *ngIf="(darkMode$|async)" (click)="onToggle('HR')">🌞</button>
-</span>-->
-  <span >
+  <span class="footerinfo">
     <span i18n="stationa">Station:</span> {{system.name}}  
-   
     <span *ngIf="currentUser">
     <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
-  
     <span *ngIf="!system" >
       &#124;  <span i18n="@@serveroff0">server off</span>
     </span>
-    | <span i18n="@@statusa0">Status: </span>
+    <span i18n="@@statusa0">Status: </span>
     <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
     <div *ngIf="system.status" class="greencircle"> </div>
     
     
-    <!--<div [ngClass]="{'redcircle' : !system.status , 'greencircle' : system.status }" title='system status'></div>-->
-    </span>
     <span *ngIf="currentUser"> | <span i18n="@@usera">user:</span> {{currentUser.email}}</span>
 
     <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 | number}} GB</span>
@@ -214,7 +205,7 @@
   </div>
   <br><span *ngIf="criticSpace" class="alert">System storage is low! please delete messages and files</span>
     <!--user: {{currentUser.email}} / {{currentUser.admin}}-->
-  
+  </span>
 </ng-container>
 
   <span *ngIf="!system" i18n="@@stationoffline">
@@ -224,3 +215,4 @@
 </div>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+</div>

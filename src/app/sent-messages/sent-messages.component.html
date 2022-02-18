@@ -28,18 +28,18 @@
         </div>
     </div>
 
+    <div *ngIf="!transList">
 
-    <h2 i18n="@@sentmessages">Sent Messages </h2>
+    <h2 i18n="@@sentmessages" class="maintitle">Sent Messages </h2>
 
     <div class="alert" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br/></div>
 
     <div *ngIf="!noMessages">
-    <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
 
     <div class="messages">
         
-            <div class="multiplist">
-                <div *ngFor="let message of sentMessages | filter:searchMessages">
+            <div class="multiplist1">
+                <div *ngFor="let message of sentMessages">
                     <a ><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin" (click)="removeMessage(message)"></a>
                     
                     <a routerLink="/message/{{message.id}}">
@@ -57,13 +57,35 @@
             </div>
             </div>
     </div>
-        <h2 i18n="@@transmissionlist">Transmission list</h2>
+
+    <button (click)="showTransmission()">Transmission List</button>
+
+    <hr>
+
+        <div class="navicons">
+            <div class="btn" >
+                <a routerLink="/compose" i18n="@@compose3">
+                    <img title="help" src="assets/svg/edit.svg">compose
+                </a>
+            </div>
+            <div class="btn sent" >
+                <a routerLink="/" i18n="@@messages2">
+                    <img title="help" src="assets/svg/comment.svg"> messages
+                </a>
+            </div>
+        </div>
+
+</div>
+
+    <div *ngIf="transList">
+
+        <h2 i18n="@@transmissionlist" class="maintitle">Transmission list</h2>
 
         <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br/></div>
         <div class="alert" *ngIf="noQueue" i18n="noqueue">There are no messages to transmit<br/></div>
 
     <div class="queue messages">
-        <div class="multiplist">
+        <div class="multiplist1">
             <div *ngFor="let job of queue | filter:searchMessages">
             <a >
                 <span *ngIf="isadmin" ></span>
@@ -86,25 +108,14 @@
      </div>  
      </div> 
         <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} total size</p>
-        <a (click)="confTransmit()">
+        <button (click)="confTransmit()">
             transmit now <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
-        </a>
+        </button>
+        <button (click)="showTransmission()">Sucessful sent messages</button>
+
     </div>
-
-    <hr>
-
-        <div class="navicons">
-            <div class="btn" >
-                <a routerLink="/compose" i18n="@@compose3">
-                    <img title="help" src="assets/svg/edit.svg">compose
-                </a>
-            </div>
-            <div class="btn sent" >
-                <a routerLink="/" i18n="@@messages2">
-                    <img title="help" src="assets/svg/comment.svg"> messages
-                </a>
-            </div>
-        </div>
+</div>
+    
 
         <div class="overall alert" *ngIf="errorAlert==true">
             <div class="cv" >

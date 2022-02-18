@@ -1,6 +1,6 @@
-<div class="">
+<div class="container">
 
-    <h2 i18n="@@publicmessages">Public Messages </h2>
+    <h2 i18n="@@publicmessages" class="maintitle">Public Messages </h2>
     
         <div class="supicons">
             <div class="" >
@@ -15,11 +15,11 @@
             </div>
         </div>
     
-        <div class="alert" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public messages<br/></div>
+        <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public messages<br/></div>
     
-        <div class="messages" *ngIf="!noMessages"> 
+        <div class="messages maincontainer" *ngIf="!noMessages"> 
     
-            <span i18n="@@searchmessages">Search Messages: </span><input class="searchbox1" [(ngModel)]="searchMessages"/>
+            
             <div class="multiplist">
                 <div *ngFor="let message of inboxMessages | filter:searchMessages">
         
@@ -41,8 +41,10 @@
                 </a>
                 <div class="date ls" >{{message.sent_at | date:'d/M/yy, h:mm'}}</div>
             </div>
-            </div>
+            
         </div>
+        <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages"/>
+            </div>
     
         <div class="navicons">
             <div class="btn" >

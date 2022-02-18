@@ -14,6 +14,9 @@ import { Observable } from 'rxjs';
   templateUrl: './sent-messages.component.html',
   styleUrls: ['./sent-messages.component.less']
 })
+
+
+
 export class SentMessagesComponent implements OnInit {
 
   currentUser: User;
@@ -33,6 +36,7 @@ export class SentMessagesComponent implements OnInit {
   noMessages = false;
   noUUcp = false;
   noQueue = false;
+  transList = false;
 
 
   constructor(
@@ -78,6 +82,15 @@ export class SentMessagesComponent implements OnInit {
     );
     console.log('⚚ cancelMail:', host, id);
   }
+
+showTransmission() {
+  if (this.transList == false) {
+    this.transList = true;
+  } else {
+    this.transList = false;
+  }
+
+}
 
   removeMessage(message: Message): void{
     this.sentMessages = this.sentMessages.filter(obj => obj !== message);
@@ -134,6 +147,11 @@ confTransmit(){
       res => {
         this.queue = res;
          console.log('⚚ uucp queue:', this.queue);
+         if (Object.keys(this.queue).length ==0) {
+           this.noQueue = true;
+         } else {
+           this.noQueue = false;
+         }
       },
       (err) => {
         this.error = err;

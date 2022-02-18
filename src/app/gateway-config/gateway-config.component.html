@@ -6,7 +6,7 @@
 <hr>
 
 <b>Current Schedules:</b>
-<ul *ngIf="schedules" id="schedulelist" class="multiplist" ng-model="schedules" >
+<ul *ngIf="schedules" id="schedulelist" class="multiplist3" ng-model="schedules" >
     <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)"> 
         
         <small>
@@ -28,13 +28,13 @@
     </div>
 </div>
 
-<hr>
+
 
 <button (click)="newSchedule()">create schedule</button>
-
+<hr>
 
 <div class="gateway" *ngIf="isEditing">
-    <hr>
+    
 
     <form #f="ngForm" id="timeform"  novalidate>
 

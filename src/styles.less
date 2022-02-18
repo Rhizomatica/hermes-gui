@@ -8,6 +8,10 @@
 @bkclr:#fff;
 @desktop: ~"only screen and (min-width: 992px)";
 
+html, body {
+    min-height: 100vh !important;
+    height: 100%;
+}
 
 *{box-sizing: border-box; 
     -webkit-box-sizing: border-box;
@@ -60,7 +64,7 @@
 
     h1, h2, h3, h4 {
         font-size: 1.2em;
-        margin: 0.1em 0 0.5em;
+        margin: 1em 0 0.2em;
     }
     
     
@@ -227,12 +231,7 @@ textarea {
     
 }
 
-.formfield input.inl {
-    display: inline;
-    width: 20px;
-    position: relative;
-    top:2px;
-}
+
 
 .bordered {
     border-bottom: 1px solid black;
@@ -241,23 +240,59 @@ textarea {
     margin: 0px;
 }
 
+.fullpage {
+    height: 100%;
+}
 
 .footer {
     font-size: 0.6em;
+    height: 1em;
+    div {
+        display:inline-block;
+    }
+    .footerinfo {
+        position: relative;
+        top: -0.5em;
+    }
 }
 
 
 .formfield {
     position: relative;
     max-width: calc(100%-4px);
+    min-height: calc(~"100% - 14em");
     padding-bottom: 1.5em;
     .bordered();
     .textarea{
         width: 100%;
     }
-    input {
+    input[type="text"], input[type="password"] {
         width: 100%;
     }
+    #searchbox1 {
+        position: relative;
+        right: 0;
+        margin-bottom: 5px;
+        margin: 0 0.1em 1em 0.1em;
+        width: calc(100% - 0.2em);
+        background: #fff 98% no-repeat url(./assets/svg/magnifying-glass-solid.svg);
+        background-size: 1em 1em;
+        border: 1px solid black;}
+
+        input.inl {
+            display: inline;
+            width: 20px;
+            
+            position: relative;
+            top:2px;
+        }
+
+}
+
+.container {
+    display:block;
+    min-height: 100%;
+    justify-content: end;
 }
 
 
@@ -502,7 +537,38 @@ textarea {
 
 
 .multiplist {
-    max-height: 10em;
+    display: block;
+    height: calc(100vh - 18em);
+    min-height: 5em;  
+    overflow-y: scroll;
+    border: 1px solid #888;
+    list-style: none;
+    list-style-position: inside;
+}
+
+.multiplist1 {
+    display: block;
+    height: calc(100vh - 20em);
+    min-height: 5em;  
+    overflow-y: scroll;
+    border: 1px solid #888;
+    list-style: none;
+    list-style-position: inside;
+}
+
+.multiplist2 {
+    display: block;
+    height: calc(100vh - 23em);
+    min-height: 5em;  
+    overflow-y: scroll;
+    border: 1px solid #888;
+    list-style: none;
+    list-style-position: inside;
+}
+
+.multiplist3 {
+    display: block;
+    min-height: 2em;  
     overflow-y: scroll;
     border: 1px solid #888;
     list-style: none;
@@ -540,12 +606,7 @@ textarea {
     right: 0;
 }
 
-input.searchbox1 {
-    position: relative;
-    right: 0;
-    margin-bottom: 5px;
 
-}
 
 input.searchbox2 {
     position: relative;
@@ -735,9 +796,7 @@ input.searchbox2 {
     z-index: 0;
   }
 
-  .footer div {
-      display:inline-block;
-  }
+  
 
   .blobber {
       width: 100%;
@@ -954,6 +1013,10 @@ input.searchbox2 {
             border-bottom: 1px solid #fff;
         }
 
+    }
+
+    .maintitle {
+        margin-top: 1.2em;
     }
 
     .formfield input.beforelist {
