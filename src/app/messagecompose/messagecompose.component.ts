@@ -208,9 +208,9 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   removeFile() {
-    const file = [];
+    const file = null;
     this.fileName = '';
-    this.file = [];
+    this.file = null;
     this.fileSelected = false;
     return this.file;
   }
