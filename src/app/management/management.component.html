@@ -4,7 +4,10 @@
     <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     <br>
 
-<div *ngIf="currentUser || isadmin">
+ 
+<div *ngIf="currentUser">
+
+<div *ngIf="isadmin">
 
     <h3 [hidden]="isEditing" i18n="@@Users">Users</h3>
     <h3 [hidden]="!isEditing"><span [hidden]="emptyUser" i18n="@@edtusers">Edit user</span><span [hidden]="!emptyUser" i18n="@@createusers">Create User</span></h3>
@@ -18,7 +21,7 @@
     </ng-container>
 
 </div>
-
+</div>
     
     
     <ng-container *ngIf="selectedUser">
