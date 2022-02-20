@@ -1,4 +1,4 @@
-<h2 i18n="@@transmissionschedules">Transmission Schedules</h2>
+<h2 i18n="@@transmissionschedules">Central Station</h2>
 
 <div *ngIf="isAdmin">
 
@@ -31,10 +31,10 @@
 
 
 <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
-<hr>
+
 
 <div class="gateway" *ngIf="isEditing">
-    
+    <hr>
 
     <form #f="ngForm" id="timeform"  novalidate>
 

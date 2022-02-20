@@ -1,23 +1,24 @@
 
 <div class="">
     <h2 i18n="@@admmanage">User Management</h2>
-    <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
-    <br>
-
- 
+    <hr>
+    
+    
 <div *ngIf="currentUser">
 
 <div *ngIf="isadmin">
 
-    <h3 [hidden]="isEditing" i18n="@@Users">Users</h3>
-    <h3 [hidden]="!isEditing"><span [hidden]="emptyUser" i18n="@@edtusers">Edit user</span><span [hidden]="!emptyUser" i18n="@@createusers">Create User</span></h3>
+    <h3 *ngIf="!isEditing" i18n="@@Users">Users</h3>
+    <h3 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser" i18n="@@createusers">Create User</span></h3>
     <ng-container >
 
-        <span i18n="@@searchusers">Search users: </span><input [hidden]="isEditing==true||isadmin==false" class="searchbox" [(ngModel)]="searchUser"/>
-
+        <div *ngIf="!isEditing">
         <ul id="userlist" class="multiplist2" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
         </ul>
+        
+        <input [hidden]="isEditing==true||isadmin==false" id="searchbox1" placeholder="Search Users" [(ngModel)]="searchUser" i18n-placeholder/>
+    </div>
     </ng-container>
 
 </div>
@@ -34,7 +35,7 @@
  
 
             <label for="email">
-                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" i18n-placeholder  placeholder="write the username"> 
+                <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder  placeholder="write the username"> 
                 
             </label>
 
@@ -143,5 +144,5 @@
             
         </form>
     </ng-container>
-
+    <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
 </div>

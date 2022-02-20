@@ -201,6 +201,7 @@ export class ManagementComponent implements OnInit {
       (res: any) => {
         this.users = res;
         console.log('⚚ management - getUsers');
+        this.getUsers();
       },
       (err) => {
         this.error = err;
