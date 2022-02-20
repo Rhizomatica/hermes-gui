@@ -58,7 +58,7 @@
             </div>
     </div>
 
-    <button (click)="showTransmission()">Transmission List</button>
+    <button i18n="@@transmissionlist" (click)="showTransmission()">Transmission List</button>
 
     <hr>
 
@@ -79,7 +79,7 @@
 
     <div *ngIf="transList">
 
-        <h2 i18n="@@transmissionlist" class="maintitle">Transmission list</h2>
+        <h2 i18n="@@transmissionlistt" class="maintitle">Transmission list</h2>
 
         <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br/></div>
         <div class="alert" *ngIf="noQueue" i18n="noqueue">There are no messages to transmit<br/></div>
@@ -109,9 +109,9 @@
      </div> 
         <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} total size</p>
         <button (click)="confTransmit()">
-            transmit now <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
+           <span i18n="@@transmitnow">transmit now</span> <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
         </button>
-        <button (click)="showTransmission()">Sucessful sent messages</button>
+        <button (click)="showTransmission()" i18n="@@sucessful">Sucessful sent messages</button>
 
     </div>
 </div>

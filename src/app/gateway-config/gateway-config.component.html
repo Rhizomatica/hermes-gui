@@ -1,11 +1,11 @@
-<h2 i18n="@@gatewayconf">Transmission Schedules</h2>
+<h2 i18n="@@transmissionschedules">Transmission Schedules</h2>
 
 <div *ngIf="isAdmin">
 
 <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br/></div>
 <hr>
 
-<b>Current Schedules:</b>
+<b i18n="@@currentschedules">Current Schedules:</b>
 <ul *ngIf="schedules" id="schedulelist" class="multiplist3" ng-model="schedules" >
     <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)"> 
         
@@ -18,7 +18,7 @@
 
 <div class="overall alert" *ngIf="errorAlert">
     <div class="cv" >
-        <span>There was an error on your request<br/>
+        <span i18n="@@errorrequest">There was an error on your request<br/>
             </span>
         <span>{{error}}</span>
         <div class="icon" ><a (click)="closeError()" >
@@ -30,7 +30,7 @@
 
 
 
-<button (click)="newSchedule()">create schedule</button>
+<button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
 <hr>
 
 <div class="gateway" *ngIf="isEditing">
@@ -46,9 +46,9 @@
 
        <div >
         <label >
-            <p i18n="@@initialtime">Schedule Title</p>
+            <p i18n="@@schedtitle" i18n="@@scheduletitel">Schedule Title</p>
             <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
-            <p class="alert" *ngIf="!canDelete">Can't delete default schedule</p>
+            <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
             <p i18n="@@initialtime">Start transmission hour: </p>
             <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required value="selectedSchedule.starttime"/>
             <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
@@ -56,16 +56,16 @@
          <label >
             <p i18n="@@finatime">Stop transmission hour:</p> 
             <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time" name="stoptime" id="stoptime" step="5"  [(ngModel)]="selectedSchedule.stoptime" value="selectedSchedule.stoptime" required/>
-            <p class="alert" *ngIf="timeerror">Stop transmission hour must be bigger than start time</p>
+            <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than start time</p>
         </label>
 
         <label >
-            <p i18n="@@finatime">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
+            <p i18n="@@enable">Enable: <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
         </label>
 
          <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime" (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button> 
          <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule" (click)="createSchedule(f)">create schedule</button> 
-         <span *ngIf="!emptySchedule"><button type="button" i18n="@@newschedule" [disabled]="!canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> 
+         <span *ngIf="!emptySchedule"><button type="button" i18n="@@deletechedule" [disabled]="!canDelete" (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span> 
         </div>
 <br/>
          
