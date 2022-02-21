@@ -14,7 +14,7 @@
 
         <div *ngIf="!isEditing">
         <ul id="userlist" class="multiplist2 users" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
-            <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
+            <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} - {{user.name}} <span *ngIf="user.admin" class="alert"> <img class="inlineicon" title="admin" src="assets/svg/wrench.svg"></span></li>
         </ul>
         
         <input [hidden]="isEditing==true||isadmin==false" id="searchbox1" placeholder="Search Users" [(ngModel)]="searchUser" i18n-placeholder/>
