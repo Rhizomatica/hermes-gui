@@ -27,12 +27,7 @@
     
     <ng-container *ngIf="selectedUser">
         <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
-            <label>
-                <span i18n>ID</span>
-                {{selectedUser.emailid}}
-                <br/>
-            </label>
- 
+            
 
             <label for="email">
                 <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder  placeholder="write the username"> 
@@ -106,7 +101,7 @@
         </label>
             <br/>
                 <button (click)="cancelCreate()" i18n="@@mwcancel" >cancel</button>
-                <button (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete user</button>
+                <span *ngIf="selectedUser.email !== 'root'"><button (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete user</button></span>
                 <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd" [disabled]="f.invalid">update</button>
                 <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch">create user</button>
 
