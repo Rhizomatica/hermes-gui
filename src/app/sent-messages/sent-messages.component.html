@@ -50,7 +50,7 @@
                     <span *ngIf="message.secure">                     
                         <img class="inlineicon" title="file" src="assets/svg/lock.svg">
                     </span>
-                    <div class="inlineicon" class="date">{{message.sent_at | date:'d/M/yy, h:mm'}}</div>
+                    <div class="inlineicon" class="date">{{message.dest}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</div>
                     </a>
                 </div>
                 <!-- {{message.dest}}-->
