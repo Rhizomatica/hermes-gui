@@ -34,6 +34,7 @@ export class MessageadmComponent implements OnInit {
   errorAlert = false;
   noSystem = false;
   isAdmin = false;
+  cleaned = false;
 
   constructor(
     private messageService: MessageService,
@@ -88,8 +89,11 @@ export class MessageadmComponent implements OnInit {
 
 
   cleanUp() {
-    const url = `${GlobalConstants.apiURL}/api/file`; // DELETE api/message/42
+    const url = `${GlobalConstants.apiURL}/api/file`; 
+    console.log('allclean');
+    this.cleaned = true;
     return this.http.delete(url);
+    
   }
 
   getMessages(): void {

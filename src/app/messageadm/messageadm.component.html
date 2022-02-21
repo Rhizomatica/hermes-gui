@@ -18,7 +18,7 @@
 <hr>
 <form #f="ngForm" >
 <p i18n="@@cleanuptext">When sending messages it's possible that broken files are stored in the server, please click here to clean up the system:</p>
-    <button i18n="@@cleanup" type="submit" (click)="cleanUp()">Clean up lost files</button>
+    <button *ngIf="!cleaned" i18n="@@cleanup" (click)="cleanUp()">Clean up lost files</button> <span i18n="@@Cleaned" class="alert" i18n="@@cleanup" *ngIf="cleaned">Cleaned!</span>
 </form>
 
 </div>
