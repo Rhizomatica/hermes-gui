@@ -9,9 +9,9 @@
 <div class="formdata" *ngIf="uLog">
     <hr>
 <h3 i18n="@@uucplog2">uucp log</h3>
-<div class="footer logs" >
+<div class="logs" >
 
-    <div *ngFor="let log of uucpLog">
+    <div *ngFor="let log of uucpLog.slice().reverse()">
         <span>{{log.line}}</span><span>{{log.content}}</span>
     </div>
 
@@ -27,7 +27,7 @@
     <h3 i18n="@@debuglog2">uucp debug log</h3>
     <div class="footer logs" >
     
-        <div *ngFor="let log of uucpDebugLog">
+        <div *ngFor="let log of uucpDebugLog.slice().reverse()">
             <span>{{log.line}}</span><span>{{log.content}}</span>
         </div>
         
@@ -42,7 +42,7 @@
     <h3 i18n="@@emaillog2">email log</h3>
     <div class="footer logs" >
 
-        <div *ngFor="let log of mailLog ">
+        <div *ngFor="let log of mailLog.slice().reverse()">
             <span>{{log.line}}</span><span>{{log.content}}</span>
         </div>
 

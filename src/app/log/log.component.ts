@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
+import { interval } from 'rxjs';
+
 
 export interface LogList {
   line: string;
@@ -26,6 +28,10 @@ export class LogComponent implements OnInit {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
+  public intervallTimer = interval(5000);
+  private subscription1;
+  private subscription2;
+  private subscription3;
 
   constructor( private authenticationService: AuthenticationService, private apiService: ApiService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -54,7 +60,7 @@ export class LogComponent implements OnInit {
     this.apiService.getUucpLog().subscribe(
       (res: any) => {
         this.uucpLog = res;
-        // console.log(this.uucpLog);
+        // console.log('read');
 
         return res;
       },
@@ -98,6 +104,13 @@ export class LogComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getLogUucp();
+    this.getLogMail();
+    this.getLogUucpDebug();
+    this.subscription1 = this.intervallTimer.subscribe(() => this.getLogUucp());
+    this.subscription2 = this.intervallTimer.subscribe(() => this.getLogMail());
+    this.subscription3 = this.intervallTimer.subscribe(() => this.getLogUucpDebug());
+
     this.getLogUucp();
     this.getLogMail();
     this.getLogUucpDebug();
