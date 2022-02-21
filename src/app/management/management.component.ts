@@ -186,7 +186,16 @@ export class ManagementComponent implements OnInit {
   }
 
   onSubmitDelete( id: number, email:string ): void {
-      this.userService.deleteUser(id, email).subscribe();
+      this.userService.deleteUser(id, email).subscribe(
+        (res: any) => {
+          this.getUsers();
+        },
+        (err) => {
+          this.error = err;
+          this.errorAlert = true;
+  
+        }
+      );
       this.deleteUser = false;
       this.isEditing = false;
       // window.location.reload();

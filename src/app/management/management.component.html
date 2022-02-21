@@ -13,7 +13,7 @@
     <ng-container >
 
         <div *ngIf="!isEditing">
-        <ul id="userlist" class="multiplist2" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
+        <ul id="userlist" class="multiplist2 users" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} | {{user.name}} | {{user.location}}</li>
         </ul>
         
