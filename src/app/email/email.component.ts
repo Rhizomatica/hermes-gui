@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailComponent implements OnInit {
 
+  linksOn = false;
+
+
   constructor() { }
+
+  showlinks() {
+  if (this.linksOn == true) {
+    this.linksOn = false
+  } else {
+    this.linksOn = true;
+  }
+
+
+
+}
 
   ngOnInit(): void {
   }

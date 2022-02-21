@@ -88,9 +88,9 @@
         <div class="multiplist1">
             <div *ngFor="let job of queue | filter:searchMessages">
             <a >
-                <span *ngIf="isadmin" ></span>
-                <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
-                <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></a>
+                <span *ngIf="isadmin" ><img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
+                    <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
+                </a>
                 <span> {{job.uuidhost}}.{{job.uuiduucp}} </span>
                 <span >
                     <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
@@ -108,8 +108,8 @@
      </div>  
      </div> 
         <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} total size</p>
-        <button (click)="confTransmit()">
-           <span i18n="@@transmitnow">transmit now</span> <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
+        <button *ngIf="currentUser" (click)="confTransmit()">
+           <span i18n="@@transmitnow" >transmit now</span> <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
         </button>
         <button (click)="showTransmission()" i18n="@@sucessful">Sucessful sent messages</button>
 

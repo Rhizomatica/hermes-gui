@@ -34,21 +34,10 @@
                     <ng-container *ngIf="stations">
 
                         <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
-                            <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}} | {{station.name}} - {{station.location}}</option>
+                            <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}}</option>
                         </select>
 
-                        <!--
-                        <ng-select *ngIf="isGateway" name="dest" [(ngModel)]="message.dest" multiple=true required>
-                            <ng-option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}} - {{station.name}}</ng-option>
-                        </ng-select>
-
-                        -->
-<!--
-                        <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [items]="stations" bindValue="alias" bindLabel="alias" formControlName="stations" [(ngModel)]="message.dest" multiple=true required 
-                        >
-                
-                        </ng-select>
--->
+                        
 
 <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true" [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true required >
 
@@ -58,7 +47,7 @@
       </ng-template>
 
       <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.name}} {{item.alias}}
+        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.alias}}
       </ng-template>
                 
                         </ng-select>

@@ -10,11 +10,11 @@
             <p><span i18n="@serial">Serial Number: </span>{{radio.mastercal}}</p>
             <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>
             <p><span i18n="@reflected">REF (Reflected Power): </span>{{radio.refinvolts}} V</p>
-            <p><input type="range" min="0" max="6" value="{{radio.refinvolts}}" disabled></p>
+            <p><input class="full" type="range" min="0" max="6" value="{{radio.refinvolts}}" disabled></p>
             <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwdinwatts}} W</p>
-            <p><input class="styled-slider" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>
+            <p><input class="styled-slider full" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
-            <p><span class="styled-slider" i18n="@Treshold">FWD Threshold: </span>{{radio.refthreshold}} </p>
+            <p><span class="styled-slider full" i18n="@Treshold">FWD Threshold: </span>{{radio.refthreshold}} </p>
             <div *ngIf="radio.led" i18n="@@radioledon">led: on </div>
             <div *ngIf="!radio.led" i18n="@@radioledoff">led: off</div>
             <div *ngIf="radio.protection" i18n="@@protectionon">protection: on </div>

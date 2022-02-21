@@ -3,8 +3,8 @@
     
   <form #g="ngForm" *ngIf="stations" class="formfield">
     <p><b>Stations on this network:</b></p>
-
-    <div><b><span class="stname">Name</span><span  class="stname">Alias</span><span>Enabled for transmission</span></b></div>
+<br/>
+    <div><b><span class="stname">Name</span><span class="stname">Alias</span><span *ngIf="isGateway" class="tranenabl">Enabled for transmission</span></b></div>
 
   <div *ngFor="let station of stations" class="itemlist">
        <span>
