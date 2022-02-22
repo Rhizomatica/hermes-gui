@@ -72,7 +72,8 @@
 		</div>
      </div>  
      </div> 
-        <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} total size</p>
+        <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} B</p>
+        <br/>
         <button *ngIf="isadmin" (click)="confTransmit()">
            <span i18n="@@transmitnow" >transmit now</span> <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
         </button>
