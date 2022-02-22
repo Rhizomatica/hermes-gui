@@ -205,14 +205,13 @@ export class MessagecomposeComponent implements OnInit {
     this.sending = true;
     
     if (!this.isGateway) { 
-      
       var str = f.value.dest;
       var arr = [];
       arr.push(str);
       f.value.dest = arr;
 
     }
-    console.log(f.value, 'eeee')
+    // console.log(f.value, 'eeee')
     // File exists?
     if (this.file != null && this.file !== [] ) {
       await this.messageService.postFile(this.file, f.value.pass).then(
