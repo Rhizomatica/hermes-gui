@@ -53,7 +53,7 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min = 500000;
   public max = 300000000;
-  public intervallTimer = interval(10000);
+  public intervallTimer = interval(500);
   private subscription;
   fwdw: any;
   refv: any;
