@@ -53,10 +53,12 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min = 500000;
   public max = 300000000;
-  public intervallTimer = interval(50000);
+  public intervallTimer = interval(10000);
   private subscription;
   fwdw: any;
   refv: any;
+  fwd_raw: any;
+  ref_raw: any;
   tx = false;
   rx = false;
   power: any;
@@ -84,10 +86,12 @@ export class RadioConfigComponent implements OnInit {
         this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
         this.refthreshold = this.radio.refthreshold;
-        this.radio.fwdiwatts = this.radio.fwdiwatts;
-        this.fwdw = this.radio.fwdiwatts;
-        this.radio.refinvolts = this.radio.refinvolts;
-        this.refv = this.radio.refinvolts;
+        this.radio.fwd_watts = this.radio.fwd_watts;
+        this.fwdw = this.radio.fwd_watts;
+        this.fwd_raw = this.radio.fwd_raw;
+        this.radio.ref_volts = this.radio.ref_volts;
+        this.refv = this.radio.ref_volts;
+        this.ref_raw = this.radio.ref_raw;
 
         if (this.radio.bypass === true) {
           this.bypass = true;
@@ -116,11 +120,13 @@ export class RadioConfigComponent implements OnInit {
         this.power = res;
         this.radio.tx = this.power.tx;
         this.radio.led = this.power.led;
-        this.led = this.radio.led;
+        this.led = this.power.led;
         this.radio.protection = this.power.protection;
         this.radio.bypass = this.power.bypass;
-        this.radio.fwdinwatts = this.power.fwdinwatts;
-        this.radio.refinvolts = this.power.refinvolts;
+        this.radio.fwd_watts = this.power.fwd_watts;
+        this.radio.fwd_raw = this.power.fwd_raw;
+        this.radio.ref_volts = this.power.ref_volts;
+        this.radio.ref_raw = this.power.ref_raw;
         console.log(this.power, 'pwd');
         // console.log(this.radio.refinvolts);
         // console.log(this.radio.fwdinwatts);

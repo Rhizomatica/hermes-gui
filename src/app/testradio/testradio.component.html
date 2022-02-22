@@ -10,10 +10,10 @@
             
             <p><span >VFO - Frequencia: </span>  {{frek}} kHz {{radio.mode}}</p> 
             <p><span>BFO (Beat Freq Osc):</span> {{radio.bfo}} Hz </p>
-            <p><span i18n="@reflected">REF (Reflected Potence): </span>{{radio.refinvolts}} V</p>
-            <p><input type="range" min="0" max="6" value="{{radio.refinvolts}}" disabled></p>
-            <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwdinwatts}} W</p>
-            <p><input class="styled-slider" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>
+            <p><span i18n="@reflected">REF (Reflected Power): </span>{{radio.ref_volts}} V ({{radio.ref_raw}}/1023)</p>
+            <p><input class="full" type="range" min="0" max="6" value="{{radio.refinvolts}}" disabled></p>
+            <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwd_watts}} W ({{radio.fwd_raw}}/1023)</p>
+            <p><input class="styled-slider full" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>
             <p><span>Mastercal: </span>{{radio.mastercal}}</p>
             <p><span>Serial Number: </span>{{radio.serial}} </p>
             <div *ngIf="radio.led" >LED de status: on </div>

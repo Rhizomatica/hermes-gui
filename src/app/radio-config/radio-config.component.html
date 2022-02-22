@@ -9,9 +9,9 @@
             <hr>
             <p><span i18n="@serial">Serial Number: </span>{{radio.mastercal}}</p>
             <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>
-            <p><span i18n="@reflected">REF (Reflected Power): </span>{{radio.refinvolts}} V</p>
+            <p><span i18n="@reflected">REF (Reflected Power): </span>{{radio.ref_volts}} V ({{radio.ref_raw}}/1023)</p>
             <p><input class="full" type="range" min="0" max="6" value="{{radio.refinvolts}}" disabled></p>
-            <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwdinwatts}} W</p>
+            <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwd_watts}} W ({{radio.fwd_raw}}/1023)</p>
             <p><input class="styled-slider full" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
             <p><span class="styled-slider full" i18n="@Treshold">FWD Threshold: </span>{{radio.refthreshold}} </p>

@@ -47,8 +47,10 @@ export class TestradioComponent implements OnInit {
   updated = false;
   public intervallTimer = interval(1000);
   private subscription;
-  fwdw: any;
-  refv: any;
+  fwd_watts: any;
+  ref_volts: any;
+  fwd_raw: any;
+  ref_raw: any;
   tx = false;
   rx = false;
   power: any;
@@ -77,10 +79,10 @@ constructor(
         this.testtone = this.radio.testtone;
         this.mode = this.radio.mode;
         this.refthreshold = this.radio.refthreshold;
-        this.radio.fwdiwatts = this.radio.fwdiwatts;
-        this.fwdw = this.radio.fwdiwatts;
-        this.radio.refinvolts = this.radio.refinvolts;
-        this.refv = this.radio.refinvolts;
+        this.radio.fwd_watts = this.radio.fwd_watts;
+        this.fwd_watts = this.radio.fwd_watts;
+        this.radio.ref_volts = this.radio.ref_volts;
+        this.ref_volts = this.radio.ref_volts;
 
 
         if (this.radio.testtone > 0) {
@@ -120,9 +122,11 @@ constructor(
         this.led = this.radio.led;
         this.radio.protection = this.power.protection;
         this.radio.bypass = this.power.bypass;
-        this.radio.fwdinwatts = this.power.fwdinwatts;
-        this.radio.refinvolts = this.power.refinvolts;
-        this.radio.txrx = this.power.txrx;
+        this.radio.fwd_watts = this.power.fwd_watts;
+        this.radio.ref_volts = this.power.ref_volts;
+        this.radio.fwd_raw = this.power.fwd_watts;
+        this.radio.ref_raw = this.power.ref_raw;
+
         // console.log(this.power);
         // console.log(this.radio.refinvolts);
         // console.log(this.radio.fwdinwatts);
@@ -237,12 +241,12 @@ constructor(
   }
 
   public getRadioPower() {
-    this.radioService.getRadioPower().subscribe(
+    this.radioService.getRadioPttswr().subscribe(
       (res: any) => {
-        this.radio.ref= res.ref;
-        this.radio.refv = res.refv;
-        this.radio.fwd = res.fwd;
-		this.radio.fwdv = res.fwdv;
+        this.radio.ref_raw= res.ref_raw;
+        this.radio.ref_volts = res.ref_volts;
+        this.radio.fwd_raw = res.fwd_raw;
+		this.radio.fwd_watts = res.fwd_watts;
         this.updated = true;
       },
       (err) => {
@@ -586,7 +590,7 @@ resetRadio() {
   }
 
   ngOnInit(): void {
-    this.radio = this.getRadioStatus();
+    this.getRadioStatus();
     this.getPttswr();
     this.subscription = this.intervallTimer.subscribe(() => this.getPttswr());
     this.testTest();

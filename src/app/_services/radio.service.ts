@@ -87,7 +87,7 @@ export class RadioService {
     }
 
     public getRadioPttswr(): Observable<{}> {
-      const url = `${GlobalConstants.apiURL}/radio/pttswr`;
+      const url = `${GlobalConstants.apiURL}/radio/power`;
       const output = this.http.get(url);
       return this.http.get(url).pipe(
         map((res: any) => {
