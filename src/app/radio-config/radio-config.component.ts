@@ -53,7 +53,7 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min = 500000;
   public max = 300000000;
-  public intervallTimer = interval(500);
+  public intervallTimer = interval(50000);
   private subscription;
   fwdw: any;
   refv: any;
@@ -99,7 +99,7 @@ export class RadioConfigComponent implements OnInit {
         } else {
           this.ptt = 'OFF';
         }
-        // console.log('hahah' + this.ptt);
+        console.log(this.radio);
         return res;
       },
       (err) => {
@@ -121,8 +121,7 @@ export class RadioConfigComponent implements OnInit {
         this.radio.bypass = this.power.bypass;
         this.radio.fwdinwatts = this.power.fwdinwatts;
         this.radio.refinvolts = this.power.refinvolts;
-        this.radio.txrx = this.power.txrx;
-        // console.log(this.power);
+        console.log(this.power, 'pwd');
         // console.log(this.radio.refinvolts);
         // console.log(this.radio.fwdinwatts);
 

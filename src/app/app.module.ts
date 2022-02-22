@@ -40,6 +40,7 @@ import { TestradioComponent } from './testradio/testradio.component';
 import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
 import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TransmissionListComponent } from './transmission-list/transmission-list.component';
 
 
 registerLocaleData(localePt);
@@ -80,7 +81,8 @@ registerLocaleData(localePt);
     RadioConfigComponent,
     FrequencyPipe,
     TestradioComponent,
-    GatewayConfigComponent
+    GatewayConfigComponent,
+    TransmissionListComponent
   ],
   imports: [
     BrowserModule,

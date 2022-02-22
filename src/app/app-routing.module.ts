@@ -19,6 +19,7 @@ import {HelpComponent} from './help/help.component';
 import { RadioConfigComponent } from './radio-config/radio-config.component';
 import { TestradioComponent } from './testradio/testradio.component';
 import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
+import { TransmissionListComponent } from './transmission-list/transmission-list.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'help', component: HelpComponent},
   { path: 'radioconfig', component: RadioConfigComponent},
   { path: 'testradio', component: TestradioComponent},
-  { path: 'gateway', component: GatewayConfigComponent}
+  { path: 'gateway', component: GatewayConfigComponent},
+  { path: 'transmission', component: TransmissionListComponent}
 ];
 
 @NgModule({
