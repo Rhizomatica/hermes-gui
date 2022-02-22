@@ -2,7 +2,7 @@ export interface Message {
   id: number;
   name: string;
   orig: string;
-  dest: string;
+  dest: any;
   text: string;
   file: string;
   fileid: string;

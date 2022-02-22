@@ -134,22 +134,7 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-  sendMessag(f: NgForm, passwd): void {
-      this.fileIsProcessing = true;
-	    f.value.orig = this.nodename;
-      console.log(f.value, 'iiiii');
-      this.messageService.sendMessage(f.value,  this.serverConfig.nodename).subscribe(
-      (res: any) => {
-        this.res = res;
-        console.log('⚚ messagecompose - sendMessage: res: ', res);
-        // this.fileIsProcessing = true;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
+  
 
   onFileSelected(event) {
 
@@ -218,7 +203,16 @@ export class MessagecomposeComponent implements OnInit {
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
     this.sending = true;
-    // console.log(f.value, 'eeee')
+    
+    if (!this.isGateway) { 
+      
+      var str = f.value.dest;
+      var arr = [];
+      arr.push(str);
+      f.value.dest = arr;
+
+    }
+    console.log(f.value, 'eeee')
     // File exists?
     if (this.file != null && this.file !== [] ) {
       await this.messageService.postFile(this.file, f.value.pass).then(
@@ -344,7 +338,7 @@ export class MessagecomposeComponent implements OnInit {
       id: null,
       name: '',
       orig: '',
-      dest: '',
+      dest: [],
       text: '',
       file: '',
       fileid: '',
