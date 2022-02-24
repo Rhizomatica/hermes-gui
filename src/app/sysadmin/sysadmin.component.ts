@@ -3,6 +3,7 @@ import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
 import { Api } from '../api';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-sysadmin',
@@ -19,6 +20,7 @@ export class SysadminComponent implements OnInit {
   system: any;
   error: any;
   isGateway: false;
+  subscription: any;
 
   constructor(
     private authenticationService: AuthenticationService,

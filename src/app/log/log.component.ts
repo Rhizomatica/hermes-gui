@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
@@ -15,7 +15,7 @@ export interface LogList {
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.less']
 })
-export class LogComponent implements OnInit {
+export class LogComponent implements OnInit, OnDestroy {
 
   uLog = false;
   eLog = false;
@@ -119,6 +119,14 @@ export class LogComponent implements OnInit {
     } else {
       this.isAdmin = false;
     }
+  }
+
+  ngOnDestroy() { 
+
+    this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
+    this.subscription3.unsubscribe();
+    console.log('quiting radio config');
   }
 
   }

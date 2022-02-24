@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { RadioService } from '../_services/radio.service';
 import { NgForm } from '@angular/forms';
@@ -6,6 +6,7 @@ import {DecimalPipe} from '@angular/common';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../user';
 import { interval } from 'rxjs';
+import { Router} from '@angular/router';
 
 // import { truncateSync } from 'fs';
 
@@ -22,7 +23,7 @@ import { interval } from 'rxjs';
 
 })
 
-export class RadioConfigComponent implements OnInit {
+export class RadioConfigComponent implements OnInit, OnDestroy {
   public radio: any = [];
   error: Error;
   alterFreq = false;
@@ -53,7 +54,7 @@ export class RadioConfigComponent implements OnInit {
   refthreshold: any;
   public min = 500000;
   public max = 300000000;
-  public intervallTimer = interval(500);
+  public intervallTimer = interval(2000);
   private subscription;
   fwdw: any;
   refv: any;
@@ -68,7 +69,8 @@ export class RadioConfigComponent implements OnInit {
 	  private apiService: ApiService,
     private authenticationService: AuthenticationService,
 	  private radioService: RadioService,
-	  private decimalPipe: DecimalPipe) { 
+	  private decimalPipe: DecimalPipe,
+    private router: Router) { 
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -417,8 +419,16 @@ export class RadioConfigComponent implements OnInit {
     } else {
       this.currentUser.admin = false;
     }
+
+    
     // console.log('ahahaha');
 
      // console.log(this.isAdmin);
+  }
+
+  ngOnDestroy() { 
+
+    this.subscription.unsubscribe();
+    console.log('quiting radio config');
   }
 }

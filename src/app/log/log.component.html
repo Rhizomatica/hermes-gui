@@ -12,7 +12,7 @@
 <div class="logs" >
 
     <div *ngFor="let log of uucpLog.slice().reverse()">
-        <span>{{log.line}}</span><span>{{log.content}}</span>
+        <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
     </div>
 
     <br>
@@ -28,7 +28,7 @@
     <div class="footer logs" >
     
         <div *ngFor="let log of uucpDebugLog.slice().reverse()">
-            <span>{{log.line}}</span><span>{{log.content}}</span>
+            <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
         </div>
         
 
@@ -43,7 +43,7 @@
     <div class="footer logs" >
 
         <div *ngFor="let log of mailLog.slice().reverse()">
-            <span>{{log.line}}</span><span>{{log.content}}</span>
+            <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
         </div>
 
    
