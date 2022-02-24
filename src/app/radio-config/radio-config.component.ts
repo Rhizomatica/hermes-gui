@@ -54,7 +54,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   refthreshold: any;
   public min = 500000;
   public max = 300000000;
-  public intervallTimer = interval(2000);
+  public intervallTimer = interval(500);
   private subscription;
   fwdw: any;
   refv: any;
