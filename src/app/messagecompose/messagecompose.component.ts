@@ -125,7 +125,7 @@ export class MessagecomposeComponent implements OnInit {
       (res: any) => {
         this.system = res;
         this.isGateway = this.system.gateway;
-        console.log(this.system);
+        // console.log(this.system);
         return res;
       },
       (err) => {
@@ -146,7 +146,7 @@ export class MessagecomposeComponent implements OnInit {
       //comparador de tamanho;
       this.file = file;
 
-      console.log(this.file);
+      // console.log(this.file);
 
       switch(this.file.type) {
             case 'image/bmp':           
@@ -178,13 +178,13 @@ export class MessagecomposeComponent implements OnInit {
   
       if(file.size < this.maxSize) {
         this.fileName = file.name;
-        console.log(file);
+        // console.log(file);
         this.fileSelected = true;
         return file;
       }
       else {
         this.fileName = 'file too big | archivo muy grande ';
-        console.log(file);
+        // console.log(file);
         this.file = null;
         file = null;
         return file;
@@ -222,7 +222,7 @@ export class MessagecomposeComponent implements OnInit {
         f.value.mimetype = value['mimetype'];
         const filesize =  value['size'] ; // can be use later on frontend to show how compressed the file is
         this.sending = false;
-        console.log(value);
+        // console.log(value);
         const res  = this.sendMessageContinue(f);
       },
       (err) => {
@@ -244,7 +244,7 @@ export class MessagecomposeComponent implements OnInit {
       this.messageService.sendMessage(f.value,  this.nodename).subscribe(
         (res: any) => {
           this.res = res;
-          console.log('⚚ messagecompose - sendMessage: res: ', res);
+          // console.log('⚚ messagecompose - sendMessage: res: ', res);
           this.fileIsProcessing = true;
           this.file = [];
           this.fileName = '';
@@ -273,7 +273,7 @@ export class MessagecomposeComponent implements OnInit {
     this.message.name = '';
     this.message.text = '';
     this.message.file = '';
-        console.log('⚚ message-detail - newMessage - TODO yeah! ', this.message);
+       // console.log('⚚ message-detail - newMessage - TODO yeah! ', this.message);
 
   }
 

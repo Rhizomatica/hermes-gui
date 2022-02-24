@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { UserService } from './user.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from './_services/authentication.service';
 import { ApiService } from './_services/api.service';
 import { User } from './user';
@@ -18,6 +18,7 @@ import { Api } from './api';
 })
 export class AppComponent implements OnInit {
   currentUser: User;
+  public iTimer = interval(30000);
   serverRes: any;
   error: any;
   system: any;
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
   res: any;
   errorAlert = false;
   resetting = false;
+  subscript: any;
 
   title = 'hermes.radio';
     constructor(
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
+        // console.log('SystemStatus');
         if (this.system.diskfree < 10485760) {
           this.criticSpace = true;
         }
@@ -139,5 +142,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
      this.getSystemStatus();
      this.getRadioStatus();
+     this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
+
   }
+
 }

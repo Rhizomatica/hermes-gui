@@ -99,7 +99,7 @@ export class SysadminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);
+    // console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);
     this.getSystemStatus();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;

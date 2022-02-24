@@ -1,7 +1,7 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AlertService } from '../alert.service';
-import { Observable, Scheduler, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 // import { Api } from '../api';
 import { GlobalConstants } from '../global-constants';
@@ -30,7 +30,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - system status:\n ', res);
+          // console.log('⚚ Hermes ⚚\n⚚ api service - system status:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -42,7 +42,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - system config');
+          // console.log('⚚ Hermes ⚚\n⚚ api service - system config');
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -144,7 +144,7 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.schedules = res || [];
-          console.log('⚚ Hermes ⚚\n⚚ api service - caller schedulles:\n ', res);
+          // console.log('⚚ Hermes ⚚\n⚚ api service - caller schedulles:\n ', res);
           return this.schedules;
       }),
       catchError(this.handleError));

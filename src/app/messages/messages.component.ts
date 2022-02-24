@@ -64,7 +64,7 @@ export class MessagesComponent implements OnInit {
         } else {
           this.noMessages = false;
         }
-        console.log(this.inboxMessages);
+        // console.log(this.inboxMessages);
      },
       (err) => {
         this.error = err;
@@ -90,7 +90,7 @@ export class MessagesComponent implements OnInit {
     this.messageService.deleteMessage($id).subscribe(
       (res: any) => {
         this.message = res;
-        console.log('⚚ messages - deleteInboxMessage -  res: ', res);
+        // console.log('⚚ messages - deleteInboxMessage -  res: ', res);
         this.getInboxMessages();
       },
       (err) => {
