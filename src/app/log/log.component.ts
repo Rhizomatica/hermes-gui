@@ -28,7 +28,7 @@ export class LogComponent implements OnInit, OnDestroy {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
-  public intervallTimer = interval(5000);
+  public intervallTimer = interval(50000);
   private subscription1;
   private subscription2;
   private subscription3;

@@ -386,10 +386,12 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       this.res = res;
       console.log('⚚ radio reset: ', res);
       // this.fileIsProcessing = true;
+      this.reseting = false;
       },
       (err) => {
       this.error = err;
       this.errorAlert = true;
+      this.reseting = false;
       }
     );
     console.log('⚚ testradio - reset to defaults ');

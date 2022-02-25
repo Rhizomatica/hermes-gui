@@ -589,15 +589,33 @@ textarea {
 }
 
 .logs {
+    position: relative;
     font-size: 0.6em;
     min-height: 10em;
     height: calc(100vh - 36em);
-    overflow-y: scroll;
+    overflow: auto;
     border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
     font-size: 0.5em;
     line-height: 1.2em;
+    position: relative;
+    section {
+        height:fit-content;
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-direction: column-reverse;
+        flex-basis: 1em;
+        -webkit-flex-grow: 1;
+        -webkit-flex-shrink: 1;
+        overflow: scroll;
+        }
+        
+    div {
+        
+        width: 100%;
+    }
     h3 {
         border-top: 1px solid black;
     }
