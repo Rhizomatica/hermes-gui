@@ -59,8 +59,8 @@
     
 
     <div class="logged" *ngIf="currentUser; else loggedOut">
-      <div class="navbar-nav">
-       <span class="topuser">{{currentUser.email}}</span>
+      <div class="navbar-nav"><span class="topuser"><span i18n="@@connectedas">connected as: </span>
+       <span >{{currentUser.email}}</span></span>
          <!-- <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/> 
         <div class="servericon">
           <span class="icon" *ngIf="!system" i18n="@@serveroff1">
@@ -176,7 +176,7 @@
   <div class="drb" (click)="onToggle('HR')"></div>
 </div>
 
-  <span class="footerinfo">
+  <span class="footerinfo">Version: 1.0 | 
     <span i18n="stationa">Station:</span> {{system.name}}  
     <span *ngIf="currentUser">
     <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
@@ -188,7 +188,7 @@
     <div *ngIf="system.status" class="greencircle"> </div>
     
     
-    <span *ngIf="currentUser"> | <span i18n="@@usera">user:</span> {{currentUser.email}}</span>
+    <!--<span *ngIf="currentUser"> | <span i18n="@@usera">user:</span> {{currentUser.email}}</span>-->
 
     <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 | number}} GB</span>
     

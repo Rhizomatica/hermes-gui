@@ -222,14 +222,12 @@ constructor(
       }
     );
     
-    
     this.getRadioPower();
+  }
 
-    }
-
-    updateFwd() {
+  updateFwd() {
       this.subscription = this.intervallTimer.subscribe(() => this.getRadioPower());
-    }
+  }
 
     stopUpdate() {
       this.subscription.unsubscribe();
