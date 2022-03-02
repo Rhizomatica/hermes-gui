@@ -196,6 +196,28 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
+  public pttOn(f) {
+    this.radioService.setRadioPTT(f).subscribe(
+      (res: any) => {
+        this.res = res;
+        console.log('⚚ radio config - set ptt- : res: ', res);
+        console.log (this.ptt);
+        this.radio.ptt = res;
+        this.ptt = f;
+        this.radio.tx = true;
+        this.radio.rx = false;
+        console.log('on');
+
+      },
+      (err) => {
+       this.error = err;
+        this.errorAlert = true;
+      }
+    );
+    
+    this.getPttswr();
+  }
+
   confirmReset() {
     if (this.reseting) {
       this.reseting = false;
