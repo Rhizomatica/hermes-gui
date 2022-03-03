@@ -593,14 +593,13 @@ textarea {
 
 .logs {
     position: relative;
-    font-size: 0.6em;
+    font-size: 0.75em;
     min-height: 10em;
-    height: calc(100vh - 36em);
+    height: calc(100vh - 32em);
     overflow: auto;
     border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
-    font-size: 0.5em;
     line-height: 1.2em;
     position: relative;
     section {
@@ -625,6 +624,16 @@ textarea {
     img {
         width: 1.5em;
         height: 1.5em;
+    }
+    .close {
+        width: 100%;
+        position:sticky;
+        top: 0;
+        align-self: flex-end;
+        text-align: right; 
+        img {
+            margin-right: 1em;
+        }
     }
 }
 
