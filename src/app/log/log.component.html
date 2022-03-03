@@ -12,7 +12,7 @@
 <div class="logs" >
 <section>
     <div *ngFor="let log of uucpLog">
-        <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
+       <p> <span>{{log}}</span></p>
     </div>
 
     <br>
@@ -28,7 +28,7 @@
     <div class="footer logs" >
     <section>
         <div *ngFor="let log of uucpDebugLog">
-            <p><span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span></p>
+            <p><span>{{log}}</span></p>
         </div>
         
     </section>
@@ -44,7 +44,7 @@
 
         <section>
         <div *ngFor="let log of mailLog">
-            <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
+            <p><span>{{log}}</span></p>
         </div>
 
     </section>
