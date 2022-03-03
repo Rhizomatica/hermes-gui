@@ -24,7 +24,6 @@
 </div>
 </div>
     
-    
     <ng-container *ngIf="selectedUser">
         <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
             
@@ -139,5 +138,7 @@
             
         </form>
     </ng-container>
+    <button *ngIf="currentUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
     <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
+    
 </div>

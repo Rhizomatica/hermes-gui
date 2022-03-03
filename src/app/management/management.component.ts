@@ -70,6 +70,8 @@ export class ManagementComponent implements OnInit {
     }
   }
 
+  
+
   Alert(param, ): boolean {
       // param=!param;
       return !param;
@@ -165,6 +167,11 @@ export class ManagementComponent implements OnInit {
     this.emptyUser = false;
     // console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
 
+  }
+
+  updateThis() {
+  //console.log(this.currentUser);
+    this.onSelect(this.currentUser);
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {

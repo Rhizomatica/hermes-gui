@@ -1,5 +1,6 @@
 <div id="radioconf">
-    <h2 i18n="@@radioconft">Radio Configuration</h2> 
+    <h2 *ngIf="isAdmin" i18n="@@radioconft">Radio Configuration</h2> 
+    <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2> 
 
     <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br/></div>
     <div >
@@ -19,8 +20,8 @@
             <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>           
             <p><span class="styled-slider full" i18n="@Treshold">Max SWR protection: </span>{{radio.refthreshold}} </p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
-            <div *ngIf="radio.led" i18n="@@radioledon">System LED: on </div>
-            <div *ngIf="!radio.led" i18n="@@radioledoff">System LED: off</div>
+            <!--<div *ngIf="radio.led" i18n="@@radioledon">System LED: on </div>
+            <div *ngIf="!radio.led" i18n="@@radioledoff">System LED: off</div>-->
             <div *ngIf="radio.protection" i18n="@@protectionon">Protection: on </div>
             <div *ngIf="radio.protection" i18n="@@protectionoff">Protection: off </div>
             
