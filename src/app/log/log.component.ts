@@ -123,6 +123,7 @@ export class LogComponent implements OnInit, OnDestroy {
   closeLogs() {
     this.uLog = false;
     this.eLog = false;
+    this.dLog = false;
   }
 
 
