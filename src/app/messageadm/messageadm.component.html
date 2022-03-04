@@ -1,16 +1,30 @@
 <h2 i18n="@@aconfigmessages">Messages Configuration</h2>
-
+<hr>
 <div class="alert" *ngIf="noSystem" i18n="cannotaccessuucp">Alert: Cannot access Hermes System<br/></div>
 
 <div *ngIf="isAdmin">
 <div *ngIf="!noSystem" >
-    <p i18n=@@selectwho>select who can attach files to messages:</p>
+    <p i18n=@@selectwho>Select who can send public messages:</p>
+
+    <form #f="ngForm" >
+    <select name="allowhmp" (change)="setComposePermission($event.target.value)">
+        <option [selected]='allowhmp=="all"' value="all" i18n="@@everyone">everyone</option>
+        <option [selected]='allowhmp=="users"' value="users" i18n="@@registeredusers">registered users</option>
+        <option [selected]='allowhmp=="admin"' value="admin" i18n="@@adminusers">admin users</option>
+    </select>
+    <br/>
+    <!--<button i18n="@@updatema">update</button>-->
+    </form>  
+    
+    <hr>
+    
+    <p i18n=@@selectwho>Select who can attach files to messages:</p>
 
 <form #f="ngForm" >
 <select name="allowfile" (change)="setUploadPermission($event.target.value)">
-    <option ng-selected='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
-    <option ng-selected='allowfile=="users"' value="users" selected i18n="@@registeredusers">registered users</option>
-    <option ng-selected='allowfile=="admin"' value="admin" i18n="@@adminusers">admin users</option>
+    <option [selected]='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
+    <option [selected]='allowfile=="users"' value="users" i18n="@@registeredusers">registered users</option>
+    <option [selected]='allowfile=="admin"' value="admin" i18n="@@adminusers">admin users</option>
 </select>
 <br/>
 <!--<button i18n="@@updatema">update</button>-->

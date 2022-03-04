@@ -9,8 +9,8 @@
             <hr>
             <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq / 1000}} kHz {{radio.mode}}</p> 
             <hr>
-            <div *ngIf="radio.bypass" i18n="@@bypasson">Conected: on </div>
-            <div *ngIf="!radio.bypass" i18n="@@bypassoff">Conected: off </div>
+            <div *ngIf="radio.bypass" i18n="@@bypasson">Conected </div>
+            <div *ngIf="!radio.bypass" i18n="@@bypassoff">Disconected </div>
             <div *ngIf="radio.tx" i18n="@@operationtx1">Operation mode: TX </div>
             <div *ngIf="radio.rx" i18n="@@operationrx" >Operation mode: RX </div>
             <p><span i18n="@reflected">REF (Reflected Power): </span>{{radio.ref_volts}} V ({{radio.ref_raw}}/1023)</p>
@@ -23,7 +23,7 @@
             <!--<div *ngIf="radio.led" i18n="@@radioledon">System LED: on </div>
             <div *ngIf="!radio.led" i18n="@@radioledoff">System LED: off</div>-->
             <div *ngIf="radio.protection" i18n="@@protectionon">Protection: on </div>
-            <div *ngIf="radio.protection" i18n="@@protectionoff">Protection: off </div>
+            <div *ngIf="!radio.protection" i18n="@@protectionoff">Protection: off </div>
             
             
             <p><span i18n="@serial">Serial Number: </span>{{radio.mastercal}}</p>
