@@ -8,6 +8,8 @@ import { UUCPService } from '../_services/uucp.service';
 import { AlertService } from '../alert.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Observable } from 'rxjs';
+import { ApiService } from '../_services/api.service';
+
 
 @Component({
   selector: 'app-sent-messages',
@@ -37,11 +39,16 @@ export class SentMessagesComponent implements OnInit {
   noUUcp = false;
   noQueue = false;
   transList = false;
+  allowCompose = false;
+  serverConfig: any;
+  allowhmp: string;
+
 
 
   constructor(
     private messageService: MessageService,
     private uucpService: UUCPService,
+    private apiService: ApiService,
     private alertService: AlertService,
     private authenticationService: AuthenticationService,
     // private userService: UserService
@@ -49,6 +56,8 @@ export class SentMessagesComponent implements OnInit {
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
+
+    
 
   closeError() {
       this.errorAlert = false;
@@ -173,11 +182,47 @@ confTransmit(){
     }
   }
 
+  getSysConfig(): void{
+    this.apiService.getSysConfig().subscribe(
+      (res: any) => {
+        this.serverConfig= res;
+        this.allowhmp = res.allowhmp;
+        
+        switch(this.allowhmp) {
+          case 'users':
+            if (this.currentUser) {
+              this.allowCompose = true;
+            }
+            break;
+            case 'admin':
+              if (this.currentUser) {
+                if (this.isadmin) {
+                  this.allowCompose = true;
+                }
+              }
+            break;
+            case 'all':
+            this.allowCompose = true;
+            break;
+            default:
+            this.allowCompose = false;
+          }
+        return res;
+      },
+      (err) => {
+        this.error = err;
+        this.allowCompose = false;
+      }
+    );
+  }
+
 
   ngOnInit(): void {
     this.getMessages();
     this.getQueue();
     this.getQueueSize();
+    this.getSysConfig();
+
     this.isadmin = this.currentUser.admin;
   }
 }

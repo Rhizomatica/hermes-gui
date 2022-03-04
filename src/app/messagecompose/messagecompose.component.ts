@@ -52,6 +52,8 @@ export class MessagecomposeComponent implements OnInit {
   public isGateway: boolean;
   public system: any;
   public selectedStations = [];
+  public allowhmp;
+  public allowCompose = false;
 
   // allowfile : users, admin, all
 
@@ -86,6 +88,7 @@ export class MessagecomposeComponent implements OnInit {
       (res: any) => {
         this.serverConfig= res;
         this.allowfile = res.allowfile;
+        this.allowhmp = res.allowhmp;
         this.nodename = res.nodename;
         // console.log('messagecompose' , this.currentUser);
         // console.log('hahaha', this.serverConfig)
@@ -110,6 +113,26 @@ export class MessagecomposeComponent implements OnInit {
             default:
             this.allowUpload = false;
           }
+          switch(this.allowhmp) {
+            case 'users':
+              if (this.currentUser) {
+                this.allowCompose = true;
+              }
+              break;
+              case 'admin':
+                if (this.currentUser) {
+                  if (this.isAdmin) {
+                    this.allowCompose = true;
+                  }
+                }
+              break;
+              case 'all':
+              this.allowCompose = true;
+              break;
+              default:
+              this.allowCompose = false;
+            }
+
         return res;
       },
       (err) => {

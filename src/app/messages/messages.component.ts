@@ -3,7 +3,7 @@ import { Message } from '../message';
 import { MessageService } from '../_services/message.service';
 import { AlertService } from '../alert.service';
 import { User } from '../user';
-// import { GlobalConstants } from '../global-constants';
+import { ApiService } from '../_services/api.service';
 import { UserService } from '../_services/user.service';
 import { AuthenticationService } from '../_services/authentication.service';
 
@@ -40,11 +40,14 @@ export class MessagesComponent implements OnInit {
   searchMessages: string;
   today = Date();
   noMessages = false;
-
+  allowCompose: boolean;
+  allowhmp: string;
+  serverConfig: any;
 
   constructor(
     private messageService: MessageService,
     private alertService: AlertService,
+    private apiService: ApiService,
     private authenticationService: AuthenticationService,
     private userService: UserService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -100,9 +103,44 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+  getSysConfig(): void{
+    this.apiService.getSysConfig().subscribe(
+      (res: any) => {
+        this.serverConfig= res;
+        this.allowhmp = res.allowhmp;
+        
+        switch(this.allowhmp) {
+          case 'users':
+            if (this.currentUser) {
+              this.allowCompose = true;
+            }
+            break;
+            case 'admin':
+              if (this.currentUser) {
+                if (this.isadmin) {
+                  this.allowCompose = true;
+                }
+              }
+            break;
+            case 'all':
+            this.allowCompose = true;
+            break;
+            default:
+            this.allowCompose = false;
+          }
+        return res;
+      },
+      (err) => {
+        this.error = err;
+        this.allowCompose = false;
+      }
+    );
+  }
+
 
   ngOnInit(): void {
     this.getInboxMessages();
+    this.getSysConfig();
     if ( this.currentUser ) {
     this.isadmin = this.currentUser.admin;
     } else {
