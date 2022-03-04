@@ -64,6 +64,14 @@ export class UserService {
       );
   }
 
+  recoverPassword(id: number, user: User): Observable<User> {
+    const url = `${GlobalConstants.apiURL}/user/recover/${id}`;
+    return this.http.post<User>(url, user, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+
     private handleError(error: HttpErrorResponse) {
       this.users = [];
 	  console.log('⚚ Hermes ⚚\n⚚ user service  error - :\n ', error);
