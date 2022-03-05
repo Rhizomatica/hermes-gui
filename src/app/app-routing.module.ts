@@ -1,29 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MessagesComponent } from './messages/messages.component';
-import { SysadminComponent } from './sysadmin/sysadmin.component';
-import { StationsComponent } from './stations/stations.component';
-import { MessageDetailComponent } from './message-detail/message-detail.component';
-import { LogComponent } from './log/log.component';
-import { ManagementComponent } from './management/management.component';
-import { MessagecomposeComponent } from './messagecompose/messagecompose.component';
-import { NetadminComponent } from './netadmin/netadmin.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
-import { LoginComponent } from './login/login.component';
-import { LanguagesComponent } from './languages/languages.component';
-import { MessageadmComponent } from './messageadm/messageadm.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { SentMessagesComponent } from './sent-messages/sent-messages.component';
-import { EmailComponent } from './email/email.component';
-import {HelpComponent} from './help/help.component';
-import { RadioConfigComponent } from './radio-config/radio-config.component';
-import { TestradioComponent } from './testradio/testradio.component';
+import { LandingComponent } from './components/public/landing/landing.component';
+import { MessagesComponent } from './components/public/messages/messages.component';
+import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
+import { StationsComponent } from './components/admin/stations/stations.component';
+import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
+import { LogComponent } from './components/admin/log/log.component';
+import { ManagementComponent } from './components/admin/management/management.component';
+import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
+import { NetadminComponent } from './components/admin/netadmin/netadmin.component';
+import { UpgradeComponent } from './components/upgrade/upgrade.component';
+import { LoginComponent } from './components/public/login/login.component';
+import { LanguagesComponent } from './components/public/languages/languages.component';
+import { MessageadmComponent } from './components/admin/messageadm/messageadm.component';
+import { ForgotpasswordComponent } from './components/public/forgotpassword/forgotpassword.component';
+import { SentMessagesComponent } from './components/sent-messages/sent-messages.component';
+import { EmailComponent } from './components/public/email/email.component';
+import {HelpComponent} from './components/public/help/help.component';
+import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
+import { TestradioComponent } from './components/testradio/testradio.component';
 import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
-import { TransmissionListComponent } from './transmission-list/transmission-list.component';
-
+import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/messages', pathMatch: 'full' },
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: 'landing', component: LandingComponent},
   { path: 'messages', component: MessagesComponent},
   { path: 'admin', component: SysadminComponent},
   { path: 'stations', component: StationsComponent},

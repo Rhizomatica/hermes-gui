@@ -1,11 +1,11 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { AlertService } from '../alert.service';
+import { AlertService } from '../_services/alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 // import { Api } from '../api';
 import { GlobalConstants } from '../global-constants';
-import { Schedule } from '../schedule';
+import { Schedule } from '../interfaces/schedule';
 
 
 @Injectable({

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { User } from '../interfaces/user';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ApiService } from '../_services/api.service';
-import { Schedule } from '../schedule';
-import { Station } from '../station';
+import { Schedule } from '../interfaces/schedule';
+import { Station } from '../interfaces/station';
 import { StationService } from '../_services/station.service';
 import { NgForm} from '@angular/forms';
 import { map, catchError } from 'rxjs/operators';
