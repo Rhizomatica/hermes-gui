@@ -9,33 +9,17 @@
 
 <style>
   :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
 
   p {
     margin: 0;
   }
 
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-
-  }
-
-  @media screen and (max-width: 575px) {
-
-  }
+ 
 </style>
 
 <!--<app-hmheader>
@@ -61,21 +45,7 @@
     <div class="logged" *ngIf="currentUser; else loggedOut">
       <div class="navbar-nav"><span class="topuser"><span i18n="@@connectedas">connected as: </span>
        <span >{{currentUser.email}}</span></span>
-         <!-- <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span><br/> 
-        <div class="servericon">
-          <span class="icon" *ngIf="!system" i18n="@@serveroff1">
-            server off
-          </span>
-        </div>-->
-
-       <!--<span class="servericon">
-          <span class="icon" *ngIf="system">
-            <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="assets/svg/broadcast-tower.svg" >
-          </span>
-          <span class="icon" *ngIf="!system">
-          <img title="server status off" src="assets/svg/broadcast-tower-off.svg" >
-          </span>
-        </span>--> 
+        
 
         <a class="icon" routerLink="/login" *ngIf="!currentUser" >
           <img title="Log In" src="assets/svg/sign-in-alt-solid.svg" ><br>
@@ -87,11 +57,6 @@
           <span class="logged" i18n="@@logout1">logout</span>
         </a>
         <br>
-
-          <!--<a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>-->
-          <!--<span *ngIf="currentUser.res === ok">ok</span><br/>
-          <button *ngIf="currentUser.email" (click)="logout()">logout</button>
-          <button *ngIf="!currentUser.email" routerLink="/login">login</button>-->
       </div>
     </div>
 
@@ -114,10 +79,10 @@
 </div>
 <nav id="mainnav" *ngIf="system">
   <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
+  <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
   <a routerLink="/admin" i18n="@admin" >
     <img title="admin" src="assets/svg/tools.svg">admin
   </a>
-  <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
   <a routerLink="/languages" i18n="@@languages"><img title="languages" src="assets/svg/globe-americas.svg">language</a>
   <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
 
@@ -169,7 +134,7 @@
 </div>
 
 
-<div class="footer">
+<footer class="footer">
   <ng-container *ngIf="system">
 
 <div class="dr">
@@ -212,7 +177,7 @@
      Hermes station offline <figure class="redcircle"></figure>
   </span>
 
-</div>
+</footer>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 </div>

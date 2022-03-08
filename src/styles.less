@@ -8,7 +8,18 @@
 @bkclr:#fff;
 @desktop: ~"only screen and (min-width: 992px)";
 
+@font-face {
+    font-family: "Rubik";
+    src: url("assets/fonts/Rubik-Light.woff2") format("woff"),
+    }
+
+@font-face {
+        font-family: "Rubik-regular";
+        src: url("assets/fonts/Rubik-Regular.woff2") format("woff"),
+        }    
+
 html, body {
+    font-family: 'Rubik', sans-serif;
     min-height: 100vh !important;
     height: 100%;
 }
@@ -17,6 +28,11 @@ html, body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
+
+h1,h2,h3,h4,h5,h6, a, li, button, input {
+    font-family: "Rubik-regular", sans-serif ;
+}
+
 
 @media screen {
     body,
@@ -42,6 +58,7 @@ html, body {
         margin-right: 0.5em;
         a {
             color: @bkclr;
+            font-family: ;
         }
 
     }
@@ -65,13 +82,7 @@ html, body {
     h1, h2, h3, h4 {
         font-size: 1.2em;
         margin: 1em 0 0.2em;
-    }
-    
-    
-    
-
-  
-    
+    }  
 }
 
 
@@ -171,27 +182,31 @@ margin-left: 2px;
 }
 
 nav {
-    font-size: 0.8em;
+    font-size: 0.6em;
+    font-family: "Rubik-regular";
+    line-height: 0.8em;
     border-bottom: 2px solid @mclr;
+    border-top: 2px solid @mclr;
     max-width: calc(100%-4px);
-    padding-top: 1.6em;
     display: flex;
     justify-content: flex-start;
     a {
     text-decoration: none;
-    border-top: 3px solid @mclr;
     padding-bottom: 4px;
     margin-right: 0.3em;
     margin-top: 0.8em;
     position: relative;
+    min-width: calc(20% - 0.25em);
+    text-align: center;
     }
-    a:hover {
-        border-top: 3px solid @clr;
-    }
+    
     img {
-        width: 2em;
-        position: absolute;
-        top: -2.3em;
+        width: 2.5em;
+        clear: both;
+        display: block;
+        position: relative;
+        margin: 0 auto 0.25em;
+       
     }
     img:hover {
         fill: @clr;
@@ -219,9 +234,12 @@ textarea {
 
 .sitetitle {
     color:@clr;
-    font-size: 14px;
+    font-size: 0.8em;
+    line-height: 1em;
     position: relative;
-    top:-3px;
+    left: 3px;    
+    margin: 0.25em 0;
+    font-weight: normal;
 }
 
 .logo {
@@ -234,7 +252,7 @@ textarea {
 
 
 .bordered {
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
     padding: 0.5em 0;
     border-radius: 0 0 0 0;
     margin: 0px;
@@ -362,11 +380,14 @@ textarea {
     display: inline-block;
     font-size: 0.6em;
     line-height: 0.7em;
+    text-align: center;
+    vertical-align: top;
     img {
         display: block;
         height: 3em;
         clear: both;
         margin-bottom: 0.1em;
+        margin: 0.1em auto;
         
     }
 
@@ -384,6 +405,7 @@ textarea {
 .btn.sent {
     position: relative;
     display: inline-block;
+    text-align: center;
    
 }
 
@@ -546,7 +568,7 @@ textarea {
 }
 
 .alert {
-    color: red;
+    color: @clr;
 }
 
 
@@ -1066,7 +1088,7 @@ input.searchbox2 {
         }
 
         .bordered {
-            border-bottom: 1px solid #fff;
+            border-bottom: 2px solid #fff;
         }
 
     }

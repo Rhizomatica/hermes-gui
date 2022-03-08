@@ -1,22 +1,9 @@
 <div class="container">
 
+    
+
     <h2 i18n="@@publicmessages" class="maintitle">Public Messages </h2>
-    
-        <div class="supicons">
-            <div class="" >
-                <a routerLink="/sent" >
-                    <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">
-                </a>
-            </div>
-           
-            <div class="" *ngIf="allowCompose" >
-                <a routerLink="/compose" >
-                    <img title="edit" src="assets/svg/edit.svg">
-                </a>
-            </div>
-            
-        </div>
-    
+ 
         <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public messages<br/></div>
     
         <div class="messages maincontainer" *ngIf="!noMessages"> 
