@@ -41,6 +41,7 @@ import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
 import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './transmission-list/transmission-list.component';
+import { HomeComponent } from './home/home.component';
 
 
 registerLocaleData(localePt);
@@ -82,7 +83,8 @@ registerLocaleData(localePt);
     FrequencyPipe,
     TestradioComponent,
     GatewayConfigComponent,
-    TransmissionListComponent
+    TransmissionListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
