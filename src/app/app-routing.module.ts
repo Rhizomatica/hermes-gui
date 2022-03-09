@@ -19,7 +19,7 @@ import { EmailComponent } from './components/public/email/email.component';
 import {HelpComponent} from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { TestradioComponent } from './components/testradio/testradio.component';
-import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
+import { GatewayConfigComponent } from './components/gateway-config/gateway-config.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 
 const routes: Routes = [

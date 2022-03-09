@@ -39,7 +39,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './components/testradio/testradio.component';
 import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
-import { GatewayConfigComponent } from './gateway-config/gateway-config.component';
+import { GatewayConfigComponent } from './components/gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 
