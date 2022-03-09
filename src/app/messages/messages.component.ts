@@ -43,6 +43,7 @@ export class MessagesComponent implements OnInit {
   allowCompose: boolean;
   allowhmp: string;
   serverConfig: any;
+  loginForm = false;
 
   constructor(
     private messageService: MessageService,
@@ -135,6 +136,22 @@ export class MessagesComponent implements OnInit {
         this.allowCompose = false;
       }
     );
+  }
+
+  showlogin() {
+    if (this.loginForm) {
+      this.loginForm = false;
+      console.log(this.loginForm)
+    } else {
+      this.loginForm = true;
+    }
+
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.currentUser = null;
+    console.log('⚚ app: user logout');
   }
 
 

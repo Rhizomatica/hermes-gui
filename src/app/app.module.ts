@@ -42,6 +42,7 @@ import { GatewayConfigComponent } from './gateway-config/gateway-config.componen
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './transmission-list/transmission-list.component';
 import { HomeComponent } from './home/home.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 
 registerLocaleData(localePt);
@@ -84,7 +85,8 @@ registerLocaleData(localePt);
     TestradioComponent,
     GatewayConfigComponent,
     TransmissionListComponent,
-    HomeComponent
+    HomeComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,7 @@ html, body {
 
 h1,h2,h3,h4,h5,h6, a, li, button, input {
     font-family: "Rubik-regular", sans-serif ;
+    margin: 0;
 }
 
 
@@ -81,7 +82,7 @@ h1,h2,h3,h4,h5,h6, a, li, button, input {
 
     h1, h2, h3, h4 {
         font-size: 1.2em;
-        margin: 1em 0 0.2em;
+        margin: 0.25em 0 0.1em;
     }  
 }
 
@@ -291,8 +292,8 @@ textarea {
         position: relative;
         right: 0;
         margin-bottom: 5px;
-        margin: 0 0.1em 1em 0.1em;
-        width: calc(100% - 0.2em);
+        margin: 0 0em 0.2em 0.1em;
+        width: calc(100% - 0.1em);
         background: #fff 98% no-repeat url(./assets/svg/magnifying-glass-solid.svg);
         background-size: 1em 1em;
         border: 1px solid black;}
@@ -406,6 +407,7 @@ textarea {
     position: relative;
     display: inline-block;
     text-align: center;
+    min-width: 10em;
    
 }
 
@@ -428,6 +430,7 @@ textarea {
     display: block;
     width: 100%;
     height: 3em;
+    text-align: center;
 }
 
 .topuser {
@@ -604,6 +607,28 @@ textarea {
 
 .users {
     margin: 0.15em;
+}
+
+.userlist {
+    width: 100%;
+    margin-bottom: 0.15em;
+    font-size: 0.75em;
+    .adm {
+        padding-left: 0.15em;
+        width: 5%;
+        display: inline-block;
+    }
+    .uemail {
+        width: 30%;
+        display: inline-block;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        padding-right: 0.25em;
+    }
+    .uname {
+        display: inline-block;
+        width: 65%;
+    }
 }
 
 .multiplist3 {
@@ -1094,7 +1119,7 @@ input.searchbox2 {
     }
 
     .maintitle {
-        margin-top: 1.2em;
+        margin-top: 0.25em;
     }
 
     .formfield input.beforelist {

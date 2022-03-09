@@ -1,0 +1,24 @@
+<h2 i18n="@@login">Login</h2>
+<form #f="ngForm" id="loginform" novalidate>
+<label >
+    <p i18n="@@username:">username:</p>
+    <input i18n="@@ilogin" name="email"  ngModel required placeholder="Login" i18n-placeholder/>
+ </label>
+ <label >
+    <p i18n="@@password">password:</p>
+     <input name="password" i18n="@@ipass" type="password" ngModel required i18n-placeholder placeholder="Password" />
+ </label>
+
+ <a >
+    <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in" >Log in</button></a>
+    <br/>
+    <br/>
+    <a  routerLink="/recovery" *ngIf="!success">
+       <div ><a i18n="@@forgotmypassword">Forgot my password</a></div>
+    </a>
+
+</form>
+
+ <p i18n="@@noaccount">Doesn't have an account?</p>
+
+      <a routerLink="/manage" ><button i18n="@@create">create an account</button></a>

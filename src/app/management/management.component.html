@@ -8,14 +8,24 @@
 
 <div *ngIf="isadmin">
 
-    <h3 *ngIf="!isEditing" i18n="@@Users">Users</h3>
-    <h3 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser" i18n="@@createusers">Create User</span></h3>
+    <h5 *ngIf="!isEditing" i18n="@@Users">User list:</h5>
+    <h5 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser" i18n="@@createusers">Create User</span></h5>
     <ng-container >
 
         <div *ngIf="!isEditing">
-        <ul id="userlist" class="multiplist2 users" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
-            <li *ngFor="let user of users | filter:searchUser" (click)="onSelect(user)">{{user.email}} - {{user.name}} <span *ngIf="user.admin" class="alert"> <img class="inlineicon" title="admin" src="assets/svg/wrench.svg"></span></li>
-        </ul>
+            <div class="userlist">
+                <div class="adm"><b><img class="inlineicon" title="admin" src="assets/svg/wrench.svg"></b></div>
+                <div class="uemail"><b>username</b></div>
+                <div class="uname"><b>name</b></div>
+            </div>
+        <div id="userlist" class="multiplist2 users" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
+            <div class="userlist" *ngFor="let user of users" (click)="onSelect(user)">
+                <div class="adm"><span *ngIf="user.admin" class="alert"> <img class="inlineicon" title="admin" src="assets/svg/wrench.svg"></span></div>
+                <div class="uemail">{{user.email}}</div>
+                <div class="uname">{{user.name}}</div>
+            </div>
+            
+        </div>
         
         <input [hidden]="isEditing==true||isadmin==false" id="searchbox1" placeholder="Search Users" [(ngModel)]="searchUser" i18n-placeholder/>
     </div>
@@ -58,7 +68,6 @@
             <label for="recovery">
                 <span i18n>recovery phrase</span>:
                 <br/><input  name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr"  required placeholder="write a question to recover your password" i18n-placeholder />
-                <div *ngIf="f.invalid" i18n="@@titlereq">Title is required</div>
             </label>
             <label>
                 <span i18n="@@recovans2">recovery answer</span>:
@@ -77,7 +86,6 @@
                 <br/>
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
                 <label for="passwd" >
-                    <span i18n="@@typethepassword">Type the password</span>
                     <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required ii18n-placeholder  placeholder="password"  minlength="6" (input)="checkpass(selectedUser.password,repasswd)" />
                 </label>
                 <label for="repasswd" >

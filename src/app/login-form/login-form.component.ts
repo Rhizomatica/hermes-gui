@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { delay } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../user';
 
-
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.less']
 })
-export class LoginComponent implements OnInit {
+
+export class LoginFormComponent implements OnInit {
+
+  @Output() hideLoginForm = new EventEmitter();
+
   res = '';
   error = Error;
   currentUser: User;
@@ -22,17 +24,25 @@ export class LoginComponent implements OnInit {
      // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  submitLogin(f: any): void{
+
+  hideForm(value: boolean) {
+    this.hideLoginForm.emit();
+    console.log("emit");
+  }
+
+  submitLogin(f: NgForm): void{
     console.log('⚚ login - submitLogin: f.value: ', f.value);
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ login - submitLogin: res: ', res);
+        //console.log('⚚ login - submitLogin: res: ', res);
+        
         return res;
+        
       },
       (err) => {
         this.error = err;
-        this.router.navigate(['/login']);
+        let val = true;
       }
     );
     // this.router.navigate(['/admin']);

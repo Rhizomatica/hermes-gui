@@ -195,12 +195,13 @@ export class ManagementComponent implements OnInit {
   onSubmitDelete( id: number, email:string ): void {
       this.userService.deleteUser(id, email).subscribe(
         (res: any) => {
+          this.users = res;
           this.getUsers();
         },
         (err) => {
           this.error = err;
           this.errorAlert = true;
-  
+          this.getUsers();
         }
       );
       this.deleteUser = false;
@@ -216,7 +217,6 @@ export class ManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
-        console.log('⚚ management - getUsers');
         this.getUsers();
       },
       (err) => {
@@ -224,7 +224,7 @@ export class ManagementComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    this.getUsers();
+    
 
   }
 
