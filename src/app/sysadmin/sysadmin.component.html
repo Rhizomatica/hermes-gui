@@ -89,29 +89,32 @@
     </div>
 
     <div *ngIf="!currentUser.admin">
-        <span i18n="@@needtobeadmin">
-            Need to be an admin to access admin features
-        </span>
-        <br>
-        <br>
         <a routerLink="/manage" i18n="@@usermanagement">User Management</a>
         <br/>
         <a routerLink="/radioconfig" i18n="@@radioinformation">Radio Information</a>
+        <br/>
+        <br/>
 
+        <p i18n="@@needtobeadmin">
+            Need to be an admin to access other admin features
+        </p>
     </div>
 
 
 </div>
 
 
+<div *ngIf="loginForm">
 
 <div *ngIf="!currentUser">
-    Need to be an admin to access admin features
-    <app-login>
-    </app-login>
+    <span i18n="@@pleaselogin">Please log in to access this area:</span>
+    <hr>
+    <app-login-form (hideLoginForm)="loginForm = false">
+    </app-login-form>
     
 </div>
 
+</div>
 
 
 <!--<a routerLink="/mailadmin" i18n="@@mailadmin">email administration</a>-->

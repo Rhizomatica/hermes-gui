@@ -5,11 +5,36 @@
 
     <form #f="ngForm" id="loginform" novalidate>
 
-       
-          <button ><a href="/mail/"  target="_self">Webmail</a></button>
-          <br/>
-       <div (click)="showlinks()" class="delta icon" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png">deltachat<br>
-       </div>
+          <button ><img  class="round icon" src="assets/img/roundcubelogo.svg"><a href="/mail/"  target="_self">Webmail</a></button>
+      
+       <button (click)="showlinks()" class="delta icon" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png">deltachat<br>
+       </button>
+      </form>
+
+
+      <hr>
+<h3>Select users to send e-mail:</h3>
+
+<ng-container *ngIf="users">
+
+{{emailto}}
+
+<ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users" bindValue="email" groupBy="selectedAllGroup" bindLabel="email" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required >
+
+   <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+       <input id="item-{{index}}" type="checkbox"
+       [(ngModel)] ="item$.selected" [ngModelOptions]="{standalone: true}"/> <span i18n="@@selectall"> Select All</span>
+     </ng-template>
+
+     <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+       <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.email}}
+     </ng-template>
+               
+                       </ng-select>
+   </ng-container>
+
+   <a href="mailto:{{emailto}}"><button>Send email to selected</button> </a>
+
 <br/>
        <div *ngIf="linksOn">
           <p i18n="@@todownload">To download deltachat click on one of the links below: </p>
@@ -35,6 +60,8 @@
       </a>
        
  
-    </form>
+    
+
+    
  </div>
  

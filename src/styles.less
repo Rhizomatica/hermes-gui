@@ -59,7 +59,10 @@ h1,h2,h3,h4,h5,h6, a, li, button, input {
         margin-right: 0.5em;
         a {
             color: @bkclr;
-            font-family: ;
+    
+        }
+        a:visited {
+            color: @bkclr;
         }
 
     }
@@ -146,7 +149,7 @@ button {
         text-decoration:none;
     }
     a:visited {
-        color: #ddd;
+        color: @bkclr;
     }
 }
 
@@ -326,6 +329,14 @@ textarea {
     }
 }
 
+.round {
+    width: 1.5em;
+    margin-right: 0.15em;
+    position: relative;
+    top: 0.15em;
+}
+
+
 
 
  .userstatus {
@@ -344,6 +355,7 @@ textarea {
 
     button {
         background-color: #666
+
     }
 
 }

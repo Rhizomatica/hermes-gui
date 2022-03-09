@@ -21,6 +21,7 @@ export class SysadminComponent implements OnInit {
   error: any;
   isGateway: false;
   subscription: any;
+  loginForm = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -103,8 +104,10 @@ export class SysadminComponent implements OnInit {
     this.getSystemStatus();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
+      this.loginForm = false;
     } else {
       this.isAdmin = false;
+      this.loginForm = true;
     }
   }
 
