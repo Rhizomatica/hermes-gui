@@ -25,9 +25,8 @@ export class LoginFormComponent implements OnInit {
   }
 
 
-  hideForm(value: boolean) {
+  hideForm() {
     this.hideLoginForm.emit();
-    console.log("emit");
   }
 
   submitLogin(f: NgForm): void{
@@ -36,7 +35,7 @@ export class LoginFormComponent implements OnInit {
       (res: any) => {
         this.res = res;
         //console.log('⚚ login - submitLogin: res: ', res);
-        
+        this.hideForm();
         return res;
         
       },

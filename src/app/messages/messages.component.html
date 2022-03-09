@@ -69,10 +69,10 @@
         </div>
 
     </div>
+
     <div *ngIf="loginForm">
         <hr>
-        <app-login-form (showlogin)="submitLogin($event)">
-            
+        <app-login-form (hideLoginForm)="loginForm = false">
         </app-login-form>
     </div>
         
