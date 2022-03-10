@@ -34,6 +34,7 @@ export class LoginFormComponent implements OnInit {
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
+        this.currentUser = res;
         //console.log('⚚ login - submitLogin: res: ', res);
         this.hideForm();
         return res;

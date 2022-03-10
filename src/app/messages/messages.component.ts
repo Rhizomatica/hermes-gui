@@ -40,8 +40,8 @@ export class MessagesComponent implements OnInit {
   searchMessages: string;
   today = Date();
   noMessages = false;
-  allowCompose: boolean;
-  allowhmp: string;
+  allowCompose = false;
+  allowhmp = 'root';
   serverConfig: any;
   loginForm = false;
 
@@ -76,6 +76,8 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+  
+
   getInboxMessage($id): void {
       this.messageService.getInboxMessage($id).subscribe(
       (res: any) => {
@@ -109,33 +111,16 @@ export class MessagesComponent implements OnInit {
       (res: any) => {
         this.serverConfig= res;
         this.allowhmp = res.allowhmp;
-        
-        switch(this.allowhmp) {
-          case 'users':
-            if (this.currentUser) {
-              this.allowCompose = true;
-            }
-            break;
-            case 'admin':
-              if (this.currentUser) {
-                if (this.isadmin) {
-                  this.allowCompose = true;
-                }
-              }
-            break;
-            case 'all':
-            this.allowCompose = true;
-            break;
-            default:
-            this.allowCompose = false;
-          }
-        return res;
+        this.checkHmp();
       },
       (err) => {
         this.error = err;
         this.allowCompose = false;
+        console.log('user:', this.currentUser);
       }
+      
     );
+    
   }
 
   showlogin() {
@@ -148,10 +133,57 @@ export class MessagesComponent implements OnInit {
 
   }
 
+  closeLogin() {
+    console.log("closed");
+    this.getSysConfig();
+    this.loginForm = false;
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    console.log('user:', this.currentUser);
+    this.checkHmp();
+    
+  }
+
+  checkHmp() {
+    switch(this.allowhmp) {
+      case 'users':
+        if (this.currentUser) {
+          this.allowCompose = true;
+          console.log('allow1:');
+        } else {
+          this.allowCompose = false;
+        }
+        break;
+        case 'admin':
+          if (this.currentUser) {
+            if (this.currentUser.admin) {
+              this.allowCompose = true;
+              console.log('allow2:', this.allowCompose);
+            } else {
+              this.allowCompose = false;
+          }} else {
+            this.allowCompose = false;
+          }
+        break;
+        case 'all':
+        this.allowCompose = true;
+        console.log('allow3:', this.allowCompose);
+        break;
+        default:
+        this.allowCompose = false;
+        console.log('allow4:', this.allowCompose);
+      }
+    return this.allowCompose;
+
+  }
+
   logout() {
     this.authenticationService.logout();
     this.currentUser = null;
     console.log('⚚ app: user logout');
+    console.log('⚚ app: user logout', this.currentUser);
+    this.checkHmp();
+  
+    
   }
 
 

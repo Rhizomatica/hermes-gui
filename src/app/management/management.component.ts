@@ -184,7 +184,7 @@ export class ManagementComponent implements OnInit {
       (err) => {
         this.error = err;
         this.errorAlert = true;
-
+        this.getUsers();
       }
     );
     this.selectedUser = [];
@@ -222,6 +222,7 @@ export class ManagementComponent implements OnInit {
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.getUsers();
       }
     );
     

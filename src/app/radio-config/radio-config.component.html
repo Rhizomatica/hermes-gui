@@ -18,7 +18,7 @@
             <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwd_watts}} W ({{radio.fwd_raw}}/1023)</p>
             <!-- <p><input class="styled-slider full" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>-->
             <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>           
-            <p><span class="styled-slider full" i18n="@Treshold">Max SWR protection: </span>{{radio.refthreshold}} </p>
+            <p><span class="styled-slider full" i18n="@swrprotection">Max SWR protection: </span>{{radio.refthreshold}} </p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
             <!--<div *ngIf="radio.led" i18n="@@radioledon">System LED: on </div>
             <div *ngIf="!radio.led" i18n="@@radioledoff">System LED: off</div>-->
@@ -32,7 +32,7 @@
             
             <div *ngIf="isAdmin">
 
-                <button *ngIf="radio.protection" (click)="resetProtection()">reset protection</button>
+                <button *ngIf="radio.protection" (click)="resetProtection()" i18n="@resetprotection1">reset protection</button>
 
 
                 <div *ngIf="isAdmin">
