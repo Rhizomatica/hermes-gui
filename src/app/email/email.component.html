@@ -19,7 +19,7 @@
 
 {{emailto}}
 
-<ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users" bindValue="email" groupBy="selectedAllGroup" bindLabel="email" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required >
+<ng-select id="selmult" #getModelValue="ngModel" name="email+email" [selectableGroup]="true" [items]="users" bindValue="email" groupBy="selectedAllGroup" bindLabel="email" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required >
 
    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
        <input id="item-{{index}}" type="checkbox"

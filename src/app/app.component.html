@@ -133,8 +133,13 @@
 
 </div>
 
+<div class="push">
 
-<footer class="footer">
+</div>
+</div>
+
+<footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
+ 
   <ng-container *ngIf="system">
 
 <div class="dr">
@@ -180,4 +185,3 @@
 </footer>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-</div>

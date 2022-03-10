@@ -98,13 +98,19 @@ export class MessagecomposeComponent implements OnInit {
           case 'users':
             if (this.currentUser) {
               this.allowUpload = true;
+            } else {
+              this.allowUpload = false;
             }
             break;
             case 'admin':
               if (this.currentUser) {
                 if (this.isAdmin) {
                   this.allowUpload = true;
+                } else {
+                  this.allowUpload = false;
                 }
+              } else {
+                this.allowUpload = false;
               }
             break;
             case 'all':
@@ -117,13 +123,19 @@ export class MessagecomposeComponent implements OnInit {
             case 'users':
               if (this.currentUser) {
                 this.allowCompose = true;
+              } else {
+                this.allowCompose = false;
               }
               break;
               case 'admin':
                 if (this.currentUser) {
                   if (this.isAdmin) {
                     this.allowCompose = true;
+                  } else {
+                    this.allowCompose = false;
                   }
+                } else {
+                  this.allowCompose = false;
                 }
               break;
               case 'all':

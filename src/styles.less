@@ -263,12 +263,18 @@ textarea {
 }
 
 .fullpage {
-    height: 100%;
+    min-height: 100%;
 }
 
+.push {
+    height: 2.5em;
+}
 .footer {
+    margin-top: -2.5em;
     font-size: 0.6em;
     height: 1em;
+    border-top: 2px solid #000;
+    background-color: @bkclr;
     div {
         display:inline-block;
     }
@@ -278,13 +284,17 @@ textarea {
     }
 }
 
+.footer.big {
+    height: 2em;
+    margin-top: -4em;
+}
 
 .formfield {
     position: relative;
     max-width: calc(100%-4px);
     min-height: calc(~"100% - 14em");
     padding-bottom: 1.5em;
-    .bordered();
+
     .textarea{
         width: 100%;
     }
@@ -1074,23 +1084,20 @@ input.searchbox2 {
         }
 
         nav {
-            border-bottom: 1px solid #fff;
+            border-bottom: 2px solid #fff;
+            border-top: 2px solid #fff;
             .flag img {
                 filter: invert(0);
             }
         }
         
-        
-
-
-
-        .formfield {
-            border-bottom: 1px solid #fff;
+        .footer {
+            background-color: @mclr;
+            border-top: 2px solid #fff;
         }
 
-        nav a {
-            border-top: 3px solid #ccc;
-        }
+    
+
         
         nav a:hover{
             filter: invert(27%) sepia(51%) saturate(3078%) hue-rotate(330deg) brightness(110%) contrast(100%);
@@ -1100,7 +1107,7 @@ input.searchbox2 {
             display: inline-block;
             width: 2em;
             height: 2em;
-            
+            outline: 0;
             .drb {
                 display: block;
                 border-top: 2em solid white;
