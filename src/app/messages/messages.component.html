@@ -6,9 +6,11 @@
     <hr>
     -->
 
-    <div>
+    <div  >
 
-    <h2 i18n="@@publicmessages" class="maintitle">Public Messages </h2>
+
+        <div *ngIf="!loginForm">
+        <h2 i18n="@@publicmessages" class="maintitle">Public Messages </h2>
         <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public messages<br/></div>
     
         <div class="messages maincontainer" *ngIf="!noMessages"> 
@@ -39,8 +41,22 @@
         </div>
         <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages"/>
             </div>
-    
+        </div>
+
+        <div *ngIf="loginForm">
+            
+            <app-login-form (hideLoginForm)="closeLogin()">
+            </app-login-form>
+            <hr>
+        </div>
+
         <div class="navicons">
+            <div class="btn" >
+                <a routerLink="/email">
+                    <img title="Log In" src="assets/svg/envelope.svg" >email
+                </a>
+            </div>
+
             <div class="btn sent" >
                 <a routerLink="/sent" i18n="@@sent">
                     <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
@@ -53,8 +69,11 @@
             </div>
 
             <div class="btn" *ngIf="!currentUser" >
-                <a (click)="showlogin()" i18n="@@login2">
-                    <img title="Log In" src="assets/svg/sign-in-alt-solid.svg" >login
+                <a *ngIf="!loginForm" (click)="showlogin()" i18n="@@login2">
+                    <img title="Log In"  src="assets/svg/sign-in-alt-solid.svg" >login
+                </a>
+                <a *ngIf="loginForm" (click)="showlogin()" i18n="@@publicmessages">
+                    <img title="Log In"  src="assets/svg/comment.svg" >public messages
                 </a>
             </div>
 
@@ -70,11 +89,7 @@
 
     </div>
 
-    <div *ngIf="loginForm">
-        <hr>
-        <app-login-form (hideLoginForm)="closeLogin()">
-        </app-login-form>
-    </div>
+   
         
 
 </div>
