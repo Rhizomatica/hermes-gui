@@ -14,11 +14,12 @@ export class EmailComponent implements OnInit {
 
   linksOn = false;
   currentUser: User;
-  users: User[];
+  users: any;
   error = Error;
   errorAlert = false;
   emailto = [];
   system: any;
+  domain: string;
 
 
   constructor(
@@ -34,23 +35,32 @@ export class EmailComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
+
+       let count = Object.keys(this.users).length;
+      console.log(Object.keys(this.users).length);
+        for (let i = 0; i < Object.keys(this.users).length; i++) {
+          this.users[i].fullmail = this.users[i].email + this.domain;
+          console.log(this.users[i].fullmail);
+
+        }
+   
+        }),(err) => {
+          this.error = err;
+          this.errorAlert = true;
+        };
         console.log(this.users);
-        
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
   }
 
   getSystemStatus(): void{
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
+        this.domain = '@' + this.system.domain;
+        this.getUsers();
       },
       (err) => {
         this.error = err;
+      
       }
     );
   }

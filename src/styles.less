@@ -599,7 +599,7 @@ textarea {
 
 .multiplist {
     display: block;
-    height: calc(100vh - 18em);
+    min-height: calc(100vh - 18em);
     min-height: 5em;  
     overflow-y: scroll;
     border: 1px solid #888;
@@ -609,12 +609,13 @@ textarea {
 
 .multiplist1 {
     display: block;
-    height: calc(100vh - 20em);
-    min-height: 5em;  
+    min-height: calc(100vh - 14em);
+    word-break: break-all;
     overflow-y: scroll;
     border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
+    font-size: 0.8em;
 }
 
 .multiplist2 {

@@ -56,16 +56,18 @@
                 <span *ngIf="isadmin" ><img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
                     <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
                 </a>
-                <span> {{job.uuidhost}}.{{job.uuiduucp}} </span>
                 <span >
                     <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
                     <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'"> 
                 </span>
-                <div class= "date">
-                <span >{{job.date}} </span> 
-            <span >{{job.time}}</span> 
-            <span > {{job.size}} B</span> 
+                <span> {{job.date}} {{job.time}} size: {{job.size}} B </span>
+                
+                <div class= "">
         
+                <span *ngIf="job.type!=='HMP'">{{job.emails}}</span> 
+                <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span> 
+         
+            <span > <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}</span> 
             
             
         
