@@ -7,7 +7,7 @@
     <!--<div>-->
         <form *ngIf="radio">
             <hr>
-            <p><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq / 1000}} kHz {{radio.mode}}</p> 
+            <p><b><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq / 1000}} kHz {{radio.mode}}</b></p> 
             <hr>
             <div *ngIf="radio.bypass" i18n="@@bypasson">Conected </div>
             <div *ngIf="!radio.bypass" i18n="@@bypassoff">Disconected </div>
@@ -18,7 +18,7 @@
             <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwd_watts}} W ({{radio.fwd_raw}}/1023)</p>
             <!-- <p><input class="styled-slider full" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>-->
             <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>           
-            <p><span class="styled-slider full" i18n="@swrprotection">Max SWR protection: </span>{{radio.refthreshold}} </p>
+            <p><span class="styled-slider full" i18n="@swrprotection">Max SWR protection: </span>{{radio.refthreshold}} (0/1023) </p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
             <!--<div *ngIf="radio.led" i18n="@@radioledon">System LED: on </div>
             <div *ngIf="!radio.led" i18n="@@radioledoff">System LED: off</div>-->
@@ -26,7 +26,7 @@
             <div *ngIf="!radio.protection" i18n="@@protectionoff">Protection: off </div>
             
             
-            <p><span i18n="@serial">Serial Number: </span>{{radio.mastercal}}</p>
+            <p><span i18n="@serial">Serial Number: </span>{{radio.serial}}</p>
 
             <!--arrow coming or going trasmitting/recieving-->
             
@@ -91,15 +91,15 @@
                             <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON');updateFwd()" >Turn ON</button>
                             <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF');stopUpdate()" >Turn OFF</button>
                         </form>
-
+<!--
                         <form #fbypass="ngForm" class="formdata field"   >
                             <p><span >ByPass:</span></p>
                             <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" >Turn ON</button>
                             <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" >Turn OFF</button>
                         </form>
-
+-->
                         <form #ftesttone="ngForm" class="formdata field"   >
-                            <p><span >Test Tone:</span> <span> {{radio.testtone}}</span></p>
+                            <p><span i18n="@@testtonec">Test Tone:</span> <span> {{radio.testtone}}</span></p>
                             
                             <div *ngIf="!toneOn" style="align-self: center;">
                                 <button name="testtone" value="600" (click)="testTone(600)" title="600hz" >600hz</button>

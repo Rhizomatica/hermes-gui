@@ -1,16 +1,15 @@
 <div class="container">
-<!--
-    <p i18n="@@lasttime">Last transmission Time:</p>
-    <p i18n="@@nexttime">Next transmission Time:</p>
+
+   <!-- <p i18n="@@lasttime">Last transmission Time:</p>
 
     <hr>
-    -->
+-->
 
     <div  >
 
 
         <div *ngIf="!loginForm">
-        <h2 i18n="@@publicmessages" class="maintitle">Public Messages </h2>
+        <h2 i18n="@@publicmessages1" class="maintitle">Public Messages </h2>
         <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public messages<br/></div>
     
         <div class="messages maincontainer" *ngIf="!noMessages"> 
@@ -51,20 +50,16 @@
         </div>
 
         <div class="navicons">
-            <div class="btn" >
-                <a routerLink="/email">
-                    <img title="Log In" src="assets/svg/envelope.svg" >email
-                </a>
-            </div>
+            
 
             <div class="btn sent" >
                 <a routerLink="/sent" i18n="@@sent">
-                    <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
+                    <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">sent public messages
                 </a>
             </div>
-            <div class="btn" *ngIf="allowCompose" >
+            <div class="btn sent" *ngIf="allowCompose" >
                 <a routerLink="/compose" i18n="@@compose1">
-                    <img title="edit" src="assets/svg/edit.svg">compose
+                    <img title="edit" src="assets/svg/edit.svg">compose public messages
                 </a>
             </div>
 

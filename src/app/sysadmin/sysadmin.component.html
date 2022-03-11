@@ -11,9 +11,9 @@
         <a routerLink="/stations" i18n="@@stations">Stations</a>
         <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">Central Station</a>
         <br />
+        <a routerLink="/netadmin" i18n="@@networkadmin">Network information</a>
         <a routerLink="/log" i18n="@@detailedlog">Detailed log</a>
        <!-- <a routerLink="/upgrade" i18n="@@systemupgrade">system restoration</a>-->
-        <a routerLink="/netadmin" i18n="@@networkadmin">Network information</a>
 
     
     </div>
@@ -60,7 +60,7 @@
 
                 </span>
                 
-                <span class="icon" ><a (click)="cancelShutDown()" >
+                <span class="icon" ><a (click)="cancelReboot()" >
                     <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
                 </span>
                 <span class="icon" ><a (click)="reboot()" >

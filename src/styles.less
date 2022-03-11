@@ -193,7 +193,7 @@ nav {
     border-top: 2px solid @mclr;
     max-width: calc(100%-4px);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     a {
     text-decoration: none;
     padding-bottom: 4px;
@@ -304,12 +304,12 @@ textarea {
     #searchbox1 {
         position: relative;
         right: 0;
-        margin-bottom: 5px;
-        margin: 0 0em 0.2em 0.1em;
-        width: calc(100% - 0.1em);
+        margin: 0 0.06em 0.5em;
+        width: calc(100% - 0.12em);
         background: #fff 98% no-repeat url(./assets/svg/magnifying-glass-solid.svg);
         background-size: 1em 1em;
-        border: 1px solid black;}
+        border: 1px solid @mclr;
+    }
 
         input.inl {
             display: inline;
@@ -381,6 +381,7 @@ textarea {
 .flags {
     margin-top: 1.8em;
     border-bottom: 0;
+    text-align: center;
 }
 
 .flags img{
@@ -430,6 +431,7 @@ textarea {
     display: inline-block;
     text-align: center;
     min-width: 10em;
+    line-height: 1em;
    
 }
 
@@ -458,7 +460,7 @@ textarea {
 .topuser {
     position: absolute;
     right: 3em;
-    top: 0;
+    top: 3em;
     display: block;
     width: 20em;
     font-size: 1.2em;
@@ -508,9 +510,9 @@ textarea {
         top:-0.5em;
         padding: 0.35em 0.35em;
         width:36%; 
-        font-size: 0.7em;
+        font-size: 0.5em;
         line-height: 0.85em;
-        height: 2.8em;
+        height: 1.5em;
         margin-left: 0.1em;
     }
 
@@ -590,6 +592,15 @@ textarea {
 
 .shut {
     text-align: right;
+    position: relative;
+    top: 2em;
+    button.midbt {
+        font-size: 0.7em;
+        height: 4em;
+        img {
+            width: 2em;
+        }
+    }
 }
 
 .alert {
@@ -599,7 +610,7 @@ textarea {
 
 .multiplist {
     display: block;
-    min-height: calc(100vh - 18em);
+    height: calc(100vh - 18em);
     min-height: 5em;  
     overflow-y: scroll;
     border: 1px solid #888;
@@ -609,7 +620,7 @@ textarea {
 
 .multiplist1 {
     display: block;
-    min-height: calc(100vh - 14em);
+    height: calc(100vh - 16em);
     word-break: break-all;
     overflow-y: scroll;
     border: 1px solid #888;
@@ -667,7 +678,7 @@ textarea {
     position: relative;
     font-size: 0.75em;
     min-height: 10em;
-    height: calc(100vh - 32em);
+    height: calc(100vh - 22em);
     overflow: auto;
     border: 1px solid #888;
     list-style: none;
@@ -1080,6 +1091,8 @@ input.searchbox2 {
             filter: invert(100%);
         }
 
+
+        
         .selstation, .passprotect {
             border-bottom: 1px solid #fff;
         }
@@ -1136,6 +1149,10 @@ input.searchbox2 {
             border-bottom: 2px solid #fff;
         }
 
+        #selmult {
+            border-color: #fff;
+        }
+
     }
 
     .maintitle {
@@ -1145,6 +1162,14 @@ input.searchbox2 {
     .formfield input.beforelist {
         display: inline;
         width: 1em;
+    }
+
+    .formfield {
+        #searchbox1 {
+            background-color: @mclr;
+            border: 1px solid #666;
+
+        }
     }
 
     .formfield input.afterlist {

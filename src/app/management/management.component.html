@@ -15,8 +15,8 @@
         <div *ngIf="!isEditing">
             <div class="userlist">
                 <div class="adm"><b><img class="inlineicon" title="admin" src="assets/svg/wrench.svg"></b></div>
-                <div class="uemail"><b>username</b></div>
-                <div class="uname"><b>name</b></div>
+                <div class="uemail" i18n="@@usernamem"><b>username</b></div>
+                <div class="uname" i18n="@@namem"><b>name</b></div>
             </div>
         <div id="userlist" class="multiplist2 users" ng-model="selectedUser" [hidden]="isEditing==true||isadmin==false">
             <div class="userlist" *ngFor="let user of users" (click)="onSelect(user)">

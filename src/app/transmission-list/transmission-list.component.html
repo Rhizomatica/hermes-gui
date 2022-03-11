@@ -1,16 +1,5 @@
 <div class="">
-    <div class="supicons">
-        <div class="" >
-            <a routerLink="/compose" >
-                <img title="help" src="assets/svg/edit.svg">
-            </a>
-        </div>
-        <div class="" >
-            <a routerLink="/" i18n="@@sent2">
-                <img title="help" src="assets/svg/comment.svg">
-            </a>
-        </div>
-    </div>
+    
 
 
     
@@ -60,7 +49,7 @@
                     <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'"> 
                     <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'"> 
                 </span>
-                <span> {{job.date}} {{job.time}} size: {{job.size}} B </span>
+                <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
                 
                 <div class= "">
         
@@ -77,9 +66,9 @@
         <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} B</p>
         <br/>
         <button *ngIf="isadmin" (click)="confTransmit()">
-           <span i18n="@@transmitnow" >transmit now</span> <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
+           <span i18n="@@transmitnow" >force transmission</span> <img class="inlineiconlink" title="cancel" src="assets/svg/arrow-right.svg" [hidden]="!isadmin" >
         </button>
-        <a routerLink="/sent"><button i18n="@@sucessful">Sucessful sent messages</button></a>
+        <!--<a routerLink="/sent"><button i18n="@@sucessful">successfully sent messages</button></a>-->
     </div>
 </div>
     
