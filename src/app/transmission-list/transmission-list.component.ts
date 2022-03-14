@@ -161,11 +161,15 @@ confTransmit(){
     if (this.queue) {
       if (this.queue !== []) {
         let soma = 0;
-        for( let i = 0; i < this.queue.length; i++) {
-          soma += parseInt(this.queue[i].size, 10);
-          console.log(soma);
-          return soma;
+        for( let i = 0; i < Object.keys(this.queue).length; i++) {
+          soma += parseInt(this.queue[i].size);
+          //console.log(soma);
+          //console.log(this.queue[i].size);
+          // console.log(i);
+          
       }
+      // console.log(soma);
+      return soma;
     }
     }
   }
