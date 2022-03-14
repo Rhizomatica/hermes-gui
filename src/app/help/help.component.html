@@ -34,13 +34,13 @@
 
 <h3 #publicm i18n="@@publicmessagesh">Public Messages</h3>
 <p i18n="@@p4">
-    Public messages can be sent between stations, and are listed on the main page of the web interface.
+    Public messages can be sent between stations, and are listed on the main page of the web interface. Each stations can be configured to determine who can send public messages, if everyone, if only registered users or only admin users.
 </p>
 <p i18n="@@p5">
-    By clicking on the <span class="icon"><img src="assets/svg/edit.svg"></span> icon, it's possible to write a new message and to attach files such as images or sound files. 
+    If sending messages is allowed for you, you can compose them by clicking on the <span class="icon"><img src="assets/svg/edit.svg"></span> icon. On the message is possible to attach files such as images or sound files. 
 </p>
 <p i18n="@@p6">
-    Public messages can be sent to your own station, which is a easy way to publicize news inside your own community.
+    Public messages can be sent to your own station, which is a easy way to publicize news inside your own community. 
 </p>
 <p i18n="@@p7">
     Public messages can also be password protected, which means that only the ones that know the password will be able to read their content, but their description still will be readable by everyone.
@@ -49,7 +49,7 @@
     Have in mind that once a password for the message (has to be at least 4 characters) is defined, there is no way to recover it, nor to change it.
 </p>
 <p i18n="@@p10">
-    A system administrator can change who can attach files on messages between stations: everyone withe access to the network, only registered users, or only administrators.
+    A system administrator can change who can send public messages and who can attach files on messages between stations: everyone withe access to the network, only registered users, or only administrators.
 </p >
 
 <p i18n="@@p122">
@@ -69,13 +69,13 @@ user_name@({{system.domain}}. Where username is the username used when creating 
 </p>
 
 <p i18n="@@q02b">
-    Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is a limitation when attaching data due to the limitations of data transmission capacity over radio.
+    Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is a limitation when attaching data due to the limitations of data transmission capacity over radio. 
 </p>
 
 <h2 #deltachat>Deltachat</h2>
 
 <p i18n="@@q03">
-    Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the transmitters' hours of operation.
+    Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the gateway station's schedule of operation.
 </p>
 
 <p i18n="@@q03a">
@@ -126,7 +126,12 @@ user_name@({{system.domain}}. Where username is the username used when creating 
 
 
 <p i18n="@@p16a">
-    Message administration: In this section an administrator can determine who can attach files in public messages between stations: anyone, only registered users, or only administrators.
+    Message administration: In this section an administrator can determine who can send public messages, and who can attach files in public messages between stations: anyone, only registered users, or only administrators.
+
+</p>
+
+<p i18n="@@p16ss">
+    Transmission List: Shows the jobs on the queue for transmission, with theis sizes and destination, where an admin can delete messages on the queue. It also has the option to transmit now, that should be used only in exeptional emergency cases.
 
 </p>
 
@@ -135,14 +140,18 @@ user_name@({{system.domain}}. Where username is the username used when creating 
 </p>
 
 <p i18n="@@p18">
-    Stations: provides a list of the connected stations on the system
+    Stations: provides a list of the connected stations on the system. If the station is a central station, it also allows to select wich stations will be enabled to message transmission.
+</p>
+
+<p i18n="@@p18ss">
+    Central Station: This menu will be shown only on the central station, and is where the admins will set the schedules for transmission to the other stations.  
 </p>
 
 <p i18n="@@p19">
     Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system
 </p>
 <p i18n="@@p20">
-    Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore factory configuration. 
+    Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore default radio configuration. 
 </p>
 
 <h2 #trouble i18n="@@truble2">Troubleshooting</h2>
