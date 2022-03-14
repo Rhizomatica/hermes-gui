@@ -31,9 +31,9 @@
 </ng-select>
 
    </ng-container>
-
-   <a href="mailto:{{emailto}}"><button>Send email to selected</button> </a>
-
+   
+   <a href="mailto:{{emailto}}" ><button [disabled]="emailto?.length == 0">Send email to selected</button> </a>
+   
 <br/>
        <div *ngIf="linksOn">
           <p i18n="@@todownload">To download deltachat click on one of the links below: </p>
