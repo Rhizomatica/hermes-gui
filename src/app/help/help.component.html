@@ -2,6 +2,8 @@
 <h2 i18n="@@helpa">Help</h2>
 
 <ul class="color">
+<li  (click)="scrollToElement(introduction)" i18n="@@introductionm" >Introduction</li>
+<li  (click)="scrollToElement(webint)" i18n="@@webintefa" >Hermes box</li>
 <li  (click)="scrollToElement(webint)" i18n="@@webintefa" >Web Interface</li>
 <li (click)="scrollToElement(publicm)"i18n="@@publicma" >Public messages</li>
 <li (click)="scrollToElement(private)"i18n="@@privatemsg" >Private messages</li>
@@ -26,10 +28,34 @@
     The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All communication between stations are encrypted and happen outside the internet.
 </p>
 
+<h2 #introduction i18n="@@intro">Hermes Box</h2>
+
+<img src="assets/img/leds.png"/>
+
+<p i18n="@@p1bx">
+    On the front of Hermes Box there are 4 different led lights:
+</p>
+
+<p i18n="@@p2bx">
+    SYS: System LED, blinks when the system is not ready to be used. SYS LED typically blinks when the equipment is turning on or when it is turning off; when the system is on it will stay solid green. 
+</p>
+
+<p i18n="@@p3bx">
+    ANT: Green when the antenna is functioning properly. ANT LED turns Red when a high SWR value is detected, meaning the high SWR protection is enabled and the radio will not transmit. SWR protection needs to be reset if active (Red), for the radio to became operational again, which can be done in the radio administrative interface. Check the RF cable and Antenna before resetting in the interface;
+</p>
+
+<p i18n="@@p4bx">
+    CONECTADO: LED on (solid Green) means that the station is connected to another station;
+</p>
+
+<p i18n="@@p5bx">
+    TX: LED on means the radio is transmitting. When this LED is off, it is in receive mode. If the CONECTADO LED is on and the TX LED is off, the station is actively receiving. During active communication with another station the CONECTADO LED will be solid Green and the TX LED will turn on and off; 
+</p>
+
 <h2 #webint i18n="@@webinterface">Web Interface</h2>
 
 <p i18n="@@p3">
-    When accessing the local Hermes WiFi network through a cellphone or computer, you will be directed to the HERMES web interface. From there you can send public messages between stations and read messages sent to your station/community. It's also possible to create users for email accounts and manage and administer the system from the web interface.
+    When accessing the local Hermes WiFi network through a cellphone or computer, you will be directed to the HERMES web interface. From there you can read public messages sent to your station, create users for e-mail, find the download links for deltachat app and send public messages between stations if you are allowed to. It's also possible manage and administer the system from the web interface.
 </p>
 
 <h3 #publicm i18n="@@publicmessagesh">Public Messages</h3>
@@ -140,7 +166,7 @@ user_name@({{system.domain}}. Where username is the username used when creating 
 </p>
 
 <p i18n="@@p18">
-    Stations: provides a list of the connected stations on the system. If the station is a central station, it also allows to select wich stations will be enabled to message transmission.
+    Stations: provides a list of the connected stations on the system. If the station is a central station, it also allows to select which stations will be enabled to message transmission.
 </p>
 
 <p i18n="@@p18ss">
@@ -148,7 +174,7 @@ user_name@({{system.domain}}. Where username is the username used when creating 
 </p>
 
 <p i18n="@@p19">
-    Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system
+    Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system.
 </p>
 <p i18n="@@p20">
     Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore default radio configuration. 
