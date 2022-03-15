@@ -1,4 +1,4 @@
-import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AlertService } from '../_services/alert.service';
 import { Observable, throwError } from 'rxjs';

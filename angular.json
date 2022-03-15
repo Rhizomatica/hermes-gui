@@ -29,7 +29,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "localize": true,
-            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -39,7 +38,13 @@
             ],
             "scripts": [
 				"./node_modules/angular-dark-mode/angular-dark-mode.js" 
-			]
+			],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -133,18 +138,12 @@
                 }
               ],
               "localize": ["en-US"],
-              "optimization": false,
               "outputHashing": "none",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "showCircularDependencies": false,
-              "aot": true,
-              "extractLicenses": false,
               "statsJson": false,
               "progress": false,
-              "vendorChunk": true,
-              "buildOptimizer": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -159,7 +158,8 @@
               ]
             }
 
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -202,19 +202,6 @@
               "src/styles.less"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
