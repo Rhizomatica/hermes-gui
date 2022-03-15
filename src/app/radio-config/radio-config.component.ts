@@ -388,10 +388,12 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.radioResetProtection().subscribe(
       (res: any) => {
       this.res = res;
+      
       console.log('⚚ radio config - reset radio: res: ', res);
       if (this.res === 1) {
         this.radio.protection = false;
       }
+      this.getRadioStatus();
       // this.fileIsProcessing = true;
       },
       (err) => {
@@ -401,19 +403,21 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  resetRadio() {
+  async resetRadio() {
     console.log('reset');
-    this.radioService.radioRestoreDefaults().subscribe(
+    await this.radioService.radioRestoreDefaults().subscribe(
       (res: any) => {
       this.res = res;
       console.log('⚚ radio reset: ', res);
       // this.fileIsProcessing = true;
       this.reseting = false;
+      this.getRadioStatus();
       },
       (err) => {
       this.error = err;
       this.errorAlert = true;
       this.reseting = false;
+      this.getRadioStatus();
       }
     );
     console.log('⚚ testradio - reset to defaults ');
