@@ -42,7 +42,6 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent},
   { path: 'help', component: HelpComponent},
   { path: 'radioconfig', component: RadioConfigComponent},
-  { path: 'testradio', component: TestradioComponent},
   { path: 'gateway', component: GatewayConfigComponent},
   { path: 'transmission', component: TransmissionListComponent}
 ];

@@ -431,6 +431,29 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     }
   }
 
+  testTone(f) {
+    this.testtone = f;
+    console.log(f);
+    console.log(this.toneOn);
+    this.radioService.setRadioTone(f).subscribe(
+      (res: any) => {
+        this.res = res;
+		this.radio.testtone = res;
+      if (res === '0') {
+          this.toneOn = false;
+        } else {
+          this.toneOn = true;
+        }
+        // this.fileIsProcessing = true;
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+
+
+  }
+
   ngOnInit(): void {
     this.getRadioStatus();
     this.getPttswr();
