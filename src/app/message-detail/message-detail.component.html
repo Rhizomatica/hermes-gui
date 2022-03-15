@@ -73,15 +73,11 @@
 
 <div class="navicons">
 
-    <div class="btn" >
-        <a  routerLink="/compose" >
-            <span  i18n="@@composea"><img title="help" src="assets/svg/edit.svg">compose</span>
-        
-        </a>
 
-        <!--<a *ngIf="!noMessage" i18n="@@reply" routerLink="/compose" i18n="@@compose">
-            <img title="help" src="assets/svg/reply-solid.svg">compose
-        </a>-->
+    <div class="btn sent" *ngIf="allowCompose" >
+        <a routerLink="/compose" i18n="@@compose1">
+            <img title="edit" src="assets/svg/edit.svg">compose public messages
+        </a>
     </div>
 
     <div class="btn sent" >
@@ -89,14 +85,11 @@
             <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
         </a>
     </div>
-<!--
-    <label>is encrypted
-        <input type="checkbox" (change)="changeEnc()">
-    </label>
--->
-
+    
 
 
 </div> 
+
+
 
 </div>
