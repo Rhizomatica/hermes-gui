@@ -447,12 +447,15 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="webintefa" datatype="html">
+      <trans-unit id="hermesbox" datatype="html">
         <source>Hermes box</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="webintefa" datatype="html">
+        <source>Web Interface</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
           <context context-type="linenumber">7</context>
@@ -487,7 +490,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="linenumber">165</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Troubleshooting" datatype="html">
@@ -497,15 +500,11 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="intro" datatype="html">
+      <trans-unit id="intro1" datatype="html">
         <source>Introduction</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
           <context context-type="linenumber">16</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p1" datatype="html">
@@ -532,19 +531,26 @@
           <context context-type="linenumber">28,29</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="intro" datatype="html">
+        <source>Hermes Box</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="p1bx" datatype="html">
         <source> On the front of Hermes Box there are 4 different led lights:
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">36,37</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p2bx" datatype="html">
         <source> SYS: System LED, blinks when the system is not ready to be used. SYS LED typically blinks when the equipment is turning on or when it is turning off; when the system is on it will stay solid green. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">40,41</context>
+          <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p3bx" datatype="html">
@@ -552,7 +558,7 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">44,45</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p4bx" datatype="html">
@@ -560,21 +566,21 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">48,49</context>
+          <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p5bx" datatype="html">
         <source> TX: LED on means the radio is transmitting. When this LED is off, it is in receive mode. If the CONECTADO LED is on and the TX LED is off, the station is actively receiving. During active communication with another station the CONECTADO LED will be solid Green and the TX LED will turn on and off; </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">52,53</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="webinterface" datatype="html">
         <source>Web Interface</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p3" datatype="html">
@@ -582,14 +588,14 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">58,59</context>
+          <context context-type="linenumber">57,58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="publicmessagesh" datatype="html">
         <source>Public Messages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p4" datatype="html">
@@ -597,21 +603,21 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">63,64</context>
+          <context context-type="linenumber">62,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p5" datatype="html">
         <source> If sending messages is allowed for you, you can compose them by clicking on the <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/edit.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> icon. On the message is possible to attach files such as images or sound files. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">66,67</context>
+          <context context-type="linenumber">65,66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p6" datatype="html">
         <source> Public messages can be sent to your own station, which is a easy way to publicize news inside your own community. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">69,70</context>
+          <context context-type="linenumber">68,69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p7" datatype="html">
@@ -619,7 +625,7 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">72,73</context>
+          <context context-type="linenumber">71,72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p9" datatype="html">
@@ -627,7 +633,7 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">75,76</context>
+          <context context-type="linenumber">74,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p10" datatype="html">
@@ -635,7 +641,7 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">78,79</context>
+          <context context-type="linenumber">77,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p122" datatype="html">
@@ -644,14 +650,14 @@ Because the radio propagation of data is very low, file attachments are constrai
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">82,83</context>
+          <context context-type="linenumber">81,82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p01" datatype="html">
         <source>Private messages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q02" datatype="html">
@@ -659,7 +665,7 @@ Because the radio propagation of data is very low, file attachments are constrai
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">89,90</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q02a" datatype="html">
@@ -668,14 +674,22 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">92,95</context>
+          <context context-type="linenumber">91,94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q02b" datatype="html">
         <source> Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is a limitation when attaching data due to the limitations of data transmission capacity over radio. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">98,99</context>
+          <context context-type="linenumber">97,98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="q03b" datatype="html">
+        <source> On the email link on the web interface you will find links for webmail (roundcube), for Deltachat download, and also it's possible to select users to send messages with your configured email client.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">101,102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q03" datatype="html">
@@ -683,7 +697,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">104,105</context>
+          <context context-type="linenumber">107,108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q03a" datatype="html">
@@ -691,7 +705,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">108,109</context>
+          <context context-type="linenumber">111,112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q04" datatype="html">
@@ -699,21 +713,54 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">121,122</context>
+          <context context-type="linenumber">124,125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dconfig" datatype="html">
         <source>Configuration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dl01" datatype="html">
+        <source>
+The HERMES system includes a compression system suitable for multimedia messages like images or audio being sent over HF. End-to-end encryption should be disabled in order to allow the server-based image and audio compression to work properly, otherwise image and audio exchange will not be
+possible. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">130,133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dl02" datatype="html">
+        <source>
+The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Advanced -> Autocrypt, turn off: Prefer End-To-End Encryption).
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">136,137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dl03" datatype="html">
+        <source>Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by another Deltachat application. In order to be able to interact with e-mails from any e-mail client software, enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dl04" datatype="html">
+        <source> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">149,150</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tranmissionlist" datatype="html">
         <source>Transmission List</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p11" datatype="html">
@@ -721,7 +768,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">129,130</context>
+          <context context-type="linenumber">158,159</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p12" datatype="html">
@@ -729,7 +776,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">133,134</context>
+          <context context-type="linenumber">162,163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p13" datatype="html">
@@ -737,7 +784,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">139,140</context>
+          <context context-type="linenumber">168,169</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p14" datatype="html">
@@ -745,14 +792,14 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">143,144</context>
+          <context context-type="linenumber">172,173</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p15" datatype="html">
         <source> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername <x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span *ngIf=&quot;system&quot;>"/>On this station the server name will be <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">147</context>
+          <context context-type="linenumber">176</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p16" datatype="html">
@@ -760,21 +807,21 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">150,151</context>
+          <context context-type="linenumber">179,180</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p16a" datatype="html">
         <source> Message administration: In this section an administrator can determine who can send public messages, and who can attach files in public messages between stations: anyone, only registered users, or only administrators. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">155,157</context>
+          <context context-type="linenumber">184,186</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p16ss" datatype="html">
         <source> Transmission List: Shows the jobs on the queue for transmission, with theis sizes and destination, where an admin can delete messages on the queue. It also has the option to transmit now, that should be used only in exeptional emergency cases. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">160,162</context>
+          <context context-type="linenumber">189,191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p17" datatype="html">
@@ -782,44 +829,44 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">165,166</context>
+          <context context-type="linenumber">194,195</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p18" datatype="html">
-        <source> Stations: provides a list of the connected stations on the system. If the station is a central station, it also allows to select wich stations will be enabled to message transmission.
+        <source> Stations: provides a list of the connected stations on the system. If the station is a central station, it also allows to select which stations will be enabled to message transmission.
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">169,170</context>
+          <context context-type="linenumber">198,199</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p18ss" datatype="html">
         <source> Central Station: This menu will be shown only on the central station, and is where the admins will set the schedules for transmission to the other stations. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">173,174</context>
+          <context context-type="linenumber">202,203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p19" datatype="html">
-        <source> Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system
+        <source> Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system.
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">177,178</context>
+          <context context-type="linenumber">206,207</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p20" datatype="html">
         <source> Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore default radio configuration. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">180,181</context>
+          <context context-type="linenumber">209,210</context>
         </context-group>
       </trans-unit>
       <trans-unit id="truble2" datatype="html">
         <source>Troubleshooting</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">183</context>
+          <context context-type="linenumber">212</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t01" datatype="html">
@@ -827,7 +874,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">186,187</context>
+          <context context-type="linenumber">215,216</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t02" datatype="html">
@@ -835,7 +882,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">190,191</context>
+          <context context-type="linenumber">219,220</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t03" datatype="html">
@@ -843,7 +890,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">194,195</context>
+          <context context-type="linenumber">223,224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t04" datatype="html">
@@ -851,7 +898,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">198,199</context>
+          <context context-type="linenumber">227,228</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t05" datatype="html">
@@ -859,7 +906,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">202,203</context>
+          <context context-type="linenumber">231,232</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t07" datatype="html">
@@ -867,7 +914,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">208,209</context>
+          <context context-type="linenumber">237,238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t08" datatype="html">
@@ -875,7 +922,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">212,213</context>
+          <context context-type="linenumber">241,242</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t09" datatype="html">
@@ -883,7 +930,7 @@ user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where usernam
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">216,217</context>
+          <context context-type="linenumber">245,246</context>
         </context-group>
       </trans-unit>
       <trans-unit id="portugues" datatype="html">
