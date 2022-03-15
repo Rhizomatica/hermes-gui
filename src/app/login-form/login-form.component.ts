@@ -19,6 +19,7 @@ export class LoginFormComponent implements OnInit {
   error = Error;
   currentUser: User;
   success = false;
+  wrong = false;
 
   constructor(private  router: Router, private authenticationService: AuthenticationService) {
      // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -35,6 +36,7 @@ export class LoginFormComponent implements OnInit {
       (res: any) => {
         this.res = res;
         this.currentUser = res;
+        this.wrong = false;
         //console.log('⚚ login - submitLogin: res: ', res);
         this.hideForm();
         return res;
@@ -42,6 +44,7 @@ export class LoginFormComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.wrong = true;
         let val = true;
       }
     );

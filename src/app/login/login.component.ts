@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   error = Error;
   currentUser: User;
   success = false;
+  wrong = false;
 
   constructor(private  router: Router, private authenticationService: AuthenticationService) {
      // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -27,15 +28,21 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ login - submitLogin: res: ', res);
+        this.wrong = false;
+        // console.log('⚚ login - submitLogin: res: ', res);
+      
+        this.router.navigate(['/admin']);
+
         return res;
       },
       (err) => {
         this.error = err;
+        this.wrong = true;
+        
+        // console.log('⚚ login - failed: res: ', res);
         this.router.navigate(['/login']);
       }
     );
-    this.router.navigate(['/admin']);
   }
 
 

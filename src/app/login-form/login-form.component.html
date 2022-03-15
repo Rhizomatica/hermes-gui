@@ -1,5 +1,7 @@
 <h2 i18n="@@login">Login</h2>
+
 <form #f="ngForm" id="loginform" novalidate>
+   <p class="alert" i18n="@@wrong1" *ngIf="wrong">wrong username or password</p>
 <label >
     <p i18n="@@username:">username:</p>
     <input type="text" i18n="@@ilogin" name="email"  ngModel required placeholder="Login" i18n-placeholder/>

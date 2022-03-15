@@ -1,9 +1,12 @@
 
 <div class=" login formdata" >
    <form #f="ngForm" id="loginform" novalidate>
-      <p>Hermes V. 1.0</p>
+      <h1>Hermes V. 1.0</h1>
       <p i18n="@@instructions">To login to the system, put your username and password</p>
       <hr>
+
+   
+      <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
       <label >
          <p i18n="@@username:">username:</p>
          <input type="text" i18n="@@ilogin" name="email" ngModel required placeholder="Login" i18n-placeholder/>
