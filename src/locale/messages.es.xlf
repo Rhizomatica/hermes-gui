@@ -83,14 +83,11 @@
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/email/email.component.html</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="selectusers" datatype="html">
         <source>Select users to send e-mail:</source><target state="new">Seleccionar usuarios para enviar correo electrónico:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/email/email.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit><trans-unit id="todownload" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/email/email.component.html</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="todownload" datatype="html">
         <source>To download deltachat click on one of the links below: </source><target state="new">Para descargar Deltachat, haga clic en uno de los enlaces a continuación: </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/email/email.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/email/email.component.html</context><context context-type="linenumber">16</context></context-group></trans-unit>
       <trans-unit id="noaccount" datatype="html">
         <source>Doesn't have an account?</source>
         <target>No tiene una cuenta?</target>
@@ -660,7 +657,7 @@ Debido a que la propagación de datos por radio es muy baja, los archivos adjunt
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">90</context></context-group></trans-unit><trans-unit id="q02a" datatype="html">
         <source> Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> and will look like this:
-user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
+user_name@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
 </source><target state="new"> 
 Cada estación de trabajo tiene un dominio diferente, que puede verse en la parte superior de esta interfaz. En esta estación, todos los correos electrónicos se crearán dentro del dominio <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> y tendrán el siguiente aspecto:
 nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Donde nombre_de_usuario es el nombre de usuario utilizado al crear el usuario.
@@ -706,26 +703,26 @@ The HERMES system includes a compression system suitable for multimedia messages
 possible. </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">133</context></context-group></trans-unit><trans-unit id="dl02" datatype="html">
-        <source>
-The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Advanced -> Autocrypt, turn off: Prefer End-To-End Encryption).
+        <source> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered.
 </source><target state="new">
 
 
   
-  Los pasos para encontrar esta función en Deltachat son: Menú hamburguesa (<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Ajustes -> Avanzado -> autoencriptar, apagar: Preferir el cifrado de extremo a extremo).
+  Los pasos para encontrar esta función en Deltachat son: -> Ajustes -> Avanzado -> Autocrypt, Preferir el cifrado de extremo a extremo, apagar. Si lo desea, también puede activar "Monitorear carpeta enviados" para verificar si sus carpetas se entregaron correctamente.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">139</context></context-group></trans-unit><trans-unit id="dl03" datatype="html">
         <source>Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by another Deltachat application. In order to be able to interact with e-mails from any e-mail client software, enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All. </source>
         
-        <target state="new">Deltachat, por defecto, etiqueta sus correos electrónicos y muestra solo los mensajes "conocidos" (correos electrónicos) que fueron enviados por otra aplicación de Deltachat. Para poder interactuar con correos electrónicos desde cualquier software de cliente de correo electrónico, habilite la opción "mostrar todos los correos electrónicos". Los pasos para encontrar esta función en Deltachat son: Menú Burger ( <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>) -> Configuración -> Chats y medios -> Mostrar correos electrónicos clásicos -> Todo. </target>
+        <target state="new">Deltachat, por defecto, etiqueta sus correos electrónicos y muestra solo los mensajes "conocidos" (correos electrónicos) que fueron enviados por otra aplicación de Deltachat. Para poder interactuar con correos electrónicos desde cualquier software de cliente de correo electrónico, habilite la opción "mostrar todos los correos electrónicos". Los pasos para encontrar esta función en Deltachat son: Menú Burger ( <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>) -> Configuración -> Chats y multimedia -> Mostrar correos clásicos -> Todos. </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">146</context></context-group></trans-unit><trans-unit id="dl04" datatype="html">
-        <source> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail.
-</source><target state="new"> Para configurar DeltaChat, primero se debe crear una cuenta de correo electrónico, en la sesión de creación de usuario, a la que se accede a través del enlace de administrador o correo electrónico en el menú principal. Para iniciar sesión en una cuenta de correo electrónico, solo se deben completar los campos de dirección de correo electrónico y contraseña, como se muestra a continuación. El usuario y la contraseña serán los mismos que se crearon al crear un inicio de sesión por primera vez en HERMES y para usar con el correo web de RoundCube.
+        <source> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>.
+</source><target state="new"> Para configurar DeltaChat, primero se debe crear una cuenta de correo electrónico, en la sesión de creación de usuario, a la que se accede a través del enlace de administrador o correo electrónico en el menú principal. Para iniciar sesión en una cuenta de correo electrónico, solo se deben completar los campos de dirección de correo electrónico y contraseña, como se muestra a continuación. El usuario y la contraseña serán los mismos que se crearon al crear un inicio de sesión por primera vez en HERMES y para usar con el correo web de RoundCube, tal como: nombre_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>.
+</source><target state="new">.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">152</context></context-group></trans-unit><trans-unit id="tranmissionlist" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">151</context></context-group></trans-unit><trans-unit id="tranmissionlist" datatype="html">
         <source>Transmission List</source><target state="new">Lista de transmisión</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">158</context></context-group></trans-unit><trans-unit id="p11" datatype="html">
@@ -750,13 +747,19 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">175</context></context-group></trans-unit><trans-unit id="p15" datatype="html">
-        <source> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername <x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span *ngIf=&quot;system&quot;>"/>On this station the server name will be <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
-        <target state="new"> Gestión de usuarios: permite crear nuevos usuarios y modificar los datos de los usuarios registrados y eliminarlos. A cada usuarioregistrado se le asigna también una cuenta de correo electrónico de Hermes del tipo username@servidor.com. En el caso de esta estación de trabajo, el servidor es <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
+        <source> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername </source>
+        <target state="new"> Gestión de usuarios: permite crear nuevos usuarios y modificar los datos de los usuarios registrados y eliminarlos. A cada usuarioregistrado se le asigna también una cuenta de correo electrónico de Hermes del tipo username@nombre_del_servidor.radio. En el caso de esta estación de trabajo, el servidor es <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">179</context></context-group></trans-unit><trans-unit id="p16" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">179</context></context-group></trans-unit><trans-unit id="p15a" datatype="html">
+        <source>On this station the server name will be:</source><target state="new">En esta estación el nombre del servidor será </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">179</context>
+        </context-group>
+      </trans-unit><trans-unit id="p16" datatype="html">
         <source> Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface
 </source>
-        <target state="new"> Los administradores también pueden dar el poder de administración a otros usuarios simplemente seleccionando la opción "es administrador" (()) en la interfaz de creación de usuarios.</target>
+        <target state="new"> Los administradores también pueden dar el poder de administración a otros usuarios simplemente seleccionando la opción "es administrador" en la interfaz de creación de usuarios.</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">182</context></context-group></trans-unit><trans-unit id="p16a" datatype="html">
         <source> Message administration: In this section an administrator can determine who can send public messages, and who can attach files in public messages between stations: anyone, only registered users, or only administrators. </source>
@@ -870,17 +873,14 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
         <source>Sent at: <x id="INTERPOLATION" equiv-text="{{message.sent_at}}"/></source>
          <target>Enviado el:<x id="INTERPOLATION" equiv-text="{{message.sent_at}}"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">69</context></context-group></trans-unit><trans-unit id="composea" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/edit.svg&quot;>"/>compose</source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/edit.svg&quot;>"/>escribir</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">78</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">69</context></context-group></trans-unit>
       
       <trans-unit id="b3614d05a42a4cfa260e6b85a1e6ec975e00babe" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;>"/>sent messages </source>
          <target><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;enviadas&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;>"/>mensajes enviados</target>
         
         <note priority="1" from="description">sent messages</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">89</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">85</context></context-group></trans-unit>
       <trans-unit id="aconfigmessages" datatype="html">
         <source>Messages Configuration</source>
          <target>Configuración de mensajes</target>
@@ -1009,7 +1009,7 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
       <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="selectall" datatype="html">
         <source> Select All</source><target state="new"> Seleccionar todo</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/email/email.component.html</context><context context-type="linenumber">24</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="attachfile" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/email/email.component.html</context><context context-type="linenumber">34</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="attachfile" datatype="html">
         <source>Attach File: </source><target state="new">Adjuntar archivo:</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context><context context-type="linenumber">75</context></context-group></trans-unit><trans-unit id="nofile" datatype="html">
@@ -1106,7 +1106,7 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;edit&quot; src=&quot;assets/svg/edit.svg&quot;>"/>compose public messages </source>
          <target><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;escrever&quot; src=&quot;assets/svg/edit.svg&quot;>"/>escribir mensajes públicos </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/messages/messages.component.html</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="login2" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context><context context-type="linenumber">79</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/messages/messages.component.html</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="login2" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;Log In&quot;  src=&quot;assets/svg/sign-in-alt-solid.svg&quot; >"/>login </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;Log In&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot; >"/>aceder </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/messages/messages.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="logout2" datatype="html">

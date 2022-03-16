@@ -154,29 +154,29 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="todownload" datatype="html">
+        <source>To download deltachat click on one of the links below: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/email/email.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="selectusers" datatype="html">
         <source>Select users to send e-mail:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/email/email.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="selectall" datatype="html">
         <source> Select All</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/email/email.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">58</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="todownload" datatype="html">
-        <source>To download deltachat click on one of the links below: </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/email/email.component.html</context>
-          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noaccount" datatype="html">
@@ -670,7 +670,7 @@ Because the radio propagation of data is very low, file attachments are constrai
       </trans-unit>
       <trans-unit id="q02a" datatype="html">
         <source> Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> and will look like this:
-user_name@(<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
+user_name@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
@@ -733,8 +733,7 @@ possible. </source>
         </context-group>
       </trans-unit>
       <trans-unit id="dl02" datatype="html">
-        <source>
-The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Advanced -> Autocrypt, turn off: Prefer End-To-End Encryption).
+        <source> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered.
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
@@ -749,11 +748,11 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
         </context-group>
       </trans-unit>
       <trans-unit id="dl04" datatype="html">
-        <source> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail.
+        <source> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>.
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
-          <context context-type="linenumber">152,153</context>
+          <context context-type="linenumber">151,153</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tranmissionlist" datatype="html">
@@ -796,7 +795,14 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
         </context-group>
       </trans-unit>
       <trans-unit id="p15" datatype="html">
-        <source> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername <x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span *ngIf=&quot;system&quot;>"/>On this station the server name will be <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;alert&quot;>"/><x id="INTERPOLATION" equiv-text="{{system.domain}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
+        <source> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">179</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="p15a" datatype="html">
+        <source>On this station the server name will be:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/help/help.component.html</context>
           <context context-type="linenumber">179</context>
@@ -1413,18 +1419,22 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
           <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="composea" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/edit.svg&quot;>"/>compose</source>
+      <trans-unit id="compose1" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;edit&quot; src=&quot;assets/svg/edit.svg&quot;>"/>compose public messages </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">79,80</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
+          <context context-type="linenumber">62,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b3614d05a42a4cfa260e6b85a1e6ec975e00babe" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;>"/>sent messages </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">89,90</context>
+          <context context-type="linenumber">85,86</context>
         </context-group>
         <note priority="1" from="description">sent messages</note>
       </trans-unit>
@@ -1744,13 +1754,6 @@ The steps to find this feature in Deltachat are: Burger Menu (<x id="START_TAG_S
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/messages/messages.component.html</context>
           <context context-type="linenumber">57,58</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="compose1" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;edit&quot; src=&quot;assets/svg/edit.svg&quot;>"/>compose public messages </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/messages/messages.component.html</context>
-          <context context-type="linenumber">62,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login2" datatype="html">

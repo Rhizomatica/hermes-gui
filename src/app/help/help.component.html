@@ -92,7 +92,7 @@ Because the radio propagation of data is very low, file attachments are constrai
 
 <p i18n="@@q02a">
     Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain {{system.domain}} and will look like this:
-user_name@({{system.domain}}. Where username is the username used when creating the user.
+user_name@{{system.domain}}. Where username is the username used when creating the user.
 </p>
 
 <p i18n="@@q02b">
@@ -136,23 +136,23 @@ possible.
 </p>
 
 <p i18n="@@dl02">
-The steps to find this feature in Deltachat are: Burger Menu (<span class="icon"><img src="assets/svg/bars-solid.svg"></span> ) -> Settings -> Advanced -> Autocrypt, turn off: Prefer End-To-End Encryption).
+    The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered.
 </p>
 
-<img class="infoimg" title="Deltachat Advanced settings" src="assets/img/adv_p2pe.jpeg" />
+<span><img class="infoimg" title="Deltachat Advanced settings" src="assets/img/adv_p2pe_es.jpeg" /></span>
 
 
 
-<p i18n="@@dl03">Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by another Deltachat application. In order to be able to interact with e-mails from any e-mail client software, enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <span class="icon"><img src="assets/svg/bars-solid.svg"></span>  ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All.  </p>
+<p i18n="@@dl03">Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by another Deltachat application. In order to be able to interact with e-mails from any e-mail client software, enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <span class="icon"><img src="assets/svg/bars-solid.svg"></span>  ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All. </p>
 
-<img  class="infoimg" title="Deltachat email settings" src="assets/img/allemails.jpeg" />
+<img  class="infoimg" title="Deltachat email settings" src="assets/img/allemails_es.jpeg" />
 
 
 <p i18n="@@dl04">
-    In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail.
+    In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@{{system.domain}}.
 </p>
 
-<img class="infoimg" title="Deltachat login" src="assets/img/login.jpeg" />
+<img i18n="@@img1" class="infoimg" title="Deltachat login" src="assets/img/login_es.jpeg" />
 
 
 <h3 #transm i18n="@@tranmissionlist">Transmission List</h3>
@@ -175,8 +175,8 @@ The steps to find this feature in Deltachat are: Burger Menu (<span class="icon"
     Inside the admin section, an admin user will find the following options:
 </p>
 
-<p i18n="@@p15">
-    Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername <span *ngIf="system">On this station the server name will be <span class="alert">{{system.domain}}</span></span></p>
+<p>
+   <span i18n="@@p15"> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername </span> <span i18n="@@p15a" *ngIf="system">On this station the server name will be:</span> <span class="alert"> {{system.domain}}</span></p>
 
 <p i18n="@@p16">
     Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface

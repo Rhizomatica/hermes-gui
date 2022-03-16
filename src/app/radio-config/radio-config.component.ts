@@ -129,7 +129,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.fwd_raw = this.power.fwd_raw;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
-        console.log(this.power, 'pwd');
+        //console.log(this.power, 'pwd');
         // console.log(this.radio.refinvolts);
         // console.log(this.radio.fwdinwatts);
 
@@ -177,7 +177,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ radio config - set ptt- : res: ', res);
+       // console.log('⚚ radio config - set ptt- : res: ', res);
         console.log (this.ptt);
         this.radio.ptt = res;
         this.ptt = f;

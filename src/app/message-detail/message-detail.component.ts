@@ -68,7 +68,7 @@ export class MessageDetailComponent implements OnInit {
   }
 
   sendPassword(id: number, f: NgForm): void {
-    console.log(f.value);
+    // console.log(f.value);
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
 		  if (res.text !== ''){
@@ -93,9 +93,9 @@ export class MessageDetailComponent implements OnInit {
   loadingAudio() {
   if (this.audioLoading) {
   this.audioLoading = false;
-  console.log('fdfdgdg');
+  // console.log('fdfdgdg');
   } else {
-    console.log('ffffff');
+   // console.log('ffffff');
   }
 
   }
@@ -157,8 +157,8 @@ export class MessageDetailComponent implements OnInit {
           }
         }
 
-        console.log(this.noMessage);
-        console.log(res);
+        // console.log(this.noMessage);
+        // console.log(res);
       },
       (err) => {
         this.error = err;
@@ -172,7 +172,7 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessageImage(id).subscribe(
       (res: any) => {
         this.messageImage = res;
-        console.log('debug componente service ' + res);
+        // console.log('debug componente service ' + res);
       },
       (err) => {
         this.error = err;
@@ -205,7 +205,7 @@ getSysConfig(): void{
     (err) => {
       this.error = err;
       this.allowCompose = false;
-      console.log('user:', this.currentUser);
+      // console.log('user:', this.currentUser);
     }
     
   );
