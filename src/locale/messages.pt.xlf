@@ -703,31 +703,43 @@ possible. </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">133</context></context-group></trans-unit><trans-unit id="dl02" datatype="html">
         <source> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered.
-</source><target state="final"> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered.
+</source><target state="final"> Os passos para encontrar isso são: Avançado -> Autocrypt, Perferir encriptação de ponto a ponto: destaivar. Você também pide ligar o monitoramento de emails enviados para checar se seus emails foram corretamente entregues.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">139</context></context-group></trans-unit><trans-unit id="dl03" datatype="html">
         <source>Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by another Deltachat application. In order to be able to interact with e-mails from any e-mail client software, enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All. </source><target state="final">Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by another Deltachat application. In order to be able to interact with e-mails from any e-mail client software, enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All. </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">146</context></context-group></trans-unit><trans-unit id="dl04" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">146</context></context-group></trans-unit><trans-unit id="deltachatroundcube" datatype="html">
         <source> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>.
 </source><target state="final"> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>.
 </target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">151</context></context-group></trans-unit><trans-unit id="tranmissionlist" datatype="html">
-        <source>Transmission List</source><target state="final">Lista de Transmissão</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">158</context></context-group></trans-unit><trans-unit id="p11" datatype="html">
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">151,153</context>
+        </context-group>
+      </trans-unit><trans-unit id="tranmissionhp" datatype="html">
+        <source>Transmission List</source><target state="final">Transmission List</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit><trans-unit id="p11h" datatype="html">
         <source> Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends.
-</source><target state="final"> Uma vez que as mensagens são enviadas, elas entram para uma fila de transmissão antes de chegarem ao seu destino final. Um administrador do sistema pode cancelar os pacotes antes de serem enviados e também pode apagar as mensagens recebidas ou enviadas. Isso é uma tarefa importnte de se fazer com uma certa frequência para evitar que acabe o espaço no servidor da estação.
+</source><target state="final"> Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends.
 </target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">161</context></context-group></trans-unit><trans-unit id="p12" datatype="html">
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">161,162</context>
+        </context-group>
+      </trans-unit><trans-unit id="p12h" datatype="html">
         <source> As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
-</source><target state="final">Como a comunicação por rádio é unidirecional, as transmissões são agendadas pelo sistema para acontecerem de acordo com o estabelecido pela estação central, alternando momentos de recepção e transmissão. Em casos de emergência, o administrador do sistema pode forçar a transmissão das mensagens na fila, utilizando o botão "transmitir agora". Isto pode interromper o recebimento de mensagens de outras estações.
+</source><target state="final"> As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
 </target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">165</context></context-group></trans-unit><trans-unit id="p13" datatype="html">
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/help/help.component.html</context>
+          <context context-type="linenumber">165,166</context>
+        </context-group>
+      </trans-unit><trans-unit id="p13" datatype="html">
         <source> To access admin features, you need an admin password, while anyone can create an user account, and only the system's admins can create new administrator users.
 </source><target state="final"> Para acessar os recursos de administração da interface é preciso ter uma senha de administração do sistema, somente os administradores podem criar outros usuários com poder de administração, enquanto qualquer um pode criar usuários comuns.
 </target>

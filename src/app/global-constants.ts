@@ -2,7 +2,7 @@ import { HttpHeaders} from '@angular/common/http';
 export class GlobalConstants {
 
   // TODO this must be /api to deploy!
-  // public static apiURL = 'http://10.8.0.3/api'; //x k4
+  // public static apiURL = 'http://10.8.0.13/api'; //x k4
   public static apiURL = '/api'; // default to deploy
 
     public static httpOptions = {

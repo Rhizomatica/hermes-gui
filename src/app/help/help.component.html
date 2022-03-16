@@ -148,20 +148,20 @@ possible.
 <img  class="infoimg" title="Deltachat email settings" src="assets/img/allemails_es.jpeg" />
 
 
-<p i18n="@@dl04">
+<p i18n="@@deltachatroundcube">
     In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@{{system.domain}}.
 </p>
 
-<img i18n="@@img1" class="infoimg" title="Deltachat login" src="assets/img/login_es.jpeg" />
+<img class="infoimg" title="Deltachat login" src="assets/img/login_es.jpeg" />
 
 
-<h3 #transm i18n="@@tranmissionlist">Transmission List</h3>
+<h3 #transm i18n="@@tranmissionhp">Transmission List</h3>
 
-<p i18n="@@p11">
+<p i18n="@@p11h">
     Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends.
 </p>
 
-<p i18n="@@p12">
+<p i18n="@@p12h">
     As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while.
 </p>
 
@@ -176,7 +176,7 @@ possible.
 </p>
 
 <p>
-   <span i18n="@@p15"> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername </span> <span i18n="@@p15a" *ngIf="system">On this station the server name will be:</span> <span class="alert"> {{system.domain}}</span></p>
+   <span i18n="@@p15"> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername </span> <span *ngIf="system"><span i18n="@@p15a">On this station the server name will be:</span> </span><span class="alert"> {{system.domain}}</span></p>
 
 <p i18n="@@p16">
     Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface
