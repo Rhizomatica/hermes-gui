@@ -1,14 +1,23 @@
 # Hermes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+
+Angular: 13.2.6
+Angular CLI: 13.2.6
+Node: 12.22.5
+Package Manager: npm 8.5.2
+
 
 ## Install node, npm
-Install node and npm (node package manager) in your distro
+
+Install node preferably(V12.22.5) and npm (node package manager) in your distro
 
 Run 'npm install' inside the project path
 
 
 ## Development server
+
+Configure .env file with your parameters and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
 
 Run `ng serve --configuration=en` for a dev server in english, you can change the language to spanish (ng serve --configuration=es) or portuguese (ng serve --configuration=pt) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -17,6 +26,8 @@ Run `ng serve --configuration=en` for a dev server in english, you can change th
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
+
+Check and configure .env file with your parameters (DEV/PROD) and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 

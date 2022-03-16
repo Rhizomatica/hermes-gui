@@ -43,7 +43,6 @@ import { GatewayConfigComponent } from './components/gateway-config/gateway-conf
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 
-
 registerLocaleData(localePt);
 
 // import { CLIENT_RENEG_LIMIT } from 'tls';
