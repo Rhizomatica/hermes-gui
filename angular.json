@@ -10,7 +10,8 @@
         "locales": {
           "pt": "src/locale/messages.pt.xlf",
           "es": "src/locale/messages.es.xlf"
-        }},
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "less"
@@ -37,11 +38,12 @@
               "src/styles.less"
             ],
             "scripts": [
-				"./node_modules/angular-dark-mode/angular-dark-mode.js" 
-			],
+              "./node_modules/angular-dark-mode/angular-dark-mode.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
+            "aot": true,
+            "buildOptimizer": true,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true
@@ -54,6 +56,7 @@
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
+              "aot": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -69,13 +72,16 @@
               ]
             },
             "pt": {
-              "localize": ["pt"],
+              "localize": [
+                "pt"
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
+              "aot": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -91,13 +97,16 @@
               ]
             },
             "es": {
-              "localize": ["es"],
+              "localize": [
+                "es"
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
+              "aot": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -113,11 +122,12 @@
               ]
             },
             "en": {
-              "localize": ["en-US"],
+              "localize": [
+                "en-US"
+              ],
               "outputHashing": "none",
               "sourceMap": false,
               "namedChunks": false,
-              "showCircularDependencies": false,
               "statsJson": false,
               "progress": false,
               "budgets": [
@@ -133,7 +143,6 @@
                 }
               ]
             }
-
           },
           "defaultConfiguration": ""
         },
