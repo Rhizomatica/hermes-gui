@@ -644,11 +644,11 @@ Mensagens públicas podem ser enviadas entre estações, e sõa listadas na pág
         <source>
 Because the radio propagation of data is very low, file attachments are constrained to 20kb sizes. The system will accept inputs for image and sound up to 30mB and for other files util 2mb, and will try to compress them to fit the maximum size for packages. For image and sound, the resolution can be changed, and the quality may be affected. For other formats, a simple compressor will be applied and message packages with size greater than 20kb may not be transmitted.
 </source><target state="final">
-Poque a propagação de dados via rádio é bem lenta, o tamanho dos arquivos anexados é restrito a 20kb. O sistema aceitará inputs de imagem e som até 30mb e para outros formatos até 2mb, e vai tentar comprimi-los até chegar ao tamanho máximo permitido para os pacotes de transmissão. Para imagem e som, a resolução dos arquivos pode ser afetada. Para oitros formatos, um compressor simples será aplicado e pacotes com tamanho maior que 20kb podem não ser transmitidos. 
+Poque a propagação de dados via rádio é bem lenta, o tamanho dos arquivos anexados é restrito a 20kb. O sistema aceitará inputs de imagem e som até 30mb e para outros formatos até 2mb, e vai tentar comprimi-los até chegar ao tamanho máximo permitido para os pacotes de transmissão. Para imagem e som, a resolução dos arquivos pode ser afetada. Para outros formatos, um compressor simples será aplicado e pacotes com tamanho maior que 20kb podem não ser transmitidos. 
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">83</context></context-group></trans-unit><trans-unit id="p01" datatype="html">
-        <source>Private messages</source><target state="final">Private messages</target>
+        <source>Private messages</source><target state="final">Mensagens Privadas</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">87</context></context-group></trans-unit><trans-unit id="q02" datatype="html">
         <source> Private messages in the HERMES system work through personal e-mails. Any user can create an Hermes email account by clicking on the "create user" option on the login screen.
@@ -660,8 +660,8 @@ Mensagens privadas no sistema HERMES funcionam através de e-mails pessoais. Qua
         <source> Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> and will look like this:
 user_name@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
 </source>
-<target state="final"> Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> and will look like this:
-user_name@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username is the username used when creating the user.
+<target state="final"> Cada estação tem um nome de domínio diferente, que pode ser visto no topo da interface. Nesta estação, todos emaisl serão criados com o domínio <x id="INTERPOLATION" equiv-text="{{system.domain}}"/> e vão parecer com este:
+nome_de_usuario@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Onde o nome_de_usuario será o nome de usuário escolhido quando o usuário for criado.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">93</context></context-group></trans-unit><trans-unit id="q02b" datatype="html">
@@ -671,7 +671,7 @@ user_name@<x id="INTERPOLATION" equiv-text="{{system.domain}}"/>. Where username
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">99</context></context-group></trans-unit><trans-unit id="q03b" datatype="html">
         <source> On the email link on the web interface you will find links for webmail (roundcube), for Deltachat download, and also it's possible to select users to send messages with your configured email client.
-</source><target state="final"> On the email link on the web interface you will find links for webmail (roundcube), for Deltachat download, and also it's possible to select users to send messages with your configured email client.
+</source><target state="final"> No link para o email no menu da interface você encontrará links para o webmail (roundcube), os dowloads do Deltachat e também é possível escolher usuários da sua estação pra mandar mensagens utilizando o cliente de email qe estiver configurado no seu aparelho.
 </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/help/help.component.html</context><context context-type="linenumber">103</context></context-group></trans-unit><trans-unit id="q03" datatype="html">
