@@ -29,7 +29,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Check and configure .env file with your parameters (DEV/PROD) and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
