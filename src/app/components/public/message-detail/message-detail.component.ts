@@ -5,6 +5,10 @@ import { Message } from '../../../interfaces/message';
 import { MessageService } from '../../../_services/message.service';
 import { GlobalConstants } from '../../../global-constants';
 import { NgForm } from '@angular/forms';
+import { User } from '../user';
+import { ApiService } from '../_services/api.service';
+import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 
 
@@ -29,6 +33,10 @@ export class MessageDetailComponent implements OnInit {
   pass = '';
   passString = '';
   audioLoading = false;
+  allowCompose = false;
+  currentUser: User;
+  allowhmp = 'root';
+  serverConfig: any;
 
 
 
@@ -36,8 +44,14 @@ export class MessageDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private messageService: MessageService,
     private location: Location,
+    private apiService: ApiService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService
 
-  ) { }
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
+  }
 
   changeEnc() {
     if (this.isEncrypted) {
@@ -54,7 +68,7 @@ export class MessageDetailComponent implements OnInit {
   }
 
   sendPassword(id: number, f: NgForm): void {
-    console.log(f.value);
+    // console.log(f.value);
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
 		  if (res.text !== ''){
@@ -79,9 +93,9 @@ export class MessageDetailComponent implements OnInit {
   loadingAudio() {
   if (this.audioLoading) {
   this.audioLoading = false;
-  console.log('fdfdgdg');
+  // console.log('fdfdgdg');
   } else {
-    console.log('ffffff');
+   // console.log('ffffff');
   }
 
   }
@@ -143,8 +157,8 @@ export class MessageDetailComponent implements OnInit {
           }
         }
 
-        console.log(this.noMessage);
-        console.log(res);
+        // console.log(this.noMessage);
+        // console.log(res);
       },
       (err) => {
         this.error = err;
@@ -158,7 +172,7 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessageImage(id).subscribe(
       (res: any) => {
         this.messageImage = res;
-        console.log('debug componente service ' + res);
+        // console.log('debug componente service ' + res);
       },
       (err) => {
         this.error = err;
@@ -181,11 +195,63 @@ export class MessageDetailComponent implements OnInit {
     });
 }
 
+getSysConfig(): void{
+  this.apiService.getSysConfig().subscribe(
+    (res: any) => {
+      this.serverConfig= res;
+      this.allowhmp = res.allowhmp;
+      this.checkHmp();
+    },
+    (err) => {
+      this.error = err;
+      this.allowCompose = false;
+      // console.log('user:', this.currentUser);
+    }
+    
+  );
+  
+}
+
+checkHmp() {
+  switch(this.allowhmp) {
+    case 'users':
+      if (this.currentUser) {
+        this.allowCompose = true;
+        console.log('allow1:');
+      } else {
+        this.allowCompose = false;
+      }
+      break;
+      case 'admin':
+        if (this.currentUser) {
+          if (this.currentUser.admin) {
+            this.allowCompose = true;
+            console.log('allow2:', this.allowCompose);
+          } else {
+            this.allowCompose = false;
+        }} else {
+          this.allowCompose = false;
+        }
+      break;
+      case 'all':
+      this.allowCompose = true;
+      console.log('allow3:', this.allowCompose);
+      break;
+      default:
+      this.allowCompose = false;
+      console.log('allow4:', this.allowCompose);
+    }
+  return this.allowCompose;
+
+}
+
 
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getMessage();
+    this.getSysConfig();
+
     // this.getImageFromService();
   }
 

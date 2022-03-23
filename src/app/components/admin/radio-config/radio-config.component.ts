@@ -129,7 +129,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.fwd_raw = this.power.fwd_raw;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
-        console.log(this.power, 'pwd');
+        //console.log(this.power, 'pwd');
         // console.log(this.radio.refinvolts);
         // console.log(this.radio.fwdinwatts);
 
@@ -177,7 +177,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
-        console.log('⚚ radio config - set ptt- : res: ', res);
+       // console.log('⚚ radio config - set ptt- : res: ', res);
         console.log (this.ptt);
         this.radio.ptt = res;
         this.ptt = f;
@@ -388,10 +388,12 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.radioResetProtection().subscribe(
       (res: any) => {
       this.res = res;
+      
       console.log('⚚ radio config - reset radio: res: ', res);
       if (this.res === 1) {
         this.radio.protection = false;
       }
+      this.getRadioStatus();
       // this.fileIsProcessing = true;
       },
       (err) => {
@@ -401,19 +403,21 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  resetRadio() {
+  async resetRadio() {
     console.log('reset');
-    this.radioService.radioRestoreDefaults().subscribe(
+    await this.radioService.radioRestoreDefaults().subscribe(
       (res: any) => {
       this.res = res;
       console.log('⚚ radio reset: ', res);
       // this.fileIsProcessing = true;
       this.reseting = false;
+      this.getRadioStatus();
       },
       (err) => {
       this.error = err;
       this.errorAlert = true;
       this.reseting = false;
+      this.getRadioStatus();
       }
     );
     console.log('⚚ testradio - reset to defaults ');
@@ -429,6 +433,29 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     } else {
       this.confirmSet = false;
     }
+  }
+
+  testTone(f) {
+    this.testtone = f;
+    console.log(f);
+    console.log(this.toneOn);
+    this.radioService.setRadioTone(f).subscribe(
+      (res: any) => {
+        this.res = res;
+		this.radio.testtone = res;
+      if (res === '0') {
+          this.toneOn = false;
+        } else {
+          this.toneOn = true;
+        }
+        // this.fileIsProcessing = true;
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+
+
   }
 
   ngOnInit(): void {

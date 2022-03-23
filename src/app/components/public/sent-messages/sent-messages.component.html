@@ -1,16 +1,20 @@
 <div class="">
-    <div class="supicons">
-        <div class="" >
-            <a routerLink="/compose" >
-                <img title="help" src="assets/svg/edit.svg">
-            </a>
-        </div>
+    <!--<div class="supicons">
+    
         <div class="" >
             <a routerLink="/" i18n="@@sent2">
                 <img title="help" src="assets/svg/comment.svg">
             </a>
         </div>
+        <div class="" *ngIf="allowCompose" >
+            <a routerLink="/compose" >
+                <img title="help" src="assets/svg/edit.svg">
+            </a>
+        </div>
     </div>
+-->
+
+    
 
     <div class="overall alert" *ngIf="confirmTransmit">
         <div class="cv" >
@@ -56,23 +60,19 @@
             </div>
             </div>
     </div>
-    <p i18n="@@listsize" class="date size">Total size of files to transmit on the queue: {{ getQueueSize() }} B</p>
+    <p i18n="@@listsize1" class="date size">Total size of files to transmit on the queue: {{ getQueueSize() }} B</p>
     <br/>
    
-    
-    
-
-   
-
         <div class="navicons">
-            <div class="btn" >
-                <a routerLink="/compose" i18n="@@compose3">
-                    <img title="help" src="assets/svg/edit.svg">compose
-                </a>
-            </div>
+            
             <div class="btn sent" >
                 <a routerLink="/" i18n="@@messages2">
                     <img title="help" src="assets/svg/comment.svg"> messages
+                </a>
+            </div>
+            <div class="btn" *ngIf="allowCompose">
+                <a routerLink="/compose" i18n="@@compose3">
+                    <img title="help" src="assets/svg/edit.svg">compose
                 </a>
             </div>
         </div>

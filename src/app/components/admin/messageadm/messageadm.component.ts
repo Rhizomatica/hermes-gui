@@ -29,6 +29,7 @@ export class MessageadmComponent implements OnInit {
   selectedMessages = false;
   isadmin = false;
   allowfile: any;
+  allowhmp: any;
   serverConfig: any;
   allowUp: FormGroup;
   errorAlert = false;
@@ -52,7 +53,8 @@ export class MessageadmComponent implements OnInit {
           (res: any) => {
             this.serverConfig = res;
             this.allowfile = res.allowfile;
-            // console.log(this.allowfile);
+            this.allowhmp = res.allowhmp;
+            console.log(res);
             return res;
           },
           (err) => {
@@ -109,7 +111,22 @@ export class MessageadmComponent implements OnInit {
 
   setUploadPermission(value: string) {
     // console.log(value);
-      this.apiService.setSysConfig(value).subscribe(
+      this.apiService.setFileConfig(value).subscribe(
+      (res: any) => {
+        this.allowfile = res.allowfile;
+        console.log('⚚ messagecompose - sendMessage');
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+    // console.log(this.allowfile);
+  }
+
+  setComposePermission(value: string) {
+    // console.log(value);
+      this.apiService.setMsgConfig(value).subscribe(
       (res: any) => {
         this.allowfile = res.allowfile;
         console.log('⚚ messagecompose - sendMessage');

@@ -1,16 +1,30 @@
 <h2 i18n="@@aconfigmessages">Messages Configuration</h2>
-
-<div class="alert" *ngIf="noSystem" i18n="cannotaccessuucp">Alert: Cannot access Hermes System<br/></div>
+<hr>
+<div class="alert" *ngIf="noSystem" i18n="cannotaccesshermes">Alert: Cannot access Hermes System<br/></div>
 
 <div *ngIf="isAdmin">
 <div *ngIf="!noSystem" >
-    <p i18n=@@selectwho>select who can attach files to messages:</p>
+    <p i18n=@@selectwhocompose>Select who can send public messages:</p>
+
+    <form #f="ngForm" >
+    <select name="allowhmp" (change)="setComposePermission($event.target.value)">
+        <option [selected]='allowhmp=="all"' value="all" i18n="@@everyone1">everyone</option>
+        <option [selected]='allowhmp=="users"' value="users" i18n="@@registeredusers1">registered users</option>
+        <option [selected]='allowhmp=="admin"' value="admin" i18n="@@adminusers1">admin users</option>
+    </select>
+    <br/>
+    <!--<button i18n="@@updatema">update</button>-->
+    </form>  
+    
+    <hr>
+    
+    <p i18n=@@selectwho>Select who can attach files to messages:</p>
 
 <form #f="ngForm" >
 <select name="allowfile" (change)="setUploadPermission($event.target.value)">
-    <option ng-selected='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
-    <option ng-selected='allowfile=="users"' value="users" selected i18n="@@registeredusers">registered users</option>
-    <option ng-selected='allowfile=="admin"' value="admin" i18n="@@adminusers">admin users</option>
+    <option [selected]='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
+    <option [selected]='allowfile=="users"' value="users" i18n="@@registeredusers">registered users</option>
+    <option [selected]='allowfile=="admin"' value="admin" i18n="@@adminusers">admin users</option>
 </select>
 <br/>
 <!--<button i18n="@@updatema">update</button>-->
@@ -25,7 +39,7 @@
 
 <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv" >
-        <span i18n="@@errorsendingadm">There was an error on sending your message <br/><br/></span>
+        <span i18n="@@errorchanging config">There was an error on changing config <br/><br/></span>
         <span>{{error}}</span>
         <div class="icon" ><a (click)="closeError()" >
             <img title="close" src="assets/svg/x.svg"></a>

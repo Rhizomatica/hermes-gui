@@ -2,7 +2,6 @@
 
 <div class="color">
 <div (click)="showUucpLog()" i18n="@@uucplog" >UUcp Log</div>
-<div (click)="showDebugLog()"i18n="@@debuglog" >Uucp Debug Log<br></div>
 <div (click)="showEmailLog()"i18n="@@emaillog" >Email Log </div>
 </div>
 
@@ -10,46 +9,57 @@
     <hr>
 <h3 i18n="@@uucplog2">uucp log</h3>
 <div class="logs" >
+    <div class="close" (click)="closeLogs()">
+        <img  title="close" src="assets/svg/times.svg">
+    </div>
 <section>
     <div *ngFor="let log of uucpLog">
-        <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
+       <p> {{log}}</p>
     </div>
-
     <br>
-    <div (click)="closeLogs()"><img  title="close" src="assets/svg/times.svg"></div>
-
-</section>    
+    
+</section>  
+<div (click)="closeLogs()">
+    <img  title="close" src="assets/svg/times.svg">
+</div>  
 </div>
 </div>
 
 <div class="formdata" *ngIf="dLog">
     <hr>
     <h3 i18n="@@debuglog2">uucp debug log</h3>
-    <div class="footer logs" >
+    <div class="logs" >
+        <div class="close" (click)="closeLogs()">
+            <img  title="close" src="assets/svg/times.svg">
+        </div>
     <section>
         <div *ngFor="let log of uucpDebugLog">
-            <p><span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span></p>
+            <p>{{log}}</p>
         </div>
-        
     </section>
-        <div (click)="closeLogs()"><img  title="close" src="assets/svg/times.svg"></div>
-        
+    <br/>
+        <div (click)="closeLogs()">
+            <img  title="close" src="assets/svg/times.svg">
+        </div>
     </div>
     </div>
 
 <div class="formdata" *ngIf="eLog">
     <hr>
     <h3 i18n="@@emaillog2">email log</h3>
-    <div class="footer logs" >
-
+    <div class="logs" >
+        <div class="close" (click)="closeLogs()">
+            <img  title="close" src="assets/svg/times.svg">
+        </div>
         <section>
         <div *ngFor="let log of mailLog">
-            <span>{{log.line}}</span>&nbsp;<span>{{log.content}}</span>
+            <p>{{log}}</p>
         </div>
-
     </section>
     <br>
-    <div (click)="closeLogs()"><img  title="close" src="assets/svg/times.svg"></div>
+    <div (click)="closeLogs()">
+        <img  title="close" src="assets/svg/times.svg">
+    </div>
 
 </div>
 </div>

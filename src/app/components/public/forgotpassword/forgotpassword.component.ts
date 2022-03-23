@@ -37,6 +37,7 @@ export class ForgotpasswordComponent implements OnInit {
       this.userService.getUsers().subscribe(
         (res: any) => {
           this.users = res;
+          console.log(this.users);
         },
         (err) => {
           this.error = err;
@@ -82,14 +83,17 @@ export class ForgotpasswordComponent implements OnInit {
       this.errorAlert = false;
     }
 
-    checkAnswer(answ) {
-      if (this.selectedUser.recoveranswer === answ) {
-        this.cAnsw = true;
-        this.iAnsw = true;
-      } else {
-        this.cAnsw = false;
-        this.iAnsw = false;
-      }
+    checkAnswer(id, answ) {
+      this.userService.recoverPassword(id, answ)
+        .subscribe(
+        (res: any) => {
+          this.cAnsw = true;
+        },
+        (err) => {
+          this.error = err;
+          this.errorAlert = true;
+        }
+      );
     }
 
 

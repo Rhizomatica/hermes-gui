@@ -1,4 +1,16 @@
-<div id="compose" class="">
+<div *ngIf="!allowCompose">
+<div id="compose" class="" *ngIf="allowhmp=='users'" i18n="@@cantcompose">
+<p>Only registered users can send messages to other stations, if you are a registered user, please log in.</p>   
+</div>
+<div id="compose" class="" *ngIf="allowhmp=='admin'" i18n="@@cantcompose2">
+<p>Only admin users can send messages to other stations, if you are an admin, please log in. </p>
+
+</div>
+
+</div>
+
+
+<div id="compose" class="" *ngIf="allowCompose">
 
     <div class="supicons">
         
@@ -43,7 +55,7 @@
 
     <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
         <input id="item-{{index}}" type="checkbox"
-        [(ngModel)] ="item$.selected" [ngModelOptions]="{standalone: true}"/> Select All
+        [(ngModel)] ="item$.selected" [ngModelOptions]="{standalone: true}"/> <span i18n="@@selectall"> Select All</span>
       </ng-template>
 
       <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">

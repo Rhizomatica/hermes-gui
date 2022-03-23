@@ -6,6 +6,7 @@ import { User } from '../../../interfaces/user';
 // import { GlobalConstants } from '../global-constants';
 import { UserService } from '../../../_services/user.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
+import { ApiService } from '../../../_services/api.service';
 
 
 export interface MessageInbox {
@@ -40,11 +41,15 @@ export class MessagesComponent implements OnInit {
   searchMessages: string;
   today = Date();
   noMessages = false;
-
+  allowCompose = false;
+  allowhmp = 'root';
+  serverConfig: any;
+  loginForm = false;
 
   constructor(
     private messageService: MessageService,
     private alertService: AlertService,
+    private apiService: ApiService,
     private authenticationService: AuthenticationService,
     private userService: UserService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -71,6 +76,8 @@ export class MessagesComponent implements OnInit {
       }
     );
   }
+
+  
 
   getInboxMessage($id): void {
       this.messageService.getInboxMessage($id).subscribe(
@@ -100,9 +107,90 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+  getSysConfig(): void{
+    this.apiService.getSysConfig().subscribe(
+      (res: any) => {
+        this.serverConfig= res;
+        this.allowhmp = res.allowhmp;
+        this.checkHmp();
+      },
+      (err) => {
+        this.error = err;
+        this.allowCompose = false;
+        console.log('user:', this.currentUser);
+      }
+      
+    );
+    
+  }
+
+  showlogin() {
+    if (this.loginForm) {
+      this.loginForm = false;
+      console.log(this.loginForm)
+    } else {
+      this.loginForm = true;
+    }
+
+  }
+
+  closeLogin() {
+    console.log("closed");
+    this.getSysConfig();
+    this.loginForm = false;
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    console.log('user:', this.currentUser);
+    this.checkHmp();
+    
+  }
+
+  checkHmp() {
+    switch(this.allowhmp) {
+      case 'users':
+        if (this.currentUser) {
+          this.allowCompose = true;
+          console.log('allow1:');
+        } else {
+          this.allowCompose = false;
+        }
+        break;
+        case 'admin':
+          if (this.currentUser) {
+            if (this.currentUser.admin) {
+              this.allowCompose = true;
+              console.log('allow2:', this.allowCompose);
+            } else {
+              this.allowCompose = false;
+          }} else {
+            this.allowCompose = false;
+          }
+        break;
+        case 'all':
+        this.allowCompose = true;
+        console.log('allow3:', this.allowCompose);
+        break;
+        default:
+        this.allowCompose = false;
+        console.log('allow4:', this.allowCompose);
+      }
+    return this.allowCompose;
+
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.currentUser = null;
+    console.log('⚚ app: user logout');
+    console.log('⚚ app: user logout', this.currentUser);
+    this.checkHmp();
+  
+    
+  }
+
 
   ngOnInit(): void {
     this.getInboxMessages();
+    this.getSysConfig();
     if ( this.currentUser ) {
     this.isadmin = this.currentUser.admin;
     } else {

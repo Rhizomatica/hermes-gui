@@ -1,5 +1,6 @@
 <div *ngIf="currentUser" class="container">
 
+    <div id="spaceadm"></div>
     <div *ngIf="currentUser.admin" >
         <div class="menu">
         <a routerLink="/manage" i18n="@@adminmanage">User management</a>
@@ -11,9 +12,9 @@
         <a routerLink="/stations" i18n="@@stations">Stations</a>
         <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">Central Station</a>
         <br />
+        <a routerLink="/netadmin" i18n="@@networkadmin">Network information</a>
         <a routerLink="/log" i18n="@@detailedlog">Detailed log</a>
        <!-- <a routerLink="/upgrade" i18n="@@systemupgrade">system restoration</a>-->
-        <a routerLink="/netadmin" i18n="@@networkadmin">Network information</a>
 
     
     </div>
@@ -60,7 +61,7 @@
 
                 </span>
                 
-                <span class="icon" ><a (click)="cancelShutDown()" >
+                <span class="icon" ><a (click)="cancelReboot()" >
                     <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
                 </span>
                 <span class="icon" ><a (click)="reboot()" >
@@ -89,26 +90,32 @@
     </div>
 
     <div *ngIf="!currentUser.admin">
-        <span i18n="@@needtobeadmin">
-            Need to be an admin to access admin features
-        </span>
-        <br>
-        <br>
-        <a routerLink="/manage" i18n="@@createuser">Create User</a>
+        <a routerLink="/manage" i18n="@@usermanagement">User Management</a>
+        <br/>
+        <a routerLink="/radioconfig" i18n="@@radioinformation">Radio Information</a>
+        <br/>
+        <br/>
+
+        <p i18n="@@needtobeadmin">
+            Need to be an admin to access other admin features
+        </p>
     </div>
 
 
 </div>
 
 
+<div *ngIf="loginForm">
 
 <div *ngIf="!currentUser">
-    Need to be an admin to access admin features
-    <app-login>
-    </app-login>
+    <span i18n="@@pleaselogin">Please log in to access this area:</span>
+    <hr>
+    <app-login-form (hideLoginForm)="loginForm = false">
+    </app-login-form>
     
 </div>
 
+</div>
 
 
 <!--<a routerLink="/mailadmin" i18n="@@mailadmin">email administration</a>-->

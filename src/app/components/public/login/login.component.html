@@ -1,13 +1,15 @@
 
 <div class=" login formdata" >
-   <h2 i18n="@@login">Login</h2>
    <form #f="ngForm" id="loginform" novalidate>
-      <p>Hermes V. 1.0</p>
-      <p i18n="@@instructions">to access admin features, put your username and password</p>
+      <h1>Hermes V. 1.0</h1>
+      <p i18n="@@instructions">To login to the system, put your username and password</p>
       <hr>
+
+   
+      <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
       <label >
          <p i18n="@@username:">username:</p>
-         <input i18n="@@ilogin" name="email"  ngModel required placeholder="Login" i18n-placeholder/>
+         <input type="text" i18n="@@ilogin" name="email" ngModel required placeholder="Login" i18n-placeholder/>
       </label>
       <label >
          <p i18n="@@password">password:</p>
@@ -23,14 +25,6 @@
          </a>
       <br>
 
-     <!-- <button (click)="submitLogout()"  >logout test</button>
-
-
-      <a i18n="@@login" routerLink="/admin"  >
-         <button>DBG: Bypass Log in</button>
-      </a>
-
-   -->
    <hr>
       
 

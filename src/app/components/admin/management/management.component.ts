@@ -70,6 +70,8 @@ export class ManagementComponent implements OnInit {
     }
   }
 
+  
+
   Alert(param, ): boolean {
       // param=!param;
       return !param;
@@ -167,6 +169,11 @@ export class ManagementComponent implements OnInit {
 
   }
 
+  updateThis() {
+  //console.log(this.currentUser);
+    this.onSelect(this.currentUser);
+  }
+
   onSubmitUpdate(id: number, f: NgForm): void {
     // console.log('sel', this.selectedUser);
     this.userService.updateUser(id, f.value).subscribe(
@@ -177,7 +184,7 @@ export class ManagementComponent implements OnInit {
       (err) => {
         this.error = err;
         this.errorAlert = true;
-
+        this.getUsers();
       }
     );
     this.selectedUser = [];
@@ -188,12 +195,13 @@ export class ManagementComponent implements OnInit {
   onSubmitDelete( id: number, email:string ): void {
       this.userService.deleteUser(id, email).subscribe(
         (res: any) => {
+          this.users = res;
           this.getUsers();
         },
         (err) => {
           this.error = err;
           this.errorAlert = true;
-  
+          this.getUsers();
         }
       );
       this.deleteUser = false;
@@ -209,15 +217,15 @@ export class ManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
-        console.log('⚚ management - getUsers');
         this.getUsers();
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.getUsers();
       }
     );
-    this.getUsers();
+    
 
   }
 

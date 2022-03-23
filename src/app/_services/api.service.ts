@@ -73,7 +73,7 @@ export class ApiService {
       catchError(this.handleError));
     }
 
-    public setSysConfig(allowfile: string): Observable<{}> {
+    public setFileConfig(allowfile: string): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/config`;
       const formData: FormData = new FormData();
       formData.append('allowfile', allowfile);
@@ -90,6 +90,24 @@ export class ApiService {
       catchError(this.handleError)
       );
   }
+
+  public setMsgConfig(allowhmp: string): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/sys/config`;
+    const formData: FormData = new FormData();
+    formData.append('allowhmp', allowhmp);
+    const params = new HttpParams();
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', null);
+    headers.set('Accept', 'multipart/form-data');
+    // Authorization: 'my-auth-token'
+    return this.http.post(url, formData, {params, headers}).pipe(
+    map((res: any) => {
+      console.log('⚚ sys server setting - allowfile: ', res.allowhmp);
+      return res.allowhmp;
+    }),
+    catchError(this.handleError)
+    );
+}
 
     public getLogin(plogin, ppassword): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status

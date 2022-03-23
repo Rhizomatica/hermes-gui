@@ -45,31 +45,34 @@
 		</div>
     </div>
 
-    <div *ngIf="!noMessage">
-        <small><p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
-        <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
-        <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
-        <p class="msgid">Id: {{message.id}}</p></small>
+<div *ngIf="!noMessage">
+    
+    <small><p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
+    <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
+    <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
+    <p class="msgid">Id: {{message.id}}</p></small>
+</div>
+<hr>
+
+<div class="navicons">
+
+
+    <div class="btn sent" *ngIf="allowCompose" >
+        <a routerLink="/compose" i18n="@@compose1">
+            <img title="edit" src="assets/svg/edit.svg">compose public messages
+        </a>
     </div>
-    <hr>
-    <div class="navicons">
-        <div class="btn" >
-            <a  routerLink="/compose" >
-                <span i18n="@@composea"><img title="help" src="assets/svg/edit.svg">compose</span>
-            </a>
-            <!--<a *ngIf="!noMessage" i18n="@@reply" routerLink="/compose" i18n="@@compose">
-                <img title="help" src="assets/svg/reply-solid.svg">compose
-            </a>-->
-        </div>
-        <div class="btn sent" >
-            <a i18n="sent messages" routerLink="/sent" i18n="@@sent">
-                <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
-            </a>
-        </div>
-        <!--
-            <label>is encrypted
-                <input type="checkbox" (change)="changeEnc()">
-            </label>
-        -->
-    </div> 
+
+    <div class="btn sent" >
+        <a i18n="sent messages" routerLink="/sent" i18n="@@sent">
+            <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
+        </a>
+    </div>
+    
+
+
+</div> 
+
+
+
 </div>
