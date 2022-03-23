@@ -43,7 +43,7 @@ import { GatewayConfigComponent } from './components/admin/gateway-config/gatewa
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { HomeComponent } from './home/home.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 registerLocaleData(localePt);

@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { delay } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
-import { AuthenticationService } from '../_services/authentication.service';
-import { User } from '../interfaces/user';
+import { AuthenticationService } from '../../_services/authentication.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-login-form',

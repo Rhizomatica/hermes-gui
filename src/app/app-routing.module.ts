@@ -16,35 +16,35 @@ import { MessageadmComponent } from './components/admin/messageadm/messageadm.co
 import { ForgotpasswordComponent } from './components/public/forgotpassword/forgotpassword.component';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { EmailComponent } from './components/public/email/email.component';
-import {HelpComponent} from './components/public/help/help.component';
+import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
-import { TestradioComponent } from './components/admin/testradio/testradio.component';
+// import { TestradioComponent } from './components/admin/testradio/testradio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
-  { path: 'landing', component: LandingComponent},
-  { path: 'messages', component: MessagesComponent},
-  { path: 'admin', component: SysadminComponent},
-  { path: 'stations', component: StationsComponent},
-  { path: 'message/:id', component: MessageDetailComponent},
-  { path: 'log', component: LogComponent},
-  { path: 'manage', component: ManagementComponent},
-  { path: 'manage/:id', component: ManagementComponent},
-  { path: 'compose', component: MessagecomposeComponent},
-  { path: 'netadmin', component: NetadminComponent},
-  { path: 'upgrade', component: UpgradeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'languages', component: LanguagesComponent},
-  { path: 'messageadm', component: MessageadmComponent},
-  { path: 'recovery', component: ForgotpasswordComponent},
-  { path: 'sent', component: SentMessagesComponent},
-  { path: 'email', component: EmailComponent},
-  { path: 'help', component: HelpComponent},
-  { path: 'radioconfig', component: RadioConfigComponent},
-  { path: 'gateway', component: GatewayConfigComponent},
-  { path: 'transmission', component: TransmissionListComponent}
+  { path: 'landing', component: LandingComponent },
+  { path: 'messages', component: MessagesComponent },
+  { path: 'admin', component: SysadminComponent },
+  { path: 'stations', component: StationsComponent },
+  { path: 'message/:id', component: MessageDetailComponent },
+  { path: 'log', component: LogComponent },
+  { path: 'manage', component: ManagementComponent },
+  { path: 'manage/:id', component: ManagementComponent },
+  { path: 'compose', component: MessagecomposeComponent },
+  { path: 'netadmin', component: NetadminComponent },
+  { path: 'upgrade', component: UpgradeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'languages', component: LanguagesComponent },
+  { path: 'messageadm', component: MessageadmComponent },
+  { path: 'recovery', component: ForgotpasswordComponent },
+  { path: 'sent', component: SentMessagesComponent },
+  { path: 'email', component: EmailComponent },
+  { path: 'help', component: HelpComponent },
+  { path: 'radioconfig', component: RadioConfigComponent },
+  { path: 'gateway', component: GatewayConfigComponent },
+  { path: 'transmission', component: TransmissionListComponent }
 ];
 
 @NgModule({
