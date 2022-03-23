@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../../interfaces/message';
-import { UUCPQueue } from '../../interfaces/uucpqueue';
-import { User } from '../../interfaces/user';
-import { UserService } from '../../_services/user.service';
-import { MessageService } from '../../_services/message.service';
-import { UUCPService } from '../../_services/uucp.service';
-import { AlertService } from '../../_services/alert.service';
-import { AuthenticationService } from '../../_services/authentication.service';
+import { Message } from '../../../interfaces/message';
+import { UUCPQueue } from '../../../interfaces/uucpqueue';
+import { User } from '../../../interfaces/user';
+import { UserService } from '../../../_services/user.service';
+import { MessageService } from '../../../_services/message.service';
+import { UUCPService } from '../../../_services/uucp.service';
+import { AlertService } from '../../../_services/alert.service';
+import { AuthenticationService } from '../../../_services/authentication.service';
 import { Observable } from 'rxjs';
 
 @Component({

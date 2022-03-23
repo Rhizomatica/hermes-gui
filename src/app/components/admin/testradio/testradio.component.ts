@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../_services/api.service';
-import { RadioService } from '../../_services/radio.service';
+import { ApiService } from '../../../_services/api.service';
+import { RadioService } from '../../../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import {DecimalPipe} from '@angular/common';
 import { interval } from 'rxjs';
