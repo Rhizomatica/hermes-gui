@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UserService } from '../_services/user.service';
-import { AuthenticationService } from '../_services/authentication.service';
-import { ApiService } from '../_services/api.service';
+import { User } from '../../../interfaces/user';
+import { UserService } from '../../../_services/user.service';
+import { AuthenticationService } from '../../../_services/authentication.service';
+import { ApiService } from '../../../_services/api.service';
 
 
 @Component({

@@ -5,10 +5,10 @@ import { Message } from '../../../interfaces/message';
 import { MessageService } from '../../../_services/message.service';
 import { GlobalConstants } from '../../../global-constants';
 import { NgForm } from '@angular/forms';
-import { User } from '../user';
-import { ApiService } from '../_services/api.service';
-import { UserService } from '../_services/user.service';
-import { AuthenticationService } from '../_services/authentication.service';
+import { User } from '../../../interfaces/user';
+import { ApiService } from '../../../_services/api.service';
+import { UserService } from '../../../_services/user.service';
+import { AuthenticationService } from '../../../_services/authentication.service';
 
 
 
