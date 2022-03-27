@@ -1,124 +1,160 @@
 <div *ngIf="currentUser" class="container">
 
     <div id="spaceadm"></div>
-    <div *ngIf="currentUser.admin" >
+    <div *ngIf="currentUser.admin">
         <div class="menu">
-        <a routerLink="/manage" i18n="@@adminmanage">User management</a>
-        <a routerLink="/messageadm" i18n="@@messageadm">Messages configuration</a>
-        <a routerLink="/transmission" i18n="@@transmissionlista">Transmission list</a>
-        <a routerLink="/radioconfig" i18n="@@radioconfig">Radio configuration</a>
+            <!-- <a routerLink="/upgrade" i18n="@@systemupgrade">system restoration</a>-->
+            <h3>Transmission</h3>
+            <div class="flexible">
+                <a routerLink="/manage" i18n="@@adminmanage">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/user-alt.svg">
+                        </div>
+                        <div class="row">
+                            User management
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/messageadm" i18n="@@messageadm">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/comment.svg">
+                        </div>
+                        Messages configuration
+                    </div>
+                </a>
+                <a routerLink="/transmission" i18n="@@transmissionlista">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/sync_alt-24px.svg">
+                        </div>
+                        Transmission list
+                    </div>
+                </a>
+                <a routerLink="/radioconfig" i18n="@@radioconfig">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/tools.svg">
+                        </div>
+                        Radio configuration
+                    </div>
+                </a>
+            </div>
+            <h3 class="m-t-25">Central</h3>
+            <div class="flexible">
+                <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/settings_input_antenna-24px.svg">
+                        </div>
+                        Central Station
+                    </div>
+                </a>
+                <a routerLink="/stations" i18n="@@stations">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/broadcast-tower.svg">
+                        </div>
+                        Stations
+                    </div>
+                </a>
+                <a routerLink="/netadmin" i18n="@@networkadmin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/hearing-24px.svg">
+                        </div>
+                        Network information
+                    </div>
+                </a>
+                <a routerLink="/log" i18n="@@detailedlog">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/build-24px.svg">
+                        </div>
+                        Detailed log
+                    </div>
+                </a>
+            </div>
+        </div>
 
-        <br />
-        <a routerLink="/stations" i18n="@@stations">Stations</a>
-        <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">Central Station</a>
-        <br />
-        <a routerLink="/netadmin" i18n="@@networkadmin">Network information</a>
-        <a routerLink="/log" i18n="@@detailedlog">Detailed log</a>
-       <!-- <a routerLink="/upgrade" i18n="@@systemupgrade">system restoration</a>-->
-
-    
-    </div>
-
-        <br/>
-
-        <div class="shut">
-
-        <button class="midbt" (click)="confirmReboot()" ><span i18n="@@reboot">reboot</span><br/>
-            <img class="btnicon" title="send" src="assets/svg/redo.svg">
-        </button>    
-
-        <button class="midbt" (click)="confirmShutDown()" ><span i18n="@@shutdown">shut down</span><br/>
-            <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
-        </button>
-        
-
-        </div>  
-
+        <div class="shut m-t-10">
+            <button class="midbt" (click)="confirmReboot()"><span i18n="@@reboot">reboot</span><br />
+                <img class="btnicon" title="send" src="assets/svg/redo.svg">
+            </button>
+            <button class="midbt" (click)="confirmShutDown()"><span i18n="@@shutdown">shut down</span><br />
+                <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
+            </button>
+        </div>
         <div class="overall alert" [hidden]="shuttingDown==false">
-            <div class="cv" >
+            <div class="cv">
                 <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
-                    <br/>
+                    <br />
                     This will stop messages transmission and reception.
-                    <br/>
-
+                    <br />
                 </span>
-                
-                <span class="icon" ><a (click)="cancelShutDown()" >
-                    <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
+                <span class="icon"><a (click)="cancelShutDown()">
+                        <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
                 </span>
-                <span class="icon" ><a (click)="shutDown()" >
-                    <img title="help" src="assets/svg/power-off-solid.svg"><button i18n="@@shutdown1">shut down</button></a>
+                <span class="icon"><a (click)="shutDown()">
+                        <img title="help" src="assets/svg/power-off-solid.svg"><button i18n="@@shutdown1">shut
+                            down</button></a>
                 </span>
             </div>
         </div>
-
         <div class="overall alert" [hidden]="restarting==false">
-            <div class="cv" >
+            <div class="cv">
                 <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
-                    <br/>
+                    <br />
                     This will stop messages transmission and reception.
-                    <br/>
+                    <br />
 
                 </span>
-                
-                <span class="icon" ><a (click)="cancelReboot()" >
-                    <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
+
+                <span class="icon"><a (click)="cancelReboot()">
+                        <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancels">cancel</button></a>
                 </span>
-                <span class="icon" ><a (click)="reboot()" >
-                    <img title="help" src="assets/svg/redo.svg"><button i18n="@@reboot1">reboot</button></a>
+                <span class="icon"><a (click)="reboot()">
+                        <img title="help" src="assets/svg/redo.svg"><button i18n="@@reboot1">reboot</button></a>
                 </span>
             </div>
         </div>
-
-
         <div class="overall alert" [hidden]="shuttingDownNow==false">
             Shutting Down System
-            <br/>
-            <a (click)="reload()" >
+            <br />
+            <a (click)="reload()">
                 <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
             <br>
         </div>
         <div class="overall alert" [hidden]="rebootingDownNow==false">
             Rebooting System
-            <br/>
-            <a (click)="reload()" >
+            <br />
+            <a (click)="reload()">
                 <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
             <br>
-            
         </div>
-
     </div>
-
     <div *ngIf="!currentUser.admin">
         <a routerLink="/manage" i18n="@@usermanagement">User Management</a>
-        <br/>
+        <br />
         <a routerLink="/radioconfig" i18n="@@radioinformation">Radio Information</a>
-        <br/>
-        <br/>
-
+        <br />
+        <br />
         <p i18n="@@needtobeadmin">
             Need to be an admin to access other admin features
         </p>
     </div>
-
-
 </div>
 
 
 <div *ngIf="loginForm">
-
-<div *ngIf="!currentUser">
-    <span i18n="@@pleaselogin">Please log in to access this area:</span>
-    <hr>
-    <app-login-form (hideLoginForm)="loginForm = false">
-    </app-login-form>
-    
-</div>
-
+    <div *ngIf="!currentUser">
+        <span i18n="@@pleaselogin">Please log in to access this area:</span>
+        <hr>
+        <app-login-form (hideLoginForm)="loginForm = false">
+        </app-login-form>
+    </div>
 </div>
 
 
 <!--<a routerLink="/mailadmin" i18n="@@mailadmin">email administration</a>-->
-
-
-

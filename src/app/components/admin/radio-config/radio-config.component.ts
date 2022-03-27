@@ -77,7 +77,20 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   getRadioStatus(): void{
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
+
+        console.log(res)
+
+        // if(!this.refv){
+        //   console.log("maoi")
+        // } 
+
         this.radio = res;
+
+        // if(!this.radio.refv){
+        //   //TODO - Redirecionar/travar tela
+        // }
+
+        //TODO - criar metodo 
         this.radio.extra = false;
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;

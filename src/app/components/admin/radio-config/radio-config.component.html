@@ -1,173 +1,165 @@
 <div id="radioconf">
-    <h2 *ngIf="isAdmin" i18n="@@radioconft">Radio Configuration</h2> 
-    <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2> 
+    <h2 *ngIf="isAdmin" i18n="@@radioconft">Radio Configuration</h2>
+    <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
 
-    <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br/></div>
-    <div >
-    <!--<div>-->
+    <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
+    <div>
+        <!--<div>-->
         <form *ngIf="radio">
             <hr>
-            <p><b><span i18n="@@currentradiofreq">Current Radio frequency:</span>  {{radio.freq / 1000}} kHz {{radio.mode}}</b></p> 
+            <p><b><span i18n="@@currentradiofreq">Current Radio frequency:</span> {{radio.freq / 1000}} kHz
+                    {{radio.mode}}</b></p>
             <hr>
             <div *ngIf="radio.bypass" i18n="@@bypasson">Conected </div>
             <div *ngIf="!radio.bypass" i18n="@@bypassoff">Disconected </div>
             <div *ngIf="radio.tx" i18n="@@operationtx1">Operation mode: TX </div>
-            <div *ngIf="radio.rx" i18n="@@operationrx" >Operation mode: RX </div>
+            <div *ngIf="radio.rx" i18n="@@operationrx">Operation mode: RX </div>
             <p><span i18n="@reflected">REF (Reflected Power): </span>{{radio.ref_volts}} V ({{radio.ref_raw}}/1023)</p>
             <!--<p><input class="full" type="range" min="0" max="6" value="{{radio.refinvolts}}" disabled></p>-->
             <p> <span i18n="@forward"> FWD (forward): </span>{{radio.fwd_watts}} W ({{radio.fwd_raw}}/1023)</p>
             <!-- <p><input class="styled-slider full" type="range" min="0" max="20" value="{{radio.fwdinwatts}}" disabled></p>-->
-            <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>           
-            <p><span class="styled-slider full" i18n="@swrprotection">Max SWR protection: </span>{{radio.refthreshold}} (0/1023) </p>
+            <p><span i18n="@bfobeat">BFO (beat frequency oscilator):</span> {{radio.bfo}} Hz</p>
+            <p><span class="styled-slider full" i18n="@swrprotection">Max SWR protection: </span>{{radio.refthreshold}}
+                (0/1023) </p>
             <p><span i18n="@mastercal">Mastercal: </span>{{radio.mastercal}}</p>
             <!--<div *ngIf="radio.led" i18n="@@radioledon">System LED: on </div>
             <div *ngIf="!radio.led" i18n="@@radioledoff">System LED: off</div>-->
             <div *ngIf="radio.protection" i18n="@@protectionon">Protection: on </div>
             <div *ngIf="!radio.protection" i18n="@@protectionoff">Protection: off </div>
-            
-            
+
+
             <p><span i18n="@serial">Serial Number: </span>{{radio.serial}}</p>
 
             <!--arrow coming or going trasmitting/recieving-->
-            
+
             <div *ngIf="isAdmin">
-
-                <button *ngIf="radio.protection" (click)="resetProtection()" i18n="@resetprotection1">reset protection</button>
-
-
+                <button *ngIf="radio.protection" (click)="resetProtection()" i18n="@resetprotection1">reset
+                    protection</button>
                 <div *ngIf="isAdmin">
-
-                
-                <button (click)="confirmChange()" *ngIf="!alterSet" i18n="@@changeradiosettings">change radio settings...</button>
+                    <button (click)="confirmChange()" *ngIf="!alterSet" i18n="@@changeradiosettings">change radio
+                        settings...</button>
                 </div>
-
                 <div class="overall" *ngIf="confirmSet">
-                    <div class="cv" >
-                    <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings? <br/>this may cause the system to stop</span>
-                    <br/>
-                    <button (click)="screenSet()" *ngIf="isAdmin" i18n="@@changer">change</button>
-                    <button (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
+                    <div class="cv">
+                        <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings? <br />this
+                            may cause the system to stop</span>
+                        <br />
+                        <button (click)="screenSet()" *ngIf="isAdmin" i18n="@@changer">change</button>
+                        <button (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
                     </div>
                 </div>
-
-
                 <div class="radio" *ngIf="alterSet">
-                    <br/>
+                    <br />
                     <div class="radio" *ngIf="radio">
 
-                        <form #ffreq="ngForm" class="formdata field"   >
+                        <form #ffreq="ngForm" class="formdata field">
                             <p><span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span></p>
-                                <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" >change frequency</button>
-                                <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frek" [(ngModel)]="frek" value={{frek}} >
-                        </form>                        
+                            <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid">change
+                                frequency</button>
+                            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frek"
+                                [(ngModel)]="frek" value={{frek}}>
+                        </form>
 
-                        <form *ngIf="radio" #fmode="ngForm" class="formdata field" >
+                        <form *ngIf="radio" #fmode="ngForm" class="formdata field">
                             <p><span i18n="@@changeradiomode">Radio mode: {{radio.mode}}</span></p>
-                            <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid" i18n="@@changemode1">change mode</button>
-                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB" [checked]="radio.mode=='USB'" >USB</label>
-                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode"  value="LSB" [checked]="radio.mode=='LSB'">LSB</label>
+                            <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid"
+                                i18n="@@changemode1">change mode</button>
+                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB"
+                                    [checked]="radio.mode=='USB'">USB</label>
+                            <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="LSB"
+                                    [checked]="radio.mode=='LSB'">LSB</label>
                         </form>
-        
-                        <form #frefthreshold="ngForm" class="formdata field"  *ngIf="radio" >
-                            <p><span i18n="@@prottheshold">Protection activation threshold level:</span> {{radio.refthreshold}}</p>
-                            <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"i18n="@@changetre1" >change threshold</button>
-                            <input type="number" [max]="1023"  class="midbt" name="refthreshold" [(ngModel)]="refthreshold" value={{refthreshold}} >
+
+                        <form #frefthreshold="ngForm" class="formdata field" *ngIf="radio">
+                            <p><span i18n="@@prottheshold">Protection activation threshold level:</span>
+                                {{radio.refthreshold}}</p>
+                            <button class="midbt" (click)="changeRefThreshold(frefthreshold)"
+                                [disabled]="frefthreshold.invalid" i18n="@@changetre1">change threshold</button>
+                            <input type="number" [max]="1023" class="midbt" name="refthreshold"
+                                [(ngModel)]="refthreshold" value={{refthreshold}}>
                         </form>
-                       
-                        <form #fbfo="ngForm" class="formdata field" novalidate  >
+
+                        <form #fbfo="ngForm" class="formdata field" novalidate>
                             <p><span i18n="@@bfobeatfreq">BFO beat frequency oscillator:</span> </p>
-                            <input type="number" class="midbt" name="bfo" value={{radio.bfo}} [(ngModel)]="radio.bfo" >
-                            <button class="midbt" type="submit" i18n="@@changebfo1" (click)="changeBfo(fbfo)" [disabled]="fbfo.invalid" >change bfo</button>
+                            <input type="number" class="midbt" name="bfo" value={{radio.bfo}} [(ngModel)]="radio.bfo">
+                            <button class="midbt" type="submit" i18n="@@changebfo1" (click)="changeBfo(fbfo)"
+                                [disabled]="fbfo.invalid">change bfo</button>
                         </form>
-        
+
                         <form #fmaster="ngForm" class="formdata field" novalidate>
                             <p><span i18n="@@mastercall2">mastercal:</span> </p>
                             <input class="midbt" name="mastercal" [(ngModel)]="mastercal" value={{radio.mastercal}}>
-                            <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)" [disabled]="fmaster.invalid" i18n="@@changemast">change mastercall</button>
+                            <button class="midbt" type="submit" (click)="changeMasterCall(fmaster)"
+                                [disabled]="fmaster.invalid" i18n="@@changemast">change mastercall</button>
                         </form>
 
-                        <form #fptt="ngForm" class="formdata field"   >
-                            <p><span >PTT:</span></p>                    
-                            <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON');updateFwd()" >Turn ON</button>
-                            <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF');stopUpdate()" >Turn OFF</button>
+                        <form #fptt="ngForm" class="formdata field">
+                            <p><span>PTT:</span></p>
+                            <button type="submit" name="ptt" value="ON" *ngIf="radio.rx"
+                                (click)="changePtt('ON');updateFwd()">Turn ON</button>
+                            <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx"
+                                (click)="changePtt('OFF');stopUpdate()">Turn OFF</button>
                         </form>
-<!--
+                        <!--
                         <form #fbypass="ngForm" class="formdata field"   >
                             <p><span >ByPass:</span></p>
                             <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" >Turn ON</button>
                             <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" >Turn OFF</button>
                         </form>
 -->
-                        <form #ftesttone="ngForm" class="formdata field"   >
+                        <form #ftesttone="ngForm" class="formdata field">
                             <p><span i18n="@@testtonec">Test Tone:</span> <span> {{radio.testtone}}</span></p>
-                            
+
                             <div *ngIf="!toneOn" style="align-self: center;">
-                                <button name="testtone" value="600" (click)="testTone(600)" title="600hz" >600hz</button>
-                                <button name="testtone" value="1500" (click)="testTone(1500)" title="1500hz">1500hz</button>
-                                <button name="testtone" value="3000" (click)="testTone(3000)" title="300hz+2700hz">300hz+2700hz</button>
-            
+                                <button name="testtone" value="600" (click)="testTone(600)" title="600hz">600hz</button>
+                                <button name="testtone" value="1500" (click)="testTone(1500)"
+                                    title="1500hz">1500hz</button>
+                                <button name="testtone" value="3000" (click)="testTone(3000)"
+                                    title="300hz+2700hz">300hz+2700hz</button>
+
                             </div>
-            
                             <div *ngIf="toneOn" style="align-self: center;">
-                                <button name="testtone" *ngIf="toneOn " value="0" (click)="testTone(0)">shut down</button>
+                                <button name="testtone" *ngIf="toneOn " value="0" (click)="testTone(0)">shut
+                                    down</button>
                             </div>
-                            
                         </form>
 
-<!--
+                        <!--
                         <form #fbypass="ngForm" class="formdata field"   >
                             <p><span i18n="@@bypass2">ByPass:</span></p>
                             <button name="bypass" value="true" [hidden]="bypass" (click)="changeByPass('ON')" i18n="@@bypassin2" >Turn on bypass</button>
                             <button name="bypass" value="false" [hidden]="!bypass" (click)="changeByPass('OFF')" i18n="@@bypassoff2">Turn off bypass</button>
                         </form>
--->     
+-->
                     </div>
-    
-                   
-                    
                 </div>
-
-                
-
                 <hr>
-            <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
-
-            <div class="overall alert" *ngIf="!reseting==false">
-                <div class="cv" >
-                    <span i18n="@@confirmreset"> Are you sure you want to reset the radio to the default configuration?
-                        <br/>
-                        <br/>
-            
-                    </span>
-                    
-                    <span class="icon" ><a (click)="confirmReset()" >
-                        <button i18n="@@cancelr">cancel</button></a>
-                    </span>
-                    <span class="icon" *ngIf="isAdmin" ><a (click)="resetRadio()" >
-                        <button i18n="@@reset1">reset</button></a>
-                    </span>
-                </div>
-            </div>
-
-
-            </div>
-
- 
-            
-        
-            <div class="overall alert" *ngIf="errorAlert==true">
-                <div class="cv" >
-                    <span i18n="@@errorchangingconfig">There was an error on changing configuration <br/><br/></span>
-                    <span>{{error}}</span>
-                    <div class="icon" ><a (click)="closeError()" >
-                        <img title="close" src="assets/svg/x.svg"></a>
+                <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">reset to default</button>
+                <div class="overall alert" *ngIf="!reseting==false">
+                    <div class="cv">
+                        <span i18n="@@confirmreset"> Are you sure you want to reset the radio to the default
+                            configuration?
+                            <br />
+                            <br />
+                        </span>
+                        <span class="icon"><a (click)="confirmReset()">
+                                <button i18n="@@cancelr">cancel</button></a>
+                        </span>
+                        <span class="icon" *ngIf="isAdmin"><a (click)="resetRadio()">
+                                <button i18n="@@reset1">reset</button></a>
+                        </span>
                     </div>
-    
                 </div>
             </div>
-
-           
-
+            <div class="overall alert" *ngIf="errorAlert==true">
+                <div class="cv">
+                    <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
+                    <span>{{error}}</span>
+                    <div class="icon"><a (click)="closeError()">
+                            <img title="close" src="assets/svg/x.svg"></a>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>

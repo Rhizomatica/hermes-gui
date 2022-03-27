@@ -105,6 +105,8 @@ export class RadioService {
         map((res: any) => {
           this.serverReturn = res;
           console.log('⚚ Hermes ⚚\n⚚ api service - radio frequency ');
+
+          
           return this.serverReturn;
       }),
       catchError(this.handleError));

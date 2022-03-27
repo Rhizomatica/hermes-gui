@@ -617,7 +617,7 @@ textarea {
     height: calc(100vh - 18em);
     min-height: 5em;  
     overflow-y: scroll;
-    border: 1px solid #888;
+    // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
 }
@@ -627,10 +627,15 @@ textarea {
     height: calc(100vh - 16em);
     word-break: break-all;
     overflow-y: scroll;
-    border: 1px solid #888;
+    // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
     font-size: 0.8em;
+}
+.multiplist1 .item{
+    // border-bottom: solid 1px #FFF;
+    margin: 20px;
+    padding: 20px;
 }
 
 .multiplist2 {
@@ -638,7 +643,7 @@ textarea {
     height: calc(100vh - 23em);
     min-height: 5em;  
     overflow-y: scroll;
-    border: 1px solid #888;
+    // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
 }
@@ -651,6 +656,8 @@ textarea {
     width: 100%;
     margin-bottom: 0.15em;
     font-size: 0.75em;
+    border-bottom: solid 1px #FFF;
+
     .adm {
         padding-left: 0.15em;
         width: 5%;
@@ -662,6 +669,7 @@ textarea {
         -ms-word-break: break-all;
         word-break: break-all;
         padding-right: 0.25em;
+        line-height: 100px;
     }
     .uname {
         display: inline-block;
@@ -676,6 +684,10 @@ textarea {
     border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
+}
+
+.multiplist3{
+    line-height: 50px;
 }
 
 .logs {
@@ -811,28 +823,28 @@ input.searchbox2 {
 .uploader #default .resetBtn {
     margin-left:auto;}
 
-
     .messages {
         div {
             margin: 0.1em 0.1em 0.2em;
             position: relative;
-            display: block;
+            display: block;     
         }
-        a {text-decoration: none;}
+        a {
+            text-decoration: none;
+        }
         .date {
-
-            position: absolute;
-            color:#555;
-            font-size: 0.4em;
-            line-height: 0.55em;
-            position: relative;
-            top:0.25em;
-            right: 0;
-            margin-bottom: 0.2em;
-  
+            font-size: 0.6em;
+            float: right;
         }
        .ckbx {
-        width: 15px;
+            width: 15px;
+        }
+        .multiplist{
+            line-height: 80px;
+        }
+        .item{
+            border-bottom: #999 1px solid;
+
         }
     }
 
@@ -860,14 +872,17 @@ input.searchbox2 {
     color:#fff;
     width: 30px;
     filter: invert(100%);
-
 }  
 
 .inlineicon {
     width: 12px;
     filter: invert(27%) brightness(200%) ;
-    margin-right: 0.1em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
 
+.inlineicon .right{
+    float: right;
 }
 
 .inlineiconj {
@@ -876,7 +891,6 @@ input.searchbox2 {
     top:0px;
     margin: 0 2px;
     filter: invert(27%) brightness(200%) ;
-
 }
 
 .inlineiconlink {
@@ -885,7 +899,6 @@ input.searchbox2 {
     position: relative;
     top:2px;
     filter: invert(27%) brightness(800%) ;
-
 }
 
 .servericon {
@@ -1026,7 +1039,10 @@ input.searchbox2 {
 
 
 @media (min-width:720px) {
-    body,
+
+    body {    
+        max-width: 70em;
+    }    
     input,
     input[type="text"],
     input[type="number"],
@@ -1060,7 +1076,6 @@ input.searchbox2 {
             line-height: 1.5em;
         }
         
-       
 
     .formdata {
         button.midbt {
@@ -1079,22 +1094,17 @@ input.searchbox2 {
     
     .messages {
     
-        .date {
-            font-size: 0.55em;
-            line-height: 0.65em;
-            position: relative;
-            top:-0.05em;
-            
-     
-        }
+        // .date {
+        //     font-size: 0.55em;
+        //     line-height: 0.65em;
+        //     position: relative;
+        //     top:-0.05em;
+        // }
 
         .size {
             line-height: 1em;
         }
-     
     }
-     
-
     }
 
     .dr {
@@ -1221,6 +1231,28 @@ input.searchbox2 {
         border-bottom: 1px solid #000;
     }
 
+    @media (min-width: 800px){  
+
+        .flexible a{
+            display: flex;
+            flex-direction: column;
+            // flex: 0 0 50%;
+            margin-left: 15px;
+            width: 15%;
+        }
+    
+        .card{
+            flex-direction: column;
+            border: solid 1.5px #000;
+            border-radius: 3px;
+            padding: 15px;
+            min-height: 100px;
+            margin: 10px;
+            text-align: center;
+            font-size: 0.5em;
+            width: 220px;
+        }
+    }
 
 
 
@@ -1422,4 +1454,89 @@ input.searchbox2 {
         margin: 0 0.25em;
 
     }
+}
+
+// .croos-needle-panel {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 100px 0 0 0;
+// }
+
+// .line {
+//     height: 1px;
+//     background-color: #f00;
+//     padding: 1px;
+//   }
+
+// .reflected {
+//     -ms-transform: rotate(45deg);
+//     -webkit-transform: rotate(45deg);
+//     transform: rotate(45deg);
+//   }
+  
+//   .forward {
+//     -ms-transform: rotate(-45deg);
+//     -webkit-transform: rotate(-45deg);
+//     transform: rotate(-45deg);
+//   }
+
+.flexible{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+@media (max-width: 600px){
+
+    .flexible a{
+        display: flex;
+        flex-direction: column;
+        margin-left: 5px;
+        width: 46%;
+    }
+    .card{
+        // display: flex;
+        flex-direction: column;
+        // flex: 0 0 50%;
+        border: solid 1.5px #000;
+        border-radius: 3px;
+        padding: 15px;
+        min-height: 100px;
+        margin: 10px;
+        text-align: center;
+        font-size: 0.5em;
+        width: 100%;
+    }
+    
+}
+
+.card-icon{
+    width: 15%;
+    filter: invert(100%);
+    display: block;
+    margin: auto;
+}
+
+.m-t-10{
+    margin-top: 10px !important;
+}
+
+.m-t-25{
+    margin-top: 25px !important;
+}
+
+.m-t-50{
+    margin-top: 50px !important;
+}
+
+.m-t-100{
+    margin-top: 100px !important;
+}
+
+.row{
+    width: 100%;
+}
+
+.float-right{
+    display: inline;
 }
