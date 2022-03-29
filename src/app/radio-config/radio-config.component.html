@@ -88,8 +88,8 @@
 
                         <form #fptt="ngForm" class="formdata field"   >
                             <p><span >PTT:</span></p>                    
-                            <button type="submit" name="ptt" value="ON" *ngIf="radio.rx" (click)="changePtt('ON');updateFwd()" >Turn ON</button>
-                            <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF');stopUpdate()" >Turn OFF</button>
+                            <button type="submit" name="ptt" value="ON" *ngIf="!radio.tx" (click)="changePtt('ON');" >Turn ON</button>
+                            <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx" (click)="changePtt('OFF');" >Turn OFF</button>
                         </form>
 <!--
                         <form #fbypass="ngForm" class="formdata field"   >
