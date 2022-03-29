@@ -190,7 +190,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  
 
   confirmReset() {
     if (this.reseting) {
@@ -416,16 +415,18 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioTone(f).subscribe(
       (res: any) => {
         this.res = res;
-		this.radio.testtone = res;
+		    this.radio.testtone = res;
       if (res === '0') {
           this.toneOn = false;
         } else {
           this.toneOn = true;
         }
+        this.getRadioStatus();
         // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.getRadioStatus();
       }
     );
 
