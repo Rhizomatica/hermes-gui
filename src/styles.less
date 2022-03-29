@@ -64,6 +64,10 @@ h1,h2,h3,h4,h5,h6, a, li, button, input {
         a:visited {
             color: @bkclr;
         }
+        img{
+            width: 16px;
+            filter: invert(100%);
+        }
 
     }
     
@@ -488,7 +492,7 @@ textarea {
 
 
 .formdata {
-    width: calc(100% - 80px);
+    // width: calc(100% - 80px);
     input {
         width:100%;
         border: 1px solid #888;
@@ -684,9 +688,6 @@ textarea {
     border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
-}
-
-.multiplist3{
     line-height: 50px;
 }
 
@@ -1146,8 +1147,8 @@ input.searchbox2 {
         }
 
         nav {
-            border-bottom: 2px solid #fff;
-            border-top: 2px solid #fff;
+            border-bottom: 1px solid #5c5b5b;
+            border-top: 1px solid #5c5b5b;
             .flag img {
                 filter: invert(0);
             }
@@ -1231,31 +1232,7 @@ input.searchbox2 {
         border-bottom: 1px solid #000;
     }
 
-    @media (min-width: 800px){  
-
-        .flexible a{
-            display: flex;
-            flex-direction: column;
-            // flex: 0 0 50%;
-            margin-left: 15px;
-            width: 15%;
-        }
-    
-        .card{
-            flex-direction: column;
-            border: solid 1.5px #000;
-            border-radius: 3px;
-            padding: 15px;
-            min-height: 100px;
-            margin: 10px;
-            text-align: center;
-            font-size: 0.5em;
-            width: 220px;
-        }
-    }
-
-
-
+  
     input[type=range] {
         height: 1.5em;
         -webkit-appearance: none;
@@ -1539,4 +1516,28 @@ input.searchbox2 {
 
 .float-right{
     display: inline;
+    float: right;
+}
+
+@media (min-width: 800px){  
+
+    .flexible a{
+        display: flex;
+        flex-direction: column;
+        // flex: 0 0 50%;
+        margin-left: 15px;
+        width: 15%;
+    }
+
+    .card{
+        flex-direction: column;
+        border: solid 1.5px #000;
+        border-radius: 3px;
+        padding: 15px;
+        min-height: 100px;
+        margin: 8px;
+        text-align: center;
+        font-size: 0.5em;
+        width: 220px;
+    }
 }

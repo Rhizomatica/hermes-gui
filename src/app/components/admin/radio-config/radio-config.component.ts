@@ -8,13 +8,6 @@ import { User } from '../../../interfaces/user';
 import { interval } from 'rxjs';
 import { Router} from '@angular/router';
 
-// import { truncateSync } from 'fs';
-
-
-// import { Router } from '@angular/router';
-// import { GlobalConstants } from '../global-constants';
-
-
 @Component({
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
@@ -142,9 +135,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.fwd_raw = this.power.fwd_raw;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
-        //console.log(this.power, 'pwd');
-        // console.log(this.radio.refinvolts);
-        // console.log(this.radio.fwdinwatts);
 
         if (this.radio.bypass === true) {
           this.bypass = true;
@@ -190,7 +180,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
-       // console.log('⚚ radio config - set ptt- : res: ', res);
         console.log (this.ptt);
         this.radio.ptt = res;
         this.ptt = f;
@@ -201,7 +190,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
           this.radio.tx = false;
           this.radio.rx = true;
         }
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -220,7 +208,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.tx = true;
         this.radio.rx = false;
         console.log('on');
-
       },
       (err) => {
        this.error = err;
@@ -237,7 +224,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     } else {
       this.reseting = true;
     }
-    // console.log('⚚ radio-config - confirmReset: ', this.reseting);
   }
 
   screenFreq(): void {
@@ -254,7 +240,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.res = res;
 		    this.radio.freq = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
-        // this.fileIsProcessing = true;
         }, (err) => {
         this.error =  err;
         this.errorAlert = true;
@@ -265,7 +250,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.res = res;
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error =  err;
         this.errorAlert = true;
@@ -281,7 +265,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.res = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
         this.radio.freq = res;
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -296,8 +279,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.res = res;
 		    this.radio.mode = res;
-        // console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error =  err;
         this.errorAlert = true;
@@ -310,7 +291,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.res = res;
 		    this.radio.bfo = res;
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -324,7 +304,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.res = res;
         console.log('⚚ changeMastercall- setRadioMastercal: res: ', res);
         this.radio.mastercal = res;
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -348,17 +327,13 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
       (res: any) => {
         this.res = res;
-        // console.log('⚚ radio config - set bypass- : res: ', res);
 		    this.radio.refthreshold = res;
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
   }
-
-
 
   confirmChange(){
     if (this.confirmSet) {
@@ -371,24 +346,21 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   screenSet() {
     if (this.alterSet === false) {
       this.alterSet = true; 
+      if (this.confirmSet) {
+        this.confirmSet = false;
+      } else {
+        this.confirmSet = true;
+      }
     } else {
       this.alterSet = false;
     }
-    if (this.confirmSet) {
-      this.confirmSet = false;
-    } else {
-      this.confirmSet = true;
-    }
   }
-
 
   setDefaults() {
     this.radioService.radioSetDefaults().subscribe(
       (res: any) => {
         this.res = res;
-        // console.log('⚚ radio config - set bypass- : res: ', res);
 		    this.radio.refthreshold = res;
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -407,7 +379,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.protection = false;
       }
       this.getRadioStatus();
-      // this.fileIsProcessing = true;
       },
       (err) => {
       this.error = err;
@@ -422,7 +393,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
       this.res = res;
       console.log('⚚ radio reset: ', res);
-      // this.fileIsProcessing = true;
       this.reseting = false;
       this.getRadioStatus();
       },
@@ -461,14 +431,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         } else {
           this.toneOn = true;
         }
-        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
-
-
   }
 
   ngOnInit(): void {
@@ -483,11 +450,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     } else {
       this.currentUser.admin = false;
     }
-
-    
-    // console.log('ahahaha');
-
-     // console.log(this.isAdmin);
   }
 
   ngOnDestroy() { 

@@ -80,9 +80,6 @@ export class EmailComponent implements OnInit {
   } else {
     this.linksOn = true;
   }
-
-
-
 }
 
   ngOnInit(): void {
