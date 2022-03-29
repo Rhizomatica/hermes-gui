@@ -190,9 +190,15 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
           this.radio.tx = false;
           this.radio.rx = true;
         }
+       console.log('⚚ radio config - set ptt- : res: ', res);
+        console.log (this.ptt);
+        this.radio.ptt = res;
+        this.getRadioStatus;
+        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.getRadioStatus;
       }
     );
   }
@@ -425,15 +431,18 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioTone(f).subscribe(
       (res: any) => {
         this.res = res;
-		this.radio.testtone = res;
+		    this.radio.testtone = res;
       if (res === '0') {
           this.toneOn = false;
         } else {
           this.toneOn = true;
         }
+        this.getRadioStatus();
+        // this.fileIsProcessing = true;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.getRadioStatus();
       }
     );
   }
@@ -453,7 +462,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() { 
-
     this.subscription.unsubscribe();
     console.log('quiting radio config');
   }
