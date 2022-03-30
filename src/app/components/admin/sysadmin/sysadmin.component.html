@@ -1,9 +1,6 @@
 <div *ngIf="currentUser" class="container">
-
-    <div id="spaceadm"></div>
     <div *ngIf="currentUser.admin">
         <div class="menu">
-            <!-- <a routerLink="/upgrade" i18n="@@systemupgrade">system restoration</a>-->
             <h3>Transmission</h3>
             <div class="flexible">
                 <a routerLink="/manage" i18n="@@adminmanage">
@@ -145,8 +142,6 @@
         </p>
     </div>
 </div>
-
-
 <div *ngIf="loginForm">
     <div *ngIf="!currentUser">
         <span i18n="@@pleaselogin">Please log in to access this area:</span>
@@ -155,6 +150,5 @@
         </app-login-form>
     </div>
 </div>
-
 
 <!--<a routerLink="/mailadmin" i18n="@@mailadmin">email administration</a>-->

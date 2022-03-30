@@ -1,16 +1,11 @@
 <div class="container">
-    <!-- <p i18n="@@lasttime">Last transmission Time:</p>
-    <hr>-->
-
     <div>
         <div *ngIf="!loginForm">
             <h2 i18n="@@publicmessages1" class="maintitle">Public Messages </h2>
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public
                 messages<br />
             </div>
-
             <input class="m-t-25" placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages"/>
-
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist">
                     <div class="item" *ngFor="let message of inboxMessages | filter:searchMessages">
@@ -29,13 +24,11 @@
                 </div>
             </div>
         </div>
-
         <div *ngIf="loginForm">
             <app-login-form (hideLoginForm)="closeLogin()">
             </app-login-form>
             <hr>
         </div>
-
         <div class="navicons">
             <div class="btn sent">
                 <a routerLink="/sent" i18n="@@sent">
@@ -64,7 +57,4 @@
         </div>
     </div>
 </div>
-
-
-
 <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->
