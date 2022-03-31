@@ -1,7 +1,7 @@
 <div *ngIf="currentUser" class="container">
     <div *ngIf="currentUser.admin">
         <div class="menu">
-            <h3>Transmission</h3>
+            <h2>Transmission</h2>
             <div class="flexible">
                 <a routerLink="/manage" i18n="@@adminmanage">
                     <div class="card">
@@ -38,7 +38,7 @@
                     </div>
                 </a>
             </div>
-            <h3 class="m-t-25">Central</h3>
+            <h2 class="m-t-25">Central</h2>
             <div class="flexible">
                 <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">
                     <div class="card">

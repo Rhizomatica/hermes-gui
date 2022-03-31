@@ -24,37 +24,34 @@
 </app-hmheader>-->
 <div class="fullpage">
   <header>
-    <a routerLink='/messages' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
+    <a routerLink='/landing' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
 
     <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
   </header>
 
   <div class="userstatus">
-
+    
     <!-- TODO ERROR else: <div class="logged" *ngIf="currentUser; else isLoggedOut"> -->
-    <!--
-    <a class="radioprot" i18n="@@radioprot" *ngIf="!protection" (click)="resetProtection()">
+    <!-- <a class="radioprot" i18n="@@radioprot" *ngIf="!protection" (click)="resetProtection()">
       protection off
     </a>
     -->
 
-
     <div class="logged" *ngIf="currentUser; else loggedOut">
-      <div class="navbar-nav"><span class="topuser"><span i18n="@@connectedas">connected as: </span>
-          <span>{{currentUser.email}}</span></span>
-
-
+      <div class="navbar-nav">
+        <span class="topuser">
+          <span i18n="@@connectedas">connected as: </span>
+          <span>{{currentUser.email}}</span>
+        </span>
         <a class="icon" routerLink="/login" *ngIf="!currentUser">
           <span class="logged" i18n="@@login1">login</span><br />
           <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
-
         </a>
 
         <a class="icon" (click)="logout()" *ngIf="currentUser">
           <span class="logged" i18n="@@logout1">logout</span><br />
           <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
             src="assets/svg/sign-out-alt-solid.svg">
-
         </a>
         <br>
       </div>
@@ -62,22 +59,27 @@
 
     <ng-template #loggedOut>
       <span class="servericon">
-        <!--<span class="icon" *ngIf="system">
+        <span class="icon" *ngIf="system">
           <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="assets/svg/broadcast-tower.svg" >
         </span>
         <span class="icon" *ngIf="!system">
         <img title="server status off" src="assets/svg/broadcast-tower-off.svg" >
-        </span>-->
+        </span>
       </span>
-
       <a class="icon" routerLink="/login">
         <img title="Log In" src="assets/svg/sign-in-alt-solid.svg"><br>
         <span class="logged" i18n="@@login1">login</span>
       </a>
     </ng-template>
-
   </div>
+
+
   <nav id="mainnav" *ngIf="system">
+    <!-- <header>
+      <a routerLink='/messages' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
+  
+      <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
+    </header> -->
     <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
     <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
     <a routerLink="/admin" i18n="@admin">
@@ -85,8 +87,37 @@
     </a>
     <a routerLink="/languages" i18n="@@languages"><img title="languages"
         src="assets/svg/globe-americas.svg">language</a>
-    <!-- <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a> -->
-
+    <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
+   
+    <!-- <div class="userstatus">  
+      <div class="logged" *ngIf="currentUser; else loggedOut">
+        <div class="navbar-nav">
+          <span class="topuser">
+            <span i18n="@@connectedas">connected as: </span>
+            <span>{{currentUser.email}}</span>
+          </span>
+          <a class="icon" routerLink="/login" *ngIf="!currentUser">
+            <span class="logged" i18n="@@login1">login</span><br />
+            <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
+          </a>
+  
+          <a class="icon" (click)="logout()" *ngIf="currentUser">
+            <span class="logged" i18n="@@logout1">logout</span><br />
+            <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
+              src="assets/svg/sign-out-alt-solid.svg">
+          </a>
+          <br>
+        </div>
+      </div>
+  
+      <ng-template #loggedOut>
+        <span class="servericon"></span>
+        <a class="icon" routerLink="/login">
+          <img title="Log In" src="assets/svg/sign-in-alt-solid.svg"><br>
+          <span class="logged" i18n="@@login1">login</span>
+        </a>
+      </ng-template>
+    </div> -->
   </nav>
 
   <div class="formfield">
@@ -133,7 +164,7 @@
       </div>
     </ng-template>
   </div>
-  <div class="push"></div>
+  <!-- <div class="push"></div> -->
 </div>
 
 <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
