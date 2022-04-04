@@ -40,7 +40,7 @@
     <div class="logged" *ngIf="currentUser; else loggedOut">
       <div class="navbar-nav">
         <span class="topuser">
-          <span i18n="@@connectedas">connected as: </span>
+          <!-- <span i18n="@@connectedas">connected as: </span> -->
           <span>{{currentUser.email}}</span>
         </span>
         <a class="icon" routerLink="/login" *ngIf="!currentUser">
@@ -49,9 +49,10 @@
         </a>
 
         <a class="icon" (click)="logout()" *ngIf="currentUser">
-          <span class="logged" i18n="@@logout1">logout</span><br />
           <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
             src="assets/svg/sign-out-alt-solid.svg">
+            <br />
+            <span class="logged" i18n="@@logout1">logout</span>
         </a>
         <br>
       </div>

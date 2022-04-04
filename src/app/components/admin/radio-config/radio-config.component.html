@@ -1,5 +1,16 @@
 <div id="radioconf">
-    <h2 *ngIf="isAdmin" i18n="@@radioconft">Radio Configuration</h2>
+    <h2 *ngIf="isAdmin" i18n="@@radioconft">
+        Radio Configuration
+    </h2>
+    <div *ngIf="radio.bypass" i18n="@@bypasson">
+        <div class="greencircle" title='uuardop'></div>
+        Transmitting
+    </div>
+    <div *ngIf="!radio.bypass" i18n="@@bypassoff">
+        <div class="redcircle" title='uuardop'></div>
+        Inactive
+    </div>
+       
     <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
 
     <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
@@ -15,26 +26,11 @@
                             Current Radio frequency</h3>
                     </div>
                 </div>
-                <div class="card">
+                <!-- <div class="card">
                     <div class="row">
-                        <h3>
-                            <div *ngIf="radio.bypass" i18n="@@bypasson">
-                                <div class="card-icon">
-                                    <img title="Transmitting" src="../../../../assets/svg/broadcast-tower.svg">
-                                </div>
-                                <div class="greencircle" title='uuardop'></div>
-                                Transmitting
-                            </div>
-                            <div *ngIf="!radio.bypass" i18n="@@bypassoff">
-                                <div class="card-icon">
-                                    <img title="Inactive" src="../../../../assets/svg/broadcast-tower-off.svg">
-                                </div>
-                                <div class="redcircle" title='uuardop'></div>
-                                Inactive
-                            </div>
-                        </h3>
+                        
                     </div>
-                </div>
+                </div> -->
                 <div class="card">
                     <div class="row">
                         <h3>

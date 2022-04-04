@@ -3,73 +3,87 @@
         <div class="menu">
             <h2>Transmission</h2>
             <div class="flexible">
-                <a routerLink="/manage" i18n="@@adminmanage">
+                <a routerLink="/manage">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/user-alt.svg">
                         </div>
-                        <div class="row">
+                        <div class="row" i18n="@@adminmanage">
                             User management
                         </div>
                     </div>
                 </a>
-                <a routerLink="/messageadm" i18n="@@messageadm">
+                <a routerLink="/messageadm">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/comment.svg">
                         </div>
-                        Messages configuration
+                        <div  i18n="@@messageadm">
+                            Messages configuration
+                        </div>
                     </div>
                 </a>
-                <a routerLink="/transmission" i18n="@@transmissionlista">
+                <a routerLink="/transmission">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/sync_alt-24px.svg">
                         </div>
-                        Transmission list
+                        <div  i18n="@@transmissionlista">
+                            Transmission list
+                        </div>
                     </div>
                 </a>
-                <a routerLink="/radioconfig" i18n="@@radioconfig">
+                <a routerLink="/radioconfig">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/tools.svg">
                         </div>
-                        Radio configuration
+                        <div i18n="@@radioconfig">
+                            Radio configuration
+                        </div>
                     </div>
                 </a>
             </div>
             <h2 class="m-t-25">Central</h2>
             <div class="flexible">
-                <a *ngIf="isGateway" routerLink="/gateway" i18n="@@scheduling">
+                <a *ngIf="isGateway" routerLink="/gateway">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/settings_input_antenna-24px.svg">
                         </div>
-                        Central Station
+                        <div i18n="@@scheduling">
+                            Central Station                            
+                        </div>
                     </div>
                 </a>
-                <a routerLink="/stations" i18n="@@stations">
+                <a routerLink="/stations">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/broadcast-tower.svg">
                         </div>
-                        Stations
+                        <div i18n="@@stations">
+                            Stations
+                        </div>
                     </div>
                 </a>
-                <a routerLink="/netadmin" i18n="@@networkadmin">
+                <a routerLink="/netadmin">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/hearing-24px.svg">
                         </div>
-                        Network information
+                        <div i18n="@@networkadmin">
+                            Network information
+                        </div>
                     </div>
                 </a>
-                <a routerLink="/log" i18n="@@detailedlog">
+                <a routerLink="/log">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/build-24px.svg">
                         </div>
-                        Detailed log
+                        <div i18n="@@detailedlog">
+                            Detailed log
+                        </div>
                     </div>
                 </a>
             </div>

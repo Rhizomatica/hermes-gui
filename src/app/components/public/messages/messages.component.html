@@ -5,7 +5,7 @@
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public
                 messages<br />
             </div>
-            <input class="m-t-25" placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages"/>
+            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages"/>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist">
                     <div class="item" *ngFor="let message of inboxMessages | filter:searchMessages">
@@ -49,12 +49,11 @@
                     <img title="Log In" src="assets/svg/comment.svg">public messages
                 </a>
             </div>
-            <div class="btn" *ngIf="currentUser">
+            <!-- <div class="btn" *ngIf="currentUser">
                 <a (click)="logout()" i18n="@@logout2">
                     <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">logout
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
-<!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->

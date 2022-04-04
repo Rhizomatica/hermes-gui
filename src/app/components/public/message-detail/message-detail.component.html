@@ -1,5 +1,5 @@
 <div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br/></div>
-<div *ngIf="message" class=" messages">
+<div *ngIf="message" class="messages">
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg"/></span>
         {{message.name}}</h3>
     <div class="formdata" *ngIf="message.secure && !uncrypted">

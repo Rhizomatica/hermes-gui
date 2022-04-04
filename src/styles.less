@@ -48,7 +48,11 @@ input {
 
 @media screen {
 
-    body,
+    body {
+        line-height: 1.1em;
+        font-size: 1.3em;
+    }
+
     input,
     input[type="text"],
     input[type="number"],
@@ -59,9 +63,10 @@ input {
     option,
     select,
     textarea {
+        line-height: 2.1em;
         font-size: 1.3em;
-        line-height: 1.1em;
     }
+
 
     button {
         font-size: 1em;
@@ -79,7 +84,7 @@ input {
         }
 
         img {
-            width: 16px;
+            width: 30px;
             filter: invert(100%);
         }
 
@@ -267,8 +272,12 @@ nav {
     img:hover {
         fill: @clr;
     }
-}
 
+    .flag img {
+        filter: brightness(1);
+        width: 50%;
+    }
+}
 
 
 nav a:hover {
@@ -328,6 +337,9 @@ textarea {
     height: 1em;
     border-top: 2px solid #000;
     background-color: @bkclr;
+    // z-index: 9999;
+    position: fixed;
+
 
     div {
         display: inline-block;
@@ -370,6 +382,7 @@ textarea {
         background: #fff 98% no-repeat url(./assets/svg/magnifying-glass-solid.svg);
         background-size: 1em 1em;
         border: 1px solid @mclr;
+        font-size: 1em;
     }
 
     input.inl {
@@ -419,8 +432,8 @@ textarea {
 
     .icon {
         img {
-            height: 2.8em;
-
+            margin-top: 5px;
+            height: 2.0em;
         }
     }
 
@@ -469,11 +482,10 @@ textarea {
 
     img {
         display: block;
-        height: 3em;
+        height: 1.4em;
         clear: both;
         margin-bottom: 0.1em;
         margin: 0.1em auto;
-
     }
 
     a {
@@ -490,10 +502,13 @@ textarea {
 .btn.sent {
     position: relative;
     display: inline-block;
-    text-align: center;
-    min-width: 10em;
+    // text-align: center;
+    // min-width: 40em;
+    width: 50%;
     line-height: 1em;
-
+    border: 1px #000 solid;
+    font-size: 0.7em;
+    padding: 15px
 }
 
 .radioprot {
@@ -519,9 +534,16 @@ textarea {
 }
 
 .topuser {
+    // position: absolute;
+    // right: 3em;
+    // top: 3em;
+    // display: block;
+    // width: 20em;
+    // font-size: 1.2em;
+
     position: absolute;
-    right: 3em;
-    top: 3em;
+    right: 4em;
+    top: 1em;
     display: block;
     width: 20em;
     font-size: 1.2em;
@@ -550,11 +572,11 @@ textarea {
     input {
         width: 100%;
         border: 1px solid #888;
-
+        border-radius: 3px;
     }
 
     label {
-        margin-top: 5px;
+        margin-top: 10px;
         display: block;
     }
 
@@ -670,7 +692,7 @@ textarea {
         height: 4em;
 
         img {
-            width: 2em;
+            width: 1em;
         }
     }
 }
@@ -725,7 +747,7 @@ textarea {
     width: 100%;
     margin-bottom: 0.15em;
     font-size: 0.75em;
-    border-bottom: solid 1px #FFF;
+    border-bottom: solid 1px @mclr;
 
     .adm {
         padding-left: 0.15em;
@@ -1244,6 +1266,24 @@ input.ng-invalid {
 
     }
 
+    .userlist {
+        border-bottom: solid 1px @bkclr;
+    }
+
+    .btn-messages-lading {
+        background-color: @mclr;
+
+        img {
+            filter: invert(100%);
+        }
+    }
+
+    .card-icon {
+        // width: 22%;
+        filter: invert(100%);
+        // display: block;
+        // margin: auto;
+    }
 }
 
 .maintitle {
@@ -1483,7 +1523,7 @@ input[type=range]:hover::-ms-track {
     flex-direction: column;
     border: solid 1.5px #000;
     border-radius: 3px;
-    padding: 35px 2px 2px 2px;
+    padding: 35px 5px 5px 5px;
     min-height: 80px;
     margin: 5px;
     text-align: center;
@@ -1493,10 +1533,14 @@ input[type=range]:hover::-ms-track {
 }
 
 .card-icon {
-    width: 25%;
-    filter: invert(100%);
+    // width: 25%;
+    // filter: invert(100%);
     display: block;
     margin: auto;
+}
+
+.card-icon img {
+    width: 25%;
 }
 
 .m-t-10 {
@@ -1540,35 +1584,60 @@ input[type=range]:hover::-ms-track {
     flex-direction: column;
     background-color: @clr;
     width: 50%;
+    color: @bkclr;
     padding: 130px 100px 100px 100px;
     line-height: 30px;
     text-align: justify;
 }
 
 .btn-messages-lading {
-    background-color: @mclr;
+    background-color: @bkclr;
     display: flex;
     flex-direction: column;
     width: 50%;
     padding: 130px 15px 15px 15px;
 
     a {
-        color: @bkclr;
         font-size: 1.5em;
         margin-top: 10px;
         text-decoration: none;
+        color: #000;
     }
 
     a>img {
-        filter: invert(100%);
         width: 45%;
         margin: auto;
         display: block;
+        color: @mclr;
     }
 }
 
 
 @media (max-width: 600px) {
+
+    input,
+    input[type=text],
+    input[type=number],
+    input[type=email],
+    input[type=tel],
+    input[type=password],
+    input[type=search],
+    option,
+    select,
+    textarea {
+        line-height: 2em;
+        font-size: 1em;
+    }
+
+    p {
+        line-height: 30px;
+    }
+
+    .formdata {
+        input {
+            font-size: 0.9em;
+        }
+    }
 
     .flexible a {
         display: flex;
@@ -1581,7 +1650,7 @@ input[type=range]:hover::-ms-track {
         flex-direction: column;
         border: solid 1.5px #000;
         border-radius: 3px;
-        padding: 15px 2px 2px 2px;
+        padding: 15px 2px 15px 2px;
         margin: 10px;
         text-align: center;
         font-size: 0.5em;
@@ -1590,16 +1659,13 @@ input[type=range]:hover::-ms-track {
     }
 
     .card-icon {
-        width: 22%;
-        filter: invert(100%);
-        display: block;
-        margin: auto;
+        filter: brightness(0.5);
     }
 
     .landing {
         display: grid;
         height: 72vh;
-    
+
         h1 {
             font-size: 0.9em;
             margin-bottom: 10px;
@@ -1614,26 +1680,24 @@ input[type=range]:hover::-ms-track {
     }
 
     .btn-messages-lading {
-        background-color: @mclr;
+        background-color: @bkclr;
         display: inline;
         width: 100%;
         padding: 60px 15px 15px 15px;
-    
+
         a {
-            color: @bkclr;
-            font-size: 0.5em;
+            font-size: 1.5em;
             margin-top: 10px;
             text-decoration: none;
         }
-    
+
         a>img {
-            filter: invert(100%);
             width: 45%;
             margin: auto;
             display: block;
         }
     }
-    
+
     .hello {
         display: inline;
         // flex-direction: row;
@@ -1642,6 +1706,18 @@ input[type=range]:hover::-ms-track {
         padding: 30px 10px 10px 10px;
         line-height: 20px;
         text-align: justify;
+    }
+
+    .footerinfo {
+        font-size: 0.8em;
+    }
+
+    .logo {
+        left: -4px;
+    }
+
+    .multiplist3 {
+        font-size: 0.9em;
     }
 }
 
@@ -1700,6 +1776,7 @@ input[type=range]:hover::-ms-track {
     }
 
     .messages {
+
         // .date {
         //     font-size: 0.55em;
         //     line-height: 0.65em;
@@ -1709,5 +1786,9 @@ input[type=range]:hover::-ms-track {
         .size {
             line-height: 1em;
         }
+    }
+
+    .shut {
+        top: 2.5em;
     }
 }
