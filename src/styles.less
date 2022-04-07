@@ -74,9 +74,9 @@ input {
         margin-top: 0.5em;
         margin-right: 0.5em;
 
+
         a {
             color: @bkclr;
-
         }
 
         a:visited {
@@ -84,7 +84,8 @@ input {
         }
 
         img {
-            width: 30px;
+            // width: 30px;
+            height: 20px;
             filter: invert(100%);
         }
 
@@ -168,7 +169,7 @@ hr {
 
 
 h2 {
-    max-width: 80%;
+    // max-width: 100%;
     font-size: 1.1em;
     margin-bottom: 1%;
     // color: @clr;
@@ -180,6 +181,7 @@ button {
     color: white;
     font-weight: bold;
     border-radius: 0.1em;
+
 
     a {
         text-decoration: none;
@@ -633,7 +635,7 @@ textarea {
 
 
 #radioconf .fomdata button.midbt {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 
 .full {
@@ -1042,7 +1044,7 @@ input.ng-invalid {
 
 
 .redcircle {
-    display: inline-block;
+    // display: inline-block;
     position: relative;
     top: 0.1em;
     background: red;
@@ -1054,7 +1056,7 @@ input.ng-invalid {
 }
 
 .greencircle {
-    display: inline-block;
+    // display: inline-block;
     position: relative;
     top: 0.1em;
     background: green;
@@ -1519,13 +1521,16 @@ input[type=range]:hover::-ms-track {
 }
 
 
+
+
 .card {
     flex-direction: column;
     border: solid 1.5px #000;
     border-radius: 3px;
     padding: 35px 5px 5px 5px;
-    min-height: 80px;
-    margin: 5px;
+    // min-height: 80px;
+    margin: 0 auto;
+    display: block;
     text-align: center;
     font-size: 0.8em;
     width: 250px;
@@ -1540,7 +1545,7 @@ input[type=range]:hover::-ms-track {
 }
 
 .card-icon img {
-    width: 25%;
+    width: 20%;
 }
 
 .m-t-10 {
@@ -1612,6 +1617,23 @@ input[type=range]:hover::-ms-track {
     }
 }
 
+.radio {
+    display: flex;
+    flex-wrap: wrap;
+    // flex-direction: row;
+}
+
+.flex-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+a {
+    .card {
+        margin: 5px
+    }
+}
 
 @media (max-width: 600px) {
 
@@ -1719,6 +1741,11 @@ input[type=range]:hover::-ms-track {
     .multiplist3 {
         font-size: 0.9em;
     }
+
+    .radio {
+        display: inline;
+    }
+
 }
 
 @media (min-width:720px) {
@@ -1765,13 +1792,13 @@ input[type=range]:hover::-ms-track {
         button.midbt {
             font-size: 1em;
             line-height: 0.85em;
-            height: 1.75em;
+            height: 2em;
             margin-left: 0.1em;
             padding: 0 0.3em 0 0.3;
         }
 
         input.midbt {
-            height: 1.85em;
+            height: 2em;
         }
     }
 
@@ -1790,5 +1817,12 @@ input[type=range]:hover::-ms-track {
 
     .shut {
         top: 2.5em;
+    }
+
+    .radio{
+        form{
+            width: 48%;
+            margin-left: 2%;
+        }
     }
 }

@@ -1,57 +1,48 @@
+<div class=" login formdata">
+  <h2 i18n="@@e_mail">E-mail</h2>
+  <form #f="ngForm" id="loginform" novalidate>
+    <button><img class="round icon" src="assets/svg/roundcubelogo.svg"><a href="/mail/"
+        target="_self">Webmail</a></button>
+    <button (click)="showlinks()" class="delta icon" i18n="@@install_deltachat"><img
+        src="assets/img/deltachat_icon.png">deltachat<br>
+    </button>
+  </form>
+  <div *ngIf="linksOn">
+    <hr>
+    <p i18n="@@todownload">To download deltachat click on one of the links below: </p>
+    <p>
+      <a href="/downloads/deltachat.apk" target="_blank" download="deltachat.apk">Android</a><br>
+      <a href="/downloads/deltachat.exe" target="_blank" download="deltachat.exe">Windows</a><br>
+      <a href="/downloads/deltachat.deb" target="_blank" download="deltachat.deb">Ubuntu/Debian</a><br>
+      <a href="/downloads/deltachat.dmg" target="_blank" download="deltachat.dmg">Mac OSX</a><br>
+    </p>
+  </div>
+  <hr>
+  <h2 i18n="@@selectusers">Select users to send e-mail:</h2>
+  <ng-container *ngIf="users">
+    <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
+      bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false"
+      [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required>
 
+      <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />
+        <span i18n="@@selectall"> Select All</span>
+      </ng-template>
 
-<div class=" login formdata" >
-   <h2 i18n="@@e_mail">E-mail</h2>
+      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+          [ngModelOptions]="{standalone: true}" />{{item.email}}
+      </ng-template>
 
-   <form #f="ngForm" id="loginform" novalidate>
-
-         <button ><img  class="round icon" src="assets/svg/roundcubelogo.svg"><a href="/mail/"  target="_self">Webmail</a></button>
-     
-      <button (click)="showlinks()" class="delta icon" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png">deltachat<br>
-      </button>
-     </form>
-
-     <div *ngIf="linksOn">
-        <hr>
-        <p i18n="@@todownload">To download deltachat click on one of the links below: </p>
-       <p>
-          <a href="/downloads/deltachat.apk" target="_blank" download="deltachat.apk">Android</a><br>
-          <a href="/downloads/deltachat.exe" target="_blank" download="deltachat.exe" >Windows</a><br>
-          <a href="/downloads/deltachat.deb" target="_blank" download="deltachat.deb">Ubuntu/Debian</a><br>
-          <a href="/downloads/deltachat.dmg" target="_blank" download="deltachat.dmg">Mac OSX</a><br>
-      
-      </p>
-     </div>
-     <hr>
-<h3 i18n="@@selectusers" >Select users to send e-mail:</h3>
-
-<ng-container *ngIf="users">
-
-<ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users" bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required >
-
-  <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-      <input id="item-{{index}}" type="checkbox"
-      [(ngModel)] ="item$.selected" [ngModelOptions]="{standalone: true}"/> <span i18n="@@selectall"> Select All</span>
-    </ng-template>
-
-    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-      <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />{{item.email}}
-    </ng-template>
-              
-</ng-select>
-
+    </ng-select>
   </ng-container>
-  
-  <a href="mailto:{{emailto}}" ><button [disabled]="emailto?.length == 0">Send email to selected</button> </a>
-  
-<br/>
-     
-   <hr>
-      <p i18n="@@noaccount">Doesn't have an account?</p>
-
-      <a  routerLink="/manage" ><button i18n="@@createbtn">create an account</button></a>
-      <br/><br>
-      <a  routerLink="/recovery" >
-        <div ><a i18n="@@forgotmypassworde">Forgot my password</a></div>
-     </a>
+  <a href="mailto:{{emailto}}"><button [disabled]="emailto?.length == 0">Send email to selected</button> </a>
+  <br />
+  <hr>
+  <p i18n="@@noaccount">Doesn't have an account?</p>
+  <a routerLink="/manage"><button i18n="@@createbtn">create an account</button></a>
+  <br /><br>
+  <a routerLink="/recovery">
+    <div><a i18n="@@forgotmypassworde">Forgot my password</a></div>
+  </a>
 </div>
