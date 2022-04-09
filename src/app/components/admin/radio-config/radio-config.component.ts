@@ -2,11 +2,23 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../../../_services/api.service';
 import { RadioService } from '../../../_services/radio.service';
 import { NgForm } from '@angular/forms';
-import {DecimalPipe} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
 import { interval } from 'rxjs';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+
+
+//Declare the audio scripts
+declare var _3LAS: any;
+declare var _3LAS_Settings: any;
+declare var Logging: any;
+
+// var Stream: _3LAS;
+// var DefaultVolume: number = 0.5;
+// var RtcConfig: RTCConfiguration;
+// var AudioTagId: string;
 
 @Component({
   selector: 'app-radio-config',
@@ -56,20 +68,25 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   tx = false;
   rx = false;
   power: any;
+  stream: any;
 
 
   constructor(
-	  private apiService: ApiService,
+    private apiService: ApiService,
     private authenticationService: AuthenticationService,
-	  private radioService: RadioService,
-	  private decimalPipe: DecimalPipe,
-    private router: Router) { 
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    private radioService: RadioService,
+    private decimalPipe: DecimalPipe,
+    private router: Router) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getRadioStatus(): void{
+  getRadioStatus(): void {
+    // LiveAudioPlayer();
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
+
+        //TESTE 3LAS WEB AUDIO
+        // this.initAudio(); 
 
         console.log(res)
 
@@ -122,7 +139,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  getPttswr(): void{
+  getPttswr(): void {
     this.radioService.getRadioPttswr().subscribe(
       (res: any) => {
         this.power = res;
@@ -158,17 +175,17 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   }
 
 
-  get value() : number {
+  get value(): number {
     this.realValue = this.radio.freq;
     return this.realValue;
-	}
+  }
   set value(newValue: number) {
     this.realValue = newValue;
-    if( this.realValue < this.freqmin ){
+    if (this.realValue < this.freqmin) {
       this.realValue = undefined;
       setTimeout(() => { this.realValue = this.freqmin; });
     }
-    else if(this.realValue > this.freqmax){
+    else if (this.realValue > this.freqmax) {
       this.realValue = undefined;
       setTimeout(() => { this.realValue = this.freqmax; });
     }
@@ -176,11 +193,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
 
   changePtt(f) {
-	  console.log (f);
+    console.log(f);
     this.radioService.setRadioPTT(f).subscribe(
       (res: any) => {
         this.res = res;
-        console.log (this.ptt);
+        console.log(this.ptt);
         this.radio.ptt = res;
         this.ptt = f;
         if (this.ptt === 'ON') {
@@ -190,8 +207,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
           this.radio.tx = false;
           this.radio.rx = true;
         }
-       console.log('⚚ radio config - set ptt- : res: ', res);
-        console.log (this.ptt);
+        console.log('⚚ radio config - set ptt- : res: ', res);
+        console.log(this.ptt);
         this.radio.ptt = res;
         this.getRadioStatus;
         // this.fileIsProcessing = true;
@@ -208,7 +225,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.res = res;
         console.log('⚚ radio config - set ptt- : res: ', res);
-        console.log (this.ptt);
+        console.log(this.ptt);
         this.radio.ptt = res;
         this.ptt = f;
         this.radio.tx = true;
@@ -216,11 +233,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         console.log('on');
       },
       (err) => {
-       this.error = err;
+        this.error = err;
         this.errorAlert = true;
       }
     );
-    
+
     this.getPttswr();
   }
 
@@ -244,12 +261,12 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioFreq(f.value.freq).subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.freq = res;
+        this.radio.freq = res;
         console.log('⚚ changeRadio- setRadioFreq: res: ', res);
-        }, (err) => {
-        this.error =  err;
+      }, (err) => {
+        this.error = err;
         this.errorAlert = true;
-        }
+      }
     );
 
     this.radioService.setRadioMode(f.value.mode).subscribe(
@@ -257,7 +274,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.res = res;
         console.log('⚚ changeFreqMode- setRadioMode: res: ', res);
       }, (err) => {
-        this.error =  err;
+        this.error = err;
         this.errorAlert = true;
       }
     );
@@ -265,7 +282,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   changeFrequency(f: NgForm) {
     const realfreq = f.value.frek * 1000;
-	  console.log(realfreq);
+    console.log(realfreq);
     this.radioService.setRadioFreq(realfreq).subscribe(
       (res: any) => {
         this.res = res;
@@ -284,9 +301,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioMode(f.value.mode).subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.mode = res;
+        this.radio.mode = res;
       }, (err) => {
-        this.error =  err;
+        this.error = err;
         this.errorAlert = true;
       }
     );
@@ -296,7 +313,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioBfo(f.value.bfo).subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.bfo = res;
+        this.radio.bfo = res;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -304,7 +321,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  changeMasterCall(f: NgForm){
+  changeMasterCall(f: NgForm) {
     this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
       (res: any) => {
         this.res = res;
@@ -317,11 +334,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  changeByPass(f: NgForm){
+  changeByPass(f: NgForm) {
     this.radioService.setRadioBypass(f.value.bypass).subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.bypass = res;
+        this.radio.bypass = res;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -329,11 +346,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  changeRefThreshold(f: NgForm){
+  changeRefThreshold(f: NgForm) {
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.refthreshold = res;
+        this.radio.refthreshold = res;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -341,7 +358,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  confirmChange(){
+  confirmChange() {
     if (this.confirmSet) {
       this.confirmSet = false;
     } else {
@@ -351,7 +368,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   screenSet() {
     if (this.alterSet === false) {
-      this.alterSet = true; 
+      this.alterSet = true;
       if (this.confirmSet) {
         this.confirmSet = false;
       } else {
@@ -366,7 +383,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.radioSetDefaults().subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.refthreshold = res;
+        this.radio.refthreshold = res;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -378,17 +395,17 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     // console.log('teste');
     this.radioService.radioResetProtection().subscribe(
       (res: any) => {
-      this.res = res;
-      
-      console.log('⚚ radio config - reset radio: res: ', res);
-      if (this.res === 1) {
-        this.radio.protection = false;
-      }
-      this.getRadioStatus();
+        this.res = res;
+
+        console.log('⚚ radio config - reset radio: res: ', res);
+        if (this.res === 1) {
+          this.radio.protection = false;
+        }
+        this.getRadioStatus();
       },
       (err) => {
-      this.error = err;
-      this.errorAlert = true;
+        this.error = err;
+        this.errorAlert = true;
       }
     );
   }
@@ -397,20 +414,20 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     console.log('reset');
     await this.radioService.radioRestoreDefaults().subscribe(
       (res: any) => {
-      this.res = res;
-      console.log('⚚ radio reset: ', res);
-      this.reseting = false;
-      this.getRadioStatus();
+        this.res = res;
+        console.log('⚚ radio reset: ', res);
+        this.reseting = false;
+        this.getRadioStatus();
       },
       (err) => {
-      this.error = err;
-      this.errorAlert = true;
-      this.reseting = false;
-      this.getRadioStatus();
+        this.error = err;
+        this.errorAlert = true;
+        this.reseting = false;
+        this.getRadioStatus();
       }
     );
     console.log('⚚ testradio - reset to defaults ');
-    }
+  }
 
   closeError() {
     this.errorAlert = false;
@@ -431,8 +448,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.setRadioTone(f).subscribe(
       (res: any) => {
         this.res = res;
-		    this.radio.testtone = res;
-      if (res === '0') {
+        this.radio.testtone = res;
+        if (res === '0') {
           this.toneOn = false;
         } else {
           this.toneOn = true;
@@ -461,8 +478,27 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     this.subscription.unsubscribe();
     console.log('quiting radio config');
   }
+
+  // initAudio() {
+  //   let logger = Logging(document.getElementById("logwindow"), "li");
+  //   var settings = _3LAS_Settings();
+  //   settings.WebRTC.RtcConfig = RtcConfig;
+
+  //   if (typeof environment.audioTagId == 'undefined')
+  //     settings.WebRTC.AudioTag = null;
+  //   else
+  //     settings.WebRTC.AudioTag = <HTMLAudioElement>document.getElementById(AudioTagId);
+
+  //   try {
+  //     Stream = _3LAS(logger, settings);
+  //   }
+  //   catch (_ex) {
+  //     // document.getElementById("webaudiounsupported").style.display = "block";
+  //     return;
+  //   }
+  // }
 }

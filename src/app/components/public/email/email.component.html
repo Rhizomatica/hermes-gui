@@ -3,8 +3,8 @@
   <form #f="ngForm" id="loginform" novalidate>
     <button><img class="round icon" src="assets/svg/roundcubelogo.svg"><a href="/mail/"
         target="_self">Webmail</a></button>
-    <button (click)="showlinks()" class="delta icon" i18n="@@install_deltachat"><img
-        src="assets/img/deltachat_icon.png">deltachat<br>
+    <button (click)="showlinks()" i18n="@@install_deltachat"><img
+        src="assets/img/deltachat_icon.png" class="delta icon">deltachat<br>
     </button>
   </form>
   <div *ngIf="linksOn">

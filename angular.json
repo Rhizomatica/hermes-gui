@@ -38,7 +38,15 @@
               "src/styles.less"
             ],
             "scripts": [
-              "./node_modules/angular-dark-mode/angular-dark-mode.js"
+              "./node_modules/angular-dark-mode/angular-dark-mode.js",
+              "./src/app/3LAS/fallback/3las.liveaudioplayer.js",
+              "./src/app/3LAS/fallback/3las.formatreader.js",
+              "./src/app/3LAS/fallback/formats/3las.formatreader.mpeg.js",
+              "./src/app/3LAS/fallback/formats/3las.formatreader.wav.js",
+              "./src/app/3LAS/util/3las.websocketclient.js",
+              "./src/app/3LAS/fallback/3las.fallback.js",
+              "./src/app/3LAS/3las.webrtc.js",
+              "./src/app/3LAS/3las.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
