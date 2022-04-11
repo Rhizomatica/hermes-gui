@@ -10,8 +10,7 @@ const envConfigFile = `export const environment = {
    appName: '${process.env.APP_NAME}',
    apiUrl: '${process.env.API_URL}',
    production: '${process.env.PRODUCTION}',
-   rtcConfig: ${process.env.RTC_CONFIG},
-   audioTagId: '${process.env.AUDIO_TAG_ID}',
+   ubitxv6: '${process.env.AUDIO_ubitxv6}',
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

@@ -10,16 +10,6 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 
-//Declare the audio scripts
-declare var _3LAS: any;
-declare var _3LAS_Settings: any;
-declare var Logging: any;
-
-// var Stream: _3LAS;
-// var DefaultVolume: number = 0.5;
-// var RtcConfig: RTCConfiguration;
-// var AudioTagId: string;
-
 @Component({
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
@@ -68,7 +58,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   tx = false;
   rx = false;
   power: any;
-  stream: any;
+  audio: any;
 
 
   constructor(
@@ -84,21 +74,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     // LiveAudioPlayer();
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
-
-        //TESTE 3LAS WEB AUDIO
-        // this.initAudio(); 
-
         console.log(res)
 
-        // if(!this.refv){
-        //   console.log("maoi")
-        // } 
-
         this.radio = res;
-
-        // if(!this.radio.refv){
-        //   //TODO - Redirecionar/travar tela
-        // }
 
         //TODO - criar metodo 
         this.radio.extra = false;
@@ -117,6 +95,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.ref_volts = this.radio.ref_volts;
         this.refv = this.radio.ref_volts;
         this.ref_raw = this.radio.ref_raw;
+
+        this.setAudioHtml()
 
         if (this.radio.bypass === true) {
           this.bypass = true;
@@ -483,22 +463,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     console.log('quiting radio config');
   }
 
-  // initAudio() {
-  //   let logger = Logging(document.getElementById("logwindow"), "li");
-  //   var settings = _3LAS_Settings();
-  //   settings.WebRTC.RtcConfig = RtcConfig;
-
-  //   if (typeof environment.audioTagId == 'undefined')
-  //     settings.WebRTC.AudioTag = null;
-  //   else
-  //     settings.WebRTC.AudioTag = <HTMLAudioElement>document.getElementById(AudioTagId);
-
-  //   try {
-  //     Stream = _3LAS(logger, settings);
-  //   }
-  //   catch (_ex) {
-  //     // document.getElementById("webaudiounsupported").style.display = "block";
-  //     return;
-  //   }
-  // }
+  setAudioHtml(){
+    this.audio = "<audio src='http://10.8.0.2:9999' type='audio/webm' controls></audio>";
+  }
 }
+
