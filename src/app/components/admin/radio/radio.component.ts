@@ -39,8 +39,8 @@ export class RadioComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.setAudioHtml()
-    this.testeAudioCORSPolicy()
+    this.setAudioHtml()
+    // this.testeAudioCORSPolicy()
   }
 
   ngOnDestroy() {
