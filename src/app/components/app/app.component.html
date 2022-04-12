@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   :host {
     box-sizing: border-box;
@@ -14,14 +5,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-
   p {
     margin: 0;
   }
 </style>
 
-<!--<app-hmheader>
-</app-hmheader>-->
 <div class="fullpage">
   <header>
     <a routerLink='/landing' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
@@ -30,7 +18,7 @@
   </header>
 
   <div class="userstatus">
-    
+
     <!-- TODO ERROR else: <div class="logged" *ngIf="currentUser; else isLoggedOut"> -->
     <!-- <a class="radioprot" i18n="@@radioprot" *ngIf="!protection" (click)="resetProtection()">
       protection off
@@ -38,9 +26,15 @@
     -->
 
     <div class="logged" *ngIf="currentUser; else loggedOut">
+      <!-- <div class="flex">
+        <a i18n="@@portugues" class="flag" href="/pt"><img title="messages" src="assets/svg/brasil.svg">Português</a>
+        <a i18n="@@espanhol" class="flag" href="/es"><img title="messages" src="assets/svg/espanha.svg">Español</a>
+        <a i18n="@@english" class="flag" href="/en-US"><img title="messages"
+            src="assets/svg/reino-unido.svg">English</a>
+      </div> -->
+       
       <div class="navbar-nav">
         <span class="topuser">
-          <!-- <span i18n="@@connectedas">connected as: </span> -->
           <span>{{currentUser.email}}</span>
         </span>
         <a class="icon" routerLink="/login" *ngIf="!currentUser">
@@ -51,8 +45,8 @@
         <a class="icon" (click)="logout()" *ngIf="currentUser">
           <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
             src="assets/svg/sign-out-alt-solid.svg">
-            <br />
-            <span class="logged" i18n="@@logout1">logout</span>
+          <br />
+          <span class="logged" i18n="@@logout1">logout</span>
         </a>
         <br>
       </div>
@@ -61,10 +55,11 @@
     <ng-template #loggedOut>
       <span class="servericon">
         <span class="icon" *ngIf="system">
-          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}" src="assets/svg/broadcast-tower.svg" >
+          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}"
+            src="assets/svg/broadcast-tower.svg">
         </span>
         <span class="icon" *ngIf="!system">
-        <img title="server status off" src="assets/svg/broadcast-tower-off.svg" >
+          <img title="server status off" src="assets/svg/broadcast-tower-off.svg">
         </span>
       </span>
       <a class="icon" routerLink="/login">
@@ -76,11 +71,6 @@
 
 
   <nav id="mainnav" *ngIf="system">
-    <!-- <header>
-      <a routerLink='/messages' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
-  
-      <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
-    </header> -->
     <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
     <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
     <a routerLink="/admin" i18n="@admin">
@@ -89,7 +79,7 @@
     <a routerLink="/languages" i18n="@@languages"><img title="languages"
         src="assets/svg/globe-americas.svg">language</a>
     <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
-   
+
     <!-- <div class="userstatus">  
       <div class="logged" *ngIf="currentUser; else loggedOut">
         <div class="navbar-nav">

@@ -4,9 +4,9 @@ export class GlobalConstants {
   
   public static appName = environment.appName;
   public static apiURL = environment.apiUrl; 
-  public static ubitxv6Url = environment.ubitxv6Url; 
   public static producion = environment.production;
-
+  public static universalHRHH5 = environment.universalHRHH5Url;
+  
   public static httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

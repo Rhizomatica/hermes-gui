@@ -2,10 +2,10 @@
     <div>
         <div *ngIf="!loginForm">
             <h2 i18n="@@publicmessages1" class="maintitle">Public Messages </h2>
+            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccessmessages">There are no public
                 messages<br />
             </div>
-            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages"/>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist">
                     <div class="item" *ngFor="let message of inboxMessages | filter:searchMessages">
@@ -23,6 +23,12 @@
                     </div>
                 </div>
             </div>
+            <div class="flex">
+                <button routerLink="/compose">
+                    <img title="edit" src="assets/svg/edit.svg">
+                    <span i18n="@@compose1"> Compose</span>
+                </button>
+            </div>
         </div>
         <div *ngIf="loginForm">
             <app-login-form (hideLoginForm)="closeLogin()">
@@ -30,16 +36,16 @@
             <hr>
         </div>
         <div class="navicons">
-            <div class="btn sent">
+            <!-- <div class="btn sent">
                 <a routerLink="/sent" i18n="@@sent">
                     <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">sent public messages
                 </a>
-            </div>
-            <div class="btn sent" *ngIf="allowCompose">
+            </div> -->
+            <!-- <div class="btn sent" *ngIf="allowCompose">
                 <a routerLink="/compose" i18n="@@compose1">
                     <img title="edit" src="assets/svg/edit.svg">compose public messages
                 </a>
-            </div>
+            </div> -->
 
             <div class="btn" *ngIf="!currentUser">
                 <a *ngIf="!loginForm" (click)="showlogin()" i18n="@@login2">

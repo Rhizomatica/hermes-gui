@@ -1,12 +1,12 @@
-<div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br/></div>
+<div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div>
 <div *ngIf="message" class="messages">
-    <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg"/></span>
+    <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
     <div class="formdata" *ngIf="message.secure && !uncrypted">
         <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
-            <input name="pass" type="password" ngModel required >
+            <input name="pass" type="password" ngModel required>
             <button type="submit" (click)="sendPassword(message.id,e)">submit</button>
         </form>
     </div>
@@ -20,10 +20,10 @@
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <hr>
-        <div *ngIf="message.file" >
+        <div *ngIf="message.file">
             <span i18n="@@File">File: </span>
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-				{{message.file}}				
+                {{message.file}}
                 <div *ngIf="isImage">
                     <img class="messageImg" src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
@@ -35,44 +35,34 @@
                     </div>
                    -->
                     <audio controls class="messageAudio" #audioplayer>
-                        <source src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" canplaythrough="loadingAudio()" type="{{message.mimetype}}"/>
+                        <source src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}"
+                            canplaythrough="loadingAudio()" type="{{message.mimetype}}" />
                         your browser does not support this type of audio
-                    </audio> 
+                    </audio>
                 </div>
-			</a>
+            </a>
             <hr>
             <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->
-		</div>
+        </div>
     </div>
 
-<div *ngIf="!noMessage">
-    
-    <small><p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
-    <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
-    <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
-    <p class="msgid">Id: {{message.id}}</p></small>
-</div>
-<hr>
-
-<div class="navicons">
-
-
-    <div class="btn sent" *ngIf="allowCompose" >
-        <a routerLink="/compose" i18n="@@compose1">
-            <img title="edit" src="assets/svg/edit.svg">compose public messages
-        </a>
+    <div *ngIf="!noMessage">
+        <small>
+            <p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
+            <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
+            <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
+            <p class="msgid">Id: {{message.id}}</p>
+        </small>
     </div>
-
-    <div class="btn sent" >
-        <a i18n="sent messages" routerLink="/sent" i18n="@@sent">
-            <img title="help" src="assets/svg/cloud-upload-alt-solid.svg">sent messages
-        </a>
+    <hr>
+    <div class="flex" *ngIf="allowCompose">
+        <!-- <button routerLink="/compose">
+            <img title="edit" src="assets/svg/edit.svg">
+            <span i18n="@@compose1"> Compose</span>
+        </button> -->
+        <button routerLink="/compose">
+            <img title="edit" src="assets/svg/edit.svg">
+            <span i18n="@@compose1"> Compose</span>
+        </button>
     </div>
-    
-
-
-</div> 
-
-
-
 </div>
