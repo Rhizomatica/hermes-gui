@@ -95,9 +95,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.ref_volts = this.radio.ref_volts;
         this.refv = this.radio.ref_volts;
         this.ref_raw = this.radio.ref_raw;
-
-        this.setAudioHtml()
-
+        
         if (this.radio.bypass === true) {
           this.bypass = true;
         } else {
@@ -461,10 +459,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
     console.log('quiting radio config');
-  }
-
-  setAudioHtml(){
-    this.audio = "<audio src='http://10.8.0.2:9999' type='audio/webm' controls></audio>";
   }
 }
 

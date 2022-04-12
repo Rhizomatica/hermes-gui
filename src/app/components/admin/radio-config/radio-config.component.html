@@ -19,7 +19,7 @@
 
     <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
     <div>
-        <div>{{html(audio)}}</div>
+        <!-- <div [innerHTML]="audio"></div> -->
         <form *ngIf="radio">
             <div class="flexible">
                 <div class="card">

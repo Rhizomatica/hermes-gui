@@ -18,6 +18,7 @@ import { SentMessagesComponent } from './components/public/sent-messages/sent-me
 import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
+import { RadioComponent } from './components/admin/radio/radio.component';
 // import { TestradioComponent } from './components/admin/testradio/testradio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent },
   { path: 'help', component: HelpComponent },
   { path: 'radioconfig', component: RadioConfigComponent },
+  { path: 'radio', component: RadioComponent },
   { path: 'gateway', component: GatewayConfigComponent },
   { path: 'transmission', component: TransmissionListComponent }
 ];
