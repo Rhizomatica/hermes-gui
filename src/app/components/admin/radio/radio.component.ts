@@ -18,7 +18,7 @@ export class RadioComponent implements OnInit, OnDestroy {
   error: Error;
   currentUser: User;
   isAdmin = false;
-  universalHRHH5Url: any;
+  radioRemoteUrl: any;
   
   constructor(
     private authenticationService: AuthenticationService,
@@ -29,8 +29,7 @@ export class RadioComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    alert("You`re listening radio Hermes")
-    this.universalHRHH5Url = this.sanitizer.bypassSecurityTrustResourceUrl(GlobalConstants.universalHRHH5);
+    this.radioRemoteUrl = this.sanitizer.bypassSecurityTrustResourceUrl(GlobalConstants.radioRemoteUrl);
   }
 
   ngOnDestroy() {

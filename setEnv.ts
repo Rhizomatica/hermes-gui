@@ -10,7 +10,7 @@ const envConfigFile = `export const environment = {
    appName: '${process.env.APP_NAME}',
    apiUrl: '${process.env.API_URL}',
    production: '${process.env.PRODUCTION}',
-   universalHRHH5Url: '${process.env.UNIVERSAL_HRHH5_URL}'
+   radioRemoteUrl: '${process.env.RADIO_REMOTE_URL}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

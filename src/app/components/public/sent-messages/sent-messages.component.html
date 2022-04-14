@@ -14,58 +14,62 @@
     </div>
 -->
 
-    
+
 
     <div class="overall alert" *ngIf="confirmTransmit">
-        <div class="cv" >
-            <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br/> This should be used only in case of emergency<br/></span>
-            
-            <div class="icon" ><a (click)="confTransmit()" >
-                <button i18n="@@cancels">cancel</button><img title="compose" src="assets/svg/x.svg"></a>
+        <div class="cv">
+            <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
+                case of emergency<br /></span>
+
+            <div class="icon"><a (click)="confTransmit()">
+                    <button i18n="@@cancels">cancel</button><img title="compose" src="assets/svg/x.svg"></a>
             </div>
-            <div class="icon" ><a (click)="transmitNow()" >
-                <button i18n="@@transmits">transmit now</button><img title="help" src="assets/svg/arrow-right.svg"></a>
+            <div class="icon"><a (click)="transmitNow()">
+                    <button i18n="@@transmits">transmit now</button><img title="help"
+                        src="assets/svg/arrow-right.svg"></a>
             </div>
         </div>
     </div>
 
     <div *ngIf="!transList">
 
-    <h2 i18n="@@sentmessages" class="maintitle">Sent Messages </h2>
+        <h2 i18n="@@sentmessages" class="maintitle">Sent Messages </h2>
 
-    <div class="alert" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br/></div>
+        <div class="alert" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br />
+        </div>
 
-    <div *ngIf="!noMessages">
+        <div *ngIf="!noMessages">
 
-    <div class="messages">
-        
-            <div class="multiplist1">
-                <div *ngFor="let message of sentMessages">
-                    <a ><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin" (click)="removeMessage(message)"></a>
-                    
-                    <a routerLink="/message/{{message.id}}">
-                    {{message.name}}
-                    <span *ngIf="message.file">                     
-                        <img class="inlineicon" title="file" src="assets/svg/paperclip-solid.svg">
-                    </span>
-                    <span *ngIf="message.secure">                     
-                        <img class="inlineicon" title="file" src="assets/svg/lock.svg">
-                    </span>
-                    <div class="inlineicon" class="date">{{message.dest}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</div>
-                    </a>
+            <div class="messages">
+
+                <div class="multiplist1">
+                    <div *ngFor="let message of sentMessages">
+                        <a><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin"
+                                (click)="removeMessage(message)"></a>
+
+                        <a routerLink="/message/{{message.id}}">
+                            {{message.name}}
+                            <span *ngIf="message.file">
+                                <img class="inlineicon" title="file" src="assets/svg/paperclip-solid.svg">
+                            </span>
+                            <span *ngIf="message.secure">
+                                <img class="inlineicon" title="file" src="assets/svg/lock.svg">
+                            </span>
+                            <div class="inlineicon" class="date">{{message.dest}}, {{message.sent_at | date:'d/M/yy,
+                                h:mm'}}</div>
+                        </a>
+                    </div>
+
+
+                    <!-- {{message.dest}}-->
                 </div>
+            </div>
+        </div>
+        <p i18n="@@listsize1" class="date size">Total size of files to transmit on the queue: {{ getQueueSize() }} B</p>
+        <br />
 
-                
-                <!-- {{message.dest}}-->
-            </div>
-            </div>
-    </div>
-    <p i18n="@@listsize1" class="date size">Total size of files to transmit on the queue: {{ getQueueSize() }} B</p>
-    <br/>
-   
         <div class="navicons">
-            
-            <div class="btn sent" >
+            <div class="btn sent">
                 <a routerLink="/" i18n="@@messages2">
                     <img title="help" src="assets/svg/comment.svg"> messages
                 </a>
@@ -76,24 +80,20 @@
                 </a>
             </div>
         </div>
-
-</div>
-
-    
-    
-
-        <div class="overall alert" *ngIf="errorAlert==true">
-            <div class="cv" >
-                <span i18n="@@errorprocessing">There was an error on processing your request <br/><br/></span>
-                <span>{{error}}</span>
-                <div class="icon" ><a (click)="closeError()" >
-                    <img title="compose" src="assets/svg/x.svg"></a>
-                </div>
-        
-            </div>
-        </div>
     </div>
 
+    <div class="overall alert" *ngIf="errorAlert==true">
+        <div class="cv">
+            <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+            <span>{{error}}</span>
+            <div class="icon"><a (click)="closeError()">
+                    <img title="compose" src="assets/svg/x.svg"></a>
+            </div>
 
-    
-    <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->
+        </div>
+    </div>
+</div>
+
+
+
+<!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->

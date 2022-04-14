@@ -5,7 +5,7 @@ export class GlobalConstants {
   public static appName = environment.appName;
   public static apiURL = environment.apiUrl; 
   public static producion = environment.production;
-  public static universalHRHH5 = environment.universalHRHH5Url;
+  public static radioRemoteUrl = environment.radioRemoteUrl;
   
   public static httpOptions = {
     headers: new HttpHeaders({
