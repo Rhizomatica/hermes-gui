@@ -118,14 +118,14 @@ input {
 
 
 body {
-    max-width: 30em;
-    width: 100%;
     margin: 0.2em auto 1em auto;
     padding: 0 0.5em;
     position: relative;
     background-color: @bkclr;
     color: @mclr;
 }
+
+
 
 body.dark-mode {
     background-color: #2d3436;
@@ -327,20 +327,33 @@ textarea {
 
 .fullpage {
     min-height: 100%;
+    max-width: 60em;
+    position: relative;
+    width: auto;
 }
 
 .push {
-    height: 2.5em;
+    height: 2em;
+}
+
+#appcontainer {
+    max-width: 60em;
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
 }
 
 .footer {
     margin-top: -2.5em;
     font-size: 0.6em;
-    height: 1em;
+    height: 2.5em;
     border-top: 2px solid #000;
     background-color: @bkclr;
+    width: 96%;
+    max-width: 100em;
     // z-index: 9999;
     position: fixed;
+    bottom: 0.4em;
 
 
     div {
