@@ -8,19 +8,43 @@
             </div>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist">
-                    <div class="item" *ngFor="let message of inboxMessages | filter:searchMessages">
+                    <div class="item" *ngFor="let message of inboxMessages| filter:searchMessages; let i = index ">
                         <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                             <span class="ls" (click)="getInboxMessage(message)">{{message.name}}</span>
-                            <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure"
-                                (click)="deleteInboxMessage(message.id)">
+                            <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure" >
                             <span *ngIf="message.file">
                                 <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
                             </span>
-                            <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}
-                                <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
-                                    [hidden]="!isadmin" (click)="deleteInboxMessage(message.id)"></span>
                         </a>
+                        <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}
+                            
+                        <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()" >
+                                
+                        </span>
+
+            
+                    
                     </div>
+                </div>
+            </div>
+            
+            <div class="overall alert" *ngIf="deleteMessage">
+                <div class="cv">
+                    <span i18n="@@yourmessageprocessed0">Are you sure yo want to delete this message? <br /><br />
+                    </span>
+                    <span>{{selectedMessage.name}}</span>    
+
+    
+                    <div class="icon"><a (click)="showDelete()">
+                            <img title="compose" src="assets/svg/x.svg"><button i18n="@@compose2">cancel</button></a>
+                    </div>
+                    <div class="icon"><a routerLink='/messages' routerLinkActive="active">
+                            <img title="help" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
+                                i18n="@@messagesbtn">confirm</button></a>
+                    </div>
+        
+                    
                 </div>
             </div>
             <div class="flex">
@@ -57,6 +81,9 @@
                     <img title="Log In" src="assets/svg/comment.svg">public messages
                 </a>
             </div>
+
+            
+
             <!-- <div class="btn" *ngIf="currentUser">
                 <a (click)="logout()" i18n="@@logout2">
                     <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">logout

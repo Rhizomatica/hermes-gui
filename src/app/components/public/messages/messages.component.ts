@@ -45,6 +45,7 @@ export class MessagesComponent implements OnInit {
   allowhmp = 'root';
   serverConfig: any;
   loginForm = false;
+  deleteMessage = false;
 
   constructor(
     private messageService: MessageService,
@@ -92,6 +93,20 @@ export class MessagesComponent implements OnInit {
     );
   }
   
+
+  showDelete() {
+    if (this.deleteMessage) {
+      this.deleteMessage = false;
+    } else {
+      this.deleteMessage = true;
+    }
+  }
+
+  selectMessage(message: Message): void {
+    this.selectedMessage = message;
+    console.log(this.selectedMessage);
+  }
+
   deleteInboxMessage($id): void {
     console.log('⚚ messages - delete id: ', $id);
     this.inboxMessages = this.inboxMessages.filter(obj => obj !== this.message);
@@ -100,12 +115,38 @@ export class MessagesComponent implements OnInit {
         this.message = res;
         // console.log('⚚ messages - deleteInboxMessage -  res: ', res);
         this.getInboxMessages();
+        this.deleteMessage = false;
       },
       (err) => {
         this.error = err;
+        this.deleteMessage = false;
         // console.error (err);
       }
     );
+    this.deleteMessage = false;
+  }
+
+
+  deleteThisMessage() {
+    let msgId = 0;
+    msgId = this.selectedMessage.id;
+    console.log(msgId);
+    console.log(this.selectedMessage);
+    this.messageService.deleteMessage(msgId).subscribe(
+      (res: any) => {
+        this.message = res;
+        // console.log('⚚ messages - deleteInboxMessage -  res: ', res);
+        this.getInboxMessages();
+        this.deleteMessage = false;
+      },
+      (err) => {
+        this.error = err;
+        this.deleteMessage = false;
+        // console.error (err);
+      }
+    );
+    // this.deleteMessage = false;
+    //this.getInboxMessages();
   }
 
   getSysConfig(): void{
@@ -192,6 +233,7 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     this.getInboxMessages();
     this.getSysConfig();
+    
     if ( this.currentUser ) {
     this.isadmin = this.currentUser.admin;
     } else {
