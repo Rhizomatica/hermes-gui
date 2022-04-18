@@ -1583,12 +1583,12 @@ input[type=range]:hover::-ms-track {
 
 .landing {
     display: flex;
-    height: 78vh;
+    max-height: calc(100vh - 12em);
+    max-height: calc(100vh - 8em);
+    text-align: center;
 
     h1 {
-        font-size: 2em;
-        margin-bottom: 70px;
-        text-align: center;
+        margin-bottom: 1em;
     }
 }
 
@@ -1598,9 +1598,13 @@ input[type=range]:hover::-ms-track {
     background-color: @clr;
     width: 50%;
     color: @bkclr;
-    padding: 130px 100px 100px 100px;
-    line-height: 30px;
-    text-align: justify;
+    padding: 3em 2em 3em 2em;
+    line-height: 1.5em;
+    text-align: left;
+    font-size: 2vmin;
+    h1 {
+        font-size: 4vmin;
+    }
 }
 
 .btn-messages-lading {
@@ -1608,7 +1612,7 @@ input[type=range]:hover::-ms-track {
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding: 130px 15px 15px 15px;
+    padding: 2em 1em;
 
     a {
         font-size: 1.5em;
@@ -1711,15 +1715,23 @@ a {
         height: 72vh;
 
         h1 {
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            font-size: 2em;
+            margin-bottom: 1em;
             text-align: center;
         }
 
+        .hello {
+            height: auto;
+            h1 {
+                font-size: 4vmin;
+
+            }
+        }
+
         h4 {
-            font-size: 0.7em;
+            font-size: 3vmin;
             margin-bottom: 0px;
-            text-align: center;
+            text-align: left;
         }
     }
 
@@ -1727,7 +1739,7 @@ a {
         background-color: @bkclr;
         display: inline;
         width: 100%;
-        padding: 60px 15px 15px 15px;
+        padding: 1em;
 
         a {
             font-size: 1.5em;
@@ -1736,7 +1748,7 @@ a {
         }
 
         a>img {
-            width: 45%;
+            width: 3em;
             margin: auto;
             display: block;
         }
@@ -1750,6 +1762,9 @@ a {
         padding: 30px 10px 10px 10px;
         line-height: 20px;
         text-align: justify;
+        height: 60vh;
+        text-justify: left;
+        font-size: 4vw;
     }
 
     .footerinfo {
@@ -1773,7 +1788,7 @@ a {
 @media (min-width:720px) {
 
     body {
-        max-width: 96%;
+        max-width: 60em;
     }
 
     input,
