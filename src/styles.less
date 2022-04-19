@@ -326,7 +326,7 @@ textarea {
 }
 
 .fullpage {
-    min-height: 100%;
+    min-height: 100vh;
     max-width: 60em;
     position: relative;
     width: auto;
@@ -707,13 +707,18 @@ textarea {
 }
 
 .shut {
-    text-align: right;
+    text-align: left;
     position: relative;
-    top: 4em;
+    width: 8em;
+    margin: 0 1vmin;
 
+    
     button.midbt {
         font-size: 0.7em;
-        height: 4em;
+        height: 4.2em;
+        border-radius: 3px;
+        margin-bottom: 0.25em;
+        width: 15em;
 
         img {
             width: 1em;
@@ -1196,6 +1201,9 @@ input.ng-invalid {
     overflow: hidden;
     outline: 1px solid #333;
     margin-right: 0.5em;
+    position: relative;
+    left: 1px;
+    top: -0.5px;
 
     .drb {
         display: block;
@@ -1252,6 +1260,7 @@ input.ng-invalid {
         width: 2em;
         height: 2em;
         outline: 0;
+        left:0;
 
         .drb {
             display: block;
@@ -1308,7 +1317,18 @@ input.ng-invalid {
         // display: block;
         // margin: auto;
     }
+
+    .card {
+        border-color: @bkclr;
+    }
 }
+
+.syspusher {
+    height: 2em;
+    display: block;
+    clear: both;
+}
+
 
 .maintitle {
     margin-top: 0.25em;
@@ -1541,26 +1561,25 @@ input[type=range]:hover::-ms-track {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    a {
+        text-decoration: none;
+    }
 }
 
-
-
-.flexible a {
-    text-decoration: none;
-}
 
 .card {
     flex-direction: column;
     border: solid 1.5px #000;
     border-radius: 3px;
-    padding: 1.5em 1em 1em;
+    padding: 2em 1em 1em;
     // min-height: 80px;
-    margin: 0 auto;
+    margin: 0.5em 1vmin;
     display: block;
     text-align: center;
     font-size: 0.8em;
     width: 13em;
     height: 8em;
+    line-height: 1em;
     
     
 }
@@ -1661,11 +1680,7 @@ input[type=range]:hover::-ms-track {
     justify-content: flex-end;
 }
 
-a {
-    .card {
-        margin: 5px
-    }
-}
+
 
 #iframeHamRadio{
     -moz-transform: scale(1, 1); 
@@ -1707,27 +1722,48 @@ a {
         }
     }
 
-    .flexible a {
+    .flexible .card {
         display: flex;
         flex-direction: column;
-        margin-left: 5px;
-        width: 46%;
+        margin-left: 1vw;
+        width: 40vw;
     }
 
     .card {
         flex-direction: column;
         border: solid 1.5px #000;
         border-radius: 3px;
-        padding: 15px 2px 15px 2px;
-        margin: 10px;
+        padding: 2vmin;
+        margin: 1vmin;
         text-align: center;
         font-size: 0.5em;
         width: 100%;
-        height: 12vh;
+        height: 15vmin;
+        line-height: 3vmin;
+        img {
+            width: 5vmin;
+        }
+    }
+
+
+
+
+    .shut {
+
+        width: 98vw;
+        
+        button.midbt {
+            font-size: 0.5em;
+            height: 15vmin;
+            width: 40vw;
+    
+    
+        }
     }
 
     .card-icon {
         filter: brightness(0.5);
+        margin-bottom: 0;
     }
 
     .landing {
@@ -1872,9 +1908,7 @@ a {
         }
     }
 
-    .shut {
-        top: 2.5em;
-    }
+
 
     .radio{
         form{

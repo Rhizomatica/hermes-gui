@@ -1,4 +1,4 @@
-<div *ngIf="currentUser" class="container">
+<div *ngIf="currentUser" class="container sysadm">
     <div *ngIf="currentUser.admin">
         <div class="menu">
             <!-- <h2>Transmission</h2> -->
@@ -46,7 +46,7 @@
                 <a routerLink="/radio">
                     <div class="card">
                         <div class="card-icon">
-                            <img _ngcontent-dpr-c68="" title="radio" src="assets/svg/broadcast-tower.svg">
+                            <img _ngcontent-dpr-c68="" title="radio" src="assets/svg/ham-radio.svg">
                         </div>
                         <div>
                             Radio
@@ -96,17 +96,25 @@
                         </div>
                     </div>
                 </a>
+
+                <div class="shut">
+                    <button class="midbt" (click)="confirmReboot()"><span i18n="@@reboot">reboot</span><br />
+                        <img class="btnicon" title="send" src="assets/svg/redo.svg">
+                    </button>
+                    <button class="midbt" (click)="confirmShutDown()"><span i18n="@@shutdown">shut down</span><br />
+                        <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
+                    </button>
+                </div>
             </div>
+
+            <div class="syspusher">
+
+            </div>
+
         </div>
 
-        <div class="shut m-t-10">
-            <button class="midbt" (click)="confirmReboot()"><span i18n="@@reboot">reboot</span><br />
-                <img class="btnicon" title="send" src="assets/svg/redo.svg">
-            </button>
-            <button class="midbt" (click)="confirmShutDown()"><span i18n="@@shutdown">shut down</span><br />
-                <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
-            </button>
-        </div>
+        
+        
         <div class="overall alert" [hidden]="shuttingDown==false">
             <div class="cv">
                 <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
@@ -155,6 +163,10 @@
                 <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
             <br>
         </div>
+
+
+
+
     </div>
     <div *ngIf="!currentUser.admin">
         <a routerLink="/manage" i18n="@@usermanagement">User Management</a>
