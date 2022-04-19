@@ -37,6 +37,7 @@ export class ManagementComponent implements OnInit {
   repasswd: any;
   system: any;
   updateUser = false;
+  recoverExplanation = false;
 
   constructor(
       private userService: UserService,
@@ -104,6 +105,16 @@ export class ManagementComponent implements OnInit {
 
    closeError() {
     this.errorAlert = false;
+  }
+
+  showExplanation() {
+    if (this.recoverExplanation) {
+      this.recoverExplanation = false;
+      console.log(this.recoverExplanation);
+    } else {
+      this.recoverExplanation = true;
+      console.log(this.recoverExplanation);
+    }
   }
 
   deleteAlert() {

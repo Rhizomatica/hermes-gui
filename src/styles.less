@@ -143,7 +143,7 @@ header {
 
 p {
     margin: 1px 0;
-    line-height: 50px;
+    line-height: 1.5em;
 }
 
 .color {
@@ -353,7 +353,7 @@ textarea {
     max-width: 100em;
     // z-index: 9999;
     position: fixed;
-    bottom: 0.4em;
+    bottom: 0em;
 
 
     div {
@@ -367,8 +367,9 @@ textarea {
 }
 
 .footer.big {
-    height: 2em;
-    margin-top: -4em;
+    height: 4em;
+    bottom: 0em;
+    background-color: @bkclr;
 }
 
 .formfield {
@@ -783,7 +784,7 @@ textarea {
         -ms-word-break: break-all;
         word-break: break-all;
         padding-right: 0.25em;
-        line-height: 100px;
+        line-height: 2em;
     }
 
     .uname {
@@ -1131,7 +1132,7 @@ input.ng-invalid {
 }
 
 .infoimg {
-    width: 60%;
+    width: 60vmin;
     height: auto;
     margin: 1em auto;
     text-align: center;
@@ -1543,19 +1544,24 @@ input[type=range]:hover::-ms-track {
 
 
 
+.flexible a {
+    text-decoration: none;
+}
 
 .card {
     flex-direction: column;
     border: solid 1.5px #000;
     border-radius: 3px;
-    padding: 35px 5px 5px 5px;
+    padding: 1.5em 1em 1em;
     // min-height: 80px;
     margin: 0 auto;
     display: block;
     text-align: center;
     font-size: 0.8em;
-    width: 250px;
-    height: 160px;
+    width: 13em;
+    height: 8em;
+    
+    
 }
 
 .card-icon {

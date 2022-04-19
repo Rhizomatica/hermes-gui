@@ -48,9 +48,9 @@
             <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
 
             <label for="name">
-                <span i18n="@@name">name</span>:
+                <span i18n="@@name">full name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required
-                    placeholder="write your name" />
+                    placeholder="write your full name" />
             </label>
             <label>
                 <span i18n="@@phonenumber">phone number</span>:
@@ -65,8 +65,14 @@
 
             <div class="selector">
             </div>
+
+            <hr>
             <label for="recovery">
-                <span i18n>recovery phrase</span>:
+                <span (click)="showExplanation()"> <img class="inlineicon" title="admin" src="assets/svg/question-circle-regular.svg"></span><span i18n>recovery phrase</span>: 
+                <div *ngIf="recoverExplanation" i18n="@@recoveryexplanation" class="alert">
+                    If you loose your password, you will need to answer a question to recover it, please write a question that only you will know the answer.
+                </div>
+                
                 <br /><input name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr" required
                     placeholder="write a question to recover your password" i18n-placeholder />
             </label>
