@@ -9,6 +9,12 @@
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist">
                     <div class="item" *ngFor="let message of inboxMessages| filter:searchMessages; let i = index ">
+                        <div class="maininfo">
+                            <div>
+                            <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()" >
+                            </div>
+                        <div>
                         <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                             <span class="ls" (click)="getInboxMessage(message)">{{message.name}}</span>
                             <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure" >
@@ -16,10 +22,12 @@
                                 <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
                             </span>
                         </a>
+                        </div>
+                        </div>
+                        
                         <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}
                             
-                        <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
-                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()" >
+                        
                                 
                         </span>
 
@@ -48,10 +56,22 @@
                 </div>
             </div>
             <div class="flex">
-                <button routerLink="/compose">
+                <button *ngIf="allowCompose" routerLink="/compose">
                     <span i18n="@@compose1">
                         <img title="compose" src="assets/svg/edit.svg">
                         Compose
+                    </span>
+                </button>
+                <button routerLink="/sent">
+                    <span i18n="@@sent1">
+                        <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">
+                        sent messages
+                    </span>
+                </button>
+                <button *ngIf="!loginForm" (click)="showlogin()" >
+                    <span i18n="@@login2">
+                        <img class="loginicon" title="login" src="assets/svg/sign-in-alt-solid.svg">
+                         login
                     </span>
                 </button>
             </div>
@@ -61,34 +81,6 @@
             </app-login-form>
             <hr>
         </div>
-        <div class="navicons">
-            <!-- <div class="btn sent">
-                <a routerLink="/sent" i18n="@@sent">
-                    <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">sent public messages
-                </a>
-            </div> -->
-            <!-- <div class="btn sent" *ngIf="allowCompose">
-                <a routerLink="/compose" i18n="@@compose1">
-                    <img title="edit" src="assets/svg/edit.svg">compose public messages
-                </a>
-            </div> -->
-
-            <div class="btn" *ngIf="!currentUser">
-                <a *ngIf="!loginForm" (click)="showlogin()" i18n="@@login2">
-                    <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">login
-                </a>
-                <a *ngIf="loginForm" (click)="showlogin()" i18n="@@publicmessages">
-                    <img title="Log In" src="assets/svg/comment.svg">public messages
-                </a>
-            </div>
-
-            
-
-            <!-- <div class="btn" *ngIf="currentUser">
-                <a (click)="logout()" i18n="@@logout2">
-                    <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">logout
-                </a>
-            </div> -->
-        </div>
+        
     </div>
 </div>

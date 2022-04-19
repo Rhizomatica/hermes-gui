@@ -41,7 +41,6 @@
         <div *ngIf="!noMessages">
 
             <div class="messages">
-
                 <div class="multiplist1">
                     <div *ngFor="let message of sentMessages">
                         <a><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin"
@@ -65,7 +64,6 @@
                 </div>
             </div>
         </div>
-        <p i18n="@@listsize1" class="date size">Total size of files to transmit on the queue: {{ getQueueSize() }} B</p>
         <br />
 
         <div class="navicons">

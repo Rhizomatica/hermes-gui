@@ -236,11 +236,7 @@ a:visited.dark-mode {
     font-size: 1em;
 }
 
-// .date{
-//     margin-left: 2px;
-//     font-size: 1em;
-//     width: 20%;
-// }
+
 
 nav {
     font-size: 0.6em;
@@ -733,7 +729,7 @@ textarea {
 
 .multiplist {
     display: block;
-    height: calc(100vh - 18em);
+    height: calc(100vh - 14em);
     min-height: 5em;
     overflow-y: scroll;
     // border: 1px solid #888;
@@ -954,19 +950,36 @@ input.searchbox2 {
 }
 
 .messages {
-    div {
+
+    .multiplist {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: no-wrap;
+    }
+    .item {
+        line-height: 1.2em;
         margin: 0.1em 0.1em 0.2em;
         position: relative;
-        display: block;
+        display: flex;
+        justify-content: space-between;
     }
-
     a {
         text-decoration: none;
+        
     }
-
     .date {
         font-size: 0.5em;
-        float: right;
+        flex-shrink: 0;
+    }
+    .maininfo {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 0.2em;
+
+        div {
+            flex-wrap: wrap;
+        }
     }
 
     .ckbx {
@@ -981,6 +994,12 @@ input.searchbox2 {
         border-bottom: #999 1px solid;
 
     }
+}
+
+.loginicon {
+    position: relative;
+    top: 0.1em;
+    margin-right: 0.2em;
 }
 
 #compose {
@@ -1746,7 +1765,12 @@ input[type=range]:hover::-ms-track {
     }
 
 
-
+    .messages {
+        .date {
+            max-width: 20%;
+            line-height: 1em;
+        }
+    }
 
     .shut {
 
@@ -1896,13 +1920,6 @@ input[type=range]:hover::-ms-track {
     }
 
     .messages {
-
-        // .date {
-        //     font-size: 0.55em;
-        //     line-height: 0.65em;
-        //     position: relative;
-        //     top:-0.05em;
-        // }
         .size {
             line-height: 1em;
         }
