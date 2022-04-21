@@ -1,84 +1,77 @@
-<div class="">
-    <!--<div class="supicons">
-    
-        <div class="" >
-            <a routerLink="/" i18n="@@sent2">
-                <img title="help" src="assets/svg/comment.svg">
-            </a>
-        </div>
-        <div class="" *ngIf="allowCompose" >
-            <a routerLink="/compose" >
-                <img title="help" src="assets/svg/edit.svg">
-            </a>
-        </div>
-    </div>
--->
-
-
-
-    <div class="overall alert" *ngIf="confirmTransmit">
-        <div class="cv">
-            <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
-                case of emergency<br /></span>
-
-            <div class="icon"><a (click)="confTransmit()">
-                    <button i18n="@@cancels">cancel</button><img title="compose" src="assets/svg/x.svg"></a>
+<div class="container">
+   
+    <div>
+        <div >
+            <h2 i18n="@@sentmessages" class="maintitle">Sent Messages </h2>
+            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
+           
+            <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br />
             </div>
-            <div class="icon"><a (click)="transmitNow()">
-                    <button i18n="@@transmits">transmit now</button><img title="help"
-                        src="assets/svg/arrow-right.svg"></a>
-            </div>
-        </div>
-    </div>
 
-    <div *ngIf="!transList">
-
-        <h2 i18n="@@sentmessages" class="maintitle">Sent Messages </h2>
-
-        <div class="alert" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br />
-        </div>
-
-        <div *ngIf="!noMessages">
-
-            <div class="messages">
-                <div class="multiplist1">
-                    <div *ngFor="let message of sentMessages">
-                        <a><img class="inlineicon" title="cancel" src="assets/svg/trash-alt.svg" *ngIf="isadmin"
-                                (click)="removeMessage(message)"></a>
-
-                        <a routerLink="/message/{{message.id}}">
-                            {{message.name}}
+            <div class="messages maincontainer" *ngIf="!noMessages">
+                <div class="multiplist sent">
+                    <div class="item" *ngFor="let message of sentMessages | filter:searchMessages; let i = index ">
+                        <div class="maininfo">
+                            <div>
+                            <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()" >
+                            </div>
+                        <div>
+                        <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
+                            <span class="ls" (click)="getInboxMessage(message)">{{message.name}}</span>
+                            <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure" >
                             <span *ngIf="message.file">
-                                <img class="inlineicon" title="file" src="assets/svg/paperclip-solid.svg">
+                                <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
                             </span>
-                            <span *ngIf="message.secure">
-                                <img class="inlineicon" title="file" src="assets/svg/lock.svg">
-                            </span>
-                            <div class="inlineicon" class="date">{{message.dest}}, {{message.sent_at | date:'d/M/yy,
-                                h:mm'}}</div>
                         </a>
+                        </div>
+                        </div>
+                        
+                        <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}   
+                        </span>
                     </div>
-
-
-                    <!-- {{message.dest}}-->
                 </div>
             </div>
-        </div>
-        <br />
+            
+            <div class="overall alert" *ngIf="deleteMessage">
+                <div class="cv">
+                    <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
+                    </span>
+                    <span>{{selectedMessage.name}}</span>    
 
-        <div class="navicons">
-            <div class="btn sent">
-                <a routerLink="/" i18n="@@messages2">
-                    <img title="help" src="assets/svg/comment.svg"> messages
-                </a>
+    
+                    <div class="icon"><a (click)="showDelete()">
+                            <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
+                    </div>
+                    <div class="icon"><a routerLink='/messages' routerLinkActive="active">
+                            <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
+                                i18n="@@confirmmt">confirm</button></a>
+                    </div>
+        
+                    
+                </div>
             </div>
-            <div class="btn" *ngIf="allowCompose">
-                <a routerLink="/compose" i18n="@@compose3">
-                    <img title="help" src="assets/svg/edit.svg">compose
-                </a>
+            <div class="flex">
+                <button *ngIf="allowCompose" routerLink="/compose">
+                    <span i18n="@@compose1">
+                        <img title="compose" src="assets/svg/edit.svg">
+                        Compose
+                    </span>
+                </button>
+                <button routerLink="/sent">
+                    <span i18n="@@sent1">
+                        <img title="sent" src="assets/svg/comment.svg">
+                        messages
+                    </span>
+                </button>
+                
             </div>
         </div>
-    </div>
+        
+        
+    <div >
+
+
 
     <div class="overall alert" *ngIf="errorAlert==true">
         <div class="cv">

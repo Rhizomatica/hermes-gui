@@ -38,10 +38,10 @@ export class SentMessagesComponent implements OnInit {
   noMessages = false;
   noUUcp = false;
   noQueue = false;
-  transList = false;
   allowCompose = false;
   serverConfig: any;
   allowhmp: string;
+  deleteMessage = false;
 
 
 
@@ -92,13 +92,41 @@ export class SentMessagesComponent implements OnInit {
     console.log('⚚ cancelMail:', host, id);
   }
 
-showTransmission() {
-  if (this.transList == false) {
-    this.transList = true;
-  } else {
-    this.transList = false;
-  }
 
+
+showDelete() {
+  if (this.deleteMessage) {
+    this.deleteMessage = false;
+  } else {
+    this.deleteMessage = true;
+  }
+}
+
+selectMessage(message: Message): void {
+  this.selectedMessage = message;
+  console.log(this.selectedMessage);
+}
+
+deleteThisMessage() {
+  let msgId = 0;
+  msgId = this.selectedMessage.id;
+  console.log(msgId);
+  console.log(this.selectedMessage);
+  this.messageService.deleteMessage(msgId).subscribe(
+    (res: any) => {
+      this.message = res;
+      // console.log('⚚ messages - deleteInboxMessage -  res: ', res);
+      this.getMessages;
+      this.deleteMessage = false;
+    },
+    (err) => {
+      this.error = err;
+      this.deleteMessage = false;
+      // console.error (err);
+    }
+  );
+  // this.deleteMessage = false;
+  //this.getInboxMessages();
 }
 
   removeMessage(message: Message): void{
@@ -123,20 +151,7 @@ confTransmit(){
   }
 }
 
- transmitNow(): void{
-    this.uucpService.callSystems().subscribe(
-      (res: any) => {
-        // this.message = res;
-    	console.log('⚚ sent-messages component transmit now:');
-    	this.confirmTransmit = false;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-    	console.log('⚚ sent-messages component transmit now fail:');
-      }
-    );
-  }
+ 
 
 
   getMessages(): void{

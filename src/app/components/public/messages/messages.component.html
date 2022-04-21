@@ -68,12 +68,14 @@
                         sent messages
                     </span>
                 </button>
+                <div *ngIf="!currentUser">
                 <button *ngIf="!loginForm" (click)="showlogin()" >
                     <span i18n="@@login2">
                         <img class="loginicon" title="login" src="assets/svg/sign-in-alt-solid.svg">
                          login
                     </span>
                 </button>
+            </div>
             </div>
         </div>
         <div *ngIf="loginForm">
