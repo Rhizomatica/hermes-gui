@@ -1,19 +1,17 @@
 <div id="radioconf">
-    <h2 *ngIf="isAdmin" i18n="@@radioconft">
-        Radio Configuration
+    <h2 *ngIf="isAdmin" >
+       <span i18n="@@radioconft">Radio Configuration </span> 
+       <span *ngIf="radio.bypass">
+            [&nbsp; <div class="greencircle" title='uuardop'></div>&nbsp;
+            <span i18n="@@bypasson">Transmitting</span>&nbsp; ]
+    </span>
+    <span *ngIf="!radio.bypass">
+            [&nbsp;<div class="redcircle" title='uuardop'></div>&nbsp;
+            <span i18n="@@bypassoff">Inactive</span>&nbsp; ]
+    </span>
     </h2>
-    <div *ngIf="radio.bypass">
-        <div class="flexible">
-            <div class="greencircle" title='uuardop'></div>
-            <div i18n="@@bypasson">Transmitting</div>
-        </div>
-    </div>
-    <div *ngIf="!radio.bypass">
-        <div class="flexible">
-            <div class="redcircle" title='uuardop'></div>
-            <span i18n="@@bypassoff">Inactive</span>
-        </div>
-    </div>
+   
+    
 
     <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
 
@@ -107,7 +105,7 @@
                     <form #ffreq="ngForm" class="formdata field">
                         <p><span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span></p>
                         <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid"
-                            [disabled]="!alterSet">change
+                            [disabled]="!alterSet" i18n="@@changefreqr0">change
                             frequency</button>
                         <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frek"
                             [(ngModel)]="frek" value={{frek}} [disabled]="!alterSet">
@@ -152,9 +150,9 @@
                     <form #fptt="ngForm" class="formdata field">
                         <p><span>PTT:</span></p>
                         <button type="submit" name="ptt" value="ON" *ngIf="radio.rx"
-                            (click)="changePtt('ON');updateFwd()" [disabled]="!alterSet">Turn ON</button>
+                            (click)="changePtt('ON');updateFwd()" [disabled]="!alterSet" i18n="@@turnonr1">Turn ON</button>
                         <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx"
-                            (click)="changePtt('OFF');stopUpdate()" [disabled]="!alterSet">Turn OFF</button>
+                            (click)="changePtt('OFF');stopUpdate()" [disabled]="!alterSet" i18n="@@turnoffr1">Turn OFF</button>
                     </form>
                     <form #ftesttone="ngForm" class="formdata field">
                         <p><span i18n="@@testtonec">Test Tone:</span> <span> {{radio.testtone}}</span></p>

@@ -652,8 +652,13 @@ textarea {
 
 
 
-#radioconf .fomdata button.midbt {
-    margin-bottom: 2em;
+#radioconf {
+    .card {
+        line-height: 1.5em;
+    }
+    .fomdata button.midbt {
+        margin-bottom: 2em;
+    }
 }
 
 .full {
@@ -739,20 +744,24 @@ textarea {
 
 .multiplist1 {
     display: block;
-    height: calc(100vh - 16em);
+    height: calc(100vh - 20em);
     word-break: break-all;
     overflow-y: scroll;
     // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
     font-size: 0.8em;
+    .item {
+        // border-bottom: solid 1px #FFF;
+        margin: 20px;
+        padding: 20px;
+    }
+    .item:first-of-type {
+        border-top: #999 1px solid;
+    }
 }
 
-.multiplist1 .item {
-    // border-bottom: solid 1px #FFF;
-    margin: 20px;
-    padding: 20px;
-}
+
 
 .multiplist2 {
     display: block;
@@ -996,6 +1005,7 @@ input.searchbox2 {
         border-bottom: #999 1px solid;
 
     }
+    
 }
 
 .loginicon {
@@ -1042,10 +1052,10 @@ button:disabled {
 }
 
 .inlineiconj {
-    width: 12px;
+    width: 1.2em;
     position: relative;
-    top: 0px;
-    margin: 0 2px;
+    top: 0.2em;
+    margin: 0 1em;
     filter: invert(27%) brightness(200%);
 }
 
@@ -1101,6 +1111,7 @@ input.ng-invalid {
     width: 1em;
     margin: 0;
     z-index: 0;
+    display: inline-block;
 }
 
 .greencircle {
@@ -1113,6 +1124,7 @@ input.ng-invalid {
     width: 1em;
     margin: 0;
     z-index: 0;
+    display: inline;
 }
 
 
@@ -1245,6 +1257,12 @@ input.ng-invalid {
         border-right: 0;
     }
 
+    .radio {
+        form {
+            border-color: #fff;
+        }
+    }
+
     .supicons img,
     nav img,
     .btn img,
@@ -1342,6 +1360,8 @@ input.ng-invalid {
     .card {
         border-color: @bkclr;
     }
+
+    
 }
 
 .syspusher {
@@ -1363,12 +1383,12 @@ input.ng-invalid {
     display: inline;
     width: 1em;
     position: relative;
-    top: 0em;
+    top: 0.3em;
 }
 
 .itemlist {
     border-bottom: 1px solid #000;
-    line-height: 150px;
+    line-height: 2em;
 }
 
 input[type=range] {
@@ -1693,6 +1713,12 @@ input[type=range]:hover::-ms-track {
     display: flex;
     flex-wrap: wrap;
     // flex-direction: row;
+    form{
+        border: 1px solid #000;
+        border-radius: 3px;
+        padding: 0.5em 1em;
+        margin: 0.5em 1% ;
+    }
 }
 
 .flex-right {
@@ -1929,10 +1955,9 @@ input[type=range]:hover::-ms-track {
 
 
 
-    .radio{
-        form{
+    .radio {
+        form {
             width: 48%;
-            margin-left: 2%;
         }
     }
 }

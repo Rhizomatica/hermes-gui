@@ -11,19 +11,26 @@
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist sent">
                     <div class="item" *ngFor="let message of sentMessages | filter:searchMessages; let i = index ">
-                        <div class="maininfo">
-                            <div>
-                            <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                        
+                        <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()" >
                             </div>
                         <div>
-                        <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
+                            
+                        <div class="maininfo">
                             <span class="ls" (click)="getInboxMessage(message)">{{message.name}}</span>
                             <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure" >
                             <span *ngIf="message.file">
                                 <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
                             </span>
+                        <div>
+                        <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
+                            
                         </a>
+
+                        <div>
+                            
+                        </div>
                         </div>
                         </div>
                         

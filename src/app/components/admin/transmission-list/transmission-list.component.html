@@ -17,34 +17,38 @@
     <div *ngIf="isadmin">
 
         <h2 i18n="@@transmissionlistt" class="maintitle">Transmission list</h2>
-
+        <p i18n="@@listsize" class="">Total size of files to transmit: {{ getQueueSize() }} B</p>
         <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
         <div class="alert" *ngIf="noQueue" i18n="noqueue">There are no messages to transmit<br /></div>
 
         <div class="queue messages">
             <div class="multiplist1">
                 <div *ngFor="let job of queue | filter:searchMessages" class="item">
+                    <div class="maininfo">
                     <a>
                         <span *ngIf="isadmin"><img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg"
                                 *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
                             <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg"
                                 *ngIf="job.type=='HMP'" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
                     </a>
-                    <span>
-                        <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
-                        <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
-                    </span>
-                    <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
 
-                    <div class="">
+                    
+                    <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
+                </div>
+                    <div class="info">
                         <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
                         <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
 
                         <span> <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}</span>
+
+                        <span>
+                            <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
+                            <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
+                        </span>
                     </div>
                 </div>
             </div>
-            <p i18n="@@listsize" class="date size">Total size of files to transmit: {{ getQueueSize() }} B</p>
+            
             <br />
             <button *ngIf="isadmin" (click)="confTransmit()">
                 <span i18n="@@transmitnow">force transmission</span> <img class="inlineiconlink" title="cancel"
