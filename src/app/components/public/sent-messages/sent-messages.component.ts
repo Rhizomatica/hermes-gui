@@ -35,7 +35,7 @@ export class SentMessagesComponent implements OnInit {
   searchMessages: string;
   confirmTransmit = false;
   errorAlert = false;
-  noMessages = false;
+  noMessages = true;
   noUUcp = false;
   noQueue = false;
   allowCompose = false;
@@ -116,7 +116,7 @@ deleteThisMessage() {
     (res: any) => {
       this.message = res;
       // console.log('⚚ messages - deleteInboxMessage -  res: ', res);
-      this.getMessages;
+      this.getMessages();
       this.deleteMessage = false;
     },
     (err) => {
@@ -151,13 +151,28 @@ confTransmit(){
   }
 }
 
- 
+ transmitNow(): void{
+    this.uucpService.callSystems().subscribe(
+      (res: any) => {
+        // this.message = res;
+    	console.log('⚚ sent-messages component transmit now:');
+    	this.confirmTransmit = false;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+    	console.log('⚚ sent-messages component transmit now fail:');
+      }
+    );
+  }
 
 
   getMessages(): void{
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
+        console.log(this.sentMessages);
+        this.noMessages = false;
       },
       (err) => {
         this.error = err;
