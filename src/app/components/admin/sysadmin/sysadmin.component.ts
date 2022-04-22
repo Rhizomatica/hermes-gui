@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { ApiService } from '../../../_services/api.service';
 import { Api } from '../../../interfaces/api';
 import { observable } from 'rxjs';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-sysadmin',
@@ -99,6 +100,10 @@ export class SysadminComponent implements OnInit {
     this.restarting = false;
     this.shuttingDown = false;
 
+  }
+
+  goHamRadioRemote() {
+    window.open(GlobalConstants.radioRemoteUrl)
   }
 
   ngOnInit(): void {
