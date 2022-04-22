@@ -55,6 +55,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   refv: any;
   fwd_raw: any;
   ref_raw: any;
+  ref_watts: any;
   tx = false;
   rx = false;
   power: any;
@@ -77,7 +78,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         console.log(res)
 
         this.radio = res;
-
         this.radio.extra = false;
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
@@ -89,11 +89,13 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.bypass = this.radio.bypass;
         this.refthreshold = this.radio.refthreshold;
         this.radio.fwd_watts = this.radio.fwd_watts;
-        this.fwdw = this.radio.fwd_watts;
-        this.fwd_raw = this.radio.fwd_raw;
-        this.radio.ref_volts = this.radio.ref_volts;
-        this.refv = this.radio.ref_volts;
-        this.ref_raw = this.radio.ref_raw;
+        this.radio.serial = this.radio.serial;
+        this.radio.testTone = this.radio.testtone;
+        // this.fwdw = this.radio.fwd_watts;
+        // this.fwd_raw = this.radio.fwd_raw;
+        // this.radio.ref_volts = this.radio.ref_volts;
+        // this.refv = this.radio.ref_volts;
+        // this.ref_raw = this.radio.ref_raw;
         
         if (this.radio.bypass === true) {
           this.bypass = true;
@@ -130,6 +132,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.fwd_raw = this.power.fwd_raw;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
+        this.ref_watts = this.radio.ref_watts;
 
         if (this.radio.bypass === true) {
           this.bypass = true;
