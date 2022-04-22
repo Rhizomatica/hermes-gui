@@ -42,7 +42,7 @@
                 <div class="card">
                     <div class="row">
                         <h3><span i18n="@reflected">REF </span>
-                            {{radio.ref_watts}}/1023
+                            {{radio.ref_watts == 0 ? radio.ref_watts/1023 : 0}}
                             <br />
                             ({{radio.ref_volts}} V)
                         </h3>
@@ -52,7 +52,7 @@
                     <div class="row">
                         <h3>
                             <span i18n="@forward"> FWD </span>
-                            {{radio.fwd_watts}}/1023
+                            {{radio.fwd_watts == 0 ? radio.fwd_watts/1023 : 0}}
                             <br />
                             ({{radio.fwd_raw}} V)
                         </h3>
