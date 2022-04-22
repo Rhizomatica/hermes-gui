@@ -171,7 +171,7 @@ confTransmit(){
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
-        console.log(this.sentMessages);
+        // console.log(this.sentMessages);
         this.noMessages = false;
       },
       (err) => {
@@ -185,7 +185,7 @@ confTransmit(){
     this.uucpService.getQueue().subscribe(
       res => {
         this.queue = res;
-         console.log('⚚ uucp queue:', this.queue);
+         // console.log('⚚ uucp queue:', this.queue);
          if (Object.keys(this.queue).length ==0) {
            this.noQueue = true;
          } else {
@@ -249,8 +249,6 @@ confTransmit(){
 
   ngOnInit(): void {
     this.getMessages();
-    this.getQueue();
-    this.getQueueSize();
     this.getSysConfig();
 
     this.isadmin = this.currentUser.admin;
