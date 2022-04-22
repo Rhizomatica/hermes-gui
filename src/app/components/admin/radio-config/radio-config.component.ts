@@ -78,7 +78,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
         this.radio = res;
 
-        //TODO - criar metodo 
         this.radio.extra = false;
         this.bfo = this.radio.bfo;
         this.mastercal = this.radio.mastercal;
@@ -121,6 +120,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.getRadioPttswr().subscribe(
       (res: any) => {
         this.power = res;
+        this.radio.swr = this.power.swr;
         this.radio.tx = this.power.tx;
         this.radio.led = this.power.led;
         this.led = this.power.led;
