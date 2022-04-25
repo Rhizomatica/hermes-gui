@@ -1,12 +1,8 @@
 <div class="">
     <h2 i18n="@@admmanage">User Management</h2>
     <hr>
-
-
     <div *ngIf="currentUser">
-
         <div *ngIf="isadmin">
-
             <h5 *ngIf="!isEditing" i18n="@@Users">User list:</h5>
             <h5 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser"
                     i18n="@@createusers">Create User</span></h5>
@@ -82,7 +78,9 @@
                     placeholder="answer to your recovery question" i18n-placeholder />
             </label>
             <hr>
-            <label>
+            <div></div>
+            <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
+            <label *ngIf="showPassword">
                 <span i18n>password</span>:
                 <br />
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
@@ -155,7 +153,9 @@
 
         </form>
     </ng-container>
+    <div *ngIf="!selectedUser">
     <button *ngIf="currentUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
+    </div>
     <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
 
 </div>

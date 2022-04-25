@@ -38,6 +38,7 @@ export class ManagementComponent implements OnInit {
   system: any;
   updateUser = false;
   recoverExplanation = false;
+  showPassword = false;
 
   constructor(
       private userService: UserService,
@@ -117,6 +118,16 @@ export class ManagementComponent implements OnInit {
     }
   }
 
+  showPasswordField() {
+    if (this.showPassword) {
+      this.showPassword = false;
+      console.log(this.showPassword);
+    } else {
+      this.showPassword = true;
+      console.log(this.showPassword);
+    }
+  }
+
   deleteAlert() {
     if (this.deleteUser) {
       this.deleteUser = false;
@@ -146,6 +157,7 @@ export class ManagementComponent implements OnInit {
        this.isadmin = false;
      }
      this.selectedUser = [];
+     this.showPassword = true;
      // opens the user edit form
      this.isEditing = true;
      // for showing the username input
