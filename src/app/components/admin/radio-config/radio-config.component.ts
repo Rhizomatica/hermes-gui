@@ -54,8 +54,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   fwdw: any;
   refv: any;
   fwd_raw: any;
+  fwd_watts: any;
+  fwd_volts: any;
   ref_raw: any;
   ref_watts: any;
+  ref_volts: any;
   tx = false;
   rx = false;
   power: any;
@@ -123,6 +126,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.power = res;
         this.radio.swr = this.power.swr;
+        this.radio.swr_str = this.power.swr.toString();
         this.radio.tx = this.power.tx;
         this.radio.led = this.power.led;
         this.led = this.power.led;
@@ -130,9 +134,10 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.bypass = this.power.bypass;
         this.radio.fwd_watts = this.power.fwd_watts;
         this.radio.fwd_raw = this.power.fwd_raw;
+        this.radio.fwd_volts = this.power.fwd_volts;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
-        this.ref_watts = this.radio.ref_watts;
+        this.radio.ref_watts = this.power.ref_watts;
 
         if (this.radio.bypass === true) {
           this.bypass = true;
