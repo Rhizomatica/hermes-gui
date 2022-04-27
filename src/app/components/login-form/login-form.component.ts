@@ -31,13 +31,13 @@ export class LoginFormComponent implements OnInit {
   }
 
   submitLogin(f: NgForm): void{
-    console.log('⚚ login - submitLogin: f.value: ', f.value);
+    // console.log('⚚ login - submitLogin: f.value: ', f.value);
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
         this.currentUser = res;
         this.wrong = false;
-        //console.log('⚚ login - submitLogin: res: ', res);
+        console.log('⚚ login - submitLogin: res: ');
         this.hideForm();
         return res;
         
