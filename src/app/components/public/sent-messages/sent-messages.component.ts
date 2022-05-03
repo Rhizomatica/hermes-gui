@@ -2,21 +2,17 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../../../interfaces/message';
 import { UUCPQueue } from '../../../interfaces/uucpqueue';
 import { User } from '../../../interfaces/user';
-import { UserService } from '../../../_services/user.service';
 import { MessageService } from '../../../_services/message.service';
 import { UUCPService } from '../../../_services/uucp.service';
 import { AlertService } from '../../../_services/alert.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
-import { Observable } from 'rxjs';
 import { ApiService } from '../../../_services/api.service';
-
 
 @Component({
   selector: 'app-sent-messages',
   templateUrl: './sent-messages.component.html',
   styleUrls: ['./sent-messages.component.less']
 })
-
 
 
 export class SentMessagesComponent implements OnInit {
@@ -43,24 +39,18 @@ export class SentMessagesComponent implements OnInit {
   allowhmp: string;
   deleteMessage = false;
 
-
-
   constructor(
     private messageService: MessageService,
     private uucpService: UUCPService,
     private apiService: ApiService,
     private alertService: AlertService,
     private authenticationService: AuthenticationService,
-    // private userService: UserService
-    )
-    {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    }
-
-    
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   closeError() {
-      this.errorAlert = false;
+    this.errorAlert = false;
   }
 
   onSelect(message: Message): void {
@@ -68,10 +58,10 @@ export class SentMessagesComponent implements OnInit {
     this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
-  cancelTransmission(host,id): void{
+  cancelTransmission(host, id): void {
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
-    	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -80,10 +70,10 @@ export class SentMessagesComponent implements OnInit {
     console.log('⚚ cancelTransmission:', host, id);
   }
 
-  cancelMail(host,id): void{
+  cancelMail(host, id): void {
     this.uucpService.cancelMail(host, id).subscribe(
       (res: any) => {
-    	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -92,86 +82,63 @@ export class SentMessagesComponent implements OnInit {
     console.log('⚚ cancelMail:', host, id);
   }
 
-
-
-showDelete() {
-  if (this.deleteMessage) {
-    this.deleteMessage = false;
-  } else {
-    this.deleteMessage = true;
-  }
-}
-
-selectMessage(message: Message): void {
-  this.selectedMessage = message;
-  console.log(this.selectedMessage);
-}
-
-deleteThisMessage() {
-  let msgId = 0;
-  msgId = this.selectedMessage.id;
-  console.log(msgId);
-  console.log(this.selectedMessage);
-  this.messageService.deleteMessage(msgId).subscribe(
-    (res: any) => {
-      this.message = res;
-      // console.log('⚚ messages - deleteInboxMessage -  res: ', res);
-      this.getMessages();
+  showDelete() {
+    if (this.deleteMessage) {
       this.deleteMessage = false;
-    },
-    (err) => {
-      this.error = err;
-      this.deleteMessage = false;
-      // console.error (err);
+    } else {
+      this.deleteMessage = true;
     }
-  );
-  // this.deleteMessage = false;
-  //this.getInboxMessages();
-}
+  }
 
-  removeMessage(message: Message): void{
-    this.sentMessages = this.sentMessages.filter(obj => obj !== message);
-    this.messageService.deleteMessage(message.id).subscribe(
+  selectMessage(message: Message): void {
+    this.selectedMessage = message;
+  }
+
+  deleteThisMessage() {
+    let msgId = 0;
+    msgId = this.selectedMessage.id;
+    console.log(msgId);
+    console.log(this.selectedMessage);
+    this.messageService.deleteMessage(msgId).subscribe(
       (res: any) => {
         this.message = res;
+        this.getSentMessages();
+        this.deleteMessage = false;
       },
       (err) => {
         this.error = err;
-        this.errorAlert = true;
+        this.deleteMessage = false;
       }
     );
-    console.log('⚚ sent-messages component cancelTransmission:', message.id);
   }
 
-confTransmit(){
-  if (this.confirmTransmit === false) {
-    this.confirmTransmit = true;
-  } else {
-    this.confirmTransmit = false;
+  confTransmit() {
+    if (this.confirmTransmit === false) {
+      this.confirmTransmit = true;
+    } else {
+      this.confirmTransmit = false;
+    }
   }
-}
 
- transmitNow(): void{
+  transmitNow(): void {
     this.uucpService.callSystems().subscribe(
       (res: any) => {
         // this.message = res;
-    	console.log('⚚ sent-messages component transmit now:');
-    	this.confirmTransmit = false;
+        console.log('⚚ sent-messages component transmit now:');
+        this.confirmTransmit = false;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
-    	console.log('⚚ sent-messages component transmit now fail:');
+        console.log('⚚ sent-messages component transmit now fail:');
       }
     );
   }
 
-
-  getMessages(): void{
+  getSentMessages(): void {
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
-        // console.log(this.sentMessages);
         this.noMessages = false;
       },
       (err) => {
@@ -181,16 +148,15 @@ confTransmit(){
     );
   }
 
-  getQueue(): void{
+  getQueue(): void {
     this.uucpService.getQueue().subscribe(
       res => {
         this.queue = res;
-         // console.log('⚚ uucp queue:', this.queue);
-         if (Object.keys(this.queue).length ==0) {
-           this.noQueue = true;
-         } else {
-           this.noQueue = false;
-         }
+        if (Object.keys(this.queue).length == 0) {
+          this.noQueue = true;
+        } else {
+          this.noQueue = false;
+        }
       },
       (err) => {
         this.error = err;
@@ -203,40 +169,40 @@ confTransmit(){
     if (this.queue) {
       if (this.queue !== []) {
         let soma = 0;
-        for( let i = 0; i < this.queue.length; i++) {
+        for (let i = 0; i < this.queue.length; i++) {
           soma += parseInt(this.queue[i].size, 10);
           console.log(soma);
           return soma;
+        }
       }
-    }
     }
   }
 
-  getSysConfig(): void{
+  getSysConfig(): void {
     this.apiService.getSysConfig().subscribe(
       (res: any) => {
-        this.serverConfig= res;
+        this.serverConfig = res;
         this.allowhmp = res.allowhmp;
-        
-        switch(this.allowhmp) {
+
+        switch (this.allowhmp) {
           case 'users':
             if (this.currentUser) {
               this.allowCompose = true;
             }
             break;
-            case 'admin':
-              if (this.currentUser) {
-                if (this.isadmin) {
-                  this.allowCompose = true;
-                }
+          case 'admin':
+            if (this.currentUser) {
+              if (this.isadmin) {
+                this.allowCompose = true;
               }
+            }
             break;
-            case 'all':
+          case 'all':
             this.allowCompose = true;
             break;
-            default:
+          default:
             this.allowCompose = false;
-          }
+        }
         return res;
       },
       (err) => {
@@ -248,9 +214,8 @@ confTransmit(){
 
 
   ngOnInit(): void {
-    this.getMessages();
+    this.getSentMessages();
     this.getSysConfig();
-
     this.isadmin = this.currentUser.admin;
   }
 }
