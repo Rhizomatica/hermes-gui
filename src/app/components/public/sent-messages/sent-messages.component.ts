@@ -211,8 +211,7 @@ export class SentMessagesComponent implements OnInit {
       }
     );
   }
-
-
+  
   ngOnInit(): void {
     this.getSentMessages();
     this.getSysConfig();

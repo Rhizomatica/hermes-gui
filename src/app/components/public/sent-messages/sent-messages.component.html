@@ -1,51 +1,44 @@
 <div class="container">
-   
     <div>
-        <div >
+        <div>
             <h2 i18n="@@sentmessages" class="maintitle">Sent Messages </h2>
             <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
-           
-            <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access sent messages<br />
-            </div>
 
+            <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access
+                sent messages<br />
+            </div>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist sent">
                     <div class="item" *ngFor="let message of sentMessages | filter:searchMessages">
                         <div class="maininfo">
-                        <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
-                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()" >
-                            
+                            <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
-                            <span class="ls" (click)="getInboxMessage(message)">{{message.name}}</span>
-                            <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg" *ngIf="message.secure" >
-                            <span *ngIf="message.file">
-                                <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
-                            </span>
-                        <div>
+                                <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
+                                    <span class="ls">{{message.name}}</span>
+                                </a>
+                                <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg"
+                                    *ngIf="message.secure">
+                                <span *ngIf="message.file">
+                                    <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
+                                </span>
+                                <div>
+                                </div>
+                                <a routerLink="/message/{{message.id}}"
+                                    title="{{message.id}} from {{message.dest}}"></a>
+                                <div></div>
+                            </div>
                         </div>
-                        <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
-                            
-                        </a>
-
-                        <div>
-                            
-                        </div>
-                        </div>
-                        </div>
-                        
-                        <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}   
+                        <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}
                         </span>
                     </div>
                 </div>
             </div>
-            
             <div class="overall alert" *ngIf="deleteMessage">
                 <div class="cv">
                     <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
                     </span>
-                    <span>{{selectedMessage.name}}</span>    
-
-    
+                    <span>{{selectedMessage.name}}</span>
                     <div class="icon"><a (click)="showDelete()">
                             <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
                     </div>
@@ -53,8 +46,6 @@
                             <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
                                 i18n="@@confirmmt">confirm</button></a>
                     </div>
-        
-                    
                 </div>
             </div>
             <div class="flex">
@@ -70,27 +61,19 @@
                         messages
                     </span>
                 </button>
-                
             </div>
         </div>
-        
-        
-    <div >
-
-
-
-    <div class="overall alert" *ngIf="errorAlert==true">
-        <div class="cv">
-            <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-            <span>{{error}}</span>
-            <div class="icon"><a (click)="closeError()">
-                    <img title="compose" src="assets/svg/x.svg"></a>
+        <div>
+            <div class="overall alert" *ngIf="errorAlert==true">
+                <div class="cv">
+                    <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+                    <span>{{error}}</span>
+                    <div class="icon"><a (click)="closeError()">
+                            <img title="compose" src="assets/svg/x.svg"></a>
+                    </div>
+                </div>
             </div>
-
         </div>
+        <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->
     </div>
 </div>
-
-
-
-<!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->

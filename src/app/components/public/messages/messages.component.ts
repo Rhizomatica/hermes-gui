@@ -78,22 +78,7 @@ export class MessagesComponent implements OnInit {
       }
     );
   }
-
   
-
-  getInboxMessage($id): void {
-      this.messageService.getInboxMessage($id).subscribe(
-      (res: any) => {
-        this.message = res;
-      },
-      (err) => {
-        this.error = err;
-        this.noMessages = true;
-      }
-    );
-  }
-  
-
   showDelete() {
     if (this.deleteMessage) {
       this.deleteMessage = false;
