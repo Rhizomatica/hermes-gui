@@ -10,11 +10,11 @@ import { ApiService } from '../../../_services/api.service';
 
 @Component({
   selector: 'app-management',
-  templateUrl: './management.component.html',
-  styleUrls: ['./management.component.less']
+  templateUrl: './user-management.component.html',
+  styleUrls: ['./user-management.component.less']
 })
 
-export class ManagementComponent implements OnInit {
+export class UserManagementComponent implements OnInit {
 
   currentUser: User;
   searchUser: string;

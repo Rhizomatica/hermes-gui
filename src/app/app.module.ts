@@ -14,7 +14,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
 import { NetadminComponent } from './components/admin/netadmin/netadmin.component';
-import { ManagementComponent } from './components/admin/management/management.component';
+import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { LoginComponent } from './components/public/login/login.component';
@@ -62,13 +62,12 @@ registerLocaleData(localePt);
     AppComponent,
     LandingComponent,
     StationsComponent,
-    // HmheaderComponent,
     MessagesComponent,
     MessageDetailComponent,
     SysadminComponent,
     LogComponent,
     NetadminComponent,
-    ManagementComponent,
+    UserManagementComponent,
     UpgradeComponent,
     MessagecomposeComponent,
     LoginComponent,

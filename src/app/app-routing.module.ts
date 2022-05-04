@@ -6,7 +6,7 @@ import { SysadminComponent } from './components/admin/sysadmin/sysadmin.componen
 import { StationsComponent } from './components/admin/stations/stations.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
-import { ManagementComponent } from './components/admin/management/management.component';
+import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { NetadminComponent } from './components/admin/netadmin/netadmin.component';
 import { UpgradeComponent } from './components/upgrade/upgrade.component';
@@ -31,8 +31,8 @@ const routes: Routes = [
   { path: 'stations', component: StationsComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
-  { path: 'manage', component: ManagementComponent },
-  { path: 'manage/:id', component: ManagementComponent },
+  { path: 'usermanage', component: UserManagementComponent },
+  { path: 'usermanage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },
   { path: 'netadmin', component: NetadminComponent },
   { path: 'upgrade', component: UpgradeComponent },
