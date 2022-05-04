@@ -1,5 +1,4 @@
 <h2 i18n="@@transmissionschedules">Central Station</h2>
-
 <div *ngIf="isAdmin">
     <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br />
     </div>
@@ -48,12 +47,10 @@
                     <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than
                         start time</p>
                 </label>
-
                 <label>
                     <p i18n="@@enable">Enable: <input type="checkbox" name="enable"
                             [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
                 </label>
-
                 <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
                     (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button>
                 <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule"
@@ -62,13 +59,8 @@
                         (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span>
             </div>
             <br />
-
-
         </form>
-
-
     </div>
-
 </div>
 <div>
     <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">You need admin privileges to access this page</p>

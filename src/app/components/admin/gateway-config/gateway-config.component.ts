@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
-import { Schedule } from '../../../interfaces/schedule';
-import { Station } from '../../../interfaces/station';
 import { StationService } from '../../../_services/station.service';
-import { NgForm} from '@angular/forms';
-import { map, catchError } from 'rxjs/operators';
-
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-gateway-config',
@@ -37,11 +33,10 @@ export class GatewayConfigComponent implements OnInit {
   defstart: boolean;
   defstop: boolean;
   defenable: boolean;
-  defid:number;
+  defid: number;
   stationedit = false;
   updateAlert = false;
   canDelete = true;
-  errormessage: any;
   timeerror = false;
 
 
@@ -49,16 +44,16 @@ export class GatewayConfigComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private stationService: StationService) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   public getStations(): void {
-   this.stationService.getStations().subscribe(
+    this.stationService.getStations().subscribe(
       (data: any) => {
         this.stations = data;
         this.stations = this.stations.filter(e => e.alias !== 'central');
         // console.log(this.stations, 'bibibi');
-       // this.comparedStations = [];
+        // this.comparedStations = [];
         for (var i in this.stations) {
           // console.log(this.stations[i]);
           for (var j in this.enabledStations) {
@@ -75,12 +70,12 @@ export class GatewayConfigComponent implements OnInit {
         // console.log(this.stations, 'eeeeee');
         // console.log(this.stations);
       }, (err) => {
-          this.error = err;
-		      console.log(this.error);
-        }
+        this.error = err;
+        console.log(this.error);
+      }
     );
 
-    
+
     //this.stations = this.stations.filter( e => e['alias'] !== 'central');
 
   }
@@ -97,60 +92,52 @@ export class GatewayConfigComponent implements OnInit {
     }
   }
 
-
-  updateSchedule(id: number, f:NgForm):void {
+  updateSchedule(id: number, f: NgForm): void {
     f.value.stations = this.enabledStations;
-    this.apiService.updateSchedule(id, f.value ).subscribe(
+    this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
         this.stations = res;
         //console.log(this.stations, 'lllll');
         this.getStations();
       }, (err) => {
-          this.error = err;  
-		      console.log(this.error);
-        }
+        this.error = err;
+        console.log(this.error);
+      }
     );
   }
 
-selectStations(ev){
-  if(ev.target.checked == true) {
-    if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
-  } else {
-    this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
+  selectStations(ev) {
+    if (ev.target.checked == true) {
+      if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
+    } else {
+      this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
+    }
+    console.log(this.enabledStations);
   }
-  console.log(this.enabledStations);
-}
 
-async updateStations(id: number, f:NgForm): Promise<void> {
+  async updateStations(id: number, f: NgForm): Promise<void> {
     this.updateAlert = false;
     f.value.stations = this.enabledStations;
     f.value.title = this.deftitle;
     f.value.starttime = this.defstart;
     f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
-    // console.log(f.value, 'hihihi');
-    await this.apiService.updateSchedule(id, f.value ).subscribe(
-      (data:any) => {
+    await this.apiService.updateSchedule(id, f.value).subscribe(
+      (data: any) => {
         this.stations = data;
         this.getSchedules();
         this.getSchedule('1');
         this.getStations();
-        console.log(this.stations, 'kkkkkkk');
-
-        console.log(this.stations);
       }, (err) => {
-          this.errormessage = err;
-		      console.log(this.errormessage);
-          this.errorAlert = true;
-        }
+        this.error = err
+        this.errorAlert = true;
+      }
     );
 
     this.stationedit = false;
-    // console.log(this.stations);
-    // console.log(this.enabledStations, 'wwww');
   }
 
-  
+
 
   stationChange() {
     if (this.stationedit === true) {
@@ -161,22 +148,20 @@ async updateStations(id: number, f:NgForm): Promise<void> {
   }
 
   confirmChange() {
-  this.updateAlert = true;
+    this.updateAlert = true;
   }
 
-  public getSchedules():void {
+  public getSchedules(): void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
         this.schedules = res;
         this.noSchedules = false;
-        // console.log(this.schedules, 'aaaaa');
         this.enabledStations = this.schedules[0].stations;
         this.deftitle = this.schedules[0].title;
         this.defstart = this.schedules[0].starttime;
         this.defstop = this.schedules[0].stoptime;
         this.defenable = this.schedules[0].enable;
         this.defid = this.schedules[0].id;
-        // console.log(this.enabledStations, 'uuuu');
         return res;
       },
       (err) => {
@@ -186,48 +171,45 @@ async updateStations(id: number, f:NgForm): Promise<void> {
   }
 
   newSchedule() {
-  this.isEditing = true;
-  this.selectedSchedule = [];
-  this.emptySchedule = true;
+    this.isEditing = true;
+    this.selectedSchedule = [];
+    this.emptySchedule = true;
   }
 
   async deleteSchedule($id): Promise<void> {
     if ($id > 1) {
       await this.apiService.deleteSchedule($id).subscribe(
-        (data:any) => {
+        (data: any) => {
           this.getSchedules();
           console.log('schedule deleted');
         }, (err) => {
-            this.errormessage = err;
-            console.log(this.errormessage);
-            this.errorAlert = true;
-          } 
-      );
-      
-    } 
-  }
-
-  async createSchedule(f:NgForm): Promise<void> {
-    f.value.stations = this.enabledStations;
-    await this.apiService.createSchedule(f.value).subscribe(
-      (data:any) => {
-        this.getSchedules();
-        console.log('schedule created');
-      }, (err) => {
-          this.errormessage = err;
-		      console.log(this.error);
+          this.error = err
           this.errorAlert = true;
         }
+      );
+
+    }
+  }
+
+  async createSchedule(f: NgForm): Promise<void> {
+    f.value.stations = this.enabledStations;
+
+    await this.apiService.createSchedule(f.value).subscribe(
+      (data: any) => {
+        this.getSchedules();
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true;
+      }
     );
-    
+
     this.isEditing = false;
   }
 
   getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.schedule = data;
-        // console.log(this.schedule, 'iiiii');
       },
       (err) => {
         this.error = err;
@@ -237,7 +219,6 @@ async updateStations(id: number, f:NgForm): Promise<void> {
 
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
-    // console.log(this.selectedSchedule, 'dadaada');
     this.isEditing = true;
     // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptySchedule = false;
@@ -254,14 +235,11 @@ async updateStations(id: number, f:NgForm): Promise<void> {
   showStations() {
     if (this.showSt === false) {
       this.showSt = true;
-      // console.log(this.showSt);
     }
     else {
       this.showSt = false;
-      // console.log(this.showSt);
     }
   }
-  
 
   ngOnInit(): void {
     this.schedules = [];
@@ -274,7 +252,5 @@ async updateStations(id: number, f:NgForm): Promise<void> {
     } else {
       this.isAdmin = false;
     }
-    
   }
-
 }
