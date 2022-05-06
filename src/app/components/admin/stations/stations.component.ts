@@ -1,11 +1,8 @@
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit, NgModule } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
 import { NgForm} from '@angular/forms';
-import { Station } from '../../../interfaces/station';
 import { StationService } from '../../../_services/station.service';
 
 @Component({
@@ -14,7 +11,6 @@ import { StationService } from '../../../_services/station.service';
   styleUrls: ['./stations.component.less']
 })
 export class StationsComponent implements OnInit {
-  // error = '';
   error: Error;
   success = '';
   test = '';
@@ -68,12 +64,9 @@ export class StationsComponent implements OnInit {
        (data: any) => {
          this.stations = data;
          this.stations = this.stations.filter(e => e.alias !== 'central');
-         // console.log(this.stations, 'bibibi');
         // this.comparedStations = [];
          for (var i in this.stations) {
-           // console.log(this.stations[i]);
            for (var j in this.enabledStations) {
-             // console.log(this.enabledStations[j], 'kkk');
              if (this.stations[i].alias == this.enabledStations[j]) {
                this.stations[i].checked = true;
                //this.comparedStations.push(this.stations[i]);
@@ -83,29 +76,31 @@ export class StationsComponent implements OnInit {
              }
            }
          }
-         // console.log(this.stations, 'eeeeee');
-         // console.log(this.stations);
        }, (err) => {
            this.error = err;
            console.log(this.error);
          }
      );
- 
-     
      //this.stations = this.stations.filter( e => e['alias'] !== 'central');
- 
    }
 
-   selectStations(ev){
-    if(ev.target.checked == true) {
-      if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
+   selectStations(ev){    
+     if (this.enabledStations.includes(ev.target.value) === false) {
+        this.enabledStations.push(ev.target.value);
+        this.switchChecked(true, ev.target.value)
+
     } else {
+      this.switchChecked(false, ev.target.value)
       this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
     }
-    console.log(this.enabledStations);
   }
 
-
+  switchChecked(checked, station): void{
+    this.stations.forEach(element => {
+      if(element.alias === station)
+        element.checked = checked
+    });
+  }
 
    getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(
@@ -125,7 +120,6 @@ export class StationsComponent implements OnInit {
     );
   } 
 
-
   async updateStations(id: number, f:NgForm): Promise<void> {
     this.updateAlert = false;
     f.value.stations = this.enabledStations;
@@ -133,25 +127,18 @@ export class StationsComponent implements OnInit {
     f.value.starttime = this.defstart;
     f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
-    // console.log(f.value, 'hihihi');
     await this.apiService.updateSchedule(id, f.value ).subscribe(
       (data:any) => {
         this.enabledStations = data.stations;
         this.getSchedule('1');
         this.getStations();
-        //console.log(this.stations, 'kkkkkkk');
-
-        //console.log(this.stations);
       }, (err) => {
           this.errormessage = err;
 		      console.log(this.errormessage);
           this.errorAlert = true;
         }
     );
-
     this.stationedit = false;
-    // console.log(this.stations);
-    // console.log(this.enabledStations, 'wwww');
   }
 
   ngOnInit(): void {

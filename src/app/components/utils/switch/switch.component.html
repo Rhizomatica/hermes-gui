@@ -1,7 +1,11 @@
-<label>
-  {{title}}
+<label (click)="onSwitch()" i18n="">
+  {{name}}
   <div class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
+    <input type="checkbox" [(ngModel)]="disabled">
+    <span class="slider round"></span>
   </div>
 </label>
+
+<!-- <div *ngIf="isadmin">
+                <switch i18n="" name="is admin" disabled="selectedUser.admin"></switch>
+            </div> -->

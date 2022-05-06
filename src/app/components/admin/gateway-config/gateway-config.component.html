@@ -28,36 +28,38 @@
     <div class="gateway" *ngIf="isEditing">
         <hr>
         <form #f="ngForm" id="timeform" novalidate>
-            <div>
-                <label>
-                    <p i18n="@@schedtitle" i18n="@@scheduletitel">Schedule Title</p>
-                    <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
-                    <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
-                    <p i18n="@@initialtime">Start transmission hour: </p>
-                    <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)"
-                        name="starttime" [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5"
-                        required value="selectedSchedule.starttime" />
-                    <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
-                </label>
-                <label>
-                    <p i18n="@@finatime">Stop transmission hour:</p>
-                    <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time"
-                        name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime"
-                        value="selectedSchedule.stoptime" required />
-                    <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than
-                        start time</p>
-                </label>
-                <label>
-                    <p i18n="@@enable">Enable: <input type="checkbox" name="enable"
-                            [(ngModel)]="selectedSchedule.enable" class="beforelist"></p>
-                </label>
-                <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
-                    (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button>
-                <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule"
-                    (click)="createSchedule(f)">create schedule</button>
-                <span *ngIf="!emptySchedule"><button type="button" i18n="@@deletechedule" [disabled]="!canDelete"
-                        (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span>
-            </div>
+            <label>
+                <p i18n="@@schedtitle" i18n="@@scheduletitel">Schedule Title</p>
+                <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
+                <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
+                <p i18n="@@initialtime">Start transmission hour: </p>
+                <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
+                    [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required
+                    value="selectedSchedule.starttime" />
+                <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
+            </label>
+            <label>
+                <p i18n="@@finatime">Stop transmission hour:</p>
+                <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time"
+                    name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime"
+                    value="selectedSchedule.stoptime" required />
+                <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than
+                    start time</p>
+            </label>
+            <label class="m-t-25">
+                <span i18n="@@enable">Enable:</span>
+                <div class="switch">
+                    <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable">
+                    <span class="slider round"></span>
+                </div>
+            </label>
+            <br />
+            <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
+                (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button>
+            <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule"
+                (click)="createSchedule(f)">create schedule</button>
+            <span *ngIf="!emptySchedule"><button type="button" i18n="@@deletechedule" [disabled]="!canDelete"
+                    (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span>
             <br />
         </form>
     </div>

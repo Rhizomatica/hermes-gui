@@ -8,29 +8,30 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SwitchComponent {
 
   constructor() {
-    console.log("Create Switch Custom Componente - " + this.title)
+    this.name = 'Switch';
+    this.i18n = 'Translate';
+    this.disabled = ''
+    this.value = 0
+    this.customFunction = function(){ console.log("Custom function called with param: " + this.disabled); }
   }
 
-  @Input('init') title: string
-  // @Input() disabled: any
-  // @Input() value: any
-  // @Input() customFunction: any
+  @Input() name: string
+  @Input() i18n: string
+  @Input() disabled: string
+  @Input() value: number
+  @Input() customFunction: any
 
   onSwitch() {
-    // if (!this.disabled)
-    //   this.disabled = 'disabled'
-    // else
-    //   this.disabled = null
-
-    // try {
-    //   this.customFunction()
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    try {
+      eval(this.customFunction)
+      console.log(this.disabled)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   ngOnInit(): void {
-    console.log("MAOOOI - " + this.title)
+    console.log("Switch component initialized: " + this.disabled)
   }
 
 }
