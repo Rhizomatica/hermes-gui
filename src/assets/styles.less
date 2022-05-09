@@ -390,7 +390,7 @@ textarea {
     #searchbox1 {
         position: relative;
         right: 0;
-        margin: 0 0.06em 0.5em;
+        margin: 1em 0.06em 1em;
         width: calc(100% - 0.12em);
         background: #fff 98% no-repeat url(./svg/magnifying-glass-solid.svg);
         background-size: 1em 1em;
@@ -793,7 +793,7 @@ textarea {
     display: block;
     height: calc(100vh - 16em);
     min-height: 5em;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
@@ -1022,7 +1022,8 @@ input.searchbox2 {
         display: flex;
         flex-direction: column;
         flex-wrap: no-wrap;
-
+        margin-top: 1em;
+        // margin-bottom: 2em;
     }
 
     .item {
@@ -1436,7 +1437,7 @@ input.ng-invalid {
 
 
 .maintitle {
-    margin-top: 0.25em;
+    margin-top: 1.25em;
 }
 
 .formfield input.beforelist {
@@ -1668,6 +1669,10 @@ input[type=range]:hover::-ms-track {
     flex-wrap: wrap;
     a {
         text-decoration: none;
+    }
+
+    h2{
+        flex:4
     }
 }
 
