@@ -37,14 +37,7 @@
                 <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
                     placeholder="write the username">
             </label>
-            <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
-            <label class="m-b-25 m-t-25" *ngIf="isadmin">
-                <span i18n>is admin</span>
-                <div class="switch">
-                    <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin">
-                    <span class="slider round"></span>
-                </div>
-            </label>
+            <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}         
             <label for="name">
                 <span i18n="@@name">full name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required
@@ -77,7 +70,7 @@
                     placeholder="answer to your recovery question" i18n-placeholder />
             </label>
             <hr>
-           
+
             <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
             <label *ngIf="showPassword">
                 <span i18n>password</span>:
@@ -100,6 +93,13 @@
                     passwords can't be empty
                 </div>
                 <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword> must have at least 6 characters</span>
+            </label>
+            <label class="m-t-25" *ngIf="isadmin">
+                <span i18n>is admin</span>
+                <div class="switch">
+                    <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin">
+                    <span class="slider round"></span>
+                </div>
             </label>
             <br />
             <button (click)="cancelCreate()" i18n="@@mwcancel">cancel</button>

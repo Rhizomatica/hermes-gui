@@ -642,22 +642,22 @@ textarea {
 
 .formdata {
 
-    // width: calc(100% - 80px);
-    input {
-        width: 100%;
-        border: 1px solid #888;
-        border-radius: 3px;
-    }
-
     label {
         margin-top: 10px;
         display: block;
+
+        input{
+            width: 100%;
+            border: 1px solid #888;
+            border-radius: 3px;
+        }
+
+        input[type="checkbox"]{
+            width: 0px;
+        }
     }
 
-    input.ckbx {
-        width: 60px;
-
-    }
+    
 
     input.midbt {
         width: 60%;
