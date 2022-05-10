@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Message } from '../../../interfaces/message';
@@ -23,7 +24,7 @@ export class MessageDetailComponent implements OnInit {
   error: Error;
   public messageImage: Blob;
   public isEncrypted = false;
-  url =  GlobalConstants.apiURL;
+  url = GlobalConstants.apiURL;
   noMessage = false;
   noImage = false;
   wrongPass = false;
@@ -37,11 +38,14 @@ export class MessageDetailComponent implements OnInit {
   currentUser: User;
   allowhmp = 'root';
   serverConfig: any;
+  deleteMessage = false;
+
 
 
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private messageService: MessageService,
     private location: Location,
     private apiService: ApiService,
@@ -71,16 +75,16 @@ export class MessageDetailComponent implements OnInit {
     // console.log(f.value);
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
-		  if (res.text !== ''){
-        this.message.text = res.text;
-        this.uncrypted = true;
-        this.passString = '?i=' + f.value.pass;
-		  }
-      else {
-        this.uncrypted = false;
-        this.wrongPass = true;
-        this.passString = '';
-      }
+        if (res.text !== '') {
+          this.message.text = res.text;
+          this.uncrypted = true;
+          this.passString = '?i=' + f.value.pass;
+        }
+        else {
+          this.uncrypted = false;
+          this.wrongPass = true;
+          this.passString = '';
+        }
       },
       (err) => {
         this.error = err;
@@ -91,12 +95,12 @@ export class MessageDetailComponent implements OnInit {
 
 
   loadingAudio() {
-  if (this.audioLoading) {
-  this.audioLoading = false;
-  // console.log('fdfdgdg');
-  } else {
-   // console.log('ffffff');
-  }
+    if (this.audioLoading) {
+      this.audioLoading = false;
+      // console.log('fdfdgdg');
+    } else {
+      // console.log('ffffff');
+    }
 
   }
 
@@ -131,10 +135,10 @@ export class MessageDetailComponent implements OnInit {
             case 'image/svg+xml':
             case 'image/pjpeg':
             case 'image/x-jps':
-            this.noImage = true;
-            this.isImage = true;
-            this.isAudio = false;
-            break;
+              this.noImage = true;
+              this.isImage = true;
+              this.isAudio = false;
+              break;
             case 'audio/aac':
             case 'audio/mpeg':
             case 'audio/ogg':
@@ -187,41 +191,41 @@ export class MessageDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessageImage(id).subscribe(
       data => {
-      this.messageImage = data;
-      // this.isImageLoading = false;
-    }, error => {
-      // this.isImageLoading = false;
-      console.log('⚚ message-detail - getImageFromService error ', error);
-    });
-}
+        this.messageImage = data;
+        // this.isImageLoading = false;
+      }, error => {
+        // this.isImageLoading = false;
+        console.log('⚚ message-detail - getImageFromService error ', error);
+      });
+  }
 
-getSysConfig(): void{
-  this.apiService.getSysConfig().subscribe(
-    (res: any) => {
-      this.serverConfig= res;
-      this.allowhmp = res.allowhmp;
-      this.checkHmp();
-    },
-    (err) => {
-      this.error = err;
-      this.allowCompose = false;
-      // console.log('user:', this.currentUser);
-    }
-    
-  );
-  
-}
-
-checkHmp() {
-  switch(this.allowhmp) {
-    case 'users':
-      if (this.currentUser) {
-        this.allowCompose = true;
-        console.log('allow1:');
-      } else {
+  getSysConfig(): void {
+    this.apiService.getSysConfig().subscribe(
+      (res: any) => {
+        this.serverConfig = res;
+        this.allowhmp = res.allowhmp;
+        this.checkHmp();
+      },
+      (err) => {
+        this.error = err;
         this.allowCompose = false;
+        // console.log('user:', this.currentUser);
       }
-      break;
+
+    );
+
+  }
+
+  checkHmp() {
+    switch (this.allowhmp) {
+      case 'users':
+        if (this.currentUser) {
+          this.allowCompose = true;
+          console.log('allow1:');
+        } else {
+          this.allowCompose = false;
+        }
+        break;
       case 'admin':
         if (this.currentUser) {
           if (this.currentUser.admin) {
@@ -229,23 +233,45 @@ checkHmp() {
             console.log('allow2:', this.allowCompose);
           } else {
             this.allowCompose = false;
-        }} else {
+          }
+        } else {
           this.allowCompose = false;
         }
-      break;
+        break;
       case 'all':
-      this.allowCompose = true;
-      console.log('allow3:', this.allowCompose);
-      break;
+        this.allowCompose = true;
+        console.log('allow3:', this.allowCompose);
+        break;
       default:
-      this.allowCompose = false;
-      console.log('allow4:', this.allowCompose);
+        this.allowCompose = false;
+        console.log('allow4:', this.allowCompose);
     }
-  return this.allowCompose;
+    return this.allowCompose;
 
-}
+  }
 
+  showDelete() {
+    if (this.deleteMessage) {
+      this.deleteMessage = false;
+    } else {
+      this.deleteMessage = true;
+    }
+  }
 
+  
+  deleteThisMessage() {
+    this.messageService.deleteMessage(this.message.id).subscribe(
+      (res: any) => {
+        this.message = res;
+        this.deleteMessage = false;
+        this.router.navigate(['/messages']);
+      },
+      (err) => {
+        this.error = err;
+        this.deleteMessage = false;
+      }
+    );
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

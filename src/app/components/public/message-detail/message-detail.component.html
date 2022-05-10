@@ -60,11 +60,32 @@
             <img title="edit" src="assets/svg/edit.svg">
             <span i18n="@@compose1"> Compose</span>
         </button> -->
+        <button (click)="showDelete()">
+            <span i18n>
+                <img title="delete" src="assets/svg/trash-alt.svg">
+                Delete
+            </span>
+        </button>
         <button routerLink="/compose">
             <span i18n="@@compose1">
                 <img title="compose" src="assets/svg/edit.svg">
                 Compose
             </span>
         </button>
+    </div>
+
+    <div class="overall alert" *ngIf="deleteMessage">
+        <div class="cv">
+            <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
+            </span>
+            <span>{{selectedMessage.name}}</span>
+            <div class="icon"><a (click)="showDelete()">
+                    <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
+            </div>
+            <div class="icon"><a routerLink='/messages' routerLinkActive="active">
+                    <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
+                        i18n="@@confirmmt">confirm</button></a>
+            </div>
+        </div>
     </div>
 </div>
