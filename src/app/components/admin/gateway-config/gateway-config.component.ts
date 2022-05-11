@@ -224,7 +224,6 @@ export class GatewayConfigComponent implements OnInit {
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
     this.isEditing = true;
-    // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptySchedule = false;
 
     if (this.selectedSchedule.id == '1') {
@@ -232,8 +231,6 @@ export class GatewayConfigComponent implements OnInit {
     } else {
       this.canDelete = true;
     }
-    // console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
-
   }
 
   showStations() {

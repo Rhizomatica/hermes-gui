@@ -20,7 +20,6 @@ export class SentMessagesComponent implements OnInit {
   currentUser: User;
   error = Error;
   success = '';
-  test = '';
   messages: Message[];
   queue: UUCPQueue[];
   job: UUCPQueue;
@@ -67,7 +66,6 @@ export class SentMessagesComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    console.log('⚚ cancelTransmission:', host, id);
   }
 
   cancelMail(host, id): void {
@@ -79,7 +77,6 @@ export class SentMessagesComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-    console.log('⚚ cancelMail:', host, id);
   }
 
   showDelete() {
@@ -97,19 +94,17 @@ export class SentMessagesComponent implements OnInit {
   deleteThisMessage() {
     let msgId = 0;
     msgId = this.selectedMessage.id;
-    console.log(msgId);
-    console.log(this.selectedMessage);
     this.messageService.deleteMessage(msgId).subscribe(
       (res: any) => {
         this.message = res;
         this.getSentMessages();
-        this.deleteMessage = false;
       },
       (err) => {
         this.error = err;
-        this.deleteMessage = false;
+        this.errorAlert = true;
       }
     );
+    this.deleteMessage = false;
   }
 
   confTransmit() {
@@ -123,14 +118,11 @@ export class SentMessagesComponent implements OnInit {
   transmitNow(): void {
     this.uucpService.callSystems().subscribe(
       (res: any) => {
-        // this.message = res;
-        console.log('⚚ sent-messages component transmit now:');
         this.confirmTransmit = false;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
-        console.log('⚚ sent-messages component transmit now fail:');
       }
     );
   }
@@ -161,6 +153,7 @@ export class SentMessagesComponent implements OnInit {
       (err) => {
         this.error = err;
         this.noUUcp = true;
+        this.errorAlert = true;
       }
     );
   }
@@ -171,7 +164,6 @@ export class SentMessagesComponent implements OnInit {
         let soma = 0;
         for (let i = 0; i < this.queue.length; i++) {
           soma += parseInt(this.queue[i].size, 10);
-          console.log(soma);
           return soma;
         }
       }

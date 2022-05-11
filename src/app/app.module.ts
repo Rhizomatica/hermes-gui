@@ -27,36 +27,28 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
 import { RetypeDirective } from './directives/retype.directive';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
-import { ErrorInterceptor} from './_helpers/error.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { UserExistDirective } from './directives/user-exist.directive';
 import { EmailComponent } from './components/public/email/email.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { FrequencyPipe } from './frequency.pipe';
-import {DecimalPipe} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { TestradioComponent } from './components/admin/testradio/testradio.component';
-import {DarkModeService, DARK_MODE_OPTIONS} from 'angular-dark-mode';
+import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { SwitchComponent } from './components/utils/switch/switch.component';
-
 
 registerLocaleData(localePt);
-
-// import { CLIENT_RENEG_LIMIT } from 'tls';
-
-/*export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, '.assets/i18n/', '.json');
-}*/
 
 @NgModule({
   exports: [
     CommonModule,
-  //  TranslateModule
+    //  TranslateModule
   ],
   declarations: [
     AppComponent,
@@ -85,8 +77,7 @@ registerLocaleData(localePt);
     TestradioComponent,
     GatewayConfigComponent,
     TransmissionListComponent,
-    LoginFormComponent,
-    SwitchComponent
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

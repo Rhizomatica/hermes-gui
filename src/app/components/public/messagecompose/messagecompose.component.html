@@ -4,27 +4,14 @@
     </div>
     <div id="compose" class="" *ngIf="allowhmp=='admin'" i18n="@@cantcompose2">
         <p>Only admin users can send messages to other stations, if you are an admin, please log in. </p>
-
     </div>
-
 </div>
 
-
 <div id="compose" class="" *ngIf="allowCompose">
-   <!-- <div class="flex">
-        <button routerLink="/compose">
-            <span i18n="@@compose1">
-                <img title="compose" src="assets/svg/edit.svg">
-                Compose
-            </span>
-
-        </button>
-    </div>-->
     <h2>
         <div class="icon" i18n="@@sendpublic">
             send your public message to another station</div>
     </h2>
-
     <form #f="ngForm" class="formdata" novalidate>
         <div [hidden]="fileIsProcessing==true">
             <label for="name">
@@ -32,79 +19,55 @@
                 <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140"
                     i18n-placeholder placeholder="Describe your message" />
             </label>
-
             <label for="text">
                 <span i18n="@@message">Message</span>:
                 <br />
                 <textarea i18n="@@writemessage" name="text" [(ngModel)]="message.text" required rows="5" cols="35"
                     maxlength="1400" i18n-placeholder placeholder="write the message"></textarea>
             </label>
-
             <label class="selstation">
                 <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
                     <span i18n="@@selectstation1" class="space">select station:</span><br>
                     <br>
-
                     <ng-container *ngIf="stations">
-
                         <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
                             <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}}</option>
                         </select>
-
-
-
                         <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest"
                             [selectableGroup]="true" [items]="stations" bindValue="alias" groupBy="selectedAllGroup"
                             bindLabel="alias" [selectableGroupAsModel]="false" [closeOnSelect]="false"
                             [(ngModel)]="message.dest" multiple=true required>
-
                             <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
                                 <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
                                     [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
                             </ng-template>
-
                             <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
                                 <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
                                     [ngModelOptions]="{standalone: true}" />{{item.alias}}
                             </ng-template>
-
                         </ng-select>
-
                     </ng-container>
-
                 </span>
             </label>
-
             <div class="uploader" *ngIf="allowUpload">
-
                 <ng-container>
                     <span i18n="@@attachfile">Attach File: </span>
-
                     <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
-
                     <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
                     <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
-
-
                     <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;"
                         #fileUpload>
-
-
                     <div *ngIf="sending">
                         <div class="blobber">
                             <div class="tx" i18n="@@uploadingfile">uploading file...</div>
                             <div class="square"></div>
                         </div>
                     </div>
-
                 </ng-container>
-
                 <div *ngIf="message.id && message.file">
                     <br>
                     <!--    <span i18n="@@fileserverid">file server id:</span>{{message.id}} /  {{message.file}} </span>-->
-
                     <span>{{message.file}} </span>
-
                     <br>
                     <span i18n="@@Img">Img:</span>
                     <img src={{$event.target.files[0].content}}>
@@ -135,25 +98,7 @@
                 </div>
             </div>
             <span></span>
-
-
-
-            <!-- 
-
-            <button type="submit" *ngIf="!passMatch && isEncrypted" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br/>
-                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-            </button>
-            <button type="submit" *ngIf="passMatch" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
-                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-            </button>
-            <button type="submit" *ngIf="!isEncrypted" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send message<br/>
-                <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-            </button>
-
-        -->
-
             <div *ngIf="isEncrypted">
-
                 <div *ngIf="passMatch">
                     <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send
                         message<br />
@@ -164,23 +109,18 @@
                     <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
                         <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
                     </button>
-
                 </div>
             </div>
-
             <div *ngIf="!isEncrypted">
                 <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send
                     message<br />
                     <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
                 </button>
             </div>
-
         </div>
-
         <div class="overall alert" [hidden]="fileIsProcessing==false">
             <div class="cv">
                 <span i18n="@@yourmessageprocessed0">Your message is been processed <br /><br /></span>
-
                 <div class="icon"><a (click)="newMessage()">
                         <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
                 </div>
@@ -194,7 +134,6 @@
                 </div>
             </div>
         </div>
-
         <div class="overall alert" [hidden]="errorAlert==false">
             <div class="cv">
                 <span i18n="@@errorsendingmsg">There was an error on sending your message <br /><br /></span>
@@ -202,13 +141,10 @@
                 <div class="icon"><a (click)="closeError()">
                         <img title="close" src="assets/svg/x.svg"></a>
                 </div>
-
             </div>
         </div>
-
         <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
             Your message was sent to the transmission list
         </div>
-
     </form>
 </div>

@@ -8,16 +8,16 @@ import { GlobalConstants } from '../../../global-constants';
 import { NgForm } from '@angular/forms';
 import { User } from '../../../interfaces/user';
 import { ApiService } from '../../../_services/api.service';
-import { UserService } from '../../../_services/user.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
-
-
-
+import { ScriptService } from '../../../_services/script.service';
+import { Utils } from '../../utils/utils';
+ 
 @Component({
   selector: 'app-message-detail',
   templateUrl: './message-detail.component.html',
   styleUrls: ['./message-detail.component.less']
 })
+
 export class MessageDetailComponent implements OnInit {
 
   @Input() message: Message;
@@ -39,9 +39,7 @@ export class MessageDetailComponent implements OnInit {
   allowhmp = 'root';
   serverConfig: any;
   deleteMessage = false;
-
-
-
+  errorAlert = false
 
   constructor(
     private route: ActivatedRoute,
@@ -50,11 +48,10 @@ export class MessageDetailComponent implements OnInit {
     private location: Location,
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    private scripts: ScriptService,
 
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-
   }
 
   changeEnc() {
@@ -63,7 +60,6 @@ export class MessageDetailComponent implements OnInit {
     } else {
       this.isEncrypted = true;
     }
-    console.log('⚚ message-detail - changeEnc: isEncrypted? ', this.isEncrypted);
   }
 
   getMessageOld(): void {
@@ -72,7 +68,6 @@ export class MessageDetailComponent implements OnInit {
   }
 
   sendPassword(id: number, f: NgForm): void {
-    // console.log(f.value);
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
         if (res.text !== '') {
@@ -90,18 +85,12 @@ export class MessageDetailComponent implements OnInit {
         this.error = err;
       }
     );
-
   }
 
 
   loadingAudio() {
-    if (this.audioLoading) {
-      this.audioLoading = false;
-      // console.log('fdfdgdg');
-    } else {
-      // console.log('ffffff');
-    }
-
+    if (this.audioLoading)
+      this.audioLoading = false
   }
 
   getMessage(): void {
@@ -120,7 +109,6 @@ export class MessageDetailComponent implements OnInit {
         if (this.message.file === '') {
           this.noImage = true;
         } else {
-          console.log(this.message.mimetype);
           switch (this.message.mimetype) {
             case '':
               this.noImage = true;
@@ -160,9 +148,6 @@ export class MessageDetailComponent implements OnInit {
               this.isImage = false;
           }
         }
-
-        // console.log(this.noMessage);
-        // console.log(res);
       },
       (err) => {
         this.error = err;
@@ -176,26 +161,22 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessageImage(id).subscribe(
       (res: any) => {
         this.messageImage = res;
-        // console.log('debug componente service ' + res);
       },
       (err) => {
         this.error = err;
         this.noImage = true;
       }
     );
-
   }
 
   getImageFromService() {
-    // this.isImageLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessageImage(id).subscribe(
       data => {
         this.messageImage = data;
-        // this.isImageLoading = false;
-      }, error => {
-        // this.isImageLoading = false;
-        console.log('⚚ message-detail - getImageFromService error ', error);
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
       });
   }
 
@@ -208,12 +189,10 @@ export class MessageDetailComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
         this.allowCompose = false;
-        // console.log('user:', this.currentUser);
       }
-
     );
-
   }
 
   checkHmp() {
@@ -221,7 +200,6 @@ export class MessageDetailComponent implements OnInit {
       case 'users':
         if (this.currentUser) {
           this.allowCompose = true;
-          console.log('allow1:');
         } else {
           this.allowCompose = false;
         }
@@ -230,7 +208,6 @@ export class MessageDetailComponent implements OnInit {
         if (this.currentUser) {
           if (this.currentUser.admin) {
             this.allowCompose = true;
-            console.log('allow2:', this.allowCompose);
           } else {
             this.allowCompose = false;
           }
@@ -240,14 +217,11 @@ export class MessageDetailComponent implements OnInit {
         break;
       case 'all':
         this.allowCompose = true;
-        console.log('allow3:', this.allowCompose);
         break;
       default:
         this.allowCompose = false;
-        console.log('allow4:', this.allowCompose);
     }
     return this.allowCompose;
-
   }
 
   showDelete() {
@@ -258,27 +232,34 @@ export class MessageDetailComponent implements OnInit {
     }
   }
 
-  
   deleteThisMessage() {
     this.messageService.deleteMessage(this.message.id).subscribe(
       (res: any) => {
         this.message = res;
         this.deleteMessage = false;
-        this.router.navigate(['/messages']);
+        this.router.navigate(['/messages']); //TODO - Verificar qual página retornar
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
         this.deleteMessage = false;
       }
     );
+  }
+
+  closeError() {
+    this.errorAlert = false;
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getMessage();
     this.getSysConfig();
-
     // this.getImageFromService();
+
+    // this.scripts.load('utils').then(data => {
+    //   console.log('script loaded ', data);
+    // }).catch(error => console.log(error));
   }
 
 }
