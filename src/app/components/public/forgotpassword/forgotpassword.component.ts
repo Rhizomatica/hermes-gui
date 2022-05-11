@@ -18,7 +18,6 @@ export class ForgotpasswordComponent implements OnInit {
     users: User[];
     stations: Station[];
     selectedUser: User;
-    control: any;
     uName: string;
     selTest = true;
     cAnsw = false;
@@ -26,28 +25,20 @@ export class ForgotpasswordComponent implements OnInit {
     noUser: true;
     passMatch = true;
     errorAlert = false;
-    sucess = false;
     answ: string;
-
-
 
     constructor(private userService: UserService, private stationService: StationService) { }
 
     getUsers(): void {
-      this.userService.getUsers().subscribe(
+      this.userService.getUsers().subscribe( //TODO - Buscar por email diretamente da API
         (res: any) => {
           this.users = res;
-          console.log(this.users);
         },
         (err) => {
           this.error = err;
           this.errorAlert = true;
         }
       );
-    }
-
-    onBtn(){
-      // console.log('debug onBtn lalala');
     }
 
     onSelect(input): void {
@@ -62,13 +53,11 @@ export class ForgotpasswordComponent implements OnInit {
     }
 
     onSubmitUpdate(f: NgForm): void {
-      console.log('⚚ management - passreset ');
       const id = this.selectedUser.emailid;
       this.userService.updateUser(id, f.value).subscribe(
         (res: any) => {
           this.users = res;
           this.success = true;
-
         },
         (err) => {
           this.error = err;
@@ -76,7 +65,6 @@ export class ForgotpasswordComponent implements OnInit {
           this.success = false;
         }
       );
-      // window.location.reload();
     }
 
     closeError() {
@@ -96,17 +84,13 @@ export class ForgotpasswordComponent implements OnInit {
       );
     }
 
-
-
     checkPassw(passw, repassw) {
       if (passw === repassw) {
         this.passMatch = true;
-
       } else {
         this.passMatch = false;
       }
     }
-
 
     ngOnInit(): void {
       this.getUsers();

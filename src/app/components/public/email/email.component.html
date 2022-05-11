@@ -3,8 +3,8 @@
   <form #f="ngForm" id="loginform" novalidate>
     <button><img class="round icon" src="assets/svg/roundcubelogo.svg"><a href="/mail/"
         target="_self">Webmail</a></button>
-    <button (click)="showlinks()" i18n="@@install_deltachat"><img
-        src="assets/img/deltachat_icon.png" class="delta icon">deltachat<br>
+    <button (click)="showlinks()" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png"
+        class="delta icon">deltachat<br>
     </button>
   </form>
   <div *ngIf="linksOn">
@@ -23,17 +23,14 @@
     <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
       bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false"
       [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required>
-
       <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
         <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />
         <span i18n="@@selectall"> Select All</span>
       </ng-template>
-
       <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
         <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
           [ngModelOptions]="{standalone: true}" />{{item.email}}
       </ng-template>
-
     </ng-select>
   </ng-container>
   <a href="mailto:{{emailto}}"><button [disabled]="emailto?.length == 0">Send email to selected</button> </a>
@@ -45,4 +42,13 @@
   <a routerLink="/recovery">
     <div><a i18n="@@forgotmypassworde">Forgot my password</a></div>
   </a>
+  <div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errormanagement">There was an error on processing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
 </div>
