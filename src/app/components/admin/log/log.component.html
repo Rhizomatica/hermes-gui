@@ -1,65 +1,55 @@
 <h2>Logs</h2>
+<button (click)="showUucpLog()">
+    <span i18n="@@uucplog">UUcp Log</span>
+</button>
+<button (click)="showEmailLog()">
+    <span i18n="@@emaillog">Email Log</span>
+</button>
 
-<div class="color">
-<div (click)="showUucpLog()" i18n="@@uucplog" >UUcp Log</div>
-<div (click)="showEmailLog()"i18n="@@emaillog" >Email Log </div>
-</div>
-
-<div class="formdata" *ngIf="uLog">
-    <hr>
-<h3 i18n="@@uucplog2">uucp log</h3>
-<div class="logs" >
-    <div class="close" (click)="closeLogs()">
-        <img  title="close" src="assets/svg/times.svg">
-    </div>
-<section>
-    <div *ngFor="let log of uucpLog">
-       <p> {{log}}</p>
-    </div>
-    <br>
-    
-</section>  
-<div (click)="closeLogs()">
-    <img  title="close" src="assets/svg/times.svg">
-</div>  
-</div>
-</div>
-
-<div class="formdata" *ngIf="dLog">
-    <hr>
-    <h3 i18n="@@debuglog2">uucp debug log</h3>
-    <div class="logs" >
-        <div class="close" (click)="closeLogs()">
-            <img  title="close" src="assets/svg/times.svg">
-        </div>
-    <section>
-        <div *ngFor="let log of uucpDebugLog">
-            <p>{{log}}</p>
-        </div>
-    </section>
-    <br/>
-        <div (click)="closeLogs()">
-            <img  title="close" src="assets/svg/times.svg">
-        </div>
-    </div>
-    </div>
-
-<div class="formdata" *ngIf="eLog">
-    <hr>
-    <h3 i18n="@@emaillog2">email log</h3>
-    <div class="logs" >
-        <div class="close" (click)="closeLogs()">
-            <img  title="close" src="assets/svg/times.svg">
-        </div>
+<div class="formdata m-t-25" *ngIf="uLog">
+    <h3 i18n="@@uucpllogsog2">uucp log</h3>
+    <hr />
+    <div class="logs">
         <section>
-        <div *ngFor="let log of mailLog">
-            <p>{{log}}</p>
-        </div>
-    </section>
-    <br>
-    <div (click)="closeLogs()">
-        <img  title="close" src="assets/svg/times.svg">
+            <div *ngFor="let log of uucpLog">
+                <p> {{log}}</p>
+            </div>
+            <br>
+        </section>
     </div>
-
 </div>
+<div class="formdata m-t-25" *ngIf="eLog">
+    <h3 i18n="@@emaillog2">email log</h3>
+    <hr />
+    <div class="logs">
+        <section>
+            <div *ngFor="let log of mailLog">
+                <p>{{log}}</p>
+            </div>
+        </section>
+        <br>
+    </div>
+</div>
+<div class="formdata m-t-25" *ngIf="dLog">
+    <h3 i18n="@@debuglog2">uucp debug log</h3>
+    <hr />
+    <div class="logs">
+        <section>
+            <div *ngFor="let log of uucpDebugLog">
+                <p>{{log}}</p>
+            </div>
+        </section>
+        <br />
+    </div>
+</div>
+<div>
+    <div class="overall alert" *ngIf="errorAlert==true">
+        <div class="cv">
+            <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+            <span>{{error}}</span>
+            <div class="icon"><a (click)="closeError()">
+                    <img title="compose" src="assets/svg/x.svg"></a>
+            </div>
+        </div>
+    </div>
 </div>

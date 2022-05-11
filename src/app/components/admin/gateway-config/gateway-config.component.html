@@ -13,7 +13,6 @@
             {{schedule.title}} ( {{schedule.starttime}} - {{schedule.stoptime}} )
         </li>
     </ul>
-
     <div class="overall alert" *ngIf="errorAlert">
         <div class="cv">
             <span i18n="@@errorrequest">There was an error on your request<br />
@@ -36,7 +35,6 @@
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
                     [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required
                     value="selectedSchedule.starttime" />
-                <!--<input name="starttime" [(ngModel)]="selectedSchedule.starttime" i18n="@@mwyn" required />-->
             </label>
             <label>
                 <p i18n="@@finatime">Stop transmission hour:</p>

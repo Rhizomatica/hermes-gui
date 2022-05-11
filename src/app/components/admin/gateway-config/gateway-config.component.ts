@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './gateway-config.component.html',
   styleUrls: ['./gateway-config.component.less']
 })
+
 export class GatewayConfigComponent implements OnInit {
 
   currentUser: User;
@@ -28,7 +29,6 @@ export class GatewayConfigComponent implements OnInit {
   comparedStations: any;
   showSt = false;
   data: any;
-  connected: any;
   deftitle: string;
   defstart: boolean;
   defstop: boolean;
@@ -38,7 +38,6 @@ export class GatewayConfigComponent implements OnInit {
   updateAlert = false;
   canDelete = true;
   timeerror = false;
-
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -52,32 +51,21 @@ export class GatewayConfigComponent implements OnInit {
       (data: any) => {
         this.stations = data;
         this.stations = this.stations.filter(e => e.alias !== 'central');
-        // console.log(this.stations, 'bibibi');
-        // this.comparedStations = [];
         for (var i in this.stations) {
-          // console.log(this.stations[i]);
           for (var j in this.enabledStations) {
-            // console.log(this.enabledStations[j], 'kkk');
             if (this.stations[i].alias == this.enabledStations[j]) {
               this.stations[i].checked = true;
-              //this.comparedStations.push(this.stations[i]);
               break;
             } else {
               this.stations[i].checked = false;
             }
           }
         }
-        // console.log(this.stations, 'eeeeee');
-        // console.log(this.stations);
       }, (err) => {
         this.error = err;
-        console.log(this.error);
+        this.errorAlert = true;
       }
     );
-
-
-    //this.stations = this.stations.filter( e => e['alias'] !== 'central');
-
   }
 
   public closeError() {
@@ -97,11 +85,10 @@ export class GatewayConfigComponent implements OnInit {
     this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
         this.stations = res;
-        //console.log(this.stations, 'lllll');
         this.getStations();
       }, (err) => {
         this.error = err;
-        console.log(this.error);
+        this.errorAlert = true;
       }
     );
   }
@@ -112,7 +99,6 @@ export class GatewayConfigComponent implements OnInit {
     } else {
       this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
     }
-    console.log(this.enabledStations);
   }
 
   async updateStations(id: number, f: NgForm): Promise<void> {
@@ -133,11 +119,8 @@ export class GatewayConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-
     this.stationedit = false;
   }
-
-
 
   stationChange() {
     if (this.stationedit === true) {
@@ -166,6 +149,7 @@ export class GatewayConfigComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   }
@@ -181,20 +165,18 @@ export class GatewayConfigComponent implements OnInit {
       await this.apiService.deleteSchedule($id).subscribe(
         (data: any) => {
           this.getSchedules();
-          console.log('schedule deleted');
         }, (err) => {
           this.error = err
           this.errorAlert = true;
         }
       );
-
     }
   }
 
   async createSchedule(f: NgForm): Promise<void> {
     f.value.stations = this.enabledStations;
 
-    if(!f.value.enable){
+    if (!f.value.enable) {
       f.value.enable = 0
     }
 
@@ -206,7 +188,6 @@ export class GatewayConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-
     this.isEditing = false;
   }
 
@@ -217,6 +198,7 @@ export class GatewayConfigComponent implements OnInit {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   }
