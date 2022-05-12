@@ -53,12 +53,19 @@
             </label>
             <br />
             <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
-                (click)="updateSchedule(selectedSchedule.id, f)">change scheduling time</button>
-            <button [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule"
-                (click)="createSchedule(f)">create schedule</button>
-            <span *ngIf="!emptySchedule"><button type="button" i18n="@@deletechedule" [disabled]="!canDelete"
-                    (click)="deleteSchedule(selectedSchedule.id)">delete schedule</button></span>
-            <br />
+                (click)="updateSchedule(selectedSchedule.id, f)">
+                change scheduling time
+            </button>
+            <button class="m-l-10" [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule"
+                (click)="createSchedule(f)">
+                create schedule
+            </button>
+            <span *ngIf="!emptySchedule">
+                <button class="m-l-10" type="button" i18n="@@deletechedule" [disabled]="!canDelete"
+                    (click)="deleteSchedule(selectedSchedule.id)">
+                    delete schedule
+                </button>
+            </span>
         </form>
     </div>
 </div>

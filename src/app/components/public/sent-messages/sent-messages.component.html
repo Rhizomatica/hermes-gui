@@ -10,7 +10,7 @@
                             Compose
                         </span>
                     </button>
-                    <button routerLink="/messages">
+                    <button class="m-l-10" routerLink="/messages">
                         <span i18n="@@publicmessages1">
                             <img title="sent" src="assets/svg/comment.svg">
                             messages
@@ -18,9 +18,7 @@
                     </button>
                 </div>
             </div>
-            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
-            
-           
+            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />           
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access
                 sent messages<br />
             </div>

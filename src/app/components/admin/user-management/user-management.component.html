@@ -37,7 +37,7 @@
                 <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
                     placeholder="write the username">
             </label>
-            <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}         
+            <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
             <label for="name">
                 <span i18n="@@name">full name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required
@@ -103,11 +103,13 @@
             </label>
             <br />
             <button (click)="cancelCreate()" i18n="@@mwcancel">cancel</button>
-            <span *ngIf="selectedUser.email !== 'root'"><button (click)="deleteAlert()" i18n="@@delusr"
-                    [disabled]="admin" [hidden]="emptyUser">delete user</button></span>
-            <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
+            <span *ngIf="selectedUser.email !== 'root'">
+                <button class="m-l-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
+                    user</button>
+            </span>
+            <button class="m-l-10" type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
                 [disabled]="f.invalid">update</button>
-            <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
+            <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
                 [disabled]="f.invalid || passunMatch">create user</button>
 
             <div class="overall" *ngIf="deleteUser">
@@ -117,7 +119,7 @@
                     <br />
                     <button type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
                         i18n="@@deleteuser">delete user</button>
-                    <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
                 </div>
             </div>
 
@@ -128,7 +130,7 @@
                     <br />
                     <button type="submit" (click)="onSubmitUpdate(selectedUser.emailid,f)" [disabled]="f.invalid"
                         i18n="@@update">update</button>
-                    <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
             </div>
 
@@ -139,16 +141,12 @@
                     <div class="icon"><a (click)="closeError()">
                             <img title="close" src="assets/svg/x.svg"></a>
                     </div>
-
                 </div>
             </div>
-
-
         </form>
     </ng-container>
-    <div *ngIf="!selectedUser">
-        <button *ngIf="currentUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
+    <div>
+        <button *ngIf="currentUser && !selectedUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
+        <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>
-    <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
-
 </div>

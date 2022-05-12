@@ -1,9 +1,11 @@
 <div class=" login formdata">
   <h2 i18n="@@e_mail">E-mail</h2>
   <form #f="ngForm" id="loginform" novalidate>
-    <button><img class="round icon" src="assets/svg/roundcubelogo.svg"><a href="/mail/"
-        target="_self">Webmail</a></button>
-    <button (click)="showlinks()" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png"
+    <button>
+      <img class="round icon" src="assets/svg/roundcubelogo.svg">
+      <a href="/mail/" target="_self">Webmail</a>
+    </button>
+    <button class="m-l-10" (click)="showlinks()" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png"
         class="delta icon">deltachat<br>
     </button>
   </form>
@@ -33,11 +35,15 @@
       </ng-template>
     </ng-select>
   </ng-container>
-  <a href="mailto:{{emailto}}"><button [disabled]="emailto?.length == 0">Send email to selected</button> </a>
+  <a href="mailto:{{emailto}}">
+    <button class="m-t-10" [disabled]="emailto?.length == 0">Send email to selected</button>
+  </a>
   <br />
   <hr>
   <p i18n="@@noaccount">Doesn't have an account?</p>
-  <a routerLink="/usermanage"><button i18n="@@createbtn">create an account</button></a>
+  <a routerLink="/usermanage">
+    <button i18n="@@createbtn">create an account</button>
+  </a>
   <br /><br>
   <a routerLink="/recovery">
     <div><a i18n="@@forgotmypassworde">Forgot my password</a></div>
@@ -46,8 +52,10 @@
     <div class="cv">
       <span i18n="@@errormanagement">There was an error on processing your request <br /><br /></span>
       <span>{{error}}</span>
-      <div class="icon"><a (click)="closeError()">
-          <img title="close" src="assets/svg/x.svg"></a>
+      <div class="icon">
+        <a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg">
+        </a>
       </div>
     </div>
   </div>

@@ -33,7 +33,7 @@
                 <div class="card">
                     <div class="row">
                         <h3>
-                            <span> 
+                            <span>
                                 {{radio.swr_str | slice:0:9}}
                             </span>
                             <br />
@@ -44,8 +44,8 @@
                 <div class="card">
                     <div class="row">
                         <h3><span i18n="@reflected">REF </span>
-                            <br/>
-                           <small> {{radio.ref_watts}} </small>
+                            <br />
+                            <small> {{radio.ref_watts}} </small>
                             <br />
                             ({{radio.ref_volts}} V)
                         </h3>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <h3>
                             <span i18n="@forward"> FWD </span>
-                            <br/>
+                            <br />
                             <small>{{radio.fwd_watts}}</small>
                             <br />
                             ({{radio.fwd_volts}} V)
@@ -98,7 +98,7 @@
                                 <br />this
                                 may cause the system to stop</span>
                             <br />
-                            <button (click)="screenSet()" i18n="@@changer">change</button>
+                            <button class="m-l-10" (click)="screenSet()" i18n="@@changer">change</button>
                             <button (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                                 <button i18n="@@cancelr">cancel</button></a>
                         </span>
                         <span class="icon" *ngIf="isAdmin"><a (click)="resetRadio()">
-                                <button i18n="@@reset1">reset</button></a>
+                                <button class="m-l-10" i18n="@@reset1">reset</button></a>
                         </span>
                     </div>
                 </div>
@@ -208,8 +208,10 @@
                 <div class="cv">
                     <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
                     <span>{{error}}</span>
-                    <div class="icon"><a (click)="closeError()">
-                            <img title="close" src="assets/svg/x.svg"></a>
+                    <div class="icon">
+                        <a (click)="closeError()">
+                            <img title="close" src="assets/svg/x.svg">
+                        </a>
                     </div>
                 </div>
             </div>

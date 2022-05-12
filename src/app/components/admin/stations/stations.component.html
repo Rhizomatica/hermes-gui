@@ -1,6 +1,6 @@
 <div class="">
   <ng-container *ngIf="stations">
-    <form #g="ngForm" *ngIf="stations" class="formfield">
+    <form #g="ngForm" *ngIf="stations">
       <h2>Stations on this network</h2>
       <br />
       <div><b><span class="stname" i18n="@@names">Name</span><span class="stname" i18n="@@aliass">Alias</span><span
@@ -16,7 +16,7 @@
             <span class="slider round" *ngIf="isGateway && isAdmin" (click)="selectStations($event)" value="{{station.alias}}" [checked]="station.checked"></span>
           </div>
       </div>
-      <button type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()" i18n="@@updateenabled">
+      <button class="m-t-10" type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()" i18n="@@updateenabled">
         Update Enabled Stations
       </button>
       <div class="overall" *ngIf="stationedit">
@@ -25,7 +25,7 @@
           <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
           <br />
           <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
-          <button type="button" (click)="confirmChange()" i18n="@@cancelg">cancel</button>
+          <button class="m-l-10" type="button" (click)="confirmChange()" i18n="@@cancelg">cancel</button>
         </div>
       </div>
     </form>

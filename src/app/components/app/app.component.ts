@@ -136,6 +136,10 @@ export class AppComponent implements OnInit {
     this.darkModeService.toggle();
   }
 
+  onActivate(event){
+    window.scrollTo(0,0)
+  }
+
   // TODO double check
   // ERROR: 54:3   use-lifecycle-interface
   //  Lifecycle interface OnInit should be implemented for method ngOnInit. (https://angular.io/styleguide#style-09-01)

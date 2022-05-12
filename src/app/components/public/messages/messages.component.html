@@ -10,14 +10,14 @@
                             Compose
                         </span>
                     </button>
-                    <button routerLink="/sent">
+                    <button class="m-l-10" routerLink="/sent">
                         <span i18n="@@sent1">
                             <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">
                             sent messages
                         </span>
                     </button>
                     <div *ngIf="!currentUser">
-                        <button *ngIf="!loginForm" (click)="showlogin()">
+                        <button class="m-l-10" *ngIf="!loginForm" (click)="showlogin()">
                             <span i18n="@@login2">
                                 <img class="loginicon" title="login" src="assets/svg/sign-in-alt-solid.svg">
                                 login
