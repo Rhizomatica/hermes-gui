@@ -13,7 +13,6 @@ import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { MessageadmComponent } from './components/admin/messageadm/messageadm.component';
-import { ForgotpasswordComponent } from './components/public/forgotpassword/forgotpassword.component';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
@@ -39,7 +38,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
   { path: 'messageadm', component: MessageadmComponent },
-  { path: 'recovery', component: ForgotpasswordComponent },
   { path: 'sent', component: SentMessagesComponent },
   { path: 'email', component: EmailComponent },
   { path: 'help', component: HelpComponent },

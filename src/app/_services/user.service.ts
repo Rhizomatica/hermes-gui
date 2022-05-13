@@ -62,18 +62,6 @@ export class UserService {
       );
   }
 
-  recoverPassword(email, answ): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/user/recover/`;
-    const formData: FormData = new FormData();
-    formData.append('email', email);
-    formData.append('recoveranswer', answ);
-    return this.http.post(url, formData).pipe(
-      map((res: any) => {
-        return res;
-      }),
-      catchError(this.handleError));
-  }
-
   private handleError(error: HttpErrorResponse) {
     this.users = [];
     return throwError(error);

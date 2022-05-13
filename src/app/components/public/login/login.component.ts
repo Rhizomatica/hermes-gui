@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     private authenticationService: AuthenticationService) {
-
     }
 
   submitLogin(f: any): void {
@@ -32,7 +31,6 @@ export class LoginComponent implements OnInit {
       (err) => {
         this.error = err;
         this.wrong = true;
-        this.router.navigate(['/login']);
       }
     );
   }

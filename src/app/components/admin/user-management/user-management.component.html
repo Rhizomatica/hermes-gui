@@ -34,7 +34,7 @@
                 <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
                     placeholder="write the username">
             </label>
-            <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}
+            <span i18n>email</span>: {{selectedUser.email}}@{{system && system.domain}}
             <label for="name">
                 <span i18n="@@name">full name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required
@@ -50,22 +50,6 @@
                 <br /><input name="site" [(ngModel)]="selectedUser.site" i18n-placeholder placeholder="website" />
             </label>
             <div class="selector"></div>
-            <hr>
-            <label for="recovery">
-                <span (click)="showExplanation()"> <img class="inlineicon" title="admin"
-                        src="assets/svg/question-circle-regular.svg"></span><span i18n>recovery phrase</span>:
-                <div *ngIf="recoverExplanation" i18n="@@recoveryexplanation" class="alert">
-                    If you loose your password, you will need to answer a question to recover it, please write a
-                    question that only you will know the answer.
-                </div>
-                <br /><input name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr" required
-                    placeholder="write a question to recover your password" i18n-placeholder />
-            </label>
-            <label>
-                <span i18n="@@recovans2">recovery answer</span>:
-                <br /><input name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" i18n="@@mwarq"
-                    placeholder="answer to your recovery question" i18n-placeholder />
-            </label>
             <hr>
             <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
             <label *ngIf="showPassword">

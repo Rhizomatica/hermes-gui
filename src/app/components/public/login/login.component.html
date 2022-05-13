@@ -1,6 +1,6 @@
 <div class=" login formdata">
    <form #f="ngForm" id="loginform" novalidate>
-      <h1>Hermes V. 1.0</h1>
+      <h1>Hermes</h1>
       <p i18n="@@instructions">To login to the system, put your username and password</p>
       <hr>
       <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
@@ -14,9 +14,6 @@
             placeholder="Password" />
       </label>
       <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">Log in</button>
-      <a routerLink="/recovery" *ngIf="!success">
-         <div><a i18n="@@forgotmypassword">Forgot my password</a></div>
-      </a>
       <hr>
       <p i18n="@@noaccount">Doesn't have an account?</p>
       <a routerLink="/usermanage"><button i18n="@@create">create an account</button></a>

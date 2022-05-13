@@ -9,8 +9,6 @@ import { MessagesComponent } from './components/public/messages/messages.compone
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
 import { NetadminComponent } from './components/admin/netadmin/netadmin.component';
@@ -22,7 +20,6 @@ import { LanguagesComponent } from './components/public/languages/languages.comp
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './components/public/help/help.component';
 import { MessageadmComponent } from './components/admin/messageadm/messageadm.component';
-import { ForgotpasswordComponent } from './components/public/forgotpassword/forgotpassword.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
 import { RetypeDirective } from './directives/retype.directive';
@@ -40,14 +37,12 @@ import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
-// import { LoginFormComponent } from './components/login-form/login-form.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
   exports: [
-    CommonModule,
-    //  TranslateModule
+    CommonModule
   ],
   declarations: [
     AppComponent,
@@ -65,7 +60,6 @@ registerLocaleData(localePt);
     LanguagesComponent,
     HelpComponent,
     MessageadmComponent,
-    ForgotpasswordComponent,
     SameUsernameDirective,
     RetypeDirective,
     SentMessagesComponent,
@@ -75,8 +69,6 @@ registerLocaleData(localePt);
     FrequencyPipe,
     GatewayConfigComponent,
     TransmissionListComponent
-    // ,
-    // LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -94,8 +86,6 @@ registerLocaleData(localePt);
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }

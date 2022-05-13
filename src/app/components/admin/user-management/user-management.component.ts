@@ -33,7 +33,6 @@ export class UserManagementComponent implements OnInit {
   repasswd: any;
   system: any;
   updateUser = false;
-  recoverExplanation = false;
   showPassword = false;
 
   constructor(
@@ -89,14 +88,6 @@ export class UserManagementComponent implements OnInit {
 
   closeError() {
     this.errorAlert = false;
-  }
-
-  showExplanation() {
-    if (this.recoverExplanation) {
-      this.recoverExplanation = false;
-    } else {
-      this.recoverExplanation = true;
-    }
   }
 
   showPasswordField() {
