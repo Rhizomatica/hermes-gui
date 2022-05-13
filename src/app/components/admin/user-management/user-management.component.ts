@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { User } from '../../../interfaces/user';
 import { UserService } from '../../../_services/user.service';
 import { Station } from '../../../interfaces/station';
 import { StationService } from '../../../_services/station.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
-
 
 @Component({
   selector: 'app-management',
@@ -19,17 +18,14 @@ export class UserManagementComponent implements OnInit {
   currentUser: User;
   searchUser: string;
   error = Error;
-  success = '';
   users: User[];
   stations: Station[];
   selectedUser: User[];
-  control: any;
   isadmin = false;
   isEditing = false;
   deleteUser = false;
   newUsername = false;
   emptyUser = false;
-  searchMessages: string;
   errorAlert = false;
   passMatch = false;
   passunMatch = false;
@@ -41,28 +37,26 @@ export class UserManagementComponent implements OnInit {
   showPassword = false;
 
   constructor(
-      private userService: UserService,
-      private stationService: StationService,
-      private authenticationService: AuthenticationService,
-      private apiService: ApiService
-    )
-    {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    }
+    private userService: UserService,
+    private stationService: StationService,
+    private authenticationService: AuthenticationService,
+    private apiService: ApiService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
-    getSystemStatus(): void{
-      this.apiService.getStatus().subscribe(
-        (res: any) => {
-          this.system = res;
-          return res;
-        },
-        (err) => {
-          this.error = err;
-        }
-      );
-
-      // console.log('system:', this.system);
-    }
+  getSystemStatus(): void {
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+        this.system = res;
+        return res;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
 
   loggedin() {
     if (this.isadmin) {
@@ -72,17 +66,11 @@ export class UserManagementComponent implements OnInit {
     }
   }
 
-  
+  Alert(param,): boolean {
+    return !param;
+  }
 
-  Alert(param, ): boolean {
-      // param=!param;
-      return !param;
-   }
-
-
-   checkpass(passwd, repasswd) {
-    // let passwd = (<HTMLInputElement>document.getElementById("pass")).value;
-    // let repasswd = (<HTMLInputElement>document.getElementById("repass")).value;
+  checkpass(passwd, repasswd) {
     if (passwd) {
       if (passwd === repasswd) {
         this.passMatch = true;
@@ -93,38 +81,29 @@ export class UserManagementComponent implements OnInit {
         this.passMin = false;
         this.passunMatch = true;
       }
-      // console.log("pass: ", this.passMatch);
-      // console.log(passwd, repasswd);
-      // console.log(this.passwd, this.repasswd);
-
     } else {
       this.passMin = true;
       this.passunMatch = false;
-
     }
   }
 
-   closeError() {
+  closeError() {
     this.errorAlert = false;
   }
 
   showExplanation() {
     if (this.recoverExplanation) {
       this.recoverExplanation = false;
-      console.log(this.recoverExplanation);
     } else {
       this.recoverExplanation = true;
-      console.log(this.recoverExplanation);
     }
   }
 
   showPasswordField() {
     if (this.showPassword) {
       this.showPassword = false;
-      console.log(this.showPassword);
     } else {
       this.showPassword = true;
-      console.log(this.showPassword);
     }
   }
 
@@ -134,9 +113,9 @@ export class UserManagementComponent implements OnInit {
     } else {
       this.deleteUser = true;
     }
-   }
+  }
 
-   updateAlert() {
+  updateAlert() {
     if (this.updateUser) {
       this.updateUser = false;
       this.emptyUser = false;
@@ -144,37 +123,34 @@ export class UserManagementComponent implements OnInit {
       this.updateUser = true;
       this.emptyUser = false;
     }
-   }
+  }
 
-   cancelCreate() {
+  cancelCreate() {
     this.isEditing = false;
-   }
+  }
 
-   newUser() {
-     if (this.currentUser) {
-       this.isadmin = this.currentUser.admin;
-     } else {
-       this.isadmin = false;
-     }
-     this.selectedUser = [];
-     this.showPassword = true;
-     // opens the user edit form
-     this.isEditing = true;
-     // for showing the username input
-     this.newUsername = true;
-     this.emptyUser = true;
-     this.updateUser = false;
-     // for showing the delete button
-     this.deleteUser = false;
-     console.log ('object', this.selectedUser);
-   }
-
+  newUser() {
+    if (this.currentUser) {
+      this.isadmin = this.currentUser.admin;
+    } else {
+      this.isadmin = false;
+    }
+    this.selectedUser = [];
+    this.showPassword = true;
+    // opens the user edit form
+    this.isEditing = true;
+    // for showing the username input
+    this.newUsername = true;
+    this.emptyUser = true;
+    this.updateUser = false;
+    // for showing the delete button
+    this.deleteUser = false;
+  }
 
   getUsers(): void {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
-        console.log('⚚ management - getUsers');
       },
       (err) => {
         this.error = err;
@@ -186,19 +162,14 @@ export class UserManagementComponent implements OnInit {
   onSelect(user): void {
     this.selectedUser = user;
     this.isEditing = true;
-    // console.log('⚚ management - onSelect: isEditing? ', this.isEditing);
     this.emptyUser = false;
-    // console.log('⚚ management - onSelect: isEditing? ', this.selectedUser);
-
   }
 
   updateThis() {
-  //console.log(this.currentUser);
     this.onSelect(this.currentUser);
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
-    // console.log('sel', this.selectedUser);
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -215,21 +186,20 @@ export class UserManagementComponent implements OnInit {
     this.isEditing = false;
   }
 
-  onSubmitDelete( id: number, email:string ): void {
-      this.userService.deleteUser(id, email).subscribe(
-        (res: any) => {
-          this.users = res;
-          this.getUsers();
-        },
-        (err) => {
-          this.error = err;
-          this.errorAlert = true;
-          this.getUsers();
-        }
-      );
-      this.deleteUser = false;
-      this.isEditing = false;
-      // window.location.reload();
+  onSubmitDelete(id: number, email: string): void {
+    this.userService.deleteUser(id, email).subscribe(
+      (res: any) => {
+        this.users = res;
+        this.getUsers();
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.getUsers();
+      }
+    );
+    this.deleteUser = false;
+    this.isEditing = false;
   }
 
   async onSubmitCreate(f: NgForm): Promise<void> {
@@ -248,21 +218,17 @@ export class UserManagementComponent implements OnInit {
         this.getUsers();
       }
     );
-    
-
   }
 
   ngOnInit(): void {
     this.getUsers();
     this.getSystemStatus();
     this.stationService.getStations()
-    .subscribe(stations =>  this.stations = stations);
+      .subscribe(stations => this.stations = stations);
     if (this.currentUser) {
-    this.isadmin = this.currentUser.admin;
+      this.isadmin = this.currentUser.admin;
     } else {
       this.isadmin = false;
     }
-
-
   }
 }

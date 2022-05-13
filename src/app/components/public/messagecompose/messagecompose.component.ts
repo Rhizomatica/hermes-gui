@@ -290,8 +290,6 @@ export class MessagecomposeComponent implements OnInit {
 
   fileUpload(files): void {
     // this.messageService.postFile($files[0]);
-    console.log('⚚ messagecompose - fileupload: ', files);
-
   }
 
   selectAllForDropdownItems(items: any[]) {

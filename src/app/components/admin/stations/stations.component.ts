@@ -10,10 +10,9 @@ import { StationService } from '../../../_services/station.service';
   templateUrl: './stations.component.html',
   styleUrls: ['./stations.component.less']
 })
+
 export class StationsComponent implements OnInit {
   error: Error;
-  success = '';
-  test = '';
   stations: any;
   currentUser: User;
   isAdmin = true;
@@ -36,17 +35,16 @@ export class StationsComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-
   getSystemStatus(): void{
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
         this.isGateway = this.system.gateway;
-        console.log(this.system);
         return res;
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   }
@@ -64,12 +62,10 @@ export class StationsComponent implements OnInit {
        (data: any) => {
          this.stations = data;
          this.stations = this.stations.filter(e => e.alias !== 'central');
-        // this.comparedStations = [];
          for (var i in this.stations) {
            for (var j in this.enabledStations) {
              if (this.stations[i].alias == this.enabledStations[j]) {
                this.stations[i].checked = true;
-               //this.comparedStations.push(this.stations[i]);
                break;
              } else {
                this.stations[i].checked = false;
@@ -78,17 +74,15 @@ export class StationsComponent implements OnInit {
          }
        }, (err) => {
            this.error = err;
-           console.log(this.error);
-         }
+           this.errorAlert = true;
+          }
      );
-     //this.stations = this.stations.filter( e => e['alias'] !== 'central');
    }
 
    selectStations(ev){    
      if (this.enabledStations.includes(ev.target.value) === false) {
         this.enabledStations.push(ev.target.value);
         this.switchChecked(true, ev.target.value)
-
     } else {
       this.switchChecked(false, ev.target.value)
       this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
@@ -111,11 +105,11 @@ export class StationsComponent implements OnInit {
         this.defstart = this.schedule.starttime;
         this.defstop = this.schedule.stoptime;
         this.defenable = this.schedule.enable;
-        //console.log(this.schedule, 'iiiii');
         return data;
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   } 
@@ -134,11 +128,14 @@ export class StationsComponent implements OnInit {
         this.getStations();
       }, (err) => {
           this.errormessage = err;
-		      console.log(this.errormessage);
           this.errorAlert = true;
         }
     );
     this.stationedit = false;
+  }
+
+  closeError() {
+    this.errorAlert = false;
   }
 
   ngOnInit(): void {
@@ -148,7 +145,8 @@ export class StationsComponent implements OnInit {
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
-      this.isAdmin = false; }
+      this.isAdmin = false; 
+    }
   }
 }
 

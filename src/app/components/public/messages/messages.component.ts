@@ -124,7 +124,6 @@ export class MessagesComponent implements OnInit {
   showlogin() {
     if (this.loginForm) {
       this.loginForm = false;
-      console.log(this.loginForm)
     } else {
       this.loginForm = true;
     }

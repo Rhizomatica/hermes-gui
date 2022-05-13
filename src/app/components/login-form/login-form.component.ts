@@ -21,45 +21,37 @@ export class LoginFormComponent implements OnInit {
   success = false;
   wrong = false;
 
-  constructor(private  router: Router, private authenticationService: AuthenticationService) {
-     // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
-
 
   hideForm() {
     this.hideLoginForm.emit();
   }
 
-  submitLogin(f: NgForm): void{
-    // console.log('⚚ login - submitLogin: f.value: ', f.value);
+  submitLogin(f: NgForm): void {
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
         this.currentUser = res;
         this.wrong = false;
-        console.log('⚚ login - submitLogin: res: ');
         this.hideForm();
         return res;
-        
       },
       (err) => {
         this.error = err;
         this.wrong = true;
-        let val = true;
       }
     );
-    // this.router.navigate(['/admin']);
   }
 
-
-  submitTest(f: any): void{
+  submitTest(f: any): void {
     console.log('⚚ login - submitTest: res: ', f.value);
   }
 
   submitLogout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
-}
+  }
 
   ngOnInit(): void {
   }

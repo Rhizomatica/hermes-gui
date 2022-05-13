@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
-import { Api } from '../../../interfaces/api';
-import { observable } from 'rxjs';
 import { GlobalConstants } from '../../../global-constants';
 
 @Component({
@@ -11,6 +9,7 @@ import { GlobalConstants } from '../../../global-constants';
   templateUrl: './sysadmin.component.html',
   styleUrls: ['./sysadmin.component.less']
 })
+
 export class SysadminComponent implements OnInit {
   currentUser: User;
   isAdmin = true;
@@ -21,8 +20,8 @@ export class SysadminComponent implements OnInit {
   system: any;
   error: any;
   isGateway: false;
-  subscription: any;
   loginForm = false;
+  errorAlert = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -35,31 +34,26 @@ export class SysadminComponent implements OnInit {
       (res: any) => {
         this.system = res;
         this.isGateway = this.system.gateway;
-        console.log(this.system);
         return res;
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true;
       }
     );
   }
 
   confirmShutDown() {
     this.shuttingDown = true;
-    console.log('⚚ sysadmin - confirmShutdown: ', this.shuttingDown);
   }
 
   cancelShutDown() {
     this.shuttingDown = false;
     this.shuttingDownNow = false;
-
   }
-
-
 
   confirmReboot() {
     this.restarting = true;
-    console.log('⚚ sysadmin - confirmShutdown: ', this.shuttingDown);
   }
 
   cancelReboot() {
@@ -70,7 +64,6 @@ export class SysadminComponent implements OnInit {
 
   confirmRestart() {
       this.restarting = true;
-      console.log('⚚ sysadmin - confirmShutdown: ', this.restarting);
   }
 
   cancelRestart() {
@@ -79,14 +72,12 @@ export class SysadminComponent implements OnInit {
   }
 
   shutDown() {
-    console.log('⚚ sysadmin - shutdown: ');
     this.shuttingDownNow = true;
     this.apiService.sysShutdown();
 
   }
 
   reboot() {
-    console.log('⚚ sysadmin - reboot: ');
     this.rebootingDownNow = true;
     this.apiService.sysReboot();
 
@@ -94,7 +85,6 @@ export class SysadminComponent implements OnInit {
 
   reload() {
     this.ngOnInit();
-    console.log('yeah');
     this.rebootingDownNow = false;
     this.shuttingDownNow = false;
     this.restarting = false;
@@ -107,7 +97,6 @@ export class SysadminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log('⚚ sysadmin - onInit currentUser: ', this.currentUser);
     this.getSystemStatus();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;

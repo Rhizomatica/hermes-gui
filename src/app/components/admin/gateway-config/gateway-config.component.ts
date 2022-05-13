@@ -236,4 +236,5 @@ export class GatewayConfigComponent implements OnInit {
       this.isAdmin = false;
     }
   }
+  
 }

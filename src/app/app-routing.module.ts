@@ -19,7 +19,6 @@ import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { RadioComponent } from './components/admin/radio/radio.component';
-// import { TestradioComponent } from './components/admin/testradio/testradio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';

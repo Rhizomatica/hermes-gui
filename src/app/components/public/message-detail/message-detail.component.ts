@@ -255,10 +255,6 @@ export class MessageDetailComponent implements OnInit {
     this.getMessage();
     this.getSysConfig();
     // this.getImageFromService();
-
-    // this.scripts.load('utils').then(data => {
-    //   console.log('script loaded ', data);
-    // }).catch(error => console.log(error));
   }
 
 }

@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     }
 
   submitLogin(f: any): void {
-    console.log('⚚ login - submitLogin: f.value: ', f.value);
     this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
