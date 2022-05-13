@@ -34,8 +34,7 @@ export class MessagesComponent implements OnInit {
     private messageService: MessageService,
     private alertService: AlertService,
     private apiService: ApiService,
-    private authenticationService: AuthenticationService,
-    private userService: UserService) {
+    private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 

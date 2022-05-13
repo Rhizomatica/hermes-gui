@@ -16,14 +16,14 @@
                             sent messages
                         </span>
                     </button>
-                    <div *ngIf="!currentUser">
+                    <!-- <div *ngIf="!currentUser">
                         <button class="m-l-10" *ngIf="!loginForm" (click)="showlogin()">
                             <span i18n="@@login2">
                                 <img class="loginicon" title="login" src="assets/svg/sign-in-alt-solid.svg">
                                 login
                             </span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
@@ -69,11 +69,11 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="loginForm">
+        <!-- <div *ngIf="loginForm">
             <app-login-form (hideLoginForm)="closeLogin()">
             </app-login-form>
             <hr>
-        </div>
+        </div> -->
         <div>
             <div class="overall alert" *ngIf="errorAlert==true">
                 <div class="cv">

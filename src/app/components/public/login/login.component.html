@@ -13,14 +13,10 @@
          <span></span><input name="password" i18n="@@ipass" type="password" ngModel required i18n-placeholder
             placeholder="Password" />
       </label>
-      <a>
-         <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">Log in</button></a>
-      <br />
-      <br />
+      <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">Log in</button>
       <a routerLink="/recovery" *ngIf="!success">
          <div><a i18n="@@forgotmypassword">Forgot my password</a></div>
       </a>
-      <br>
       <hr>
       <p i18n="@@noaccount">Doesn't have an account?</p>
       <a routerLink="/usermanage"><button i18n="@@create">create an account</button></a>
