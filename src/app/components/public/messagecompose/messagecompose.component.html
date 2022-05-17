@@ -54,7 +54,18 @@
                     <span i18n="@@attachfile">Attach File: </span>
                     <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
                     <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
+                    <button class="m-l-10" *ngIf="!fileSelected" (click)="fileCamUpload.click()"
+                        i18n="@@camfile">camera</button>
                     <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
+
+                    <!-- <audio #figAudio>
+                        <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
+                        <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
+                        <source [src]="audSrc | sanitizerUrl" type="audio/wav">
+                    </audio> -->
+
+                    <input type="file" capture="camera" accept="image/*" name="cameraInput"
+                        (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
                     <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;"
                         #fileUpload>
                     <div *ngIf="sending">
@@ -66,7 +77,6 @@
                 </ng-container>
                 <div *ngIf="message.id && message.file">
                     <br>
-                    <!--    <span i18n="@@fileserverid">file server id:</span>{{message.id}} /  {{message.file}} </span>-->
                     <span>{{message.file}} </span>
                     <br>
                     <span i18n="@@Img">Img:</span>
