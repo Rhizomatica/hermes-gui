@@ -54,7 +54,7 @@ export class SentMessagesComponent implements OnInit {
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
-    this.alertService.add('mensagem lida: id=$' + message.id);
+    // this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
   cancelTransmission(host, id): void {
@@ -97,7 +97,10 @@ export class SentMessagesComponent implements OnInit {
     this.messageService.deleteMessage(msgId).subscribe(
       (res: any) => {
         this.message = res;
-        this.getSentMessages();
+        this.sentMessages = this.sentMessages.filter((a)=>{ return a !== res});
+        console.log(res)
+        this.alertService.showSuccess(200, 'Mensagem excluída com sucesso!');
+        // this.getSentMessages();
       },
       (err) => {
         this.error = err;
@@ -202,6 +205,10 @@ export class SentMessagesComponent implements OnInit {
         this.allowCompose = false;
       }
     );
+  }
+
+  trackSentMessages (index: number, message: Message) {
+    return message.id;
   }
   
   ngOnInit(): void {

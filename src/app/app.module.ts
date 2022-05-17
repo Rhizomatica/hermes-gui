@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent } from './components/app/app.component';
 import { LandingComponent } from './components/public/landing/landing.component';
 import { StationsComponent } from './components/admin/stations/stations.component';
@@ -42,7 +45,7 @@ registerLocaleData(localePt);
 
 @NgModule({
   exports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     AppComponent,
@@ -78,7 +81,9 @@ registerLocaleData(localePt);
     HttpClientModule,
     Ng2SearchPipeModule,
     AngularFileUploaderModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
   ],
   providers: [
     DecimalPipe,

@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { AlertService } from '../_services/alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-// import { Api } from '../api';
 import { GlobalConstants } from '../global-constants';
 import { Schedule } from '../interfaces/schedule';
 
@@ -74,7 +73,6 @@ export class ApiService {
       const headers = new HttpHeaders();
       headers.set('Content-Type', null);
       headers.set('Accept', 'multipart/form-data');
-      // Authorization: 'my-auth-token'
       return this.http.post(url, formData, {params, headers}).pipe(
       map((res: any) => {
         return res.allowfile;
@@ -179,7 +177,6 @@ export class ApiService {
     );
 }
 
-
 // need to verify this
 public updateSchedule(id: number, schedule: Schedule): Observable<Schedule>{
   const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
@@ -187,7 +184,6 @@ public updateSchedule(id: number, schedule: Schedule): Observable<Schedule>{
    catchError(this.handleError),
   );
 }
-
 
 public deleteSchedule(id) {
   const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message

@@ -7,6 +7,8 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
+import { AlertService } from '../../../_services/alert.service';
+
 
 @Component({
   selector: 'app-messagecompose',
@@ -55,7 +57,8 @@ export class MessagecomposeComponent implements OnInit {
     private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -227,6 +230,7 @@ export class MessagecomposeComponent implements OnInit {
           f.value.mimetype = value['mimetype'];
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
           this.sending = false;
+          this.alertService.showSuccess(value, value)
           const res = this.sendMessageContinue(f);
         },
         (err) => {

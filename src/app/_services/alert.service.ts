@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AlertService {
+
+  constructor(private toastr: ToastrService) { }
 
   alerts: string[] = [];
 
@@ -13,5 +17,13 @@ export class AlertService {
 
   clear(): void {
     this.alerts = [];
+  }
+  
+  showSuccess(code, msg = 'Success'){
+    this.toastr.success(msg, code);
+  }
+
+  showError(code, msg = 'Error'){
+    this.toastr.error(msg, code);
   }
 }

@@ -24,7 +24,7 @@
             </div>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist sent">
-                    <div class="item" *ngFor="let message of sentMessages | filter:searchMessages">
+                    <div class="item" *ngFor="let message of sentMessages; trackBy: trackSentMessages | filter:searchMessages">
                         <div class="maininfo">
                             <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
@@ -57,7 +57,8 @@
                     <div class="icon"><a (click)="showDelete()">
                             <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
                     </div>
-                    <div class="icon"><a routerLink='/sent' routerLinkActive="active">
+                    <div class="icon">
+                        <a>
                             <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
                                 i18n="@@confirmmt">confirm</button></a>
                     </div>

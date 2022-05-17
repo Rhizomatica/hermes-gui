@@ -40,7 +40,7 @@ export class MessagesComponent implements OnInit {
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
-    this.alertService.add('read message: id=$' + message.id);
+    // this.alertService.add('read message: id=$' + message.id);
   }
 
   getInboxMessages(): void {
@@ -78,6 +78,8 @@ export class MessagesComponent implements OnInit {
     this.messageService.deleteMessage($id).subscribe(
       (res: any) => {
         this.message = res;
+        this.alertService.showSuccess(200, "Maoi")
+
         this.getInboxMessages();
       },
       (err) => {
@@ -95,7 +97,8 @@ export class MessagesComponent implements OnInit {
     this.messageService.deleteMessage(msgId).subscribe(
       (res: any) => {
         this.message = res;
-        this.getInboxMessages();
+        this.inboxMessages = this.inboxMessages.filter((a)=>{ return a !== res.message.id});
+        // this.getInboxMessages();
       },
       (err) => {
         this.error = err;
