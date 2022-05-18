@@ -1,5 +1,11 @@
-<h2 i18n="@@transmissionschedules">Central Station</h2>
 <div *ngIf="isAdmin">
+    <div class="flexible">
+        <h2 class="" i18n="@@transmissionschedules">Central Station</h2>
+        <div class="flex-right">
+            <button class="m-l-10" (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
+        </div>
+    </div>
+
     <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br />
     </div>
     <hr>
@@ -23,7 +29,6 @@
             </div>
         </div>
     </div>
-    <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
     <div class="gateway" *ngIf="isEditing">
         <hr>
         <form #f="ngForm" id="timeform" novalidate>
@@ -56,12 +61,12 @@
                 (click)="updateSchedule(selectedSchedule.id, f)">
                 change scheduling time
             </button>
-            <button class="m-l-10" [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button" i18n="@@newschedule"
-                (click)="createSchedule(f)">
+            <button class="m-l-10" [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button"
+                i18n="@@newschedule" (click)="createSchedule(f)">
                 create schedule
             </button>
             <span *ngIf="!emptySchedule">
-                <button class="m-l-10" type="button" i18n="@@deletechedule" [disabled]="!canDelete"
+                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule" [disabled]="!canDelete"
                     (click)="deleteSchedule(selectedSchedule.id)">
                     delete schedule
                 </button>

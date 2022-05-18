@@ -7,6 +7,8 @@
 @mclr: #333;
 @bkclr: #fff;
 @desktop: ~"only screen and (min-width: 992px)";
+@import '~ngx-toastr/toastr';
+
 
 @font-face {
     font-family: "Rubik";
@@ -120,7 +122,7 @@ body {
     margin: 0 auto;
     position: relative;
     // background-color: @bkclr;
-    background-color: #eeeeee;
+    background-color: #fafafa;
     color: @mclr;
 }
 
@@ -271,9 +273,7 @@ nav {
     }
 
     .logo {
-        img {
             width: 10em;
-        }
     }
 
     img:hover {
@@ -380,6 +380,8 @@ textarea {
     padding-right: 5em;
     padding-left: 5em;
     top: 5em;
+    padding-bottom: 6em;
+
 
     .textarea {
         width: 100%;
@@ -666,7 +668,7 @@ input:checked+.slider:before {
         position: relative;
         // top: -0.5em;
         padding: 0.35em;
-        width: calc(40% - 1em);
+        width: calc(41% - 1em);
         font-size: 0.4em;
         line-height: 0.85em;
         height: 3.4em;
@@ -712,7 +714,7 @@ input:checked+.slider:before {
     }
 
     // .fomdata button.midbt {
-        // margin-bottom: 2em;
+    // margin-bottom: 2em;
     // }
 }
 
@@ -799,13 +801,14 @@ input:checked+.slider:before {
 
 .multiplist1 {
     display: block;
-    height: calc(100vh - 20em);
+    // height: calc(100vh - 20em);
     word-break: break-all;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
     font-size: 0.8em;
+    padding-bottom: 6em;
 
     .item {
         // border-bottom: solid 1px #FFF;
@@ -822,12 +825,10 @@ input:checked+.slider:before {
 
 .multiplist2 {
     display: block;
-    height: calc(100vh - 23em);
     min-height: 5em;
-    overflow-y: scroll;
-    // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
+    padding-bottom: 6em;
 }
 
 .users {
@@ -837,7 +838,7 @@ input:checked+.slider:before {
 .userlist {
     width: 100%;
     margin-bottom: 0.15em;
-    font-size: 0.75em;
+    font-size: 1em;
     border-bottom: solid 1px @mclr;
 
     .adm {
@@ -1029,8 +1030,8 @@ input.searchbox2 {
     }
 
     .item:last-child {
-      padding-bottom: 6em;
-      border-bottom: 0;
+        padding-bottom: 6em;
+        border-bottom: 0;
     }
 
     a {
@@ -1309,16 +1310,16 @@ input.ng-invalid {
     // ::-webkit-scrollbar {
     //     width: 12px;
     // }
-    
+
     // ::-webkit-scrollbar-track {
     //     -webkit-box-shadow: inset 0 0 6px     @mclr; 
     // }
-    
+
     // ::-webkit-scrollbar-thumb {
     //     // border-radius: 10px;
     //     -webkit-box-shadow: inset 0 0 1.8px     @bkclr; 
     // }
-    
+
     a:visited {
         color: #ccc;
     }
@@ -1836,7 +1837,8 @@ input[type=range]:hover::-ms-track {
         width: 80%;
         display: block;
         color: @mclr;
-        margin:auto
+        margin: auto;
+        padding-top: 1.5em;
     }
 }
 
@@ -1848,7 +1850,7 @@ input[type=range]:hover::-ms-track {
     form {
         border: 1px solid #000;
         border-radius: 3px;
-        padding: 0.5em 1em;
+        padding: 1em;
         margin: 0.5em 1%;
     }
 }
@@ -1902,16 +1904,21 @@ input[type=range]:hover::-ms-track {
     }
 
     .formdata {
+        button.midbt {
+            font-size: 0.8em;
+            margin-top: 0.6em;
+        }
+
         input {
             font-size: 0.9em;
         }
     }
 
     .flexible .card {
-        display: flex;
-        flex-direction: column;
-        margin-left: 1vw;
-        width: 40vw;
+        // display: flex;
+        // flex-direction: column;
+        margin-left: 0.5vw;
+        width: 45vw;
     }
 
     .card {
@@ -1923,7 +1930,7 @@ input[type=range]:hover::-ms-track {
         text-align: center;
         font-size: 0.8em;
         width: 100%;
-        height: 15vmin;
+        height: 23vmin;
         line-height: 3vmin;
 
         img {
@@ -1953,15 +1960,15 @@ input[type=range]:hover::-ms-track {
         button.midbt {
             font-size: 0.8em;
             height: 15vmin;
-            width: 40vw;
+            width: 44vw;
             margin-right: 2vw;
-
         }
     }
 
     .card-icon {
         filter: brightness(0.5);
         margin-bottom: 0;
+        margin-top: 0.5em;
     }
 
     .landing {
@@ -2038,7 +2045,8 @@ input[type=range]:hover::-ms-track {
 
     .formfield {
         padding: 0.5em;
-        top: 1em
+        top: 3em;
+        margin-bottom: 4em
     }
 
     .topuser {
@@ -2050,6 +2058,10 @@ input[type=range]:hover::-ms-track {
             top: 3em;
             padding: 0.5em;
         }
+    }
+
+    .logo-link {
+        display: none;
     }
 }
 
@@ -2090,12 +2102,11 @@ input[type=range]:hover::-ms-track {
 
     .formdata {
         button.midbt {
-            font-size: 1em;
+            font-size: 0.8em;
             line-height: 0.85em;
-            height: 2em;
+            height: 2.4em;
             margin-left: 0.1em;
-            padding: 0 0.3em 0 0.3;
-            margin-top: 0.4em;
+            margin-top: 0.6em;
         }
 
         input.midbt {
@@ -2108,8 +2119,6 @@ input[type=range]:hover::-ms-track {
             line-height: 1em;
         }
     }
-
-
 
     .radio {
         form {

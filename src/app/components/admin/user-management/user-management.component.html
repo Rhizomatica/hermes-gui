@@ -1,9 +1,13 @@
 <div class="">
-    <h2 i18n="@@admmanage">User Management</h2>
-    <hr>
+    <div class="flexible">
+        <h2 i18n="@@admmanage">User Management</h2>
+        <div class="flex-right" *ngIf="isadmin">
+            <button *ngIf="currentUser && !selectedUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
+            <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
+        </div>    
+    </div>
     <div *ngIf="currentUser">
         <div *ngIf="isadmin">
-            <h5 *ngIf="!isEditing" i18n="@@Users">User list:</h5>
             <h5 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser"
                     i18n="@@createusers">Create User</span></h5>
             <ng-container>
@@ -122,8 +126,4 @@
             </div>
         </form>
     </ng-container>
-    <div>
-        <button *ngIf="currentUser && !selectedUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
-        <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
-    </div>
 </div>

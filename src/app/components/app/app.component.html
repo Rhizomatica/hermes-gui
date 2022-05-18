@@ -12,8 +12,8 @@
 <div id="appcontainer">
   <div class="fullpage">
     <nav id="mainnav" *ngIf="system">
-      <a routerLink='/landing' class="logo">
-        <img title="Hermes logo" src="assets/img/logohermes.png">
+      <a routerLink='/landing' class="logo-link">
+        <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
       </a>
       <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
