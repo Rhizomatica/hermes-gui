@@ -1,6 +1,20 @@
 <div id="radio">
     <div ngIf="isAdmin">
-        <iframe id="iframeHamRadio" class="e2e-iframe-trusted-src" [src]="radioRemoteUrl"
-            height="100%" width="100%" frameBorder="0"></iframe>
+        <canvas class="visualizer" id="canBFSPC" width="1024" style="display:none"></canvas>
+        <canvas class="visualizer" id="canBFFFT" width="2048" style="display:none"></canvas>
+        <div id="div-princ">
+            <img onclick="powertogle();" id="button_power" alt="Click to connect or disconnect interface"
+            src="assets/svg/power-off-solid.svg">
+
+            <div id="div-mode_menu">
+                <ul>
+                    <li onclick="togle_li();sendTRXmode();" class="button_mode button_pressed" lichecked="">USB</li>
+                    <li onclick="togle_li();sendTRXmode();" class="button_mode button_unpressed">LSB</li>
+                    <!-- <li onclick="togle_li();sendTRXmode();" class="button_mode button_unpressed">CW</li>
+				  <li onclick="togle_li();sendTRXmode();" class="button_mode button_unpressed">AM</li>
+				  <li onclick="togle_li();sendTRXmode();" class="button_mode button_unpressed">FM</li> -->
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

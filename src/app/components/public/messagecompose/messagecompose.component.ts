@@ -7,14 +7,13 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
+import { Utils } from '../../../components/utils/utils';
 
 @Component({
   selector: 'app-messagecompose',
   templateUrl: './messagecompose.component.html',
   styleUrls: ['./messagecompose.component.less']
-
 })
-
 
 export class MessagecomposeComponent implements OnInit {
 
@@ -55,7 +54,8 @@ export class MessagecomposeComponent implements OnInit {
     private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private utils: Utils) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -145,47 +145,24 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-
-
   onFileSelected(event) {
     let file: File = event.target.files[0];
+
     if (file) {
       this.file = file;
-      switch (this.file.type) {
-        case 'image/bmp':
-        case 'image/gif':
-        case 'image/jpeg':
-        case 'image/png':
-        case 'image/webp':
-        case 'image/svg+xml':
-        case 'image/pjpeg':
-        case 'image/x-jps':
-        case 'audio/aac':
-        case 'audio/mpeg':
-        case 'audio/ogg':
-        case 'audio/ogx':
-        case 'audio/opus':
-        case 'audio/wav':
-        case 'audio/x-wav':
-        case 'audio/webm':
-        case 'audio/3gpp':
-        case 'audio/3gpp2':
-          this.maxSize = 31457280;
-          break;
-        default:
-          this.maxSize = 2097152;
-      }
-      if (file.size < this.maxSize) {
-        this.fileName = file.name;
-        this.fileSelected = true;
-        return file;
-      }
-      else {
-        this.fileName = 'file too big | archivo muy grande ';
-        this.file = null;
-        file = null;
-        return file;
-      }
+      this.maxSize = this.utils.getMaxSizeFileByType(this.file.type)
+    }
+
+    if (file.size < this.maxSize) {
+      this.fileName = file.name;
+      this.fileSelected = true;
+      return file;
+    }
+    else {
+      this.fileName = 'file too big | archivo muy grande ';
+      this.file = null;
+      file = null;
+      return file;
     }
   }
 
@@ -255,7 +232,6 @@ export class MessagecomposeComponent implements OnInit {
 
   // TODO check to remove
   newMessage() {
-    // this.router.navigate(['/compose']);
     this.fileIsProcessing = false;
     this.message.name = '';
     this.message.text = '';
@@ -269,7 +245,6 @@ export class MessagecomposeComponent implements OnInit {
       this.isEncrypted = true;
     }
   }
-
 
   checkpwd(passwd, repasswd) {
     if (passwd) {
@@ -291,7 +266,6 @@ export class MessagecomposeComponent implements OnInit {
   fileUpload(files): void {
     // this.messageService.postFile($files[0]);
     console.log('⚚ messagecompose - fileupload: ', files);
-
   }
 
   selectAllForDropdownItems(items: any[]) {

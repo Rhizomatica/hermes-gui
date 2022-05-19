@@ -1,5 +1,15 @@
+import { Injectable } from "@angular/core";
+
+declare var document: any;
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class Utils {
+
+  constructor() {
+  }
 
   getFileType(file) {
 
@@ -49,6 +59,32 @@ export class Utils {
         obj.isImage = false
     }
     return obj
+  }
+
+  getMaxSizeFileByType(type) {
+    switch (type) {
+      case 'image/bmp':
+      case 'image/gif':
+      case 'image/jpeg':
+      case 'image/png':
+      case 'image/webp':
+      case 'image/svg+xml':
+      case 'image/pjpeg':
+      case 'image/x-jps':
+      case 'audio/aac':
+      case 'audio/mpeg':
+      case 'audio/ogg':
+      case 'audio/ogx':
+      case 'audio/opus':
+      case 'audio/wav':
+      case 'audio/x-wav':
+      case 'audio/webm':
+      case 'audio/3gpp':
+      case 'audio/3gpp2':
+        return 31457280;
+      default:
+        return 2097152;
+    }
   }
 
 } 
