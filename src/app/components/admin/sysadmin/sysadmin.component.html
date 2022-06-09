@@ -156,14 +156,33 @@
         </div>
     </div>
     <div *ngIf="!currentUser.admin">
-        <a routerLink="/usermanage" i18n="@@usermanagement">User Management</a>
-        <br />
-        <a routerLink="/radioconfig" i18n="@@radioinformation">Radio Information</a>
-        <br />
-        <br />
-        <p i18n="@@needtobeadmin">
-            Need to be an admin to access other admin features
-        </p>
+        <div class="menu">
+            <div class="flexible">
+                <a routerLink="/usermanage">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/user-alt.svg">
+                        </div>
+                        <div class="row" i18n="@@adminmanage">
+                            User management
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/radioconfig">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/tools.svg">
+                        </div>
+                        <div i18n="@@radioconfig">
+                            Radio configuration
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <p i18n="@@needtobeadmin">
+                Need to be an admin to access other admin features
+            </p>
+        </div>
     </div>
 </div>
 <div>

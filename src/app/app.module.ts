@@ -37,6 +37,7 @@ import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
+import { LoginFormComponent } from './components/public/login-form/login-form.component';
 
 registerLocaleData(localePt);
 
@@ -68,7 +69,8 @@ registerLocaleData(localePt);
     RadioConfigComponent,
     FrequencyPipe,
     GatewayConfigComponent,
-    TransmissionListComponent
+    TransmissionListComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

@@ -3,8 +3,8 @@
         <h2 i18n="@@admmanage">User Management</h2>
         <div class="flex-right" *ngIf="isadmin">
             <button *ngIf="currentUser && !selectedUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
-            <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
         </div>    
+        <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>
     <div *ngIf="currentUser">
         <div *ngIf="isadmin">
@@ -48,10 +48,6 @@
                 <span i18n="@@phonenumber">phone number</span>:
                 <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder
                     placeholder="phone number" />
-            </label>
-            <label>
-                <span i18n>site</span>:
-                <br /><input name="site" [(ngModel)]="selectedUser.site" i18n-placeholder placeholder="website" />
             </label>
             <div class="selector"></div>
             <hr>
