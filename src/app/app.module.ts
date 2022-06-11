@@ -38,6 +38,8 @@ import { GatewayConfigComponent } from './components/admin/gateway-config/gatewa
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(localePt);
 
@@ -80,7 +82,13 @@ registerLocaleData(localePt);
     HttpClientModule,
     Ng2SearchPipeModule,
     AngularFileUploaderModule,
-    NgSelectModule
+    NgSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: Boolean(environment.production),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+    registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     DecimalPipe,

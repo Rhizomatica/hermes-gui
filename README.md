@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
 Angular: 13.2.6
-Angular CLI: 13.2.6
+Angular CLI: 13.2.6 / 14.0.1
 Node: 12.22.5
 Package Manager: npm 8.5.2
 
@@ -42,6 +42,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Services Work (PWA APPLICATION)
+required 
+    npm install --global http-server
+
+https://angular.io/guide/service-worker-getting-started
+
+Run Service Work
+http-server -p 8080 -c-1 dist/hermes
 
 
 ## Interface Contents
