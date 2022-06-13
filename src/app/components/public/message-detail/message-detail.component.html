@@ -66,7 +66,7 @@
                 Delete
             </span>
         </button>
-        <button routerLink="/compose">
+        <button class="m-l-10" routerLink="/compose">
             <span i18n="@@compose1">
                 <img title="compose" src="assets/svg/edit.svg">
                 Compose
@@ -79,12 +79,17 @@
             <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
             </span>
             <span>{{selectedMessage.name}}</span>
-            <div class="icon"><a (click)="showDelete()">
-                    <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
+            <div class="icon">
+                <a (click)="showDelete()">
+                    <img title="cancel" src="assets/svg/x.svg">
+                    <button i18n="@@cancelmt">cancel</button>
+                </a>
             </div>
-            <div class="icon"><a routerLink='/messages' routerLinkActive="active">
-                    <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
-                        i18n="@@confirmmt">confirm</button></a>
+            <div class="icon">
+                <a routerLink='/messages' routerLinkActive="active">
+                    <img title="confirm" src="assets/svg/trash-alt.svg">
+                    <button (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
+                </a>
             </div>
         </div>
     </div>
@@ -93,8 +98,10 @@
             <div class="cv">
                 <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
                 <span>{{error}}</span>
-                <div class="icon"><a (click)="closeError()">
-                        <img title="compose" src="assets/svg/x.svg"></a>
+                <div class="icon">
+                    <a (click)="closeError()">
+                        <img title="compose" src="assets/svg/x.svg">
+                    </a>
                 </div>
             </div>
         </div>

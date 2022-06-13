@@ -30,7 +30,6 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          // console.log('⚚ Hermes ⚚\n⚚ api service - system status:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -42,32 +41,26 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          // console.log('⚚ Hermes ⚚\n⚚ api service - system config');
           return this.serverReturn;
       }),
       catchError(this.handleError));
     }
     public sysShutdown() {
       const url = `${GlobalConstants.apiURL}/sys/shutdown`; // get api:sys/shutdown
-      console.log('shutting down');
       this.http.get(url).subscribe();
     }
 
     public sysReboot() {
       const url = `${GlobalConstants.apiURL}/sys/reboot`; // get api:sys/reboot
-      console.log('rebooting');
       this.http.get(url).subscribe();
 
     }
 
     public sysRestore(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/restore`; // get api:sys/restore
-      // console.log(this.http.get(url));
-      // console.log(url);
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          // console.log('⚚ Hermes ⚚\n⚚ api service - system restore:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -84,7 +77,6 @@ export class ApiService {
       // Authorization: 'my-auth-token'
       return this.http.post(url, formData, {params, headers}).pipe(
       map((res: any) => {
-        console.log('⚚ sys server setting - allowfile: ', res.allowfile);
         return res.allowfile;
       }),
       catchError(this.handleError)
@@ -102,7 +94,6 @@ export class ApiService {
     // Authorization: 'my-auth-token'
     return this.http.post(url, formData, {params, headers}).pipe(
     map((res: any) => {
-      console.log('⚚ sys server setting - allowfile: ', res.allowhmp);
       return res.allowhmp;
     }),
     catchError(this.handleError)
@@ -127,7 +118,6 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          // console.log('⚚ Hermes ⚚\n⚚ api service - mail log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -139,7 +129,6 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          // console.log('⚚ Hermes ⚚\n⚚ api service - uucp log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -151,7 +140,6 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          // console.log('⚚ Hermes ⚚\n⚚ api service - uucp debug log:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -162,7 +150,6 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.schedules = res || [];
-          // console.log('⚚ Hermes ⚚\n⚚ api service - caller schedulles:\n ', res);
           return this.schedules;
       }),
       catchError(this.handleError));
@@ -175,7 +162,6 @@ export class ApiService {
       return this.http.get(url).pipe(
         map((res: any) => {
           this.serverReturn = res;
-          console.log('⚚ Hermes ⚚\n⚚ api service - caller schedule:\n ', res);
           return this.serverReturn;
       }),
       catchError(this.handleError));
@@ -184,8 +170,6 @@ export class ApiService {
 
   public createSchedule(schedule: Schedule): Observable<Schedule[]> {
     const url = `${GlobalConstants.apiURL}/caller`; // POST /message
-    // messageImage: File;
-    console.log('⚚ gateway scheduller - created');
     return this.http.post<Schedule>(url, schedule).pipe(
       map((res: any) => {
         this.schedule = res;
@@ -199,7 +183,6 @@ export class ApiService {
 // need to verify this
 public updateSchedule(id: number, schedule: Schedule): Observable<Schedule>{
   const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
-  console.log('⚚ gateway scheduller - updated');
   return this.http.put<Schedule>(url, schedule).pipe(
    catchError(this.handleError),
   );
@@ -208,17 +191,14 @@ public updateSchedule(id: number, schedule: Schedule): Observable<Schedule>{
 
 public deleteSchedule(id) {
   const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
-  console.log('⚚ gateway scheduller - deleted');
   return this.http.delete(url).pipe(
     map((res: any) => {
-      console.log('⚚ api service - deleteSchedule');
         return this.schedules;
     }),
    catchError(this.handleError));
 }
 
     private handleError(error: HttpErrorResponse) {
-      console.log('⚚ Hermes ⚚\n⚚ api service  error - :\n ', error);
 	      return throwError(error);}
 }
 

@@ -24,14 +24,12 @@ export class SwitchComponent {
   onSwitch() {
     try {
       eval(this.customFunction)
-      console.log(this.disabled)
     } catch (error) {
       console.log(error)
     }
   }
 
   ngOnInit(): void {
-    console.log("Switch component initialized: " + this.disabled)
   }
 
 }

@@ -2,7 +2,7 @@
     <div>
         <div *ngIf="!loginForm">
             <div class="flexible">
-                <h2 i18n="@@publicmessages1" class="maintitle">Public Messages </h2>
+                <h2 i18n="@@publicmessages1" class="">Public Messages </h2>
                 <div class="flex-right">
                     <button *ngIf="allowCompose" routerLink="/compose">
                         <span i18n="@@compose1">
@@ -10,20 +10,20 @@
                             Compose
                         </span>
                     </button>
-                    <button routerLink="/sent">
+                    <button class="m-l-10" routerLink="/sent">
                         <span i18n="@@sent1">
                             <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg">
                             sent messages
                         </span>
                     </button>
-                    <div *ngIf="!currentUser">
-                        <button *ngIf="!loginForm" (click)="showlogin()">
+                    <!-- <div *ngIf="!currentUser">
+                        <button class="m-l-10" *ngIf="!loginForm" (click)="showlogin()">
                             <span i18n="@@login2">
                                 <img class="loginicon" title="login" src="assets/svg/sign-in-alt-solid.svg">
                                 login
                             </span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
@@ -69,11 +69,11 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="loginForm">
+        <!-- <div *ngIf="loginForm">
             <app-login-form (hideLoginForm)="closeLogin()">
             </app-login-form>
             <hr>
-        </div>
+        </div> -->
         <div>
             <div class="overall alert" *ngIf="errorAlert==true">
                 <div class="cv">

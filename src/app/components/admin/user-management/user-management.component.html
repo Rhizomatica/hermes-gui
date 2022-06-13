@@ -1,13 +1,16 @@
 <div class="">
-    <h2 i18n="@@admmanage">User Management</h2>
-    <hr>
+    <div class="flexible">
+        <h2 i18n="@@admmanage">User Management</h2>
+        <div class="flex-right" *ngIf="isadmin">
+            <button *ngIf="currentUser && !selectedUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
+        </div>    
+        <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
+    </div>
     <div *ngIf="currentUser">
         <div *ngIf="isadmin">
-            <h5 *ngIf="!isEditing" i18n="@@Users">User list:</h5>
             <h5 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser"
                     i18n="@@createusers">Create User</span></h5>
             <ng-container>
-
                 <div *ngIf="!isEditing">
                     <div class="userlist">
                         <input [hidden]="isEditing==true||isadmin==false" id="searchbox1" placeholder="Search Users"
@@ -27,17 +30,15 @@
                     </div>
                 </div>
             </ng-container>
-
         </div>
     </div>
-
     <ng-container *ngIf="selectedUser">
         <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
             <label for="email">
                 <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
                     placeholder="write the username">
             </label>
-            <span i18n>email</span>: {{selectedUser.email}}@{{system.domain}}         
+            <span i18n>email</span>: {{selectedUser.email}}@{{system && system.domain}}
             <label for="name">
                 <span i18n="@@name">full name</span>:
                 <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required
@@ -48,29 +49,8 @@
                 <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder
                     placeholder="phone number" />
             </label>
-            <label>
-                <span i18n>site</span>:
-                <br /><input name="site" [(ngModel)]="selectedUser.site" i18n-placeholder placeholder="website" />
-            </label>
             <div class="selector"></div>
             <hr>
-            <label for="recovery">
-                <span (click)="showExplanation()"> <img class="inlineicon" title="admin"
-                        src="assets/svg/question-circle-regular.svg"></span><span i18n>recovery phrase</span>:
-                <div *ngIf="recoverExplanation" i18n="@@recoveryexplanation" class="alert">
-                    If you loose your password, you will need to answer a question to recover it, please write a
-                    question that only you will know the answer.
-                </div>
-                <br /><input name="recoverphrase" [(ngModel)]="selectedUser.recoverphrase" i18n="@@mwqr" required
-                    placeholder="write a question to recover your password" i18n-placeholder />
-            </label>
-            <label>
-                <span i18n="@@recovans2">recovery answer</span>:
-                <br /><input name="recoveranswer" [(ngModel)]="selectedUser.recoveranswer" i18n="@@mwarq"
-                    placeholder="answer to your recovery question" i18n-placeholder />
-            </label>
-            <hr>
-
             <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
             <label *ngIf="showPassword">
                 <span i18n>password</span>:
@@ -103,13 +83,14 @@
             </label>
             <br />
             <button (click)="cancelCreate()" i18n="@@mwcancel">cancel</button>
-            <span *ngIf="selectedUser.email !== 'root'"><button (click)="deleteAlert()" i18n="@@delusr"
-                    [disabled]="admin" [hidden]="emptyUser">delete user</button></span>
-            <button type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
+            <span *ngIf="selectedUser.email !== 'root'">
+                <button class="m-l-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
+                    user</button>
+            </span>
+            <button class="m-l-10" type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
                 [disabled]="f.invalid">update</button>
-            <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
+            <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
                 [disabled]="f.invalid || passunMatch">create user</button>
-
             <div class="overall" *ngIf="deleteUser">
                 <div class="cv">
                     <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br />
@@ -117,10 +98,9 @@
                     <br />
                     <button type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
                         i18n="@@deleteuser">delete user</button>
-                    <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
                 </div>
             </div>
-
             <div class="overall" *ngIf="updateUser">
                 <div class="cv">
                     <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br />
@@ -128,10 +108,9 @@
                     <br />
                     <button type="submit" (click)="onSubmitUpdate(selectedUser.emailid,f)" [disabled]="f.invalid"
                         i18n="@@update">update</button>
-                    <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
                 </div>
             </div>
-
             <div class="overall alert" [hidden]="errorAlert==false">
                 <div class="cv">
                     <span i18n="@@errormanagemet">There was an error on precessing your request <br /><br /></span>
@@ -139,16 +118,8 @@
                     <div class="icon"><a (click)="closeError()">
                             <img title="close" src="assets/svg/x.svg"></a>
                     </div>
-
                 </div>
             </div>
-
-
         </form>
     </ng-container>
-    <div *ngIf="!selectedUser">
-        <button *ngIf="currentUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
-    </div>
-    <button i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
-
 </div>

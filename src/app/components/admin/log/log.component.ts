@@ -4,7 +4,6 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { ApiService } from '../../../_services/api.service';
 import { interval } from 'rxjs';
 
-
 export interface LogList {
   line: string;
   content: string;
@@ -32,6 +31,7 @@ export class LogComponent implements OnInit, OnDestroy {
   private subscription1;
   private subscription2;
   private subscription3;
+  errorAlert = false;
 
   constructor( private authenticationService: AuthenticationService, private apiService: ApiService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -84,12 +84,11 @@ export class LogComponent implements OnInit, OnDestroy {
     this.apiService.getUucpLog().subscribe(
       (res: any) => {
         this.uucpLog = res;
-        // console.log('read');
-
         return res;
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true
       }
     );
   }
@@ -98,11 +97,11 @@ export class LogComponent implements OnInit, OnDestroy {
     this.apiService.getMailLog().subscribe(
       (res: any) => {
         this.mailLog = res;
-        // console.log('read mail');
         return res;
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true
       }
     );
   }
@@ -111,11 +110,11 @@ export class LogComponent implements OnInit, OnDestroy {
     this.apiService.getUucpDebugLog().subscribe(
       (res: any) => {
         this.uucpDebugLog = res;
-        // console.log('read debug');
         return res;
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true
       }
     );
   }
@@ -126,8 +125,9 @@ export class LogComponent implements OnInit, OnDestroy {
     this.dLog = false;
   }
 
-
-
+  closeError() {
+    this.errorAlert = false;
+  }
 
   ngOnInit(): void {
     this.getLogUucp();
@@ -151,7 +151,6 @@ export class LogComponent implements OnInit, OnDestroy {
     if (this.subscription3) {
       this.subscription3.unsubscribe();
     }
-    console.log('quiting radio config');
   }
 
   }

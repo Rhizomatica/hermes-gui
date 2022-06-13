@@ -9,9 +9,8 @@ import { NgForm } from '@angular/forms';
 import { User } from '../../../interfaces/user';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
-import { ScriptService } from '../../../_services/script.service';
-import { Utils } from '../../utils/utils';
- 
+// import { ScriptService } from '../../../_services/script.service';
+
 @Component({
   selector: 'app-message-detail',
   templateUrl: './message-detail.component.html',
@@ -48,7 +47,7 @@ export class MessageDetailComponent implements OnInit {
     private location: Location,
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
-    private scripts: ScriptService,
+    // private scripts: ScriptService,
 
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -256,10 +255,6 @@ export class MessageDetailComponent implements OnInit {
     this.getMessage();
     this.getSysConfig();
     // this.getImageFromService();
-
-    // this.scripts.load('utils').then(data => {
-    //   console.log('script loaded ', data);
-    // }).catch(error => console.log(error));
   }
 
 }

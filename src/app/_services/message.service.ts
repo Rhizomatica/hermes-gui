@@ -93,7 +93,6 @@ export class MessageService {
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
-        console.log('⚚ message service - getInboxMessages');
         return this.messages;
     }),
       catchError(this.handleError));
@@ -114,7 +113,6 @@ export class MessageService {
     const url = `${GlobalConstants.apiURL}/inbox/${id}`; // DELETE /inbox/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        console.log('⚚ message service - deleteInboxMessage');
         return this.messages;
     }),
      catchError(this.handleError));
@@ -125,12 +123,10 @@ export class MessageService {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
     return this.http.delete(url).pipe(
       map((res: any) => {
-        console.log('⚚ message service - deleteMessage');
           return this.messages;
       }),
      catchError(this.handleError));
   }
-
 
    // uncrypt message test by ariane
    uncrypt(id: number, values): Observable<{}> {
@@ -143,7 +139,6 @@ export class MessageService {
      catchError(this.handleError));
   }
 
-
   // POST: add a new message to the database
   sendMessage(message: Message, origin: any): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message`; // POST /message
@@ -151,7 +146,6 @@ export class MessageService {
     message.sent_at = Date();
     message.orig = origin;
     // messageImage: File;
-    console.log('⚚ message service - sendMessage');
     return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
         this.message = res;
@@ -172,7 +166,6 @@ export class MessageService {
 
   private handleError(error: HttpErrorResponse) {
     this.message = [];
-	  console.log('⚚ Hermes ⚚\n⚚ message service  error - :\n ', error);
 	    return throwError(error);
   }
 

@@ -1,22 +1,33 @@
-<div class="">
+<div>
   <ng-container *ngIf="stations">
-    <form #g="ngForm" *ngIf="stations" class="formfield">
+    <form #g="ngForm" *ngIf="stations">
       <h2>Stations on this network</h2>
       <br />
-      <div><b><span class="stname" i18n="@@names">Name</span><span class="stname" i18n="@@aliass">Alias</span><span
-            *ngIf="isGateway" class="tranenabl" i18n="@@enabledto">Enabled for transmission</span></b></div>
-
+      <div>
+        <b>
+          <span class="stname" i18n="@@names">Name</span>
+          <span class="stname" i18n="@@aliass">Alias</span>
+          <span *ngIf="isGateway" class="tranenabl" i18n="@@enabledto">
+            Enabled for transmission
+          </span>
+        </b>
+      </div>
       <div *ngFor="let station of stations" class="itemlist">
         <span>
-          <span [ngClass]="{'neutral' : !station.checked}"><b class="stname">{{station.name}} </b> </span>
-          <span class="stname">{{station.alias}}</span></span>
+          <span [ngClass]="{'neutral' : !station.checked}">
+            <b class="stname">{{station.name}} </b>
+          </span>
+          <span class="stname">{{station.alias}}</span>
+        </span>
         <!-- <input *ngIf="isGateway && isAdmin" type="checkbox" class="afterlist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> -->
-          <div class="switch m-b-10">
-            <input type="checkbox" name="switchButton" [checked]="station.checked">
-            <span class="slider round" *ngIf="isGateway && isAdmin" (click)="selectStations($event)" value="{{station.alias}}" [checked]="station.checked"></span>
-          </div>
+        <div class="switch m-b-10">
+          <input type="checkbox" name="switchButton" [checked]="station.checked">
+          <span class="slider round" *ngIf="isGateway && isAdmin" (click)="selectStations($event)"
+            value="{{station.alias}}" [checked]="station.checked"></span>
+        </div>
       </div>
-      <button type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()" i18n="@@updateenabled">
+      <button class="m-t-25" type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()"
+        i18n="@@updateenabled">
         Update Enabled Stations
       </button>
       <div class="overall" *ngIf="stationedit">
@@ -25,9 +36,20 @@
           <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
           <br />
           <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
-          <button type="button" (click)="confirmChange()" i18n="@@cancelg">cancel</button>
+          <button class="m-l-10" type="button" (click)="confirmChange()" i18n="@@cancelg">cancel</button>
         </div>
       </div>
     </form>
   </ng-container>
+</div>
+<div>
+  <div class="overall alert" *ngIf="errorAlert==true">
+    <div class="cv">
+      <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="compose" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
 </div>

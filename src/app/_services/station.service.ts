@@ -16,21 +16,20 @@ export class StationService {
   constructor(
     private http: HttpClient,
     private alertService: AlertService) { }
-    stations: Station[];
+  stations: Station[];
 
-    getStations(): Observable<Station[]> {
-      const url = `${GlobalConstants.apiURL}/sys/stations`;
-      return this.http.get(url).pipe(
-        map((res: any) => {
-          this.stations = res;
-          return this.stations;
+  getStations(): Observable<Station[]> {
+    const url = `${GlobalConstants.apiURL}/sys/stations`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        this.stations = res;
+        return this.stations;
       }),
       catchError(this.handleError));
-    }
+  }
 
-    private handleError(error: HttpErrorResponse) {
-      this.stations = [];
-      console.log('⚚ Hermes ⚚\n⚚ station service  error - :\n ', error);
-	    return throwError(error);
-    }
+  private handleError(error: HttpErrorResponse) {
+    this.stations = [];
+    return throwError(error);
+  }
 }

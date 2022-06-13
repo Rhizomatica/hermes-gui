@@ -14,12 +14,13 @@ import { ScriptService } from '../../../_services/script.service';
 })
 
 export class RadioComponent implements OnInit, OnDestroy {
-  public radio: any = [];
+  public radio: any = []
   error: Error;
   currentUser: User;
   isAdmin = false;
   radioRemoteUrl: any;
   uhrrScript: any;
+  errorAlert:false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -27,6 +28,10 @@ export class RadioComponent implements OnInit, OnDestroy {
     private scriptService: ScriptService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
     this.isAdmin = this.currentUser.admin
+  }
+
+  closeError() {
+    this.errorAlert = false
   }
 
   ngOnInit(): void {
@@ -44,7 +49,6 @@ export class RadioComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('quiting radio')
   }
 }
 

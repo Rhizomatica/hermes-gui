@@ -13,13 +13,11 @@ import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { MessageadmComponent } from './components/admin/messageadm/messageadm.component';
-import { ForgotpasswordComponent } from './components/public/forgotpassword/forgotpassword.component';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { RadioComponent } from './components/admin/radio/radio.component';
-// import { TestradioComponent } from './components/admin/testradio/testradio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
@@ -40,7 +38,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
   { path: 'messageadm', component: MessageadmComponent },
-  { path: 'recovery', component: ForgotpasswordComponent },
   { path: 'sent', component: SentMessagesComponent },
   { path: 'email', component: EmailComponent },
   { path: 'help', component: HelpComponent },
@@ -53,6 +50,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

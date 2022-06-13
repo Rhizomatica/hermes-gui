@@ -10,13 +10,14 @@
 
 @font-face {
     font-family: "Rubik";
-    src: url("/fonts/Rubik-Light.woff2") format("woff"),
+    src: url("./fonts/Rubik-Light.woff2") format("woff"),
 }
 
 @font-face {
     font-family: "Rubik-regular";
-    src: url("/fonts/Rubik-Regular.woff2") format("woff"),
+    src: url("./fonts/Rubik-Regular.woff2") format("woff"),
 }
+
 
 html,
 body {
@@ -71,8 +72,7 @@ input {
     button {
         font-size: 1em;
         padding: 0.3em 0.5em;
-        margin: 0.5em;
-
+        // margin: 0.5em;
 
         a {
             color: @bkclr;
@@ -117,13 +117,12 @@ input {
 
 
 body {
-    margin: 0.2em auto 1em auto;
-    padding: 0 0.5em;
+    margin: 0 auto;
     position: relative;
-    background-color: @bkclr;
+    // background-color: @bkclr;
+    background-color: #fafafa;
     color: @mclr;
 }
-
 
 
 body.dark-mode {
@@ -243,9 +242,14 @@ nav {
     line-height: 0.8em;
     border-bottom: 2px solid @mclr;
     border-top: 2px solid @mclr;
-    max-width: calc(100% - 4px);
+    width: 100%;
     display: flex;
     justify-content: center;
+    background-color: @bkclr;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+
 
     a {
         text-decoration: none;
@@ -253,7 +257,7 @@ nav {
         margin-right: 0.3em;
         margin-top: 0.8em;
         position: relative;
-        min-width: calc(20% - 0.25em);
+        min-width: calc(14% - 0.25em);
         text-align: center;
     }
 
@@ -264,6 +268,10 @@ nav {
         position: relative;
         margin: 0 auto 0.25em;
 
+    }
+
+    .logo {
+            width: 10em;
     }
 
     img:hover {
@@ -281,9 +289,6 @@ nav a:hover {
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
-
-
-
 label {
     display: block;
     text-align: left;
@@ -296,7 +301,7 @@ textarea {
 
 .sitetitle {
     color: @clr;
-    font-size: 0.8em;
+    font-size: 1.2em;
     line-height: 1em;
     position: relative;
     left: 3px;
@@ -306,12 +311,10 @@ textarea {
 
 .logo {
     position: relative;
-    left: -10px;
+    // left: 10px;
     top: 0px;
 
 }
-
-
 
 .bordered {
     border-bottom: 2px solid black;
@@ -322,9 +325,12 @@ textarea {
 
 .fullpage {
     min-height: 100vh;
-    max-width: 61em;
+    max-width: 100%;
     position: relative;
-    width: auto;
+    margin: auto;
+
+    // top:60em
+    // width: auto;
 }
 
 .push {
@@ -332,8 +338,7 @@ textarea {
 }
 
 #appcontainer {
-    max-width: 60em;
-    width: 100%;
+    // max-width: 90em;
     position: relative;
     min-height: 100vh;
     padding-bottom: 2em;
@@ -345,12 +350,10 @@ textarea {
     height: 2.5em;
     border-top: 2px solid #000;
     background-color: @bkclr;
-    width: 96%;
-    max-width: 100em;
-    // z-index: 9999;
+    width: 100%;
+    // max-width: 100em;
     position: fixed;
     bottom: 0em;
-
 
     div {
         display: inline-block;
@@ -372,9 +375,10 @@ textarea {
     position: relative;
     max-width: calc(100% - 4px);
     min-height: calc(~"100% - 14em");
-    // padding: 1.5em;
-    padding: 2%;
-
+    padding-right: 5em;
+    padding-left: 5em;
+    top: 5em;
+    padding-bottom: 6em;
 
 
     .textarea {
@@ -417,15 +421,15 @@ textarea {
     margin-left: 10px;
     margin-right: 10px;
     line-height: 1px;
-  }
-  
-  .switch input { 
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0.6em !important;
@@ -436,9 +440,9 @@ textarea {
     -webkit-transition: .4s;
     transition: .4s;
     margin: auto 0;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 25px;
@@ -449,18 +453,18 @@ textarea {
     border: #b8b8b8 0.5px solid;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(22px);
     -ms-transform: translateX(22px);
     transform: translateX(22px);
     background-color: @clr;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
 
 
 .container {
@@ -475,7 +479,7 @@ textarea {
         height: 1.5em;
         position: relative;
         top: 5px;
-        margin-right: 0.1em;
+        // margin-right: 0.1em;
     }
 }
 
@@ -525,9 +529,10 @@ textarea {
 }
 
 .flags {
-    margin-top: 1.8em;
+    margin-top: 6em;
     border-bottom: 0;
     text-align: center;
+    left: 0;
 }
 
 .flags img {
@@ -607,19 +612,11 @@ textarea {
 }
 
 .topuser {
-    // position: absolute;
-    // right: 3em;
-    // top: 3em;
-    // display: block;
-    // width: 20em;
-    // font-size: 1.2em;
-
     position: absolute;
-    right: 4em;
     top: 1em;
     display: block;
-    width: 20em;
     font-size: 1.2em;
+    text-align: right;
 }
 
 
@@ -645,18 +642,18 @@ textarea {
         margin-top: 10px;
         display: block;
 
-        input{
+        input {
             width: 100%;
             border: 1px solid #888;
             border-radius: 3px;
         }
 
-        input[type="checkbox"]{
+        input[type="checkbox"] {
             width: 0px;
         }
     }
 
-    
+
 
     input.midbt {
         width: 60%;
@@ -667,10 +664,10 @@ textarea {
         text-align: left;
         float: right;
         position: relative;
-        top: -0.5em;
-        padding: 0.35em 0.35em;
-        width: calc(40% - 1em);
-        font-size: 0.5em;
+        // top: -0.5em;
+        padding: 0.35em;
+        width: calc(41% - 1em);
+        font-size: 0.4em;
         line-height: 0.85em;
         height: 3.4em;
         margin-left: 0.1em;
@@ -708,13 +705,15 @@ textarea {
 #radioconf {
     .card {
         line-height: 1.3em;
+
         small {
             font-size: 0.6em;
         }
     }
-    .fomdata button.midbt {
-        margin-bottom: 2em;
-    }
+
+    // .fomdata button.midbt {
+    // margin-bottom: 2em;
+    // }
 }
 
 .full {
@@ -769,10 +768,10 @@ textarea {
     width: 8em;
     margin: 0 1vmin;
 
-    
+
     button.midbt {
         font-size: 0.7em;
-        height: 4.2em;
+        height: 4em;
         border-radius: 3px;
         margin-bottom: 0.25em;
         width: 14.5em;
@@ -800,18 +799,21 @@ textarea {
 
 .multiplist1 {
     display: block;
-    height: calc(100vh - 20em);
+    // height: calc(100vh - 20em);
     word-break: break-all;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
     font-size: 0.8em;
+    padding-bottom: 6em;
+
     .item {
         // border-bottom: solid 1px #FFF;
         margin: 20px;
         padding: 20px;
     }
+
     .item:first-of-type {
         border-top: #999 1px solid;
     }
@@ -821,12 +823,10 @@ textarea {
 
 .multiplist2 {
     display: block;
-    height: calc(100vh - 23em);
     min-height: 5em;
-    overflow-y: scroll;
-    // border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
+    padding-bottom: 6em;
 }
 
 .users {
@@ -836,7 +836,7 @@ textarea {
 .userlist {
     width: 100%;
     margin-bottom: 0.15em;
-    font-size: 0.75em;
+    font-size: 1em;
     border-bottom: solid 1px @mclr;
 
     .adm {
@@ -873,14 +873,9 @@ textarea {
 .logs {
     position: relative;
     font-size: 0.75em;
-    min-height: 10em;
-    height: calc(100vh - 22em);
-    overflow: auto;
-    border: 1px solid #888;
     list-style: none;
     list-style-position: inside;
     line-height: 1.2em;
-    position: relative;
 
     section {
         height: fit-content;
@@ -891,7 +886,6 @@ textarea {
         flex-basis: 1em;
         -webkit-flex-grow: 1;
         -webkit-flex-shrink: 1;
-        overflow: scroll;
     }
 
     div {
@@ -1032,14 +1026,22 @@ input.searchbox2 {
         display: flex;
         justify-content: space-between;
     }
+
+    .item:last-child {
+        padding-bottom: 6em;
+        border-bottom: 0;
+    }
+
     a {
         text-decoration: none;
-        
+
     }
+
     .date {
         font-size: 0.5em;
         flex-shrink: 0;
     }
+
     .maininfo {
         display: flex;
         flex-direction: row;
@@ -1062,7 +1064,7 @@ input.searchbox2 {
         border-bottom: #999 1px solid;
 
     }
-    
+
 }
 
 .loginicon {
@@ -1303,6 +1305,19 @@ input.ng-invalid {
 }
 
 .dark-mode {
+    // ::-webkit-scrollbar {
+    //     width: 12px;
+    // }
+
+    // ::-webkit-scrollbar-track {
+    //     -webkit-box-shadow: inset 0 0 6px     @mclr; 
+    // }
+
+    // ::-webkit-scrollbar-thumb {
+    //     // border-radius: 10px;
+    //     -webkit-box-shadow: inset 0 0 1.8px     @bkclr; 
+    // }
+
     a:visited {
         color: #ccc;
     }
@@ -1335,6 +1350,10 @@ input.ng-invalid {
     nav {
         border-bottom: 1px solid #5c5b5b;
         border-top: 1px solid #5c5b5b;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: @mclr;
 
         .flag img {
             filter: invert(0);
@@ -1356,7 +1375,7 @@ input.ng-invalid {
         width: 2em;
         height: 2em;
         outline: 0;
-        left:0;
+        left: 0;
 
         .drb {
             display: block;
@@ -1389,10 +1408,16 @@ input.ng-invalid {
         border-color: #fff;
     }
 
-    .formfield #searchbox1 {
-        background-color: @mclr;
-        border: 1px solid #666;
 
+
+    .formfield {
+
+        top: 5em;
+
+        #searchbox1 {
+            background-color: @mclr;
+            border: 1px solid #666;
+        }
     }
 
     .userlist {
@@ -1416,16 +1441,17 @@ input.ng-invalid {
 
     .card {
         border-color: @bkclr;
+        background-color: @mclr;
     }
 
-    a{
-      .card{
-        color: #FFF;
-        cursor: pointer;
-      }  
+    a {
+        .card {
+            color: #FFF;
+            cursor: pointer;
+        }
     }
 
-    
+
 }
 
 .syspusher {
@@ -1666,12 +1692,13 @@ input[type=range]:hover::-ms-track {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
     a {
         text-decoration: none;
     }
 
-    h2{
-        flex:4
+    h2 {
+        flex: 4
     }
 }
 
@@ -1689,8 +1716,7 @@ input[type=range]:hover::-ms-track {
     width: 12.5em;
     height: 8em;
     line-height: 1em;
-    
-    
+    background-color: @bkclr;
 }
 
 .card-icon {
@@ -1736,6 +1762,22 @@ input[type=range]:hover::-ms-track {
     margin-bottom: 100px !important;
 }
 
+.m-l-10 {
+    margin-left: 10px !important;
+}
+
+.m-l-25 {
+    margin-left: 25px !important;
+}
+
+.m-l-50 {
+    margin-left: 50px !important;
+}
+
+.m-l-100 {
+    margin-left: 100px !important;
+}
+
 
 .row {
     width: 100%;
@@ -1767,6 +1809,7 @@ input[type=range]:hover::-ms-track {
     line-height: 1.5em;
     text-align: left;
     font-size: 2vmin;
+
     h1 {
         font-size: 4vmin;
     }
@@ -1784,25 +1827,29 @@ input[type=range]:hover::-ms-track {
         margin-top: 10px;
         text-decoration: none;
         color: #000;
+        margin: auto;
+
     }
 
     a>img {
-        width: 45%;
-        margin: auto;
+        width: 80%;
         display: block;
         color: @mclr;
+        margin: auto;
+        padding-top: 1.5em;
     }
 }
 
 .radio {
     display: flex;
     flex-wrap: wrap;
+
     // flex-direction: row;
-    form{
+    form {
         border: 1px solid #000;
         border-radius: 3px;
-        padding: 0.5em 1em;
-        margin: 0.5em 1% ;
+        padding: 1em;
+        margin: 0.5em 1%;
     }
 }
 
@@ -1814,12 +1861,12 @@ input[type=range]:hover::-ms-track {
 
 
 
-#iframeHamRadio{
-    -moz-transform: scale(1, 1); 
-    -webkit-transform: scale(1, 1); 
+#iframeHamRadio {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
     -o-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
-    transform: scale(1, 1); 
+    transform: scale(1, 1);
     -moz-transform-origin: top left;
     -webkit-transform-origin: top left;
     -o-transform-origin: top left;
@@ -1828,7 +1875,7 @@ input[type=range]:hover::-ms-track {
     height: 90vh;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     input,
     input[type=text],
@@ -1848,17 +1895,28 @@ input[type=range]:hover::-ms-track {
         line-height: 30px;
     }
 
+    nav {
+        .logo {
+            display: none
+        }
+    }
+
     .formdata {
+        button.midbt {
+            font-size: 0.8em;
+            margin-top: 0.6em;
+        }
+
         input {
             font-size: 0.9em;
         }
     }
 
     .flexible .card {
-        display: flex;
-        flex-direction: column;
-        margin-left: 1vw;
-        width: 40vw;
+        // display: flex;
+        // flex-direction: column;
+        margin-left: 0.5vw;
+        width: 45vw;
     }
 
     .card {
@@ -1868,23 +1926,24 @@ input[type=range]:hover::-ms-track {
         padding: 2vmin;
         margin: 1vmin;
         text-align: center;
-        font-size: 0.5em;
+        font-size: 0.8em;
         width: 100%;
-        height: 15vmin;
+        height: 23vmin;
         line-height: 3vmin;
+
         img {
             width: 5vmin;
         }
-        
     }
 
-#radioconf {
-    .card {
-        small {
-            font-size: 0.8em;
+    #radioconf {
+        .card {
+            small {
+                font-size: 0.8em;
+            }
         }
     }
-}
+
     .messages {
         .date {
             max-width: 20%;
@@ -1895,19 +1954,19 @@ input[type=range]:hover::-ms-track {
     .shut {
 
         width: 98vw;
+
         button.midbt {
-            font-size: 0.5em;
+            font-size: 0.8em;
             height: 15vmin;
-            width: 40vw;
+            width: 44vw;
             margin-right: 2vw;
-    
-    
         }
     }
 
     .card-icon {
         filter: brightness(0.5);
         margin-bottom: 0;
+        margin-top: 0.5em;
     }
 
     .landing {
@@ -1922,9 +1981,9 @@ input[type=range]:hover::-ms-track {
 
         .hello {
             height: auto;
-            h1 {
-                font-size: 4vmin;
 
+            h1 {
+                font-size: 3vmin;
             }
         }
 
@@ -1956,7 +2015,6 @@ input[type=range]:hover::-ms-track {
 
     .hello {
         display: inline;
-        // flex-direction: row;
         background-color: @clr;
         width: 100%;
         padding: 30px 10px 10px 10px;
@@ -1972,7 +2030,7 @@ input[type=range]:hover::-ms-track {
     }
 
     .logo {
-        left: -4px;
+        // left: 10px;
     }
 
     .multiplist3 {
@@ -1983,13 +2041,31 @@ input[type=range]:hover::-ms-track {
         display: inline;
     }
 
+    .formfield {
+        padding: 0.5em;
+        top: 3em;
+        margin-bottom: 4em
+    }
+
+    .topuser {
+        display: none;
+    }
+
+    .dark-mode {
+        .formfield {
+            top: 3em;
+            padding: 0.5em;
+        }
+    }
+
+    .logo-link {
+        display: none;
+    }
 }
 
 @media (min-width:720px) {
 
-    body {
-        max-width: 60em;
-    }
+    body {}
 
     input,
     input[type="text"],
@@ -2007,7 +2083,6 @@ input[type=range]:hover::-ms-track {
     button {
         font-size: 1em;
         padding: 0.3em 0.5em;
-        margin: 0.5em;
     }
 
     #spaceadm {
@@ -2025,11 +2100,11 @@ input[type=range]:hover::-ms-track {
 
     .formdata {
         button.midbt {
-            font-size: 1em;
+            font-size: 0.8em;
             line-height: 0.85em;
-            height: 2em;
+            height: 2.4em;
             margin-left: 0.1em;
-            padding: 0 0.3em 0 0.3;
+            margin-top: 0.6em;
         }
 
         input.midbt {
@@ -2042,8 +2117,6 @@ input[type=range]:hover::-ms-track {
             line-height: 1em;
         }
     }
-
-
 
     .radio {
         form {

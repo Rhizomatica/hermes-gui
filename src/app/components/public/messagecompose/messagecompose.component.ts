@@ -49,6 +49,8 @@ export class MessagecomposeComponent implements OnInit {
   public selectedStations = [];
   public allowhmp;
   public allowCompose = false;
+  public camPicture: any;
+
 
   constructor(
     private messageService: MessageService,
@@ -143,6 +145,18 @@ export class MessagecomposeComponent implements OnInit {
         this.errorAlert = true;
       }
     );
+  }
+
+  onFileCamSelected(e){
+    this.camPicture = e.target.files[0]
+    this.onFileSelected(e)
+  }
+
+  audFileSelected(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const audSrc = URL.createObjectURL(event.target.files[0]);
+      // this.figAudio.nativeElement.src = this.audSrc;
+    }
   }
 
   onFileSelected(event) {
@@ -265,7 +279,6 @@ export class MessagecomposeComponent implements OnInit {
 
   fileUpload(files): void {
     // this.messageService.postFile($files[0]);
-    console.log('⚚ messagecompose - fileupload: ', files);
   }
 
   selectAllForDropdownItems(items: any[]) {

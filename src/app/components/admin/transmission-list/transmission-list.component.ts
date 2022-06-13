@@ -1,25 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Message } from '../../../interfaces/message';
 import { UUCPQueue } from '../../../interfaces/uucpqueue';
 import { User } from '../../../interfaces/user';
-import { UserService } from '../../../_services/user.service';
 import { MessageService } from '../../../_services/message.service';
 import { UUCPService } from '../../../_services/uucp.service';
 import { AlertService } from '../../../_services/alert.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-transmission-list',
   templateUrl: './transmission-list.component.html',
   styleUrls: ['./transmission-list.component.less']
 })
+
 export class TransmissionListComponent implements OnInit {
 
   currentUser: User;
   error = Error;
-  success = '';
-  test = '';
   messages: Message[];
   queue: UUCPQueue[];
   job: UUCPQueue;
@@ -35,61 +32,53 @@ export class TransmissionListComponent implements OnInit {
   noQueue = false;
   transList = false;
 
-
   constructor(
     private messageService: MessageService,
     private uucpService: UUCPService,
-    private alertService: AlertService,
     private authenticationService: AuthenticationService,
-    private userService: UserService
-    )
-    {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    }
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   closeError() {
-      this.errorAlert = false;
+    this.errorAlert = false;
   }
 
   onSelect(message: Message): void {
     this.selectedMessage = message;
-    this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
-  cancelTransmission(host,id): void{
+  cancelTransmission(host, id): void {
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
-    	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
-    console.log('⚚ cancelTransmission:', host, id);
   }
 
-  cancelMail(host,id): void{
+  cancelMail(host, id): void {
     this.uucpService.cancelMail(host, id).subscribe(
       (res: any) => {
-    	  this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
-    console.log('⚚ cancelMail:', host, id);
   }
 
-showTransmission() {
-  if (this.transList == false) {
-    this.transList = true;
-  } else {
-    this.transList = false;
+  showTransmission() {
+    if (this.transList == false) {
+      this.transList = true;
+    } else {
+      this.transList = false;
+    }
   }
 
-}
-
-  removeMessage(message: Message): void{
+  removeMessage(message: Message): void {
     this.sentMessages = this.sentMessages.filter(obj => obj !== message);
     this.messageService.deleteMessage(message.id).subscribe(
       (res: any) => {
@@ -100,34 +89,29 @@ showTransmission() {
         this.errorAlert = true;
       }
     );
-    console.log('⚚ sent-messages component cancelTransmission:', message.id);
   }
 
-confTransmit(){
-  if (this.confirmTransmit === false) {
-    this.confirmTransmit = true;
-  } else {
-    this.confirmTransmit = false;
+  confTransmit() {
+    if (this.confirmTransmit === false) {
+      this.confirmTransmit = true;
+    } else {
+      this.confirmTransmit = false;
+    }
   }
-}
 
- transmitNow(): void{
+  transmitNow(): void {
     this.uucpService.callSystems().subscribe(
       (res: any) => {
-        // this.message = res;
-    	console.log('⚚ sent-messages component transmit now:');
-    	this.confirmTransmit = false;
+        this.confirmTransmit = false;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
-    	console.log('⚚ sent-messages component transmit now fail:');
       }
     );
   }
 
-
-  getMessages(): void{
+  getMessages(): void {
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
@@ -139,16 +123,15 @@ confTransmit(){
     );
   }
 
-  getQueue(): void{
+  getQueue(): void {
     this.uucpService.getQueue().subscribe(
       res => {
         this.queue = res;
-         console.log('⚚ uucp queue:', this.queue);
-         if (Object.keys(this.queue).length ==0) {
-           this.noQueue = true;
-         } else {
-           this.noQueue = false;
-         }
+        if (Object.keys(this.queue).length == 0) {
+          this.noQueue = true;
+        } else {
+          this.noQueue = false;
+        }
       },
       (err) => {
         this.error = err;
@@ -161,19 +144,13 @@ confTransmit(){
     if (this.queue) {
       if (this.queue !== []) {
         let soma = 0;
-        for( let i = 0; i < Object.keys(this.queue).length; i++) {
+        for (let i = 0; i < Object.keys(this.queue).length; i++) {
           soma += parseInt(this.queue[i].size);
-          //console.log(soma);
-          //console.log(this.queue[i].size);
-          // console.log(i);
-          
+        }
+        return soma;
       }
-      // console.log(soma);
-      return soma;
-    }
     }
   }
-
 
   ngOnInit(): void {
     this.getMessages();

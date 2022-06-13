@@ -1,70 +1,69 @@
 <h2 i18n="@@networkadmin1">Network information</h2>
-
-<form class="">
+<p *ngIf="!system"> OFF </p>
+<form *ngIf="system">
   <p>
-  <b><span class="b" i18n="@@status">Status: </span>{{system.status}}</b>
+    <b><span class="b" i18n="@@status">Status: </span>{{system.status}}</b>
   </p>
   <p>
-  <span class="b" i18n="@@alias">Alias: </span>{{system.name}}
+    <span class="b" i18n="@@alias">Alias: </span>{{system.name}}
   </p>
   <p>
     <span class="b" i18n="@@domai">Domain: </span>{{system.domain}}
-    </p>
-<p>
- <span class="b" i18n="@@ip">IP / Netmask address: </span> <span>{{system.interfaces}}</span>
-</p>
-
-<p>
-  <span class="b" i18n="@@nodename">Node Name</span> : <span>{{system.nodename}}</span>
-</p>
-<p>
- <span class="b" i18n="@@ssid">SSID Network name: </span><span>{{system.wifiessid}}</span>
-</p>
-<p>
- <span class="b" i18n="@@uucp">UUcp: </span><span> {{system.piduu}}</span>
-</p>
-<p>
-  <span class="b" i18n="@@modem">Modem: </span><span> {{system.pidmodem}}</span>
-</p>
-
-<p>
-  <span class="b" i18n="@@radion">Radio: </span><span> {{system.pidradio}}</span>
-</p>
-
-<p>
-  <span class="b" i18n="@@hermesr">Hermes: </span><span> {{system.pidhmp}}</span>
-</p>
-
-<p>
-  <span class="b" i18n="@@database">Database: </span> <span> {{system.piddb}}</span>
-</p>
-<p>
-  <span class="b" i18n="@@mailn">Mail: </span> <span> {{system.pidpf}}</span>
-</p>
-
-<p>
-  <span class="b" i18n="@@totalmemory">Total Memory: </span> <span> {{system.memtotal}}</span>
-</p>
-<p>
-  <span class="b" i18n="@@usedmemory">Used Memory: </span> <span> {{system.memused}}</span>
-</p>
-<p>
-  <span class="b" i18n="@@freememory">Free Memory: </span><span> {{system.memfree}}</span>
-</p>
-<p>
-  <span class="b" i18n="@@phpmemory">Php Memory: </span> <span> {{system.phpmemory}}</span>
-</p>
-<p>
-  <span class="b" i18n="@@wifi">Wifi Channel: </span><span >{{system.wifich}} </span>
-</p>
-
-
-
- <p>
- <span class="b" i18n="@@piddb">Piddb: </span>{{system.piddb}}
- </p>
-
- <!--<button>Update</button>-->
- <!--<button>Reset</button>-->
-
+  </p>
+  <p>
+    <span class="b" i18n="@@ip">IP / Netmask address: </span> <span>{{system.interfaces}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@nodename">Node Name</span> : <span>{{system.nodename}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@ssid">SSID Network name: </span><span>{{system.wifiessid}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@uucp">UUcp: </span><span> {{system.piduu}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@modem">Modem: </span><span> {{system.pidmodem}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@radion">Radio: </span><span> {{system.pidradio}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@hermesr">Hermes: </span><span> {{system.pidhmp}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@database">Database: </span> <span> {{system.piddb}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@mailn">Mail: </span> <span> {{system.pidpf}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@totalmemory">Total Memory: </span> <span> {{system.memtotal}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@usedmemory">Used Memory: </span> <span> {{system.memused}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@freememory">Free Memory: </span><span> {{system.memfree}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@phpmemory">Php Memory: </span> <span> {{system.phpmemory}}</span>
+  </p>
+  <p>
+    <span class="b" i18n="@@wifi">Wifi Channel: </span><span>{{system.wifich}} </span>
+  </p>
+  <p>
+    <span class="b" i18n="@@piddb">Piddb: </span>{{system.piddb}}
+  </p>
 </form>
+<div>
+  <div class="overall alert" *ngIf="errorAlert==true">
+      <div class="cv">
+          <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+          <span>{{error}}</span>
+          <div class="icon"><a (click)="closeError()">
+                  <img title="compose" src="assets/svg/x.svg"></a>
+          </div>
+      </div>
+  </div>
+</div>

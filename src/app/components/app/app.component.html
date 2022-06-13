@@ -4,105 +4,40 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
   p {
     margin: 0;
   }
 </style>
 
 <div id="appcontainer">
+  <div class="fullpage">
+    <nav id="mainnav" *ngIf="system">
+      <a routerLink='/landing' class="logo-link">
+        <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
+        <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
+      </a>
+      <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
+      <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
+      <a routerLink="/admin" i18n="@admin">
+        <img title="admin" src="assets/svg/tools.svg">admin
+      </a>
+      <a routerLink="/languages" i18n="@@languages"><img title="languages"
+          src="assets/svg/globe-americas.svg">language</a>
+      <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
 
-<div class="fullpage">
-  <header>
-    <a routerLink='/landing' class="logo"><img title="Hermes logo" src="assets/img/logohermes.png"></a>
-
-    <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
-  </header>
-
-  <div class="userstatus">
-
-    <!-- TODO ERROR else: <div class="logged" *ngIf="currentUser; else isLoggedOut"> -->
-    <!-- <a class="radioprot" i18n="@@radioprot" *ngIf="!protection" (click)="resetProtection()">
-      protection off
-    </a>
-    -->
-
-    <div class="logged" *ngIf="currentUser; else loggedOut">
-      <!-- <div class="flex">
-        <a i18n="@@portugues" class="flag" href="/pt"><img title="messages" src="assets/svg/brasil.svg">Português</a>
-        <a i18n="@@espanhol" class="flag" href="/es"><img title="messages" src="assets/svg/espanha.svg">Español</a>
-        <a i18n="@@english" class="flag" href="/en-US"><img title="messages"
-            src="assets/svg/reino-unido.svg">English</a>
-      </div> -->
-       
-      <div class="navbar-nav">
+      <a class="icon" routerLink="/login" *ngIf="!currentUser">
+        <span class="logged" i18n="@@login1">login</span><br />
+        <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
+      </a>
+      <a class="icon" (click)="logout()" *ngIf="currentUser">
+        <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
+          src="assets/svg/sign-out-alt-solid.svg">
+        <br />
+        <span class="logged" i18n="@@logout1">logout</span>
         <span class="topuser">
           <span>{{currentUser.email}}</span>
         </span>
-        <a class="icon" routerLink="/login" *ngIf="!currentUser">
-          <span class="logged" i18n="@@login1">login</span><br />
-          <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
-        </a>
-
-        <a class="icon" (click)="logout()" *ngIf="currentUser">
-          <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
-            src="assets/svg/sign-out-alt-solid.svg">
-          <br />
-          <span class="logged" i18n="@@logout1">logout</span>
-        </a>
-        <br>
-      </div>
-    </div>
-
-    <ng-template #loggedOut>
-      <!-- <span class="servericon">
-        <span class="icon" *ngIf="system">
-          <img title="server status ON! PID uucp: {{system.piduu}} / ar: {{system.pidar}}"
-            src="assets/svg/broadcast-tower.svg">
-        </span>
-        <span class="icon" *ngIf="!system">
-          <img title="server status off" src="assets/svg/broadcast-tower-off.svg">
-        </span>
-      </span> -->
-      <a class="icon" routerLink="/login">
-        <img title="Log In" src="assets/svg/sign-in-alt-solid.svg"><br>
-        <span class="logged" i18n="@@login1">login</span>
       </a>
-    </ng-template>
-  </div>
-
-
-  <nav id="mainnav" *ngIf="system">
-    <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
-    <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
-    <a routerLink="/admin" i18n="@admin">
-      <img title="admin" src="assets/svg/tools.svg">admin
-    </a>
-    <a routerLink="/languages" i18n="@@languages"><img title="languages"
-        src="assets/svg/globe-americas.svg">language</a>
-    <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
-
-    <!-- <div class="userstatus">  
-      <div class="logged" *ngIf="currentUser; else loggedOut">
-        <div class="navbar-nav">
-          <span class="topuser">
-            <span i18n="@@connectedas">connected as: </span>
-            <span>{{currentUser.email}}</span>
-          </span>
-          <a class="icon" routerLink="/login" *ngIf="!currentUser">
-            <span class="logged" i18n="@@login1">login</span><br />
-            <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
-          </a>
-  
-          <a class="icon" (click)="logout()" *ngIf="currentUser">
-            <span class="logged" i18n="@@logout1">logout</span><br />
-            <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
-              src="assets/svg/sign-out-alt-solid.svg">
-          </a>
-          <br>
-        </div>
-      </div>
-  
       <ng-template #loggedOut>
         <span class="servericon"></span>
         <a class="icon" routerLink="/login">
@@ -110,103 +45,78 @@
           <span class="logged" i18n="@@login1">login</span>
         </a>
       </ng-template>
-    </div> -->
-  </nav>
+    </nav>
 
-  <div class="formfield">
-    <router-outlet *ngIf="system; else serverOff"></router-outlet>
-
-    <ng-template #serverOff>
-      <hr>
-      <!-- TODO - Criar Tradução -->
-      <p i18n="hermes503Http">503 Service Unavaliable</p>
-      <p i18n="hermesoffline">Hermes server is offline, please turn the station on.
-      </p>
-      <br>
-      <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">If your server is already on
-        click here</div>
-
-      <div *ngIf="serverError" i18n="@@areadyonmsg">
-        If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your
-        system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may
-        need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule
-        an online maintenance support session.
+    <div class="formfield">
+      <router-outlet *ngIf="system; else serverOff" (activate)="onActivate($event)"></router-outlet>
+      <ng-template #serverOff>
+        <hr>
+        <!-- TODO - Criar Tradução -->
+        <p i18n="hermes503Http">503 Service Unavaliable</p>
+        <p i18n="hermesoffline">Hermes server is offline, please turn the station on.
+        </p>
         <br>
-        <span class="icon"><img (click)="showServerAlert()" title="close" src="assets/svg/times.svg"> </span>
-      </div>
+        <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">If your server is already
+          on click here</div>
 
-      <!--<div class="overall alert" *ngIf="resetting">
-          <div class="cv" >
-              <span i18n="@@resetprotection">Please check your antenna and Reset radio protection <br/></span>
-              <button ><a (click)="confirmReset()" >
-                  reset</a>
-              </button>
-              <button  ><a (click)="resetProtection()" >
-                cancel</a>
-            </button>
-          </div>
-        </div>-->
-
-      <div class="overall alert" *ngIf="errorAlert==true">
-        <div class="cv">
-          <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
-          <span>{{error}}</span>
-          <div class="icon"><a (click)="closeError()">
-              <img title="compose" src="assets/svg/x.svg"></a>
+        <div *ngIf="serverError" i18n="@@areadyonmsg">
+          If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
+          your
+          system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you
+          may
+          need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule
+          an online maintenance support session.
+          <br>
+          <span class="icon"><img (click)="showServerAlert()" title="close" src="assets/svg/times.svg"> </span>
+        </div>
+        <div class="overall alert" *ngIf="errorAlert==true">
+          <div class="cv">
+            <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
+            <span>{{error}}</span>
+            <div class="icon"><a (click)="closeError()">
+                <img title="compose" src="assets/svg/x.svg"></a>
+            </div>
           </div>
         </div>
-      </div>
-    </ng-template>
-  </div>
-  <!-- <div class="push"></div> -->
-</div>
-
-<footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
-  <ng-container *ngIf="system">
-    <div class="dr">
-      <div class="drb" (click)="onToggle('HR')"></div>
+      </ng-template>
     </div>
+  </div>
 
-
-
-    <span class="footerinfo">Version: 1.0 |
-      <span i18n="stationa">Station:</span> {{system.name}}
-      <span *ngIf="currentUser">
-        <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
-      <span *ngIf="!system">
-        &#124; <span i18n="@@serveroff0">server off</span>
-      </span>
-      <span i18n="@@statusa0">| Status: </span>
-      <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
-      <div *ngIf="system.status" class="greencircle"> </div>
-
-
-      <!--<span *ngIf="currentUser"> | <span i18n="@@usera">user:</span> {{currentUser.email}}</span>-->
-      <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 | number}}
-        GB</span>
-
-      <div *ngIf="fullStats">
-
-        <!--Uucp bridge: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>-->
-        UUCP: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }"
-          title='uuardop {{system.piduucp}}'></div>
-        &#124; Database: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }"
-          title='mysql {{system.piddb}}'></div>
-        &#124; Modem: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
-        &#124; Radio: <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }"
-          title='uuardop {{system.piduucp}}'></div>
-        &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
-        &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
+  <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
+    <ng-container *ngIf="system">
+      <div class="dr">
+        <div class="drb" (click)="onToggle('HR')"></div>
       </div>
-      <br><span *ngIf="criticSpace" class="alert">System storage is low! please delete messages and files</span>
-      <!--user: {{currentUser.email}} / {{currentUser.admin}}-->
+      <span class="footerinfo">Version: 1.0 |
+        <span i18n="stationa">Station:</span> {{system.name}}
+        <span *ngIf="currentUser">
+          <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
+        <span *ngIf="!system">
+          &#124; <span i18n="@@serveroff0">server off</span>
+        </span>
+        <span i18n="@@statusa0">| Status: </span>
+        <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
+        <div *ngIf="system.status" class="greencircle"> </div>
+        <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 |
+          number}}
+          GB</span>
+        <div *ngIf="fullStats">
+          <!--Uucp bridge: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>-->
+          UUCP: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }"
+            title='uuardop {{system.piduucp}}'></div>
+          &#124; Database: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }"
+            title='mysql {{system.piddb}}'></div>
+          &#124; Modem: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
+          &#124; Radio: <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }"
+            title='uuardop {{system.piduucp}}'></div>
+          &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
+          &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
+        </div>
+        <br><span *ngIf="criticSpace" class="alert">System storage is low! please delete messages and files</span>
+      </span>
+    </ng-container>
+    <span *ngIf="!system" i18n="@@stationoffline">
+      Hermes station offline <figure class="redcircle"></figure>
     </span>
-
-  </ng-container>
-
-  <span *ngIf="!system" i18n="@@stationoffline">
-    Hermes station offline <figure class="redcircle"></figure>
-  </span>
-
-</footer>
+  </footer>
 </div>
