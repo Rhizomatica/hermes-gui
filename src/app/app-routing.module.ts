@@ -21,6 +21,8 @@ import { RadioComponent } from './components/admin/radio/radio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
+import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -45,7 +47,8 @@ const routes: Routes = [
   { path: 'radio', component: RadioComponent },
   { path: 'gateway', component: GatewayConfigComponent },
   { path: 'transmission', component: TransmissionListComponent },
-  { path: 'switch', component: SwitchComponent }
+  { path: 'switch', component: SwitchComponent },
+  { path: 'scary', component: RadioScaryComponent },
 ];
 
 @NgModule({

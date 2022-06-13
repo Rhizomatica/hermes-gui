@@ -38,6 +38,7 @@ import { GatewayConfigComponent } from './components/admin/gateway-config/gatewa
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
+import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 
 registerLocaleData(localePt);
 
@@ -70,7 +71,8 @@ registerLocaleData(localePt);
     FrequencyPipe,
     GatewayConfigComponent,
     TransmissionListComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RadioScaryComponent
   ],
   imports: [
     BrowserModule,

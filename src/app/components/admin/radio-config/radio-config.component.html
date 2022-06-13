@@ -38,9 +38,10 @@
                 </div>
                 <div class="card">
                     <div class="row">
-                        <h3><span i18n="@reflected">REF </span>
-                            <br />
+                        <h3>
                             <small> {{radio.ref_watts}} </small>
+                            <br />
+                            <span i18n="@reflected">REF </span>
                             <br />
                             ({{radio.ref_volts}} V)
                         </h3>
@@ -49,9 +50,9 @@
                 <div class="card">
                     <div class="row">
                         <h3>
-                            <span i18n="@forward"> FWD </span>
-                            <br />
                             <small>{{radio.fwd_watts}}</small>
+                            <br />
+                            <span i18n="@forward"> FWD </span>
                             <br />
                             ({{radio.fwd_volts}} V)
                         </h3>
@@ -75,9 +76,9 @@
             </div>
             <div *ngIf="isAdmin">
                 <div class="flex-right m-t-25">
-                    <button *ngIf="radio.protection" (click)="resetProtection()" i18n="@resetprotection1">reset
-                        protection</button>
-                    <div class="float-right">
+                    <!-- <button *ngIf="radio.protection" (click)="resetProtection()" i18n="@resetprotection1">reset
+                        protection</button> -->
+                    <!-- <div class="float-right">
                         <button (click)="confirmChange()" *ngIf="!alterSet">
                             <img title="Unlock" src="assets/svg/lock.svg">
                             <span i18n="@@unlockFormRadioSettings"> Unlock</span>
@@ -85,8 +86,8 @@
                         <button class="m-l-10" (click)="screenSet()" *ngIf="alterSet" i18n="@@lockFormRadioSettings">
                             <img title="Lock" src="assets/svg/lock-open.svg"> Lock
                         </button>
-                    </div>
-                    <div class="overall" *ngIf="confirmSet && !alterSet">
+                    </div> -->
+                    <div class="overall" *ngIf="confirmSet">
                         <div class="cv">
                             <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
                                 <br />
@@ -103,23 +104,23 @@
                         <span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span>
                         <div class="flexible">
                             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek"
-                                [(ngModel)]="frek" value={{frek}} [disabled]="!alterSet">
+                                [(ngModel)]="frek" value={{frek}}>
                             <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid"
-                                [disabled]="!alterSet" i18n="@@changefreqr0">
+                                i18n="@@changefreqr0">
                                 change frequency
                             </button>
                         </div>
                     </form>
                     <form *ngIf="radio" #fmode="ngForm" class="formdata field">
                         <p><span i18n="@@changeradiomode">Radio mode: {{radio.mode}}</span></p>
-                        <button class="midbt" type="submit" (click)="changeMode(fmode)"
-                            [disabled]="fmode.invalid || !alterSet" i18n="@@changemode1">change mode</button>
+                        <button class="midbt" type="submit" (click)="changeMode(fmode)" [disabled]="fmode.invalid"
+                            i18n="@@changemode1">change mode</button>
                         <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="USB"
                                 [checked]="radio.mode=='USB'">USB</label>
                         <label><input class="inl" type="radio" name="mode" [(ngModel)]="mode" value="LSB"
-                                [checked]="radio.mode=='LSB'" [disabled]="!alterSet">LSB</label>
+                                [checked]="radio.mode=='LSB'">LSB</label>
                     </form>
-                    <form #frefthreshold="ngForm" class="formdata field" *ngIf="radio">
+                    <!-- <form #frefthreshold="ngForm" class="formdata field" *ngIf="radio">
                         <span i18n="@@prottheshold">Protection activation threshold level:</span>
                         {{radio.refthreshold}}
                         <div class="flexible">
@@ -183,13 +184,13 @@
                                 shut down
                             </button>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
-                <hr>
+                <!-- <hr>
                 <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()" [disabled]="!alterSet">
                     reset to default
-                </button>
-                <div class="overall alert" *ngIf="!reseting==false">
+                </button> -->
+                <!-- <div class="overall alert" *ngIf="!reseting==false">
                     <div class="cv">
                         <span i18n="@@confirmreset">
                             Are you sure you want to reset the radio to the default configuration?
@@ -211,7 +212,7 @@
                             </a>
                         </span>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="overall alert" *ngIf="errorAlert==true">
                 <div class="cv">
