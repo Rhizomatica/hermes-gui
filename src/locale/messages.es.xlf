@@ -211,17 +211,24 @@
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="finatime" datatype="html">
         <source>Stop transmission hour:</source><target state="new">Hora de parada de transmisión:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="timewarning" datatype="html">
-        <source>Stop transmission hour must be bigger than start time</source><target state="new">La hora de parada de la transmisión debe ser mayor que la hora de inicio</target>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">44</context></context-group></trans-unit>
+      <trans-unit id="timewarning" datatype="html">
+        <source>Stop transmission hour must be bigger than start time</source>
+        <target state="new">La hora de parada de la transmisión debe ser mayor que la hora de inicio</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="enable" datatype="html">
-        <source>Enable: <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;enable&quot;
-                            [(ngModel)]=&quot;selectedSchedule.enable&quot; class=&quot;beforelist&quot;>"/></source><target state="new">Habilitar: <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;enable&quot; [(ngModel)]=&quot;selectedSchedule.enable&quot; class=&quot;beforelist&quot;>"/></target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">53</context></context-group></trans-unit><trans-unit id="changetime" datatype="html">
+      <context-group purpose="location">
+      <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
+      <context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="enable" datatype="html">
+        <source>Enable</source><target state="new">Habilitar</target>
+      <context-group purpose="location">
+      <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
+      <context context-type="linenumber">53</context></context-group>
+      </trans-unit>
+      <trans-unit id="changetime" datatype="html">
         <source>change scheduling time</source><target state="new">cambiar el horario de programación</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="newschedule" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
+      <context context-type="linenumber">58</context></context-group>
+      </trans-unit><trans-unit id="newschedule" datatype="html">
         <source>create schedule</source><target state="new">crear horario</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="deletechedule" datatype="html">
@@ -1524,16 +1531,19 @@ El sistema HERMES incluye un sistema de compresión adecuado para mensajes multi
  En este caso, es posible que deba llevar su equipo a un lugar con Internet para el mantenimiento en línea.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/help/help.component.html</context><context context-type="linenumber">247</context></context-group></trans-unit><trans-unit id="landingtext" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/help/help.component.html</context><context context-type="linenumber">247</context></context-group></trans-unit>
+      <!-- <trans-unit id="landingtext" datatype="html">
         <source>High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym, HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified visual interface accessed via smartphone or computer, allowing for the transmission and reception of data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be easily encrypted and password-protected by the sender. HERMES, both architecture designs and software, is free and open-source. </source><target state="new">High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym, HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified visual interface accessed via smartphone or computer, allowing for the transmission and reception of data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be easily encrypted and password-protected by the sender. HERMES, both architecture designs and software, is free and open-source. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/landing/landing.component.html</context>
           <context context-type="linenumber">5,12</context>
         </context-group>
-      </trans-unit><trans-unit id="landingmessages" datatype="html">
+      </trans-unit> -->
+       <trans-unit id="landingmessages" datatype="html">
         <source> messages</source><target state="new"> mensajes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/landing/landing.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">22</context>
         </context-group>
-      </trans-unit></body></file></xliff>
+      </trans-unit>
+      </body></file></xliff>

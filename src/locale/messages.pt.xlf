@@ -208,10 +208,7 @@
         <source>Stop transmission hour must be bigger than start time</source><target state="final">A hora de parada da transmissão precisa ser maior que a hora de início</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="enable" datatype="html">
-        <source>Enable: <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;enable&quot;
-                            [(ngModel)]=&quot;selectedSchedule.enable&quot; class=&quot;beforelist&quot;>"/></source><target state="final">Habilitar: <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;enable&quot;
-                            [(ngModel)]=&quot;selectedSchedule.enable&quot; class=&quot;beforelist&quot;>"/></target>
-        
+        <source>Enable </source><target state="final">Habilitar</target>
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">53</context></context-group></trans-unit><trans-unit id="changetime" datatype="html">
         <source>change scheduling time</source><target state="final">mudar horário de agendamento</target>
         
@@ -772,7 +769,8 @@ Para configurar o Deltachat, primeiramente é preciso criar uma conta de e-mail,
 </source><target state="final"> Se você receber uma mensagem dizendo que o servidor está desligado, e seu equipamento parece estar ligado, pode ser que parte do seu sistema esteja corrompido. Neste caso, você pode ter que levar seu equipamento para um lugar com acesso à internet para uma manutenção à distância.
 </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/help/help.component.html</context><context context-type="linenumber">247</context></context-group></trans-unit><trans-unit id="landingtext" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/help/help.component.html</context><context context-type="linenumber">247</context></context-group></trans-unit>
+      <!-- <trans-unit id="landingtext" datatype="html">
         <source>High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym, HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified visual interface accessed via smartphone or computer, allowing for the transmission and reception of data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be easily encrypted and password-protected by the sender. HERMES, both architecture designs and software, is free and open-source. </source>
         <target state="final">
         O Sistema de trocas multimídiade alta frequeência rural e de emergência de (High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System), melhor conhecido pelo seu acrônimo, HERMES, oferece comunicações digitais sobre rádio de ondas curtas/HF a um custo acessível, utilizando uma interface visual simplicada acessível por smarfones ou computadores, permitindo a transmissão e recepção de dados (mensagens, audio, documentos, fotos, coordernadas de GPS etc). Por questões de segurança, estas informações podem ser facilmente criptografas e protegidas por senha pelos remetentes. Tanto a arquitetura e desenho do sistema quanto seus softwares são livres e de código aberto.
@@ -781,11 +779,12 @@ Para configurar o Deltachat, primeiramente é preciso criar uma conta de e-mail,
           <context context-type="sourcefile">src/app/components/public/landing/landing.component.html</context>
           <context context-type="linenumber">5,12</context>
         </context-group>
-      </trans-unit><trans-unit id="landingmessages" datatype="html">
+      </trans-unit> -->
+      <trans-unit id="landingmessages" datatype="html">
         <source> messages</source><target state="final"> mensagens</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/landing/landing.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit><trans-unit id="05671fbfbfff8da378f94e768e6f2b2b5a200701" datatype="html">
         <source>Alert: cannot access this message<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source><target state="final">Alerta: não pudemos acessar esta mensagem<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
