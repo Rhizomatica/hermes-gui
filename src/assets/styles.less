@@ -1426,6 +1426,21 @@ input.ng-invalid {
 
     .btn-messages-lading {
         background-color: @mclr;
+        a{
+            color: @bkclr;
+        }
+
+        img {
+            filter: invert(100%);
+        }
+    }
+
+    .btn-mail-lading {
+        background-color: @clr;
+
+        a{
+            color: @bkclr;
+        }
 
         img {
             filter: invert(100%);
@@ -1793,10 +1808,6 @@ input[type=range]:hover::-ms-track {
     max-height: calc(100vh - 12em);
     max-height: calc(100vh - 8em);
     text-align: center;
-
-    h1 {
-        margin-bottom: 1em;
-    }
 }
 
 .hello {
@@ -1812,6 +1823,7 @@ input[type=range]:hover::-ms-track {
 
     h1 {
         font-size: 4vmin;
+        color: @bkclr;
     }
 }
 
@@ -1836,10 +1848,34 @@ input[type=range]:hover::-ms-track {
         display: block;
         color: @mclr;
         margin: auto;
-        padding-top: 1.5em;
+        // padding-top: 1.5em;
     }
 }
 
+.btn-mail-lading {
+    background-color: @clr;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 2em 1em;
+
+    a {
+        font-size: 1.5em;
+        margin-top: 10px;
+        text-decoration: none;
+        color: @bkclr;
+        margin: auto;
+
+    }
+
+    a>img {
+        width: 75%;
+        display: block;
+        color: @mclr;
+        margin: auto;
+        filter: invert(100%);
+    }
+}
 .radio {
     display: flex;
     flex-wrap: wrap;
@@ -1974,8 +2010,7 @@ input[type=range]:hover::-ms-track {
         height: 72vh;
 
         h1 {
-            font-size: 2em;
-            margin-bottom: 1em;
+            font-size: 1.5em;
             text-align: center;
         }
 
@@ -2007,9 +2042,30 @@ input[type=range]:hover::-ms-track {
         }
 
         a>img {
-            width: 3em;
+            width: 60%;
             margin: auto;
             display: block;
+        }
+    }
+
+    .btn-mail-lading {
+        background-color: @clr;
+        display: inline;
+        width: 100%;
+        padding: 1em;
+
+        a {
+            font-size: 1.5em;
+            margin-top: 10px;
+            text-decoration: none;
+            color: @bkclr;
+        }
+
+        a>img {
+            width: 60%;
+            margin: auto;
+            display: block;
+            filter: invert(100%);
         }
     }
 
