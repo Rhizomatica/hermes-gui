@@ -1459,6 +1459,14 @@ input.ng-invalid {
         background-color: @mclr;
     }
 
+   .card.connected {
+        border-color:green;
+    }
+
+    .card.disconnected {
+        border-color:red;
+    }
+
     a {
         .card {
             color: #FFF;
@@ -1732,6 +1740,16 @@ input[type=range]:hover::-ms-track {
     height: 8em;
     line-height: 1em;
     background-color: @bkclr;
+}
+
+.card.connected {
+    border-color:green;
+    color: green;
+}
+
+.card.disconnected {
+    border-color:red;
+    color: red;
 }
 
 .card-icon {

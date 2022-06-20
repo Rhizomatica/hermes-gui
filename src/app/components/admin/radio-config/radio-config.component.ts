@@ -20,7 +20,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   // alterSet = false;
   confirmSet = false;
   res: any;
-  // ptt: any;
+  ptt: any;
   // bfo: any;
   // mastercal: any;
   freq: any;
@@ -53,10 +53,13 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   ref_raw: any;
   ref_watts: any;
   ref_volts: any;
-  // tx = false;
-  // rx = false;
+  tx = false;
+  rx = false;
   power: any;
   // audio: any;
+  connected: any;
+  gps: any;
+  modeSwitch: boolean;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -74,6 +77,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.freq = this.radio.freq;
         this.frek = this.radio.freq / 1000;
         this.mode = this.radio.mode;
+        this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
         this.led = this.radio.led;
         // this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
@@ -82,7 +86,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.serial = this.radio.serial;
         this.radio.testTone = this.radio.testtone;
         this.bypass = this.radio.bypass ? 'ON' : 'OFF'
-        // this.ptt = this.radio.tx ? 'ON' : 'OFF'
+        this.connected = this.radio.bypass ? 'connected' : 'disconnected';
+        this.ptt = this.radio.tx ? 'ON' : 'OFF'
+        this.gps = this.radio.gps;
         return res;
       },
       (err) => {
@@ -110,7 +116,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.ref_raw = this.power.ref_raw;
         this.radio.ref_watts = this.power.ref_watts;
         // this.bypass = this.radio.bypass ? true : false
-        // this.ptt = this.radio.tx ? 'ON' : 'OFF'
+        this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
       },
       (err) => {
@@ -137,40 +143,40 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   }
 
 
-  // changePtt(f) {
-  //   this.radioService.setRadioPTT(f).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.ptt = res;
-  //       this.ptt = f;
-  //       this.radio.tx = this.ptt === 'ON' ? true : false
-  //       this.radio.rx = this.ptt === 'ON' ? false : true
-  //       this.getRadioStatus;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //       this.getRadioStatus;
-  //     }
-  //   );
-  // }
+  changePtt(event) {
+    this.radioService.setRadioPTT( this.ptt == 'ON' ? 'OFF' : 'ON').subscribe(
+      (res: any) => {
+        this.res = res;
+        this.radio.ptt = res;
+        this.ptt = this.radio.ptt;
+        this.radio.tx = this.ptt === 'ON' ? true : false
+        this.radio.rx = this.ptt === 'ON' ? false : true
+        this.getRadioStatus;
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.getRadioStatus;
+      }
+    );
+  }
 
-  // public pttOn(f) {
-  //   this.radioService.setRadioPTT(f).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.ptt = res;
-  //       this.ptt = f;
-  //       this.radio.tx = true;
-  //       this.radio.rx = false;
-  //     },
-  //     (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
+  public pttOn(f) {
+    this.radioService.setRadioPTT(f).subscribe(
+      (res: any) => {
+        this.res = res;
+        this.radio.ptt = res;
+        this.ptt = f;
+        this.radio.tx = true;
+        this.radio.rx = false;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
 
-  //   this.getPttswr();
-  // }
+    this.getPttswr();
+  }
 
   // confirmReset() {
   //   this.reseting = this.reseting ? false : true
@@ -214,8 +220,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  changeMode(f: NgForm) {
-    this.radioService.setRadioMode(f.value.mode).subscribe(
+  changeMode(event) {    
+    this.modeSwitch = this.modeSwitch === true ? false : true;
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
       (res: any) => {
         this.res = res;
         this.radio.mode = res;
@@ -339,6 +346,18 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   //     }
   //   );
   // }
+
+  gpsStartCalibration(){
+    this.radioService.gpsStartCalibration().subscribe(
+      (res: any) => {
+        this.gps = res
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
 
   closeError() {
     this.errorAlert = false;

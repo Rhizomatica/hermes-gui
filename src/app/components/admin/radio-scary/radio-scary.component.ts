@@ -137,22 +137,22 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
   }
 
 
-  changePtt(f) {
-    this.radioService.setRadioPTT(f).subscribe(
-      (res: any) => {
-        this.res = res;
-        this.radio.ptt = res;
-        this.ptt = f;
-        this.radio.tx = this.ptt === 'ON' ? true : false
-        this.radio.rx = this.ptt === 'ON' ? false : true
-        this.getRadioStatus;
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.getRadioStatus;
-      }
-    );
-  }
+  // changePtt(f) {
+  //   this.radioService.setRadioPTT(f).subscribe(
+  //     (res: any) => {
+  //       this.res = res;
+  //       this.radio.ptt = res;
+  //       this.ptt = f;
+  //       this.radio.tx = this.ptt === 'ON' ? true : false
+  //       this.radio.rx = this.ptt === 'ON' ? false : true
+  //       this.getRadioStatus;
+  //     }, (err) => {
+  //       this.error = err;
+  //       this.errorAlert = true;
+  //       this.getRadioStatus;
+  //     }
+  //   );
+  // }
 
   public pttOn(f) {
     this.radioService.setRadioPTT(f).subscribe(

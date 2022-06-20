@@ -1,14 +1,14 @@
 <div id="radioconf">
     <h2 *ngIf="isAdmin">
         <span>Radio Scary Configuration </span>
-        <span *ngIf="radio.bypass">
+        <!-- <span *ngIf="radio.bypass">
             [&nbsp; <div class="greencircle" title='uuardop'></div>&nbsp;
             <span i18n="@@conectedr">Conected</span>&nbsp; ]
         </span>
         <span *ngIf="!radio.bypass">
             [&nbsp;<div class="redcircle" title='uuardop'></div>&nbsp;
             <span i18n="@@disconectedr">Disconected</span>&nbsp; ]
-        </span>
+        </span> -->
     </h2>
     <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
     <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
@@ -62,7 +62,7 @@
                         </div>
                     </form>
 
-                    <form #fptt="ngForm" class="formdata field">
+                    <!-- <form #fptt="ngForm" class="formdata field">
                         <p><span>PTT:</span></p>
                         <button type="submit" name="ptt" value="ON" *ngIf="radio.rx"
                             (click)="changePtt('ON');updateFwd()" i18n="@@turnonr1">Turn
@@ -70,7 +70,7 @@
                         <button type="submit" name="ptt" value="OFF" *ngIf="radio.tx"
                             (click)="changePtt('OFF');stopUpdate()" i18n="@@turnoffr1">Turn
                             OFF</button>
-                    </form>
+                    </form> -->
                     <form #ftesttone="ngForm" class="formdata field">
                         <p><span i18n="@@testtonec">Test Tone:</span> <span> {{radio.testtone}}</span></p>
 
