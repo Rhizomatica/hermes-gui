@@ -22,14 +22,10 @@
         <!-- <input *ngIf="isGateway && isAdmin" type="checkbox" class="afterlist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> -->
         <div class="switch m-b-10">
           <input type="checkbox" name="switchButton" [checked]="station.checked">
-          <span class="slider round" *ngIf="isGateway && isAdmin" (click)="selectStations($event)"
+          <span class="slider round" *ngIf="isGateway && isAdmin" type="submit" (click)="confirmChange($event)"
             value="{{station.alias}}" [checked]="station.checked"></span>
         </div>
       </div>
-      <button class="m-t-25" type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()"
-        i18n="@@updateenabled">
-        Update Enabled Stations
-      </button>
       <div class="overall" *ngIf="stationedit">
         <div class="cv">
           <span i18n="@@areyousurestations">Are you sure you want to change the list of enabled stations?</span><br />

@@ -49,12 +49,13 @@ export class StationsComponent implements OnInit {
     );
   }
 
-  confirmChange() {
+  confirmChange(event) {
     if (this.stationedit === true) {
       this.stationedit = false
     } else {
       this.stationedit = true;
     }
+    this.selectStations(event)
   }
 
   public getStations(): void {
