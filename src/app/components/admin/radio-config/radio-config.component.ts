@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
+import { WebsocketService } from '../../../_services/websocket.service';
 import { NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
@@ -10,7 +11,7 @@ import { interval } from 'rxjs';
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
   styleUrls: ['./radio-config.component.less'],
-  providers: [DecimalPipe]
+  providers: [DecimalPipe, WebsocketService, {provide: '_serviceRoute', useValue: 'radio/power'}]  
 })
 
 export class RadioConfigComponent implements OnInit, OnDestroy {
@@ -63,9 +64,14 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private radioService: RadioService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
+    private radioService: RadioService,
+    private websocketService: WebsocketService) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
+      websocketService.messages.subscribe(msg => {
+        this.power = msg;
+      });
+    }
 
   getRadioStatus(): void {
     this.radioService.getRadioStatus().subscribe(
@@ -144,7 +150,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
 
   changePtt(event) {
-    this.radioService.setRadioPTT( this.ptt == 'ON' ? 'OFF' : 'ON').subscribe(
+    this.radioService.setRadioPTT(this.ptt == 'ON' ? 'OFF' : 'ON').subscribe(
       (res: any) => {
         this.res = res;
         this.radio.ptt = res;
@@ -220,7 +226,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  changeMode(event) {    
+  changeMode(event) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
     this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
       (res: any) => {
@@ -347,7 +353,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   //   );
   // }
 
-  gpsStartCalibration(){
+  gpsStartCalibration() {
     this.radioService.gpsStartCalibration().subscribe(
       (res: any) => {
         this.gps = res

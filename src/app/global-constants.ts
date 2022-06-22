@@ -6,6 +6,7 @@ export class GlobalConstants {
   public static apiURL = environment.apiUrl; 
   public static producion = environment.production;
   public static radioRemoteUrl = environment.radioRemoteUrl;
+  public static webSocketUrl = environment.webSocketUrl;
   
   public static httpOptions = {
     headers: new HttpHeaders({
