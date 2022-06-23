@@ -22,7 +22,7 @@ import { GatewayConfigComponent } from './components/admin/gateway-config/gatewa
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
-
+import { LoadingComponent } from './components/utils/loading/loading.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -49,6 +49,7 @@ const routes: Routes = [
   { path: 'transmission', component: TransmissionListComponent },
   { path: 'switch', component: SwitchComponent },
   { path: 'scary', component: RadioScaryComponent },
+  { path: 'loading', component: LoadingComponent },
 ];
 
 @NgModule({

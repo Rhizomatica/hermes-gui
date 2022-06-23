@@ -28,6 +28,7 @@ export class StationsComponent implements OnInit {
   errorAlert = false;
   system: any;
   isGateway = false;
+  loading = true;
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -72,10 +73,12 @@ export class StationsComponent implements OnInit {
                this.stations[i].checked = false;
              }
            }
+           this.loading = false;
          }
        }, (err) => {
            this.error = err;
            this.errorAlert = true;
+           this.loading = false;
           }
      );
    }
@@ -116,6 +119,7 @@ export class StationsComponent implements OnInit {
   } 
 
   async updateStations(id: number, f:NgForm): Promise<void> {
+    this.loading = true;
     this.updateAlert = false;
     f.value.stations = this.enabledStations;
     f.value.title = this.deftitle;
@@ -127,9 +131,11 @@ export class StationsComponent implements OnInit {
         this.enabledStations = data.stations;
         this.getSchedule('1');
         this.getStations();
+        this.loading = false;
       }, (err) => {
           this.errormessage = err;
           this.errorAlert = true;
+          this.loading = false;
         }
     );
     this.stationedit = false;

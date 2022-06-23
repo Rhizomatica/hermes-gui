@@ -1,0 +1,27 @@
+.overall{
+    img{
+        width: 5em;
+    }
+
+    .rotating {
+        animation: rotate 1s infinite;
+     }
+     
+     @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+     }
+}
+
+.overall.loading{
+    opacity: 94%;
+}
+
+
+.dark-mode{
+    .overall {
+        img{
+            filter: invert(100%);
+        }
+    }
+}

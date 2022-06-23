@@ -1156,6 +1156,23 @@ input.ng-invalid {
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
+    img{
+        width: 5em;
+    }
+
+    .rotating {
+        animation: rotate 1s infinite;
+     }
+     
+     @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+     }
+}
+
+.overall.loading{
+    opacity: 94%;
 }
 
 
@@ -1398,6 +1415,10 @@ input.ng-invalid {
 
     .overall {
         background-color: #333;
+
+        img{
+            filter: invert(100%);
+        }
     }
 
     .bordered {
