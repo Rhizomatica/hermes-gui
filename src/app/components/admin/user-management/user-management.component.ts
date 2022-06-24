@@ -34,7 +34,8 @@ export class UserManagementComponent implements OnInit {
   system: any;
   updateUser = false;
   showPassword = false;
-
+  loading = true
+  
   constructor(
     private userService: UserService,
     private stationService: StationService,
@@ -142,10 +143,12 @@ export class UserManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }

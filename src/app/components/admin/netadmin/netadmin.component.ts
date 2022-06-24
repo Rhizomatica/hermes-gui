@@ -12,6 +12,7 @@ export class NetadminComponent implements OnInit {
   error: any
   system: any
   errorAlert = false
+  loading = true
 
   constructor(
     private apiService: ApiService
@@ -21,11 +22,13 @@ export class NetadminComponent implements OnInit {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res
+        this.loading = false
         return res
       },
       (err) => {
         this.error = err
         this.errorAlert = true
+        this.loading = false
       }
     )
   }

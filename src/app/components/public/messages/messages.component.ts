@@ -29,6 +29,7 @@ export class MessagesComponent implements OnInit {
   loginForm = false;
   deleteMessage = false;
   errorAlert = false;
+  loading = true;
 
   constructor(
     private messageService: MessageService,
@@ -44,6 +45,7 @@ export class MessagesComponent implements OnInit {
   }
 
   getInboxMessages(): void {
+    this.loading = true
     this.messageService.getMessagesByType('inbox').subscribe(
       (res: any) => {
         this.inboxMessages = res;
@@ -53,10 +55,12 @@ export class MessagesComponent implements OnInit {
         } else {
           this.noMessages = false;
         }
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
@@ -73,33 +77,38 @@ export class MessagesComponent implements OnInit {
     this.selectedMessage = message;
   }
 
-  deleteInboxMessage($id): void {
-    this.inboxMessages = this.inboxMessages.filter(obj => obj !== this.message);
-    this.messageService.deleteMessage($id).subscribe(
-      (res: any) => {
-        this.message = res;
-        this.getInboxMessages();
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-    this.deleteMessage = false;
-  }
+  // deleteInboxMessage($id): void {
+  //   this.inboxMessages = this.inboxMessages.filter(obj => obj !== this.message);
+  //   this.messageService.deleteMessage($id).subscribe(
+  //     (res: any) => {
+  //       this.message = res;
+  //       this.getInboxMessages();
+  //       this.loading = false
+  //     },
+  //     (err) => {
+  //       this.error = err;
+  //       this.errorAlert = true;
+  //       this.loading = false
+  //     }
+  //   );
+  //   this.deleteMessage = false;
+  // }
 
 
   deleteThisMessage() {
+    this.loading = true
     let msgId = 0;
     msgId = this.selectedMessage.id;
     this.messageService.deleteMessage(msgId).subscribe(
       (res: any) => {
         this.message = res;
         this.getInboxMessages();
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
     this.deleteMessage = false;
@@ -170,7 +179,7 @@ export class MessagesComponent implements OnInit {
     this.currentUser = null;
     this.checkHmp();
   }
-  
+
   closeError() {
     this.errorAlert = false;
   }

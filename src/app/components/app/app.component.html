@@ -4,6 +4,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   p {
     margin: 0;
   }
@@ -48,7 +49,7 @@
     </nav>
 
     <div class="formfield">
-      <router-outlet *ngIf="system; else serverOff" (activate)="onActivate($event)"></router-outlet>
+      <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
         <hr>
         <!-- TODO - Criar Tradução -->
@@ -81,6 +82,8 @@
       </ng-template>
     </div>
   </div>
+
+  <loading [loading]="loading"></loading>
 
   <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
     <ng-container *ngIf="system">

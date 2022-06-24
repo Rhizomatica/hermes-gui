@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
   errorAlert = false;
   resetting = false;
   subscript: any;
+  loading = true;
 
   title = 'hermes.radio';
   constructor(
@@ -87,11 +88,13 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
+        this.loading = false;
         return res;
       },
       (err) => {
         this.error = err;
         this.radioError = true;
+        this.loading = false;
       }
     );
   }

@@ -61,6 +61,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   connected: any;
   gps: any;
   modeSwitch: boolean;
+  loading = true
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -123,11 +124,13 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.ref_watts = this.power.ref_watts;
         // this.bypass = this.radio.bypass ? true : false
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
+        this.loading = false
         return res;
       },
       (err) => {
         this.error = err;
         this.radioError = true;
+        this.loading = false
       }
     );
   }
@@ -214,14 +217,17 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   // }
 
   changeFrequency(f: NgForm) {
+    this.loading = true
     const realfreq = f.value.frek * 1000;
     this.radioService.setRadioFreq(realfreq).subscribe(
       (res: any) => {
         this.res = res;
         this.radio.freq = res;
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }

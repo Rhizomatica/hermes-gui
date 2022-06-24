@@ -31,6 +31,7 @@ export class TransmissionListComponent implements OnInit {
   noUUcp = false;
   noQueue = false;
   transList = false;
+  loading = true;
 
   constructor(
     private messageService: MessageService,
@@ -115,10 +116,12 @@ export class TransmissionListComponent implements OnInit {
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noMessages = true;
+        this.loading = false
       }
     );
   }
