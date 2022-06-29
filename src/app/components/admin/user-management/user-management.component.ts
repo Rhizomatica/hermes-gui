@@ -35,7 +35,8 @@ export class UserManagementComponent implements OnInit {
   updateUser = false;
   showPassword = false;
   loading = true
-  
+  flagAdmin = false
+
   constructor(
     private userService: UserService,
     private stationService: StationService,
@@ -43,6 +44,7 @@ export class UserManagementComponent implements OnInit {
     private apiService: ApiService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.flagAdmin = this.currentUser.admin
   }
 
   getSystemStatus(): void {
@@ -212,6 +214,17 @@ export class UserManagementComponent implements OnInit {
         this.getUsers();
       }
     );
+  }
+
+  changeAdmin($event: Event) {
+    $event.preventDefault()
+
+    if(this.flagAdmin)
+      this.flagAdmin = false
+    else
+      this.flagAdmin = true
+
+      console.log(this.flagAdmin)
   }
 
   ngOnInit(): void {

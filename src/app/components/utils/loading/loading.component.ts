@@ -13,7 +13,9 @@ export class LoadingComponent implements OnChanges {
 
   @Input() loading: boolean
 
-  ngOnChanges(changes) {
-    changes.changes && changes.changes.loading.currentValue != changes.loading.previousValue ? this.loading = changes.loading.currentValue : null
+  ngOnChanges(change) {
+    change && change.loading.currentValue != change.loading.previousValue ? this.loading = change.loading.currentValue : null
   }
+
+  
 }
