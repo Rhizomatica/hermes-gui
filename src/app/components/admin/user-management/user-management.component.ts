@@ -199,6 +199,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   async onSubmitCreate(f: NgForm): Promise<void> {
+    this.loading = true
     f.value.location = 'local';
     await this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
