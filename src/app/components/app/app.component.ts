@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
   errorAlert = false;
   resetting = false;
   subscript: any;
+  deferredPrompt: any
 
   title = 'hermes.radio';
   constructor(
@@ -117,7 +118,7 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/login']);
     this.currentUser = null;
   }
-  
+
   onToggle(): void {
     this.darkModeService.toggle();
   }
@@ -126,11 +127,45 @@ export class AppComponent implements OnInit {
     window.scrollTo(0, 0)
   }
 
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onbeforeinstallprompt(e) {
+    console.log("maoi")    
+    // Impede que o mini-infobar apareça em mobile
+    e.preventDefault();
+    this.deferredPrompt = e;
+    // showInstallPromotion();
+    console.log(`'beforeinstallprompt' event was fired.`);
+  }
+
+  installPWA(): void{
+    this.deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    this.deferredPrompt.userChoice
+      .then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        this.deferredPrompt = null;
+      });
+  }
+
   ngOnInit(): void {
+    console.log("maoi")    
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
     this.getRadioStatus();
     this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
+
+    // window.addEventListener('appinstalled', () => {
+    //   // Esconder a promoção de instalação fornecida pela app
+    //   // hideInstallPromotion();
+    //   // Limpar o deferredPrompt para que seja coletado
+    //   this.deferredPrompt = null;
+    //   // Opcionalmente, enviar evento de analytics para indicar instalação com sucesso
+    //   console.log('PWA was installed');
+    // });
   }
 
 }

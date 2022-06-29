@@ -12,14 +12,15 @@ Package Manager: npm 8.5.2
 
 Install node preferably(V12.22.5) and npm (node package manager) in your distro
 
-Run 'npm install' inside the project path
+Run `npm install` inside the project path
 
 
 ## Development server
 
 Configure .env file with your parameters and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
 
-Run `ng serve --configuration=en` for a dev server in english, you can change the language to spanish (ng serve --configuration=es) or portuguese (ng serve --configuration=pt) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --configuration=en` for a dev server in english, you can change the language to spanish (`ng serve --configuration=es`) or portuguese (`ng serve --configuration=pt`) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 
 ## Code scaffolding
 
@@ -39,19 +40,19 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Service Work (PWA)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-## Services Work (PWA APPLICATION)
-required 
-    npm install --global http-server
+** Install Required module http-server
+    `npm install --global http-server`
 
 https://angular.io/guide/service-worker-getting-started
 
-Run Service Work
-http-server -p 8080 -c-1 dist/hermes
+Run like a Service Work (PWA)
+    `http-server -p 8080 -c-1 dist/hermes`
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
 ## Interface Contents
