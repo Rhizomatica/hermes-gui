@@ -56,7 +56,6 @@ export class StationsComponent implements OnInit {
     } else {
       this.stationedit = true;
     }
-    this.selectStations(event)
   }
 
   public getStations(): void {
@@ -119,6 +118,8 @@ export class StationsComponent implements OnInit {
   } 
 
   async updateStations(id: number, f:NgForm): Promise<void> {
+    this.selectStations(event)
+
     this.loading = true;
     this.updateAlert = false;
     f.value.stations = this.enabledStations;
