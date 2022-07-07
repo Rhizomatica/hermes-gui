@@ -2,9 +2,6 @@
 <div class="">
     <div class="flexible">
         <h2 i18n="@@admmanage">User Management</h2>
-        <div class="flex-right" *ngIf="isadmin">
-            <button *ngIf="currentUser && !selectedUser" i18n="@@usersettings" (click)="updateThis()">user settings</button>
-        </div>    
         <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>
     <div *ngIf="currentUser">
