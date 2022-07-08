@@ -66,6 +66,15 @@ export class UUCPService{
       catchError(this.handleError));
   }
 
+  callSystem(uucp): Observable<UUCPQueue[]> {
+    const url = `${GlobalConstants.apiURL}/sys/uucall/${uucp}`; //TODO - pode ser só id?
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return this.queue;
+    }),
+      catchError(this.handleError));
+  }
+
 
   private handleError(error: HttpErrorResponse) {
 	    this.queue = [];

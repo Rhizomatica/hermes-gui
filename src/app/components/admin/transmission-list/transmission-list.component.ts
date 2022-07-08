@@ -22,7 +22,7 @@ export class TransmissionListComponent implements OnInit {
   job: UUCPQueue;
   sentMessages: Message[];
   message: Message;
-  selectedMessage: Message; // redundant?
+  // selectedMessage: Message; // redundant?
   isadmin = false;
   searchMessages: string;
   confirmTransmit = false;
@@ -32,6 +32,7 @@ export class TransmissionListComponent implements OnInit {
   noQueue = false;
   transList = false;
   loading = true;
+  jobToForce: UUCPQueue
 
   constructor(
     private messageService: MessageService,
@@ -45,9 +46,9 @@ export class TransmissionListComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  onSelect(message: Message): void {
-    this.selectedMessage = message;
-  }
+  // onSelect(message: Message): void {
+  //   this.selectedMessage = message;
+  // }
 
   cancelTransmission(host, id): void {
     this.uucpService.cancelTransmission(host, id).subscribe(
@@ -92,16 +93,17 @@ export class TransmissionListComponent implements OnInit {
     );
   }
 
-  confTransmit() {
+  confTransmit(job: UUCPQueue) {
     if (this.confirmTransmit === false) {
       this.confirmTransmit = true;
+      this.jobToForce = job;
     } else {
       this.confirmTransmit = false;
     }
   }
 
   transmitNow(): void {
-    this.uucpService.callSystems().subscribe(
+    this.uucpService.callSystem(this.jobToForce).subscribe(
       (res: any) => {
         this.confirmTransmit = false;
       },
