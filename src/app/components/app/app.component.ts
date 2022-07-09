@@ -129,11 +129,11 @@ export class AppComponent implements OnInit {
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
-    console.log("maoi")    
+    console.log("Service Worker is started")    
     // Impede que o mini-infobar apareça em mobile
     e.preventDefault();
     this.deferredPrompt = e;
-    // showInstallPromotion();
+    // this.showInstallPromotion();
     console.log(`'beforeinstallprompt' event was fired.`);
   }
 
@@ -158,14 +158,14 @@ export class AppComponent implements OnInit {
     this.getRadioStatus();
     this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
 
-    // window.addEventListener('appinstalled', () => {
-    //   // Esconder a promoção de instalação fornecida pela app
-    //   // hideInstallPromotion();
-    //   // Limpar o deferredPrompt para que seja coletado
-    //   this.deferredPrompt = null;
-    //   // Opcionalmente, enviar evento de analytics para indicar instalação com sucesso
-    //   console.log('PWA was installed');
-    // });
+    window.addEventListener('appinstalled', () => {
+      // Esconder a promoção de instalação fornecida pela app
+      // hideInstallPromotion();
+      // Limpar o deferredPrompt para que seja coletado
+      this.deferredPrompt = null;
+      // Opcionalmente, enviar evento de analytics para indicar instalação com sucesso
+      console.log('PWA was installed');
+    });
   }
 
 }
