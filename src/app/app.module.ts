@@ -84,7 +84,9 @@ registerLocaleData(localePt);
     AngularFileUploaderModule,
     NgSelectModule,
     ServiceWorkerModule.register('ngsw-sw.js', {
-      enabled: Boolean(!environment.production),
+      // enabled: Boolean(environment.production),
+      enabled: Boolean(true),
+
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
