@@ -152,7 +152,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("maoi")    
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
     this.getRadioStatus();
