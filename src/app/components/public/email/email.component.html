@@ -20,8 +20,8 @@
     </p>
   </div>
   <hr>
-  <h2 i18n="@@selectusers">Select users to send e-mail:</h2>
   <ng-container *ngIf="users">
+    <h3 i18n="@@selectusers">Select users to send e-mail:</h3>
     <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
       bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false"
       [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required>

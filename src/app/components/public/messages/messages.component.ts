@@ -49,13 +49,15 @@ export class MessagesComponent implements OnInit {
     this.messageService.getMessagesByType('inbox').subscribe(
       (res: any) => {
         this.inboxMessages = res;
-        this.inboxMessages = this.inboxMessages.sort((a, b) => { return a.created_at < b.created_at ? 1 : -1; });
+        this.inboxMessages = this.inboxMessages
+
         if (this.inboxMessages.length == 0) {
           this.noMessages = true;
         } else {
           this.noMessages = false;
         }
         this.loading = false
+        
       },
       (err) => {
         this.error = err;
