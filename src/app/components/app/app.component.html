@@ -17,17 +17,24 @@
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
       </a>
-      <a routerLink="/messages" i18n="@@messages"><img title="messages" src="assets/svg/comment.svg">messages</a>
-      <a routerLink="/email" i18n="@@email"><img title="mail" src="assets/svg/envelope.svg">email</a>
-      <a routerLink="/admin" i18n="@admin">
-        <img title="admin" src="assets/svg/tools.svg">admin
+      <a routerLink="/messages" i18n="@@messages">
+        <img title="messages" src="assets/svg/comment.svg">
+        messages
       </a>
-      <a routerLink="/languages" i18n="@@languages"><img title="languages"
-          src="assets/svg/globe-americas.svg">language</a>
-      <a routerLink="/help" i18n="@@help"><img title="help" src="assets/svg/question-circle-regular.svg">help</a>
-
+      <a routerLink="/email" i18n="@@email">
+        <img title="mail" src="assets/svg/envelope.svg">
+        email</a>
+      <a routerLink="/admin" i18n="@admin">
+        <img title="admin" src="assets/svg/tools.svg">
+        admin
+      </a>
+      <a routerLink="/help" i18n="@@help">
+        <img title="help" src="assets/svg/question-circle-regular.svg">
+        help
+      </a>
       <a class="icon" routerLink="/login" *ngIf="!currentUser">
-        <span class="logged" i18n="@@login1">login</span><br />
+        <span class="logged" i18n="@@login1">login</span>
+        <br />
         <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
       </a>
       <a class="icon" (click)="logout()" *ngIf="currentUser">
@@ -80,6 +87,15 @@
           </div>
         </div>
       </ng-template>
+    </div>
+    <div class="overall" *ngIf="changeLanguage">
+      <div class="cv">
+          <nav class="flags">
+            <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages" src="assets/svg/brasil.svg">Português</a>
+            <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages" src="assets/svg/espanha.svg">Español</a>
+            <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages" src="assets/svg/reino-unido.svg">English</a>
+          </nav>          
+      </div>
     </div>
   </div>
 

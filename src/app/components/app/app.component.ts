@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   resetting = false;
   subscript: any;
   loading = true;
+  changeLanguage = false
 
   title = 'hermes.radio';
   constructor(
@@ -129,11 +130,25 @@ export class AppComponent implements OnInit {
     window.scrollTo(0, 0)
   }
 
+  changeLanguageModal(){
+    this.changeLanguage = this.changeLanguage ? false : true
+  }
+
+  checkLanguage(){
+    this.changeLanguage = !localStorage.getItem('language') ? true : false
+  }
+
+  setLanguage(language){
+    localStorage.setItem("language", language)
+    window.open("/"+language)
+  }
+
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
     this.getRadioStatus();
     this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
+    this.checkLanguage()
   }
 
 }
