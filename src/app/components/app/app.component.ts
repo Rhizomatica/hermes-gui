@@ -139,8 +139,8 @@ export class AppComponent implements OnInit {
   }
 
   setLanguage(language){
-    localStorage.setItem("language", language)
-    window.open("/"+language)
+    localStorage.setItem('language', language)
+    window.open('/'+language, '_self')
   }
 
   ngOnInit(): void {

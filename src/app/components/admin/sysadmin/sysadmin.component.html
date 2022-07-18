@@ -156,6 +156,9 @@
         </div>
     </div>
     <div *ngIf="!currentUser.admin">
+        <p i18n="@@needtobeadmin">
+            Need to be an admin to access other admin features
+        </p>
         <div class="menu">
             <div class="flexible">
                 <a routerLink="/usermanage">
@@ -179,9 +182,6 @@
                     </div>
                 </a>
             </div>
-            <p i18n="@@needtobeadmin">
-                Need to be an admin to access other admin features
-            </p>
         </div>
     </div>
 </div>

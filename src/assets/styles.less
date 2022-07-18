@@ -113,15 +113,15 @@ input {
         margin: 0.25em 0 0.1em;
     }
 
-    h1{
+    h1 {
         font-size: 1.1em;
     }
 
-    h2{
+    h2 {
         font-size: 1em;
     }
 
-    h3{
+    h3 {
         font-size: 0.9em;
     }
 }
@@ -268,7 +268,7 @@ nav {
         margin-right: 0.3em;
         margin-top: 0.8em;
         position: relative;
-        min-width: calc(14% - 0.25em);
+        min-width: calc(17% - 0.25em);
         text-align: center;
     }
 
@@ -282,7 +282,7 @@ nav {
     }
 
     .logo {
-            width: 10em;
+        width: 10em;
     }
 
     img:hover {
@@ -1010,6 +1010,12 @@ input.searchbox2 {
     font-size: 12px;
 }
 
+.uploader p {
+    word-wrap: break-word;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .uploader .btn:hover {
     color: #fff;
     font-weight: bold;
@@ -1169,21 +1175,26 @@ input.ng-invalid {
         transform: translateY(-50%);
     }
 
-    img{
+    img {
         width: 5em;
     }
 
     .rotating {
         animation: rotate 1s infinite;
-     }
-     
-     @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-     }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
 }
 
-.overall.loading{
+.overall.loading {
     opacity: 94%;
 }
 
@@ -1428,7 +1439,7 @@ input.ng-invalid {
     .overall {
         background-color: #333;
 
-        img{
+        img {
             filter: invert(100%);
         }
     }
@@ -1459,7 +1470,8 @@ input.ng-invalid {
 
     .btn-messages-lading {
         background-color: @mclr;
-        a{
+
+        a {
             color: @bkclr;
         }
 
@@ -1471,7 +1483,7 @@ input.ng-invalid {
     .btn-mail-lading {
         background-color: @clr;
 
-        a{
+        a {
             color: @bkclr;
         }
 
@@ -1492,12 +1504,12 @@ input.ng-invalid {
         background-color: @mclr;
     }
 
-   .card.connected {
-        border-color:green;
+    .card.connected {
+        border-color: green;
     }
 
     .card.disconnected {
-        border-color:red;
+        border-color: red;
     }
 
     a {
@@ -1508,10 +1520,17 @@ input.ng-invalid {
     }
 
 
-    .switch{
+    .switch {
         background-color: @bkclr;
     }
 
+    .language {
+        background-color: @mclr;
+
+        img {
+            filter: invert(100%);
+        }
+    }
 
 }
 
@@ -1781,12 +1800,12 @@ input[type=range]:hover::-ms-track {
 }
 
 .card.connected {
-    border-color:green;
+    border-color: green;
     color: green;
 }
 
 .card.disconnected {
-    border-color:red;
+    border-color: red;
     color: red;
 }
 
@@ -1857,6 +1876,28 @@ input[type=range]:hover::-ms-track {
 .float-right {
     display: inline;
     float: right;
+}
+
+.language {
+    background-color: @bkclr;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1em;
+    // border: 1px solid;
+    margin-top: 1em;
+
+    img {
+        width: 2em;
+    }
+
+
+    span {
+        font-size: 1em;
+        display: flex;
+        margin-left: 1em;
+        margin-top: 0.5em;
+    }
 }
 
 .landing {
@@ -1932,6 +1973,7 @@ input[type=range]:hover::-ms-track {
         filter: invert(100%);
     }
 }
+
 .radio {
     display: flex;
     flex-wrap: wrap;

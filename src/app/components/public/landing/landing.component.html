@@ -23,4 +23,17 @@
             </a>
         </div>
     </div>
+    <div class="language" (click)="changeLanguageModal()">
+        <img title="languages" src="assets/svg/globe-americas.svg" />
+        <span>language</span>
+    </div>
+    <div class="overall" *ngIf="changeLanguage">
+        <div class="cv">
+            <nav class="flags">
+              <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages" src="assets/svg/brasil.svg">Português</a>
+              <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages" src="assets/svg/espanha.svg">Español</a>
+              <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages" src="assets/svg/reino-unido.svg">English</a>
+            </nav>          
+        </div>
+      </div>
 </div>
