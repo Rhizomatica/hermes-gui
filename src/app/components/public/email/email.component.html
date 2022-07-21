@@ -40,10 +40,12 @@
   </a>
   <br />
   <hr>
-  <p i18n="@@noaccount">Doesn't have an account?</p>
-  <a routerLink="/usermanage">
-    <button i18n="@@createbtn">create an account</button>
-  </a>
+  <div *ngIf="!currentUser">
+    <p i18n="@@noaccount">Doesn't have an account?</p>
+    <a routerLink="/usermanage">
+      <button i18n="@@createbtn">create an account</button>
+    </a>
+  </div>
   <br />
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
