@@ -495,7 +495,7 @@ input:checked+.slider:before {
 }
 
 .round {
-    width: 1.5em;
+    width: 1.2em;
     margin-right: 0.15em;
     position: relative;
     top: 0.15em;
@@ -1267,6 +1267,10 @@ input.ng-invalid {
         top: 0.15em;
     }
 
+    .helpimg {
+        width: 98%;
+    }
+
 }
 
 .infoimg {
@@ -1359,7 +1363,7 @@ input.ng-invalid {
     // }
 
     a:visited {
-        color: #ccc;
+        color: @bkclr;
     }
 
     hr {
@@ -1884,8 +1888,7 @@ input[type=range]:hover::-ms-track {
     flex-direction: row;
     width: 100%;
     padding: 1em;
-    // border: 1px solid;
-    margin-top: 1em;
+    border: 1px solid;
 
     img {
         width: 2em;
