@@ -145,6 +145,16 @@
                     </div>
                 </div>
             </div>
+            <div class="overall alert" *ngIf="gpsMessage">
+                <div class="cv">
+                    <span i18n="">GPS Calibration successfull - {{gpsMessage}}<br /><br /></span>
+                    <div class="icon">
+                        <a (click)="closeGPSMessage()">
+                            <img title="close" src="assets/svg/x.svg">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>

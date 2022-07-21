@@ -63,10 +63,10 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   power: any;
   // audio: any;
   connected: any;
-  gps: any;
   modeSwitch: boolean;
   loading = true
-
+  gpsMessage: any
+ 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
@@ -101,7 +101,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.bypass = this.radio.bypass ? 'ON' : 'OFF'
         this.connected = this.radio.bypass ? 'connected' : 'disconnected';
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
-        this.gps = this.radio.gps;
         return res;
       },
       (err) => {
@@ -368,7 +367,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   gpsStartCalibration() {
     this.radioService.gpsStartCalibration().subscribe(
       (res: any) => {
-        this.gps = res
+        this.gpsMessage = res
       },
       (err) => {
         this.error = err;
@@ -379,6 +378,10 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   closeError() {
     this.errorAlert = false;
+  }
+
+  closeGPSMessage(){
+    this.gpsMessage = null
   }
 
   submitSet() {
