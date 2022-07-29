@@ -22,9 +22,9 @@
                     i18n-placeholder placeholder="Describe your message" />
             </label>
             <label for="text">
-                <span i18n="@@message">Message</span>:
+                <span i18n="@@messageComposeLabel">Message</span>:
                 <br />
-                <textarea i18n="@@writemessage" name="text" [(ngModel)]="message.text" required rows="5" cols="35"
+                <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35"
                     maxlength="1400" i18n-placeholder placeholder="write the message"></textarea>
             </label>
             <label class="selstation">
@@ -110,6 +110,7 @@
             </div>
             <span></span>
             <div *ngIf="isEncrypted">
+                <!-- TODO - USAR MESMO NGIF -->
                 <div *ngIf="passMatch">
                     <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send
                         message<br />

@@ -106,7 +106,7 @@
       <div class="dr">
         <div class="drb" (click)="onToggle('HR')"></div>
       </div>
-      <span class="footerinfo">Version: 1.0 |
+      <span class="footerinfo">V2.0 |
         <span i18n="stationa">Station:</span> {{system.name}}
         <span *ngIf="currentUser">
           <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
@@ -131,7 +131,7 @@
           &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
           &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
         </div>
-        <br><span *ngIf="criticSpace" class="alert">System storage is low! please delete messages and files</span>
+        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and files</span>
       </span>
     </ng-container>
     <span *ngIf="!system" i18n="@@stationoffline">

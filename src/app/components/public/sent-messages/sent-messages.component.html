@@ -2,7 +2,7 @@
     <div>
         <div>
             <div class="flexible">
-                <h2 i18n="@@sentmessages" class="">Sent Messages </h2>
+                <h2 i18n="@@sentmessages">Sent Messages </h2>
                 <div class="flex-right">
                     <button *ngIf="allowCompose" routerLink="/compose">
                         <span i18n="@@compose1">
@@ -18,7 +18,7 @@
                     </button>
                 </div>
             </div>
-            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />           
+            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access
                 sent messages<br />
             </div>
@@ -30,7 +30,8 @@
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
                                 <div class="row">
-                                    <span class="date">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</span>
+                                    <span class="date">{{message.orig}}, {{message.sent_at | date:'d/M/yy,
+                                        h:mm'}}</span>
                                 </div>
                                 <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                                     <span class="ls">{{message.name}}</span>
@@ -59,8 +60,8 @@
                             <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
                     </div>
                     <div class="icon">
-                            <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
-                                i18n="@@confirmmt">confirm</button>
+                        <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
+                            i18n="@@confirmmt">confirm</button>
                     </div>
                 </div>
             </div>
@@ -71,12 +72,11 @@
                     <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
                     <span>{{error}}</span>
                     <div class="icon"><a (click)="closeError()">
-                            <img title="compose" src="assets/svg/x.svg"></a>
+                            <img src="assets/svg/x.svg"></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--<app-message-detail [message]="selectedMessage"></app-message-detail>-->
     </div>
 </div>
 <loading [loading]="loading"></loading>

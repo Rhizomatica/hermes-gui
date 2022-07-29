@@ -48,7 +48,7 @@
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="radio" src="assets/svg/ham-radio.svg">
                         </div>
-                        <div>
+                        <div i18n="@@radioEmulator">
                             Radio
                         </div>
                     </div>
@@ -140,14 +140,14 @@
                 </span>
             </div>
         </div>
-        <div class="overall alert" [hidden]="shuttingDownNow==false">
+        <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
             Shutting Down System
             <br />
             <a (click)="reload()">
                 <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
             <br>
         </div>
-        <div class="overall alert" [hidden]="rebootingDownNow==false">
+        <div class="overall alert" [hidden]="rebootingDownNow==false" i18n="@@rebootButton">
             Rebooting System
             <br />
             <a (click)="reload()">
