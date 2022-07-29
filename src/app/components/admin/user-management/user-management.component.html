@@ -51,7 +51,7 @@
             <hr>
             <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
             <label *ngIf="showPassword">
-                <span i18n>password</span>:
+                <span i18n="@@passwordlabeluser">password</span>:
                 <br />
                 <!--<input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required  placeholder="password"  minlength="8" />-->
                 <label for="passwd">
@@ -73,7 +73,7 @@
                 <span *ngIf="f.invalid" class="alert" i18n=@@strongpassword> must have at least 6 characters</span>
             </label>
             <label class="m-t-25" *ngIf="isadmin">
-                <span i18n>is admin</span>
+                <span i18n="@@isadmin">is admin</span>
                 <div class="switch">
                     <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin">
                     <span class="slider round"></span>
@@ -83,13 +83,14 @@
             <br />
             <button (click)="cancelCreate()" i18n="@@mwcancel">cancel</button>
             <span *ngIf="selectedUser.email !== 'root'">
-                <button class="m-l-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
+                <button class="m-l-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
+                    [hidden]="emptyUser">delete
                     user</button>
             </span>
             <button class="m-l-10" type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
                 [disabled]="f.invalid">update</button>
             <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
-                [disabled]="f.invalid || passunMatch">create user</button>
+                [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
             <div class="overall" *ngIf="deleteUser">
                 <div class="cv">
                     <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br />
@@ -107,7 +108,8 @@
                     <br />
                     <button type="submit" (click)="onSubmitUpdate(selectedUser.emailid,f)" [disabled]="f.invalid"
                         i18n="@@update">update</button>
-                    <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid"
+                        i18n="@@cancel">cancel</button>
                 </div>
             </div>
             <div class="overall alert" [hidden]="errorAlert==false">

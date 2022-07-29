@@ -34,7 +34,7 @@
         <hr>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
-                <p i18n="@@schedtitle" i18n="@@scheduletitel">Schedule Title</p>
+                <p i18n="@@schedtitle">Schedule Title</p>
                 <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
                 <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
                 <p i18n="@@initialtime">Start transmission hour: </p>

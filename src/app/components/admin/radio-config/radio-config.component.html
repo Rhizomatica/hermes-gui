@@ -4,7 +4,7 @@
         <span i18n="@@radioconft">Radio Configuration </span>
     </h2>
     <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
-    <div i18n="cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
+    <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
     <div>
         <form *ngIf="radio">
             <div class="flexible">
@@ -106,12 +106,12 @@
                         </div>
                     </form>
                     <form #fptt="ngForm" class="formdata field">
-                        <span>GPS Calibration</span>
+                        <span i18n="@@labelgpscalibration" >GPS Calibration</span>
                         <button type="submit" name="gps" class="float-right"
-                            (click)="gpsStartCalibration()">Start</button>
+                            (click)="gpsStartCalibration()" i18n="@@startgpscalibration">Start</button>
                     </form>
                     <form *ngIf="radio" class="formdata field">
-                        <span i18n="@@changeradiomode">Radio mode</span>
+                        <span i18n="@@changeradiomode" >Radio mode</span>
                         <div class="float-right">
                             <span>USB</span>
                             <div class="switch">
@@ -147,7 +147,7 @@
             </div>
             <div class="overall alert" *ngIf="gpsMessage">
                 <div class="cv">
-                    <span i18n="">GPS Calibration successfull - {{gpsMessage}}<br /><br /></span>
+                    <span i18n="@@gpscalibrationsuccess">GPS Calibration successful - {{gpsMessage}}<br /><br /></span>
                     <div class="icon">
                         <a (click)="closeGPSMessage()">
                             <img title="close" src="assets/svg/x.svg">

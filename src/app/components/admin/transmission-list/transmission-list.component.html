@@ -26,8 +26,8 @@
             </div>
         </div>
         <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ getQueueSize() }} B</p>
-        <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
-        <div class="alert" *ngIf="noQueue" i18n="noqueue">There are no messages to transmit<br /></div>
+        <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
+        <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
         <div class="queue messages">
             <div class="multiplist1">
                 <div *ngFor="let job of queue | filter:searchMessages" class="item">
