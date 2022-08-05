@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Message } from '../../../interfaces/message';
 import { MessageService } from '../../../_services/message.service';
@@ -7,6 +7,9 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
+// declare var $: any;
+import * as RecordRTC from 'recordrtc';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-messagecompose',
@@ -50,12 +53,17 @@ export class MessagecomposeComponent implements OnInit {
   public allowCompose = false;
   public camPicture: any;
   public loading = true
+  public audioFileUrl: any
+  public audioRecorderOverall = false
+  public record: any
+  public recording = false
 
   constructor(
     private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private domSanitizer: DomSanitizer) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -148,13 +156,6 @@ export class MessagecomposeComponent implements OnInit {
   onFileCamSelected(e) {
     this.camPicture = e.target.files[0]
     this.onFileSelected(e)
-  }
-
-  audFileSelected(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const audSrc = URL.createObjectURL(event.target.files[0]);
-      // this.figAudio.nativeElement.src = this.audSrc;
-    }
   }
 
   onFileSelected(event) {
@@ -314,6 +315,60 @@ export class MessagecomposeComponent implements OnInit {
 
     allSelect(items);
   }
+
+  audioRecorder() {
+    this.audioRecorderOverall = true
+  }
+
+  closeaudioRecorder() {
+    this.audioRecorderOverall = false
+  }
+
+  sanitize(url: string) {
+    return this.domSanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  initiateRecording() {
+    this.recording = true;
+    let mediaConstraints = {
+      video: false,
+      audio: true
+    };
+
+    navigator.mediaDevices.getUserMedia(mediaConstraints).then(this.successCallback.bind(this), this.errorCallback.bind(this));
+  }
+
+  successCallback(stream) {
+    var options = {
+      mimeType: "audio/wav",
+      numberOfAudioChannels: 1,
+      sampleRate: 16000,
+    };
+    //Start Actuall Recording
+    var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
+    this.record = new StereoAudioRecorder(stream, options);
+    this.record.record();
+  }
+
+  stopRecording() {
+    this.recording = false;
+    this.record.stop(this.processRecording.bind(this));
+  }
+
+  processRecording(blob) {
+    this.audioFileUrl = URL.createObjectURL(blob);
+    console.log("blob", blob);
+    console.log("url", this.audioFileUrl);
+  }
+
+  errorCallback(error) {
+    this.audioRecorderOverall = false
+    this.recording = false
+    this.errorAlert = true
+    this.errormsg = 'Can not play audio in your browser';
+  }
+
+  //TODO - Delete audioFile
 
   // TODO double check start params on inbox
   ngOnInit(): void {
