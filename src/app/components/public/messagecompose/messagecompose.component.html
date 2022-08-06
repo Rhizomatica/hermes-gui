@@ -53,21 +53,14 @@
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>
-          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)"
-            style="display: none;" #fileCamUpload>
+          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
           <p i18n="@@nofile" class="fileName">{{fileName || "no file selected"}}</p>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-          <button class="m-l-10" *ngIf="!fileSelected" (click)="fileCamUpload.click()" i18n="@@camfile">camera</button>
+          <button *ngIf="!fileSelected" (click)="fileCamUpload.click()" i18n="@@camfile" class="m-l-10">camera</button>
+          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">Audio Recorder</button>
           <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
-
-          <div class="row" *ngIf="!audioFileUrl" >
-            <button (click)="audioRecorder()" i18n="@@audiorecorder">Audio Recorder</button>
-          </div>
-          <div class="uploader m-t-25" *ngIf="audioFileUrl" >
-            <span>{{audioFileUrl}}</span>
-          </div>
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -157,13 +150,15 @@
     </div>
 
     <div class="overall alert" *ngIf="audioRecorderOverall">
-      <button (click)="initiateRecording()" *ngIf="!recording" i18n="@@startrecord"> Start Recording </button>
-      <button (click)="stopRecording()" *ngIf="recording" i18n="@@stoprecord"> Stop Recording </button>
-      <audio controls="" *ngIf="audioFileUrl">
-        <source [src]="sanitize(audioFileUrl)" type="audio/wav" name="audioFileUrl" >
-      </audio>
-      <div class="icon"><a (click)="closeaudioRecorder()">
-        <img title="close" src="assets/svg/x.svg"></a>
+      <div class="cv">
+        <button (click)="initiateRecording()" *ngIf="!recording" i18n="@@startrecord"> Start Recording </button>
+        <button (click)="stopRecording()" *ngIf="recording" i18n="@@stoprecord"> Stop Recording </button>
+        <audio controls="" *ngIf="audioFileUrl">
+          <source [src]="sanitize(audioFileUrl)" type="audio/wav" name="audioFileUrl">
+        </audio>
+        <div class="icon"><a (click)="closeaudioRecorder()">
+            <img title="close" src="assets/svg/x.svg"></a>
+        </div>
       </div>
     </div>
   </form>

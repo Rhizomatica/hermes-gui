@@ -53,7 +53,6 @@ export class MessagecomposeComponent implements OnInit {
   public allowCompose = false;
   public camPicture: any;
   public loading = true
-  public audioFileUrl: any
   public audioRecorderOverall = false
   public record: any
   public recording = false
@@ -302,10 +301,6 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-  fileUpload(files): void {
-    // this.messageService.postFile($files[0]);
-  }
-
   selectAllForDropdownItems(items: any[]) {
     let allSelect = items => {
       items.forEach(element => {
@@ -342,7 +337,7 @@ export class MessagecomposeComponent implements OnInit {
     var options = {
       mimeType: "audio/wav",
       numberOfAudioChannels: 1,
-      sampleRate: 16000,
+      sampleRate: 50000,
     };
     //Start Actuall Recording
     var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
@@ -356,9 +351,9 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   processRecording(blob) {
-    this.audioFileUrl = URL.createObjectURL(blob);
+    this.file = URL.createObjectURL(blob);
     console.log("blob", blob);
-    console.log("url", this.audioFileUrl);
+    console.log("url", this.file);
   }
 
   errorCallback(error) {
