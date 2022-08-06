@@ -1,3 +1,4 @@
+<loading [loading]="loading"></loading>
 <div>
     <div class="overall alert" *ngIf="confirmTransmit">
         <div class="cv">
@@ -18,15 +19,15 @@
         <div class="flexible">
             <h2 i18n="@@transmissionlistt">Transmission list</h2>
             <div class="flex-right">
-                <button *ngIf="isadmin" (click)="confTransmit()">
+                <!-- <button *ngIf="isadmin" (click)="confTransmit()">
                     <span i18n="@@transmitnow">force transmission</span> <img class="inlineiconlink" title="cancel"
                         src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
-                </button>
+                </button> -->
             </div>
         </div>
         <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ getQueueSize() }} B</p>
-        <div class="alert" *ngIf="noUUcp" i18n="cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
-        <div class="alert" *ngIf="noQueue" i18n="noqueue">There are no messages to transmit<br /></div>
+        <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
+        <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
         <div class="queue messages">
             <div class="multiplist1">
                 <div *ngFor="let job of queue | filter:searchMessages" class="item">
@@ -49,6 +50,10 @@
                             <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
                             <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
                         </span>
+                        <button *ngIf="isadmin" (click)="confTransmit(job)">
+                            <span i18n="@@transmitnow">force transmission</span> <img class="inlineiconlink" title="cancel"
+                                src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
+                        </button>
                     </div>
                 </div>
             </div>

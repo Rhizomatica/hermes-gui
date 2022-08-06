@@ -1,7 +1,8 @@
+<loading [loading]="loading"></loading>
 <div>
   <ng-container *ngIf="stations">
     <form #g="ngForm" *ngIf="stations">
-      <h2>Stations on this network</h2>
+      <h2 i18n="@@stationsonthisnetwork">Stations on this network</h2>
       <br />
       <div>
         <b>
@@ -19,17 +20,11 @@
           </span>
           <span class="stname">{{station.alias}}</span>
         </span>
-        <!-- <input *ngIf="isGateway && isAdmin" type="checkbox" class="afterlist" value="{{station.alias}}" (change)="selectStations($event)" [checked]="station.checked"> -->
-        <div class="switch m-b-10">
+        <div class="switch m-b-10" *ngIf="isGateway">
           <input type="checkbox" name="switchButton" [checked]="station.checked">
-          <span class="slider round" *ngIf="isGateway && isAdmin" (click)="selectStations($event)"
-            value="{{station.alias}}" [checked]="station.checked"></span>
+          <span class="slider round" type="submit" (click)="confirmChange($event)" value="{{station.alias}}"></span>
         </div>
-      </div>
-      <button class="m-t-25" type="submit" *ngIf="isGateway && isAdmin" (click)="confirmChange()"
-        i18n="@@updateenabled">
-        Update Enabled Stations
-      </button>
+      </div> 
       <div class="overall" *ngIf="stationedit">
         <div class="cv">
           <span i18n="@@areyousurestations">Are you sure you want to change the list of enabled stations?</span><br />

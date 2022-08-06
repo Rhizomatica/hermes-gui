@@ -49,7 +49,7 @@ export class MessagecomposeComponent implements OnInit {
   public allowhmp;
   public allowCompose = false;
   public camPicture: any;
-
+  public loading = true
 
   constructor(
     private messageService: MessageService,
@@ -145,7 +145,7 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-  onFileCamSelected(e){
+  onFileCamSelected(e) {
     this.camPicture = e.target.files[0]
     this.onFileSelected(e)
   }
@@ -210,6 +210,7 @@ export class MessagecomposeComponent implements OnInit {
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
     this.sending = true;
+    this.loading = true;
 
     if (!this.isGateway) {
       var str = f.value.dest;
@@ -220,7 +221,6 @@ export class MessagecomposeComponent implements OnInit {
     // File exists?
     if (this.file != null && this.file !== []) {
       await this.messageService.postFile(this.file, f.value.pass).then(
-
         (value: any) => {
           f.value.file = value['filename']; // gona change  to this default instead of image
           f.value.fileid = value['id'];
@@ -233,6 +233,7 @@ export class MessagecomposeComponent implements OnInit {
           this.errormsg = err;
           this.errorAlert = true;
           this.sending = false;
+          this.loading = false;
         }
       );
     }
@@ -251,10 +252,12 @@ export class MessagecomposeComponent implements OnInit {
         this.fileIsProcessing = true;
         this.file = [];
         this.fileName = '';
+        this.loading = false;
       },
       (err) => {
         this.errormsg = err;
         this.errorAlert = true;
+        this.loading = false;
       }
     );
   }
@@ -339,8 +342,8 @@ export class MessagecomposeComponent implements OnInit {
       .subscribe(stations => {
         this.stations = stations;
         this.selectedStations = [this.stations[0].id];
-        this.selectAllForDropdownItems(this.stations
-        );
+        this.selectAllForDropdownItems(this.stations);
+        this.loading = false
       });
   }
 

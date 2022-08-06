@@ -236,7 +236,7 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
         this.message = res;
         this.deleteMessage = false;
-        this.router.navigate(['/messages']); //TODO - Verificar qual página retornar
+        this.location.back()
       },
       (err) => {
         this.error = err;

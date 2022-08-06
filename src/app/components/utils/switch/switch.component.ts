@@ -1,23 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 
 @Component({
   selector: 'switch',
   templateUrl: './switch.component.html',
   styleUrls: ['./switch.component.less']
 })
-export class SwitchComponent {
+export class SwitchComponent implements OnChanges {
 
   constructor() {
-    this.name = 'Switch';
+    this.inputName = 'Switch';
+    this.label = 'switch'
     this.i18n = 'Translate';
-    this.disabled = ''
+    this.enabled = ''
     this.value = 0
-    this.customFunction = function(){ console.log("Custom function called with param: " + this.disabled); }
+    this.customFunction = function () { console.log("Custom function called with param: " + this.disabled); }
   }
 
-  @Input() name: string
+  @Input() inputName: string
+  @Input() label: string
   @Input() i18n: string
-  @Input() disabled: string
+  @Input() enabled: string
   @Input() value: number
   @Input() customFunction: any
 
@@ -32,4 +34,8 @@ export class SwitchComponent {
   ngOnInit(): void {
   }
 
+  ngOnChanges(change) {    
+    change.enabled && change.enabled.currentValue != change.enabled.previousValue ? this.enabled = change.name.currentValue: null
+    change.value && change.value.currentValue != change.value.previousValue ? this.value = change.value.currentValue: null
+  }
 }

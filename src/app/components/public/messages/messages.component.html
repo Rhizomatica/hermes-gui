@@ -35,11 +35,12 @@
                 <div class="multiplist">
                     <div class="item" *ngFor="let message of inboxMessages| filter:searchMessages; let i = index ">
                         <div class="maininfo">
+                            <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                                [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
-                                <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
-                                    [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
-                            </div>
-                            <div>
+                                <div class="row">
+                                    <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</span>
+                                </div>
                                 <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                                     <span class="ls">{{message.name}}</span>
                                     <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg"
@@ -50,7 +51,6 @@
                                 </a>
                             </div>
                         </div>
-                        <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</span>
                     </div>
                 </div>
             </div>
@@ -62,9 +62,9 @@
                     <div class="icon"><a (click)="showDelete()">
                             <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
                     </div>
-                    <div class="icon"><a routerLink='/messages' routerLinkActive="active">
+                    <div class="icon">
                             <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
-                                i18n="@@confirmmt">confirm</button></a>
+                                i18n="@@confirmmt">confirm</button>
                     </div>
                 </div>
             </div>
@@ -86,4 +86,5 @@
             </div>
         </div>
     </div>
+    <loading [loading]="loading"></loading>
 </div>

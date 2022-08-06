@@ -1,3 +1,5 @@
+<loading [loading]="loading"></loading>
+
 <div *ngIf="!allowCompose">
     <div id="compose" class="" *ngIf="allowhmp=='users'" i18n="@@cantcompose">
         <p>Only registered users can send messages to other stations, if you are a registered user, please log in.</p>
@@ -20,9 +22,9 @@
                     i18n-placeholder placeholder="Describe your message" />
             </label>
             <label for="text">
-                <span i18n="@@message">Message</span>:
+                <span i18n="@@messageComposeLabel">Message</span>:
                 <br />
-                <textarea i18n="@@writemessage" name="text" [(ngModel)]="message.text" required rows="5" cols="35"
+                <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35"
                     maxlength="1400" i18n-placeholder placeholder="write the message"></textarea>
             </label>
             <label class="selstation">
@@ -49,9 +51,13 @@
                     </ng-container>
                 </span>
             </label>
-            <div class="uploader" *ngIf="allowUpload">
+            <div class="uploader m-t-25" *ngIf="allowUpload">
                 <ng-container>
-                    <span i18n="@@attachfile">Attach File: </span>
+                    <input type="file" capture="camera" accept="image/*" name="cameraInput"
+                        (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
+                    <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;"
+                        #fileUpload>
+                    <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
                     <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
                     <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
                     <button class="m-l-10" *ngIf="!fileSelected" (click)="fileCamUpload.click()"
@@ -63,11 +69,6 @@
                         <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
                         <source [src]="audSrc | sanitizerUrl" type="audio/wav">
                     </audio> -->
-
-                    <input type="file" capture="camera" accept="image/*" name="cameraInput"
-                        (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
-                    <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;"
-                        #fileUpload>
                     <div *ngIf="sending">
                         <div class="blobber">
                             <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -109,6 +110,7 @@
             </div>
             <span></span>
             <div *ngIf="isEncrypted">
+                <!-- TODO - USAR MESMO NGIF -->
                 <div *ngIf="passMatch">
                     <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send
                         message<br />

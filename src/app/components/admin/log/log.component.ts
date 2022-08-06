@@ -27,17 +27,19 @@ export class LogComponent implements OnInit, OnDestroy {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
-  public intervallTimer = interval(5000);
+  public intervallTimer = interval(10000);
   private subscription1;
   private subscription2;
   private subscription3;
   errorAlert = false;
+  loading = false
 
-  constructor( private authenticationService: AuthenticationService, private apiService: ApiService) {
+  constructor(private authenticationService: AuthenticationService, private apiService: ApiService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   showUucpLog() {
+    this.loading = true
     this.uLog = true;
     this.eLog = false;
     this.dLog = false;
@@ -48,10 +50,11 @@ export class LogComponent implements OnInit, OnDestroy {
     };
     if (this.subscription3) {
       this.subscription3.unsubscribe();
-    } 
+    }
   }
 
   showEmailLog() {
+    this.loading = true
     this.uLog = false;
     this.eLog = true;
     this.dLog = false;
@@ -66,6 +69,7 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   showDebugLog() {
+    this.loading = true
     this.uLog = false;
     this.eLog = false;
     this.dLog = true;
@@ -84,11 +88,13 @@ export class LogComponent implements OnInit, OnDestroy {
     this.apiService.getUucpLog().subscribe(
       (res: any) => {
         this.uucpLog = res;
+        this.loading = false
         return res;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true
+        this.loading = false
       }
     );
   }
@@ -97,11 +103,13 @@ export class LogComponent implements OnInit, OnDestroy {
     this.apiService.getMailLog().subscribe(
       (res: any) => {
         this.mailLog = res;
+        this.loading = false
         return res;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true
+        this.loading = false
       }
     );
   }
@@ -110,11 +118,13 @@ export class LogComponent implements OnInit, OnDestroy {
     this.apiService.getUucpDebugLog().subscribe(
       (res: any) => {
         this.uucpDebugLog = res;
+        this.loading = false
         return res;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true
+        this.loading = false
       }
     );
   }
@@ -130,10 +140,10 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getLogUucp();
-    this.getLogMail();
-    this.getLogUucpDebug();
-    
+    // this.getLogUucp();
+    // this.getLogMail();
+    // this.getLogUucpDebug();
+
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
@@ -141,7 +151,7 @@ export class LogComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     if (this.subscription1) {
       this.subscription1.unsubscribe();
     };
@@ -153,6 +163,6 @@ export class LogComponent implements OnInit, OnDestroy {
     }
   }
 
-  }
+}
 
 

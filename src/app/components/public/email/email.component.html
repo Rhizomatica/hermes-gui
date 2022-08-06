@@ -3,7 +3,7 @@
   <form #f="ngForm" id="loginform" novalidate>
     <button>
       <img class="round icon" src="assets/svg/roundcubelogo.svg">
-      <a href="/mail/" target="_self">Webmail</a>
+      <a href="/mail/" target="_blank">Webmail</a>
     </button>
     <button class="m-l-10" (click)="showlinks()" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png"
         class="delta icon">deltachat<br>
@@ -20,8 +20,8 @@
     </p>
   </div>
   <hr>
-  <h2 i18n="@@selectusers">Select users to send e-mail:</h2>
   <ng-container *ngIf="users">
+    <h3 i18n="@@selectusers">Select users to send e-mail:</h3>
     <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
       bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false"
       [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required>
@@ -36,14 +36,16 @@
     </ng-select>
   </ng-container>
   <a href="mailto:{{emailto}}">
-    <button class="m-t-10" [disabled]="emailto?.length == 0">Send email to selected</button>
+    <button class="m-t-10" [disabled]="emailto?.length == 0" i18n="@@emailsendemailselected">Send e-mail to selected</button>
   </a>
   <br />
   <hr>
-  <p i18n="@@noaccount">Doesn't have an account?</p>
-  <a routerLink="/usermanage">
-    <button i18n="@@createbtn">create an account</button>
-  </a>
+  <div *ngIf="!currentUser">
+    <p i18n="@@noaccount">Doesn't have an account?</p>
+    <a routerLink="/usermanage">
+      <button i18n="@@createbtn">create an account</button>
+    </a>
+  </div>
   <br />
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">

@@ -34,6 +34,8 @@ export class UserManagementComponent implements OnInit {
   system: any;
   updateUser = false;
   showPassword = false;
+  loading = true
+  flagAdmin = false
 
   constructor(
     private userService: UserService,
@@ -42,6 +44,7 @@ export class UserManagementComponent implements OnInit {
     private apiService: ApiService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.flagAdmin = this.currentUser.admin
   }
 
   getSystemStatus(): void {
@@ -142,10 +145,12 @@ export class UserManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (res: any) => {
         this.users = res;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
@@ -194,6 +199,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   async onSubmitCreate(f: NgForm): Promise<void> {
+    this.loading = true
     f.value.location = 'local';
     await this.userService.createUser(f.value).subscribe();
     this.isEditing = false;
@@ -209,6 +215,17 @@ export class UserManagementComponent implements OnInit {
         this.getUsers();
       }
     );
+  }
+
+  changeAdmin($event: Event) {
+    $event.preventDefault()
+
+    if(this.flagAdmin)
+      this.flagAdmin = false
+    else
+      this.flagAdmin = true
+
+      console.log(this.flagAdmin)
   }
 
   ngOnInit(): void {

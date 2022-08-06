@@ -26,11 +26,23 @@ Run `ng serve --configuration=en` for a dev server in english, you can change th
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Build & Publish
 
-Check and configure .env file with your parameters (DEV/PROD) and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
+Access remotly machine in port 22 with `ssh -p 22 hermes@[my_host_ip]`
+type `sudo su` to admin verification 
+Set origin main branch `git checkout main`
+Update project `git pull`
+Create an .env file like a .env.example in root directory
+Check and configure .env file with your parameters DEV/PROD and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
+Remove all files in dist folder `rm -r dist/`
+Run `npm run build / ng build` to build the project. The build artifacts will be stored in the `dist` directory.
+Copy them in `/var/www/html/` directory
+    `cp -a dist/hermes/pt /var/www/html/`
+    `cp -a dist/hermes/es /var/www/html/`
+    `cp -a dist/hermes/en-US/ /var/www/html/`
+Done 
+Navigate to [HERMES](https://[my_host_ip])
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 

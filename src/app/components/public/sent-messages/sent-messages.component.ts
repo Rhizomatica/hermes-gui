@@ -37,6 +37,7 @@ export class SentMessagesComponent implements OnInit {
   serverConfig: any;
   allowhmp: string;
   deleteMessage = false;
+  loading = true
 
   constructor(
     private messageService: MessageService,
@@ -92,6 +93,7 @@ export class SentMessagesComponent implements OnInit {
   }
 
   deleteThisMessage() {
+    this.loading = true
     let msgId = 0;
     msgId = this.selectedMessage.id;
     this.messageService.deleteMessage(msgId).subscribe(
@@ -102,6 +104,7 @@ export class SentMessagesComponent implements OnInit {
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
     this.deleteMessage = false;
@@ -128,14 +131,17 @@ export class SentMessagesComponent implements OnInit {
   }
 
   getSentMessages(): void {
+    this.loading = true
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
         this.noMessages = false;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noMessages = true;
+        this.loading = false
       }
     );
   }
@@ -203,7 +209,7 @@ export class SentMessagesComponent implements OnInit {
       }
     );
   }
-  
+
   ngOnInit(): void {
     this.getSentMessages();
     this.getSysConfig();

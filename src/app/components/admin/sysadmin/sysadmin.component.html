@@ -48,7 +48,7 @@
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="radio" src="assets/svg/ham-radio.svg">
                         </div>
-                        <div>
+                        <div i18n="@@radioEmulator">
                             Radio
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                 src="assets/svg/material icons/settings_input_antenna-24px.svg">
                         </div>
                         <div i18n="@@scheduling">
-                            Central Station
+                            Transmission Schedule
                         </div>
                     </div>
                 </a>
@@ -140,14 +140,14 @@
                 </span>
             </div>
         </div>
-        <div class="overall alert" [hidden]="shuttingDownNow==false">
+        <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
             Shutting Down System
             <br />
             <a (click)="reload()">
                 <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
             <br>
         </div>
-        <div class="overall alert" [hidden]="rebootingDownNow==false">
+        <div class="overall alert" [hidden]="rebootingDownNow==false" i18n="@@rebootButton">
             Rebooting System
             <br />
             <a (click)="reload()">
@@ -156,6 +156,9 @@
         </div>
     </div>
     <div *ngIf="!currentUser.admin">
+        <p i18n="@@needtobeadmin">
+            Need to be an admin to access other admin features
+        </p>
         <div class="menu">
             <div class="flexible">
                 <a routerLink="/usermanage">
@@ -179,9 +182,6 @@
                     </div>
                 </a>
             </div>
-            <p i18n="@@needtobeadmin">
-                Need to be an admin to access other admin features
-            </p>
         </div>
     </div>
 </div>

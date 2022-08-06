@@ -38,6 +38,7 @@ export class GatewayConfigComponent implements OnInit {
   updateAlert = false;
   canDelete = true;
   timeerror = false;
+  loading = true;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -61,9 +62,12 @@ export class GatewayConfigComponent implements OnInit {
             }
           }
         }
+        this.loading = false
+
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
@@ -81,6 +85,7 @@ export class GatewayConfigComponent implements OnInit {
   }
 
   updateSchedule(id: number, f: NgForm): void {
+    this.loading = true
     f.value.stations = this.enabledStations;
     this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
@@ -89,6 +94,7 @@ export class GatewayConfigComponent implements OnInit {
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
@@ -145,11 +151,13 @@ export class GatewayConfigComponent implements OnInit {
         this.defstop = this.schedules[0].stoptime;
         this.defenable = this.schedules[0].enable;
         this.defid = this.schedules[0].id;
+        this.loading = false
         return res;
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
@@ -161,6 +169,7 @@ export class GatewayConfigComponent implements OnInit {
   }
 
   async deleteSchedule($id): Promise<void> {
+    this.loading = true
     if ($id > 1) {
       await this.apiService.deleteSchedule($id).subscribe(
         (data: any) => {
@@ -168,6 +177,7 @@ export class GatewayConfigComponent implements OnInit {
         }, (err) => {
           this.error = err
           this.errorAlert = true;
+          this.loading = false
         }
       );
     }

@@ -38,6 +38,9 @@ import { GatewayConfigComponent } from './components/admin/gateway-config/gatewa
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
+import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
+import { LoadingComponent } from './components/utils/loading/loading.component';
+import { SwitchComponent } from './components/utils/switch/switch.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -72,7 +75,10 @@ registerLocaleData(localePt);
     FrequencyPipe,
     GatewayConfigComponent,
     TransmissionListComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RadioScaryComponent,
+    LoadingComponent,
+    SwitchComponent
   ],
   imports: [
     BrowserModule,

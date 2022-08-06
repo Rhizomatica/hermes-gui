@@ -31,6 +31,8 @@ export class AppComponent implements OnInit {
   errorAlert = false;
   resetting = false;
   subscript: any;
+  loading = true;
+  changeLanguage = false
   deferredPrompt: any
 
   title = 'hermes.radio';
@@ -88,11 +90,13 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
+        this.loading = false;
         return res;
       },
       (err) => {
         this.error = err;
         this.radioError = true;
+        this.loading = false;
       }
     );
   }
@@ -127,9 +131,22 @@ export class AppComponent implements OnInit {
     window.scrollTo(0, 0)
   }
 
+  changeLanguageModal(){
+    this.changeLanguage = this.changeLanguage ? false : true
+  }
+
+  checkLanguage(){
+    this.changeLanguage = !localStorage.getItem('language') ? true : false
+  }
+
+  setLanguage(language){
+    localStorage.setItem('language', language)
+    window.open('/'+language, '_self')
+  }
+
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
-    console.log("Service Worker is started")    
+    console.log("Service Worker is started")
     // Impede que o mini-infobar apareça em mobile
     e.preventDefault();
     this.deferredPrompt = e;
@@ -156,6 +173,7 @@ export class AppComponent implements OnInit {
     this.getSystemStatus();
     this.getRadioStatus();
     this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
+    this.checkLanguage()
 
     window.addEventListener('appinstalled', () => {
       // Esconder a promoção de instalação fornecida pela app

@@ -8,8 +8,9 @@ import { ApiService } from '../../../_services/api.service';
 })
 export class HelpComponent implements OnInit {
 
-  error: any;
-  system: any;
+  error: any
+  system: any
+  changeLanguage = false
 
   constructor(
     private apiService: ApiService
@@ -19,17 +20,26 @@ export class HelpComponent implements OnInit {
   getSystemStatus(): void{
     this.apiService.getStatus().subscribe(
       (res: any) => {
-        this.system = res;
-        return res;
+        this.system = res
+        return res
       },
       (err) => {
-        this.error = err;
+        this.error = err
       }
     );
   }
 
   scrollToElement($element): void {
-    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+  }
+
+  changeLanguageModal(){
+    this.changeLanguage = this.changeLanguage ? false : true
+  }
+
+  setLanguage(language){
+    localStorage.setItem('language', language)
+    window.open('/'+language, '_self')
   }
 
   ngOnInit(): void {
