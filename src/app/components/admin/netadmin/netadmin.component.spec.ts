@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NetadminComponent } from './netadmin.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NetadminComponent', () => {
   let component: NetadminComponent;
@@ -8,9 +8,10 @@ describe('NetadminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NetadminComponent ]
+      declarations: [NetadminComponent],
+      imports: [HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

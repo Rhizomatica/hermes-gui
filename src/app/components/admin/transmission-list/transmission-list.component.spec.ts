@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TransmissionListComponent } from './transmission-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('TransmissionListComponent', () => {
   let component: TransmissionListComponent;
@@ -8,7 +8,8 @@ describe('TransmissionListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransmissionListComponent ]
+      declarations: [ TransmissionListComponent ],
+      imports:[HttpClientModule]
     })
     .compileComponents();
   });

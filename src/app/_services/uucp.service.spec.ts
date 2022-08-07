@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
+import { UUCPService } from './uucp.service';
+import { HttpClientModule } from '@angular/common/http';
 
-import { UucpService } from './uucp.service';
-
-describe('UucpService', () => {
-  let service: UucpService;
+describe('UUCPService', () => {
+  let service: UUCPService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(UucpService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule]
+    });
+    service = TestBed.inject(UUCPService);
   });
 
   it('should be created', () => {

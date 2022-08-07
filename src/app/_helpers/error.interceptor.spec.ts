@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ErrorInterceptor } from './error.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ErrorInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [
-      ErrorInterceptor
-      ]
+    providers: [ErrorInterceptor],
+    imports: [HttpClientModule]
   }));
 
   it('should be created', () => {

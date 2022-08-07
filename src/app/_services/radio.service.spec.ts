@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-
 import { RadioService } from './radio.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('RadioService', () => {
   let service: RadioService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule]
+    });
     service = TestBed.inject(RadioService);
   });
 

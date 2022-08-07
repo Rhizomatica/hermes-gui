@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Station } from '../../../station';
-
+import { Station } from '../../../interfaces/station';
 import { StationsComponent } from './stations.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('StationsComponent', () => {
   let component: StationsComponent;
@@ -10,9 +10,10 @@ describe('StationsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StationsComponent ]
+      declarations: [StationsComponent],
+      imports: [HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
