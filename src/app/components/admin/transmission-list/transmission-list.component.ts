@@ -103,7 +103,7 @@ export class TransmissionListComponent implements OnInit {
   }
 
   transmitNow(): void {
-    this.uucpService.callSystem(this.jobToForce).subscribe(
+    this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
         this.confirmTransmit = false;
       },
