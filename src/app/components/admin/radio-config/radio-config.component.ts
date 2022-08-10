@@ -6,16 +6,17 @@ import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
 import { interval } from 'rxjs';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
   styleUrls: ['./radio-config.component.less'],
-  providers: [DecimalPipe, 
-    WebsocketService, 
+  providers: [DecimalPipe,
+    WebsocketService,
     // {provide: '_serviceRoute', useValue: 'radio/power'}
     {provide: '_serviceRoute', useValue: 'WSaudioRX'}
-  ]  
+  ]
 })
 
 export class RadioConfigComponent implements OnInit, OnDestroy {
@@ -66,7 +67,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   modeSwitch: boolean;
   loading = true
   gpsMessage: any
- 
+  hasGps = GlobalConstants.hasGPS
+
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,

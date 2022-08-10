@@ -1,14 +1,15 @@
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 export class GlobalConstants {
-  
-  public static appName = environment.appName;
-  public static apiURL = environment.apiUrl; 
-  public static producion = environment.production;
-  public static radioRemoteUrl = environment.radioRemoteUrl;
-  public static webSocketUrl = environment.webSocketUrl;
-  public static radioRemoteWSUrl = environment.radioRemoteWSUrl;
-  
+
+  public static appName = environment.appName
+  public static apiURL = environment.apiUrl
+  public static producion = environment.production
+  public static radioRemoteUrl = environment.radioRemoteUrl
+  public static webSocketUrl = environment.webSocketUrl
+  public static radioRemoteWSUrl = environment.radioRemoteWSUrl
+  public static hasGPS = environment.hasGPS
+
   public static httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
