@@ -1,162 +1,177 @@
 <loading [loading]="loading"></loading>
 
 <div *ngIf="!allowCompose">
-    <div id="compose" class="" *ngIf="allowhmp=='users'" i18n="@@cantcompose">
-        <p>Only registered users can send messages to other stations, if you are a registered user, please log in.</p>
-    </div>
-    <div id="compose" class="" *ngIf="allowhmp=='admin'" i18n="@@cantcompose2">
-        <p>Only admin users can send messages to other stations, if you are an admin, please log in. </p>
-    </div>
+  <div id="compose" class="" *ngIf="allowhmp=='users'" i18n="@@cantcompose">
+    <p>Only registered users can send messages to other stations, if you are a registered user, please log in.</p>
+  </div>
+  <div id="compose" class="" *ngIf="allowhmp=='admin'" i18n="@@cantcompose2">
+    <p>Only admin users can send messages to other stations, if you are an admin, please log in. </p>
+  </div>
 </div>
 
 <div id="compose" class="" *ngIf="allowCompose">
-    <h2>
-        <div class="icon" i18n="@@sendpublic">
-            send your public message to another station</div>
-    </h2>
-    <form #f="ngForm" class="formdata" novalidate>
-        <div [hidden]="fileIsProcessing==true">
-            <label for="name">
-                <span i18n="@@description">Description</span>:
-                <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140"
-                    i18n-placeholder placeholder="Describe your message" />
-            </label>
-            <label for="text">
-                <span i18n="@@messageComposeLabel">Message</span>:
-                <br />
-                <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35"
-                    maxlength="1400" i18n-placeholder placeholder="write the message"></textarea>
-            </label>
-            <label class="selstation">
-                <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-                    <span i18n="@@selectstation1" class="space">select station:</span><br>
-                    <br>
-                    <ng-container *ngIf="stations">
-                        <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
-                            <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}}</option>
-                        </select>
-                        <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest"
-                            [selectableGroup]="true" [items]="stations" bindValue="alias" groupBy="selectedAllGroup"
-                            bindLabel="alias" [selectableGroupAsModel]="false" [closeOnSelect]="false"
-                            [(ngModel)]="message.dest" multiple=true required>
-                            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                                    [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
-                            </ng-template>
-                            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                                    [ngModelOptions]="{standalone: true}" />{{item.alias}}
-                            </ng-template>
-                        </ng-select>
-                    </ng-container>
-                </span>
-            </label>
-            <div class="uploader m-t-25" *ngIf="allowUpload">
-                <ng-container>
-                    <input type="file" capture="camera" accept="image/*" name="cameraInput"
-                        (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
-                    <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;"
-                        #fileUpload>
-                    <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
-                    <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
-                    <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-                    <button class="m-l-10" *ngIf="!fileSelected" (click)="fileCamUpload.click()"
-                        i18n="@@camfile">camera</button>
-                    <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
+  <h2>
+    <div class="icon" i18n="@@sendpublic">
+      send your public message to another station</div>
+  </h2>
+  <form #f="ngForm" class="formdata" novalidate>
+    <div [hidden]="fileIsProcessing==true">
+      <label for="name">
+        <span i18n="@@description">Description</span>:
+        <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140"
+          i18n-placeholder placeholder="Describe your message" />
+      </label>
+      <label for="text">
+        <span i18n="@@messageComposeLabel">Message</span>:
+        <br />
+        <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35" maxlength="1400" i18n-placeholder
+          placeholder="write the message"></textarea>
+      </label>
+      <label class="selstation">
+        <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
+          <span i18n="@@selectstation1" class="space">select station:</span><br>
+          <br>
+          <ng-container *ngIf="stations">
+            <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
+              <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}}</option>
+            </select>
+            <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
+              [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
+              [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true
+              required>
+              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                  [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                  [ngModelOptions]="{standalone: true}" />{{item.alias}}
+              </ng-template>
+            </ng-select>
+          </ng-container>
+        </span>
+      </label>
+      <div class="uploader m-t-25" *ngIf="allowUpload">
+        <ng-container>
+          <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
+          <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
 
-                    <!-- <audio #figAudio>
+          <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+          <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
+
+          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
+          <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
+            i18n="@@camfile">camera</button>
+          <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
+            i18n="@@camfile">camera</button>
+
+          <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
+
+          <!-- <audio #figAudio>
                         <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
                         <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
                         <source [src]="audSrc | sanitizerUrl" type="audio/wav">
                     </audio> -->
-                    <div *ngIf="sending">
-                        <div class="blobber">
-                            <div class="tx" i18n="@@uploadingfile">uploading file...</div>
-                            <div class="square"></div>
-                        </div>
-                    </div>
-                </ng-container>
-                <div *ngIf="message.id && message.file">
-                    <br>
-                    <span>{{message.file}} </span>
-                    <br>
-                    <span i18n="@@Img">Img:</span>
-                    <img src={{$event.target.files[0].content}}>
-                </div>
+          <div *ngIf="sending">
+            <div class="blobber">
+              <div class="tx" i18n="@@uploadingfile">uploading file...</div>
+              <div class="square"></div>
             </div>
-            <label class="passprotect">
-                <span class="icon lock"><img title="messages" src="assets/svg/lock.svg">
-                    <span i18n="@@protectpssw">protect with password</span>:
-                    <input type="checkbox" unckecked (change)="encrypted()" />
-                </span>
-            </label>
-            <div id="cryptopass" *ngIf=isEncrypted>
-                <label for="passwd">
-                    <span i18n="@@typethepassword">Type the password</span>
-                    <input type="password" name="pass" [(ngModel)]="passwd" minlength="4"
-                        (input)="checkpwd(passwd,repasswd)" />
-                </label>
-                <label for="repasswd">
-                    <span i18n="@@retypethepassword2">Retype the password</span>
-                    <input type="password" [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"
-                        [ngModelOptions]="{standalone: true}" />
-                </label>
-                <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
-                    passwords doesn't match
-                </div>
-                <div [hidden]=!passMin class="error" i18n="@@passempty">
-                    passwords can't be empty
-                </div>
-            </div>
-            <span></span>
-            <div *ngIf="isEncrypted">
-                <!-- TODO - USAR MESMO NGIF -->
-                <div *ngIf="passMatch">
-                    <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send
-                        message<br />
-                        <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-                    </button>
-                </div>
-                <div *ngIf="!passMatch">
-                    <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
-                        <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-                    </button>
-                </div>
-            </div>
-            <div *ngIf="!isEncrypted">
-                <button type="submit" (click)="sendMessage(f)" [disabled]="f.invalid" i18n="@@sendmessage">send
-                    message<br />
-                    <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-                </button>
-            </div>
+          </div>
+        </ng-container>
+        <div *ngIf="message.id && message.file">
+          <br>
+          <span>{{message.file}} </span>
+          <br>
+          <span i18n="@@Img">Img:</span>
+          <img src={{$event.target.files[0].content}}>
         </div>
-        <div class="overall alert" [hidden]="fileIsProcessing==false">
-            <div class="cv">
-                <span i18n="@@yourmessageprocessed0">Your message is been processed <br /><br /></span>
-                <div class="icon"><a (click)="newMessage()">
-                        <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
-                </div>
-                <div class="icon"><a routerLink='/messages' routerLinkActive="active">
-                        <img title="help" src="assets/svg/comment.svg"><button
-                            i18n="@@messagesbtn">messages</button></a>
-                </div>
-                <div class="icon"><a routerLink='/sent' routerLinkActive="active">
-                        <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg"><button
-                            i18n="@@sentmessagesbtn">sent messages</button></a>
-                </div>
-            </div>
+      </div>
+      <label class="passprotect">
+        <span class="icon lock"><img title="messages" src="assets/svg/lock.svg">
+          <span i18n="@@protectpssw">protect with password</span>:
+          <input type="checkbox" unckecked (change)="encrypted()" />
+        </span>
+      </label>
+      <div id="cryptopass" *ngIf=isEncrypted>
+        <label for="passwd">
+          <span i18n="@@typethepassword">Type the password</span>
+          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" (input)="checkpwd(passwd,repasswd)" />
+        </label>
+        <label for="repasswd">
+          <span i18n="@@retypethepassword2">Retype the password</span>
+          <input type="password" [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"
+            [ngModelOptions]="{standalone: true}" />
+        </label>
+        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
+          passwords doesn't match
         </div>
-        <div class="overall alert" [hidden]="errorAlert==false">
-            <div class="cv">
-                <span i18n="@@errorsendingmsg">There was an error on sending your message <br /><br /></span>
-                <span>{{error}}</span>
-                <div class="icon"><a (click)="closeError()">
-                        <img title="close" src="assets/svg/x.svg"></a>
-                </div>
-            </div>
+        <div [hidden]=!passMin class="error" i18n="@@passempty">
+          passwords can't be empty
         </div>
-        <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
-            Your message was sent to the transmission list
+      </div>
+      <span></span>
+      <div *ngIf="isEncrypted">
+        <!-- TODO - USAR MESMO NGIF -->
+        <div *ngIf="passMatch">
+          <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
+            message<br />
+            <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+          </button>
         </div>
-    </form>
+        <div *ngIf="!passMatch">
+          <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
+            <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+          </button>
+        </div>
+      </div>
+      <div *ngIf="!isEncrypted">
+        <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
+          message<br />
+          <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+        </button>
+      </div>
+    </div>
+    <div class="overall alert" [hidden]="fileIsProcessing==false">
+      <div class="cv">
+        <span i18n="@@yourmessageprocessed0">Your message is been processed <br /><br /></span>
+        <div class="icon"><a (click)="newMessage()">
+            <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
+        </div>
+        <div class="icon"><a routerLink='/messages' routerLinkActive="active">
+            <img title="help" src="assets/svg/comment.svg"><button i18n="@@messagesbtn">messages</button></a>
+        </div>
+        <div class="icon"><a routerLink='/sent' routerLinkActive="active">
+            <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg"><button i18n="@@sentmessagesbtn">sent
+              messages</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="overall alert" [hidden]="errorAlert==false">
+      <div class="cv">
+        <span i18n="@@errorsendingmsg">There was an error on sending your message <br /><br /></span>
+        <span>{{error}}</span>
+        <div class="icon"><a (click)="closeError()">
+            <img title="close" src="assets/svg/x.svg"></a>
+        </div>
+      </div>
+    </div>
+    <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
+      Your message was sent to the transmission list
+    </div>
+    <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
+      <div class="cv">
+        <div class="icon">
+            <button i18n="@@Capture" (click)="capture($event)">Capture</button>
+        </div>
+        <div class="icon">
+          <a (click)="closeWebCamDesktop()">
+            <img title="close" src="assets/svg/x.svg">
+          </a>
+        </div>
+        <video class="m-t-100"  width="680" height="480" #video></video>
+        <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
+      </div>
+    </div>
+  </form>
 </div>
