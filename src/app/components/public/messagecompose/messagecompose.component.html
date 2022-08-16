@@ -59,11 +59,12 @@
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
 
-          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
-          <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
-            i18n="@@camfile">camera</button>
-          <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
-            i18n="@@camfile">camera</button>
+          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
+            #fileCamUpload>
+          <!-- <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
+            i18n="@@camfile">camera</button> -->
+          <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
+            i18n="@@camfile">camera</button> -->
 
           <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
 
@@ -71,7 +72,7 @@
                         <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
                         <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
                         <source [src]="audSrc | sanitizerUrl" type="audio/wav">
-                    </audio> -->
+                </audio> -->
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -162,14 +163,14 @@
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
         <div class="icon">
-            <button i18n="@@Capture" (click)="capture($event)">Capture</button>
+          <button i18n="@@Capture" (click)="capture($event)">Capture</button>
         </div>
         <div class="icon">
           <a (click)="closeWebCamDesktop()">
             <img title="close" src="assets/svg/x.svg">
           </a>
         </div>
-        <video class="m-t-100"  width="680" height="480" #video></video>
+        <video class="m-t-100" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
       </div>
     </div>
