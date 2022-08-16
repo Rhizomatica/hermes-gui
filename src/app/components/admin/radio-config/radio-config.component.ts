@@ -13,7 +13,7 @@ import { GlobalConstants } from '../../../global-constants';
   templateUrl: './radio-config.component.html',
   styleUrls: ['./radio-config.component.less'],
   providers: [DecimalPipe,
-    WebsocketService,
+    // WebsocketService,
     // {provide: '_serviceRoute', useValue: 'radio/power'}
     {provide: '_serviceRoute', useValue: 'WSaudioRX'}
   ]
@@ -43,8 +43,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   public freqmax = 30000;
   errorAlert = false;
   radioError = false;
-  // testtone = '0';
-  // toneOn = false;
+  testtone = '0';
+  toneOn = false;
   currentUser: User;
   isAdmin = false;
   // refthreshold: any;
@@ -72,14 +72,14 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
-    private websocketService: WebsocketService
+    // private websocketService: WebsocketService
     ) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
-      websocketService.messages.subscribe(msg => {
-        // this.power = msg;
-        console.log(msg);
-      });
+      // websocketService.messages.subscribe(msg => {
+      //   // this.power = msg;
+      //   console.log(msg);
+      // });
     }
 
   getRadioStatus(): void {
@@ -164,10 +164,18 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.res = res;
         this.radio.ptt = res;
-        this.ptt = this.radio.ptt;
+        // this.ptt = this.radio.ptt;
         this.radio.tx = this.ptt === 'ON' ? true : false
         this.radio.rx = this.ptt === 'ON' ? false : true
-        this.getRadioStatus;
+
+        if(this.ptt == "ON"){
+          this.testTone(0);
+        }
+
+        if(this.ptt == "OFF"){
+          this.testTone(600);
+        }
+
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -181,9 +189,17 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.res = res;
         this.radio.ptt = res;
-        this.ptt = f;
+        // this.ptt = f;
         this.radio.tx = true;
         this.radio.rx = false;
+
+        if(this.ptt == "ON"){
+          this.testTone(0);
+        }
+
+        if(this.ptt == "OFF"){
+          this.testTone(600);
+        }
       },
       (err) => {
         this.error = err;
@@ -390,21 +406,21 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.confirmSet = this.confirmSet ? false : true
   }
 
-  // testTone(f) {
-  //   this.testtone = f;
-  //   this.radioService.setRadioTone(f).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.testtone = res;
-  //       this.toneOn = res === '0' ? false : true
-  //       this.getRadioStatus();
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //       this.getRadioStatus();
-  //     }
-  //   );
-  // }
+  testTone(f) {
+    this.testtone = f;
+    this.radioService.setRadioTone(f).subscribe(
+      (res: any) => {
+        this.res = res;
+        this.radio.testtone = res;
+        this.toneOn = res === '0' ? false : true
+        this.getRadioStatus();
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.getRadioStatus();
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.getRadioStatus();
