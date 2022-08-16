@@ -11,6 +11,8 @@
                 <div class="card {{ connected }}">
                     <div class="row">
                         <h3>
+                            <span i18n="@@status"> Status</span>
+                            <br />
                             <span *ngIf="radio.bypass">
                                 <span i18n="@@conectedr">Connected</span>
                             </span>
@@ -23,42 +25,42 @@
                 <div class="card">
                     <div class="row">
                         <h3>
+                            <span i18n="@currentradiofreq">Radio frequency</span>
+                            <br />
                             <span> {{radio.freq / 1000}} </span>
                             kHz
-                            <br />
-                            <span i18n="@currentradiofreq">Radio frequency</span>
                         </h3>
                     </div>
                 </div>
                 <div class="card">
                     <div class="row">
                         <h3>
-                            <span>
-                                {{radio.swr_str | slice:0:9}} W
-                            </span>
-                            <br />
                             SWR
+                            <br />
+                            <span>
+                                {{radio.swr_str | slice:0:9}}
+                            </span>
                         </h3>
                     </div>
                 </div>
                 <div class="card">
                     <div class="row">
                         <h3>
-                            {{radio.ref_watts}} W
-                            <br />
                             <span i18n="@reflected">REF </span>
-                            <!-- <br /> -->
-                            <!-- ({{radio.ref_volts}} V) -->
+                            <br />
+                            ({{radio.ref_watts}} W)
+                            <br />
+                            ({{radio.ref_volts}} V)
                         </h3>
                     </div>
                 </div>
                 <div class="card">
                     <div class="row">
                         <h3>
-                            {{radio.fwd_watts}} W
-                            <br />
                             <span i18n="@forward"> FWD </span>
-                            <!-- <br /> -->
+                            <br />
+                            ({{radio.fwd_watts}} W)
+                            <br />
                             ({{radio.fwd_volts}} V)
                         </h3>
                     </div>
@@ -66,15 +68,20 @@
                 <div class="card">
                     <div class="row">
                         <h3>
-                            <div *ngIf="radio.tx" i18n="@@operationtx1"> TX <br /> Operation mode </div>
-                            <div *ngIf="radio.rx" i18n="@@operationrx"> RX <br /> Operation mode </div>
+                            <span i18n="@@operationmode">Operation mode</span>
+                            <br />
+                            <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
+                            <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
                         </h3>
                     </div>
                 </div>
                 <div class="card">
                     <div class="row">
                         <h3>
-                            <div i18n="@@serial"> {{radio.serial}} <br /> Serial Number </div>
+                            <div i18n="@@serial">Serial Number
+                                <br />
+                                {{radio.serial}}
+                            </div>
                         </h3>
                     </div>
                 </div>
@@ -106,12 +113,12 @@
                         </div>
                     </form>
                     <form #fptt="ngForm" class="formdata field" *ngIf="hasGps">
-                        <span i18n="@@labelgpscalibration" >GPS Calibration</span>
-                        <button type="submit" name="gps" class="float-right"
-                            (click)="gpsStartCalibration()" i18n="@@startgpscalibration">Start</button>
+                        <span i18n="@@labelgpscalibration">GPS Calibration</span>
+                        <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
+                            i18n="@@startgpscalibration">Start</button>
                     </form>
                     <form *ngIf="radio" class="formdata field">
-                        <span i18n="@@changeradiomode" >Radio mode</span>
+                        <span i18n="@@changeradiomode">Radio mode</span>
                         <div class="float-right">
                             <span>USB</span>
                             <div class="switch">
@@ -128,8 +135,8 @@
                         </span>
                         <div class="switch float-right">
                             <input type="checkbox" name="mode" [checked]="radio.tx">
-                            <span class="slider round" *ngIf="isAdmin" (click)="changePtt($event)"
-                                value="{{radio.tx}}" [checked]="radio.tx"></span>
+                            <span class="slider round" *ngIf="isAdmin" (click)="changePtt($event)" value="{{radio.tx}}"
+                                [checked]="radio.tx"></span>
                         </div>
                     </form>
                 </div>

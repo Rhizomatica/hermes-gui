@@ -171,7 +171,7 @@
       </context-group>
       <context-group purpose="location">
         <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-        <context context-type="linenumber">64</context>
+        <context context-type="linenumber">67</context>
       </context-group>
       <context-group purpose="location">
         <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
@@ -306,6 +306,10 @@
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context>
       <context context-type="linenumber">6</context>
+    </context-group>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+      <context context-type="linenumber">14</context>
     </context-group>
   </trans-unit>
   <trans-unit id="alias" datatype="html">
@@ -457,21 +461,21 @@
     <source>Connected</source>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">15</context>
+      <context context-type="linenumber">17</context>
     </context-group>
   </trans-unit>
   <trans-unit id="disconectedr" datatype="html">
     <source>Disconnected</source>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">18</context>
+      <context context-type="linenumber">20</context>
     </context-group>
   </trans-unit>
   <trans-unit id="8b19b477b68e93a5c0eddd97314009662f95f5b5" datatype="html">
     <source>Radio frequency</source>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">29</context>
+      <context context-type="linenumber">28</context>
     </context-group>
     <note priority="1" from="description">@currentradiofreq</note>
   </trans-unit>
@@ -491,200 +495,204 @@
     </context-group>
     <note priority="1" from="description">@forward</note>
   </trans-unit>
-  <trans-unit id="operationtx1" datatype="html">
-    <source> TX <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
- Operation mode </source>
+  <trans-unit id="operationmode" datatype="html">
+    <source>Operation mode</source>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">69</context>
+      <context context-type="linenumber">71</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="operationtx1" datatype="html">
+    <source> TX</source>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+      <context context-type="linenumber">73</context>
     </context-group>
   </trans-unit>
   <trans-unit id="operationrx" datatype="html">
-    <source> RX <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
- Operation mode </source>
+    <source> RX</source>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">70</context>
+      <context context-type="linenumber">74</context>
     </context-group>
   </trans-unit>
   <trans-unit id="serial" datatype="html">
-    <source>
-      <x id="INTERPOLATION" equiv-text="{{radio.serial}}"/>
-      <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
- Serial Number </source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">77</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="areyousurechangesett" datatype="html">
-    <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
- this may cause the system to stop </source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">86,89</context>
-    </context-group>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-      <context context-type="linenumber">23,26</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="changer" datatype="html">
-    <source>change</source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">91</context>
-    </context-group>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-      <context context-type="linenumber">28</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="cancelr0" datatype="html">
-    <source>cancel</source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">92</context>
-    </context-group>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-      <context context-type="linenumber">29</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="changefrequency" datatype="html">
-    <source>Radio frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq / 1000}}"/>
- kHz</source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">98</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="changefreqr0" datatype="html">
-    <source> change frequency </source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">103,105</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="labelgpscalibration" datatype="html">
-    <source>GPS Calibration</source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">109</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="startgpscalibration" datatype="html">
-    <source>Start</source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">111</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="changeradiomode" datatype="html">
-    <source>Radio mode</source>
-    <context-group purpose="location">
-      <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-      <context context-type="linenumber">114</context>
-    </context-group>
-  </trans-unit>
-  <trans-unit id="errorchangingconfig" datatype="html">
-    <source>There was an error on changing configuration <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
-    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+    <source>Serial Number <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+    <x id="INTERPOLATION" equiv-text="{{radio.serial}}"/>
   </source>
   <context-group purpose="location">
     <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-    <context context-type="linenumber">139</context>
+    <context context-type="linenumber">81,84</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="areyousurechangesett" datatype="html">
+  <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+ this may cause the system to stop </source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">93,96</context>
   </context-group>
   <context-group purpose="location">
     <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-    <context context-type="linenumber">126</context>
-  </context-group>
-  <context-group purpose="location">
-    <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-    <context context-type="linenumber">82</context>
+    <context context-type="linenumber">23,26</context>
   </context-group>
 </trans-unit>
-<trans-unit id="gpscalibrationsuccess" datatype="html">
-  <source>GPS Calibration successful - <x id="INTERPOLATION" equiv-text="{{gpsMessage}}"/>
-  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<trans-unit id="changer" datatype="html">
+  <source>change</source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">98</context>
+  </context-group>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+    <context context-type="linenumber">28</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="cancelr0" datatype="html">
+  <source>cancel</source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">99</context>
+  </context-group>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+    <context context-type="linenumber">29</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="changefrequency" datatype="html">
+  <source>Radio frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq / 1000}}"/>
+ kHz</source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">105</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="changefreqr0" datatype="html">
+  <source> change frequency </source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">110,112</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="labelgpscalibration" datatype="html">
+  <source>GPS Calibration</source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">116</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="startgpscalibration" datatype="html">
+  <source>Start</source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">118</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="changeradiomode" datatype="html">
+  <source>Radio mode</source>
+  <context-group purpose="location">
+    <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+    <context context-type="linenumber">121</context>
+  </context-group>
+</trans-unit>
+<trans-unit id="errorchangingconfig" datatype="html">
+  <source>There was an error on changing configuration <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
   <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </source>
 <context-group purpose="location">
   <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-  <context context-type="linenumber">150</context>
+  <context context-type="linenumber">146</context>
+</context-group>
+<context-group purpose="location">
+  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+  <context context-type="linenumber">126</context>
+</context-group>
+<context-group purpose="location">
+  <context context-type="sourcefile">src/app/components/app/app.component.html</context>
+  <context context-type="linenumber">82</context>
+</context-group>
+</trans-unit>
+<trans-unit id="gpscalibrationsuccess" datatype="html">
+<source>GPS Calibration successful - <x id="INTERPOLATION" equiv-text="{{gpsMessage}}"/>
+<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</source>
+<context-group purpose="location">
+<context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+<context context-type="linenumber">157</context>
 </context-group>
 </trans-unit>
 <trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
 <source>Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">14</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">14</context>
 </context-group>
 <note priority="1" from="description">cannotaccessradio</note>
 </trans-unit>
 <trans-unit id="1e094b00ca3de679b3ae2506c817ecf8e12005e3" datatype="html">
 <source>reset protection</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">19,20</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">19,20</context>
 </context-group>
 <note priority="1" from="description">@resetprotection1</note>
 </trans-unit>
 <trans-unit id="prottheshold" datatype="html">
 <source>Protection activation threshold level:</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">35</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">35</context>
 </context-group>
 </trans-unit>
 <trans-unit id="changetre1" datatype="html">
 <source>change threshold</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">42,43</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">42,43</context>
 </context-group>
 </trans-unit>
 <trans-unit id="bfobeatfreq" datatype="html">
 <source>BFO beat frequency oscillator:</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">47</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">47</context>
 </context-group>
 </trans-unit>
 <trans-unit id="changebfo1" datatype="html">
 <source>change bfo</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">52</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">52</context>
 </context-group>
 </trans-unit>
 <trans-unit id="mastercall2" datatype="html">
 <source>mastercal:</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">57</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">57</context>
 </context-group>
 </trans-unit>
 <trans-unit id="changemast" datatype="html">
 <source>change mastercall</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">61</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">61</context>
 </context-group>
 </trans-unit>
 <trans-unit id="testtonec" datatype="html">
 <source>Test Tone:</source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">75</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">75</context>
 </context-group>
 </trans-unit>
 <trans-unit id="resettodefault" datatype="html">
 <source> reset to default </source>
 <context-group purpose="location">
-  <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-  <context context-type="linenumber">97,99</context>
+<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+<context context-type="linenumber">97,99</context>
 </context-group>
 </trans-unit>
 <trans-unit id="confirmreset" datatype="html">
@@ -802,13 +810,6 @@
 <context context-type="linenumber">179,181</context>
 </context-group>
 </trans-unit>
-<trans-unit id="radioEmulator" datatype="html">
-<source> Radio </source>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">51,53</context>
-</context-group>
-</trans-unit>
 <trans-unit id="scheduling" datatype="html">
 <source> Transmission Schedule </source>
 <context-group purpose="location">
@@ -872,7 +873,7 @@
 </context-group>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">8</context>
+<context context-type="linenumber">9,11</context>
 </context-group>
 </trans-unit>
 <trans-unit id="shutdown1" datatype="html">
@@ -950,17 +951,17 @@
 </context-group>
 </trans-unit>
 <trans-unit id="transmits" datatype="html">
-<source>transmit now</source>
+<source> transmit now </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">12</context>
+<context context-type="linenumber">16,18</context>
 </context-group>
 </trans-unit>
 <trans-unit id="transmissionlistt" datatype="html">
 <source>Transmission list</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">20</context>
+<context context-type="linenumber">25</context>
 </context-group>
 </trans-unit>
 <trans-unit id="listsize" datatype="html">
@@ -968,7 +969,7 @@
  B</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">28</context>
+<context context-type="linenumber">33</context>
 </context-group>
 </trans-unit>
 <trans-unit id="cannotaccessuucp" datatype="html">
@@ -976,7 +977,7 @@
 </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">29</context>
+<context context-type="linenumber">34</context>
 </context-group>
 </trans-unit>
 <trans-unit id="noqueue" datatype="html">
@@ -984,28 +985,28 @@
 </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">30</context>
+<context context-type="linenumber">35</context>
 </context-group>
 </trans-unit>
 <trans-unit id="destisizet" datatype="html">
 <source>size:</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">43</context>
+<context context-type="linenumber">46</context>
 </context-group>
 </trans-unit>
 <trans-unit id="destinationt" datatype="html">
 <source> destination:</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">48</context>
+<context context-type="linenumber">51</context>
 </context-group>
 </trans-unit>
 <trans-unit id="transmitnow" datatype="html">
 <source>force</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
-<context context-type="linenumber">54</context>
+<context context-type="linenumber">57</context>
 </context-group>
 </trans-unit>
 <trans-unit id="admmanage" datatype="html">
@@ -1127,7 +1128,7 @@ name<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 </context-group>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">104,106</context>
+<context context-type="linenumber">107,109</context>
 </context-group>
 </trans-unit>
 <trans-unit id="passempty" datatype="html">
@@ -1138,7 +1139,7 @@ name<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 </context-group>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">107,109</context>
+<context context-type="linenumber">110,112</context>
 </context-group>
 </trans-unit>
 <trans-unit id="strongpassword" datatype="html">
@@ -2292,7 +2293,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
 <source>Attach File: </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">60</context>
+<context context-type="linenumber">56</context>
 </context-group>
 </trans-unit>
 <trans-unit id="nofile" datatype="html">
@@ -2301,63 +2302,56 @@ Only admin users can send messages to other stations, if you are an admin, pleas
 </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">61</context>
+<context context-type="linenumber">57</context>
 </context-group>
 </trans-unit>
 <trans-unit id="selfile" datatype="html">
 <source>select file</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">62</context>
-</context-group>
-</trans-unit>
-<trans-unit id="camfile" datatype="html">
-<source>camera</source>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">64</context>
+<context context-type="linenumber">60</context>
 </context-group>
 </trans-unit>
 <trans-unit id="remfile" datatype="html">
 <source>remove file</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">65</context>
+<context context-type="linenumber">69</context>
 </context-group>
 </trans-unit>
 <trans-unit id="uploadingfile" datatype="html">
 <source>uploading file...</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">74</context>
+<context context-type="linenumber">78</context>
 </context-group>
 </trans-unit>
 <trans-unit id="Img" datatype="html">
 <source>Img:</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">83</context>
+<context context-type="linenumber">87</context>
 </context-group>
 </trans-unit>
 <trans-unit id="protectpssw" datatype="html">
 <source>protect with password</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">89</context>
+<context context-type="linenumber">93</context>
 </context-group>
 </trans-unit>
 <trans-unit id="typethepassword" datatype="html">
 <source>Type the password</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">95</context>
+<context context-type="linenumber">99</context>
 </context-group>
 </trans-unit>
 <trans-unit id="retypethepassword2" datatype="html">
 <source>Retype the password</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">100</context>
+<context context-type="linenumber">103</context>
 </context-group>
 </trans-unit>
 <trans-unit id="sendmessage" datatype="html">
@@ -2366,15 +2360,15 @@ Only admin users can send messages to other stations, if you are an admin, pleas
 </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">115,117</context>
+<context context-type="linenumber">118,120</context>
 </context-group>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">121,122</context>
+<context context-type="linenumber">124,125</context>
 </context-group>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">127,129</context>
+<context context-type="linenumber">130,132</context>
 </context-group>
 </trans-unit>
 <trans-unit id="yourmessageprocessed0" datatype="html">
@@ -2383,28 +2377,28 @@ Only admin users can send messages to other stations, if you are an admin, pleas
 </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">135</context>
+<context context-type="linenumber">138</context>
 </context-group>
 </trans-unit>
 <trans-unit id="compose2" datatype="html">
 <source>compose</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">137</context>
+<context context-type="linenumber">140</context>
 </context-group>
 </trans-unit>
 <trans-unit id="messagesbtn" datatype="html">
 <source>messages</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">141</context>
+<context context-type="linenumber">143</context>
 </context-group>
 </trans-unit>
 <trans-unit id="sentmessagesbtn" datatype="html">
 <source>sent messages</source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">145</context>
+<context context-type="linenumber">146,147</context>
 </context-group>
 </trans-unit>
 <trans-unit id="errorsendingmsg" datatype="html">
@@ -2413,14 +2407,21 @@ Only admin users can send messages to other stations, if you are an admin, pleas
 </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">151</context>
+<context context-type="linenumber">153</context>
 </context-group>
 </trans-unit>
 <trans-unit id="messagesenttolist" datatype="html">
 <source> Your message was sent to the transmission list </source>
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">158,160</context>
+<context context-type="linenumber">160,162</context>
+</context-group>
+</trans-unit>
+<trans-unit id="Capture" datatype="html">
+<source>Capture</source>
+<context-group purpose="location">
+<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
+<context context-type="linenumber">166</context>
 </context-group>
 </trans-unit>
 <trans-unit id="publicmessages1" datatype="html">
