@@ -110,6 +110,7 @@ export class TransmissionListComponent implements OnInit {
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.confirmTransmit = false;
       }
     );
   }
@@ -126,6 +127,10 @@ export class TransmissionListComponent implements OnInit {
         this.loading = false
       }
     );
+  }
+
+  closeOveralTransmission(){
+    this.confirmTransmit = false
   }
 
   getQueue(): void {

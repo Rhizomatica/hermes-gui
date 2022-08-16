@@ -1,71 +1,74 @@
 <loading [loading]="loading"></loading>
 <div>
-    <div class="overall alert" *ngIf="confirmTransmit">
-        <div class="cv">
-            <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
-                case of emergency<br /></span>
-            <div class="icon"><a (click)="confTransmit()">
-                    <button i18n="@@cancels">cancel</button><img title="compose" src="assets/svg/x.svg"></a>
-            </div>
-            <div class="icon">
-                <a (click)="transmitNow()">
-                    <button i18n="@@transmits">transmit now</button>
-                    <img title="help" src="assets/svg/arrow-right.svg">
-                </a>
-            </div>
-        </div>
+  <div class="overall alert" *ngIf="confirmTransmit">
+    <div class="cv">
+      <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
+        case of emergency<br /></span>
+      <div class="icon m-t-10">
+        <a (click)="closeOveralTransmission()">
+          <button i18n="@@cancels">
+            cancel
+          </button>
+        </a>
+      </div>
+      <div class="icon m-t-10">
+        <a (click)="transmitNow()">
+          <button i18n="@@transmits">
+            transmit now
+          </button>
+        </a>
+      </div>
     </div>
-    <div *ngIf="isadmin">
-        <div class="flexible">
-            <h2 i18n="@@transmissionlistt">Transmission list</h2>
-            <div class="flex-right">
-                <!-- <button *ngIf="isadmin" (click)="confTransmit()">
+  </div>
+  <div *ngIf="isadmin">
+    <div class="flexible">
+      <h2 i18n="@@transmissionlistt">Transmission list</h2>
+      <div class="flex-right">
+        <!-- <button *ngIf="isadmin" (click)="confTransmit()">
                     <span i18n="@@transmitnow">force transmission</span> <img class="inlineiconlink" title="cancel"
                         src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
                 </button> -->
-            </div>
-        </div>
-        <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ getQueueSize() }} B</p>
-        <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
-        <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
-        <div class="queue messages">
-            <div class="multiplist1">
-                <div *ngFor="let job of queue | filter:searchMessages" class="item">
-                    <div class="maininfo">
-                        <a>
-                            <span *ngIf="isadmin"><img class="inlineicon" title="cancel mail"
-                                    src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'"
-                                    (click)="cancelMail(job.uuidhost,job.uuiduucp)">
-                                <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg"
-                                    *ngIf="job.type=='HMP'"
-                                    (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
-                        </a>
-                        <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
-                    </div>
-                    <div class="info">
-                        <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
-                        <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
-                        <span> <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}</span>
-                        <span>
-                            <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
-                            <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
-                        </span>
-                        <button *ngIf="isadmin" (click)="confTransmit(job)">
-                            <span i18n="@@transmitnow">force</span> <img class="inlineiconlink" title="cancel"
-                                src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="overall alert" *ngIf="errorAlert==true">
-        <div class="cv">
-            <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-            <span>{{error}}</span>
-            <div class="icon"><a (click)="closeError()">
-                    <img title="compose" src="assets/svg/x.svg"></a>
-            </div>
+    <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ getQueueSize() }} B</p>
+    <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
+    <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
+    <div class="queue messages">
+      <div class="multiplist1">
+        <div *ngFor="let job of queue | filter:searchMessages" class="item">
+          <div class="maininfo">
+            <a>
+              <span *ngIf="isadmin"><img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg"
+                  *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
+                <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
+                  (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
+            </a>
+            <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
+          </div>
+          <div class="info">
+            <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
+            <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
+            <span> <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}</span>
+            <span>
+              <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
+              <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
+            </span>
+            <button *ngIf="isadmin" (click)="confTransmit(job)">
+              <span i18n="@@transmitnow">force</span> <img class="inlineiconlink" title="cancel"
+                src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="overall alert" *ngIf="errorAlert==true">
+    <div class="cv">
+      <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+      <!-- <span>{{error}}</span> -->
+      <div class="icon"><a (click)="closeError()">
+          <img title="compose" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
 </div>
