@@ -88,7 +88,7 @@
           <img src={{$event.target.files[0].content}}>
         </div>
       </div>
-      <label class="passprotect">
+      <label class="passprotect" *ngIf="fileSelected">
         <span class="icon lock"><img title="messages" src="assets/svg/lock.svg">
           <span i18n="@@protectpssw">protect with password</span>:
           <input type="checkbox" unckecked (change)="encrypted()" />
@@ -114,22 +114,22 @@
       <span></span>
       <div *ngIf="isEncrypted">
         <!-- TODO - USAR MESMO NGIF -->
-        <div *ngIf="passMatch">
+        <div *ngIf="passMatch" class="m-t-10">
           <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
             message<br />
-            <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+            <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
           </button>
         </div>
-        <div *ngIf="!passMatch">
+        <div *ngIf="!passMatch" class="m-t-10">
           <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
-            <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+            <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
           </button>
         </div>
       </div>
-      <div *ngIf="!isEncrypted">
+      <div *ngIf="!isEncrypted" class="m-t-10">
         <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
           message<br />
-          <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+          <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
         </button>
       </div>
     </div>
