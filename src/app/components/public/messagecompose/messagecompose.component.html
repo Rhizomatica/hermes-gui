@@ -117,19 +117,16 @@
         <div *ngIf="passMatch" class="m-t-10">
           <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
             message<br />
-            <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
           </button>
         </div>
         <div *ngIf="!passMatch" class="m-t-10">
           <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
-            <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
           </button>
         </div>
       </div>
       <div *ngIf="!isEncrypted" class="m-t-10">
         <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
           message<br />
-          <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
         </button>
       </div>
     </div>
