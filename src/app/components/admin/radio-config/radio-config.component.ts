@@ -36,7 +36,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   usb = true;
   mode: any;
   led: any;
-  // protection: any;
+  protection: any;
   bypass: any;
   public realValue: number;
   public freqmin = 500;
@@ -47,7 +47,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   toneOn = false;
   currentUser: User;
   isAdmin = false;
-  // refthreshold: any;
+  refthreshold: any;
   public min = 500000;
   public max = 300000000;
   public intervallTimer = interval(900);
@@ -94,9 +94,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.mode = this.radio.mode;
         this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
         this.led = this.radio.led;
-        // this.protection = this.radio.protection;
+        this.protection = this.radio.protection;
         this.bypass = this.radio.bypass;
-        // this.refthreshold = this.radio.refthreshold;
+        this.refthreshold = this.radio.refthreshold;
         this.radio.fwd_watts = this.radio.fwd_watts;
         this.radio.serial = this.radio.serial;
         this.radio.testTone = this.radio.testtone;
@@ -121,7 +121,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.tx = this.power.tx;
         this.radio.led = this.power.led;
         this.led = this.power.led;
-        // this.radio.protection = this.power.protection;
+        this.radio.protection = this.power.protection;
         this.radio.bypass = this.power.bypass;
         this.radio.fwd_watts = this.power.fwd_watts;
         // this.radio.fwd_raw = this.power.fwd_raw;
@@ -304,17 +304,17 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   //   );
   // }
 
-  // changeRefThreshold(f: NgForm) {
-  //   this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.refthreshold = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
+  changeRefThreshold(f: NgForm) {
+    this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
+      (res: any) => {
+        this.res = res;
+        this.radio.refthreshold = res;
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
 
   confirmChange() {
     if (this.confirmSet) {
@@ -350,21 +350,21 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   //   );
   // }
 
-  // resetProtection() {
-  //   this.radioService.radioResetProtection().subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       if (this.res === 1) {
-  //         this.radio.protection = false;
-  //       }
-  //       this.getRadioStatus();
-  //     },
-  //     (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
+  resetProtection() {
+    this.radioService.radioResetProtection().subscribe(
+      (res: any) => {
+        this.res = res;
+        if (this.res === 1) {
+          this.radio.protection = false;
+        }
+        this.getRadioStatus();
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
 
   // async resetRadio() {
   //   await this.radioService.radioRestoreDefaults().subscribe(

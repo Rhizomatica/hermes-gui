@@ -1,167 +1,187 @@
 <loading [loading]="loading"></loading>
 <div id="radioconf">
-    <h2 *ngIf="isAdmin">
-        <span i18n="@@radioconft">Radio Configuration </span>
-    </h2>
-    <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
-    <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
-    <div>
-        <form *ngIf="radio">
+  <h2 *ngIf="isAdmin">
+    <span i18n="@@radioconft">Radio Configuration </span>
+  </h2>
+  <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
+  <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
+  <div>
+    <form *ngIf="radio">
+      <div class="flexible">
+        <div class="card {{ connected }}">
+          <div class="row">
+            <h3>
+              <span i18n="@@status"> Status</span>
+              <br />
+              <span *ngIf="radio.bypass">
+                <span i18n="@@conectedr">Connected</span>
+              </span>
+              <span *ngIf="!radio.bypass">
+                <span i18n="@@disconectedr">Disconnected</span>
+              </span>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <span i18n="@currentradiofreq">Radio frequency</span>
+              <br />
+              <span> {{radio.freq / 1000}} </span>
+              kHz
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              SWR
+              <br />
+              <span>
+                {{radio.swr_str | slice:0:9}}
+              </span>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <span i18n="@reflected">REF </span>
+              <br />
+              ({{radio.ref_watts}} W)
+              <br />
+              ({{radio.ref_volts}} V)
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <span i18n="@forward"> FWD </span>
+              <br />
+              ({{radio.fwd_watts}} W)
+              <br />
+              ({{radio.fwd_volts}} V)
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <span i18n="@@operationmode">Operation mode</span>
+              <br />
+              <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
+              <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <div i18n="@@serial">Serial Number
+                <br />
+                {{radio.serial}}
+              </div>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isAdmin">
+        <div class="flex-right m-t-25">
+          <div class="overall" *ngIf="confirmSet">
+            <div class="cv">
+              <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
+                <br />
+                this may cause the system to stop
+              </span>
+              <br />
+              <button (click)="screenSet()" i18n="@@changer">change</button>
+              <button class="m-l-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="radio" *ngIf="radio">
+          <form #ffreq="ngForm" class="formdata field">
+            <span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span>
             <div class="flexible">
-                <div class="card {{ connected }}">
-                    <div class="row">
-                        <h3>
-                            <span i18n="@@status"> Status</span>
-                            <br />
-                            <span *ngIf="radio.bypass">
-                                <span i18n="@@conectedr">Connected</span>
-                            </span>
-                            <span *ngIf="!radio.bypass">
-                                <span i18n="@@disconectedr">Disconnected</span>
-                            </span>
-                        </h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <h3>
-                            <span i18n="@currentradiofreq">Radio frequency</span>
-                            <br />
-                            <span> {{radio.freq / 1000}} </span>
-                            kHz
-                        </h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <h3>
-                            SWR
-                            <br />
-                            <span>
-                                {{radio.swr_str | slice:0:9}}
-                            </span>
-                        </h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <h3>
-                            <span i18n="@reflected">REF </span>
-                            <br />
-                            ({{radio.ref_watts}} W)
-                            <br />
-                            ({{radio.ref_volts}} V)
-                        </h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <h3>
-                            <span i18n="@forward"> FWD </span>
-                            <br />
-                            ({{radio.fwd_watts}} W)
-                            <br />
-                            ({{radio.fwd_volts}} V)
-                        </h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <h3>
-                            <span i18n="@@operationmode">Operation mode</span>
-                            <br />
-                            <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
-                            <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
-                        </h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <h3>
-                            <div i18n="@@serial">Serial Number
-                                <br />
-                                {{radio.serial}}
-                            </div>
-                        </h3>
-                    </div>
-                </div>
+              <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
+                value={{frek}}>
+              <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
+                change frequency
+              </button>
             </div>
-            <div *ngIf="isAdmin">
-                <div class="flex-right m-t-25">
-                    <div class="overall" *ngIf="confirmSet">
-                        <div class="cv">
-                            <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
-                                <br />
-                                this may cause the system to stop
-                            </span>
-                            <br />
-                            <button (click)="screenSet()" i18n="@@changer">change</button>
-                            <button class="m-l-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="radio" *ngIf="radio">
-                    <form #ffreq="ngForm" class="formdata field">
-                        <span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span>
-                        <div class="flexible">
-                            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek"
-                                [(ngModel)]="frek" value={{frek}}>
-                            <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid"
-                                i18n="@@changefreqr0">
-                                change frequency
-                            </button>
-                        </div>
-                    </form>
-                    <form #fptt="ngForm" class="formdata field" *ngIf="hasGps">
-                        <span i18n="@@labelgpscalibration">GPS Calibration</span>
-                        <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
-                            i18n="@@startgpscalibration">Start</button>
-                    </form>
-                    <form *ngIf="radio" class="formdata field">
-                        <span i18n="@@changeradiomode">Radio mode</span>
-                        <div class="float-right">
-                            <span>USB</span>
-                            <div class="switch">
-                                <input type="checkbox" name="mode" [checked]="modeSwitch">
-                                <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)"
-                                    value="{{modeSwitch}}" [checked]="modeSwitch"></span>
-                            </div>
-                            <span>LSB</span>
-                        </div>
-                    </form>
-                    <form #fptt="ngForm" class="formdata field">
-                        <span>PTT
-                            <!-- - {{this.ptt}} -->
-                        </span>
-                        <div class="switch float-right">
-                            <input type="checkbox" name="mode" [checked]="radio.tx">
-                            <span class="slider round" *ngIf="isAdmin" (click)="changePtt($event)" value="{{radio.tx}}"
-                                [checked]="radio.tx"></span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="overall alert" *ngIf="errorAlert==true">
-                <div class="cv">
-                    <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
-                    <span>{{error}}</span>
-                    <div class="icon">
-                        <a (click)="closeError()">
-                            <img title="close" src="assets/svg/x.svg">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="overall alert" *ngIf="gpsMessage">
-                <div class="cv">
-                    <span i18n="@@gpscalibrationsuccess">GPS Calibration successful - {{gpsMessage}}<br /><br /></span>
-                    <div class="icon">
-                        <a (click)="closeGPSMessage()">
-                            <img title="close" src="assets/svg/x.svg">
-                        </a>
-                    </div>
-                </div>
+          </form>
+          <form #frefthreshold="ngForm" class="formdata field" *ngIf="radio">
+            <span i18n="@@prottheshold">Protection activation threshold level:</span>
+            {{radio.refthreshold}}
+            <div class="flexible">
+                <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold"
+                    [(ngModel)]="refthreshold" value={{refthreshold}}>
+
+                <button class="midbt" (click)="changeRefThreshold(frefthreshold)"
+                    [disabled]="frefthreshold.invalid" i18n="@@changetre1">change
+                    threshold</button>
             </div>
         </form>
-    </div>
+          <form *ngIf="radio" class="formdata field">
+            <span i18n="@@changeradiomode">Radio mode</span>
+            <div class="float-right">
+              <span>USB</span>
+              <div class="switch">
+                <input type="checkbox" name="mode" [checked]="modeSwitch">
+                <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{modeSwitch}}"
+                  [checked]="modeSwitch"></span>
+              </div>
+              <span>LSB</span>
+            </div>
+          </form>
+          <form #fptt="ngForm" class="formdata field">
+            <span>PTT
+              <!-- - {{this.ptt}} -->
+            </span>
+            <div class="switch float-right">
+              <input type="checkbox" name="mode" [checked]="radio.tx">
+              <span class="slider round" *ngIf="isAdmin" (click)="changePtt($event)" value="{{radio.tx}}"
+                [checked]="radio.tx"></span>
+            </div>
+          </form>
+          <form #fptt="ngForm" class="formdata field" *ngIf="hasGps">
+            <span i18n="@@labelgpscalibration">GPS Calibration</span>
+            <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
+              i18n="@@startgpscalibration">Start</button>
+          </form>
+          <form #fptt="ngForm" class="formdata field">
+            <div class="m-l-10">
+              <span i8ln="@@radioprotection">
+                Radio Protection
+              </span>
+              <button (click)="resetProtection()" i18n="@resetprotection1" class="float-right">
+                reset protection</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="overall alert" *ngIf="errorAlert==true">
+        <div class="cv">
+          <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
+          <span>{{error}}</span>
+          <div class="icon">
+            <a (click)="closeError()">
+              <img title="close" src="assets/svg/x.svg">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="overall alert" *ngIf="gpsMessage">
+        <div class="cv">
+          <span i18n="@@gpscalibrationsuccess">GPS Calibration successful - {{gpsMessage}}<br /><br /></span>
+          <div class="icon">
+            <a (click)="closeGPSMessage()">
+              <img title="close" src="assets/svg/x.svg">
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
