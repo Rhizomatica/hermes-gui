@@ -153,7 +153,7 @@
           <form #fptt="ngForm" class="formdata field">
             <div class="m-l-10">
               <span i8ln="@@radioprotection">
-                Radio Protection
+                Protection
               </span>
               <button (click)="resetProtection()" i18n="@resetprotection1" class="float-right">
                 reset protection</button>
@@ -174,7 +174,7 @@
       </div>
       <div class="overall alert" *ngIf="gpsMessage">
         <div class="cv">
-          <span i18n="@@gpscalibrationsuccess">GPS Calibration successful - {{gpsMessage}}<br /><br /></span>
+          <span i18n="@@gpscalibrationsuccess">GPS Calibration successful<br /><br /></span>
           <div class="icon">
             <a (click)="closeGPSMessage()">
               <img title="close" src="assets/svg/x.svg">

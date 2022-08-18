@@ -222,7 +222,7 @@ export class RadioService {
 
   public gpsStartCalibration(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/calibration`;
-    return this.http.post(url, null).pipe(
+    return this.http.get(url).pipe(
       map((res: any) => {
         return res;
       }),
