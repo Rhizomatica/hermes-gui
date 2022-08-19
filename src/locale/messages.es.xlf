@@ -172,13 +172,13 @@ ayuda</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">166</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">126</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">82</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">200</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">97</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">82</context></context-group></trans-unit>
 <trans-unit id="gpscalibrationsuccess" datatype="html">
   <source>GPS Calibration successful</source>
 <target state="new">Calibración GPS exitosa</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">177</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">211</context></context-group></trans-unit>
 
 <trans-unit id="dd5c255301e6628e34419e082e6b9173b7c6ff57" datatype="html">
 <source>Station:</source>
@@ -1584,7 +1584,14 @@ email<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
 <context context-type="linenumber">14</context>
 </context-group>
-</trans-unit>
+</trans-unit><trans-unit id="6edc340f0b2ddcc67d31889c260f7fd12a4d8abd" datatype="html">
+        <source>reset protection</source><target state="new">reset protection</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="description">@resetprotection1</note>
+      </trans-unit>
 <trans-unit id="8b19b477b68e93a5c0eddd97314009662f95f5b5" datatype="html">
 <source>Radio frequency</source>
 <target state="new">Frecuencia de radio</target>
@@ -1656,16 +1663,7 @@ email<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 <context context-type="linenumber">81</context>
 </context-group>
 </trans-unit>
-<trans-unit id="1e094b00ca3de679b3ae2506c817ecf8e12005e3" datatype="html">
-<source>reset protection</source>
-<target state="new">restablecer la protección</target>
 
-<note priority="1" from="description">@resetprotection1</note>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">19</context>
-</context-group>
-</trans-unit>
 <trans-unit id="areyousurechangesett" datatype="html">
 <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this may cause the system to stop </source>
 <target state="new">Seguro de querer cambiar la configuración de la radio? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
@@ -1754,6 +1752,12 @@ esto puede hacer que el sistema se detenga</target>
           <context context-type="linenumber">158,159</context>
         </context-group>
         <note priority="1" from="description">@resetprotection1</note>
+      </trans-unit><trans-unit id="defaultlabel" datatype="html">
+        <source> Default </source><target state="new"> Defecto </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">164,166</context>
+        </context-group>
       </trans-unit>
 <trans-unit id="changeradiomode" datatype="html">
 <source>Radio mode</source>
@@ -1788,76 +1792,47 @@ esto puede hacer que el sistema se detenga</target>
 <source>change bfo</source>
 <target state="new">cambiar bfo</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">52</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit>
 <trans-unit id="mastercall2" datatype="html">
 <source>mastercal:</source>
 <target state="new">mastercal:</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">57</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">56</context></context-group></trans-unit>
 <trans-unit id="changemast" datatype="html">
 <source>change mastercall</source>
 <target state="new">cambiar mastercall</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">61</context>
-</context-group>
-</trans-unit>
-<trans-unit id="testtonec" datatype="html">
-<source>Test Tone:</source>
-<target state="new">Tono de prueba:</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">75</context>
-</context-group>
-</trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">60</context></context-group></trans-unit>
+
 <trans-unit id="resettodefault" datatype="html">
 <source> reset to default </source>
-<target state="new">restablecer los valores predeterminados</target>
+<target state="new">Ajustes de fábrica de la radio</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">97</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">167</context></context-group></trans-unit>
 <trans-unit id="confirmreset" datatype="html">
 <source> Are you sure you want to reset the radio to the default configuration? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
 <target state="new"> ¿Está seguro de que desea restablecer la radio a la configuración predeterminada? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
 </target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">102</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">177</context></context-group></trans-unit>
 <trans-unit id="cancelr" datatype="html">
 <source> cancel </source>
 <target state="new">cancelar</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">109</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">184</context></context-group></trans-unit>
 <trans-unit id="reset1" datatype="html">
 <source> reset </source>
 <target state="new">resetar</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
-<context context-type="linenumber">116</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">191</context></context-group></trans-unit>
 <trans-unit id="stationsonthisnetwork" datatype="html">
 <source>Stations on this network</source>
 <target state="new">Estaciones en esta red</target>

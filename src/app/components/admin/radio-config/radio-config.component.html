@@ -115,14 +115,14 @@
             <span i18n="@@prottheshold">Protection activation threshold level:</span>
             {{radio.refthreshold}}
             <div class="flexible">
-                <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold"
-                    [(ngModel)]="refthreshold" value={{refthreshold}}>
+              <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
+                value={{refthreshold}}>
 
-                <button class="midbt" (click)="changeRefThreshold(frefthreshold)"
-                    [disabled]="frefthreshold.invalid" i18n="@@changetre1">change
-                    threshold</button>
+              <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
+                i18n="@@changetre1">change
+                threshold</button>
             </div>
-        </form>
+          </form>
           <form *ngIf="radio" class="formdata field">
             <span i18n="@@changeradiomode">Radio mode</span>
             <div class="float-right">
@@ -159,6 +159,40 @@
                 reset protection</button>
             </div>
           </form>
+          <form #fptt="ngForm" class="formdata field">
+            <div class="m-l-10">
+              <span i18n="@@defaultlabel">
+                Default
+              </span>
+              <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()" class="float-right">
+                reset to default
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="overall alert" *ngIf="!reseting==false">
+        <div class="cv">
+          <span i18n="@@confirmreset">
+            Are you sure you want to reset the radio to the default configuration?
+            <br />
+            <br />
+          </span>
+          <span class="icon">
+            <a (click)="confirmReset()">
+              <button i18n="@@cancelr">
+                cancel
+              </button>
+            </a>
+          </span>
+          <span class="icon" *ngIf="isAdmin">
+            <a (click)="resetRadio()">
+              <button class="m-l-10" i18n="@@reset1">
+                reset
+              </button>
+            </a>
+          </span>
         </div>
       </div>
       <div class="overall alert" *ngIf="errorAlert==true">

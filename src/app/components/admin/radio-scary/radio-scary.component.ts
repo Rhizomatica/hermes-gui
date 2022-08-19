@@ -25,7 +25,6 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
   freq: any;
   frek: any;
   realfreq: any;
-  reseting = false;
   usb = true;
   mode: any;
   led: any;
@@ -172,10 +171,6 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
     this.getPttswr();
   }
 
-  confirmReset() {
-    this.reseting = this.reseting ? false : true
-  }
-
   // screenFreq(): void {
   //   this.alterFreq = this.alterFreq ? false : true
   // }
@@ -306,22 +301,6 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
       (err) => {
         this.error = err;
         this.errorAlert = true;
-      }
-    );
-  }
-
-  async resetRadio() {
-    await this.radioService.radioRestoreDefaults().subscribe(
-      (res: any) => {
-        this.res = res;
-        this.reseting = false;
-        this.getRadioStatus();
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.reseting = false;
-        this.getRadioStatus();
       }
     );
   }
