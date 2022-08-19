@@ -1341,7 +1341,7 @@ email<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;sent&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;>"/> sent messages </source>
 <target state="new">
 <x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;sent&quot; src=&quot;assets/svg/cloud-upload-alt-solid.svg&quot;>"/>
- mensajes enviados </target>
+ enviados </target>
 
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
@@ -1362,15 +1362,9 @@ email<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 <target state="new">Estado: </target>
 
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context>
-<context context-type="linenumber">6</context>
-</context-group>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-<context context-type="linenumber">14</context>
-</context-group>
-</trans-unit>
+
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">6</context></context-group></trans-unit>
 <trans-unit id="alias" datatype="html">
 <source>Alias: </source>
 <target state="new">Alias: </target>
@@ -1570,7 +1564,13 @@ email<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
 <context context-type="linenumber">7</context>
 </context-group>
-</trans-unit>
+</trans-unit><trans-unit id="statusconfig" datatype="html">
+        <source> Status</source><target state="new"> Estado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
 <source>Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
 <target state="new">Alerta: no se puede acceder a la radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
@@ -1741,7 +1741,13 @@ esto puede hacer que el sistema se detenga</target>
 <target state="new">Comienzo</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">151</context></context-group></trans-unit><trans-unit id="03f4dcd09e8e302447590cc8b1429b5cac3ef52a" datatype="html">
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">151</context></context-group></trans-unit><trans-unit id="radioprotection" datatype="html">
+        <source> Protection </source><target state="new"> Proteccion </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">155,157</context>
+        </context-group>
+      </trans-unit><trans-unit id="03f4dcd09e8e302447590cc8b1429b5cac3ef52a" datatype="html">
         <source> reset protection</source><target state="new"> reset protection</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -1871,21 +1877,14 @@ esto puede hacer que el sistema se detenga</target>
 <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
 <context context-type="linenumber">5</context>
 </context-group>
-</trans-unit>
-<trans-unit id="cancels" datatype="html">
-<source>cancel</source>
-<target state="new">cancelar</target>
+</trans-unit><trans-unit id="cancelsTransmission" datatype="html">
+        <source> cancel </source><target state="new"> cancelar </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
 
-
-
-
-
-
-
-
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">120</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context><context context-type="linenumber">9</context></context-group></trans-unit>
 <trans-unit id="transmits" datatype="html">
 <source> transmit now </source>
 <target state="new">forçar transmissión</target>
@@ -2133,7 +2132,13 @@ esto puede hacer que el sistema se detenga</target>
 <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
 <context context-type="linenumber">114</context>
 </context-group>
-</trans-unit>
+</trans-unit><trans-unit id="cancels1" datatype="html">
+        <source>cancel</source><target state="new">cancelar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="shutdown1" datatype="html">
 <source>shut down</source>
 <target state="new">cerrar</target>
