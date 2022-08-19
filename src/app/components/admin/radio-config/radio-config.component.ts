@@ -160,6 +160,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
 
   changePtt(event) {
+    this.loading = true
     this.radioService.setRadioPTT(this.ptt == 'ON' ? 'OFF' : 'ON').subscribe(
       (res: any) => {
         this.res = res;
@@ -414,7 +415,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.radio.testtone = res;
         this.toneOn = res === '0' ? false : true
         this.getRadioStatus();
+        this.loading = false
       }, (err) => {
+        this.loading = false
         this.error = err;
         this.errorAlert = true;
         this.getRadioStatus();
