@@ -75,7 +75,7 @@
       <label class="m-t-25" *ngIf="isadmin">
         <span i18n="@@isadmin">is admin</span>
         <div class="switch">
-          <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin">
+          <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin" [enabled]="flagAdmin">
           <span class="slider round"></span>
         </div>
         <!-- <switch i18n="" name="admin" label="is admin" (click)="changeAdmin($event)" [enabled]="flagAdmin" [value]="flagAdmin"></switch> -->
@@ -86,7 +86,7 @@
         <button class="m-l-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
           user</button>
       </span>
-      <button class="m-l-10" type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
+      <button class="m-l-10 m-t-10" type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
         [disabled]="f.invalid">update</button>
       <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
         [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
