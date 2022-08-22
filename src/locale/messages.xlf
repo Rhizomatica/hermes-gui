@@ -608,7 +608,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="radioprotection" datatype="html">
-        <source> Protection </source>
+        <source> Protection - <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'ON' : 'OFF'}}"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">155,157</context>
