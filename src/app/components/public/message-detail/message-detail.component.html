@@ -1,4 +1,4 @@
-<div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div>
+<!-- <div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div> -->
 <div *ngIf="message" class="messages">
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
@@ -13,13 +13,12 @@
     <!--
     <div class="blobber">
         <div class="tx">decoding message...</div>
-        <div class="square"></div>
+      <div class="square"></div>
     </div>
     -->
     <div class="date"></div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
-        <hr>
         <div *ngIf="message.file">
             <span i18n="@@File">File: </span>
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
@@ -41,7 +40,6 @@
                     </audio>
                 </div>
             </a>
-            <hr>
             <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->
         </div>
     </div>
