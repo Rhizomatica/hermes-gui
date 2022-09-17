@@ -213,6 +213,7 @@ export class SentMessagesComponent implements OnInit {
   ngOnInit(): void {
     this.getSentMessages();
     this.getSysConfig();
-    this.isadmin = this.currentUser.admin;
+    if(this.currentUser)
+      this.isadmin = this.currentUser.admin;
   }
 }
