@@ -139,6 +139,7 @@ export class TransmissionListComponent implements OnInit {
         this.queue = res;
         if (Object.keys(this.queue).length == 0) {
           this.noQueue = true;
+          this.queue = null
         } else {
           this.noQueue = false;
         }
@@ -152,7 +153,7 @@ export class TransmissionListComponent implements OnInit {
 
   getQueueSize() {
     if (this.queue) {
-      if (this.queue !== []) {
+      if (this.queue.length === 0) {
         let soma = 0;
         for (let i = 0; i < Object.keys(this.queue).length; i++) {
           soma += parseInt(this.queue[i].size);
