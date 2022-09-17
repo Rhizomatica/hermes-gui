@@ -20,9 +20,9 @@
           </span>
           <span class="stname">{{station.alias}}</span>
         </span>
-        <div class="switch m-b-10" *ngIf="isGateway">
+        <div class="switch m-b-10" *ngIf="isGateway"> 
           <input type="checkbox" name="switchButton" [checked]="station.checked">
-          <span class="slider round" type="submit" (click)="confirmChange($event)" value="{{station.alias}}"></span>
+          <span class="slider round" type="submit" (click)="changeStationStatus($event)" value="{{station.alias}}"></span>
         </div>
       </div> 
       <div class="overall" *ngIf="stationedit">
@@ -31,7 +31,7 @@
           <span i18n="@@thismaycause">this may cause communication to some stations to stop!</span>
           <br />
           <button type="button" (click)="updateStations('1', g)" i18n="@@confirmg">confirm</button>
-          <button class="m-l-10" type="button" (click)="confirmChange()" i18n="@@cancelg">cancel</button>
+          <button class="m-l-10" type="button" (click)="cancelChange()" i18n="@@cancelg">cancel</button>
         </div>
       </div>
     </form>

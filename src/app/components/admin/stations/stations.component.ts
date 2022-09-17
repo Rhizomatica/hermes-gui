@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { User } from '../../../interfaces/user';
+import { Station } from '../../../interfaces/station';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
 import { NgForm} from '@angular/forms';
@@ -29,6 +30,7 @@ export class StationsComponent implements OnInit {
   system: any;
   isGateway = false;
   loading = true;
+  currentStation: Station
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -50,12 +52,19 @@ export class StationsComponent implements OnInit {
     );
   }
 
-  confirmChange(event) {
+  changeStationStatus(event) {
+    this.currentStation = this.stations.filter((a)=>{ return a.alias === event.target.value})[0] 
     if (this.stationedit === true) {
       this.stationedit = false
     } else {
       this.stationedit = true;
     }
+  }
+
+  cancelChange(){
+    this.stationedit = false
+    this.loading = false
+    this.currentStation = null
   }
 
   public getStations(): void {
@@ -82,13 +91,13 @@ export class StationsComponent implements OnInit {
      );
    }
 
-   selectStations(ev){    
-     if (this.enabledStations.includes(ev.target.value) === false) {
-        this.enabledStations.push(ev.target.value);
-        this.switchChecked(true, ev.target.value)
+   selectStations(){    
+     if (this.enabledStations.includes(this.currentStation.alias) === false) {
+        this.enabledStations.push(this.currentStation.alias);
+        this.switchChecked(true, this.currentStation.alias)
     } else {
-      this.switchChecked(false, ev.target.value)
-      this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
+      this.enabledStations = this.enabledStations.filter(e => e !== this.currentStation.alias);
+      this.switchChecked(false, this.currentStation.alias)
     }
   }
 
@@ -108,6 +117,7 @@ export class StationsComponent implements OnInit {
         this.defstart = this.schedule.starttime;
         this.defstop = this.schedule.stoptime;
         this.defenable = this.schedule.enable;
+        this.validateStationsObject()
         return data;
       },
       (err) => {
@@ -117,8 +127,19 @@ export class StationsComponent implements OnInit {
     );
   } 
 
+  validateStationsObject(){
+    if(!this.enabledStations || !this.enabledStations.stations){
+      this.enabledStations = ["local"];
+      this.deftitle = 'default';
+      this.defstart = new Date('00:00:00');
+      this.defstop = new Date('24:00:00');
+      this.defenable = false;
+    }
+  }
+
   async updateStations(id: number, f:NgForm): Promise<void> {
-    this.selectStations(event)
+
+    this.selectStations()
 
     this.loading = true;
     this.updateAlert = false;
