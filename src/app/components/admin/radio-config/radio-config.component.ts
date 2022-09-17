@@ -15,7 +15,7 @@ import { GlobalConstants } from '../../../global-constants';
   providers: [DecimalPipe,
     // WebsocketService,
     // {provide: '_serviceRoute', useValue: 'radio/power'}
-    {provide: '_serviceRoute', useValue: 'WSaudioRX'}
+    // {provide: '_serviceRoute', useValue: 'WSaudioRX'}
   ]
 })
 
