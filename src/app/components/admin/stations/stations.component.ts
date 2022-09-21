@@ -117,7 +117,7 @@ export class StationsComponent implements OnInit {
         this.defstart = this.schedule.starttime;
         this.defstop = this.schedule.stoptime;
         this.defenable = this.schedule.enable;
-        this.validateStationsObject()
+        // this.validateStationsObject()
         return data;
       },
       (err) => {
@@ -127,15 +127,15 @@ export class StationsComponent implements OnInit {
     );
   } 
 
-  validateStationsObject(){
-    if(!this.enabledStations || !this.enabledStations.stations){
-      this.enabledStations = ["local"];
-      this.deftitle = 'default';
-      this.defstart = new Date('00:00:00');
-      this.defstop = new Date('24:00:00');
-      this.defenable = false;
-    }
-  }
+  // validateStationsObject(){
+  //   if(!this.enabledStations || !this.enabledStations.stations){
+  //     this.enabledStations = ["local"];
+  //     this.deftitle = 'default';
+  //     this.defstart = new Date('00:00:00');
+  //     this.defstop = new Date('24:00:00');
+  //     this.defenable = false;
+  //   }
+  // }
 
   async updateStations(id: number, f:NgForm): Promise<void> {
 
@@ -148,6 +148,7 @@ export class StationsComponent implements OnInit {
     f.value.starttime = this.defstart;
     f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
+
     await this.apiService.updateSchedule(id, f.value ).subscribe(
       (data:any) => {
         this.enabledStations = data.stations;
