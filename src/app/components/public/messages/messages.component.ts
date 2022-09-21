@@ -48,9 +48,7 @@ export class MessagesComponent implements OnInit {
     this.loading = true
     this.messageService.getMessagesByType('inbox').subscribe(
       (res: any) => {
-        this.inboxMessages = res;
-        this.inboxMessages = this.inboxMessages
-
+        this.inboxMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
         if (this.inboxMessages.length == 0) {
           this.noMessages = true;
         } else {

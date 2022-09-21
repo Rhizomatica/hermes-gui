@@ -134,7 +134,7 @@ export class SentMessagesComponent implements OnInit {
     this.loading = true
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
-        this.sentMessages = res;
+        this.sentMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
         this.noMessages = false;
         this.loading = false
       },
@@ -165,14 +165,12 @@ export class SentMessagesComponent implements OnInit {
   }
 
   getQueueSize() {
-    if (this.queue) {
-      if (this.queue !== []) {
+    if (this.queue) { 
         let soma = 0;
         for (let i = 0; i < this.queue.length; i++) {
           soma += parseInt(this.queue[i].size, 10);
           return soma;
         }
-      }
     }
   }
 
