@@ -1226,6 +1226,9 @@ input.ng-invalid {
     display: inline-block;
 }
 
+.green{
+    background: green;
+}
 
 .blobber {
     width: calc(100% - 1em);
@@ -1293,6 +1296,20 @@ input.ng-invalid {
 
 .messageAudio {
     width: 100%;
+}
+
+.Blink {
+    animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+@keyframes blinker {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes blobber {

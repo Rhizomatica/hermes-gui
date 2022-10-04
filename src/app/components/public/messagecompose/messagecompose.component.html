@@ -59,7 +59,7 @@
           <p i18n="@@nofile" class="fileName">{{fileName || "no file selected"}}</p>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <button *ngIf="!fileSelected" (click)="fileCamUpload.click()" i18n="@@camfile" class="m-l-10">camera</button>
-          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">Audio Recorder</button>
+          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button>
           <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
           <div *ngIf="sending">
             <div class="blobber">
@@ -151,11 +151,22 @@
 
     <div class="overall alert" *ngIf="audioRecorderOverall">
       <div class="cv">
-        <button (click)="initiateRecording()" *ngIf="!recording" i18n="@@startrecord"> Start Recording </button>
+        <div *ngIf="recording" class="m-b-50">
+          <i class="redcircle Blink"></i> &nbsp; {{minutesLabel}} : {{secondsLabel}} 
+          <br/>
+          <span i18n="@@blinkrecording" class="m-l-10">recording...</span> 
+        </div>
+
+        <button (click)="initiateRecording()" *ngIf="!recording && !file" i18n="@@startrecord" class="green"> 
+            Start Recording 
+        </button>
         <button (click)="stopRecording()" *ngIf="recording" i18n="@@stoprecord"> Stop Recording </button>
-        <audio controls="" *ngIf="audioFileUrl">
-          <source [src]="sanitize(audioFileUrl)" type="audio/wav" name="audioFileUrl">
-        </audio>
+        <div class="row m-t-25">
+          <audio controls="" *ngIf="file">
+            <source [src]="sanitize(file)" type="audio/wav" name="audioFileUrl">
+          </audio>
+        </div>
+      
         <div class="icon"><a (click)="closeaudioRecorder()">
             <img title="close" src="assets/svg/x.svg"></a>
         </div>

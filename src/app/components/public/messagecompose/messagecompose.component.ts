@@ -10,6 +10,8 @@ import { User } from '../../../interfaces/user';
 // declare var $: any;
 import * as RecordRTC from 'recordrtc';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Time } from '@angular/common';
+import { TimeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-messagecompose',
@@ -56,6 +58,10 @@ export class MessagecomposeComponent implements OnInit {
   public audioRecorderOverall = false
   public record: any
   public recording = false
+  public timeRecording = 0
+  public secondsLabel = "00"
+  public minutesLabel = "00"
+  public recordingInterval
 
   constructor(
     private messageService: MessageService,
@@ -219,7 +225,7 @@ export class MessagecomposeComponent implements OnInit {
       f.value.dest = arr;
     }
     // File exists?
-    if (this.file != null && this.file !== []) {
+    if (this.file) {
       await this.messageService.postFile(this.file, f.value.pass).then(
         (value: any) => {
           f.value.file = value['filename']; // gona change  to this default instead of image
@@ -331,6 +337,23 @@ export class MessagecomposeComponent implements OnInit {
     };
 
     navigator.mediaDevices.getUserMedia(mediaConstraints).then(this.successCallback.bind(this), this.errorCallback.bind(this));
+    this.countRecording()
+  }
+
+  countRecording() {
+    this.recordingInterval = setInterval(() => {
+      this.timeRecording++
+      this.minutesLabel = this.formatTime(Math.floor(this.timeRecording / 60))
+      this.secondsLabel = this.formatTime((this.timeRecording - Number(this.minutesLabel) * 60))
+    }, 1000);
+  }
+
+  formatTime(value: any) {
+    var valString = value + ""
+    if (valString.length < 2) {
+      return "0" + valString
+    }
+    return valString
   }
 
   successCallback(stream) {
@@ -348,12 +371,16 @@ export class MessagecomposeComponent implements OnInit {
   stopRecording() {
     this.recording = false;
     this.record.stop(this.processRecording.bind(this));
+    this.cancelInterval()
+  }
+
+  cancelInterval(){
+    clearInterval(this.recordingInterval);
   }
 
   processRecording(blob) {
     this.file = URL.createObjectURL(blob);
-    console.log("blob", blob);
-    console.log("url", this.file);
+    this.fileName = this.file
   }
 
   errorCallback(error) {
@@ -362,8 +389,6 @@ export class MessagecomposeComponent implements OnInit {
     this.errorAlert = true
     this.errormsg = 'Can not play audio in your browser';
   }
-
-  //TODO - Delete audioFile
 
   // TODO double check start params on inbox
   ngOnInit(): void {
