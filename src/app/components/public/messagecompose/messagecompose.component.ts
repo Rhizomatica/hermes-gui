@@ -10,8 +10,6 @@ import { User } from '../../../interfaces/user';
 // declare var $: any;
 import * as RecordRTC from 'recordrtc';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Time } from '@angular/common';
-import { TimeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-messagecompose',
@@ -210,6 +208,9 @@ export class MessagecomposeComponent implements OnInit {
     this.fileName = '';
     this.file = null;
     this.fileSelected = false;
+    this.timeRecording = 0
+    this.secondsLabel = "00"
+    this.minutesLabel = "00"
     return this.file;
   }
 
@@ -379,8 +380,16 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   processRecording(blob) {
-    this.file = URL.createObjectURL(blob);
-    this.fileName = this.file
+    if (blob.size < this.maxSize) {
+      // let file: File = event.target.files[0];
+      this.file = blob //Renomear no blob
+      this.fileName = URL.createObjectURL(blob)
+      this.fileSelected = true;
+    }
+    else {
+      this.fileName = 'file too big | archivo muy grande ';
+      this.file = null;
+    }
   }
 
   errorCallback(error) {
