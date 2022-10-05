@@ -1,0 +1,9 @@
+<div class="player">
+  <div class="row m-t-50">
+    <audio controls autoplay="{{playing}}" class="messageAudio" #audioplayer>
+      <source src="{{url}}/file/{{fileId}}{{secured ? password : ''}}"
+          canplaythrough="loadingAudio()" type="{{mimetype}}" />
+      your browser does not support this type of audio
+    </audio>
+  </div>
+</div>

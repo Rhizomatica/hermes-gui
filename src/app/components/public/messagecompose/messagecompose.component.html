@@ -60,7 +60,7 @@
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <button *ngIf="!fileSelected" (click)="fileCamUpload.click()" i18n="@@camfile" class="m-l-10">camera</button>
           <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button>
-          <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove file</button>
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -161,13 +161,18 @@
             Start Recording 
         </button>
         <button (click)="stopRecording()" *ngIf="recording" i18n="@@stoprecord"> Stop Recording </button>
-        <div class="row m-t-25">
-          <audio controls="" *ngIf="file">
+        <div class="row m-t-25" *ngIf="file">
+          <audio controls="">
             <source [src]="sanitize(file)" type="audio/wav" name="audioFileUrl">
           </audio>
+          <player [playing]="'false'" [mimetype]="'audio/wav'" [fileId]="null" [url]="sanitize(file)" 
+            [secured]="false" [password]="null"></player>
+            <a (click)="removeFile()" class="icon">
+              <img src="assets/svg/trash-alt.svg" > 
+            </a>          
         </div>
       
-        <div class="icon"><a (click)="closeaudioRecorder()">
+        <div class="icon m-t-25"><a (click)="closeaudioRecorder()">
             <img title="close" src="assets/svg/x.svg"></a>
         </div>
       </div>

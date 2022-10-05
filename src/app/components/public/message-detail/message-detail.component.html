@@ -39,6 +39,9 @@
                             canplaythrough="loadingAudio()" type="{{message.mimetype}}" />
                         your browser does not support this type of audio
                     </audio>
+                    <player [playing]="'false'" [mimetype]="message.mimetype" [fileId]="message.fileid" 
+                        [url]="url" [secured]="message.secure" [password]="passString"></player>
+
                 </div>
             </a>
             <hr>
