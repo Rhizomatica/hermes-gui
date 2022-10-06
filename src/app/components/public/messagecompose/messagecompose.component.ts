@@ -7,9 +7,6 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
-// declare var $: any;
-import * as RecordRTC from 'recordrtc';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-messagecompose',
@@ -54,19 +51,12 @@ export class MessagecomposeComponent implements OnInit {
   public camPicture: any;
   public loading = true
   public audioRecorderOverall = false
-  public record: any
-  public recording = false
-  public timeRecording = 0
-  public secondsLabel = "00"
-  public minutesLabel = "00"
-  public recordingInterval
 
   constructor(
     private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService,
-    private domSanitizer: DomSanitizer) {
+    private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -208,10 +198,6 @@ export class MessagecomposeComponent implements OnInit {
     this.fileName = '';
     this.file = null;
     this.fileSelected = false;
-    this.timeRecording = 0
-    this.secondsLabel = "00"
-    this.minutesLabel = "00"
-    return this.file;
   }
 
   async sendMessage(f: NgForm): Promise<void> {
@@ -290,7 +276,6 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-
   checkpwd(passwd, repasswd) {
     if (passwd) {
       if (passwd === repasswd) {
@@ -326,75 +311,19 @@ export class MessagecomposeComponent implements OnInit {
     this.audioRecorderOverall = false
   }
 
-  sanitize(url: string) {
-    return this.domSanitizer.bypassSecurityTrustUrl(url);
-  }
-
-  initiateRecording() {
-    this.recording = true;
-    let mediaConstraints = {
-      video: false,
-      audio: true
-    };
-
-    navigator.mediaDevices.getUserMedia(mediaConstraints).then(this.successCallback.bind(this), this.errorCallback.bind(this));
-    this.countRecording()
-  }
-
-  countRecording() {
-    this.recordingInterval = setInterval(() => {
-      this.timeRecording++
-      this.minutesLabel = this.formatTime(Math.floor(this.timeRecording / 60))
-      this.secondsLabel = this.formatTime((this.timeRecording - Number(this.minutesLabel) * 60))
-    }, 1000);
-  }
-
-  formatTime(value: any) {
-    var valString = value + ""
-    if (valString.length < 2) {
-      return "0" + valString
-    }
-    return valString
-  }
-
-  successCallback(stream) {
-    var options = {
-      mimeType: "audio/wav",
-      numberOfAudioChannels: 1,
-      sampleRate: 50000,
-    };
-    //Start Actuall Recording
-    var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
-    this.record = new StereoAudioRecorder(stream, options);
-    this.record.record();
-  }
-
-  stopRecording() {
-    this.recording = false;
-    this.record.stop(this.processRecording.bind(this));
-    this.cancelInterval()
-  }
-
-  cancelInterval(){
-    clearInterval(this.recordingInterval);
-  }
-
-  processRecording(blob) {
-    if (blob.size < this.maxSize) {
-      // let file: File = event.target.files[0];
-      this.file = blob //Renomear no blob
-      this.fileName = URL.createObjectURL(blob)
+  addFileItemEmitted(event){
+    this.file = event
+    if(this.file){
       this.fileSelected = true;
+      this.fileName = URL.createObjectURL(this.file)
+      return
     }
-    else {
-      this.fileName = 'file too big | archivo muy grande ';
-      this.file = null;
-    }
+
+    this.errorCallback
   }
 
   errorCallback(error) {
     this.audioRecorderOverall = false
-    this.recording = false
     this.errorAlert = true
     this.errormsg = 'Can not play audio in your browser';
   }

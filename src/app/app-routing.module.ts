@@ -24,6 +24,7 @@ import { SwitchComponent } from './components/utils/switch/switch.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { PlayerComponent } from './components/utils/player/player.component';
+import { RecorderComponent } from './components/utils/recorder/recorder.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'scary', component: RadioScaryComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'player', component: PlayerComponent },
+  { path: 'recorder', component: RecorderComponent }
 ];
 
 @NgModule({

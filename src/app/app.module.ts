@@ -42,6 +42,7 @@ import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
+import { RecorderComponent } from './components/utils/recorder/recorder.component';
 
 registerLocaleData(localePt);
 
@@ -78,7 +79,8 @@ registerLocaleData(localePt);
     RadioScaryComponent,
     LoadingComponent,
     SwitchComponent,
-    PlayerComponent
+    PlayerComponent,
+    RecorderComponent
   ],
   imports: [
     BrowserModule,
