@@ -114,4 +114,16 @@ export class RecorderComponent implements OnChanges {
   cancelInterval() {
     clearInterval(this.recordingInterval);
   }
+
+  removeFile() {
+    this.recording = false
+    this.file = null
+    this.fileName = null
+
+    this.record = null
+    this.timeRecording = 0
+    this.secondsLabel = "00"
+    this.minutesLabel = "00"
+    this.recordingInterval = null
+  }
 }
