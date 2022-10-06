@@ -33,11 +33,9 @@
                         <div class="square"></div>
                     </div>
                    -->
-                    <audio controls class="messageAudio" #audioplayer>
-                        <source src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}"
-                            canplaythrough="loadingAudio()" type="{{message.mimetype}}" />
-                        your browser does not support this type of audio
-                    </audio>
+                    <player [playing]="'false'" [mimetype]="message.mimetype" [fileId]="message.fileid" 
+                        [url]="url" [secured]="message.secure" [password]="passString"></player>
+
                 </div>
             </a>
             <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->

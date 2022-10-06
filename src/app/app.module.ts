@@ -41,6 +41,8 @@ import { LoginFormComponent } from './components/public/login-form/login-form.co
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
+import { PlayerComponent } from './components/utils/player/player.component';
+import { RecorderComponent } from './components/utils/recorder/recorder.component';
 
 registerLocaleData(localePt);
 
@@ -76,7 +78,9 @@ registerLocaleData(localePt);
     LoginFormComponent,
     RadioScaryComponent,
     LoadingComponent,
-    SwitchComponent
+    SwitchComponent,
+    PlayerComponent,
+    RecorderComponent
   ],
   imports: [
     BrowserModule,

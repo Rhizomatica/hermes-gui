@@ -54,6 +54,7 @@ export class MessagecomposeComponent implements OnInit {
   public webCamDesktop = false
   public WIDTH = 640;
   public HEIGHT = 480;
+  public audioRecorderOverall = false
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -270,7 +271,6 @@ export class MessagecomposeComponent implements OnInit {
     this.fileName = '';
     this.file = null;
     this.fileSelected = false;
-    return this.file;
   }
 
   async sendMessage(f: NgForm): Promise<void> {
@@ -285,7 +285,7 @@ export class MessagecomposeComponent implements OnInit {
       f.value.dest = arr;
     }
     // File exists?
-    if (this.file != null && this.file !== []) {
+    if (this.file) {
       await this.messageService.postFile(this.file, f.value.pass).then(
         (value: any) => {
           f.value.file = value['filename']; // gona change  to this default instead of image
@@ -352,7 +352,6 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-
   checkpwd(passwd, repasswd) {
     if (passwd) {
       if (passwd === repasswd) {
@@ -382,6 +381,31 @@ export class MessagecomposeComponent implements OnInit {
     };
 
     allSelect(items);
+  }
+
+  audioRecorder() {
+    this.audioRecorderOverall = true
+  }
+
+  closeaudioRecorder() {
+    this.audioRecorderOverall = false
+  }
+
+  addFileItemEmitted(event){
+    this.file = event
+    if(this.file){
+      this.fileSelected = true;
+      this.fileName = URL.createObjectURL(this.file)
+      return
+    }
+
+    this.errorCallback
+  }
+
+  errorCallback(error) {
+    this.audioRecorderOverall = false
+    this.errorAlert = true
+    this.errormsg = 'Can not play audio in your browser';
   }
 
   // TODO double check start params on inbox
