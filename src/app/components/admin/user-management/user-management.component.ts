@@ -156,6 +156,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSelect(user): void {
+    this.selectedUser = null
     if(!this.isadmin)
         return
         

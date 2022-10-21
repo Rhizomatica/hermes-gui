@@ -1368,18 +1368,18 @@ input.ng-invalid {
 }
 
 .dark-mode {
-  // ::-webkit-scrollbar {
-  //     width: 12px;
-  // }
-
-  // ::-webkit-scrollbar-track {
-  //     -webkit-box-shadow: inset 0 0 6px     @mclr;
-  // }
-
-  // ::-webkit-scrollbar-thumb {
-  //     // border-radius: 10px;
-  //     -webkit-box-shadow: inset 0 0 1.8px     @bkclr;
-  // }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ccc;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ccc;
+  }
 
   a:visited {
     color: @bkclr;
@@ -1480,7 +1480,7 @@ input.ng-invalid {
   .formfield {
 
     top: 6em;
-
+   
     #searchbox1 {
       background-color: @mclr;
       border: 1px solid #666;
