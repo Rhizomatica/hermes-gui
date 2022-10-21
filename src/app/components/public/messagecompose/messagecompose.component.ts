@@ -163,6 +163,7 @@ export class MessagecomposeComponent implements OnInit {
 
   async openWebCamDesktop() {
     this.webCamDesktop = true
+    this.dataURItoBlob(this.canvas.nativeElement.toDataURL("image/png"));
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       try {
@@ -173,6 +174,13 @@ export class MessagecomposeComponent implements OnInit {
           this.video.nativeElement.srcObject = stream;
           this.video.nativeElement.play();
           this.error = null;
+          var base_image = new Image();
+          base_image.src = "../assets/svg/smile-regular.svg";
+
+          base_image.onload = () => {
+            this.drawImageToCanvas(base_image)
+          }
+      
         }
         //  else {
         //   this.error = "You have no output video device";
@@ -207,13 +215,15 @@ export class MessagecomposeComponent implements OnInit {
     for (var i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
-    this.file = new Blob([ia], { type: mimeString }) //TODO - formato da imagem com problema para envio
+
+     //TODO - formato da imagem com problema para envio
+     //TODO - Já seta so de abrir a webcam não deveria setar (usar outra variavel?)
+    this.file = new Blob([ia], { type: mimeString })
     this.fileName = window.URL.createObjectURL(this.file)
   }
 
   drawImageToCanvas(image: any) {
-    this.canvas.nativeElement
-      .getContext("2d")
+    this.canvas.nativeElement.getContext('2d')
       .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
   }
 
@@ -391,9 +401,9 @@ export class MessagecomposeComponent implements OnInit {
     this.audioRecorderOverall = false
   }
 
-  addFileItemEmitted(event){
+  addFileItemEmitted(event) {
     this.file = event
-    if(this.file){
+    if (this.file) {
       this.fileSelected = true;
       this.fileName = URL.createObjectURL(this.file)
       return

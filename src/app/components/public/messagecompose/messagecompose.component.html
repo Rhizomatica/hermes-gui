@@ -61,10 +61,10 @@
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
-        <!-- <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
-          i18n="@@camfile">camera</button> -->
-        <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
-          i18n="@@camfile">camera</button> -->
+          <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
+          i18n="@@camfile">camera</button>
+          <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
+          i18n="@@camfile">camera</button> 
           <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button>
           <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove file</button>
           <div *ngIf="sending">
@@ -168,15 +168,15 @@
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
         <div class="icon">
-          <button i18n="@@Capture" (click)="capture($event)">Capture</button>
-        </div>
-        <div class="icon">
           <a (click)="closeWebCamDesktop()">
             <img title="close" src="assets/svg/x.svg">
           </a>
         </div>
-        <video class="m-t-100" width="680" height="480" #video></video>
+        <video class="m-t-50" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
+        <div>
+          <button i18n="@@Capture" (click)="capture($event)">Capture</button>
+        </div>
       </div>
     </div>
   </form>
