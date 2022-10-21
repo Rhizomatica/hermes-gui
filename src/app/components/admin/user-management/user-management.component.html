@@ -7,26 +7,22 @@
     </div>
   </div>
   <div *ngIf="currentUser">
-    <div *ngIf="isadmin">
-      <h5 *ngIf="isEditing"><span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span><span *ngIf="emptyUser"
-          i18n="@@createusers">Create User</span></h5>
-      <ng-container>
-        <div *ngIf="!isEditing">
-          <div class="userlist">
-            <input [hidden]="isEditing==true||isadmin==false" id="searchbox1" placeholder="Search Users"
-              [(ngModel)]="searchUser" i18n-placeholder />
-            <div class="adm"><b><img class="inlineicon" title="admin" src="assets/svg/wrench.svg"></b></div>
-            <div class="uemail" i18n=""><b>email</b></div>
-            <div class="uname" i18n="@@namem"><b>name</b></div>
-          </div>
-          <div id="userlist" class="multiplist2 users" ng-model="selectedUser"
-            [hidden]="isEditing==true||isadmin==false">
-            <div class="userlist" *ngFor="let user of users" (click)="onSelect(user)">
-              <div class="adm"><span *ngIf="user.admin" class="alert"> <img class="inlineicon" title="admin"
-                    src="assets/svg/wrench.svg"></span></div>
-              <div class="uemail">{{user.email}}</div>
-              <div class="uname">{{user.name}}</div>
+    <div>
+      <h5 *ngIf="isEditing">
+        <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
+        <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
+      </h5>
+      <ng-container *ngIf="!isEditing">
+        <div id="userlist" class="multiplist2 users m-t-10">
+          <!-- <input id="searchbox1" placeholder="Search Users" [(ngModel)]="searchUser" i18n-placeholder /> -->
+          <div class="userlist" *ngFor="let user of users" (click)="onSelect(user)">
+            <div class="adm">
+              <span *ngIf="user.admin" class="alert">
+                <img class="inlineicon" title="admin" src="assets/svg/wrench.svg">
+              </span>
             </div>
+            <div class="uemail">{{user.email}}</div>
+            <div class="uname">{{user.name}}</div>
           </div>
         </div>
       </ng-container>

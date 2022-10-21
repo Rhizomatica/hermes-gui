@@ -156,6 +156,9 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSelect(user): void {
+    if(!this.isadmin)
+        return
+        
     this.selectedUser = user;
     this.isEditing = true;
     this.emptyUser = false;
