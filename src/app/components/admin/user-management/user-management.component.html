@@ -37,7 +37,7 @@
       <span i18n>email</span>: {{selectedUser.email}}@{{system && system.domain}}
       <label for="name">
         <span i18n="@@name">full name</span>:
-        <input name="name" [(ngModel)]="selectedUser.name" i18n="@@mwyn" required placeholder="write your full name" />
+        <input name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" />
       </label>
       <label>
         <span i18n="@@phonenumber">phone number</span>:

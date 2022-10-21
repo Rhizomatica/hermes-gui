@@ -7,7 +7,7 @@
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required>
-            <button type="submit" (click)="sendPassword(message.id,e)">submit</button>
+            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">submit</button>
         </form>
     </div>
     <!--
