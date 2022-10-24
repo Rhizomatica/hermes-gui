@@ -59,8 +59,8 @@
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
 
-          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
-            #fileCamUpload>
+          <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
+            #fileCamUpload> -->
           <!-- <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
             i18n="@@camfile">camera</button> -->
           <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
