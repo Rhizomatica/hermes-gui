@@ -236,7 +236,7 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
         this.message = res;
         this.deleteMessage = false;
-        this.location.back()
+        window.open('/messages', '_self')
       },
       (err) => {
         this.error = err;
