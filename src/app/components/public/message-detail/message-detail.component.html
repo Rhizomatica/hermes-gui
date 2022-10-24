@@ -57,7 +57,7 @@
             <img title="edit" src="assets/svg/edit.svg">
             <span i18n="@@compose1"> Compose</span>
         </button> -->
-        <button (click)="showDelete()">
+        <button (click)="showDelete(message)">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
                 Delete
@@ -83,10 +83,10 @@
                 </a>
             </div>
             <div class="icon">
-                <a routerLink='/messages' routerLinkActive="active">
+                <!-- <a routerLink='/messages' routerLinkActive="none"> -->
                     <img title="confirm" src="assets/svg/trash-alt.svg">
                     <button (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
-                </a>
+                <!-- </a> -->
             </div>
         </div>
     </div>

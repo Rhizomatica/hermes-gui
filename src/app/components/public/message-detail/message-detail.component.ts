@@ -38,6 +38,7 @@ export class MessageDetailComponent implements OnInit {
   allowhmp = 'root';
   serverConfig: any;
   deleteMessage = false;
+  selectedMessage: Message
   errorAlert = false
 
   constructor(
@@ -223,7 +224,8 @@ export class MessageDetailComponent implements OnInit {
     return this.allowCompose;
   }
 
-  showDelete() {
+  showDelete(message) {
+    this.selectedMessage = message
     if (this.deleteMessage) {
       this.deleteMessage = false;
     } else {
@@ -236,12 +238,15 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
         this.message = res;
         this.deleteMessage = false;
-        window.open('/messages', '_self')
+        // window.open('/messages', '_self')
+        this.selectedMessage = null
+        history.back()
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
         this.deleteMessage = false;
+        this.selectedMessage = null
       }
     );
   }
