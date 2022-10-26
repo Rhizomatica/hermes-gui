@@ -100,16 +100,11 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
-        if (this.message.text === '') {
-          this.noMessage = true;
-        } else {
-          this.noMessage = false;
-        }
-
         if (this.message.file === '') {
           this.noImage = true;
         } else {
           switch (this.message.mimetype) {
+            //TODO - Separar (levar para utils)
             case '':
               this.noImage = true;
               this.isAudio = false;
