@@ -889,9 +889,7 @@ input:checked+.slider:before {
 }
 
 .multiplist3 {
-  display: block;
-  min-height: 2em;
-  overflow-y: scroll;
+  min-height: 1.5em;
   border: 1px solid #888;
   list-style: none;
   list-style-position: inside;
@@ -2210,7 +2208,10 @@ input[type=range]:hover::-ms-track {
   }
 
   .multiplist3 {
+    display: flex;
+    flex-direction: column;
     font-size: 0.9em;
+    width: 100%;
   }
 
   .radio {
@@ -2220,7 +2221,9 @@ input[type=range]:hover::-ms-track {
   .formfield {
     padding: 0.5em;
     top: 4em;
-    margin-bottom: 4em
+    margin-bottom: 4em;
+    height: fit-content;
+    margin-bottom: 1.5em;
   }
 
   .topuser {
