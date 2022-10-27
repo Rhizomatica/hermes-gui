@@ -197,7 +197,9 @@ export class GatewayConfigComponent implements OnInit {
         this.getSchedules();
       }, (err) => {
         this.error = err
-        this.errorAlert = true;
+        this.errorAlert = true
+        this.loading = false
+        this.errorAlert = true
       }
     );
     this.isEditing = false;
