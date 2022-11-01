@@ -188,8 +188,8 @@ export class GatewayConfigComponent implements OnInit {
 
     f.value.stations = this.enabledStations;
 
-    if (!f.value.enable) {
-      f.value.enable = 0
+    if (!f.value.enable || f.value.enable == 0) {
+      f.value.enable = false
     }
 
     await this.apiService.createSchedule(f.value).subscribe(
