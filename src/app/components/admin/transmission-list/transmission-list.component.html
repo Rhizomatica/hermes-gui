@@ -43,7 +43,7 @@
                 <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
                   (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
             </a>
-            <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
+            <span>{{job.time}} {{job.date}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
           </div>
           <div class="info">
             <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
