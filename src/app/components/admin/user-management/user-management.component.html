@@ -85,7 +85,7 @@
       <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
         [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
         <span *ngIf="selectedUser.email !== 'root'">
-          <button class="m-l-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
+          <button class="m-l-10 m-t-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
             user</button>
         </span>
       <div class="overall" *ngIf="deleteUser">
