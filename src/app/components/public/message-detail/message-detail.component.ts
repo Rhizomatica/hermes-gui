@@ -40,6 +40,7 @@ export class MessageDetailComponent implements OnInit {
   deleteMessage = false;
   selectedMessage: Message
   errorAlert = false
+  loading = false
 
   constructor(
     private route: ActivatedRoute,
@@ -94,6 +95,7 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getMessage(): void {
+    this.loading = true
     const id = +this.route.snapshot.paramMap.get('id');
     const file = +this.route.snapshot.paramMap.get('file');
     const mime = '';
@@ -143,36 +145,31 @@ export class MessageDetailComponent implements OnInit {
               this.isImage = false;
           }
         }
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noMessage = true;
+        this.loading = false
       }
     );
   }
 
   getMessageImage(): void {
+    this.loading = true
     const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessageImage(id).subscribe(
       (res: any) => {
         this.messageImage = res;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noImage = true;
+        this.loading = false
       }
     );
-  }
-
-  getImageFromService() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessageImage(id).subscribe(
-      data => {
-        this.messageImage = data;
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      });
   }
 
   getSysConfig(): void {
@@ -229,12 +226,14 @@ export class MessageDetailComponent implements OnInit {
   }
 
   deleteThisMessage() {
+    this.deleteMessage = false
+    this.loading = true
     this.messageService.deleteMessage(this.message.id).subscribe(
       (res: any) => {
         this.message = res;
         this.deleteMessage = false;
-        // window.open('/messages', '_self')
         this.selectedMessage = null
+        this.loading = false
         history.back()
       },
       (err) => {
@@ -242,6 +241,7 @@ export class MessageDetailComponent implements OnInit {
         this.errorAlert = true;
         this.deleteMessage = false;
         this.selectedMessage = null
+        this.loading = false
       }
     );
   }
@@ -254,7 +254,6 @@ export class MessageDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getMessage();
     this.getSysConfig();
-    // this.getImageFromService();
   }
 
 }

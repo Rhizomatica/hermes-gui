@@ -1,4 +1,6 @@
 <!-- <div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div> -->
+<loading [loading]="loading"></loading>
+
 <div *ngIf="message" class="messages">
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
