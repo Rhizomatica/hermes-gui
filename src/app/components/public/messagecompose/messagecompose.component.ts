@@ -268,10 +268,10 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   removeFile() {
-    const file = null;
     this.fileName = '';
     this.file = null;
     this.fileSelected = false;
+    this.isEncrypted = false
     return this.file;
   }
 

@@ -112,20 +112,9 @@
         </div>
       </div>
       <span></span>
-      <div *ngIf="isEncrypted">
-        <!-- TODO - USAR MESMO NGIF -->
-        <div *ngIf="passMatch" class="m-t-10">
-          <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
-            message<br />
-          </button>
-        </div>
-        <div *ngIf="!passMatch" class="m-t-10">
-          <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
-          </button>
-        </div>
-      </div>
-      <div *ngIf="!isEncrypted" class="m-t-10">
-        <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
+      <div class="m-t-10">
+        <button type="submit" (click)="sendMessage(f)"
+          [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">send
           message<br />
         </button>
       </div>
