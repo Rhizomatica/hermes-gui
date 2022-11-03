@@ -52,23 +52,29 @@ export class TransmissionListComponent implements OnInit {
   // }
 
   cancelTransmission(host, id): void {
+    this.loading = true
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
 
   cancelMail(host, id): void {
+    this.loading = true
     this.uucpService.cancelMail(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
