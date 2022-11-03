@@ -105,10 +105,10 @@ export class TransmissionListComponent implements OnInit {
 
   transmitNow(): void {
     this.closeOveralTransmission()
-    this.loading = true
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
         this.getMessages()
+        this.jobToForce = null
       },
       (err) => {
         this.error = err;
