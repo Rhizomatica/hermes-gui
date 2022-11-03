@@ -23,36 +23,43 @@
   <div *ngIf="isadmin">
     <div class="flexible">
       <h2 i18n="@@transmissionlistt">Transmission list</h2>
-      <div class="flex-right">
-        <!-- <button *ngIf="isadmin" (click)="confTransmit()">
-                    <span i18n="@@transmitnow">force transmission</span> <img class="inlineiconlink" title="cancel"
-                        src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
-                </button> -->
-      </div>
     </div>
-    <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ getQueueSize() }} B</p>
+    <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ queueSize }} B</p>
     <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
     <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
-    <div class="queue messages">
+    <div class="queue messages m-t-25">
       <div class="multiplist1">
         <div *ngFor="let job of queue | filter:searchMessages" class="item">
           <div class="maininfo">
             <a>
-              <span *ngIf="isadmin"><img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg"
+              <span *ngIf="isadmin">
+                <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg"
                   *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
                 <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
-                  (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"></span>
+                  (click)="cancelTransmission(job.uuidhost,job.uuiduucp)">
+              </span>
             </a>
-            <span> {{job.date}} {{job.time}} <span i18n="@@destisizet">size:</span> {{job.size}} B </span>
+            <div class="row">
+              <span>{{job.time}} {{job.date}} </span>
+            </div>
           </div>
           <div class="info">
-            <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
-            <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
-            <span> <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}</span>
-            <span>
-              <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
-              <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
-            </span>
+            <div class="row">
+              <span>
+                <img class="inlineiconj" src="assets/svg/envelope.svg" *ngIf="job.type!=='HMP'">
+                <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
+              </span>
+              <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
+              <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
+            </div>
+            <div class="row">
+              <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}
+            </div>
+            <div class="row">
+              <span i18n="@@destisizet">size:</span> {{job.size}} B
+            </div>
+          </div>
+          <div class="row-reverse">
             <button *ngIf="isadmin" (click)="confTransmit(job)">
               <span i18n="@@transmitnow">force</span> <img class="inlineiconlink" title="cancel"
                 src="assets/svg/arrow-right.svg" [hidden]="!isadmin">

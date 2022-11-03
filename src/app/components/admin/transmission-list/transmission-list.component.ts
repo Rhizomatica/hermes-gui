@@ -33,6 +33,7 @@ export class TransmissionListComponent implements OnInit {
   transList = false;
   loading = true;
   jobToForce: UUCPQueue
+  queueSize = 0
 
   constructor(
     private messageService: MessageService,
@@ -103,14 +104,17 @@ export class TransmissionListComponent implements OnInit {
   }
 
   transmitNow(): void {
+    this.closeOveralTransmission()
+    this.loading = true
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
-        this.confirmTransmit = false;
+        this.getMessages()
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
         this.confirmTransmit = false;
+        this.loading = false
       }
     );
   }
@@ -119,7 +123,7 @@ export class TransmissionListComponent implements OnInit {
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
-        this.loading = false
+        this.getQueue()
       },
       (err) => {
         this.error = err;
@@ -129,7 +133,7 @@ export class TransmissionListComponent implements OnInit {
     );
   }
 
-  closeOveralTransmission(){
+  closeOveralTransmission() {
     this.confirmTransmit = false
   }
 
@@ -142,31 +146,29 @@ export class TransmissionListComponent implements OnInit {
           this.queue = null
         } else {
           this.noQueue = false;
+          this.getQueueSize()
         }
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noUUcp = true;
+        this.loading = false
       }
     );
   }
 
   getQueueSize() {
-    if (this.queue) {
-      if (this.queue.length === 0) {
-        let soma = 0;
-        for (let i = 0; i < Object.keys(this.queue).length; i++) {
-          soma += parseInt(this.queue[i].size);
-        }
-        return soma;
+    if (this.queue && this.queue.length > 0) {
+      for (let i = 0; i < Object.keys(this.queue).length; i++) {
+        this.queueSize += parseInt(this.queue[i].size);
       }
     }
   }
 
   ngOnInit(): void {
+    this.loading = true
     this.getMessages();
-    this.getQueue();
-    this.getQueueSize();
     this.isadmin = this.currentUser.admin;
   }
 }

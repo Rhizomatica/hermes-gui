@@ -11,7 +11,7 @@ export interface Message {
     content: string;
 }
 
-@Injectable()
+// @Injectable()
 export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;

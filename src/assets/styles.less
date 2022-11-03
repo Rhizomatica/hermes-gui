@@ -354,6 +354,8 @@ textarea {
   position: relative;
   min-height: 100vh;
   padding-bottom: 2em;
+  // overflow: hidden;
+  height: fit-content;
 }
 
 .footer {
@@ -425,7 +427,7 @@ textarea {
 .switch {
   position: relative;
   display: inline-block;
-  width: 48px;
+  width: 44px;
   height: 23px;
   border-radius: 15px;
   background-color: #727272;
@@ -887,9 +889,7 @@ input:checked+.slider:before {
 }
 
 .multiplist3 {
-  display: block;
-  min-height: 2em;
-  overflow-y: scroll;
+  min-height: 1.5em;
   border: 1px solid #888;
   list-style: none;
   list-style-position: inside;
@@ -1056,11 +1056,12 @@ input.searchbox2 {
   }
 
   .item {
-    line-height: 1.2em;
+    line-height: 1.5em;
     margin: 0.1em 0.1em 0.2em;
     position: relative;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
   }
 
   .item:last-child {
@@ -1151,7 +1152,7 @@ button:disabled {
   width: 1.2em;
   position: relative;
   top: 0.2em;
-  margin: 0 1em;
+  margin-right: 0.5em;
   filter: invert(27%) brightness(200%);
 }
 
@@ -1368,18 +1369,18 @@ input.ng-invalid {
 }
 
 .dark-mode {
-  // ::-webkit-scrollbar {
-  //     width: 12px;
-  // }
-
-  // ::-webkit-scrollbar-track {
-  //     -webkit-box-shadow: inset 0 0 6px     @mclr;
-  // }
-
-  // ::-webkit-scrollbar-thumb {
-  //     // border-radius: 10px;
-  //     -webkit-box-shadow: inset 0 0 1.8px     @bkclr;
-  // }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ccc;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ccc;
+  }
 
   a:visited {
     color: @bkclr;
@@ -1478,9 +1479,7 @@ input.ng-invalid {
 
 
   .formfield {
-
-    top: 6em;
-
+   
     #searchbox1 {
       background-color: @mclr;
       border: 1px solid #666;
@@ -1896,6 +1895,12 @@ input[type=range]:hover::-ms-track {
   width: 100%;
 }
 
+.row-reverse{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .float-right {
   display: inline;
   float: right;
@@ -2208,7 +2213,10 @@ input[type=range]:hover::-ms-track {
   }
 
   .multiplist3 {
+    display: flex;
+    flex-direction: column;
     font-size: 0.9em;
+    width: 100%;
   }
 
   .radio {
@@ -2216,20 +2224,13 @@ input[type=range]:hover::-ms-track {
   }
 
   .formfield {
-    padding: 0.5em;
+    padding: 0.5em 0.5em 5em 0.5em;
     top: 4em;
-    margin-bottom: 4em
+    height: fit-content;
   }
 
   .topuser {
     display: none;
-  }
-
-  .dark-mode {
-    .formfield {
-      top: 4em;
-      padding: 0.5em;
-    }
   }
 
   .logo-link {

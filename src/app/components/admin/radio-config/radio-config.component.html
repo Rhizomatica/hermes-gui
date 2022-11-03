@@ -8,11 +8,9 @@
   <div>
     <form *ngIf="radio">
       <div class="flexible">
-        <div class="card {{ connected }}">
+        <div class="card {{ radio.connection === true ? 'connected' : 'disconnected' }}">
           <div class="row">
             <h3>
-              <span i18n="@@statusconfig"> Status</span>
-              <br />
               <span *ngIf="radio.connection">
                 <span i18n="@@conectedr">Connected</span>
               </span>

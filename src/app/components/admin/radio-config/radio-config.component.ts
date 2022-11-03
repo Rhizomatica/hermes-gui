@@ -113,6 +113,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.getRadioPttswr().subscribe(
       (res: any) => {
         this.power = res;
+        this.radio.connection = this.power.connection
         this.radio.swr = this.power.swr;
         this.radio.swr_str = this.power.swr.toString();
         this.radio.tx = this.power.tx;

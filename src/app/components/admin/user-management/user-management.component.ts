@@ -36,6 +36,7 @@ export class UserManagementComponent implements OnInit {
   showPassword = false;
   loading = true
   flagAdmin = false
+  fullNameEmpty = false
 
   constructor(
     private userService: UserService,
@@ -78,6 +79,11 @@ export class UserManagementComponent implements OnInit {
         this.passMatch = true;
         this.passMin = false;
         this.passunMatch = false;
+
+        if(passwd.length < 6){
+          this.passMin = true
+        }
+
       } else {
         this.passMatch = false;
         this.passMin = false;
@@ -87,6 +93,10 @@ export class UserManagementComponent implements OnInit {
       this.passMin = true;
       this.passunMatch = false;
     }
+  }
+
+  checkFullName(fullName){
+    this.fullNameEmpty = fullName && fullName.length > 0 ? false : true
   }
 
   closeError() {
@@ -156,6 +166,10 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSelect(user): void {
+    this.selectedUser = null
+    if(!this.isadmin)
+        return
+        
     this.selectedUser = user;
     this.isEditing = true;
     this.emptyUser = false;
@@ -225,7 +239,6 @@ export class UserManagementComponent implements OnInit {
     else
       this.flagAdmin = true
 
-      console.log(this.flagAdmin)
   }
 
   ngOnInit(): void {

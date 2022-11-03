@@ -1,4 +1,6 @@
 <!-- <div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div> -->
+<loading [loading]="loading"></loading>
+
 <div *ngIf="message" class="messages">
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
@@ -7,7 +9,7 @@
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required>
-            <button type="submit" (click)="sendPassword(message.id,e)">submit</button>
+            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">submit</button>
         </form>
     </div>
     <!--
@@ -57,7 +59,7 @@
             <img title="edit" src="assets/svg/edit.svg">
             <span i18n="@@compose1"> Compose</span>
         </button> -->
-        <button (click)="showDelete()">
+        <button (click)="showDelete(message)" [hidden]="currentUser.admin !== 1">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
                 Delete
@@ -83,10 +85,10 @@
                 </a>
             </div>
             <div class="icon">
-                <a routerLink='/messages' routerLinkActive="active">
+                <!-- <a routerLink='/messages' routerLinkActive="none"> -->
                     <img title="confirm" src="assets/svg/trash-alt.svg">
                     <button (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
-                </a>
+                <!-- </a> -->
             </div>
         </div>
     </div>

@@ -38,7 +38,9 @@ export class MessageDetailComponent implements OnInit {
   allowhmp = 'root';
   serverConfig: any;
   deleteMessage = false;
+  selectedMessage: Message
   errorAlert = false
+  loading = false
 
   constructor(
     private route: ActivatedRoute,
@@ -93,22 +95,18 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getMessage(): void {
+    this.loading = true
     const id = +this.route.snapshot.paramMap.get('id');
     const file = +this.route.snapshot.paramMap.get('file');
     const mime = '';
     this.messageService.getMessage(id).subscribe(
       (res: any) => {
         this.message = res;
-        if (this.message.text === '') {
-          this.noMessage = true;
-        } else {
-          this.noMessage = false;
-        }
-
         if (this.message.file === '') {
           this.noImage = true;
         } else {
           switch (this.message.mimetype) {
+            //TODO - Separar (levar para utils)
             case '':
               this.noImage = true;
               this.isAudio = false;
@@ -147,36 +145,31 @@ export class MessageDetailComponent implements OnInit {
               this.isImage = false;
           }
         }
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noMessage = true;
+        this.loading = false
       }
     );
   }
 
   getMessageImage(): void {
+    this.loading = true
     const id = +this.route.snapshot.paramMap.get('id');
     this.messageService.getMessageImage(id).subscribe(
       (res: any) => {
         this.messageImage = res;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noImage = true;
+        this.loading = false
       }
     );
-  }
-
-  getImageFromService() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessageImage(id).subscribe(
-      data => {
-        this.messageImage = data;
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      });
   }
 
   getSysConfig(): void {
@@ -223,7 +216,8 @@ export class MessageDetailComponent implements OnInit {
     return this.allowCompose;
   }
 
-  showDelete() {
+  showDelete(message) {
+    this.selectedMessage = message
     if (this.deleteMessage) {
       this.deleteMessage = false;
     } else {
@@ -232,16 +226,22 @@ export class MessageDetailComponent implements OnInit {
   }
 
   deleteThisMessage() {
+    this.deleteMessage = false
+    this.loading = true
     this.messageService.deleteMessage(this.message.id).subscribe(
       (res: any) => {
         this.message = res;
         this.deleteMessage = false;
-        this.location.back()
+        this.selectedMessage = null
+        this.loading = false
+        history.back()
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
         this.deleteMessage = false;
+        this.selectedMessage = null
+        this.loading = false
       }
     );
   }
@@ -254,7 +254,6 @@ export class MessageDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getMessage();
     this.getSysConfig();
-    // this.getImageFromService();
   }
 
 }
