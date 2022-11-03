@@ -172,6 +172,7 @@ export class UserManagementComponent implements OnInit {
         
     this.selectedUser = user;
     this.isEditing = true;
+    this.showPassword = false
     this.emptyUser = false;
   }
 
