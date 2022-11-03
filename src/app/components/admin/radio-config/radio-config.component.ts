@@ -37,7 +37,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   mode: any;
   led: any;
   protection: any;
-  bypass: any;
   public realValue: number;
   public freqmin = 500;
   public freqmax = 30000;
@@ -63,7 +62,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   rx = false;
   power: any;
   // audio: any;
-  connected: any;
   modeSwitch: boolean;
   loading = true
   gpsMessage: any
@@ -95,13 +93,10 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
-        this.bypass = this.radio.bypass;
         this.refthreshold = this.radio.refthreshold;
         this.radio.fwd_watts = this.radio.fwd_watts;
         this.radio.serial = this.radio.serial;
         this.radio.testTone = this.radio.testtone;
-        this.bypass = this.radio.bypass ? 'ON' : 'OFF'
-        this.connected = this.radio.bypass ? 'connected' : 'disconnected';
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
       },
@@ -116,6 +111,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.getRadioPttswr().subscribe(
       (res: any) => {
         this.power = res;
+        this.radio.connection = this.power.connection
         this.radio.swr = this.power.swr;
         this.radio.swr_str = this.power.swr.toString();
         this.radio.tx = this.power.tx;
