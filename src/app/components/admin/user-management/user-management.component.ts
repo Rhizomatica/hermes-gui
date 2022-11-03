@@ -80,7 +80,7 @@ export class UserManagementComponent implements OnInit {
         this.passMin = false;
         this.passunMatch = false;
 
-        if(passwd.length < 6){
+        if (passwd.length < 6) {
           this.passMin = true
         }
 
@@ -95,7 +95,7 @@ export class UserManagementComponent implements OnInit {
     }
   }
 
-  checkFullName(fullName){
+  checkFullName(fullName) {
     this.fullNameEmpty = fullName && fullName.length > 0 ? false : true
   }
 
@@ -167,9 +167,9 @@ export class UserManagementComponent implements OnInit {
 
   onSelect(user): void {
     this.selectedUser = null
-    if(!this.isadmin)
-        return
-        
+    if (!this.isadmin)
+      return
+
     this.selectedUser = user;
     this.isEditing = true;
     this.showPassword = false
@@ -181,6 +181,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
+    this.loading = true
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -198,6 +199,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSubmitDelete(id: number, email: string): void {
+    this.loading = true
     this.userService.deleteUser(id, email).subscribe(
       (res: any) => {
         this.users = res;
@@ -235,7 +237,7 @@ export class UserManagementComponent implements OnInit {
   changeAdmin($event: Event) {
     $event.preventDefault()
 
-    if(this.flagAdmin)
+    if (this.flagAdmin)
       this.flagAdmin = false
     else
       this.flagAdmin = true
