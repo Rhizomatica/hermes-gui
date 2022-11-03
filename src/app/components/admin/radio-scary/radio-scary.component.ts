@@ -29,7 +29,7 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
   mode: any;
   led: any;
   protection: any;
-  bypass: any;
+  connection: any;
   public realValue: number;
   public freqmin = 500;
   public freqmax = 30000;
@@ -75,12 +75,12 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
         this.mode = this.radio.mode;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
-        this.bypass = this.radio.bypass;
+        this.connection = this.radio.connection;
         this.refthreshold = this.radio.refthreshold;
         this.radio.fwd_watts = this.radio.fwd_watts;
         this.radio.serial = this.radio.serial;
         this.radio.testTone = this.radio.testtone;
-        this.bypass = this.radio.bypass ? 'ON' : 'OFF'
+        this.connection = this.radio.connection ? 'ON' : 'OFF'
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
       },
@@ -101,14 +101,14 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
         this.radio.led = this.power.led;
         this.led = this.power.led;
         this.radio.protection = this.power.protection;
-        this.radio.bypass = this.power.bypass;
+        this.radio.connection = this.power.connection;
         this.radio.fwd_watts = this.power.fwd_watts;
         this.radio.fwd_raw = this.power.fwd_raw;
         this.radio.fwd_volts = this.power.fwd_volts;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
         this.radio.ref_watts = this.power.ref_watts;
-        this.bypass = this.radio.bypass ? true : false
+        this.connection = this.radio.connection ? true : false
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
       },
@@ -245,11 +245,11 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
     );
   }
 
-  changeByPass(f: NgForm) {
-    this.radioService.setRadioBypass(f.value.bypass).subscribe(
+  changeConnected(f: NgForm) {
+    this.radioService.setRadioConnected(f.value.connection).subscribe(
       (res: any) => {
         this.res = res;
-        this.radio.bypass = res;
+        this.radio.connection = res;
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
