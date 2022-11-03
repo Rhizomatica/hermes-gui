@@ -272,7 +272,7 @@ nav {
     min-width: calc(17% - 0.25em);
     text-align: center;
   }
-
+  
   img {
     width: 2.3em;
     clear: both;
@@ -298,6 +298,10 @@ nav {
 
 
 nav a:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+nav a:active {
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
@@ -1422,6 +1426,10 @@ input.ng-invalid {
     .flag img {
       filter: invert(0);
       width: 50%;
+    }
+
+    a:active {
+      filter: invert(27%) sepia(51%) saturate(3078%) hue-rotate(330deg) brightness(110%) contrast(100%);
     }
   }
 
