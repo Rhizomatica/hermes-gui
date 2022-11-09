@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LogComponent } from './log.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('LogComponent', () => {
   let component: LogComponent;
@@ -8,9 +8,10 @@ describe('LogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogComponent ]
+      declarations: [LogComponent],
+      imports: [HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

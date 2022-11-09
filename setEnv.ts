@@ -12,7 +12,8 @@ const envConfigFile = `export const environment = {
    production: '${process.env.PRODUCTION}',
    radioRemoteUrl: '${process.env.RADIO_REMOTE_URL}',
    webSocketUrl: '${process.env.WEBSOCKET_URL}',
-   radioRemoteWSUrl: '${process.env.RADIO_REMOTE_WS_URL}'
+   radioRemoteWSUrl: '${process.env.RADIO_REMOTE_WS_URL}',
+   hasGPS: '${process.env.HAS_GPS}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

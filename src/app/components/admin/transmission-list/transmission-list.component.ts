@@ -33,6 +33,7 @@ export class TransmissionListComponent implements OnInit {
   transList = false;
   loading = true;
   jobToForce: UUCPQueue
+  queueSize = 0
 
   constructor(
     private messageService: MessageService,
@@ -51,23 +52,29 @@ export class TransmissionListComponent implements OnInit {
   // }
 
   cancelTransmission(host, id): void {
+    this.loading = true
     this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
 
   cancelMail(host, id): void {
+    this.loading = true
     this.uucpService.cancelMail(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
@@ -103,13 +110,17 @@ export class TransmissionListComponent implements OnInit {
   }
 
   transmitNow(): void {
-    this.uucpService.callSystem(this.jobToForce).subscribe(
+    this.closeOveralTransmission()
+    this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
-        this.confirmTransmit = false;
+        this.getMessages()
+        this.jobToForce = null
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.confirmTransmit = false;
+        this.loading = false
       }
     );
   }
@@ -118,7 +129,7 @@ export class TransmissionListComponent implements OnInit {
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
         this.sentMessages = res;
-        this.loading = false
+        this.getQueue()
       },
       (err) => {
         this.error = err;
@@ -128,39 +139,42 @@ export class TransmissionListComponent implements OnInit {
     );
   }
 
+  closeOveralTransmission() {
+    this.confirmTransmit = false
+  }
+
   getQueue(): void {
     this.uucpService.getQueue().subscribe(
       res => {
         this.queue = res;
         if (Object.keys(this.queue).length == 0) {
           this.noQueue = true;
+          this.queue = null
         } else {
           this.noQueue = false;
+          this.getQueueSize()
         }
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.noUUcp = true;
+        this.loading = false
       }
     );
   }
 
   getQueueSize() {
-    if (this.queue) {
-      if (this.queue !== []) {
-        let soma = 0;
-        for (let i = 0; i < Object.keys(this.queue).length; i++) {
-          soma += parseInt(this.queue[i].size);
-        }
-        return soma;
+    if (this.queue && this.queue.length > 0) {
+      for (let i = 0; i < Object.keys(this.queue).length; i++) {
+        this.queueSize += parseInt(this.queue[i].size);
       }
     }
   }
 
   ngOnInit(): void {
+    this.loading = true
     this.getMessages();
-    this.getQueue();
-    this.getQueueSize();
     this.isadmin = this.currentUser.admin;
   }
 }

@@ -36,6 +36,7 @@ export class UserManagementComponent implements OnInit {
   showPassword = false;
   loading = true
   flagAdmin = false
+  fullNameEmpty = false
 
   constructor(
     private userService: UserService,
@@ -78,6 +79,11 @@ export class UserManagementComponent implements OnInit {
         this.passMatch = true;
         this.passMin = false;
         this.passunMatch = false;
+
+        if (passwd.length < 6) {
+          this.passMin = true
+        }
+
       } else {
         this.passMatch = false;
         this.passMin = false;
@@ -87,6 +93,10 @@ export class UserManagementComponent implements OnInit {
       this.passMin = true;
       this.passunMatch = false;
     }
+  }
+
+  checkFullName(fullName) {
+    this.fullNameEmpty = fullName && fullName.length > 0 ? false : true
   }
 
   closeError() {
@@ -156,8 +166,13 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSelect(user): void {
+    this.selectedUser = null
+    if (!this.isadmin)
+      return
+
     this.selectedUser = user;
     this.isEditing = true;
+    this.showPassword = false
     this.emptyUser = false;
   }
 
@@ -166,6 +181,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSubmitUpdate(id: number, f: NgForm): void {
+    this.loading = true
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         this.users = res;
@@ -183,6 +199,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   onSubmitDelete(id: number, email: string): void {
+    this.loading = true
     this.userService.deleteUser(id, email).subscribe(
       (res: any) => {
         this.users = res;
@@ -220,12 +237,11 @@ export class UserManagementComponent implements OnInit {
   changeAdmin($event: Event) {
     $event.preventDefault()
 
-    if(this.flagAdmin)
+    if (this.flagAdmin)
       this.flagAdmin = false
     else
       this.flagAdmin = true
 
-      console.log(this.flagAdmin)
   }
 
   ngOnInit(): void {

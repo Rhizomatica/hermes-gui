@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Message } from '../../../interfaces/message';
 import { MessageService } from '../../../_services/message.service';
@@ -7,6 +7,7 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-messagecompose',
@@ -50,12 +51,23 @@ export class MessagecomposeComponent implements OnInit {
   public allowCompose = false;
   public camPicture: any;
   public loading = true
+  public mobile: any
+  public webCamDesktop = false
+  public WIDTH = 640;
+  public HEIGHT = 480;
+
+  @ViewChild("canvas")
+  public canvas: ElementRef;
+
+  @ViewChild("video")
+  public video: ElementRef;
 
   constructor(
     private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private router: Router) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -150,6 +162,62 @@ export class MessagecomposeComponent implements OnInit {
     this.onFileSelected(e)
   }
 
+  async openWebCamDesktop() {
+    this.webCamDesktop = true
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+        if (stream) {
+          this.video.nativeElement.srcObject = stream;
+          this.video.nativeElement.play();
+          this.error = null;
+        }
+        //  else {
+        //   this.error = "You have no output video device";
+        // }
+      } catch (e) {
+        this.error = e;
+      }
+    }
+  }
+
+  isMobile() {
+    return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
+  }
+
+  capture(e) {
+    this.drawImageToCanvas(this.video.nativeElement)
+    this.dataURItoBlob(this.canvas.nativeElement.toDataURL("image/png"));
+    this.fileSelected = true
+  }
+
+  dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+      byteString = atob(dataURI.split(',')[1]);
+    else
+      byteString = unescape(dataURI.split(',')[1]);
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    this.file = new Blob([ia], { type: mimeString }) //TODO - formato da imagem com problema para envio
+    this.fileName = window.URL.createObjectURL(this.file)
+  }
+
+  drawImageToCanvas(image: any) {
+    this.canvas.nativeElement
+      .getContext("2d")
+      .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
+  }
+
   audFileSelected(event: any) {
     if (event.target.files && event.target.files[0]) {
       const audSrc = URL.createObjectURL(event.target.files[0]);
@@ -200,10 +268,10 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   removeFile() {
-    const file = null;
     this.fileName = '';
     this.file = null;
     this.fileSelected = false;
+    this.isEncrypted = false
     return this.file;
   }
 
@@ -253,6 +321,7 @@ export class MessagecomposeComponent implements OnInit {
         this.file = [];
         this.fileName = '';
         this.loading = false;
+        this.router.navigate(['/sent']);
       },
       (err) => {
         this.errormsg = err;
@@ -266,6 +335,9 @@ export class MessagecomposeComponent implements OnInit {
     this.errorAlert = false;
   }
 
+  closeWebCamDesktop() {
+    this.webCamDesktop = false
+  }
   // TODO check to remove
   newMessage() {
     // this.router.navigate(['/compose']);
@@ -334,6 +406,7 @@ export class MessagecomposeComponent implements OnInit {
       mimetype: ''
     };
 
+    this.mobile = this.isMobile()
     this.getSysConfig();
     this.getSystemStatus();
     this.isEncrypted = false;

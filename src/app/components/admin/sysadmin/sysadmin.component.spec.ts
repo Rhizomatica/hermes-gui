@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SysadminComponent } from './sysadmin.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SysadminComponent', () => {
   let component: SysadminComponent;
@@ -8,7 +8,8 @@ describe('SysadminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SysadminComponent ]
+      declarations: [ SysadminComponent ],
+      imports:[HttpClientModule]
     })
     .compileComponents();
   });

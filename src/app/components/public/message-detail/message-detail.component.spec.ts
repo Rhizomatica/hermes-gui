@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MessageDetailComponent } from './message-detail.component';
-
-import { Message } from '../../message';
+import { Message } from '../../../interfaces/message';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('MessageDetailComponent', () => {
   let component: MessageDetailComponent;
@@ -10,9 +9,10 @@ describe('MessageDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessageDetailComponent ]
+      declarations: [MessageDetailComponent],
+      imports: [HttpClientModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

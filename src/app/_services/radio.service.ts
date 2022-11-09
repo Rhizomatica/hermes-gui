@@ -175,8 +175,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioBypass(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/bypass/${value}`;
+  public setRadioConnected(value: string): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/connection/${value}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -222,7 +222,7 @@ export class RadioService {
 
   public gpsStartCalibration(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/calibration`;
-    return this.http.post(url, null).pipe(
+    return this.http.get(url).pipe(
       map((res: any) => {
         return res;
       }),

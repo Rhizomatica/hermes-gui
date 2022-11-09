@@ -38,7 +38,7 @@ export class UUCPService{
   }
 
   cancelTransmission(uuhost, id): Observable<UUCPQueue[]> {
-    const url = `${GlobalConstants.apiURL}/sys/uuk/${uuhost}/${id}`; 
+    const url = `${GlobalConstants.apiURL}/sys/uuk/${uuhost}/${id}`;
     return this.http.delete(url).pipe(
       map((res: any) => {
         this.queue = res;
@@ -48,7 +48,7 @@ export class UUCPService{
   }
 
   cancelMail(uuhost, id): Observable<UUCPQueue[]> {
-    const url = `${GlobalConstants.apiURL}/sys/mail/${uuhost}/${id}`; 
+    const url = `${GlobalConstants.apiURL}/sys/mail/${uuhost}/${id}`;
     return this.http.delete(url).pipe(
       map((res: any) => {
         this.queue = res;
@@ -66,8 +66,8 @@ export class UUCPService{
       catchError(this.handleError));
   }
 
-  callSystem(uucp): Observable<UUCPQueue[]> {
-    const url = `${GlobalConstants.apiURL}/sys/uucall/${uucp}`; //TODO - pode ser só id?
+  callSystem(uuidhost): Observable<UUCPQueue[]> {
+    const url = `${GlobalConstants.apiURL}/sys/uucall/${uuidhost}`;
     return this.http.get(url).pipe(
       map((res: any) => {
         return this.queue;

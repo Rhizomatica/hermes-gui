@@ -101,7 +101,7 @@
 
   <loading [loading]="loading"></loading>
 
-  <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
+  <footer [ngClass]="fullStats ? 'footer big' : 'footer'">
     <ng-container *ngIf="system">
       <div class="dr">
         <div class="drb" (click)="onToggle('HR')"></div>
@@ -110,7 +110,7 @@
         <div class="float-right m-r-10" *ngIf="deferredPrompt">
           <button (click)="installPWA()">Install > </button>
         </div>
-        Version: 2.0 |
+        Version: 2.1 |
         <span i18n="stationa">Station:</span> {{system.name}}
         <span *ngIf="currentUser">
           <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>

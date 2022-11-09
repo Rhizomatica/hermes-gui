@@ -1,20 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RadioComponent } from './radio.component';
+import { HttpClientModule } from '@angular/common/http';
 
-import { RadioConfigComponent } from './radio.component';
-
-describe('RadioConfigComponent', () => {
-  let component: RadioConfigComponent;
-  let fixture: ComponentFixture<RadioConfigComponent>;
+describe('RadioComponent', () => {
+  let component: RadioComponent;
+  let fixture: ComponentFixture<RadioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadioConfigComponent ]
+      declarations: [ RadioComponent ],
+      imports:[
+        HttpClientModule
+      ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadioConfigComponent);
+    fixture = TestBed.createComponent(RadioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

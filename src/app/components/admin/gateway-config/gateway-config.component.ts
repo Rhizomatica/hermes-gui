@@ -184,10 +184,12 @@ export class GatewayConfigComponent implements OnInit {
   }
 
   async createSchedule(f: NgForm): Promise<void> {
+    this.loading = true
+
     f.value.stations = this.enabledStations;
 
-    if (!f.value.enable) {
-      f.value.enable = 0
+    if (!f.value.enable || f.value.enable == 0) {
+      f.value.enable = false
     }
 
     await this.apiService.createSchedule(f.value).subscribe(
@@ -195,7 +197,9 @@ export class GatewayConfigComponent implements OnInit {
         this.getSchedules();
       }, (err) => {
         this.error = err
-        this.errorAlert = true;
+        this.errorAlert = true
+        this.loading = false
+        this.errorAlert = true
       }
     );
     this.isEditing = false;

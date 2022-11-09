@@ -1,4 +1,6 @@
-<div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div>
+<!-- <div class="alert" i18n="nomessage" *ngIf="noMessage">Alert: cannot access this message<br /></div> -->
+<loading [loading]="loading"></loading>
+
 <div *ngIf="message" class="messages">
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
@@ -7,19 +9,18 @@
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required>
-            <button type="submit" (click)="sendPassword(message.id,e)">submit</button>
+            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">submit</button>
         </form>
     </div>
     <!--
     <div class="blobber">
         <div class="tx">decoding message...</div>
-        <div class="square"></div>
+      <div class="square"></div>
     </div>
     -->
     <div class="date"></div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
-        <hr>
         <div *ngIf="message.file">
             <span i18n="@@File">File: </span>
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
@@ -41,7 +42,6 @@
                     </audio>
                 </div>
             </a>
-            <hr>
             <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->
         </div>
     </div>
@@ -54,14 +54,13 @@
             <p class="msgid">Id: {{message.id}}</p>
         </small>
     </div>
-    <hr>
-    <div class="flex" *ngIf="allowCompose">
+    <div class="flex m-t-25" *ngIf="allowCompose">
         <!-- <button routerLink="/compose">
             <img title="edit" src="assets/svg/edit.svg">
             <span i18n="@@compose1"> Compose</span>
         </button> -->
-        <button (click)="showDelete()">
-            <span i18n>
+        <button (click)="showDelete(message)" [hidden]="currentUser.admin !== 1">
+            <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
                 Delete
             </span>
@@ -86,10 +85,10 @@
                 </a>
             </div>
             <div class="icon">
-                <a routerLink='/messages' routerLinkActive="active">
+                <!-- <a routerLink='/messages' routerLinkActive="none"> -->
                     <img title="confirm" src="assets/svg/trash-alt.svg">
                     <button (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
-                </a>
+                <!-- </a> -->
             </div>
         </div>
     </div>
