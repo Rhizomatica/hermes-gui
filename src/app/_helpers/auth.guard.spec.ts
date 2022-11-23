@@ -7,12 +7,13 @@ describe('AuthGuard', () => {
   let guard: AuthGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ]
+    });
     guard = TestBed.inject(AuthGuard);
-    imports: [
-      RouterTestingModule,
-      HttpClientModule
-    ]
   });
 
   it('should be created', () => {
