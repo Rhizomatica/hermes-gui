@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
 
 
   submitLogin(formlogin: NgForm): void {
-    this.authenticationService.login(formlogin.value.email, e.value.password).subscribe(
+    this.authenticationService.login(formlogin.value.email, formlogin.value.password).subscribe(
       (res: any) => {
         this.res = res;
         this.wrong = false;
