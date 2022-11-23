@@ -1,6 +1,5 @@
 <div class=" login formdata">
   <h2 i18n="@@e_mail">E-mail</h2>
-  <form #f="ngForm" id="loginform" novalidate>
     <button>
       <img class="round icon" src="assets/svg/roundcubelogo.svg">
       <a href="/mail/" target="_blank">Webmail</a>
@@ -8,7 +7,6 @@
     <button class="m-l-10" (click)="showlinks()" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png"
         class="delta icon">deltachat<br>
     </button>
-  </form>
   <div *ngIf="linksOn">
     <hr>
     <p i18n="@@todownload">To download deltachat click on one of the links below: </p>
