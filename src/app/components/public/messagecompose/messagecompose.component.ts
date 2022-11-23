@@ -7,6 +7,7 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-messagecompose',
@@ -66,7 +67,8 @@ export class MessagecomposeComponent implements OnInit {
     private messageService: MessageService,
     private apiService: ApiService,
     private stationService: StationService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private router: Router) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -277,10 +279,11 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   removeFile() {
-    const file = null;
     this.fileName = '';
     this.file = null;
     this.fileSelected = false;
+    this.isEncrypted = false
+    return this.file;
   }
 
   async sendMessage(f: NgForm): Promise<void> {
@@ -329,6 +332,7 @@ export class MessagecomposeComponent implements OnInit {
         this.file = [];
         this.fileName = '';
         this.loading = false;
+        this.router.navigate(['/sent']);
       },
       (err) => {
         this.errormsg = err;

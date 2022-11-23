@@ -106,40 +106,12 @@
         </div>
       </div>
       <span></span>
-      <div *ngIf="isEncrypted">
-        <!-- TODO - USAR MESMO NGIF -->
-        <div *ngIf="passMatch" class="m-t-10">
-          <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
-            message<br />
-            <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-          </button>
-        </div>
-        <div *ngIf="!passMatch" class="m-t-10">
-          <button type="submit" (click)="sendMessage(f)" disabled i18n="@@sendmessage">send message<br />
-            <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
-          </button>
-        </div>
-      </div>
-      <div *ngIf="!isEncrypted" class="m-t-10">
-        <button type="submit" (click)="sendMessage(f)" [disabled]="dest && name" i18n="@@sendmessage">send
+      <div class="m-t-10">
+        <button type="submit" (click)="sendMessage(f)"
+          [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">send
           message<br />
           <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
         </button>
-      </div>
-    </div>
-    <div class="overall alert" [hidden]="fileIsProcessing==false">
-      <div class="cv">
-        <span i18n="@@yourmessageprocessed0">Your message is been processed <br /><br /></span>
-        <div class="icon"><a (click)="newMessage()">
-            <img title="compose" src="assets/svg/edit.svg"><button i18n="@@compose2">compose</button></a>
-        </div>
-        <div class="icon"><a routerLink='/messages' routerLinkActive="active">
-            <img title="help" src="assets/svg/comment.svg"><button i18n="@@messagesbtn">messages</button></a>
-        </div>
-        <div class="icon"><a routerLink='/sent' routerLinkActive="active">
-            <img title="sent" src="assets/svg/cloud-upload-alt-solid.svg"><button i18n="@@sentmessagesbtn">sent
-              messages</button></a>
-        </div>
       </div>
     </div>
     <div class="overall alert" [hidden]="errorAlert==false">

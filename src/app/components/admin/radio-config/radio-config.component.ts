@@ -23,12 +23,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   public radio: any = [];
   error: Error;
   alterFreq = false;
-  // alterSet = false;
   confirmSet = false;
   res: any;
   ptt: any;
-  // bfo: any;
-  // mastercal: any;
   freq: any;
   frek: any;
   realfreq: any;
@@ -37,7 +34,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   mode: any;
   led: any;
   protection: any;
-  bypass: any;
   public realValue: number;
   public freqmin = 500;
   public freqmax = 30000;
@@ -52,8 +48,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   public max = 300000000;
   public intervallTimer = interval(900);
   private subscription;
-  // fwdw: any;
-  // fwd_raw: any;
   fwd_watts: any;
   fwd_volts: any;
   ref_raw: any;
@@ -62,8 +56,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   tx = false;
   rx = false;
   power: any;
-  // audio: any;
-  connected: any;
   modeSwitch: boolean;
   loading = true
   gpsMessage: any
@@ -95,13 +87,11 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
         this.led = this.radio.led;
         this.protection = this.radio.protection;
-        this.bypass = this.radio.bypass;
+        // this.connection = this.radio.connection;
         this.refthreshold = this.radio.refthreshold;
         this.radio.fwd_watts = this.radio.fwd_watts;
         this.radio.serial = this.radio.serial;
         this.radio.testTone = this.radio.testtone;
-        this.bypass = this.radio.bypass ? 'ON' : 'OFF'
-        this.connected = this.radio.bypass ? 'connected' : 'disconnected';
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
       },
@@ -116,20 +106,18 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.radioService.getRadioPttswr().subscribe(
       (res: any) => {
         this.power = res;
+        this.radio.connection = this.power.connection
         this.radio.swr = this.power.swr;
         this.radio.swr_str = this.power.swr.toString();
         this.radio.tx = this.power.tx;
         this.radio.led = this.power.led;
         this.led = this.power.led;
         this.radio.protection = this.power.protection;
-        this.radio.bypass = this.power.bypass;
         this.radio.fwd_watts = this.power.fwd_watts;
-        // this.radio.fwd_raw = this.power.fwd_raw;
         this.radio.fwd_volts = this.power.fwd_volts;
         this.radio.ref_volts = this.power.ref_volts;
         this.radio.ref_raw = this.power.ref_raw;
         this.radio.ref_watts = this.power.ref_watts;
-        // this.bypass = this.radio.bypass ? true : false
         this.ptt = this.radio.tx ? 'ON' : 'OFF'
         this.loading = false
         return res;
@@ -219,27 +207,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.alterFreq = this.alterFreq ? false : true
   }
 
-  // changeRadioFreqMode(f: NgForm) {
-  //   this.radioService.setRadioFreq(f.value.freq).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.freq = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-
-  //   this.radioService.setRadioMode(f.value.mode).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
-
   changeFrequency(f: NgForm) {
     this.loading = true
     const realfreq = f.value.frek * 1000;
@@ -269,42 +236,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     );
   }
 
-  // changeBfo(f: NgForm) {
-  //   this.radioService.setRadioBfo(f.value.bfo).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.bfo = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
-
-  // changeMasterCall(f: NgForm) {
-  //   this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.mastercal = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
-
-  // changeByPass(f: NgForm) {
-  //   this.radioService.setRadioBypass(f.value.bypass).subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.bypass = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
-
   changeRefThreshold(f: NgForm) {
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
       (res: any) => {
@@ -326,30 +257,12 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   }
 
   screenSet() {
-    // if (this.alterSet === false) {
-    // this.alterSet = true;
     if (this.confirmSet) {
       this.confirmSet = false;
     } else {
       this.confirmSet = true;
     }
   }
-  // else {
-  // this.alterSet = false;
-  // }
-  // }
-
-  // setDefaults() {
-  //   this.radioService.radioSetDefaults().subscribe(
-  //     (res: any) => {
-  //       this.res = res;
-  //       this.radio.refthreshold = res;
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     }
-  //   );
-  // }
 
   resetProtection() {
     this.radioService.radioResetProtection().subscribe(
