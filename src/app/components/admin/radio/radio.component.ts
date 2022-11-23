@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { DecimalPipe } from '@angular/common'
 import { AuthenticationService } from '../../../_services/authentication.service'
 import { User } from '../../../interfaces/user'
@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser'
   providers: [DecimalPipe],
 })
 
-export class RadioComponent implements OnInit, OnDestroy {
+export class RadioComponent implements OnInit {
   public radio: any = []
   error: Error;
   errorAlert: false
@@ -24,7 +24,8 @@ export class RadioComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private sanitizer: DomSanitizer) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
-    this.isAdmin = this.currentUser.admin
+    if(this.currentUser)
+      this.isAdmin = this.currentUser.admin
   }
 
   closeError() {
@@ -33,9 +34,6 @@ export class RadioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.radioRemoteUrl = this.sanitizer.bypassSecurityTrustResourceUrl(GlobalConstants.radioRemoteUrl)
-  }
-
-  ngOnDestroy() {
   }
 }
 
