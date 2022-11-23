@@ -150,8 +150,12 @@ export class AppComponent implements OnInit {
     // Impede que o mini-infobar apareça em mobile
     e.preventDefault();
     this.deferredPrompt = e;
-    // this.showInstallPromotion();
+    this.showInstallPromotion();
     console.log(`'beforeinstallprompt' event was fired.`);
+  }
+
+  showInstallPromotion(){
+    console.log("deferred" + this.deferredPrompt)
   }
 
   installPWA(): void{
