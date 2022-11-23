@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../app/_helpers/auth.guard';
 import { LandingComponent } from './components/public/landing/landing.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
@@ -58,7 +59,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 
 export class AppRoutingModule { }
