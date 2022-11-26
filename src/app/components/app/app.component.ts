@@ -159,6 +159,7 @@ export class AppComponent implements OnInit {
   }
 
   installPWA(): void{
+    this.showInstallPromotion();
     this.deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
     this.deferredPrompt.userChoice
@@ -184,7 +185,6 @@ export class AppComponent implements OnInit {
       // hideInstallPromotion();
       // Limpar o deferredPrompt para que seja coletado
       this.deferredPrompt = null;
-      // Opcionalmente, enviar evento de analytics para indicar instalação com sucesso
       console.log('PWA was installed');
     });
   }

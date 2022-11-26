@@ -89,7 +89,7 @@ registerLocaleData(localePt);
     Ng2SearchPipeModule,
     AngularFileUploaderModule,
     NgSelectModule,
-    ServiceWorkerModule.register('ngsw-sw.js', {
+    ServiceWorkerModule.register('ngsw-worker.js', {
       // enabled: Boolean(environment.production),
       enabled: Boolean(true),
 
