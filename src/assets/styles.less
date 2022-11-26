@@ -1250,7 +1250,6 @@ input.ng-invalid {
   display: inline-block;
 }
 
-
 .blobber {
   width: calc(100% - 1em);
   height: 50px;
@@ -1317,6 +1316,20 @@ input.ng-invalid {
 
 .messageAudio {
   width: 100%;
+}
+
+.Blink {
+    animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+@keyframes blinker {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes blobber {

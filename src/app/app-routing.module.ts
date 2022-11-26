@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../app/_helpers/auth.guard';
 import { LandingComponent } from './components/public/landing/landing.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
@@ -23,6 +24,8 @@ import { TransmissionListComponent } from './components/admin/transmission-list/
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
+import { PlayerComponent } from './components/utils/player/player.component';
+import { RecorderComponent } from './components/utils/recorder/recorder.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -50,11 +53,14 @@ const routes: Routes = [
   { path: 'switch', component: SwitchComponent },
   { path: 'scary', component: RadioScaryComponent },
   { path: 'loading', component: LoadingComponent },
+  { path: 'player', component: PlayerComponent },
+  { path: 'recorder', component: RecorderComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 
 export class AppRoutingModule { }

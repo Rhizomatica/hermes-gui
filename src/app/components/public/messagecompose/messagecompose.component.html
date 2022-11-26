@@ -53,26 +53,20 @@
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>
+          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
+          <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
-          <p i18n="@@nofile">{{fileName || "no file selected"}}</p>
-
+          <p i18n="@@nofile" class="fileName">{{fileName || "no file selected"}}</p>
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-
-          <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
-            #fileCamUpload> -->
-          <!-- <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
-            i18n="@@camfile">camera</button> -->
-          <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
-            i18n="@@camfile">camera</button> -->
-
-          <button *ngIf="fileSelected" (click)="removeFile()" i18n="@@remfile">remove file</button>
-
-          <!-- <audio #figAudio>
-                        <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
-                        <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
-                        <source [src]="audSrc | sanitizerUrl" type="audio/wav">
-                </audio> -->
+          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
+          #fileCamUpload>
+          <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
+          i18n="@@camfile">camera</button>
+          <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
+          i18n="@@camfile">camera</button> 
+          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button>
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove file</button>
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -80,7 +74,7 @@
             </div>
           </div>
         </ng-container>
-        <div *ngIf="message.id && message.file">
+        <div *ngIf="message && message.id && message.file">
           <br>
           <span>{{message.file}} </span>
           <br>
@@ -116,6 +110,7 @@
         <button type="submit" (click)="sendMessage(f)"
           [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">send
           message<br />
+          <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
         </button>
       </div>
     </div>
@@ -131,18 +126,29 @@
     <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
       Your message was sent to the transmission list
     </div>
+
+    <div class="overall alert" *ngIf="audioRecorderOverall">
+      <div class="cv">
+        <recorder [file]="url" [maxSize]="maxSize" [fileName]="fileName" [fileSelected]="fileSelected"
+        (emitteFileOP)="addFileItemEmitted($event)"></recorder>    
+        
+        <div class="icon m-t-25"><a (click)="closeaudioRecorder()">
+            <img title="close" src="assets/svg/x.svg"></a>
+        </div>
+      </div>
+    </div>
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
-        <div class="icon">
-          <button i18n="@@Capture" (click)="capture($event)">Capture</button>
-        </div>
         <div class="icon">
           <a (click)="closeWebCamDesktop()">
             <img title="close" src="assets/svg/x.svg">
           </a>
         </div>
-        <video class="m-t-100" width="680" height="480" #video></video>
+        <video class="m-t-50" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
+        <div>
+          <button i18n="@@Capture" (click)="capture($event)">Capture</button>
+        </div>
       </div>
     </div>
   </form>

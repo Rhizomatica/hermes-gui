@@ -175,6 +175,7 @@ export class TransmissionListComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true
     this.getMessages();
-    this.isadmin = this.currentUser.admin;
+    if(this.currentUser)
+      this.isadmin = this.currentUser.admin;
   }
 }

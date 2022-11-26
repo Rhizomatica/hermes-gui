@@ -55,6 +55,7 @@ export class MessagecomposeComponent implements OnInit {
   public webCamDesktop = false
   public WIDTH = 640;
   public HEIGHT = 480;
+  public audioRecorderOverall = false
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -164,6 +165,7 @@ export class MessagecomposeComponent implements OnInit {
 
   async openWebCamDesktop() {
     this.webCamDesktop = true
+    this.dataURItoBlob(this.canvas.nativeElement.toDataURL("image/png"));
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       try {
@@ -174,6 +176,13 @@ export class MessagecomposeComponent implements OnInit {
           this.video.nativeElement.srcObject = stream;
           this.video.nativeElement.play();
           this.error = null;
+          var base_image = new Image();
+          base_image.src = "../assets/svg/smile-regular.svg";
+
+          base_image.onload = () => {
+            this.drawImageToCanvas(base_image)
+          }
+      
         }
         //  else {
         //   this.error = "You have no output video device";
@@ -208,13 +217,15 @@ export class MessagecomposeComponent implements OnInit {
     for (var i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
-    this.file = new Blob([ia], { type: mimeString }) //TODO - formato da imagem com problema para envio
+
+     //TODO - formato da imagem com problema para envio
+     //TODO - Já seta so de abrir a webcam não deveria setar (usar outra variavel?)
+    this.file = new Blob([ia], { type: mimeString })
     this.fileName = window.URL.createObjectURL(this.file)
   }
 
   drawImageToCanvas(image: any) {
-    this.canvas.nativeElement
-      .getContext("2d")
+    this.canvas.nativeElement.getContext('2d')
       .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
   }
 
@@ -287,7 +298,7 @@ export class MessagecomposeComponent implements OnInit {
       f.value.dest = arr;
     }
     // File exists?
-    if (this.file != null && this.file !== []) {
+    if (this.file) {
       await this.messageService.postFile(this.file, f.value.pass).then(
         (value: any) => {
           f.value.file = value['filename']; // gona change  to this default instead of image
@@ -355,7 +366,6 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-
   checkpwd(passwd, repasswd) {
     if (passwd) {
       if (passwd === repasswd) {
@@ -385,6 +395,31 @@ export class MessagecomposeComponent implements OnInit {
     };
 
     allSelect(items);
+  }
+
+  audioRecorder() {
+    this.audioRecorderOverall = true
+  }
+
+  closeaudioRecorder() {
+    this.audioRecorderOverall = false
+  }
+
+  addFileItemEmitted(event) {
+    this.file = event
+    if (this.file) {
+      this.fileSelected = true;
+      this.fileName = URL.createObjectURL(this.file)
+      return
+    }
+
+    this.errorCallback
+  }
+
+  errorCallback(error) {
+    this.audioRecorderOverall = false
+    this.errorAlert = true
+    this.errormsg = 'Can not play audio in your browser';
   }
 
   // TODO double check start params on inbox
