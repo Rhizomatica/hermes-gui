@@ -56,6 +56,10 @@
     </nav>
 
     <div class="formfield">
+      <div class="language m-b-10" (click)="installPWA()" *ngIf="deferredPrompt">
+        <img title="install" src="assets/svg/material icons/arrow_circle_down-24px.svg" />
+        <span i18n="@installhermesappng">Install HERMES APP </span>
+      </div>
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
         <hr>
@@ -90,11 +94,14 @@
     </div>
     <div class="overall" *ngIf="changeLanguage">
       <div class="cv">
-          <nav class="flags">
-            <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages" src="assets/svg/brasil.svg">Português</a>
-            <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages" src="assets/svg/espanha.svg">Español</a>
-            <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages" src="assets/svg/reino-unido.svg">English</a>
-          </nav>
+        <nav class="flags">
+          <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages"
+              src="assets/svg/brasil.svg">Português</a>
+          <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages"
+              src="assets/svg/espanha.svg">Español</a>
+          <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages"
+              src="assets/svg/reino-unido.svg">English</a>
+        </nav>
       </div>
     </div>
   </div>
@@ -107,9 +114,6 @@
         <div class="drb" (click)="onToggle('HR')"></div>
       </div>
       <span class="footerinfo">
-        <div class="float-right m-r-10" *ngIf="deferredPrompt">
-          <button (click)="installPWA()">Install > </button>
-        </div>
         Version: 2.1 |
         <span i18n="stationa">Station:</span> {{system.name}}
         <span *ngIf="currentUser">
@@ -135,11 +139,28 @@
           &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
           &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
         </div>
-        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and files</span>
+        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and
+          files</span>
       </span>
     </ng-container>
     <span *ngIf="!system" i18n="@@stationoffline">
       Hermes station offline <figure class="redcircle"></figure>
     </span>
   </footer>
+
+  <div class="overall alert" *ngIf="installPromotion">
+    <div class="cv">
+      <span i18n="@@installappmsg">Do you like install HERMES APP?<br /><br /></span>
+      <div class="icon">
+        <a (click)="closeInstallapp()">
+          <img title="close" src="assets/svg/x.svg">
+        </a>
+      </div>
+      <div class="row">
+        <a (click)="installPWA()">
+          Install
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

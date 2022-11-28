@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   loading = true;
   changeLanguage = false
   deferredPrompt: any
+  installPromotion: boolean = false
 
   title = 'hermes.radio';
   constructor(
@@ -150,16 +151,22 @@ export class AppComponent implements OnInit {
     // Impede que o mini-infobar apareça em mobile
     e.preventDefault();
     this.deferredPrompt = e;
-    this.showInstallPromotion();
+    if(!this.deferredPrompt){
+      this.showInstallPromotion();
+    }
     console.log(`'beforeinstallprompt' event was fired.`);
   }
 
   showInstallPromotion(){
     console.log("deferred" + this.deferredPrompt)
+    this.installPromotion = true
+  }
+
+  closeInstallapp(){
+    this.installPromotion = false
   }
 
   installPWA(): void{
-    this.showInstallPromotion();
     this.deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
     this.deferredPrompt.userChoice
@@ -173,6 +180,12 @@ export class AppComponent implements OnInit {
       });
   }
 
+  hideInstallPromotion(){
+    if(!this.deferredPrompt){
+      this.deferredPrompt = null;
+    }
+  }
+
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
@@ -182,7 +195,7 @@ export class AppComponent implements OnInit {
 
     window.addEventListener('appinstalled', () => {
       // Esconder a promoção de instalação fornecida pela app
-      // hideInstallPromotion();
+      this.hideInstallPromotion();
       // Limpar o deferredPrompt para que seja coletado
       this.deferredPrompt = null;
       console.log('PWA was installed');
