@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br />
+    <div class="alert" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio transmission<br />
     </div>
     <hr>
     <b i18n="@@currentschedules">Current Schedules:</b>

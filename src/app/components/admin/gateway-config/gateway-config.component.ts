@@ -19,7 +19,6 @@ export class GatewayConfigComponent implements OnInit {
   enabled = true;
   error = Error;
   errorAlert = false;
-  noSchedules = true;
   isEditing = false;
   selectedSchedule: any;
   schedules: any;
@@ -143,14 +142,16 @@ export class GatewayConfigComponent implements OnInit {
   public getSchedules(): void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
-        this.schedules = res;
-        this.noSchedules = false;
-        this.enabledStations = this.schedules[0].stations;
-        this.deftitle = this.schedules[0].title;
-        this.defstart = this.schedules[0].starttime;
-        this.defstop = this.schedules[0].stoptime;
-        this.defenable = this.schedules[0].enable;
-        this.defid = this.schedules[0].id;
+        if (res.length > 0) {
+          this.schedules = res;
+          this.enabledStations = this.schedules[0].stations;
+          this.deftitle = this.schedules[0].title;
+          this.defstart = this.schedules[0].starttime;
+          this.defstop = this.schedules[0].stoptime;
+          this.defenable = this.schedules[0].enable;
+          this.defid = this.schedules[0].id;
+        }
+        
         this.loading = false
         return res;
       },
@@ -250,5 +251,5 @@ export class GatewayConfigComponent implements OnInit {
       this.isAdmin = false;
     }
   }
-  
+
 }
