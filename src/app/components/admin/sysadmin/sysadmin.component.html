@@ -195,6 +195,18 @@
             </div>
         </div>
     </div>
+    <div class="overall alert" *ngIf="alertBrowserXP">
+        <div class="cv">
+            <span i18n="@@alertbrowserxp">
+                To a better HERMES experience use the chromium/chrome browser
+            </span>
+            <div class="icon">
+                <a (click)="closeBrowserAlert()">
+                    <img title="compose" src="assets/svg/x.svg">
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 <div *ngIf="loginForm">
     <div *ngIf="!currentUser">
