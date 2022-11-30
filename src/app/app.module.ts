@@ -3,7 +3,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { LandingComponent } from './components/public/landing/landing.component';
-import { StationsComponent } from './components/admin/stations/stations.component';
+// import { StationsComponent } from './components/admin/stations/stations.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
@@ -53,7 +53,7 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     LandingComponent,
-    StationsComponent,
+    // StationsComponent,
     MessagesComponent,
     MessageDetailComponent,
     SysadminComponent,

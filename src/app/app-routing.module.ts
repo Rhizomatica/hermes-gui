@@ -4,7 +4,7 @@ import { AuthGuard } from '../app/_helpers/auth.guard';
 import { LandingComponent } from './components/public/landing/landing.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
-import { StationsComponent } from './components/admin/stations/stations.component';
+// import { StationsComponent } from './components/admin/stations/stations.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'admin', component: SysadminComponent },
-  { path: 'stations', component: StationsComponent },
+  // { path: 'stations', component: StationsComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
   { path: 'usermanage', component: UserManagementComponent },
