@@ -41,14 +41,14 @@
                 <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
                 <p i18n="@@initialtime">Start transmission hour: </p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
-                    [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required
-                    value="selectedSchedule.starttime" />
+                    [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" required
+                    value="selectedSchedule.starttime" pattern="[0-9]{2}:[0-9]{2}" step="60"/>
             </label>
             <label>
                 <p i18n="@@finatime" class="m-t-10">Stop transmission hour:</p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time"
-                    name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime"
-                    value="selectedSchedule.stoptime" required />
+                    name="stoptime" id="stoptime" [(ngModel)]="selectedSchedule.stoptime"
+                    value="selectedSchedule.stoptime" required pattern="[0-9]{2}:[0-9]{2}" step="60"/>
                 <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than
                     start time</p>
             </label>
