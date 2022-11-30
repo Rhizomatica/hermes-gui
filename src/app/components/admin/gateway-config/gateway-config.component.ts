@@ -85,7 +85,6 @@ export class GatewayConfigComponent implements OnInit {
 
   updateSchedule(id: number, f: NgForm): void {
     this.loading = true
-    f.value.stations = this.enabledStations;
     this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
         this.stations = res;
@@ -98,13 +97,14 @@ export class GatewayConfigComponent implements OnInit {
     );
   }
 
-  selectStations(ev) {
-    if (ev.target.checked == true) {
-      if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
-    } else {
-      this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
-    }
-  }
+  // selectStations(ev) {
+  //   if (ev.target.checked == true) {
+  //     if (this.enabledStations.includes(ev.target.value) === false) 
+  //       this.enabledStations.push(ev.target.value);
+  //   } else {
+  //     this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
+  //   }
+  // }
 
   async updateStations(id: number, f: NgForm): Promise<void> {
     this.updateAlert = false;
@@ -113,6 +113,7 @@ export class GatewayConfigComponent implements OnInit {
     f.value.starttime = this.defstart;
     f.value.stoptime = this.defstop;
     f.value.enable = this.defenable;
+
     await this.apiService.updateSchedule(id, f.value).subscribe(
       (data: any) => {
         this.stations = data;
@@ -124,6 +125,8 @@ export class GatewayConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     );
+
+
     this.stationedit = false;
   }
 
@@ -151,7 +154,7 @@ export class GatewayConfigComponent implements OnInit {
           this.defenable = this.schedules[0].enable;
           this.defid = this.schedules[0].id;
         }
-        
+
         this.loading = false
         return res;
       },

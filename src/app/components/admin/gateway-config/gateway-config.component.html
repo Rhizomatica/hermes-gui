@@ -36,7 +36,7 @@
         <hr>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
-                <p i18n="@@schedtitle">Schedule Title</p>
+                <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
                 <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
                 <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
                 <p i18n="@@initialtime">Start transmission hour: </p>
@@ -45,7 +45,7 @@
                     value="selectedSchedule.starttime" />
             </label>
             <label>
-                <p i18n="@@finatime">Stop transmission hour:</p>
+                <p i18n="@@finatime" class="m-t-10">Stop transmission hour:</p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time"
                     name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime"
                     value="selectedSchedule.stoptime" required />
@@ -53,15 +53,13 @@
                     start time</p>
             </label>
 
-            <span i18n="@@selectstationsgw" class="space">select station:</span><br>
+            <p i18n="@@selectstationsgw" class="m-t-10">
+                Select station:
+            </p>
             <ng-container *ngIf="stations" class="m-t-10">
-                <select name="dest" [(ngModel)]="message.dest" required>
-                    <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}}</option>
-                </select>
-                <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
-                    [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
-                    [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true
-                    required>
+                <ng-select id="selmult" #getModelValue="ngModel" name="stations" [selectableGroup]="true" [items]="stations"
+                    bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false"
+                    [closeOnSelect]="false" [(ngModel)]="schedules.stations" multiple=true required>
                     <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
                         <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
                             [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
