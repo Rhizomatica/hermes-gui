@@ -57,7 +57,7 @@
             <img title="edit" src="assets/svg/edit.svg">
             <span i18n="@@compose1"> Compose</span>
         </button> -->
-        <button (click)="showDelete(message)" [hidden]="currentUser.admin !== 1">
+        <button (click)="showDelete(message)" [hidden]="currentUser.admin === 1">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
                 Delete
