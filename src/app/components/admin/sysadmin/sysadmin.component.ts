@@ -3,6 +3,7 @@ import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
 import { GlobalConstants } from '../../../global-constants';
+import { UtilsService } from '../../../_services/utils.service';
 
 @Component({
   selector: 'app-sysadmin',
@@ -22,10 +23,15 @@ export class SysadminComponent implements OnInit {
   isGateway: false;
   loginForm = false;
   errorAlert = false;
+  alertBrowserXP: Boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    private utils: UtilsService
+    ) {
+      this.checkBrowser(utils.detectBrowserName())
+
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -94,6 +100,15 @@ export class SysadminComponent implements OnInit {
 
   goHamRadioRemote() {
     window.open(GlobalConstants.radioRemoteUrl)
+  }
+
+  checkBrowser(browser){
+    if(browser !== 'chrome')
+      this.alertBrowserXP = true
+  }
+  
+  closeBrowserAlert(){
+    this.alertBrowserXP = false
   }
 
   ngOnInit(): void {

@@ -19,21 +19,13 @@ export class GatewayConfigComponent implements OnInit {
   enabled = true;
   error = Error;
   errorAlert = false;
-  noSchedules = true;
   isEditing = false;
   selectedSchedule: any;
   schedules: any;
   schedule: any;
   emptySchedule = false;
   enabledStations: any;
-  comparedStations: any;
   showSt = false;
-  data: any;
-  deftitle: string;
-  defstart: boolean;
-  defstop: boolean;
-  defenable: boolean;
-  defid: number;
   stationedit = false;
   updateAlert = false;
   canDelete = true;
@@ -85,8 +77,15 @@ export class GatewayConfigComponent implements OnInit {
   }
 
   updateSchedule(id: number, f: NgForm): void {
+
+    if(!f.value.stations){
+      f.value.stations = this.selectedSchedule.stations
+    }
+
+    f.value.starttime += ":00"
+    f.value.stoptime += ":00"
+
     this.loading = true
-    f.value.stations = this.enabledStations;
     this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
         this.stations = res;
@@ -99,43 +98,6 @@ export class GatewayConfigComponent implements OnInit {
     );
   }
 
-  selectStations(ev) {
-    if (ev.target.checked == true) {
-      if (this.enabledStations.includes(ev.target.value) === false) this.enabledStations.push(ev.target.value);
-    } else {
-      this.enabledStations = this.enabledStations.filter(e => e !== ev.target.value);
-    }
-  }
-
-  async updateStations(id: number, f: NgForm): Promise<void> {
-    this.updateAlert = false;
-    f.value.stations = this.enabledStations;
-    f.value.title = this.deftitle;
-    f.value.starttime = this.defstart;
-    f.value.stoptime = this.defstop;
-    f.value.enable = this.defenable;
-    await this.apiService.updateSchedule(id, f.value).subscribe(
-      (data: any) => {
-        this.stations = data;
-        this.getSchedules();
-        this.getSchedule('1');
-        this.getStations();
-      }, (err) => {
-        this.error = err
-        this.errorAlert = true;
-      }
-    );
-    this.stationedit = false;
-  }
-
-  stationChange() {
-    if (this.stationedit === true) {
-      this.stationedit = false
-    } else {
-      this.stationedit = true;
-    }
-  }
-
   confirmChange() {
     this.updateAlert = true;
   }
@@ -143,14 +105,12 @@ export class GatewayConfigComponent implements OnInit {
   public getSchedules(): void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
-        this.schedules = res;
-        this.noSchedules = false;
-        this.enabledStations = this.schedules[0].stations;
-        this.deftitle = this.schedules[0].title;
-        this.defstart = this.schedules[0].starttime;
-        this.defstop = this.schedules[0].stoptime;
-        this.defenable = this.schedules[0].enable;
-        this.defid = this.schedules[0].id;
+        if (res.length > 0) {
+          this.schedules = res;
+          // this.schedules[0].starttime = this.schedules[0].starttime.toString().slice(0, -3)
+          // this.schedules[0].stoptime = this.schedules[0].stoptime.toString().slice(0, -3)         
+        }
+
         this.loading = false
         return res;
       },
@@ -170,6 +130,9 @@ export class GatewayConfigComponent implements OnInit {
 
   async deleteSchedule($id): Promise<void> {
     this.loading = true
+    this.isEditing = false;
+    this.selectedSchedule = [];
+    this.emptySchedule = true;
     if ($id > 1) {
       await this.apiService.deleteSchedule($id).subscribe(
         (data: any) => {
@@ -186,11 +149,12 @@ export class GatewayConfigComponent implements OnInit {
   async createSchedule(f: NgForm): Promise<void> {
     this.loading = true
 
-    f.value.stations = this.enabledStations;
-
     if (!f.value.enable || f.value.enable == 0) {
       f.value.enable = false
     }
+
+    f.value.starttime += ":00"
+    f.value.stoptime += ":00"
 
     await this.apiService.createSchedule(f.value).subscribe(
       (data: any) => {
@@ -202,13 +166,18 @@ export class GatewayConfigComponent implements OnInit {
         this.errorAlert = true
       }
     );
+
     this.isEditing = false;
   }
 
+
+  //TODO - nao esta sendo utilizado
   getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(
       (data: any) => {
         this.schedule = data;
+        this.schedules.starttime = this.schedules.starttime.toString().slice(0, -3)
+        this.schedules.stoptime = this.schedules.stoptime.toString().slice(0, -3)
       },
       (err) => {
         this.error = err;
@@ -229,20 +198,10 @@ export class GatewayConfigComponent implements OnInit {
     }
   }
 
-  showStations() {
-    if (this.showSt === false) {
-      this.showSt = true;
-    }
-    else {
-      this.showSt = false;
-    }
-  }
-
   ngOnInit(): void {
     this.schedules = [];
     this.selectedSchedule = [];
     this.getSchedules();
-    this.getSchedule('1');
     this.getStations();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -250,5 +209,5 @@ export class GatewayConfigComponent implements OnInit {
       this.isAdmin = false;
     }
   }
-  
+
 }

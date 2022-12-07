@@ -272,7 +272,7 @@ nav {
     min-width: calc(17% - 0.25em);
     text-align: center;
   }
-  
+
   img {
     width: 2.3em;
     clear: both;
@@ -1011,7 +1011,7 @@ input.searchbox2 {
   min-height: 8.5em;
   height: calc(100vh - 16em);
 
-  a{
+  a {
     color: #000;
   }
 }
@@ -1250,7 +1250,6 @@ input.ng-invalid {
   display: inline-block;
 }
 
-
 .blobber {
   width: calc(100% - 1em);
   height: 50px;
@@ -1319,6 +1318,20 @@ input.ng-invalid {
   width: 100%;
 }
 
+.Blink {
+  animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes blobber {
   0% {
     left: 0px;
@@ -1373,16 +1386,20 @@ input.ng-invalid {
 }
 
 .dark-mode {
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #ccc;
-    opacity: 1; /* Firefox */
+    opacity: 1;
+    /* Firefox */
   }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
     color: #ccc;
   }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
     color: #ccc;
   }
 
@@ -1487,7 +1504,7 @@ input.ng-invalid {
 
 
   .formfield {
-   
+
     #searchbox1 {
       background-color: @mclr;
       border: 1px solid #666;
@@ -1562,6 +1579,17 @@ input.ng-invalid {
     }
   }
 
+  tr:nth-child(even) {
+    background: @mclr
+  }
+
+  tr:nth-child(odd) {
+    background: rgb(73, 73, 73)
+  }
+
+  .connected {
+    color: #3af773;
+  }
 }
 
 .syspusher {
@@ -1903,7 +1931,7 @@ input[type=range]:hover::-ms-track {
   width: 100%;
 }
 
-.row-reverse{
+.row-reverse {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
@@ -2044,6 +2072,25 @@ input[type=range]:hover::-ms-track {
   height: 90vh;
 }
 
+th,
+td {
+  padding: 15px;
+  // display: block;
+}
+
+tr:nth-child(even) {
+  background: rgb(211, 211, 211)
+}
+
+tr:nth-child(odd) {
+  background: rgb(230, 229, 229)
+}
+
+.connected {
+  color: green;
+}
+
+
 @media (max-width: 700px) {
 
   input,
@@ -2062,6 +2109,50 @@ input[type=range]:hover::-ms-track {
 
   p {
     line-height: 30px;
+  }
+
+  table {
+    border: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: .3em;
+  }
+
+  table td {
+    display: block;
+    font-size: .8em;
+    word-wrap: break-word;
+    padding: 5px;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
   }
 
   nav {
@@ -2257,7 +2348,7 @@ input[type=range]:hover::-ms-track {
       // }
     }
 
-    .info{
+    .info {
       flex-direction: row-reverse;
       // display: none;
       // flex-direction: row;

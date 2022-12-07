@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+// submitTest(f: NgForm): void {
+  //   console.log('⚚ login - submitTest: res: ', f.value);
+  // }
+  import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../_services/authentication.service';
-import { User } from '../../../interfaces/user';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +12,18 @@ import { User } from '../../../interfaces/user';
   styleUrls: ['./login.component.less']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit{
   res = '';
   error = Error;
-  currentUser: User;
   success = false;
   wrong = false;
 
   constructor(private router: Router,
-    private authenticationService: AuthenticationService) {
-    }
+    private authenticationService: AuthenticationService) {}
 
-  submitLogin(f: any): void {
-    this.authenticationService.login(f.value.email, f.value.password).subscribe(
+
+  submitLogin(formlogin: NgForm): void {
+    this.authenticationService.login(formlogin.value.email, formlogin.value.password).subscribe(
       (res: any) => {
         this.res = res;
         this.wrong = false;
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  submitTest(f: any): void {
+  submitTest(f: NgForm): void {
     console.log('⚚ login - submitTest: res: ', f.value);
   }
 
@@ -45,5 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("oioi")
   }
 }

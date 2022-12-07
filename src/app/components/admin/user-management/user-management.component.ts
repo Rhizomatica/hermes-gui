@@ -45,7 +45,8 @@ export class UserManagementComponent implements OnInit {
     private apiService: ApiService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    this.flagAdmin = this.currentUser.admin
+    if(this.currentUser)
+      this.flagAdmin = this.currentUser.admin
   }
 
   getSystemStatus(): void {

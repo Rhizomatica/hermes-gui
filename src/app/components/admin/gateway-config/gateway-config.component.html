@@ -7,7 +7,8 @@
         </div>
     </div>
 
-    <div class="alert" *ngIf="noSchedules" i18n="@@noschedules">There are no schedules for radio transmission<br />
+    <div class="alert" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio
+        transmission<br />
     </div>
     <hr>
     <b i18n="@@currentschedules">Current Schedules:</b>
@@ -17,7 +18,7 @@
                 <div [ngClass]="{'redcircle' : !schedule.enable , 'greencircle' : schedule.enable }" title='enabled'>
                 </div>
             </small>
-            {{schedule.title}} 
+            {{schedule.title}}
             <p>( {{schedule.starttime}} - {{schedule.stoptime}} )</p>
         </li>
     </ul>
@@ -35,22 +36,46 @@
         <hr>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
-                <p i18n="@@schedtitle">Schedule Title</p>
+                <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
                 <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
                 <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
                 <p i18n="@@initialtime">Start transmission hour: </p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
-                    [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" step="5" required
-                    value="selectedSchedule.starttime" />
+                    [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" required
+                    value="selectedSchedule.starttime" pattern="[0-9]{2}:[0-9]{2}" step="60"/>
             </label>
             <label>
-                <p i18n="@@finatime">Stop transmission hour:</p>
+                <p i18n="@@finatime" class="m-t-10">Stop transmission hour:</p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time"
-                    name="stoptime" id="stoptime" step="5" [(ngModel)]="selectedSchedule.stoptime"
-                    value="selectedSchedule.stoptime" required />
+                    name="stoptime" id="stoptime" [(ngModel)]="selectedSchedule.stoptime"
+                    value="selectedSchedule.stoptime" required pattern="[0-9]{2}:[0-9]{2}" step="60"/>
                 <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than
                     start time</p>
             </label>
+
+            <ng-container *ngIf="stations && selectedSchedule.length === 0" class="m-t-10">
+                <p i18n="@@selectstationsgw" class="m-t-10">
+                    Select station:
+                </p>
+                <ng-select id="selmult" #getModelValue="ngModel" name="stations" [selectableGroup]="true" [items]="stations"
+                    bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false"
+                    [closeOnSelect]="false" [(ngModel)]="schedules.stations" multiple=true required>
+                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                            [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                            [ngModelOptions]="{standalone: true}" />{{item.alias}}
+                    </ng-template>
+                </ng-select>
+            </ng-container>
+
+            <div *ngIf="selectedSchedule.stations" class="row m-t-10">
+                <p i18n="@@selectedstations">Selected stations:</p>
+                <i>{{selectedSchedule.stations}}</i>
+            </div>
+
             <label class="m-t-25">
                 <span i18n="@@enable">Enable</span>
                 <div class="switch">

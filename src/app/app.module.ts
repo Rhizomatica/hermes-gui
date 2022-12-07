@@ -3,7 +3,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { LandingComponent } from './components/public/landing/landing.component';
-import { StationsComponent } from './components/admin/stations/stations.component';
+// import { StationsComponent } from './components/admin/stations/stations.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
@@ -41,6 +41,8 @@ import { LoginFormComponent } from './components/public/login-form/login-form.co
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
+import { PlayerComponent } from './components/utils/player/player.component';
+import { RecorderComponent } from './components/utils/recorder/recorder.component';
 
 registerLocaleData(localePt);
 
@@ -51,7 +53,7 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     LandingComponent,
-    StationsComponent,
+    // StationsComponent,
     MessagesComponent,
     MessageDetailComponent,
     SysadminComponent,
@@ -76,7 +78,9 @@ registerLocaleData(localePt);
     LoginFormComponent,
     RadioScaryComponent,
     LoadingComponent,
-    SwitchComponent
+    SwitchComponent,
+    PlayerComponent,
+    RecorderComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,10 @@ export class LanguagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.siteLocale = window.location.pathname.split('/')[1];
-    this.siteLanguage = this.languageList.find(f => f.code === this.siteLocale).label;
+    var currentUrlLanguage = this.languageList.find(f => f.code === this.siteLocale);
+
+    if(currentUrlLanguage){
+      this.siteLanguage = currentUrlLanguage.label
+    }
   }
 }
