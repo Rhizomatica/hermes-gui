@@ -53,10 +53,10 @@
                     start time</p>
             </label>
 
-            <p i18n="@@selectstationsgw" class="m-t-10">
-                Select station:
-            </p>
-            <ng-container *ngIf="stations" class="m-t-10">
+            <ng-container *ngIf="stations && selectedSchedule.length === 0" class="m-t-10">
+                <p i18n="@@selectstationsgw" class="m-t-10">
+                    Select station:
+                </p>
                 <ng-select id="selmult" #getModelValue="ngModel" name="stations" [selectableGroup]="true" [items]="stations"
                     bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias" [selectableGroupAsModel]="false"
                     [closeOnSelect]="false" [(ngModel)]="schedules.stations" multiple=true required>
@@ -70,6 +70,12 @@
                     </ng-template>
                 </ng-select>
             </ng-container>
+
+            <div *ngIf="selectedSchedule.stations" class="row m-t-10">
+                <p>Selected stations:</p>
+                <i>{{selectedSchedule.stations}}</i>
+            </div>
+
             <label class="m-t-25">
                 <span i18n="@@enable">Enable</span>
                 <div class="switch">

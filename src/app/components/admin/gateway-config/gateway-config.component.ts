@@ -99,8 +99,8 @@ export class GatewayConfigComponent implements OnInit {
       (res: any) => {
         if (res.length > 0) {
           this.schedules = res;
-          this.schedules[0].starttime = this.schedules[0].starttime.toString().slice(0, -3)
-          this.schedules[0].stoptime = this.schedules[0].stoptime.toString().slice(0, -3)         
+          // this.schedules[0].starttime = this.schedules[0].starttime.toString().slice(0, -3)
+          // this.schedules[0].stoptime = this.schedules[0].stoptime.toString().slice(0, -3)         
         }
 
         this.loading = false
@@ -122,6 +122,9 @@ export class GatewayConfigComponent implements OnInit {
 
   async deleteSchedule($id): Promise<void> {
     this.loading = true
+    this.isEditing = false;
+    this.selectedSchedule = [];
+    this.emptySchedule = true;
     if ($id > 1) {
       await this.apiService.deleteSchedule($id).subscribe(
         (data: any) => {
@@ -138,11 +141,12 @@ export class GatewayConfigComponent implements OnInit {
   async createSchedule(f: NgForm): Promise<void> {
     this.loading = true
 
-    f.value.stations = this.enabledStations;
-
     if (!f.value.enable || f.value.enable == 0) {
       f.value.enable = false
     }
+
+    f.value.starttime += ":00"
+    f.value.stoptime += ":00"
 
     await this.apiService.createSchedule(f.value).subscribe(
       (data: any) => {
@@ -154,13 +158,18 @@ export class GatewayConfigComponent implements OnInit {
         this.errorAlert = true
       }
     );
+
     this.isEditing = false;
   }
 
+
+  //TODO - nao esta sendo utilizado
   getSchedule($id): void {
     this.apiService.getSchedule($id).subscribe(
       (data: any) => {
         this.schedule = data;
+        this.schedules.starttime = this.schedules.starttime.toString().slice(0, -3)
+        this.schedules.stoptime = this.schedules.stoptime.toString().slice(0, -3)
       },
       (err) => {
         this.error = err;
@@ -173,6 +182,8 @@ export class GatewayConfigComponent implements OnInit {
     this.selectedSchedule = schedule;
     this.isEditing = true;
     this.emptySchedule = false;
+
+    console.log("Selected "+this.selectedSchedule.stations)
 
     if (this.selectedSchedule.id == '1') {
       this.canDelete = false;
