@@ -73,17 +73,17 @@
         </context-group>
       </trans-unit>
       <trans-unit id="selectstationsgw" datatype="html">
-        <source>select station:</source>
+        <source> Select station: </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="selectall" datatype="html">
         <source> Select All</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
@@ -94,39 +94,46 @@
           <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="selectedstations" datatype="html">
+        <source>Selected stations:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="enable" datatype="html">
         <source>Enable</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changetime" datatype="html">
         <source> change scheduling time </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">84,86</context>
+          <context context-type="linenumber">88,90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="newschedule" datatype="html">
         <source> create schedule </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">88,90</context>
+          <context context-type="linenumber">92,94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deletechedule" datatype="html">
         <source> delete schedule </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">93,95</context>
+          <context context-type="linenumber">97,99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="needadm" datatype="html">
         <source>You need admin privileges to access this page</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="uucplog" datatype="html">
@@ -177,10 +184,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio/radio.component.html</context>
           <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">43</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
@@ -731,62 +734,6 @@
           <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="stationsonthisnetwork" datatype="html">
-        <source>Stations on this network</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="names" datatype="html">
-        <source>Name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="aliass" datatype="html">
-        <source>Alias</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="enabledto" datatype="html">
-        <source> Enabled for transmission </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">11,13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="areyousurestations" datatype="html">
-        <source>Are you sure you want to change the list of enabled stations?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="thismaycause" datatype="html">
-        <source>this may cause communication to some stations to stop!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="confirmg" datatype="html">
-        <source>confirm</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cancelg" datatype="html">
-        <source>cancel</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/stations/stations.component.html</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="adminmanage" datatype="html">
         <source> User management </source>
         <context-group purpose="location">
@@ -828,13 +775,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
           <context context-type="linenumber">65,67</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="stations" datatype="html">
-        <source> Stations </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">75,77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="networkadmin" datatype="html">

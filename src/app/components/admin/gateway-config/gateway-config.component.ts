@@ -183,8 +183,6 @@ export class GatewayConfigComponent implements OnInit {
     this.isEditing = true;
     this.emptySchedule = false;
 
-    console.log("Selected "+this.selectedSchedule.stations)
-
     if (this.selectedSchedule.id == '1') {
       this.canDelete = false;
     } else {
