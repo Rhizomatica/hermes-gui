@@ -77,6 +77,14 @@ export class GatewayConfigComponent implements OnInit {
   }
 
   updateSchedule(id: number, f: NgForm): void {
+
+    if(!f.value.stations){
+      f.value.stations = this.selectedSchedule.stations
+    }
+
+    f.value.starttime += ":00"
+    f.value.stoptime += ":00"
+
     this.loading = true
     this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
