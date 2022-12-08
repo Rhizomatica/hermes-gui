@@ -28,7 +28,6 @@ export class GatewayConfigComponent implements OnInit {
   showSt = false;
   stationedit = false;
   updateAlert = false;
-  canDelete = true;
   timeerror = false;
   loading = true;
 
@@ -78,7 +77,7 @@ export class GatewayConfigComponent implements OnInit {
 
   updateSchedule(id: number, f: NgForm): void {
 
-    if(!f.value.stations){
+    if (!f.value.stations) {
       f.value.stations = this.selectedSchedule.stations
     }
 
@@ -133,17 +132,16 @@ export class GatewayConfigComponent implements OnInit {
     this.isEditing = false;
     this.selectedSchedule = [];
     this.emptySchedule = true;
-    if ($id > 1) {
-      await this.apiService.deleteSchedule($id).subscribe(
-        (data: any) => {
-          this.getSchedules();
-        }, (err) => {
-          this.error = err
-          this.errorAlert = true;
-          this.loading = false
-        }
-      );
-    }
+    await this.apiService.deleteSchedule($id).subscribe(
+      (data: any) => {
+        this.getSchedules();
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
+
   }
 
   async createSchedule(f: NgForm): Promise<void> {
@@ -190,12 +188,6 @@ export class GatewayConfigComponent implements OnInit {
     this.selectedSchedule = schedule;
     this.isEditing = true;
     this.emptySchedule = false;
-
-    if (this.selectedSchedule.id == '1') {
-      this.canDelete = false;
-    } else {
-      this.canDelete = true;
-    }
   }
 
   ngOnInit(): void {
