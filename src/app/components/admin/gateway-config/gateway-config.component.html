@@ -11,7 +11,7 @@
     <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio
         transmission<br />
     </div>
-    <ul *ngIf="schedules.length > 0" id="schedulelist" class="multiplist3" ng-model="schedules">
+    <ul *ngIf="schedules.length > 0" id="schedulelist" class="multiplist3" [(ng-model)]="schedules">
         <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">
             <small>
                 <div [ngClass]="{'redcircle' : !schedule.enable , 'greencircle' : schedule.enable }" title='enabled'>
@@ -86,7 +86,7 @@
             <br />
             <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
                 (click)="updateSchedule(selectedSchedule.id, f)">
-                change scheduling time
+                change
             </button>
             <button class="m-l-10" [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button"
                 i18n="@@newschedule" (click)="createSchedule(f)">
