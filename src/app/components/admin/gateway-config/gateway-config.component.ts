@@ -87,8 +87,7 @@ export class GatewayConfigComponent implements OnInit {
     this.loading = true
     this.apiService.updateSchedule(id, f.value).subscribe(
       (res: any) => {
-        this.stations = res;
-        this.getStations();
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;

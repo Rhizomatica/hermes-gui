@@ -37,7 +37,6 @@
             <label>
                 <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
                 <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
-                <p class="alert" *ngIf="!canDelete" i18n="@@cantdeletedef">Can't delete default schedule</p>
                 <p i18n="@@initialtime">Start transmission hour: </p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
                     [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" required
@@ -52,13 +51,13 @@
                     start time</p>
             </label>
 
-            <ng-container *ngIf="stations && selectedSchedule.length === 0" class="m-t-10">
+            <ng-container class="m-t-10">
                 <p i18n="@@selectstationsgw" class="m-t-10">
                     Select station:
                 </p>
                 <ng-select id="selmult" #getModelValue="ngModel" name="stations" [selectableGroup]="true"
                     [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
-                    [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="schedules.stations"
+                    [selectableGroupAsModel]="true" [closeOnSelect]="false" [(ngModel)]="selectedSchedule.stations"
                     multiple=true required>
                     <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
                         <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
@@ -70,11 +69,6 @@
                     </ng-template>
                 </ng-select>
             </ng-container>
-
-            <div *ngIf="selectedSchedule.stations" class="row m-t-10">
-                <p i18n="@@selectedstations">Selected stations:</p>
-                <i>{{selectedSchedule.stations}}</i>
-            </div>
 
             <label class="m-t-25">
                 <span i18n="@@enable">Enable</span>
