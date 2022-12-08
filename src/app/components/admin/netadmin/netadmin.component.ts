@@ -30,7 +30,6 @@ export class NetadminComponent implements OnInit {
       (res: any) => {
         this.system = res
         this.loading = false
-        return res
       },
       (err) => {
         this.error = err
@@ -74,10 +73,12 @@ export class NetadminComponent implements OnInit {
     this.stations.forEach(station => {
       station.checked = false
       this.schedules.forEach(schedule => {
+        if (!schedule.enable)
+          return
+
         schedule.stations.forEach(scheduleStation => {
-          if (scheduleStation === station.alias) {
+          if (scheduleStation === station.alias)
             station.checked = true
-          }
         });
       });
     });
