@@ -78,12 +78,12 @@
 
 <hr class="m-t-25" />
 <h2 i18n="@@stationsonthisnetwork" class="m-t-25">Stations on this network</h2>
-<table style="width:100%">
+<table *ngIf="system" style="width:100%">
   <tr *ngFor="let station of stations">
     <td class="b">{{station.name}}</td>
     <td>{{station.alias}}</td>
-    <!-- <td *ngIf="station.checked" i18n="@@stationenabled" class="b connected">enabled</td>
-    <td *ngIf="!station.checked" i18n="@@stationdisabled">disabled</td> -->
+    <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected">enabled</td>
+    <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled">disabled</td>
   </tr>
 </table>
 

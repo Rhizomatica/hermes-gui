@@ -31,7 +31,6 @@ export class SysadminComponent implements OnInit {
     private utils: UtilsService
     ) {
       this.checkBrowser(utils.detectBrowserName())
-
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -103,8 +102,12 @@ export class SysadminComponent implements OnInit {
   }
 
   checkBrowser(browser){
-    if(browser !== 'chrome')
+    var browserWarning = localStorage.getItem('browserWarning');
+
+    if(browserWarning === null && browser !== 'chrome'){
+      localStorage.setItem('browserWarning', 'true');
       this.alertBrowserXP = true
+    }
   }
   
   closeBrowserAlert(){
