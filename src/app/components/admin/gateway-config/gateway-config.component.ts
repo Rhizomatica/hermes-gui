@@ -104,14 +104,8 @@ export class GatewayConfigComponent implements OnInit {
   public getSchedules(): void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
-        if (res.length > 0) {
-          this.schedules = res;
-          // this.schedules[0].starttime = this.schedules[0].starttime.toString().slice(0, -3)
-          // this.schedules[0].stoptime = this.schedules[0].stoptime.toString().slice(0, -3)         
-        }
-
+        this.schedules = res;
         this.loading = false
-        return res;
       },
       (err) => {
         this.error = err;
