@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit{
     private authenticationService: AuthenticationService) {}
 
 
-  submitLogin(formlogin: NgForm): void {
-    this.authenticationService.login(formlogin.value.email, formlogin.value.password).subscribe(
+  submitLogin(f: NgForm): void {
+    console.log("test" + f.value.email)
+    this.authenticationService.login(f.value.email, f.value.password).subscribe(
       (res: any) => {
         this.res = res;
         this.wrong = false;
@@ -47,6 +48,6 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("oioi")
+    // console.log("oioi")
   }
 }
