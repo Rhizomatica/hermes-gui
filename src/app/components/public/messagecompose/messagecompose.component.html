@@ -29,7 +29,7 @@
       </label>
       <label class="selstation">
         <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-          <span i18n="@@selectstation1" class="space">select station:</span><br>
+          <span i18n="@@selectstation1" class="space">select destiny station:</span><br>
           <br>
           <ng-container *ngIf="stations">
             <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
@@ -56,7 +56,12 @@
           <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
-          <p i18n="@@nofile" class="fileName">{{fileName || "no file selected"}}</p>
+          <p class="fileName" *ngIf="fileName">
+            {{fileName}}
+          </p>
+          <p i18n="@@nofile" class="fileName" *ngIf="!fileName">
+            no file selected
+          </p>
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"

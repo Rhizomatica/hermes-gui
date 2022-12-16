@@ -51,17 +51,17 @@
       <hr>
       <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
       <label *ngIf="showPassword">
-        <span i18n="@@passwordlabeluser">password</span>
+      <span i18n="@@passwordlabeluser">password</span>
         <br />
         <label for="passwd">
-          <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required
-            ii18n-placeholder placeholder="password" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" />
+          <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password" minlength="6"
+            (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderpassword" i18n-placeholder placeholder="password"/>
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword">Retype the password</span>
           <input type="password" [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" />
+            (input)="checkpass(selectedUser.password,repasswd)" 
+            i18n="@@placeholderretypepassword" i18n-placeholder placeholder="retype password"/>
         </label>
         <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
           passwords doesn't match
@@ -90,8 +90,8 @@
         </span>
       <div class="overall" *ngIf="deleteUser">
         <div class="cv">
-          <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br />
-          <span i18n="@@thisactioncannot">this action cannot be undone!</span>
+          <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?<br />
+          <!-- <span i18n="@@thisactioncannot">this action cannot be undone!</span> -->
           <br />
           <button type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
             i18n="@@deleteuser">delete user</button>

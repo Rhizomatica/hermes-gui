@@ -14,40 +14,40 @@ export class EmailComponent implements OnInit {
 
   linksOn = false;
   currentUser: User;
-  users: any;
+  // users: any;
   error = Error;
   errorAlert = false;
-  emailto = [];
+  // emailto = [];
   system: any;
   domain: string;
 
   constructor(
-    private userService: UserService,
+    // private userService: UserService,
     private authenticationService: AuthenticationService,
     private apiService: ApiService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (res: any) => {
-        this.users = res;
-        for (let i = 0; i < Object.keys(this.users).length; i++) {
-          this.users[i].fullmail = this.users[i].email + this.domain;
-        }
-      }), (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      };
-  }
+  // getUsers(): void {
+  //   this.userService.getUsers().subscribe(
+  //     (res: any) => {
+  //       this.users = res;
+  //       for (let i = 0; i < Object.keys(this.users).length; i++) {
+  //         this.users[i].fullmail = this.users[i].email + this.domain;
+  //       }
+  //     }), (err) => {
+  //       this.error = err;
+  //       this.errorAlert = true;
+  //     };
+  // }
 
   getSystemStatus(): void {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
         this.domain = '@' + this.system.domain;
-        this.getUsers();
+        // this.getUsers();
       },
       (err) => {
         this.error = err;
@@ -56,14 +56,14 @@ export class EmailComponent implements OnInit {
     );
   }
 
-  selectAllForDropdownItems(items: any[]) {
-    let allSelect = items => {
-      items.forEach(element => {
-        element['selectedAllGroup'] = 'selectedAllGroup';
-      });
-    };
-    allSelect(items);
-  }
+  // selectAllForDropdownItems(items: any[]) {
+  //   let allSelect = items => {
+  //     items.forEach(element => {
+  //       element['selectedAllGroup'] = 'selectedAllGroup';
+  //     });
+  //   };
+  //   allSelect(items);
+  // }
 
   showlinks() {
     if (this.linksOn == true) {
@@ -78,7 +78,7 @@ export class EmailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    // this.getUsers();
     this.getSystemStatus();
   }
 
