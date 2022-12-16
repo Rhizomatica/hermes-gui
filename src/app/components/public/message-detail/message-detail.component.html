@@ -57,18 +57,18 @@
             <img title="edit" src="assets/svg/edit.svg">
             <span i18n="@@compose1"> Compose</span>
         </button> -->
-        <button (click)="showDelete(message)" [hidden]="currentUser.admin === 1">
+        <button (click)="showDelete(message)" [hidden]="currentUser.admin !== 1">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
                 Delete
             </span>
         </button>
-        <button class="m-l-10" routerLink="/compose">
+        <!-- <button class="m-l-10" routerLink="/compose">
             <span i18n="@@compose1">
                 <img title="compose" src="assets/svg/edit.svg">
                 Compose
             </span>
-        </button>
+        </button> -->
     </div>
 
     <div class="overall alert" *ngIf="deleteMessage">
