@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'usermanage', component: UserManagementComponent },
   { path: 'usermanage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },
+  { path: 'response/:origin', component: MessagecomposeComponent },
   { path: 'netadmin', component: NetadminComponent },
   { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },

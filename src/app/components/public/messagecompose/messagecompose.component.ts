@@ -7,7 +7,7 @@ import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-messagecompose',
@@ -68,7 +68,8 @@ export class MessagecomposeComponent implements OnInit {
     private apiService: ApiService,
     private stationService: StationService,
     private authenticationService: AuthenticationService,
-    private router: Router) {
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -424,6 +425,11 @@ export class MessagecomposeComponent implements OnInit {
 
   // TODO double check start params on inbox
   ngOnInit(): void {
+
+    //TODO - convert to alias
+    // this.selectedStations =
+     console.log(this.activatedRoute.snapshot.paramMap.get("origin"))
+
     this.message = {
       id: null,
       name: '',
