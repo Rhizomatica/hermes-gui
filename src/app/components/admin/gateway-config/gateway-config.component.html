@@ -51,6 +51,10 @@
                     start time</p>
             </label>
 
+            <label>
+                <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
+                value={{frek}}>
+            </label>
             <ng-container class="m-t-10">
                 <p i18n="@@selectstationsgw" class="m-t-10">
                     Select station:
