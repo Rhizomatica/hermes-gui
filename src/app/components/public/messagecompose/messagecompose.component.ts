@@ -426,15 +426,12 @@ export class MessagecomposeComponent implements OnInit {
   // TODO double check start params on inbox
   ngOnInit(): void {
 
-    //TODO - convert to alias
-    // this.selectedStations =
-     console.log(this.activatedRoute.snapshot.paramMap.get("origin"))
 
     this.message = {
       id: null,
       name: '',
       orig: '',
-      dest: [],
+      dest: [this.activatedRoute.snapshot.paramMap.get("origin")],
       text: '',
       file: '',
       fileid: '',
