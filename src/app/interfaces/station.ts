@@ -3,4 +3,5 @@ export interface Station {
   name: string;
   alias: string;
   checked: boolean;
+  frequency: number;
 }
