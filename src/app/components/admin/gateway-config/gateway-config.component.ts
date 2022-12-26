@@ -32,7 +32,7 @@ export class GatewayConfigComponent implements OnInit {
   loading = true;
   public freqmin = 500;
   public freqmax = 30000;
-  frek = 500
+  frequency = 500
 
   constructor(
     private authenticationService: AuthenticationService,
