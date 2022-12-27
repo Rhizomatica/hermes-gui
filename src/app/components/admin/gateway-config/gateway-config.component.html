@@ -60,7 +60,7 @@
                     Select station:
                 </p>
                 <ng-select id="selmult" #getModelValue="ngModel" name="stations" [selectableGroup]="true"
-                    [items]="stations" bindValue="name" groupBy="selectedAllGroup" bindLabel="name"
+                    [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
                     [selectableGroupAsModel]="true" [closeOnSelect]="false" [(ngModel)]="selectedSchedule.stations"
                     multiple=true required>
                     <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
@@ -69,7 +69,7 @@
                     </ng-template>
                     <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
                         <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                            [ngModelOptions]="{standalone: true}" />{{item.name}}
+                            [ngModelOptions]="{standalone: true}" />{{item.alias}}
                     </ng-template>
                 </ng-select>
             </ng-container>

@@ -423,15 +423,19 @@ export class MessagecomposeComponent implements OnInit {
     this.errormsg = 'Can not play audio in your browser';
   }
 
-  // TODO double check start params on inbox
+  getAliasOrigin(originName){
+    if(!originName)
+      return null
+
+    return this.stations.filter((a)=>{ return a.name === originName })[0].alias
+  }
+
   ngOnInit(): void {
-
-
     this.message = {
       id: null,
       name: '',
       orig: '',
-      dest: [this.activatedRoute.snapshot.paramMap.get("origin")],
+      dest: [],
       text: '',
       file: '',
       fileid: '',
@@ -454,7 +458,14 @@ export class MessagecomposeComponent implements OnInit {
         this.stations = stations;
         this.selectedStations = [this.stations[0].id];
         this.selectAllForDropdownItems(this.stations);
+
+        var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
+
+        this.message.dest = origin !== null ? [origin] : []
+
         this.loading = false
+
+
       });
   }
 
