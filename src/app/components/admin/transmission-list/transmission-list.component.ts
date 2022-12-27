@@ -67,7 +67,8 @@ export class TransmissionListComponent implements OnInit {
 
   cancelMail(host, id): void {
     this.loading = true
-    this.uucpService.cancelMail(host, id).subscribe(
+    var language = localStorage.getItem('language')
+    this.uucpService.cancelMail(host, id, language).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
         this.loading = false

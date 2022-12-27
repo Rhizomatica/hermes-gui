@@ -69,16 +69,16 @@ export class SentMessagesComponent implements OnInit {
     );
   }
 
-  cancelMail(host, id): void {
-    this.uucpService.cancelMail(host, id).subscribe(
-      (res: any) => {
-        this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
+  // cancelMail(host, id, language): void {
+  //   this.uucpService.cancelMail(host, id, language).subscribe(
+  //     (res: any) => {
+  //       this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+  //     }, (err) => {
+  //       this.error = err;
+  //       this.errorAlert = true;
+  //     }
+  //   );
+  // }
 
   showDelete() {
     if (this.deleteMessage) {
