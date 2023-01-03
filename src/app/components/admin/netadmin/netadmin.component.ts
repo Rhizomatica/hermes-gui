@@ -19,6 +19,11 @@ export class NetadminComponent implements OnInit {
   stations: Station[]
   enabledStations: Station[]
   schedules: Schedule[]
+  public freqmin = 500
+  public freqmax = 30000
+  frequency = 500
+  modeSwitch: boolean
+  mode: any
 
   constructor(
     private apiService: ApiService,
@@ -87,6 +92,20 @@ export class NetadminComponent implements OnInit {
   closeError() {
     this.errorAlert = false
   }
+
+  changeMode(event) {
+    this.modeSwitch = this.modeSwitch === true ? false : true;
+    // this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
+    //   (res: any) => {
+    //     this.res = res;
+    //     this.radio.mode = res;
+    //   }, (err) => {
+    //     this.error = err;
+    //     this.errorAlert = true;
+    //   }
+    // );
+  }
+  
 
   ngOnInit(): void {
     this.getSystemStatus()

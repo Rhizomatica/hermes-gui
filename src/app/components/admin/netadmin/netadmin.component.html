@@ -3,11 +3,30 @@
 <h2 i18n="@@stationsonthisnetwork" class="m-t-25">Stations on this network</h2>
 
 <table *ngIf="system" style="width:100%">
+  <tr align="left">
+    <th>Station</th>
+    <th>Status</th>
+    <th>Frequency</th>
+    <th>Mode</th>
+  </tr>
   <tr *ngFor="let station of stations">
     <!-- <td class="b">{{station.name}}</td> -->
     <td class="b">{{station.alias}}</td>
     <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected">enabled</td>
     <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled">disabled</td>
+    <td>
+      <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frequency{{station.id}}" 
+        [(ngModel)]="frequency[station.id]" value={{frequency}}/>
+    </td>
+    <td>
+      <span>USB</span>
+      <div class="switch">
+        <input type="checkbox" name="mode{{station.id}}" [checked]="true"/>
+        <span class="slider round-uc" (click)="changeMode($event)" value={{station.checked}}
+          [checked]="true"></span>
+      </div>
+      <span>LSB</span>
+    </td>
   </tr>
 </table>
 
@@ -89,8 +108,6 @@
     <td>{{system.piddb}}</td>
   </tr>
 </table>
-
-
 
 <div>
   <div class="overall alert" *ngIf="errorAlert==true">
