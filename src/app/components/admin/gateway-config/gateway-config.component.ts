@@ -30,9 +30,6 @@ export class GatewayConfigComponent implements OnInit {
   updateAlert = false;
   timeerror = false;
   loading = true;
-  public freqmin = 500;
-  public freqmax = 30000;
-  frequency = 500
 
   constructor(
     private authenticationService: AuthenticationService,
