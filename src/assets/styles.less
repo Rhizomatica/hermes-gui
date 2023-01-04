@@ -2130,6 +2130,10 @@ tr:nth-child(odd) {
     table-layout: fixed;
   }
 
+  table caption {
+    font-size: 1.3em;
+  }
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -2141,10 +2145,6 @@ tr:nth-child(odd) {
     width: 1px;
   }
 
-  table caption {
-    font-size: 1.3em;
-  }
-
   table tr {
     display: block;
     margin-bottom: .3em;
@@ -2154,7 +2154,17 @@ tr:nth-child(odd) {
     display: block;
     font-size: .8em;
     word-wrap: break-word;
-    padding: 5px;
+    padding: 30px;
+
+    border-bottom: 0.5px solid #ddd;
+    // display: block;
+    // font-size: .8em;
+    text-align: right;
+
+    input:checked+.slider:before {
+      transform: translate(-22px)  
+    }
+    
   }
 
   table td::before {
