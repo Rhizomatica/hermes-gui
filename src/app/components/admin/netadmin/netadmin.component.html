@@ -13,12 +13,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let frequencies of frequency">
-      <td class="b" scope="row" i18n="@@aliasstationlabel" data-label="Alias">{{station.alias}}</td>
-      <td class="b" scope="row" data-label="Nickname">{{station.nickname}}</td>
-      <td class="b" scope="row" data-label="Status">{{station.enabled}}</td>
-      <td class="b" scope="row" data-label="Frequency">{{station.frequency}}</td>
-      <td class="b" scope="row" data-label="Mode">{{station.mode}}</td>
+    <tr *ngFor="let frequency of frequencies">
+      <td class="b" scope="row" i18n="@@aliasstationlabel" data-label="Alias">{{frequency.alias}}</td>
+      <td class="b" scope="row" data-label="Nickname">{{frequency.nickname === null ? '-' : frequency.nickname}}</td>
+      <td class="b" scope="row" data-label="Status">{{frequency.enabled}}</td>
+      <td class="b" scope="row" data-label="Frequency">
+        <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frequency{{frequency.id}}" 
+          [(ngModel)]="frequency[frequency.id]"
+          (change)="changeFrequency(frequency.id)" value={{frequency}}/>
+      </td>
+      <td class="b" scope="row" data-label="Mode">{{frequency.mode}}</td>
 
       <!-- <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected" data-label="Status">enabled</td>
       <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled" data-label="Status">disabled</td>
