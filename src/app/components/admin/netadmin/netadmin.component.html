@@ -5,21 +5,27 @@
 <table *ngIf="system" style="width:100%">
   <thead>
     <tr align="left">
-      <th scope="col">Station</th>
-      <th scope="col">Status</th>
-      <th scope="col">Frequency</th>
-      <th scope="col">Mode</th>
+      <th scope="col" i18n="@@aliasstation">Alias</th>
+      <th scope="col" i18n="@@nicknamestation">Nickname</th>
+      <th scope="col" i18n="@@statusstation">Status</th>
+      <th scope="col" i18n="@@frequencystation">Frequency</th>
+      <th scope="col" i18n="@@frequencymode">Mode</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let station of stations">
-      <!-- <td class="b">{{station.name}}</td> -->
-      <td class="b" scope="row" data-label="Station">{{station.alias}}</td>
-      <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected" data-label="Status">enabled</td>
+    <tr *ngFor="let frequencies of frequency">
+      <td class="b" scope="row" i18n="@@aliasstationlabel" data-label="Alias">{{station.alias}}</td>
+      <td class="b" scope="row" data-label="Nickname">{{station.nickname}}</td>
+      <td class="b" scope="row" data-label="Status">{{station.enabled}}</td>
+      <td class="b" scope="row" data-label="Frequency">{{station.frequency}}</td>
+      <td class="b" scope="row" data-label="Mode">{{station.mode}}</td>
+
+      <!-- <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected" data-label="Status">enabled</td>
       <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled" data-label="Status">disabled</td>
       <td data-label="Frequency">
         <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frequency{{station.id}}" 
-          [(ngModel)]="frequency[station.id]" value={{frequency}}/>
+          [(ngModel)]="frequency[station.id]"
+          (change)="changeFrequency(station.id)" value={{frequency}}/>
       </td>
       <td data-label="Mode">
         <span>USB</span>
@@ -29,10 +35,9 @@
             [checked]="true"></span>
         </div>
         <span>LSB</span>
-      </td>
+      </td> -->
     </tr>
   </tbody>
- 
 </table>
 
 <hr class="m-t-25" />
