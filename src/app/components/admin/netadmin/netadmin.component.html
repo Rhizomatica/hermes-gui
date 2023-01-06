@@ -18,9 +18,9 @@
       <td class="b" scope="row" data-label="Nickname">{{frequency.nickname === null ? '-' : frequency.nickname}}</td>
       <td class="b" scope="row" data-label="Status">{{frequency.enabled}}</td>
       <td class="b" scope="row" data-label="Frequency">
-        <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frequency{{frequency.id}}" 
-          [(ngModel)]="frequency[frequency.id]"
-          (change)="changeFrequency(frequency.id)" value={{frequency}}/>
+        <input type="number" class="midbt" name="frequency{{frequency.id}}" [min]="freqmin" [max]="freqmax"
+          value={{frequency.frequency}} [(ngModel)]="frequencyArray[frequency.id]"
+          (change)="changeFrequency(frequency.id, frequencyArray[frequency.id])" />
       </td>
       <td class="b" scope="row" data-label="Mode">{{frequency.mode}}</td>
 

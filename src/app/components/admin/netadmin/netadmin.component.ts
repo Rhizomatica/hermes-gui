@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Frequency } from 'src/app/interfaces/frequency';
-import { Schedule } from 'src/app/interfaces/schedule';
-import { Station } from 'src/app/interfaces/station';
 import { FrequencyService } from 'src/app/_services/frequency.service';
 import { ApiService } from '../../../_services/api.service';
-import { StationService } from '../../../_services/station.service';
 
 @Component({
   selector: 'app-netadmin',
@@ -24,9 +21,9 @@ export class NetadminComponent implements OnInit {
   modeSwitch: boolean
   mode: string
   frequencies: Frequency[]
-  // stations: Station[]
-  // enabledStations: Station[]
-  // schedules: Schedule[]
+  frequencyArray: any = [{ key: 1, values: '' }];
+  currentFrequency: Frequency
+
  
   
 
@@ -56,6 +53,7 @@ export class NetadminComponent implements OnInit {
       this.frequencyService.getFrequencies().subscribe(
         (data: any) => {
           this.frequencies = data;
+          this.loadArrayFrequencies(data)
           this.loading = false
         }, (err) => {
           this.error = err;
@@ -65,58 +63,19 @@ export class NetadminComponent implements OnInit {
       );
   }
 
-  // public getStations(): void {
-  //   this.loading = true
-  //   this.stationService.getStations().subscribe(
-  //     (data: any) => {
-  //       this.stations = data;
-  //       this.stations = this.stations.filter(e => e.alias !== 'central');
-  //       this.getSchedules()
-  //     }, (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //       this.loading = false;
-  //     }
-  //   );
-  // }
-
-  // getSchedules(): void {
-  //   this.apiService.getSchedules().subscribe(
-  //     (data: any) => {
-  //       this.schedules = data
-  //       this.loading = false
-  //       this.loadEnabledStations()
-  //     },
-  //     (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //       this.loading = false
-  //     }
-  //   );
-  // }
-
-  // loadEnabledStations(): void {
-  //   this.stations.forEach(station => {
-  //     station.checked = false
-  //     this.schedules.forEach(schedule => {
-  //       if (!schedule.enable)
-  //         return
-
-  //       schedule.stations.forEach(scheduleStation => {
-  //         if (scheduleStation === station.alias)
-  //           station.checked = true
-  //       });
-  //     });
-  //   });
-  // }
+  loadArrayFrequencies(data) {
+    data.forEach(item => {
+      this.frequencyArray.push(item)
+    });
+  }
 
   closeError() {
     this.errorAlert = false
   }
 
   changeMode(event) {
-    this.modeSwitch = this.modeSwitch === true ? false : true;
-    console.log(event)
+    // this.modeSwitch = this.modeSwitch === true ? false : true;
+    // console.log(event)
     // this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
     //   (res: any) => {
     //     this.res = res;
@@ -128,8 +87,32 @@ export class NetadminComponent implements OnInit {
     // );
   }
 
-  changeFrequency(id) {
-    console.log(id)
+  changeFrequency(id, frequency): void {
+    this.setObjectFrequency(id)
+    this.currentFrequency.frequency = frequency
+
+    this.frequencyService.updateFrequency(id, this.currentFrequency).subscribe(
+      (res: any) => {
+        this.getFrequencies()
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );  
+  }
+
+  setObjectFrequency(id): void{
+
+    var station = this.frequencies.filter((a)=>{ return a.id = id})[0]
+
+    this.currentFrequency = {
+      id : station.id,
+      alias: station.alias,
+      nickname: station.nickname,
+      frequency : station.frequency,
+      mode: station.mode,
+      enable: station.enable
+    }
   }
   
 

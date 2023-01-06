@@ -47,9 +47,9 @@ export class FrequencyService {
       catchError(this.handleError));
   }
 
-  updateFrequency(frequency: Frequency): Observable<Frequency> {
-    const url = `${GlobalConstants.apiURL}/frequency/${frequency.id}`;
-    return this.http.post<Frequency>(url, frequency, this.httpOptions).pipe(
+  updateFrequency(id: number, frequency: Frequency): Observable<Frequency> {
+    const url = `${GlobalConstants.apiURL}/frequency/${id}`;
+    return this.http.put<Frequency>(url, frequency).pipe(
       catchError(this.handleError)
     );
   }
