@@ -22,6 +22,9 @@ export class NetadminComponent implements OnInit {
   mode: string
   frequencies: Frequency[]
   frequencyArray: any = [];
+  modeArray: any = [];
+  nicknameArray: any = [];
+
   currentFrequency: Frequency
 
  
@@ -54,6 +57,7 @@ export class NetadminComponent implements OnInit {
         (data: any) => {
           this.frequencies = data;
           this.loadArrayFrequencies(data)
+          this.loadArrayNickname(data)
           this.loading = false
         }, (err) => {
           this.error = err;
@@ -67,6 +71,27 @@ export class NetadminComponent implements OnInit {
     this.frequencyArray = []
     data.forEach(item => {
       this.frequencyArray.push(item.frequency)
+    });
+  }
+
+  loadArrayMode(data) {
+    this.modeArray = []
+    data.forEach(item => {
+      this.modeArray.push(item.mode)
+    });
+  }
+
+  loadArrayEnable(data) {
+    this.modeArray = []
+    data.forEach(item => {
+      this.modeArray.push(item.mode)
+    });
+  }
+
+  loadArrayNickname(data) {
+    this.nicknameArray = []
+    data.forEach(item => {
+      this.nicknameArray.push(item.nickname)
     });
   }
 
@@ -89,10 +114,27 @@ export class NetadminComponent implements OnInit {
   }
 
   changeFrequency(frequency, newValue): void {
-    console.log(frequency)
-
     this.setObjectFrequency(frequency.id)
     this.currentFrequency.frequency = newValue
+    this.update(this.currentFrequency)
+  }
+
+  changeNickname(frequency, newValue): void {
+    this.setObjectFrequency(frequency.id)
+    this.currentFrequency.nickname = newValue
+    this.update(this.currentFrequency)
+  }
+
+  setObjectFrequency(id): void {
+    this.currentFrequency = null
+    this.currentFrequency = this.frequencies.filter((a)=>{ return a.id == id })[0]
+  }
+
+  update(frequency): void {
+
+    if(frequency.frequency === null)
+      return
+
     this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe(
       (res: any) => {
         this.getFrequencies()
@@ -102,12 +144,6 @@ export class NetadminComponent implements OnInit {
       }
     );  
   }
-
-  setObjectFrequency(id): void {
-    this.currentFrequency = null
-    this.currentFrequency = this.frequencies.filter((a)=>{ return a.id == id })[0]
-  }
-  
 
   ngOnInit(): void {
     this.getSystemStatus()
