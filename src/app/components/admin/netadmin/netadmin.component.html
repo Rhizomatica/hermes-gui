@@ -19,7 +19,15 @@
         <input type="text" class="midbt" name="nickname{{i}}"
           [(ngModel)]="nicknameArray[i]" (change)="changeNickname(frequency, nicknameArray[i])" />
       </td>
-      <td class="b" scope="row" data-label="Status">{{frequency.enabled}}</td>
+      <td class="b" scope="row" data-label="Status">
+        <span>OFF</span>
+        <div class="switch">
+          <input type="checkbox" name="mode{{i}}" [checked]="true"/>
+          <span class="slider round-uc" (click)="changeEnable(frequency, enableArray[i])"
+            [checked]="true"></span>
+        </div>
+        <span>ON</span>
+      </td>
       <td class="b" scope="row" data-label="Frequency">
         <input type="number" class="midbt" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
           [(ngModel)]="frequencyArray[i]" (change)="changeFrequency(frequency, frequencyArray[i])" />

@@ -24,6 +24,8 @@ export class NetadminComponent implements OnInit {
   frequencyArray: any = [];
   modeArray: any = [];
   nicknameArray: any = [];
+  enableArray: any = [];
+
 
   currentFrequency: Frequency
 
@@ -82,9 +84,9 @@ export class NetadminComponent implements OnInit {
   }
 
   loadArrayEnable(data) {
-    this.modeArray = []
+    this.enableArray = []
     data.forEach(item => {
-      this.modeArray.push(item.mode)
+      this.enableArray.push(item.enable)
     });
   }
 
@@ -99,18 +101,18 @@ export class NetadminComponent implements OnInit {
     this.errorAlert = false
   }
 
-  changeMode(event) {
+  changeMode(frequency, newValue) {
+      // this.modeSwitch = this.modeSwitch === true ? false : true;
+      this.setObjectFrequency(frequency.id)
+      this.currentFrequency.mode = newValue
+      this.update(this.currentFrequency)
+  }
+
+  changeEnable(frequency, newValue) {
     // this.modeSwitch = this.modeSwitch === true ? false : true;
-    // console.log(event)
-    // this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
-    //   (res: any) => {
-    //     this.res = res;
-    //     this.radio.mode = res;
-    //   }, (err) => {
-    //     this.error = err;
-    //     this.errorAlert = true;
-    //   }
-    // );
+    this.setObjectFrequency(frequency.id)
+    this.currentFrequency.enable = newValue
+    this.update(this.currentFrequency)
   }
 
   changeFrequency(frequency, newValue): void {
