@@ -24,7 +24,15 @@
         <input type="number" class="midbt" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
           [(ngModel)]="frequencyArray[i]" (change)="changeFrequency(frequency, frequencyArray[i])" />
       </td>
-      <td class="b" scope="row" data-label="Mode">{{frequency.mode}}</td>
+      <td class="b" scope="row" data-label="Mode">
+        <span>USB</span>
+        <div class="switch">
+          <input type="checkbox" name="mode{{i}}" [checked]="true"/>
+          <span class="slider round-uc" (click)="changeMode(frequency, modeArray[i])"
+            [checked]="true"></span>
+        </div>
+        <span>LSB</span>
+      </td>
 
       <!-- <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected" data-label="Status">enabled</td>
       <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled" data-label="Status">disabled</td>
