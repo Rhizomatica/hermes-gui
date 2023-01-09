@@ -60,6 +60,8 @@ export class NetadminComponent implements OnInit {
           this.frequencies = data;
           this.loadArrayFrequencies(data)
           this.loadArrayNickname(data)
+          this.loadArrayMode(data)
+          this.loadArrayEnable(data)
           this.loading = false
         }, (err) => {
           this.error = err;
@@ -79,14 +81,14 @@ export class NetadminComponent implements OnInit {
   loadArrayMode(data) {
     this.modeArray = []
     data.forEach(item => {
-      this.modeArray.push(item.mode)
+      this.modeArray.push(item.mode === 'LSB' ? true : false)
     });
   }
 
   loadArrayEnable(data) {
     this.enableArray = []
     data.forEach(item => {
-      this.enableArray.push(item.enable)
+      this.enableArray.push(item.enable === 1 ? true : false)
     });
   }
 
@@ -102,28 +104,29 @@ export class NetadminComponent implements OnInit {
   }
 
   changeMode(frequency, newValue) {
-      // this.modeSwitch = this.modeSwitch === true ? false : true;
+      newValue = newValue == true ? false : true
       this.setObjectFrequency(frequency.id)
-      this.currentFrequency.mode = newValue
+      this.currentFrequency.mode = newValue == true ? "LSB" : "USB"
       this.update(this.currentFrequency)
   }
 
   changeEnable(frequency, newValue) {
-    // this.modeSwitch = this.modeSwitch === true ? false : true;
+    console.log(newValue)
+    newValue = newValue == true ? false : true
     this.setObjectFrequency(frequency.id)
-    this.currentFrequency.enable = newValue
+    this.currentFrequency.enable = newValue == true ? 1 : 0
     this.update(this.currentFrequency)
   }
 
   changeFrequency(frequency, newValue): void {
     this.setObjectFrequency(frequency.id)
-    this.currentFrequency.frequency = newValue
+    this.currentFrequency.frequency = newValue == null ? 0 : newValue
     this.update(this.currentFrequency)
   }
 
   changeNickname(frequency, newValue): void {
     this.setObjectFrequency(frequency.id)
-    this.currentFrequency.nickname = newValue
+    this.currentFrequency.nickname = newValue == null ? "" : newValue
     this.update(this.currentFrequency)
   }
 

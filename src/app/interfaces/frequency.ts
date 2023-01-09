@@ -4,5 +4,5 @@ export interface Frequency {
   nickname: string;
   frequency: number;
   mode: string;
-  enable: boolean;
+  enable: number;
 }

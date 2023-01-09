@@ -22,9 +22,9 @@
       <td class="b" scope="row" data-label="Status">
         <span>OFF</span>
         <div class="switch">
-          <input type="checkbox" name="mode{{i}}" [checked]="true"/>
+          <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]"/>
           <span class="slider round-uc" (click)="changeEnable(frequency, enableArray[i])"
-            [checked]="true"></span>
+            [checked]="enableArray[i]"></span>
         </div>
         <span>ON</span>
       </td>
@@ -32,32 +32,15 @@
         <input type="number" class="midbt" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
           [(ngModel)]="frequencyArray[i]" (change)="changeFrequency(frequency, frequencyArray[i])" />
       </td>
-      <td class="b" scope="row" data-label="Mode">
+      <td class="b">
         <span>USB</span>
         <div class="switch">
-          <input type="checkbox" name="mode{{i}}" [checked]="true"/>
+          <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"/>
           <span class="slider round-uc" (click)="changeMode(frequency, modeArray[i])"
-            [checked]="true"></span>
+            [checked]="modeArray[i]"></span>
         </div>
         <span>LSB</span>
       </td>
-
-      <!-- <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected" data-label="Status">enabled</td>
-      <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled" data-label="Status">disabled</td>
-      <td data-label="Frequency">
-        <input type="number" [min]="freqmin" [max]="freqmax" class="midbt" name="frequency{{station.id}}" 
-          [(ngModel)]="frequency[station.id]"
-          (change)="changeFrequency(station.id)" value={{frequency}}/>
-      </td>
-      <td data-label="Mode">
-        <span>USB</span>
-        <div class="switch">
-          <input type="checkbox" name="mode{{station.id}}" [checked]="true"/>
-          <span class="slider round-uc" (click)="changeMode($event)" value={{station.checked}}
-            [checked]="true"></span>
-        </div>
-        <span>LSB</span>
-      </td> -->
     </tr>
   </tbody>
 </table>
