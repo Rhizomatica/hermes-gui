@@ -21,7 +21,7 @@ export class NetadminComponent implements OnInit {
   modeSwitch: boolean
   mode: string
   frequencies: Frequency[]
-  frequencyArray: any = [{ key: 1, values: '' }];
+  frequencyArray: any = [];
   currentFrequency: Frequency
 
  
@@ -64,8 +64,9 @@ export class NetadminComponent implements OnInit {
   }
 
   loadArrayFrequencies(data) {
+    this.frequencyArray = []
     data.forEach(item => {
-      this.frequencyArray.push(item)
+      this.frequencyArray.push(item.frequency)
     });
   }
 
@@ -87,11 +88,12 @@ export class NetadminComponent implements OnInit {
     // );
   }
 
-  changeFrequency(id, frequency): void {
-    this.setObjectFrequency(id)
-    this.currentFrequency.frequency = frequency
+  changeFrequency(frequency, newValue): void {
+    console.log(frequency)
 
-    this.frequencyService.updateFrequency(id, this.currentFrequency).subscribe(
+    this.setObjectFrequency(frequency.id)
+    this.currentFrequency.frequency = newValue
+    this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe(
       (res: any) => {
         this.getFrequencies()
       }, (err) => {
@@ -101,18 +103,9 @@ export class NetadminComponent implements OnInit {
     );  
   }
 
-  setObjectFrequency(id): void{
-
-    var station = this.frequencies.filter((a)=>{ return a.id = id})[0]
-
-    this.currentFrequency = {
-      id : station.id,
-      alias: station.alias,
-      nickname: station.nickname,
-      frequency : station.frequency,
-      mode: station.mode,
-      enable: station.enable
-    }
+  setObjectFrequency(id): void {
+    this.currentFrequency = null
+    this.currentFrequency = this.frequencies.filter((a)=>{ return a.id == id })[0]
   }
   
 

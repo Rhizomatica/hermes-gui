@@ -13,14 +13,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let frequency of frequencies">
+    <tr *ngFor="let frequency of frequencies; let i = index">
       <td class="b" scope="row" i18n="@@aliasstationlabel" data-label="Alias">{{frequency.alias}}</td>
       <td class="b" scope="row" data-label="Nickname">{{frequency.nickname === null ? '-' : frequency.nickname}}</td>
       <td class="b" scope="row" data-label="Status">{{frequency.enabled}}</td>
       <td class="b" scope="row" data-label="Frequency">
-        <input type="number" class="midbt" name="frequency{{frequency.id}}" [min]="freqmin" [max]="freqmax"
-          value={{frequency.frequency}} [(ngModel)]="frequencyArray[frequency.id]"
-          (change)="changeFrequency(frequency.id, frequencyArray[frequency.id])" />
+          <input type="number" class="midbt" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
+            [(ngModel)]="frequencyArray[i]" 
+            (change)="changeFrequency(frequency, frequencyArray[i])" />
       </td>
       <td class="b" scope="row" data-label="Mode">{{frequency.mode}}</td>
 
