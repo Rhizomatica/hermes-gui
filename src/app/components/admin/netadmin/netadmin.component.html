@@ -14,12 +14,16 @@
   </thead>
   <tbody>
     <tr *ngFor="let frequency of frequencies; let i = index">
-      <td class="b" scope="row" i18n="@@aliasstationlabel" data-label="Alias">{{frequency.alias}}</td>
-      <td class="b" scope="row" data-label="Nickname">
+      <td class="b title" scope="row" i18n="@@aliasstationlabel">
+        {{frequency.alias}}
+      </td>
+      <td class="b" scope="row">
+        <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
         <input type="text" class="midbt" name="nickname{{i}}"
           [(ngModel)]="nicknameArray[i]" (change)="changeNickname(frequency, nicknameArray[i])" />
       </td>
-      <td class="b" scope="row" data-label="Status">
+      <td class="b" scope="row">
+        <span class="span-table" i18n="@@statusstationlabel">Status</span>
         <span>OFF</span>
         <div class="switch">
           <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]"/>
@@ -28,11 +32,13 @@
         </div>
         <span>ON</span>
       </td>
-      <td class="b" scope="row" data-label="Frequency">
-        <input type="number" class="midbt" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
+      <td class="b" scope="row">
+        <span class="span-table" i18n="@@frequencystationlabel">Frequency</span>
+        <input type="number" class="midbt text-right" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
           [(ngModel)]="frequencyArray[i]" (change)="changeFrequency(frequency, frequencyArray[i])" />
       </td>
       <td class="b">
+        <span class="span-table" i18n="@@modestationlabel">Mode</span>
         <span>USB</span>
         <div class="switch">
           <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"/>

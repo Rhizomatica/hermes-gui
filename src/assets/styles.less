@@ -1398,6 +1398,21 @@ input.ng-invalid {
   }
 }
 
+table {
+  
+  input.midbt {
+    width: 100% !important;
+  }
+}
+
+tr:nth-child(odd) {
+  background: rgb(192, 192, 192)
+}
+
+.span-table{
+  display: none;
+}
+
 .dark-mode {
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -2152,19 +2167,14 @@ tr:nth-child(odd) {
 
   table td {
     display: block;
-    font-size: .8em;
     word-wrap: break-word;
-    padding: 30px;
+    padding: 15px;
+    border-bottom: 0.5px solid rgb(163, 163, 163);
 
-    border-bottom: 0.5px solid #ddd;
-    // display: block;
-    // font-size: .8em;
-    text-align: right;
-
-    input:checked+.slider:before {
-      transform: translate(-22px)  
+    input.midbt {
+      width: 60% !important;
+      margin-right: 0.1em;
     }
-    
   }
 
   table td::before {
@@ -2176,6 +2186,12 @@ tr:nth-child(odd) {
 
   table td:last-child {
     border-bottom: 0;
+  }
+
+  .span-table{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 15px;  
   }
 
   nav {
