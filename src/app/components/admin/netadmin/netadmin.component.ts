@@ -29,14 +29,12 @@ export class NetadminComponent implements OnInit {
 
   currentFrequency: Frequency
 
- 
-  
+
+
 
   constructor(
     private apiService: ApiService,
-    // private stationService: StationService,
-    private frequencyService: FrequencyService
-    ) {
+    private frequencyService: FrequencyService) {
   }
 
   getSystemStatus(): void {
@@ -55,20 +53,20 @@ export class NetadminComponent implements OnInit {
 
   public getFrequencies(): void {
     this.loading = true
-      this.frequencyService.getFrequencies().subscribe(
-        (data: any) => {
-          this.frequencies = data;
-          this.loadArrayFrequencies(data)
-          this.loadArrayNickname(data)
-          this.loadArrayMode(data)
-          this.loadArrayEnable(data)
-          this.loading = false
-        }, (err) => {
-          this.error = err;
-          this.errorAlert = true;
-          this.loading = false;
-        }
-      );
+    this.frequencyService.getFrequencies().subscribe(
+      (data: any) => {
+        this.frequencies = data;
+        this.loadArrayFrequencies(data)
+        this.loadArrayNickname(data)
+        this.loadArrayMode(data)
+        this.loadArrayEnable(data)
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false;
+      }
+    );
   }
 
   loadArrayFrequencies(data) {
@@ -103,41 +101,47 @@ export class NetadminComponent implements OnInit {
     this.errorAlert = false
   }
 
-  changeMode(frequency, newValue) {
-      newValue = newValue == true ? false : true
-      this.setObjectFrequency(frequency.id)
-      this.currentFrequency.mode = newValue == true ? "LSB" : "USB"
-      this.update(this.currentFrequency)
+  changeEnableSwitch(i) {
+    this.enableArray[i] = this.enableArray[i] == true ? false : true
   }
 
-  changeEnable(frequency, newValue) {
-    console.log(newValue)
-    newValue = newValue == true ? false : true
-    this.setObjectFrequency(frequency.id)
+  changeModeSwitch(i) {
+    this.modeArray[i] = this.modeArray[i] == true ? false : true
+  }
+
+  changeMode(newValue) {
+    this.currentFrequency.mode = newValue == true ? "LSB" : "USB"
+  }
+
+  changeEnable(newValue) {
     this.currentFrequency.enable = newValue == true ? 1 : 0
-    this.update(this.currentFrequency)
   }
 
-  changeFrequency(frequency, newValue): void {
-    this.setObjectFrequency(frequency.id)
+  changeFrequency(newValue): void {
     this.currentFrequency.frequency = newValue == null ? 0 : newValue
-    this.update(this.currentFrequency)
   }
 
-  changeNickname(frequency, newValue): void {
-    this.setObjectFrequency(frequency.id)
+  changeNickname(newValue): void {
     this.currentFrequency.nickname = newValue == null ? "" : newValue
-    this.update(this.currentFrequency)
   }
 
   setObjectFrequency(id): void {
     this.currentFrequency = null
-    this.currentFrequency = this.frequencies.filter((a)=>{ return a.id == id })[0]
+    this.currentFrequency = this.frequencies.filter((a) => { return a.id == id })[0]
+  }
+
+  updateItem(frequency, i): void {
+    this.setObjectFrequency(frequency.id)
+    this.changeNickname(this.nicknameArray[i])
+    this.changeEnable(this.enableArray[i])
+    this.changeFrequency(this.frequencyArray[i])
+    this.changeMode(this.modeArray[i])
+    this.update(this.currentFrequency)
   }
 
   update(frequency): void {
 
-    if(frequency.frequency === null)
+    if (frequency.frequency === null)
       return
 
     this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe(
@@ -147,12 +151,11 @@ export class NetadminComponent implements OnInit {
         this.error = err;
         this.errorAlert = true;
       }
-    );  
+    );
   }
 
   ngOnInit(): void {
     this.getSystemStatus()
     this.getFrequencies()
-    // this.getStations()
   }
 }
