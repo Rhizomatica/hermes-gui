@@ -106,7 +106,10 @@ export class NetadminComponent implements OnInit {
   }
 
   changeModeSwitch(i) {
-    this.modeArray[i] = this.modeArray[i] == true ? false : true
+    if(this.enableArray[i] === false)
+      return
+      
+      this.modeArray[i] = this.modeArray[i] == true ? false : true
   }
 
   changeMode(newValue) {

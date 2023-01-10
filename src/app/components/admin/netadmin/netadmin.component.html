@@ -20,15 +20,13 @@
       </td>
       <td class="b" scope="row">
         <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
-        <input type="text" class="midbt" name="nickname{{i}}"
-          [(ngModel)]="nicknameArray[i]" 
-          />
+        <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]" />
       </td>
       <td class="b" scope="row">
         <span class="span-table" i18n="@@statusstationlabel">Status</span>
         <span>OFF</span>
         <div class="switch">
-          <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]"/>
+          <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
           <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
         </div>
         <span>ON</span>
@@ -36,20 +34,26 @@
       <td class="b" scope="row">
         <span class="span-table" i18n="@@frequencystationlabel">Frequency</span>
         <input type="number" class="midbt text-right" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
-          [(ngModel)]="frequencyArray[i]"/>
+          [(ngModel)]="frequencyArray[i]" [disabled]="enableArray[i] == false ? true : false" />
+          kHz
       </td>
       <td class="b">
-        <span class="span-table" i18n="@@modestationlabel">Mode</span>
-        <span>USB</span>
-        <div class="switch">
-          <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"/>
-          <span class="slider round-uc" (click)="changeModeSwitch(i)"
-            [checked]="modeArray[i]"></span>
+        <div [hidden]="enableArray[i] == false ? true : false">
+          <span class="span-table" i18n="@@modestationlabel">Mode</span>
+          <span>USB</span>
+          <div class="switch">
+            <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
+              [disabled]="enableArray[i] == false ? true : false" />
+            <span class="slider round-uc {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)" [checked]="modeArray[i]"></span>
+          </div>
+          <span>LSB</span>
         </div>
-        <span>LSB</span>
+        <div [hidden]="enableArray[i] == false ? false : true">
+          <span>{{modeArray[i] == true ? 'LSB' : 'USB'}}</span>
+        </div>
       </td>
       <td>
-        <button (click)="updateItem(frequency, i)">Update</button>
+        <button (click)="updateItem(frequency, i)" i18n="@@frequencyupdatebutton">update</button>
       </td>
     </tr>
   </tbody>

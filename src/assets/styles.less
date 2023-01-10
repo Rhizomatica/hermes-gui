@@ -479,6 +479,7 @@ input:checked+.slider:before {
   -ms-transform: translateX(22px);
   transform: translateX(22px);
   background-color: @clr;
+  border-color: @clr;
 }
 
 .slider.round:before {
@@ -491,6 +492,11 @@ input:checked+.slider:before {
   border: #b8b8b8 0.5px solid;
 }
 
+.slider.round-uc.disable:before {
+  background-color: #727272;
+  border: #727272 0.5px solid;
+
+}
 
 .container {
   display: block;
@@ -1395,13 +1401,6 @@ input.ng-invalid {
     display: block;
     border-top: 2em solid black;
     border-right: 2em solid white;
-  }
-}
-
-table {
-  
-  input.midbt {
-    width: 100% !important;
   }
 }
 
