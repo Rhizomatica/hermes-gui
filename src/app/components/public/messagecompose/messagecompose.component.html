@@ -33,7 +33,7 @@
           <br>
           <ng-container *ngIf="stations">
             <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
-              <option *ngFor="let station of stations" value="{{station.alias}}">{{station.alias}}</option>
+              <option *ngFor="let station of stations" value="{{station.alias}}">{{station.alias}} {{station.nickname}}</option>
             </select>
             <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
               [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
@@ -45,7 +45,7 @@
               </ng-template>
               <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
                 <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                  [ngModelOptions]="{standalone: true}" />{{item.alias}}
+                  [ngModelOptions]="{standalone: true}" />{{item.alias}}{{item.nickname}}
               </ng-template>
             </ng-select>
           </ng-container>
