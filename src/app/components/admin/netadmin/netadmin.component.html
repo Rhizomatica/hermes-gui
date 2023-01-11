@@ -15,7 +15,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let frequency of frequencies; let i = index">
-      <td class="b title" scope="row" i18n="@@aliasstationlabel">
+      <td class="b title" scope="row">
+        <span class="span-table">Alias</span>
         {{frequency.alias}}
       </td>
       <td class="b" scope="row">
@@ -38,8 +39,8 @@
           kHz
       </td>
       <td class="b">
+        <span class="span-table" i18n="@@modestationlabel">Mode</span>
         <div [hidden]="enableArray[i] == false ? true : false">
-          <span class="span-table" i18n="@@modestationlabel">Mode</span>
           <span>USB</span>
           <div class="switch">
             <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
@@ -52,7 +53,7 @@
           <span>{{modeArray[i] == true ? 'LSB' : 'USB'}}</span>
         </div>
       </td>
-      <td>
+      <td align="text-right">
         <button (click)="updateItem(frequency, i)" i18n="@@frequencyupdatebutton">update</button>
       </td>
     </tr>
@@ -61,7 +62,7 @@
 
 <hr class="m-t-25" />
 
-<h2 i18n="@@networkadmin1">Network information</h2>
+<h2 class="m-t-25" i18n="@@networkadmin1">Network information</h2>
 <p *ngIf="!system"> OFF </p>
 <table *ngIf="system" style="width:100%;">
   <tr>
