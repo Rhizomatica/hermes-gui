@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Frequency } from 'src/app/interfaces/frequency';
 import { FrequencyService } from 'src/app/_services/frequency.service';
+import { StationService } from 'src/app/_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 
 @Component({
@@ -34,6 +35,7 @@ export class NetadminComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
+    private stationService: StationService,
     private frequencyService: FrequencyService) {
   }
 
@@ -102,6 +104,7 @@ export class NetadminComponent implements OnInit {
   }
 
   changeEnableSwitch(i) {
+    this.getStations(i);
     this.enableArray[i] = this.enableArray[i] == true ? false : true
   }
 
@@ -153,6 +156,29 @@ export class NetadminComponent implements OnInit {
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+      }
+    );
+  }
+
+  public getStations(index): void {
+    this.stationService.getStations().subscribe(
+      (data: any) => {
+
+        var stationAlias = this.frequencies[index].alias //get alias from updating item
+        var newFrequency = data.filter((a)=>{ return a.alias == stationAlias})[0].frequency //get frequency from server
+
+        if(newFrequency!= null && newFrequency != undefined) {
+          //if found new frequency
+          this.frequencyArray[index] = newFrequency
+          return
+        }
+
+        this.frequencyArray[index] = 500
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
       }
     );
   }
