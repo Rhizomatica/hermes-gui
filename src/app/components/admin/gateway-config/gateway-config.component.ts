@@ -42,7 +42,7 @@ export class GatewayConfigComponent implements OnInit {
     this.stationService.getStations().subscribe(
       (data: any) => {
         this.stations = data;
-        this.stations = this.stations.filter(e => e.alias !== 'central');
+        this.stations = this.stations.filter(e => e.alias !== 'central' && e.alias !== 'gw' && e.alias !== 'local');
         for (var i in this.stations) {
           for (var j in this.enabledStations) {
             if (this.stations[i].alias == this.enabledStations[j]) {
