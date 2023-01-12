@@ -18,7 +18,7 @@ export class NetadminComponent implements OnInit {
   loading = true
   public freqmin = 500
   public freqmax = 30000
-  frequency = 500
+  frequency = 7000
   modeSwitch: boolean
   mode: string
   frequencies: Frequency[]
@@ -63,8 +63,8 @@ export class NetadminComponent implements OnInit {
         this.loading = false
       }, (err) => {
         this.error = err;
-        this.errorAlert = true;
-        this.loading = false;
+        this.errorAlert = true
+        this.loading = false
       }
     );
   }
@@ -172,29 +172,31 @@ export class NetadminComponent implements OnInit {
         this.getFrequencies()
       }, (err) => {
         this.error = err;
-        this.errorAlert = true;
+        this.errorAlert = true
       }
     );
+  }
+
+  public getStationFrequency(data, index){
+    var stationAlias = this.frequencies[index].alias
+    var newFrequency = data.filter((a) => { return a.alias == stationAlias })[0].frequency
+
+    if (newFrequency != null && newFrequency != undefined) {
+      this.frequencyArray[index] = newFrequency
+      return
+    }
+
+    this.frequencyArray[index] = this.frequency
   }
 
   public getStations(index): void {
     this.stationService.getStations().subscribe(
       (data: any) => {
-
-        var stationAlias = this.frequencies[index].alias //get alias from updating item
-        var newFrequency = data.filter((a) => { return a.alias == stationAlias })[0].frequency //get frequency from server
-
-        if (newFrequency != null && newFrequency != undefined) {
-          //if found new frequency
-          this.frequencyArray[index] = newFrequency
-          return
-        }
-
-        this.frequencyArray[index] = 500
+        this.getStationFrequency(data, index)
         this.loading = false
       }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
         this.loading = false
       }
     );
