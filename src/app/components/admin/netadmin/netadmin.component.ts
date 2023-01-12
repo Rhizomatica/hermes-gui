@@ -26,12 +26,9 @@ export class NetadminComponent implements OnInit {
   modeArray: any = [];
   nicknameArray: any = [];
   enableArray: any = [];
-
-
-  currentFrequency: Frequency
-
-
-
+  editArray: any = [];
+  currentFrequency: Frequency;
+  pendingUpdate = false
 
   constructor(
     private apiService: ApiService,
@@ -62,6 +59,7 @@ export class NetadminComponent implements OnInit {
         this.loadArrayNickname(data)
         this.loadArrayMode(data)
         this.loadArrayEnable(data)
+        this.loadArrayEdit(data)
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -99,8 +97,25 @@ export class NetadminComponent implements OnInit {
     });
   }
 
+  loadArrayEdit(data) {
+    this.editArray = []
+    data.forEach(item => {
+      this.editArray.push(false)
+    });
+  }
+
   closeError() {
     this.errorAlert = false
+  }
+
+  startEditing(i) {
+
+    for (let index = 0; index < this.editArray.length; index++) {
+      this.editArray[index] = false
+    }
+
+    this.editArray[i] = true
+    this.pendingUpdate = true
   }
 
   changeEnableSwitch(i) {
@@ -109,10 +124,10 @@ export class NetadminComponent implements OnInit {
   }
 
   changeModeSwitch(i) {
-    if(this.enableArray[i] === false)
+    if (this.enableArray[i] === false)
       return
-      
-      this.modeArray[i] = this.modeArray[i] == true ? false : true
+
+    this.modeArray[i] = this.modeArray[i] == true ? false : true
   }
 
   changeMode(newValue) {
@@ -124,7 +139,7 @@ export class NetadminComponent implements OnInit {
   }
 
   changeFrequency(newValue): void {
-    this.currentFrequency.frequency = newValue == null ? 0 : newValue
+    this.currentFrequency.frequency = newValue == null ? 500 : newValue
   }
 
   changeNickname(newValue): void {
@@ -142,7 +157,9 @@ export class NetadminComponent implements OnInit {
     this.changeEnable(this.enableArray[i])
     this.changeFrequency(this.frequencyArray[i])
     this.changeMode(this.modeArray[i])
+    this.editArray[i] = false
     this.update(this.currentFrequency)
+    this.pendingUpdate = false
   }
 
   update(frequency): void {
@@ -165,9 +182,9 @@ export class NetadminComponent implements OnInit {
       (data: any) => {
 
         var stationAlias = this.frequencies[index].alias //get alias from updating item
-        var newFrequency = data.filter((a)=>{ return a.alias == stationAlias})[0].frequency //get frequency from server
+        var newFrequency = data.filter((a) => { return a.alias == stationAlias })[0].frequency //get frequency from server
 
-        if(newFrequency!= null && newFrequency != undefined) {
+        if (newFrequency != null && newFrequency != undefined) {
           //if found new frequency
           this.frequencyArray[index] = newFrequency
           return

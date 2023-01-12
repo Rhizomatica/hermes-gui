@@ -21,26 +21,32 @@
       </td>
       <td class="b" scope="row">
         <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
-        <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]" />
+        <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]" [hidden]="editArray[i] == false"/>
+        <span [hidden]="editArray[i] == true">{{nicknameArray[i]}}</span>
       </td>
       <td class="b" scope="row">
         <span class="span-table" i18n="@@statusstationlabel">Status</span>
-        <span>OFF</span>
-        <div class="switch">
-          <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
-          <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
+        <div [hidden]="editArray[i] == false">
+          <span>OFF</span>
+          <div class="switch">
+            <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
+            <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
+          </div>
+          <span>ON</span>
         </div>
-        <span>ON</span>
+        
+        <span [hidden]="editArray[i] == true">{{enableArray[i] == true ? 'ON' : 'OFF'}}</span>
       </td>
       <td class="b" scope="row">
         <span class="span-table" i18n="@@frequencystationlabel">Frequency</span>
         <input type="number" class="midbt text-right" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
-          [(ngModel)]="frequencyArray[i]" [disabled]="enableArray[i] == false ? true : false" />
-          kHz
+          [(ngModel)]="frequencyArray[i]" [disabled]="enableArray[i] == false ? true : false"  [hidden]="editArray[i] == false"/>
+        <span [hidden]="editArray[i] == true">{{frequencyArray[i]}}</span>
+        kHz
       </td>
       <td class="b">
         <span class="span-table" i18n="@@modestationlabel">Mode</span>
-        <div [hidden]="enableArray[i] == false ? true : false">
+        <div [hidden]="enableArray[i] == false || editArray[i] == false ? true : false">
           <span>USB</span>
           <div class="switch">
             <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
@@ -49,12 +55,13 @@
           </div>
           <span>LSB</span>
         </div>
-        <div [hidden]="enableArray[i] == false ? false : true">
+        <div [hidden]="enableArray[i] == true && editArray[i] == true ? true : false">
           <span>{{modeArray[i] == true ? 'LSB' : 'USB'}}</span>
         </div>
       </td>
-      <td align="text-right">
-        <button (click)="updateItem(frequency, i)" i18n="@@frequencyupdatebutton">update</button>
+      <td>
+        <button (click)="startEditing(i)" [hidden]="editArray[i] == true || pendingUpdate" i18n="@@frequencyeditbutton">edit</button>
+        <button (click)="updateItem(frequency, i)" [hidden]="editArray[i] == false" i18n="@@frequencyupdatebutton">update</button>
       </td>
     </tr>
   </tbody>
