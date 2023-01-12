@@ -25,6 +25,7 @@ export class StationsComponent implements OnInit {
   defstart: Date;
   defstop: Date;
   defenable: boolean;
+  frequency: number;
   stationedit = false;
   errorAlert = false;
   system: any;
@@ -117,6 +118,7 @@ export class StationsComponent implements OnInit {
         this.defstart = this.schedule.starttime;
         this.defstop = this.schedule.stoptime;
         this.defenable = this.schedule.enable;
+        this.frequency = this.schedule.frequency
         // this.validateStationsObject()
         return data;
       },

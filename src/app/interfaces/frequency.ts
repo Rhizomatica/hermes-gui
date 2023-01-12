@@ -1,8 +1,8 @@
-export interface Station {
+export interface Frequency {
   id: number;
-  name: string;
   alias: string;
   nickname: string;
-  checked: boolean;
   frequency: number;
+  mode: string;
+  enable: number;
 }

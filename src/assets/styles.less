@@ -479,6 +479,7 @@ input:checked+.slider:before {
   -ms-transform: translateX(22px);
   transform: translateX(22px);
   background-color: @clr;
+  border-color: @clr;
 }
 
 .slider.round:before {
@@ -487,10 +488,15 @@ input:checked+.slider:before {
 
 .slider.round-uc:before {
   border-radius: 50%;
-  background-color: @clr;
-  border: @clr 0.5px solid;
+  background-color: #b8b8b8;
+  border: #b8b8b8 0.5px solid;
 }
 
+.slider.round-uc.disable:before {
+  background-color: #727272;
+  border: #727272 0.5px solid;
+
+}
 
 .container {
   display: block;
@@ -562,8 +568,21 @@ input:checked+.slider:before {
 
 .flags {
   border: 0;
-  text-align: center;
+  // text-align: center;
   left: 0;
+
+  .flag {
+    margin: auto 0;
+    width: 100%;
+    display: block;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  span{
+    text-decoration: none;
+    padding-left: 10px;
+  }
 }
 
 .flags img {
@@ -1385,6 +1404,14 @@ input.ng-invalid {
   }
 }
 
+tr:nth-child(odd) {
+  background: rgb(192, 192, 192)
+}
+
+.span-table{
+  display: none;
+}
+
 .dark-mode {
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -2090,6 +2117,9 @@ tr:nth-child(odd) {
   color: green;
 }
 
+.right {
+  float: right;
+}
 
 @media (max-width: 700px) {
 
@@ -2117,6 +2147,10 @@ tr:nth-child(odd) {
     table-layout: fixed;
   }
 
+  table caption {
+    font-size: 1.3em;
+  }
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -2128,10 +2162,6 @@ tr:nth-child(odd) {
     width: 1px;
   }
 
-  table caption {
-    font-size: 1.3em;
-  }
-
   table tr {
     display: block;
     margin-bottom: .3em;
@@ -2139,9 +2169,14 @@ tr:nth-child(odd) {
 
   table td {
     display: block;
-    font-size: .8em;
     word-wrap: break-word;
-    padding: 5px;
+    padding: 15px;
+    border-bottom: 0.5px solid rgb(163, 163, 163);
+
+    input.midbt {
+      width: 60% !important;
+      margin-right: 0.1em;
+    }
   }
 
   table td::before {
@@ -2153,6 +2188,12 @@ tr:nth-child(odd) {
 
   table td:last-child {
     border-bottom: 0;
+  }
+
+  .span-table{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 15px;  
   }
 
   nav {

@@ -1,5 +1,75 @@
 <loading [loading]="loading"></loading>
-<h2 i18n="@@networkadmin1">Network information</h2>
+
+<h2 i18n="@@stationsonthisnetwork" class="m-t-25">Stations on this network</h2>
+
+<table *ngIf="system" style="width:100%">
+  <thead>
+    <tr align="left">
+      <th scope="col" i18n="@@aliasstation">Alias</th>
+      <th scope="col" i18n="@@nicknamestation">Nickname</th>
+      <th scope="col" i18n="@@statusstation">Status</th>
+      <th scope="col" i18n="@@frequencystation">Frequency</th>
+      <th scope="col" i18n="@@frequencymode">Mode</th>
+      <th scope="col" i18n="@@frequencyupdate">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let frequency of frequencies; let i = index">
+      <td class="b title" scope="row">
+        <span class="span-table">Alias</span>
+        {{frequency.alias}}
+      </td>
+      <td class="b" scope="row">
+        <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
+        <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]" [hidden]="editArray[i] == false"/>
+        <span [hidden]="editArray[i] == true">{{nicknameArray[i]}}</span>
+      </td>
+      <td class="b" scope="row">
+        <span class="span-table" i18n="@@statusstationlabel">Status</span>
+        <div [hidden]="editArray[i] == false">
+          <span>OFF</span>
+          <div class="switch">
+            <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
+            <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
+          </div>
+          <span>ON</span>
+        </div>
+        
+        <span [hidden]="editArray[i] == true">{{enableArray[i] == true ? 'ON' : 'OFF'}}</span>
+      </td>
+      <td class="b" scope="row">
+        <span class="span-table" i18n="@@frequencystationlabel">Frequency</span>
+        <input type="number" class="midbt text-right" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
+          [(ngModel)]="frequencyArray[i]" [disabled]="enableArray[i] == false ? true : false"  [hidden]="editArray[i] == false"/>
+        <span [hidden]="editArray[i] == true">{{frequencyArray[i]}}</span>
+        kHz
+      </td>
+      <td class="b">
+        <span class="span-table" i18n="@@modestationlabel">Mode</span>
+        <div [hidden]="enableArray[i] == false || editArray[i] == false ? true : false">
+          <span>USB</span>
+          <div class="switch">
+            <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
+              [disabled]="enableArray[i] == false ? true : false" />
+            <span class="slider round-uc {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)" [checked]="modeArray[i]"></span>
+          </div>
+          <span>LSB</span>
+        </div>
+        <div [hidden]="enableArray[i] == true && editArray[i] == true ? true : false">
+          <span>{{modeArray[i] == true ? 'LSB' : 'USB'}}</span>
+        </div>
+      </td>
+      <td>
+        <button (click)="startEditing(i)" [hidden]="editArray[i] == true || pendingUpdate" i18n="@@frequencyeditbutton">edit</button>
+        <button (click)="updateItem(frequency, i)" [hidden]="editArray[i] == false" i18n="@@frequencyupdatebutton">update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="m-t-25" />
+
+<h2 class="m-t-25" i18n="@@networkadmin1">Network information</h2>
 <p *ngIf="!system"> OFF </p>
 <table *ngIf="system" style="width:100%;">
   <tr>
@@ -73,17 +143,6 @@
   <tr>
     <td class="b" i18n="@@piddb">Piddb:</td>
     <td>{{system.piddb}}</td>
-  </tr>
-</table>
-
-<hr class="m-t-25" />
-<h2 i18n="@@stationsonthisnetwork" class="m-t-25">Stations on this network</h2>
-<table *ngIf="system" style="width:100%">
-  <tr *ngFor="let station of stations">
-    <td class="b">{{station.name}}</td>
-    <td>{{station.alias}}</td>
-    <td *ngIf="station.checked && system.gateway" i18n="@@stationenabled" class="b connected">enabled</td>
-    <td *ngIf="!station.checked && system.gateway" i18n="@@stationdisabled">disabled</td>
   </tr>
 </table>
 

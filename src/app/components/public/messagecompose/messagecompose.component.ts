@@ -6,8 +6,10 @@ import { Station } from '../../../interfaces/station';
 import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
+import { FrequencyService } from '../../../_services/frequency.service';
 import { User } from '../../../interfaces/user';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Frequency } from 'src/app/interfaces/frequency';
 
 @Component({
   selector: 'app-messagecompose',
@@ -56,6 +58,7 @@ export class MessagecomposeComponent implements OnInit {
   public WIDTH = 640;
   public HEIGHT = 480;
   public audioRecorderOverall = false
+  public frequencies: Frequency[]
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -68,7 +71,9 @@ export class MessagecomposeComponent implements OnInit {
     private apiService: ApiService,
     private stationService: StationService,
     private authenticationService: AuthenticationService,
-    private router: Router) {
+    private frequencyService: FrequencyService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -422,7 +427,36 @@ export class MessagecomposeComponent implements OnInit {
     this.errormsg = 'Can not play audio in your browser';
   }
 
-  // TODO double check start params on inbox
+  getAliasOrigin(originName){
+    if(!originName)
+      return null
+
+    return this.stations.filter((a)=>{ return a.name === originName })[0].alias
+  }
+
+  public getFrequencies(): void {
+    this.loading = true
+      this.frequencyService.getFrequencies().subscribe(
+        (data: any) => {
+          this.frequencies = data;
+          this.loading = false
+        }, (err) => {
+          this.error = err;
+          this.errorAlert = true;
+          this.loading = false;
+        }
+      );
+  }
+
+  getNickName(stations): void {
+    stations.forEach(station => {
+      this.frequencies.forEach(frequency => {
+        if(station.alias === frequency.alias && frequency.nickname != null)
+            station.nickname = " - " + frequency.nickname
+      })
+    })
+  }
+
   ngOnInit(): void {
     this.message = {
       id: null,
@@ -444,6 +478,7 @@ export class MessagecomposeComponent implements OnInit {
     this.mobile = this.isMobile()
     this.getSysConfig();
     this.getSystemStatus();
+    this.getFrequencies();
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()
@@ -451,7 +486,14 @@ export class MessagecomposeComponent implements OnInit {
         this.stations = stations;
         this.selectedStations = [this.stations[0].id];
         this.selectAllForDropdownItems(this.stations);
+
+        var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
+
+        this.message.dest = origin !== null ? [origin] : []
+
         this.loading = false
+
+        this.getNickName(stations)
       });
   }
 
