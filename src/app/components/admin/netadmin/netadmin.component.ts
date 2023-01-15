@@ -119,8 +119,11 @@ export class NetadminComponent implements OnInit {
   }
 
   changeEnableSwitch(i) {
-    this.getStations(i);
     this.enableArray[i] = this.enableArray[i] == true ? false : true
+
+    if(this.enableArray[i] == true)
+      this.getStations(i);
+
   }
 
   changeModeSwitch(i) {
@@ -139,7 +142,7 @@ export class NetadminComponent implements OnInit {
   }
 
   changeFrequency(newValue): void {
-    this.currentFrequency.frequency = newValue == null ? 500 : newValue
+    this.currentFrequency.frequency = newValue == null ? this.frequency : newValue
   }
 
   changeNickname(newValue): void {
