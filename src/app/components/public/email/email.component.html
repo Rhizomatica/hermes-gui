@@ -37,7 +37,7 @@
     <button class="m-t-10" [disabled]="emailto?.length == 0" i18n="@@emailsendemailselected">Send e-mail to selected</button>
   </a> -->
   <!-- <hr> -->
-  <div *ngIf="!currentUser">
+  <div class="m-t-25" *ngIf="!currentUser">
     <p i18n="@@noaccount">Doesn't have an account?</p>
     <a routerLink="/usermanage">
       <button i18n="@@createbtn">create an account</button>
