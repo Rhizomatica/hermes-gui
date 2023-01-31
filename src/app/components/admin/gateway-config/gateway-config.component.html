@@ -33,6 +33,7 @@
     </div>
     <div class="gateway" *ngIf="isEditing">
         <hr>
+        <h3 class="flex-right">{{localDateHour}}</h3>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
                 <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
