@@ -55,7 +55,7 @@ export class MessageService {
   }
 
   getMessagesByType($type): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message/${$type}`; // get api/messages/{inbox/outbox/draft}
+    const url = `${GlobalConstants.apiURL}/message/type/${$type}`; // get api/messages/{inbox/outbox/draft}
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
@@ -90,7 +90,7 @@ export class MessageService {
   }
 
   uncrypt(id: number, values): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/uncrypt/${id}`;
+    const url = `${GlobalConstants.apiURL}/message/uncrypt/${id}`;
     return this.http.post<Message>(url, values).pipe(
       map((res: any) => {
         this.text = res;
