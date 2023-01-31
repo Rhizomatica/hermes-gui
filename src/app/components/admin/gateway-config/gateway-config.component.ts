@@ -30,7 +30,8 @@ export class GatewayConfigComponent implements OnInit {
   updateAlert = false;
   timeerror = false;
   loading = true;
-
+  localDateHour = null
+  
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -185,11 +186,24 @@ export class GatewayConfigComponent implements OnInit {
     this.emptySchedule = false;
   }
 
+  setLocalDateHour(){
+    this.localDateHour = new Date();
+    const yyyy = this.localDateHour.getFullYear();
+    let mm = this.localDateHour.getMonth() + 1; // Months start at 0!
+    let dd = this.localDateHour.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    this.localDateHour = dd + '/' + mm + '/' + yyyy + " " + new Date().toLocaleTimeString();
+  }
+
   ngOnInit(): void {
     this.schedules = [];
     this.selectedSchedule = [];
     this.getSchedules();
     this.getStations();
+    this.setLocalDateHour()
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
