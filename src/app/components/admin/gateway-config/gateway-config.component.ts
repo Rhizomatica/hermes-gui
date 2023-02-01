@@ -180,8 +180,10 @@ export class GatewayConfigComponent implements OnInit {
 
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
-    this.selectedSchedule.starttime = this.selectedSchedule.starttime.toString().slice(0, -3)
-    this.selectedSchedule.stoptime = this.selectedSchedule.stoptime.toString().slice(0, -3)
+    if(this.selectedSchedule.starttime >= 8){
+      this.selectedSchedule.starttime = this.selectedSchedule.starttime.toString().slice(0, -3)
+      this.selectedSchedule.stoptime = this.selectedSchedule.stoptime.toString().slice(0, -3)
+    }
     this.isEditing = true;
     this.emptySchedule = false;
   }
