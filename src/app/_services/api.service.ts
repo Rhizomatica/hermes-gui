@@ -56,6 +56,7 @@ export class ApiService {
 
     }
 
+    //Nao existe rota na API
     public sysRestore(): Observable<{}> {
       const url = `${GlobalConstants.apiURL}/sys/restore`; // get api:sys/restore
       return this.http.get(url).pipe(

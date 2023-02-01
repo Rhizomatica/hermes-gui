@@ -277,18 +277,6 @@ export class RadioScaryComponent implements OnInit, OnDestroy {
     }
   }
 
-  setDefaults() {
-    this.radioService.radioSetDefaults().subscribe(
-      (res: any) => {
-        this.res = res;
-        this.radio.refthreshold = res;
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
-
   resetProtection() {
     this.radioService.radioResetProtection().subscribe(
       (res: any) => {
