@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core'
+import { User } from '../../../interfaces/user'
+import { CustomError } from '../../../interfaces/customerror'
+import { UserService } from '../../../_services/user.service'
+import { AuthenticationService } from '../../../_services/authentication.service';
+import { CustomErrorsService } from '../../../_services/custom-errors.service';
+
+@Component({
+  selector: 'custom-errors',
+  templateUrl: './custom-errors.component.html',
+  styleUrls: ['./custom-errors.component.less']
+})
+
+export class CustomErrorsComponent implements OnInit {
+
+  currentUser: User
+  admin: Boolean
+  loading: Boolean = false
+  error: String
+  errorAlert: Boolean
+  customErrors: CustomError[]
+
+  constructor(
+    private userService: UserService,
+    private authenticationService: AuthenticationService,
+    private customErrorsService: CustomErrorsService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    if (this.currentUser)
+      this.admin = this.currentUser.admin
+  }
+
+  getCustomErrors(){
+    this.loading = true
+    this.customErrorsService.getCustomErrors().subscribe(
+      (data: any) => {
+        this.customErrors = data;
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
+  public closeError() {
+    this.errorAlert = false;
+  }
+
+  ngOnInit(): void {
+    this.getCustomErrors()
+  }
+}

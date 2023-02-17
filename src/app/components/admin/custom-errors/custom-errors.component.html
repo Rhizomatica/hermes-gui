@@ -1,0 +1,20 @@
+<loading [loading]="loading"></loading>
+<div class="">
+  <div class="flexible">
+    <h2 i18n="@@admmanage">Custom Errors</h2>
+  </div>
+  <div class="row">
+    <div class="row" *ngFor="let customErrors of error">
+      <i>{{error.controller}}</i> 
+    </div>
+  </div>
+  <div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errormanagemet">There was an error on precessing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
+</div>

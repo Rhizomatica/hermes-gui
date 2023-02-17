@@ -43,6 +43,7 @@ import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
+import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
 
 registerLocaleData(localePt);
 
@@ -80,7 +81,8 @@ registerLocaleData(localePt);
     LoadingComponent,
     SwitchComponent,
     PlayerComponent,
-    RecorderComponent
+    RecorderComponent,
+    CustomErrorsComponent
   ],
   imports: [
     BrowserModule,
