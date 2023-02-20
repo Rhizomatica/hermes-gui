@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
 import { CustomError } from '../../../interfaces/customerror'
-import { UserService } from '../../../_services/user.service'
+// import { UserService } from '../../../_services/user.service'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { CustomErrorsService } from '../../../_services/custom-errors.service';
 
@@ -17,11 +17,12 @@ export class CustomErrorsComponent implements OnInit {
   admin: Boolean
   loading: Boolean = false
   error: String
-  errorAlert: Boolean
+  errorAlert: Boolean = false
   customErrors: CustomError[]
+  visibleArray: any = []
 
   constructor(
-    private userService: UserService,
+    // private userService: UserService,
     private authenticationService: AuthenticationService,
     private customErrorsService: CustomErrorsService
   ) {
@@ -30,12 +31,13 @@ export class CustomErrorsComponent implements OnInit {
       this.admin = this.currentUser.admin
   }
 
-  getCustomErrors(){
+  getCustomErrors() {
     this.loading = true
     this.customErrorsService.getCustomErrors().subscribe(
       (data: any) => {
         this.customErrors = data;
-        this.loading = false
+        this.loading = false;
+        this.loadVisibleArray(data)
       },
       (err) => {
         this.error = err;
@@ -43,6 +45,21 @@ export class CustomErrorsComponent implements OnInit {
         this.errorAlert = true;
       }
     );
+  }
+
+  loadVisibleArray(data) {
+    this.visibleArray = []
+    data.forEach(item => {
+      this.visibleArray.push(false)
+    });
+  }
+
+  viewLog(i) {
+    for (let index = 0; index < this.visibleArray.length; index++) {
+      this.visibleArray[index] = false
+    }
+
+    this.visibleArray[i] = true
   }
 
   public closeError() {
