@@ -1,0 +1,27 @@
+<loading [loading]="loading"></loading>
+<div class="">
+  <div class="flexible">
+    <h2>MENU</h2>
+  </div>
+  <div class="row">
+    <!-- MENU -->
+    <ul>
+      <a routerLink="/messages" i18n="@@messages">
+        <img title="messages" src="assets/svg/comment.svg">
+        messages
+      </a>
+      <li>
+        Message
+      </li>
+    </ul>
+  </div>
+  <div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
+</div>
