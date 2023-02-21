@@ -27,6 +27,7 @@ import { LoadingComponent } from './components/utils/loading/loading.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
+import { MenuComponent } from './components/public/menu/menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -58,6 +59,7 @@ const routes: Routes = [
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
   { path: 'customErrors', component: CustomErrorsComponent },
+  { path: 'menu', component: MenuComponent },
 ];
 
 @NgModule({

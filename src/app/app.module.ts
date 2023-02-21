@@ -44,6 +44,7 @@ import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
+import { MenuComponent } from './components/public/menu/menu.component';
 
 registerLocaleData(localePt);
 
@@ -82,7 +83,8 @@ registerLocaleData(localePt);
     SwitchComponent,
     PlayerComponent,
     RecorderComponent,
-    CustomErrorsComponent
+    CustomErrorsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
