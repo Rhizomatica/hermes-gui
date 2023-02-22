@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
   subscript: any;
   loading = true;
   changeLanguage = false
-
   title = 'hermes.radio';
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,

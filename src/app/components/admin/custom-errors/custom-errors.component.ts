@@ -20,6 +20,7 @@ export class CustomErrorsComponent implements OnInit {
   errorAlert: Boolean = false
   customErrors: CustomError[]
   visibleArray: any = []
+  searchError: String
 
   constructor(
     // private userService: UserService,

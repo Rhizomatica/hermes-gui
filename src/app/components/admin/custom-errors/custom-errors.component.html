@@ -4,7 +4,8 @@
     <h2>API Custom Errors</h2>
   </div>
   <div class="row">
-    <div class="row" *ngFor="let error of customErrors; let i = index">
+    <input placeholder="Search errors" i18n-placeholder id="searchbox1" [(ngModel)]="searchError" />
+    <div class="row" *ngFor="let error of customErrors | filter:searchError; let i = index">
       <div class="row">
         <p (click)="viewLog(i)">
           <b>Date Hour: </b> 
