@@ -17,6 +17,14 @@ export class ErrorInterceptor implements HttpInterceptor {
                 location.reload();
             }
 
+            //TODO - REPORT FEEDBACK
+            //TODO - Translate returns
+            if (err.status === 500)
+                return throwError('Internal Server error, please try again. If this error persists send a report feedback.');
+
+            if (err.status === 400)
+                return throwError('Service not found. If this error persists send a report feedback.');
+
             const error = err.error.message || err.statusText;
             return throwError(error);
         }));
