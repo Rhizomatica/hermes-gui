@@ -107,6 +107,16 @@
                         </div>
                     </div>
                 </a>
+                <a routerLink="/wifiManager" *ngIf="isAdmin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/wifi-solid.svg">
+                        </div>
+                        <div i18n="@@wifimanagercard">
+                            Wi-Fi Manager
+                        </div>
+                    </div>
+                </a>
                 <div class="shut m-t-10">
                     <button class="midbt" (click)="confirmReboot()"><span i18n="@@reboot">reboot</span><br />
                         <img class="btnicon" title="send" src="assets/svg/redo.svg">

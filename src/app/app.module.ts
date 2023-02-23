@@ -45,6 +45,7 @@ import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
 import { MenuComponent } from './components/public/menu/menu.component';
+import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
 
 registerLocaleData(localePt);
 
@@ -84,7 +85,8 @@ registerLocaleData(localePt);
     PlayerComponent,
     RecorderComponent,
     CustomErrorsComponent,
-    MenuComponent
+    MenuComponent,
+    WifiManagerComponent
   ],
   imports: [
     BrowserModule,

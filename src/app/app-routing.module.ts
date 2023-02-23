@@ -28,6 +28,7 @@ import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
 import { MenuComponent } from './components/public/menu/menu.component';
+import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -60,6 +61,7 @@ const routes: Routes = [
   { path: 'recorder', component: RecorderComponent },
   { path: 'customErrors', component: CustomErrorsComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'wifiManager', component: WifiManagerComponent },
 ];
 
 @NgModule({
