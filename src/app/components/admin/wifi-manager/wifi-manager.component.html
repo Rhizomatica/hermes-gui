@@ -3,10 +3,13 @@
   <div class="flexible">
     <h1>WIFI MANAGER</h1>
   </div>
-  <div class="row">
+  <div class="row m-t-10">
     <input i18n="@@wifialias" name="alias" 
     [(ngModel)]="wifi" 
     required maxlength="140" i18n-placeholder placeholder="Set wifi name" />
+    <div class="row m-t-10">
+      <button (click)="saveWifiConfig()">save changes</button>
+    </div>
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
