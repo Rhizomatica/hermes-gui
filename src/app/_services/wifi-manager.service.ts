@@ -23,11 +23,21 @@ export class WifiManagerService {
     })
   };
 
-  getWifiParams(): Observable<Object> {
-    const url = `${GlobalConstants.apiURL}/customerrors`;
+  getWiFiList(): Observable<Object> {
+    const url = `${GlobalConstants.apiURL}/wifi`;
     return this.http.get(url).pipe(
       map((res: any) => {
         return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  changeWifiName(values): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/wifi/`;
+    return this.http.post(url, values).pipe(
+      map((res: any) => {
+        this.text = res;
+        return this.text;
       }),
       catchError(this.handleError));
   }

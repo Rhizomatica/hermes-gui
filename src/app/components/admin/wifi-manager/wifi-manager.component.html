@@ -3,12 +3,20 @@
   <div class="flexible">
     <h1>WIFI MANAGER</h1>
   </div>
-  <div class="row m-t-10">
-    <input i18n="@@wifialias" name="alias" 
-    [(ngModel)]="wifi" 
-    required maxlength="140" i18n-placeholder placeholder="Set wifi name" />
-    <div class="row m-t-10">
-      <button (click)="saveWifiConfig()">save changes</button>
+  <div class="row m-t-25">
+    <div class="flexible">
+      <form #f="ngForm">
+        <input i18n="@@wifialias" name="name" [(ngModel)]="wifiName" required maxlength="140" i18n-placeholder
+          placeholder="Set wifi name" />
+        <div class="row m-t-10">
+          <button (click)="saveWifiConfig(f)" [disabled]="!wifiName">save changes</button>
+        </div>
+      </form>
+    </div>
+    <div class="flexible">
+      <div class="row" *ngFor="let wifi of wifiList" >
+        <b>wifi</b>
+      </div>
     </div>
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">

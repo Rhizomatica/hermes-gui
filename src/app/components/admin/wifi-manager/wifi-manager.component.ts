@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { NgForm } from '@angular/forms';
 import { User } from '../../../interfaces/user'
 // import { CustomError } from '../../../interfaces/customerror'
 // import { UserService } from '../../../_services/user.service'
@@ -70,10 +71,10 @@ export class WifiManagerComponent implements OnInit {
   loading: Boolean = false
   error: String
   errorAlert: Boolean = false
-  wifi: any //CREATE MODEL?
+  wifiName: any //TODO - Review Type
+  wifiList: []
 
   constructor(
-    // private userService: UserService,
     private authenticationService: AuthenticationService,
     private wifiManagerService: WifiManagerService
   ) {
@@ -82,18 +83,44 @@ export class WifiManagerComponent implements OnInit {
       this.admin = this.currentUser.admin
   }
 
-  public getWifiConfig(){
-    return null
+  public getWifiList() {
+    this.wifiManagerService.getWiFiList().subscribe(
+      (data: any) => {
+        this.wifiList = data
+        this.wifiName = data.filter((a) => { return a[0] === 'yes'})[0] //TODO - review return
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
   }
 
-  public saveWifiConfig(){
-    return null
+  public saveWifiConfig(f: NgForm) {
+
+    if (!f.value.name) {
+      f.value.name = 'HERMES-DEFAULT'
+    }
+
+    this.loading = true
+    this.wifiManagerService.changeWifiName(f.value).subscribe(
+      (res: any) => {
+        this.wifiName = res
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
   }
 
   public closeError() {
-    this.errorAlert = false;
+    this.errorAlert = false
   }
 
   ngOnInit(): void {
+    this.getWifiList()
   }
 }
