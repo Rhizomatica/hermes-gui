@@ -27,7 +27,7 @@ export class LogComponent implements OnInit, OnDestroy {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
-  public intervallTimer = interval(10000);
+  public intervallTimer = interval(10000); //TODO - Remove timer (switch to reload button)
   private subscription1;
   private subscription2;
   private subscription3;

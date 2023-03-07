@@ -9,11 +9,12 @@
 
 <div class="formdata m-t-25" *ngIf="uLog">
     <h3 i18n="@@uucpllogsog2">uucp log</h3>
-    <hr />
+    <!-- <hr /> -->
     <div class="logs">
         <section>
             <div *ngFor="let log of uucpLog">
-                <p> {{log}}</p>
+                <p class="m-t-10"> {{log}}</p>
+                <hr />
             </div>
             <br>
         </section>
@@ -21,11 +22,12 @@
 </div>
 <div class="formdata m-t-25" *ngIf="eLog">
     <h3 i18n="@@emaillog2">email log</h3>
-    <hr />
+    <!-- <hr /> -->
     <div class="logs">
         <section>
             <div *ngFor="let log of mailLog">
-                <p>{{log}}</p>
+                <p class="m-t-10">{{log}}</p>
+                <hr />
             </div>
         </section>
         <br>
