@@ -12,7 +12,7 @@
 
 <div id="appcontainer">
   <div class="fullpage">
-    <nav id="mainnav" *ngIf="system">
+    <nav id="mainnav" *ngIf="system && !mobile">
       <a routerLink='/landing' class="logo-link">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
@@ -53,8 +53,18 @@
           <span class="logged" i18n="@@login1">login</span>
         </a>
       </ng-template>
-      <a routerLink="/menu" i18n="@@help" *ngIf="mobile">
-        <img title="help" src="assets/svg/bars-solid.svg">
+    </nav>
+
+    <nav *ngIf="mobile">
+      <a routerLink='/landing' class="logo-link">
+        <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
+        <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
+      </a>
+      <a routerLink="/menu" class="float-right" *ngIf="!isMenuPage">
+        <img title="menu" src="assets/svg/bars-solid.svg">
+      </a>
+      <a routerLink="" class="float-right" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+        <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
 
@@ -93,11 +103,14 @@
     </div>
     <div class="overall" *ngIf="changeLanguage">
       <div class="cv">
-          <nav class="flags">
-            <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages" src="assets/svg/brasil.svg">Português</a>
-            <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages" src="assets/svg/espanha.svg">Español</a>
-            <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages" src="assets/svg/reino-unido.svg">English</a>
-          </nav>          
+        <nav class="flags">
+          <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages"
+              src="assets/svg/brasil.svg">Português</a>
+          <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages"
+              src="assets/svg/espanha.svg">Español</a>
+          <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages"
+              src="assets/svg/reino-unido.svg">English</a>
+        </nav>
       </div>
     </div>
   </div>
@@ -134,7 +147,8 @@
           &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
           &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
         </div>
-        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and files</span>
+        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and
+          files</span>
       </span>
     </ng-container>
     <span *ngIf="!system" i18n="@@stationoffline">

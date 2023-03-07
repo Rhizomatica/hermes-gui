@@ -4,6 +4,7 @@ import { CustomError } from '../../../interfaces/customerror'
 // import { UserService } from '../../../_services/user.service'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { CustomErrorsService } from '../../../_services/custom-errors.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'menu',
@@ -22,7 +23,8 @@ export class MenuComponent implements OnInit {
   constructor(
     // private userService: UserService,
     private authenticationService: AuthenticationService,
-    private customErrorsService: CustomErrorsService
+    private customErrorsService: CustomErrorsService,
+    private router: Router,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
@@ -34,6 +36,12 @@ export class MenuComponent implements OnInit {
     this.errorAlert = false;
   }
 
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+    this.currentUser = null;
+  }
+  
   ngOnInit(): void {
 
   }

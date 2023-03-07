@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
   changeLanguage = false
   title = 'hermes.radio';
   mobile: any
+  isMenuPage: boolean
 
   constructor(
     private router: Router,
@@ -43,9 +45,21 @@ export class AppComponent implements OnInit {
     private apiService: ApiService,
     private radioService: RadioService,
     private darkModeService: DarkModeService,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private location: Location,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    // router.events.subscribe((val) => {
+    //     this.chackIsMenuPage()
+    // });
+
+    router.events.subscribe((val) => {
+      // see also 
+      if (val instanceof NavigationEnd)
+        this.chackIsMenuPage()
+
+    });
+
   }
 
   getSystemStatus(): void {
@@ -124,7 +138,7 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/login']);
     this.currentUser = null;
   }
-  
+
   onToggle(): void {
     this.darkModeService.toggle();
   }
@@ -133,17 +147,25 @@ export class AppComponent implements OnInit {
     window.scrollTo(0, 0)
   }
 
-  changeLanguageModal(){
+  changeLanguageModal() {
     this.changeLanguage = this.changeLanguage ? false : true
   }
 
-  checkLanguage(){
+  checkLanguage() {
     this.changeLanguage = !localStorage.getItem('language') ? true : false
   }
 
-  setLanguage(language){
+  setLanguage(language) {
     localStorage.setItem('language', language)
-    window.open('/'+language, '_self')
+    window.open('/' + language, '_self')
+  }
+
+  closeMobileMenu() {
+    this.location.back();
+  }
+
+  chackIsMenuPage() {
+    this.isMenuPage = this.router.url == '/menu' ? true : false
   }
 
   ngOnInit(): void {

@@ -25,7 +25,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         var message = ''
 
         if (language === 'en-US') {
-            console.log('entrou')
             message = this.englishError(errorStatus)
         }
 

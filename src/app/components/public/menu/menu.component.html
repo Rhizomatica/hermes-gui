@@ -1,5 +1,5 @@
 <loading [loading]="loading"></loading>
-<div class="row">
+<div class="row" *ngIf="currentUser">
   <h4>Welcome {{currentUser.email}}</h4>
 </div>
 <div class="phonemenu">
@@ -9,15 +9,19 @@
     messages
   </a>
   <a routerLink="/email" i18n="@@emailmenu">
-    <img title="messages" src="assets/svg/envelope.svg">
+    <img title="email" src="assets/svg/envelope.svg">
     email
   </a>
-  <a routerLink="/admin" i18n="@@adminmenu">
-    <img title="messages" src="assets/svg/tools.svg">
+  <a routerLink="/admin" i18n="@@adminmenu" *ngIf="currentUser">
+    <img title="admin" src="assets/svg/tools.svg">
+    admin
+  </a>
+  <a routerLink="/login" i18n="@@login" *ngIf="!currentUser">
+    <img title="login" src="assets/svg/sign-in-alt-solid.svg">
     admin
   </a>
   <a routerLink="/help" i18n="@@helpmenu">
-    <img title="messages" src="assets/svg/question-circle-regular.svg">
+    <img title="help" src="assets/svg/question-circle-regular.svg">
     help
   </a>
   <a routerLink="/user" (click)="logout()" *ngIf="currentUser">

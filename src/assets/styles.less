@@ -1977,6 +1977,11 @@ input[type=range]:hover::-ms-track {
   float: right;
 }
 
+.float-left {
+  // display: inline;
+  float: left;
+}
+
 .language {
   background-color: @bkclr;
   display: flex;
@@ -2136,7 +2141,7 @@ tr:nth-child(odd) {
   flex-wrap: nowrap;
   flex-direction: column;
   margin-top: 10px;
-  
+
   a {
     flex-direction: column;
     border-bottom: 0.5px solid rgb(163, 163, 163);
@@ -2242,8 +2247,11 @@ tr:nth-child(odd) {
   }
 
   nav {
-    .logo {
-      display: none
+    justify-content: left;
+    position: left;
+
+    a {
+      min-width: calc(58% - 0.25em);
     }
   }
 
@@ -2414,9 +2422,9 @@ tr:nth-child(odd) {
     display: none;
   }
 
-  .logo-link {
-    display: none;
-  }
+  // .logo-link {
+  //   display: none;
+  // }
 
   .messages {
 
