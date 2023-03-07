@@ -580,7 +580,7 @@ input:checked+.slider:before {
     padding-bottom: 10px;
   }
 
-  span{
+  span {
     text-decoration: none;
     padding-left: 10px;
   }
@@ -1409,7 +1409,7 @@ tr:nth-child(odd) {
   background: rgb(192, 192, 192)
 }
 
-.span-table{
+.span-table {
   display: none;
 }
 
@@ -1618,6 +1618,13 @@ tr:nth-child(odd) {
   .connected {
     color: #3af773;
   }
+
+  .phonemenu {
+    img {
+      filter: invert(100%);
+    }
+  }
+
 }
 
 .syspusher {
@@ -2122,6 +2129,43 @@ tr:nth-child(odd) {
   float: right;
 }
 
+.phonemenu {
+
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-top: 10px;
+  
+  a {
+    flex-direction: column;
+    border-bottom: 0.5px solid rgb(163, 163, 163);
+    margin-right: 50px;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
+
+  img {
+    vertical-align: middle;
+    width: 10%;
+    margin: 20px;
+  }
+}
+
 @media (max-width: 700px) {
 
   input,
@@ -2191,10 +2235,10 @@ tr:nth-child(odd) {
     border-bottom: 0;
   }
 
-  .span-table{
+  .span-table {
     display: flex;
     flex-direction: column;
-    padding: 0 0 15px;  
+    padding: 0 0 15px;
   }
 
   nav {

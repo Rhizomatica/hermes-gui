@@ -1,27 +1,40 @@
 <loading [loading]="loading"></loading>
-<div class="">
-  <div class="flexible">
-    <h2>MENU</h2>
-  </div>
-  <div class="row">
-    <!-- MENU -->
-    <ul>
-      <a routerLink="/messages" i18n="@@messages">
-        <img title="messages" src="assets/svg/comment.svg">
-        messages
-      </a>
-      <li>
-        Message
-      </li>
-    </ul>
-  </div>
-  <div class="overall alert" [hidden]="errorAlert==false">
-    <div class="cv">
-      <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
-      <span>{{error}}</span>
-      <div class="icon"><a (click)="closeError()">
-          <img title="close" src="assets/svg/x.svg"></a>
-      </div>
+<div class="row">
+  <h4>Welcome {{currentUser.email}}</h4>
+</div>
+<div class="phonemenu">
+  <!-- MENU -->
+  <a routerLink="/messages" i18n="@@messagemenu">
+    <img title="messages" src="assets/svg/comment.svg">
+    messages
+  </a>
+  <a routerLink="/email" i18n="@@emailmenu">
+    <img title="messages" src="assets/svg/envelope.svg">
+    email
+  </a>
+  <a routerLink="/admin" i18n="@@adminmenu">
+    <img title="messages" src="assets/svg/tools.svg">
+    admin
+  </a>
+  <a routerLink="/help" i18n="@@helpmenu">
+    <img title="messages" src="assets/svg/question-circle-regular.svg">
+    help
+  </a>
+  <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
+    <img src="assets/svg/sign-out-alt-solid.svg">
+    <span class="logged" i18n="@@logout1">
+      logout
+    </span>
+  </a>
+  <!-- <img title="messages" src="assets/svg/sign-in-alt-solid.svg"> -->
+
+</div>
+<div class="overall alert" [hidden]="errorAlert==false">
+  <div class="cv">
+    <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
+    <span>{{error}}</span>
+    <div class="icon"><a (click)="closeError()">
+        <img title="close" src="assets/svg/x.svg"></a>
     </div>
   </div>
 </div>

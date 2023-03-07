@@ -6,6 +6,7 @@ import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { RadioService } from '../../_services/radio.service';
+import { UtilsService } from '../../_services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -34,13 +35,15 @@ export class AppComponent implements OnInit {
   loading = true;
   changeLanguage = false
   title = 'hermes.radio';
+  mobile: any
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private radioService: RadioService,
-    private darkModeService: DarkModeService
+    private darkModeService: DarkModeService,
+    private utils: UtilsService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -148,6 +151,7 @@ export class AppComponent implements OnInit {
     this.getSystemStatus();
     this.getRadioStatus();
     this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
+    this.mobile = this.utils.isMobile()
     this.checkLanguage()
   }
 

@@ -53,6 +53,9 @@
           <span class="logged" i18n="@@login1">login</span>
         </a>
       </ng-template>
+      <a routerLink="/menu" i18n="@@help" *ngIf="mobile">
+        <img title="help" src="assets/svg/bars-solid.svg">
+      </a>
     </nav>
 
     <div class="formfield">
