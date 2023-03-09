@@ -23,7 +23,7 @@ export class WifiManagerService {
     })
   };
 
-  getWiFiList(): Observable<Object> {
+  getWiFiConfig(): Observable<Object> {
     const url = `${GlobalConstants.apiURL}/wifi`;
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -32,7 +32,7 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
-  changeWifiName(values): Observable<{}> {
+  changeWiFiName(values): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/wifi/`;
     return this.http.post(url, values).pipe(
       map((res: any) => {

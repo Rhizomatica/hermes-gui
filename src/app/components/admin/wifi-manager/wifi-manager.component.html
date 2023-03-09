@@ -5,19 +5,75 @@
   </div>
   <div class="row m-t-25">
     <div class="flexible">
-      <form #f="ngForm">
-        <input i18n="@@wifialias" name="name" [(ngModel)]="wifiName" required maxlength="140" i18n-placeholder
-          placeholder="Set wifi name" />
-        <div class="row m-t-10">
-          <button (click)="saveWifiConfig(f)" [disabled]="!wifiName">save changes</button>
-        </div>
-      </form>
-    </div>
-    <div class="flexible">
-      <div class="row" *ngFor="let wifi of wifiList" >
-        <b>wifi</b>
+      <div>
+        <form #f="ngForm">
+          <div class="m-t-10">
+            <p>SSID</p>
+            <div [hidden]=!msgPatternChars class="error" i18n="@@passdontmatch">
+              Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço
+            </div>
+            <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
+              i18n-placeholder placeholder="Set wifi name" (keyup)="_keyUp($event)"/>
+          </div>
+          <div class="m-t-10">
+            <p>Chanels</p>
+            <select class="row" name="chanel" [(ngModel)]="wiFiChanel">
+              <option [selected]="currentChanel" value="{{chanel}}" *ngFor="let chanel of chanels">{{chanel}}</option>
+            </select>
+          </div>
+          <div class="m-t-10">
+            <p>Password</p>
+            <div [hidden]=!passwordMin class="error" i18n="@@strongpassword">
+              password must have at least 6 characters
+            </div>
+            <input type="text" i18n="@@wifialias" name="password" [(ngModel)]="wiFiPassword" required maxlength="32"
+              i18n-placeholder placeholder="Set wifi name"
+              (input)="checkpass(wiFiPassword,wiFiRetypePassword)" />
+          </div>
+          <div class="m-t-10">
+            <p>Confirm Password</p>
+            <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatch">
+              passwords doesn't match
+            </div>
+            <input type="text" i18n="@@wifialias" name="retypepassword" [(ngModel)]="wiFiRetypePassword" required
+              maxlength="32" i18n-placeholder placeholder="Set wifi name"
+              (input)="checkpass(wiFiPassword,wiFiRetypePassword)" />
+          </div>
+          <div class="row m-t-25">
+            <button (click)="saveWifiConfig(f)" [disabled]="!wiFiSSID || !wiFiPassword || !wiFiRetypePassword || passwordUnmatch || passwordMin ">save changes</button>
+          </div>
+        </form>
       </div>
+      <!-- <div class="m-l-25">
+        <table *ngIf="currentChanel" style="width:100%;">
+          <tr>
+            <td class="b" i18n="@@status">Status:</td>
+            <td>{{system.status}}</td>
+          </tr>
+          <tr>
+            <td class="b" i18n="@@alias">Alias:</td>
+            <td>{{system.name}}</td>
+          </tr>
+          <tr>
+            <td class="b" i18n="@@domai">Domain:</td>
+            <td>{{system.domain}}</td>
+          </tr>
+          <tr>
+            <td class="b" i18n="@@ip">IP / Netmask address:</td>
+            <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
+          </tr>
+          <tr>
+            <td class="b" i18n="@@nodename">Node Name:</td>
+            <td>{{system.nodename}}</td>
+          </tr>
+          <tr>
+            <td class="b" i18n="@@ssid">SSID Network name:</td>
+            <td>{{system.wifiessid}}</td>
+          </tr>
+        </table>
+      </div> -->
     </div>
+
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
