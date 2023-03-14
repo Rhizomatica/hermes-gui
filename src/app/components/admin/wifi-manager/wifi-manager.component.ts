@@ -21,8 +21,8 @@ export class WifiManagerComponent implements OnInit {
   errorAlert: Boolean = false
   channels: Number[] = []
   wiFiSSID: String
-  wiFiRetypePassPhrase: String
-  wiFiPassPhrase: String
+  wiFiRetypePassphrase: String
+  wiFiPassphrase: String
   wiFiChannel: Number = 1
   msgPatternChars: Boolean = false
   excludedKeys: Number[]
@@ -43,7 +43,7 @@ export class WifiManagerComponent implements OnInit {
       (data: any) => {
         this.wiFiChannel = data.channel
         this.wiFiSSID = data.ssid
-        this.wiFiPassPhrase = data.wpa_passphrase
+        this.wiFiPassphrase = data.wpa_passphrase
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -66,7 +66,7 @@ export class WifiManagerComponent implements OnInit {
       (res: any) => {
         this.wiFiChannel = parseInt(res.channel)
         this.wiFiSSID = res.ssid
-        this.wiFiPassPhrase = res.wpa_passphrase
+        this.wiFiPassphrase = res.wpa_passphrase
         this.loading = false
       }, (err) => {
         this.error = err;
