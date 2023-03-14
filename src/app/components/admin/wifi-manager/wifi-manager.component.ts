@@ -19,11 +19,11 @@ export class WifiManagerComponent implements OnInit {
   loading: Boolean = false
   error: String
   errorAlert: Boolean = false
-  chanels: Number[] = []
+  channels: Number[] = []
   wiFiSSID: String
-  wiFiRetypePassword: any
-  wiFiPassword: any
-  wiFiChanel: Number = 1
+  wiFiRetypePassPhrase: String
+  wiFiPassPhrase: String
+  wiFiChannel: Number = 1
   msgPatternChars: Boolean = false
   excludedKeys: Number[]
   passwordUnmatch = false;
@@ -41,9 +41,9 @@ export class WifiManagerComponent implements OnInit {
   public getWiFiConfig() {
     this.wifiManagerService.getWiFiConfig().subscribe(
       (data: any) => {
-        this.wiFiChanel = data.chanel
+        this.wiFiChannel = data.channel
         this.wiFiSSID = data.ssid
-        this.wiFiPassword = data.password
+        this.wiFiPassPhrase = data.wpa_passphrase
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -64,9 +64,9 @@ export class WifiManagerComponent implements OnInit {
     this.loading = true
     this.wifiManagerService.changeWiFiName(f.value).subscribe(
       (res: any) => {
-        this.wiFiChanel = res.chanel
+        this.wiFiChannel = parseInt(res.channel)
         this.wiFiSSID = res.ssid
-        this.wiFiPassword = res.password
+        this.wiFiPassPhrase = res.wpa_passphrase
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -110,9 +110,9 @@ export class WifiManagerComponent implements OnInit {
     this.errorAlert = false
   }
 
-  setChanels() {
+  setChannels() {
     for (let index = 1; index < 12; index++) {
-      this.chanels.push(index);
+      this.channels.push(index);
     }
   }
 
@@ -140,7 +140,7 @@ export class WifiManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWiFiConfig()
-    this.setChanels()
+    this.setChannels()
     this.setExcludedKeys()
   }
 }

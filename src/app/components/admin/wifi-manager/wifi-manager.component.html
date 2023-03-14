@@ -17,8 +17,8 @@
           </div>
           <div class="m-t-10">
             <p>Chanels</p>
-            <select class="row" name="chanel" [(ngModel)]="wiFiChanel">
-              <option [selected]="currentChanel" value="{{chanel}}" *ngFor="let chanel of chanels">{{chanel}}</option>
+            <select class="row" name="chanel" [(ngModel)]="wiFiChannel">
+              <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}</option>
             </select>
           </div>
           <div class="m-t-10">
@@ -26,21 +26,21 @@
             <div [hidden]=!passwordMin class="error" i18n="@@strongpassword">
               password must have at least 6 characters
             </div>
-            <input type="text" i18n="@@wifialias" name="password" [(ngModel)]="wiFiPassword" required maxlength="32"
+            <input type="text" i18n="@@wifialias" name="password" [(ngModel)]="wiFiPassPhrase" required maxlength="32"
               i18n-placeholder placeholder="Set wifi name"
-              (input)="checkpass(wiFiPassword,wiFiRetypePassword)" />
+              (input)="checkpass(wiFiPassPhrase,wiFiRetypePassPhrase)" />
           </div>
           <div class="m-t-10">
             <p>Confirm Password</p>
             <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatch">
               passwords doesn't match
             </div>
-            <input type="text" i18n="@@wifialias" name="retypepassword" [(ngModel)]="wiFiRetypePassword" required
+            <input type="text" i18n="@@wifialias" name="retypepassword" [(ngModel)]="wiFiRetypePassPhrase" required
               maxlength="32" i18n-placeholder placeholder="Set wifi name"
-              (input)="checkpass(wiFiPassword,wiFiRetypePassword)" />
+              (input)="checkpass(wiFiPassPhrase,wiFiRetypePassPhrase)" />
           </div>
           <div class="row m-t-25">
-            <button (click)="saveWifiConfig(f)" [disabled]="!wiFiSSID || !wiFiPassword || !wiFiRetypePassword || passwordUnmatch || passwordMin ">save changes</button>
+            <button (click)="saveWifiConfig(f)" [disabled]="!wiFiSSID || !wiFiPassPhrase || !wiFiRetypePassPhrase || passwordUnmatch || passwordMin ">save changes</button>
           </div>
         </form>
       </div>
