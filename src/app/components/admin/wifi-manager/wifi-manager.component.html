@@ -1,11 +1,11 @@
 <loading [loading]="loading"></loading>
 <div class="">
-  <div class="flexible">
+  <div class="row">
     <h1>WIFI MANAGER</h1>
   </div>
   <div class="row m-t-25">
     <div class="flexible">
-      <div>
+      <div class="half-row">
         <form #f="ngForm">
           <div class="m-t-10">
             <p>SSID</p>
@@ -13,12 +13,13 @@
               Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço
             </div>
             <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
-              i18n-placeholder placeholder="Set wifi name" (keyup)="_keyUp($event)"/>
+              i18n-placeholder placeholder="Set wifi name" (keyup)="_keyUp($event)" />
           </div>
           <div class="m-t-10">
             <p>Channel</p>
             <select class="row" name="chanel" [(ngModel)]="wiFiChannel">
-              <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}</option>
+              <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}
+              </option>
             </select>
           </div>
           <div class="m-t-10">
@@ -27,8 +28,7 @@
               password must have at least 6 characters
             </div>
             <input type="text" i18n="@@wifialias" name="password" [(ngModel)]="wiFiPassphrase" required maxlength="32"
-              i18n-placeholder placeholder="Set wifi name"
-              (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+              i18n-placeholder placeholder="Set wifi name" (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="m-t-10">
             <p>Confirm Passphrase</p>
@@ -40,40 +40,50 @@
               (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="row m-t-25">
-            <button (click)="saveWifiConfig(f)" [disabled]="!wiFiSSID || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin ">save changes</button>
+            <button (click)="saveWifiConfig(f)"
+              [disabled]="!wiFiSSID || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin ">save
+              changes</button>
           </div>
         </form>
       </div>
-      <!-- <div class="m-l-25">
-        <table *ngIf="currentChanel" style="width:100%;">
-          <tr>
-            <td class="b" i18n="@@status">Status:</td>
-            <td>{{system.status}}</td>
-          </tr>
-          <tr>
-            <td class="b" i18n="@@alias">Alias:</td>
-            <td>{{system.name}}</td>
-          </tr>
-          <tr>
-            <td class="b" i18n="@@domai">Domain:</td>
-            <td>{{system.domain}}</td>
-          </tr>
-          <tr>
-            <td class="b" i18n="@@ip">IP / Netmask address:</td>
-            <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
-          </tr>
-          <tr>
-            <td class="b" i18n="@@nodename">Node Name:</td>
-            <td>{{system.nodename}}</td>
-          </tr>
-          <tr>
-            <td class="b" i18n="@@ssid">SSID Network name:</td>
-            <td>{{system.wifiessid}}</td>
-          </tr>
+      <div class="flex-right half-row">
+        <table *ngIf="system" style="width:100%;">
+          <thead>
+            <tr align="left">
+              <th>Item</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="b" i18n="@@status">Status:</td>
+              <td>{{system.status}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@alias">Alias:</td>
+              <td>{{system.name}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@domai">Domain:</td>
+              <td>{{system.domain}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@ip">IP / Netmask address:</td>
+              <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@nodename">Node Name:</td>
+              <td>{{system.nodename}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@ssid">SSID Network name:</td>
+              <td>{{system.wifiessid}}</td>
+            </tr>
+          </tbody>
+          
         </table>
-      </div> -->
+      </div>
     </div>
-
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">

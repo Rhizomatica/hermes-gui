@@ -2,7 +2,7 @@
 
 <h2 i18n="@@stationsonthisnetwork" class="m-t-25">Stations on this network</h2>
 
-<table *ngIf="system" style="width:100%">
+<table style="width:100%">
   <thead>
     <tr align="left">
       <th scope="col" i18n="@@aliasstation">Alias</th>
@@ -67,8 +67,7 @@
   </tbody>
 </table>
 
-<hr class="m-t-25" />
-<!-- TODO - NOVA PAGINA? -->
+<!-- <hr class="m-t-25" />
 <h2 class="m-t-25" i18n="@@networkadmin1">Network information</h2>
 <p *ngIf="!system"> OFF </p>
 <table *ngIf="system" style="width:100%;">
@@ -95,7 +94,7 @@
   <tr>
     <td class="b" i18n="@@ssid">SSID Network name:</td>
     <td>{{system.wifiessid}}</td>
-  </tr>
+  </tr> -->
   <!-- <tr>
     <td class="b" i18n="@@uucp">UUcp:</td>
     <td>{{system.piduu}}</td>
@@ -143,8 +142,8 @@
   <!-- <tr>
     <td class="b" i18n="@@piddb">Piddb:</td>
     <td>{{system.piddb}}</td>
-  </tr> -->
-</table>
+  </tr> 
+</table>-->
 
 <div>
   <div class="overall alert" *ngIf="errorAlert==true">

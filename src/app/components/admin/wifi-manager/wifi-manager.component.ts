@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { NgForm } from '@angular/forms';
+import { ApiService } from 'src/app/_services/api.service';
 import { User } from '../../../interfaces/user'
 // import { CustomError } from '../../../interfaces/customerror'
 // import { UserService } from '../../../_services/user.service'
@@ -28,8 +29,10 @@ export class WifiManagerComponent implements OnInit {
   excludedKeys: Number[]
   passwordUnmatch = false;
   passwordMin = false
+  system: any
 
   constructor(
+    private apiService: ApiService,
     private authenticationService: AuthenticationService,
     private wifiManagerService: WifiManagerService
   ) {
@@ -138,9 +141,25 @@ export class WifiManagerComponent implements OnInit {
     this.passwordUnmatch = false
   }
 
+  getSystemStatus(): void {
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+        this.system = res
+        this.loading = false
+      },
+      (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    )
+  }
+
+
   ngOnInit(): void {
     this.getWiFiConfig()
     this.setChannels()
     this.setExcludedKeys()
+    this.getSystemStatus()
   }
 }
