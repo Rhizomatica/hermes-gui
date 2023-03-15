@@ -3,21 +3,21 @@
   <div class="row">
     <h1>WIFI MANAGER</h1>
   </div>
-  <div class="row m-t-25">
+  <div class="row">
     <div class="flexible">
       <div class="half-row">
         <form #f="ngForm">
           <div class="m-t-10">
-            <p>SSID</p>
-            <div [hidden]=!msgPatternChars class="error" i18n="@@passdontmatch">
+            <p>SSID Network name</p>
+            <div [hidden]=!msgPatternChars class="wiFiRetypePassphraseerror" i18n="@@passdontmatch">
               Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço
             </div>
-            <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
-              i18n-placeholder placeholder="Set wifi name" (keyup)="_keyUp($event)" />
+            <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3"
+              maxlength="32" (keyup)="_keyUp($event)" />
           </div>
           <div class="m-t-10">
             <p>Channel</p>
-            <select class="row" name="chanel" [(ngModel)]="wiFiChannel">
+            <select class="row" name="channel" [(ngModel)]="wiFiChannel">
               <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}
               </option>
             </select>
@@ -27,8 +27,8 @@
             <div [hidden]=!passwordMin class="error" i18n="@@strongpassword">
               password must have at least 6 characters
             </div>
-            <input type="text" i18n="@@wifialias" name="password" [(ngModel)]="wiFiPassphrase" required maxlength="32"
-              i18n-placeholder placeholder="Set wifi name" (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+            <input type="text" i18n="@@wifialias" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required
+              maxlength="32" (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="m-t-10">
             <p>Confirm Passphrase</p>
@@ -36,7 +36,7 @@
               passwords doesn't match
             </div>
             <input type="text" i18n="@@wifialias" name="retypepassword" [(ngModel)]="wiFiRetypePassphrase" required
-              maxlength="32" i18n-placeholder placeholder="Set wifi name"
+              maxlength="32" i18n-placeholder placeholder="Retype the Wi-Fi passphrase"
               (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="row m-t-25">
@@ -48,39 +48,30 @@
       </div>
       <div class="flex-right half-row">
         <table *ngIf="system" style="width:100%;">
-          <thead>
+          <!-- <thead>
             <tr align="left">
               <th>Item</th>
               <th>Value</th>
             </tr>
-          </thead>
+          </thead> -->
           <tbody>
             <tr>
-              <td class="b" i18n="@@status">Status:</td>
-              <td>{{system.status}}</td>
-            </tr>
-            <tr>
-              <td class="b" i18n="@@alias">Alias:</td>
+              <td class="b" i18n="@@alias">Alias</td>
               <td>{{system.name}}</td>
             </tr>
             <tr>
-              <td class="b" i18n="@@domai">Domain:</td>
+              <td class="b" i18n="@@domai">Domain</td>
               <td>{{system.domain}}</td>
             </tr>
             <tr>
-              <td class="b" i18n="@@ip">IP / Netmask address:</td>
-              <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
-            </tr>
-            <tr>
-              <td class="b" i18n="@@nodename">Node Name:</td>
+              <td class="b" i18n="@@nodename">Node Name</td>
               <td>{{system.nodename}}</td>
             </tr>
             <tr>
-              <td class="b" i18n="@@ssid">SSID Network name:</td>
-              <td>{{system.wifiessid}}</td>
+              <td class="b" i18n="@@ip">IP address</td>
+              <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
             </tr>
           </tbody>
-          
         </table>
       </div>
     </div>

@@ -58,11 +58,11 @@ export class WifiManagerComponent implements OnInit {
 
   public saveWifiConfig(f: NgForm) {
 
-    var formChecked = this.checkForm(f)
-    if (!formChecked) {
-      this.errorAlert = true;
-      return
-    }
+    // var formChecked = this.checkForm(f)
+    // if (!formChecked) {
+    //   this.errorAlert = true;
+    //   return
+    // }
 
     this.loading = true
     this.wifiManagerService.changeWiFiName(f.value).subscribe(
@@ -98,14 +98,14 @@ export class WifiManagerComponent implements OnInit {
       return false
     }
 
-    f.value.ssid.array.forEach(item => {
+    // f.value.ssid.split('').forEach(item => {
 
-      if (this.excludedKeys.includes(item)) {
-        // event.target.value = event.target.value.replace(event.key, "");
-        this.msgPatternChars = true
-        return false
-      }
-    });
+    //   if (this.excludedKeys.includes(item)) {
+    //     // event.target.value = event.target.value.replace(event.key, "");
+    //     this.msgPatternChars = true
+    //     return false
+    //   }
+    // });
 
   }
 
