@@ -1,11 +1,43 @@
 <loading [loading]="loading"></loading>
 <h2>Logs</h2>
-<button (click)="showUucpLog()">
+<button (click)="showCustomLogs()">
+    <span i18n="@@customlogbutton">Custom Logs</span>
+</button>
+<button class="m-l-10" (click)="showUucpLog()">
     <span i18n="@@uucplog">UUcp Log</span>
 </button>
 <button class="m-l-10" (click)="showEmailLog()">
     <span i18n="@@emaillog">Email Log</span>
 </button>
+
+<div class="formdata m-t-25" *ngIf="customLog">
+    <h3 i18n="@@customlogstitle">Custom log</h3>
+    <div class="row">
+        <input placeholder="Search errors" i18n-placeholder id="searchbox1" [(ngModel)]="searchError" />
+        <div class="row" *ngFor="let error of customErrors | filter:searchError; let i = index">
+            <div class="row">
+                <p (click)="viewLog(i)">
+                    <b>Date Hour: </b>
+                    {{error.created_at | date:'short'}} hr
+                    <button class="m-l-10 float-right">
+                        <img class="icon" src="assets/svg/eye.svg">
+                    </button>
+                </p>
+                <div class="row m-t-10 " [hidden]="visibleArray[i] == false ? true : false">
+                    <p><b>Error code:</b> {{error.error_code}}</p>
+                    <p><b>Station:</b> {{error.station}}
+                    <p>
+                    <p><b>Controller: </b> {{error.controller}}</p>
+                    <p><b>Message:</b></p>
+                    <p>{{error.error_message}}</p>
+                    <p><b>Stack Trace:</b></p>
+                    <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
 
 <div class="formdata m-t-25" *ngIf="uLog">
     <h3 i18n="@@uucpllogsog2">uucp log</h3>
@@ -40,6 +72,7 @@
         <section>
             <div *ngFor="let log of uucpDebugLog">
                 <p>{{log}}</p>
+                <hr />
             </div>
         </section>
         <br />
