@@ -9,7 +9,7 @@
         <form #f="ngForm">
           <div class="m-t-10">
             <p>SSID Network name</p>
-            <div [hidden]=!msgPatternChars class="wiFiRetypePassphraseerror" i18n="@@passdontmatch">
+            <div [hidden]=!msgPatternChars class="error" i18n="@@passdontmatch">
               Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço
             </div>
             <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3"
@@ -25,7 +25,7 @@
           <div class="m-t-10">
             <p>Passphrase</p>
             <div [hidden]=!passwordMin class="error" i18n="@@strongpassword">
-              password must have at least 6 characters
+              password must have at least 8 characters
             </div>
             <input type="text" i18n="@@wifialias" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required
               maxlength="32" (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
@@ -35,13 +35,13 @@
             <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatch">
               passwords doesn't match
             </div>
-            <input type="text" i18n="@@wifialias" name="retypepassword" [(ngModel)]="wiFiRetypePassphrase" required
+            <input type="text" i18n="@@wifialias" name="wpa_passphrase_retype" [(ngModel)]="wiFiRetypePassphrase" required
               maxlength="32" i18n-placeholder placeholder="Retype the Wi-Fi passphrase"
               (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="row m-t-25">
             <button (click)="saveWifiConfig(f)"
-              [disabled]="!wiFiSSID || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin ">save
+              [disabled]="!wiFiSSID || wiFiSSID.length < 3 || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin">save
               changes</button>
           </div>
         </form>
@@ -79,6 +79,15 @@
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
       <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
+  <div class="overall alert" [hidden]="errorAlertPatterns==false">
+    <div class="cv">
+      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations. <br /><br /></span>
       <span>{{error}}</span>
       <div class="icon"><a (click)="closeError()">
           <img title="close" src="assets/svg/x.svg"></a>

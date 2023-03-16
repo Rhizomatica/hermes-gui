@@ -20,6 +20,7 @@ export class WifiManagerComponent implements OnInit {
   loading: Boolean = false
   error: String
   errorAlert: Boolean = false
+  errorAlertPatterns: Boolean = false
   channels: Number[] = []
   wiFiSSID: String
   wiFiRetypePassphrase: String
@@ -30,6 +31,7 @@ export class WifiManagerComponent implements OnInit {
   passwordUnmatch = false;
   passwordMin = false
   system: any
+  
 
   constructor(
     private apiService: ApiService,
@@ -58,18 +60,15 @@ export class WifiManagerComponent implements OnInit {
 
   public saveWifiConfig(f: NgForm) {
 
-    // var formChecked = this.checkForm(f)
-    // if (!formChecked) {
-    //   this.errorAlert = true;
-    //   return
-    // }
+    var formChecked = this.checkForm(f)
+    if (!formChecked) {
+      this.errorAlertPatterns = true;
+      return
+    }
 
     this.loading = true
     this.wifiManagerService.changeWiFiName(f.value).subscribe(
       (res: any) => {
-        this.wiFiChannel = parseInt(res.channel)
-        this.wiFiSSID = res.ssid
-        this.wiFiPassphrase = res.wpa_passphrase
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -94,19 +93,17 @@ export class WifiManagerComponent implements OnInit {
       f.value.ssid = 'HERMES-DEFAULT'
     }
 
-    if (!f.value.password) {
+    if (!f.value.wpa_passphrase || f.value.wpa_passphrase !== f.value.wpa_passphrase_retype) {
       return false
     }
 
-    // f.value.ssid.split('').forEach(item => {
+    [f.value.ssid].forEach(item => {
+      if (this.excludedKeys.includes(item)) {
+        return false
+      }
+    });
 
-    //   if (this.excludedKeys.includes(item)) {
-    //     // event.target.value = event.target.value.replace(event.key, "");
-    //     this.msgPatternChars = true
-    //     return false
-    //   }
-    // });
-
+    return true
   }
 
   public closeError() {
@@ -120,13 +117,13 @@ export class WifiManagerComponent implements OnInit {
   }
 
   setExcludedKeys() {
-    // ?, ", $, [, \, ], +. and space    
+    // ?, ", $, [, \, ], +. and space   //TODO - Verify another characters...
     this.excludedKeys = [32, 52, 187, 191, 219, 220, 221, 222]
   }
 
   checkpass(password, retypePassword) {
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       this.passwordMin = true
       return
     }
