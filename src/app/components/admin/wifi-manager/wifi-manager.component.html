@@ -9,8 +9,8 @@
         <form #f="ngForm">
           <div class="m-t-10">
             <p>SSID Network name</p>
-            <div [hidden]=!msgPatternChars class="error" i18n="@@passdontmatch">
-              Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço
+            <div [hidden]=!msgPatternChars class="error" i18n="@@ssidrules">
+              Unaccepted characters: ?, ", $, [, \, ], +. e space
             </div>
             <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3"
               maxlength="32" (keyup)="_keyUp($event)" />
@@ -24,7 +24,7 @@
           </div>
           <div class="m-t-10">
             <p>Passphrase</p>
-            <div [hidden]=!passwordMin class="error" i18n="@@strongpassword">
+            <div [hidden]=!passwordMin class="error" i18n="@@wifistrongpassword">
               password must have at least 8 characters
             </div>
             <input type="text" i18n="@@wifialias" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required

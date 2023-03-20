@@ -16,7 +16,7 @@
     <img title="admin" src="assets/svg/tools.svg">
     admin
   </a>
-  <a routerLink="/login" i18n="@@login" *ngIf="!currentUser">
+  <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
     <img title="login" src="assets/svg/sign-in-alt-solid.svg">
     admin
   </a>
@@ -26,7 +26,7 @@
   </a>
   <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
     <img src="assets/svg/sign-out-alt-solid.svg">
-    <span class="logged" i18n="@@logout1">
+    <span class="logged" i18n="@@logoutmenu">
       logout
     </span>
   </a>
