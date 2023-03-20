@@ -103,7 +103,7 @@
           <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br />
           <span i18n="@@thisactioncannot">this action cannot be undone!</span>
           <br />
-          <button type="submit" (click)="onSubmitUpdate(selectedUser.emailid,f)" [disabled]="f.invalid"
+          <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
             i18n="@@update">update</button>
           <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid"
             i18n="@@cancel">cancel</button>

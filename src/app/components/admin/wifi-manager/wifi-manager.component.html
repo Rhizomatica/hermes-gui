@@ -1,0 +1,98 @@
+<loading [loading]="loading"></loading>
+<div class="">
+  <div class="row">
+    <h1>WIFI MANAGER</h1>
+  </div>
+  <div class="row">
+    <div class="flexible">
+      <div class="half-row">
+        <form #f="ngForm">
+          <div class="m-t-10">
+            <p i18n="@@ssidnetworkname">SSID Network name</p>
+            <div [hidden]=!msgPatternChars class="error" i18n="@@ssidrules">
+              Unaccepted characters: ?, ", $, [, \, ], +. e space
+            </div>
+            <input type="text" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
+              (keyup)="_keyUp($event)" />
+          </div>
+          <div class="m-t-10">
+            <p i18n="@@networkchanel">Channel</p>
+            <select class="row" name="channel" [(ngModel)]="wiFiChannel">
+              <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}
+              </option>
+            </select>
+          </div>
+          <div class="m-t-10">
+            <p i18n="@@networkpassprase">Passphrase</p>
+            <div [hidden]=!passwordMin class="error" i18n="@@wifistrongpassword">
+              password must have at least 8 characters
+            </div>
+            <input type="text" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required maxlength="32"
+              (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+          </div>
+          <div class="m-t-10">
+            <p i18n="@@networkconfirmpassprase">Confirm Passphrase</p>
+            <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatch">
+              passwords doesn't match
+            </div>
+            <input type="text" name="wpa_passphrase_retype" [(ngModel)]="wiFiRetypePassphrase" required maxlength="32"
+              i18n="@@networkconfirmpasspraseplaceholder" i18n-placeholder placeholder="Retype the Wi-Fi passphrase"
+              (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+          </div>
+          <div class="row m-t-25">
+            <button (click)="saveWifiConfig(f)"
+              [disabled]="!wiFiSSID || wiFiSSID.length < 3 || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin"
+              i18n="@@savewificonfigbutton"> save
+              changes</button>
+          </div>
+        </form>
+      </div>
+      <div class="flex-right half-row">
+        <table *ngIf="system" style="width:100%;">
+          <!-- <thead>
+            <tr align="left">
+              <th>Item</th>
+              <th>Value</th>
+            </tr>
+          </thead> -->
+          <tbody>
+            <tr>
+              <td class="b" i18n="@@alias">Alias</td>
+              <td>{{system.name}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@domai">Domain</td>
+              <td>{{system.domain}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@nodename">Node Name</td>
+              <td>{{system.nodename}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@ip">IP address</td>
+              <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
+  <div class="overall alert" [hidden]="errorAlertPatterns==false">
+    <div class="cv">
+      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations. <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
+</div>

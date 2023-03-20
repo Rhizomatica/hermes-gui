@@ -1,0 +1,44 @@
+<loading [loading]="loading"></loading>
+<div class="row" *ngIf="currentUser">
+  <h4>Welcome {{currentUser.email}}</h4>
+</div>
+<div class="phonemenu">
+  <!-- MENU -->
+  <a routerLink="/messages" i18n="@@messagemenu">
+    <img title="messages" src="assets/svg/comment.svg">
+    messages
+  </a>
+  <a routerLink="/email" i18n="@@emailmenu">
+    <img title="email" src="assets/svg/envelope.svg">
+    email
+  </a>
+  <a routerLink="/admin" i18n="@@adminmenu" *ngIf="currentUser">
+    <img title="admin" src="assets/svg/tools.svg">
+    admin
+  </a>
+  <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
+    <img title="login" src="assets/svg/sign-in-alt-solid.svg">
+    admin
+  </a>
+  <a routerLink="/help" i18n="@@helpmenu">
+    <img title="help" src="assets/svg/question-circle-regular.svg">
+    help
+  </a>
+  <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
+    <img src="assets/svg/sign-out-alt-solid.svg">
+    <span class="logged" i18n="@@logoutmenu">
+      logout
+    </span>
+  </a>
+  <!-- <img title="messages" src="assets/svg/sign-in-alt-solid.svg"> -->
+
+</div>
+<div class="overall alert" [hidden]="errorAlert==false">
+  <div class="cv">
+    <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
+    <span>{{error}}</span>
+    <div class="icon"><a (click)="closeError()">
+        <img title="close" src="assets/svg/x.svg"></a>
+    </div>
+  </div>
+</div>

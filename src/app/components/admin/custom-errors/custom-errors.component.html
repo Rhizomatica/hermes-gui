@@ -1,0 +1,16 @@
+<loading [loading]="loading"></loading>
+<div class="">
+  <div class="flexible">
+    <h2>API Custom Errors</h2>
+  </div>
+ 
+  <div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
+      <span>{{error}}</span>
+      <div class="icon"><a (click)="closeError()">
+          <img title="close" src="assets/svg/x.svg"></a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@ import { ApiService } from '../../../_services/api.service';
 export class NetadminComponent implements OnInit {
 
   error: any
-  system: any
+  // system: any
   errorAlert = false
   loading = true
   public freqmin = 500
@@ -31,24 +31,24 @@ export class NetadminComponent implements OnInit {
   pendingUpdate = false
 
   constructor(
-    private apiService: ApiService,
+    // private apiService: ApiService,
     private stationService: StationService,
     private frequencyService: FrequencyService) {
   }
 
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res
-        this.loading = false
-      },
-      (err) => {
-        this.error = err
-        this.errorAlert = true
-        this.loading = false
-      }
-    )
-  }
+  // getSystemStatus(): void {
+  //   this.apiService.getStatus().subscribe(
+  //     (res: any) => {
+  //       this.system = res
+  //       this.loading = false
+  //     },
+  //     (err) => {
+  //       this.error = err
+  //       this.errorAlert = true
+  //       this.loading = false
+  //     }
+  //   )
+  // }
 
   public getFrequencies(): void {
     this.loading = true
@@ -206,7 +206,7 @@ export class NetadminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSystemStatus()
+    // this.getSystemStatus()
     this.getFrequencies()
   }
 }

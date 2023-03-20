@@ -3,6 +3,8 @@ import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
 import { interval } from 'rxjs';
+import { CustomErrorsService } from '../../../_services/custom-errors.service';
+import { CustomError } from '../../../interfaces/customerror'
 
 export interface LogList {
   line: string;
@@ -27,14 +29,22 @@ export class LogComponent implements OnInit, OnDestroy {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
-  public intervallTimer = interval(10000);
+  public intervallTimer = interval(10000); //TODO - Remove timer (switch to reload button)
   private subscription1;
   private subscription2;
   private subscription3;
   errorAlert = false;
   loading = false
 
-  constructor(private authenticationService: AuthenticationService, private apiService: ApiService) {
+  customErrors: CustomError[]
+  visibleArray: any = []
+  searchError: String
+  customLog: boolean
+
+  constructor(private authenticationService: AuthenticationService, 
+    private apiService: ApiService,
+    private customErrorsService: CustomErrorsService
+    ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -43,6 +53,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.uLog = true;
     this.eLog = false;
     this.dLog = false;
+    this.customLog = false;
     this.getLogUucp();
     this.subscription1 = this.intervallTimer.subscribe(() => this.getLogUucp());
     if (this.subscription2) {
@@ -58,6 +69,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.uLog = false;
     this.eLog = true;
     this.dLog = false;
+    this.customLog = false;
     this.getLogMail();
     this.subscription2 = this.intervallTimer.subscribe(() => this.getLogMail());
     if (this.subscription1) {
@@ -73,6 +85,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.uLog = false;
     this.eLog = false;
     this.dLog = true;
+    this.customLog = false;
     this.getLogUucpDebug();
     this.subscription3 = this.intervallTimer.subscribe(() => this.getLogUucpDebug());
     if (this.subscription1) {
@@ -83,6 +96,14 @@ export class LogComponent implements OnInit, OnDestroy {
     }
   }
 
+  showCustomLogs(){
+    this.loading = true
+    this.uLog = false;
+    this.eLog = false;
+    this.dLog = false;
+    this.customLog = true;
+    this.getCustomErrors();
+  }
 
   getLogUucp() {
     this.apiService.getUucpLog().subscribe(
@@ -137,6 +158,37 @@ export class LogComponent implements OnInit, OnDestroy {
 
   closeError() {
     this.errorAlert = false;
+  }
+
+  getCustomErrors() {
+    this.loading = true
+    this.customErrorsService.getCustomErrors().subscribe(
+      (data: any) => {
+        this.customErrors = data;
+        this.loading = false;
+        this.loadVisibleArray(data)
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
+  loadVisibleArray(data) {
+    this.visibleArray = []
+    data.forEach(item => {
+      this.visibleArray.push(false)
+    });
+  }
+
+  viewLog(i) {
+    for (let index = 0; index < this.visibleArray.length; index++) {
+      this.visibleArray[index] = false
+    }
+
+    this.visibleArray[i] = true
   }
 
   ngOnInit(): void {

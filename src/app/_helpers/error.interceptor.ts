@@ -12,13 +12,54 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
             if (err.status === 401) {
-                // auto logout if 401 response returned from api
-                this.authenticationService.logout();
-                location.reload();
+                this.authenticationService.logout()
+                location.reload()
             }
 
-            const error = err.error.message || err.statusText;
-            return throwError(error);
+            return throwError(this.translateError(err.status))
         }));
+    }
+
+    public translateError(errorStatus) {
+        var language = localStorage.getItem('language')
+        var message = ''
+
+        if (language === 'en-US') {
+            message = this.englishError(errorStatus)
+        }
+
+        if (language === 'pt') {
+            message = this.portugueseError(errorStatus)
+        }
+
+        if (language == 'es') {
+            message = this.spanishError(errorStatus)
+        }
+
+        return message + ' If this error persists send a report feedback.'
+    }
+
+    public englishError(errorStatus) {
+        if (errorStatus == 500)
+            return 'Internal Server error, please try again.'
+
+        if (errorStatus == 400)
+            return 'Service not found.'
+    }
+
+    public portugueseError(errorStatus) {
+        if (errorStatus == 500)
+            return 'Erro interno no Servidor, por favor tente novamente.'
+
+        if (errorStatus == 400)
+            return 'Serviço não encontrado.'
+    }
+
+    public spanishError(errorStatus) {
+        if (errorStatus == 500)
+            return 'Error interno del servidor, inténtalo de nuevo.'
+
+        if (errorStatus == 400)
+            return 'Servicio no encontrado.'
     }
 }

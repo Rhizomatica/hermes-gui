@@ -27,4 +27,8 @@ export class UtilsService {
         return 'other';
     }
   }  
+
+  isMobile(){
+    return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
+  }
 }

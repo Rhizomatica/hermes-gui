@@ -2,7 +2,12 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="login1" datatype="html">
+      <trans-unit id="errorcustomerror" datatype="html">
+        <source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source><target state="new">There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/custom-errors/custom-errors.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">82</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="login1" datatype="html">
         <source>login</source>
         <target state="new">aceder</target>
 
@@ -29,47 +34,34 @@
         <source> is administrator</source>
         <target state="final">es administrador</target>
 
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">112</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">128</context></context-group></trans-unit>
       <trans-unit id="serveroff0" datatype="html">
         <source>server off</source>
         <target state="translated"> servidor apagado </target>
 
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">114</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">130</context></context-group></trans-unit>
       <trans-unit id="statusa0" datatype="html">
         <source>| Status: </source>
         <target state="new">| Estado: </target>
 
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">116</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">132</context></context-group></trans-unit>
       <trans-unit id="freespace" datatype="html">
         <source>Free Space:</source>
         <target state="new">Espacio libre:</target>
 
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">135</context></context-group></trans-unit><trans-unit id="ab2e4084645e2190e08a2aed4cdbf6773e2fae01" datatype="html">
+        <source>System storage is low! please delete messages and files</source><target state="new">System storage is low! please delete messages and files</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">119</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ddfd1cfe494c89f15228d4820e36c1d86da854ed" datatype="html">
-        <source>System storage is low! please delete messages and files</source>
-        <target state="new">¡El almacenamiento del sistema es bajo! por favor borre mensajes y archivos</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">134</context>
+          <context context-type="linenumber">150,151</context>
         </context-group>
         <note priority="1" from="description">storagelow</note>
       </trans-unit>
+      
       <trans-unit id="messages" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;>"/> messages </source>
         <target>
@@ -122,29 +114,20 @@ ayuda</target>
         <target state="new">503 Servicio no disponible</target>
 
         <note priority="1" from="description">hermes503Http</note>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">76</context></context-group></trans-unit>
       <trans-unit id="355775d922c68773e0c10b2ab4f754861d5b88d7" datatype="html">
         <source>Hermes server is offline, please turn the station on. </source>
         <target state="new">El servidor Hermes está desconectado, encienda la estación.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">64,65</context>
-        </context-group>
+        
         <note priority="1" from="description">hermesoffline</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">77</context></context-group></trans-unit>
       <trans-unit id="areadyon" datatype="html">
         <source>If your server is already on click here</source>
         <target state="new">Si su servidor ya está activado, haga clic aquí </target>
 
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">67</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">80</context></context-group></trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
         <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
       <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea.
@@ -154,11 +137,8 @@ ayuda</target>
         <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
       </target>
 
-      <context-group purpose="location">
-        <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-        <context context-type="linenumber">70</context>
-      </context-group>
-    </trans-unit>
+      
+    <context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">83</context></context-group></trans-unit>
     <trans-unit id="errorchangingconfig" datatype="html">
       <source>There was an error on changing configuration <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
     <target state="new">Hubo un error al cambiar la configuración  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
@@ -172,7 +152,7 @@ ayuda</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">198</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">97</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">82</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context><context context-type="linenumber">198</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context><context context-type="linenumber">97</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">95</context></context-group></trans-unit>
 <trans-unit id="gpscalibrationsuccess" datatype="html">
   <source>GPS Calibration successful</source>
 <target state="new">Calibración GPS exitosa</target>
@@ -185,22 +165,16 @@ ayuda</target>
 <target state="final">Estación:</target>
 
 <note priority="1" from="description">stationa</note>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/app/app.component.html</context>
-<context context-type="linenumber">110</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">126</context></context-group></trans-unit>
 <trans-unit id="stationoffline" datatype="html">
 <source> Hermes station offline <x id="START_TAG_FIGURE" ctype="x-figure" equiv-text="&lt;figure class=&quot;redcircle&quot;>"/><x id="CLOSE_TAG_FIGURE" ctype="x-figure" equiv-text="&lt;/figure>"/></source>
 <target state="translated"> Estación Hermes desconectada <x id="START_TAG_FIGURE" ctype="x-figure" equiv-text="&lt;figure class=&quot;redcircle&quot;>"/>
 <x id="CLOSE_TAG_FIGURE" ctype="x-figure" equiv-text="&lt;/figure>"/>
 </target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/app/app.component.html</context>
-<context context-type="linenumber">137</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">154</context></context-group></trans-unit>
 <trans-unit id="e_mail" datatype="html">
 <source>E-mail</source>
 <target>Correo electrónico</target>
@@ -228,7 +202,7 @@ deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">63</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">64</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit>
 
 <trans-unit id="todownload" datatype="html">
 <source>To download deltachat click on one of the links below: </source>
@@ -338,61 +312,68 @@ deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 <target state="new">Título del horario</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">38</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">39</context></context-group></trans-unit>
 
 <trans-unit id="initialtime" datatype="html">
 <source>Start transmission hour: </source>
 <target state="new">Hora de inicio de transmisión: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">41</context></context-group></trans-unit>
 <trans-unit id="finatime" datatype="html">
 <source>Stop transmission hour:</source>
 <target state="new">Hora de parada de transmisión:</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">46</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit>
 <trans-unit id="timewarning" datatype="html">
 <source>Stop transmission hour must be bigger than start time</source>
 <target state="new">La hora de parada de la transmisión debe ser mayor que la hora de inicio</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="selectstationsgw" datatype="html">
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="selectstationsgw" datatype="html">
         <source> Select station: </source><target state="new">seleccione las estaciones:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">54</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">55</context></context-group></trans-unit>
 <trans-unit id="enable" datatype="html">
 <source>Enable</source>
 <target state="new">Habilitar</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">73</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">74</context></context-group></trans-unit>
 <trans-unit id="changetime" datatype="html">
 <source> change </source>
 <target state="new">cambiar</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">81</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">82</context></context-group></trans-unit>
 <trans-unit id="newschedule" datatype="html">
 <source> create schedule </source>
 <target state="new">crear horario</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">85</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">86</context></context-group></trans-unit>
 <trans-unit id="deletechedule" datatype="html">
 <source> delete schedule </source>
 <target state="new">borrar horario</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">90</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">91</context></context-group></trans-unit>
 <trans-unit id="needadm" datatype="html">
 <source>You need admin privileges to access this page</source>
 <target state="new">Necesita privilegios de administrador para acceder a esta página</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">98</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">99</context></context-group></trans-unit><trans-unit id="customlogbutton" datatype="html">
+        <source>Custom Logs</source><target state="new">Registro personalizado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="portugues" datatype="html">
-<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/brasil.svg&quot;>"/>Português</source>
+<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot;
+              src=&quot;assets/svg/brasil.svg&quot;>"/>Português</source>
 <target>
 <x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;mensagens&quot; src=&quot;assets/svg/brasil.svg&quot;>"/>
 Portugués</target>
@@ -400,9 +381,10 @@ Portugués</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">94</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/languages/languages.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">107</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/languages/languages.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
 <trans-unit id="espanhol" datatype="html">
-<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/espanha.svg&quot;>"/>Español</source>
+<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot;
+              src=&quot;assets/svg/espanha.svg&quot;>"/>Español</source>
 <target>
 <x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;mensagens&quot; src=&quot;assets/svg/espanha.svg&quot;>"/>
 Español</target>
@@ -410,9 +392,10 @@ Español</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">95</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/languages/languages.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">109</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/languages/languages.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit>
 <trans-unit id="english" datatype="html">
-<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/reino-unido.svg&quot;>"/>English</source>
+<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot;
+              src=&quot;assets/svg/reino-unido.svg&quot;>"/>English</source>
 <target>
 <x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/reino-unido.svg&quot;>"/>
 Inglés</target>
@@ -420,51 +403,84 @@ Inglés</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">96</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/languages/languages.component.html</context><context context-type="linenumber">5</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/app/app.component.html</context><context context-type="linenumber">111</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/languages/languages.component.html</context><context context-type="linenumber">5</context></context-group></trans-unit>
 <trans-unit id="uucplog" datatype="html">
 <source>UUcp Log</source>
 <target state="new">Logs del UUcp</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-<context context-type="linenumber">4</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">7</context></context-group></trans-unit>
 <trans-unit id="emaillog" datatype="html">
 <source>Email Log</source>
 <target state="new">Logs del Email </target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-<context context-type="linenumber">7</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="customlogstitle" datatype="html">
+        <source>Custom log</source><target state="new">Registro personalizado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="743bd99eeb0e667fc29346da0e6790204e1f048a" datatype="html">
+        <source>Search errors</source><target state="new">Search errors</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit><trans-unit id="customerrordatehour" datatype="html">
+        <source>Date Hour: </source><target state="new">Fecha Hora: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit><trans-unit id="customerrorcode" datatype="html">
+        <source>Error code:</source><target state="new">Código de error:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit><trans-unit id="customerrorcstation" datatype="html">
+        <source>Station:</source><target state="new">Estación:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit><trans-unit id="customerrorcontroller" datatype="html">
+        <source>Controller: </source><target state="new">Controlador: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit><trans-unit id="customerrormessage" datatype="html">
+        <source>Message:</source><target state="new">Mensaje:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit><trans-unit id="customerrorstacktrace" datatype="html">
+        <source>Stack Trace:</source><target state="new">Rastreo de pila:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="uucpllogsog2" datatype="html">
 <source>uucp log</source>
 <target state="new">registros del uucp</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-<context context-type="linenumber">11</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">42</context></context-group></trans-unit>
 <trans-unit id="debuglog2" datatype="html">
 <source>uucp debug log</source>
 <target state="new">Registros de depuración del Uucp</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-<context context-type="linenumber">35</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit>
 <trans-unit id="emaillog2" datatype="html">
 <source>email log</source>
 <target state="new">Registros del Email</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-<context context-type="linenumber">23</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">55</context></context-group></trans-unit>
 <trans-unit id="login" datatype="html">
 <source>Login</source>
 <target>Aceder</target>
@@ -500,7 +516,43 @@ Inglés</target>
 <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
 <context context-type="linenumber">6</context>
 </context-group>
-</trans-unit>
+</trans-unit><trans-unit id="messagemenu" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;>"/> messages </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;>"/> messajes </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailmenu" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;email&quot; src=&quot;assets/svg/envelope.svg&quot;>"/> email </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;email&quot; src=&quot;assets/svg/envelope.svg&quot;>"/> email </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit><trans-unit id="adminmenu" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;admin&quot; src=&quot;assets/svg/tools.svg&quot;>"/> admin </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;admin&quot; src=&quot;assets/svg/tools.svg&quot;>"/> admin </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">16,18</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginmenu" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/> admin </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/> admin </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit><trans-unit id="helpmenu" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot;>"/> help </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot;>"/> ayuda </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+      </trans-unit><trans-unit id="logoutmenu" datatype="html">
+        <source> logout </source><target state="new"> cerrar </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="username:" datatype="html">
 <source>username:</source>
 <target>nombre de usuario:</target>
@@ -940,7 +992,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">66</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">111</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">66</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">111</context></context-group></trans-unit>
 <trans-unit id="passempty" datatype="html">
 <source> passwords can't be empty </source>
 <target state="new"> las contraseñas no pueden estar vacías </target>
@@ -1084,119 +1136,48 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 <context context-type="linenumber">15</context>
 </context-group>
 </trans-unit>
-<trans-unit id="networkadmin1" datatype="html">
-<source>Network information</source>
-<target state="new">Información de la Red</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit>
-<trans-unit id="status" datatype="html">
-<source>Status:</source>
-<target state="new">Estado: </target>
-
-
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">76</context></context-group></trans-unit>
 <trans-unit id="alias" datatype="html">
-<source>Alias:</source>
+<source>Alias</source>
 <target state="new">Alias: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">80</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">60</context></context-group></trans-unit>
 <trans-unit id="domai" datatype="html">
-<source>Domain:</source>
+<source>Domain</source>
 <target state="new">Dominio: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">84</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">64</context></context-group></trans-unit>
 <trans-unit id="ip" datatype="html">
-<source>IP / Netmask address:</source>
-<target state="new">IP / Dirección IP / máscara de red : </target>
+<source>IP address</source>
+<target state="new">Dirección IP</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">88</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="errorPatternsWifi" datatype="html">
+        <source> Verify the patterns to save the WiFi configurations. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source><target state="new"> Verifica los patrones para guardar las configuraciones WiFi. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">91</context></context-group></trans-unit>
 <trans-unit id="nodename" datatype="html">
-<source>Node Name:</source>
+<source>Node Name</source>
 <target state="new">Nombre del nodo</target>
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">92</context></context-group></trans-unit>
-<trans-unit id="ssid" datatype="html">
-<source>SSID Network name:</source>
-<target state="new">SSID Nombre de red: </target>
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">96</context></context-group></trans-unit>
-<trans-unit id="uucp" datatype="html">
-<source>UUcp:</source>
-<target state="new">UUcp: </target>
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit>
-<trans-unit id="modem" datatype="html">
-<source>Modem:</source>
-<target state="new">Modem: </target>
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">104</context></context-group></trans-unit>
-<trans-unit id="radion" datatype="html">
-<source>Radio:</source>
-<target state="new">Radio: </target>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit>
-<trans-unit id="hermesr" datatype="html">
-<source>Hermes:</source>
-<target state="new">Hermes: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">112</context></context-group></trans-unit>
-<trans-unit id="database" datatype="html">
-<source>Database:</source>
-<target state="new">Base de datos: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">116</context></context-group></trans-unit>
-<trans-unit id="mailn" datatype="html">
-<source>Mail:</source>
-<target state="new">Correo: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">120</context></context-group></trans-unit>
-<trans-unit id="totalmemory" datatype="html">
-<source>Total Memory:</source>
-<target state="new">Memoria total: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">124</context></context-group></trans-unit>
-<trans-unit id="usedmemory" datatype="html">
-<source>Used Memory:</source>
-<target state="new">Memoria usada: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">128</context></context-group></trans-unit>
-<trans-unit id="freememory" datatype="html">
-<source>Free Memory:</source>
-<target state="new">Memoria libre: </target>
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">132</context></context-group></trans-unit>
-<trans-unit id="phpmemory" datatype="html">
-<source>Php Memory:</source>
-<target state="new">Memoria de Php: </target>
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">136</context></context-group></trans-unit>
-<trans-unit id="wifi" datatype="html">
-<source>Wifi Channel:</source>
-<target state="new">Canal WiFi: </target>
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">140</context></context-group></trans-unit>
-<trans-unit id="piddb" datatype="html">
-<source>Piddb:</source>
-<target state="new">Piddb: </target>
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">144</context></context-group></trans-unit><trans-unit id="stationsonthisnetwork" datatype="html">
-        <source>Stations on this network</source><target state="new">Estaciones en esta red</target>
+<trans-unit id="stationsonthisnetwork" datatype="html">
+        <source>Radio Network</source><target state="new">Estaciones en esta red</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="aliasstation" datatype="html">
         <source>Alias</source><target state="new">Alias</target>
@@ -1591,7 +1572,7 @@ esto puede hacer que el sistema se detenga</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">49</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">152</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio/radio.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">191</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context><context context-type="linenumber">77</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">96</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context><context context-type="linenumber">80</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context><context context-type="linenumber">65</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">83</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/netadmin/netadmin.component.html</context><context context-type="linenumber">72</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio/radio.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">211</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context><context context-type="linenumber">77</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">96</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context><context context-type="linenumber">80</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context><context context-type="linenumber">65</context></context-group></trans-unit>
 
 
 
@@ -1603,15 +1584,9 @@ esto puede hacer que el sistema se detenga</target>
 <source> User management </source>
 <target state="new">Gestión de usuarios</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">10</context>
-</context-group>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">169</context>
-</context-group>
-</trans-unit>
+
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">10</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">189</context></context-group></trans-unit>
 <trans-unit id="messageadm" datatype="html">
 <source> Messages configuration </source>
 <target state="new">Configuración de mensajes</target>
@@ -1634,15 +1609,9 @@ esto puede hacer que el sistema se detenga</target>
 <source> Radio configuration </source>
 <target state="new">Configuración de radio</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">41</context>
-</context-group>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">179</context>
-</context-group>
-</trans-unit>
+
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">41</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">199</context></context-group></trans-unit>
 
 
 <trans-unit id="scheduling" datatype="html">
@@ -1655,93 +1624,72 @@ esto puede hacer que el sistema se detenga</target>
 </context-group>
 </trans-unit>
 <trans-unit id="networkadmin" datatype="html">
-<source> Network information </source>
+<source> Radio Network </source>
 <target state="new">Información de la Red</target>
 
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
 <context context-type="linenumber">85</context>
 </context-group>
-</trans-unit>
+</trans-unit><trans-unit id="wifimanagercard" datatype="html">
+        <source> Wi-Fi Manager </source><target state="new"> Wi-Fi Manager </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
+          <context context-type="linenumber">95,97</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="detailedlog" datatype="html">
 <source> Detailed log </source>
 <target state="new">Log detallado</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">95</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">105</context></context-group></trans-unit>
 <trans-unit id="reboot" datatype="html">
 <source>reboot</source>
 <target state="new">reiniciar</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">101</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">121</context></context-group></trans-unit>
 <trans-unit id="shutdown" datatype="html">
 <source>shut down</source>
 <target state="new">apagar</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">104</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">124</context></context-group></trans-unit>
 <trans-unit id="confirmshutdown" datatype="html">
 <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
 <target state="new"> ¿Está seguro de que desea apagar el sistema Hermes?  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
  Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
 </target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">114</context>
-</context-group>
-</trans-unit><trans-unit id="cancels1" datatype="html">
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">134</context></context-group></trans-unit><trans-unit id="cancels1" datatype="html">
         <source>cancel</source><target state="new">cancelar</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">120</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">140</context></context-group></trans-unit>
 <trans-unit id="shutdown1" datatype="html">
 <source>shut down</source>
 <target state="new">cerrar</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">123</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">143</context></context-group></trans-unit>
 <trans-unit id="confirmreboot" datatype="html">
 <source> Are you sure you want to reboot Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
 <target state="new"> ¿Está seguro de que desea reiniciar el sistema Hermes?  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
  Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
 </target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">130</context>
-</context-group>
-</trans-unit><trans-unit id="cancels2" datatype="html">
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">150</context></context-group></trans-unit><trans-unit id="cancels2" datatype="html">
         <source>cancel</source><target state="new">cancelar</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">136</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">156</context></context-group></trans-unit>
 <trans-unit id="reboot1" datatype="html">
 <source>reboot</source>
 <target state="new">reiniciar</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">139</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">159</context></context-group></trans-unit>
 <trans-unit id="shutDownButton" datatype="html">
 <source> Shutting Down System <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;close&quot; src=&quot;assets/svg/x.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></source>
 <target state="new"> Apagar el sistema <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
@@ -1752,11 +1700,8 @@ esto puede hacer que el sistema se detenga</target>
 <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 </target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">143,148</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">163</context></context-group></trans-unit>
 <trans-unit id="rebootButton" datatype="html">
 <source> Rebooting System <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;close&quot; src=&quot;assets/svg/x.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></source>
 <target state="new"> Sistema de reinicio <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
@@ -1767,32 +1712,23 @@ esto puede hacer que el sistema se detenga</target>
 <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 </target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">150,155</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">170</context></context-group></trans-unit>
 <trans-unit id="needtobeadmin" datatype="html">
 <source> Need to be an admin to access other admin features </source>
 <target state="new"> Necesita ser un administrador para acceder a las funciones de administrador </target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-<context context-type="linenumber">159</context>
-</context-group>
-</trans-unit><trans-unit id="alertbrowserxp" datatype="html">
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">179</context></context-group></trans-unit><trans-unit id="alertbrowserxp" datatype="html">
         <source> To a better HERMES experience use the chromium/chrome browser </source><target state="new"> Para una mejor experiencia con HERMES, use el navegador chromium/chrome </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context>
-          <context context-type="linenumber">200,202</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">220</context></context-group></trans-unit>
 <trans-unit id="pleaselogin" datatype="html">
 <source>Please log in to access this area:</source>
 <target state="new">Inicie sesión para acceder a esta área:</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">213</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">233</context></context-group></trans-unit>
 <trans-unit id="transmissionlistt" datatype="html">
 <source>Transmission list</source>
 <target state="new">Lista de Transmissión</target>
@@ -2141,7 +2077,52 @@ esto puede hacer que el sistema se detenga</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="ssidnetworkname" datatype="html">
+        <source>SSID Network name</source><target state="new">SSID Nombre de red</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit><trans-unit id="ssidrules" datatype="html">
+        <source> Unaccepted characters: ?, ", $, [, \, ], +. e space </source><target state="new"> Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit><trans-unit id="networkchanel" datatype="html">
+        <source>Channel</source><target state="new">Canal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="networkpassprase" datatype="html">
+        <source>Passphrase</source><target state="new">Frase de contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit><trans-unit id="wifistrongpassword" datatype="html">
+        <source> password must have at least 8 characters </source><target state="new"> la contraseña debe tener al menos 8 caracteres </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit><trans-unit id="networkconfirmpassprase" datatype="html">
+        <source>Confirm Passphrase</source><target state="new">Confirmar frase de contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit><trans-unit id="f5ab5850a8a8f5100a6906d41f1b8056676ec1da" datatype="html">
+        <source>Retype the Wi-Fi passphrase</source><target state="new">Vuelva a escribir la frase de contraseña de Wi-Fi</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="savewificonfigbutton" datatype="html">
+        <source> save changes</source><target state="new"> guardar alteraciones </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="helpa" datatype="html">
 <source>Help</source>
 <target state="new">Ayuda</target>

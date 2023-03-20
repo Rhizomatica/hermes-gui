@@ -80,10 +80,20 @@
                 <a routerLink="/netadmin">
                     <div class="card">
                         <div class="card-icon">
-                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/wifi-solid.svg">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/settings_input_antenna-24px.svg">
                         </div>
                         <div i18n="@@networkadmin">
-                            Network information
+                            Radio Network
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/wifiManager" *ngIf="isAdmin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/wifi-solid.svg">
+                        </div>
+                        <div i18n="@@wifimanagercard">
+                            Wi-Fi Manager
                         </div>
                     </div>
                 </a>
@@ -97,6 +107,16 @@
                         </div>
                     </div>
                 </a>
+                <!-- <a routerLink="/customErrors" *ngIf="isAdmin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/eye.svg">
+                        </div>
+                        <div i18n="@@customerrorscard">
+                            Custom Errors
+                        </div>
+                    </div>
+                </a> -->
                 <div class="shut m-t-10">
                     <button class="midbt" (click)="confirmReboot()"><span i18n="@@reboot">reboot</span><br />
                         <img class="btnicon" title="send" src="assets/svg/redo.svg">

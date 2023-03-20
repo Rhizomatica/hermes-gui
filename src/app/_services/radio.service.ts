@@ -106,16 +106,17 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioMode(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/freq`;
-    const output = this.http.get(url);
-    return this.http.get(url).pipe(
-      map((res: any) => {
-        this.serverReturn = res;
-        return this.serverReturn;
-      }),
-      catchError(this.handleError));
-  }
+  //TODO - REMOVE UNUSED
+  // public getRadioMode(): Observable<{}> {
+  //   const url = `${GlobalConstants.apiURL}/radio/freq`;
+  //   const output = this.http.get(url);
+  //   return this.http.get(url).pipe(
+  //     map((res: any) => {
+  //       this.serverReturn = res;
+  //       return this.serverReturn;
+  //     }),
+  //     catchError(this.handleError));
+  // }
 
   public getRadioBfo(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/radio/bfo`;
@@ -193,17 +194,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public radioSetDefaults(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/setdefaults`;
-    return this.http.post(url, null).pipe(
-      map((res: any) => {
-        return res;
-      }),
-      catchError(this.handleError));
-  }
-
   public radioRestoreDefaults(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/restoredefaults`;
+    const url = `${GlobalConstants.apiURL}/radio/default`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

@@ -78,7 +78,7 @@ export class MessageadmComponent implements OnInit {
   cleanUp() {
     const url = `${GlobalConstants.apiURL}/api/file`;
     this.cleaned = true;
-    return this.http.delete(url);
+    return this.http.delete(url); //TODO - Move to service...
   }
 
   getMessages(): void {
