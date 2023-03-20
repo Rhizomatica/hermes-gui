@@ -8,40 +8,41 @@
       <div class="half-row">
         <form #f="ngForm">
           <div class="m-t-10">
-            <p>SSID Network name</p>
+            <p i18n="@@ssidnetworkname">SSID Network name</p>
             <div [hidden]=!msgPatternChars class="error" i18n="@@ssidrules">
               Unaccepted characters: ?, ", $, [, \, ], +. e space
             </div>
-            <input type="text" i18n="@@wifialias" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3"
-              maxlength="32" (keyup)="_keyUp($event)" />
+            <input type="text" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
+              (keyup)="_keyUp($event)" />
           </div>
           <div class="m-t-10">
-            <p>Channel</p>
+            <p i18n="@@networkchanel">Channel</p>
             <select class="row" name="channel" [(ngModel)]="wiFiChannel">
               <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}
               </option>
             </select>
           </div>
           <div class="m-t-10">
-            <p>Passphrase</p>
+            <p i18n="@@networkpassprase">Passphrase</p>
             <div [hidden]=!passwordMin class="error" i18n="@@wifistrongpassword">
               password must have at least 8 characters
             </div>
-            <input type="text" i18n="@@wifialias" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required
-              maxlength="32" (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+            <input type="text" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required maxlength="32"
+              (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="m-t-10">
-            <p>Confirm Passphrase</p>
+            <p i18n="@@networkconfirmpassprase">Confirm Passphrase</p>
             <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatch">
               passwords doesn't match
             </div>
-            <input type="text" i18n="@@wifialias" name="wpa_passphrase_retype" [(ngModel)]="wiFiRetypePassphrase" required
-              maxlength="32" i18n-placeholder placeholder="Retype the Wi-Fi passphrase"
+            <input type="text" name="wpa_passphrase_retype" [(ngModel)]="wiFiRetypePassphrase" required maxlength="32"
+              i18n="@@networkconfirmpasspraseplaceholder" i18n-placeholder placeholder="Retype the Wi-Fi passphrase"
               (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
           </div>
           <div class="row m-t-25">
             <button (click)="saveWifiConfig(f)"
-              [disabled]="!wiFiSSID || wiFiSSID.length < 3 || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin">save
+              [disabled]="!wiFiSSID || wiFiSSID.length < 3 || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin"
+              i18n="@@savewificonfigbutton"> save
               changes</button>
           </div>
         </form>

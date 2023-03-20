@@ -4,19 +4,10 @@
     <body>
       <trans-unit id="errorcustomerror" datatype="html">
         <source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source><target state="final">There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/custom-errors/custom-errors.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
-          <context context-type="linenumber">81</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-      </trans-unit><trans-unit id="login1" datatype="html">
+        
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/custom-errors/custom-errors.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">82</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="login1" datatype="html">
         <source>login</source>
         <target state="final">entrar</target>
 
@@ -751,11 +742,29 @@
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="ssidrules" datatype="html">
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="ssidnetworkname" datatype="html">
+        <source>SSID Network name</source><target state="final">SSID Nome da rede</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit><trans-unit id="ssidrules" datatype="html">
         <source> Unaccepted characters: ?, ", $, [, \, ], +. e space </source><target state="final"> Caractéres não aceitos: ?, ", $, [, \, ], +. e espaço </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
           <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit><trans-unit id="networkchanel" datatype="html">
+        <source>Channel</source><target state="final">Canal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="networkpassprase" datatype="html">
+        <source>Passphrase</source><target state="final">Senha</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit><trans-unit id="wifistrongpassword" datatype="html">
         <source> password must have at least 8 characters </source><target state="final"> a senha deve ter pelo menos 8 caracteres </target>
@@ -763,11 +772,20 @@
           <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
           <context context-type="linenumber">27,29</context>
         </context-group>
-      </trans-unit><trans-unit id="f5ab5850a8a8f5100a6906d41f1b8056676ec1da" datatype="html">
-        <source>Retype the Wi-Fi passphrase</source><target state="final">Redigite a senha do Wi-Fi</target>
+      </trans-unit><trans-unit id="networkconfirmpassprase" datatype="html">
+        <source>Confirm Passphrase</source><target state="final">Confirmar senha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit><trans-unit id="f5ab5850a8a8f5100a6906d41f1b8056676ec1da" datatype="html">
+        <source>Retype the Wi-Fi passphrase</source><target state="final">Redigite a senha do Wi-Fi</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="savewificonfigbutton" datatype="html">
+        <source> save changes</source><target state="final"> salvar alterações</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
+          <context context-type="linenumber">45,46</context>
         </context-group>
       </trans-unit>
 <trans-unit id="helpa" datatype="html">
@@ -1670,19 +1688,16 @@
 <target state="final">IP address</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">71</context></context-group></trans-unit><trans-unit id="errorPatternsWifi" datatype="html">
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="errorPatternsWifi" datatype="html">
         <source> Verify the patterns to save the WiFi configurations. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source><target state="final"> Verify the patterns to save the WiFi configurations. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>
-          <context context-type="linenumber">90</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">91</context></context-group></trans-unit>
 <trans-unit id="nodename" datatype="html">
 <source>Node Name</source>
 <target state="final">Node Name</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">67</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit>
 
 
 
@@ -1852,13 +1867,13 @@
 <target state="final">Alias</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">59</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">60</context></context-group></trans-unit>
 <trans-unit id="domai" datatype="html">
 <source>Domain</source>
 <target state="final">Domain</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">63</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">64</context></context-group></trans-unit>
 <trans-unit id="operationtx1" datatype="html">
 <source> TX</source>
 <target state="final"> TX</target>
