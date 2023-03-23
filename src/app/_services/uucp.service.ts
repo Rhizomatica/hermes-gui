@@ -37,7 +37,7 @@ export class UUCPService{
       catchError(this.handleError));
   }
 
-  cancelTransmission(uuhost, id): Observable<UUCPQueue[]> {
+  cancelTransmision(uuhost, id): Observable<UUCPQueue[]> {
     const url = `${GlobalConstants.apiURL}/sys/uuk/${uuhost}/${id}`;
     return this.http.delete(url).pipe(
       map((res: any) => {

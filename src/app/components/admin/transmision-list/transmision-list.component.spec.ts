@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TransmissionListComponent } from './transmission-list.component';
+import { TransmisionListComponent } from './transmision-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('TransmissionListComponent', () => {
-  let component: TransmissionListComponent;
-  let fixture: ComponentFixture<TransmissionListComponent>;
+  let component: TransmisionListComponent;
+  let fixture: ComponentFixture<TransmisionListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransmissionListComponent ],
+      declarations: [ TransmisionListComponent ],
       imports:[HttpClientModule]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TransmissionListComponent);
+    fixture = TestBed.createComponent(TransmisionListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

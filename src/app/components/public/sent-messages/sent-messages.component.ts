@@ -59,7 +59,7 @@ export class SentMessagesComponent implements OnInit {
   }
 
   cancelTransmission(host, id): void {
-    this.uucpService.cancelTransmission(host, id).subscribe(
+    this.uucpService.cancelTransmision(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
       }, (err) => {

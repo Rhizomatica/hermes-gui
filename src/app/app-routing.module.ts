@@ -9,7 +9,7 @@ import { MessageDetailComponent } from './components/public/message-detail/messa
 import { LogComponent } from './components/admin/log/log.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
-import { NetadminComponent } from './components/admin/netadmin/netadmin.component';
+import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
@@ -20,13 +20,12 @@ import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { RadioComponent } from './components/admin/radio/radio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
-import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
+import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
-import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
 import { MenuComponent } from './components/public/menu/menu.component';
 import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
 
@@ -42,7 +41,7 @@ const routes: Routes = [
   { path: 'usermanage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },
   { path: 'response/:origin', component: MessagecomposeComponent },
-  { path: 'netadmin', component: NetadminComponent },
+  { path: 'stationinformation', component: StationInformationComponent },
   { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
@@ -53,13 +52,12 @@ const routes: Routes = [
   { path: 'radioconfig', component: RadioConfigComponent },
   { path: 'radio', component: RadioComponent },
   { path: 'gateway', component: GatewayConfigComponent },
-  { path: 'transmission', component: TransmissionListComponent },
+  { path: 'transmision', component: TransmisionListComponent },
   { path: 'switch', component: SwitchComponent },
   { path: 'scary', component: RadioScaryComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
-  { path: 'customErrors', component: CustomErrorsComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'wifiManager', component: WifiManagerComponent },
 ];
