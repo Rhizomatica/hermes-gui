@@ -1,7 +1,7 @@
 <loading [loading]="loading"></loading>
 <h2>Logs</h2>
 <button (click)="showCustomLogs()">
-    <span i18n="@@customlogbutton">Custom Logs</span>
+    <span i18n="@@errorlogbutton">Error Log</span>
 </button>
 <button class="m-l-10" (click)="showUucpLog()">
     <span i18n="@@uucplog">UUcp Log</span>
@@ -11,9 +11,10 @@
 </button>
 
 <div class="formdata m-t-25" *ngIf="customLog">
-    <h3 i18n="@@customlogstitle">Custom log</h3>
+    <h3 i18n="@@errorlog">Error log</h3>
     <div class="row">
-        <input placeholder="Search errors" i18n-placeholder id="searchbox1" [(ngModel)]="searchError" />
+        <input i18n="@@searcherrorplaceholder" i18n-placeholder placeholder="search error" id="searchbox1"
+            [(ngModel)]="searchError" />
         <div class="row" *ngFor="let error of customErrors | filter:searchError; let i = index">
             <div class="row">
                 <p (click)="viewLog(i)">
@@ -29,7 +30,7 @@
                     <p><b i18n="@@customerrorcontroller">Controller: </b> {{error.controller}}</p>
                     <p><b i18n="@@customerrormessage">Message:</b></p>
                     <p>{{error.error_message}}</p>
-                    <p><b i18n="@@customerrorstacktrace">Stack Trace:</b></p>
+                    <p><b>Stack Trace:</b></p>
                     <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p>
                 </div>
             </div>

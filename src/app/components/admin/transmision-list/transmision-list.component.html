@@ -5,8 +5,8 @@
       <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
         case of emergency<br /></span>
       <div class="icon m-t-10">
-        <a (click)="closeOveralTransmission()">
-          <button i18n="@@cancelsTransmission">
+        <a (click)="closeOveralTransmision()">
+          <button i18n="@@cancelsTransmision">
             cancel
           </button>
         </a>
@@ -22,7 +22,7 @@
   </div>
   <div *ngIf="isadmin">
     <div class="flexible">
-      <h2 i18n="@@transmissionlistt">Transmission list</h2>
+      <h2 i18n="@@transmisionlistt">Transmission list</h2>
     </div>
     <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ queueSize }} B</p>
     <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
@@ -36,7 +36,7 @@
                 <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg"
                   *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
                 <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
-                  (click)="cancelTransmission(job.uuidhost,job.uuiduucp)">
+                  (click)="cancelTransmision(job.uuidhost,job.uuiduucp)">
               </span>
             </a>
             <div class="row">

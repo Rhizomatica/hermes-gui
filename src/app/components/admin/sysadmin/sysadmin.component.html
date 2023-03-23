@@ -22,14 +22,14 @@
                         </div>
                     </div>
                 </a>
-                <a routerLink="/transmission">
+                <a routerLink="/transmision">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="messages"
                                 src="assets/svg/material icons/sync_alt-24px.svg">
                         </div>
-                        <div i18n="@@transmissionlista">
-                            Transmission list
+                        <div i18n="@@transmisionlista">
+                            Transmision list
                         </div>
                     </div>
                 </a>
@@ -54,7 +54,6 @@
                     </div>
                 </a> -->
             </div>
-            <h2 class="m-t-25">Central</h2>
             <div class="flexible">
                 <a *ngIf="isGateway" routerLink="/gateway">
                     <div class="card">
@@ -77,13 +76,13 @@
                         </div>
                     </div>
                 </a> -->
-                <a routerLink="/netadmin">
+                <a routerLink="/stationinformation">
                     <div class="card">
                         <div class="card-icon">
-                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/material icons/settings_input_antenna-24px.svg">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/broadcast-tower.svg">
                         </div>
-                        <div i18n="@@networkadmin">
-                            Radio Network
+                        <div i18n="@@stationinformationcard">
+                            Station information
                         </div>
                     </div>
                 </a>
@@ -93,7 +92,7 @@
                             <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/wifi-solid.svg">
                         </div>
                         <div i18n="@@wifimanagercard">
-                            Wi-Fi Manager
+                            Wi-Fi & Ethernet manager
                         </div>
                     </div>
                 </a>
@@ -133,7 +132,7 @@
             <div class="cv">
                 <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
                     <br />
-                    This will stop messages transmission and reception.
+                    This will stop messages transmision and reception.
                     <br />
                 </span>
                 <span class="icon"><a (click)="cancelShutDown()">
@@ -149,7 +148,7 @@
             <div class="cv">
                 <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
                     <br />
-                    This will stop messages transmission and reception.
+                    This will stop messages transmision and reception.
                     <br />
                 </span>
                 <span class="icon"><a (click)="cancelReboot()">

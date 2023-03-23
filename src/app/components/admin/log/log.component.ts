@@ -41,10 +41,10 @@ export class LogComponent implements OnInit, OnDestroy {
   searchError: String
   customLog: boolean
 
-  constructor(private authenticationService: AuthenticationService, 
+  constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private customErrorsService: CustomErrorsService
-    ) {
+  ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -96,7 +96,7 @@ export class LogComponent implements OnInit, OnDestroy {
     }
   }
 
-  showCustomLogs(){
+  showCustomLogs() {
     this.loading = true
     this.uLog = false;
     this.eLog = false;
@@ -192,10 +192,6 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.getLogUucp();
-    // this.getLogMail();
-    // this.getLogUucpDebug();
-
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {

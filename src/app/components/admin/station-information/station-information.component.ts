@@ -5,12 +5,12 @@ import { StationService } from 'src/app/_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 
 @Component({
-  selector: 'app-netadmin',
-  templateUrl: './netadmin.component.html',
-  styleUrls: ['./netadmin.component.less']
+  selector: 'app-station-information',
+  templateUrl: './station-information.component.html',
+  styleUrls: ['./station-information.component.less']
 })
 
-export class NetadminComponent implements OnInit {
+export class StationInformationComponent implements OnInit {
 
   error: any
   // system: any

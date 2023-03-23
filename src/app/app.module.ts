@@ -11,7 +11,7 @@ import { SysadminComponent } from './components/admin/sysadmin/sysadmin.componen
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
-import { NetadminComponent } from './components/admin/netadmin/netadmin.component';
+import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
@@ -36,14 +36,13 @@ import localePt from '@angular/common/locales/pt';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
+import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
-import { CustomErrorsComponent } from './components/admin/custom-errors/custom-errors.component';
 import { MenuComponent } from './components/public/menu/menu.component';
 import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
 
@@ -61,7 +60,7 @@ registerLocaleData(localePt);
     MessageDetailComponent,
     SysadminComponent,
     LogComponent,
-    NetadminComponent,
+    StationInformationComponent,
     UserManagementComponent,
     UpgradeComponent,
     MessagecomposeComponent,
@@ -77,14 +76,13 @@ registerLocaleData(localePt);
     RadioConfigComponent,
     FrequencyPipe,
     GatewayConfigComponent,
-    TransmissionListComponent,
+    TransmisionListComponent,
     LoginFormComponent,
     RadioScaryComponent,
     LoadingComponent,
     SwitchComponent,
     PlayerComponent,
     RecorderComponent,
-    CustomErrorsComponent,
     MenuComponent,
     WifiManagerComponent
   ],

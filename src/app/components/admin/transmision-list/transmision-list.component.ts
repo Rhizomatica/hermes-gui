@@ -4,16 +4,15 @@ import { UUCPQueue } from '../../../interfaces/uucpqueue';
 import { User } from '../../../interfaces/user';
 import { MessageService } from '../../../_services/message.service';
 import { UUCPService } from '../../../_services/uucp.service';
-import { AlertService } from '../../../_services/alert.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 
 @Component({
   selector: 'app-transmission-list',
-  templateUrl: './transmission-list.component.html',
-  styleUrls: ['./transmission-list.component.less']
+  templateUrl: './transmision-list.component.html',
+  styleUrls: ['./transmision-list.component.less']
 })
 
-export class TransmissionListComponent implements OnInit {
+export class TransmisionListComponent implements OnInit {
 
   currentUser: User;
   error = Error;
@@ -22,7 +21,6 @@ export class TransmissionListComponent implements OnInit {
   job: UUCPQueue;
   sentMessages: Message[];
   message: Message;
-  // selectedMessage: Message; // redundant?
   isadmin = false;
   searchMessages: string;
   confirmTransmit = false;
@@ -51,9 +49,9 @@ export class TransmissionListComponent implements OnInit {
   //   this.selectedMessage = message;
   // }
 
-  cancelTransmission(host, id): void {
+  cancelTransmision(host, id): void {
     this.loading = true
-    this.uucpService.cancelTransmission(host, id).subscribe(
+    this.uucpService.cancelTransmision(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
         this.loading = false
@@ -80,7 +78,7 @@ export class TransmissionListComponent implements OnInit {
     );
   }
 
-  showTransmission() {
+  showTransmision() {
     if (this.transList == false) {
       this.transList = true;
     } else {
@@ -111,7 +109,7 @@ export class TransmissionListComponent implements OnInit {
   }
 
   transmitNow(): void {
-    this.closeOveralTransmission()
+    this.closeOveralTransmision()
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
         this.getMessages()
@@ -140,7 +138,7 @@ export class TransmissionListComponent implements OnInit {
     );
   }
 
-  closeOveralTransmission() {
+  closeOveralTransmision() {
     this.confirmTransmit = false
   }
 

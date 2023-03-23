@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NetadminComponent } from './netadmin.component';
+import { NetadminComponent } from './station-information.component';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('NetadminComponent', () => {
