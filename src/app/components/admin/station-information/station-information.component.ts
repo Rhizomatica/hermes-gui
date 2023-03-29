@@ -158,8 +158,8 @@ export class StationInformationComponent implements OnInit {
     this.setObjectFrequency(frequency.id)
     this.changeNickname(this.nicknameArray[i])
     this.changeEnable(this.enableArray[i])
-    this.changeFrequency(this.frequencyArray[i])
-    this.changeMode(this.modeArray[i])
+    // this.changeFrequency(this.frequencyArray[i])
+    // this.changeMode(this.modeArray[i])
     this.editArray[i] = false
     this.update(this.currentFrequency)
     this.pendingUpdate = false
