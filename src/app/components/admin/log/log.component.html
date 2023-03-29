@@ -16,8 +16,8 @@
         <input i18n="@@searcherrorplaceholder" i18n-placeholder placeholder="search error" id="searchbox1"
             [(ngModel)]="searchError" />
         <div class="row" *ngFor="let error of customErrors | filter:searchError; let i = index">
-            <div class="row">
-                <p (click)="viewLog(i)">
+            <div class="row" (click)="viewLog(i)">
+                <p>
                     <b i18n="@@customerrordatehour">Date Hour: </b>
                     {{error.created_at | date:'short'}} hr
                     <button class="m-l-10 float-right">
@@ -32,6 +32,12 @@
                     <p>{{error.error_message}}</p>
                     <p><b>Stack Trace:</b></p>
                     <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p>
+                    <p>
+                        <button class="m-t-10" i18n="@@btndeletecustomerror"
+                            (click)="deleteCustomError(error.id)">
+                            delete
+                        </button>
+                    </p>
                 </div>
             </div>
             <hr />

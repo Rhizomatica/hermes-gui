@@ -191,6 +191,20 @@ export class LogComponent implements OnInit, OnDestroy {
     this.visibleArray[i] = true
   }
 
+  deleteCustomError(id){
+    this.loading = true
+    this.customErrorsService.deleteCustomError(id).subscribe(
+      (data: any) => {
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
   ngOnInit(): void {
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
