@@ -55,7 +55,7 @@
       </ng-template>
     </nav>
 
-    <nav *ngIf="mobile">
+    <nav *ngIf="mobile" class="nav-mobile">
       <a routerLink='/landing' class="logo-link">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
