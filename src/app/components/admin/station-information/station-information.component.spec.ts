@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NetadminComponent } from './station-information.component';
+import { StationInformationComponent } from './station-information.component';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('NetadminComponent', () => {
-  let component: NetadminComponent;
-  let fixture: ComponentFixture<NetadminComponent>;
+  let component: StationInformationComponent;
+  let fixture: ComponentFixture<StationInformationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NetadminComponent],
+      declarations: [StationInformationComponent],
       imports: [HttpClientModule]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NetadminComponent);
+    fixture = TestBed.createComponent(StationInformationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

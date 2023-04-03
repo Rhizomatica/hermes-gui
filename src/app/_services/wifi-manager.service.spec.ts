@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { WifiManagerService } from './wifi-manager.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('WifiManager', () => {
   let service: WifiManagerService;
@@ -8,7 +10,10 @@ describe('WifiManager', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports:[
-        HttpClientModule
+        RouterTestingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule
       ]
     });
     service = TestBed.inject(WifiManagerService);
