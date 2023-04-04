@@ -195,6 +195,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.loading = true
     this.customErrorsService.deleteCustomError(id).subscribe(
       (data: any) => {
+        this.showCustomLogs()
         this.loading = false
       },
       (err) => {
