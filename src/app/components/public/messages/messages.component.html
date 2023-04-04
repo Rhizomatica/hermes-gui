@@ -33,7 +33,7 @@
 
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist">
-                    <div class="item" *ngFor="let message of inboxMessages | filter:inboxMessages; let i = index">
+                    <div class="item" *ngFor="let message of inboxMessages | filter:searchMessages; let i = index">
                         <div class="maininfo">
                             <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
