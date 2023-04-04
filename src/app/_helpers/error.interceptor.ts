@@ -36,7 +36,8 @@ export class ErrorInterceptor implements HttpInterceptor {
             message = this.spanishError(errorStatus)
         }
 
-        return message + ' If this error persists send a report feedback.'
+        return message 
+        // + ' If this error persists send a report feedback.'
     }
 
     public englishError(errorStatus) {
