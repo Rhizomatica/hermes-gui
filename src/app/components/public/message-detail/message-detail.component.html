@@ -24,7 +24,7 @@
         <div *ngIf="message.file">
             <!-- <span i18n="@@File">File: </span> -->
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                <div *ngIf="isImage && uncrypted">
+                <div *ngIf="(isImage && !message.secure) || (isImage && message.secure && uncrypted)">
                     <img class="messageImg" src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
                 {{message.file}}
@@ -43,7 +43,7 @@
             <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->
         </div>
     </div>
-
+    <hr/>
     <div *ngIf="!noMessage">
         <small>
             <p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
