@@ -202,7 +202,7 @@ deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">64</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/gateway-config/gateway-config.component.html</context><context context-type="linenumber">64</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">34</context></context-group></trans-unit>
 
 <trans-unit id="todownload" datatype="html">
 <source>To download deltachat click on one of the links below: </source>
@@ -442,24 +442,30 @@ Inglés</target>
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">30</context></context-group></trans-unit><trans-unit id="customerrormessage" datatype="html">
         <source>Message:</source><target state="new">Mensaje:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">31</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">31</context></context-group></trans-unit><trans-unit id="btndeletecustomerror" datatype="html">
+        <source> delete </source><target state="new"> delete </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">37,39</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="uucpllogsog2" datatype="html">
 <source>uucp log</source>
 <target state="new">registros del uucp</target>
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">49</context></context-group></trans-unit>
 <trans-unit id="debuglog2" datatype="html">
 <source>uucp debug log</source>
 <target state="new">Registros de depuración del Uucp</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">69</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">75</context></context-group></trans-unit>
 <trans-unit id="emaillog2" datatype="html">
 <source>email log</source>
 <target state="new">Registros del Email</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">56</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">62</context></context-group></trans-unit>
 <trans-unit id="login" datatype="html">
 <source>Login</source>
 <target>Aceder</target>
@@ -630,12 +636,7 @@ Inglés</target>
         <source>submit</source><target state="new">Verificar contraseña</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">12</context></context-group></trans-unit>
-<trans-unit id="File" datatype="html">
-<source>File: </source>
-<target state="new">Archivo: </target>
 
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">25</context></context-group></trans-unit>
 <trans-unit id="Origin" datatype="html">
 <source>Origin: <x id="INTERPOLATION" equiv-text="{{message.orig}}"/></source>
 <target state="new">Origen: <x id="INTERPOLATION" equiv-text="{{message.orig}}"/>
@@ -657,7 +658,7 @@ Inglés</target>
 
 
 <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="deleteMessageDetail" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> Delete </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> Eliminar </target>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> delete </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> Eliminar </target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="replymessage" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;reply&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/> reply </source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;reply&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/> contestar </target>
@@ -789,8 +790,8 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 </context-group>
 </trans-unit>
 <trans-unit id="sendpublic" datatype="html">
-<source> send your public message to another station</source>
-<target state="new"> enviar su mensaje público a otra estación</target>
+<source> New message </source>
+<target state="new"> Nueva message</target>
 
 <context-group purpose="location">
 <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
@@ -798,68 +799,43 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 </context-group>
 </trans-unit>
 <trans-unit id="description" datatype="html">
-<source>Description</source>
+<source>Subject</source>
 <target state="new">Asunto</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">20</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">46</context></context-group></trans-unit>
 <trans-unit id="530d6ee956947c02099290b222000b9a44043653" datatype="html">
 <source>Describe your message</source>
 <target state="new">Asunto</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">22</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">48</context></context-group></trans-unit>
 <trans-unit id="messageComposeLabel" datatype="html">
 <source>Message</source>
 <target state="new">Mensaje</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">25</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit>
 
 <trans-unit id="301752a2b5612ddcf5cd4a75eda218d1f3212bf1" datatype="html">
 <source>write the message</source>
 <target state="new">escribir el mensaje</target>
 
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">28</context>
-</context-group>
-</trans-unit>
+
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">54</context></context-group></trans-unit><trans-unit id="fileSizeError" datatype="html">
+        <source> File's too big, max size is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{maxSize}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></source><target state="new"> El archivo es demasiado grande, el tamaño máximo es <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{maxSize}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">69,70</context>
+        </context-group>
+      </trans-unit>
 <trans-unit id="selectstation1" datatype="html">
-<source>select destiny station:</source>
-<target state="new">seleccionar la estación de destino:</target>
-
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-<context context-type="linenumber">32</context>
-</context-group>
-</trans-unit>
-<trans-unit id="attachfile" datatype="html">
-<source>Attach File: </source>
-<target state="new">Adjuntar archivo: </target>
+<source>To</source>
+<target state="new">Para</target>
 
 
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">21</context></context-group></trans-unit>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">63</context></context-group></trans-unit>
-<trans-unit id="nofile" datatype="html">
-<source> no file selected </source>
-<target state="new">
-  ningún archivo seleccionado
-</target>
-
-
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">67</context></context-group></trans-unit>
 <trans-unit id="selfile" datatype="html">
 <source>select file</source>
 <target state="new">seleccionar archivo</target>
@@ -867,7 +843,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">71</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit>
 
 <trans-unit id="remfile" datatype="html">
 <source>remove file</source>
@@ -876,7 +852,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">79</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">80</context></context-group></trans-unit>
 <trans-unit id="uploadingfile" datatype="html">
 <source>uploading file...</source>
 <target state="new">cargando archivo...</target>
@@ -884,7 +860,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">82</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">84</context></context-group></trans-unit>
 <trans-unit id="Img" datatype="html">
 <source>Img:</source>
 <target state="new">Imagen:</target>
@@ -892,15 +868,15 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">91</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">93</context></context-group></trans-unit>
 <trans-unit id="protectpssw" datatype="html">
-<source>protect with password</source>
-<target state="new">proteger con contraseña</target>
+<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/lock.svg&quot;>"/> protect message </source>
+<target state="new">proteger message</target>
 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">97</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit>
 
 <trans-unit id="edtusers" datatype="html">
 <source>Edit user</source>
@@ -977,7 +953,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">66</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">111</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">66</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">116</context></context-group></trans-unit>
 <trans-unit id="passempty" datatype="html">
 <source> passwords can't be empty </source>
 <target state="new"> las contraseñas no pueden estar vacías </target>
@@ -987,7 +963,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">119</context></context-group></trans-unit>
 <trans-unit id="typethepassword" datatype="html">
 <source>Type the password</source>
 <target state="new">Escriba la contraseña</target>
@@ -996,7 +972,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">103</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit>
 <trans-unit id="retypethepassword2" datatype="html">
 <source>Retype the password</source>
 <target state="new">Escribir de nuevo la contraseña</target>
@@ -1004,9 +980,9 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">107</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">112</context></context-group></trans-unit>
 <trans-unit id="sendmessage" datatype="html">
-<source>send message<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img class=&quot;btnicon&quot; title=&quot;send&quot; src=&quot;assets/svg/paper-plane.svg&quot;>"/></source>
+<source> send message </source>
 <target state="new">enviar mensaje</target>
 
 
@@ -1020,7 +996,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">121</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">126</context></context-group></trans-unit>
 
 
 
@@ -1034,7 +1010,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">129</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">134</context></context-group></trans-unit>
 <trans-unit id="messagesenttolist" datatype="html">
 <source> Your message was sent to the transmission list </source>
 <target state="new"> Su mensaje fue enviado a la lista de transmisión </target>
@@ -1042,12 +1018,12 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">136</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">141</context></context-group></trans-unit>
 <trans-unit id="Capture" datatype="html">
 <source>Capture</source>
 <target state="new">Captura</target>
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">160</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context><context context-type="linenumber">165</context></context-group></trans-unit>
 <trans-unit id="publicmessages1" datatype="html">
 <source>Public Messages </source>
 <target state="new">Mensajes Públicos </target>
@@ -1536,7 +1512,7 @@ esto puede hacer que el sistema se detenga</target>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">84</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio/radio.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context><context context-type="linenumber">72</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">210</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context><context context-type="linenumber">77</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">96</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context><context context-type="linenumber">80</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context><context context-type="linenumber">65</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/log/log.component.html</context><context context-type="linenumber">90</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/radio/radio.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context><context context-type="linenumber">72</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/sysadmin/sysadmin.component.html</context><context context-type="linenumber">210</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context><context context-type="linenumber">77</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context><context context-type="linenumber">96</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context><context context-type="linenumber">80</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context><context context-type="linenumber">65</context></context-group></trans-unit>
 
 
 

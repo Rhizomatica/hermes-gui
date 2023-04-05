@@ -80,7 +80,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="enable" datatype="html">
@@ -188,32 +188,39 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="btndeletecustomerror" datatype="html">
+        <source> delete </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
+          <context context-type="linenumber">37,39</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="uucpllogsog2" datatype="html">
         <source>uucp log</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emaillog2" datatype="html">
         <source>email log</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="debuglog2" datatype="html">
         <source>uucp debug log</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorprocessing" datatype="html">
         <source>There was an error on processing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">90</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio/radio.component.html</context>
@@ -1086,7 +1093,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">111,113</context>
+          <context context-type="linenumber">116,118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="strongpassword" datatype="html">
@@ -2157,13 +2164,6 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="File" datatype="html">
-        <source>File: </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="Origin" datatype="html">
         <source>Origin: <x id="INTERPOLATION" equiv-text="{{message.orig}}"/></source>
         <context-group purpose="location">
@@ -2186,7 +2186,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="deleteMessageDetail" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> Delete </source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> delete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">62,64</context>
@@ -2259,143 +2259,136 @@
         </context-group>
       </trans-unit>
       <trans-unit id="sendpublic" datatype="html">
-        <source> send your public message to another station</source>
+        <source> New message </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">14,15</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectstation1" datatype="html">
+        <source>To</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="description" datatype="html">
-        <source>Description</source>
+        <source>Subject</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="530d6ee956947c02099290b222000b9a44043653" datatype="html">
         <source>Describe your message</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="messageComposeLabel" datatype="html">
         <source>Message</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="301752a2b5612ddcf5cd4a75eda218d1f3212bf1" datatype="html">
         <source>write the message</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="selectstation1" datatype="html">
-        <source>select destiny station:</source>
+      <trans-unit id="fileSizeError" datatype="html">
+        <source> File's too big, max size is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{maxSize}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="attachfile" datatype="html">
-        <source>Attach File: </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="nofile" datatype="html">
-        <source> no file selected </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">67,69</context>
+          <context context-type="linenumber">69,70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="selfile" datatype="html">
         <source>select file</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="remfile" datatype="html">
         <source>remove file</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">80,81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="uploadingfile" datatype="html">
         <source>uploading file...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Img" datatype="html">
         <source>Img:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectpssw" datatype="html">
-        <source>protect with password</source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/lock.svg&quot;>"/> protect message </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">100,102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="typethepassword" datatype="html">
         <source>Type the password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="retypethepassword2" datatype="html">
         <source>Retype the password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passempty" datatype="html">
         <source> passwords can't be empty </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">114,116</context>
+          <context context-type="linenumber">119,121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sendmessage" datatype="html">
-        <source>send message<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img class=&quot;btnicon&quot; title=&quot;send&quot; src=&quot;assets/svg/paper-plane.svg&quot;>"/></source>
+        <source> send message </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">121,123</context>
+          <context context-type="linenumber">126,128</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorsendingmsg" datatype="html">
         <source>There was an error on sending your message <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">129</context>
+          <context context-type="linenumber">134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="messagesenttolist" datatype="html">
         <source> Your message was sent to the transmission list </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">136,138</context>
+          <context context-type="linenumber">141,143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Capture" datatype="html">
         <source>Capture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">165</context>
         </context-group>
       </trans-unit>
       <trans-unit id="publicmessages1" datatype="html">
