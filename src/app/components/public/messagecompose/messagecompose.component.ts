@@ -59,6 +59,7 @@ export class MessagecomposeComponent implements OnInit {
   public HEIGHT = 480;
   public audioRecorderOverall = false
   public frequencies: Frequency[]
+  fileSizeError: boolean = false
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -187,7 +188,7 @@ export class MessagecomposeComponent implements OnInit {
           base_image.onload = () => {
             this.drawImageToCanvas(base_image)
           }
-      
+
         }
         //  else {
         //   this.error = "You have no output video device";
@@ -223,8 +224,8 @@ export class MessagecomposeComponent implements OnInit {
       ia[i] = byteString.charCodeAt(i);
     }
 
-     //TODO - formato da imagem com problema para envio
-     //TODO - Já seta so de abrir a webcam não deveria setar (usar outra variavel?)
+    //TODO - formato da imagem com problema para envio
+    //TODO - Já seta so de abrir a webcam não deveria setar (usar outra variavel?)
     this.file = new Blob([ia], { type: mimeString })
     this.fileName = window.URL.createObjectURL(this.file)
   }
@@ -272,10 +273,12 @@ export class MessagecomposeComponent implements OnInit {
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
+        this.fileSizeError = false
         return file;
       }
       else {
-        this.fileName = 'file too big | archivo muy grande ';
+        this.fileName = ' - ';
+        this.fileSizeError = true
         this.file = null;
         file = null;
         return file;
@@ -427,32 +430,32 @@ export class MessagecomposeComponent implements OnInit {
     this.errormsg = 'Can not play audio in your browser';
   }
 
-  getAliasOrigin(originName){
-    if(!originName)
+  getAliasOrigin(originName) {
+    if (!originName)
       return null
 
-    return this.stations.filter((a)=>{ return a.name === originName })[0].alias
+    return this.stations.filter((a) => { return a.name === originName })[0].alias
   }
 
   public getFrequencies(): void {
     this.loading = true
-      this.frequencyService.getFrequencies().subscribe(
-        (data: any) => {
-          this.frequencies = data;
-          this.loading = false
-        }, (err) => {
-          this.error = err;
-          this.errorAlert = true;
-          this.loading = false;
-        }
-      );
+    this.frequencyService.getFrequencies().subscribe(
+      (data: any) => {
+        this.frequencies = data;
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false;
+      }
+    );
   }
 
   getNickName(stations): void {
     stations.forEach(station => {
       this.frequencies.forEach(frequency => {
-        if(station.alias === frequency.alias && frequency.nickname != null)
-            station.nickname = " - " + frequency.nickname
+        if (station.alias === frequency.alias && frequency.nickname != null)
+          station.nickname = " - " + frequency.nickname
       })
     })
   }

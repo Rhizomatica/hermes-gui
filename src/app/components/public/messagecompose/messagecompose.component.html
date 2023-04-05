@@ -12,49 +12,46 @@
 <div id="compose" class="" *ngIf="allowCompose">
   <h2>
     <div class="icon" i18n="@@sendpublic">
-      send your public message to another station</div>
+      New message
+    </div>
   </h2>
   <form #f="ngForm" class="formdata" novalidate>
     <div [hidden]="fileIsProcessing==true">
+      <label class="selstation">
+        <span i18n="@@selectstation1" class="space">To</span>
+        <ng-container *ngIf="stations">
+          <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
+            <option *ngFor="let station of stations" value="{{station.alias}}">
+              {{station.alias}}
+              <!-- {{station.nickname}} -->
+            </option>
+          </select>
+          <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
+            [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
+            [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true required>
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                [ngModelOptions]="{standalone: true}" />
+              {{item.alias}}
+              <!-- {{item.nickname}} -->
+            </ng-template>
+          </ng-select>
+        </ng-container>
+      </label>
       <label for="name">
-        <span i18n="@@description">Description</span>:
+        <span i18n="@@description">Subject</span>
         <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140"
           i18n-placeholder placeholder="Describe your message" />
       </label>
       <label for="text">
-        <span i18n="@@messageComposeLabel">Message</span>:
+        <span i18n="@@messageComposeLabel">Message</span>
         <br />
-        <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35" maxlength="1400" i18n-placeholder
+        <textarea name="text" [(ngModel)]="message.text" required rows="8" cols="35" maxlength="1400" i18n-placeholder
           placeholder="write the message"></textarea>
-      </label>
-      <label class="selstation">
-        <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-          <span i18n="@@selectstation1" class="space">select destiny station:</span><br>
-          <br>
-          <ng-container *ngIf="stations">
-            <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
-              <option *ngFor="let station of stations" value="{{station.alias}}">
-                {{station.alias}}
-                <!-- {{station.nickname}} -->
-              </option>
-            </select>
-            <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
-              [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
-              [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true
-              required>
-              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                  [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
-              </ng-template>
-              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                  [ngModelOptions]="{standalone: true}" />
-                {{item.alias}}
-                <!-- {{item.nickname}} -->
-              </ng-template>
-            </ng-select>
-          </ng-container>
-        </span>
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>
@@ -69,6 +66,9 @@
             no file selected
           </p> -->
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeError"> File's too big, max size is
+            <b>{{maxSize}}</b>
+          </p>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
@@ -98,7 +98,7 @@
         <span class="icon lock">
           <button i18n="@@protectpssw" (click)="encrypted()">
             <img title="messages" src="assets/svg/lock.svg">
-            protect with password
+            protect message
           </button>
           <!-- <input type="checkbox" unckecked/> -->
         </span>
@@ -123,8 +123,8 @@
       <span></span>
       <div class="m-t-10">
         <button type="submit" (click)="sendMessage(f)"
-          [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">send
-          message<br />
+          [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">
+          send message
           <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
         </button>
       </div>
