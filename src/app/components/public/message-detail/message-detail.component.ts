@@ -71,10 +71,11 @@ export class MessageDetailComponent implements OnInit {
   sendPassword(id: number, f: NgForm): void {
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
-        if (res.text !== '') {
-          this.message.text = res.text;
+        if (res.message && res.message !== '') {
+          this.message.text = res.message;
           this.uncrypted = true;
           this.passString = '?i=' + f.value.pass;
+          this.wrongPass = false;
         }
         else {
           this.uncrypted = false;

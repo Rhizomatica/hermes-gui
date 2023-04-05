@@ -4,7 +4,7 @@
 <div *ngIf="message" class="messages">
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
-    <div class="formdata" *ngIf="message.secure && !uncrypted">
+    <div class="formdata" *ngIf="message.secure && uncrypted === false">
         <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
@@ -20,14 +20,14 @@
     -->
     <div class="date"></div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
-        <p>{{message.text}}</p>
+        <p>{{message.text}}</p> 
         <div *ngIf="message.file">
-            <span i18n="@@File">File: </span>
+            <!-- <span i18n="@@File">File: </span> -->
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                {{message.file}}
-                <div *ngIf="isImage">
+                <div *ngIf="isImage && uncrypted">
                     <img class="messageImg" src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
+                {{message.file}}
                 <div *ngIf="isAudio">
                     <!--
                     <div class="blobber" *ngIf="audioLoading">
@@ -60,7 +60,7 @@
         <button (click)="showDelete(message)" [hidden]="currentUser.admin !== 1">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
-                Delete
+                delete
             </span>
         </button>
         <button class="m-l-10" routerLink="/response/{{message.orig}}">

@@ -49,8 +49,8 @@
               <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
                 <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
                   [ngModelOptions]="{standalone: true}" />
-                  {{item.alias}}
-                  <!-- {{item.nickname}} -->
+                {{item.alias}}
+                <!-- {{item.nickname}} -->
               </ng-template>
             </ng-select>
           </ng-container>
@@ -58,15 +58,16 @@
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>
-          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
+          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)"
+            style="display: none;" #fileCamUpload>
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-          <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
+          <!-- <span i18n="@@attachfile" class="m-t-10">Attach File: </span> -->
           <p class="fileName" *ngIf="fileName">
             {{fileName}}
           </p>
-          <p i18n="@@nofile" class="fileName" *ngIf="!fileName">
+          <!-- <p i18n="@@nofile" class="fileName" *ngIf="!fileName">
             no file selected
-          </p>
+          </p> -->
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
@@ -76,7 +77,8 @@
           <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
           i18n="@@camfile">camera</button> 
           <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button> -->
-          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove file</button>
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove
+            file</button>
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -92,10 +94,13 @@
           <img src={{$event.target.files[0].content}}>
         </div>
       </div>
-      <label class="passprotect" *ngIf="fileSelected">
-        <span class="icon lock"><img title="messages" src="assets/svg/lock.svg">
-          <span i18n="@@protectpssw">protect with password</span>:
-          <input type="checkbox" unckecked (change)="encrypted()" />
+      <label class="passprotect">
+        <span class="icon lock">
+          <button i18n="@@protectpssw" (click)="encrypted()">
+            <img title="messages" src="assets/svg/lock.svg">
+            protect with password
+          </button>
+          <!-- <input type="checkbox" unckecked/> -->
         </span>
       </label>
       <div id="cryptopass" *ngIf=isEncrypted>
@@ -120,7 +125,7 @@
         <button type="submit" (click)="sendMessage(f)"
           [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">send
           message<br />
-          <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+          <!-- <img class="btnicon" title="send" src="assets/svg/paper-plane.svg"> -->
         </button>
       </div>
     </div>
@@ -140,8 +145,8 @@
     <div class="overall alert" *ngIf="audioRecorderOverall">
       <div class="cv">
         <recorder [file]="url" [maxSize]="maxSize" [fileName]="fileName" [fileSelected]="fileSelected"
-        (emitteFileOP)="addFileItemEmitted($event)"></recorder>    
-        
+          (emitteFileOP)="addFileItemEmitted($event)"></recorder>
+
         <div class="icon m-t-25"><a (click)="closeaudioRecorder()">
             <img title="close" src="assets/svg/x.svg"></a>
         </div>
