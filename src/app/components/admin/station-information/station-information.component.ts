@@ -13,7 +13,6 @@ import { ApiService } from '../../../_services/api.service';
 export class StationInformationComponent implements OnInit {
 
   error: any
-  // system: any
   errorAlert = false
   loading = true
   public freqmin = 500
@@ -29,26 +28,27 @@ export class StationInformationComponent implements OnInit {
   editArray: any = [];
   currentFrequency: Frequency;
   pendingUpdate = false
+  isGateway:boolean = false;
 
   constructor(
-    // private apiService: ApiService,
+    private apiService: ApiService,
     private stationService: StationService,
     private frequencyService: FrequencyService) {
   }
 
-  // getSystemStatus(): void {
-  //   this.apiService.getStatus().subscribe(
-  //     (res: any) => {
-  //       this.system = res
-  //       this.loading = false
-  //     },
-  //     (err) => {
-  //       this.error = err
-  //       this.errorAlert = true
-  //       this.loading = false
-  //     }
-  //   )
-  // }
+  getSystemStatus(): void {
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+        this.isGateway =  res.gateway;
+        this.loading = false
+      },
+      (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    )
+  }
 
   public getFrequencies(): void {
     this.loading = true
@@ -158,8 +158,8 @@ export class StationInformationComponent implements OnInit {
     this.setObjectFrequency(frequency.id)
     this.changeNickname(this.nicknameArray[i])
     this.changeEnable(this.enableArray[i])
-    // this.changeFrequency(this.frequencyArray[i])
-    // this.changeMode(this.modeArray[i])
+    this.changeFrequency(this.frequencyArray[i])
+    this.changeMode(this.modeArray[i])
     this.editArray[i] = false
     this.update(this.currentFrequency)
     this.pendingUpdate = false
@@ -206,7 +206,7 @@ export class StationInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getSystemStatus()
+    this.getSystemStatus()
     this.getFrequencies()
   }
 }
