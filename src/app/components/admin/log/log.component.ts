@@ -164,7 +164,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.loading = true
     this.customErrorsService.getCustomErrors().subscribe(
       (data: any) => {
-        this.customErrors = data;
+        this.customErrors = data.sort((a, b) => { return new Date(a.created_at) < new Date(b.created_at) ? 1 : -1; });
         this.loading = false;
         this.loadVisibleArray(data)
       },
