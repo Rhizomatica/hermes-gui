@@ -9,7 +9,7 @@
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required>
-            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">submit</button>
+            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">check password</button>
         </form>
     </div>
     <!--
@@ -49,7 +49,7 @@
             <p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
             <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
             <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at | date:'d/M/yy, h:mm'}}</p>
-            <p class="msgid">Id: {{message.id}}</p>
+            <!-- <p class="msgid">Id: {{message.id}}</p> -->
         </small>
     </div>
     <div class="flex m-t-25" *ngIf="allowCompose">
