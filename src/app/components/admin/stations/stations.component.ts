@@ -29,7 +29,7 @@ export class StationsComponent implements OnInit {
   stationedit = false;
   errorAlert = false;
   system: any;
-  isGateway = false;
+  isGateway:boolean = false;
   loading = true;
   currentStation: Station
 
