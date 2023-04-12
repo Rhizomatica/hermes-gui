@@ -63,7 +63,7 @@
       <a routerLink="/menu" class="float-right" *ngIf="!isMenuPage">
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
-      <a routerLink="" class="float-right" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+      <a class="float-right" (click)="closeMobileMenu()" *ngIf="isMenuPage">
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
@@ -122,33 +122,57 @@
       <div class="dr">
         <div class="drb" (click)="onToggle('HR')"></div>
       </div>
-      <span class="footerinfo">V2.2 |
-        <span i18n="stationa">Station:</span> {{system.name}}
-        <span *ngIf="currentUser">
-          <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
-        <span *ngIf="!system">
-          &#124; <span i18n="@@serveroff0">server off</span>
-        </span>
-        <span i18n="@@statusa0">| Status: </span>
-        <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
-        <div *ngIf="system.status" class="greencircle"> </div>
-        <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 |
-          number}}
-          GB</span>
-        <div *ngIf="fullStats">
-          <!--Uucp bridge: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>-->
-          UUCP: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }"
-            title='uuardop {{system.piduucp}}'></div>
-          &#124; Database: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }"
-            title='mysql {{system.piddb}}'></div>
-          &#124; Modem: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
-          &#124; Radio: <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }"
-            title='uuardop {{system.piduucp}}'></div>
-          &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
-          &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
+      <span class="footerinfo" (click)="showFullStatus()">V2.2 - {{system.name}}
+        <div class="icon right">
+          <img title="view more" src="assets/svg/eye.svg">
         </div>
-        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and
-          files</span>
+        <span *ngIf="!system">
+          <span i18n="@@serveroff0">server off</span>
+        </span>
+
+        <div class="row" *ngIf="fullStats">
+          <!-- TODO - Verificar qual diferenca status /radio -->
+          <div class="row">
+            <span i18n="@@statusa0">Status: </span>
+            <div *ngIf="!system.status" class="redcircle"></div>
+            <div *ngIf="system.status" class="greencircle"></div>
+          </div>
+          <div class="row">
+            Radio:
+            <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }" title='uuardop'></div>
+          </div>
+          <div class="row">
+            UUCP:
+            <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }" title='uuardop'></div>
+          </div>
+          <div class="row">
+            Schedule(IDEIA):
+            <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }" title='uuardop'></div>
+          </div>
+          <div class="row">
+            Uucp bridge(REMOVER?):
+            <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }"
+              title='uuardop {{system.piduucp}}'></div>
+          </div>
+          <div class="row">
+            Database(REMOVER?): <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }"
+              title='mysql {{system.piddb}}'></div>
+          </div>
+          <div class="row">
+            Modem(REMOVER?):
+            <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
+          </div>
+          <div class="row">
+            Inbox(REMOVER?):
+            <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
+          </div>
+          <div class="row">
+            Email(REMOVER?): <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
+          </div>
+          <div class="row">
+            <span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and files</span>
+          </div>
+        </div>
       </span>
     </ng-container>
     <span *ngIf="!system" i18n="@@stationoffline">
