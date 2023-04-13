@@ -114,7 +114,6 @@
       </div>
     </div>
   </div>
-
   <loading [loading]="loading"></loading>
 
   <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
@@ -124,53 +123,22 @@
       </div>
       <span class="footerinfo" (click)="showFullStatus()">V2.2 - {{system.name}}
         <div class="icon right">
-          <img title="view more" src="assets/svg/eye.svg">
+          <img title="view more" *ngIf="!fullStats" src="assets/svg/angle-down.svg">
+          <img title="view more" *ngIf="fullStats" src="assets/svg/angle-up.svg">
         </div>
         <span *ngIf="!system">
           <span i18n="@@serveroff0">server off</span>
         </span>
+        <span i18n="@@statusa0"> | Status: </span>
+        <div *ngIf="!system.status" class="redcircle"></div>
+        <div *ngIf="system.status" class="greencircle"></div>
+        <span i18n="@@freespace"> | Free Space: </span>
+        {{system.diskfree /1024 /1024 | number}} GB
 
         <div class="row" *ngIf="fullStats">
-          <!-- TODO - Verificar qual diferenca status /radio -->
           <div class="row">
-            <span i18n="@@statusa0">Status: </span>
-            <div *ngIf="!system.status" class="redcircle"></div>
-            <div *ngIf="system.status" class="greencircle"></div>
-          </div>
-          <div class="row">
-            Radio:
-            <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }" title='uuardop'></div>
-          </div>
-          <div class="row">
-            UUCP:
-            <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }" title='uuardop'></div>
-          </div>
-          <div class="row">
-            Schedule(IDEIA):
-            <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }" title='uuardop'></div>
-          </div>
-          <div class="row">
-            Uucp bridge(REMOVER?):
-            <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }"
-              title='uuardop {{system.piduucp}}'></div>
-          </div>
-          <div class="row">
-            Database(REMOVER?): <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }"
-              title='mysql {{system.piddb}}'></div>
-          </div>
-          <div class="row">
-            Modem(REMOVER?):
-            <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
-          </div>
-          <div class="row">
-            Inbox(REMOVER?):
-            <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
-          </div>
-          <div class="row">
-            Email(REMOVER?): <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
-          </div>
-          <div class="row">
-            <span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and files</span>
+            <span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and
+              files</span>
           </div>
         </div>
       </span>
