@@ -66,10 +66,9 @@ export class AppComponent implements OnInit {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
-        // if (this.system.diskfree < 10485760) {
-          this.criticSpace = true; //TODO - Mudar tratamento / dar maior atencao... dar opcao de limpar...
-        // }
-        // return res;
+        if (this.system.diskfree < 10485760) {
+          this.criticSpace = true;
+        }
       },
       (err) => {
         this.error = err;
