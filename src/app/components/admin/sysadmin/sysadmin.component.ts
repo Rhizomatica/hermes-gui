@@ -18,13 +18,12 @@ export class SysadminComponent implements OnInit {
   restarting = false;
   shuttingDownNow = false;
   rebootingDownNow = false;
-  system: any;
   error: any;
-  isGateway: false;
-  loginForm = false;
+  isGateway:boolean = GlobalConstants.gateway
   errorAlert = false;
   alertBrowserXP: Boolean = false
-
+  loginForm = false;
+  
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -34,19 +33,6 @@ export class SysadminComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getSystemStatus(): void{
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        this.isGateway = this.system.gateway;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
 
   confirmShutDown() {
     this.shuttingDown = true;
@@ -115,7 +101,6 @@ export class SysadminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSystemStatus();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
       this.loginForm = false;

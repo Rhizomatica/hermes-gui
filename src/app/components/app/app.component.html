@@ -121,30 +121,9 @@
       <div class="dr">
         <div class="drb" (click)="onToggle('HR')"></div>
       </div>
-      <span class="footerinfo" (click)="showFullStatus()">V2.2 - {{system.name}}
-        <div class="icon right">
-          <img title="view more" *ngIf="!fullStats" src="assets/svg/angle-down.svg">
-          <img title="view more" *ngIf="fullStats" src="assets/svg/angle-up.svg">
-        </div>
-        <span *ngIf="!system">
-          <span i18n="@@serveroff0">server off</span>
-        </span>
-        <span i18n="@@statusa0"> | Status: </span>
-        <div *ngIf="!system.status" class="redcircle"></div>
-        <div *ngIf="system.status" class="greencircle"></div>
-        <span i18n="@@freespace"> | Free Space: </span>
-        {{system.diskfree /1024 /1024 | number}} GB
-
-        <div class="row" *ngIf="fullStats">
-          <div class="row">
-            <span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and
-              files</span>
-          </div>
-        </div>
+      <span class="footerinfo">
+        V2.2 - {{system.name}}
       </span>
     </ng-container>
-    <span *ngIf="!system" i18n="@@stationoffline">
-      Hermes station offline <figure class="redcircle"></figure>
-    </span>
   </footer>
 </div>

@@ -3,6 +3,7 @@ import { Frequency } from 'src/app/interfaces/frequency';
 import { FrequencyService } from 'src/app/_services/frequency.service';
 import { StationService } from 'src/app/_services/station.service';
 import { ApiService } from '../../../_services/api.service';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-station-information',
@@ -28,7 +29,7 @@ export class StationInformationComponent implements OnInit {
   editArray: any = [];
   currentFrequency: Frequency;
   pendingUpdate = false
-  isGateway:boolean = false;
+  isGateway:boolean = GlobalConstants.gateway
 
   constructor(
     private apiService: ApiService,
@@ -36,19 +37,6 @@ export class StationInformationComponent implements OnInit {
     private frequencyService: FrequencyService) {
   }
 
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.isGateway =  res.gateway;
-        this.loading = false
-      },
-      (err) => {
-        this.error = err
-        this.errorAlert = true
-        this.loading = false
-      }
-    )
-  }
 
   public getFrequencies(): void {
     this.loading = true
@@ -206,7 +194,6 @@ export class StationInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSystemStatus()
     this.getFrequencies()
   }
 }

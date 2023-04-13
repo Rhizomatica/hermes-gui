@@ -35,11 +35,12 @@ export class LogComponent implements OnInit, OnDestroy {
   private subscription3;
   errorAlert = false;
   loading = false
-
   customErrors: CustomError[]
   visibleArray: any = []
   searchError: String
   customLog: boolean
+  system: any
+  criticSpace = false;
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -191,7 +192,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.visibleArray[i] = true
   }
 
-  deleteCustomError(id){
+  deleteCustomError(id) {
     this.loading = true
     this.customErrorsService.deleteCustomError(id).subscribe(
       (data: any) => {
@@ -206,7 +207,24 @@ export class LogComponent implements OnInit, OnDestroy {
     );
   }
 
+  getSystemStatus(): void {
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+        this.system = res
+        if (this.system.diskfree < 10485760) {
+          this.criticSpace = true;
+        }
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   ngOnInit(): void {
+    this.getSystemStatus()
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {

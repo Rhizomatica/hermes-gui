@@ -35,7 +35,7 @@
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
           placeholder="write the username" (focusout)="checkFullName(selectedUser.name)">
       </label>
-      <a>{{selectedUser.email}}@{{system && system.domain}}</a> 
+      <a>{{selectedUser.email}}@{{domain}}</a> 
       <label for="name">
         <span i18n="@@name">full name</span>
         <input name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>

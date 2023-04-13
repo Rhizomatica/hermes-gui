@@ -10,6 +10,7 @@ import { FrequencyService } from '../../../_services/frequency.service';
 import { User } from '../../../interfaces/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Frequency } from 'src/app/interfaces/frequency';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-messagecompose',
@@ -46,8 +47,7 @@ export class MessagecomposeComponent implements OnInit {
   public sending = false;
   public nodename: any;
   public maxSize: any = 31457280;
-  public isGateway: boolean;
-  public system: any;
+  public isGateway:boolean = GlobalConstants.gateway
   public selectedStations = [];
   public allowhmp;
   public allowCompose = false;
@@ -150,19 +150,6 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        this.isGateway = this.system.gateway;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
 
   onFileCamSelected(e) {
     this.camPicture = e.target.files[0]
@@ -480,7 +467,6 @@ export class MessagecomposeComponent implements OnInit {
 
     this.mobile = this.isMobile()
     this.getSysConfig();
-    this.getSystemStatus();
     this.getFrequencies();
     this.isEncrypted = false;
     this.fileIsProcessing = false;
