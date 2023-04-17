@@ -41,6 +41,7 @@ export class LogComponent implements OnInit, OnDestroy {
   customLog: boolean
   system: any
   criticSpace = false;
+  confirmDeleteAllLogs = false;
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -192,8 +193,44 @@ export class LogComponent implements OnInit, OnDestroy {
     this.visibleArray[i] = true
   }
 
+
+  confirmDeleteAllCustomError() {    
+    this.confirmDeleteAllLogs = true
+  }
+
+  closedeleteconfirmation(){
+    this.confirmDeleteAllLogs = false
+  }
+
   deleteCustomError(id) {
     this.loading = true
+
+    if (!id)
+      this.deleteAllCustomError()
+
+    if (id)
+      this.deleteCustomErrorById(id)
+  }
+
+
+
+  deleteAllCustomError() {
+    this.customErrorsService.deleteAllCustomError().subscribe(
+      (data: any) => {
+        this.showCustomLogs()
+        this.loading = false
+        this.confirmDeleteAllLogs = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+        this.confirmDeleteAllLogs = false
+      }
+    );
+  }
+
+  deleteCustomErrorById(id) {
     this.customErrorsService.deleteCustomError(id).subscribe(
       (data: any) => {
         this.showCustomLogs()

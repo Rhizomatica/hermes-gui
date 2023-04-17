@@ -6,7 +6,7 @@
         <div *ngIf="!system.status" class="redcircle"></div>
         <div *ngIf="system.status" class="greencircle"></div>
         {{system.status == true ? 'ON' : 'OFF'}}
-    </div>  
+    </div>
 
     <div class="row">
         <span i18n="@@freespace"> | Free Space: </span>
@@ -32,6 +32,9 @@
 <div class="formdata m-t-25" *ngIf="customLog">
     <h3 i18n="@@errorlog">Error log</h3>
     <div class="row">
+        <button class="m-t-10" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
+            delete all
+        </button>
         <input i18n="@@searcherrorplaceholder" i18n-placeholder placeholder="search error" id="searchbox1"
             [(ngModel)]="searchError" />
         <div class="row" *ngFor="let error of customErrors | filter:searchError; let i = index">
@@ -52,7 +55,8 @@
                     <p><b>Stack Trace:</b></p>
                     <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p>
                     <p>
-                        <button class="m-t-10" i18n="@@btndeletecustomerror" (click)="deleteCustomError(error.id)">
+                        <button class="m-t-10" i18n="@@btndeletecustomerror"
+                            (click)="deleteAllCustomError(error.id)">
                             delete
                         </button>
                     </p>
@@ -110,6 +114,14 @@
             <div class="icon"><a (click)="closeError()">
                     <img title="compose" src="assets/svg/x.svg"></a>
             </div>
+        </div>
+    </div>
+    <div class="overall alert" *ngIf="confirmDeleteAllLogs==true">
+        <div class="cv">
+            <span i18n="@@deleteallcustomerrosconfirmation">Are you sure, do want delete all errors logs?</span>
+            <br /><br />
+            <button type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete all</button>
+            <button class="m-l-10" type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
         </div>
     </div>
 </div>
