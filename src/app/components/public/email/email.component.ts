@@ -18,8 +18,6 @@ export class EmailComponent implements OnInit {
   error = Error;
   errorAlert = false;
   // emailto = [];
-  system: any;
-  domain: string;
 
   constructor(
     // private userService: UserService,
@@ -42,19 +40,6 @@ export class EmailComponent implements OnInit {
   //     };
   // }
 
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        this.domain = '@' + this.system.domain;
-        // this.getUsers();
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
 
   // selectAllForDropdownItems(items: any[]) {
   //   let allSelect = items => {
@@ -79,7 +64,6 @@ export class EmailComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getUsers();
-    this.getSystemStatus();
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="help" *ngIf="system">
+<div class="help">
     <!-- <div class="language" (click)="changeLanguageModal()">
         <img title="languages" src="assets/svg/globe-americas.svg" />
         <span>language</span>
@@ -7,15 +7,15 @@
         <div class="cv">
             <div class="flags">
                 <a i18n="@@portugueshelp" class="flag" routerLink="" (click)="setLanguage('pt')">
-                    <img title="messages" src="assets/svg/brasil.svg"> 
+                    <img title="messages" src="assets/svg/brasil.svg">
                     <span>Portuguese</span>
                 </a>
                 <a i18n="@@espanholhelp" class="flag" routerLink="" (click)="setLanguage('es')">
-                    <img title="messages" src="assets/svg/espanha.svg"> 
+                    <img title="messages" src="assets/svg/espanha.svg">
                     <span>Spanish</span>
                 </a>
                 <a i18n="@@englishhelp" class="flag" routerLink="" (click)="setLanguage('en-US')">
-                    <img title="messages" src="assets/svg/reino-unido.svg"> 
+                    <img title="messages" src="assets/svg/reino-unido.svg">
                     <span>English</span>
                 </a>
             </div>
@@ -115,8 +115,12 @@
     </p>
     <p i18n="@@q02a">
         Each workstation has a different domain, which can be seen at the top of the interface. On this station, all
-        emails will be created within the domain {{system.domain}} and will look like this:
-        user_name@{{system.domain}}. Where username is the username used when creating the user.
+        emails will be created within the domain
+        {{domain}}
+        and will look like this:
+        user_name@
+        {{domain}}
+        . Where username is the username used when creating the user.
     </p>
     <p i18n="@@q02b">
         Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is
@@ -171,7 +175,8 @@
         trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address
         and password fields should be filled, as shown below. The user and password will be the same as those created
         when first creating a login on HERMES and for use with the RoundCube webmail, such as:
-        username@{{system.domain}}.
+        username@
+        {{domain}}.
     </p>
     <img class="infoimg" title="Deltachat login" src="assets/img/login_es.jpeg" />
     <h3 #transm i18n="@@tranmissionhp">Transmission List</h3>
@@ -197,8 +202,13 @@
     <p>
         <span i18n="@@p15"> Users management: allows creation of new users, updating data of registered users and to
             delete users of the system. Every username correspond to a email account with the same name of the kind
-            username@servername </span> <span *ngIf="system"><span i18n="@@p15a">On this station the server name will
-                be:</span> </span><span class="alert"> {{system.domain}}</span>
+            username@servername </span>
+        <span>
+            <span i18n="@@p15a">On this station the server name will
+                be:
+            </span>
+        </span>
+        <span class="alert"> {{domain}}</span>
     </p>
     <p i18n="@@p16">
         Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update

@@ -6,6 +6,7 @@ import { Station } from '../../../interfaces/station';
 import { StationService } from '../../../_services/station.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-management',
@@ -31,12 +32,13 @@ export class UserManagementComponent implements OnInit {
   passunMatch = false;
   passMin = false;
   repasswd: any;
-  system: any;
   updateUser = false;
   showPassword = false;
   loading = true
   flagAdmin = false
   fullNameEmpty = false
+  domain: String = GlobalConstants.domain
+  errorUserAlreadyExist: boolean = false
 
   constructor(
     private userService: UserService,
@@ -45,21 +47,8 @@ export class UserManagementComponent implements OnInit {
     private apiService: ApiService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    if(this.currentUser)
+    if (this.currentUser)
       this.flagAdmin = this.currentUser.admin
-  }
-
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
   }
 
   loggedin() {
@@ -219,18 +208,23 @@ export class UserManagementComponent implements OnInit {
   async onSubmitCreate(f: NgForm): Promise<void> {
     this.loading = true
     f.value.location = 'local';
-    await this.userService.createUser(f.value).subscribe();
-    this.isEditing = false;
-    this.users = [];
-    this.userService.getUsers().subscribe(
+    await this.userService.createUser(f.value).subscribe(
       (res: any) => {
-        this.users = res;
+        console.log(res)
+        if (res.code === 504) {
+          this.errorUserAlreadyExist = true
+
+          this.isEditing = false;
+          this.users = [];
+          this.loading = false
+          return
+        }
+
         this.getUsers();
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.getUsers();
+        this.isEditing = false;
+        this.users = [];
+        this.loading = false
+
       }
     );
   }
@@ -247,7 +241,6 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    this.getSystemStatus();
     this.stationService.getStations()
       .subscribe(stations => this.stations = stations);
     if (this.currentUser) {

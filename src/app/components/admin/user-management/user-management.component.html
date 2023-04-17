@@ -35,7 +35,7 @@
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
           placeholder="write the username" (focusout)="checkFullName(selectedUser.name)">
       </label>
-      <a>{{selectedUser.email}}@{{system && system.domain}}</a> 
+      <a>{{selectedUser.email}}@{{domain}}</a> 
       <label for="name">
         <span i18n="@@name">full name</span>
         <input name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>
@@ -113,6 +113,14 @@
         <div class="cv">
           <span i18n="@@errormanagemet">There was an error on precessing your request <br /><br /></span>
           <span>{{error}}</span>
+          <div class="icon"><a (click)="closeError()">
+              <img title="close" src="assets/svg/x.svg"></a>
+          </div>
+        </div>
+      </div>
+      <div class="overall alert" [hidden]="!errorUseralreadyExist">
+        <div class="cv">
+          <span i18n="@@deleterooterror">This user already exist please choose another email <br /><br /></span>
           <div class="icon"><a (click)="closeError()">
               <img title="close" src="assets/svg/x.svg"></a>
           </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../_services/api.service';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-help',
@@ -9,7 +10,7 @@ import { ApiService } from '../../../_services/api.service';
 export class HelpComponent implements OnInit {
 
   error: any
-  system: any
+  domain: string = GlobalConstants.domain
   changeLanguage = false
 
   constructor(
@@ -17,17 +18,6 @@ export class HelpComponent implements OnInit {
 
   ) { }
 
-  getSystemStatus(): void{
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res
-        return res
-      },
-      (err) => {
-        this.error = err
-      }
-    );
-  }
 
   scrollToElement($element): void {
     $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
@@ -43,7 +33,6 @@ export class HelpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSystemStatus();
   }
 
 }

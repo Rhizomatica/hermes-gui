@@ -17,13 +17,11 @@ import { UtilsService } from '../../_services/utils.service';
 
 export class AppComponent implements OnInit {
   currentUser: User;
-  public iTimer = interval(30000);
   serverRes: any;
   error: any;
   system: any;
   fullStats = false;
   serverError = false;
-  criticSpace = false;
   toggleButton = document.querySelector('.dark-button');
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   radio: any;
@@ -57,21 +55,18 @@ export class AppComponent implements OnInit {
       // see also 
       if (val instanceof NavigationEnd)
         this.chackIsMenuPage()
-
     });
-
   }
 
   getSystemStatus(): void {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
-        if (this.system.diskfree < 10485760) {
-          this.criticSpace = true;
-        }
+        this.loading = false
       },
       (err) => {
         this.error = err;
+        this.loading = false
       }
     );
   }
@@ -114,14 +109,6 @@ export class AppComponent implements OnInit {
         this.loading = false;
       }
     );
-  }
-
-  showFullStatus() {
-    if (!this.fullStats) {
-      this.fullStats = true;
-    } else {
-      this.fullStats = false;
-    }
   }
 
   showServerAlert() {
@@ -168,10 +155,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
     this.getRadioStatus();
-    this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
     this.mobile = this.utils.isMobile()
     this.checkLanguage()
   }

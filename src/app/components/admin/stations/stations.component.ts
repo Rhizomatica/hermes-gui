@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { ApiService } from '../../../_services/api.service';
 import { NgForm} from '@angular/forms';
 import { StationService } from '../../../_services/station.service';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-stations',
@@ -27,9 +28,8 @@ export class StationsComponent implements OnInit {
   defenable: boolean;
   frequency: number;
   stationedit = false;
-  errorAlert = false;
-  system: any;
-  isGateway:boolean = false;
+  errorAlert = false;  
+  isGateway:boolean = GlobalConstants.gateway
   loading = true;
   currentStation: Station
 
@@ -39,19 +39,6 @@ export class StationsComponent implements OnInit {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  getSystemStatus(): void{
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        this.isGateway = this.system.gateway;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
 
   changeStationStatus(event) {
     this.currentStation = this.stations.filter((a)=>{ return a.alias === event.target.value})[0] 
@@ -171,7 +158,6 @@ export class StationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSystemStatus();
     this.getSchedule('1');
     this.getStations();
     if (this.currentUser) {

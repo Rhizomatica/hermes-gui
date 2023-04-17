@@ -9,6 +9,8 @@ export class GlobalConstants {
   public static webSocketUrl = environment.webSocketUrl
   public static radioRemoteWSUrl = environment.radioRemoteWSUrl
   public static hasGPS = environment.hasGPS
+  public static domain = environment.domain
+  public static gateway = environment.gateway
 
   public static httpOptions = {
     headers: new HttpHeaders({
