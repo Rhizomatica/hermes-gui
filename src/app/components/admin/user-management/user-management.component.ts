@@ -38,6 +38,7 @@ export class UserManagementComponent implements OnInit {
   flagAdmin = false
   fullNameEmpty = false
   domain: String = GlobalConstants.domain
+  errorUserAlreadyExist: boolean = false
 
   constructor(
     private userService: UserService,
@@ -46,10 +47,9 @@ export class UserManagementComponent implements OnInit {
     private apiService: ApiService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    if(this.currentUser)
+    if (this.currentUser)
       this.flagAdmin = this.currentUser.admin
   }
-
 
   loggedin() {
     if (this.isadmin) {
@@ -208,18 +208,23 @@ export class UserManagementComponent implements OnInit {
   async onSubmitCreate(f: NgForm): Promise<void> {
     this.loading = true
     f.value.location = 'local';
-    await this.userService.createUser(f.value).subscribe();
-    this.isEditing = false;
-    this.users = [];
-    this.userService.getUsers().subscribe(
+    await this.userService.createUser(f.value).subscribe(
       (res: any) => {
-        this.users = res;
+        console.log(res)
+        if (res.code === 504) {
+          this.errorUserAlreadyExist = true
+
+          this.isEditing = false;
+          this.users = [];
+          this.loading = false
+          return
+        }
+
         this.getUsers();
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.getUsers();
+        this.isEditing = false;
+        this.users = [];
+        this.loading = false
+
       }
     );
   }

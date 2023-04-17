@@ -118,6 +118,14 @@
           </div>
         </div>
       </div>
+      <div class="overall alert" [hidden]="!errorUseralreadyExist">
+        <div class="cv">
+          <span i18n="@@deleterooterror">This user already exist please choose another email <br /><br /></span>
+          <div class="icon"><a (click)="closeError()">
+              <img title="close" src="assets/svg/x.svg"></a>
+          </div>
+        </div>
+      </div>
     </form>
   </ng-container>
 </div>
