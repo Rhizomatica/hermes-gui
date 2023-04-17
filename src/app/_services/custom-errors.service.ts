@@ -45,7 +45,7 @@ export class CustomErrorsService {
   }
 
   deleteAllCustomError(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/customerrors/`;
+    const url = `${GlobalConstants.apiURL}/customerrors`;
     return this.http.delete(url)
       .pipe(
         catchError(this.handleError));
