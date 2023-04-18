@@ -2,16 +2,16 @@
 <h2>Logs</h2>
 <div class="row" *ngIf="system">
     <div class="row">
-        <span i18n="@@statusmachine"> | Status: </span>
+        <span i18n="@@statusmachine">Status: </span>
         <div *ngIf="!system.status" class="redcircle"></div>
         <div *ngIf="system.status" class="greencircle"></div>
         {{system.status == true ? 'ON' : 'OFF'}}
     </div>
 
     <div class="row">
-        <span i18n="@@freespace"> | Free Space: </span>
+        <span i18n="@@freespace">Free Space: </span>
         {{system.diskfree /1024 /1024 | number}} GB
-        <div class="row">
+        <div class="row m-t-10">
             <span *ngIf="criticSpace" class="alert" i18n="storagelow">
                 System storage is low! please delete messages and
                 files
@@ -19,6 +19,7 @@
         </div>
     </div>
 </div>
+<hr />
 <button (click)="showCustomLogs()">
     <span i18n="@@errorlogbutton">Error Log</span>
 </button>
