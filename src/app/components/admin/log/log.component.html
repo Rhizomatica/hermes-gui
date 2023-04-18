@@ -1,5 +1,4 @@
 <loading [loading]="loading"></loading>
-<h2>Logs</h2>
 <div class="row" *ngIf="system">
     <div class="row">
         <span i18n="@@statusmachine">Status: </span>
@@ -19,7 +18,9 @@
         </div>
     </div>
 </div>
-<hr />
+<!-- <hr /> -->
+<h2>Logs</h2>
+
 <button (click)="showCustomLogs()">
     <span i18n="@@errorlogbutton">Error Log</span>
 </button>
