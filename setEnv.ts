@@ -14,7 +14,7 @@ const envConfigFile = `export const environment = {
    webSocketUrl: '${process.env.WEBSOCKET_URL}',
    radioRemoteWSUrl: '${process.env.RADIO_REMOTE_WS_URL}',
    hasGPS: '${process.env.HAS_GPS}',
-   domain: '${process.env.DOMAIN}.hermes.radio',
+   domain: '${process.env.DOMAIN}',
    gateway: ${process.env.GATEWAY}
 };`;
 

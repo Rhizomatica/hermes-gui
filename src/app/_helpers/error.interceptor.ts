@@ -36,7 +36,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             message = this.spanishError(errorStatus)
         }
 
-        return message 
+        return message
         // + ' If this error persists send a report feedback.'
     }
 
@@ -46,6 +46,8 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         if (errorStatus == 400)
             return 'Service not found.'
+
+        return errorStatus
     }
 
     public portugueseError(errorStatus) {
@@ -54,6 +56,8 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         if (errorStatus == 400)
             return 'Serviço não encontrado.'
+
+        return errorStatus
     }
 
     public spanishError(errorStatus) {
@@ -62,5 +66,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         if (errorStatus == 400)
             return 'Servicio no encontrado.'
+
+        return errorStatus
     }
 }

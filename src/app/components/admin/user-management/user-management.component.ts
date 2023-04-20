@@ -38,7 +38,7 @@ export class UserManagementComponent implements OnInit {
   flagAdmin = false
   fullNameEmpty = false
   domain: String = GlobalConstants.domain
-  errorUserAlreadyExist: boolean = false
+  errorUserAlreadyExist = false
 
   constructor(
     private userService: UserService,
@@ -91,6 +91,7 @@ export class UserManagementComponent implements OnInit {
 
   closeError() {
     this.errorAlert = false;
+    this.errorUserAlreadyExist = false;
   }
 
   showPasswordField() {
@@ -210,21 +211,15 @@ export class UserManagementComponent implements OnInit {
     f.value.location = 'local';
     await this.userService.createUser(f.value).subscribe(
       (res: any) => {
-        console.log(res)
-        if (res.code === 504) {
-          this.errorUserAlreadyExist = true
-
-          this.isEditing = false;
-          this.users = [];
-          this.loading = false
-          return
-        }
-
         this.getUsers();
         this.isEditing = false;
-        this.users = [];
         this.loading = false
-
+      },(err) => {
+        this.loading = false
+        this.errorAlert = true;
+        if (err == 409) {
+          this.errorUserAlreadyExist = true
+        }
       }
     );
   }
