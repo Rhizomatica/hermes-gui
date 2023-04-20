@@ -726,21 +726,20 @@
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">107</context></context-group></trans-unit>
-<trans-unit id="errormanagemet" datatype="html">
-<source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-<target state="final">Houve um erro ao processar sua requisição <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
-
-
-
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="deleterooterror" datatype="html">
-        <source>This user already exist please choose another email <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source><target state="final">Este usuário já existe, por favor, escolha outro e-mail <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context><context context-type="linenumber">107</context></context-group></trans-unit><trans-unit id="usererror" datatype="html">
+        <source>There was an error on precessing your request </source><target state="final">Ocorreu um erro ao processar sua solicitação </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">123</context>
+          <context context-type="linenumber">114</context>
         </context-group>
-      </trans-unit><trans-unit id="wifiandethernetmanagertitle" datatype="html">
+      </trans-unit><trans-unit id="usererrorexist" datatype="html">
+        <source>This user already exist please choose another email</source><target state="final">Este usuário já existe, por favor, escolha outro e-mail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+<trans-unit id="wifiandethernetmanagertitle" datatype="html">
         <source>Wi-Fi &amp; Ethernet manager</source><target state="final">Administrador Wi-Fi &amp; Ethernet</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-manager/wifi-manager.component.html</context>

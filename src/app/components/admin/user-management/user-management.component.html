@@ -111,8 +111,8 @@
       </div>
       <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
-          <span i18n="@@errormanagemet" *ngIf="!errorUserAlreadyExist">There was an error on precessing your request </span>
-          <span i18n="@@deleterooterror" *ngIf="errorUserAlreadyExist">This user already exist please choose another email</span>
+          <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on precessing your request </span>
+          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exist please choose another email</span>
           <br /><br />
           <div class="icon"><a (click)="closeError()">
               <img title="close" src="assets/svg/x.svg"></a>
