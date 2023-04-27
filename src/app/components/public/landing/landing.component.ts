@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/_services/api.service';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { UtilsService } from 'src/app/_services/utils.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-landing',
@@ -8,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 export class LandingComponent implements OnInit {  
 
 
-  constructor(){
+  constructor(
+    private authenticationService: AuthenticationService,
+    private apiService: ApiService,
+    private utils: UtilsService
+    ) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      this.admin = this.currentUser.admin
   }
-  
+
+  currentUser: User
+  admin: boolean = false
+
   ngOnInit(): void {
+
+
   }
 }

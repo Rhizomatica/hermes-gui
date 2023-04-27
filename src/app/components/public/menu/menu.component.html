@@ -16,13 +16,13 @@
     <img title="admin" src="assets/svg/tools.svg">
     admin
   </a>
-  <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
-    <img title="login" src="assets/svg/sign-in-alt-solid.svg">
-    login
-  </a>
   <a routerLink="/help" i18n="@@helpmenu">
     <img title="help" src="assets/svg/question-circle-regular.svg">
     help
+  </a>
+  <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
+    <img title="login" src="assets/svg/sign-in-alt-solid.svg">
+    login
   </a>
   <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
     <img src="assets/svg/sign-out-alt-solid.svg">
