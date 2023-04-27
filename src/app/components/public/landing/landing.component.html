@@ -1,26 +1,80 @@
-<div class="container">
-    <div class="landing">
-        <!-- <div class="hello">
-            <h4 i18n="@@landingtext">High-frequency Emergency and Rural Multimedia Exchange System
-                The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym,
-                HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified
-                visual interface accessed via smartphone or computer, allowing for the transmission and reception of
-                data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be
-                easily encrypted and password-protected by the sender. HERMES, both architecture designs and
-                software, is free and open-source.
-            </h4>
-        </div> -->
-        <div class="btn-mail-lading">
-            <a routerLink="/email">
-                <h1 title="e-mail"> e-mail</h1>
-                <img src="assets/svg/envelope-xl.png">
-            </a>
-        </div>
-        <div class="btn-messages-lading">
-            <a routerLink="/messages">
-                <img src="assets/svg/comment-xl.png">
-                <h1 i18n="@@landingmessages" title="messages"> messages</h1>
-            </a>
+<div *ngIf="currentUser" class="container sysadm">
+    <h1>Public</h1>
+    Welcome to HERMES radio {{currentUser.name}},
+    <hr />
+    <div *ngIf="currentUser.admin" class="m-t-10">
+        <div class="menu">
+            <div class="flexible">
+                <a routerLink="/radiophony">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/ham-radio.svg">
+                        </div>
+                        <div i18n="@@radiophonycard">
+                            Radiophony
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/messages">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/comment.svg">
+                        </div>
+                        <div i18n="@@messagescard">
+                            Messages
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/email">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="Email" src="assets/svg/envelope.svg">
+                        </div>
+                        <div i18n="@@emailcard">
+                            E-mail
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/admin" *ngIf="admin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="Admin" src="assets/svg/tools.svg">
+                        </div>
+                        <div i18n="@@admincard">
+                            Admin
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/help">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="Help" src="assets/svg/question-circle-regular.svg">
+                        </div>
+                        <div i18n="@@helpcard">
+                            Help
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/login" *ngIf="!currentUser">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="Help" src="assets/svg/sign-in-alt-solid.svg">
+                        </div>
+                        <div i18n="@@logincard">
+                            Login
+                        </div>
+                    </div>
+                </a>
+                <div class="shut m-t-10" *ngIf="currentUser">
+                    <button class="midbt" (click)="logOff()">
+                        <span i18n="@@logoutbutton">
+                            Logout
+                        </span>
+                        <br />
+                        <img class="btnicon" title="send" src="assets/svg/sign-out-alt-solid.svg">
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
