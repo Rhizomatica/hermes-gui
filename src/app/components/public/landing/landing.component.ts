@@ -9,19 +9,20 @@ import { User } from 'src/app/interfaces/user';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.less']
 })
-export class LandingComponent implements OnInit {  
+export class LandingComponent implements OnInit {
 
 
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private utils: UtilsService
-    ) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    if (this.currentUser)
       this.admin = this.currentUser.admin
   }
 
-  currentUser: User
+  currentUser: User = null
   admin: boolean = false
 
   ngOnInit(): void {
