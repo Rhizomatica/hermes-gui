@@ -1,8 +1,8 @@
-<div *ngIf="currentUser" class="container sysadm">
+<div class="container sysadm">
     <h1>Public</h1>
-    Welcome to HERMES radio {{currentUser.name}},
+    Welcome to HERMES radio{{ currentUser ? ' ' + currentUser.name + '.' : '.'}}
     <hr />
-    <div *ngIf="currentUser.admin" class="m-t-10">
+    <div class="m-t-10">
         <div class="menu">
             <div class="flexible">
                 <a routerLink="/radiophony">
@@ -55,18 +55,15 @@
                         </div>
                     </div>
                 </a>
-                <a routerLink="/login" *ngIf="!currentUser">
-                    <div class="card">
-                        <div class="card-icon">
-                            <img _ngcontent-dpr-c68="" title="Help" src="assets/svg/sign-in-alt-solid.svg">
-                        </div>
-                        <div i18n="@@logincard">
+                <div class="shut m-t-10">
+                    <button routerLink="/login" class="midbt" *ngIf="!currentUser">
+                        <span i18n="@@loginbutton">
                             Login
-                        </div>
-                    </div>
-                </a>
-                <div class="shut m-t-10" *ngIf="currentUser">
-                    <button class="midbt" (click)="logOff()">
+                        </span>
+                        <br />
+                        <img class="btnicon" title="send" src="assets/svg/sign-in-alt-solid.svg">
+                    </button>
+                    <button class="midbt" (click)="logOff()" *ngIf="currentUser">
                         <span i18n="@@logoutbutton">
                             Logout
                         </span>
