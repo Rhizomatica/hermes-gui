@@ -11,15 +11,15 @@ export interface Message {
     content: string;
 }
 
-// @Injectable()
+@Injectable()
 export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
         this.messages = <Subject<Message>>this.connect(`${
-            // GlobalConstants.webSocketUrl
-            GlobalConstants.radioRemoteWSUrl
+            GlobalConstants.webSocketUrl
+            // GlobalConstants.radioRemoteWSUrl
         }/${_serviceRoute}`).pipe(
             map(
                 (response: MessageEvent): Message => {
