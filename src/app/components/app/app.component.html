@@ -1,4 +1,4 @@
-<style>
+<style> 
   :host {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -12,15 +12,15 @@
 
 <div id="appcontainer">
   <div class="fullpage">
-    <nav class="nav-mobile" *ngIf="system">
+    <nav *ngIf="system">
       <a routerLink='/landing' class="logo-link">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
       </a>
-      <a routerLink="/menu" class="float-right" *ngIf="!isMenuPage">
+      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage">
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
-      <a class="float-right" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+      <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>

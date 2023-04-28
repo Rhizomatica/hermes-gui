@@ -1,9 +1,5 @@
 <loading [loading]="loading"></loading>
-<div class="row" *ngIf="currentUser">
-  <h4 i18n="@@welcomemessagemenu">Welcome, {{currentUser.email}} </h4>
-</div>
 <div class="phonemenu">
-  <!-- MENU -->
   <a routerLink="/messages" i18n="@@messagemenu">
     <img title="messages" src="assets/svg/comment.svg">
     messages
@@ -30,8 +26,6 @@
       logout
     </span>
   </a>
-  <!-- <img title="messages" src="assets/svg/sign-in-alt-solid.svg"> -->
-
 </div>
 <div class="overall alert" [hidden]="errorAlert==false">
   <div class="cv">

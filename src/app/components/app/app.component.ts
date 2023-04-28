@@ -5,7 +5,6 @@ import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
-import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 
@@ -22,8 +21,6 @@ export class AppComponent implements OnInit {
   system: any;
   fullStats = false;
   serverError = false;
-  toggleButton = document.querySelector('.dark-button');
-  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   radio: any;
   protection = true;
   radioError = false;
@@ -42,7 +39,6 @@ export class AppComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private radioService: RadioService,
-    private darkModeService: DarkModeService,
     private utils: UtilsService,
     private location: Location,
   ) {
@@ -123,10 +119,6 @@ export class AppComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
-  }
-
-  onToggle(): void {
-    this.darkModeService.toggle();
   }
 
   onActivate(event) {

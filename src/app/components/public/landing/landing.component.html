@@ -1,6 +1,6 @@
 <div class="container sysadm">
     <h1>Public</h1>
-    Welcome to HERMES radio{{ currentUser ? ' ' + currentUser.name + '.' : '.'}}
+    Welcome to HERMES V2.3 RADIO{{ currentUser ? ', ' + currentUser.name + '.' : '.'}}
     <hr />
     <div class="m-t-10">
         <div class="menu">
@@ -56,7 +56,16 @@
                     </div>
                 </a>
                 <div class="shut m-t-10">
-                    <button routerLink="/login" class="midbt" *ngIf="!currentUser">
+                    <button (click)="toggle()" class="midbt {{currentTheme}}">
+                        <span i18n="@@darktheme" *ngIf="currentTheme == 'light'">
+                            Dark Theme
+                        </span>
+                        <span i18n="@@lighttheme" *ngIf="currentTheme == 'dark'">
+                            Light Theme
+                        </span>
+                        <br />
+                    </button>
+                    <button routerLink="/login" class="midbt m-t-10" *ngIf="!currentUser">
                         <span i18n="@@loginbutton">
                             Login
                         </span>
