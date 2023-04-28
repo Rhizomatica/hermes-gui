@@ -1,6 +1,6 @@
 <div class="container sysadm">
     <h1>Public</h1>
-    Welcome to HERMES V2.3 RADIO{{ currentUser ? ', ' + currentUser.name + '.' : '.'}}
+    Welcome to <b>V2.3</b> HERMES RADIO{{ currentUser ? ', ' + currentUser.name + '.' : '.'}}
     <hr />
     <div class="m-t-10">
         <div class="menu">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </a>
-                <a routerLink="/admin" *ngIf="admin">
+                <a routerLink="/admin" *ngIf="currentUser">
                     <div class="card">
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="Admin" src="assets/svg/tools.svg">
@@ -72,7 +72,7 @@
                         <br />
                         <img class="btnicon" title="send" src="assets/svg/sign-in-alt-solid.svg">
                     </button>
-                    <button class="midbt" (click)="logOff()" *ngIf="currentUser">
+                    <button class="midbt m-t-10" (click)="logOff()" *ngIf="currentUser">
                         <span i18n="@@logoutbutton">
                             Logout
                         </span>
