@@ -231,15 +231,6 @@ a:visited.dark-mode {
   font-weight: bold;
 }
 
-// .item > a > p {
-//     margin-left: 2px;
-//     font-size: 1em;
-// max-width: 60%;
-// overflow: hidden;
-// text-overflow: ellipsis;
-// white-space: nowrap;
-// }
-
 .ls {
   margin-left: 2px;
   font-size: 0.9em;
@@ -252,25 +243,17 @@ nav {
   font-family: "Rubik-regular";
   line-height: 0.8em;
   border-bottom: 1px solid @mclr;
-  // border-top: 2px solid @mclr;
   width: 100%;
   display: flex;
-  justify-content: center;
   background-color: @bkclr;
   z-index: 1;
   position: fixed;
+  padding: 15px;
   top: 0;
-  padding-bottom: 5px;
-
 
   a {
     text-decoration: none;
-    padding-bottom: 4px;
-    margin-right: 0.3em;
-    margin-top: 0.8em;
-    position: relative;
-    min-width: calc(17% - 0.25em);
-    text-align: center;
+    min-width: calc(50%);
   }
 
   img {
@@ -278,12 +261,12 @@ nav {
     clear: both;
     display: block;
     position: relative;
-    margin: 0 auto 0.25em;
-
+    // margin: 0 auto 0.1em;
   }
 
   .logo {
     width: 10em;
+    margin-left: 1.2em;
   }
 
   img:hover {
@@ -293,6 +276,10 @@ nav {
   .flag img {
     filter: brightness(1);
     width: 50%;
+  }
+
+  .burguer {
+    margin-top: 7px;
   }
 }
 
@@ -320,16 +307,7 @@ textarea {
   font-size: 1.2em;
   line-height: 1em;
   position: relative;
-  left: 3px;
-  margin: 0.25em 0;
   font-weight: normal;
-}
-
-.logo {
-  position: relative;
-  // left: 10px;
-  top: 0px;
-
 }
 
 .bordered {
@@ -821,6 +799,18 @@ input:checked+.slider:before {
   width: 8em;
   margin: 0 1vmin;
 
+  .dark {
+    background-color: @bkclr;
+    color: @mclr;
+    // border: 0.5px solid @mclr;
+  }
+
+  .light {
+    background-color: @mclr;
+    color: @bkclr;
+    // border: 0.5px solid @bkclr;
+
+  }
 
   button.midbt {
     font-size: 0.7em;
@@ -1457,14 +1447,8 @@ tr:nth-child(odd) {
     filter: invert(100%);
   }
 
-  // .selstation,
-  // .passprotect {
-  // border-bottom: 1px solid #fff;
-  // }
-
   nav {
     border-bottom: 1px solid #5c5b5b;
-    // border-top: 1px solid #5c5b5b;
     position: fixed;
     width: 100%;
     top: 0;
@@ -1980,7 +1964,10 @@ input[type=range]:hover::-ms-track {
 }
 
 .float-right {
-  display: inline;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-end;
   float: right;
 }
 
@@ -2259,7 +2246,7 @@ tr:nth-child(odd) {
   // nav img {
   // }
 
-  .nav-mobile {
+  .navmain {
     justify-content: left;
     position: left;
 
@@ -2270,8 +2257,7 @@ tr:nth-child(odd) {
 
     .logo {
       width: 10em;
-      margin-left: 1.5em;
-
+      // margin-left: 1.5em;
     }
 
     .sitetitle {
@@ -2426,10 +2412,6 @@ tr:nth-child(odd) {
     font-size: 0.8em;
   }
 
-  .logo {
-    // left: 10px;
-  }
-
   .multiplist3 {
     display: flex;
     flex-direction: column;
@@ -2450,10 +2432,6 @@ tr:nth-child(odd) {
   .topuser {
     display: none;
   }
-
-  // .logo-link {
-  //   display: none;
-  // }
 
   .messages {
 
