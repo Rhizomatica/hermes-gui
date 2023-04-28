@@ -1,5 +1,8 @@
 <div *ngIf="currentUser" class="container sysadm">
     <h1>Admin</h1>
+    <p i18n="@@needtobeadmin" *ngIf="!currentUser.admin">
+        Need to be an admin to access other admin features
+    </p>
     <hr/>
     <div *ngIf="currentUser.admin">
         <div class="menu">
@@ -169,9 +172,6 @@
         </div>
     </div>
     <div *ngIf="!currentUser.admin">
-        <p i18n="@@needtobeadmin">
-            Need to be an admin to access other admin features
-        </p>
         <div class="menu">
             <div class="flexible">
                 <a routerLink="/usermanage">
