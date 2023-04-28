@@ -34,10 +34,11 @@ export class LandingComponent implements OnInit {
     this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light'
   }
 
-  logout() {
+  logOff() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
+    this.admin = false
   }
 
   toggle(): void {
