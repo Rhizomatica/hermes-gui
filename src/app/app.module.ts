@@ -46,6 +46,8 @@ import { RecorderComponent } from './components/utils/recorder/recorder.componen
 import { MenuComponent } from './components/public/menu/menu.component';
 import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
 import { RadiophonyComponent } from './components/public/radiophony/radiophony.component';
+import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
+
 
 registerLocaleData(localePt);
 
@@ -86,7 +88,8 @@ registerLocaleData(localePt);
     RecorderComponent,
     MenuComponent,
     WifiManagerComponent,
-    RadiophonyComponent
+    RadiophonyComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
