@@ -24,7 +24,8 @@ export class RadiophonyComponent implements OnInit {
   error: String
   errorAlert: Boolean = false
   frequency: number = 7140
-
+  mode: String
+  
   constructor(
     private authenticationService: AuthenticationService,
     private websocketService: WebsocketService
@@ -41,6 +42,10 @@ export class RadiophonyComponent implements OnInit {
 
   public closeError() {
     this.errorAlert = false;
+  }
+
+  changeMode() {
+
   }
 
   ngOnInit(): void {
