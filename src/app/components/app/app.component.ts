@@ -161,7 +161,7 @@ export class AppComponent implements OnInit {
     localStorage.setItem('breadcrumb', JSON.stringify(this.breadCrumbPages))
     var name = this.router.url.split("/")[1]
 
-    if (name == 'login') {
+    if (name == 'login' || name == 'menu') {
       return
     }
 
