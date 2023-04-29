@@ -11,6 +11,7 @@ import { User } from 'src/app/interfaces/user';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.less']
 })
+
 export class LandingComponent implements OnInit {
   [x: string]: any;
 
