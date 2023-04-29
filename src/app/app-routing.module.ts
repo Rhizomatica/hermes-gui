@@ -29,6 +29,7 @@ import { RecorderComponent } from './components/utils/recorder/recorder.componen
 import { MenuComponent } from './components/public/menu/menu.component';
 import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
 import { RadiophonyComponent } from './components/public/radiophony/radiophony.component';
+import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -61,8 +62,8 @@ const routes: Routes = [
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'wifiManager', component: WifiManagerComponent },
-  { path: 'radiophony', component:   RadiophonyComponent
-},
+  { path: 'radiophony', component:   RadiophonyComponent},
+  { path: 'breadcrumb', component: BreadcrumbComponent }
 ];
 
 @NgModule({

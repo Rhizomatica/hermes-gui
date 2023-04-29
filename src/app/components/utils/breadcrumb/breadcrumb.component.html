@@ -1,0 +1,8 @@
+<div class="breadcrumb m-t-25">
+  <a href="javascript:history.back()" class="icon">
+    <img title="close" src="assets/svg/angle-left.svg">
+  </a>
+  <a *ngFor="let page of pages" routerLink="{{page.url}}" class="m-l-10">
+    {{page.name}} /
+  </a>
+</div>
