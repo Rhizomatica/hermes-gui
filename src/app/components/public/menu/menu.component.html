@@ -1,29 +1,33 @@
 <loading [loading]="loading"></loading>
 <div class="phonemenu">
+  <a routerLink="/radiophony" i18n="@@radiophonymenu">
+    <img title="messages" src="assets/svg/walkie-talkie.svg">
+    Radiophony
+  </a>
   <a routerLink="/messages" i18n="@@messagemenu">
     <img title="messages" src="assets/svg/comment.svg">
-    messages
+    Messages
   </a>
   <a routerLink="/email" i18n="@@emailmenu">
     <img title="email" src="assets/svg/envelope.svg">
-    email
+    Email
   </a>
   <a routerLink="/admin" i18n="@@adminmenu" *ngIf="currentUser">
     <img title="admin" src="assets/svg/tools.svg">
-    admin
+    Admin
   </a>
   <a routerLink="/help" i18n="@@helpmenu">
     <img title="help" src="assets/svg/question-circle-regular.svg">
-    help
+    Help
   </a>
   <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
     <img title="login" src="assets/svg/sign-in-alt-solid.svg">
-    login
+    Login
   </a>
   <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
     <img src="assets/svg/sign-out-alt-solid.svg">
     <span class="logged" i18n="@@logoutmenu">
-      logout
+      Logout
     </span>
   </a>
 </div>

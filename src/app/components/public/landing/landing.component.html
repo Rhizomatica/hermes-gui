@@ -1,7 +1,6 @@
 <div class="container sysadm">
     <h1>Public</h1>
-    Welcome to <a href="https://github.com/Rhizomatica/hermes-gui" target="_blank">V2.3</a> HERMES Radio.
-    <span class="float-right">{{ currentUser ? currentUser.name : null}}</span>
+    Welcome {{ currentUser ? currentUser.name : null}}
     <hr />
     <div class="m-t-10">
         <div class="menu">
@@ -21,7 +20,7 @@
                         <div class="card-icon">
                             <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/comment.svg">
                         </div>
-                        <div i18n="@@messagescard">
+                        <div class="card-title" i18n="@@messagescard">
                             Messages
                         </div>
                     </div>
@@ -66,7 +65,7 @@
                         </span>
                         <br />
                     </button>
-                    <button routerLink="/login" class="midbt m-t-10" *ngIf="!currentUser">
+                    <button routerLink="/login" class="midbt" *ngIf="!currentUser">
                         <span i18n="@@loginbutton">
                             Login
                         </span>
