@@ -83,10 +83,6 @@ export class SysadminComponent implements OnInit {
 
   }
 
-  goHamRadioRemote() {
-    window.open(GlobalConstants.radioRemoteUrl)
-  }
-
   checkBrowser(browser){
     var browserWarning = localStorage.getItem('browserWarning');
 

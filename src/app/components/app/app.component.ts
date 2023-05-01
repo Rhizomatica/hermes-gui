@@ -165,8 +165,8 @@ export class AppComponent implements OnInit {
       return
     }
 
-    if (name == 'landing') {
-      var newPage = JSON.parse('{"name":"landing", "url":"/landing"}')
+    if (name == 'home') {
+      var newPage = JSON.parse('{"name":"home", "url":"/home"}')
       this.breadCrumbPages = [newPage]
     }
 
@@ -186,7 +186,7 @@ export class AppComponent implements OnInit {
     }
 
     //Remove ao renavegar pelo breadcrumb
-    if (found && name != 'landing') {
+    if (found && name != 'home') {
       var vezes = indexfound - 1
       for (var i = 0; i <= vezes; i++) {
         this.breadCrumbPages.pop()

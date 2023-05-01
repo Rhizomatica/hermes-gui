@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../app/_helpers/auth.guard';
-import { LandingComponent } from './components/public/landing/landing.component';
+import { homeComponent } from './components/public/home/home.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
-// import { StationsComponent } from './components/admin/stations/stations.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
@@ -18,7 +17,6 @@ import { SentMessagesComponent } from './components/public/sent-messages/sent-me
 import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
-import { RadioComponent } from './components/admin/radio/radio.component';
 import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
 import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
@@ -32,11 +30,10 @@ import { RadiophonyComponent } from './components/public/radiophony/radiophony.c
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/landing', pathMatch: 'full' },
-  { path: 'landing', component: LandingComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: homeComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'admin', component: SysadminComponent },
-  // { path: 'stations', component: StationsComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
   { path: 'usermanage', component: UserManagementComponent },
@@ -52,7 +49,6 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent },
   { path: 'help', component: HelpComponent },
   { path: 'radioconfig', component: RadioConfigComponent },
-  { path: 'radio', component: RadioComponent },
   { path: 'gateway', component: GatewayConfigComponent },
   { path: 'transmision', component: TransmisionListComponent },
   { path: 'switch', component: SwitchComponent },
@@ -62,7 +58,7 @@ const routes: Routes = [
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'wifiManager', component: WifiManagerComponent },
-  { path: 'radiophony', component:   RadiophonyComponent},
+  { path: 'radiophony', component: RadiophonyComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent }
 ];
 
