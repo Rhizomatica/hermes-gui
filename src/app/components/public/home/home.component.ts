@@ -7,12 +7,12 @@ import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.less']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.less']
 })
 
-export class LandingComponent implements OnInit {
+export class homeComponent implements OnInit {
   [x: string]: any;
 
 
