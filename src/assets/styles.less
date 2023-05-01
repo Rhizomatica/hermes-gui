@@ -318,27 +318,23 @@ textarea {
 }
 
 .fullpage {
-  min-height: 100vh;
   max-width: 100%;
   position: relative;
   margin: auto;
-
-  // top:60em
-  // width: auto;
 }
 
 .push {
   height: 2em;
 }
 
-#appcontainer {
+// #appcontainer {
   // max-width: 90em;
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 2em;
+  // position: relative;
+  // min-height: 100vh;
+  // padding-bottom: 2em;
   // overflow: hidden;
-  height: fit-content;
-}
+  // height: fit-content;
+// }
 
 .footer {
   margin-top: -2.5em;
@@ -376,7 +372,7 @@ textarea {
   padding-right: 5em;
   padding-left: 5em;
   top: 7em;
-  padding-bottom: 6em;
+  padding-bottom: 1em;
 
 
   .textarea {
@@ -1081,7 +1077,7 @@ input.searchbox2 {
   }
 
   .item:last-child {
-    padding-bottom: 6em;
+    padding-bottom: 1em;
     border-bottom: 0;
   }
 
@@ -1617,6 +1613,17 @@ tr:nth-child(odd) {
     }
   }
 
+  .breadcrumb {
+
+    a {
+      color: @bkclr;
+
+      img {
+        filter: invert(100%);
+      }
+    }
+  }
+
 }
 
 .syspusher {
@@ -1857,6 +1864,7 @@ input[type=range]:hover::-ms-track {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
 
   a {
     text-decoration: none;
@@ -2181,12 +2189,9 @@ tr:nth-child(odd) {
 }
 
 .breadcrumb {
-  z-index: 1;
   top: 54px;
-  /* left: 70px; */
-  position: fixed;
+  position: absolute;
   width: 100%;
-  background-color: @vstclr;
   padding-left: 7%;
   vertical-align: middle;
   margin: auto 0;
@@ -2198,18 +2203,14 @@ tr:nth-child(odd) {
     text-decoration: none;
     margin-bottom: 20px;
     font-size: 15px;
-    // vertical-align: middle;
-    color: @bkclr;
 
     img {
       height: 26px;
       margin-right: 20px;
-      // vertical-align: middle;
-      filter: invert(100%);
+      filter: invert(25%);
     }
   }
 }
-
 
 @media (max-width: 700px) {
 
@@ -2324,21 +2325,16 @@ tr:nth-child(odd) {
   }
 
   .flexible .card {
-    margin-left: 0.5vw;
-    width: 44vw;
+    margin-left: 0.6vw;
+    width: 45vw;
   }
 
   .card {
     flex-direction: column;
-    border: solid 1.5px #000;
-    border-radius: 3px;
     padding: 2vmin;
     margin: 1vmin;
-    text-align: center;
-    font-size: 0.9em;
     width: 100%;
-    height: 22vmin;
-    line-height: 4vmin;
+    height: 23vmin;
 
     img {
       width: 7vmin;
@@ -2367,7 +2363,7 @@ tr:nth-child(odd) {
     button.midbt {
       font-size: 0.8em;
       height: 15vmin;
-      width: 44vw;
+      width: 49%;
       margin-right: 1vw;
     }
   }
@@ -2466,7 +2462,7 @@ tr:nth-child(odd) {
   }
 
   .formfield {
-    padding: 0.5em 0.5em 5em 0.5em;
+    padding: 0.5em;
     top: 6em;
     height: fit-content;
   }
@@ -2507,6 +2503,10 @@ tr:nth-child(odd) {
 
   .fullfrequency {
     font-size: 5rem;
+  }
+
+  .hidden-xs {
+    display: none;
   }
 }
 
