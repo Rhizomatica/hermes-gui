@@ -24,7 +24,7 @@
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
-    <breadcrumb [pages]=breadCrumbPages></breadcrumb>
+    <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
     <div class="formfield">
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
