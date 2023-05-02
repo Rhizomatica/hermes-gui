@@ -33,7 +33,8 @@ export class AppComponent implements OnInit {
   title = 'hermes.radio';
   mobile: any
   isMenuPage: boolean
-  breadCrumbPages = []
+  currentPage = 'home'
+  currentUrl = '/home'
 
   constructor(
     private router: Router,
@@ -47,12 +48,6 @@ export class AppComponent implements OnInit {
     // router.events.subscribe((val) => {
     //     this.chackIsMenuPage()
     // });
-
-    var localStorageBreadcrumb = localStorage.getItem('breadcrumb')
-
-    if (localStorageBreadcrumb) {
-      this.breadCrumbPages = JSON.parse(localStorageBreadcrumb)
-    }
 
     router.events.subscribe((val) => {
       // see also
@@ -157,41 +152,8 @@ export class AppComponent implements OnInit {
 
   //TODO - Should be at component breadcrumb?
   updateBreadcrumb() {
-
-    localStorage.setItem('breadcrumb', JSON.stringify(this.breadCrumbPages))
-    var name = this.router.url.split("/")[1]
-
-    if (name == 'login' || name == 'menu') {
-      return
-    }
-
-    if (name == 'home') {
-      var newPage = JSON.parse('{"name":"home", "url":"/home"}')
-      this.breadCrumbPages = [newPage]
-    }
-
-    var found = false
-    var indexfound
-    this.breadCrumbPages.forEach((item, index) => {
-      if (item.name == name) {
-        found = true
-        indexfound = index
-      }
-    })
-
-    //Nao encontrado insere no array
-    if (!found) {
-      var newPage = JSON.parse('{"name":"' + name + '", "url":"' + this.router.url + '"}')
-      this.breadCrumbPages.push(newPage)
-    }
-
-    //Remove ao renavegar pelo breadcrumb
-    if (found && name != 'home') {
-      var vezes = indexfound - 1
-      for (var i = 0; i <= vezes; i++) {
-        this.breadCrumbPages.pop()
-      }
-    }
+    this.currentPage = this.router.url.split("/")[1]
+    this.currentUrl = this.router.url
   }
 
 
