@@ -18,6 +18,54 @@
         </div>
     </div>
 </div>
+<!-- <div class="row flexible m-t-25">
+    <button class="" (click)="confirmReboot()">
+        <span i18n="@@reboot">reboot</span><br />
+        <img class="btnicon" title="send" src="assets/svg/redo.svg">
+    </button>
+    <button class="m-l-10" (click)="confirmShutDown()">
+        <span i18n="@@shutdown">shut down</span><br />
+        <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
+    </button>
+
+    <div class="overall alert" [hidden]="shuttingDown==false">
+        <div class="cv">
+            <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
+                <br />
+                This will stop messages transmision and reception.
+                <br />
+            </span>
+            <button (click)="cancelShutDown()" i18n="@@cancels1">cancel</button> <button class="m-l-10"
+                (click)="shutDown()" i18n="@@shutdown1">shut
+                down</button>
+        </div>
+    </div>
+    <div class="overall alert" [hidden]="restarting==false">
+        <div class="cv">
+            <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
+                <br />
+                This will stop messages transmision and reception.
+                <br />
+            </span>
+            <button (click)="cancelReboot()" i18n="@@cancels2">cancel</button>
+            <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">reboot</button>
+        </div>
+    </div>
+    <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
+        Shutting Down System
+        <br />
+        <a (click)="reload()">
+            <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
+        <br>
+    </div>
+    <div class="overall alert" [hidden]="rebootingDownNow==false" i18n="@@rebootButton">
+        Rebooting System
+        <br />
+        <a (click)="reload()">
+            <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
+        <br>
+    </div>
+</div> -->
 <!-- <hr /> -->
 <h2 class="m-t-25">Logs</h2>
 
@@ -57,8 +105,7 @@
                     <p><b>Stack Trace:</b></p>
                     <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p>
                     <p>
-                        <button class="m-t-10" i18n="@@btndeletecustomerror"
-                            (click)="deleteCustomError(error.id)">
+                        <button class="m-t-10" i18n="@@btndeletecustomerror" (click)="deleteCustomError(error.id)">
                             delete
                         </button>
                     </p>

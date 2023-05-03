@@ -1,5 +1,9 @@
 <loading [loading]="loading"></loading>
 <div class="phonemenu">
+  <a routerLink="/home" i18n="@@radiophonymenu">
+    <img title="messages" src="assets/svg/house.svg">
+    Home
+  </a>
   <a routerLink="/radiophony" i18n="@@radiophonymenu">
     <img title="messages" src="assets/svg/walkie-talkie.svg">
     Radiophony
@@ -11,10 +15,6 @@
   <a routerLink="/email" i18n="@@emailmenu">
     <img title="email" src="assets/svg/envelope.svg">
     Email
-  </a>
-  <a routerLink="/admin" i18n="@@adminmenu" *ngIf="currentUser">
-    <img title="admin" src="assets/svg/tools.svg">
-    Admin
   </a>
   <a routerLink="/help" i18n="@@helpmenu">
     <img title="help" src="assets/svg/question-circle-regular.svg">

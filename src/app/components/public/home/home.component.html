@@ -1,7 +1,5 @@
 <div class="container sysadm">
-    <h1>Public</h1>
     Welcome {{ currentUser ? currentUser.name : null}}
-    <hr />
     <div class="m-t-10">
         <div class="menu">
             <div class="flexible">
@@ -11,7 +9,7 @@
                             <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/walkie-talkie.svg">
                         </div>
                         <div i18n="@@radiophonycard">
-                            Radiophony
+                            Voice
                         </div>
                     </div>
                 </a>
@@ -35,16 +33,6 @@
                         </div>
                     </div>
                 </a>
-                <a routerLink="/admin" *ngIf="currentUser">
-                    <div class="card">
-                        <div class="card-icon">
-                            <img _ngcontent-dpr-c68="" title="Admin" src="assets/svg/tools.svg">
-                        </div>
-                        <div i18n="@@admincard">
-                            Admin
-                        </div>
-                    </div>
-                </a>
                 <a routerLink="/help">
                     <div class="card">
                         <div class="card-icon">
@@ -52,6 +40,86 @@
                         </div>
                         <div i18n="@@helpcard">
                             Help
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/radioconfig">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/ham-radio.svg">
+                        </div>
+                        <div i18n="@@radioconfig">
+                            Radio configuration
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/usermanage" *ngIf="currentUser">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/circle-user.svg">
+                        </div>
+                        <div class="row" i18n="@@adminmanage">
+                            User management
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/messageadm" *ngIf="admin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/comments.svg">
+                        </div>
+                        <div i18n="@@messageadm">
+                            Messages configuration
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="isGateway && admin" routerLink="/gateway">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/clock.svg">
+                        </div>
+                        <div i18n="@@scheduling">
+                            Transmission schedule
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/transmision" *ngIf="admin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/transmit-antenna.svg">
+                        </div>
+                        <div i18n="@@transmisionlista">
+                            Transmision list
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/stationinformation" *ngIf="admin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/broadcast-tower.svg">
+                        </div>
+                        <div i18n="@@stationinformationcard">
+                            Stations information
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/wifiManager" *ngIf="admin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/wifi-solid.svg">
+                        </div>
+                        <div i18n="@@wifimanagercard">
+                            Wi-Fi & Ethernet manager
+                        </div>
+                    </div>
+                </a>
+                <a routerLink="/log" *ngIf="admin">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/compass.svg">
+                        </div>
+                        <div i18n="@@detailedlog">
+                            Detailed log
                         </div>
                     </div>
                 </a>
