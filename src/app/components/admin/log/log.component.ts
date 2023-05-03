@@ -43,6 +43,13 @@ export class LogComponent implements OnInit, OnDestroy {
   criticSpace = false;
   confirmDeleteAllLogs = false;
 
+  shuttingDown = false;
+  restarting = false;
+  shuttingDownNow = false;
+  rebootingDownNow = false;
+  alertBrowserXP: Boolean = false
+  loginForm = false;
+
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private customErrorsService: CustomErrorsService
@@ -259,6 +266,12 @@ export class LogComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  confirmReboot(){}
+
+  confirmShutDown(){}
+
+  reload(){}
 
   ngOnInit(): void {
     this.getSystemStatus()

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { ApiService } from 'src/app/_services/api.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
-import { UtilsService } from 'src/app/_services/utils.service';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
+
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class homeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private darkModeService: DarkModeService,
+    private router: Router
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)

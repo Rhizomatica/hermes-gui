@@ -55,6 +55,7 @@ export class BreadcrumbComponent implements OnChanges {
   removeBreadCrumbItem() {
     //Se ja foi encontrado remove ao renavegar pelo breadcrumb
     for (var i = this.pages.length; i >= 0; i--) {
+      //Encontrou pagina corrente sai do loop
       if (this.pages[i - 1].name == this.currentPage) {
         return
       }
