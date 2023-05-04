@@ -12,7 +12,7 @@ import { DecimalPipe } from '@angular/common';
     WebsocketService,
     // { provide: '_serviceRoute', useValue: 'radio/power' },
     // { provide: '_serviceRoute', useValue: 'WSaudioRX' }
-    { provide: '_serviceRoute', useValue: '' }
+    { provide: '_serviceRoute', useValue: 'websocket' }
   ]
 })
 
