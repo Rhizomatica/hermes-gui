@@ -1,15 +1,15 @@
 <loading [loading]="loading"></loading>
-<div class="radiophony m-t-25">
+<div class="radiophony">
   <div class="row">
     <span class="fullfrequency">{{frequency}} kHz</span>
   </div>
-  <div class="row m-t-25">
-    <span>LSB</span>
-    <div class="switch">
-      <input type="checkbox" name="mode" [checked]="mode  == 'lsb'" />
-      <span class="slider round-uc" (click)="changeMode()"></span>
-    </div>
-    <span>USB</span>
+  <div class="row m-t-25 voiceactions">
+   <button class="m-t-10" (click)="lsbVoice()">
+    LSB
+   </button>
+   <button class="m-t-10 m-l-10" (click)="usbVoice()">
+    USB
+   </button>
   </div>
 </div>
 
