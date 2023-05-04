@@ -8,11 +8,11 @@ require('dotenv').config()
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
    appName: '${process.env.APP_NAME}',
+   version: '${process.env.VERSION}',
    apiUrl: '${process.env.API_URL}',
    production: '${process.env.PRODUCTION}',
    radioRemoteUrl: '${process.env.RADIO_REMOTE_URL}',
    webSocketUrl: '${process.env.WEBSOCKET_URL}',
-   radioRemoteWSUrl: '${process.env.RADIO_REMOTE_WS_URL}',
    hasGPS: '${process.env.HAS_GPS}',
    domain: '${process.env.DOMAIN}',
    gateway: ${process.env.GATEWAY}
