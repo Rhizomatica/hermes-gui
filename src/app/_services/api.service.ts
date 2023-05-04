@@ -3,14 +3,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { AlertService } from '../_services/alert.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-// import { Api } from '../api';
 import { GlobalConstants } from '../global-constants';
 import { Schedule } from '../interfaces/schedule';
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
   login = false;
   serverReturn: any;
