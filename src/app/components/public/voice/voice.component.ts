@@ -5,9 +5,9 @@ import { WebsocketService } from '../../../_services/websocket.service';
 import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'radiophony',
-  templateUrl: './radiophony.component.html',
-  styleUrls: ['./radiophony.component.less'],
+  selector: 'voice',
+  templateUrl: './voice.component.html',
+  styleUrls: ['./voice.component.less'],
   providers: [DecimalPipe,
     WebsocketService,
     // { provide: '_serviceRoute', useValue: 'radio/power' },
@@ -16,7 +16,7 @@ import { DecimalPipe } from '@angular/common';
   ]
 })
 
-export class RadiophonyComponent implements OnInit {
+export class VoiceComponent implements OnInit {
 
   currentUser: User
   admin: Boolean
@@ -44,7 +44,11 @@ export class RadiophonyComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  changeMode() {
+  lsbVoice(){
+
+  }
+
+  usbVoice(){
 
   }
 
