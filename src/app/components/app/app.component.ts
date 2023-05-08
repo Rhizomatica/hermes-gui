@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   isMenuPage: boolean
   currentPage = 'home'
   currentUrl = '/home'
-  frequency:String = '0000'
+  frequency:Number = 0
   frequencyMode:String = null
 
   constructor(
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
-        this.frequency = this.radio.freq === '' ? '0000' : this.radio.freq  
+        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq  
         this.frequencyMode = this.radio.mode;
         this.loading = false;
         return res;
