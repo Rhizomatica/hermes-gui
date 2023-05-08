@@ -205,9 +205,9 @@ a {
 }
 
 
-a:active {
-  color: #c96;
-}
+// a:active {
+//   color: #c96;
+// }
 
 
 a:visited {
@@ -275,15 +275,13 @@ nav {
   .burguer {
     margin-top: 7px;
   }
-}
 
-
-nav a:hover {
-  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
-}
-
-nav a:active {
-  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  .nav-frequency {
+    position: absolute;
+    float: right;
+    right: 60px;
+    top: 34px;
+  }
 }
 
 label {
@@ -1411,19 +1409,11 @@ tr:nth-child(odd) {
       filter: invert(0);
       width: 50%;
     }
-
-    a:active {
-      filter: invert(27%) sepia(51%) saturate(3078%) hue-rotate(330deg) brightness(110%) contrast(100%);
-    }
   }
 
   .footer {
     background-color: @mclr;
     border-top: 2px solid #fff;
-  }
-
-  nav a:hover {
-    filter: invert(27%) sepia(51%) saturate(3078%) hue-rotate(330deg) brightness(110%) contrast(100%);
   }
 
   .dr {
@@ -1574,6 +1564,13 @@ tr:nth-child(odd) {
       img {
         filter: invert(100%);
       }
+    }
+  }
+
+  .card.voice {  
+    border: @clr;
+    img {
+      filter: invert(0%);
     }
   }
 
@@ -1837,6 +1834,17 @@ input[type=range]:hover::-ms-track {
   height: 8.5em;
   line-height: 1em;
   background-color: @bkclr;
+}
+
+.card.voice {
+  background-color: @clr;
+  border: solid 1.5px @clr;
+
+  // color: @bkclr;
+
+  img {
+    // filter: invert(100%);
+  }
 }
 
 .card.connected {
@@ -2119,10 +2127,10 @@ tr:nth-child(odd) {
   display: block;
 }
 
-.voiceactions{
+.voiceactions {
   text-align: center;
 
-  button{
+  button {
     width: 150px;
   }
 }
