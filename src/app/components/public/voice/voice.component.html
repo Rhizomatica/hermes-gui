@@ -4,15 +4,14 @@
     <span class="fullfrequency">{{frequency}} kHz</span>
   </div>
   <div class="row m-t-25 voiceactions">
-    <button class="m-t-10" (click)="usbVoice()">
+    <button class="m-t-10" (click)="setUSB()" disabled="{{mode !== 'USB' ? true : false}}">
       USB
-     </button>
-   <button class="m-t-10 m-l-10" (click)="lsbVoice()">
-    LSB
-   </button>
+    </button>
+    <button class="m-t-10 m-l-10" (click)="setLSB()" disabled="{{mode !== 'LSB' ? true : false}}">
+      LSB
+    </button>
   </div>
 </div>
-
 <div class="overall alert" [hidden]="errorAlert==false">
   <div class="cv">
     <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
