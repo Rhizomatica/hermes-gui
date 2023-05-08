@@ -35,6 +35,8 @@ export class AppComponent implements OnInit {
   isMenuPage: boolean
   currentPage = 'home'
   currentUrl = '/home'
+  frequency:String = '0000'
+  frequencyMode:String = null
 
   constructor(
     private router: Router,
@@ -100,6 +102,8 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
+        this.frequency = this.radio.freq === '' ? '0000' : this.radio.freq  
+        this.frequencyMode = this.radio.mode;
         this.loading = false;
         return res;
       },
@@ -155,7 +159,6 @@ export class AppComponent implements OnInit {
     this.currentPage = this.router.url.split("/")[1]
     this.currentUrl = this.router.url
   }
-
 
   ngOnInit(): void {
     this.loading = true

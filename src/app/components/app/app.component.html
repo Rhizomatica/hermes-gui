@@ -1,4 +1,4 @@
-<style> 
+<style>
   :host {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -15,12 +15,16 @@
     <nav *ngIf="system">
       <a routerLink='/home' class="logo-link">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
-        <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
+        <h1 class="sitetitle" *ngIf="system">
+          <span>{{system.domain}}</span>
+        </h1>
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage">
+        <span class="nav-frequency">{{frequency}} kHz {{frequencyMode}}</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+        <span class="nav-frequency">{{frequency}} kHz {{frequencyMode}}</span>
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
@@ -29,7 +33,6 @@
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
         <hr>
-        <!-- TODO - Criar Tradução -->
         <p i18n="hermes503Http">503 Service Unavaliable</p>
         <p i18n="hermesoffline">Hermes server is offline, please turn the station on.
         </p>
