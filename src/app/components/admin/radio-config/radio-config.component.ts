@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { User } from '../../../interfaces/user';
 import { interval } from 'rxjs';
 import { GlobalConstants } from '../../../global-constants';
+import { ApiService } from 'src/app/_services/api.service';
 
 @Component({
   selector: 'app-radio-config',
@@ -61,10 +62,19 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   gpsMessage: any
   hasGps = GlobalConstants.hasGPS
 
+
+  shuttingDown = false;
+  restarting = false;
+  shuttingDownNow = false;
+  rebootingDownNow = false;
+  alertBrowserXP: Boolean = false
+  loginForm = false;
+
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
     // private websocketService: WebsocketService
+    private apiService: ApiService
     ) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
@@ -336,6 +346,46 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
         this.getRadioStatus();
       }
     );
+  }
+
+
+  confirmShutDown() {
+    this.shuttingDown = true;
+  }
+
+  cancelShutDown() {
+    this.shuttingDown = false;
+    this.shuttingDownNow = false;
+  }
+
+  confirmReboot() {
+    this.restarting = true;
+  }
+
+  cancelReboot() {
+    this.restarting = false;
+    this.shuttingDownNow = false;
+
+  }
+
+  confirmRestart() {
+      this.restarting = true;
+  }
+
+  cancelRestart() {
+    this.restarting = false;
+    this.shuttingDownNow = false;
+  }
+
+  shutDown() {
+    this.shuttingDownNow = true;
+    this.apiService.sysShutdown();
+
+  }
+
+  reboot() {
+    this.rebootingDownNow = true;
+    this.apiService.sysReboot();
   }
 
   ngOnInit(): void {
