@@ -12,7 +12,7 @@
 
 <div id="appcontainer">
   <div class="fullpage">
-    <nav *ngIf="system">
+    <nav *ngIf="system && currentPage != 'home'">
       <a routerLink='/home' class="logo-link">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system">
@@ -29,7 +29,7 @@
       </a>
     </nav>
     <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
-    <div class="formfield">
+    <div class="formfield {{currentPage == 'home' ? 'home' : ''}}">
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
         <hr>
