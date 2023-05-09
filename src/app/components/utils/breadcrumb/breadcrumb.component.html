@@ -1,4 +1,4 @@
-<div class="breadcrumb m-t-25" *ngIf="currentPage != 'menu'">
+<div class="breadcrumb m-t-25" [hidden]="currentPage == 'menu' || currentPage == 'home'">
   <a href="javascript:history.back()" class="icon">
     <img title="close" src="assets/svg/angle-left.svg">
   </a>
