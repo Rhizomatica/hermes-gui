@@ -43,12 +43,6 @@ export class LogComponent implements OnInit, OnDestroy {
   criticSpace = false;
   confirmDeleteAllLogs = false;
 
-  shuttingDown = false;
-  restarting = false;
-  shuttingDownNow = false;
-  rebootingDownNow = false;
-  alertBrowserXP: Boolean = false
-  loginForm = false;
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -219,8 +213,6 @@ export class LogComponent implements OnInit, OnDestroy {
       this.deleteCustomErrorById(id)
   }
 
-
-
   deleteAllCustomError() {
     this.customErrorsService.deleteAllCustomError().subscribe(
       (data: any) => {
@@ -266,12 +258,6 @@ export class LogComponent implements OnInit, OnDestroy {
       }
     );
   }
-
-  confirmReboot(){}
-
-  confirmShutDown(){}
-
-  reload(){}
 
   ngOnInit(): void {
     this.getSystemStatus()
