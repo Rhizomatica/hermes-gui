@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 
 @Component({
@@ -21,8 +22,10 @@ export class homeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private darkModeService: DarkModeService,
-    private router: Router
+    private router: Router,
+    private utils: UtilsService
   ) {
+    this.checkBrowser(utils.detectBrowserName())
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
@@ -32,10 +35,7 @@ export class homeComponent implements OnInit {
   admin: boolean = false
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
-
-  ngOnInit(): void {
-    this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light'
-  }
+  alertBrowserXP: Boolean = false
 
   logOff() {
     this.authenticationService.logout();
@@ -56,5 +56,23 @@ export class homeComponent implements OnInit {
       this.darkModeService.toggle();
       return
     }
+  }
+
+  checkBrowser(browser){
+    var browserWarning = localStorage.getItem('browserWarning');
+
+    if(browserWarning === null && browser !== 'chrome'){
+      localStorage.setItem('browserWarning', 'true');
+      this.alertBrowserXP = true
+    }
+  }
+  
+  closeBrowserAlert(){
+    this.alertBrowserXP = false
+  }
+
+
+  ngOnInit(): void {
+    this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light'
   }
 }

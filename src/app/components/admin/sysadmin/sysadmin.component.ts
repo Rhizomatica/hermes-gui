@@ -71,7 +71,6 @@ export class SysadminComponent implements OnInit {
   reboot() {
     this.rebootingDownNow = true;
     this.apiService.sysReboot();
-
   }
 
   reload() {
