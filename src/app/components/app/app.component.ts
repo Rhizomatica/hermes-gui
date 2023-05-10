@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Location } from '@angular/common';
+import { DecimalPipe, Location } from '@angular/common';
 import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
+import { WebsocketService } from 'src/app/_services/websocket.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
+  providers: [DecimalPipe,
+    WebsocketService,
+    { provide: '_serviceRoute', useValue: 'websocket/ptt' }
+  ]
 })
 
 export class AppComponent implements OnInit {
@@ -35,8 +41,8 @@ export class AppComponent implements OnInit {
   isMenuPage: boolean
   currentPage = 'home'
   currentUrl = '/home'
-  frequency:Number = 0
-  frequencyMode:String = null
+  frequency: Number = 0
+  frequencyMode: String = null
 
   constructor(
     private router: Router,
@@ -45,6 +51,7 @@ export class AppComponent implements OnInit {
     private radioService: RadioService,
     private utils: UtilsService,
     private location: Location,
+    private websocketService: WebsocketService,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     // router.events.subscribe((val) => {
@@ -58,6 +65,37 @@ export class AppComponent implements OnInit {
         this.updateBreadcrumb()
       }
     });
+
+
+    //Run Websocket to listen PTT if app is runing local (station)
+    if(this.isItRuningLocal() && this.isSBitxRadio()){
+      websocketService.messages.subscribe(msg => {  
+        if (msg) { //TODO - TEST PTT
+          this.router.navigate(['/voice']);
+        }
+      });
+    }
+
+    
+    console.log(this.router.url) 
+
+  }
+
+  isItRuningLocal(){
+    var url = window.location.href //TODO - testar primeira vez  que roda
+    return url === 'http://localhost:4200/' || url === 'http://127.0.0.1:4200/' ? true : false
+  }
+
+  isSBitxRadio(){
+    //TODO - Verificar se eh radio SBITX (validacao nao eh valida 2.3 eh versao mais nova da GUI se atualizar radio HERMES vai dar na mesma (.env?????))
+
+    // 1 - Colocar no installer versao de radio (HERMES OU SBITX)
+    // 2 - Utilizar para verificar versao do radio
+    // 3 - Se estiver rodando local na versao SBITX do radio roda websocket para observar PTT
+    // 4 - PTT acionado redireciona para tela de voice com controles disponiveis
+    // 5 - 
+
+    return parseFloat(GlobalConstants.version) >= 2.3 ? true : false
   }
 
   getSystemStatus(): void {
@@ -102,7 +140,7 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
-        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq  
+        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq
         this.frequencyMode = this.radio.mode;
         this.loading = false;
         return res;
