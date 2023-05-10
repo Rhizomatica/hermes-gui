@@ -1573,8 +1573,12 @@ tr:nth-child(odd) {
   .card.voice {  
     border: @clr;
     img {
-      filter: invert(0%);
+      // filter: invert(0%);
     }
+  }
+
+  .card.voice .card-icon{
+      filter: invert(0%);
   }
 
 }
@@ -1843,11 +1847,7 @@ input[type=range]:hover::-ms-track {
   background-color: @clr;
   border: solid 1.5px @clr;
 
-  // color: @bkclr;
-
-  img {
-    // filter: invert(100%);
-  }
+  color: @bkclr;
 }
 
 .card.connected {
