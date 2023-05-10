@@ -36,6 +36,8 @@ export class homeComponent implements OnInit {
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
   alertBrowserXP: Boolean = false
+  frequency: Number = 0
+  mode: String = ''
 
   logOff() {
     this.authenticationService.logout();
@@ -58,19 +60,32 @@ export class homeComponent implements OnInit {
     }
   }
 
-  checkBrowser(browser){
+  checkBrowser(browser) {
     var browserWarning = localStorage.getItem('browserWarning');
 
-    if(browserWarning === null && browser !== 'chrome'){
+    if (browserWarning === null && browser !== 'chrome') {
       localStorage.setItem('browserWarning', 'true');
       this.alertBrowserXP = true
     }
   }
-  
-  closeBrowserAlert(){
+
+  closeBrowserAlert() {
     this.alertBrowserXP = false
   }
 
+  getRadioStatus(): void {
+    this.radioService.getRadioStatus().subscribe(
+      (res: any) => {
+        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq
+        this.mode = this.radio.mode
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false;
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light'
