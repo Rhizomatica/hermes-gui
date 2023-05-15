@@ -11,7 +11,6 @@ const envConfigFile = `export const environment = {
    version: '${process.env.VERSION}',
    apiUrl: '${process.env.API_URL}',
    production: '${process.env.PRODUCTION}',
-   radioRemoteUrl: '${process.env.RADIO_REMOTE_URL}',
    webSocketUrl: '${process.env.WEBSOCKET_URL}',
    hasGPS: '${process.env.HAS_GPS}',
    domain: '${process.env.DOMAIN}',

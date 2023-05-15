@@ -6,7 +6,6 @@ export class GlobalConstants {
   public static version = environment.version
   public static apiURL = environment.apiUrl
   public static producion = environment.production
-  public static radioRemoteUrl = environment.radioRemoteUrl
   public static webSocketUrl = environment.webSocketUrl
   public static hasGPS = environment.hasGPS
   public static domain = environment.domain
