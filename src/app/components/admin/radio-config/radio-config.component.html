@@ -100,7 +100,8 @@
         </div>
         <div class="radio" *ngIf="radio">
           <form #ffreq="ngForm" class="formdata field">
-            <span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span>
+            <span i18n="@@changefrequency">Radio frequency
+            </span>
             <div class="flexible">
               <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
                 value={{frek}}>
@@ -122,8 +123,8 @@
             </div>
           </form>
           <form *ngIf="radio" class="formdata field">
-            <span i18n="@@changeradiomode">Radio mode</span>
-            <div class="float-right">
+            <span i18n="@@changeradiomode">Mode</span>
+            <div class="float-right flex-right">
               <span>USB</span>
               <div class="switch">
                 <input type="checkbox" name="mode" [checked]="modeSwitch">
@@ -154,7 +155,7 @@
                 Protection
               </span>
               <button (click)="resetProtection()" i18n="@resetprotection1" class="float-right">
-                reset protection</button>
+                reset</button>
             </div>
           </form>
           <form #fptt="ngForm" class="formdata field">
@@ -171,11 +172,11 @@
             <div class="m-l-10">
               <button class="" (click)="confirmReboot()">
                 <span i18n="@@reboot">reboot</span><br />
-                <img class="btnicon" title="send" src="assets/svg/redo.svg">
+                <!-- <img class="btnicon" title="send" src="assets/svg/redo.svg"> -->
               </button>
               <button class="m-l-10" (click)="confirmShutDown()">
                 <span i18n="@@shutdown">shut down</span><br />
-                <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg">
+                <!-- <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg"> -->
               </button>
             </div>
           </form>
