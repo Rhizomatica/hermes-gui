@@ -15,7 +15,8 @@ const envConfigFile = `export const environment = {
    webSocketUrl: '${process.env.WEBSOCKET_URL}',
    hasGPS: '${process.env.HAS_GPS}',
    domain: '${process.env.DOMAIN}',
-   gateway: ${process.env.GATEWAY}
+   gateway: ${process.env.GATEWAY},
+   bitx: '${process.env.BITX}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');
