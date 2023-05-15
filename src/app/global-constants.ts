@@ -11,6 +11,7 @@ export class GlobalConstants {
   public static hasGPS = environment.hasGPS
   public static domain = environment.domain
   public static gateway = environment.gateway
+  public static bitx = environment.bitx
 
   public static httpOptions = {
     headers: new HttpHeaders({

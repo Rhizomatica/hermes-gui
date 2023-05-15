@@ -87,15 +87,7 @@ export class AppComponent implements OnInit {
   }
 
   isSBitxRadio(){
-    //TODO - Verificar se eh radio SBITX (validacao nao eh valida 2.3 eh versao mais nova da GUI se atualizar radio HERMES vai dar na mesma (.env?????))
-
-    // 1 - Colocar no installer versao de radio (HERMES OU SBITX)
-    // 2 - Utilizar para verificar versao do radio
-    // 3 - Se estiver rodando local na versao SBITX do radio roda websocket para observar PTT
-    // 4 - PTT acionado redireciona para tela de voice com controles disponiveis
-    // 5 - 
-
-    return parseFloat(GlobalConstants.version) >= 2.3 ? true : false
+     return GlobalConstants.bitx === 'S' ? true : false
   }
 
   getSystemStatus(): void {
