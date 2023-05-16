@@ -158,7 +158,8 @@ export class UserManagementComponent implements OnInit {
 
   onSelect(user): void {
     this.selectedUser = null
-    if (!this.isadmin)
+
+    if (!this.isadmin && this.currentUser.email !== user.email)
       return
 
     this.selectedUser = user;
