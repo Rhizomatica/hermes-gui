@@ -350,8 +350,8 @@ textarea {
   position: relative;
   max-width: calc(100% - 4px);
   min-height: calc(~"100% - 14em");
-  padding-right: 4em;
-  padding-left: 4em;
+  padding-right: 3.5em;
+  padding-left: 3.5em;
   top: 7em;
   padding-bottom: 1em;
 
@@ -2162,6 +2162,69 @@ tr:nth-child(odd) {
       filter: invert(25%);
     }
   }
+}
+
+@media (max-width: 800px) and (min-width: 700px) {
+  .half-row{
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  table {
+    border: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: .3em;
+  }
+
+  table td {
+    display: block;
+    word-wrap: break-word;
+    padding: 15px;
+    border-bottom: 0.5px solid rgb(163, 163, 163);
+
+    input.midbt {
+      width: 60% !important;
+      margin-right: 0.1em;
+    }
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  .span-table {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 15px;
+  }
+
 }
 
 @media (max-width: 700px) {
