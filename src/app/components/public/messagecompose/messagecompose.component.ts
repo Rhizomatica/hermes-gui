@@ -47,7 +47,7 @@ export class MessagecomposeComponent implements OnInit {
   public sending = false;
   public nodename: any;
   public maxSize: any = 31457280;
-  public isGateway:boolean = GlobalConstants.gateway
+  public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
   public allowhmp;
   public allowCompose = false;
@@ -473,12 +473,15 @@ export class MessagecomposeComponent implements OnInit {
     this.stationService.getStations()
       .subscribe(stations => {
         this.stations = stations;
-        this.selectedStations = [this.stations[0].id];
-        this.selectAllForDropdownItems(this.stations);
+        
+        if (this.stations.length > 0) {
+          this.selectedStations = [this.stations[0].id];
+          this.selectAllForDropdownItems(this.stations);
 
-        var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
+          var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
 
-        this.message.dest = origin !== null ? [origin] : []
+          this.message.dest = origin !== null ? [origin] : []
+        }
 
         this.loading = false
 
