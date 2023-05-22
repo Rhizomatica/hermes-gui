@@ -1,7 +1,6 @@
 import { Injectable, Optional, Inject } from "@angular/core";
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { GlobalConstants } from '../global-constants';
