@@ -6,7 +6,6 @@ import { homeComponent } from './components/public/home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
-import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
@@ -59,7 +58,6 @@ registerLocaleData(localePt);
     homeComponent,
     MessagesComponent,
     MessageDetailComponent,
-    SysadminComponent,
     LogComponent,
     StationInformationComponent,
     UserManagementComponent,

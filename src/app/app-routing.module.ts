@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../app/_helpers/auth.guard';
 import { homeComponent } from './components/public/home/home.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
-import { SysadminComponent } from './components/admin/sysadmin/sysadmin.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: homeComponent },
   { path: 'messages', component: MessagesComponent },
-  { path: 'admin', component: SysadminComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
   { path: 'usermanage', component: UserManagementComponent },
