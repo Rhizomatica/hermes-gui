@@ -1,12 +1,27 @@
 <div class=" login formdata">
   <h2 i18n="@@e_mail">E-mail</h2>
-    <button>
-      <img class="round icon" src="assets/svg/roundcubelogo.svg">
-      <a href="/mail/" target="_blank">Webmail</a>
-    </button>
-    <button class="m-l-10" (click)="showlinks()" i18n="@@install_deltachat"><img src="assets/img/deltachat_icon.png"
-        class="delta icon">deltachat<br>
-    </button>
+  <div class="flexible">
+    <a href="/mail/" target="_blank">
+      <div class="card">
+        <div class="card-icon">
+          <img class="icon" src="assets/svg/roundcubelogo.png">
+        </div>
+        <div class="card-title">
+          Webmail
+        </div>
+      </div>
+    </a>
+    <a (click)="showlinks()">
+      <div class="card">
+        <div class="card-icon">
+          <img src="assets/svg/deltachat_icon.png" class="icon">
+        </div>
+        <div class="card-title">
+          Deltachat
+        </div>
+      </div>
+    </a>
+  </div>
   <div *ngIf="linksOn">
     <hr>
     <p i18n="@@todownload">To download deltachat click on one of the links below: </p>
@@ -17,26 +32,6 @@
       <a href="/downloads/deltachat.dmg" target="_blank" download="deltachat.dmg">Mac OSX</a><br>
     </p>
   </div>
-  <!-- <hr> -->
-  <!-- <ng-container *ngIf="users">
-    <h3 i18n="@@selectusers">Select users to send e-mail:</h3>
-    <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
-      bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false"
-      [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required>
-      <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected" [ngModelOptions]="{standalone: true}" />
-        <span i18n="@@selectall"> Select All</span>
-      </ng-template>
-      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-          [ngModelOptions]="{standalone: true}" />{{item.email}}
-      </ng-template>
-    </ng-select>
-  </ng-container>
-  <a href="mailto:{{emailto}}">
-    <button class="m-t-10" [disabled]="emailto?.length == 0" i18n="@@emailsendemailselected">Send e-mail to selected</button>
-  </a> -->
-  <!-- <hr> -->
   <div class="m-t-25" *ngIf="!currentUser">
     <p i18n="@@noaccount">Doesn't have an account?</p>
     <a routerLink="/usermanage">
