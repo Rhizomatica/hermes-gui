@@ -91,16 +91,7 @@
 <context context-type="linenumber">2</context>
 </context-group>
 </trans-unit>
-<trans-unit id="install_deltachat" datatype="html">
-<source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/img/deltachat_icon.png&quot;
-        class=&quot;delta icon&quot;>"/>deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></source>
-<target state="new">
-<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/img/deltachat_icon.png&quot;>"/>
-deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
-</target>
 
-
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">7</context></context-group></trans-unit>
 
 <trans-unit id="selectall" datatype="html">
 <source> Select All</source>
@@ -116,7 +107,7 @@ deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 <target state="new">Para descargar Deltachat, haga clic en uno de los enlaces a continuación: </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">12</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">27</context></context-group></trans-unit>
 <trans-unit id="noaccount" datatype="html">
 <source>Doesn't have an account?</source>
 <target>No tiene una cuenta?</target>
@@ -125,13 +116,13 @@ deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">41</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">36</context></context-group></trans-unit>
 <trans-unit id="createbtn" datatype="html">
 <source>create an account</source>
 <target>crear una cuenta</target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit>
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">38</context></context-group></trans-unit>
 <trans-unit id="9ba640ccee5a65fd2adbe520574828ccac8c1e12" datatype="html">
 <source>write the username</source>
 <target state="new">escriba el nombre de usuario</target>
@@ -157,7 +148,7 @@ deltachat<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
 </target>
 
 
-<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">49</context></context-group></trans-unit><trans-unit id="portugueshelp" datatype="html">
+<context-group purpose="location"><context context-type="sourcefile">src/app/components/public/email/email.component.html</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="portugueshelp" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/brasil.svg&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>Portuguese<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source><target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/brasil.svg&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>Português<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
@@ -1025,12 +1016,9 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <source>Station information</source><target state="new">Información de las estaciónes</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="therearenostatons" datatype="html">
-        <source>There are no stations</source><target state="new">There are no stations</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit><trans-unit id="aliasstation" datatype="html">
+        <source>There are no stations</source><target state="new">No hay estaciones</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="aliasstation" datatype="html">
         <source>Alias</source><target state="new">Alias</target>
         
       <context-group purpose="location"><context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit><trans-unit id="nicknamestation" datatype="html">
@@ -2420,7 +2408,7 @@ El sistema HERMES incluye un sistema de compresión adecuado para mensajes multi
           <context context-type="linenumber">128,130</context>
         </context-group>
       </trans-unit><trans-unit id="lighttheme" datatype="html">
-        <source> Light theme </source><target state="new"> Tema de luz </target>
+        <source> Light theme </source><target state="new"> Tema claro </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
           <context context-type="linenumber">131,133</context>
