@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Location } from '@angular/common';
+import { DecimalPipe, Location } from '@angular/common';
 import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
-import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
+import { WebsocketService } from 'src/app/_services/websocket.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
+  providers: [DecimalPipe,
+    WebsocketService,
+    { provide: '_serviceRoute', useValue: 'websocket/ptt' }
+  ]
 })
 
 export class AppComponent implements OnInit {
@@ -22,8 +27,6 @@ export class AppComponent implements OnInit {
   system: any;
   fullStats = false;
   serverError = false;
-  toggleButton = document.querySelector('.dark-button');
-  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   radio: any;
   protection = true;
   radioError = false;
@@ -36,15 +39,19 @@ export class AppComponent implements OnInit {
   title = 'hermes.radio';
   mobile: any
   isMenuPage: boolean
+  currentPage = 'home'
+  currentUrl = '/home'
+  frequency: Number = 0
+  frequencyMode: String = null
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private radioService: RadioService,
-    private darkModeService: DarkModeService,
     private utils: UtilsService,
     private location: Location,
+    private websocketService: WebsocketService,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     // router.events.subscribe((val) => {
@@ -52,10 +59,31 @@ export class AppComponent implements OnInit {
     // });
 
     router.events.subscribe((val) => {
-      // see also 
-      if (val instanceof NavigationEnd)
+      // see also
+      if (val instanceof NavigationEnd) {
         this.chackIsMenuPage()
+        this.updateBreadcrumb()
+      }
     });
+
+
+    //Run Websocket to listen PTT if app is runing local (station)
+    if(this.isItRuningLocal() && this.isSBitxRadio()){
+      websocketService.messages.subscribe(msg => {  
+        if (msg) { //TODO - TEST PTT
+          this.router.navigate(['/voice']);
+        }
+      });
+    }
+  }
+
+  isItRuningLocal(){
+    var url = window.location.href //TODO - testar primeira vez  que roda
+    return url === 'http://localhost:4200/' || url === 'http://127.0.0.1:4200/' ? true : false
+  }
+
+  isSBitxRadio(){
+     return GlobalConstants.bitx === 'S' ? true : false
   }
 
   getSystemStatus(): void {
@@ -100,6 +128,8 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
+        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq / 1000
+        this.frequencyMode = this.radio.mode;
         this.loading = false;
         return res;
       },
@@ -125,10 +155,6 @@ export class AppComponent implements OnInit {
     this.currentUser = null;
   }
 
-  onToggle(): void {
-    this.darkModeService.toggle();
-  }
-
   onActivate(event) {
     window.scrollTo(0, 0)
   }
@@ -152,6 +178,12 @@ export class AppComponent implements OnInit {
 
   chackIsMenuPage() {
     this.isMenuPage = this.router.url == '/menu' ? true : false
+  }
+
+  //TODO - Should be at component breadcrumb?
+  updateBreadcrumb() {
+    this.currentPage = this.router.url.split("/")[1]
+    this.currentUrl = this.router.url
   }
 
   ngOnInit(): void {

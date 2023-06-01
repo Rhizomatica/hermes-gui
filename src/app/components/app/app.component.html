@@ -12,67 +12,27 @@
 
 <div id="appcontainer">
   <div class="fullpage">
-    <nav id="mainnav" *ngIf="system && !mobile">
-      <a routerLink='/landing' class="logo-link">
+    <nav *ngIf="system && currentPage != 'home'">
+      <a routerLink='/home' class="logo-link">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
-        <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
+        <h1 class="sitetitle" *ngIf="system">
+          <span>{{system.domain}}</span>
+        </h1>
       </a>
-      <a routerLink="/messages" i18n="@@messages">
-        <img title="messages" src="assets/svg/comment.svg">
-        messages
-      </a>
-      <a routerLink="/email" i18n="@@email">
-        <img title="mail" src="assets/svg/envelope.svg">
-        email</a>
-      <a routerLink="/admin" i18n="@admin">
-        <img title="admin" src="assets/svg/tools.svg">
-        admin
-      </a>
-      <a routerLink="/help" i18n="@@help">
-        <img title="help" src="assets/svg/question-circle-regular.svg">
-        help
-      </a>
-      <a class="icon" routerLink="/login" *ngIf="!currentUser">
-        <span class="logged" i18n="@@login1">login</span>
-        <br />
-        <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
-      </a>
-      <a class="icon" (click)="logout()" *ngIf="currentUser">
-        <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
-          src="assets/svg/sign-out-alt-solid.svg">
-        <br />
-        <span class="logged" i18n="@@logout1">logout</span>
-        <span class="topuser">
-          <span>{{currentUser.email}}</span>
-        </span>
-      </a>
-      <ng-template #loggedOut>
-        <span class="servericon"></span>
-        <a class="icon" routerLink="/login">
-          <img title="Log In" src="assets/svg/sign-in-alt-solid.svg"><br>
-          <span class="logged" i18n="@@login1">login</span>
-        </a>
-      </ng-template>
-    </nav>
-
-    <nav *ngIf="mobile" class="nav-mobile">
-      <a routerLink='/landing' class="logo-link">
-        <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
-        <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
-      </a>
-      <a routerLink="/menu" class="float-right" *ngIf="!isMenuPage">
+      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage">
+        <span class="nav-frequency">{{frequency}} kHz {{frequencyMode}}</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
-      <a class="float-right" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+      <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+        <span class="nav-frequency">{{frequency}} kHz {{frequencyMode}}</span>
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
-
-    <div class="formfield">
+    <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
+    <div class="formfield {{currentPage == 'home' ? 'home' : ''}}">
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
         <hr>
-        <!-- TODO - Criar Tradução -->
         <p i18n="hermes503Http">503 Service Unavaliable</p>
         <p i18n="hermesoffline">Hermes server is offline, please turn the station on.
         </p>
@@ -103,20 +63,26 @@
     </div>
     <div class="overall" *ngIf="changeLanguage">
       <div class="cv">
-        <nav class="flags">
-          <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages"
-              src="assets/svg/brasil.svg">Português</a>
-          <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages"
-              src="assets/svg/espanha.svg">Español</a>
-          <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages"
-              src="assets/svg/reino-unido.svg">English</a>
-        </nav>
+        <div class="flags">
+          <a class="flag" routerLink="" (click)="setLanguage('pt')">
+            <img title="messages" src="assets/svg/brasil.svg">
+            <p>Português</p>
+          </a>
+          <a class="flag m-t-10" routerLink="" (click)="setLanguage('es')">
+            <img title="messages" src="assets/svg/espanha.svg">
+            <p>Español</p>
+          </a>
+          <a class="flag m-t-10" routerLink="" (click)="setLanguage('en-US')">
+            <img title="messages" src="assets/svg/reino-unido.svg">
+            <p>English</p>
+          </a>
+        </div>
       </div>
     </div>
   </div>
   <loading [loading]="loading"></loading>
 
-  <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
+  <!-- <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
     <ng-container *ngIf="system">
       <div class="dr">
         <div class="drb" (click)="onToggle('HR')"></div>
@@ -125,5 +91,5 @@
         V2.2 - {{system.name}}
       </span>
     </ng-container>
-  </footer>
+  </footer> -->
 </div>

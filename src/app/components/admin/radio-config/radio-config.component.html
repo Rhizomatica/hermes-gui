@@ -100,7 +100,7 @@
         </div>
         <div class="radio" *ngIf="radio">
           <form #ffreq="ngForm" class="formdata field">
-            <span i18n="@@changefrequency">Radio frequency: {{radio.freq / 1000}} kHz</span>
+            <span i18n="@@changefrequency">Radio frequency</span>
             <div class="flexible">
               <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
                 value={{frek}}>
@@ -122,8 +122,8 @@
             </div>
           </form>
           <form *ngIf="radio" class="formdata field">
-            <span i18n="@@changeradiomode">Radio mode</span>
-            <div class="float-right">
+            <span i18n="@@changeradiomode">Mode</span>
+            <div class="float-right flex-right">
               <span>USB</span>
               <div class="switch">
                 <input type="checkbox" name="mode" [checked]="modeSwitch">
@@ -149,12 +149,10 @@
               i18n="@@startgpscalibration">Start</button>
           </form>
           <form #fptt="ngForm" class="formdata field">
-            <div class="m-l-10">
-              <span i18n="@@radioprotection">
-                Protection - {{radio.protection ? 'ON' : 'OFF'}}
-              </span>
+            <div>
+              <span i18n="@@radioprotection">Protection</span>
               <button (click)="resetProtection()" i18n="@resetprotection1" class="float-right">
-                reset protection</button>
+                reset</button>
             </div>
           </form>
           <form #fptt="ngForm" class="formdata field">
@@ -167,7 +165,18 @@
               </button>
             </div>
           </form>
-
+          <form #fptt="ngForm" class="formdata field">
+            <div class="m-l-10">
+              <button class="" (click)="confirmReboot()">
+                <span i18n="@@reboot">reboot</span><br />
+                <!-- <img class="btnicon" title="send" src="assets/svg/redo.svg"> -->
+              </button>
+              <button class="m-l-10" (click)="confirmShutDown()">
+                <span i18n="@@shutdown">shut down</span><br />
+                <!-- <img class="btnicon" title="send" src="assets/svg/power-off-solid.svg"> -->
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="overall alert" *ngIf="!reseting==false">
@@ -213,6 +222,43 @@
             </a>
           </div>
         </div>
+      </div>
+      <div class="overall alert" [hidden]="shuttingDown==false">
+        <div class="cv">
+          <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
+            <br />
+            This will stop messages transmision and reception.
+            <br />
+          </span>
+          <button (click)="cancelShutDown()" i18n="@@cancels1">cancel</button> <button class="m-l-10"
+            (click)="shutDown()" i18n="@@shutdown1">shut
+            down</button>
+        </div>
+      </div>
+      <div class="overall alert" [hidden]="restarting==false">
+        <div class="cv">
+          <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
+            <br />
+            This will stop messages transmision and reception.
+            <br />
+          </span>
+          <button (click)="cancelReboot()" i18n="@@cancels2">cancel</button>
+          <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">reboot</button>
+        </div>
+      </div>
+      <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
+        Shutting Down System
+        <br />
+        <a (click)="reload()">
+          <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
+        <br>
+      </div>
+      <div class="overall alert" [hidden]="rebootingDownNow==false" i18n="@@rebootButton">
+        Rebooting System
+        <br />
+        <a (click)="reload()">
+          <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
+        <br>
       </div>
     </form>
   </div>

@@ -14,7 +14,8 @@ module.exports = function (config) {
     ],
     client: {
       captureConsole: true,
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
+      random: false
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/hermes'),

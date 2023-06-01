@@ -1,37 +1,35 @@
 <loading [loading]="loading"></loading>
-<div class="row" *ngIf="currentUser">
-  <h4 i18n="@@welcomemessagemenu">Welcome, {{currentUser.email}} </h4>
-</div>
 <div class="phonemenu">
-  <!-- MENU -->
+  <a routerLink="/home" i18n="@@radiophonymenu">
+    <img title="home" src="assets/svg/house.svg">
+    Home
+  </a>
+  <a routerLink="/voice" i18n="@@voicemenu">
+    <img title="voice" src="assets/svg/walkie-talkie.svg">
+    Voice
+  </a>
   <a routerLink="/messages" i18n="@@messagemenu">
     <img title="messages" src="assets/svg/comment.svg">
-    messages
+    Messages
   </a>
   <a routerLink="/email" i18n="@@emailmenu">
     <img title="email" src="assets/svg/envelope.svg">
-    email
-  </a>
-  <a routerLink="/admin" i18n="@@adminmenu" *ngIf="currentUser">
-    <img title="admin" src="assets/svg/tools.svg">
-    admin
-  </a>
-  <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
-    <img title="login" src="assets/svg/sign-in-alt-solid.svg">
-    login
+    Email
   </a>
   <a routerLink="/help" i18n="@@helpmenu">
     <img title="help" src="assets/svg/question-circle-regular.svg">
-    help
+    Help
+  </a>
+  <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
+    <img title="login" src="assets/svg/sign-in-alt-solid.svg">
+    Login
   </a>
   <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
     <img src="assets/svg/sign-out-alt-solid.svg">
     <span class="logged" i18n="@@logoutmenu">
-      logout
+      Logout
     </span>
   </a>
-  <!-- <img title="messages" src="assets/svg/sign-in-alt-solid.svg"> -->
-
 </div>
 <div class="overall alert" [hidden]="errorAlert==false">
   <div class="cv">

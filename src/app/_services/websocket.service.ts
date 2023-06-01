@@ -1,7 +1,6 @@
 import { Injectable, Optional, Inject } from "@angular/core";
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { GlobalConstants } from '../global-constants';
@@ -11,15 +10,15 @@ export interface Message {
     content: string;
 }
 
-// @Injectable()
+@Injectable()
 export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
         this.messages = <Subject<Message>>this.connect(`${
-            // GlobalConstants.webSocketUrl
-            GlobalConstants.radioRemoteWSUrl
+            GlobalConstants.webSocketUrl
+            // GlobalConstants.radioRemoteWSUrl
         }/${_serviceRoute}`).pipe(
             map(
                 (response: MessageEvent): Message => {

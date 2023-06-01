@@ -43,6 +43,7 @@ export class LogComponent implements OnInit, OnDestroy {
   criticSpace = false;
   confirmDeleteAllLogs = false;
 
+
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private customErrorsService: CustomErrorsService
@@ -211,8 +212,6 @@ export class LogComponent implements OnInit, OnDestroy {
     if (id)
       this.deleteCustomErrorById(id)
   }
-
-
 
   deleteAllCustomError() {
     this.customErrorsService.deleteAllCustomError().subscribe(
