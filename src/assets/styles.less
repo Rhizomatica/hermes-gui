@@ -384,7 +384,7 @@ textarea {
   }
 }
 
-.formfield.home{
+.formfield.home {
   // top: 20px;
   top: 0.5em;
 }
@@ -1452,6 +1452,10 @@ tr:nth-child(odd) {
     img {
       filter: invert(100%);
     }
+
+    .flags img {
+      filter: invert(0%);
+    }
   }
 
   .bordered {
@@ -1508,6 +1512,7 @@ tr:nth-child(odd) {
     border-color: @bkclr;
     background-color: @mclr;
     color: @bkclr;
+
     .action {
       background-color: @clr;
     }
@@ -1571,15 +1576,16 @@ tr:nth-child(odd) {
     }
   }
 
-  .card.voice {  
+  .card.voice {
     border: @clr;
+
     img {
       // filter: invert(0%);
     }
   }
 
-  .card.voice .card-icon{
-      filter: invert(0%);
+  .card.voice .card-icon {
+    filter: invert(0%);
   }
 
 }
@@ -2145,7 +2151,7 @@ tr:nth-child(odd) {
   top: 54px;
   position: absolute;
   width: 100%;
-  padding-left: 7%;
+  padding-left: 3em;
   vertical-align: middle;
   margin: auto 0;
   height: 37px;
@@ -2166,7 +2172,7 @@ tr:nth-child(odd) {
 }
 
 @media (max-width: 800px) and (min-width: 700px) {
-  .half-row{
+  .half-row {
     width: 100%;
     margin-top: 10px;
   }
@@ -2224,6 +2230,14 @@ tr:nth-child(odd) {
     display: flex;
     flex-direction: column;
     padding: 0 0 15px;
+  }
+
+  .card {
+    width: 18em;
+  }
+
+  .shut button.midbt {
+    width: 20.5em;
   }
 
 }
