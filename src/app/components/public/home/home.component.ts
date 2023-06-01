@@ -76,7 +76,7 @@ export class homeComponent implements OnInit {
   getRadioStatus(): void {
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
-        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq
+        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq / 1000
         this.mode = this.radio.mode
         this.loading = false
       },
