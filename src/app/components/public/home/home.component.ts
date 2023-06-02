@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
 import { UtilsService } from 'src/app/_services/utils.service';
-
+import { RadioService } from 'src/app/_services/radio.service';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +21,7 @@ export class homeComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
+    private radioService: RadioService,
     private darkModeService: DarkModeService,
     private router: Router,
     private utils: UtilsService
@@ -29,6 +30,9 @@ export class homeComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
+
+    if (utils.isItRuningLocal() && utils.isSBitxRadio())
+      this.showVoiceCard = false
   }
 
   currentUser: User = null
@@ -38,7 +42,8 @@ export class homeComponent implements OnInit {
   alertBrowserXP: Boolean = false
   frequency: Number = 0
   mode: String = ''
-
+  showVoiceCard: Boolean = true
+  
   logOff() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
@@ -76,6 +81,7 @@ export class homeComponent implements OnInit {
   getRadioStatus(): void {
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
+        this.radio = res
         this.frequency = this.radio.freq === '' ? 0 : this.radio.freq / 1000
         this.mode = this.radio.mode
         this.loading = false
@@ -88,6 +94,7 @@ export class homeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light'
+    this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light';
+    this.getRadioStatus()
   }
 }

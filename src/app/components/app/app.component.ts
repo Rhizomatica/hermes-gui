@@ -68,22 +68,13 @@ export class AppComponent implements OnInit {
 
 
     //Run Websocket to listen PTT if app is runing local (station)
-    if(this.isItRuningLocal() && this.isSBitxRadio()){
+    if(utils.isItRuningLocal() && utils.isSBitxRadio()){
       websocketService.messages.subscribe(msg => {  
         if (msg) { //TODO - TEST PTT
           this.router.navigate(['/voice']);
         }
       });
     }
-  }
-
-  isItRuningLocal(){
-    var url = window.location.href //TODO - testar primeira vez  que roda
-    return url === 'http://localhost:4200/' || url === 'http://127.0.0.1:4200/' ? true : false
-  }
-
-  isSBitxRadio(){
-     return GlobalConstants.bitx === 'S' ? true : false
   }
 
   getSystemStatus(): void {
@@ -194,5 +185,4 @@ export class AppComponent implements OnInit {
     this.mobile = this.utils.isMobile()
     this.checkLanguage()
   }
-
 }
