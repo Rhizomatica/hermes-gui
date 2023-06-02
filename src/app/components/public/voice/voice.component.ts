@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { WebsocketService } from '../../../_services/websocket.service';
 import { DecimalPipe } from '@angular/common';
 import { RadioService } from 'src/app/_services/radio.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'voice',
@@ -25,7 +26,9 @@ export class VoiceComponent implements OnInit {
   frequency: number = 0
   mode: String
   radio: any
-  
+  intervallTimer = interval(900);
+  subscription = null
+
   constructor(
     private authenticationService: AuthenticationService,
     private websocketService: WebsocketService,
@@ -81,6 +84,12 @@ export class VoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRadioStatus()
+    this.subscription = this.intervallTimer.subscribe(() => this.getRadioStatus());
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    };
   }
 }
