@@ -20,11 +20,10 @@
         </h1>
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage">
-        <span class="nav-frequency">{{frequency}} kHz {{frequencyMode}}</span>
+        <span class="nav-frequency">{{frequencyMode}} {{frequency}} kHz</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
-        <span class="nav-frequency">{{frequency}} kHz {{frequencyMode}}</span>
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
