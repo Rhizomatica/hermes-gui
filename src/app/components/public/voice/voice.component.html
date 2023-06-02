@@ -3,11 +3,11 @@
   <div class="row">
     <span class="fullfrequency">{{frequency}} kHz</span>
   </div>
-  <div class="row m-t-25 voiceactions">
-    <button class="m-t-10" (click)="setUSB()" disabled="{{mode !== 'USB' ? true : false}}">
+  <div class="row m-t-25 voiceactions" *ngIf="mode!=null">
+    <button class="m-t-10" (click)="setUSB()" [disabled]="mode === 'USB' ? true : null">
       USB
     </button>
-    <button class="m-t-10 m-l-10" (click)="setLSB()" disabled="{{mode !== 'LSB' ? true : false}}">
+    <button class="m-t-10 m-l-10" (click)="setLSB()" [disabled]="mode === 'LSB' ? true : null">
       LSB
     </button>
   </div>
