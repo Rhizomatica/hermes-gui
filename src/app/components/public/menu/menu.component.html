@@ -1,5 +1,12 @@
 <loading [loading]="loading"></loading>
-<div class="phonemenu">
+<div *ngIf="currentUser">
+  <b>
+    <span>You are logged in</span>
+    <span class="float-right"> {{currentUser.name}} </span>
+    <hr/>
+  </b>
+</div>
+<div class="phonemenu m-t-25">
   <a routerLink="/home" i18n="@@radiophonymenu">
     <img title="home" src="assets/svg/house.svg">
     Home
