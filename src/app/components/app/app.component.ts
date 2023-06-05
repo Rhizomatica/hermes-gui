@@ -16,7 +16,7 @@ import { GlobalConstants } from 'src/app/global-constants';
   styleUrls: ['./app.component.less'],
   providers: [DecimalPipe,
     WebsocketService,
-    { provide: '_serviceRoute', useValue: 'websocket/ptt' }
+    { provide: '_serviceRoute', useValue: 'websocket' }
   ]
 })
 
@@ -68,10 +68,18 @@ export class AppComponent implements OnInit {
 
 
     //Run Websocket to listen PTT if app is runing local (station)
-    if(utils.isItRuningLocal() && utils.isSBitxRadio()){
-      websocketService.messages.subscribe(msg => {  
+    if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
+
+      websocketService.messages.subscribe(msg => {
         if (msg) { //TODO - TEST PTT
           this.router.navigate(['/voice']);
+          console.log(msg)
+          // https://github.com/afarhan/sbitx/blob/main/web/index.html
+          // TODO
+          //Update frequency mode
+          //Change mode
+          //Change frequency
+          //Listen ptt
         }
       });
     }

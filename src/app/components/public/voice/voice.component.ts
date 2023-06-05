@@ -9,11 +9,7 @@ import { interval } from 'rxjs';
 @Component({
   selector: 'voice',
   templateUrl: './voice.component.html',
-  styleUrls: ['./voice.component.less'],
-  providers: [DecimalPipe,
-    WebsocketService,
-    { provide: '_serviceRoute', useValue: 'websocket' }
-  ]
+  styleUrls: ['./voice.component.less']
 })
 
 export class VoiceComponent implements OnInit {
@@ -37,11 +33,6 @@ export class VoiceComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
-
-    websocketService.messages.subscribe(msg => {
-      // this.power = msg;
-      console.log(msg);
-    });
   }
 
   public closeError() {
