@@ -18,7 +18,9 @@ export class WebsocketService {
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
         this.messages = <Subject<Message>>this.connect(`${
             GlobalConstants.webSocketUrl
-            // GlobalConstants.radioRemoteWSUrl
+            //TODO - Logar no websocket
+            // websocket_send("login="+el("passkey").value);
+
         }/${_serviceRoute}`).pipe(
             map(
                 (response: MessageEvent): Message => {
