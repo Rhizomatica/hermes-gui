@@ -43,7 +43,7 @@ export class VoiceComponent implements OnInit {
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
         this.radio = res
-        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq  / 1000
+        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq  / 1000
         this.mode = this.radio.mode
         this.loading = false        
       },

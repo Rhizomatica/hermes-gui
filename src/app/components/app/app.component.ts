@@ -127,7 +127,7 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
-        this.frequency = this.radio.freq === '' ? 0 : this.radio.freq / 1000
+        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq  / 1000
         this.frequencyMode = this.radio.mode;
         this.loading = false;
         return res;
