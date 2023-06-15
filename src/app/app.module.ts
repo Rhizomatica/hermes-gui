@@ -17,7 +17,7 @@ import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './components/public/help/help.component';
-import { MessageadmComponent } from './components/admin/message-config/message-config.component';
+import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
 import { RetypeDirective } from './directives/retype.directive';
@@ -42,7 +42,7 @@ import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { MenuComponent } from './components/public/menu/menu.component';
-import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
+import { WiFiConfigurationComponent } from './components/admin/wifi-config/wifi-config.component';
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 
@@ -66,7 +66,7 @@ registerLocaleData(localePt);
     LoginComponent,
     LanguagesComponent,
     HelpComponent,
-    MessageadmComponent,
+    MessageConfigComponent,
     SameUsernameDirective,
     RetypeDirective,
     SentMessagesComponent,
@@ -83,7 +83,7 @@ registerLocaleData(localePt);
     PlayerComponent,
     RecorderComponent,
     MenuComponent,
-    WifiManagerComponent,
+    WiFiConfigurationComponent,
     VoiceComponent,
     BreadcrumbComponent
   ],

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { WifiManagerComponent } from './wifi-manager.component';
+import { WiFiConfigurationComponent } from './wifi-config.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('CustomErrorsComponent', () => {
-  let component: WifiManagerComponent;
-  let fixture: ComponentFixture<WifiManagerComponent>;
+  let component: WiFiConfigurationComponent;
+  let fixture: ComponentFixture<WiFiConfigurationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WifiManagerComponent],
+      declarations: [WiFiConfigurationComponent],
       imports: [
         RouterTestingModule,
         HttpClientModule,
@@ -22,7 +22,7 @@ describe('CustomErrorsComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WifiManagerComponent);
+    fixture = TestBed.createComponent(WiFiConfigurationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

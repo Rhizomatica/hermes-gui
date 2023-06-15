@@ -24,7 +24,7 @@ import { LoadingComponent } from './components/utils/loading/loading.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { MenuComponent } from './components/public/menu/menu.component';
-import { WifiManagerComponent } from './components/admin/wifi-manager/wifi-manager.component';
+import { WiFiConfigurationComponent } from './components/admin/wifi-config/wifi-config.component';
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 
@@ -55,7 +55,7 @@ const routes: Routes = [
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'wifi-ethernet', component: WifiManagerComponent },
+  { path: 'wifi-config', component: WiFiConfigurationComponent },
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent }
 ];
