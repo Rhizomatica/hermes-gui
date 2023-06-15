@@ -24,7 +24,7 @@ import { LoadingComponent } from './components/utils/loading/loading.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { MenuComponent } from './components/public/menu/menu.component';
-import { WiFiConfigurationComponent } from './components/admin/wifi-config/wifi-config.component';
+import { WiFiManagementComponent } from './components/admin/wifi-management/wifi-management.component';
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 
@@ -34,11 +34,11 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
-  { path: 'usermanage', component: UserManagementComponent },
-  { path: 'usermanage/:id', component: UserManagementComponent },
+  { path: 'user-manage', component: UserManagementComponent },
+  { path: 'user-manage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },
   { path: 'response/:origin', component: MessagecomposeComponent },
-  { path: 'stationinformation', component: StationInformationComponent },
+  { path: 'station-info', component: StationInformationComponent },
   { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
@@ -55,7 +55,7 @@ const routes: Routes = [
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'wifi-config', component: WiFiConfigurationComponent },
+  { path: 'wifi-manage', component: WiFiManagementComponent },
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent }
 ];
