@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { DecimalPipe, Location } from '@angular/common';
-import { Observable, interval } from 'rxjs';
+import { Location } from '@angular/common';
+// import { DecimalPipe, Location } from '@angular/common';
+// import { Observable, interval } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
-import { WebsocketService } from 'src/app/_services/websocket.service';
+// import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [DecimalPipe,
-    WebsocketService,
-    { provide: '_serviceRoute', useValue: 'websocket' }
-  ]
+  // providers: [DecimalPipe,
+  //   WebsocketService,
+  //   { provide: '_serviceRoute', useValue: 'websocket' }
+  // ]
 })
 
 export class AppComponent implements OnInit {
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit {
     private radioService: RadioService,
     private utils: UtilsService,
     private location: Location,
-    private websocketService: WebsocketService,
+    // private websocketService: WebsocketService,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     // router.events.subscribe((val) => {
@@ -68,21 +69,21 @@ export class AppComponent implements OnInit {
 
 
     //Run Websocket to listen PTT if app is runing local (station)
-    if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
+    // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
 
-      websocketService.messages.subscribe(msg => {
-        if (msg) { //TODO - TEST PTT
-          this.router.navigate(['/voice']);
-          console.log(msg)
-          // https://github.com/afarhan/sbitx/blob/main/web/index.html
-          // TODO
-          //Update frequency mode
-          //Change mode
-          //Change frequency
-          //Listen ptt
-        }
-      });
-    }
+      // websocketService.messages.subscribe(msg => {
+      //   if (msg) { //TODO - TEST PTT
+      //     this.router.navigate(['/voice']);
+      //     console.log(msg)
+      //     // https://github.com/afarhan/sbitx/blob/main/web/index.html
+      //     // TODO
+      //     //Update frequency mode
+      //     //Change mode
+      //     //Change frequency
+      //     //Listen ptt
+      //   }
+      // });
+    // }
   }
 
   getSystemStatus(): void {
