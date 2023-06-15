@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
 import { AuthenticationService } from '../../../_services/authentication.service';
-import { WebsocketService } from '../../../_services/websocket.service';
-import { DecimalPipe } from '@angular/common';
+// import { WebsocketService } from '../../../_services/websocket.service';
+// import { DecimalPipe } from '@angular/common';
 import { RadioService } from 'src/app/_services/radio.service';
 import { interval } from 'rxjs';
 
-@Component({
+@Component({  
   selector: 'voice',
   templateUrl: './voice.component.html',
   styleUrls: ['./voice.component.less']
@@ -27,7 +27,7 @@ export class VoiceComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private websocketService: WebsocketService,
+    // private websocketService: WebsocketService,
     private radioService: RadioService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
