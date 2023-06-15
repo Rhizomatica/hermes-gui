@@ -16,7 +16,7 @@ import { SentMessagesComponent } from './components/public/sent-messages/sent-me
 import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
-import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
+import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent },
   { path: 'help', component: HelpComponent },
   { path: 'radioconfig', component: RadioConfigComponent },
-  { path: 'gateway', component: GatewayConfigComponent },
+  { path: 'schedule', component: ScheduleComponent },
   { path: 'transmision', component: TransmisionListComponent },
   { path: 'switch', component: SwitchComponent },
   { path: 'scary', component: RadioScaryComponent },

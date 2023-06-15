@@ -6,12 +6,12 @@ import { StationService } from '../../../_services/station.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-gateway-config',
-  templateUrl: './gateway-config.component.html',
-  styleUrls: ['./gateway-config.component.less']
+  selector: 'app-schedule',
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.less']
 })
 
-export class GatewayConfigComponent implements OnInit {
+export class ScheduleComponent implements OnInit {
 
   currentUser: User;
   stations: any;
