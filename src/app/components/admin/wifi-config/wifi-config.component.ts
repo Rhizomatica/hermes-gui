@@ -9,11 +9,11 @@ import { WifiManagerService } from '../../../_services/wifi-manager.service';
 
 @Component({
   selector: 'wifi-manager',
-  templateUrl: './wifi-manager.component.html',
-  styleUrls: ['./wifi-manager.component.less']
+  templateUrl: './wifi-config.component.html',
+  styleUrls: ['./wifi-config.component.less']
 })
 
-export class WifiManagerComponent implements OnInit {
+export class WiFiConfigurationComponent implements OnInit {
 
   currentUser: User
   admin: Boolean
