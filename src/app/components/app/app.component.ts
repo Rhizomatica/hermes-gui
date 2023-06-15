@@ -90,6 +90,7 @@ export class AppComponent implements OnInit {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
+        this.system.domain = this.system.domain == "hermes.radio" ? "demo.hermes.radio" : this.system.domain
         this.loading = false
       },
       (err) => {
