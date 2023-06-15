@@ -32,7 +32,7 @@ import { DecimalPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
-import { GatewayConfigComponent } from './components/admin/gateway-config/gateway-config.component';
+import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
@@ -74,7 +74,7 @@ registerLocaleData(localePt);
     EmailComponent,
     RadioConfigComponent,
     FrequencyPipe,
-    GatewayConfigComponent,
+    ScheduleComponent,
     TransmisionListComponent,
     LoginFormComponent,
     RadioScaryComponent,

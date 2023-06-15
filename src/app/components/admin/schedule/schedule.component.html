@@ -17,8 +17,7 @@
                 <div [ngClass]="{'redcircle' : !schedule.enable , 'greencircle' : schedule.enable }" title='enabled'>
                 </div>
             </small>
-            {{schedule.title}}
-            <p>( {{schedule.starttime}} - {{schedule.stoptime}} )</p>
+            {{schedule.title}} ({{schedule.starttime}} - {{schedule.stoptime}})
         </li>
     </ul>
     <div class="overall alert" *ngIf="errorAlert">
