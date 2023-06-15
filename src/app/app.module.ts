@@ -17,7 +17,7 @@ import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './components/public/help/help.component';
-import { MessageadmComponent } from './components/admin/messageadm/messageadm.component';
+import { MessageadmComponent } from './components/admin/message-config/message-config.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
 import { RetypeDirective } from './directives/retype.directive';

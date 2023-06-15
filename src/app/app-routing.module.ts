@@ -11,7 +11,7 @@ import { StationInformationComponent } from './components/admin/station-informat
 import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
-import { MessageadmComponent } from './components/admin/messageadm/messageadm.component';
+import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { EmailComponent } from './components/public/email/email.component';
 import { HelpComponent } from './components/public/help/help.component';
@@ -42,11 +42,11 @@ const routes: Routes = [
   { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
-  { path: 'messageadm', component: MessageadmComponent },
+  { path: 'message-config', component: MessageConfigComponent },
   { path: 'sent', component: SentMessagesComponent },
   { path: 'email', component: EmailComponent },
   { path: 'help', component: HelpComponent },
-  { path: 'radioconfig', component: RadioConfigComponent },
+  { path: 'radio-config', component: RadioConfigComponent },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'transmision', component: TransmisionListComponent },
   { path: 'switch', component: SwitchComponent },
@@ -55,7 +55,7 @@ const routes: Routes = [
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'wifiManager', component: WifiManagerComponent },
+  { path: 'wifi-ethernet', component: WifiManagerComponent },
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent }
 ];

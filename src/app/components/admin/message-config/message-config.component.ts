@@ -9,12 +9,12 @@ import { GlobalConstants } from '../../../global-constants';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-messageadm',
-  templateUrl: './messageadm.component.html',
-  styleUrls: ['./messageadm.component.less']
+  selector: 'app-message-config',
+  templateUrl: './message-config.component.html',
+  styleUrls: ['./message-config.component.less']
 })
 
-export class MessageadmComponent implements OnInit {
+export class MessageConfigComponent implements OnInit {
 
   currentUser: User;
   error = Error;

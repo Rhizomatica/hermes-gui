@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MessageadmComponent } from './messageadm.component';
+import { MessageConfigComponent } from './message-config.component';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('MessageadmComponent', () => {
-  let component: MessageadmComponent;
-  let fixture: ComponentFixture<MessageadmComponent>;
+  let component: MessageConfigComponent;
+  let fixture: ComponentFixture<MessageConfigComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessageadmComponent],
+      declarations: [MessageConfigComponent],
       imports: [HttpClientModule]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageadmComponent);
+    fixture = TestBed.createComponent(MessageConfigComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
