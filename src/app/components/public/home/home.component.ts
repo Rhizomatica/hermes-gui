@@ -7,6 +7,7 @@ import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { RadioService } from 'src/app/_services/radio.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-home',
@@ -43,6 +44,7 @@ export class homeComponent implements OnInit {
   frequency: Number = 0
   mode: String = ''
   showVoiceCard: Boolean = true
+  isGateway:boolean = GlobalConstants.gateway
   
   logOff() {
     this.authenticationService.logout();
