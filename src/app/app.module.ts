@@ -42,7 +42,7 @@ import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { MenuComponent } from './components/public/menu/menu.component';
-import { WiFiConfigurationComponent } from './components/admin/wifi-config/wifi-config.component';
+import { WiFiManagementComponent } from './components/admin/wifi-management/wifi-management.component';
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 
@@ -83,7 +83,7 @@ registerLocaleData(localePt);
     PlayerComponent,
     RecorderComponent,
     MenuComponent,
-    WiFiConfigurationComponent,
+    WiFiManagementComponent,
     VoiceComponent,
     BreadcrumbComponent
   ],
