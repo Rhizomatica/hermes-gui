@@ -106,6 +106,9 @@ export class ScheduleComponent implements OnInit {
       (res: any) => {
         this.schedules = res;
         this.loading = false
+
+       this.formatTime(this.schedules)
+        
       },
       (err) => {
         this.error = err;
@@ -113,6 +116,13 @@ export class ScheduleComponent implements OnInit {
         this.loading = false
       }
     );
+  }
+
+  formatTime(schedules){
+     schedules.forEach(schedule => {
+      schedule.starttime = schedule.starttime.toString().slice(0, -3)
+      schedule.stoptime = schedule.stoptime.toString().slice(0, -3)
+    });
   }
 
   newSchedule() {
@@ -168,8 +178,7 @@ export class ScheduleComponent implements OnInit {
     this.apiService.getSchedule($id).subscribe(
       (data: any) => {
         this.schedule = data;
-        this.schedules.starttime = this.schedules.starttime.toString().slice(0, -3)
-        this.schedules.stoptime = this.schedules.stoptime.toString().slice(0, -3)
+        this.formatTime([this.schedule])
       },
       (err) => {
         this.error = err;
@@ -181,8 +190,7 @@ export class ScheduleComponent implements OnInit {
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
     if(this.selectedSchedule.starttime >= 8){
-      this.selectedSchedule.starttime = this.selectedSchedule.starttime.toString().slice(0, -3)
-      this.selectedSchedule.stoptime = this.selectedSchedule.stoptime.toString().slice(0, -3)
+      this.formatTime([this.selectedSchedule])
     }
     this.isEditing = true;
     this.emptySchedule = false;
