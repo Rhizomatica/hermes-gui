@@ -61,6 +61,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   loading = true
   gpsMessage: any
   hasGps = GlobalConstants.hasGPS
+  bitx = GlobalConstants.bitx
 
 
   shuttingDown = false;

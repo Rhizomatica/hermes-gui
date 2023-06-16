@@ -143,7 +143,7 @@
                 [checked]="radio.tx"></span>
             </div>
           </form>
-          <form #fptt="ngForm" class="formdata field" *ngIf="hasGps">
+          <form #fptt="ngForm" class="formdata field" *ngIf="hasGps && bitx !== 'S'">
             <span i18n="@@labelgpscalibration">GPS Calibration</span>
             <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
               i18n="@@startgpscalibration">Start</button>
