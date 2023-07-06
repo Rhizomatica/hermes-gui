@@ -29,7 +29,6 @@ export class MessageService {
     })
   };
 
-  //TODO - Mudar controller?
   async postFile(file: File, pass) {
     const url = `${GlobalConstants.apiURL}/file/`; // POST api/file
     const formData: FormData = new FormData();
@@ -37,14 +36,15 @@ export class MessageService {
     formData.append('pass', pass);
     const params = new HttpParams();
     const headers = new HttpHeaders();
+
     // add this to be able to show progress on interface
     params.set('reportProgress', 'true');
     params.set('observe', 'events');
     headers.set('Access-Control-Allow-Origin', '*');
     
-    //TODO - Revisar isso - (Ariane) try to fix cors error
     headers.set('Content-Type', null);
     headers.set('Accept', 'multipart/form-data');
+
     try {
       const response = await this.http.post(url, formData, { params, headers });
 
@@ -74,7 +74,6 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-  //TODO - MUDAR DE ARQUIVO? (Tratar como file)
   getMessageImage(id: number): Observable<Blob> {
     const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
     return this.http.get(url, { responseType: 'blob' });
@@ -82,6 +81,15 @@ export class MessageService {
 
   deleteMessage(id): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        return this.messages;
+      }),
+      catchError(this.handleError));
+  }
+
+  deleteFile(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/api/file/`;
     return this.http.delete(url).pipe(
       map((res: any) => {
         return this.messages;
