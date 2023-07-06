@@ -173,20 +173,6 @@ export class ScheduleComponent implements OnInit {
   }
 
 
-  //TODO - nao esta sendo utilizado
-  getSchedule($id): void {
-    this.apiService.getSchedule($id).subscribe(
-      (data: any) => {
-        this.schedule = data;
-        this.formatTime([this.schedule])
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
-
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
     if(this.selectedSchedule.starttime >= 8){

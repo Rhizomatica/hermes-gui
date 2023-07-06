@@ -106,18 +106,6 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  //TODO - REMOVE UNUSED
-  // public getRadioMode(): Observable<{}> {
-  //   const url = `${GlobalConstants.apiURL}/radio/freq`;
-  //   const output = this.http.get(url);
-  //   return this.http.get(url).pipe(
-  //     map((res: any) => {
-  //       this.serverReturn = res;
-  //       return this.serverReturn;
-  //     }),
-  //     catchError(this.handleError));
-  // }
-
   public getRadioBfo(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/radio/bfo`;
     const output = this.http.get(url);
