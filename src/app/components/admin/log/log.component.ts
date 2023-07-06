@@ -16,6 +16,7 @@ export interface LogList {
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.less']
 })
+
 export class LogComponent implements OnInit, OnDestroy {
 
   uLog = false;
@@ -29,10 +30,6 @@ export class LogComponent implements OnInit, OnDestroy {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
-  public intervallTimer = interval(10000); //TODO - Remove timer (switch to reload button)
-  private subscription1;
-  private subscription2;
-  private subscription3;
   errorAlert = false;
   loading = false
   customErrors: CustomError[]
@@ -58,13 +55,6 @@ export class LogComponent implements OnInit, OnDestroy {
     this.dLog = false;
     this.customLog = false;
     this.getLogUucp();
-    this.subscription1 = this.intervallTimer.subscribe(() => this.getLogUucp());
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
-    };
-    if (this.subscription3) {
-      this.subscription3.unsubscribe();
-    }
   }
 
   showEmailLog() {
@@ -74,13 +64,6 @@ export class LogComponent implements OnInit, OnDestroy {
     this.dLog = false;
     this.customLog = false;
     this.getLogMail();
-    this.subscription2 = this.intervallTimer.subscribe(() => this.getLogMail());
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
-    };
-    if (this.subscription3) {
-      this.subscription3.unsubscribe();
-    }
   }
 
   showDebugLog() {
@@ -90,13 +73,6 @@ export class LogComponent implements OnInit, OnDestroy {
     this.dLog = true;
     this.customLog = false;
     this.getLogUucpDebug();
-    this.subscription3 = this.intervallTimer.subscribe(() => this.getLogUucpDebug());
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
-    };
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
-    }
   }
 
   showCustomLogs() {
@@ -269,15 +245,6 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
-    };
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
-    }
-    if (this.subscription3) {
-      this.subscription3.unsubscribe();
-    }
   }
 
 }
