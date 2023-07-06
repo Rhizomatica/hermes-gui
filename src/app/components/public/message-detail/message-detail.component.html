@@ -24,13 +24,13 @@
         <div *ngIf="message.file">
             <!-- <span i18n="@@File">File: </span> -->
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                <div *ngIf="(isImage && !message.secure) || (isImage && message.secure && uncrypted)">
+                <div *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage&& message.secure && uncrypted)">
                     <img class="messageImg" src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
                 {{message.file}}
-                <div *ngIf="isAudio">
+                <div *ngIf="fileAttr && fileAttr.isAudio">
                     <!--
-                    <div class="blobber" *ngIf="audioLoading">
+                    <div class="blobber" *ngIf="fileAttr.audioLoading">
                         <div class="tx"i18n="@@loadingaudio">decrypting audio...</div>
                         <div class="square"></div>
                     </div>
