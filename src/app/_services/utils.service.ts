@@ -9,7 +9,7 @@ export class UtilsService {
 
   browser: string = null;
 
-  public detectBrowserName() { 
+  public detectBrowserName() {
     const agent = window.navigator.userAgent.toLowerCase()
     switch (true) {
       case agent.indexOf('edge') > -1:
@@ -27,19 +27,74 @@ export class UtilsService {
       default:
         return 'other';
     }
-  }  
+  }
 
-  isMobile(){
+  isMobile() {
     return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
   }
 
-  isItRuningLocal(){
+  isItRuningLocal() {
     var url = window.location.href
     return url === 'http://localhost:4200/' || url === 'http://127.0.0.1:4200/' ? true : false
   }
 
-  isSBitxRadio(){
-     return GlobalConstants.bitx === 'S' ? true : false
+  isSBitxRadio() {
+    return GlobalConstants.bitx === 'S' ? true : false
+  }
+
+
+  getFileType(mimetype) {
+
+    //TODO - review object
+
+    var fileAttr = {
+      noImage: null,
+      isAudio: null,
+      isImage: null,
+      audioLoading: null
+    }
+
+    switch (mimetype) {
+      case '':
+        fileAttr.noImage = true;
+        fileAttr.isAudio = false;
+
+        break;
+      case 'image/bmp':
+      case 'image/gif':
+      case 'image/jpeg':
+      case 'image/png':
+      case 'image/tiff':
+      case 'image/webp':
+      case 'image/svg+xml':
+      case 'image/pjpeg':
+      case 'image/x-jps':
+        fileAttr.noImage = true;
+        fileAttr.isImage = true;
+        fileAttr.isAudio = false;
+        break;
+      case 'audio/aac':
+      case 'audio/mpeg':
+      case 'audio/ogg':
+      case 'audio/ogx':
+      case 'audio/opus':
+      case 'audio/wav':
+      case 'audio/x-wav':
+      case 'audio/webm':
+      case 'audio/3gpp':
+      case 'audio/3gpp2':
+        fileAttr.noImage = false;
+        fileAttr.isImage = false;
+        fileAttr.isAudio = true;
+        fileAttr.audioLoading = true;
+        break;
+      default:
+        fileAttr.noImage = false;
+        fileAttr.isAudio = false;
+        fileAttr.isImage = false;
+    }
+
+    return fileAttr
   }
 
 }

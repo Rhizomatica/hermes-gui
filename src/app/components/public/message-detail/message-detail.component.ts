@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 import { User } from '../../../interfaces/user';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
+import { UtilsService } from 'src/app/_services/utils.service';
 // import { ScriptService } from '../../../_services/script.service';
 
 @Component({
@@ -24,15 +25,12 @@ export class MessageDetailComponent implements OnInit {
   public messageImage: Blob;
   public isEncrypted = false;
   url = GlobalConstants.apiURL;
-  noMessage = false;
-  noImage = false;
   wrongPass = false;
   uncrypted = false;
-  isAudio = false;
-  isImage = false;
+  fileAttr: any
+  noMessage = false;
   pass = '';
   passString = '';
-  audioLoading = false;
   allowCompose = false;
   currentUser: User;
   allowhmp = 'root';
@@ -49,6 +47,7 @@ export class MessageDetailComponent implements OnInit {
     private location: Location,
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
+    private utils: UtilsService,
     // private scripts: ScriptService,
 
   ) {
@@ -91,8 +90,8 @@ export class MessageDetailComponent implements OnInit {
 
 
   loadingAudio() {
-    if (this.audioLoading)
-      this.audioLoading = false
+    if (this.fileAttr && this.fileAttr.audioLoading)
+      this.fileAttr.audioLoading = false
   }
 
   getMessage(): void {
@@ -104,47 +103,9 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
         this.message = res;
         if (this.message.file === '') {
-          this.noImage = true;
+          this.fileAttr.noImage = true;
         } else {
-          switch (this.message.mimetype) {
-            //TODO - Separar (levar para utils)
-            case '':
-              this.noImage = true;
-              this.isAudio = false;
-              break;
-            case 'image/bmp':
-            case 'image/gif':
-            case 'image/jpeg':
-            case 'image/png':
-            case 'image/tiff':
-            case 'image/webp':
-            case 'image/svg+xml':
-            case 'image/pjpeg':
-            case 'image/x-jps':
-              this.noImage = true;
-              this.isImage = true;
-              this.isAudio = false;
-              break;
-            case 'audio/aac':
-            case 'audio/mpeg':
-            case 'audio/ogg':
-            case 'audio/ogx':
-            case 'audio/opus':
-            case 'audio/wav':
-            case 'audio/x-wav':
-            case 'audio/webm':
-            case 'audio/3gpp':
-            case 'audio/3gpp2':
-              this.noImage = false;
-              this.isImage = false;
-              this.isAudio = true;
-              this.audioLoading = true;
-              break;
-            default:
-              this.noImage = false;
-              this.isAudio = false;
-              this.isImage = false;
-          }
+          this.fileAttr = this.utils.getFileType(this.message.mimetype)
         }
 
         this.loading = false
@@ -167,7 +128,7 @@ export class MessageDetailComponent implements OnInit {
       },
       (err) => {
         this.error = err;
-        this.noImage = true;
+        this.fileAttr.noImage = true;
         this.loading = false
       }
     );
