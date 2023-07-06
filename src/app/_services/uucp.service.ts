@@ -28,7 +28,7 @@ export class UUCPService{
     };
 
   getQueue(): Observable<UUCPQueue[]> {
-    const url = `${GlobalConstants.apiURL}/sys/uuls`; // TODO - colocar campos a mais e verificar oque tem hoje (Transmission List)
+    const url = `${GlobalConstants.apiURL}/sys/uuls`;
     return this.http.get(url).pipe(
       map((res: any) => {
         this.queue = res;

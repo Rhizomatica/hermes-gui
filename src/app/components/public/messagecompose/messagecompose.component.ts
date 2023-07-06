@@ -344,14 +344,6 @@ export class MessagecomposeComponent implements OnInit {
   closeWebCamDesktop() {
     this.webCamDesktop = false
   }
-  // TODO check to remove
-  newMessage() {
-    // this.router.navigate(['/compose']);
-    this.fileIsProcessing = false;
-    this.message.name = '';
-    this.message.text = '';
-    this.message.file = '';
-  }
 
   encrypted() {
     if (this.isEncrypted) {

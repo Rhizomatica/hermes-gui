@@ -117,7 +117,7 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   setExcludedKeys() {
-    // ?, ", $, [, \, ], +. and space   //TODO - Verify another characters...
+    // ?, ", $, [, \, ], +. and space
     this.excludedKeys = [32, 52, 187, 191, 219, 220, 221, 222]
   }
 

@@ -87,7 +87,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   getRadioStatus(): void {
     this.radioService.getRadioStatus().subscribe(
-      (res: any) => { //TODO - pegar só o necessário
+      (res: any) => {
         this.radio = res;
         this.radio.extra = false;
         // this.bfo = this.radio.bfo;
