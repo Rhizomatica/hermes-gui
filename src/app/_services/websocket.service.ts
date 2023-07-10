@@ -15,18 +15,13 @@ export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;
 
-    constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
-        this.messages = <Subject<Message>>this.connect(`${
-            GlobalConstants.webSocketUrl
-            //TODO - Logar no websocket
-            // websocket_send("login="+el("passkey").value);
 
-        }/${_serviceRoute}`).pipe(
-            map(
-                (response: MessageEvent): Message => {
-                    return JSON.parse(response.data);
-                }
-            )
+    constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
+        this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl}`).pipe(
+            map((response: MessageEvent): Message => {
+                console.log("Response Constructor serviceroute" + response)
+                return JSON.parse(response.data);
+            })
         );
     }
 
@@ -56,19 +51,9 @@ export class WebsocketService {
                 }
             }
         };
+
         return new AnonymousSubject<MessageEvent>(observer, observable);
     }
 }
 
 
-// sendMsg() {
-//     let message = {
-//       source: '',
-//       content: ''
-//     };
-//     message.source = 'localhost';
-//     message.content = this.content;
-
-//     this.sent.push(message);
-//     this.websocketService.messages.next(message);
-//   }

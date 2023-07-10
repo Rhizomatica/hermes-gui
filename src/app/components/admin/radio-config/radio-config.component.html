@@ -134,8 +134,7 @@
             </div>
           </form>
           <form #fptt="ngForm" class="formdata field">
-            <span>PTT
-              <!-- - {{this.ptt}} -->
+            <span>PTT ({{this.ptt}})
             </span>
             <div class="switch float-right">
               <input type="checkbox" name="mode" [checked]="radio.tx">
@@ -150,7 +149,7 @@
           </form>
           <form #fptt="ngForm" class="formdata field">
             <div>
-              <span i18n="@@radioprotection">Protection</span>
+              <span i18n="@@radioprotection">Protection ({{radio.protection ? 'ON' : 'OFF'}})</span>
               <button (click)="resetProtection()" i18n="@resetprotection1" class="float-right">
                 reset</button>
             </div>
