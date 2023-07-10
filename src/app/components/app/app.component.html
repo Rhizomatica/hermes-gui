@@ -27,8 +27,13 @@
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
+
     <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
+
     <div class="formfield {{currentPage == 'home' ? 'home' : ''}}">
+
+      <h5 class="alert">WS RECEIVED -  <br /> <i *ngFor="received as i">{{i}}</i>{{ received }}</h5>
+
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
       <ng-template #serverOff>
         <hr>
