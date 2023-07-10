@@ -11,6 +11,7 @@ export class GlobalConstants {
   public static domain = environment.domain
   public static gateway = environment.gateway
   public static bitx = environment.bitx
+  public static generalLogin = environment.generalLogin
 
   public static httpOptions = {
     headers: new HttpHeaders({

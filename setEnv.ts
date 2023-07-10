@@ -15,7 +15,8 @@ const envConfigFile = `export const environment = {
    hasGPS: '${process.env.HAS_GPS}',
    domain: '${process.env.DOMAIN}',
    gateway: ${process.env.GATEWAY},
-   bitx: '${process.env.BITX}'
+   bitx: '${process.env.BITX}',
+   generalLogin: '${process.env.GENERAL_LOGIN}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

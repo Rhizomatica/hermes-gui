@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Location } from '@angular/common';
-// import { DecimalPipe, Location } from '@angular/common';
-// import { Observable, interval } from 'rxjs';
+import { DecimalPipe, Location } from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
-// import { WebsocketService } from 'src/app/_services/websocket.service';
+import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  // providers: [DecimalPipe,
-  //   WebsocketService,
-  //   { provide: '_serviceRoute', useValue: 'websocket' }
-  // ]
+  providers: [DecimalPipe,
+    WebsocketService,
+    { provide: '_serviceRoute', useValue: 'websocket' }
+  ]
 })
 
 export class AppComponent implements OnInit {
@@ -44,6 +42,9 @@ export class AppComponent implements OnInit {
   currentUrl = '/home'
   frequency: Number = 0
   frequencyMode: String = null
+  received = [];
+  sent = [];
+  content = '';
 
   constructor(
     private router: Router,
@@ -52,7 +53,7 @@ export class AppComponent implements OnInit {
     private radioService: RadioService,
     private utils: UtilsService,
     private location: Location,
-    // private websocketService: WebsocketService,
+    private websocketService: WebsocketService,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     // router.events.subscribe((val) => {
@@ -66,24 +67,51 @@ export class AppComponent implements OnInit {
         this.updateBreadcrumb()
       }
     });
-
-
+    // https://indepth.dev/tutorials/angular/how-to-implement-websockets-in-angular-project
     //Run Websocket to listen PTT if app is runing local (station)
-    // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
+    if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
 
       // websocketService.messages.subscribe(msg => {
-      //   if (msg) { //TODO - TEST PTT
-      //     this.router.navigate(['/voice']);
-      //     console.log(msg)
-      //     // https://github.com/afarhan/sbitx/blob/main/web/index.html
-      //     // TODO
-      //     //Update frequency mode
-      //     //Change mode
-      //     //Change frequency
-      //     //Listen ptt
-      //   }
+      //   this.received.push(msg);
+
+      //   // if (msg) {
+      //   // this.router.navigate(['/voice']);
+      //   // https://github.com/afarhan/sbitx/blob/main/web/index.html
+      //   // }
       // });
-    // }
+
+      websocketService.messages.subscribe(msg =>
+        // console.log('message received: ' + msg)
+        this.received.push(msg),
+
+        // this.radio = msg;
+        // this.protection = msg.radio.protection;
+        // this.frequency = msg.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq / 1000
+        // this.frequencyMode = this.radio.mode;
+
+        // TODO - GET ALL THIS DATA?
+        // { "tx": true, "rx": false, "led": false, "fwd_raw": "", "fwd_volts": 0, "fwd_watts": 0, "swr": 0, "ref_raw": "", "ref_volts": 0, "ref_watts": 0, "protection": false, "connection": false }
+
+        // Called whenever there is a message from the server
+        err => console.log("err" + err),
+        // Called if WebSocket API signals some kind of error
+        () => console.log('complete, closing connection...')
+        // Called when connection is closed (for whatever reason)
+      )
+
+    }
+  }
+
+  sendMsg() {
+    let message = {
+      source: '',
+      content: ''
+    };
+    message.source = 'localhost';
+    message.content = this.content;
+
+    this.sent.push(message);
+    this.websocketService.messages.next(message);
   }
 
   getSystemStatus(): void {
@@ -129,7 +157,7 @@ export class AppComponent implements OnInit {
       (res: any) => {
         this.radio = res;
         this.protection = this.radio.protection;
-        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq  / 1000
+        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq / 1000
         this.frequencyMode = this.radio.mode;
         this.loading = false;
         return res;
@@ -181,13 +209,17 @@ export class AppComponent implements OnInit {
     this.isMenuPage = this.router.url == '/menu' ? true : false
   }
 
-  //TODO - Should be at component breadcrumb?
   updateBreadcrumb() {
     this.currentPage = this.router.url.split("/")[1]
     this.currentUrl = this.router.url
   }
 
+  checkGeneralLogin() {
+    GlobalConstants.generalLogin == 'true' ? this.router.navigate(['/login']) : null;
+  }
+
   ngOnInit(): void {
+    this.checkGeneralLogin()
     this.loading = true
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
