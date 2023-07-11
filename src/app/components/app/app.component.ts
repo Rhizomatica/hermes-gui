@@ -219,7 +219,7 @@ export class AppComponent implements OnInit {
   }
 
   disableNavigationsGeneralLoginNoUser() {
-    if (this.currentPage == 'login' && GlobalConstants.generalLogin && !this.currentUser) {
+    if (this.currentPage == 'login' && GlobalConstants.generalLogin && this.currentUser != null) {
       return true
     }
     return false
