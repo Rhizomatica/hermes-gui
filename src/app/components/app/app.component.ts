@@ -215,8 +215,17 @@ export class AppComponent implements OnInit {
   }
 
   checkGeneralLogin() {
-    GlobalConstants.generalLogin == 'true' ? this.router.navigate(['/login']) : null;
+    GlobalConstants.generalLogin == true ? this.router.navigate(['/login']) : null;
   }
+
+  disableNavigationsGeneralLoginNoUser() {
+    if (this.currentPage == 'login' && GlobalConstants.generalLogin && !this.currentUser) {
+      return true
+    }
+    return false
+  }
+
+
 
   ngOnInit(): void {
     this.checkGeneralLogin()
