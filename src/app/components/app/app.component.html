@@ -12,14 +12,17 @@
 
 <div id="appcontainer">
   <div class="fullpage">
+    <!-- TODO - Create component -->
     <nav *ngIf="system && currentPage != 'home'">
-      <a routerLink='/home' class="logo-link">
+      <a routerLink='/home' class="logo-link"
+        [style.pointer-events]="disableNavigationsGeneralLoginNoUser() ? 'auto' : 'none'"
+        (keydown.enter)="disableNavigationsGeneralLoginNoUser()">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system">
           <span>{{system.domain}}</span>
         </h1>
       </a>
-      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage">
+      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && disableNavigationsGeneralLoginNoUser()">
         <span class="nav-frequency">{{frequencyMode}} {{frequency}} kHz</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
@@ -27,14 +30,18 @@
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
+    <!-- TODO - Create component -->
+
 
     <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
 
     <div class="formfield {{currentPage == 'home' ? 'home' : ''}}">
 
-      <h5 class="alert">WS RECEIVED -  <br /> <i *ngFor="received as i">{{i}}</i>{{ received }}</h5>
+      <!-- <h5 class="alert">WS RECEIVED -  <br /> <i *ngFor="received as i">{{i}}</i>{{ received }}</h5> -->
 
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
+
+      <!-- TODO - Create component -->
       <ng-template #serverOff>
         <hr>
         <p i18n="hermes503Http">503 Service Unavaliable</p>
@@ -64,7 +71,11 @@
           </div>
         </div>
       </ng-template>
+      <!-- TODO - Create component -->
+
     </div>
+    <!-- TODO - Create component -->
+
     <div class="overall" *ngIf="changeLanguage">
       <div class="cv">
         <div class="flags">
@@ -83,17 +94,8 @@
         </div>
       </div>
     </div>
+    <!-- TODO - Create component -->
+
   </div>
   <loading [loading]="loading"></loading>
-
-  <!-- <footer [ngClass]=" fullStats ? 'footer big' : 'footer' ">
-    <ng-container *ngIf="system">
-      <div class="dr">
-        <div class="drb" (click)="onToggle('HR')"></div>
-      </div>
-      <span class="footerinfo">
-        V2.2 - {{system.name}}
-      </span>
-    </ng-container>
-  </footer> -->
 </div>

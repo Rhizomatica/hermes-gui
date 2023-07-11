@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'breadcrumb',
@@ -17,9 +18,9 @@ export class BreadcrumbComponent implements OnChanges {
   @Input() currentPage: String
   @Input() currentUrl: String
   pages = []
+  generalLogin: Boolean = GlobalConstants.generalLogin
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(change) {
     change.currentPage && change.currentPage.currentValue != change.currentPage.previousValue ? this.currentPage = change.currentPage.currentValue : null
