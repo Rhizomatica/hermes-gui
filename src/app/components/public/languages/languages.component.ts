@@ -18,6 +18,11 @@ export class LanguagesComponent implements OnInit {
 
   constructor() { }
 
+  setLanguage(language) {
+    localStorage.setItem('language', language)
+    window.open('/' + language, '_self')
+  }
+
   ngOnInit(): void {
     this.siteLocale = window.location.pathname.split('/')[1];
     var currentUrlLanguage = this.languageList.find(f => f.code === this.siteLocale);

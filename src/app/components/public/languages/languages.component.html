@@ -1,7 +1,26 @@
-<div class="">
-    <nav class="flags">
-        <a i18n="@@portugues" class="flag" href="/pt"><img title="messages" src="assets/svg/brasil.svg">Português</a>
-        <a i18n="@@espanhol" class="flag" href="/es"><img title="messages" src="assets/svg/espanha.svg">Español</a>
-        <a i18n="@@english" class="flag" href="/en-US"><img title="messages" src="assets/svg/reino-unido.svg">English</a>
-    </nav>
+<div class="overall">
+    <div class="cv">
+        <div class="flags">
+            <a class="flag" routerLink="" (click)="setLanguage('en-US')">
+                <img title="English" src="assets/svg/reino-unido.svg">
+                <p>English</p>
+            </a>
+            <a class="flag m-t-10" routerLink="" (click)="setLanguage('en-US')">
+                <img title="messages" src="assets/svg/espanha.svg">
+                <p>Español</p>
+            </a>
+            <a class="flag m-t-10" routerLink="" (click)="setLanguage('pt')">
+                <img title="messages" src="assets/svg/brasil.svg">
+                <p>Português</p>
+            </a>
+            <a class="flag m-t-10" routerLink="" (click)="setLanguage('xx')">
+                <img title="messages" src="assets/svg/reino-unido.svg">
+                <p>XX</p>
+            </a>
+            <a class="flag m-t-10" routerLink="" (click)="setLanguage('yy')">
+                <img title="messages" src="assets/svg/reino-unido.svg">
+                <p>YY</p>
+            </a>
+        </div>
+    </div>
 </div>

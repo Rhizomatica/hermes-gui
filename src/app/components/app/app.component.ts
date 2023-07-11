@@ -188,17 +188,9 @@ export class AppComponent implements OnInit {
     window.scrollTo(0, 0)
   }
 
-  changeLanguageModal() {
-    this.changeLanguage = this.changeLanguage ? false : true
-  }
-
   checkLanguage() {
-    this.changeLanguage = !localStorage.getItem('language') ? true : false
-  }
-
-  setLanguage(language) {
-    localStorage.setItem('language', language)
-    window.open('/' + language, '_self')
+    !localStorage.getItem('language') ? this.router.navigate(['/languages'])
+    : null;
   }
 
   closeMobileMenu() {
@@ -224,8 +216,6 @@ export class AppComponent implements OnInit {
     }
     return false
   }
-
-
 
   ngOnInit(): void {
     this.checkGeneralLogin()
