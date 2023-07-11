@@ -15,14 +15,14 @@
     <!-- TODO - Create component -->
     <nav *ngIf="system && (currentPage != 'home' && currentPage != 'languages')">
       <a routerLink='/home' class="logo-link"
-        [style.pointer-events]="disableNavigationsGeneralLoginNoUser() ? 'auto' : 'none'"
-        (keydown.enter)="disableNavigationsGeneralLoginNoUser()">
+        [style.pointer-events]="disableNavigationsGeneralLoginNoUser() ? 'none' : 'auto'"
+        (keydown.enter)="!disableNavigationsGeneralLoginNoUser()">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
         <h1 class="sitetitle" *ngIf="system">
           <span>{{system.domain}}</span>
         </h1>
       </a>
-      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && disableNavigationsGeneralLoginNoUser()">
+      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsGeneralLoginNoUser()">
         <span class="nav-frequency">{{frequencyMode}} {{frequency}} kHz</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
