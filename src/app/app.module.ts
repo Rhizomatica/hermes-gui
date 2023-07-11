@@ -31,6 +31,8 @@ import { FrequencyPipe } from './frequency.pipe';
 import { DecimalPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+// import localeXx from '@angular/common/locales/xx';
+// import localeYy from '@angular/common/locales/yy';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
