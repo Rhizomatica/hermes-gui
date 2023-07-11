@@ -13,7 +13,7 @@
 <div id="appcontainer">
   <div class="fullpage">
     <!-- TODO - Create component -->
-    <nav *ngIf="system && currentPage != 'home'">
+    <nav *ngIf="system && (currentPage != 'home' && currentPage != 'languages')">
       <a routerLink='/home' class="logo-link"
         [style.pointer-events]="disableNavigationsGeneralLoginNoUser() ? 'auto' : 'none'"
         (keydown.enter)="disableNavigationsGeneralLoginNoUser()">
@@ -74,28 +74,6 @@
       <!-- TODO - Create component -->
 
     </div>
-    <!-- TODO - Create component -->
-
-    <div class="overall" *ngIf="changeLanguage">
-      <div class="cv">
-        <div class="flags">
-          <a class="flag" routerLink="" (click)="setLanguage('pt')">
-            <img title="messages" src="assets/svg/brasil.svg">
-            <p>Português</p>
-          </a>
-          <a class="flag m-t-10" routerLink="" (click)="setLanguage('es')">
-            <img title="messages" src="assets/svg/espanha.svg">
-            <p>Español</p>
-          </a>
-          <a class="flag m-t-10" routerLink="" (click)="setLanguage('en-US')">
-            <img title="messages" src="assets/svg/reino-unido.svg">
-            <p>English</p>
-          </a>
-        </div>
-      </div>
-    </div>
-    <!-- TODO - Create component -->
-
   </div>
   <loading [loading]="loading"></loading>
 </div>
