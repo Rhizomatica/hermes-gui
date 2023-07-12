@@ -21,8 +21,8 @@ export class WebsocketService {
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
         this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl + '/websocket'}`).pipe(
             map((response: MessageEvent): Message => {
-                console.log("Response Constructor serviceroute")
-                return JSON.parse(response.data);
+                return response.data;
+                // return JSON.parse(response.data);
             })
         );
     }

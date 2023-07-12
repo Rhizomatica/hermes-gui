@@ -76,19 +76,18 @@ export class AppComponent implements OnInit {
     //Run Websocket to listen PTT if app is runing local (station)
     // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
 
+    this.sharedService.radioObj.subscribe({
+      next: newValue => this.radioObj
+    });
+
     websocketService.messages.subscribe(data => {
 
       this.radioObj = {
         irxs: 4,
-        freq: 7010000,
+        freq: 484804804,
         mode: 'USB',
         protection: 'off' // TODO - Change this one to bit or boolean?
       }
-
-
-      // this.sharedService.radioObj.subscribe({
-      //   next: newValue => this.radioObj
-      // });
 
       this.sharedService.radioObj.value.frequency = this.radioObj.freq;
 
@@ -112,7 +111,7 @@ export class AppComponent implements OnInit {
       // }
 
       // 2 - Se obter ptt Hardware mode nevegar para voice conferir se esta usando hardware
-      // 3 - Atualizar dados interface
+      // 3 - Atualizar dados interface - doing
       // 4 - Botao Controle de frequencia 
       // 5 - Tornar essas informacoes globais de facil acesso
       // 6 - Refatorar codigo
