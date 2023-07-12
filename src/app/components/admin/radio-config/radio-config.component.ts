@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
-// import { WebsocketService } from '../../../_services/websocket.service';
 import { NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
@@ -13,11 +12,7 @@ import { ApiService } from 'src/app/_services/api.service';
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
   styleUrls: ['./radio-config.component.less'],
-  providers: [DecimalPipe,
-    // WebsocketService,
-    // {provide: '_serviceRoute', useValue: 'radio/power'}
-    // {provide: '_serviceRoute', useValue: 'WSaudioRX'}
-  ]
+  providers: [DecimalPipe]
 })
 
 export class RadioConfigComponent implements OnInit, OnDestroy {
@@ -74,15 +69,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
-    // private websocketService: WebsocketService
     private apiService: ApiService
     ) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-
-      // websocketService.messages.subscribe(msg => {
-      //   // this.power = msg;
-      //   console.log(msg);
-      // });
     }
 
   getRadioStatus(): void {
