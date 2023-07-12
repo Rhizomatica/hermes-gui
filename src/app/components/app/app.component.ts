@@ -8,6 +8,9 @@ import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
+import { DarkModeService } from 'angular-dark-mode';
+import { SharedService } from 'src/app/_services/shared.service';
+import { Radio } from 'src/app/interfaces/radio';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit {
   subscript: any;
   loading = true;
   changeLanguage = false
-  title = 'hermes.radio';
+  title = 'hermes.radio'
   mobile: any
   isMenuPage: boolean
   currentPage = 'home'
@@ -45,6 +48,7 @@ export class AppComponent implements OnInit {
   received = [];
   sent = [];
   content = '';
+  radioObj: Radio
 
   constructor(
     private router: Router,
@@ -54,6 +58,7 @@ export class AppComponent implements OnInit {
     private utils: UtilsService,
     private location: Location,
     private websocketService: WebsocketService,
+    private sharedService: SharedService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     // router.events.subscribe((val) => {
@@ -67,39 +72,60 @@ export class AppComponent implements OnInit {
         this.updateBreadcrumb()
       }
     });
-    // https://indepth.dev/tutorials/angular/how-to-implement-websockets-in-angular-project
+
     //Run Websocket to listen PTT if app is runing local (station)
-    if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
+    // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
 
-      // websocketService.messages.subscribe(msg => {
-      //   this.received.push(msg);
+    websocketService.messages.subscribe(data => {
 
-      //   // if (msg) {
-      //   // this.router.navigate(['/voice']);
-      //   // https://github.com/afarhan/sbitx/blob/main/web/index.html
-      //   // }
+      this.radioObj = {
+        irxs: 4,
+        freq: 7010000,
+        mode: 'USB',
+        protection: 'off' // TODO - Change this one to bit or boolean?
+      }
+
+
+      // this.sharedService.radioObj.subscribe({
+      //   next: newValue => this.radioObj
       // });
 
-      websocketService.messages.subscribe(msg =>
-        // console.log('message received: ' + msg)
-        this.received.push(msg),
+      this.sharedService.radioObj.value.frequency = this.radioObj.freq;
 
-        // this.radio = msg;
-        // this.protection = msg.radio.protection;
-        // this.frequency = msg.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq / 1000
-        // this.frequencyMode = this.radio.mode;
 
-        // TODO - GET ALL THIS DATA?
-        // { "tx": true, "rx": false, "led": false, "fwd_raw": "", "fwd_volts": 0, "fwd_watts": 0, "swr": 0, "ref_raw": "", "ref_volts": 0, "ref_watts": 0, "protection": false, "connection": false }
+      // TODO ------------------------------------
 
-        // Called whenever there is a message from the server
-        err => console.log("err" + err),
-        // Called if WebSocket API signals some kind of error
-        () => console.log('complete, closing connection...')
-        // Called when connection is closed (for whatever reason)
-      )
+      // 1 - Sugerir obter todos esses dados (radio config)
+      // { 
+      //   "tx": true, 
+      //   "rx": false, 
+      //   "led": false, 
+      //   "fwd_raw": "", 
+      //   "fwd_volts": 0, 
+      //   "fwd_watts": 0, 
+      //   "swr": 0, 
+      //   "ref_raw": "", 
+      //   "ref_volts": 0, 
+      //   "ref_watts": 0, 
+      //   "protection": false, 
+      //   "connection": false 
+      // }
 
-    }
+      // 2 - Se obter ptt Hardware mode nevegar para voice conferir se esta usando hardware
+      // 3 - Atualizar dados interface
+      // 4 - Botao Controle de frequencia 
+      // 5 - Tornar essas informacoes globais de facil acesso
+      // 6 - Refatorar codigo
+      // 7 - Enviar JSON do servidor
+
+
+    }, err => {
+      console.log("err" + err)
+
+    }, () => {
+      console.log('complete, closing connection...')
+    })
+    // }
   }
 
   sendMsg() {
@@ -107,6 +133,7 @@ export class AppComponent implements OnInit {
       source: '',
       content: ''
     };
+
     message.source = 'localhost';
     message.content = this.content;
 
@@ -190,7 +217,7 @@ export class AppComponent implements OnInit {
 
   checkLanguage() {
     !localStorage.getItem('language') ? this.router.navigate(['/languages'])
-    : null;
+      : null;
   }
 
   closeMobileMenu() {
@@ -207,7 +234,7 @@ export class AppComponent implements OnInit {
   }
 
   checkGeneralLogin() {
-    GlobalConstants.generalLogin == true  && this.currentUser == null ? this.router.navigate(['/login']) : null;
+    GlobalConstants.generalLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
   }
 
   disableNavigationsGeneralLoginNoUser() {

@@ -10,6 +10,8 @@ export interface Message {
     content: string;
 }
 
+// https://indepth.dev/tutorials/angular/how-to-implement-websockets-in-angular-project
+
 @Injectable()
 export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
@@ -17,9 +19,9 @@ export class WebsocketService {
 
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
-        this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl}`).pipe(
+        this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl + '/websocket'}`).pipe(
             map((response: MessageEvent): Message => {
-                console.log("Response Constructor serviceroute" + response)
+                console.log("Response Constructor serviceroute")
                 return JSON.parse(response.data);
             })
         );
