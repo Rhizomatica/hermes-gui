@@ -51,6 +51,12 @@ export class CustomErrorsService {
         catchError(this.handleError));
   }
 
+  newCustomError(erro: CustomError): Observable<CustomError> {
+    const url = `${GlobalConstants.apiURL}/customerrors`;
+    return this.http.post<CustomError>(url, erro).pipe(
+      catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     this.customErrors = [];
     return throwError(error);

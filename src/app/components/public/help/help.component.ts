@@ -20,10 +20,10 @@ export class HelpComponent implements OnInit {
 
 
   scrollToElement($element): void {
-    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+    $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
   }
 
-  changeLanguageModal(){
+  changeLanguageModal() {
     this.changeLanguage = this.changeLanguage ? false : true
   }
 
@@ -31,8 +31,7 @@ export class HelpComponent implements OnInit {
     localStorage.setItem('language', language)
     window.open('/'+language, '_self')
   }
-
+  
   ngOnInit(): void {
   }
-
 }
