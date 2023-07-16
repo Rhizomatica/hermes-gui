@@ -13,7 +13,9 @@ export class LanguagesComponent implements OnInit {
   languageList = [
     { code: 'pt', label: 'Português' },
     { code: 'es', label: 'Español' },
-    { code: 'en', label: 'English' }
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+    { code: 'yy', label: 'YY' }
   ];
 
   constructor() { }

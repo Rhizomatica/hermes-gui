@@ -24,18 +24,18 @@ export class ErrorInterceptor implements HttpInterceptor {
         var language = localStorage.getItem('language')
         var message = ''
 
-        if (language === 'en-US') {
-            message = this.englishError(errorStatus)
+        switch (language) {
+            case 'en-US':
+                message = this.englishError(errorStatus)
+            case 'pt':
+                message = this.portugueseError(errorStatus)
+            case 'es':
+                message = this.spanishError(errorStatus)
+            case 'fr':
+                message = this.françaisError(errorStatus)
+            case 'yy':
+                message = this.yyError(errorStatus)
         }
-
-        if (language === 'pt') {
-            message = this.portugueseError(errorStatus)
-        }
-
-        if (language == 'es') {
-            message = this.spanishError(errorStatus)
-        }
-
         return message
         // + ' If this error persists send a report feedback.'
     }
@@ -69,4 +69,28 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         return errorStatus
     }
+
+
+    //TODO - translate
+    public françaisError(errorStatus) {
+        if (errorStatus == 500)
+            return 'Error interno del servidor, inténtalo de nuevo.'
+
+        if (errorStatus == 400)
+            return 'Servicio no encontrado.'
+
+        return errorStatus
+    }
+
+    //TODO - translate
+    public yyError(errorStatus) {
+        if (errorStatus == 500)
+            return 'Error interno del servidor, inténtalo de nuevo.'
+
+        if (errorStatus == 400)
+            return 'Servicio no encontrado.'
+
+        return errorStatus
+    }
+
 }
