@@ -6,7 +6,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class SharedService {
+
   public radioObj = new BehaviorSubject<any>({
-    frequency: 7010000
+    type: null,
+    frequency: null,
+    irxs: null,
+    freq: null,
+    mode: null,
+    protection: null,
+    tx: null,
+    rx: null,
+    led: null,
+    fwd_raw: null,
+    fwd_volts: null,
+    fwd_watts: null,
+    swr: null,
+    ref_raw: null,
+    ref_volts: null,
+    ref_watts: null,
+    connection: null
   });
 }

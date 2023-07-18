@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { DecimalPipe, Location } from '@angular/common';
+import { DecimalPipe, Location, NgSwitchCase } from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
@@ -11,6 +11,7 @@ import { GlobalConstants } from 'src/app/global-constants';
 import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
+import { CustomErrorsService } from 'src/app/_services/custom-errors.service';
 
 @Component({
   selector: 'app-root',
@@ -58,12 +59,10 @@ export class AppComponent implements OnInit {
     private utils: UtilsService,
     private location: Location,
     private websocketService: WebsocketService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private errorService: CustomErrorsService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    // router.events.subscribe((val) => {
-    //     this.chackIsMenuPage()
-    // });
 
     router.events.subscribe((val) => {
       // see also
@@ -73,6 +72,10 @@ export class AppComponent implements OnInit {
       }
     });
 
+    this.startWebSocketService()
+  }
+
+  startWebSocketService() {
     //Run Websocket to listen PTT if app is runing local (station)
     // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
 
@@ -80,51 +83,87 @@ export class AppComponent implements OnInit {
       next: newValue => this.radioObj
     });
 
-    websocketService.messages.subscribe(data => {
-
-      this.radioObj = {
-        irxs: 4,
-        freq: 484804804,
-        mode: 'USB',
-        protection: 'off' // TODO - Change this one to bit or boolean?
-      }
-
-      this.sharedService.radioObj.value.frequency = this.radioObj.freq;
+    this.websocketService.messages.subscribe(data => {
+      this.checkWSObjectType(data)
 
 
-      // TODO ------------------------------------
-
-      // 1 - Sugerir obter todos esses dados (radio config)
-      // { 
-      //   "tx": true, 
-      //   "rx": false, 
-      //   "led": false, 
-      //   "fwd_raw": "", 
-      //   "fwd_volts": 0, 
-      //   "fwd_watts": 0, 
-      //   "swr": 0, 
-      //   "ref_raw": "", 
-      //   "ref_volts": 0, 
-      //   "ref_watts": 0, 
-      //   "protection": false, 
-      //   "connection": false 
+      //OBJETO DE TESTE
+      // this.radioObj = {
+      //   type: 'A',
+      //   irxs: 4,
+      //   freq: 484804804,
+      //   mode: 'USB',
+      //   protection: 'off',
+      //   tx: true,
+      //   rx: false,
+      //   led: false,
+      //   fwd_raw: 0,
+      //   fwd_volts: 0,
+      //   fwd_watts: 0,
+      //   swr: 0,
+      //   ref_raw: 0,
+      //   ref_volts: 0,
+      //   ref_watts: 0,
+      //   connection: false
       // }
 
-      // 2 - Se obter ptt Hardware mode nevegar para voice conferir se esta usando hardware
-      // 3 - Atualizar dados interface - doing
-      // 4 - Botao Controle de frequencia 
-      // 5 - Tornar essas informacoes globais de facil acesso
-      // 6 - Refatorar codigo
-      // 7 - Enviar JSON do servidor
+      // this.checkWSObjectType(this.radioObj)
 
 
     }, err => {
-      console.log("err" + err)
+
+      //Pegar variavel erro para visualizar oq vem ....
+      var newError = {
+        controller: 'websocket',
+        error_code: '500',
+        error_message: 'Error to retrieve data from websocket service',
+        stacktrace: err,
+        station: GlobalConstants.domain,
+        created_at: new Date()
+      }
+
+      this.errorService.newCustomError(err)
 
     }, () => {
-      console.log('complete, closing connection...')
+      console.log('complete, closing websocket connection...')
     })
-    // }
+  }
+
+
+  checkWSObjectType(data) {
+    switch (data.type) {
+      case 'A':
+        this.mountObjectA(data)
+      case 'B':
+        this.mountObjectB(data)
+      case 'C':
+        this.mountObjectC(data)
+    }
+  }
+
+  mountObjectA(data) {
+    this.sharedService.radioObj.value.type = data.type;
+    this.sharedService.radioObj.value.irxs = data.irxs;
+    this.sharedService.radioObj.value.frequency = data.freq;
+    this.sharedService.radioObj.value.frequency = data.freq;
+    this.sharedService.radioObj.value.mode = data.mode;
+    this.sharedService.radioObj.value.protection = data.protection;
+    this.sharedService.radioObj.value.tx = data.tx;
+  }
+  mountObjectB(data) {
+    this.sharedService.radioObj.value.rx = data.rx;
+    this.sharedService.radioObj.value.led = data.led;
+    this.sharedService.radioObj.value.fwd_raw = data.fwd_raw;
+    this.sharedService.radioObj.value.fwd_volts = data.fwd_volts;
+    this.sharedService.radioObj.value.fwd_watts = data.fwd_watts;
+  }
+
+  mountObjectC(data) {
+    this.sharedService.radioObj.value.swr = data.swr;
+    this.sharedService.radioObj.value.ref_raw = data.ref_raw;
+    this.sharedService.radioObj.value.ref_volts = data.ref_volts;
+    this.sharedService.radioObj.value.ref_watts = data.ref_watts;
+    this.sharedService.radioObj.value.connection = data.connection;
   }
 
   sendMsg() {

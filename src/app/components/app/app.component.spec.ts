@@ -45,6 +45,12 @@ describe('AppComponent', () => {
     // expect(compiled.querySelector('.content span').textContent).toContain('hermes app is running!');
   });
 
+  // it('should create the WS', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   const app = fixture.componentInstance;
+  //   expect(app).toBeTruthy();
+  // });
+
   // it('check system', () => {
   //   expect(app.getSystemStatus()).toBeTrue();
   // });
