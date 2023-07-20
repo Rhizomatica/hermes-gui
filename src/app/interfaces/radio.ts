@@ -1,7 +1,6 @@
 export interface Radio {
   type: String,
-  irxs: Number,
-  freq: Number,
+  freq: number,
   mode: String,
   protection: String,
   tx: Boolean,
