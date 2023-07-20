@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { ApiService } from 'src/app/_services/api.service';
@@ -8,6 +8,8 @@ import { User } from 'src/app/interfaces/user';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { RadioService } from 'src/app/_services/radio.service';
 import { GlobalConstants } from 'src/app/global-constants';
+import { Radio } from 'src/app/interfaces/radio';
+import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +27,8 @@ export class homeComponent implements OnInit {
     private radioService: RadioService,
     private darkModeService: DarkModeService,
     private router: Router,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private sharedService: SharedService
   ) {
     this.checkBrowser(utils.detectBrowserName())
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -41,10 +44,13 @@ export class homeComponent implements OnInit {
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
   alertBrowserXP: Boolean = false
-  frequency: Number = 0
+  frequency: number = 0
   mode: String = ''
   showVoiceCard: Boolean = true
   isGateway:boolean = GlobalConstants.gateway
+  radio: Radio
+
+  @Input() radioObj: Radio
   
   logOff() {
     this.authenticationService.logout();
@@ -80,23 +86,14 @@ export class homeComponent implements OnInit {
     this.alertBrowserXP = false
   }
 
-  getRadioStatus(): void {
-    this.radioService.getRadioStatus().subscribe(
-      (res: any) => {
-        this.radio = res
-        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq  / 1000
-        this.mode = this.radio.mode
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false;
-      }
-    );
-  }
-
   ngOnInit(): void {
     this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light';
-    this.getRadioStatus()
+
+    this.radio = this.sharedService.radioObj.value
+    this.formatFrequency()
+  }
+
+  formatFrequency() {
+    this.frequency = this.radio.freq == 0 || this.radio.freq == null ? 0 : this.radio.freq / 1000
   }
 }

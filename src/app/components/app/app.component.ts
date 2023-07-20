@@ -85,31 +85,6 @@ export class AppComponent implements OnInit {
 
     this.websocketService.messages.subscribe(data => {
       this.checkWSObjectType(data)
-
-
-      //OBJETO DE TESTE
-      // this.radioObj = {
-      //   type: 'A',
-      //   irxs: 4,
-      //   freq: 484804804,
-      //   mode: 'USB',
-      //   protection: 'off',
-      //   tx: true,
-      //   rx: false,
-      //   led: false,
-      //   fwd_raw: 0,
-      //   fwd_volts: 0,
-      //   fwd_watts: 0,
-      //   swr: 0,
-      //   ref_raw: 0,
-      //   ref_volts: 0,
-      //   ref_watts: 0,
-      //   connection: false
-      // }
-
-      // this.checkWSObjectType(this.radioObj)
-
-
     }, err => {
 
       //Pegar variavel erro para visualizar oq vem ....
@@ -132,38 +107,25 @@ export class AppComponent implements OnInit {
 
   checkWSObjectType(data) {
     switch (data.type) {
-      case 'A':
-        this.mountObjectA(data)
-      case 'B':
-        this.mountObjectB(data)
-      case 'C':
-        this.mountObjectC(data)
+      case 0:
+        this.mountObjectTypeZero(data)
+      case 1:
+        this.mountObjectTypeOne(data)
     }
   }
 
-  mountObjectA(data) {
-    this.sharedService.radioObj.value.type = data.type;
-    this.sharedService.radioObj.value.irxs = data.irxs;
-    this.sharedService.radioObj.value.frequency = data.freq;
-    this.sharedService.radioObj.value.frequency = data.freq;
-    this.sharedService.radioObj.value.mode = data.mode;
-    this.sharedService.radioObj.value.protection = data.protection;
-    this.sharedService.radioObj.value.tx = data.tx;
-  }
-  mountObjectB(data) {
-    this.sharedService.radioObj.value.rx = data.rx;
-    this.sharedService.radioObj.value.led = data.led;
-    this.sharedService.radioObj.value.fwd_raw = data.fwd_raw;
-    this.sharedService.radioObj.value.fwd_volts = data.fwd_volts;
+  mountObjectTypeZero(data) {
     this.sharedService.radioObj.value.fwd_watts = data.fwd_watts;
+    this.sharedService.radioObj.value.freq = data.freq;
+    this.sharedService.radioObj.value.swr = data.swr;
+    this.sharedService.radioObj.value.protection = data.protection;
   }
 
-  mountObjectC(data) {
-    this.sharedService.radioObj.value.swr = data.swr;
-    this.sharedService.radioObj.value.ref_raw = data.ref_raw;
-    this.sharedService.radioObj.value.ref_volts = data.ref_volts;
-    this.sharedService.radioObj.value.ref_watts = data.ref_watts;
-    this.sharedService.radioObj.value.connection = data.connection;
+  mountObjectTypeOne(data) {
+    this.sharedService.radioObj.value.freq = data.freq;
+    this.sharedService.radioObj.value.mode = data.mode;
+    this.sharedService.radioObj.value.tx = data.tx;
+    this.sharedService.radioObj.value.rx = data.rx;
   }
 
   sendMsg() {

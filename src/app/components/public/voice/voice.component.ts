@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { RadioService } from 'src/app/_services/radio.service';
 import { interval } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
+import { Radio } from 'src/app/interfaces/radio';
 
 @Component({
   selector: 'voice',
@@ -20,12 +21,12 @@ export class VoiceComponent implements OnInit {
   errorAlert: Boolean = false
   frequency: number = 0
   mode: String
-  radio: any
   intervallTimer = interval(900);
   subscription = null
+  radio: Radio
 
-  @Input() radioObj: Object
-  
+  @Input() radioObj: Radio
+
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
@@ -38,21 +39,6 @@ export class VoiceComponent implements OnInit {
 
   public closeError() {
     this.errorAlert = false;
-  }
-
-  getRadioStatus(): void {
-    this.radioService.getRadioStatus().subscribe(
-      (res: any) => {
-        this.radio = res
-        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq / 1000
-        this.mode = this.radio.mode
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false;
-      }
-    );
   }
 
   setUSB() {
@@ -76,19 +62,20 @@ export class VoiceComponent implements OnInit {
   }
 
   ngOnChanges(change) {
-    change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radioObj = change.radioObj.currentValue : null
+    change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
 
-    this.radio = this.radioObj
-
-    this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq / 1000
+    this.formatFrequency()
     this.mode = this.radio.mode
     this.loading = false
   }
 
   ngOnInit(): void {
-    console.log(this.sharedService.radioObj.value.frequency)
-    this.radio = this.sharedService.radioObj
-    // this.subscription = this.intervallTimer.subscribe(() => this.getRadioStatus());
+    this.radio = this.sharedService.radioObj.value
+    this.formatFrequency()
+  }
+
+  formatFrequency() {
+    this.frequency = this.radio.freq == 0 || this.radio.freq == null ? 0 : this.radio.freq / 1000
   }
 
   ngOnDestroy() {
