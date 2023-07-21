@@ -32,6 +32,28 @@
       <a href="/downloads/deltachat.dmg" target="_blank" download="deltachat.dmg">Mac OSX</a><br>
     </p>
   </div>
+  <div class="m-t-25">
+    <h2 i18n="@@selectusers">Select users to send e-mail:</h2>
+    <ng-container *ngIf="users">
+      <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
+        bindValue="fullmail" groupBy="selectedAllGroup" bindLabel="fullmail" [selectableGroupAsModel]="false"
+        [closeOnSelect]="false" [(ngModel)]="emailto" multiple=true required>
+        <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+          <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+            [ngModelOptions]="{standalone: true}" />
+          <span i18n="@@selectall"> Select All</span>
+        </ng-template>
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+            [ngModelOptions]="{standalone: true}" />{{item.email}}
+        </ng-template>
+      </ng-select>
+    </ng-container>
+    <a href="mailto:{{emailto}}">
+      <button class="m-t-10" [disabled]="emailto?.length == 0">Send email to selected</button>
+    </a>
+  </div>
+  <br />
   <div class="m-t-25" *ngIf="!currentUser">
     <p i18n="@@noaccount">Doesn't have an account?</p>
     <a routerLink="/usermanage">
