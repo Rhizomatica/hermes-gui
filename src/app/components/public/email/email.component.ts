@@ -3,6 +3,7 @@ import { User } from '../../../interfaces/user';
 import { UserService } from '../../../_services/user.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-email',
@@ -14,41 +15,43 @@ export class EmailComponent implements OnInit {
 
   linksOn = false;
   currentUser: User;
-  // users: any;
   error = Error;
   errorAlert = false;
-  // emailto = [];
+  emailto = [];
+  users: any;
+  domain: String
+
 
   constructor(
-    // private userService: UserService,
     private authenticationService: AuthenticationService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private userService: UserService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  // getUsers(): void {
-  //   this.userService.getUsers().subscribe(
-  //     (res: any) => {
-  //       this.users = res;
-  //       for (let i = 0; i < Object.keys(this.users).length; i++) {
-  //         this.users[i].fullmail = this.users[i].email + this.domain;
-  //       }
-  //     }), (err) => {
-  //       this.error = err;
-  //       this.errorAlert = true;
-  //     };
-  // }
+  getUsers(): void {
+    this.userService.getUsers().subscribe(
+      (res: any) => {
+        this.users = res;
+        for (let i = 0; i < Object.keys(this.users).length; i++) {
+          this.users[i].fullmail = this.users[i].email + '@' + this.domain + GlobalConstants.domain;
+        }
+      }), (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      };
+  }
 
 
-  // selectAllForDropdownItems(items: any[]) {
-  //   let allSelect = items => {
-  //     items.forEach(element => {
-  //       element['selectedAllGroup'] = 'selectedAllGroup';
-  //     });
-  //   };
-  //   allSelect(items);
-  // }
+  selectAllForDropdownItems(items: any[]) {
+    let allSelect = items => {
+      items.forEach(element => {
+        element['selectedAllGroup'] = 'selectedAllGroup';
+      });
+    };
+    allSelect(items);
+  }
 
   showlinks() {
     if (this.linksOn == true) {
@@ -57,13 +60,13 @@ export class EmailComponent implements OnInit {
       this.linksOn = true;
     }
   }
-  
+
   closeError() {
     this.errorAlert = false;
   }
 
   ngOnInit(): void {
-    // this.getUsers();
+    this.getUsers();
   }
 
 }
