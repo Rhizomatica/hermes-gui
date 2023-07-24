@@ -9,8 +9,6 @@ export class SharedService {
 
   public radioObj = new BehaviorSubject<any>({
     type: null,
-    frequency: null,
-    irxs: null,
     freq: null,
     mode: null,
     protection: null,

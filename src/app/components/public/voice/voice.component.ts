@@ -63,19 +63,10 @@ export class VoiceComponent implements OnInit {
 
   ngOnChanges(change) {
     change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
-
-    this.formatFrequency()
-    this.mode = this.radio.mode
-    this.loading = false
   }
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
-    this.formatFrequency()
-  }
-
-  formatFrequency() {
-    this.frequency = this.radio.freq == 0 || this.radio.freq == null ? 0 : this.radio.freq / 1000
   }
 
   ngOnDestroy() {

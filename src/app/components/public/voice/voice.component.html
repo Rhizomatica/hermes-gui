@@ -1,13 +1,13 @@
 <loading [loading]="loading"></loading>
 <div class="radiophony">
   <div class="row">
-    <span class="fullfrequency">{{frequency}} kHz</span>
+    <span class="fullfrequency">{{radio.freq}} kHz</span>
   </div>
-  <div class="row m-t-25 voiceactions" *ngIf="mode!=null">
-    <button class="m-t-10" (click)="setUSB()" [disabled]="mode === 'USB' ? true : null">
+  <div class="row m-t-25 voiceactions" *ngIf="radio.mode!=null">
+    <button class="m-t-10" (click)="setUSB()" [disabled]="radio.mode === 'USB' ? true : null">
       USB
     </button>
-    <button class="m-t-10 m-l-10" (click)="setLSB()" [disabled]="mode === 'LSB' ? true : null">
+    <button class="m-t-10 m-l-10" (click)="setLSB()" [disabled]="radio.mode === 'LSB' ? true : null">
       LSB
     </button>
   </div>

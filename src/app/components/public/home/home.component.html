@@ -4,11 +4,10 @@
             <a routerLink="/voice" *ngIf="showVoiceCard">
                 <div class="card voice">
                     <div class="m-t-25">
-                        <!-- <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/walkie-talkie.svg"> -->
-                        <b>{{frequency}} kHz</b>
+                        <b>{{radio.freq}} kHz</b>
                     </div>
                     <div i18n="@@voicecard">
-                        {{mode}}
+                        {{radio.mode}}
                     </div>
                 </div>
             </a>

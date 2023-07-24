@@ -44,8 +44,6 @@ export class AppComponent implements OnInit {
   isMenuPage: boolean
   currentPage = 'home'
   currentUrl = '/home'
-  frequency: Number = 0
-  frequencyMode: String = null
   received = [];
   sent = [];
   content = '';
@@ -85,6 +83,7 @@ export class AppComponent implements OnInit {
 
     this.websocketService.messages.subscribe(data => {
       this.checkWSObjectType(data)
+      this.radio = this.sharedService.radioObj.value
     }, err => {
 
       //Pegar variavel erro para visualizar oq vem ....
@@ -122,7 +121,7 @@ export class AppComponent implements OnInit {
   }
 
   mountObjectTypeOne(data) {
-    this.sharedService.radioObj.value.freq = data.freq;
+    this.sharedService.radioObj.value.freq = data.freq !== 0 || data.freq !== null ? data.freq / 1000 : 0;
     this.sharedService.radioObj.value.mode = data.mode;
     this.sharedService.radioObj.value.tx = data.tx;
     this.sharedService.radioObj.value.rx = data.rx;
@@ -179,24 +178,6 @@ export class AppComponent implements OnInit {
     );
   }
 
-  getRadioStatus(): void {
-    this.radioService.getRadioStatus().subscribe(
-      (res: any) => {
-        this.radio = res;
-        this.protection = this.radio.protection;
-        this.frequency = this.radio.freq == '' || this.radio.freq == null ? 0 : this.radio.freq / 1000
-        this.frequencyMode = this.radio.mode;
-        this.loading = false;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.radioError = true;
-        this.loading = false;
-      }
-    );
-  }
-
   showServerAlert() {
     if (!this.serverError) {
       this.serverError = true;
@@ -216,8 +197,7 @@ export class AppComponent implements OnInit {
   }
 
   checkLanguage() {
-    !localStorage.getItem('language') ? this.router.navigate(['/languages'])
-      : null;
+    !localStorage.getItem('language') ? this.router.navigate(['/languages']) : null;
   }
 
   closeMobileMenu() {
@@ -249,7 +229,6 @@ export class AppComponent implements OnInit {
     this.loading = true
     console.log('⚚ HERMES RADIO ⚚');
     this.getSystemStatus();
-    this.getRadioStatus();
     this.mobile = this.utils.isMobile()
     this.checkLanguage()
   }
