@@ -97,4 +97,7 @@ export class UtilsService {
     return fileAttr
   }
 
+  formatFrequency(freq){
+    return (Math.round((freq / 1000) * 100) / 100).toFixed(2);
+  }
 }
