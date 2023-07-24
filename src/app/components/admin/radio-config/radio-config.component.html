@@ -25,7 +25,7 @@
             <h3>
               <span i18n="@currentradiofreq">Radio frequency</span>
               <br />
-              <span> {{radio.freq / 1000}} </span>
+              <span> {{radio.freq}} </span>
               kHz
             </h3>
           </div>
@@ -47,8 +47,8 @@
               <span i18n="@reflected">REF </span>
               <br />
               ({{radio.ref_watts}} W)
-              <br />
-              ({{radio.ref_volts}} V)
+              <!-- <br />
+              ({{radio.ref_volts}} V) -->
             </h3>
           </div>
         </div>
@@ -58,8 +58,8 @@
               <span i18n="@forward"> FWD </span>
               <br />
               ({{radio.fwd_watts}} W)
-              <br />
-              ({{radio.fwd_volts}} V)
+              <!-- <br />
+              ({{radio.fwd_volts}} V) -->
             </h3>
           </div>
         </div>
@@ -73,7 +73,7 @@
             </h3>
           </div>
         </div>
-        <div class="card">
+        <!-- <div class="card">
           <div class="row">
             <h3>
               <div i18n="@@serial">Serial Number
@@ -82,7 +82,7 @@
               </div>
             </h3>
           </div>
-        </div>
+        </div> -->
       </div>
       <div *ngIf="isAdmin">
         <div class="flex-right m-t-25">
