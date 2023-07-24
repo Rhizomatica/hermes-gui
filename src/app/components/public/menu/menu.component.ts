@@ -5,6 +5,8 @@ import { CustomError } from '../../../interfaces/customerror'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { CustomErrorsService } from '../../../_services/custom-errors.service';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/_services/shared.service';
+import { Radio } from 'src/app/interfaces/radio';
 
 @Component({
   selector: 'menu',
@@ -19,11 +21,11 @@ export class MenuComponent implements OnInit {
   loading: Boolean = false
   error: String
   errorAlert: Boolean = false
+  radio: Radio
 
   constructor(
-    // private userService: UserService,
     private authenticationService: AuthenticationService,
-    private customErrorsService: CustomErrorsService,
+    private sharedService: SharedService,
     private router: Router,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -43,6 +45,6 @@ export class MenuComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
+    this.radio = this.sharedService.radioObj.value
   }
 }
