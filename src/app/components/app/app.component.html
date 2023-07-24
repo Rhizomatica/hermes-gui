@@ -23,7 +23,7 @@
         </h1>
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsGeneralLoginNoUser()">
-        <span class="nav-frequency">{{radio.mode}} {{radio.freq}} kHz</span>
+        <span class="nav-frequency" *ngIf="radio">{{radio.mode}} {{radio.freq}} kHz</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
@@ -71,8 +71,6 @@
           </div>
         </div>
       </ng-template>
-      <!-- TODO - Create component -->
-
     </div>
   </div>
   <loading [loading]="loading"></loading>
