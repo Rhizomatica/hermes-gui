@@ -114,17 +114,17 @@ export class AppComponent implements OnInit {
   }
 
   mountObjectTypeZero(data) {
-    this.sharedService.radioObj.value.fwd_watts = data.fwd_watts;
-    this.sharedService.radioObj.value.freq = data.freq;
-    this.sharedService.radioObj.value.swr = data.swr;
-    this.sharedService.radioObj.value.protection = data.protection;
+    this.sharedService.radioObj.value.fwd_watts = data.fwd_watts
+    this.sharedService.radioObj.value.freq = data.freq
+    this.sharedService.radioObj.value.swr = data.swr
+    this.sharedService.radioObj.value.protection = data.protection
   }
 
   mountObjectTypeOne(data) {
-    this.sharedService.radioObj.value.freq = data.freq !== 0 || data.freq !== null ? data.freq / 1000 : 0;
-    this.sharedService.radioObj.value.mode = data.mode;
-    this.sharedService.radioObj.value.tx = data.tx;
-    this.sharedService.radioObj.value.rx = data.rx;
+    this.sharedService.radioObj.value.freq = this.utils.formatFrequency(data.freq)
+    this.sharedService.radioObj.value.mode = data.mode
+    this.sharedService.radioObj.value.tx = data.tx
+    this.sharedService.radioObj.value.rx = data.rx
   }
 
   sendMsg() {

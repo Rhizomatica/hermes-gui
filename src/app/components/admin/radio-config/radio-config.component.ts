@@ -74,6 +74,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
+  //TODO - USE WS
   getRadioStatus(): void {
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
