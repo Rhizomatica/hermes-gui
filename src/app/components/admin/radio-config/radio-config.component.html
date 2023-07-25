@@ -36,7 +36,7 @@
               SWR
               <br />
               <span>
-                {{radio.swr_str | slice:0:9}}
+                {{radio.swr | slice:0:9}}
               </span>
             </h3>
           </div>
@@ -100,7 +100,8 @@
         </div>
         <div class="radio" *ngIf="radio">
           <form #ffreq="ngForm" class="formdata field">
-            <span i18n="@@changefrequency">Radio frequency</span>
+            <span i18n="@@changefrequency">Radio frequency: {{radio.freq}}
+            </span>
             <div class="flexible">
               <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
                 value={{frek}}>
@@ -110,8 +111,7 @@
             </div>
           </form>
           <form #frefthreshold="ngForm" class="formdata field" *ngIf="radio">
-            <span i18n="@@prottheshold">Protection activation threshold level:</span>
-            {{radio.refthreshold}}
+            <span i18n="@@prottheshold">Protection activation threshold level: {{radio.refthreshold}}</span>
             <div class="flexible">
               <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
                 value={{refthreshold}}>
@@ -127,14 +127,14 @@
               <span>USB</span>
               <div class="switch">
                 <input type="checkbox" name="mode" [checked]="modeSwitch">
-                <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{modeSwitch}}"
+                <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{radio.mode}}"
                   [checked]="modeSwitch"></span>
               </div>
               <span>LSB</span>
             </div>
           </form>
           <form #fptt="ngForm" class="formdata field">
-            <span>PTT ({{this.ptt}})
+            <span>PTT ({{radio.tx == false ? 'OFF' : 'ON'}})
             </span>
             <div class="switch float-right">
               <input type="checkbox" name="mode" [checked]="radio.tx">
