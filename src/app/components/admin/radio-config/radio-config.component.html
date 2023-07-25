@@ -111,7 +111,7 @@
             </div>
           </form>
           <form #frefthreshold="ngForm" class="formdata field" *ngIf="radio">
-            <span i18n="@@prottheshold">Protection activation threshold level: {{radio.refthreshold}}</span>
+            <span i18n="@@prottheshold">Protection activation threshold level: </span>
             <div class="flexible">
               <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
                 value={{refthreshold}}>
@@ -134,8 +134,7 @@
             </div>
           </form>
           <form #fptt="ngForm" class="formdata field">
-            <span>PTT ({{radio.tx == false ? 'OFF' : 'ON'}})
-            </span>
+            <span>PTT ({{radio.tx == false ? 'OFF' : 'ON'}})</span>
             <div class="switch float-right">
               <input type="checkbox" name="mode" [checked]="radio.tx">
               <span class="slider round" *ngIf="isAdmin" (click)="changePtt($event)" value="{{radio.tx}}"

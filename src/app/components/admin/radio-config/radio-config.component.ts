@@ -46,9 +46,7 @@ export class RadioConfigComponent implements OnInit {
   realfreq: any;
   led: any;
   ptt: any;
-  // freq: any;
-  frek: any; //TODO - ????
-  // protection: any;
+  frek: any;
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
 
@@ -281,7 +279,6 @@ export class RadioConfigComponent implements OnInit {
   shutDown() {
     this.shuttingDownNow = true;
     this.apiService.sysShutdown();
-
   }
 
   reboot() {
@@ -294,6 +291,7 @@ export class RadioConfigComponent implements OnInit {
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
     this.frek = this.radio.freq
     this.isAdmin = this.currentUser && this.currentUser.admin
+    this.refthreshold = this.radio.refthreshold //TODO - Missing
     this.loading = false
   }
 }
