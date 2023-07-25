@@ -9,9 +9,8 @@ require('dotenv').config()
 const envConfigFile = `export const environment = {
    appName: '${process.env.APP_NAME}',
    version: '${process.env.VERSION}',
-   apiUrl: '${process.env.API_URL}',
    production: '${process.env.PRODUCTION}',
-   webSocketUrl: '${process.env.WEBSOCKET_URL}',
+   local: ${process.env.LOCAL},
    hasGPS: '${process.env.HAS_GPS}',
    domain: '${process.env.DOMAIN}',
    gateway: ${process.env.GATEWAY},
