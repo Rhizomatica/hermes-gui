@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
   loading = true;
   changeLanguage = false
   title = 'hermes.radio'
-  mobile: any
   isMenuPage: boolean
   currentPage = 'home'
   currentUrl = '/home'
@@ -63,7 +62,6 @@ export class AppComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     router.events.subscribe((val) => {
-      // see also
       if (val instanceof NavigationEnd) {
         this.chackIsMenuPage()
         this.updateBreadcrumb()
@@ -225,11 +223,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkGeneralLogin()
-    this.loading = true
     console.log('⚚ HERMES RADIO ⚚');
+    this.loading = true
+    this.checkGeneralLogin()
     this.getSystemStatus();
-    this.mobile = this.utils.isMobile()
+    this.utils.isMobile()
     this.checkLanguage()
   }
 }

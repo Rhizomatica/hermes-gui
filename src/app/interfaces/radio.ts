@@ -7,11 +7,12 @@ export interface Radio {
   rx: Boolean,
   led: Boolean,
   fwd_raw: Number,
-  fwd_volts: Number,
+  // fwd_volts: Number,
   fwd_watts: Number,
   swr: Number,
   ref_raw: Number,
-  ref_volts: Number,
+  // ref_volts: Number,
   ref_watts: Number,
   connection: Boolean
+  //PTT?
 }
