@@ -21,7 +21,6 @@ export class EmailComponent implements OnInit {
   users: any;
   domain: String
 
-
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -35,14 +34,13 @@ export class EmailComponent implements OnInit {
       (res: any) => {
         this.users = res;
         for (let i = 0; i < Object.keys(this.users).length; i++) {
-          this.users[i].fullmail = this.users[i].email + '@' + this.domain + GlobalConstants.domain;
+          this.users[i].fullmail = this.users[i].email + '@' + GlobalConstants.domain;
         }
       }), (err) => {
         this.error = err;
         this.errorAlert = true;
       };
   }
-
 
   selectAllForDropdownItems(items: any[]) {
     let allSelect = items => {
@@ -68,5 +66,4 @@ export class EmailComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
   }
-
 }
