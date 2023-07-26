@@ -17,15 +17,16 @@ export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;
 
+    constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) { }
 
-    constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
+    public startService(){
         this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl}`).pipe(
             map((response: MessageEvent): Message => {
                 return JSON.parse(response.data);
             })
         );
     }
-
+    
     public connect(url): AnonymousSubject<MessageEvent> {
         if (!this.subject) {
             this.subject = this.create(url);
