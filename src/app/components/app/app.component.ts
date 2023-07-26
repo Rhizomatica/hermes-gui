@@ -65,10 +65,13 @@ export class AppComponent implements OnInit {
       if (val instanceof NavigationEnd) {
         this.chackIsMenuPage()
         this.updateBreadcrumb()
+
+        if (this.currentUser && !this.websocketService.messages) {
+          this.websocketService.startService()
+          this.startWebSocketService()
+        }
       }
     });
-
-    this.startWebSocketService()
   }
 
   startWebSocketService() {
