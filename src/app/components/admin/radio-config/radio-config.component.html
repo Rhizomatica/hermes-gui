@@ -48,7 +48,7 @@
             <h3>
               <span i18n="@reflected">REF </span>
               <br />
-              ({{radio.ref_watts}} W)
+              ({{radio.ref_watts ? radio.ref_watts : 0}} W)
               <!-- <br />
               ({{radio.ref_volts}} V) -->
             </h3>
@@ -59,7 +59,7 @@
             <h3>
               <span i18n="@forward"> FWD </span>
               <br />
-              ({{radio.fwd_watts}} W)
+              ({{radio.fwd_watts ? radio.fwd_watts : 0}} W)
               <!-- <br />
               ({{radio.fwd_volts}} V) -->
             </h3>
