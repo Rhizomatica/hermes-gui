@@ -47,6 +47,7 @@ export class RadioConfigComponent implements OnInit {
   led: any;
   ptt: any;
   frek: any;
+  serial: String
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
 
@@ -149,7 +150,7 @@ export class RadioConfigComponent implements OnInit {
     this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
       (res: any) => {
 
-       }, (err) => {
+      }, (err) => {
         this.error = err;
         this.errorAlert = true;
       }
@@ -286,12 +287,28 @@ export class RadioConfigComponent implements OnInit {
     this.apiService.sysReboot();
   }
 
+  getRadioStatus() {
+    this.loading = true
+    this.radioService.getRadioStatus().subscribe(
+      (res: any) => {
+        this.refthreshold = res.refthreshold;
+        this.serial = res.serial;
+        // this.ptt = this.radio.tx ? 'ON' : 'OFF'
+        return res;
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+      }
+    );
+  }
+
   ngOnInit(): void {
+    this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
     this.frek = this.radio.freq
     this.isAdmin = this.currentUser && this.currentUser.admin
-    this.refthreshold = this.radio.refthreshold //TODO - Missing
     this.loading = false
   }
 }
