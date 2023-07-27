@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
-import { CustomError } from '../../../interfaces/customerror'
-// import { UserService } from '../../../_services/user.service'
 import { AuthenticationService } from '../../../_services/authentication.service';
-import { CustomErrorsService } from '../../../_services/custom-errors.service';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
+import { WebsocketService } from 'src/app/_services/websocket.service';
 
 @Component({
   selector: 'menu',
@@ -27,21 +25,23 @@ export class MenuComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private sharedService: SharedService,
     private router: Router,
+    private websocketService: WebsocketService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
   }
 
-
   public closeError() {
     this.errorAlert = false;
   }
 
+  //TODO - Virar utils?
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.currentUser = null;
+    this.websocketService.ws.close()
   }
   
   ngOnInit(): void {

@@ -1,15 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
-import { ApiService } from 'src/app/_services/api.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
 import { UtilsService } from 'src/app/_services/utils.service';
-import { RadioService } from 'src/app/_services/radio.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { Radio } from 'src/app/interfaces/radio';
 import { SharedService } from 'src/app/_services/shared.service';
+import { WebsocketService } from 'src/app/_services/websocket.service';
 
 @Component({
   selector: 'app-home',
@@ -23,12 +22,11 @@ export class homeComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private apiService: ApiService,
-    private radioService: RadioService,
     private darkModeService: DarkModeService,
     private router: Router,
     private utils: UtilsService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private websocketService: WebsocketService
   ) {
     this.checkBrowser(utils.detectBrowserName())
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -55,6 +53,7 @@ export class homeComponent implements OnInit {
     this.router.navigate(['/login']);
     this.currentUser = null;
     this.admin = false
+    this.websocketService.ws.close()
   }
 
   toggle(): void {
