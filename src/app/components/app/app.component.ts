@@ -12,6 +12,7 @@ import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { CustomErrorsService } from 'src/app/_services/custom-errors.service';
+import { CustomError } from 'src/app/interfaces/customerror';
 
 @Component({
   selector: 'app-root',
@@ -75,6 +76,7 @@ export class AppComponent implements OnInit {
   }
 
   startWebSocketService() {
+
     //Run Websocket to listen PTT if app is runing local (station)
     // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
 
@@ -87,17 +89,18 @@ export class AppComponent implements OnInit {
       this.radio = this.sharedService.radioObj.value
     }, err => {
 
-      //Pegar variavel erro para visualizar oq vem ....
-      var newError = {
+      var newError: CustomError
+
+      newError = {
         controller: 'websocket',
-        error_code: '500',
+        error_code: 500,
         error_message: 'Error to retrieve data from websocket service',
         stacktrace: err,
         station: GlobalConstants.domain,
         created_at: new Date()
       }
 
-      this.errorService.newCustomError(err)
+      this.errorService.newCustomError(newError)
 
     }, () => {
       console.log('complete, closing websocket connection...')
@@ -185,12 +188,6 @@ export class AppComponent implements OnInit {
     } else {
       this.serverError = false;
     }
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-    this.currentUser = null;
   }
 
   onActivate(event) {

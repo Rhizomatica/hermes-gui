@@ -16,17 +16,18 @@ export interface Message {
 export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;
+    public ws: WebSocket
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) { }
 
-    public startService(){
+    public startService() {
         this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl}`).pipe(
             map((response: MessageEvent): Message => {
                 return JSON.parse(response.data);
             })
         );
     }
-    
+
     public connect(url): AnonymousSubject<MessageEvent> {
         if (!this.subject) {
             this.subject = this.create(url);
@@ -35,21 +36,21 @@ export class WebsocketService {
     }
 
     private create(url): AnonymousSubject<MessageEvent> {
-        let ws = new WebSocket(url);
+        this.ws = new WebSocket(url);
 
         let observable = new Observable((obs: Observer<MessageEvent>) => {
-            ws.onmessage = obs.next.bind(obs);
-            ws.onerror = obs.error.bind(obs);
-            ws.onclose = obs.complete.bind(obs);
-            return ws.close.bind(ws);
+            this.ws.onmessage = obs.next.bind(obs);
+            this.ws.onerror = obs.error.bind(obs);
+            this.ws.onclose = obs.complete.bind(obs);
+            return this.ws.close.bind(this.ws);
         });
 
         let observer = {
             error: null,
             complete: null,
             next: (data: Object) => {
-                if (ws.readyState === WebSocket.OPEN) {
-                    ws.send(JSON.stringify(data));
+                if (this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(data));
                 }
             }
         };
