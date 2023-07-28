@@ -1,17 +1,17 @@
 <loading [loading]="loading"></loading>
 <div class="">
   <div class="flexible">
-    <h2 i18n="@@admmanage">User Management</h2>
+    <h2 i18n="@@admmanage" *ngIf="!isEditing">User Management</h2>
+    <h2 *ngIf="isEditing">
+      <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
+      <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
+    </h2>
     <div class="row">
       <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>
   </div>
   <div *ngIf="currentUser">
     <div>
-      <h5 *ngIf="isEditing">
-        <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
-        <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
-      </h5>
       <ng-container *ngIf="!isEditing">
         <div id="userlist" class="multiplist2 users m-t-10">
           <input id="searchbox1" placeholder="Search Users" [(ngModel)]="searchUser" i18n-placeholder />
@@ -31,27 +31,27 @@
   <ng-container *ngIf="selectedUser">
     <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
       <label for="email">
-        email
+        Email
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
           placeholder="write the username" (focusout)="checkFullName(selectedUser.name)">
       </label>
       <a>{{selectedUser.email}}@{{domain}}</a> 
       <label for="name">
-        <span i18n="@@name">full name</span>
-        <input name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>
+        <span i18n="@@name">Full name</span>
+        <p>{{selectedUser.name}}</p>
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
         full name is required
       </div>
       <label>
-        <span i18n="@@phonenumber">phone number</span>
+        <span i18n="@@phonenumber">Phone number</span>
         <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number" />
       </label>
       <div class="selector"></div>
       <hr>
       <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
       <label *ngIf="showPassword">
-      <span i18n="@@passwordlabeluser">password</span>
+      <span i18n="@@passwordlabeluser">Password</span>
         <br />
         <label for="passwd">
           <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password" minlength="6"
@@ -71,7 +71,7 @@
         </div>
       </label>
       <label class="m-t-25" *ngIf="isadmin">
-        <span i18n="@@isadmin">is admin</span>
+        <span i18n="@@isadmin">Is admin</span>
         <div class="switch">
           <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin" [enabled]="flagAdmin">
           <span class="slider round"></span>
