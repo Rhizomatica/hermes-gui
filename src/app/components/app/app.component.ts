@@ -107,7 +107,6 @@ export class AppComponent implements OnInit {
     })
   }
 
-
   checkWSObjectType(data) {
     switch (data.type) {
       case 0:
@@ -156,14 +155,6 @@ export class AppComponent implements OnInit {
         this.loading = false
       }
     );
-  }
-
-  resetProtection() {
-    if (this.resetting === true) {
-      this.resetting = false;
-    } else {
-      this.resetting = true;
-    }
   }
 
   confirmReset() {
