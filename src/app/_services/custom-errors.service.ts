@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError} from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { CustomError } from '../interfaces/customerror';
 import { GlobalConstants } from '../global-constants';
@@ -53,7 +53,7 @@ export class CustomErrorsService {
 
   newCustomError(erro: CustomError): Observable<CustomError> {
     const url = `${GlobalConstants.apiURL}/customerrors`;
-    return this.http.post<CustomError>(url, erro).pipe(
+    return this.http.post<CustomError>(url, erro, this.httpOptions).pipe(
       catchError(this.handleError));
   }
 
