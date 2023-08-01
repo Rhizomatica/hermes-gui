@@ -77,9 +77,6 @@ export class AppComponent implements OnInit {
 
   startWebSocketService() {
 
-    //Run Websocket to listen PTT if app is runing local (station)
-    // if (utils.isItRuningLocal() && utils.isSBitxRadio()) {
-
     this.sharedService.radioObj.subscribe({
       next: newValue => this.radioObj
     });
@@ -87,6 +84,8 @@ export class AppComponent implements OnInit {
     this.websocketService.messages.subscribe(data => {
       this.checkWSObjectType(data)
       this.radio = this.sharedService.radioObj.value
+      this.checkingPTTHardwareCommand()
+
     }, err => {
 
       var newError: CustomError
@@ -155,6 +154,12 @@ export class AppComponent implements OnInit {
         this.loading = false
       }
     );
+  }
+
+  checkingPTTHardwareCommand(){
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio() && this.radio.ptt) {
+      this.router.navigate(['/voice'])
+    }
   }
 
   confirmReset() {

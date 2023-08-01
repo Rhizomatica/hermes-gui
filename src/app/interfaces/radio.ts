@@ -14,5 +14,5 @@ export interface Radio {
   // ref_volts: Number,
   ref_watts: Number,
   connection: Boolean
-  //PTT?
+  ptt: Boolean
 }
