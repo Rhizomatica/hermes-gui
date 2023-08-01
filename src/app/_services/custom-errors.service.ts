@@ -53,7 +53,7 @@ export class CustomErrorsService {
 
   newCustomError(erro: CustomError): Observable<CustomError> {
     const url = `${GlobalConstants.apiURL}/customerrors`;
-    return this.http.post<CustomError>(url, erro, this.httpOptions).pipe(
+    return this.http.post<CustomError>(url, erro).pipe(
       catchError(this.handleError));
   }
 
