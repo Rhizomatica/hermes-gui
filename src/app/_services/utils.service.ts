@@ -34,8 +34,7 @@ export class UtilsService {
   }
 
   isItRuningLocal() {
-    var url = window.location.href
-    return url === 'http://localhost:4200/' || url === 'http://127.0.0.1:4200/' ? true : false
+    return window.location.href === 'http://localhost:4200/' || window.location.href === 'http://127.0.0.1:4200/' ? true : false
   }
 
   isSBitxRadio() {
