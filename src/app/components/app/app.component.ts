@@ -87,13 +87,13 @@ export class AppComponent implements OnInit {
       this.checkingPTTHardwareCommand()
 
     }, err => {
-
+      
       var newError: CustomError
 
       newError = {
         controller: 'websocket',
         error_code: 500,
-        error_message: 'Error to retrieve data from websocket service',
+        error_message: 'Error to connect on websocket service',
         stacktrace: err,
         station: GlobalConstants.domain,
         created_at: new Date()
