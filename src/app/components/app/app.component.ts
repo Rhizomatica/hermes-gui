@@ -86,21 +86,23 @@ export class AppComponent implements OnInit {
       this.radio = this.sharedService.radioObj.value
       this.checkingPTTHardwareCommand()
 
-    }, err => {
-      
-      var newError: CustomError
+    }, async err => {
 
-      newError = {
+      var newError: CustomError = {
         controller: 'websocket',
         error_code: 500,
         error_message: 'Error to connect on websocket service',
-        stacktrace: err,
-        station: GlobalConstants.domain,
-        created_at: new Date()
+        stacktrace: err
       }
 
-      this.errorService.newCustomError(newError)
-
+      this.loading = true
+      await this.errorService.newCustomError(newError).subscribe(
+        (res: any) => {
+          this.loading = false
+        },(err) => {
+          this.loading = false
+        }
+      );
     }, () => {
       console.log('complete, closing websocket connection...')
     })
