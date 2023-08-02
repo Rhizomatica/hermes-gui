@@ -89,9 +89,20 @@
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
               value={{frek}}>
-            <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
+            <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
               change frequency
             </button>
+          </div>
+          <div class="overall alert" *ngIf="confirmSet">
+            <div class="cv">
+              <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
+                <br />
+                this may cause the system to stop
+              </span>
+              <br />
+              <button (click)="changeFrequency(ffreq)" i18n="@@changer">change</button>
+              <button class="m-l-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
+            </div>
           </div>
         </form>
         <form #frefthreshold="ngForm" class="formdata field" *ngIf="isAdmin">
@@ -157,17 +168,6 @@
       </div>
 
       <!-- ALERTS -->
-      <div class="overall alert" *ngIf="confirmSet">
-        <div class="cv">
-          <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
-            <br />
-            this may cause the system to stop
-          </span>
-          <br />
-          <button (click)="screenSet()" i18n="@@changer">change</button>
-          <button class="m-l-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-        </div>
-      </div>
       <div class="overall alert" *ngIf="!reseting==false">
         <div class="cv">
           <span i18n="@@confirmreset">
