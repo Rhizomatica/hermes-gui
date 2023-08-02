@@ -7,6 +7,7 @@ import { User } from '../../../interfaces/user';
 import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'app-radio-config',
@@ -48,6 +49,7 @@ export class RadioConfigComponent implements OnInit {
   ptt: any;
   frek: any;
   serial: String
+  localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
 
@@ -55,7 +57,8 @@ export class RadioConfigComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
     private apiService: ApiService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private utils: UtilsService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -310,6 +313,7 @@ export class RadioConfigComponent implements OnInit {
     this.frek = this.radio.freq
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
+    this.localUsing = this.utils.isItRuningLocal()
   }
 }
 
