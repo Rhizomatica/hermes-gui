@@ -88,21 +88,8 @@ export class AppComponent implements OnInit {
 
     }, async err => {
 
-      var newError: CustomError = {
-        controller: 'websocket',
-        error_code: 500,
-        error_message: 'Error to connect on websocket service',
-        stacktrace: err
-      }
-
-      this.loading = true
-      await this.errorService.newCustomError(newError).subscribe(
-        (res: any) => {
-          this.loading = false
-        },(err) => {
-          this.loading = false
-        }
-      );
+      this.saveWebsocketError()
+      
     }, () => {
       console.log('complete, closing websocket connection...')
     })
@@ -142,6 +129,30 @@ export class AppComponent implements OnInit {
 
     this.sent.push(message);
     this.websocketService.messages.next(message);
+  }
+
+  async saveWebsocketError(): Promise<void> {
+
+    // f.value.controller = 'websocket'
+    // f.value.error_code = 500
+    // f.value.error_message = 'Error to connect on websocket service'
+    // f.value.stacktrace = null
+
+    var newError: CustomError = {
+      controller: 'websocket',
+      error_code: 500,
+      error_message: 'Error to connect on websocket service',
+      stacktrace: null
+    }
+
+    this.loading = true
+    await this.errorService.newCustomError(newError).subscribe(
+      (res: any) => {
+        this.loading = false
+      },(err) => {
+        this.loading = false
+      }
+    );
   }
 
   getSystemStatus(): void {
