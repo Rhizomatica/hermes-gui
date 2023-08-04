@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="radio" *ngIf="radio">
-        <form #ffreq="ngForm" class="formdata field" *ngIf="localUsing">
+        <form #ffreq="ngForm" class="formdata field" *ngIf="(localUsing && !isAdmin) || isAdmin">
           <span i18n="@@changefrequency">Radio frequency: {{radio.freq}}
           </span>
           <div class="flexible">
