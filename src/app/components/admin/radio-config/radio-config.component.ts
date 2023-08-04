@@ -84,21 +84,24 @@ export class RadioConfigComponent implements OnInit {
     this.loading = true
     this.radioService.setRadioPTT(this.ptt == 'ON' ? 'OFF' : 'ON').subscribe(
       (res: any) => {
-        this.radio.ptt = res;
+        this.radio.ptt = res
         this.radio.tx = this.ptt === 'ON' ? true : false
         this.radio.rx = this.ptt === 'ON' ? false : true
 
         if (this.ptt == "ON") {
-          this.testTone(0);
+          this.testTone(0)
         }
 
         if (this.ptt == "OFF") {
-          this.testTone(600);
+          this.testTone(600)
         }
 
+        this.loading = false
+
       }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
       }
     );
   }
