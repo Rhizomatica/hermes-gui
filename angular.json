@@ -47,7 +47,10 @@
             "buildOptimizer": true,
             "sourceMap": true,
             "optimization": true,
-            "namedChunks": true
+            "namedChunks": true,
+            "allowedCommonJsDependencies":[
+              "rxjs/internal/Subject"
+            ]
           },
           "configurations": {
             "production": {
