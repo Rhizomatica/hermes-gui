@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
-import { interval } from 'rxjs';
 import { CustomErrorsService } from '../../../_services/custom-errors.service';
 import { CustomError } from '../../../interfaces/customerror'
 

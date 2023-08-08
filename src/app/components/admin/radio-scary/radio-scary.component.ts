@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
-import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-radio-scary',
