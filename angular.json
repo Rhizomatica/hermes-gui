@@ -48,7 +48,7 @@
             "sourceMap": true,
             "optimization": true,
             "namedChunks": true,
-            "allowedCommonJsDependencies":[
+            "allowedCommonJsDependencies": [
               "rxjs/internal/Subject"
             ]
           },
@@ -241,5 +241,13 @@
   },
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

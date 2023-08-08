@@ -6,7 +6,7 @@ import { homeComponent } from './components/public/home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
-import { AngularFileUploaderModule } from 'angular-file-uploader';
+// import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
@@ -18,7 +18,7 @@ import { LanguagesComponent } from './components/public/languages/languages.comp
 import { CommonModule } from '@angular/common';
 import { HelpComponent } from './components/public/help/help.component';
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
 import { RetypeDirective } from './directives/retype.directive';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -35,7 +35,7 @@ import localeFr from '@angular/common/locales/fr';
 // import localeYy from '@angular/common/locales/yy';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
-import { NgSelectModule } from '@ng-select/ng-select';
+// import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
@@ -96,9 +96,9 @@ registerLocaleData(localeFr);
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule,
-    AngularFileUploaderModule,
-    NgSelectModule
+    // Ng2SearchPipeModule,
+    // AngularFileUploaderModule,
+    // NgSelectModule
   ],
   providers: [
     DecimalPipe,
