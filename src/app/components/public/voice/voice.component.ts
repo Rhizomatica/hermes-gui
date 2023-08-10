@@ -25,6 +25,7 @@ export class VoiceComponent implements OnInit {
   subscription = null
   radio: Radio
   step: number = 1
+  placesArray: Array<String>
 
   @Input() radioObj: Radio
 
@@ -87,12 +88,19 @@ export class VoiceComponent implements OnInit {
     );
   }
 
+  splitFrequency() {
+    var freqString = this.radio.freq.toString()
+
+    this.placesArray = freqString.match(/.{1,3}/g);
+  }
+
   ngOnChanges(change) {
     change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
   }
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
+    this.splitFrequency()
   }
 
   ngOnDestroy() {
