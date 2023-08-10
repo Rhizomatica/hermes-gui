@@ -65,30 +65,34 @@ export class VoiceComponent implements OnInit {
 
   changeStep() {
 
-    if (this.step == 1) {
-      this.step++
+
+    switch (this.step) {
+      case 1:
+        this.step++
+        break;
+      case 2:
+        this.step++
+        break;
+      case 3:
+        this.step = 1
+        break;
     }
 
-    if (this.step == 2) {
-      this.step++
-    }
-
-    if (this.step == 3) {
-      this.step = 1
-    }
-
-    this.step
-    this.radioService.changeStep(this.step).subscribe(
-      (res: any) => {
-        this.step = res.radio.step
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
+    // this.step
+    // this.radioService.changeStep(this.step).subscribe(
+    //   (res: any) => {
+    //     this.step = res.radio.step
+    //   }, (err) => {
+    //     this.error = err;
+    //     this.errorAlert = true;
+    //   }
+    // );
   }
 
   splitFrequency() {
+    if (!this.radio || !this.radio.freq || this.radio.freq == 0)
+      return
+
     var freqString = this.radio.freq.toString()
 
     this.placesArray = freqString.match(/.{1,3}/g);
@@ -96,6 +100,8 @@ export class VoiceComponent implements OnInit {
 
   ngOnChanges(change) {
     change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
+
+    this.splitFrequency()
   }
 
   ngOnInit(): void {
