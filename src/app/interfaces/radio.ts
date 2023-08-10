@@ -13,6 +13,7 @@ export interface Radio {
   ref_raw: Number,
   // ref_volts: Number,
   ref_watts: Number,
-  connection: Boolean
-  ptt: Boolean
+  connection: Boolean,
+  ptt: Boolean,
+  step: number
 }

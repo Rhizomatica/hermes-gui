@@ -6,6 +6,7 @@
       loading radio status...
     </h2>
   </div>
+  <button (click)="changeStep()">Step</button>
   <div class="row m-t-25 voiceactions" *ngIf="radio.mode!=null">
     <button class="m-t-10" (click)="setUSB()" [disabled]="radio.mode === 'USB' ? true : null">
       USB
