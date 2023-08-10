@@ -100,6 +100,8 @@ export class UtilsService {
     if (!freq)
       return 0
 
-    return (Math.round((freq / 1000) * 100) / 100).toFixed(2);
+    freq = (Math.round((freq / 1000) * 100) / 100).toFixed(2); //Set Decimal
+    return freq.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "."); //Format number with dots
+
   }
 }
