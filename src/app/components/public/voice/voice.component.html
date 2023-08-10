@@ -1,7 +1,10 @@
 <loading [loading]="loading"></loading>
 <div class="radiophony">
   <div class="row">
-    <span class="fullfrequency">{{radio.freq}} kHz</span>
+    <span class="fullfrequency" *ngIf="radio.freq">{{radio.freq}} kHz</span>
+    <h2 i18n="@@loadingfrequency" *ngIf="!radio.freq">
+      loading radio status...
+    </h2>
   </div>
   <div class="row m-t-25 voiceactions" *ngIf="radio.mode!=null">
     <button class="m-t-10" (click)="setUSB()" [disabled]="radio.mode === 'USB' ? true : null">
