@@ -257,14 +257,14 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  confirmShutDown() {
-    this.shuttingDown = true;
-  }
+  // confirmShutDown() {
+  //   this.shuttingDown = true;
+  // }
 
-  cancelShutDown() {
-    this.shuttingDown = false;
-    this.shuttingDownNow = false;
-  }
+  // cancelShutDown() {
+  //   this.shuttingDown = false;
+  //   this.shuttingDownNow = false;
+  // }
 
   confirmReboot() {
     this.restarting = true;
@@ -284,10 +284,10 @@ export class RadioConfigComponent implements OnInit {
     this.shuttingDownNow = false;
   }
 
-  shutDown() {
-    this.shuttingDownNow = true;
-    this.apiService.sysShutdown();
-  }
+  // shutDown() {
+  //   this.shuttingDownNow = true;
+  //   this.apiService.sysShutdown();
+  // }
 
   reboot() {
     this.rebootingDownNow = true;

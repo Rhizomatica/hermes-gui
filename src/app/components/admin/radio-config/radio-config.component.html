@@ -160,9 +160,9 @@
             <button class="" (click)="confirmReboot()">
               <span i18n="@@reboot">reboot</span><br />
             </button>
-            <button class="m-l-10" (click)="confirmShutDown()">
+            <!-- <button class="m-l-10" (click)="confirmShutDown()">
               <span i18n="@@shutdown">shut down</span><br />
-            </button>
+            </button> -->
           </div>
         </form>
       </div>
@@ -212,7 +212,7 @@
           </div>
         </div>
       </div>
-      <div class="overall alert" [hidden]="shuttingDown==false">
+      <!-- <div class="overall alert" [hidden]="shuttingDown==false">
         <div class="cv">
           <span i18n="@@confirmshutdown"> Are you sure you want to shut down Hermes system?
             <br />
@@ -223,7 +223,7 @@
             (click)="shutDown()" i18n="@@shutdown1">shut
             down</button>
         </div>
-      </div>
+      </div> -->
       <div class="overall alert" [hidden]="restarting==false">
         <div class="cv">
           <span i18n="@@confirmreboot"> Are you sure you want to reboot Hermes system?
@@ -235,13 +235,13 @@
           <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">reboot</button>
         </div>
       </div>
-      <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
+      <!-- <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
         Shutting Down System
         <br />
         <a (click)="reload()">
           <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
         <br>
-      </div>
+      </div> -->
       <div class="overall alert" [hidden]="rebootingDownNow==false" i18n="@@rebootButton">
         Rebooting System
         <br />

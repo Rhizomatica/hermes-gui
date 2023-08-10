@@ -47,6 +47,7 @@ import { MenuComponent } from './components/public/menu/menu.component';
 import { WiFiManagementComponent } from './components/admin/wifi-management/wifi-management.component';
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
+import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
 
 
 registerLocaleData(localePt);
@@ -88,7 +89,8 @@ registerLocaleData(localeFr);
     MenuComponent,
     WiFiManagementComponent,
     VoiceComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    FloatButtonComponent
   ],
   imports: [
     BrowserModule,

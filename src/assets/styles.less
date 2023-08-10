@@ -539,7 +539,7 @@ input:checked+.slider:before {
     flex-direction: row;
     text-decoration: none;
 
-    p{
+    p {
       margin-top: 10px;
     }
   }
@@ -2189,6 +2189,40 @@ tr:nth-child(odd) {
     }
   }
 }
+
+.float {
+  position: fixed;
+  right: 10px;
+  bottom: 5px;
+
+  .floatbutton {
+    text-align: center;
+    width: 50px;
+    float: left;
+    border-radius: 3px;
+    background-color: @mclr;
+    color: @bkclr;
+    font-size: 0.7em;
+    
+    b{
+      display: none;
+    }
+
+    img {
+      width: 0.9em;
+      filter: invert(100%);
+    }
+  }
+
+  .floatbutton:hover {
+    width: 150px;
+    background-color: @clr;
+    b{
+      display: block;
+    }
+  }
+}
+
 
 @media (max-width: 800px) and (min-width: 700px) {
   .half-row {
