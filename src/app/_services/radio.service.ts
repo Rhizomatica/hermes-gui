@@ -209,6 +209,17 @@ export class RadioService {
       catchError(this.handleError));
   }
 
+
+  public changeStep(step: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/step/`;
+    return this.http.post(url, step).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }

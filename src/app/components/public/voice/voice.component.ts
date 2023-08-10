@@ -24,6 +24,7 @@ export class VoiceComponent implements OnInit {
   intervallTimer = interval(900);
   subscription = null
   radio: Radio
+  step: number = 1
 
   @Input() radioObj: Radio
 
@@ -54,6 +55,31 @@ export class VoiceComponent implements OnInit {
       (res: any) => {
         this.radio.mode = res;
         this.mode = this.radio.mode
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
+
+  changeStep() {
+
+    if (this.step == 1) {
+      this.step++
+    }
+
+    if (this.step == 2) {
+      this.step++
+    }
+
+    if (this.step == 3) {
+      this.step = 1
+    }
+
+    this.step
+    this.radioService.changeStep(this.step).subscribe(
+      (res: any) => {
+        this.step = res.radio.step
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
