@@ -5,6 +5,8 @@ import { RadioService } from 'src/app/_services/radio.service';
 import { interval } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
+import { NgForm } from '@angular/forms';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'voice',
@@ -27,13 +29,17 @@ export class VoiceComponent implements OnInit {
   step: number = 1
   modeSwitch: boolean
   placesArray: Array<String>
+  inputFrequencyFlag: Boolean = false
+  freqmin: number = 500
+  freqmax: number = 30000
 
   @Input() radioObj: Radio
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private utils: UtilsService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
@@ -55,7 +61,6 @@ export class VoiceComponent implements OnInit {
       }
     );
   }
-
 
   changeStep() {
 
@@ -81,13 +86,37 @@ export class VoiceComponent implements OnInit {
     // );
   }
 
-
   splitFrequency() {
     if (!this.radio || !this.radio.freq || this.radio.freq == 0)
       return
 
     this.placesArray = this.radio.freq.toString().split('.')
   }
+
+  showInputFrequency() {
+    if (this.inputFrequencyFlag)
+      this.inputFrequencyFlag = false
+    else
+      this.inputFrequencyFlag = true
+  }
+
+  changeFrequency(f: NgForm) {
+    this.loading = true
+    this.radioService.setRadioFreq((f.value.frequency * 1000)).subscribe(
+      (res: any) => {
+        this.radio.freq = this.utils.formatFrequency(res);
+        this.loading = false
+        this.inputFrequencyFlag = false
+        this.splitFrequency()
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+        this.inputFrequencyFlag = false
+      }
+    );
+  }
+
   ngOnChanges(change) {
     change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
 
@@ -96,6 +125,7 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
+    // this.frequency = this.radio.freq
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
     this.splitFrequency()
   }
