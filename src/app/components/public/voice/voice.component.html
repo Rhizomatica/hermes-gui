@@ -12,7 +12,7 @@
       </div>
     </span>
     <div *ngIf="inputFrequencyFlag">
-      <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}}</span>
+      <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}} kHz</span>
       <form #ffreq="ngForm" class="formdata field">
         <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency" [(ngModel)]="frequency"
           value={{frequency}}>
