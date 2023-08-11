@@ -320,7 +320,7 @@
         <source>Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="conectedr" datatype="html">
@@ -401,6 +401,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">92,94</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">19,21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousurechangesett" datatype="html">
@@ -488,18 +492,11 @@
           <context context-type="linenumber">161</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="shutdown" datatype="html">
-        <source>shut down</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">164</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="confirmreset" datatype="html">
         <source> Are you sure you want to reset the radio to the default configuration? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">173,176</context>
+          <context context-type="linenumber">173,177</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelr" datatype="html">
@@ -517,10 +514,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
-        <source>There was an error on changing configuration <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
+        <source>There was an error on changing configuration <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;/span&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;/span&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">196</context>
+          <context context-type="linenumber">196,197</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
@@ -528,7 +525,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">66,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpscalibrationsuccess" datatype="html">
@@ -538,32 +535,11 @@
           <context context-type="linenumber">207</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="confirmshutdown" datatype="html">
-        <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">217,220</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cancels1" datatype="html">
-        <source>cancel</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">222</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="shutdown1" datatype="html">
-        <source>shut down</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">223,224</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="confirmreboot" datatype="html">
         <source> Are you sure you want to reboot Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">229,232</context>
+          <context context-type="linenumber">229,233</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
@@ -580,18 +556,11 @@
           <context context-type="linenumber">235</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="shutDownButton" datatype="html">
-        <source> Shutting Down System <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;close&quot; src=&quot;assets/svg/x.svg&quot;&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">238,243</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="rebootButton" datatype="html">
-        <source> Rebooting System <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;close&quot; src=&quot;assets/svg/x.svg&quot;&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/></source>
+        <source> Rebooting System <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="src=&quot;assets/svg/x.svg&quot;&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/a&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;br&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">245,250</context>
+          <context context-type="linenumber">245,252</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
@@ -655,14 +624,14 @@
         <source>There are no schedules for radio transmission<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
-          <context context-type="linenumber">11,12</context>
+          <context context-type="linenumber">11,14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorrequest" datatype="html">
         <source>There was an error on your request<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">25,26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="schedtitle" datatype="html">
@@ -1239,7 +1208,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorPatternsWifi" datatype="html">
@@ -1273,10 +1242,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
-        <source> If you are seeing a &quot;server offline&quot; message, yet your server should, or seems to be on, it&apos;s possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <source> If you are seeing a &quot;server offline&quot; message, yet your server should, or seems to be on, it&apos;s possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="erverAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">54,62</context>
+          <context context-type="linenumber">54,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e_mail" datatype="html">
@@ -2142,17 +2111,17 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cantcompose" datatype="html">
-        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Only registered users can send messages to other stations, if you are a registered user, please log in.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="Only registered users can send messages to other stations, if you are a regi"/>Only registered users can send messages to other stations, if you are a registered user, please log in.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cantcompose2" datatype="html">
-        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Only admin users can send messages to other stations, if you are an admin, please log in. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="Only admin users can send messages to other stations, if you are an admin, pl"/>Only admin users can send messages to other stations, if you are an admin, please log in. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sendpublic" datatype="html">
@@ -2198,10 +2167,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="fileSizeError" datatype="html">
-        <source> File&apos;s too big, max size is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{maxSize}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
+        <source> File&apos;s too big, max size is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="&lt;/b&gt;"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">69,70</context>
+          <context context-type="linenumber">69,72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="selfile" datatype="html">
@@ -2233,7 +2202,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="protectpssw" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/lock.svg&quot;&gt;"/> protect message </source>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="protect message"/> protect message </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">100,102</context>
@@ -2268,10 +2237,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="errorsendingmsg" datatype="html">
-        <source>There was an error on sending your message <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
+        <source>There was an error on sending your message <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;/span&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;/span&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
-          <context context-type="linenumber">134</context>
+          <context context-type="linenumber">134,135</context>
         </context-group>
       </trans-unit>
       <trans-unit id="messagesenttolist" datatype="html">
@@ -2349,6 +2318,27 @@
           <context context-type="linenumber">16,17</context>
         </context-group>
         <note priority="1" from="description">cannotaccesssentmessages</note>
+      </trans-unit>
+      <trans-unit id="loadingfrequency" datatype="html">
+        <source> loading radio status... </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="currentFrequencyVoice" datatype="html">
+        <source>Current voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/> kHz</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancelchangevoicefrequency" datatype="html">
+        <source> cancel </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="systemupgradeu" datatype="html">
         <source>system upgrade</source>
@@ -2454,6 +2444,27 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">67,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmshutdowncomponent" datatype="html">
+        <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br /&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/floatbutton/floatbutton.component.html</context>
+          <context context-type="linenumber">9,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shutdownbuttoncomponentcancel" datatype="html">
+        <source> cancel </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/floatbutton/floatbutton.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shutdownbuttoncomponentconfirmation" datatype="html">
+        <source> shutdown</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/floatbutton/floatbutton.component.html</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="blinkrecording" datatype="html">
