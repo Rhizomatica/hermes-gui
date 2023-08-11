@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
     }, async err => {
 
       this.saveWebsocketError()
-      
+
     }, () => {
       console.log('complete, closing websocket connection...')
     })
@@ -133,11 +133,6 @@ export class AppComponent implements OnInit {
 
   async saveWebsocketError(): Promise<void> {
 
-    // f.value.controller = 'websocket'
-    // f.value.error_code = 500
-    // f.value.error_message = 'Error to connect on websocket service'
-    // f.value.stacktrace = null
-
     var newError: CustomError = {
       controller: 'websocket',
       error_code: 500,
@@ -149,7 +144,7 @@ export class AppComponent implements OnInit {
     await this.errorService.newCustomError(newError).subscribe(
       (res: any) => {
         this.loading = false
-      },(err) => {
+      }, (err) => {
         this.loading = false
       }
     );
@@ -169,7 +164,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  checkingPTTHardwareCommand(){
+  checkingPTTHardwareCommand() {
     if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio() && this.radio.ptt) {
       this.router.navigate(['/voice'])
     }

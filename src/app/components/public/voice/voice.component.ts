@@ -25,6 +25,7 @@ export class VoiceComponent implements OnInit {
   subscription = null
   radio: Radio
   step: number = 1
+  modeSwitch: boolean
   placesArray: Array<String>
 
   @Input() radioObj: Radio
@@ -43,19 +44,11 @@ export class VoiceComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  setUSB() {
-    this.changeMode('USB')
-  }
-
-  setLSB() {
-    this.changeMode('LSB')
-  }
-
-  changeMode(mode) {
-    this.radioService.setRadioMode(mode).subscribe(
+  changeMode(event) {
+    this.modeSwitch = this.modeSwitch === true ? false : true;
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
       (res: any) => {
-        this.radio.mode = res;
-        this.mode = this.radio.mode
+
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -63,8 +56,8 @@ export class VoiceComponent implements OnInit {
     );
   }
 
+  
   changeStep() {
-
 
     switch (this.step) {
       case 1:
@@ -78,7 +71,6 @@ export class VoiceComponent implements OnInit {
         break;
     }
 
-    // this.step
     // this.radioService.changeStep(this.step).subscribe(
     //   (res: any) => {
     //     this.step = res.radio.step
@@ -106,6 +98,7 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
+    this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
     this.splitFrequency()
   }
 
