@@ -56,7 +56,7 @@ export class VoiceComponent implements OnInit {
     );
   }
 
-  
+
   changeStep() {
 
     switch (this.step) {
@@ -81,15 +81,13 @@ export class VoiceComponent implements OnInit {
     // );
   }
 
+
   splitFrequency() {
     if (!this.radio || !this.radio.freq || this.radio.freq == 0)
       return
 
-    var freqString = this.radio.freq.toString()
-
-    this.placesArray = freqString.match(/.{1,3}/g);
+    this.placesArray = this.radio.freq.toString().split('.')
   }
-
   ngOnChanges(change) {
     change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
 
