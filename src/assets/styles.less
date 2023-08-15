@@ -1588,15 +1588,22 @@ tr:nth-child(odd) {
 
   .card.voice {
     border: @clr;
-
-    img {
-      // filter: invert(0%);
-    }
   }
 
   .card.voice .card-icon {
     filter: invert(0%);
   }
+
+  .float{
+    .floatbutton {
+      background-color: @bkclr;
+  
+      img {
+        filter: invert(0%);
+      }
+    }
+  }
+  
 
 }
 
@@ -2211,15 +2218,6 @@ tr:nth-child(odd) {
     img {
       width: 0.9em;
       filter: invert(100%);
-    }
-  }
-
-  .floatbutton:hover {
-    width: 150px;
-    background-color: @clr;
-
-    b {
-      display: block;
     }
   }
 }
