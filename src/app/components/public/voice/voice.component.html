@@ -6,16 +6,22 @@
     </h2>
     <span class="fullfrequency" *ngIf="radio.freq && placesArray">
       <div *ngIf="!inputFrequencyFlag" (click)="showInputFrequency()">
-        <span class="{{step == 3 ? 'color': ''}}">{{placesArray[0]}}</span>.<span
+        <span *ngFor="let digit of placesArray; let i = index" class="{{step == i ? 'color': ''}}">{{digit}}<span
+            *ngIf="i % 3 == 0 && i !== placesArray.length - 3">,</span><span
+            *ngIf="i == placesArray.length - 3">.</span>
+        </span>
+
+        <span class="text-sm"> kHz</span>
+        <!-- <span class="{{step == 3 ? 'color': ''}}">{{placesArray[0]}}</span>.<span
           class="{{step == 2 ? 'color': ''}}">{{placesArray[1]}}</span>.<span
-          class="{{step == 1 ? 'color': ''}}">{{placesArray[2]}}</span><span class="text-sm"> kHz</span>
+          class="{{step == 1 ? 'color': ''}}">{{placesArray[2]}}</span> -->
       </div>
     </span>
     <div *ngIf="inputFrequencyFlag">
       <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}} kHz</span>
       <form #ffreq="ngForm" class="formdata field">
-        <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency" [(ngModel)]="frequency"
-          value={{frequency}}>
+        <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency"
+          [(ngModel)]="frequency" value={{frequency}}>
         <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
           change frequency
         </button>
