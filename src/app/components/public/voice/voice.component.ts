@@ -21,7 +21,6 @@ export class VoiceComponent implements OnInit {
   loading: Boolean = false
   error: String
   errorAlert: Boolean = false
-  frequency: number = 0
   mode: String
   intervallTimer = interval(900);
   subscription = null
@@ -48,6 +47,9 @@ export class VoiceComponent implements OnInit {
       this.admin = this.currentUser.admin
   }
 
+  providers: [SharedService]
+
+
   public closeError() {
     this.errorAlert = false;
   }
@@ -66,9 +68,9 @@ export class VoiceComponent implements OnInit {
 
   changeStep() {
 
-    this.step --
+    this.step--
 
-    if(this.step < 0){
+    if (this.step < 0) {
       this.step = this.placesArray.length - 1
     }
 
@@ -89,12 +91,9 @@ export class VoiceComponent implements OnInit {
     this.frequencyAux = this.radio.freq.toString()
     this.frequencyAux = this.frequencyAux.replace(/,/g, "")
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
-    console.log(this.frequencyAux)
-
     this.placesArray = this.frequencyAux.toString().split('')
 
-    this.step = this.placesArray.length -1
-    console.log(this.step)
+    this.step = this.placesArray.length - 1
   }
 
   showInputFrequency() {
@@ -122,14 +121,16 @@ export class VoiceComponent implements OnInit {
   }
 
   ngOnChanges(change) {
-    change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
+    if (change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue) {
+      this.radio = change.radioObj.currentValue
 
-    this.splitFrequency()
+      console.log('CHANGED' + this.radio)
+      this.splitFrequency()
+    }
   }
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
-    // this.frequency = this.radio.freq
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
     this.splitFrequency()
 
