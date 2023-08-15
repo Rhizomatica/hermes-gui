@@ -26,12 +26,14 @@ export class VoiceComponent implements OnInit {
   intervallTimer = interval(900);
   subscription = null
   radio: Radio
-  step: number = 1
+  step: number = 0
   modeSwitch: boolean
   placesArray: Array<String>
   inputFrequencyFlag: Boolean = false
   freqmin: number = 500
   freqmax: number = 30000
+  frequencyAux: String
+
 
   @Input() radioObj: Radio
 
@@ -64,16 +66,10 @@ export class VoiceComponent implements OnInit {
 
   changeStep() {
 
-    switch (this.step) {
-      case 1:
-        this.step++
-        break;
-      case 2:
-        this.step++
-        break;
-      case 3:
-        this.step = 1
-        break;
+    this.step --
+
+    if(this.step < 0){
+      this.step = this.placesArray.length - 1
     }
 
     // this.radioService.changeStep(this.step).subscribe(
@@ -90,7 +86,15 @@ export class VoiceComponent implements OnInit {
     if (!this.radio || !this.radio.freq || this.radio.freq == 0)
       return
 
-    this.placesArray = this.radio.freq.toString().split('.')
+    this.frequencyAux = this.radio.freq.toString()
+    this.frequencyAux = this.frequencyAux.replace(/,/g, "")
+    this.frequencyAux = this.frequencyAux.replace(/\./g, "")
+    console.log(this.frequencyAux)
+
+    this.placesArray = this.frequencyAux.toString().split('')
+
+    this.step = this.placesArray.length -1
+    console.log(this.step)
   }
 
   showInputFrequency() {
@@ -128,6 +132,7 @@ export class VoiceComponent implements OnInit {
     // this.frequency = this.radio.freq
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
     this.splitFrequency()
+
   }
 
   ngOnDestroy() {
