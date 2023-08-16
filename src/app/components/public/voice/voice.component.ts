@@ -30,6 +30,7 @@ export class VoiceComponent implements OnInit {
   freqmin: number = 500
   freqmax: number = 30000
   frequencyAux: String
+  frequencyInput: number = 0
 
   subject = new BehaviorSubject(this.radioService);
 
@@ -94,6 +95,7 @@ export class VoiceComponent implements OnInit {
         this.radio.freq = this.utils.formatFrequency(res);
         this.loading = false
         this.inputFrequencyFlag = false
+        this.frequencyInput = parseInt(res) / 1000
         this.splitFrequency()
       }, (err) => {
         this.error = err;
@@ -111,10 +113,16 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.sharedService.radioObj.subscribe(message => {
+
       this.radio = this.sharedService.radioObj.value
       this.modeSwitch = this.radio.mode == 'LSB' ? true : false
       this.splitFrequency()
-      // this.setInitialStep()
+
+      if (this.frequencyInput === 0 && this.radio.freq !== null) {
+        this.frequencyInput = parseInt(this.frequencyAux.toString()) / 100
+        this.setInitialStep()
+      }
+      
     })
   }
 }
