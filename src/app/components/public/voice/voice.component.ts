@@ -62,10 +62,9 @@ export class VoiceComponent implements OnInit {
   }
 
   changeStep() {
-
     this.step--
 
-    if (this.step < 0) {
+    if (this.step < 0 || this.step == 0 && this.placesArray.length == 7) {
       this.step = this.placesArray.length - 1
     }
   }
@@ -122,7 +121,7 @@ export class VoiceComponent implements OnInit {
         this.frequencyInput = parseInt(this.frequencyAux.toString()) / 100
         this.setInitialStep()
       }
-      
+
     })
   }
 }
