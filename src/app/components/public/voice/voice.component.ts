@@ -116,12 +116,5 @@ export class VoiceComponent implements OnInit {
       this.splitFrequency()
       // this.setInitialStep()
     })
-
   }
-
-  // ngOnDestroy() {
-  //   if (this.sharedService.radioObj.subscribe) {
-  //     this.sharedService.radioObj.unsubscribe()
-  //   };
-  // }
 }
