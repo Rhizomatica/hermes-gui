@@ -11,6 +11,7 @@ export class HelpComponent implements OnInit {
 
   error: any
   domain: string = GlobalConstants.domain
+  version: string = GlobalConstants.version
   changeLanguage = false
 
   constructor(
