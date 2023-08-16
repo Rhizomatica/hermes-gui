@@ -17,7 +17,7 @@
       <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}} kHz</span>
       <form #ffreq="ngForm" class="formdata field">
         <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency"
-          [(ngModel)]="frequency" value={{frequency}}>
+          [(ngModel)]="frequencyInput" value={{frequencyInput}}>
         <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
           change frequency
         </button>
