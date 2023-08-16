@@ -109,6 +109,7 @@ export class AppComponent implements OnInit {
     this.sharedService.radioObj.value.freq = data.freq
     this.sharedService.radioObj.value.swr = data.swr
     this.sharedService.radioObj.value.protection = data.protection
+    this.sharedService.radioObj.next(this.sharedService.radioObj.value)
   }
 
   mountObjectTypeOne(data) {
@@ -116,6 +117,7 @@ export class AppComponent implements OnInit {
     this.sharedService.radioObj.value.mode = data.mode
     this.sharedService.radioObj.value.tx = data.tx
     this.sharedService.radioObj.value.rx = data.rx
+    this.sharedService.radioObj.next(this.sharedService.radioObj.value)
   }
 
   sendMsg() {
