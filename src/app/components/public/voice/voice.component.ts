@@ -119,9 +119,9 @@ export class VoiceComponent implements OnInit {
 
   }
 
-  ngOnDestroy() {
-    if (this.sharedService.radioObj.subscribe) {
-      this.sharedService.radioObj.unsubscribe()
-    };
-  }
+  // ngOnDestroy() {
+  //   if (this.sharedService.radioObj.subscribe) {
+  //     this.sharedService.radioObj.unsubscribe()
+  //   };
+  // }
 }
