@@ -6,9 +6,8 @@
     </h2>
     <span class="fullfrequency" *ngIf="radio.freq && placesArray">
       <div *ngIf="!inputFrequencyFlag" (click)="showInputFrequency()">
-        <span *ngFor="let digit of placesArray; let i = index" class="{{step == i ? 'color': ''}}">{{digit}}<span
-            *ngIf="i % 3 == 0 && i !== placesArray.length - 3">,</span><span
-            *ngIf="i == placesArray.length - 3">.</span>
+        <span *ngFor="let digit of placesArray; let i = index"
+          class="{{step == i ? 'color': ''}}">{{digit}}<span *ngIf="(placesArray.length == 6 && i == 0) || (placesArray.length == 7 && i == 1) ">,</span><span *ngIf="i == placesArray.length - 3">.</span>
         </span>
         <span class="text-sm"> kHz</span>
       </div>
