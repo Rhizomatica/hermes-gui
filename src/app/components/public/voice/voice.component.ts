@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { RadioService } from 'src/app/_services/radio.service';
-import { interval } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
@@ -22,8 +22,6 @@ export class VoiceComponent implements OnInit {
   error: String
   errorAlert: Boolean = false
   mode: String
-  intervallTimer = interval(900);
-  subscription = null
   radio: Radio
   step: number = 0
   modeSwitch: boolean
@@ -33,8 +31,7 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   frequencyAux: String
 
-
-  @Input() radioObj: Radio
+  subject = new BehaviorSubject(this.radioService);
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -46,9 +43,6 @@ export class VoiceComponent implements OnInit {
     if (this.currentUser)
       this.admin = this.currentUser.admin
   }
-
-  providers: [SharedService]
-
 
   public closeError() {
     this.errorAlert = false;
@@ -73,15 +67,6 @@ export class VoiceComponent implements OnInit {
     if (this.step < 0) {
       this.step = this.placesArray.length - 1
     }
-
-    // this.radioService.changeStep(this.step).subscribe(
-    //   (res: any) => {
-    //     this.step = res.radio.step
-    //   }, (err) => {
-    //     this.error = err;
-    //     this.errorAlert = true;
-    //   }
-    // );
   }
 
   splitFrequency() {
@@ -93,7 +78,6 @@ export class VoiceComponent implements OnInit {
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
     this.placesArray = this.frequencyAux.toString().split('')
 
-    this.step = this.placesArray.length - 1
   }
 
   showInputFrequency() {
@@ -120,25 +104,24 @@ export class VoiceComponent implements OnInit {
     );
   }
 
-  ngOnChanges(change) {
-    if (change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue) {
-      this.radio = change.radioObj.currentValue
-
-      console.log('CHANGED' + this.radio)
-      this.splitFrequency()
-    }
+  setInitialStep() {
+    if (this.placesArray.length > 0)
+      this.step = this.placesArray.length - 1
   }
 
   ngOnInit(): void {
-    this.radio = this.sharedService.radioObj.value
-    this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
-    this.splitFrequency()
+    this.sharedService.radioObj.subscribe(message => {
+      this.radio = this.sharedService.radioObj.value
+      this.modeSwitch = this.radio.mode == 'LSB' ? true : false
+      this.splitFrequency()
+      // this.setInitialStep()
+    })
 
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.sharedService.radioObj.subscribe) {
+      this.sharedService.radioObj.unsubscribe()
     };
   }
 }
