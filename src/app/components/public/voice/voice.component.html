@@ -38,7 +38,7 @@
           PTT
         </div>
         <div class="data-body">
-          ({{radio.tx == false ? 'OFF' : 'ON'}})
+          {{radio.tx == false ? 'OFF' : 'ON'}}
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
       </div>
       <div class="data">
         <div class="data-title">
-          MODE
+          Mode
         </div>
         <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.freq">
           <span>USB</span>
@@ -66,7 +66,6 @@
         </div>
       </div>
       <div class="data">
-        <!-- <div class="data-title"></div> -->
         <div class="data-body">
           <button (click)="changeStep()" *ngIf="!inputFrequencyFlag">step</button>
         </div>
