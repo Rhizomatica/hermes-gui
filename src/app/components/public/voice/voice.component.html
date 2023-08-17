@@ -1,40 +1,76 @@
 <loading [loading]="loading"></loading>
+<h2 i18n="@@voicetitle">Voice</h2>
 <div class="radiophony" *ngIf="radio !== null">
-  <div class="row">
-    <h2 i18n="@@loadingfrequency" *ngIf="!radio.freq">
-      loading radio status...
-    </h2>
-    <span class="fullfrequency" *ngIf="radio.freq && placesArray">
-      <div *ngIf="!inputFrequencyFlag" (click)="showInputFrequency()">
-        <span *ngFor="let digit of placesArray; let i = index"
-          class="{{step == i ? 'color': ''}}">{{digit}}<span *ngIf="(placesArray.length == 6 && i == 0) || (placesArray.length == 7 && i == 1) ">,</span><span *ngIf="i == placesArray.length - 3">.</span>
-        </span>
-        <span class="text-sm"> kHz</span>
+  <h2 i18n="@@loadingfrequency" *ngIf="!radio.freq">
+    loading radio status...
+  </h2>
+  <div class="transciever-panel" *ngIf="radio.freq">
+    <div class="data">
+      <div class="data-body frequency">
+        <div *ngIf="!inputFrequencyFlag" (click)="showInputFrequency()">
+          <span *ngFor="let digit of placesArray; let i = index" class="{{step == i ? 'color': ''}}">{{digit}}<span
+              *ngIf="(placesArray.length == 6 && i == 0) || (placesArray.length == 7 && i == 1) ">,</span><span
+              *ngIf="i == placesArray.length - 3">.</span>
+          </span>
+          <span class="text-sm"> kHz</span>
+        </div>
       </div>
-    </span>
-    <div *ngIf="inputFrequencyFlag">
-      <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}} kHz</span>
-      <form #ffreq="ngForm" class="formdata field">
-        <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency"
-          [(ngModel)]="frequencyInput" value={{frequencyInput}}>
-        <button class="midbt" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
-          change frequency
-        </button>
-        <button class="m-t-10" (click)="showInputFrequency()" i18n="@@cancelchangevoicefrequency">
-          cancel
-        </button>
-      </form>
     </div>
-  </div>
-  <div class="row" *ngIf="!inputFrequencyFlag && radio.freq">
-    <button (click)="changeStep()" *ngIf="!inputFrequencyFlag">step</button>
-    <div class="float-right flex-right">
-      <span>USB</span>
-      <div class="switch">
-        <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.mode}}" [checked]="modeSwitch">
-        <span class="slider round-uc" (click)="changeMode($event)"></span>
+    <div class="info-panel">
+      <div class="data">
+        <div class="data-title">
+          Power
+        </div>
+        <div class="data-body">
+          ({{radio.fwd_watts ? radio.fwd_watts : 0}} W)
+        </div>
       </div>
-      <span>LSB</span>
+      <div class="data">
+        <div class="data-title">
+          SWR
+        </div>
+        <div class="data-body">
+          {{radio.swr !== null ? (radio.swr | slice:0:9) : 0}}
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          PTT
+        </div>
+        <div class="data-body">
+          ({{radio.tx == false ? 'OFF' : 'ON'}})
+        </div>
+      </div>
+    </div>
+    <div class="info-panel">
+      <div class="data">
+        <div class="data-title">
+          Operation
+        </div>
+        <div class="data-body">
+          <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
+          <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          MODE
+        </div>
+        <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.freq">
+          <span>USB</span>
+          <div class="switch">
+            <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.mode}}" [checked]="modeSwitch">
+            <span class="slider round-uc" (click)="changeMode($event)"></span>
+          </div>
+          <span>LSB</span>
+        </div>
+      </div>
+      <div class="data">
+        <!-- <div class="data-title"></div> -->
+        <div class="data-body">
+          <button (click)="changeStep()" *ngIf="!inputFrequencyFlag">step</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -45,5 +81,21 @@
     <div class="icon"><a (click)="closeError()">
         <img title="close" src="assets/svg/x.svg"></a>
     </div>
+  </div>
+</div>
+
+<div class="overall" *ngIf="inputFrequencyFlag">
+  <div class="cv">
+    <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}} kHz</span>
+    <form #ffreq="ngForm" class="formdata field">
+      <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency"
+        [(ngModel)]="frequencyInput" value={{frequencyInput}}>
+      <button class="m-r-10" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
+        change frequency
+      </button>
+      <button class="m-t-10" (click)="showInputFrequency()" i18n="@@cancelchangevoicefrequency">
+        cancel
+      </button>
+    </form>
   </div>
 </div>
