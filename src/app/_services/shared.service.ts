@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Radio } from '../interfaces/radio';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class SharedService {
 
-  public radioObj = new BehaviorSubject<any>({
+  public radioObj = new BehaviorSubject<Radio>({
     type: null,
     freq: null,
     mode: null,
@@ -16,12 +17,14 @@ export class SharedService {
     rx: null,
     led: null,
     fwd_raw: null,
-    fwd_volts: null,
+    // fwd_volts: Number,
     fwd_watts: null,
     swr: null,
     ref_raw: null,
-    ref_volts: null,
+    // ref_volts: Number,
     ref_watts: null,
-    connection: null
+    connection: null,
+    ptt: null,
+    step: null
   });
 }
