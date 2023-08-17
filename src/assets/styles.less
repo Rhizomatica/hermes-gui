@@ -1594,16 +1594,16 @@ tr:nth-child(odd) {
     filter: invert(0%);
   }
 
-  .float{
+  .float {
     .floatbutton {
       background-color: @bkclr;
-  
+
       img {
         filter: invert(0%);
       }
     }
   }
-  
+
 
 }
 
@@ -2158,15 +2158,6 @@ tr:nth-child(odd) {
   }
 }
 
-.fullfrequency {
-  font-size: 6rem;
-  line-height: 10rem;
-  text-align: center;
-  display: block;
-  font-family: "Rubik", monospace;
-
-}
-
 .voiceactions {
   text-align: center;
 
@@ -2230,6 +2221,14 @@ tr:nth-child(odd) {
 
 
 @media (max-width: 800px) and (min-width: 700px) {
+
+  .formfield {
+    padding-right: 3em;
+    padding-left: 3em;
+  }
+
+
+
   .half-row {
     width: 100%;
     margin-top: 10px;
@@ -2297,6 +2296,46 @@ tr:nth-child(odd) {
   .shut button.midbt {
     width: 20.5em;
   }
+
+
+  .radiophony {
+    .transciever-panel {
+
+      .data {
+
+        padding: 15px;
+        margin: 5px;
+
+
+        .data-title {
+          font-size: 1.1em;
+          padding-bottom: 15px;
+        }
+
+        .data-body {
+          font-size: 1.1em;
+
+          button {
+            margin: 8px;
+          }
+        }
+
+        .data-body.frequency {
+          font-size: 3em;
+        }
+      }
+    }
+
+    .switch {
+      height: 23px;
+    }
+
+    .slider::before {
+      height: 27px;
+    }
+
+  }
+
 
 }
 
@@ -2589,6 +2628,88 @@ tr:nth-child(odd) {
     img {
       width: 8%;
     }
+  }
+
+  .radiophony {
+    .transciever-panel {
+
+      .data {
+
+        padding: 15px;
+        margin: 5px;
+
+
+        .data-title {
+          font-size: 1.1em;
+          padding-bottom: 15px;
+        }
+
+        .data-body {
+          font-size: 1.1em;
+
+          button {
+            margin: 8px;
+          }
+        }
+
+        .data-body.frequency {
+          font-size: 3em;
+        }
+      }
+    }
+  }
+}
+
+.transciever-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .data {
+    border: solid 1px @bkclr;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .data-title {
+      justify-content: flex-start;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding-bottom: 20px;
+    }
+
+    .data-body {
+      font-size: 1.5em;
+      align-items: stretch;
+
+      // button{
+      //   font-size: 0.6em;
+      // }
+    }
+
+    .data-body.frequency {
+      // width: 70%;
+      font-size: 6em;
+      font-family: "Rubik", monospace;
+      line-height: 100%;
+      display: flex;
+      align-items: center;
+      // width: 90%;
+    }
+
+    .data-switch {
+      font-size: 1em;
+    }
+
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
