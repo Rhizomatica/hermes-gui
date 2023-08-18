@@ -62,7 +62,7 @@ export class SharedService {
     this.radioObj.value.rx = this.storedRadioObj.rx
     this.radioObj.value.fwd_watts = this.storedRadioObj.fwd_watts
     this.radioObj.value.swr = this.storedRadioObj.swr
-    this.radioObj.value.ptt = this.storedRadioObj.ptt
+    // this.radioObj.value.ptt = this.storedRadioObj.ptt
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -71,17 +71,17 @@ export class SharedService {
 
     this.storedRadioObj.freq = newObj.freq == null ? this.storedRadioObj.freq : newObj.freq
     this.storedRadioObj.mode = newObj.mode == null ? this.storedRadioObj.mode : newObj.mode
-    this.storedRadioObj.protection = newObj.protection == null ? this.storedRadioObj.protection : newObj.protection
+    // this.storedRadioObj.protection = newObj.protection == null ? this.storedRadioObj.protection : newObj.protection
     this.storedRadioObj.tx = newObj.tx == null ? this.storedRadioObj.tx : newObj.tx
     this.storedRadioObj.rx = newObj.rx == null ? this.storedRadioObj.rx : newObj.rx
-    this.storedRadioObj.led = newObj.led == null ? this.storedRadioObj.led : newObj.led
-    this.storedRadioObj.fwd_raw = newObj.fwd_raw == null ? this.storedRadioObj.fwd_raw : newObj.fwd_raw
+    // this.storedRadioObj.led = newObj.led == null ? this.storedRadioObj.led : newObj.led
+    // this.storedRadioObj.fwd_raw = newObj.fwd_raw == null ? this.storedRadioObj.fwd_raw : newObj.fwd_raw
     this.storedRadioObj.fwd_watts = newObj.fwd_watts == null ? this.storedRadioObj.fwd_watts : newObj.fwd_watts
     this.storedRadioObj.swr = newObj.swr == null ? this.storedRadioObj.swr : newObj.swr
-    this.storedRadioObj.ref_raw = newObj.ref_raw == null ? this.storedRadioObj.ref_raw : newObj.ref_raw
-    this.storedRadioObj.ref_watts = newObj.ref_watts == null ? this.storedRadioObj.ref_watts : newObj.ref_watts
-    this.storedRadioObj.connection = newObj.connection == null ? this.storedRadioObj.connection : newObj.connection
-    this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
-    this.storedRadioObj.step = newObj.step == null ? this.storedRadioObj.step : newObj.step
+    // this.storedRadioObj.ref_raw = newObj.ref_raw == null ? this.storedRadioObj.ref_raw : newObj.ref_raw
+    // this.storedRadioObj.ref_watts = newObj.ref_watts == null ? this.storedRadioObj.ref_watts : newObj.ref_watts
+    // this.storedRadioObj.connection = newObj.connection == null ? this.storedRadioObj.connection : newObj.connection
+    // this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
+    // this.storedRadioObj.step = newObj.step == null ? this.storedRadioObj.step : newObj.step
   }
 }
