@@ -84,7 +84,6 @@ export class AppComponent implements OnInit {
     this.websocketService.messages.subscribe(data => {
       this.sharedService.setRadioObjShared(data) 
 
-      // this.checkWSObjectType(data)
       this.radio = this.sharedService.radioObj.value
       this.checkingPTTHardwareCommand()
 
@@ -96,45 +95,6 @@ export class AppComponent implements OnInit {
       console.log('complete, closing websocket connection...')
     })
   }
-
-  checkWSObjectType(data) {
-    // this.sharedService.setRadioObjShared(data) 
-    
-    // setLocalStorageRadio(data)
-
-    // switch (data.type) {
-    //   case 0:
-    //     this.mountObjectTypeZero(data)
-    //   case 1:
-    //     this.mountObjectTypeOne(data)
-    // }
-  }
-
-  // mountObjectTypeZero(data) {
-  //   this.sharedService.radioObj.value.fwd_watts = data.fwd_watts
-  //   this.sharedService.radioObj.value.swr = data.swr
-
-  //   var oldRadioObj = this.sharedService.getLocalStorageRadio()
-
-  //   this.sharedService.radioObj.value.freq = this.utils.formatFrequency(oldRadioObj.freq)
-  //   this.sharedService.radioObj.value.mode = oldRadioObj.mode
-  //   this.sharedService.radioObj.value.tx = oldRadioObj.tx
-  //   this.sharedService.radioObj.value.rx = oldRadioObj.rx
-  //   this.sharedService.radioObj.next(this.sharedService.radioObj.value)
-  // }
-
-  // mountObjectTypeOne(data) {
-  //   this.sharedService.radioObj.value.freq = this.utils.formatFrequency(data.freq)
-  //   this.sharedService.radioObj.value.mode = data.mode
-  //   this.sharedService.radioObj.value.tx = data.tx
-  //   this.sharedService.radioObj.value.rx = data.rx
-
-  //   var oldRadioObj = this.sharedService.getLocalStorageRadio()
-
-  //   this.sharedService.radioObj.value.fwd_watts = oldRadioObj.fwd_watts
-  //   this.sharedService.radioObj.value.swr = oldRadioObj.swr
-  //   this.sharedService.radioObj.next(this.sharedService.radioObj.value)
-  // }
 
   sendMsg() {
     let message = {
