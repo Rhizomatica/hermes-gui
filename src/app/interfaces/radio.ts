@@ -1,5 +1,4 @@
 export interface Radio {
-  // type: String,
   freq: number,
   mode: String,
   protection: String,
