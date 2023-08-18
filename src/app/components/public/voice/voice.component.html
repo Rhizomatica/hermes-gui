@@ -30,7 +30,8 @@
           SWR
         </div>
         <div class="data-body">
-          {{radio.swr !== null ? (radio.swr | slice:0:9) : 0}}
+          <!-- {{radio.swr && radio.swr ? (radio.swr | slice:0:9) : 0}} -->
+          {{radio.swr}}
         </div>
       </div>
       <div class="data">
@@ -38,7 +39,7 @@
           PTT
         </div>
         <div class="data-body">
-          {{radio.tx == false ? 'OFF' : 'ON'}}
+          {{radio.tx || radio.tx == false ? 'OFF' : 'ON'}}
         </div>
       </div>
     </div>
