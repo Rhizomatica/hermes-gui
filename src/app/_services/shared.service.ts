@@ -61,7 +61,7 @@ export class SharedService {
     this.radioObj.value.tx = this.storedRadioObj.tx
     this.radioObj.value.rx = this.storedRadioObj.rx
     this.radioObj.value.fwd_watts = this.storedRadioObj.fwd_watts
-    this.radioObj.value.swr = this.storedRadioObj.swr
+    this.radioObj.value.swr = this.storedRadioObj.swr !== null ? (parseInt(this.storedRadioObj.swr) / 10).toFixed(1).toString() : '0'
     // this.radioObj.value.ptt = this.storedRadioObj.ptt
 
     this.radioObj.next(this.radioObj.value)
