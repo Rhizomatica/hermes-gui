@@ -21,6 +21,7 @@ export class RadioConfigComponent implements OnInit {
   error: Error
   alterFreq = false
   confirmSet = false
+  confirmSendPTT = false
   reseting = false
   errorAlert = false
   radioError = false
@@ -82,20 +83,20 @@ export class RadioConfigComponent implements OnInit {
 
   changePtt(event) {
     this.loading = true
-    this.radioService.setRadioPTT(this.ptt == 'ON' ? 'OFF' : 'ON').subscribe(
+    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF').subscribe(
       (res: any) => {
-        this.radio.ptt = res
-        this.radio.tx = this.ptt === 'ON' ? true : false
-        this.radio.rx = this.ptt === 'ON' ? false : true
 
-        if (this.ptt == "ON") {
-          this.testTone(0)
-        }
+        
+        //TODO - Change response API - NAO ESTA ENVIANDO TONE
+        // if (!this.radio.tx) {
+        //   this.testTone(0)
+        // }
 
-        if (this.ptt == "OFF") {
-          this.testTone(600)
-        }
+        // if (this.radio.tx) {
+        //   this.testTone(600)
+        // }
 
+        this.confirmSendPTT = false
         this.loading = false
 
       }, (err) => {
@@ -180,6 +181,14 @@ export class RadioConfigComponent implements OnInit {
       this.confirmSet = false;
     } else {
       this.confirmSet = true;
+    }
+  }
+
+  confirmChangePTT() {
+    if (this.confirmSendPTT) {
+      this.confirmSendPTT = false;
+    } else {
+      this.confirmSendPTT = true;
     }
   }
 
