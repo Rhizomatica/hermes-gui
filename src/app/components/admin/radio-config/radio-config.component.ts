@@ -86,7 +86,7 @@ export class RadioConfigComponent implements OnInit {
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF').subscribe(
       (res: any) => {
 
-        
+
         //TODO - Change response API - NAO ESTA ENVIANDO TONE
         // if (!this.radio.tx) {
         //   this.testTone(0)
@@ -166,11 +166,14 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeRefThreshold(f: NgForm) {
+    this.loading = true
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
       (res: any) => {
         this.radio.refthreshold = res;
+        this.loading = false
       }, (err) => {
         this.error = err;
+        this.loading = false
         this.errorAlert = true;
       }
     );
