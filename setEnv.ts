@@ -7,8 +7,6 @@ require('dotenv').config()
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
-   appName: '${process.env.APP_NAME}',
-   version: '${process.env.VERSION}',
    production: ${process.env.PRODUCTION},
    local: ${process.env.LOCAL},
    hasGPS: ${process.env.HAS_GPS},
