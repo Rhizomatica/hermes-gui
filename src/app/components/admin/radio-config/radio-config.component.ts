@@ -88,13 +88,13 @@ export class RadioConfigComponent implements OnInit {
 
 
         //TODO - Change response API - NAO ESTA ENVIANDO TONE
-        // if (!this.radio.tx) {
-        //   this.testTone(0)
-        // }
+        if (res == 'OFF') {
+          this.testTone(0)
+        }
 
-        // if (this.radio.tx) {
-        //   this.testTone(600)
-        // }
+        if (res === 'ON') {
+          this.testTone(600)
+        }
 
         this.confirmSendPTT = false
         this.loading = false
