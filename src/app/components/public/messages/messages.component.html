@@ -1,5 +1,5 @@
 <div class="container">
-    <div>
+    <loading [loading]="loading"></loading>
         <div *ngIf="!loginForm">
             <div class="flexible">
                 <h2 i18n="@@publicmessages1" class="">Public Messages </h2>
@@ -16,14 +16,6 @@
                             sent messages
                         </span>
                     </button>
-                    <!-- <div *ngIf="!currentUser">
-                        <button class="m-l-10" *ngIf="!loginForm" (click)="showlogin()">
-                            <span i18n="@@login2">
-                                <img class="loginicon" title="login" src="assets/svg/sign-in-alt-solid.svg">
-                                login
-                            </span>
-                        </button>
-                    </div> -->
                 </div>
             </div>
             <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
@@ -39,7 +31,8 @@
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
                                 <div class="row">
-                                    <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</span>
+                                    <span class="date ls">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}
+                                    </span>
                                 </div>
                                 <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                                     <span class="ls">{{message.name}}</span>
@@ -59,21 +52,13 @@
                     <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
                     </span>
                     <span>{{selectedMessage.name}}</span>
-                    <div class="icon"><a (click)="showDelete()">
-                            <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
-                    </div>
-                    <div class="icon">
-                            <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
-                                i18n="@@confirmmt">confirm</button>
+                    <div class="row">
+                        <button i18n="@@cancelmt" (click)="showDelete()">cancel</button>
+                        <button (click)="deleteThisMessage()" i18n="@@confirmmt" class="m-l-10">confirm</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div *ngIf="loginForm">
-            <app-login-form (hideLoginForm)="closeLogin()">
-            </app-login-form>
-            <hr>
-        </div> -->
         <div>
             <div class="overall alert" *ngIf="errorAlert==true">
                 <div class="cv">
@@ -85,6 +70,4 @@
                 </div>
             </div>
         </div>
-    </div>
-    <loading [loading]="loading"></loading>
 </div>
