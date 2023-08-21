@@ -81,7 +81,7 @@ export class RadioConfigComponent implements OnInit {
     }
   }
 
-  changePtt(event) {
+  changePtt() {
     this.loading = true
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF').subscribe(
       (res: any) => {
@@ -188,6 +188,11 @@ export class RadioConfigComponent implements OnInit {
   }
 
   confirmChangePTT() {
+    if(this.radio.tx == true){
+      this.changePtt()
+      return
+    }
+
     if (this.confirmSendPTT) {
       this.confirmSendPTT = false;
     } else {
