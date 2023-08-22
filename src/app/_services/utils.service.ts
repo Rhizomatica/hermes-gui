@@ -105,4 +105,11 @@ export class UtilsService {
     return freq.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","); //Format number with dots
 
   }
+
+  formatSWR(swr){
+    if(!swr)
+      return '0'
+    
+    return (parseInt(swr) / 10).toFixed(1).toString()
+  }
 }
