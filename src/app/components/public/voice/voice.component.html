@@ -6,8 +6,8 @@
   <div class="transciever-panel" *ngIf="radio.freq">
     <div class="data">
       <div class="data-body frequency">
-        <div *ngIf="!inputFrequencyFlag" (click)="showInputFrequency()">
-          <span *ngFor="let digit of placesArray; let i = index" class="{{step == i ? 'color': ''}}">{{digit}}<span
+        <div *ngIf="!inputFrequencyFlag">
+          <span *ngFor="let digit of placesArray; let i = index" class="{{step == i ? 'color': ''}}" (click)="changeStepDigit(i)">{{digit}}<span
               *ngIf="(placesArray.length == 6 && i == 0) || (placesArray.length == 7 && i == 1) ">,</span><span
               *ngIf="i == placesArray.length - 3">.</span>
           </span>
@@ -74,26 +74,10 @@
 </div>
 <div class="overall alert" [hidden]="errorAlert==false">
   <div class="cv">
-    <span i18n="@@errorcustomerror">There was an error on precessing your request <br /><br /></span>
-    <span>{{error}}</span>
-    <div class="icon"><a (click)="closeError()">
-        <img title="close" src="assets/svg/x.svg"></a>
+    <span i18n="@@websocketerror">There was an error on precessing your request </span>
+    {{error}}
+    <div class="icon">
+      <button class="m-t-10" (click)="updatePage()" i18n="@@updatevoicepage">reload page</button>
     </div>
-  </div>
-</div>
-
-<div class="overall" *ngIf="inputFrequencyFlag">
-  <div class="cv">
-    <span i18n="@@currentFrequencyVoice">Current voice frequency: {{radio.freq}} kHz</span>
-    <form #ffreq="ngForm" class="formdata field">
-      <input type="number" class="midbt m-t-10" [min]="freqmin" [max]="freqmax" name="frequency"
-        [(ngModel)]="frequencyInput" value={{frequencyInput}}>
-      <button class="m-r-10" (click)="changeFrequency(ffreq)" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
-        change frequency
-      </button>
-      <button class="m-t-10" (click)="showInputFrequency()" i18n="@@cancelchangevoicefrequency">
-        cancel
-      </button>
-    </form>
   </div>
 </div>
