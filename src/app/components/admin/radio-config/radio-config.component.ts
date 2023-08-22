@@ -86,8 +86,8 @@ export class RadioConfigComponent implements OnInit {
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF').subscribe(
       (res: any) => {
 
+        this.radio.tx = res == 'ON' ? true : false
 
-        //TODO - Change response API - NAO ESTA ENVIANDO TONE
         if (res == 'OFF') {
           this.testTone(0)
         }
