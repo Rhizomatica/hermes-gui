@@ -23,14 +23,12 @@ export class VoiceComponent implements OnInit {
   errorAlert: Boolean = false
   mode: String
   radio: Radio
-  step: number = 0
+  step: number = null
   modeSwitch: boolean
   placesArray: Array<String>
-  inputFrequencyFlag: Boolean = false
   freqmin: number = 500
   freqmax: number = 30000
   frequencyAux: String
-  frequencyInput: number = 0
 
   subject = new BehaviorSubject(this.radioService);
 
@@ -67,6 +65,8 @@ export class VoiceComponent implements OnInit {
     if (this.step < 0 || this.step == 0 && this.placesArray.length == 7) {
       this.step = this.placesArray.length - 1
     }
+
+    this.updateStep()
   }
 
   splitFrequency() {
@@ -80,27 +80,17 @@ export class VoiceComponent implements OnInit {
 
   }
 
-  showInputFrequency() {
-    if (this.inputFrequencyFlag)
-      this.inputFrequencyFlag = false
-    else
-      this.inputFrequencyFlag = true
-  }
-
   changeFrequency(f: NgForm) {
     this.loading = true
     this.radioService.setRadioFreq((f.value.frequency * 1000)).subscribe(
       (res: any) => {
         this.radio.freq = this.utils.formatFrequency(res);
         this.loading = false
-        this.inputFrequencyFlag = false
-        this.frequencyInput = parseInt(res) / 1000
         this.splitFrequency()
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
-        this.inputFrequencyFlag = false
       }
     );
   }
@@ -110,6 +100,29 @@ export class VoiceComponent implements OnInit {
       this.step = this.placesArray.length - 1
   }
 
+  changeStepDigit(index){
+      this.step = index
+      this.updateStep()
+  }
+
+  updateStep() {
+    // this.loading = true
+    // this.radioService.updateStep(this.step).subscribe(
+    //   (res: any) => {
+    //    this.step = res.step
+    //   }, (err) => {
+    //     this.error = err;
+    //     this.errorAlert = true;
+    //     this.loading = false
+    //   }
+    // );
+  }
+
+  updatePage(){
+    this.errorAlert = false
+    location.reload()
+  }
+
   ngOnInit(): void {
     this.sharedService.radioObj.subscribe(message => {
 
@@ -117,11 +130,9 @@ export class VoiceComponent implements OnInit {
       this.modeSwitch = this.radio.mode == 'LSB' ? true : false
       this.splitFrequency()
 
-      if (this.frequencyInput === 0 && this.radio.freq !== null) {
-        this.frequencyInput = parseInt(this.frequencyAux.toString()) / 100
+      if (this.step === null && this.radio.freq) {
         this.setInitialStep()
       }
-
     })
   }
 }
