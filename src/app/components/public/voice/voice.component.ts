@@ -100,25 +100,91 @@ export class VoiceComponent implements OnInit {
       this.step = this.placesArray.length - 1
   }
 
-  changeStepDigit(index){
-      this.step = index
-      this.updateStep()
+  changeStepDigit(index) {
+    this.step = index
+    this.updateStep()
+  }
+
+  getSavedStep() {
+    this.loading = true
+    this.radioService.getStep().subscribe(
+      (res: any) => {
+
+         if (res === null && this.radio.freq) {
+          this.setInitialStep()
+        }
+
+        this.setStepCode(res.step)
+
+        
+
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
   }
 
   updateStep() {
-    // this.loading = true
-    // this.radioService.updateStep(this.step).subscribe(
-    //   (res: any) => {
-    //    this.step = res.step
-    //   }, (err) => {
-    //     this.error = err;
-    //     this.errorAlert = true;
-    //     this.loading = false
-    //   }
-    // );
+    this.loading = true
+    this.radioService.updateStep(this.setStepValue()).subscribe(
+      (res: any) => {
+        this.step = res.step
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
   }
 
-  updatePage(){
+  setStepCode(value) {
+    switch (value) {
+      case '10':
+        this.step = 1;
+        break;
+      case '100':
+        this.step = 2;
+        break;
+      case '1000':
+        this.step = 3;
+        break;
+      case '10000':
+        this.step = 4;
+        break;
+      case '100000':
+        this.step = 5;
+        break;
+      case '1000000':
+        this.step = 6;
+        break;
+      default:
+        this.step = 1;
+        break;
+    }
+  }
+
+  setStepValue() {
+    switch (this.step) {
+      case 1:
+        return 10;
+      case 2:
+        return 100;
+      case 3:
+        return 1000;
+      case 4:
+        return 10000;
+      case 5:
+        return 100000;
+      case 6:
+        return 1000000;
+      default:
+        return 10;
+    }
+  }
+
+  updatePage() {
     this.errorAlert = false
     location.reload()
   }
@@ -129,10 +195,8 @@ export class VoiceComponent implements OnInit {
       this.radio = this.sharedService.radioObj.value
       this.modeSwitch = this.radio.mode == 'LSB' ? true : false
       this.splitFrequency()
-
-      if (this.step === null && this.radio.freq) {
-        this.setInitialStep()
-      }
     })
+
+    this.getSavedStep()
   }
 }
