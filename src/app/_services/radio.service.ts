@@ -219,8 +219,8 @@ export class RadioService {
   }
 
   public updateStep(step: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/step/`;
-    return this.http.post(url, step).pipe(
+    const url = `${GlobalConstants.apiURL}/radio/step/${step}`;
+    return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
       }),

@@ -5,7 +5,7 @@ import { RadioService } from 'src/app/_services/radio.service';
 import { BehaviorSubject } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
@@ -63,7 +63,7 @@ export class VoiceComponent implements OnInit {
     this.step--
 
     if (this.step < 0 || this.step == 0 && this.placesArray.length == 7) {
-      this.step = this.placesArray.length - 1
+      this.step = this.placesArray.length - 2
     }
 
     this.updateStep()
@@ -76,6 +76,7 @@ export class VoiceComponent implements OnInit {
     this.frequencyAux = this.radio.freq.toString()
     this.frequencyAux = this.frequencyAux.replace(/,/g, "")
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
+    this.frequencyAux = this.frequencyAux.length <= 6 ? "0" + this.frequencyAux : this.frequencyAux
     this.placesArray = this.frequencyAux.toString().split('')
 
   }
@@ -101,6 +102,9 @@ export class VoiceComponent implements OnInit {
   }
 
   changeStepDigit(index) {
+    if(index == 6)
+      return
+
     this.step = index
     this.updateStep()
   }
@@ -110,13 +114,14 @@ export class VoiceComponent implements OnInit {
     this.radioService.getStep().subscribe(
       (res: any) => {
 
+        this.loading = false
+
          if (res === null && this.radio.freq) {
           this.setInitialStep()
+          return
         }
 
-        this.setStepCode(res.step)
-
-        
+        this.setStepCode(res)
 
       }, (err) => {
         this.error = err;
@@ -127,59 +132,58 @@ export class VoiceComponent implements OnInit {
   }
 
   updateStep() {
-    this.loading = true
     this.radioService.updateStep(this.setStepValue()).subscribe(
       (res: any) => {
-        this.step = res.step
+        // if(res != true || res != 1){
+        //   this.error = res
+        //   this.errorAlert = true;
+        // }
+
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
-        this.loading = false
       }
     );
   }
 
   setStepCode(value) {
+    console.log(typeof(value))
+
     switch (value) {
-      case '10':
+      case 1000000:
+        this.step = 0;
+        break;
+      case 100000:
         this.step = 1;
         break;
-      case '100':
+      case 10000:
         this.step = 2;
         break;
-      case '1000':
+      case 1000:
         this.step = 3;
         break;
-      case '10000':
+      case 100:
         this.step = 4;
         break;
-      case '100000':
+      case 10:
         this.step = 5;
-        break;
-      case '1000000':
-        this.step = 6;
-        break;
-      default:
-        this.step = 1;
         break;
     }
   }
 
   setStepValue() {
     switch (this.step) {
+      case 0:
+        return 1000000;
       case 1:
-        return 10;
+        return 100000;
       case 2:
-        return 100;
+        return 10000;
       case 3:
         return 1000;
       case 4:
-        return 10000;
+        return 100;
       case 5:
-        return 100000;
-      case 6:
-        return 1000000;
-      default:
         return 10;
     }
   }
