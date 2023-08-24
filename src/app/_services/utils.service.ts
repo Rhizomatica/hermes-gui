@@ -102,7 +102,9 @@ export class UtilsService {
 
     freq = (Math.round((freq / 1000) * 100) / 100).toFixed(2); //Set Decimal
 
-    return freq.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","); //Format number with dots
+    freq = freq.replace(/\./g, ',') //Replace decimal dot per comma
+
+    return freq.replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, "."); //Format number with dots
   }
 
   formatSWR(swr){
