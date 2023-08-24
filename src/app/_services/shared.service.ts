@@ -60,7 +60,7 @@ export class SharedService {
     this.storedRadioObj.mode = newObj.mode == null ? this.storedRadioObj.mode : newObj.mode
     this.storedRadioObj.tx = newObj.tx == null ? this.storedRadioObj.tx : newObj.tx
     this.storedRadioObj.rx = newObj.rx == null ? this.storedRadioObj.rx : newObj.rx
-    this.storedRadioObj.fwd_watts = newObj.fwd_watts == null ? this.storedRadioObj.fwd_watts : newObj.fwd_watts
+    this.storedRadioObj.fwd_watts = newObj.fwd_watts == null ? this.storedRadioObj.fwd_watts : utils.formatPower(newObj.fwd_watts)
     this.storedRadioObj.swr = newObj.swr == null ? this.storedRadioObj.swr : utils.formatSWR(newObj.swr)
   }
 }

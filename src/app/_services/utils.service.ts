@@ -103,13 +103,19 @@ export class UtilsService {
     freq = (Math.round((freq / 1000) * 100) / 100).toFixed(2); //Set Decimal
 
     return freq.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","); //Format number with dots
-
   }
 
   formatSWR(swr){
     if(!swr)
-      return '0'
+      return '1.0'
     
     return (parseInt(swr) / 10).toFixed(1).toString()
+  }
+
+  formatPower(fwd){
+    if(!fwd)
+      return '0'
+    
+    return (parseInt(fwd) / 10).toFixed(1).toString()
   }
 }
