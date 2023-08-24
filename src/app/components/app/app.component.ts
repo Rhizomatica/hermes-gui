@@ -67,6 +67,8 @@ export class AppComponent implements OnInit {
         this.chackIsMenuPage()
         this.updateBreadcrumb()
 
+
+        //TODO - tentar reconectar websocket 5 segundos tiemout
         if (this.currentUser && !this.websocketService.messages) {
           this.websocketService.startService()
           this.startWebSocketService()
@@ -90,6 +92,8 @@ export class AppComponent implements OnInit {
     }, async err => {
 
       this.saveWebsocketError()
+      this.websocketService.ws.close()
+      this.sharedService.mountRadioObjDemo()
 
     }, () => {
       console.log('complete, closing websocket connection...')

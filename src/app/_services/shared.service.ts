@@ -49,6 +49,7 @@ export class SharedService {
     this.radioObj.value.rx = this.storedRadioObj.rx
     this.radioObj.value.fwd_watts = this.storedRadioObj.fwd_watts
     this.radioObj.value.swr = this.storedRadioObj.swr
+    this.radioObj.value.protection = this.storedRadioObj.protection
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -62,5 +63,18 @@ export class SharedService {
     this.storedRadioObj.rx = newObj.rx == null ? this.storedRadioObj.rx : newObj.rx
     this.storedRadioObj.fwd_watts = newObj.fwd_watts == null ? this.storedRadioObj.fwd_watts : utils.formatPower(newObj.fwd_watts)
     this.storedRadioObj.swr = newObj.swr == null ? this.storedRadioObj.swr : utils.formatSWR(newObj.swr)
+    this.storedRadioObj.protection = newObj.protection == null ? this.storedRadioObj.protection : newObj.protection
+  }
+
+  mountRadioObjDemo(){
+    var utils = new UtilsService()
+
+    this.radioObj.value.freq = utils.formatFrequency(1085500)
+    this.radioObj.value.mode = 'USB'
+    this.radioObj.value.tx = false
+    this.radioObj.value.rx = true
+    this.radioObj.value.fwd_watts = '1.0'
+    this.radioObj.value.swr = '1.98'
+    this.radioObj.next(this.radioObj.value)
   }
 }
