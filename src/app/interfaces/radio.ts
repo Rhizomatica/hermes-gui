@@ -7,7 +7,7 @@ export interface Radio {
   led: Boolean,
   fwd_raw: number,
   // fwd_volts: Number,
-  fwd_watts: number,
+  fwd_watts: string,
   swr: string,
   ref_raw: number,
   // ref_volts: Number,
