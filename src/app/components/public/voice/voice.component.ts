@@ -113,7 +113,7 @@ export class VoiceComponent implements OnInit {
 
         this.loading = false
 
-         if (res === null && this.radio.freq) {
+        if (res === null && this.radio.freq) {
           this.setInitialStep()
           return
         }
@@ -131,7 +131,7 @@ export class VoiceComponent implements OnInit {
   updateStep() {
     this.radioService.updateStep(this.setStepValue()).subscribe(
       (res: any) => {
-        if(res != true || res != 1){
+        if (res != true || res != 1) {
           this.error = res
           this.errorAlert = true;
         }
@@ -144,43 +144,41 @@ export class VoiceComponent implements OnInit {
   }
 
   setStepCode(value) {
-    console.log(typeof(value))
-
-    switch (value) {
+     switch (value) {
       case 1000000:
-        this.step = 0;
-        break;
-      case 100000:
         this.step = 1;
         break;
-      case 10000:
+      case 100000:
         this.step = 2;
         break;
-      case 1000:
+      case 10000:
         this.step = 3;
         break;
-      case 100:
+      case 1000:
         this.step = 4;
         break;
-      case 10:
+      case 100:
         this.step = 5;
+        break;
+      case 10:
+        this.step = 6;
         break;
     }
   }
 
   setStepValue() {
     switch (this.step) {
-      case 0:
-        return 1000000;
       case 1:
-        return 100000;
+        return 1000000;
       case 2:
-        return 10000;
+        return 100000;
       case 3:
-        return 1000;
+        return 10000;
       case 4:
-        return 100;
+        return 1000;
       case 5:
+        return 100;
+      case 6:
         return 10;
     }
   }
