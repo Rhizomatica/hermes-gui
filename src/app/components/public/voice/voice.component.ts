@@ -76,7 +76,13 @@ export class VoiceComponent implements OnInit {
     this.frequencyAux = this.radio.freq.toString()
     this.frequencyAux = this.frequencyAux.replace(/,/g, "")
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
-    this.frequencyAux = this.frequencyAux.length <= 6 ? "0" + this.frequencyAux : this.frequencyAux
+
+    if (this.frequencyAux.length == 6)
+      this.frequencyAux = "0" + this.frequencyAux
+
+    if (this.frequencyAux.length == 5)
+      this.frequencyAux = "00" + this.frequencyAux
+
     this.placesArray = this.frequencyAux.toString().split('')
 
   }
@@ -144,7 +150,7 @@ export class VoiceComponent implements OnInit {
   }
 
   setStepCode(value) {
-     switch (value) {
+    switch (value) {
       case 1000000:
         this.step = 1;
         break;
