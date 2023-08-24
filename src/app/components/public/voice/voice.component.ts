@@ -134,10 +134,10 @@ export class VoiceComponent implements OnInit {
   updateStep() {
     this.radioService.updateStep(this.setStepValue()).subscribe(
       (res: any) => {
-        // if(res != true || res != 1){
-        //   this.error = res
-        //   this.errorAlert = true;
-        // }
+        if(res != true || res != 1){
+          this.error = res
+          this.errorAlert = true;
+        }
 
       }, (err) => {
         this.error = err;
