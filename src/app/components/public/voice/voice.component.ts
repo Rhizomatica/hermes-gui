@@ -63,7 +63,7 @@ export class VoiceComponent implements OnInit {
     this.step--
 
     if (this.step < 0 || this.step == 0 && this.placesArray.length == 7) {
-      this.step = this.placesArray.length - 2
+      this.step = this.placesArray.length - 1
     }
 
     this.updateStep()
@@ -102,9 +102,6 @@ export class VoiceComponent implements OnInit {
   }
 
   changeStepDigit(index) {
-    if(index == 6)
-      return
-
     this.step = index
     this.updateStep()
   }
