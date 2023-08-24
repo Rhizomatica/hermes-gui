@@ -84,7 +84,6 @@ export class VoiceComponent implements OnInit {
       this.frequencyAux = "00" + this.frequencyAux
 
     this.placesArray = this.frequencyAux.toString().split('')
-
   }
 
   changeFrequency(f: NgForm) {
