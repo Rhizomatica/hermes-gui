@@ -122,6 +122,7 @@ export class UserManagementComponent implements OnInit {
 
   cancelCreate() {
     this.isEditing = false;
+    this.newUsername = false;
   }
 
   newUser() {
