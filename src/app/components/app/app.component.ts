@@ -84,7 +84,7 @@ export class AppComponent implements OnInit {
     });
 
     this.websocketService.messages.subscribe(data => {
-      this.sharedService.setRadioObjShared(data) 
+      this.sharedService.setRadioObjShared(data)
 
       this.radio = this.sharedService.radioObj.value
       this.checkingPTTHardwareCommand()
@@ -93,7 +93,9 @@ export class AppComponent implements OnInit {
 
       this.saveWebsocketError()
       this.websocketService.ws.close()
-      this.sharedService.mountRadioObjDemo()
+
+      if (self.location.hostname === 'hermes.radio')
+        this.sharedService.mountRadioObjDemo()
 
     }, () => {
       console.log('complete, closing websocket connection...')
