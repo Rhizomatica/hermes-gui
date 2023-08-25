@@ -38,7 +38,8 @@
       <a>{{selectedUser.email}}@{{domain}}</a> 
       <label for="name">
         <span i18n="@@name">Name</span>
-        <p>{{selectedUser.name}}</p>
+        <p *ngIf="!newUsername">{{selectedUser.name}}</p>
+        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
         full name is required
