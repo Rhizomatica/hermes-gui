@@ -13,6 +13,7 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { CustomErrorsService } from 'src/app/_services/custom-errors.service';
 import { CustomError } from 'src/app/interfaces/customerror';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -48,6 +49,8 @@ export class AppComponent implements OnInit {
   sent = [];
   content = '';
   radioObj: Radio
+  intervallTimerKeepWebSocketAlive = interval(900);
+
 
   constructor(
     private router: Router,
@@ -68,7 +71,6 @@ export class AppComponent implements OnInit {
         this.updateBreadcrumb()
 
 
-        //TODO - tentar reconectar websocket 5 segundos tiemout
         if (this.currentUser && !this.websocketService.messages) {
           this.websocketService.startService()
           this.startWebSocketService()
@@ -87,12 +89,15 @@ export class AppComponent implements OnInit {
       this.sharedService.setRadioObjShared(data)
 
       this.radio = this.sharedService.radioObj.value
+
       this.checkingPTTHardwareCommand()
 
     }, async err => {
 
       this.saveWebsocketError()
       this.websocketService.ws.close()
+
+      this.keepWebSocketAlive()
 
       if (self.location.hostname === 'hermes.radio')
         this.sharedService.mountRadioObjDemo()
@@ -132,6 +137,16 @@ export class AppComponent implements OnInit {
         this.loading = false
       }
     );
+  }
+
+  keepWebSocketAlive(){
+    console.log('keep alive...')
+    if(!this.websocketService.ws.OPEN){
+      this.intervallTimerKeepWebSocketAlive.subscribe(() => {
+        this.websocketService.startService()
+        this.startWebSocketService()
+      });
+    }
   }
 
   getSystemStatus(): void {
