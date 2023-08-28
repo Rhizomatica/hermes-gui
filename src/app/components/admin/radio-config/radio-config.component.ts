@@ -334,7 +334,6 @@ export class RadioConfigComponent implements OnInit {
     this.frek = this.radio.freq
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
-    this.localUsing = this.utils.isItRuningLocal()
   }
 }
 
