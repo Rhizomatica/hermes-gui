@@ -31,7 +31,7 @@ export class WebsocketService {
     public connect(url): AnonymousSubject<MessageEvent> {
         if (!this.subject) {
             this.subject = this.create(url)
-        }
+        }        
         return this.subject;
     }
 
