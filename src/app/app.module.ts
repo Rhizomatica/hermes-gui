@@ -48,6 +48,7 @@ import { WiFiManagementComponent } from './components/admin/wifi-management/wifi
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 
 registerLocaleData(localePt);
@@ -100,7 +101,8 @@ registerLocaleData(localeFr);
     HttpClientModule,
     Ng2SearchPipeModule,
     AngularFileUploaderModule,
-    NgSelectModule
+    NgSelectModule,
+    NgIdleKeepaliveModule.forRoot()
   ],
   providers: [
     DecimalPipe,
