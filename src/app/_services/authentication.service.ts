@@ -37,5 +37,10 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+
+        // this.authenticationService.logout();
+        // this.router.navigate(['/login']);
+        // this.currentUser = null;
+        // this.websocketService.ws.close()
     }
 }

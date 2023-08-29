@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { DecimalPipe, Location, NgSwitchCase } from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
@@ -14,6 +14,8 @@ import { Radio } from 'src/app/interfaces/radio';
 import { CustomErrorsService } from 'src/app/_services/custom-errors.service';
 import { CustomError } from 'src/app/interfaces/customerror';
 import { interval } from 'rxjs';
+import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
+// import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
   selector: 'app-root',
@@ -47,10 +49,12 @@ export class AppComponent implements OnInit {
   currentUrl = '/home'
   received = [];
   sent = [];
-  content = '';
+  content = ''
   radioObj: Radio
-  intervallTimerKeepWebSocketAlive = interval(900);
-
+  intervallTimerKeepWebSocketAlive = interval(900)
+  idleState = "NOT_STARTED";
+  countdown?: number = null
+  lastPing?: Date = null
 
   constructor(
     private router: Router,
@@ -61,9 +65,14 @@ export class AppComponent implements OnInit {
     private location: Location,
     private websocketService: WebsocketService,
     private sharedService: SharedService,
-    private errorService: CustomErrorsService
+    private errorService: CustomErrorsService,
+    private idle: Idle,
+    // private keepalive: Keepalive, 
+    private cd: ChangeDetectorRef
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
+    this.startIdleDetector()
 
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
@@ -139,9 +148,9 @@ export class AppComponent implements OnInit {
     );
   }
 
-  keepWebSocketAlive(){
+  keepWebSocketAlive() {
     console.log('keep alive...')
-    if(!this.websocketService.ws.OPEN){
+    if (!this.websocketService.ws.OPEN) {
       this.intervallTimerKeepWebSocketAlive.subscribe(() => {
         this.websocketService.startService()
         this.startWebSocketService()
@@ -225,6 +234,50 @@ export class AppComponent implements OnInit {
     return false
   }
 
+  startIdleDetector() {
+    this.idle.setIdle(60)
+    this.idle.setTimeout(60)
+    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
+
+    this.idle.onIdleStart.subscribe(() => {
+      this.idleState = "IDLE";
+    })
+
+    // do something when the user is no longer idle
+    this.idle.onIdleEnd.subscribe(() => {
+      this.idleState = "NOT_IDLE"
+      console.log(`${this.idleState} ${new Date()}`)
+
+      this.countdown = null;
+      this.cd.detectChanges() // how do i avoid this kludge?
+    })
+
+    // do something when the user has timed out
+    this.idle.onTimeout.subscribe(() => {
+      this.idleState = "TIMED_OUT"
+      this.authenticationService.logout();
+      this.router.navigate(['/login']);
+    })
+
+
+
+    // do something as the timeout countdown does its thing
+    this.idle.onTimeoutWarning.subscribe(seconds => this.countdown = seconds);
+
+    // set keepalive parameters, omit if not using keepalive
+    // this.keepalive.interval(15); // will ping at this interval while not idle, in seconds
+    // this.keepalive.onPing.subscribe(() => this.lastPing = new Date()); // do something when it pings
+  }
+
+  resetIdle() {
+    // we'll call this method when we want to start/reset the idle process
+    // reset any component state and be sure to call idle.watch()
+    this.idle.watch();
+    this.idleState = "NOT_IDLE";
+    this.countdown = null;
+    this.lastPing = null;
+  }
+
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
     this.loading = true
@@ -232,5 +285,8 @@ export class AppComponent implements OnInit {
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
+
+    // right when the component initializes, start reset state and start watching
+    this.resetIdle();
   }
 }
