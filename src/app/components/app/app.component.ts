@@ -254,6 +254,7 @@ export class AppComponent implements OnInit {
       this.idleState = "TIMED_OUT"
       this.authenticationService.logout();
       this.router.navigate(['/login']);
+      this.websocketService.ws.close()
     })
 
     // do something as the timeout countdown does its thing

@@ -40,7 +40,7 @@ export class MenuComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
-    this.currentUser = null;
+    this.admin = false
     this.websocketService.ws.close()
   }
   
