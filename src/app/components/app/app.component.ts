@@ -54,7 +54,6 @@ export class AppComponent implements OnInit {
   intervallTimerKeepWebSocketAlive = interval(900)
   idleState = "NOT_STARTED";
   countdown?: number = null
-  lastPing?: Date = null
 
   constructor(
     private router: Router,
@@ -235,8 +234,8 @@ export class AppComponent implements OnInit {
   }
 
   startIdleDetector() {
-    this.idle.setIdle(60)
-    this.idle.setTimeout(60)
+    this.idle.setIdle(600)
+    this.idle.setTimeout(30)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
     this.idle.onIdleStart.subscribe(() => {
@@ -246,8 +245,6 @@ export class AppComponent implements OnInit {
     // do something when the user is no longer idle
     this.idle.onIdleEnd.subscribe(() => {
       this.idleState = "NOT_IDLE"
-      console.log(`${this.idleState} ${new Date()}`)
-
       this.countdown = null;
       this.cd.detectChanges() // how do i avoid this kludge?
     })
@@ -259,14 +256,10 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/login']);
     })
 
-
-
     // do something as the timeout countdown does its thing
-    this.idle.onTimeoutWarning.subscribe(seconds => this.countdown = seconds);
-
-    // set keepalive parameters, omit if not using keepalive
-    // this.keepalive.interval(15); // will ping at this interval while not idle, in seconds
-    // this.keepalive.onPing.subscribe(() => this.lastPing = new Date()); // do something when it pings
+    this.idle.onTimeoutWarning.subscribe(seconds => {
+      this.countdown = seconds
+    });
   }
 
   resetIdle() {
@@ -275,7 +268,6 @@ export class AppComponent implements OnInit {
     this.idle.watch();
     this.idleState = "NOT_IDLE";
     this.countdown = null;
-    this.lastPing = null;
   }
 
   ngOnInit(): void {
@@ -285,7 +277,6 @@ export class AppComponent implements OnInit {
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
-
     // right when the component initializes, start reset state and start watching
     this.resetIdle();
   }
