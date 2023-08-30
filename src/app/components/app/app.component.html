@@ -30,17 +30,10 @@
         <img title="close" src="assets/svg/times.svg">
       </a>
     </nav>
-    <!-- TODO - Create component -->
-
-
-    <div class="row">IDLE_STATE: {{idleState}}, COUNTDOWN: {{countdown}}</div>
-
 
     <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
 
     <div class="formfield {{currentPage == 'home' ? 'home' : ''}}">
-
-      <!-- <h5 class="alert">WS RECEIVED -  <br /> <i *ngFor="received as i">{{i}}</i>{{ received }}</h5> -->
 
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
 
@@ -76,6 +69,12 @@
       </ng-template>
     </div>
     <floatbutton></floatbutton>
+  </div>
+  <div class="overall alert" *ngIf="countdown == 30">
+    <div class="cv">
+      <span i18n="@@countdowninactivite">Inactivite user. Countdown for logoff</span>
+      <div class="row"><b>{{countdown}}</b></div>
+    </div>
   </div>
   <loading [loading]="loading"></loading>
 </div>
