@@ -51,7 +51,6 @@ export class homeComponent implements OnInit {
   logOff() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
-    this.currentUser = null;
     this.admin = false
     this.websocketService.ws.close()
   }
