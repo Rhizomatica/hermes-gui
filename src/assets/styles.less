@@ -1604,6 +1604,9 @@ tr:nth-child(odd) {
     }
   }
 
+  input[type=range] {
+    background-color: #2d3436;
+  }
 
 }
 
@@ -1635,126 +1638,74 @@ tr:nth-child(odd) {
 }
 
 input[type=range] {
-  height: 1.5em;
   -webkit-appearance: none;
-}
-
-/*webkit*/
-input[type=range]::-webkit-slider-thumb {
-  width: 0.2em;
-  height: 1.5em;
-  border-radius: 0;
-  background: #000000;
-  border: none;
-  box-shadow: none;
-
-  -webkit-appearance: none;
+  background-color: #fafafa;
+  width: 300px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-  height: 1.5em;
-  border-radius: 0;
-  background: #fff;
-  border: 1px solid #b2b2b2;
-  box-shadow: none;
-}
-
-input[type=range]::-webkit-slider-thumb:hover {
-  background: #0061c3;
-}
-
-input[type=range]:hover::-webkit-slider-runnable-track {
-  background: #fff;
-  border-color: #000;
-}
-
-input[type=range]::-webkit-slider-thumb:active {
-  background: #2f98f9;
-}
-
-input[type=range]:active::-webkit-slider-runnable-track {
-  background: #fff;
-  border-color: #000;
-}
-
-
-
-/*mozilla*/
-input[type=range]::-moz-range-thumb {
-  width: 0.2em;
-  height: 1.5em;
-  border-radius: 0;
-  background: #000000;
+  width: 300px;
+  height: 5px;
+  background: #ddd;
   border: none;
-  box-shadow: none;
+  border-radius: 3px;
 }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: @clr;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+// https://codepen.io/duplich/pen/qjYQEZ
+// ::-ms-fill-upper and ::-ms-fill-lower chrome Problem******
+
+
+//firefox
+// input[type=range]{
+//   /* fix for FF unable to apply focus style bug  */
+//   border: 1px solid white; 
+
+//   /*required for proper track sizing in FF*/
+//   width: 300px;
+// }
 
 input[type=range]::-moz-range-track {
-  height: 1.5em;
-  border-radius: 0;
-  background: #fff;
-  border: 1px solid #b2b2b2;
-  box-shadow: none;
-}
-
-input[type=range]::-moz-range-thumb:hover {
-  background: #0061c3;
-}
-
-input[type=range]:hover::-moz-range-track {
-  background: #fff;
-  border-color: #000;
-}
-
-input[type=range]:-moz-range-thumb:active {
-  background: #2f98f9;
-}
-
-input[type=range]:active::-moz-range-track {
-  background: #fff;
-  border-color: #000;
-}
-
-
-
-/*ms*/
-input[type=range].styled-slider::-ms-fill-upper {
-  background: transparent;
-  border-color: transparent;
-}
-
-input[type=range].styled-slider::-ms-fill-lower {
-  background: transparent;
-  border-color: transparent;
-}
-
-input[type=range].styled-slider::-ms-thumb {
-  width: 0.2em;
-  height: 1.5em;
-  border-radius: 0;
-  background: #000000;
+  width: 300px;
+  height: 5px;
+  background: #ddd;
   border: none;
-  box-shadow: none;
-  margin-top: 0;
-  box-sizing: border-box;
+  border-radius: 3px;
 }
 
-input[type=range]::-ms-track {
-  height: 1.5em;
-  border-radius: 0;
-  background: #fff;
-  border: 1px solid #b2b2b2;
-  box-shadow: none;
-  box-sizing: border-box;
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: @clr;
 }
 
-input[type=range]::-ms-thumb:hover {
-  background: #0061c3;
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
 }
 
-input[type=range]:hover::-ms-track {
-  background: #fff;
-  border-color: #000;
+input[type=range]:focus::-moz-range-track {
+  background: #ccc;
 }
 
 #selmult {
@@ -2324,7 +2275,7 @@ tr:nth-child(odd) {
           font-size: 2.8em;
         }
 
-        .data-body.frequency:hover{
+        .data-body.frequency:hover {
           cursor: crosshair;
         }
       }
