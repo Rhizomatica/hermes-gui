@@ -13,7 +13,8 @@ const envConfigFile = `export const environment = {
    domain: '${process.env.DOMAIN}',
    gateway: ${process.env.GATEWAY},
    bitx: '${process.env.BITX}',
-   generalLogin: ${process.env.GENERAL_LOGIN}
+   generalLogin: ${process.env.GENERAL_LOGIN},
+   emergencyEmail: '${process.env.EMERGENCY_EMAIL}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

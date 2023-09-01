@@ -20,6 +20,7 @@ export class EmailComponent implements OnInit {
   emailto = [];
   users: any;
   domain: String
+  emergencyEmail: String
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -27,6 +28,7 @@ export class EmailComponent implements OnInit {
     private userService: UserService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.emergencyEmail = GlobalConstants.emergencyEmail
   }
 
   getUsers(): void {
