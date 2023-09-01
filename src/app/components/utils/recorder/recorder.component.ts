@@ -24,14 +24,14 @@ export class RecorderComponent implements OnChanges {
   }
 
   @Input() recording: boolean
-  @Input() file: String
+  @Input() file: string
   @Input() fileName: any
-  @Input() maxSize: Number
+  @Input() maxSize: number
 
   public record: any
   public timeRecording: any
-  public secondsLabel: String
-  public minutesLabel: String
+  public secondsLabel: string
+  public minutesLabel: string
   public recordingInterval: any
 
   @Output() emitteFileOP = new EventEmitter<any>();

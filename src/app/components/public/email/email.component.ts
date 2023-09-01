@@ -19,8 +19,8 @@ export class EmailComponent implements OnInit {
   errorAlert = false;
   emailto = [];
   users: any;
-  domain: String
-  emergencyEmail: String
+  domain: string
+  emergencyEmail: string
 
   constructor(
     private authenticationService: AuthenticationService,

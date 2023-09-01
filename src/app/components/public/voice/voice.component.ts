@@ -17,18 +17,18 @@ import { UtilsService } from 'src/app/_services/utils.service';
 export class VoiceComponent implements OnInit {
 
   currentUser: User
-  admin: Boolean
-  loading: Boolean = false
-  error: String
-  errorAlert: Boolean = false
-  mode: String
+  admin: boolean
+  loading: boolean = false
+  error: string
+  errorAlert: boolean = false
+  mode: string
   radio: Radio
   step: number = null
   modeSwitch: boolean
   placesArray: Array<String>
   freqmin: number = 500
   freqmax: number = 30000
-  frequencyAux: String
+  frequencyAux: string
 
   subject = new BehaviorSubject(this.radioService);
 

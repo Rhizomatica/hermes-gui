@@ -33,7 +33,7 @@ export class LogComponent implements OnInit, OnDestroy {
   loading = false
   customErrors: CustomError[]
   visibleArray: any = []
-  searchError: String
+  searchError: string
   customLog: boolean
   system: any
   criticSpace = false;

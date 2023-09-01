@@ -16,18 +16,18 @@ import { WifiManagerService } from '../../../_services/wifi-manager.service';
 export class WiFiManagementComponent implements OnInit {
 
   currentUser: User
-  admin: Boolean
-  loading: Boolean = false
-  error: String
-  errorAlert: Boolean = false
-  errorAlertPatterns: Boolean = false
-  channels: Number[] = []
-  wiFiSSID: String
-  wiFiRetypePassphrase: String
-  wiFiPassphrase: String
-  wiFiChannel: Number = 1
-  msgPatternChars: Boolean = false
-  excludedKeys: Number[]
+  admin: boolean
+  loading: boolean = false
+  error: string
+  errorAlert: string
+  errorAlertPatterns: boolean = false
+  channels: number[] = []
+  wiFiSSID: string
+  wiFiRetypePassphrase: string
+  wiFiPassphrase: string
+  wiFiChannel: number = 1
+  msgPatternChars: boolean = false
+  excludedKeys: number[]
   passwordUnmatch = false;
   passwordMin = false
   system: any
