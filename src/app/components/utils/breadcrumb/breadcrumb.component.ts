@@ -15,10 +15,10 @@ export class BreadcrumbComponent implements OnChanges {
   }
 
 
-  @Input() currentPage: String
-  @Input() currentUrl: String
+  @Input() currentPage: string
+  @Input() currentUrl: string
   pages = []
-  generalLogin: Boolean = GlobalConstants.generalLogin
+  generalLogin: boolean = GlobalConstants.generalLogin
 
   ngOnInit(): void { }
 

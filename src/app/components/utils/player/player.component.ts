@@ -17,11 +17,11 @@ export class PlayerComponent implements OnChanges {
   }
 
   @Input() playing: boolean
-  @Input() url: String
-  @Input() fileId: Number
-  @Input() mimetype: String
+  @Input() url: string
+  @Input() fileId: number
+  @Input() mimetype: string
   @Input() secured: boolean
-  @Input() password: String
+  @Input() password: string
 
   ngOnChanges(change) {
     change && change.playing.currentValue != change.playing.previousValue ? this.playing = change.playing.currentValue : null

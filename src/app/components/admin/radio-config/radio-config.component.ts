@@ -49,7 +49,7 @@ export class RadioConfigComponent implements OnInit {
   led: any;
   ptt: any;
   frek: any;
-  serial: String
+  serial: string
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx

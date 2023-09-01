@@ -15,10 +15,10 @@ import { WebsocketService } from 'src/app/_services/websocket.service';
 export class MenuComponent implements OnInit {
 
   currentUser: User
-  admin: Boolean
-  loading: Boolean = false
-  error: String
-  errorAlert: Boolean = false
+  admin: boolean
+  loading: boolean = false
+  error: string
+  errorAlert: boolean = false
   radio: Radio
 
   constructor(

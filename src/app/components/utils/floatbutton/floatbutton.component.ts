@@ -16,8 +16,8 @@ export class FloatButtonComponent{
     
   }
 
-  @Input() shuttingDown: Boolean
-  @Input() shuttingDownNow: Boolean
+  @Input() shuttingDown: boolean
+  @Input() shuttingDownNow: boolean
 
   ngOnInit(): void { }
 

@@ -16,13 +16,13 @@ export class RadioScaryComponent implements OnInit {
 
   public radio: any = []
   error: Error
-  errorAlert: Boolean
+  errorAlert: boolean
   res: any
   bfo: any
   mastercal: any
-  radioError: Boolean
+  radioError: boolean
   currentUser: User
-  isAdmin: Boolean
+  isAdmin: boolean
   
   constructor(
     private authenticationService: AuthenticationService,

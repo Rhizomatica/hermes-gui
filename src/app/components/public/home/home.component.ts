@@ -41,8 +41,8 @@ export class homeComponent implements OnInit {
   admin: boolean = false
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
-  alertBrowserXP: Boolean = false
-  showVoiceCard: Boolean = true
+  alertBrowserXP: boolean = false
+  showVoiceCard: boolean = true
   isGateway: boolean = GlobalConstants.gateway
   radio: Radio
 
