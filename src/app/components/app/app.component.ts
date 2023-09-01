@@ -79,7 +79,12 @@ export class AppComponent implements OnInit {
         this.updateBreadcrumb()
 
 
-        if (this.currentUser && !this.websocketService.messages) {
+        if (GlobalConstants.generalLogin && this.currentUser && !this.websocketService.messages) {
+          this.websocketService.startService()
+          this.startWebSocketService()
+        }
+
+        if(!GlobalConstants.generalLogin && !this.websocketService.messages){
           this.websocketService.startService()
           this.startWebSocketService()
         }
