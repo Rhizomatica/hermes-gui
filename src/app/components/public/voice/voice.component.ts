@@ -5,7 +5,7 @@ import { RadioService } from 'src/app/_services/radio.service';
 import { BehaviorSubject } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
-import { FormControl, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class VoiceComponent implements OnInit {
   freqmin: number = 500
   freqmax: number = 30000
   frequencyAux: string
-  volume: number = 5
+  volume: number = 60
 
   subject = new BehaviorSubject(this.radioService);
 
