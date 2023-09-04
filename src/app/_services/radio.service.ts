@@ -236,6 +236,16 @@ export class RadioService {
       catchError(this.handleError));
   }
 
+  public getVolume(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/volume/`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+  
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }
