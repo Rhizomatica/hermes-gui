@@ -194,6 +194,17 @@ export class VoiceComponent implements OnInit {
     location.reload()
   }
 
+  getVolume() {
+    this.radioService.getVolume().subscribe(
+      (res: any) => {
+        this.volume = res
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true
+      }
+    );
+  }
+
   changeVolume(f: NgForm) {
     this.loading = true
     this.volume = f.value.volume
