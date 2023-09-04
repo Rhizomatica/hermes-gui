@@ -29,6 +29,7 @@ export class VoiceComponent implements OnInit {
   freqmin: number = 500
   freqmax: number = 30000
   frequencyAux: string
+  volume: number = 5
 
   subject = new BehaviorSubject(this.radioService);
 
@@ -193,13 +194,19 @@ export class VoiceComponent implements OnInit {
     location.reload()
   }
 
-  changeVolume() {
-    // const value = document.querySelector("#value");
-    // const input = document.querySelector("#pi_input");
-    // value.textContent = input.value;
-    // input.addEventListener("input", (event) => {
-    //   value.textContent = event.target.value;
-    // });
+  changeVolume(f: NgForm) {
+    this.loading = true
+    this.volume = f.value.volume
+    this.radioService.changeVolume(f.value.volume).subscribe(
+      (res: any) => {
+        this.volume = res
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
   }
 
   ngOnInit(): void {
