@@ -70,7 +70,7 @@
     </div>
     <floatbutton></floatbutton>
   </div>
-  <div class="overall alert" *ngIf="countdown == 30">
+  <div class="overall alert" *ngIf="countdown && !isLoginPage">
     <div class="cv">
       <span i18n="@@countdowninactivite">Inactive user. Countdown for logoff</span>
       <div class="row"><b>{{countdown}}</b></div>
