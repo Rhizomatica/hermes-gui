@@ -84,7 +84,7 @@ export class AppComponent implements OnInit {
           this.startWebSocketService()
         }
 
-        if(!GlobalConstants.generalLogin && !this.websocketService.messages){
+        if (!GlobalConstants.generalLogin && !this.websocketService.messages) {
           this.websocketService.startService()
           this.startWebSocketService()
         }
@@ -239,7 +239,7 @@ export class AppComponent implements OnInit {
   }
 
   startIdleDetector() {
-    this.idle.setIdle(600)
+    this.idle.setIdle(40)
     this.idle.setTimeout(30)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
@@ -258,14 +258,18 @@ export class AppComponent implements OnInit {
     this.idle.onTimeout.subscribe(() => {
       this.idleState = "TIMED_OUT"
       this.authenticationService.logout();
-      this.router.navigate(['/login']);
+      // right when the component initializes, start reset state and start watching
+      this.resetIdle();
       this.websocketService.ws.close()
+      this.router.navigate(['/login']);
     })
 
     // do something as the timeout countdown does its thing
     this.idle.onTimeoutWarning.subscribe(seconds => {
       this.countdown = seconds
     });
+
+    this.idle.watch()
   }
 
   resetIdle() {
@@ -283,7 +287,5 @@ export class AppComponent implements OnInit {
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
-    // right when the component initializes, start reset state and start watching
-    this.resetIdle();
   }
 }
