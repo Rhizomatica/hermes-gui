@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
   intervallTimerKeepWebSocketAlive = interval(900)
   idleState = "NOT_STARTED";
   countdown?: number = null
+  isLoginPage: boolean = null
 
   constructor(
     private router: Router,
@@ -75,7 +76,8 @@ export class AppComponent implements OnInit {
 
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        this.chackIsMenuPage()
+        this.checkIsMenuPage()
+        this.checkIsLoginPage()
         this.updateBreadcrumb()
 
 
@@ -218,8 +220,12 @@ export class AppComponent implements OnInit {
     this.location.back();
   }
 
-  chackIsMenuPage() {
+  checkIsMenuPage() {
     this.isMenuPage = this.router.url == '/menu' ? true : false
+  }
+
+  checkIsLoginPage() {
+    this.isLoginPage = this.router.url == '/login' ? true : false
   }
 
   updateBreadcrumb() {
