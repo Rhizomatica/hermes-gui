@@ -3,7 +3,7 @@
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="errorcustomerror" datatype="html">
-        <source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <source>There was an error on processing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <target state="new">There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
@@ -31,22 +31,13 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f26df4bb18c9f34a5d7ae8a27c1850fb78f8f8a6" datatype="html">
-        <source>503 Service Unavaliable</source>
-        <target state="new">503 Servicio no disponible</target>
-        <note priority="1" from="description">hermes503Http</note>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">47</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="355775d922c68773e0c10b2ab4f754861d5b88d7" datatype="html">
         <source>Hermes server is offline, please turn the station on. </source>
         <target state="new">El servidor Hermes está desconectado, encienda la estación.</target>
         <note priority="1" from="description">hermesoffline</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areadyon" datatype="html">
@@ -54,7 +45,7 @@
         <target state="new">Si su servidor ya está activado, haga clic aquí </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
@@ -67,7 +58,15 @@
       </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="countdowninactivite" datatype="html">
+        <source>Inactive user. Countdown for logoff</source>
+        <target state="new">Inactive user. Countdown for logoff</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
@@ -85,7 +84,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpscalibrationsuccess" datatype="html">
@@ -136,12 +135,20 @@
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="emailsuport" datatype="html">
+        <source>If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
+        <target state="new">If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
+          <context context-type="linenumber">58,59</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="noaccount" datatype="html">
         <source>Doesn't have an account?</source>
         <target>No tiene una cuenta?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createbtn" datatype="html">
@@ -149,7 +156,7 @@
         <target>crear una cuenta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9ba640ccee5a65fd2adbe520574828ccac8c1e12" datatype="html">
@@ -175,7 +182,7 @@
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmissionschedules" datatype="html">
@@ -942,12 +949,20 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="da4b7060a3bb12ad4ff0714446201f26b6008676" datatype="html">
+        <source>write your full name</source>
+        <target state="new">write your full name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="fullnamerequired" datatype="html">
-        <source> full name is required </source>
+        <source> name is required </source>
         <target state="new"> se requiere el nombre completo </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">43,45</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="phonenumber" datatype="html">
@@ -955,7 +970,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <target>número de teléfono</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="faf5561bbb13ecd8003ff345aa88cdaf8ced6de6" datatype="html">
@@ -963,7 +978,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <target state="new">número de teléfono</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="retypethepassword" datatype="html">
@@ -971,7 +986,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <target state="new">Escribir de nuevo la contraseña</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f701339fa66204b6d4b161c7c56fbc6a1a48d5f8" datatype="html">
@@ -979,7 +994,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <target state="new">vuelva a escribir la contraseña</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passdontmatch" datatype="html">
@@ -987,7 +1002,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <target state="new"> las contraseñas no coinciden </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">67</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
@@ -1087,7 +1102,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         </context-group>
       </trans-unit>
       <trans-unit id="areyousuredeletemsg" datatype="html">
-        <source>Are you sure yo want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <source>Are you sure you want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <target state="new">¿Está seguro de que desea eliminar este mensaje? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </target>
@@ -1177,6 +1192,15 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">91</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="90644bd636009a71889350b5db6cbfeab7013d21" datatype="html">
+        <source>503 Service Unavailable</source>
+        <target state="new">503 Service Unavailable</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">hermes503Http</note>
       </trans-unit>
       <trans-unit id="nodename" datatype="html">
         <source>Node Name</source>
@@ -1388,7 +1412,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationrx" datatype="html">
@@ -1400,7 +1424,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="serial" datatype="html">
@@ -1497,7 +1521,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="suresendpttmessage" datatype="html">
-        <source>Are you sure you want send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irraparable problems </source>
+        <source>Are you sure you want send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems </source>
         <target state="new">Are you sure you want send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irraparable problems </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -1670,12 +1694,20 @@ esto puede hacer que el sistema se detenga</target>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="volumevoice" datatype="html">
+        <source> Volume: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </source>
+        <target state="new"> Volume: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="websocketerror" datatype="html">
-        <source>There was an error on precessing your request </source>
+        <source>There was an error on processing your request </source>
         <target state="new">There was an error on precessing your request </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="updatevoicepage" datatype="html">
@@ -1683,7 +1715,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">reload page</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorprocessing" datatype="html">
@@ -1717,7 +1749,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="deleteallcustomerrosconfirmation" datatype="html">
-        <source>Are you sure, do want delete all errors logs?</source>
+        <source>	Are you sure you want to delete all error logs? </source>
         <target state="new">Are you sure, do want delete all errors logs?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
@@ -1805,7 +1837,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreboot" datatype="html">
-        <source> Are you sure you want to reboot Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <source> Are you sure you want to reboot the Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <target state="new"> ¿Está seguro de que desea reiniciar el sistema Hermes?  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
  Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
 </target>
@@ -2102,7 +2134,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">las contraseñas deben tener al menos 6 caracteres  </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="isadmin" datatype="html">
@@ -2110,7 +2142,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">administrador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changepassword" datatype="html">
@@ -2118,7 +2150,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">cambiar contraseña</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordlabeluser" datatype="html">
@@ -2126,7 +2158,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">contraseña</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
@@ -2134,7 +2166,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">contraseña</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="mwcancel" datatype="html">
@@ -2142,7 +2174,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="delusr" datatype="html">
@@ -2150,7 +2182,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">borrar usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="mupd" datatype="html">
@@ -2158,7 +2190,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">actualizar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="mcreateuser" datatype="html">
@@ -2166,7 +2198,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">crear usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousuredelete" datatype="html">
@@ -2174,7 +2206,7 @@ esto puede hacer que el sistema se detenga</target>
         <target>Seguro que quieres eliminar?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="thisactioncannot" datatype="html">
@@ -2182,7 +2214,7 @@ esto puede hacer que el sistema se detenga</target>
         <target>esta acción no se puede revertir!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deleteuser" datatype="html">
@@ -2190,7 +2222,7 @@ esto puede hacer que el sistema se detenga</target>
         <target>eliminar usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel" datatype="html">
@@ -2202,11 +2234,11 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">99</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">110</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/upgrade/upgrade.component.html</context>
@@ -2222,7 +2254,7 @@ esto puede hacer que el sistema se detenga</target>
         <target>Seguro que quiere actualizar?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="update" datatype="html">
@@ -2230,15 +2262,15 @@ esto puede hacer que el sistema se detenga</target>
         <target>actualizar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="usererror" datatype="html">
-        <source>There was an error on precessing your request </source>
+        <source>There was an error on processing your request </source>
         <target state="new">Hubo un error al procesar su solicitud </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="usererrorexist" datatype="html">
@@ -2246,7 +2278,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">Este usuario ya existe, elija otro correo electrónico.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wifiandethernetmanagertitle" datatype="html">

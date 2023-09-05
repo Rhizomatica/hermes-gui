@@ -42,7 +42,7 @@
         <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
-        full name is required
+        name is required
       </div>
       <label>
         <span i18n="@@phonenumber">Phone number</span>
@@ -112,7 +112,7 @@
       </div>
       <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
-          <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on precessing your request </span>
+          <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on processing your request </span>
           <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exist please choose another email</span>
           <br /><br />
           <div class="icon"><a (click)="closeError()">
