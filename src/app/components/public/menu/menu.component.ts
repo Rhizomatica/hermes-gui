@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { WebsocketService } from 'src/app/_services/websocket.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'menu',
@@ -41,9 +42,11 @@ export class MenuComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.admin = false
-    this.websocketService.ws.close()
+
+    if (GlobalConstants.generalLogin)
+      this.websocketService.ws.close()
   }
-  
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
   }
