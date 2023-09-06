@@ -266,7 +266,10 @@ export class AppComponent implements OnInit {
       this.authenticationService.logout();
       // right when the component initializes, start reset state and start watching
       this.resetIdle();
-      this.websocketService.ws.close()
+      
+      if (GlobalConstants.generalLogin)
+        this.websocketService.ws.close()
+
       this.router.navigate(['/login']);
     })
 

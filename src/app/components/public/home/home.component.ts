@@ -52,7 +52,9 @@ export class homeComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.admin = false
-    this.websocketService.ws.close()
+
+    if (GlobalConstants.generalLogin)
+        this.websocketService.ws.close()
   }
 
   toggle(): void {
