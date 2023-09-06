@@ -7,8 +7,8 @@
     <div class="data">
       <div class="data-body frequency">
         <div *ngIf="!inputFrequencyFlag">
-          <span *ngFor="let digit of placesArray; let i = index" class="{{step == i ? 'color': ''}}"
-            (click)="changeStepDigit(i)">{{digit}}<span
+          <span *ngFor="let digit of placesArray; let i = index"
+            (click)="changeStepDigit(i)"><span class="{{step == i ? 'color': ''}}">{{digit}}</span><span
               *ngIf="(placesArray.length == 6 && i == 0) || (placesArray.length == 7 && i == 1) ">.</span><span
               *ngIf="i == placesArray.length - 3">,</span>
           </span>
