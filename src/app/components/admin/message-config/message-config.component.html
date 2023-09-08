@@ -1,6 +1,5 @@
 <loading [loading]="loading"></loading>
 <h2 i18n="@@aconfigmessages">Messages Configuration</h2>
-<hr>
 <div class="alert" *ngIf="noSystem" i18n="@@cannotaccesshermes">Alert: Cannot access Hermes System<br /></div>
 <div *ngIf="isAdmin">
     <div *ngIf="!noSystem">
@@ -14,8 +13,7 @@
             <br />
             <!--<button i18n="@@updatema">update</button>-->
         </form>
-        <hr>
-        <p i18n=@@selectwho>Select who can attach files to messages:</p>
+        <p i18n=@@selectwho class="m-t-10">Select who can attach files to messages:</p>
         <form #f="ngForm">
             <select name="allowfile" (change)="setUploadPermission($event.target.value)">
                 <option [selected]='allowfile=="all"' value="all" i18n="@@everyone">everyone</option>
@@ -25,8 +23,7 @@
             <br />
             <!--<button i18n="@@updatema">update</button>-->
         </form>
-        <hr>
-        <form #f="ngForm">
+        <form #f="ngForm" class="m-t-10">
             <p i18n="@@cleanuptext">
                 When sending messages it's possible that broken files are stored in the server, please click here to
                 clean up the system:
