@@ -79,7 +79,6 @@ export class MessageConfigComponent implements OnInit {
   }
 
   cleanUp() {
-    const url = `${GlobalConstants.apiURL}/api/file`;
     this.cleaned = true;
     this.messageService.deleteFile().subscribe(
       (res: any) => {
