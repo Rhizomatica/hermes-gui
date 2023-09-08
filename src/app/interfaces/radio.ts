@@ -1,7 +1,7 @@
 export interface Radio {
   freq: number,
   mode: string,
-  protection: string,
+  protection: boolean,
   tx: boolean,
   rx: boolean,
   led: boolean,
