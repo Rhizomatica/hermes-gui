@@ -136,7 +136,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="emailsuport" datatype="html">
-        <source>If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
+        <source>If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:{{emergencyEmail}}&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
         <target state="new">If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
@@ -276,7 +276,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="changetime" datatype="html">
-        <source> change </source>
+        <source> update </source>
         <target state="new">cambiar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
@@ -681,7 +681,7 @@
         <target state="new">Configuración de mensajes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cannotaccesshermes" datatype="html">
@@ -702,7 +702,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="everyone1" datatype="html">
-        <source>everyone</source>
+        <source>everyone </source>
         <target state="new">todos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
@@ -714,7 +714,7 @@
         <target state="new">usuarios registrados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminusers1" datatype="html">
@@ -722,7 +722,7 @@
         <target state="new">administradores</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="selectwho" datatype="html">
@@ -734,7 +734,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="everyone" datatype="html">
-        <source>everyone</source>
+        <source>everyone </source>
         <target state="new">todos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
@@ -746,7 +746,7 @@
         <target state="new">usuarios registrados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminusers" datatype="html">
@@ -754,7 +754,7 @@
         <target state="new">administradores</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cleanuptext" datatype="html">
@@ -1521,7 +1521,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="suresendpttmessage" datatype="html">
-        <source>Are you sure you want send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems </source>
+        <source>Are you sure you want to send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems </source>
         <target state="new">Are you sure you want send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irraparable problems </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
