@@ -79,7 +79,7 @@
             <br />
             <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
                 (click)="updateSchedule(selectedSchedule.id, f)">
-                change
+                update
             </button>
             <button class="m-l-10" [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button"
                 i18n="@@newschedule" (click)="createSchedule(f)">
