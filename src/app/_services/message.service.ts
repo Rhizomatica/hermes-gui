@@ -89,7 +89,7 @@ export class MessageService {
   }
 
   deleteFile(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/api/file/`;
+    const url = `${GlobalConstants.apiURL}/file/`;
     return this.http.delete(url).pipe(
       map((res: any) => {
         return this.messages;
