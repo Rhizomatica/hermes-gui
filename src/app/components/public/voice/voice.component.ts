@@ -30,7 +30,6 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   frequencyAux: string
   volume: number = 60
-
   subject = new BehaviorSubject(this.radioService);
 
   constructor(
@@ -216,6 +215,20 @@ export class VoiceComponent implements OnInit {
         this.error = err;
         this.errorAlert = true
         this.loading = false
+      }
+    );
+  }
+
+  resetProtection() {
+    this.radioService.radioResetProtection().subscribe(
+      (res: any) => {
+        if (res === 1) {
+          this.radio.protection = false;
+        }
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
       }
     );
   }
