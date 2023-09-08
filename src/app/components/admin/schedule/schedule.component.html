@@ -37,7 +37,7 @@
             <label>
                 <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
                 <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
-                <p i18n="@@initialtime">Start transmission hour: </p>
+                <p i18n="@@initialtime" class="m-t-10">Start transmission hour: </p>
                 <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
                     [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" required
                     value="selectedSchedule.starttime" pattern="[0-9]{2}:[0-9]{2}" step="60" />
