@@ -30,9 +30,11 @@ import { RadioConfigComponent } from './components/admin/radio-config/radio-conf
 import { FrequencyPipe } from './frequency.pipe';
 import { DecimalPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 import localePt from '@angular/common/locales/pt';
 import localeFr from '@angular/common/locales/fr';
-// import localeYy from '@angular/common/locales/yy';
+import localeIt from '@angular/common/locales/it';
+// import localeSag from '@angular/common/locales/sag';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -52,7 +54,9 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 
 registerLocaleData(localePt);
+registerLocaleData(localeEs);
 registerLocaleData(localeFr);
+// registerLocaleData(localeSag);
 
 @NgModule({
   exports: [
@@ -107,7 +111,9 @@ registerLocaleData(localeFr);
   providers: [
     DecimalPipe,
     { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: LOCALE_ID, useValue: 'es' },
     { provide: LOCALE_ID, useValue: 'fr' },
+    { provide: LOCALE_ID, useValue: 'sag' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
