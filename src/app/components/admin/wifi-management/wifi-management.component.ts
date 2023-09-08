@@ -19,7 +19,7 @@ export class WiFiManagementComponent implements OnInit {
   admin: boolean
   loading: boolean = false
   error: string
-  errorAlert: boolean
+  errorAlert: boolean = false
   errorAlertPatterns: boolean = false
   channels: number[] = []
   wiFiSSID: string
