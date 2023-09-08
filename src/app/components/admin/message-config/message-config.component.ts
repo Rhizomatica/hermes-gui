@@ -29,6 +29,7 @@ export class MessageConfigComponent implements OnInit {
   noSystem = false;
   isAdmin = false;
   cleaned = false;
+  loading = true
 
   constructor(
     private messageService: MessageService,
@@ -45,10 +46,12 @@ export class MessageConfigComponent implements OnInit {
         this.serverConfig = res;
         this.allowfile = res.allowfile;
         this.allowhmp = res.allowhmp;
+        this.loading = false
         return res;
       },
       (err) => {
         this.error = err;
+        this.loading = false
         this.noSystem = true;
         this.errorAlert = true;
       }
@@ -102,24 +105,31 @@ export class MessageConfigComponent implements OnInit {
   }
 
   setUploadPermission(value: string) {
+    this.loading = true
+
     this.apiService.setFileConfig(value).subscribe(
       (res: any) => {
         this.allowfile = res.allowfile;
+        this.loading = false
       },
       (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     );
   }
 
   setComposePermission(value: string) {
+    this.loading = true
     this.apiService.setMsgConfig(value).subscribe(
       (res: any) => {
         this.allowfile = res.allowfile;
+        this.loading = false
       },
       (err) => {
         this.error = err;
+        this.loading = false
         this.errorAlert = true;
       }
     );
