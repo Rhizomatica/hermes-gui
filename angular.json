@@ -10,7 +10,8 @@
         "locales": {
           "pt": "src/locale/messages.pt.xlf",
           "es": "src/locale/messages.es.xlf",
-          "fr": "src/locale/messages.fr.xlf"
+          "fr": "src/locale/messages.fr.xlf",
+          "sag": "src/locale/messages.sag.xlf"
         }
       },
       "schematics": {
@@ -173,6 +174,31 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "sag": {
+              "localize": [
+                "sag"
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "aot": true,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           },
           "defaultConfiguration": ""
@@ -198,6 +224,9 @@
             },
             "fr": {
               "browserTarget": "hermes:build:fr"
+            },
+            "sag": {
+              "browserTarget": "hermes:build:sag"
             }
           }
         },
