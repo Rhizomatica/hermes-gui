@@ -23,13 +23,13 @@ export class MessageConfigComponent implements OnInit {
   selectedMessages = false;
   allowfile: any;
   allowhmp: any;
-  serverConfig: any;
   allowUp: UntypedFormGroup;
   errorAlert = false;
   noSystem = false;
   isAdmin = false;
   cleaned = false;
   loading = true
+  generalLogin: boolean = GlobalConstants.generalLogin
 
   constructor(
     private messageService: MessageService,
@@ -43,9 +43,16 @@ export class MessageConfigComponent implements OnInit {
   getSysConfig(): void {
     this.apiService.getSysConfig().subscribe(
       (res: any) => {
-        this.serverConfig = res;
-        this.allowfile = res.allowfile;
-        this.allowhmp = res.allowhmp;
+        
+        if (this.generalLogin) {
+          this.updateRuleForGeneralLogin(res)
+        }
+
+        if (!this.generalLogin) {
+          this.allowfile = res.allowfile;
+          this.allowhmp = res.allowhmp;
+        }
+
         this.loading = false
         return res;
       },
@@ -91,24 +98,23 @@ export class MessageConfigComponent implements OnInit {
     )
   }
 
-  getMessages(): void {
-    this.messageService.getMessagesByType('inbox').subscribe(
-      (res: any) => {
-        this.messages = res;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
+  // getMessages(): void {
+  //   this.messageService.getMessagesByType('inbox').subscribe(
+  //     (res: any) => {
+  //       this.messages = res;
+  //     },
+  //     (err) => {
+  //       this.error = err;
+  //       this.errorAlert = true;
+  //     }
+  //   );
+  // }
 
   setUploadPermission(value: string) {
     this.loading = true
-
     this.apiService.setFileConfig(value).subscribe(
       (res: any) => {
-        this.allowfile = res.allowfile;
+        // this.allowfile = res.allowfile;
         this.loading = false
       },
       (err) => {
@@ -123,7 +129,7 @@ export class MessageConfigComponent implements OnInit {
     this.loading = true
     this.apiService.setMsgConfig(value).subscribe(
       (res: any) => {
-        this.allowfile = res.allowfile;
+        // this.allowhmp = res.allowhmp;
         this.loading = false
       },
       (err) => {
@@ -134,8 +140,26 @@ export class MessageConfigComponent implements OnInit {
     );
   }
 
+  updateRuleForGeneralLogin(data) {
+    if (data.allowhmp == 'all') {
+      this.allowhmp = 'users'
+      this.setComposePermission(this.allowhmp)
+    }
+
+    if (data.allowhmp != 'all')
+      this.allowhmp = data.allowhmp
+
+    if (data.allowfile == 'all') {
+      this.allowfile = 'users'
+      this.setUploadPermission(this.allowfile)
+    }
+
+    if (data.allowfile != 'all')
+      this.allowfile = data.allowfile
+  }
+
   ngOnInit(): void {
-    this.getMessages();
+    // this.getMessages();
     this.getSysConfig();
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
