@@ -17,22 +17,23 @@
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <div *ngIf="message.file">
-            <button (click)="rotateImage()" class="pull-right">
-                <img title="rotate" src="assets/svg/redo.svg">
-            </button>
-
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
                 <div
                     *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage&& message.secure && uncrypted)">
                     <img id="image" class="messageImg"
                         src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
-                {{message.file}}
                 <div *ngIf="fileAttr && fileAttr.isAudio">
                     <player [playing]="'false'" [mimetype]="message.mimetype" [fileId]="message.fileid" [url]="url"
                         [secured]="message.secure" [password]="passString"></player>
 
                 </div>
+            </a>
+            <button (click)="rotateImage()" class="pull-right">
+                <img title="rotate" src="assets/svg/redo.svg">
+            </button>
+            <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
+                {{message.file}}
             </a>
         </div>
     </div>
