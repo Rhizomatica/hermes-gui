@@ -27,11 +27,11 @@ export class HelpComponent implements OnInit {
     this.changeLanguage = this.changeLanguage ? false : true
   }
 
-  setLanguage(language){
+  setLanguage(language) {
     localStorage.setItem('language', language)
-    window.open('/'+language, '_self')
+    window.open('/' + language, '_self')
   }
-  
+
   ngOnInit(): void {
   }
 }
