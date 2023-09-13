@@ -7,14 +7,15 @@ require('dotenv').config()
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
-   production: ${process.env.PRODUCTION},
-   local: ${process.env.LOCAL},
-   hasGPS: ${process.env.HAS_GPS},
-   domain: '${process.env.DOMAIN}',
-   gateway: ${process.env.GATEWAY},
-   bitx: '${process.env.BITX}',
-   generalLogin: ${process.env.GENERAL_LOGIN},
-   emergencyEmail: '${process.env.EMERGENCY_EMAIL}'
+    local: ${process.env.LOCAL},
+    production: ${process.env.PRODUCTION},
+    serverIP: '${process.env.SERVER_IP}',
+    domain: '${process.env.DOMAIN}',
+    gateway: ${process.env.GATEWAY},
+    bitx: '${process.env.BITX}',
+    hasGPS: ${process.env.HAS_GPS},
+    generalLogin: ${process.env.GENERAL_LOGIN},
+    emergencyEmail: '${process.env.EMERGENCY_EMAIL}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');
