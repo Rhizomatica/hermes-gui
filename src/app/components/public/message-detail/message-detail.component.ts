@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -39,6 +39,7 @@ export class MessageDetailComponent implements OnInit {
   selectedMessage: Message
   errorAlert = false
   loading = false
+  degree: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,7 +49,7 @@ export class MessageDetailComponent implements OnInit {
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
     private utils: UtilsService,
-    // private scripts: ScriptService,
+    private renderer: Renderer2
 
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -210,6 +211,21 @@ export class MessageDetailComponent implements OnInit {
 
   closeError() {
     this.errorAlert = false;
+  }
+
+  rotateImage() {
+    const image = document.getElementById('image')
+
+    this.degree += 90
+
+    this.renderer.setStyle(
+      image,
+      'transform',
+      `rotate(${this.degree}deg)`
+    )
+
+    if (image.offsetWidth > image.offsetHeight)
+      image.style.width = '400px'
   }
 
   ngOnInit(): void {
