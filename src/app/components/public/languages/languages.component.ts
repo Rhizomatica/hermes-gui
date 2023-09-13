@@ -15,7 +15,7 @@ export class LanguagesComponent implements OnInit {
     { code: 'es', label: 'Español' },
     { code: 'en', label: 'English' },
     { code: 'fr', label: 'Français' },
-    { code: 'yy', label: 'YY' }
+    { code: 'sag', label: 'Sango' }
   ];
 
   constructor() { }

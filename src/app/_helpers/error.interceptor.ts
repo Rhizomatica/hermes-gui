@@ -33,8 +33,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                 message = this.spanishError(errorStatus)
             case 'fr':
                 message = this.françaisError(errorStatus)
-            case 'yy':
-                message = this.yyError(errorStatus)
+            case 'sag':
+                message = this.sangoError(errorStatus)
         }
         return message
         // + ' If this error persists send a report feedback.'
@@ -83,12 +83,12 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     //TODO - translate
-    public yyError(errorStatus) {
+    public sangoError(errorStatus) {
         if (errorStatus == 500)
-            return 'Error interno del servidor, inténtalo de nuevo.'
+            return 'Error interno del servidor, inténtalo de nuevo. (TRADUZIR)******'
 
         if (errorStatus == 400)
-            return 'Servicio no encontrado.'
+            return 'Servicio no encontrado. (TRADUZIR)******'
 
         return errorStatus
     }
