@@ -6,12 +6,19 @@
       <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
       <label>
          <p i18n="@@username:">username:</p>
-         <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel/>
+         <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
       </label>
       <label>
          <p i18n="@@password">password:</p>
-         <input type="password" name="password" required i18n="@@ipass" placeholder="Password" i18n-placeholder ngModel/>
+         <input type="password" name="password" required i18n="@@ipass" placeholder="Password" i18n-placeholder
+            ngModel />
       </label>
-      <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">Log in</button>
+      <div class="row">
+         <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">Log in</button>
+         <a routerLink="/help" i18n="@@helplogin"  class="icon m-l-25">
+            <img title="help" src="assets/svg/question-circle-regular.svg" class="p-t-25">
+            Help
+          </a>
+      </div>
    </form>
 </div>
