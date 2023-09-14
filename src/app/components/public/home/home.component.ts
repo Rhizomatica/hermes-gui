@@ -53,7 +53,7 @@ export class homeComponent implements OnInit {
     this.router.navigate(['/login']);
     this.admin = false
 
-    if (GlobalConstants.generalLogin)
+    if (GlobalConstants.generalLogin && this.websocketService.ws.OPEN)
         this.websocketService.ws.close()
   }
 
