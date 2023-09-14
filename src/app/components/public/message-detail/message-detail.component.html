@@ -19,7 +19,7 @@
         <div *ngIf="message.file">
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
                 <div
-                    *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage&& message.secure && uncrypted)">
+                    *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage && message.secure && uncrypted)">
                     <img id="image" class="messageImg"
                         src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
@@ -29,7 +29,7 @@
 
                 </div>
             </a>
-            <button (click)="rotateImage()" class="pull-right">
+            <button (click)="rotateImage()" class="pull-right" *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage && message.secure && uncrypted)">
                 <img title="rotate" src="assets/svg/redo.svg">
             </button>
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
