@@ -248,8 +248,8 @@ export class AppComponent implements OnInit {
   }
 
   startIdleDetector() {
-    this.idle.setIdle(10)
-    this.idle.setTimeout(5)
+    this.idle.setIdle(600)
+    this.idle.setTimeout(30)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
     this.idle.onIdleStart.subscribe(() => {
