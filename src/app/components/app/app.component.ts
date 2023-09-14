@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   sent = [];
   content = ''
   radioObj: Radio
-  intervallTimerKeepWebSocketAlive = interval(900)
+  intervallTimerKeepWebSocketAlive = interval(9000)
   idleState = "NOT_STARTED";
   countdown?: number = null
   isLoginPage: boolean = null
@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
     }, async err => {
 
       this.saveWebsocketError()
-      if (this.websocketService.ws.OPEN)
+      if (this.websocketService.ws.OPEN == 1)
         this.websocketService.ws.close()
 
       this.keepWebSocketAlive()
@@ -158,13 +158,11 @@ export class AppComponent implements OnInit {
   }
 
   keepWebSocketAlive() {
-    console.log('keep alive...')
-    if (!this.websocketService.ws.OPEN) {
-      this.intervallTimerKeepWebSocketAlive.subscribe(() => {
-        this.websocketService.startService()
-        this.startWebSocketService()
-      });
-    }
+    const subs = this.intervallTimerKeepWebSocketAlive.subscribe(val => {
+      console.log('keep alive...')
+      this.websocketService.startService()
+      this.startWebSocketService()
+    });
   }
 
   getSystemStatus(): void {
@@ -270,7 +268,7 @@ export class AppComponent implements OnInit {
       // right when the component initializes, start reset state and start watching
       this.resetIdle();
 
-      if (GlobalConstants.generalLogin && this.websocketService.ws.OPEN)
+      if (GlobalConstants.generalLogin && this.websocketService.ws.OPEN == 1)
         this.websocketService.ws.close()
 
       this.router.navigate(['/login']);
