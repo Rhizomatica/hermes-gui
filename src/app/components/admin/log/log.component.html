@@ -9,7 +9,7 @@
 
     <div class="row">
         <span i18n="@@freespace">Free Space: </span>
-        {{system.diskfree /1024 /1024}} GB
+        {{system.diskfree}} GB
         <div class="row m-t-10">
             <span *ngIf="criticSpace" class="alert" i18n="storagelow">
                 System storage is low! please delete messages and

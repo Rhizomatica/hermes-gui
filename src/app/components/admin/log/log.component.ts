@@ -229,6 +229,9 @@ export class LogComponent implements OnInit, OnDestroy {
         if (this.system.diskfree < 10485760) {
           this.criticSpace = true;
         }
+
+        this.system.diskfree = (this.system.diskfree  /1024 /1024).toFixed(3)
+
         this.loading = false
       },
       (err) => {
