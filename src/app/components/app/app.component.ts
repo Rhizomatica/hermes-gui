@@ -110,7 +110,8 @@ export class AppComponent implements OnInit {
     }, async err => {
 
       this.saveWebsocketError()
-      this.websocketService.ws.close()
+      if (this.websocketService.ws.OPEN)
+        this.websocketService.ws.close()
 
       this.keepWebSocketAlive()
 
@@ -247,8 +248,8 @@ export class AppComponent implements OnInit {
   }
 
   startIdleDetector() {
-    this.idle.setIdle(600)
-    this.idle.setTimeout(30)
+    this.idle.setIdle(10)
+    this.idle.setTimeout(5)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
     this.idle.onIdleStart.subscribe(() => {
@@ -269,7 +270,7 @@ export class AppComponent implements OnInit {
       // right when the component initializes, start reset state and start watching
       this.resetIdle();
 
-      if (GlobalConstants.generalLogin)
+      if (GlobalConstants.generalLogin && this.websocketService.ws.OPEN)
         this.websocketService.ws.close()
 
       this.router.navigate(['/login']);
