@@ -33,8 +33,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import localePt from '@angular/common/locales/pt';
 import localeFr from '@angular/common/locales/fr';
-import localeIt from '@angular/common/locales/it';
-// import localeSag from '@angular/common/locales/sag';
+import localeEn from '@angular/common/locales/en';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -52,11 +51,11 @@ import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.co
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
-
+registerLocaleData(localeEn);
+registerLocaleData(localeFr);
 registerLocaleData(localePt);
 registerLocaleData(localeEs);
-registerLocaleData(localeFr);
-// registerLocaleData(localeSag);
+//TODO - Missing localeSag
 
 @NgModule({
   exports: [

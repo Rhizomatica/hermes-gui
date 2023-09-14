@@ -141,7 +141,9 @@ export class AppComponent implements OnInit {
       controller: 'websocket',
       error_code: 500,
       error_message: 'Error to connect on websocket service',
-      stacktrace: null
+      stacktrace: null,
+      created_at: new Date().toString(),
+      updated_at: new Date().toString()
     }
 
     this.loading = true
@@ -266,7 +268,7 @@ export class AppComponent implements OnInit {
       this.authenticationService.logout();
       // right when the component initializes, start reset state and start watching
       this.resetIdle();
-      
+
       if (GlobalConstants.generalLogin)
         this.websocketService.ws.close()
 

@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { ApiService } from '../../../_services/api.service';
 import { CustomErrorsService } from '../../../_services/custom-errors.service';
 import { CustomError } from '../../../interfaces/customerror'
+import { UtilsService } from 'src/app/_services/utils.service';
 
 export interface LogList {
   line: string;
@@ -42,7 +43,8 @@ export class LogComponent implements OnInit, OnDestroy {
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
-    private customErrorsService: CustomErrorsService
+    private customErrorsService: CustomErrorsService,
+    private utils: UtilsService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -143,6 +145,8 @@ export class LogComponent implements OnInit, OnDestroy {
     this.customErrorsService.getCustomErrors().subscribe(
       (data: any) => {
         this.customErrors = data.sort((a, b) => { return new Date(a.created_at) < new Date(b.created_at) ? 1 : -1; });
+        this.customErrors = this.customErrors.filter((a) => { return a.created_at = this.utils.formatDate(a.created_at) });
+
         this.loading = false;
         this.loadVisibleArray(data)
       },
@@ -170,11 +174,11 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
 
-  confirmDeleteAllCustomError() {    
+  confirmDeleteAllCustomError() {
     this.confirmDeleteAllLogs = true
   }
 
-  closedeleteconfirmation(){
+  closedeleteconfirmation() {
     this.confirmDeleteAllLogs = false
   }
 
