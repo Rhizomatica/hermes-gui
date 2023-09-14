@@ -109,6 +109,8 @@ export class MessageDetailComponent implements OnInit {
           this.fileAttr = this.utils.getFileType(this.message.mimetype)
         }
 
+        this.message.sent_at = this.utils.formatDate(this.message.sent_at)
+
         this.loading = false
       },
       (err) => {

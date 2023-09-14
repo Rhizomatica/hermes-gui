@@ -107,17 +107,24 @@ export class UtilsService {
     return freq.replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, "."); //Format number with dots
   }
 
-  formatSWR(swr){
-    if(!swr)
+  formatSWR(swr) {
+    if (!swr)
       return '1.0'
-    
+
     return (parseInt(swr) / 10).toFixed(1).toString()
   }
 
-  formatPower(fwd){
-    if(!fwd)
+  formatPower(fwd) {
+    if (!fwd)
       return '0'
-    
+
     return (parseInt(fwd) / 10).toFixed(1).toString()
+  }
+
+  formatDate(date) {
+    if (!date)
+      return ''
+
+    return new Date(date).toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric", hour: '2-digit' })
   }
 }
