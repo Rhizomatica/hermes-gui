@@ -45,8 +45,8 @@ export class AppComponent implements OnInit {
   changeLanguage = false
   title = 'hermes.radio'
   isMenuPage: boolean
-  currentPage = 'home'
-  currentUrl = '/home'
+  currentPage = GlobalConstants.generalLogin ? "login" : 'home'
+  currentUrl = GlobalConstants.generalLogin ? "login" : 'home'
   received = [];
   sent = [];
   content = ''
