@@ -11,7 +11,7 @@
     <img title="home" src="assets/svg/house.svg">
     Home
   </a>
-  <a routerLink="/voice" i18n="@@voicemenu">
+  <a routerLink="/voice" i18n="@@voicemenu" *ngIf="radio.freq !== null">
     <img title="voice" src="assets/svg/walkie-talkie.svg">
     Voice
   </a>
@@ -26,6 +26,14 @@
   <a routerLink="/help" i18n="@@helpmenu">
     <img title="help" src="assets/svg/question-circle-regular.svg">
     Help
+  </a>
+  <a routerLink="/radio-config" i18n="@@radioconfigmenu">
+    <img title="radio-config" src="assets/svg/ham-radio.svg">
+    Radio Configuration
+  </a>
+  <a routerLink="/user-manage" i18n="@@usermanagegmenu">
+    <img title="user-manage" src="assets/svg/circle-user.svg">
+    User management
   </a>
   <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
     <img title="login" src="assets/svg/sign-in-alt-solid.svg">
