@@ -37,13 +37,12 @@ export class MenuComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  //TODO - Virar utils?
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.admin = false
 
-    if (GlobalConstants.generalLogin)
+    if (GlobalConstants.generalLogin && this.websocketService.ws && this.websocketService.ws.OPEN == 1)
       this.websocketService.ws.close()
   }
 

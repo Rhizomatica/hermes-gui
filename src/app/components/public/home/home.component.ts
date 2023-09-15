@@ -53,8 +53,8 @@ export class homeComponent implements OnInit {
     this.router.navigate(['/login']);
     this.admin = false
 
-    if (GlobalConstants.generalLogin && this.websocketService.ws.OPEN)
-        this.websocketService.ws.close()
+    if (GlobalConstants.generalLogin && this.websocketService.ws && this.websocketService.ws.OPEN == 1)
+      this.websocketService.ws.close()
   }
 
   toggle(): void {
