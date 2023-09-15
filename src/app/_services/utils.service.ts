@@ -125,6 +125,6 @@ export class UtilsService {
     if (!date)
       return ''
 
-    return new Date(date).toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric", hour: '2-digit' })
+    return new Date(date).toLocaleDateString('pt', { day: "numeric", month: "numeric", year: "numeric", hour: '2-digit', hour12: true, minute: "2-digit" })
   }
 }
