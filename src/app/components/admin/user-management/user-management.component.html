@@ -35,11 +35,12 @@
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
           placeholder="write the username" (focusout)="checkFullName(selectedUser.name)">
       </label>
-      <a>{{selectedUser.email}}@{{domain}}</a> 
+      <a>{{selectedUser.email}}@{{domain}}</a>
       <label for="name">
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
-        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>
+        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder
+          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)" />
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
         name is required
@@ -52,17 +53,18 @@
       <hr>
       <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
       <label *ngIf="showPassword">
-      <span i18n="@@passwordlabeluser">Password</span>
+        <span i18n="@@passwordlabeluser">Password</span>
         <br />
         <label for="passwd">
-          <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderpassword" i18n-placeholder placeholder="password"/>
+          <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password"
+            minlength="6" (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderpassword"
+            i18n-placeholder placeholder="password" />
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword">Retype the password</span>
           <input type="password" [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" 
-            i18n="@@placeholderretypepassword" i18n-placeholder placeholder="retype password"/>
+            (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderretypepassword" i18n-placeholder
+            placeholder="retype password" />
         </label>
         <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
           passwords doesn't match
@@ -85,10 +87,11 @@
         [disabled]="f.invalid">update</button>
       <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
         [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
-        <span *ngIf="selectedUser.email !== 'root'">
-          <button class="m-l-10 m-t-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
-            user</button>
-        </span>
+      <span *ngIf="selectedUser.email !== 'root'">
+        <button class="m-l-10 m-t-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
+          [hidden]="emptyUser">delete
+          user</button>
+      </span>
       <div class="overall" *ngIf="deleteUser">
         <div class="cv">
           <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?<br />
@@ -113,7 +116,8 @@
       <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
           <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on processing your request </span>
-          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exist please choose another email</span>
+          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exist please choose another
+            email</span>
           <br /><br />
           <div class="icon"><a (click)="closeError()">
               <img title="close" src="assets/svg/x.svg"></a>
