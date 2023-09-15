@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
     }, async err => {
 
       this.saveWebsocketError()
-      if (this.websocketService.ws.OPEN == 1)
+      if (this.websocketService.ws && this.websocketService.ws.OPEN == 1)
         this.websocketService.ws.close()
 
       this.keepWebSocketAlive()
@@ -268,7 +268,7 @@ export class AppComponent implements OnInit {
       // right when the component initializes, start reset state and start watching
       this.resetIdle();
 
-      if (GlobalConstants.generalLogin && this.websocketService.ws.OPEN == 1)
+      if (GlobalConstants.generalLogin && this.websocketService.ws && this.websocketService.ws.OPEN == 1)
         this.websocketService.ws.close()
 
       this.router.navigate(['/login']);
