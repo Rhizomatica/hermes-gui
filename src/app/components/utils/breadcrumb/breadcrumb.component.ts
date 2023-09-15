@@ -10,8 +10,8 @@ import { GlobalConstants } from 'src/app/global-constants';
 export class BreadcrumbComponent implements OnChanges {
 
   constructor() {
-    this.currentPage = 'home'
-    this.currentUrl = '/home'
+    this.currentPage = ''
+    this.currentUrl = ''
   }
 
 
@@ -26,7 +26,12 @@ export class BreadcrumbComponent implements OnChanges {
     change.currentPage && change.currentPage.currentValue != change.currentPage.previousValue ? this.currentPage = change.currentPage.currentValue : null
 
     //Nao insere no breadcrumb login nem menu page
-    if (this.currentPage == 'login' || this.currentPage == 'menu') {
+    if (this.currentPage == 'login') {
+      this.cleanBreadcrumb()
+      return
+    }
+
+    if (this.currentPage == 'menu') {
       return
     }
 
@@ -62,5 +67,9 @@ export class BreadcrumbComponent implements OnChanges {
       }
       this.pages.pop()
     }
+  }
+
+  cleanBreadcrumb() {
+    this.pages = []
   }
 }
