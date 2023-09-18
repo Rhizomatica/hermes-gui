@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <div class="radio" *ngIf="radio">
+      <div class="radio" *ngIf="radio && radio.freq">
         <form #ffreq="ngForm" class="formdata field">
           <span i18n="@@changefrequency">Radio frequency: {{radio.freq}}
           </span>
