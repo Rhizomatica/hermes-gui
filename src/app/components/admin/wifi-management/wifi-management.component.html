@@ -10,7 +10,7 @@
           <div class="m-t-10">
             <p i18n="@@ssidnetworkname">SSID Network name</p>
             <div [hidden]=!msgPatternChars class="error" i18n="@@ssidrules">
-              Unaccepted characters: ?, ", $, [, \, ], +. e space
+              Unaccepted characters: ?, ", $, [, \, ], +, . and space
             </div>
             <input type="text" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
               (keyup)="_keyUp($event)" />
