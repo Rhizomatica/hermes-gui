@@ -10,10 +10,6 @@ import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
-import { Radio } from 'src/app/interfaces/radio';
-import { CustomErrorsService } from 'src/app/_services/custom-errors.service';
-import { CustomError } from 'src/app/interfaces/customerror';
-import { interval } from 'rxjs';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
 
@@ -50,8 +46,6 @@ export class AppComponent implements OnInit {
   received = [];
   sent = [];
   content = ''
-  radioObj: Radio
-  intervallTimerKeepWebSocketAlive = interval(9000)
   idleState = "NOT_STARTED";
   countdown?: number = null
   isLoginPage: boolean = null
@@ -65,7 +59,6 @@ export class AppComponent implements OnInit {
     private location: Location,
     private websocketService: WebsocketService,
     private sharedService: SharedService,
-    private errorService: CustomErrorsService,
     private idle: Idle,
     // private keepalive: Keepalive, 
     private cd: ChangeDetectorRef
@@ -80,47 +73,11 @@ export class AppComponent implements OnInit {
         this.checkIsLoginPage()
         this.updateBreadcrumb()
 
-
-        if (GlobalConstants.generalLogin && this.currentUser && !this.websocketService.messages) {
-          this.websocketService.startService()
-          this.startWebSocketService()
-        }
-
         if (!GlobalConstants.generalLogin && !this.websocketService.messages) {
           this.websocketService.startService()
-          this.startWebSocketService()
         }
       }
     });
-  }
-
-  startWebSocketService() {
-
-    this.sharedService.radioObj.subscribe({
-      next: newValue => this.radioObj
-    });
-
-    this.websocketService.messages.subscribe(data => {
-      this.sharedService.setRadioObjShared(data)
-
-      this.radio = this.sharedService.radioObj.value
-
-      this.checkingPTTHardwareCommand()
-
-    }, async err => {
-
-      this.saveWebsocketError()
-      if (this.websocketService.ws && this.websocketService.ws.OPEN == 1)
-        this.websocketService.ws.close()
-
-      this.keepWebSocketAlive()
-
-      if (self.location.hostname === 'hermes.radio')
-        this.sharedService.mountRadioObjDemo()
-
-    }, () => {
-      console.log('complete, closing websocket connection...')
-    })
   }
 
   sendMsg() {
@@ -136,34 +93,6 @@ export class AppComponent implements OnInit {
     this.websocketService.messages.next(message);
   }
 
-  async saveWebsocketError(): Promise<void> {
-
-    var newError: CustomError = {
-      controller: 'websocket',
-      error_code: 500,
-      error_message: 'Error to connect on websocket service',
-      stacktrace: null,
-      created_at: new Date().toString(),
-      updated_at: new Date().toString()
-    }
-
-    this.loading = true
-    await this.errorService.newCustomError(newError).subscribe(
-      (res: any) => {
-        this.loading = false
-      }, (err) => {
-        this.loading = false
-      }
-    );
-  }
-
-  keepWebSocketAlive() {
-    const subs = this.intervallTimerKeepWebSocketAlive.subscribe(val => {
-      console.log('keep alive...')
-      this.websocketService.startService()
-      this.startWebSocketService()
-    });
-  }
 
   getSystemStatus(): void {
     this.apiService.getStatus().subscribe(
@@ -179,11 +108,6 @@ export class AppComponent implements OnInit {
     );
   }
 
-  checkingPTTHardwareCommand() {
-    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio() && this.radio.ptt) {
-      this.router.navigate(['/voice'])
-    }
-  }
 
   confirmReset() {
     this.radioService.radioResetProtection().subscribe(
@@ -264,14 +188,10 @@ export class AppComponent implements OnInit {
     // do something when the user has timed out
     this.idle.onTimeout.subscribe(() => {
       this.idleState = "TIMED_OUT"
-      this.authenticationService.logout();
-      // right when the component initializes, start reset state and start watching
       this.resetIdle();
-
-      if (GlobalConstants.generalLogin && this.websocketService.ws && this.websocketService.ws.OPEN == 1)
-        this.websocketService.ws.close()
-
+      this.authenticationService.logout();
       this.router.navigate(['/login']);
+      this.websocketService.closeConnection()
     })
 
     // do something as the timeout countdown does its thing
@@ -297,5 +217,6 @@ export class AppComponent implements OnInit {
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
+    this.radio = this.sharedService.radioObj.value
   }
 }

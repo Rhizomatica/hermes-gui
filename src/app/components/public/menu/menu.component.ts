@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   error: string
   errorAlert: boolean = false
   radio: Radio
-  generalLogin:boolean = GlobalConstants.generalLogin
+  generalLogin: boolean = GlobalConstants.generalLogin
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -42,9 +42,7 @@ export class MenuComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.admin = false
-
-    if (this.generalLogin && this.websocketService.ws && this.websocketService.ws.OPEN == 1)
-      this.websocketService.ws.close()
+    this.websocketService.closeConnection()
   }
 
   ngOnInit(): void {
