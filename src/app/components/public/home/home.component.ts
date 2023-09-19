@@ -33,6 +33,10 @@ export class homeComponent implements OnInit {
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
+    if (GlobalConstants.generalLogin && this.currentUser && !this.websocketService.messages) {
+      this.websocketService.startService()
+    }
+
     if (utils.isItRuningLocal() && utils.isSBitxRadio())
       this.showVoiceCard = false
   }
@@ -45,16 +49,14 @@ export class homeComponent implements OnInit {
   showVoiceCard: boolean = true
   isGateway: boolean = GlobalConstants.gateway
   radio: Radio
-  generalLogin:boolean = GlobalConstants.generalLogin
+  generalLogin: boolean = GlobalConstants.generalLogin
   @Input() radioObj: Radio
 
   logOff() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.admin = false
-
-    if (this.generalLogin && this.websocketService.ws && this.websocketService.ws.OPEN == 1)
-      this.websocketService.ws.close()
+    this.websocketService.closeConnection()
   }
 
   toggle(): void {
