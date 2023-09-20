@@ -196,10 +196,17 @@ export class VoiceComponent implements OnInit {
   getVolume() {
     this.radioService.getVolume().subscribe(
       (res: any) => {
-        this.volume = res
+        
+        if (typeof res == 'number') {
+          this.volume = res
+          return
+        }
+
+        this.volume = 60
+
       }, (err) => {
         this.error = err;
-        this.errorAlert = true
+        // this.errorAlert = true
       }
     );
   }
@@ -209,11 +216,11 @@ export class VoiceComponent implements OnInit {
     this.volume = f.value.volume
     this.radioService.changeVolume(f.value.volume).subscribe(
       (res: any) => {
-        this.volume = res
+        this.volume = res //TODO - Return API***
         this.loading = false
       }, (err) => {
         this.error = err;
-        this.errorAlert = true
+        // this.errorAlert = true
         this.loading = false
       }
     );
@@ -241,6 +248,7 @@ export class VoiceComponent implements OnInit {
       this.splitFrequency()
     })
 
+    this.getVolume()
     this.getSavedStep()
   }
 }
