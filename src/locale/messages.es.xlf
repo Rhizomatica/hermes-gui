@@ -9,10 +9,6 @@
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">82</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="freespace" datatype="html">
         <source>Free Space: </source>
@@ -49,7 +45,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
-        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
+        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/> to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
         <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea.
         <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
         <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/>
@@ -144,7 +140,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="noaccount" datatype="html">
-        <source>Doesn't have an account?</source>
+        <source>Don't have an account?</source>
         <target>No tiene una cuenta?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
@@ -547,6 +543,14 @@
           <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="errorcustomerrormenu" datatype="html">
+        <source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new">There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="username:" datatype="html">
         <source>username:</source>
         <target>nombre de usuario:</target>
@@ -688,6 +692,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="areyousuredeletemsgdetail" datatype="html">
+        <source>Are you sure you want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new">Are you sure you want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="compose1" datatype="html">
@@ -1021,17 +1033,17 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
           <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="passdontmatch" datatype="html">
-        <source> passwords doesn't match </source>
-        <target state="new"> las contraseñas no coinciden </target>
+      <trans-unit id="passdontmatchuser" datatype="html">
+        <source> passwords don't match </source>
+        <target state="new"> passwords don't match </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">69,71</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
+      </trans-unit>
+      <trans-unit id="passdontmatch" datatype="html">
+        <source> passwords don't match </source>
+        <target state="new"> las contraseñas no coinciden </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">116</context>
@@ -1125,21 +1137,13 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <note priority="1" from="description">cannotaccessmessages</note>
       </trans-unit>
       <trans-unit id="areyousuredeletemsg" datatype="html">
-        <source>Are you sure you want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <source>Are you sure yo want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <target state="new">¿Está seguro de que desea eliminar este mensaje? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">52</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
-          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelmt" datatype="html">
@@ -1709,6 +1713,14 @@ esto puede hacer que el sistema se detenga</target>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="areyousuredeletemsgsent" datatype="html">
+        <source>Are you sure yo want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new">Are you sure yo want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="loadingfrequency" datatype="html">
         <source> loading radio status... </source>
         <target state="new"> loading radio status... </target>
@@ -2274,7 +2286,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="thisactioncannot" datatype="html">
-        <source>this action cannot be undone!</source>
+        <source>This action cannot be undone!</source>
         <target>esta acción no se puede revertir!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
@@ -2314,7 +2326,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousureupdate" datatype="html">
-        <source>Are you sure you wanna update</source>
+        <source>Are you sure you want to update</source>
         <target>Seguro que quiere actualizar?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
@@ -2338,7 +2350,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="usererrorexist" datatype="html">
-        <source>This user already exist please choose another email</source>
+        <source>This user already exists please choose another email</source>
         <target state="new">Este usuario ya existe, elija otro correo electrónico.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
@@ -2399,6 +2411,14 @@ esto puede hacer que el sistema se detenga</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passdontmatchwifi" datatype="html">
+        <source> passwords don't match </source>
+        <target state="new"> passwords don't match </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
+          <context context-type="linenumber">35,37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f5ab5850a8a8f5100a6906d41f1b8056676ec1da" datatype="html">

@@ -32,8 +32,8 @@
           </div>
           <div class="m-t-10">
             <p i18n="@@networkconfirmpassprase">Confirm Passphrase</p>
-            <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatch">
-              passwords doesn't match
+            <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatchwifi">
+              passwords don't match
             </div>
             <input type="password" name="wpa_passphrase_retype" [(ngModel)]="wiFiRetypePassphrase" required maxlength="32"
               i18n="@@networkconfirmpasspraseplaceholder" i18n-placeholder placeholder="Retype the Wi-Fi passphrase"

@@ -66,7 +66,7 @@
             (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderretypepassword" i18n-placeholder
             placeholder="retype password" />
         </label>
-        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
+        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatchuser">
           passwords don't match
         </div>
         <div [hidden]=!passMin class="error" i18n="@@strongpassword">
