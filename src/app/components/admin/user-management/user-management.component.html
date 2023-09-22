@@ -66,8 +66,8 @@
             (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderretypepassword" i18n-placeholder
             placeholder="retype password" />
         </label>
-        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
-          passwords doesn't match
+        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatchuser">
+          passwords don't match
         </div>
         <div [hidden]=!passMin class="error" i18n="@@strongpassword">
           password must have at least 6 characters
@@ -104,8 +104,8 @@
       </div>
       <div class="overall" *ngIf="updateUser">
         <div class="cv">
-          <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br />
-          <span i18n="@@thisactioncannot">this action cannot be undone!</span>
+          <span i18n="@@areyousureupdate">Are you sure you want to update</span> {{selectedUser.name}}?<br />
+          <span i18n="@@thisactioncannot">This action cannot be undone!</span>
           <br />
           <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
             i18n="@@update">update</button>
@@ -116,7 +116,7 @@
       <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
           <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on processing your request </span>
-          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exist please choose another
+          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exists please choose another
             email</span>
           <br /><br />
           <div class="icon"><a (click)="closeError()">

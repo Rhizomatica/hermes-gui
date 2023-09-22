@@ -37,7 +37,6 @@ export class ErrorInterceptor implements HttpInterceptor {
                 message = this.sangoError(errorStatus)
         }
         return message
-        // + ' If this error persists send a report feedback.'
     }
 
     public englishError(errorStatus) {
@@ -71,24 +70,22 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
 
-    //TODO - translate
     public françaisError(errorStatus) {
         if (errorStatus == 500)
-            return 'Error interno del servidor, inténtalo de nuevo.'
+            return 'Erreur interne de serveur, veuillez essayer de nouveau.'
 
         if (errorStatus == 400)
-            return 'Servicio no encontrado.'
+            return 'Service introuvable.'
 
         return errorStatus
     }
 
-    //TODO - translate
     public sangoError(errorStatus) {
         if (errorStatus == 500)
-            return 'Error interno del servidor, inténtalo de nuevo. (TRADUZIR)******'
+            return 'Erreur interne de serveur, veuillez essayer de nouveau.'
 
         if (errorStatus == 400)
-            return 'Servicio no encontrado. (TRADUZIR)******'
+            return 'Service introuvable.'
 
         return errorStatus
     }

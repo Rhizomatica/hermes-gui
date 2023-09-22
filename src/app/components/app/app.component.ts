@@ -49,6 +49,8 @@ export class AppComponent implements OnInit {
   idleState = "NOT_STARTED";
   countdown?: number = null
   isLoginPage: boolean = null
+  emergencyEmail = GlobalConstants.emergencyEmail
+
 
   constructor(
     private router: Router,
