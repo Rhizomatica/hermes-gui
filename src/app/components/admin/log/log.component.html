@@ -38,8 +38,9 @@
         </button>
         <input i18n="@@searcherrorplaceholder" i18n-placeholder placeholder="search error" id="searchbox1"
             [(ngModel)]="searchError" />
-        <div class="row" *ngFor="let error of customErrors | filter:searchError; let i = index">
-            <div class="row" (click)="viewLog(i)">
+        <div class="multiplist">
+            <div class="item m-t-10" *ngFor="let error of customErrors | filter:searchError; let i = index"
+                (click)="viewLog(i)">
                 <p>
                     <b i18n="@@customerrordatehour">Date Hour: </b>
                     {{error.created_at}}
@@ -62,7 +63,6 @@
                     </p>
                 </div>
             </div>
-            <hr />
         </div>
     </div>
 </div>
@@ -71,10 +71,9 @@
     <h3 i18n="@@uucpllogsog2">uucp log</h3>
     <!-- <hr /> -->
     <div class="logs">
-        <section>
-            <div *ngFor="let log of uucpLog">
+        <section class="multiplist">
+            <div class="item" *ngFor="let log of uucpLog">
                 <p class="m-t-10"> {{log}}</p>
-                <hr />
             </div>
             <br>
         </section>
@@ -84,10 +83,9 @@
     <h3 i18n="@@emaillog2">email log</h3>
     <!-- <hr /> -->
     <div class="logs">
-        <section>
-            <div *ngFor="let log of mailLog">
+        <section class="multiplist">
+            <div class="item" *ngFor="let log of mailLog">
                 <p class="m-t-10">{{log}}</p>
-                <hr />
             </div>
         </section>
         <br>
@@ -120,8 +118,9 @@
         <div class="cv">
             <span i18n="@@deleteallcustomerrosconfirmation"> Are you sure you want to delete all error logs? </span>
             <br /><br />
-            <button type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete all</button>
             <button class="m-l-10" type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
+            <button type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete all</button>
+
         </div>
     </div>
 </div>

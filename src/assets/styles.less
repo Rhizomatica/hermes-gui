@@ -348,10 +348,11 @@ textarea {
 
 .formfield {
   position: relative;
-  max-width: calc(100% - 4px);
+  max-width: calc(74% - 4px);
   min-height: calc(~"100% - 14em");
   padding-right: 3.5em;
   padding-left: 3.5em;
+  margin-left: 12.5%;
   top: 7em;
   padding-bottom: 1em;
 
@@ -385,9 +386,20 @@ textarea {
 }
 
 .formfield.home {
-  // top: 20px;
   top: 0.5em;
+  max-width: 100%;
+  margin-left: 0;
 }
+
+.formfield.voice {
+  max-width: 100%;
+  margin-left: 0;
+}
+
+.formfield.radio-config {
+  max-width: 77%;
+}
+
 
 .switch {
   position: relative;
@@ -810,6 +822,10 @@ input:checked+.slider:before {
   min-height: 5em;
   list-style: none;
   list-style-position: inside;
+
+  .item {
+    border-bottom: #999 1px solid;
+  }
 }
 
 .multiplist1 {
@@ -848,7 +864,7 @@ input:checked+.slider:before {
   width: 100%;
   margin-bottom: 0.15em;
   font-size: 1em;
-  border-bottom: solid 1px @mclr;
+  border-bottom: #999 1px solid;
 
   .adm {
     padding-left: 0.15em;
@@ -1083,9 +1099,7 @@ menu {
 
   .item {
     border-bottom: #999 1px solid;
-
   }
-
 }
 
 .loginicon {
@@ -1489,7 +1503,7 @@ tr:nth-child(odd) {
   }
 
   .userlist {
-    border-bottom: solid 1px @bkclr;
+    border-bottom: #999 1px solid;
   }
 
   .btn-messages-lading {
@@ -1608,6 +1622,12 @@ tr:nth-child(odd) {
 
   input[type=range] {
     background-color: #2d3436;
+  }
+
+  .multiplist {
+    .item {
+      border-bottom: #999 1px solid;
+    }
   }
 
 }
@@ -2098,7 +2118,7 @@ tr:nth-child(odd) {
 }
 
 .text-sm {
-  font-size: 0.6em;
+  font-size: 0.5em;
 }
 
 @media (max-width: 800px) and (min-width: 700px) {
@@ -2554,6 +2574,9 @@ tr:nth-child(odd) {
   flex-direction: row;
   flex-wrap: wrap;
 
+  width: 100%;
+  margin-left: 0;
+
   .data {
     padding: 30px;
     margin: 10px;
@@ -2571,21 +2594,14 @@ tr:nth-child(odd) {
     .data-body {
       font-size: 1.5em;
       align-items: stretch;
-
-      // button{
-      //   font-size: 0.6em;
-      // }
     }
 
     .data-body.frequency {
-      // width: 70%;
-      font-size: 6em;
-      // font-family: "Cousine", monospace;
+      font-size: 5.5em;
       font-family: monospace;
       line-height: 100%;
       display: flex;
       align-items: center;
-      // width: 90%;
     }
 
     .data-switch {

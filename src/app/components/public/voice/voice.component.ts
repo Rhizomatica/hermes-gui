@@ -29,7 +29,7 @@ export class VoiceComponent implements OnInit {
   freqmin: number = 500
   freqmax: number = 30000
   frequencyAux: string
-  volume: number = 60
+  volume: number = 0
   subject = new BehaviorSubject(this.radioService);
 
   constructor(
@@ -202,7 +202,7 @@ export class VoiceComponent implements OnInit {
           return
         }
 
-        this.volume = 60
+        this.volume = 0
 
       }, (err) => {
         this.error = err;
