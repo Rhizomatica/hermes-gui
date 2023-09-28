@@ -33,10 +33,23 @@
           <div class="maininfo">
             <a>
               <span *ngIf="isadmin">
-                <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg"
-                  *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)">
+                <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'"
+                  (click)="cancelMail(job.uuidhost,job.uuiduucp)">
                 <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
-                  (click)="cancelTransmision(job.uuidhost,job.uuiduucp)">
+                  (click)="confirmCancelTransmission()">
+
+                <div class="overall alert" *ngIf="deleteMessage">
+                  <div class="cv">
+                    <span i18n="@@deletetransmissionconfirmation">Are you sure you want to cancel this
+                      transmission?</span>
+                    <div class="row">
+                      <button (click)="confirmCancelTransmission()"
+                        i18n="@@canceloperationcanceltransmission">cancel</button>
+                      <button class="m-l-10" (click)="cancelTransmision(job.uuidhost,job.uuiduucp)"
+                        i18n="@@confirmcanceltransmission">confirm</button>
+                    </div>
+                  </div>
+                </div>
               </span>
             </a>
             <div class="row">
