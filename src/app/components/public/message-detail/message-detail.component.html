@@ -5,7 +5,7 @@
     <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
         {{message.name}}</h3>
     <div class="formdata" *ngIf="message.secure && uncrypted === false">
-        <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
+        <p i18n="@@encryptedmessage">Protected message, type the password:</p>
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required>
