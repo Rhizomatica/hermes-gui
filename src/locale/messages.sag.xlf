@@ -67,12 +67,24 @@
           <context context-type="linenumber">36,38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e4c9f27640059827dfd1eb59443f75f530efd919" datatype="html">
-        <source>search error</source>
-        <target state="new">search error</target>
+      <trans-unit id="6bec7734cb3740b324966b003c0f45f0148a70e8" datatype="html">
+        <source>search</source>
+        <target state="new">search</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="customerrordatehour" datatype="html">
@@ -304,7 +316,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cleanup" datatype="html">
-        <source>Clean up lost files</source>
+        <source>Clean up broken files</source>
         <target state="new">Clean up lost files</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
@@ -1087,14 +1099,6 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="739b3885e4e0faa6cd2577989917cbc4e97277ce" datatype="html">
-        <source>Search Users</source>
-        <target state="new">Search Users</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="9ba640ccee5a65fd2adbe520574828ccac8c1e12" datatype="html">
         <source>write the username</source>
         <target state="new">write the username</target>
@@ -1495,6 +1499,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
           <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sentemailbutton" datatype="html">
+        <source>send email to selected</source>
+        <target state="new">send email to selected</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailsuport" datatype="html">
@@ -2382,8 +2394,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="encryptedmessage" datatype="html">
-        <source>Encrypted message, type the password:</source>
-        <target state="new">Encrypted message, type the password:</target>
+        <source>Protected message, type the password:</source>
+        <target state="new">Protected message, type the password:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">8</context>
@@ -2670,9 +2682,9 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="compose1" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> compose </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> compose </target>
+      <trans-unit id="newmessage" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </source>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">9,11</context>
@@ -2684,18 +2696,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">15,17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c7e54e9c3c3ba0568ece1701e1e0db1bea934448" datatype="html">
-        <source>Search Messages</source>
-        <target state="new">Search Messages</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
-          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="62a8e3dc60a7c5aa0d84d1aae02ac17f8f8c0dbc" datatype="html">
@@ -2749,7 +2749,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="volumevoice" datatype="html">
-        <source> Volume: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </source>
+        <source> Volume: <x id="INTERPOLATION" equiv-text="{{radio.volume}}"/> </source>
         <target state="new"> Volume: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>

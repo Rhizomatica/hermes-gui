@@ -29,7 +29,6 @@ export class VoiceComponent implements OnInit {
   freqmin: number = 500
   freqmax: number = 30000
   frequencyAux: string
-  volume: number = 0
   subject = new BehaviorSubject(this.radioService);
 
   constructor(
@@ -193,30 +192,10 @@ export class VoiceComponent implements OnInit {
     location.reload()
   }
 
-  getVolume() {
-    this.radioService.getVolume().subscribe(
-      (res: any) => {
-        
-        if (typeof res == 'number') {
-          this.volume = res
-          return
-        }
-
-        this.volume = 0
-
-      }, (err) => {
-        this.error = err;
-        // this.errorAlert = true
-      }
-    );
-  }
-
   changeVolume(f: NgForm) {
     this.loading = true
-    this.volume = f.value.volume
     this.radioService.changeVolume(f.value.volume).subscribe(
       (res: any) => {
-        this.volume = res //TODO - Return API***
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -248,7 +227,6 @@ export class VoiceComponent implements OnInit {
       this.splitFrequency()
     })
 
-    this.getVolume()
     this.getSavedStep()
   }
 }

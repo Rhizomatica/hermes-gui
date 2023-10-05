@@ -12,7 +12,7 @@
                     </button>
                 </div>
             </div>
-            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
+            <input id="searchbox1" [(ngModel)]="searchMessages" placeholder="search" i18n-placeholder/>
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access
                 sent messages<br />
             </div>

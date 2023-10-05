@@ -61,18 +61,30 @@
       </trans-unit>
       <trans-unit id="btndeleteallcustomerror" datatype="html">
         <source> delete all </source>
-        <target state="new"> Supprimer tout </target>
+        <target state="new"> supprimer tout </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">36,38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e4c9f27640059827dfd1eb59443f75f530efd919" datatype="html">
-        <source>search error</source>
-        <target state="new">Erreur de recherche</target>
+      <trans-unit id="6bec7734cb3740b324966b003c0f45f0148a70e8" datatype="html">
+        <source>search</source>
+        <target state="new">recherche</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="customerrordatehour" datatype="html">
@@ -297,15 +309,15 @@
       </trans-unit>
       <trans-unit id="cleanuptext" datatype="html">
         <source> When sending messages it's possible that broken files are stored in the server, please click here to clean up the system: </source>
-        <target state="new"> Lors de l'envoi de messages, il est possible que des fichiers endommagés soient sauvegardés sur le serveur, merci de cliquer ici pour nettoyer le système: </target>
+        <target state="new"> Lors de l'envoi de messages, il est possible que des fichiers perdus soient sauvegardés sur le serveur, merci de cliquer ici pour nettoyer le système: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
           <context context-type="linenumber">29,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cleanup" datatype="html">
-        <source>Clean up lost files</source>
-        <target state="new">Nettoyer les fichiers perdus</target>
+        <source>Clean up broken files</source>
+        <target state="new">nettoyer les fichiers perdus</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
           <context context-type="linenumber">33</context>
@@ -447,7 +459,7 @@
       </trans-unit>
       <trans-unit id="changefreqr0" datatype="html">
         <source> change frequency </source>
-        <target state="new"> Changer la fréquence </target>
+        <target state="new"> changer la fréquence </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">94</context>
@@ -487,7 +499,7 @@
       </trans-unit>
       <trans-unit id="changetre1" datatype="html">
         <source>change threshold</source>
-        <target state="new">Changer la limite</target>
+        <target state="new">changer la limite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">117</context>
@@ -551,7 +563,7 @@
       </trans-unit>
       <trans-unit id="c6ff7f8b6c056c7e6a61595b1dfddac3fdc41009" datatype="html">
         <source> reset</source>
-        <target state="new"> Réinitialisation</target>
+        <target state="new"> réinitialisation</target>
         <note priority="1" from="description">@resetprotection1</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -560,7 +572,7 @@
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
         <source> reset to default </source>
-        <target state="new"> Réinitialisation aux paramètres par défaut </target>
+        <target state="new"> réinitialisation aux paramètres par défaut </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">166</context>
@@ -584,7 +596,7 @@
       </trans-unit>
       <trans-unit id="cancelr" datatype="html">
         <source> cancel </source>
-        <target state="new"> Annuler </target>
+        <target state="new"> annuler </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">193</context>
@@ -632,7 +644,7 @@
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
         <source>cancel</source>
-        <target state="new">Annuler</target>
+        <target state="new">annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">246</context>
@@ -705,7 +717,7 @@
       </trans-unit>
       <trans-unit id="createschedule" datatype="html">
         <source>create schedule</source>
-        <target state="new">Créer un calendrier</target>
+        <target state="new">créer un calendrier</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
           <context context-type="linenumber">6</context>
@@ -809,7 +821,7 @@
       </trans-unit>
       <trans-unit id="newschedule" datatype="html">
         <source> create schedule </source>
-        <target state="new"> Créer un calendrier </target>
+        <target state="new"> créer un calendrier </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
           <context context-type="linenumber">86</context>
@@ -817,7 +829,7 @@
       </trans-unit>
       <trans-unit id="deletechedule" datatype="html">
         <source> delete schedule </source>
-        <target state="new"> Supprimer un calendrier </target>
+        <target state="new"> supprimer un calendrier </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
           <context context-type="linenumber">91</context>
@@ -1001,7 +1013,7 @@
       </trans-unit>
       <trans-unit id="deletetransmissionconfirmation" datatype="html">
         <source>Are you sure you want to cancel this transmission?</source>
-        <target state="new">Are you sure you want to cancel this transmission?</target>
+        <target state="new">Êtes-vous sûr de vouloir annuler cette transmission?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
           <context context-type="linenumber">43,44</context>
@@ -1009,7 +1021,7 @@
       </trans-unit>
       <trans-unit id="canceloperationcanceltransmission" datatype="html">
         <source>cancel</source>
-        <target state="new">cancel</target>
+        <target state="new">annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
           <context context-type="linenumber">47</context>
@@ -1017,7 +1029,7 @@
       </trans-unit>
       <trans-unit id="confirmcanceltransmission" datatype="html">
         <source>confirm</source>
-        <target state="new">confirm</target>
+        <target state="new">confirmer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
           <context context-type="linenumber">49</context>
@@ -1073,7 +1085,7 @@
       </trans-unit>
       <trans-unit id="createusers" datatype="html">
         <source>Create User</source>
-        <target state="new">Créer un utilisateur</target>
+        <target state="new">créer un utilisateur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">7</context>
@@ -1085,14 +1097,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="739b3885e4e0faa6cd2577989917cbc4e97277ce" datatype="html">
-        <source>Search Users</source>
-        <target state="new">Search Users</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9ba640ccee5a65fd2adbe520574828ccac8c1e12" datatype="html">
@@ -1145,7 +1149,7 @@
       </trans-unit>
       <trans-unit id="changepassword" datatype="html">
         <source>change password</source>
-        <target state="new">Changer le mot de passe</target>
+        <target state="new">changer le mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">54</context>
@@ -1225,7 +1229,7 @@
       </trans-unit>
       <trans-unit id="mupd" datatype="html">
         <source>update</source>
-        <target state="new">Mettre à jour</target>
+        <target state="new">mettre à jour</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">87</context>
@@ -1241,7 +1245,7 @@
       </trans-unit>
       <trans-unit id="delusr" datatype="html">
         <source>delete user</source>
-        <target state="new">Supprimer l'utilisateur</target>
+        <target state="new">supprimer l'utilisateur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">93</context>
@@ -1337,7 +1341,7 @@
       </trans-unit>
       <trans-unit id="networkpassprase" datatype="html">
         <source>Passphrase</source>
-        <target state="new">Phrase secrète</target>
+        <target state="new">Mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">26</context>
@@ -1345,7 +1349,7 @@
       </trans-unit>
       <trans-unit id="wifistrongpassword" datatype="html">
         <source> password must have at least 8 characters </source>
-        <target state="new"> password must have at least 8 characters </target>
+        <target state="new"> le mot de passe doit contenir au moins 8 caractères </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">27,29</context>
@@ -1353,7 +1357,7 @@
       </trans-unit>
       <trans-unit id="networkconfirmpassprase" datatype="html">
         <source>Confirm Passphrase</source>
-        <target state="new">Confirm Passphrase</target>
+        <target state="new">Confirmer le mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">34</context>
@@ -1369,7 +1373,7 @@
       </trans-unit>
       <trans-unit id="f5ab5850a8a8f5100a6906d41f1b8056676ec1da" datatype="html">
         <source>Retype the Wi-Fi passphrase</source>
-        <target state="new">Retype the Wi-Fi passphrase</target>
+        <target state="new">Retapez la phrase secrète Wi-Fi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">39</context>
@@ -1377,7 +1381,7 @@
       </trans-unit>
       <trans-unit id="savewificonfigbutton" datatype="html">
         <source> save changes</source>
-        <target state="new"> save changes</target>
+        <target state="new"> sauvegarder les modifications</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">45,46</context>
@@ -1495,6 +1499,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
           <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sentemailbutton" datatype="html">
+        <source>send email to selected</source>
+        <target state="new">envoyer un e-mail à la sélectionnée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailsuport" datatype="html">
@@ -2091,7 +2103,7 @@
       </trans-unit>
       <trans-unit id="helpcard" datatype="html">
         <source> Help </source>
-        <target state="new"> Aider </target>
+        <target state="new"> Aide </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
           <context context-type="linenumber">39,41</context>
@@ -2303,7 +2315,7 @@
       </trans-unit>
       <trans-unit id="radiophonymenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;>"/> Home </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;>"/> D'accueil </target>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;>"/> Accueil </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">11,13</context>
@@ -2382,8 +2394,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="encryptedmessage" datatype="html">
-        <source>Encrypted message, type the password:</source>
-        <target state="new">Message chiffré, entrer le mot de passe:</target>
+        <source>Protected message, type the password:</source>
+        <target state="new">Message protégé, entrer le mot de passe:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">8</context>
@@ -2431,7 +2443,7 @@
       </trans-unit>
       <trans-unit id="deleteMessageDetail" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> delete </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> Envoyer à la corbeille </target>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> supprimer </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">52</context>
@@ -2567,7 +2579,7 @@
       </trans-unit>
       <trans-unit id="selfile" datatype="html">
         <source>select file</source>
-        <target state="new">choisir le dossier</target>
+        <target state="new">attacher un fichier</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">72</context>
@@ -2600,7 +2612,7 @@
       <trans-unit id="protectpssw" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="protect message
           &lt;"/> protect message </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/lock.svg&quot;>"/> Protéger le message </target>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/lock.svg&quot;>"/> protéger le message </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">100,102</context>
@@ -2632,7 +2644,7 @@
       </trans-unit>
       <trans-unit id="sendmessage" datatype="html">
         <source> send message </source>
-        <target state="new"> Envoyer le message </target>
+        <target state="new"> envoyer le message </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">127</context>
@@ -2670,9 +2682,9 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="compose1" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> compose </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> Ecrire un message </target>
+      <trans-unit id="newmessage" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </source>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> nouveau </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">9,11</context>
@@ -2684,18 +2696,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">15,17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c7e54e9c3c3ba0568ece1701e1e0db1bea934448" datatype="html">
-        <source>Search Messages</source>
-        <target state="new">Search Messages</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
-          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="62a8e3dc60a7c5aa0d84d1aae02ac17f8f8c0dbc" datatype="html">
@@ -2749,7 +2749,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="volumevoice" datatype="html">
-        <source> Volume: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </source>
+        <source> Volume: <x id="INTERPOLATION" equiv-text="{{radio.volume}}"/> </source>
         <target state="new"> Volume: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
