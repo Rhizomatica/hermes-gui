@@ -36,7 +36,7 @@
         <button class="m-t-10" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
             delete all
         </button>
-        <input i18n="@@searcherrorplaceholder" i18n-placeholder placeholder="search for error" id="searchbox1"
+        <input id="searchbox1" i18n-placeholder placeholder="search"
             [(ngModel)]="searchError" />
         <div class="multiplist">
             <div class="item m-t-10" *ngFor="let error of customErrors | filter:searchError; let i = index"
