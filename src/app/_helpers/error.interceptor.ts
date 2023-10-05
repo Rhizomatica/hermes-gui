@@ -33,8 +33,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                 message = this.spanishError(errorStatus)
             case 'fr':
                 message = this.françaisError(errorStatus)
-            case 'sag':
-                message = this.sangoError(errorStatus)
+            // case 'sag':
+            //     message = this.sangoError(errorStatus)
         }
         return message
     }
@@ -80,14 +80,14 @@ export class ErrorInterceptor implements HttpInterceptor {
         return errorStatus
     }
 
-    public sangoError(errorStatus) {
-        if (errorStatus == 500)
-            return 'Erreur interne de serveur, veuillez essayer de nouveau.'
+    // public sangoError(errorStatus) {
+    //     if (errorStatus == 500)
+    //         return 'Erreur interne de serveur, veuillez essayer de nouveau.'
 
-        if (errorStatus == 400)
-            return 'Service introuvable.'
+    //     if (errorStatus == 400)
+    //         return 'Service introuvable.'
 
-        return errorStatus
-    }
+    //     return errorStatus
+    // }
 
 }
