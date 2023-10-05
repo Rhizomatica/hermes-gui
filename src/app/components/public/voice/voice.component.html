@@ -16,11 +16,11 @@
         </div>
       </div>
       <div class="data-title m-t-25" i18n="@@volumevoice">
-        Volume: {{volume}}
+        Volume: {{radio.volume}}
       </div>
       <div class="data-body">
         <form #fvolume="ngForm" class="formdata">
-          <input type="range" name="volume" min="0" max="100" step="5" value="{{volume}}" ngModel="{{volume}}"
+          <input type="range" name="volume" min="0" max="100" step="5" value="{{radio.volume}}" ngModel="{{radio.volume}}"
             (change)="changeVolume(fvolume)" />
           <!-- <datalist id="markers">
               <option value="0">0</option>

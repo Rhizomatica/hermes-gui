@@ -14,5 +14,6 @@ export interface Radio {
   ref_watts: number,
   connection: boolean,
   ptt: boolean,
-  step: number
+  step: number,
+  volume: number
 }

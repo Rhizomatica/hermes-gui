@@ -25,7 +25,8 @@ export class SharedService {
     ref_watts: null,
     connection: null,
     ptt: null,
-    step: null
+    step: null,
+    volume: null
   });
 
   public storedRadioObj = <Radio>({
@@ -34,7 +35,9 @@ export class SharedService {
     tx: null,
     rx: null,
     fwd_watts: null,
-    swr: null
+    swr: null,
+    protection: null,
+    volume: null
   });
 
   setRadioObjShared(data) {
@@ -50,6 +53,7 @@ export class SharedService {
     this.radioObj.value.fwd_watts = this.storedRadioObj.fwd_watts
     this.radioObj.value.swr = this.storedRadioObj.swr
     this.radioObj.value.protection = this.storedRadioObj.protection
+    this.radioObj.value.volume = this.storedRadioObj.volume
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -64,6 +68,7 @@ export class SharedService {
     this.storedRadioObj.fwd_watts = newObj.fwd_watts == null ? this.storedRadioObj.fwd_watts : utils.formatPower(newObj.fwd_watts)
     this.storedRadioObj.swr = newObj.swr == null ? this.storedRadioObj.swr : utils.formatSWR(newObj.swr)
     this.storedRadioObj.protection = newObj.protection == null ? this.storedRadioObj.protection : newObj.protection
+    this.storedRadioObj.volume = newObj.volume == null ? this.storedRadioObj.volume : newObj.volume
   }
 
   mountRadioObjDemo(){
@@ -75,6 +80,8 @@ export class SharedService {
     this.radioObj.value.rx = true
     this.radioObj.value.fwd_watts = '1.0'
     this.radioObj.value.swr = '1.98'
+    this.radioObj.value.protection = null
+    this.radioObj.value.volume = 60
     this.radioObj.next(this.radioObj.value)
   }
 }
