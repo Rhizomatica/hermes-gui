@@ -131,6 +131,14 @@
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="sentemailbutton" datatype="html">
+        <source>send email to selected</source>
+        <target state="new">send email to selected</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="emailsuport" datatype="html">
         <source>If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:{{emergencyEmail}}&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
         <target state="new">If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
@@ -714,16 +722,6 @@
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="compose1" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> compose </source>
-        <target state="new">
-<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;edit&quot; src=&quot;assets/svg/edit.svg&quot;>"/>
- escribir</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="aconfigmessages" datatype="html">
         <source>Messages Configuration</source>
         <target state="new">Configuración de mensajes</target>
@@ -1118,6 +1116,14 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="newmessage" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </source>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> nueva </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
+          <context context-type="linenumber">9,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="62a8e3dc60a7c5aa0d84d1aae02ac17f8f8c0dbc" datatype="html">
