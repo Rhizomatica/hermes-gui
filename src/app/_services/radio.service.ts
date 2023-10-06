@@ -156,7 +156,14 @@ export class RadioService {
   }
 
   public setRadioTone(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/tone/${value}`;
+
+    var route = '/radio/tone/'
+
+    if (GlobalConstants.bitx == 'S') {
+      route = '/radio/tone/sbitx/'
+    }
+
+    const url = `${GlobalConstants.apiURL}${route}${value}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -244,7 +251,7 @@ export class RadioService {
       }),
       catchError(this.handleError));
   }
-  
+
 
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
