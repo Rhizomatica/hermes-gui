@@ -20,8 +20,8 @@
       </div>
       <div class="data-body">
         <form #fvolume="ngForm" class="formdata">
-          <input type="range" name="volume" min="0" max="100" step="5" value="{{radio.volume}}" ngModel="{{radio.volume}}"
-            (change)="changeVolume(fvolume)" />
+          <input type="range" name="volume" min="0" max="100" step="5" value="{{radio.volume}}"
+            ngModel="{{radio.volume}}" (change)="changeVolume(fvolume)" />
           <!-- <datalist id="markers">
               <option value="0">0</option>
               <option value="25">25</option>
@@ -51,6 +51,13 @@
         </div>
       </div>
       <div class="data">
+        <div class="data-body">
+          <button (click)="changeStep()" *ngIf="!inputFrequencyFlag" i18n="@@stepvoice">step</button>
+        </div>
+      </div>
+    </div>
+    <div class="info-panel">
+      <div class="data">
         <div class="data-title">
           PTT
         </div>
@@ -59,8 +66,6 @@
           <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
         </div>
       </div>
-    </div>
-    <div class="info-panel">
       <div class="data">
         <div class="data-title" i18n="@@protectionvoice">
           Protection
@@ -81,11 +86,6 @@
             <span class="slider round-uc" (click)="changeMode($event)"></span>
           </div>
           <span>LSB</span>
-        </div>
-      </div>
-      <div class="data">
-        <div class="data-body">
-          <button (click)="changeStep()" *ngIf="!inputFrequencyFlag" i18n="@@stepvoice">step</button>
         </div>
       </div>
     </div>
