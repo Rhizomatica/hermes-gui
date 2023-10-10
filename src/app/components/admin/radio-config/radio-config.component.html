@@ -85,7 +85,7 @@
       </div>
       <div class="radio" *ngIf="radio && radio.freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio frequency: {{radio.freq}}
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
@@ -93,6 +93,11 @@
             <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
               change frequency
             </button>
+            <div class="row m-t-10" *ngIf="!isAdmin">
+              <p i18n="@@advisechangedatafrequency">
+                <b>DO NOT</b> use this button <b>UNLESS</b> you have been asked by the manager to change the data transmission frequency of the radio.
+              </p>
+            </div>
           </div>
           <div class="overall alert" *ngIf="confirmSet">
             <div class="cv">

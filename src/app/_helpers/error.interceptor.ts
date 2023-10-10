@@ -41,7 +41,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     public englishError(errorStatus) {
         if (errorStatus == 500)
-            return 'Internal Server error, please try again.'
+            return 'Internal Server error, please try again. Contact support if the problem persists.'
 
         if (errorStatus == 400)
             return 'Service not found.'
@@ -51,7 +51,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     public portugueseError(errorStatus) {
         if (errorStatus == 500)
-            return 'Erro interno no Servidor, por favor tente novamente.'
+            return 'Erro interno no Servidor, por favor tente novamente. Entre em contato com o suporte se o problema persistir.'
 
         if (errorStatus == 400)
             return 'Serviço não encontrado.'
@@ -61,7 +61,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     public spanishError(errorStatus) {
         if (errorStatus == 500)
-            return 'Error interno del servidor, inténtalo de nuevo.'
+            return 'Error interno del servidor, inténtalo de nuevo. Póngase en contacto con el soporte si el problema persiste.'
 
         if (errorStatus == 400)
             return 'Servicio no encontrado.'
@@ -72,7 +72,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     public françaisError(errorStatus) {
         if (errorStatus == 500)
-            return 'Erreur interne de serveur, veuillez essayer de nouveau.'
+            return 'Erreur interne de serveur, veuillez essayer de nouveau. Contactez le support si le problème persiste.'
 
         if (errorStatus == 400)
             return 'Service introuvable.'

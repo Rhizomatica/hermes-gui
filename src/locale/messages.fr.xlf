@@ -426,7 +426,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationrx" datatype="html">
@@ -438,7 +438,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="serial" datatype="html">
@@ -450,7 +450,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="changefrequency" datatype="html">
-        <source>Radio frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/> </source>
+        <source>Radio data frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/> </source>
         <target state="new">Fréquence radio : <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -465,12 +465,20 @@
           <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="advisechangedatafrequency" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>N'<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> you have been asked by the manager to change the data transmission frequency of the radio. </source>
+        <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>DO NOT<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> utilisez PAS ce bouton <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>SAUF<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>  si le responsable vous a demandé de modifier la fréquence de transmission des données de la radio. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">98,100</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="areyousurechangesett" datatype="html">
         <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this may cause the system to stop </source>
         <target state="new">Etes vous sûr de vouloir changer les paramètres de la radio ? Cela est susceptible de faire que la radio s'arrête de fonctionner </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changer" datatype="html">
@@ -478,7 +486,7 @@
         <target state="new">Changer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">110</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelr0" datatype="html">
@@ -486,7 +494,7 @@
         <target state="new">annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="prottheshold" datatype="html">
@@ -494,7 +502,7 @@
         <target state="new">Seuil d'activation de la protection</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changetre1" datatype="html">
@@ -502,7 +510,7 @@
         <target state="new">changer la limite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changeradiomode" datatype="html">
@@ -510,7 +518,7 @@
         <target state="new">Mode</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="suresendpttmessage" datatype="html">
@@ -518,7 +526,7 @@
         <target state="new">Etes vous sûr de vouloir envoyer un test sonore vers le PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Cela peut entraîner des problèmes irréparables </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">141,144</context>
+          <context context-type="linenumber">146</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sendptt" datatype="html">
@@ -526,7 +534,7 @@
         <target state="new">Envoyer un test sonore vers le PTT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">147</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelsendptt" datatype="html">
@@ -534,7 +542,7 @@
         <target state="new">annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="linenumber">151</context>
         </context-group>
       </trans-unit>
       <trans-unit id="labelgpscalibration" datatype="html">
@@ -542,7 +550,7 @@
         <target state="new">Calibration GPS</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="startgpscalibration" datatype="html">
@@ -550,7 +558,7 @@
         <target state="new">commencer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">154</context>
+          <context context-type="linenumber">159</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprotection" datatype="html">
@@ -558,7 +566,7 @@
         <target state="new">protection (<x id="INTERPOLATION" equiv-text="{{radio.protection ? 'ON' : 'OFF'}}"/>)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">158</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c6ff7f8b6c056c7e6a61595b1dfddac3fdc41009" datatype="html">
@@ -567,7 +575,7 @@
         <note priority="1" from="description">@resetprotection1</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">165</context>
         </context-group>
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
@@ -575,7 +583,7 @@
         <target state="new"> réinitialisation aux paramètres par défaut </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">166</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot" datatype="html">
@@ -583,7 +591,7 @@
         <target state="new">redémarrer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">173</context>
+          <context context-type="linenumber">178</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreset" datatype="html">
@@ -591,7 +599,7 @@
         <target state="new"> Etes vous sûr de vouloir réinitialiser la radio à la configuration par défaut? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">186</context>
+          <context context-type="linenumber">191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelr" datatype="html">
@@ -599,7 +607,7 @@
         <target state="new"> annuler </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">193</context>
+          <context context-type="linenumber">198</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reset1" datatype="html">
@@ -607,7 +615,7 @@
         <target state="new"> réinitialiser </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">200</context>
+          <context context-type="linenumber">205</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
@@ -615,7 +623,7 @@
         <target state="new">Une erreur s'est produite lors du changement de configuration <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">208</context>
+          <context context-type="linenumber">213</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
@@ -631,7 +639,7 @@
         <target state="new">Calibration GPS réalisée avec succès</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">219</context>
+          <context context-type="linenumber">224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreboot" datatype="html">
@@ -639,7 +647,7 @@
         <target state="new"> Etes vous sûr de vouloir relancer le système Hermes? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Cela va stopper la transmission et la réception des messages. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">241</context>
+          <context context-type="linenumber">246</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
@@ -647,7 +655,7 @@
         <target state="new">annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">251</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot1" datatype="html">
@@ -655,7 +663,7 @@
         <target state="new">relancer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">247</context>
+          <context context-type="linenumber">252</context>
         </context-group>
       </trans-unit>
       <trans-unit id="rebootButton" datatype="html">
@@ -663,7 +671,7 @@
         <target state="new"> Système en cours de relance <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;close&quot; src=&quot;assets/svg/x.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">258</context>
+          <context context-type="linenumber">263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c7793775d5c9e3e104977c383d6e38f8af4c5316" datatype="html">
@@ -2769,24 +2777,24 @@
         <target state="new"> Protection </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">65,67</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="878de3ad44e634ecaf219427d948689bd975e1af" datatype="html">
         <source>reset</source>
         <target state="new">réinitialisation</target>
+        <note priority="1" from="description">@resetprotectionvoice</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">75</context>
         </context-group>
-        <note priority="1" from="description">@resetprotectionvoice</note>
       </trans-unit>
       <trans-unit id="modevoice" datatype="html">
         <source> Mode </source>
         <target state="new"> Mode </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">74,76</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stepvoice" datatype="html">
@@ -2794,7 +2802,7 @@
         <target state="new">étape</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="websocketerror" datatype="html">
