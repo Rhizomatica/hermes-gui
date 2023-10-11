@@ -296,7 +296,6 @@ export class MessagecomposeComponent implements OnInit {
 
   sendMessageContinue(f: NgForm) {
     this.sending = false;
-
     this.messageService.sendMessage(f.value, this.nodename).subscribe(
       (res: any) => {
         this.res = res;
@@ -449,7 +448,19 @@ export class MessagecomposeComponent implements OnInit {
 
           var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
 
-          this.message.dest = origin !== null ? [origin] : []
+
+          if(origin == null){
+            this.message.dest = []
+          }
+
+          if(!Array.isArray(origin)){
+            this.message.dest = [origin]
+          }
+
+          if(Array.isArray(origin)){
+            this.message.dest = origin
+          }
+
         }
 
         this.loading = false
