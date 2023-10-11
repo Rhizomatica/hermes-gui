@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd, ActivationEnd } from '@angular/router';
 import { DecimalPipe, Location, NgSwitchCase } from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
@@ -11,6 +11,7 @@ import { GlobalConstants } from 'src/app/global-constants';
 import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
+import { Observable, Subscribable } from 'rxjs';
 // import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
@@ -23,7 +24,7 @@ import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
   ]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   currentUser: User;
   serverRes: any;
   error: any;
@@ -50,7 +51,7 @@ export class AppComponent implements OnInit {
   countdown?: number = null
   isLoginPage: boolean = null
   emergencyEmail = GlobalConstants.emergencyEmail
-
+  routerObserver = null
 
   constructor(
     private router: Router,
@@ -68,18 +69,6 @@ export class AppComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     this.startIdleDetector()
-
-    router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        this.checkIsMenuPage()
-        this.checkIsLoginPage()
-        this.updateBreadcrumb()
-
-        if (!GlobalConstants.generalLogin && !this.websocketService.messages) {
-          this.websocketService.startService()
-        }
-      }
-    });
   }
 
   sendMsg() {
@@ -220,5 +209,31 @@ export class AppComponent implements OnInit {
     this.utils.isMobile()
     this.checkLanguage()
     this.radio = this.sharedService.radioObj.value
+
+    this.routerObserver = this.router.events.subscribe((event) => {
+      if (event instanceof ActivationEnd) {
+
+        //Redirect login if reload page...
+        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home' ) {
+          this.router.navigate(['home'])
+        }
+      }
+
+      if (event instanceof NavigationEnd) {
+
+        this.checkIsMenuPage()
+        this.checkIsLoginPage()
+        this.updateBreadcrumb()
+
+        if (!GlobalConstants.generalLogin && !this.websocketService.messages) {
+          this.websocketService.startService()
+        }
+      }
+
+    });
+  }
+
+  ngOnDestroy() {
+    this.routerObserver.unsubscribe();
   }
 }
