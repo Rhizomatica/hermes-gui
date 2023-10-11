@@ -8,6 +8,7 @@ import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-radio-config',
@@ -48,7 +49,7 @@ export class RadioConfigComponent implements OnInit {
   realfreq: any;
   led: any;
   ptt: any;
-  frek: any;
+  frek: number;
   serial: string
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
@@ -331,7 +332,7 @@ export class RadioConfigComponent implements OnInit {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
-    this.frek = this.radio.freq
+    this.frek = parseFloat(this.radio.freq) * 1000 
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }
