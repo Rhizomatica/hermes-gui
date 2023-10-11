@@ -85,7 +85,7 @@
       </div>
       <div class="radio" *ngIf="radio && radio.freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}kHz
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
