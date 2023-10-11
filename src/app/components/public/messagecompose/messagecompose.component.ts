@@ -46,7 +46,7 @@ export class MessagecomposeComponent implements OnInit {
   public fileSelected = false;
   public sending = false;
   public nodename: any;
-  public maxSize: any = 31457280;
+  public maxSize: any = 20971520; //20MB
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
   public allowhmp;
@@ -233,30 +233,7 @@ export class MessagecomposeComponent implements OnInit {
     let file: File = event.target.files[0];
     if (file) {
       this.file = file;
-      switch (this.file.type) {
-        case 'image/bmp':
-        case 'image/gif':
-        case 'image/jpeg':
-        case 'image/png':
-        case 'image/webp':
-        case 'image/svg+xml':
-        case 'image/pjpeg':
-        case 'image/x-jps':
-        case 'audio/aac':
-        case 'audio/mpeg':
-        case 'audio/ogg':
-        case 'audio/ogx':
-        case 'audio/opus':
-        case 'audio/wav':
-        case 'audio/x-wav':
-        case 'audio/webm':
-        case 'audio/3gpp':
-        case 'audio/3gpp2':
-          this.maxSize = 31457280;
-          break;
-        default:
-          this.maxSize = 2097152;
-      }
+
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
@@ -319,7 +296,6 @@ export class MessagecomposeComponent implements OnInit {
 
   sendMessageContinue(f: NgForm) {
     this.sending = false;
-
     this.messageService.sendMessage(f.value, this.nodename).subscribe(
       (res: any) => {
         this.res = res;
@@ -472,7 +448,19 @@ export class MessagecomposeComponent implements OnInit {
 
           var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
 
-          this.message.dest = origin !== null ? [origin] : []
+
+          if(origin == null){
+            this.message.dest = []
+          }
+
+          if(!Array.isArray(origin)){
+            this.message.dest = [origin]
+          }
+
+          if(Array.isArray(origin)){
+            this.message.dest = origin
+          }
+
         }
 
         this.loading = false

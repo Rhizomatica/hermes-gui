@@ -36,7 +36,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="uucplog" datatype="html">
-        <source>UUcp Log</source>
+        <source>UUcp log</source>
         <target state="new">Journal UUCP</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
@@ -44,15 +44,15 @@
         </context-group>
       </trans-unit>
       <trans-unit id="emaillog" datatype="html">
-        <source>Email Log</source>
-        <target state="new">Journal email</target>
+        <source>email log</source>
+        <target state="new">journal email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorlog" datatype="html">
-        <source>Error log</source>
+        <source>error log</source>
         <target state="new">Journal d'erreurs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
@@ -145,7 +145,7 @@
       </trans-unit>
       <trans-unit id="emaillog2" datatype="html">
         <source>email log</source>
-        <target state="new">Journal email</target>
+        <target state="new">journal email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">83</context>
@@ -450,8 +450,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="changefrequency" datatype="html">
-        <source>Radio data frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/> </source>
-        <target state="new">Fréquence radio : <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/> </target>
+        <source>Radio data frequency: <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/>kHz </source>
+        <target state="new">Fréquence données radio : <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/>kHz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">88</context>
@@ -466,7 +466,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="advisechangedatafrequency" datatype="html">
-        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>N'<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> you have been asked by the manager to change the data transmission frequency of the radio. </source>
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>DO NOT<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> you have been asked by the manager to change the data transmission frequency of the radio. </source>
         <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>DO NOT<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> utilisez PAS ce bouton <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>SAUF<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>  si le responsable vous a demandé de modifier la fréquence de transmission des données de la radio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -631,7 +631,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpscalibrationsuccess" datatype="html">
@@ -957,7 +957,7 @@
       </trans-unit>
       <trans-unit id="frequencyupdatebutton" datatype="html">
         <source>update</source>
-        <target state="new">Mise à jour</target>
+        <target state="new">mise à jour</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context>
           <context context-type="linenumber">64</context>
@@ -1470,11 +1470,11 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
-        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/> to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
+        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact Invisible Children or the people you are usually in touch with through the Early Warning System. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
         <target state="new"> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="countdowninactivite" datatype="html">
@@ -1482,7 +1482,7 @@
         <target state="new">Utilisateur inactif. Compte à rebours avant déconnexion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e_mail" datatype="html">
@@ -1549,12 +1549,20 @@
           <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="chooseyourlanguage" datatype="html">
+        <source>Choose your language</source>
+        <target state="new">Choisissez votre langue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="helpa" datatype="html">
         <source>Help</source>
         <target state="new">Aide</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="introductionm" datatype="html">
@@ -1562,7 +1570,7 @@
         <target state="new">Introduction</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hermesbox" datatype="html">
@@ -1570,7 +1578,7 @@
         <target state="new">Hermes box</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="webintefa" datatype="html">
@@ -1578,7 +1586,7 @@
         <target state="new">Web Interface</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="publicma" datatype="html">
@@ -1586,7 +1594,7 @@
         <target state="new">Public messages</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="privatemsg" datatype="html">
@@ -1594,7 +1602,7 @@
         <target state="new">Private messages</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tranmissionlista" datatype="html">
@@ -1602,7 +1610,7 @@
         <target state="new">Transmission List</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sysadmh" datatype="html">
@@ -1610,11 +1618,11 @@
         <target state="new">System Administration</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">43</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">204</context>
+          <context context-type="linenumber">205</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Troubleshooting" datatype="html">
@@ -1622,7 +1630,7 @@
         <target state="new">Troubleshooting</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="intro1" datatype="html">
@@ -1630,7 +1638,7 @@
         <target state="new">Introduction</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p1" datatype="html">
@@ -1638,7 +1646,7 @@
         <target state="new"> HERMES provides a telecommunication system through the use of shortwave / HF radio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p2" datatype="html">
@@ -1646,7 +1654,7 @@
         <target state="new"> Hermes system allows transmission of text and files between connected stations, through public messages, sent through this interface or private messages, though Deltachat application or webmail interface. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p2a" datatype="html">
@@ -1654,7 +1662,7 @@
         <target state="new"> The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All communication between stations are encrypted and happen outside the internet. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="intro" datatype="html">
@@ -1662,7 +1670,7 @@
         <target state="new">Hermes Box</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p1bx" datatype="html">
@@ -1670,7 +1678,7 @@
         <target state="new"> On the front of Hermes Box there are 4 different led lights: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p2bx" datatype="html">
@@ -1678,7 +1686,7 @@
         <target state="new"> SYS: System LED, blinks when the system is not ready to be used. SYS LED typically blinks when the equipment is turning on or when it is turning off; when the system is on it will stay solid green. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p3bx" datatype="html">
@@ -1686,7 +1694,7 @@
         <target state="new"> ANT: Green when the antenna is functioning properly. ANT LED turns Red when a high SWR value is detected, meaning the high SWR protection is enabled and the radio will not transmit. SWR protection needs to be reset if active (Red), for the radio to became operational again, which can be done in the radio administrative interface. Check the RF cable and Antenna before resetting in the interface; </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p4bx" datatype="html">
@@ -1694,7 +1702,7 @@
         <target state="new"> CONECTADO: LED on (solid Green) means that the station is connected to another station; </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p5bx" datatype="html">
@@ -1702,7 +1710,7 @@
         <target state="new"> TX: LED on means the radio is transmitting. When this LED is off, it is in receive mode. If the CONECTADO LED is on and the TX LED is off, the station is actively receiving. During active communication with another station the CONECTADO LED will be solid Green and the TX LED will turn on and off; </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="webinterface" datatype="html">
@@ -1710,7 +1718,7 @@
         <target state="new">Web Interface</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p3" datatype="html">
@@ -1718,7 +1726,7 @@
         <target state="new"> When accessing the local Hermes WiFi network through a cellphone or computer, you will be directed to the HERMES web interface. From there you can read public messages sent to your station, create users for e-mail, find the download links for deltachat app and send public messages between stations if you are allowed to. It's also possible manage and administer the system from the web interface. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="publicmessagesh" datatype="html">
@@ -1726,7 +1734,7 @@
         <target state="new">Public Messages</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p4" datatype="html">
@@ -1734,7 +1742,7 @@
         <target state="new"> Public messages can be sent between stations, and are listed on the main page of the web interface. Each stations can be configured to determine who can send public messages, if everyone, if only registered users or only admin users. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p5" datatype="html">
@@ -1744,7 +1752,7 @@
                 src=&quot;/assets/svg/edit.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> icon. On the message is possible to attach files such as images or sound files. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p6" datatype="html">
@@ -1752,7 +1760,7 @@
         <target state="new"> Public messages can be sent to your own station, which is a easy way to publicize news inside your own community. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p7" datatype="html">
@@ -1760,7 +1768,7 @@
         <target state="new"> Public messages can also be password protected, which means that only the ones that know the password will be able to read their content, but their description still will be readable by everyone. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">102</context>
+          <context context-type="linenumber">103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p9" datatype="html">
@@ -1768,7 +1776,7 @@
         <target state="new"> Have in mind that once a password for the message (has to be at least 4 characters) is defined, there is no way to recover it, nor to change it. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p10" datatype="html">
@@ -1776,7 +1784,7 @@
         <target state="new"> A system administrator can change who can send public messages and who can attach files on messages between stations: everyone withe access to the network, only registered users, or only administrators. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p122" datatype="html">
@@ -1784,7 +1792,7 @@
         <target state="new"> Because the radio propagation of data is very low, file attachments are constrained to 20kb sizes. The system will accept inputs for image and sound up to 30mB and for other files util 2mb, and will try to compress them to fit the maximum size for packages. For image and sound, the resolution can be changed, and the quality may be affected. For other formats, a simple compressor will be applied and message packages with size greater than 20kb may not be transmitted. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p01" datatype="html">
@@ -1792,7 +1800,7 @@
         <target state="new">Private messages</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q02" datatype="html">
@@ -1800,7 +1808,7 @@
         <target state="new"> Private messages in the HERMES system work through personal e-mails. Any user can create an Hermes email account by clicking on the "create user" option on the login screen. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q02a" datatype="html">
@@ -1808,7 +1816,7 @@
         <target state="new"> Each workstation has a different domain, which can be seen at the top of the interface. On this station, all emails will be created within the domain <x id="INTERPOLATION" equiv-text="{{domain}}"/> and will look like this: user_name@ <x id="INTERPOLATION" equiv-text="{{domain}}"/> . Where username is the username used when creating the user. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q02b" datatype="html">
@@ -1816,7 +1824,7 @@
         <target state="new"> Through a redirect, HERMES emails can be sent to and received from external servers, but be aware that there is a limitation when attaching data due to the limitations of data transmission capacity over radio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">136</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q03b" datatype="html">
@@ -1824,7 +1832,7 @@
         <target state="new"> On the email link on the web interface you will find links for webmail (roundcube), for Deltachat download, and also it's possible to select users to send messages with your configured email client. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">140</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q03" datatype="html">
@@ -1832,7 +1840,7 @@
         <target state="new"> Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the gateway station's schedule of operation. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">144</context>
+          <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q03a" datatype="html">
@@ -1840,7 +1848,7 @@
         <target state="new"> To download Deltachat, select one of the packages below, according to your phone's operating system: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">151</context>
         </context-group>
       </trans-unit>
       <trans-unit id="q04" datatype="html">
@@ -1848,7 +1856,7 @@
         <target state="new"> On Iphone and ipad you will need to download the app from the App Store in a place with internet. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">159</context>
+          <context context-type="linenumber">160</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dconfig" datatype="html">
@@ -1856,7 +1864,7 @@
         <target state="new">Configuration</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">163</context>
+          <context context-type="linenumber">164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dl01" datatype="html">
@@ -1864,7 +1872,7 @@
         <target state="new"> The HERMES system includes a compression system suitable for multimedia messages like images or audio being sent over HF. End-to-end encryption should be disabled in order to allow the server-based image and audio compression to work properly, otherwise image and audio exchange will not be possible. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">164</context>
+          <context context-type="linenumber">165</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dl02" datatype="html">
@@ -1872,7 +1880,7 @@
         <target state="new"> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">170</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dl03" datatype="html">
@@ -1882,7 +1890,7 @@
             class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/bars-solid.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> ) -> Settings -> Chats and Media -> Show Classic E-Mails -> All. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">176</context>
+          <context context-type="linenumber">177</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deltachatroundcube" datatype="html">
@@ -1890,7 +1898,7 @@
         <target state="new"> In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address and password fields should be filled, as shown below. The user and password will be the same as those created when first creating a login on HERMES and for use with the RoundCube webmail, such as: username@ <x id="INTERPOLATION" equiv-text="{{domain}}"/>. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">183</context>
+          <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tranmissionhp" datatype="html">
@@ -1898,7 +1906,7 @@
         <target state="new">Transmission List</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">192</context>
+          <context context-type="linenumber">193</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p11h" datatype="html">
@@ -1906,7 +1914,7 @@
         <target state="new"> Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">193</context>
+          <context context-type="linenumber">194</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p12h" datatype="html">
@@ -1914,7 +1922,7 @@
         <target state="new"> As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central staion, alternating between reception and transmission events. In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">198</context>
+          <context context-type="linenumber">199</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p13" datatype="html">
@@ -1922,7 +1930,7 @@
         <target state="new"> To access admin features, you need an admin password, while anyone can create an user account, and only the system's admins can create new administrator users. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">205</context>
+          <context context-type="linenumber">206</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p14" datatype="html">
@@ -1930,7 +1938,7 @@
         <target state="new"> Inside the admin section, an admin user will find the following options: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">209</context>
+          <context context-type="linenumber">210</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p15" datatype="html">
@@ -1938,7 +1946,7 @@
         <target state="new"> Users management: allows creation of new users, updating data of registered users and to delete users of the system. Every username correspond to a email account with the same name of the kind username@servername </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">214</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p15a" datatype="html">
@@ -1946,7 +1954,7 @@
         <target state="new">On this station the server name will be: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">217</context>
+          <context context-type="linenumber">218</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p16" datatype="html">
@@ -1954,7 +1962,7 @@
         <target state="new"> Administrators can also give admin powers to regular users, by clicking on the "is admin" checkbox on the update user interface </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">223</context>
+          <context context-type="linenumber">224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p16a" datatype="html">
@@ -1962,7 +1970,7 @@
         <target state="new"> Message administration: In this section an administrator can determine who can send public messages, and who can attach files in public messages between stations: anyone, only registered users, or only administrators. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">227</context>
+          <context context-type="linenumber">228</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p16ss" datatype="html">
@@ -1970,7 +1978,7 @@
         <target state="new"> Transmission List: Shows the jobs on the queue for transmission, with their sizes and destination, where an admin can delete messages on the queue. It also has the option to transmit now, that should be used only in exeptional emergency cases. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">232</context>
+          <context context-type="linenumber">233</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p17" datatype="html">
@@ -1978,7 +1986,7 @@
         <target state="new"> Network info: displays information about the system, such as network addresses, call sign, server name, etc. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">237</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p18" datatype="html">
@@ -1986,7 +1994,7 @@
         <target state="new"> Stations: provides a list of the connected stations on the system. If the station is a central station, it also allows to select which stations will be enabled to message transmission. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">240</context>
+          <context context-type="linenumber">241</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p18ss" datatype="html">
@@ -1994,7 +2002,7 @@
         <target state="new"> Central Station: This menu will be shown only on the central station, and is where the admins will set the schedules for transmission to the other stations. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">244</context>
+          <context context-type="linenumber">245</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p19" datatype="html">
@@ -2002,7 +2010,7 @@
         <target state="new"> Detailed Log: provides access to system logs, such as email logs and uucp logs, that register every activity on the system. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">248</context>
+          <context context-type="linenumber">249</context>
         </context-group>
       </trans-unit>
       <trans-unit id="p20" datatype="html">
@@ -2010,7 +2018,7 @@
         <target state="new"> Radio configuration: provides an interface to access and change frequency and radio transmission mode. It also allows to restore default radio configuration. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">252</context>
+          <context context-type="linenumber">253</context>
         </context-group>
       </trans-unit>
       <trans-unit id="truble2" datatype="html">
@@ -2018,7 +2026,7 @@
         <target state="new">Troubleshooting</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">256</context>
+          <context context-type="linenumber">257</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t01" datatype="html">
@@ -2026,7 +2034,7 @@
         <target state="new"> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">257</context>
+          <context context-type="linenumber">258</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t02" datatype="html">
@@ -2034,7 +2042,7 @@
         <target state="new"> To know what to do in case of an error, you first need to know which component is causing the problem. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">261</context>
+          <context context-type="linenumber">262</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t03" datatype="html">
@@ -2042,7 +2050,7 @@
         <target state="new"> To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">264</context>
+          <context context-type="linenumber">265</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t04" datatype="html">
@@ -2050,7 +2058,7 @@
         <target state="new"> If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">270</context>
+          <context context-type="linenumber">271</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t05" datatype="html">
@@ -2058,7 +2066,7 @@
         <target state="new"> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">275</context>
+          <context context-type="linenumber">276</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t07" datatype="html">
@@ -2066,7 +2074,7 @@
         <target state="new"> If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">280</context>
+          <context context-type="linenumber">281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t08" datatype="html">
@@ -2074,7 +2082,7 @@
         <target state="new"> If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">285</context>
+          <context context-type="linenumber">286</context>
         </context-group>
       </trans-unit>
       <trans-unit id="t09" datatype="html">
@@ -2082,7 +2090,7 @@
         <target state="new"> If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/help/help.component.html</context>
-          <context context-type="linenumber">289</context>
+          <context context-type="linenumber">290</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voicecard" datatype="html">
@@ -2285,13 +2293,17 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="log_in" datatype="html">
+      <trans-unit id="log_in_form" datatype="html">
         <source>Log in</source>
-        <target state="new">connexion</target>
+        <target state="new">Log in</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login-form/login-form.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="log_in" datatype="html">
+        <source>log in</source>
+        <target state="new">connexion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
           <context context-type="linenumber">17</context>
@@ -2314,8 +2326,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="helplogin" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot; class=&quot;p-t-25&quot;>"/> Help </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot; class=&quot;p-t-25&quot;>"/> Aide </target>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot; class=&quot;p-t-25&quot;>"/> help </source>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;help&quot; src=&quot;assets/svg/question-circle-regular.svg&quot; class=&quot;p-t-25&quot;>"/> aide </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
           <context context-type="linenumber">19,21</context>
@@ -2724,8 +2736,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="compose1sent" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> Compose </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> Ecrire un message </target>
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </source>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> nouvelle </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">9,11</context>

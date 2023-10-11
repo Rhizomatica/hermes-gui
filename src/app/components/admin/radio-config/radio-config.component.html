@@ -85,7 +85,7 @@
       </div>
       <div class="radio" *ngIf="radio && radio.freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}kHz
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
@@ -106,8 +106,8 @@
                 this may cause the system to stop
               </span>
               <br />
-              <button class="m-l-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-              <button (click)="changeFrequency(ffreq)" i18n="@@changer">change</button>
+              <button class="m-t-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
+              <button class="m-l-10" (click)="changeFrequency(ffreq)" i18n="@@changer">change</button>
             </div>
           </div>
         </form>
