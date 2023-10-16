@@ -2453,7 +2453,7 @@
         <target state="final"> cancelar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">198</context>
+          <context context-type="linenumber">210</context>
         </context-group>
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
@@ -2469,7 +2469,7 @@
         <target state="final"> Tem certeza que deseja redefinir para as configurações? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">191</context>
+          <context context-type="linenumber">203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reset1" datatype="html">
@@ -2477,7 +2477,7 @@
         <target state="final"> resetar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">205</context>
+          <context context-type="linenumber">217</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
@@ -2485,7 +2485,7 @@
         <target state="translated">Houve um erro ao alterar as configurações <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">225</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
@@ -2501,7 +2501,7 @@
         <target state="final">GPS calibrado com sucesso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">224</context>
+          <context context-type="linenumber">236</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ysyncronizenow" datatype="html">
@@ -2814,6 +2814,14 @@
           <context context-type="linenumber">178</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="sosemergency" datatype="html">
+        <source>SOS emergency</source>
+        <target state="new">SOS emergency</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">189,192</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="transmits" datatype="html">
         <source> transmit now </source>
         <target state="final"> transmit now </target>
@@ -2835,7 +2843,7 @@
         <target state="translated"> Are you sure you want to reboot Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">258</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
@@ -2843,7 +2851,7 @@
         <target state="final">cancel</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">251</context>
+          <context context-type="linenumber">263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot1" datatype="html">
@@ -2851,7 +2859,7 @@
         <target state="final">reiniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">252</context>
+          <context context-type="linenumber">264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="rebootButton" datatype="html">
@@ -2859,7 +2867,31 @@
         <target state="translated"> Rebooting System <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a (click)=&quot;reload()&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;close&quot; src=&quot;assets/svg/x.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">263</context>
+          <context context-type="linenumber">275</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmsosmessage" datatype="html">
+        <source> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new"> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">285,289</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancelsosbutton" datatype="html">
+        <source> cancel </source>
+        <target state="new"> cancel </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">293,297</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmsosbutton" datatype="html">
+        <source> confirm SOS Emergency </source>
+        <target state="new"> confirm SOS Emergency </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">300,305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">

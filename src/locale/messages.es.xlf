@@ -45,14 +45,11 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
-        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
-        <!-- <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea. -->
-
+        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source><!-- <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea. -->
         <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
         <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/>
         <x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;mail&quot; src=&quot;assets/svg/times.svg&quot;>"/>
         <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-      </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">56</context>
@@ -73,7 +70,7 @@
   </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">225</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-scary/radio-scary.component.html</context>
@@ -89,7 +86,7 @@
         <target state="new">Calibración GPS exitosa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">224</context>
+          <context context-type="linenumber">236</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e_mail" datatype="html">
@@ -1654,7 +1651,7 @@ esto puede hacer que el sistema se detenga</target>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">191</context>
+          <context context-type="linenumber">203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelr" datatype="html">
@@ -1662,7 +1659,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">198</context>
+          <context context-type="linenumber">210</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reset1" datatype="html">
@@ -1670,7 +1667,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">resetar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">205</context>
+          <context context-type="linenumber">217</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ysyncronizenow" datatype="html">
@@ -1932,6 +1929,14 @@ esto puede hacer que el sistema se detenga</target>
           <context context-type="linenumber">178</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="sosemergency" datatype="html">
+        <source>SOS emergency</source>
+        <target state="new">SOS emergency</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">189,192</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="confirmreboot" datatype="html">
         <source> Are you sure you want to reboot the Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <target state="new"> ¿Está seguro de que desea reiniciar el sistema Hermes?  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
@@ -1939,7 +1944,7 @@ esto puede hacer que el sistema se detenga</target>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">258</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
@@ -1947,7 +1952,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">251</context>
+          <context context-type="linenumber">263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot1" datatype="html">
@@ -1955,7 +1960,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">reiniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">252</context>
+          <context context-type="linenumber">264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="rebootButton" datatype="html">
@@ -1970,7 +1975,31 @@ esto puede hacer que el sistema se detenga</target>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">263</context>
+          <context context-type="linenumber">275</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmsosmessage" datatype="html">
+        <source> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new"> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">285,289</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancelsosbutton" datatype="html">
+        <source> cancel </source>
+        <target state="new"> cancel </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">293,297</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmsosbutton" datatype="html">
+        <source> confirm SOS Emergency </source>
+        <target state="new"> confirm SOS Emergency </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">300,305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">
