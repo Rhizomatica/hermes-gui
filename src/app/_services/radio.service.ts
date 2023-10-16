@@ -252,6 +252,14 @@ export class RadioService {
       catchError(this.handleError));
   }
 
+  public sosEmergency(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/sosemergency/`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
 
   private handleError(error: HttpErrorResponse) {
     return throwError(error);

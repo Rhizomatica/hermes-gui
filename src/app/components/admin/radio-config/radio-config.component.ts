@@ -54,6 +54,7 @@ export class RadioConfigComponent implements OnInit {
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
+  sosEmergency:boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -189,7 +190,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   confirmChangePTT() {
-    if(this.radio.tx == true){
+    if (this.radio.tx == true) {
       this.changePtt()
       return
     }
@@ -328,11 +329,32 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
+  sosEmergencyConfirmation() {
+    if(this.sosEmergency)
+      return this.sosEmergency = false
+
+    this.sosEmergency = true
+
+  }
+
+  callSOSEmergency() {
+    this.radioService.sosEmergency().subscribe(
+      (res: any) => {
+        alert('SOS EMERGENCY OPERATION')
+        return res;
+      },
+      (err) => {
+        this.error = err;
+        this.radioError = true;
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
     this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
-    this.frek = parseFloat(this.radio.freq) * 1000 
+    this.frek = parseFloat(this.radio.freq) * 1000
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }

@@ -182,6 +182,18 @@
             </button> -->
           </div>
         </form>
+
+        <form #freboot="ngForm" class="formdata field">
+          <div class="m-l-10">
+            <button class="danger" (click)="sosEmergencyConfirmation()">
+              <span i18n="@@sosemergency">SOS emergency</span>
+            </button>
+            <p class="m-t-10">
+              Use this button <b>only in dangerous or emergency situations.</b>
+              It is going to erase all data from HERMES system.
+            </p>
+          </div>
+        </form>
       </div>
 
       <!-- ALERTS -->
@@ -266,6 +278,33 @@
           <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
         <br>
       </div>
+
+      <div class="overall alert" *ngIf="sosEmergency">
+        <div class="cv">
+          <span i18n="@@confirmsosmessage">
+            Are you sure do you want to start a SOS EMERGENCY operation?
+            It is goingo to erase all data from HERMES sysyem.
+            <br />
+            <br />
+          </span>
+          <span class="icon">
+            <a (click)="sosEmergencyConfirmation()">
+              <button i18n="@@cancelsosbutton">
+                cancel
+              </button>
+            </a>
+          </span>
+          <span class="icon">
+            <a (click)="callSOSEmergency()">
+              <button class="m-l-10" i18n="@@confirmsosbutton">
+                confirm SOS Emergency
+              </button>
+            </a>
+          </span>
+        </div>
+      </div>
     </form>
+
+    
   </div>
 </div>
