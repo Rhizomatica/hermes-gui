@@ -45,8 +45,11 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
-        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact Invisible Children or the people you are usually in touch with through the Early Warning System. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
-        <target state="translated"> Se você estiver vendo uma mensagem de "servidor offline", mas seu servidor deveria ou parece estar ligado, é possível que seu sistema esteja corrompido. Se você já tentou acessar o HERMES de outros dispositivos e o problema persistir, pode ser necessário levar sua estação a um local com internet e entrar em contato com os fornecedores em support@hermes.radio para agendar uma sessão de suporte de manutenção online. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
+        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
+        <target state="translated"> 
+        Se você estiver vendo uma mensagem “servidor offline”, mas seu servidor deveria estar ou parece estar ligado, é possível que seu sistema esteja corrompido. Por favor contacte suporte ou as pessoas com quem habitualmente contacta. O e-mail de suporte é <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>.
+        <!-- Se você estiver vendo uma mensagem de "servidor offline", mas seu servidor deveria ou parece estar ligado, é possível que seu sistema esteja corrompido. Se você já tentou acessar o HERMES de outros dispositivos e o problema persistir, pode ser necessário levar sua estação a um local com internet e entrar em contato com os fornecedores em support@hermes.radio para agendar uma sessão de suporte de manutenção online. -->
+         <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">56</context>
@@ -634,7 +637,7 @@
       </trans-unit>
       <trans-unit id="da4b7060a3bb12ad4ff0714446201f26b6008676" datatype="html">
         <source>write your full name</source>
-        <target state="new">write your full name</target>
+        <target state="new">escreva seu nome completo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">43</context>
@@ -650,7 +653,7 @@
       </trans-unit>
       <trans-unit id="phonenumber" datatype="html">
         <source>Phone number</source>
-        <target state="final">Phone number</target>
+        <target state="final">Número de telefone</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">49</context>
@@ -666,7 +669,7 @@
       </trans-unit>
       <trans-unit id="typethepassword" datatype="html">
         <source>Type the password</source>
-        <target state="final">Escreva a senha</target>
+        <target state="final">escreva a senha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">108</context>
@@ -682,7 +685,7 @@
       </trans-unit>
       <trans-unit id="isadmin" datatype="html">
         <source>Is admin</source>
-        <target state="final">Is admin</target>
+        <target state="final">administrador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">77</context>
@@ -698,7 +701,7 @@
       </trans-unit>
       <trans-unit id="passwordlabeluser" datatype="html">
         <source>Password</source>
-        <target state="final">Password</target>
+        <target state="final">Senha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">56</context>
