@@ -449,16 +449,12 @@ export class MessagecomposeComponent implements OnInit {
           var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
 
 
-          if(origin == null){
-            this.message.dest = []
+          if(Array.isArray(origin)){
+            this.message.dest = origin
           }
 
           if(!Array.isArray(origin)){
             this.message.dest = [origin]
-          }
-
-          if(Array.isArray(origin)){
-            this.message.dest = origin
           }
 
         }
