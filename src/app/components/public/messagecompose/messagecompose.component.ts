@@ -264,9 +264,18 @@ export class MessagecomposeComponent implements OnInit {
     this.loading = true;
 
     if (!this.isGateway) {
+      console.log()
       var str = f.value.dest;
       var arr = [];
-      arr.push(str);
+      
+      if(Array.isArray(f.value.dest)){
+        arr = f.value.dest 
+      }
+
+      if(!Array.isArray(f.value.dest)){
+        arr.push(str);
+      }
+      
       f.value.dest = arr;
     }
     // File exists?
