@@ -264,7 +264,6 @@ export class MessagecomposeComponent implements OnInit {
     this.loading = true;
 
     if (!this.isGateway) {
-      console.log()
       var str = f.value.dest;
       var arr = [];
       

@@ -20,7 +20,7 @@
       </div>
       <div class="data-body">
         <form #fvolume="ngForm" class="formdata">
-          <input type="range" name="volume" min="0" max="100" step="5" value="{{radio.volume}}"
+          <input type="range" name="volume" min="0" max="100" step="10" value="{{radio.volume}}"
             ngModel="{{radio.volume}}" (change)="changeVolume(fvolume)" />
           <!-- <datalist id="markers">
               <option value="0">0</option>
