@@ -281,7 +281,7 @@
 
       <div class="overall alert" *ngIf="sosEmergency">
         <div class="cv">
-          <span i18n="@@confirmsosmessage">
+          <span i18n="@@confirmsosmessage" *ngIf="!isAdmin">
             Are you sure do you want to start a SOS EMERGENCY operation?
             It is goingo to erase all data from HERMES sysyem.
             <br />
