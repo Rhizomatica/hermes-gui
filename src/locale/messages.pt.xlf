@@ -2506,7 +2506,7 @@
       </trans-unit>
       <trans-unit id="ysyncronizenow" datatype="html">
         <source>Are you sure you want to synchronize now? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This should be used only in case of emergency<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="final">Tem certeza que deseja sincronizar agora? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Deve ser usado somente em casos de emergencia<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="final">Tem certeza que deseja sincronizar agora? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Deve ser usado somente em casos de emergência<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
           <context context-type="linenumber">5</context>
@@ -2816,10 +2816,18 @@
       </trans-unit>
       <trans-unit id="sosemergency" datatype="html">
         <source>SOS emergency</source>
-        <target state="new">SOS emergency</target>
+        <target state="new">Emergência SOS</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">189,192</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sosemergencylabel" datatype="html">
+        <source> Use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only in dangerous or emergency situations.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is going to erase all data from HERMES system. </source>
+        <target state="new"> Use este botão <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Isso apagará todos os dados do sistema HERMES. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">192,194</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmits" datatype="html">
@@ -2871,8 +2879,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosmessage" datatype="html">
-        <source> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new"> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <source> Are you sure do you want to start a SOS EMERGENCY operation? It is going to erase all data from HERMES system. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new"> Tem certeza que deseja iniciar uma operação SOS EMERGÊNCIA? Isso apagará todos os dados do sistema HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">285,289</context>
@@ -2880,18 +2888,18 @@
       </trans-unit>
       <trans-unit id="cancelsosbutton" datatype="html">
         <source> cancel </source>
-        <target state="new"> cancel </target>
+        <target state="new"> cancelar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">293,297</context>
+          <context context-type="linenumber">292</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosbutton" datatype="html">
         <source> confirm SOS Emergency </source>
-        <target state="new"> confirm SOS Emergency </target>
+        <target state="new"> confirmar Emergência SOS </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">300,305</context>
+          <context context-type="linenumber">299</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">

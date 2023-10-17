@@ -1931,10 +1931,18 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="sosemergency" datatype="html">
         <source>SOS emergency</source>
-        <target state="new">SOS emergency</target>
+        <target state="new">Emergencia SOS</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">189,192</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sosemergencylabel" datatype="html">
+        <source> Use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only in dangerous or emergency situations.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is going to erase all data from HERMES system. </source>
+        <target state="new"> Utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>sólo en situaciones peligrosas o de emergencia. <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Borrará todos los datos del sistema HERMES. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">192,194</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreboot" datatype="html">
@@ -1979,8 +1987,8 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosmessage" datatype="html">
-        <source> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new"> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <source> Are you sure do you want to start a SOS EMERGENCY operation? It is going to erase all data from HERMES system. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <target state="new"> ¿Estás seguro de que quieres iniciar una operación de EMERGENCIA SOS? Borrará todos los datos del sistema HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">285,289</context>
@@ -1988,18 +1996,18 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="cancelsosbutton" datatype="html">
         <source> cancel </source>
-        <target state="new"> cancel </target>
+        <target state="new"> cancelar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">293,297</context>
+          <context context-type="linenumber">292</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosbutton" datatype="html">
         <source> confirm SOS Emergency </source>
-        <target state="new"> confirm SOS Emergency </target>
+        <target state="new"> confirmar Emergencia SOS </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">300,305</context>
+          <context context-type="linenumber">299</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">
