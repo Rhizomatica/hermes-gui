@@ -188,7 +188,7 @@
             <button class="danger" (click)="sosEmergencyConfirmation()">
               <span i18n="@@sosemergency">SOS emergency</span>
             </button>
-            <p class="m-t-10">
+            <p class="m-t-10" i18n="@@sosemergencylabel" *ngIf="!isAdmin">
               Use this button <b>only in dangerous or emergency situations.</b>
               It is going to erase all data from HERMES system.
             </p>
@@ -282,8 +282,7 @@
       <div class="overall alert" *ngIf="sosEmergency">
         <div class="cv">
           <span i18n="@@confirmsosmessage">
-            Are you sure do you want to start a SOS EMERGENCY operation?
-            It is goingo to erase all data from HERMES sysyem.
+            Are you sure do you want to start a SOS EMERGENCY operation? It is going to erase all data from HERMES system.
             <br />
             <br />
           </span>
