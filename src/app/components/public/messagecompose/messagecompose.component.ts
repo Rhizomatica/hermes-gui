@@ -266,15 +266,15 @@ export class MessagecomposeComponent implements OnInit {
     if (!this.isGateway) {
       var str = f.value.dest;
       var arr = [];
-      
-      if(Array.isArray(f.value.dest)){
-        arr = f.value.dest 
+
+      if (Array.isArray(f.value.dest)) {
+        arr = f.value.dest
       }
 
-      if(!Array.isArray(f.value.dest)){
+      if (!Array.isArray(f.value.dest)) {
         arr.push(str);
       }
-      
+
       f.value.dest = arr;
     }
     // File exists?
@@ -449,22 +449,22 @@ export class MessagecomposeComponent implements OnInit {
     this.stationService.getStations()
       .subscribe(stations => {
         this.stations = stations;
-        
+
         if (this.stations.length > 0) {
           this.selectedStations = [this.stations[0].id];
           this.selectAllForDropdownItems(this.stations);
 
           var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
 
+          if (origin) {
+            if (Array.isArray(origin)) {
+              this.message.dest = origin
+            }
 
-          if(Array.isArray(origin)){
-            this.message.dest = origin
+            if (!Array.isArray(origin)) {
+              this.message.dest = [origin]
+            }
           }
-
-          if(!Array.isArray(origin)){
-            this.message.dest = [origin]
-          }
-
         }
 
         this.loading = false
