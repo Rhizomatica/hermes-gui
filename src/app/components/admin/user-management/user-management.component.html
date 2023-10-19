@@ -97,8 +97,8 @@
           <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?<br />
           <!-- <span i18n="@@thisactioncannot">this action cannot be undone!</span> -->
           <br />
-          <button class="m-l-10" type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
-          <button type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
+          <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+          <button class="m-l-10" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
             i18n="@@deleteuser">delete user</button>
         </div>
       </div>
@@ -107,9 +107,9 @@
           <span i18n="@@areyousureupdate">Are you sure you want to update</span> {{selectedUser.name}}?<br />
           <span i18n="@@thisactioncannot">This action cannot be undone!</span>
           <br />
-          <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid"
+          <button type="submit" (click)="updateAlert()" [disabled]="f.invalid"
             i18n="@@cancel">cancel</button>
-          <button type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
+          <button class="m-l-10" type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
             i18n="@@update">update</button>
         </div>
       </div>
