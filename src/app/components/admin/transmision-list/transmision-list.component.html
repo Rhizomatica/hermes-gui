@@ -66,10 +66,10 @@
               <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
             </div>
             <div class="row">
-              <span i18n="@@destinationt"> destination:</span>{{job.uuidhost}}
+              <span i18n="@@destinationt"> Destination:</span>{{job.uuidhost}}
             </div>
             <div class="row">
-              <span i18n="@@destisizet">size:</span> {{job.size}} B
+              <span i18n="@@destisizet">Size:</span> {{job.size}} B
             </div>
             <div class="row" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp">
               <a i18n="@@forcetransmitting">Transmitting... </a>
