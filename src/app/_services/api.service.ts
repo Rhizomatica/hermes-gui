@@ -45,9 +45,15 @@ export class ApiService {
       }),
       catchError(this.handleError));
   }
-  public sysShutdown() {
+  public sysShutdown(): Observable<{}>  {
     const url = `${GlobalConstants.apiURL}/sys/shutdown`; // get api:sys/shutdown
-    this.http.get(url).subscribe();
+    const output = this.http.get(url).subscribe();
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        this.serverReturn = res;
+        return this.serverReturn;
+      }),
+      catchError(this.handleError));
   }
 
   public sysReboot() {

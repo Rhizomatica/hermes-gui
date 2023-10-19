@@ -8,32 +8,41 @@ import { GlobalConstants } from 'src/app/global-constants';
   styleUrls: ['./floatbutton.component.less']
 })
 
-export class FloatButtonComponent{
+export class FloatButtonComponent {
 
   constructor(
     private apiService: ApiService,
   ) {
-    
+
   }
 
   @Input() shuttingDown: boolean
   @Input() shuttingDownNow: boolean
 
+  public loading: boolean = false
+
   ngOnInit(): void { }
 
 
   confirmShutDown() {
-    console.log('entrou')
-    this.shuttingDown = true;
+    this.shuttingDown = true
   }
 
   cancelShutDown() {
-    this.shuttingDown = false;
-    this.shuttingDownNow = false;
+    this.shuttingDown = false
+    this.shuttingDownNow = false
   }
 
   shutDown() {
-    this.shuttingDownNow = true;
-    this.apiService.sysShutdown();
+    this.shuttingDownNow = true
+    this.loading = true
+    this.apiService.sysShutdown().subscribe(
+      (data: any) => {
+        this.loading = false
+      }, (err) => {
+        this.loading = false;
+      }
+    );
+    this.loading = false
   }
 }
