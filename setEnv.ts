@@ -9,7 +9,6 @@ require('dotenv').config()
 const envConfigFile = `export const environment = {
     local: ${process.env.LOCAL},
     production: ${process.env.PRODUCTION},
-    serverIP: '${process.env.SERVER_IP}',
     domain: '${process.env.DOMAIN}',
     gateway: ${process.env.GATEWAY},
     bitx: '${process.env.BITX}',
