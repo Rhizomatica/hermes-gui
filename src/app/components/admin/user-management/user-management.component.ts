@@ -177,7 +177,7 @@ export class UserManagementComponent implements OnInit {
     this.loading = true
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
-        this.users = res;
+        // this.users = res;
         this.getUsers();
       },
       (err) => {
