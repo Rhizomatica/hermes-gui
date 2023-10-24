@@ -2,11 +2,12 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 export class GlobalConstants {
 
+
   public static local = environment.local
-  public static producion = environment.production
   public static serverIP = '10.8.0.128'
-  public static apiURL = environment.local ? `https://${environment.serverIP}/api` : `https://${self.location.hostname}/api`
-  public static webSocketUrl = environment.local ? `wss://${environment.serverIP}:8080/websocket` : `wss://${self.location.hostname + ':8080/websocket'}`
+  public static producion = environment.production
+  public static apiURL = this.local ? `https://${this.serverIP}/api` : `https://${self.location.hostname}/api`
+  public static webSocketUrl = this.local ? `wss://${this.serverIP}:8080/websocket` : `wss://${self.location.hostname + ':8080/websocket'}`
   public static domain = environment.domain
   public static gateway = environment.gateway
   public static bitx = environment.bitx

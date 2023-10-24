@@ -8,8 +8,6 @@ import { SharedService } from "./shared.service";
 import { Radio } from "../interfaces/radio";
 import { UtilsService } from "./utils.service";
 import { Router } from '@angular/router';
-import { CustomError } from "../interfaces/customerror";
-import { CustomErrorsService } from 'src/app/_services/custom-errors.service';
 import { interval } from 'rxjs';
 
 export interface Message {
@@ -31,10 +29,7 @@ export class WebsocketService {
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
         private sharedService?: SharedService,
         private utils?: UtilsService,
-        private router?: Router,
-        private errorService?: CustomErrorsService
-
-    ) { }
+        private router?: Router) { }
 
     public startService() {
         console.log('Starting websocket...')
@@ -90,8 +85,6 @@ export class WebsocketService {
 
         }, async err => {
 
-            this.saveWebsocketError()
-
             if (this.ws && this.ws.OPEN == 1)
                 this.closeConnection()
 
@@ -109,27 +102,6 @@ export class WebsocketService {
         if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio() && this.radioObj.ptt) {
             this.router.navigate(['/voice'])
         }
-    }
-
-    async saveWebsocketError(): Promise<void> {
-
-        var newError: CustomError = {
-            controller: 'websocket',
-            error_code: 500,
-            error_message: 'Error to connect on websocket service',
-            stacktrace: null,
-            created_at: new Date().toString(),
-            updated_at: new Date().toString()
-        }
-
-        // this.loading = true
-        await this.errorService.newCustomError(newError).subscribe(
-            (res: any) => {
-                // this.loading = false
-            }, (err) => {
-                // this.loading = false
-            }
-        );
     }
 
     keepWebSocketAlive() {

@@ -75,7 +75,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <div i18n="@@serial">Serial Number
+              <div i18n="@@serial">Serial number
                 <br />
                 {{serial}}
               </div>
@@ -117,9 +117,20 @@
             <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
               value={{refthreshold}}>
 
-            <button class="midbt" (click)="changeRefThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
+            <button class="midbt" (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
               i18n="@@changetre1">change
               threshold</button>
+          </div>
+          <div class="overall alert" *ngIf="confirmChangeProtection">
+            <div class="cv">
+              <span i18n="@@confirmthreshold">Are you sure you want to change radio protection threshold?
+                <br />
+                this may cause the system to stop and damage your radio
+              </span>
+              <br />
+              <button class="m-t-10" (click)="confirmChangeThreshold()" i18n="@@cancelrchangeprotection">cancel</button>
+              <button class="m-l-10" (click)="changeRefThreshold(frefthreshold)" i18n="@@changeprotection">change</button>
+            </div>
           </div>
         </form>
         <form class="formdata field" *ngIf="isAdmin">
@@ -303,7 +314,5 @@
         </div>
       </div>
     </form>
-
-    
   </div>
 </div>

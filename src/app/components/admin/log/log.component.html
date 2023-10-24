@@ -21,7 +21,7 @@
 <h2 class="m-t-25">Logs</h2>
 
 <button (click)="showCustomLogs()">
-    <span i18n="@@errorlogbutton">Error Log</span>
+    <span i18n="@@errorlogbutton">error Log</span>
 </button>
 <button class="m-l-10" (click)="showUucpLog()">
     <span i18n="@@uucplog">UUcp log</span>
@@ -31,13 +31,12 @@
 </button>
 
 <div class="formdata m-t-25" *ngIf="customLog">
-    <h3 i18n="@@errorlog">error log</h3>
+    <h3 i18n="@@errorlog">Error log</h3>
     <div class="row">
         <button class="m-t-10" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
             delete all
         </button>
-        <input id="searchbox1" i18n-placeholder placeholder="search"
-            [(ngModel)]="searchError" />
+        <input id="searchbox1" i18n-placeholder placeholder="search" [(ngModel)]="searchError" />
         <div class="multiplist">
             <div class="item m-t-10" *ngFor="let error of customErrors | filter:searchError; let i = index"
                 (click)="viewLog(i)">
@@ -54,8 +53,8 @@
                     <p><b i18n="@@customerrorcontroller">Controller: </b> {{error.controller}}</p>
                     <p><b i18n="@@customerrormessage">Message:</b></p>
                     <p>{{error.error_message}}</p>
-                    <p><b>Stack Trace:</b></p>
-                    <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p>
+                    <!-- <p><b>Stack Trace:</b></p>
+                    <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p> -->
                     <p>
                         <button class="m-t-10" i18n="@@btndeletecustomerror" (click)="deleteCustomError(error.id)">
                             delete
@@ -68,7 +67,7 @@
 </div>
 
 <div class="formdata m-t-25" *ngIf="uLog">
-    <h3 i18n="@@uucpllogsog2">uucp log</h3>
+    <h3 i18n="@@uucpllogsog2">UUcp log</h3>
     <!-- <hr /> -->
     <div class="logs">
         <section class="multiplist">
@@ -80,7 +79,7 @@
     </div>
 </div>
 <div class="formdata m-t-25" *ngIf="eLog">
-    <h3 i18n="@@emaillog2">email log</h3>
+    <h3 i18n="@@emaillog2">Email log</h3>
     <!-- <hr /> -->
     <div class="logs">
         <section class="multiplist">
@@ -92,7 +91,7 @@
     </div>
 </div>
 <div class="formdata m-t-25" *ngIf="dLog">
-    <h3 i18n="@@debuglog2">uucp debug log</h3>
+    <h3 i18n="@@debuglog2">UUcp debug log</h3>
     <hr />
     <div class="logs">
         <section>
@@ -118,9 +117,8 @@
         <div class="cv">
             <span i18n="@@deleteallcustomerrosconfirmation"> Are you sure you want to delete all error logs? </span>
             <br /><br />
-            <button class="m-l-10" type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
-            <button type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete all</button>
-
+            <button type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
+            <button class="m-l-10" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete all</button>
         </div>
     </div>
 </div>

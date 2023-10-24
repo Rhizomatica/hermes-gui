@@ -54,7 +54,8 @@ export class RadioConfigComponent implements OnInit {
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
-  sosEmergency:boolean = false
+  sosEmergency: boolean = false
+  confirmChangeProtection: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -167,11 +168,39 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
+  confirmChange() {
+    if (this.confirmSet) {
+      this.confirmSet = false;
+    } else {
+      this.confirmSet = true;
+    }
+  }
+
+  confirmChangeThreshold() {
+    if (this.confirmChangeProtection) {
+      this.confirmChangeProtection = false;
+    } else {
+      this.confirmChangeProtection = true;
+    }
+  }
+
   changeRefThreshold(f: NgForm) {
+    this.confirmChangeProtection = false
     this.loading = true
+
+    if (f.value.refthreshold) {
+
+      var refthresholdString = f.value.refthreshold.toString()
+
+      if (refthresholdString.includes("."))
+        f.value.refthreshold = f.value.refthreshold * 10
+
+    }
+
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
       (res: any) => {
-        this.radio.refthreshold = res;
+        this.radio.refthreshold = res / 10;
+        this.refthreshold = res / 10
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -179,14 +208,6 @@ export class RadioConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     );
-  }
-
-  confirmChange() {
-    if (this.confirmSet) {
-      this.confirmSet = false;
-    } else {
-      this.confirmSet = true;
-    }
   }
 
   confirmChangePTT() {
@@ -317,7 +338,7 @@ export class RadioConfigComponent implements OnInit {
     this.loading = true
     this.radioService.getRadioStatus().subscribe(
       (res: any) => {
-        this.refthreshold = res.refthreshold;
+        this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;
         // this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
@@ -330,17 +351,15 @@ export class RadioConfigComponent implements OnInit {
   }
 
   sosEmergencyConfirmation() {
-    if(this.sosEmergency)
+    if (this.sosEmergency)
       return this.sosEmergency = false
 
     this.sosEmergency = true
-
   }
 
   callSOSEmergency() {
     this.radioService.sosEmergency().subscribe(
       (res: any) => {
-        alert('SOS EMERGENCY OPERATION')
         return res;
       },
       (err) => {
