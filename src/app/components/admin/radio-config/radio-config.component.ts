@@ -344,13 +344,11 @@ export class RadioConfigComponent implements OnInit {
       return this.sosEmergency = false
 
     this.sosEmergency = true
-
   }
 
   callSOSEmergency() {
     this.radioService.sosEmergency().subscribe(
       (res: any) => {
-        alert('SOS EMERGENCY OPERATION')
         return res;
       },
       (err) => {
