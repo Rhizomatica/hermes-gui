@@ -620,7 +620,7 @@
       </trans-unit>
       <trans-unit id="sosemergency" datatype="html">
         <source>SOS emergency</source>
-        <target state="new">SOS emergency</target>
+        <target state="new">SOS urgence</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">200</context>
@@ -628,7 +628,7 @@
       </trans-unit>
       <trans-unit id="sosemergencylabel" datatype="html">
         <source> Use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only in dangerous or emergency situations.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is going to erase all data from HERMES system. </source>
-        <target state="new"> Use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only in dangerous or emergency situations.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is going to erase all data from HERMES system. </target>
+        <target state="new"> Utilisez ce bouton <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>seulement en cas de situation dangereuse.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Cela va effacer toutes les données de votre système HERMES </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">203</context>
@@ -671,7 +671,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpscalibrationsuccess" datatype="html">
@@ -716,7 +716,7 @@
       </trans-unit>
       <trans-unit id="confirmsosmessage" datatype="html">
         <source> Are you sure do you want to start a SOS EMERGENCY operation? It is going to erase all data from HERMES system. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new"> Are you sure do you want to start a SOS EMERGENCY operation? It is goingo to erase all data from HERMES sysyem. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new"> Êtes vous sûr de vouloir débuter une opération SOS URGENCE ? Cela va effacer toute les données de votre système HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">296</context>
@@ -732,7 +732,7 @@
       </trans-unit>
       <trans-unit id="confirmsosbutton" datatype="html">
         <source> confirm SOS Emergency </source>
-        <target state="new"> confirm SOS Emergency </target>
+        <target state="new"> confirmer SOS Urgence </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">310</context>
@@ -1536,12 +1536,11 @@
       <trans-unit id="areadyonmsg" datatype="html">
         <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
         <target state="new"> 
-        Si vous voyez un message “serveur déconnecté” alors que votre serveur devrait être allumé ou semble allumé, il est possible que votre système soit corrompu. Si vous avez déjà essayé d'accéder à HERMES depuis un autre appareil et le problème continue, il est possible que vous deviez amener votre station dans un endroit avec une connexion à internet et que vous contactiez les fournisseurs à <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/> pour planifier une session de maintenance en ligne.
-        <!-- If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you may need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule an online maintenance support session.  -->
+        Si vous voyez un message “serveur déconnecté” alors que votre serveur devrait être allumé, ou semble allumé, il est possible que votre système ne fonctionne plus. Merci de contacter Invisible Children ou les personnes avec qui vous êtes d'abitude en contact en ce qui concerne le système d'aleete précoce. L'email de support est <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>
         <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;close&quot; src=&quot;assets/svg/times.svg&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="countdowninactivite" datatype="html">
@@ -1549,7 +1548,7 @@
         <target state="new">Utilisateur inactif. Compte à rebours avant déconnexion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e_mail" datatype="html">

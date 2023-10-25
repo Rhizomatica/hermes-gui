@@ -48,15 +48,9 @@
           on click here</div>
 
         <div *ngIf="serverError" i18n="@@areadyonmsg">
-          <!-- If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
-          your
-          system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you
-          may
-          need to take your station to a place with internet and contact the vendors at {{emergencyEmail}} to schedule
-          an online maintenance support session. -->
-
-          If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is {{emergencyEmail}}.
-
+          If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
+          your system is corrupted. Please contact the support or the people you are usually in touch with. The support
+          email is {{emergencyEmail}}.
           <br>
           <span class="icon"><img (click)="showServerAlert()" title="close" src="assets/svg/times.svg"> </span>
         </div>
