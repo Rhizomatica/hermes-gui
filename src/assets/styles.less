@@ -242,7 +242,7 @@ nav {
   background-color: @bkclr;
   z-index: 1;
   position: fixed;
-  padding: 15px;
+  padding: 10px 13px;
   top: 0;
 
   a {
@@ -272,14 +272,14 @@ nav {
   }
 
   .burguer {
-    margin-top: 7px;
+    margin-top: 13px;
   }
 
   .nav-frequency {
     position: absolute;
     float: right;
     right: 60px;
-    top: 34px;
+    top: 40px;
   }
 }
 
@@ -295,10 +295,13 @@ textarea {
 
 .sitetitle {
   color: @clr;
-  font-size: 1.2em;
+  font-size: 1em;
   line-height: 1em;
   position: relative;
-  font-weight: normal;
+  font-weight: 400;
+  word-wrap: break-word;
+  width: 160px;
+  text-align: center;
 }
 
 .bordered {
@@ -2071,7 +2074,7 @@ tr:nth-child(odd) {
 }
 
 .breadcrumb {
-  top: 54px;
+  top: 60px;
   position: absolute;
   width: 100%;
   padding-left: 3em;
@@ -2262,7 +2265,11 @@ tr:nth-child(odd) {
 
   }
 
-
+  nav { 
+    .burguer {
+      margin-top: 16px;
+    }
+  }
 }
 
 @media (max-width: 700px) {
@@ -2594,6 +2601,12 @@ tr:nth-child(odd) {
           font-size: 2.8em;
         }
       }
+    }
+  }
+
+  nav {
+    .burguer {
+      margin-top: 16px;
     }
   }
 }
