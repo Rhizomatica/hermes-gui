@@ -1,0 +1,81 @@
+<span (click)="toggleHint()" class="icon hint">
+  <img src="assets/svg/question-circle-regular.svg" title="help">
+</span>
+
+<div class="overall alert" *ngIf="showHint">
+  <div class="cv">
+    <h2 class="cv-title">Hint {{hint}}</h2>
+
+    <span *ngIf="hint == 'login'" i18n="@@hintlogin">
+      <p>
+        Use your required credentials to access the HERMES system.
+      </p>
+      <p class="m-t-25">
+        <b>Username:</b> matheus
+      </p>
+      <p>
+        <b>Password:</b> matheus1234
+      </p>
+
+      <p class="m-t-25">
+        <b>**</b>Probably your credentials were created and provided before. If you have no access to this information
+        search for
+        the system administrator.
+      </p>
+
+      <p class="m-t-25">
+        <b>**</b>If you forgot your password search for the system administrator to change it for you.
+      </p>
+    </span>
+
+    <span *ngIf="hint == 'voice'" i18n="@@hintvoice">
+      <p>
+        Use the voice panel to communicate via voice PTT (push to talk)
+      </p>
+    </span>
+
+    <span *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat">
+      <p class="m-t-25">
+        Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications
+        (similar to chat); this app works on most smartphones and has a similar appearance to Whatsapp or Telegram. Keep
+        in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending
+        on the amount of messages in the queue and the gateway station's schedule of operation.
+      </p>
+
+      <p class="m-t-25">
+        To download Deltachat, select one of the packages below, according to your device operating system:
+      </p>
+
+      <p class="m-t-25">
+        Android
+        Windows
+        Ubuntu/Debian
+        Mac OSX
+      </p>
+
+      <p class="m-t-25">
+        **Note: On Iphone and ipad you will need to download the app from the App Store in a place with internet.
+      </p>
+
+
+      <p class="m-t-25">
+        Configuration
+        The HERMES system includes a compression system suitable for multimedia messages like images or audio being sent
+        over HF. End-to-end encryption should be disabled in order to allow the server-based image and audio compression
+        to work properly, otherwise image and audio exchange will not be possible.
+      </p>
+
+      <p class="m-t-25">
+        The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn
+        off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly
+        delivered.
+      </p>
+    </span>
+
+
+
+    <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
+      close
+    </button>
+  </div>
+</div>

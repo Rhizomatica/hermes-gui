@@ -1,7 +1,4 @@
-// submitTest(f: NgForm): void {
-  //   console.log('⚚ login - submitTest: res: ', f.value);
-  // }
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { NgForm } from '@angular/forms';
@@ -12,14 +9,14 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.less']
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   res = '';
   error = Error;
   success = false;
   wrong = false;
 
   constructor(private router: Router,
-    private authenticationService: AuthenticationService) {}
+    private authenticationService: AuthenticationService) { }
 
 
   submitLogin(f: NgForm): void {

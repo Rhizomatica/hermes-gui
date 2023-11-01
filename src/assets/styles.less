@@ -489,9 +489,15 @@ input:checked+.slider:before {
     position: relative;
     top: 5px;
   }
+
+  .hint {
+    img {
+      filter: invert(48%) sepia(75%) saturate(3895%) hue-rotate(3deg) brightness(103%) contrast(104%);
+    }
+  }
 }
 
-.round {
+.hint .round {
   width: 1.2em;
   margin-right: 0.5em;
   position: relative;
@@ -1182,7 +1188,7 @@ input.ng-invalid {
   background-color: #fff;
   height: 100%;
   width: 100%;
-  color: @clr;
+  color: @mclr;
   font-weight: bold;
   text-align: center;
   z-index: 10;
@@ -1194,6 +1200,11 @@ input.ng-invalid {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    padding: 3%;
+
+    .cv-title{
+      color: @clr;
+    }
   }
 
   img {
@@ -1478,6 +1489,7 @@ tr:nth-child(odd) {
 
   .overall {
     background-color: #333;
+    color: @bkclr;
 
     img {
       filter: invert(100%);
@@ -2265,7 +2277,7 @@ tr:nth-child(odd) {
 
   }
 
-  nav { 
+  nav {
     .burguer {
       margin-top: 16px;
     }

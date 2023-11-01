@@ -28,6 +28,7 @@ import { WiFiManagementComponent } from './components/admin/wifi-management/wifi
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
+import { HintComponent } from './components/utils/hint/hint.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -59,7 +60,8 @@ const routes: Routes = [
   { path: 'wifi-manage', component: WiFiManagementComponent },
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent },
-  { path: 'floatbutton', component: FloatButtonComponent }
+  { path: 'floatbutton', component: FloatButtonComponent },
+  { path: 'hint', component: HintComponent }
 ];
 
 @NgModule({

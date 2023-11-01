@@ -1,7 +1,9 @@
 <div class=" login formdata">
    <form #f="ngForm" id="loginform" novalidate>
       <h1>Hermes</h1>
-      <p i18n="@@instructions">To login to the system, put your username and password</p>
+      <p i18n="@@instructions">To login to the system, put your username and password
+         <hint [showHint]="false" [hint]="'login'"></hint>
+      </p>
       <hr>
       <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
       <label>
@@ -15,10 +17,10 @@
       </label>
       <div class="row">
          <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log in</button>
-         <a routerLink="/help" i18n="@@helplogin"  class="icon m-l-25">
+         <a routerLink="/help" i18n="@@helplogin" class="icon m-l-25">
             <img title="help" src="assets/svg/question-circle-regular.svg" class="p-t-25">
             help
-          </a>
+         </a>
       </div>
    </form>
 </div>
