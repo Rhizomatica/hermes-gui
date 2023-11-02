@@ -272,14 +272,19 @@ nav {
   }
 
   .burguer {
-    margin-top: 13px;
-  }
+      margin: 0 auto;
+      top: 50%;
+      display: flex;
+      flex-direction: column;
+      flex-flow: row-reverse;  
+    }
 
   .nav-frequency {
     position: absolute;
     float: right;
     right: 60px;
-    top: 40px;
+    top: 46%;
+    margin: 0 auto;
   }
 }
 
@@ -431,7 +436,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0px;
-  background-color: #ccc;
+  // background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
   margin: auto 0;
@@ -1190,7 +1195,7 @@ input.ng-invalid {
   width: 100%;
   color: @mclr;
   font-weight: bold;
-  text-align: center;
+  text-align: justify;
   z-index: 10;
 
   .cv {
@@ -1200,9 +1205,11 @@ input.ng-invalid {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    padding: 3%;
+    padding: 15%;
+    font-size: 1em !important;
+    font-weight: 100 !important;
 
-    .cv-title{
+    .cv-title {
       color: @clr;
     }
   }
@@ -1228,9 +1235,8 @@ input.ng-invalid {
 
 .overall.loading {
   opacity: 94%;
+  text-align: center;
 }
-
-
 
 .redcircle {
   position: relative;
@@ -2277,11 +2283,11 @@ tr:nth-child(odd) {
 
   }
 
-  nav {
-    .burguer {
-      margin-top: 16px;
-    }
-  }
+  // nav {
+  //   .burguer {
+  //     margin-top: 7px;
+  //   }
+  // }
 }
 
 @media (max-width: 700px) {
@@ -2616,11 +2622,11 @@ tr:nth-child(odd) {
     }
   }
 
-  nav {
-    .burguer {
-      margin-top: 16px;
-    }
-  }
+  // nav {
+  //   .burguer {
+  //     margin-top: 7px;
+  //   }
+  // }
 }
 
 .transciever-panel {
