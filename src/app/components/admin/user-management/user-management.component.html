@@ -6,6 +6,8 @@
       <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
       <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
     </h2>
+    <hint [showHint]="false" [hint]="'usermanagement'"></hint>
+
     <div class="row">
       <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>

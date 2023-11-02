@@ -16,7 +16,6 @@ import { MessagecomposeComponent } from './components/public/messagecompose/mess
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { CommonModule } from '@angular/common';
-import { HelpComponent } from './components/public/help/help.component';
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
@@ -75,7 +74,6 @@ registerLocaleData(localeEs);
     MessagecomposeComponent,
     LoginComponent,
     LanguagesComponent,
-    HelpComponent,
     MessageConfigComponent,
     SameUsernameDirective,
     RetypeDirective,

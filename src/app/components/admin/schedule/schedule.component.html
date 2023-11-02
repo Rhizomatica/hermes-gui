@@ -1,13 +1,12 @@
 <loading [loading]="loading"></loading>
 <div *ngIf="isAdmin">
     <div class="flexible">
-        <h2 class="" i18n="@@transmissionschedules">Transmission Schedule</h2>
-        <div class="flex-right">
-            <button class="m-l-10" (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
-        </div>
+        <h2 class="" i18n="@@transmissionschedules">Transmission schedule</h2>
+        <hint [showHint]="false" [hint]="'schedules'"></hint>
     </div>
-    <hr>
-    <b i18n="@@currentschedules">Current Schedules:</b>
+    <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
+    <hr />
+    <b i18n="@@currentschedules">Current schedules:</b>
     <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio
         transmission<br />
     </div>

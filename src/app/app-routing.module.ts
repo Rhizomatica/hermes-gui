@@ -14,7 +14,6 @@ import { LanguagesComponent } from './components/public/languages/languages.comp
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { EmailComponent } from './components/public/email/email.component';
-import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
@@ -47,7 +46,6 @@ const routes: Routes = [
   { path: 'message-config', component: MessageConfigComponent },
   { path: 'sent', component: SentMessagesComponent },
   { path: 'email', component: EmailComponent },
-  { path: 'help', component: HelpComponent },
   { path: 'radio-config', component: RadioConfigComponent },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'transmision', component: TransmisionListComponent },
