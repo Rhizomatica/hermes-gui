@@ -35,7 +35,7 @@ export class SharedService {
     tx: null,
     rx: null,
     fwd_watts: null,
-    swr: null,
+    swr: '1.0',
     protection: null,
     volume: null
   });
