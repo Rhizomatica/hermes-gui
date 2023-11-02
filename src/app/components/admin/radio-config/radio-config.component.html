@@ -95,7 +95,8 @@
             </button>
             <div class="row m-t-10" *ngIf="!isAdmin">
               <p i18n="@@advisechangedatafrequency">
-                <b>DO NOT</b> use this button <b>UNLESS</b> you have been asked by the manager to change the data transmission frequency of the radio.
+                <b>DO NOT</b> use this button <b>UNLESS</b> you have been asked by the manager to change the data
+                transmission frequency of the radio.
               </p>
             </div>
           </div>
@@ -129,7 +130,8 @@
               </span>
               <br />
               <button class="m-t-10" (click)="confirmChangeThreshold()" i18n="@@cancelrchangeprotection">cancel</button>
-              <button class="m-l-10" (click)="changeRefThreshold(frefthreshold)" i18n="@@changeprotection">change</button>
+              <button class="m-l-10" (click)="changeRefThreshold(frefthreshold)"
+                i18n="@@changeprotection">change</button>
             </div>
           </div>
         </form>
@@ -154,13 +156,15 @@
           </div>
           <div class="overall alert" *ngIf="confirmSendPTT">
             <div class="cv">
-              <span i18n="@@suresendpttmessage">Are you sure you want to send PTT?
+              <span i18n="@@suresendpttmessage">
+                Are you sure you want to send PTT?
                 <br />
                 This can cause irreparable problems
               </span>
-              <br />
-              <button class="m-l-10" (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
-              <button (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send ptt</button>
+              <div class="row m-t-10">
+                <button (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
+                <button (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send ptt</button>
+              </div>
             </div>
           </div>
         </form>
@@ -194,7 +198,7 @@
           </div>
         </form>
 
-        <form #freboot="ngForm" class="formdata field">
+        <form #femergency="ngForm" class="formdata field">
           <div class="m-l-10">
             <button class="danger" (click)="sosEmergencyConfirmation()">
               <span i18n="@@sosemergency">SOS emergency</span>
@@ -212,23 +216,15 @@
         <div class="cv">
           <span i18n="@@confirmreset">
             Are you sure you want to reset the radio to the default configuration?
-            <br />
-            <br />
           </span>
-          <span class="icon">
-            <a (click)="confirmReset()">
-              <button i18n="@@cancelr">
-                cancel
-              </button>
-            </a>
-          </span>
-          <span class="icon" *ngIf="isAdmin">
-            <a (click)="resetRadio()">
-              <button class="m-l-10" i18n="@@reset1">
-                reset
-              </button>
-            </a>
-          </span>
+          <div class="row m-t-10">
+            <button i18n="@@cancelr" (click)="confirmReset()">
+              cancel
+            </button>
+            <button class="m-l-10" (click)="resetRadio()" *ngIf="isAdmin" i18n="@@reset1">
+              reset
+            </button>
+          </div>
         </div>
       </div>
       <div class="overall alert" *ngIf="errorAlert==true">
@@ -271,7 +267,7 @@
             This will stop messages transmission and reception.
             <br />
           </span>
-          <button (click)="cancelReboot()" i18n="@@cancels2">cancel</button>
+          <button (click)="cancelReboot()" class="m-t-10" i18n="@@cancels2">cancel</button>
           <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">reboot</button>
         </div>
       </div>
@@ -293,24 +289,18 @@
       <div class="overall alert" *ngIf="sosEmergency">
         <div class="cv">
           <span i18n="@@confirmsosmessage">
-            Are you sure do you want to start a SOS EMERGENCY operation? It is going to erase all data from HERMES system.
+            Are you sure do you want to start a SOS EMERGENCY operation? 
             <br />
-            <br />
+            It is going to erase all data from HERMES system.
           </span>
-          <span class="icon">
-            <a (click)="sosEmergencyConfirmation()">
-              <button i18n="@@cancelsosbutton">
-                cancel
-              </button>
-            </a>
-          </span>
-          <span class="icon">
-            <a (click)="callSOSEmergency()">
-              <button class="m-l-10" i18n="@@confirmsosbutton">
-                confirm SOS Emergency
-              </button>
-            </a>
-          </span>
+          <div class="row m-t-10">
+            <button i18n="@@cancelsosbutton" (click)="sosEmergencyConfirmation()">
+              cancel
+            </button>
+            <button class="m-l-10" (click)="callSOSEmergency()" i18n="@@confirmsosbutton">
+              confirm SOS Emergency
+            </button>
+          </div>
         </div>
       </div>
     </form>
