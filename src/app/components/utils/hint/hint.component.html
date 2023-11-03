@@ -200,15 +200,26 @@
       </p>
     </div>
 
-    <!-- message config -->
+    <div *ngIf="hint == 'messageconfig'" i18n="@@hintmessageconfig">
+      <h1 class="cv-title">Message Configuration</h1>
+      <p>
+        Manage who can send messages and attach files.
+      </p>
+      <p>
+        Broken files can consume your storage, clean broken files to free your storage from unnecessary files.
+      </p>
+    </div>
 
     <div *ngIf="hint == 'schedules'" i18n="@@hintschedules">
       <h1 class="cv-title">Transmission schedule</h1>
       <p>
+        Manage your transmissions schedules, by time period and stations.
         As the communication between the stations are unidirectional, the transmissions are schedules to happen
-        acconding to the central staion, alternating between reception and transmission events. In an emergency case,
-        the system administrator can force message transmission queue by clicking on the "transmit now" link. This can
-        interrupt receiving messages from other stations for a while.
+        acconding to the central station, alternating between reception and transmission events.
+        The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All
+        communication between stations are encrypted and happen outside the internet.
+        Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive,
+        depending on the amount of messages in the queue and the gateway station's schedule of operation.
       </p>
     </div>
 
@@ -220,24 +231,22 @@
         messages. This is a task that need to be done often to avoid that the space in the server ends.
       </p>
       <p>
-        As the communication between the stations are unidirectional, the transmissions are schedules to happen
-        acconding to the central staion, alternating between reception and transmission events. In an emergency case,
-        the system administrator can force message transmission queue by clicking on the "transmit now" link. This can
-        interrupt receiving messages from other stations for a while.
+        In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit
+        now" link. This can interrupt receiving messages from other stations for a while.
       </p>
     </div>
 
     <div *ngIf="hint == 'stations'" i18n="@@hintstations">
       <h1 class="cv-title">Stations Information</h1>
       <p>
-        Stations Information
+        Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections.
       </p>
     </div>
 
     <div *ngIf="hint == 'wifi'" i18n="@@hintwifi">
       <h1 class="cv-title">Wi-Fi & Ethernet manager</h1>
       <p>
-        Wi-Fi & Ethernet manager
+        Wi-Fi & Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and ethernet information. 
       </p>
     </div>
 
