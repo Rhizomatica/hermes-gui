@@ -1197,6 +1197,7 @@ input.ng-invalid {
   font-weight: bold;
   text-align: justify;
   z-index: 10;
+  overflow-x: hidden;
 
   .cv {
     width: 100%;
@@ -1205,7 +1206,18 @@ input.ng-invalid {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    padding: 15%;
+    padding: 10%;
+
+    .cv-title {
+      color: @clr;
+    }
+  }
+
+  .cv-hint {
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    padding: 10%;
     font-size: 1em !important;
     font-weight: 100 !important;
 
