@@ -1,5 +1,8 @@
 <div class=" login formdata">
-  <h2 i18n="@@e_mail">E-mail</h2>
+  <div class="flexible">
+    <h2 i18n="@@e_mail">E-mail</h2>
+    <hint [showHint]="false" [hint]="'email'"></hint>
+  </div>
   <div class="flexible">
     <a href="/mail/">
       <div class="card">
@@ -31,6 +34,13 @@
       <a href="/downloads/deltachat.deb" target="_blank" download="deltachat.deb">Ubuntu/Debian</a><br>
       <a href="/downloads/deltachat.dmg" target="_blank" download="deltachat.dmg">Mac OSX</a><br>
     </p>
+    <p i18n="@@deltachatapplestoredownloadmessage">
+      *Note: On Iphone and ipad you will need to download the app from the App Store in a place with internet.
+    </p>
+    <p i18n="@@configuredeltachat" class="m-t-10"><b>Configure deltachat</b>
+      <hint [showHint]="false" [hint]="'deltachat'"></hint>
+    </p>
+    <hr />
   </div>
   <div class="m-t-25">
     <h2 i18n="@@selectusers">Select users to send e-mail:</h2>
@@ -55,7 +65,7 @@
   </div>
   <br />
   <div class="row">
-    <p i18n="@@emailsuport">If you have a problem and are not sure who to write to 
+    <p i18n="@@emailsuport">If you have a problem and are not sure who to write to
       <a href="mailto:{{emergencyEmail}}">{{emergencyEmail}}</a>
     </p>
   </div>

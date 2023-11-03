@@ -1,5 +1,8 @@
 <loading [loading]="loading"></loading>
-<h2 i18n="@@aconfigmessages">Messages Configuration</h2>
+<div class="flexible">
+    <h2 i18n="@@aconfigmessages">Messages Configuration</h2>
+    <hint [showHint]="false" [hint]="'messageconfig'"></hint>
+</div>
 <div class="alert" *ngIf="noSystem" i18n="@@cannotaccesshermes">Alert: Cannot access Hermes System<br /></div>
 <div *ngIf="isAdmin">
     <div *ngIf="!noSystem">

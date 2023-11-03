@@ -242,7 +242,7 @@ nav {
   background-color: @bkclr;
   z-index: 1;
   position: fixed;
-  padding: 15px;
+  padding: 10px 13px;
   top: 0;
 
   a {
@@ -272,14 +272,19 @@ nav {
   }
 
   .burguer {
-    margin-top: 7px;
+    margin: 0 auto;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-flow: row-reverse;
   }
 
   .nav-frequency {
     position: absolute;
     float: right;
     right: 60px;
-    top: 34px;
+    top: 46%;
+    margin: 0 auto;
   }
 }
 
@@ -295,10 +300,13 @@ textarea {
 
 .sitetitle {
   color: @clr;
-  font-size: 1.2em;
+  font-size: 1em;
   line-height: 1em;
   position: relative;
-  font-weight: normal;
+  font-weight: 400;
+  word-wrap: break-word;
+  width: 160px;
+  text-align: center;
 }
 
 .bordered {
@@ -428,7 +436,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0px;
-  background-color: #ccc;
+  // background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
   margin: auto 0;
@@ -482,13 +490,19 @@ input:checked+.slider:before {
 
 .icon {
   img {
-    height: 1.2em;
+    height: 1em;
     position: relative;
     top: 5px;
   }
+
+  .hint {
+    img {
+      filter: invert(48%) sepia(75%) saturate(3895%) hue-rotate(3deg) brightness(103%) contrast(104%);
+    }
+  }
 }
 
-.round {
+.hint .round {
   width: 1.2em;
   margin-right: 0.5em;
   position: relative;
@@ -1179,10 +1193,11 @@ input.ng-invalid {
   background-color: #fff;
   height: 100%;
   width: 100%;
-  color: @clr;
+  color: @mclr;
   font-weight: bold;
-  text-align: center;
+  text-align: justify;
   z-index: 10;
+  overflow-x: hidden;
 
   .cv {
     width: 100%;
@@ -1191,6 +1206,24 @@ input.ng-invalid {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    padding: 10%;
+
+    .cv-title {
+      color: @clr;
+    }
+  }
+
+  .cv-hint {
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    padding: 10%;
+    font-size: 1em !important;
+    font-weight: 100 !important;
+
+    .cv-title {
+      color: @clr;
+    }
   }
 
   img {
@@ -1214,9 +1247,8 @@ input.ng-invalid {
 
 .overall.loading {
   opacity: 94%;
+  text-align: center;
 }
-
-
 
 .redcircle {
   position: relative;
@@ -1475,6 +1507,7 @@ tr:nth-child(odd) {
 
   .overall {
     background-color: #333;
+    color: @bkclr;
 
     img {
       filter: invert(100%);
@@ -2071,7 +2104,7 @@ tr:nth-child(odd) {
 }
 
 .breadcrumb {
-  top: 54px;
+  top: 60px;
   position: absolute;
   width: 100%;
   padding-left: 3em;
@@ -2262,7 +2295,11 @@ tr:nth-child(odd) {
 
   }
 
-
+  // nav {
+  //   .burguer {
+  //     margin-top: 7px;
+  //   }
+  // }
 }
 
 @media (max-width: 700px) {
@@ -2596,6 +2633,12 @@ tr:nth-child(odd) {
       }
     }
   }
+
+  // nav {
+  //   .burguer {
+  //     margin-top: 7px;
+  //   }
+  // }
 }
 
 .transciever-panel {

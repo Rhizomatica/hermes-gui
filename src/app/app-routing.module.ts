@@ -14,7 +14,6 @@ import { LanguagesComponent } from './components/public/languages/languages.comp
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { SentMessagesComponent } from './components/public/sent-messages/sent-messages.component';
 import { EmailComponent } from './components/public/email/email.component';
-import { HelpComponent } from './components/public/help/help.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
@@ -28,6 +27,7 @@ import { WiFiManagementComponent } from './components/admin/wifi-management/wifi
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
+import { HintComponent } from './components/utils/hint/hint.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,7 +46,6 @@ const routes: Routes = [
   { path: 'message-config', component: MessageConfigComponent },
   { path: 'sent', component: SentMessagesComponent },
   { path: 'email', component: EmailComponent },
-  { path: 'help', component: HelpComponent },
   { path: 'radio-config', component: RadioConfigComponent },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'transmision', component: TransmisionListComponent },
@@ -59,7 +58,8 @@ const routes: Routes = [
   { path: 'wifi-manage', component: WiFiManagementComponent },
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent },
-  { path: 'floatbutton', component: FloatButtonComponent }
+  { path: 'floatbutton', component: FloatButtonComponent },
+  { path: 'hint', component: HintComponent }
 ];
 
 @NgModule({

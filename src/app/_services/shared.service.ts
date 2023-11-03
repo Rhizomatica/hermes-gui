@@ -30,12 +30,13 @@ export class SharedService {
   });
 
   public storedRadioObj = <Radio>({
+    connection: null,
     freq: null,
     mode: null,
     tx: null,
     rx: null,
     fwd_watts: null,
-    swr: null,
+    swr: '1.0',
     protection: null,
     volume: null
   });
@@ -46,6 +47,7 @@ export class SharedService {
   }
 
   setSharedObj() {
+    this.radioObj.value.connection = this.storedRadioObj.connection
     this.radioObj.value.freq = this.storedRadioObj.freq
     this.radioObj.value.mode = this.storedRadioObj.mode
     this.radioObj.value.tx = this.storedRadioObj.tx
@@ -61,6 +63,7 @@ export class SharedService {
 
     var utils = new UtilsService()
 
+    this.storedRadioObj.connection = newObj.connection == null ? this.storedRadioObj.connection : newObj.connection
     this.storedRadioObj.freq = newObj.freq == null ? this.storedRadioObj.freq : utils.formatFrequency(newObj.freq)
     this.storedRadioObj.mode = newObj.mode == null ? this.storedRadioObj.mode : newObj.mode
     this.storedRadioObj.tx = newObj.tx == null ? this.storedRadioObj.tx : newObj.tx
@@ -74,6 +77,7 @@ export class SharedService {
   mountRadioObjDemo(){
     var utils = new UtilsService()
 
+    this.radioObj.value.connection = false
     this.radioObj.value.freq = utils.formatFrequency(1085500)
     this.radioObj.value.mode = 'USB'
     this.radioObj.value.tx = false

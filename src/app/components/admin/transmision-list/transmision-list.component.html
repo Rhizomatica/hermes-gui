@@ -23,6 +23,7 @@
   <div *ngIf="isadmin">
     <div class="flexible">
       <h2 i18n="@@transmisionlistt">Transmission list</h2>
+      <hint [showHint]="false" [hint]="'transmissionlist'"></hint>
     </div>
     <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ queueSize }} B</p>
     <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>

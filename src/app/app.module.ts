@@ -16,7 +16,6 @@ import { MessagecomposeComponent } from './components/public/messagecompose/mess
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { CommonModule } from '@angular/common';
-import { HelpComponent } from './components/public/help/help.component';
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SameUsernameDirective } from './directives/same-username.directive';
@@ -50,6 +49,8 @@ import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { HintComponent } from './components/utils/hint/hint.component';
+
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
@@ -73,7 +74,6 @@ registerLocaleData(localeEs);
     MessagecomposeComponent,
     LoginComponent,
     LanguagesComponent,
-    HelpComponent,
     MessageConfigComponent,
     SameUsernameDirective,
     RetypeDirective,
@@ -94,7 +94,8 @@ registerLocaleData(localeEs);
     WiFiManagementComponent,
     VoiceComponent,
     BreadcrumbComponent,
-    FloatButtonComponent
+    FloatButtonComponent,
+    HintComponent
   ],
   imports: [
     BrowserModule,

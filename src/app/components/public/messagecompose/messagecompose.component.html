@@ -10,11 +10,13 @@
 </div>
 
 <div id="compose" class="" *ngIf="allowCompose">
-  <h2>
-    <div class="icon" i18n="@@sendpublic">
+  <div class="flexible">
+    <h2 i18n="@@sendpublic">
       New message
-    </div>
-  </h2>
+    </h2>
+    <hint [showHint]="false" [hint]="'newmessage'"></hint>
+  </div>
+
   <form #f="ngForm" class="formdata" novalidate>
     <div [hidden]="fileIsProcessing==true">
       <label class="selstation">
@@ -70,6 +72,7 @@
             <b>{{maxSize}}</b>
           </p>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
+          <hint [showHint]="false" [hint]="'attachfile'"></hint>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"

@@ -1,4 +1,8 @@
 <loading [loading]="loading"></loading>
+<div class="flexible m-t-25">
+    <h2>Troubleshooting</h2>
+    <hint [showHint]="false" [hint]="'troubleshooting'"></hint>
+</div>
 <div class="row" *ngIf="system">
     <div class="row">
         <span i18n="@@statusmachine">Status: </span>
@@ -19,7 +23,6 @@
     </div>
 </div>
 <h2 class="m-t-25">Logs</h2>
-
 <button (click)="showCustomLogs()">
     <span i18n="@@errorlogbutton">error Log</span>
 </button>
