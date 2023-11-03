@@ -10,11 +10,13 @@
 </div>
 
 <div id="compose" class="" *ngIf="allowCompose">
-  <h2>
-    <div class="icon" i18n="@@sendpublic">
+  <div class="flexible">
+    <h2 i18n="@@sendpublic">
       New message
-    </div>
-  </h2>
+    </h2>
+    <hint [showHint]="false" [hint]="'newmessage'"></hint>
+  </div>
+
   <form #f="ngForm" class="formdata" novalidate>
     <div [hidden]="fileIsProcessing==true">
       <label class="selstation">

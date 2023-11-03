@@ -3,6 +3,7 @@
         <div>
             <div class="flexible">
                 <h2 i18n="@@sentmessages">Sent Messages </h2>
+                <hint [showHint]="false" [hint]="'sentmessages'"></hint>
                 <div class="row">
                     <button *ngIf="allowCompose" routerLink="/compose">
                         <span i18n="@@compose1sent">
@@ -12,7 +13,7 @@
                     </button>
                 </div>
             </div>
-            <input id="searchbox1" [(ngModel)]="searchMessages" placeholder="search" i18n-placeholder/>
+            <input id="searchbox1" [(ngModel)]="searchMessages" placeholder="search" i18n-placeholder />
             <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access
                 sent messages<br />
             </div>
