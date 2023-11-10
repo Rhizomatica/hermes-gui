@@ -115,7 +115,10 @@
         Radio Status - radio connection status (connected / disconnected)
       </p>
       <p class="m-t-10">
-        Data Digital frequency - frequency used for messages and files transmission
+        Digital Data frequency - frequency for messages and files transmission
+      </p>
+      <p>
+        *Note: Changing the frequency can stop all send and receive transmissions.
       </p>
       <p class="m-t-10">
         SWR - Standing Wave Ratio. It's a measure of how well a radio's antenna system matches the
@@ -127,20 +130,17 @@
         shorten the transmission range and preserve battery capacity.
       </p>
       <p class="m-t-10">
-        Operation mode - TX / RX
+        Operation mode - TX / RX ????
       </p>
       <p class="m-t-10">
-        Serial Number - Identify your radio equipment
-      </p>
-      <p class="m-t-25">
-        **Note: Changing the frequency can stop all send and receive transmissions.
+        Serial Number - Identifies your radio equipment
       </p>
     </div>
 
     <div *ngIf="hint == 'frequency'" i18n="@@hintfrequency">
       <h1 class="cv-title">Frequency</h1>
       <p>
-        Digital frequency for messages and files transmission
+        Digital Data frequency for messages and files transmission
       </p>
     </div>
 
@@ -162,28 +162,31 @@
     <div *ngIf="hint == 'ptt'" i18n="@@hintptt">
       <h1 class="cv-title">PTT (Push to talk)</h1>
       <p>
-        Test push to talk ...
+        Test PTT (push to talk) test send tone.... ?
       </p>
     </div>
 
     <div *ngIf="hint == 'reboot'" i18n="@@hintreboot">
       <h1 class="cv-title">Reboot</h1>
       <p>
-        Reboot
+        Reboot your HERMES system.
       </p>
     </div>
 
     <div *ngIf="hint == 'reset'" i18n="@@hintreset">
       <h1 class="cv-title">Reset to default</h1>
       <p>
-        Reset
+        Reset/restore your radio to the default HERMES configuration. You won't lose your messages.
+      </p>
+      <p>
+        *Note: Restoring your radio to the default configurations can stop all send and receive transmissions.
       </p>
     </div>
 
     <div *ngIf="hint == 'resetprotection'" i18n="@@hintresetprotection">
       <h1 class="cv-title">Reset protection</h1>
       <p>
-        Reset protection
+        Reset the radio protection ...? 
       </p>
     </div>
 
@@ -193,7 +196,7 @@
         On User management you can update your own information (Phone number and password) or delete your user.
       </p>
       <p>
-        **Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore.
+        *Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore.
       </p>
       <p>
         If you are an administrator user you can create, update and delete users.
