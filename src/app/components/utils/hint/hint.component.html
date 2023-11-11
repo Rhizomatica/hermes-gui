@@ -115,15 +115,13 @@
         Radio Status - radio connection status (connected / disconnected)
       </p>
       <p class="m-t-10">
-        Digital Data frequency - frequency for messages and files transmission
+        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other
       </p>
       <p>
         *Note: Changing the frequency can stop all send and receive transmissions.
       </p>
       <p class="m-t-10">
-        SWR - Standing Wave Ratio. It's a measure of how well a radio's antenna system matches the
-        transmitter. A low SWR reading indicates that the antenna is transmitting an optimal radio frequency power. A
-        high SWR can reflect enough power back into the radio to create enough heat to damage the final RF transistor.
+        SWR - Standing Wave Ratio. It indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR suggests that he antenna is not set to the same frequency as the transmitter or that it has some damage. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter.
       </p>
       <p class="m-t-10">
         Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can
@@ -147,22 +145,21 @@
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
       <h1 class="cv-title">Threshold</h1>
       <p>
-        Threshold
+        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission will halt
       </p>
     </div>
 
     <div *ngIf="hint == 'mode'" i18n="@@hintmode">
       <h1 class="cv-title">Mode</h1>
       <p>
-        The radio can operate on two different modes USB / LSB.
-        LSB and USB are single-sideband radio modes. LSB stands for Lower Side Band and USB stands for Upper Side Band.
+        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other
       </p>
     </div>
 
     <div *ngIf="hint == 'ptt'" i18n="@@hintptt">
       <h1 class="cv-title">PTT (Push to talk)</h1>
       <p>
-        Test PTT (push to talk) test send tone.... ?
+        Push To Talk. This function simulates pressing the PTT button on the physical microphone. Used only for testing purposes when tunning the system.
       </p>
     </div>
 
@@ -173,7 +170,7 @@
       </p>
     </div>
 
-    <div *ngIf="hint == 'reset'" i18n="@@hintreset">
+    <div *ngIf="hint == 'reset'" i18n="@@hint">
       <h1 class="cv-title">Reset to default</h1>
       <p>
         Reset/restore your radio to the default HERMES configuration. You won't lose your messages.
@@ -186,7 +183,7 @@
     <div *ngIf="hint == 'resetprotection'" i18n="@@hintresetprotection">
       <h1 class="cv-title">Reset protection</h1>
       <p>
-        Reset the radio protection ...? 
+        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the transmission to avoid damage to the equipment. Click reset to resume system operation 
       </p>
     </div>
 
