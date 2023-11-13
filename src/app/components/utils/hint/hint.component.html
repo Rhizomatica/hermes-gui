@@ -153,6 +153,9 @@
       <p>
         Digital Data frequency for messages and files transmission.
       </p>
+      <p>
+        *Note: Changing the frequency can stop all send and receive transmissions.
+      </p>
     </div>
 
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
@@ -206,7 +209,7 @@
         On User management you can update your own information (Phone number and password) or delete your user.
       </p>
       <p>
-        If you are an administrator user you can create, update and delete users.
+        If you are an administrator user you can create, update and delete all users with exception of the root user.
       </p>
       <p class="m-t-25">
         *Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore.
@@ -253,6 +256,21 @@
       <h1 class="cv-title">Stations Information</h1>
       <p>
         Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections.
+      </p>
+      <p class="m-t-25">
+        Alias - Station identification.
+      </p>
+      <p>
+        Nickname - Name to easy or representative identification.
+      </p>
+      <p>
+        Status - Connection status between stations.
+      </p>
+      <p>
+        Frequency - Preferred digital data frequency for connection between stations.
+      </p>
+      <p>
+        Mode - Preferred mode for connection between stations (USB/LSB).
       </p>
     </div>
 
