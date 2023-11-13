@@ -23,7 +23,19 @@
     <div *ngIf="hint == 'voice'" i18n="@@hintvoice">
       <h1 class="cv-title">Voice</h1>
       <p>
-        Use the voice panel to communicate via voice PTT (push to talk)
+        Use the voice panel to communicate via voice PTT (push to talk).
+      </p>
+      <p class="m-t-25">
+        Step - Use the step button or select the digit to change easily the radio frequency.      
+      </p>
+      <p>
+        Volume - Volume input to regulate your speaker volume.
+      </p>
+      <p>
+        Reset Protection - If the radio turn the protection ON you can reset the protection selecting (reset).
+      </p>
+      <p>
+        Mode - You can change the operating mode (USB/LSB) switching the mode option button.
       </p>
     </div>
 
@@ -112,10 +124,10 @@
         The Radio Configuration page you can find all information about the Radio Analog and Digital transmission.
       </p>
       <p class="m-t-25">
-        Radio Status - radio connection status (connected / disconnected)
+        Radio Status - radio connection status (connected / disconnected).
       </p>
       <p class="m-t-10">
-        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other
+        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other.
       </p>
       <p>
         *Note: Changing the frequency can stop all send and receive transmissions.
@@ -131,28 +143,28 @@
         Operation mode - TX / RX ????
       </p>
       <p class="m-t-10">
-        Serial Number - Identifies your radio equipment
+        Serial Number - Identifies your radio equipment.
       </p>
     </div>
 
     <div *ngIf="hint == 'frequency'" i18n="@@hintfrequency">
       <h1 class="cv-title">Frequency</h1>
       <p>
-        Digital Data frequency for messages and files transmission
+        Digital Data frequency for messages and files transmission.
       </p>
     </div>
 
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
       <h1 class="cv-title">Threshold</h1>
       <p>
-        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission will halt
+        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission will halt.
       </p>
     </div>
 
     <div *ngIf="hint == 'mode'" i18n="@@hintmode">
       <h1 class="cv-title">Mode</h1>
       <p>
-        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other
+        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other.
       </p>
     </div>
 
@@ -183,7 +195,7 @@
     <div *ngIf="hint == 'resetprotection'" i18n="@@hintresetprotection">
       <h1 class="cv-title">Reset protection</h1>
       <p>
-        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the transmission to avoid damage to the equipment. Click reset to resume system operation 
+        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the transmission to avoid damage to the equipment. Click reset to resume system operation.
       </p>
     </div>
 
