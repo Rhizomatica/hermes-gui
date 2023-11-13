@@ -23,7 +23,19 @@
     <div *ngIf="hint == 'voice'" i18n="@@hintvoice">
       <h1 class="cv-title">Voice</h1>
       <p>
-        Use the voice panel to communicate via voice PTT (push to talk)
+        Use the voice panel to communicate via voice PTT (push to talk).
+      </p>
+      <p class="m-t-25">
+        Step - Use the step button or select the digit to change easily the radio frequency.      
+      </p>
+      <p>
+        Volume - Volume input to regulate your speaker volume.
+      </p>
+      <p>
+        Reset Protection - If the radio turn the protection ON you can reset the protection selecting (reset).
+      </p>
+      <p>
+        Mode - You can change the operating mode (USB/LSB) switching the mode option button.
       </p>
     </div>
 
@@ -44,9 +56,9 @@
       <p>
         List of sent messages, outbox.
       </p>
-      <p>
+      <p class="m-t-25">
         *Note: seen a sent message in this list does not mean the message was received by the destination or even
-        transmitted.
+        transmitted. Check the <a routerLink="/transmission">transmission list</a> to verify the transmission status of your sent messages.
       </p>
     </div>
 
@@ -79,7 +91,7 @@
         The Email page you can find the Webmail system, Deltachat downloads and the stations email list, also you can
         find emergency email contact to unexpected or emergency situations.
       </p>
-      <p>
+      <p class="m-t-25">
         *Note: To access the webmail you have to use the same credentials used to access the HERMES system.
       </p>
     </div>
@@ -90,10 +102,11 @@
         Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications
         (similar to WhatsApp).
       </p>
-
-      <video width="500" height="225" controls>
-        <source src="videos/deltachat.mp4" type="video/mp4">
-      </video>
+      <div class="video-hint">
+        <video width="500" height="225" controls>
+          <source src="videos/{{language}}/deltachat.mp4" type="video/mp4">
+        </video>
+      </div>
       <p>
         The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the
         server-based image and audio compression to work properly, otherwise image and audio exchange will not be
@@ -112,10 +125,10 @@
         The Radio Configuration page you can find all information about the Radio Analog and Digital transmission.
       </p>
       <p class="m-t-25">
-        Radio Status - radio connection status (connected / disconnected)
+        Radio Status - radio connection status (connected / disconnected).
       </p>
       <p class="m-t-10">
-        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other
+        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other.
       </p>
       <p>
         *Note: Changing the frequency can stop all send and receive transmissions.
@@ -131,28 +144,31 @@
         Operation mode - TX / RX ????
       </p>
       <p class="m-t-10">
-        Serial Number - Identifies your radio equipment
+        Serial Number - Identifies your radio equipment.
       </p>
     </div>
 
     <div *ngIf="hint == 'frequency'" i18n="@@hintfrequency">
       <h1 class="cv-title">Frequency</h1>
       <p>
-        Digital Data frequency for messages and files transmission
+        Digital Data frequency for messages and files transmission.
+      </p>
+      <p>
+        *Note: Changing the frequency can stop all send and receive transmissions.
       </p>
     </div>
 
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
       <h1 class="cv-title">Threshold</h1>
       <p>
-        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission will halt
+        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission will halt.
       </p>
     </div>
 
     <div *ngIf="hint == 'mode'" i18n="@@hintmode">
       <h1 class="cv-title">Mode</h1>
       <p>
-        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other
+        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other.
       </p>
     </div>
 
@@ -175,7 +191,7 @@
       <p>
         Reset/restore your radio to the default HERMES configuration. You won't lose your messages.
       </p>
-      <p>
+      <p class="m-t-25">
         *Note: Restoring your radio to the default configurations can stop all send and receive transmissions.
       </p>
     </div>
@@ -183,7 +199,7 @@
     <div *ngIf="hint == 'resetprotection'" i18n="@@hintresetprotection">
       <h1 class="cv-title">Reset protection</h1>
       <p>
-        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the transmission to avoid damage to the equipment. Click reset to resume system operation 
+        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the transmission to avoid damage to the equipment. Click reset to resume system operation.
       </p>
     </div>
 
@@ -193,10 +209,10 @@
         On User management you can update your own information (Phone number and password) or delete your user.
       </p>
       <p>
-        *Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore.
+        If you are an administrator user you can create, update and delete all users with exception of the root user.
       </p>
-      <p>
-        If you are an administrator user you can create, update and delete users.
+      <p class="m-t-25">
+        *Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore.
       </p>
     </div>
 
@@ -240,6 +256,21 @@
       <h1 class="cv-title">Stations Information</h1>
       <p>
         Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections.
+      </p>
+      <p class="m-t-25">
+        Alias - Station identification.
+      </p>
+      <p>
+        Nickname - Name to easy or representative identification.
+      </p>
+      <p>
+        Status - Connection status between stations.
+      </p>
+      <p>
+        Frequency - Preferred digital data frequency for connection between stations.
+      </p>
+      <p>
+        Mode - Preferred mode for connection between stations (USB/LSB).
       </p>
     </div>
 

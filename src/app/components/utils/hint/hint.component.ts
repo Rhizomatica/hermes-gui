@@ -19,6 +19,7 @@ export class HintComponent {
   @Input() hint: string
   
   public loading: boolean = false
+  public language: string = null
 
   toggleHint() {
     if (this.showHint)
@@ -28,6 +29,8 @@ export class HintComponent {
       return this.showHint = true
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.language = localStorage.getItem('language')
+  }
 
 }
