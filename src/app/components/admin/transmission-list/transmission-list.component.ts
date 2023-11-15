@@ -114,7 +114,7 @@ export class TransmissionListComponent implements OnInit {
   }
 
   transmitNow(): void {
-    this.closeOveralTransmission()
+    this.confirmTransmit = false
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
         this.getMessages()
@@ -145,6 +145,7 @@ export class TransmissionListComponent implements OnInit {
 
   closeOveralTransmission() {
     this.confirmTransmit = false
+    this.jobToForce = null
   }
 
   getQueue(): void {
