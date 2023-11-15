@@ -29,7 +29,7 @@ export class MessageConfigComponent implements OnInit {
   isAdmin = false;
   cleaned = false;
   loading = true
-  generalLogin: boolean = GlobalConstants.generalLogin
+  requireLogin: boolean = GlobalConstants.requireLogin
 
   constructor(
     private messageService: MessageService,
@@ -44,11 +44,11 @@ export class MessageConfigComponent implements OnInit {
     this.apiService.getSysConfig().subscribe(
       (res: any) => {
         
-        if (this.generalLogin) {
-          this.updateRuleForGeneralLogin(res)
+        if (this.requireLogin) {
+          this.updateRuleForRequireLogin(res)
         }
 
-        if (!this.generalLogin) {
+        if (!this.requireLogin) {
           this.allowfile = res.allowfile;
           this.allowhmp = res.allowhmp;
         }
@@ -140,7 +140,7 @@ export class MessageConfigComponent implements OnInit {
     );
   }
 
-  updateRuleForGeneralLogin(data) {
+  updateRuleForRequireLogin(data) {
     if (data.allowhmp == 'all') {
       this.allowhmp = 'users'
       this.setComposePermission(this.allowhmp)

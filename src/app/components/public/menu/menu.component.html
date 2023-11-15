@@ -3,10 +3,10 @@
   <b>
     <span>You are logged in</span>
     <span class="float-right"> {{currentUser.name}} </span>
-    <hr />
+    <hr class="m-b-25"/>
   </b>
 </div>
-<div class="phonemenu m-t-25">
+<div class="phonemenu">
   <a routerLink="/home" i18n="@@radiophonymenu">
     <img title="home" src="assets/svg/house.svg">
     Home
@@ -27,7 +27,7 @@
     <img title="radio-config" src="assets/svg/ham-radio.svg">
     Radio Configuration
   </a>
-  <a routerLink="/user-manage" i18n="@@usermanagegmenu" *ngIf="!generalLogin || (generalLogin && admin)">
+  <a routerLink="/user-manage" i18n="@@usermanagegmenu" *ngIf="!requireLogin || (requireLogin && admin)">
     <img title="user-manage" src="assets/svg/circle-user.svg">
     User management
   </a>

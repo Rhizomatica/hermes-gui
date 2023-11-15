@@ -1,6 +1,6 @@
 <loading [loading]="loading"></loading>
 <div class="flexible m-t-25">
-    <h2>Troubleshooting</h2>
+    <h2 i18n="@@troubleshootinghintlabel">Troubleshooting</h2>
     <hint [showHint]="false" [hint]="'troubleshooting'"></hint>
 </div>
 <div class="row" *ngIf="system">
@@ -24,7 +24,7 @@
 </div>
 <h2 class="m-t-25">Logs</h2>
 <button (click)="showCustomLogs()">
-    <span i18n="@@errorlogbutton">error Log</span>
+    <span i18n="@@errorlogbutton">error log</span>
 </button>
 <button class="m-l-10" (click)="showUucpLog()">
     <span i18n="@@uucplog">UUcp log</span>

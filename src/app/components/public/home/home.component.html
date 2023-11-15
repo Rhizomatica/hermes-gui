@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </a>
-            <a routerLink="/user-manage" *ngIf="!generalLogin || (generalLogin && admin)">
+            <a routerLink="/user-manage" *ngIf="!requireLogin || (requireLogin && admin)">
                 <div class="card">
                     <div class="card-icon">
                         <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/circle-user.svg">
@@ -67,17 +67,17 @@
                         <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/clock.svg">
                     </div>
                     <div i18n="@@scheduling">
-                        Transmision schedule
+                        Transmission schedule
                     </div>
                 </div>
             </a>
-            <a routerLink="/transmision" *ngIf="admin">
+            <a routerLink="/transmission" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
                         <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/transmit-antenna.svg">
                     </div>
-                    <div i18n="@@transmisionlista">
-                        Transmision list
+                    <div i18n="@@transmissionlista">
+                        Transmission list
                     </div>
                 </div>
             </a>
