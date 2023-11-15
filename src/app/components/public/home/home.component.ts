@@ -33,7 +33,7 @@ export class homeComponent implements OnInit {
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
-    if (GlobalConstants.generalLogin && this.currentUser && !this.websocketService.messages) {
+    if (GlobalConstants.requireLogin && this.currentUser && !this.websocketService.messages) {
       this.websocketService.startService()
     }
 
@@ -49,7 +49,7 @@ export class homeComponent implements OnInit {
   showVoiceCard: boolean = true
   isGateway: boolean = GlobalConstants.gateway
   radio: Radio
-  generalLogin: boolean = GlobalConstants.generalLogin
+  requireLogin: boolean = GlobalConstants.requireLogin
   @Input() radioObj: Radio
 
   logOff() {

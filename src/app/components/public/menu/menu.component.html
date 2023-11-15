@@ -27,7 +27,7 @@
     <img title="radio-config" src="assets/svg/ham-radio.svg">
     Radio Configuration
   </a>
-  <a routerLink="/user-manage" i18n="@@usermanagegmenu" *ngIf="!generalLogin || (generalLogin && admin)">
+  <a routerLink="/user-manage" i18n="@@usermanagegmenu" *ngIf="!requireLogin || (requireLogin && admin)">
     <img title="user-manage" src="assets/svg/circle-user.svg">
     User management
   </a>

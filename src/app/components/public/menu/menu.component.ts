@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   error: string
   errorAlert: boolean = false
   radio: Radio
-  generalLogin: boolean = GlobalConstants.generalLogin
+  requireLogin: boolean = GlobalConstants.requireLogin
 
   constructor(
     private authenticationService: AuthenticationService,

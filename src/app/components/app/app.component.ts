@@ -42,8 +42,8 @@ export class AppComponent implements OnInit, OnDestroy {
   changeLanguage = false
   title = 'hermes.radio'
   isMenuPage: boolean
-  currentPage = GlobalConstants.generalLogin ? "login" : 'home'
-  currentUrl = GlobalConstants.generalLogin ? "login" : 'home'
+  currentPage = GlobalConstants.requireLogin ? "login" : 'home'
+  currentUrl = GlobalConstants.requireLogin ? "login" : 'home'
   received = [];
   sent = [];
   content = ''
@@ -149,12 +149,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.currentUrl = this.router.url
   }
 
-  checkGeneralLogin() {
-    GlobalConstants.generalLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
+  checkRequireLogin() {
+    GlobalConstants.requireLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
   }
 
-  disableNavigationsGeneralLoginNoUser() {
-    if (GlobalConstants.generalLogin && this.currentUser == null) {
+  disableNavigationsRequireLoginNoUser() {
+    if (GlobalConstants.requireLogin && this.currentUser == null) {
       return true
     }
     return false
@@ -204,7 +204,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
     this.loading = true
-    this.checkGeneralLogin()
+    this.checkRequireLogin()
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
@@ -225,7 +225,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.checkIsLoginPage()
         this.updateBreadcrumb()
 
-        if (!GlobalConstants.generalLogin && !this.websocketService.messages) {
+        if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
           this.websocketService.startService()
         }
       }

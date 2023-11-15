@@ -24,7 +24,7 @@ export class WebsocketService {
     public ws: WebSocket
     public radioObj: Radio
     public intervallTimerKeepWebSocketAlive = interval(9000)
-    private generalLogin: boolean = GlobalConstants.generalLogin
+    private requireLogin: boolean = GlobalConstants.requireLogin
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
         private sharedService?: SharedService,
@@ -113,7 +113,7 @@ export class WebsocketService {
     }
 
     closeConnection() {
-        if (this.generalLogin && this.ws && this.ws.OPEN == 1) {
+        if (this.requireLogin && this.ws && this.ws.OPEN == 1) {
             this.ws.close()
             this.messages.complete()
             this.messages = null

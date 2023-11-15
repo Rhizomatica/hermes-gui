@@ -9,7 +9,7 @@
         <p i18n=@@selectwhocompose>Select who can send public messages:</p>
         <form #f="ngForm">
             <select name="allowhmp" (change)="setComposePermission($event.target.value)">
-                <option [selected]='allowhmp=="all"' value="all" i18n="@@everyone1" [hidden]="generalLogin">everyone
+                <option [selected]='allowhmp=="all"' value="all" i18n="@@everyone1" [hidden]="requireLogin">everyone
                 </option>
                 <option [selected]='allowhmp=="users"' value="users" i18n="@@registeredusers1">registered users</option>
                 <option [selected]='allowhmp=="admin"' value="admin" i18n="@@adminusers1">admin users</option>
@@ -20,7 +20,7 @@
         <p i18n=@@selectwho class="m-t-10">Select who can attach files to messages:</p>
         <form #f="ngForm">
             <select name="allowfile" (change)="setUploadPermission($event.target.value)">
-                <option [selected]='allowfile=="all"' value="all" i18n="@@everyone" [hidden]="generalLogin">everyone
+                <option [selected]='allowfile=="all"' value="all" i18n="@@everyone" [hidden]="requireLogin">everyone
                 </option>
                 <option [selected]='allowfile=="users"' value="users" i18n="@@registeredusers">registered users</option>
                 <option [selected]='allowfile=="admin"' value="admin" i18n="@@adminusers">admin users</option>
