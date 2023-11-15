@@ -4,6 +4,10 @@
 
 <div class="overall" *ngIf="showHint">
   <div class="cv-hint">
+    <h1 class="cv-title" i18n="@@helphinttitle">
+      Help
+    </h1>
+
     <div *ngIf="hint == 'login'" i18n="@@hintlogin">
       <h1 class="cv-title">Login</h1>
       <p>
@@ -120,7 +124,7 @@
     </div>
 
     <div *ngIf="hint == 'radioconfig'" i18n="@@hintradioconfig">
-      <h1 class="cv-title">Radio Config</h1>
+      <h1 class="cv-title">Radio Configuration</h1>
       <p>
         The Radio Configuration page you can find all information about the Radio Analog and Digital transmission.
       </p>
