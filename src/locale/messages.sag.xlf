@@ -36,7 +36,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="errorlogbutton" datatype="html">
-        <source>error Log</source>
+        <source>error log</source>
         <target state="new">Error Log</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
@@ -482,7 +482,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areyousurechangesett" datatype="html">
-        <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this may cause the system to stop </source>
+        <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This may cause the system to stop. </source>
         <target state="new">Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this may cause the system to stop </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -523,7 +523,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="confirmthreshold" datatype="html">
-        <source>Are you sure you want to change radio protection threshold? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this may cause the system to stop and damage your radio </source>
+        <source>Are you sure you want to change radio protection threshold? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This may cause the system to stop and damage your radio. </source>
         <target state="new">Are you sure you want to change radio protection threshold? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this may cause the system to stop and damage your radio </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -555,7 +555,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="suresendpttmessage" datatype="html">
-        <source> Are you sure you want to send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems </source>
+        <source> Are you sure you want to send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems. </source>
         <target state="new">Are you sure you want to send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -563,7 +563,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="sendptt" datatype="html">
-        <source>send ptt</source>
+        <source>send PTT</source>
         <target state="new">send ptt</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -2687,7 +2687,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="hintwifi" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Wi-Fi &amp; Ethernet manager<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Wi-Fi &amp; Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and ethernet information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Wi-Fi &amp; Ethernet manager<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Wi-Fi &amp; Ethernet manager, configure Wi-Fi SSID (network name), change password connection and check Wi-Fi and ethernet information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: Change the SSID or the Wi-Fi password will disconnect everybody from this network. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
         <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Wi-Fi &amp; Ethernet manager<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Wi-Fi &amp; Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and ethernet information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
@@ -2699,7 +2699,7 @@
         <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Troubleshooting<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter. To know what to do in case of an error, you first need to know which component is causing the problem. To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network: If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network. In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter. If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings. If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration. If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">314</context>
+          <context context-type="linenumber">317</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closehintbutton" datatype="html">
@@ -2707,7 +2707,7 @@
         <target state="new"> close </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">349</context>
+          <context context-type="linenumber">352</context>
         </context-group>
       </trans-unit>
       <trans-unit id="blinkrecording" datatype="html">
