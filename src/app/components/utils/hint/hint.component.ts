@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { ApiService } from 'src/app/_services/api.service';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'hint',
@@ -10,9 +11,9 @@ import { ApiService } from 'src/app/_services/api.service';
 export class HintComponent {
 
   constructor(
-    private apiService: ApiService,
+    private authenticationService: AuthenticationService
   ) {
-
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   @Input() showHint: boolean
@@ -20,6 +21,7 @@ export class HintComponent {
   
   public loading: boolean = false
   public language: string = null
+  public currentUser: User;
 
   toggleHint() {
     if (this.showHint)
