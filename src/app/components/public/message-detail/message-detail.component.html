@@ -2,8 +2,10 @@
 <loading [loading]="loading"></loading>
 
 <div *ngIf="message" class="messages">
-    <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
-        {{message.name}}</h3>
+    <h2>
+        <span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
+        {{message.name}} <hint [showHint]="false" [hint]="'message'"></hint>
+    </h2>
     <div class="formdata" *ngIf="message.secure && uncrypted === false">
         <p i18n="@@encryptedmessage">Protected message, type the password:</p>
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>

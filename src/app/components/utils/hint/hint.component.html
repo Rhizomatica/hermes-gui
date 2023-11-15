@@ -30,7 +30,7 @@
         Use the voice panel to communicate via voice PTT (push to talk).
       </p>
       <p class="m-t-25">
-        Step - Use the step button or select the digit to change easily the radio frequency.      
+        Step - Use the step button or select the digit to change easily the radio frequency.
       </p>
       <p>
         Volume - Volume input to regulate your speaker volume.
@@ -65,7 +65,19 @@
       </p>
       <p class="m-t-25">
         *Note: seen a sent message in this list does not mean the message was received by the destination or even
-        transmitted. Check the <a routerLink="/transmision">transmission list</a> to verify the transmission status of your sent messages.
+        transmitted. Check the <a routerLink="/transmision">transmission list</a> to verify the transmission status of
+        your sent messages.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'message'" i18n="@@hintmessage">
+      <h1 class="cv-title">Message</h1>
+      <p>
+        On message received detail you can see all message information, title, message, file, date and time, origin and
+        destinations. Select reply button for answer the message. </p>
+      <p class="m-t-10">
+        *Note: if it is about a protected message, typing the correct password (same defined previously by the
+        emitter/origin) you can access to the message content.
       </p>
     </div>
 
@@ -135,13 +147,18 @@
         Radio Status - radio connection status (connected / disconnected).
       </p>
       <p class="m-t-10">
-        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other.
+        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same
+        frequency so they can communicate with each other.
       </p>
       <p>
         *Note: Changing the frequency can stop all send and receive transmissions.
       </p>
       <p class="m-t-10">
-        SWR - Standing Wave Ratio. It indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR suggests that he antenna is not set to the same frequency as the transmitter or that it has some damage. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter.
+        SWR - Standing Wave Ratio. It indicates how efficiently power is transmitted from the radio transmitter to the
+        antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the
+        system will operate efficiently. A high SWR suggests that he antenna is not set to the same frequency as the
+        transmitter or that it has some damage. The transmission will not be optimal and trying to operate the system
+        with a high SWR can damage the transmitter.
       </p>
       <p class="m-t-10">
         Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can
@@ -168,21 +185,24 @@
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
       <h1 class="cv-title">Threshold</h1>
       <p>
-        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission will halt.
+        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission
+        will halt.
       </p>
     </div>
 
     <div *ngIf="hint == 'mode'" i18n="@@hintmode">
       <h1 class="cv-title">Mode</h1>
       <p>
-        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other.
+        The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can
+        communicate with each other.
       </p>
     </div>
 
     <div *ngIf="hint == 'ptt'" i18n="@@hintptt">
       <h1 class="cv-title">PTT (Push to talk)</h1>
       <p>
-        Push To Talk. This function simulates pressing the PTT button on the physical microphone. Used only for testing purposes when tunning the system.
+        Push To Talk. This function simulates pressing the PTT button on the physical microphone. Used only for testing
+        purposes when tunning the system.
       </p>
     </div>
 
@@ -206,7 +226,8 @@
     <div *ngIf="hint == 'resetprotection'" i18n="@@hintresetprotection">
       <h1 class="cv-title">Reset protection</h1>
       <p>
-        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the transmission to avoid damage to the equipment. Click reset to resume system operation.
+        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the
+        transmission to avoid damage to the equipment. Click reset to resume system operation.
       </p>
     </div>
 
@@ -262,7 +283,8 @@
     <div *ngIf="hint == 'stations'" i18n="@@hintstations">
       <h1 class="cv-title">Stations Information</h1>
       <p>
-        Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections.
+        Manage the stations network, giving nicknames for each station and configuring the preferred transmission data
+        frequency and mode for each connection or enable and disable connections.
       </p>
       <p class="m-t-25">
         Alias - Station identification.
@@ -284,7 +306,8 @@
     <div *ngIf="hint == 'wifi'" i18n="@@hintwifi">
       <h1 class="cv-title">Wi-Fi & Ethernet manager</h1>
       <p>
-        Wi-Fi & Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and ethernet information. 
+        Wi-Fi & Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and
+        ethernet information.
       </p>
     </div>
 
