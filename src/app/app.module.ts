@@ -36,7 +36,7 @@ import localeEn from '@angular/common/locales/en';
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { TransmisionListComponent } from './components/admin/transmision-list/transmision-list.component';
+import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
 import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
@@ -83,7 +83,7 @@ registerLocaleData(localeEs);
     RadioConfigComponent,
     FrequencyPipe,
     ScheduleComponent,
-    TransmisionListComponent,
+    TransmissionListComponent,
     LoginFormComponent,
     RadioScaryComponent,
     LoadingComponent,

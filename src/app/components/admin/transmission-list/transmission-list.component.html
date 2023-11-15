@@ -5,8 +5,8 @@
       <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
         case of emergency<br /></span>
       <div class="icon m-t-10">
-        <a (click)="closeOveralTransmision()">
-          <button i18n="@@cancelsTransmision">
+        <a (click)="closeOveralTransmission()">
+          <button i18n="@@cancelsTransmission">
             cancel
           </button>
         </a>
@@ -22,7 +22,7 @@
   </div>
   <div *ngIf="isadmin">
     <div class="flexible">
-      <h2 i18n="@@transmisionlistt">Transmission list</h2>
+      <h2 i18n="@@transmissionlistt">Transmission list</h2>
       <hint [showHint]="false" [hint]="'transmissionlist'"></hint>
     </div>
     <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ queueSize }} B</p>
@@ -46,7 +46,7 @@
                     <div class="row">
                       <button (click)="confirmCancelTransmission()"
                         i18n="@@canceloperationcanceltransmission">cancel</button>
-                      <button class="m-l-10" (click)="cancelTransmision(job.uuidhost,job.uuiduucp)"
+                      <button class="m-l-10" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"
                         i18n="@@confirmcanceltransmission">confirm</button>
                     </div>
                   </div>

@@ -8,11 +8,11 @@ import { AuthenticationService } from '../../../_services/authentication.service
 
 @Component({
   selector: 'app-transmission-list',
-  templateUrl: './transmision-list.component.html',
-  styleUrls: ['./transmision-list.component.less']
+  templateUrl: './transmission-list.component.html',
+  styleUrls: ['./transmission-list.component.less']
 })
 
-export class TransmisionListComponent implements OnInit {
+export class TransmissionListComponent implements OnInit {
 
   currentUser: User
   error = Error
@@ -46,9 +46,9 @@ export class TransmisionListComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  cancelTransmision(host, id): void {
+  cancelTransmission(host, id): void {
     this.loading = true
-    this.uucpService.cancelTransmision(host, id).subscribe(
+    this.uucpService.cancelTransmission(host, id).subscribe(
       (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id)
         this.loading = false
@@ -75,7 +75,7 @@ export class TransmisionListComponent implements OnInit {
     );
   }
 
-  showTransmision() {
+  showTransmission() {
     if (this.transList == false) {
       this.transList = true
     } else {
@@ -114,7 +114,7 @@ export class TransmisionListComponent implements OnInit {
   }
 
   transmitNow(): void {
-    this.closeOveralTransmision()
+    this.closeOveralTransmission()
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
       (res: any) => {
         this.getMessages()
@@ -143,7 +143,7 @@ export class TransmisionListComponent implements OnInit {
     );
   }
 
-  closeOveralTransmision() {
+  closeOveralTransmission() {
     this.confirmTransmit = false
   }
 

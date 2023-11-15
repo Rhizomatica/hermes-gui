@@ -1690,15 +1690,15 @@ esto puede hacer que el sistema se detenga</target>
  Esto debe usarse solo en caso de emergencia<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
 </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cancelsTransmision" datatype="html">
+      <trans-unit id="cancelsTransmission" datatype="html">
         <source> cancel </source>
         <target state="new"> cancel </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">9,11</context>
         </context-group>
       </trans-unit>
@@ -1706,15 +1706,15 @@ esto puede hacer que el sistema se detenga</target>
         <source> transmit now </source>
         <target state="new">forçar transmissión</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="transmisionlistt" datatype="html">
+      <trans-unit id="transmissionlistt" datatype="html">
         <source>Transmission list</source>
-        <target state="new">Lista de transmisión</target>
+        <target state="new">Transmission list</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
@@ -1843,7 +1843,7 @@ esto puede hacer que el sistema se detenga</target>
           <context context-type="linenumber">81</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">91</context>
         </context-group>
         <context-group purpose="location">
@@ -1891,14 +1891,6 @@ esto puede hacer que el sistema se detenga</target>
           <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="transmisionlista" datatype="html">
-        <source> Transmision list </source>
-        <target state="new"> Lista de transmisión </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">79</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="radioconfig" datatype="html">
         <source> Radio configuration </source>
         <target state="new">Configuración de radio</target>
@@ -1908,11 +1900,19 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="scheduling" datatype="html">
-        <source> Transmision schedule </source>
+        <source> Transmission schedule </source>
         <target state="new">Horario de transmisión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
           <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="transmissionlista" datatype="html">
+        <source> Transmission list </source>
+        <target state="new"> Transmission list </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
+          <context context-type="linenumber">79,81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stationinformationcard" datatype="html">
@@ -2040,7 +2040,7 @@ esto puede hacer que el sistema se detenga</target>
         <source>Size:</source>
         <target state="new">Tamaño:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
@@ -2048,7 +2048,7 @@ esto puede hacer que el sistema se detenga</target>
         <source>Transmitting... </source>
         <target state="new">Transmitiendo... </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
@@ -2056,7 +2056,7 @@ esto puede hacer que el sistema se detenga</target>
         <source> Destination:</source>
         <target state="new"> Destino:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
@@ -2065,7 +2065,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">Tamaño total de archivos a transmitir: <x id="INTERPOLATION" equiv-text="{{ getQueueSize() }}"/>
  B</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
@@ -2074,7 +2074,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">Alert: Cannot access transmission list<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
@@ -2083,7 +2083,7 @@ esto puede hacer que el sistema se detenga</target>
         <target state="new">No hay mensajes para transmitir<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
@@ -2091,7 +2091,7 @@ esto puede hacer que el sistema se detenga</target>
         <source>Are you sure you want to cancel this transmission?</source>
         <target state="new">Are you sure you want to cancel this transmission?</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
@@ -2099,7 +2099,7 @@ esto puede hacer que el sistema se detenga</target>
         <source>cancel</source>
         <target state="new">cancel</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
@@ -2107,7 +2107,7 @@ esto puede hacer que el sistema se detenga</target>
         <source>confirm</source>
         <target state="new">confirm</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
@@ -2115,7 +2115,7 @@ esto puede hacer que el sistema se detenga</target>
         <source>force</source>
         <target state="new">forzar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/transmision-list/transmision-list.component.html</context>
+          <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
@@ -2241,7 +2241,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmshutdowncomponent" datatype="html">
-        <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
+        <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
         <target state="new"> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmision and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/floatbutton/floatbutton.component.html</context>
@@ -2297,7 +2297,7 @@ esto puede hacer que el sistema se detenga</target>
         </context-group>
       </trans-unit>
       <trans-unit id="hintsentmessages" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Sent messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages, outbox. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: seen a sent message in this list does not mean the message was received by the destination or even transmitted. Check the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;/transmision&quot;>"/>transmission list<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> to verify the transmission status of your sent messages. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Sent messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages, outbox. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: seen a sent message in this list does not mean the message was received by the destination or even transmitted. Check the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;/transmission&quot;>"/>transmission list<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> to verify the transmission status of your sent messages. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
         <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Sent messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages, outbox. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: seen a sent message in this list does not mean the message was received by the destination or even transmitted. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
