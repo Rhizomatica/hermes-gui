@@ -33,6 +33,7 @@ export class TransmissionListComponent implements OnInit {
   jobToForce: UUCPQueue
   queueSize = 0
   deleteMessage:boolean = false
+  jobToDelete:UUCPQueue
 
   constructor(
     private messageService: MessageService,
@@ -46,11 +47,11 @@ export class TransmissionListComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  cancelTransmission(host, id): void {
+  cancelTransmission(): void {
     this.loading = true
-    this.uucpService.cancelTransmission(host, id).subscribe(
+    this.uucpService.cancelTransmission(this.jobToDelete.uuidhost, this.jobToDelete.uuiduucp).subscribe(
       (res: any) => {
-        this.queue = this.queue.filter(obj => obj.uuiduucp !== id)
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== this.jobToDelete.uuiduucp)
         this.loading = false
       }, (err) => {
         this.error = err
@@ -83,11 +84,12 @@ export class TransmissionListComponent implements OnInit {
     }
   }
 
-  confirmCancelTransmission() {
+  confirmCancelTransmission(jobToDelete: UUCPQueue) {
     if (this.deleteMessage) {
       this.deleteMessage = false;
     } else {
       this.deleteMessage = true;
+      this.jobToDelete = jobToDelete
     }
   }
 

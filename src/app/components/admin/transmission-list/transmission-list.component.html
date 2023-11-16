@@ -20,6 +20,18 @@
       </div>
     </div>
   </div>
+  <div class="overall alert" *ngIf="deleteMessage">
+    <div class="cv">
+      <span i18n="@@deletetransmissionconfirmation">Are you sure you want to cancel this
+        transmission?</span>
+      <div class="row m-t-10">
+        <button (click)="confirmCancelTransmission()" i18n="@@canceloperationcanceltransmission">cancel</button>
+        <button class="m-l-10" (click)="cancelTransmission()"
+          i18n="@@confirmcanceltransmission">confirm</button>
+      </div>
+    </div>
+  </div>
+  
   <div *ngIf="isadmin">
     <div class="flexible">
       <h2 i18n="@@transmissionlistt">Transmission list</h2>
@@ -37,20 +49,7 @@
                 <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'"
                   (click)="cancelMail(job.uuidhost,job.uuiduucp)">
                 <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
-                  (click)="confirmCancelTransmission()">
-
-                <div class="overall alert" *ngIf="deleteMessage">
-                  <div class="cv">
-                    <span i18n="@@deletetransmissionconfirmation">Are you sure you want to cancel this
-                      transmission?</span>
-                    <div class="row">
-                      <button (click)="confirmCancelTransmission()"
-                        i18n="@@canceloperationcanceltransmission">cancel</button>
-                      <button class="m-l-10" (click)="cancelTransmission(job.uuidhost,job.uuiduucp)"
-                        i18n="@@confirmcanceltransmission">confirm</button>
-                    </div>
-                  </div>
-                </div>
+                  (click)="confirmCancelTransmission(job)">
               </span>
             </a>
             <div class="row">
@@ -90,8 +89,10 @@
     <div class="cv">
       <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
       <!-- <span>{{error}}</span> -->
-      <div class="icon"><a (click)="closeError()">
-          <img title="compose" src="assets/svg/x.svg"></a>
+      <div class="icon">
+        <button (click)="closeError()">
+          <img title="compose" src="assets/svg/x.svg">
+        </button>
       </div>
     </div>
   </div>
