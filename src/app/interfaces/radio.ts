@@ -15,5 +15,6 @@ export interface Radio {
   connection: boolean,
   ptt: boolean,
   step: number,
-  volume: number
+  volume: number,
+  profile: number
 }

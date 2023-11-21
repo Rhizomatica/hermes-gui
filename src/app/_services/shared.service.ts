@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, empty } from 'rxjs';
 import { Radio } from '../interfaces/radio';
 import { UtilsService } from './utils.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SharedService {
+
+  router: Router
 
   public radioObj = new BehaviorSubject<Radio>({
     freq: null,
@@ -17,16 +20,15 @@ export class SharedService {
     rx: null,
     led: null,
     fwd_raw: null,
-    // fwd_volts: Number,
     fwd_watts: null,
     swr: null,
     ref_raw: null,
-    // ref_volts: Number,
     ref_watts: null,
     connection: null,
     ptt: null,
     step: null,
-    volume: null
+    volume: null,
+    profile: null
   });
 
   public storedRadioObj = <Radio>({
@@ -38,10 +40,12 @@ export class SharedService {
     fwd_watts: null,
     swr: '1.0',
     protection: null,
-    volume: null
+    volume: null,
+    profile: null
   });
 
   setRadioObjShared(data) {
+    this.observeOperatingProfileMode(data)
     this.mountRadioObj(data)
     this.setSharedObj()
   }
@@ -56,6 +60,7 @@ export class SharedService {
     this.radioObj.value.swr = this.storedRadioObj.swr
     this.radioObj.value.protection = this.storedRadioObj.protection
     this.radioObj.value.volume = this.storedRadioObj.volume
+    this.radioObj.value.profile = this.storedRadioObj.profile
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -72,9 +77,10 @@ export class SharedService {
     this.storedRadioObj.swr = newObj.swr == null ? this.storedRadioObj.swr : utils.formatSWR(newObj.swr)
     this.storedRadioObj.protection = newObj.protection == null ? this.storedRadioObj.protection : newObj.protection
     this.storedRadioObj.volume = newObj.volume == null ? this.storedRadioObj.volume : newObj.volume
+    this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
   }
 
-  mountRadioObjDemo(){
+  mountRadioObjDemo() {
     var utils = new UtilsService()
 
     this.radioObj.value.connection = false
@@ -86,6 +92,15 @@ export class SharedService {
     this.radioObj.value.swr = '1.98'
     this.radioObj.value.protection = null
     this.radioObj.value.volume = 60
+    this.radioObj.value.profile = 1
     this.radioObj.next(this.radioObj.value)
+  }
+
+  observeOperatingProfileMode(data) {
+    if (data.profile != null && data.profile !== this.storedRadioObj.profile) {
+      if (data.profile == 1) { //analog
+        this.router.navigate(['/voice']);
+      }
+    }
   }
 }
