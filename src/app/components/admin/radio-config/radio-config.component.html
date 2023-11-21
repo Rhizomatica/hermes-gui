@@ -217,6 +217,20 @@
             </p>
           </div>
         </form>
+
+        <hr />
+        <form #fanalogfreq="ngForm" class="formdata field">
+          <span i18n="@@changeanalogfrequency">Radio analog frequency: {{radio.freq}}kHz
+            <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
+          </span>
+          <div class="flexible">
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq" [(ngModel)]="analogfreq"
+              value={{analogfreq}}>
+            <button class="midbt" (click)="changeAnalogFrequency()" [disabled]="fanalogfreq.invalid" i18n="@@changeanalogfreqr0">
+              change analog frequency
+            </button>
+          </div>
+        </form>
       </div>
 
       <!-- ALERTS -->

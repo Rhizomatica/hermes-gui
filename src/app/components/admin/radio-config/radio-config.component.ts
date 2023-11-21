@@ -369,6 +369,22 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
+  changeAnalogFrequency(f: NgForm) {
+    this.loading = true
+    const realfreq = f.value.analogFreq * 1000;
+    this.confirmSet = false
+    this.radioService.setRadioFreq(realfreq).subscribe(
+      (res: any) => {
+        this.radio.freq = this.utils.formatFrequency(res);
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value

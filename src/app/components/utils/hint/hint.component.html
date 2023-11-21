@@ -173,12 +173,22 @@
     </div>
 
     <div *ngIf="hint == 'frequency'" i18n="@@hintfrequency">
-      <h1 class="cv-title">Frequency</h1>
+      <h1 class="cv-title">Digital data frequency</h1>
       <p>
         Digital Data frequency for messages and files transmission.
       </p>
       <p>
         *Note: Changing the frequency can stop all send and receive transmissions.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'analogFrequency'" i18n="@@hintfrequency">
+      <h1 class="cv-title">Analog frequency</h1>
+      <p>
+        Analog frequency for voice usage.
+      </p>
+      <p>
+        *Note: That frequency is not related to the message and emails transmission.
       </p>
     </div>
 
