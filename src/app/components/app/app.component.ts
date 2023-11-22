@@ -183,6 +183,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.authenticationService.logout();
       this.router.navigate(['/login']);
       this.websocketService.closeConnection()
+      this.changeOperateModeProfile()
     })
 
     // do something as the timeout countdown does its thing
@@ -199,6 +200,21 @@ export class AppComponent implements OnInit, OnDestroy {
     this.idle.watch();
     this.idleState = "NOT_IDLE";
     this.countdown = null;
+  }
+
+  changeOperateModeProfile(){
+    //Profile id = 1 - digital
+    this.radioService.changeOperateModeProfile(1).subscribe(
+      (res: any) => {
+        if (res === 1) {
+          this.radio.profile = res.profile;
+        }
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
   }
 
   ngOnInit(): void {
