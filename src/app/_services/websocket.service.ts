@@ -129,12 +129,15 @@ export class WebsocketService {
     }
 
     changeOperateModeProfile() {
-        //Profile id = 1 - digital
-        this.radioService.changeOperateModeProfile(1).subscribe(
-            (res: any) => {
-                return res
-            }
-        );
+        if (this.radioObj && this.radioObj.profile == 2) {
+            //Profile id = 1 - digital
+            this.radioService.changeOperateModeProfile(1).subscribe(
+                (res: any) => {
+                    return res
+                }
+            );
+        }
+
     }
 }
 
