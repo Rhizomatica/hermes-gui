@@ -219,7 +219,26 @@ export class VoiceComponent implements OnInit {
     );
   }
 
+  changeOperateModeProfile(){
+    //Profile id = 2 - analog
+    this.radioService.changeOperateModeProfile(2).subscribe(
+      (res: any) => {
+        if (res === 1) {
+          this.radio.profile = res.profile;
+        }
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
+
+
   ngOnInit(): void {
+
+    this.changeOperateModeProfile()
+
     this.sharedService.radioObj.subscribe(message => {
 
       this.radio = this.sharedService.radioObj.value
