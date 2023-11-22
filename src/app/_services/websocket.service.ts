@@ -9,6 +9,8 @@ import { Radio } from "../interfaces/radio";
 import { UtilsService } from "./utils.service";
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
+import { RadioService } from "./radio.service";
+import { resourceUsage } from "process";
 
 export interface Message {
     source: string;
@@ -29,6 +31,7 @@ export class WebsocketService {
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
         private sharedService?: SharedService,
         private utils?: UtilsService,
+        private radioService?: RadioService,
         private router?: Router) { }
 
     public startService() {
@@ -113,6 +116,9 @@ export class WebsocketService {
     }
 
     closeConnection() {
+
+        this.changeOperateModeProfile()
+
         if (this.requireLogin && this.ws && this.ws.OPEN == 1) {
             this.ws.close()
             this.messages.complete()
@@ -120,6 +126,15 @@ export class WebsocketService {
             this.ws = null
             this.subject = null
         }
+    }
+
+    changeOperateModeProfile() {
+        //Profile id = 1 - digital
+        this.radioService.changeOperateModeProfile(1).subscribe(
+            (res: any) => {
+                return res
+            }
+        );
     }
 }
 
