@@ -35,21 +35,21 @@
       <label for="email">
         Email
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
-          placeholder="write the username" (focusout)="checkFullName(selectedUser.name)">
+          placeholder="write the username" (focusout)="checkFullName(selectedUser.name)" maxlength="100">
       </label>
-      <a>{{selectedUser.email}}@{{domain}}</a>
+      <a>{{selectedUser.email}}@{{domain}}</a>matheus thibau Paulino
       <label for="name">
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
         <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder
-          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)" />
+          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)" maxlength="100"/>
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
         name is required
       </div>
       <label>
         <span i18n="@@phonenumber">Phone number</span>
-        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number" />
+        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number" maxlength="25"/>
       </label>
       <div class="selector"></div>
       <hr>

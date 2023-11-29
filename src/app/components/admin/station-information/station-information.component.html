@@ -26,7 +26,7 @@
       <td class="b" scope="row">
         <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
         <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]"
-          [hidden]="editArray[i] == false" />
+          [hidden]="editArray[i] == false" maxlength="25"/>
         <span [hidden]="editArray[i] == true">{{nicknameArray[i]}}</span>
       </td>
       <td class="b" scope="row" *ngIf="isGateway">
