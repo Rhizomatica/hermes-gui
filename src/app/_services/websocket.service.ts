@@ -93,7 +93,7 @@ export class WebsocketService {
 
             this.keepWebSocketAlive()
 
-            if (self.location.hostname === 'hermes.radio')
+            if (self.location.hostname === 'demo.hermes.radio')
                 this.sharedService.mountRadioObjDemo()
 
         }, () => {
