@@ -11,6 +11,7 @@ import { User } from '../../../interfaces/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Frequency } from 'src/app/interfaces/frequency';
 import { GlobalConstants } from '../../../global-constants';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'app-messagecompose',
@@ -46,7 +47,7 @@ export class MessagecomposeComponent implements OnInit {
   public fileSelected = false;
   public sending = false;
   public nodename: any;
-  public maxSize: any = 20971520; //20MB
+  public maxSize: any = 31457280; //30MB
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
   public allowhmp;
@@ -74,7 +75,8 @@ export class MessagecomposeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private frequencyService: FrequencyService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -89,6 +91,7 @@ export class MessagecomposeComponent implements OnInit {
         this.allowhmp = res.allowhmp;
         this.nodename = res.nodename;
 
+        //TODO IMPROVE THIS CODE
         switch (this.allowfile) {
           case 'users':
             if (this.currentUser) {
@@ -234,20 +237,35 @@ export class MessagecomposeComponent implements OnInit {
     if (file) {
       this.file = file;
 
+      this.verifyFileMaxSize(file)
+
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
         this.fileSizeError = false
         return file;
       }
-      else {
-        this.fileName = ' - ';
-        this.fileSizeError = true
-        this.file = null;
-        file = null;
-        return file;
-      }
+
+      this.fileName = ' - ';
+      this.fileSizeError = true
+      this.file = null;
+      file = null;
+      return file;
+
     }
+  }
+
+
+  verifyFileMaxSize(file) {
+    var type = this.utils.getFileType(file.type)
+    
+    console.log(type)
+
+    if(type == 'image' || type == 'audio'){
+        return this.maxSize = 31457280;
+    }
+
+    this.maxSize = 2097152;
   }
 
   removeFile() {

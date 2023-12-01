@@ -68,8 +68,8 @@
             no file selected
           </p> -->
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeError"> File's too big, max size is
-            <b>{{maxSize}}</b>
+          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeError">
+            File's too big, max size is <b>{{maxSize}}</b>
           </p>
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <hint [showHint]="false" [hint]="'attachfile'"></hint>
@@ -109,11 +109,12 @@
       <div id="cryptopass" *ngIf=isEncrypted>
         <label for="passwd">
           <span i18n="@@typethepassword">Type the password</span>
-          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" (input)="checkpwd(passwd,repasswd)" />
+          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" maxlength="20"
+            (input)="checkpwd(passwd,repasswd)" />
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword2">Retype the password</span>
-          <input type="password" [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"
+          <input type="password" [(ngModel)]="repasswd" minlength="4" maxlength="20" (input)="checkpwd(passwd,repasswd)"
             [ngModelOptions]="{standalone: true}" />
         </label>
         <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">

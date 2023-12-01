@@ -27,7 +27,7 @@ export class MessageDetailComponent implements OnInit {
   url = GlobalConstants.apiURL;
   wrongPass = false;
   uncrypted = false;
-  fileAttr: any
+  fileType: string = null
   noMessage = false;
   pass = '';
   passString = '';
@@ -89,12 +89,6 @@ export class MessageDetailComponent implements OnInit {
     );
   }
 
-
-  loadingAudio() {
-    if (this.fileAttr && this.fileAttr.audioLoading)
-      this.fileAttr.audioLoading = false
-  }
-
   getMessage(): void {
     this.loading = true
     const id = +this.route.snapshot.paramMap.get('id');
@@ -104,9 +98,9 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
         this.message = res;
         if (this.message.file === '') {
-          this.fileAttr.noImage = true;
+          this.fileType = null
         } else {
-          this.fileAttr = this.utils.getFileType(this.message.mimetype)
+          this.fileType = this.utils.getFileType(this.message.mimetype)
         }
 
         this.message.sent_at = this.utils.formatDate(this.message.sent_at)
@@ -131,7 +125,7 @@ export class MessageDetailComponent implements OnInit {
       },
       (err) => {
         this.error = err;
-        this.fileAttr.noImage = true;
+        this.fileType = null;
         this.loading = false
       }
     );
