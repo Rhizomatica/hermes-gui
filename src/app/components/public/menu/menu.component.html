@@ -3,7 +3,7 @@
   <b>
     <span i18n="@@loggedlabel">You are logged in</span>
     <span class="float-right"> {{currentUser.name}} </span>
-    <hr class="m-b-25"/>
+    <hr class="m-b-25" />
   </b>
 </div>
 <div class="phonemenu">
@@ -46,8 +46,8 @@
   <div class="cv">
     <span i18n="@@errorcustomerrormenu">There was an error on precessing your request <br /><br /></span>
     <span>{{error}}</span>
-    <div class="icon"><a (click)="closeError()">
-        <img title="close" src="assets/svg/x.svg"></a>
-    </div>
+    <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+      close
+    </button>
   </div>
 </div>

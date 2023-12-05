@@ -224,9 +224,10 @@
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq" [(ngModel)]="analogfreq"
-              value={{analogfreq}}>
-            <button class="midbt" (click)="changeAnalogFrequency()" [disabled]="fanalogfreq.invalid" i18n="@@changeanalogfreqr0">
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq"
+              [(ngModel)]="analogfreq" value={{analogfreq}}>
+            <button class="midbt" (click)="changeAnalogFrequency()" [disabled]="fanalogfreq.invalid"
+              i18n="@@changeanalogfreqr0">
               change analog frequency
             </button>
           </div>
@@ -253,21 +254,17 @@
         <div class="cv">
           <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
           <span>{{error}}</span>
-          <div class="icon">
-            <a (click)="closeError()">
-              <img title="close" src="assets/svg/x.svg">
-            </a>
-          </div>
+          <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+            close
+          </button>
         </div>
       </div>
       <div class="overall alert" *ngIf="gpsMessage">
         <div class="cv">
           <span i18n="@@gpscalibrationsuccess">GPS Calibration successful</span>
-          <div class="icon">
-            <a (click)="closeGPSMessage()">
-              <img title="close" src="assets/svg/x.svg">
-            </a>
-          </div>
+          <button class="m-t-10" (click)="closeGPSMessage()" i18n="@@closeerrorbuttongps">
+            close
+          </button>
         </div>
       </div>
       <!-- <div class="overall alert" [hidden]="shuttingDown==false">
@@ -293,19 +290,12 @@
           <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">reboot</button>
         </div>
       </div>
-      <!-- <div class="overall alert" [hidden]="shuttingDownNow==false" i18n="@@shutDownButton">
-        Shutting Down System
-        <br />
-        <a (click)="reload()">
-          <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
-        <br>
-      </div> -->
-      <div class="overall alert" [hidden]="rebootingDownNow==false" i18n="@@rebootButton">
-        Rebooting System
-        <br />
-        <a (click)="reload()">
-          <span class="icon"><img title="close" src="assets/svg/x.svg"></span></a>
-        <br>
+
+      <div class="overall alert" [hidden]="rebootingDownNow==false">
+        <span i18n="@@rebootingsystemlabel">Rebooting System</span>
+        <button class="m-t-10" (click)="reload()" i18n="@@closeerrorbuttonrebooting">
+          close
+        </button>
       </div>
 
       <div class="overall alert" *ngIf="sosEmergency">

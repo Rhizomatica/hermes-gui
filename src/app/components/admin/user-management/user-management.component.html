@@ -121,9 +121,9 @@
           <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exists please choose another
             email</span>
           <br /><br />
-          <div class="icon"><a (click)="closeError()">
-              <img title="close" src="assets/svg/x.svg"></a>
-          </div>
+          <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+            close
+          </button>
         </div>
       </div>
     </form>

@@ -26,12 +26,11 @@
         transmission?</span>
       <div class="row m-t-10">
         <button (click)="confirmCancelTransmission()" i18n="@@canceloperationcanceltransmission">cancel</button>
-        <button class="m-l-10" (click)="cancelTransmission()"
-          i18n="@@confirmcanceltransmission">confirm</button>
+        <button class="m-l-10" (click)="cancelTransmission()" i18n="@@confirmcanceltransmission">confirm</button>
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="isadmin">
     <div class="flexible">
       <h2 i18n="@@transmissionlistt">Transmission list</h2>
@@ -89,11 +88,9 @@
     <div class="cv">
       <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
       <!-- <span>{{error}}</span> -->
-      <div class="icon">
-        <button (click)="closeError()">
-          <img title="compose" src="assets/svg/x.svg">
-        </button>
-      </div>
+      <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+        close
+      </button>
     </div>
   </div>
 </div>

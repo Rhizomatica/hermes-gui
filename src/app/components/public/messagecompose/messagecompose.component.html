@@ -136,9 +136,9 @@
       <div class="cv">
         <span i18n="@@errorsendingmsg">There was an error on sending your message <br /><br /></span>
         <span>{{error}}</span>
-        <div class="icon"><a (click)="closeError()">
-            <img title="close" src="assets/svg/x.svg"></a>
-        </div>
+        <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
       </div>
     </div>
     <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
@@ -150,18 +150,16 @@
         <recorder [file]="url" [maxSize]="maxSize" [fileName]="fileName" [fileSelected]="fileSelected"
           (emitteFileOP)="addFileItemEmitted($event)"></recorder>
 
-        <div class="icon m-t-25"><a (click)="closeaudioRecorder()">
-            <img title="close" src="assets/svg/x.svg"></a>
-        </div>
+        <button class="m-t-10" (click)="closeaudioRecorder()" i18n="@@closeerrorbutton">
+          close
+        </button>
       </div>
     </div>
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
-        <div class="icon">
-          <a (click)="closeWebCamDesktop()">
-            <img title="close" src="assets/svg/x.svg">
-          </a>
-        </div>
+        <button class="m-t-10" (click)="closeWebCamDesktop()" i18n="@@closeerrorbutton">
+          close
+        </button>
         <video class="m-t-50" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
         <div>
