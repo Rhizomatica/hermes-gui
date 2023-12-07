@@ -47,7 +47,7 @@ export class MessagecomposeComponent implements OnInit {
   public fileSelected = false;
   public sending = false;
   public nodename: any;
-  public maxSize: any = 31457280; //30MB
+  public maxSize: any = 20480000; //20.48MB
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
   public allowhmp;
@@ -237,8 +237,6 @@ export class MessagecomposeComponent implements OnInit {
     if (file) {
       this.file = file;
 
-      this.verifyFileMaxSize(file)
-
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
@@ -253,19 +251,6 @@ export class MessagecomposeComponent implements OnInit {
       return file;
 
     }
-  }
-
-
-  verifyFileMaxSize(file) {
-    var type = this.utils.getFileType(file.type)
-    
-    console.log(type)
-
-    if(type == 'image' || type == 'audio'){
-        return this.maxSize = 31457280;
-    }
-
-    this.maxSize = 2097152;
   }
 
   removeFile() {
