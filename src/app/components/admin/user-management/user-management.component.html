@@ -37,7 +37,7 @@
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
           placeholder="write the username" (focusout)="checkFullName(selectedUser.name)" maxlength="100">
       </label>
-      <a>{{selectedUser.email}}@{{domain}}</a>matheus thibau Paulino
+      <a>{{selectedUser.email}}@{{domain}}</a>
       <label for="name">
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
