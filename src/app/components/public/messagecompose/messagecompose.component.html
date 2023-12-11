@@ -71,8 +71,13 @@
           <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeError">
             File's too big, max size is <b>{{maxSize}}</b>
           </p>
+          
+          <!-- TODO - translate -->
+          <p class="error" *ngIf="fileTypeError" i18n="@@fileTypeError">
+            File type video not supported, please choose another file.
+          </p>
+
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-          <hint [showHint]="false" [hint]="'attachfile'"></hint>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
@@ -80,8 +85,12 @@
           <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
           i18n="@@camfile">camera</button> 
           <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button> -->
-          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove
-            file</button>
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
+            file
+          </button>
+
+          <hint [showHint]="false" [hint]="'attachfile'"></hint>
+          
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>

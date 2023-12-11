@@ -34,7 +34,9 @@ export class MessagecomposeComponent implements OnInit {
   public repasswd;
   public serverConfig: any;
   public allowfile: any;
-  public allowUpload = false;
+  public allowhmp;
+  public allowCompose:boolean = false;
+  public allowUpload:boolean = false;
   public currentUser: User;
   public isAdmin = false;
   public passunMatch = false;
@@ -50,8 +52,6 @@ export class MessagecomposeComponent implements OnInit {
   public maxSize: any = 20480000; //20.48MB
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
-  public allowhmp;
-  public allowCompose = false;
   public camPicture: any;
   public loading = true
   public mobile: any
@@ -61,6 +61,7 @@ export class MessagecomposeComponent implements OnInit {
   public audioRecorderOverall = false
   public frequencies: Frequency[]
   fileSizeError: boolean = false
+  fileTypeError: boolean = false
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -91,57 +92,8 @@ export class MessagecomposeComponent implements OnInit {
         this.allowhmp = res.allowhmp;
         this.nodename = res.nodename;
 
-        //TODO IMPROVE THIS CODE
-        switch (this.allowfile) {
-          case 'users':
-            if (this.currentUser) {
-              this.allowUpload = true;
-            } else {
-              this.allowUpload = false;
-            }
-            break;
-          case 'admin':
-            if (this.currentUser) {
-              if (this.isAdmin) {
-                this.allowUpload = true;
-              } else {
-                this.allowUpload = false;
-              }
-            } else {
-              this.allowUpload = false;
-            }
-            break;
-          case 'all':
-            this.allowUpload = true;
-            break;
-          default:
-            this.allowUpload = false;
-        }
-        switch (this.allowhmp) {
-          case 'users':
-            if (this.currentUser) {
-              this.allowCompose = true;
-            } else {
-              this.allowCompose = false;
-            }
-            break;
-          case 'admin':
-            if (this.currentUser) {
-              if (this.isAdmin) {
-                this.allowCompose = true;
-              } else {
-                this.allowCompose = false;
-              }
-            } else {
-              this.allowCompose = false;
-            }
-            break;
-          case 'all':
-            this.allowCompose = true;
-            break;
-          default:
-            this.allowCompose = false;
-        }
+        this.verifyWriteMessagePermission()
+        this.verifyFileUploadPermission()
 
         return res;
       },
@@ -153,6 +105,37 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
+  verifyWriteMessagePermission() {
+    switch (this.allowhmp) {
+      case 'users':
+        if (this.currentUser)
+          this.allowCompose = true;
+        break;
+      case 'admin':
+        if (this.isAdmin)
+          this.allowCompose = true;
+        break;
+      case 'all':
+        this.allowCompose = true;
+        break;
+    }
+  }
+
+  verifyFileUploadPermission() {
+    switch (this.allowfile) {
+      case 'users':
+        if (this.currentUser) 
+          this.allowUpload = true;
+        break;
+      case 'admin':
+          if (this.isAdmin) 
+            this.allowUpload = true;
+        break;
+      case 'all':
+        this.allowUpload = true;
+        break;
+    }
+  }
 
   onFileCamSelected(e) {
     this.camPicture = e.target.files[0]
@@ -236,6 +219,13 @@ export class MessagecomposeComponent implements OnInit {
     let file: File = event.target.files[0];
     if (file) {
       this.file = file;
+
+      if (this.utils.getFileType(file.type) == 'video') {
+        this.fileSelected = true;
+        this.fileTypeError = true
+        return
+      }
+
 
       if (file.size < this.maxSize) {
         this.fileName = file.name;
