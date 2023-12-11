@@ -31,7 +31,8 @@ export class WiFiManagementComponent implements OnInit {
   passwordUnmatch = false;
   passwordMin = false
   system: any
-  
+  macFilter: boolean = false
+  macList:string = ''
 
   constructor(
     private apiService: ApiService,
@@ -49,6 +50,8 @@ export class WiFiManagementComponent implements OnInit {
         this.wiFiChannel = data.channel
         this.wiFiSSID = data.ssid
         this.wiFiPassphrase = data.wpa_passphrase
+        this.macFilter = data.macaddr_acl == 0 ? false : true
+        this.macList = data.accept_mac_file
         this.loading = false
       }, (err) => {
         this.error = err;

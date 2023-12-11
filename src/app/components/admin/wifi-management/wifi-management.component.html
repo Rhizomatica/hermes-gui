@@ -77,6 +77,18 @@
         </table>
       </div>
     </div>
+    <div class="row m-t-25">
+        <span i18n="@@macfiltertitle">MAC Filter</span>
+        <div class="switch">
+          <input type="checkbox" name="macFilter" [(ngModel)]="macFilter">
+          <span class="slider round"></span>
+        </div>
+    </div>
+    <div class="row m-t-25">
+      <span i18n="@@accetmaclisttitle">Accepted MAC list</span>
+      <textarea name="text" [(ngModel)]="macList" required rows="6" cols="35" maxlength="1400" i18n-placeholder
+      placeholder="accepted MAC list"></textarea>
+    </div>
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
