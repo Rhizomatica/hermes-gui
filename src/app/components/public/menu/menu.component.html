@@ -31,11 +31,35 @@
     <img title="user-manage" src="assets/svg/circle-user.svg">
     User management
   </a>
+  <a routerLink="/message-config" i18n="@@messageadmmenu" *ngIf="admin">
+    <img src="assets/svg/comments.svg">
+    Message configuration
+  </a>
+  <a routerLink="/schedule" i18n="@@schedulingmenu" *ngIf="isGateway && admin">
+    <img src="assets/svg/clock.svg">
+    Transmission schedule
+  </a>
+  <a routerLink="/transmission" i18n="@@transmissionlistmenu" *ngIf="admin">
+    <img src="assets/svg/transmit-antenna.svg">
+    Transmission list
+  </a>
+  <a routerLink="/station-info" i18n="@@stationinformationmenu" *ngIf="admin">
+    <img src="assets/svg/broadcast-tower.svg">
+    Station information
+  </a>
+  <a routerLink="/wifi-manage" i18n="@@wifimanagermenu" *ngIf="admin">
+    <img src="assets/svg/wifi-solid.svg">
+    Wi-Fi & Ethernet manager
+  </a>
+  <a routerLink="/log" i18n="@@detailedlogmenu" *ngIf="admin">
+    <img src="assets/svg/compass.svg">
+    Detailed log
+  </a>
   <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
     <img title="login" src="assets/svg/sign-in-alt-solid.svg">
     Login
   </a>
-  <a routerLink="/user" (click)="logout()" *ngIf="currentUser">
+  <a routerLink="" (click)="logout()" *ngIf="currentUser">
     <img src="assets/svg/sign-out-alt-solid.svg">
     <span class="logged" i18n="@@logoutmenu">
       Logout
