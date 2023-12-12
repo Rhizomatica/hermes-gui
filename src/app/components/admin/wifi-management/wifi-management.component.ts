@@ -50,7 +50,7 @@ export class WiFiManagementComponent implements OnInit {
         this.wiFiChannel = data.channel
         this.wiFiSSID = data.ssid
         this.wiFiPassphrase = data.wpa_passphrase
-        this.macFilter = data.macaddr_acl == 0 ? false : true
+        this.macFilter = !data.macaddr_acl || data.macaddr_acl == 0 ? false : true
         this.macList = data.accept_mac_file
         this.loading = false
       }, (err) => {
@@ -153,6 +153,34 @@ export class WiFiManagementComponent implements OnInit {
         this.loading = false
       }
     )
+  }
+
+  public toggleMACFilter(f: NgForm) {
+    this.macFilter = this.macFilter == true ? false : true //Toggle
+    f.value.macFilter = this.macFilter == true ? 1 : 0 //Format for API
+
+    this.wifiManagerService.toggleMACFilter(f.value).subscribe(
+      (res: any) => {
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
+  }
+
+  public updateMACList(f: NgForm) {
+    this.loading = true
+    this.wifiManagerService.updateMACList(f.value).subscribe(
+      (res: any) => {
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
   }
 
 

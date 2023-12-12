@@ -77,35 +77,50 @@
         </table>
       </div>
     </div>
+    <hr />
+    <h1 i18n="@@mediaaccesscontroltitle" class="m-t-25">Media Access Control</h1>
+
     <div class="row m-t-25">
-        <span i18n="@@macfiltertitle">MAC Filter</span>
-        <div class="switch">
-          <input type="checkbox" name="macFilter" [(ngModel)]="macFilter">
-          <span class="slider round"></span>
+      <form #formMacFilter="ngForm">
+        <span i18n="@@macfiltertitle">Enable/Disable MAC Filter</span>
+        <div class="switch float-right">
+          <input type="checkbox" name="macFilter" [checked]="macFilter" [value]="macFilter">
+          <span class="slider round" (click)="toggleMACFilter(formMacFilter)"></span>
         </div>
+      </form>
     </div>
-    <div class="row m-t-25">
-      <span i18n="@@accetmaclisttitle">Accepted MAC list</span>
-      <textarea name="text" [(ngModel)]="macList" required rows="6" cols="35" maxlength="1400" i18n-placeholder
-      placeholder="accepted MAC list"></textarea>
+    <div class="row m-t-25" *ngIf="macFilter">
+      <form #formMacList="ngForm">
+        <span i18n="@@acceptmaclisttitle">Accepted MAC address list</span>
+        <textarea name="macAddressList" [(ngModel)]="macList" required rows="6" cols="35" maxlength="1400"
+          i18n-placeholder placeholder="accepted MAC list"></textarea>
+        <div class="row m-t-25">
+          <button (click)="updateMACList(formMacList)" i18n="@@savemacaddresbutton">
+            save mac address list
+          </button>
+        </div>
+      </form>
     </div>
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
-      <span i18n="@@errorcustomerror">There was an error on processing your request <br /><br /></span>
-      <span>{{error}}</span>
-      <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-        close
-      </button>
+      <span i18n="@@errorcustomerror">There was an error on processing your request</span>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
+      </div>
+
     </div>
   </div>
   <div class="overall alert" [hidden]="errorAlertPatterns==false">
     <div class="cv">
-      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations. <br /><br /></span>
-      <span>{{error}}</span>
-      <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbuttonwifi">
-        close
-      </button>
+      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations.</span>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbuttonwifi">
+          close
+        </button>
+      </div>
     </div>
   </div>
 </div>
