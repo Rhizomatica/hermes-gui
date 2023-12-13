@@ -157,7 +157,7 @@ export class WiFiManagementComponent implements OnInit {
 
   public toggleMACFilter(f: NgForm) {
     this.macFilter = this.macFilter == true ? false : true //Toggle
-    f.value.macFilter = this.macFilter == true ? 1 : 0 //Format for API
+    f.value.macFilter = this.macFilter == true ? '1' : '0' //Format for API
 
     this.wifiManagerService.toggleMACFilter(f.value).subscribe(
       (res: any) => {
