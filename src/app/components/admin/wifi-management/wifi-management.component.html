@@ -92,8 +92,11 @@
     <div class="row m-t-25" *ngIf="macFilter">
       <form #formMacList="ngForm">
         <span i18n="@@acceptmaclisttitle">Accepted MAC address list</span>
+        <div [hidden]=!msgMACListPattern class="error" i18n="@@maclistrule">
+          Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, ENTER
+        </div>
         <textarea name="macAddressList" [(ngModel)]="macList" required rows="6" cols="35" maxlength="1400"
-          i18n-placeholder placeholder="accepted MAC list"></textarea>
+          i18n-placeholder placeholder="accepted MAC list" (keyup)="_keyUpMacList($event)"></textarea>
         <div class="row m-t-25">
           <button (click)="updateMACList(formMacList)" i18n="@@savemacaddresbutton">
             save mac address list

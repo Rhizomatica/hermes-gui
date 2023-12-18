@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/_services/api.service';
 import { User } from '../../../interfaces/user'
-// import { CustomError } from '../../../interfaces/customerror'
-// import { UserService } from '../../../_services/user.service'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { WifiManagerService } from '../../../_services/wifi-manager.service';
 
@@ -32,7 +30,9 @@ export class WiFiManagementComponent implements OnInit {
   passwordMin = false
   system: any
   macFilter: boolean = false
-  macList:string = ''
+  macList: string = ''
+  msgMACListPattern: boolean = false
+  includedKeysMacList: number[]
 
   constructor(
     private apiService: ApiService,
@@ -157,7 +157,7 @@ export class WiFiManagementComponent implements OnInit {
 
   public toggleMACFilter(f: NgForm) {
     this.macFilter = this.macFilter == true ? false : true //Toggle
-    f.value.macFilter = this.macFilter == true ? '1' : '0' //Format for API
+    f.value.macFilter = this.macFilter == true ? '1' : '0' //Format
 
     this.wifiManagerService.toggleMACFilter(f.value).subscribe(
       (res: any) => {
@@ -170,24 +170,46 @@ export class WiFiManagementComponent implements OnInit {
     );
   }
 
+  // nao aceitar diferente de letras, numeros, quebra de linha, dois pontos(:)
   public updateMACList(f: NgForm) {
     this.loading = true
+
+    f.value.macAddressList = f.value.macAddressList.split('\n')
+
+    for (let index = 0; index < f.value.macAddressList.length; index++) {
+      f.value.macAddressList[index] += ';'
+    }
+
     this.wifiManagerService.updateMACList(f.value).subscribe(
       (res: any) => {
         this.loading = false
       }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
         this.loading = false
       }
     );
   }
 
+  setIncludedKeysMacList() {
+    // hexadecimal, :, enter
+    this.includedKeysMacList = [13, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 65, 66, 67, 68, 69, 70]
+  }
+
+  _keyUpMacList(event: any) {
+    const keyCode = event.keyCode;
+    if (!this.includedKeysMacList.includes(keyCode)) {
+      event.target.value = event.target.value.replace(event.key, "");
+      this.msgMACListPattern = true
+      return
+    }
+  }
 
   ngOnInit(): void {
     this.getWiFiConfig()
     this.setChannels()
     this.setExcludedKeys()
+    this.setIncludedKeysMacList()
     this.getSystemStatus()
   }
 }
