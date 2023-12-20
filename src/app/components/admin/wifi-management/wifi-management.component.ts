@@ -33,6 +33,7 @@ export class WiFiManagementComponent implements OnInit {
   macList: string[]
   msgMACListPatternError: boolean = false
   includedKeysMacList: number[]
+  newMACAddress: string = ''
 
   constructor(
     private apiService: ApiService,
@@ -68,6 +69,8 @@ export class WiFiManagementComponent implements OnInit {
       this.errorAlertPatterns = true;
       return
     }
+
+    f.value.macaddr_acl = this.macFilter == true ? '1' : '0' //Format
 
     this.loading = true
     this.wifiManagerService.changeWiFiName(f.value).subscribe(
@@ -119,7 +122,6 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   setExcludedKeys() {
-    // ?, ", $, [, \, ], +. and space
     this.excludedKeys = [32, 52, 187, 191, 219, 220, 221, 222]
   }
 
@@ -171,15 +173,19 @@ export class WiFiManagementComponent implements OnInit {
 
   public addMACAddress(f: NgForm) {
     this.loading = true
-
+    
     if (!this.validateMACAddress(f.value.macAddress)) {
       this.msgMACListPatternError = true
+      this.loading = false
       return
     }
 
     this.wifiManagerService.updateMACList(f.value).subscribe(
       (res: any) => {
         this.loading = false
+
+        this.getWiFiConfig()
+
       }, (err) => {
         this.error = err
         this.errorAlert = true
@@ -189,19 +195,15 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   validateMACAddress(macAddress) {
-    const macRegex = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i;
-
-    // Remove any invalid characters
-    const cleanedMac = macAddress.replace(/[^0-9A-F:.-]/gi, '');
+    const macRegex = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i
 
     // Check if the cleaned MAC address matches the regular expression
-    return macRegex.test(cleanedMac);;
+    return macAddress.match(macRegex)
   }
 
   public closeMACAddressError() {
     this.msgMACListPatternError = false
   }
-
 
   public removeMACAddress(address){
     this.loading = true
@@ -209,6 +211,7 @@ export class WiFiManagementComponent implements OnInit {
     this.wifiManagerService.removeMACAddress(address).subscribe(
       (res: any) => {
         this.loading = false
+        this.getWiFiConfig()
       }, (err) => {
         this.error = err
         this.errorAlert = true
@@ -217,12 +220,10 @@ export class WiFiManagementComponent implements OnInit {
     );
   }
 
-
   ngOnInit(): void {
     this.getWiFiConfig()
     this.setChannels()
     this.setExcludedKeys()
-    // this.setIncludedKeysMacList()
     this.getSystemStatus()
   }
 }

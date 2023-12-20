@@ -62,8 +62,8 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
-  public removeMACAddress(id) {
-    const url = `${GlobalConstants.apiURL}/mac/address/${id}`;
+  public removeMACAddress(address) {
+    const url = `${GlobalConstants.apiURL}/wifi/mac/address/${address}`;
     return this.http.delete(url).pipe(
       map((res: any) => {
         return this.text;

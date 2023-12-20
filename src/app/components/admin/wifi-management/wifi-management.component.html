@@ -50,12 +50,6 @@
       </div>
       <div class="flex-right half-row">
         <table *ngIf="system" style="width:100%;">
-          <!-- <thead>
-            <tr align="left">
-              <th>Item</th>
-              <th>Value</th>
-            </tr>
-          </thead> -->
           <tbody>
             <tr>
               <td class="b" i18n="@@alias">Alias</td>
@@ -91,20 +85,21 @@
     <div class="row m-t-25">
       <span i18n="@@addnewmacaddress">Add new MAC address</span>
       <div class="row">
-        <form #fNewMacAddress="ngForm">
+        <form #fNewMACAddress="ngForm">
           <div class="flexible">
             <div class="half-row">
-              <input type="text" required minlength="8" maxlength="17" name="macAddress" />
-            </div>
-            <div class="flex-right half-row">
-              <button class="m-t-10" (click)="addMACAddress(fNewMacAddress)" i18n="@@savemacaddress">save</button>
+              <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
+                [disabled]="!macFilter" />
+              <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
+                [disabled]="!macFilter">save</button>
             </div>
           </div>
         </form>
         <div class="overall alert" *ngIf="msgMACListPatternError">
           <div class="cv">
             <span i18n="@@patternmacaddress">
-              Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, ENTER
+              MAC address pattern wrong, please type it again.
+              Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, -
             </span>
             <div class="row m-t-10">
               <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
@@ -115,15 +110,18 @@
         </div>
       </div>
       <hr />
-      <h1 class="m-t-25" i18n="@@acceptmaclisttitle">Accepted MAC address list</h1>
-      <div class="row m-t-25">
-        <p *ngIf="!macList || !macList.length || macList[0] == ''" i18n="@@emptymacaddresslist">
-          Empty MAC address list
-        </p>
-      </div>
-      <div class="row m-t-10" *ngFor="let item of macList">
-        <p>{{item}}</p>
-        <button (click)="removeMacAddress()" *ngIf="item" i18n="@@removemacaddress">remove</button>
+      <div *ngIf="macFilter">
+        <h1 class="m-t-25" i18n="@@acceptmaclisttitle">Accepted MAC address list</h1>
+        <div class="row m-t-25">
+          <p *ngIf="!macList || !macList.length || macList[0] == ''" i18n="@@emptymacaddresslist">
+            Empty MAC address list
+          </p>
+        </div>
+        <div class="row m-t-10" *ngFor="let item of macList">
+          <span class="click" (click)="removeMACAddress(item)" *ngIf="item !== ''" title="remove">
+            <img class="inlineicon" src="assets/svg/times.svg">{{item}}
+          </span>
+        </div>
       </div>
     </div>
   </div>
