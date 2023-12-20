@@ -79,7 +79,6 @@
     </div>
     <hr />
     <h1 i18n="@@mediaaccesscontroltitle" class="m-t-25">Media Access Control</h1>
-
     <div class="row m-t-25">
       <form #formMacFilter="ngForm">
         <span i18n="@@macfiltertitle">Enable/Disable MAC Filter</span>
@@ -89,20 +88,43 @@
         </div>
       </form>
     </div>
-    <div class="row m-t-25" *ngIf="macFilter">
-      <form #formMacList="ngForm">
-        <span i18n="@@acceptmaclisttitle">Accepted MAC address list</span>
-        <div [hidden]=!msgMACListPattern class="error" i18n="@@maclistrule">
-          Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, ENTER
+    <div class="row m-t-25">
+      <span i18n="@@addnewmacaddress">Add new MAC address</span>
+      <div class="row">
+        <form #fNewMacAddress="ngForm">
+          <div class="flexible">
+            <div class="half-row">
+              <input type="text" required minlength="8" maxlength="17" name="macAddress" />
+            </div>
+            <div class="flex-right half-row">
+              <button class="m-t-10" (click)="addMACAddress(fNewMacAddress)" i18n="@@savemacaddress">save</button>
+            </div>
+          </div>
+        </form>
+        <div class="overall alert" *ngIf="msgMACListPatternError">
+          <div class="cv">
+            <span i18n="@@patternmacaddress">
+              Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, ENTER
+            </span>
+            <div class="row m-t-10">
+              <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
+                close
+              </button>
+            </div>
+          </div>
         </div>
-        <textarea name="macAddressList" [(ngModel)]="macList" required rows="6" cols="35" maxlength="1400"
-          i18n-placeholder placeholder="accepted MAC list" (keyup)="_keyUpMacList($event)"></textarea>
-        <div class="row m-t-25">
-          <button (click)="updateMACList(formMacList)" i18n="@@savemacaddresbutton">
-            save mac address list
-          </button>
-        </div>
-      </form>
+      </div>
+      <hr />
+      <h1 class="m-t-25" i18n="@@acceptmaclisttitle">Accepted MAC address list</h1>
+      <div class="row m-t-25">
+        <p *ngIf="!macList || !macList.length || macList[0] == ''" i18n="@@emptymacaddresslist">
+          Empty MAC address list
+        </p>
+      </div>
+      <div class="row m-t-10" *ngFor="let item of macList">
+        <p>{{item}}</p>
+        <button (click)="removeMacAddress()" *ngIf="item" i18n="@@removemacaddress">remove</button>
+      </div>
     </div>
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
@@ -115,7 +137,7 @@
       </div>
     </div>
   </div>
-  <div class="overall alert" [hidden]="errorAlertPatterns==false">
+  <div class="overall alert" *ngIf="errorAlertPatterns">
     <div class="cv">
       <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations.</span>
       <div class="row m-t-10">
