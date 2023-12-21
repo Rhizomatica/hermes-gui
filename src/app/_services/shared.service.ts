@@ -49,7 +49,8 @@ export class SharedService {
   });
 
   setRadioObjShared(data) {
-    this.observeOperatingProfileMode(data)
+    //TODO - Dual frequency
+    // this.observeOperatingProfileMode(data)
     this.mountRadioObj(data)
     this.setSharedObj()
   }

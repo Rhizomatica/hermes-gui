@@ -237,7 +237,8 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.changeOperateModeProfile()
+    //TODO - Dual frequency
+    // this.changeOperateModeProfile()
 
     this.sharedService.radioObj.subscribe(message => {
 
