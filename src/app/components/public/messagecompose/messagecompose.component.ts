@@ -61,7 +61,6 @@ export class MessagecomposeComponent implements OnInit {
   public audioRecorderOverall = false
   public frequencies: Frequency[]
   fileSizeError: boolean = false
-  fileTypeError: boolean = false
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -219,13 +218,6 @@ export class MessagecomposeComponent implements OnInit {
     let file: File = event.target.files[0];
     if (file) {
       this.file = file;
-
-      if (this.utils.getFileType(file.type) == 'video') {
-        this.fileSelected = true;
-        this.fileTypeError = true
-        return
-      }
-
 
       if (file.size < this.maxSize) {
         this.fileName = file.name;

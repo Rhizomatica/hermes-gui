@@ -72,11 +72,6 @@
             File's too big, max size is <b>{{maxSize}}</b>
           </p>
           
-          <!-- TODO - translate -->
-          <p class="error" *ngIf="fileTypeError" i18n="@@fileTypeError">
-            File type video not supported, please choose another file.
-          </p>
-
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
