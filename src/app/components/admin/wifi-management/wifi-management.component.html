@@ -72,15 +72,20 @@
       </div>
     </div>
     <hr />
-    <h1 i18n="@@mediaaccesscontroltitle" class="m-t-25">Media Access Control</h1>
+    <h1 i18n="@@mediaaccesscontroltitle" class="m-t-25">
+      Media Access Control
+      <hint [showHint]="false" [hint]="'mediaAccessControl'"></hint>
+    </h1>
     <div class="row m-t-25">
-      <form #formMacFilter="ngForm">
-        <span i18n="@@macfiltertitle">Enable/Disable MAC Filter</span>
-        <div class="switch float-right">
-          <input type="checkbox" name="macFilter" [checked]="macFilter" [value]="macFilter">
-          <span class="slider round" (click)="toggleMACFilter(formMacFilter)"></span>
-        </div>
-      </form>
+      <div class="flexible half-row">
+        <form #formMacFilter="ngForm">
+          <span i18n="@@macfiltertitle">{{macFilter ? 'Disable' : 'Enable'}} MAC Filter</span>
+          <div class="switch float-right">
+            <input type="checkbox" name="macFilter" [checked]="macFilter" [value]="macFilter">
+            <span class="slider round" (click)="toggleMACFilter(formMacFilter)"></span>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="row m-t-25">
       <span i18n="@@addnewmacaddress">Add new MAC address</span>

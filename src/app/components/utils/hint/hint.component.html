@@ -111,7 +111,8 @@
     <div *ngIf="hint == 'email'" i18n="@@hintemail">
       <h1 class="cv-title">Email</h1>
       <p>
-        On the Email page you can find the Webmail system, Deltachat downloads and the stations email list. You can also find emergency email contacts for unexpected or emergency situations.
+        On the Email page you can find the Webmail system, Deltachat downloads and the stations email list. You can also
+        find emergency email contacts for unexpected or emergency situations.
       </p>
       <p class="m-t-25">
         *Note: To access the webmail you have to use the same credentials used to access the HERMES system.
@@ -191,7 +192,8 @@
         Analog frequency for voice usage.
       </p>
       <p>
-        *Note: This frequency is not related to the message and emails transmission and only applies to voice transmission and reception.
+        *Note: This frequency is not related to the message and emails transmission and only applies to voice
+        transmission and reception.
       </p>
     </div>
 
@@ -232,7 +234,8 @@
         Reset/restore your radio to the default HERMES configuration. You won't lose your messages.
       </p>
       <p class="m-t-25">
-        *Note: Restoring your radio to the default configurations can stop or interrupt sending and reception of transmissions.
+        *Note: Restoring your radio to the default configurations can stop or interrupt sending and reception of
+        transmissions.
       </p>
     </div>
 
@@ -240,7 +243,8 @@
       <h1 class="cv-title">Reset protection</h1>
       <p>
         If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt
-        transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why the system went over the threshold.
+        transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why
+        the system went over the threshold.
       </p>
     </div>
 
@@ -270,7 +274,8 @@
       <h1 class="cv-title">Transmission schedule</h1>
       <p>
         Manage your transmission schedules, by time period and station name.
-        As communication between stations is unidirectional, transmissions must be scheduled to happen according to the central station, alternating between reception and transmission with different stations at different times.
+        As communication between stations is unidirectional, transmissions must be scheduled to happen according to the
+        central station, alternating between reception and transmission with different stations at different times.
         Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive,
         depending on the amount of messages in the queue and the gateway station's schedule of operation.
       </p>
@@ -281,7 +286,8 @@
       <p>
         When you press send on a message, it is a transmission queue before its final destination. A
         system administrator can cancel the messages in the queue before they are sent, and also delete the sent and
-        received messages. Deleted sent and received messages periodically can help avoid the hard drive from filling up.
+        received messages. Deleted sent and received messages periodically can help avoid the hard drive from filling
+        up.
       </p>
       <p>
         In an emergency, the system administrator can force message transmission of the queue by clicking on the
@@ -316,7 +322,8 @@
     <div *ngIf="hint == 'wifi'" i18n="@@hintwifi">
       <h1 class="cv-title">Wi-Fi & Ethernet manager</h1>
       <p>
-        Wi-Fi & Ethernet manager, configure Wi-Fi SSID (network name), change password and check Wi-Fi and ethernet information.
+        Wi-Fi & Ethernet manager, configure Wi-Fi SSID (network name), change password and check Wi-Fi and ethernet
+        information.
       </p>
       <p class="m-t-10">
         *Note: Changing the SSID or the Wi-Fi password will disconnect everybody from the Wi-Fi network.
@@ -353,6 +360,20 @@
         If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it
         could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place
         with internet for online maintenance.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'mediaAccessControl'" i18n="@@hintmediaaccesscontrol">
+      <h1 class="cv-title">Media Access Control (MAC)</h1>
+      <p>
+        A Media Access Control (MAC) address, sometimes referred to as a hardware or physical address, is a unique,
+        12-character alphanumeric attribute that is used to identify individual electronic devices on a network.
+
+        In this section you can enable or disable the MAC verification in reason of restrict the WiFi access. Add a new
+        MAC address to provide access permission to the Wi-Fi HERMES for a unique device.
+      </p>
+      <p class="m-t-10">
+        An example of a MAC address is: 00-B0-D0-63-C2-26.
       </p>
     </div>
 
