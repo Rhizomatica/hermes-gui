@@ -4,6 +4,8 @@ import { FrequencyService } from 'src/app/_services/frequency.service';
 import { StationService } from 'src/app/_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { GlobalConstants } from '../../../global-constants';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-station-information',
@@ -13,6 +15,7 @@ import { GlobalConstants } from '../../../global-constants';
 
 export class StationInformationComponent implements OnInit {
 
+  currentUser: User
   error: any
   errorAlert = false
   loading = true
@@ -29,12 +32,15 @@ export class StationInformationComponent implements OnInit {
   editArray: any = [];
   currentFrequency: Frequency;
   pendingUpdate = false
-  isGateway:boolean = GlobalConstants.gateway
+  isGateway: boolean = GlobalConstants.gateway
 
   constructor(
     private apiService: ApiService,
     private stationService: StationService,
+    private authenticationService: AuthenticationService,
     private frequencyService: FrequencyService) {
+
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
 
@@ -109,7 +115,7 @@ export class StationInformationComponent implements OnInit {
   changeEnableSwitch(i) {
     this.enableArray[i] = this.enableArray[i] == true ? false : true
 
-    if(this.enableArray[i] == true)
+    if (this.enableArray[i] == true)
       this.getStations(i);
 
   }
@@ -168,7 +174,7 @@ export class StationInformationComponent implements OnInit {
     );
   }
 
-  public getStationFrequency(data, index){
+  public getStationFrequency(data, index) {
     var stationAlias = this.frequencies[index].alias
     var newFrequency = data.filter((a) => { return a.alias == stationAlias })[0].frequency
 

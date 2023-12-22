@@ -1,88 +1,94 @@
 <loading [loading]="loading"></loading>
 
-<div class="flexible m-t-25">
-  <h2 i18n="@@stationsonthisnetwork">Station information</h2>
-  <hint [showHint]="false" [hint]="'stations'"></hint>
-</div>
-
-<div class="alert" *ngIf="!frequencies || !frequencies.length" i18n="@@therearenostatons">There are no stations</div>
-<table style="width:100%" *ngIf="frequencies && frequencies.length">
-  <thead>
-    <tr align="left">
-      <th scope="col" i18n="@@aliasstation">Alias</th>
-      <th scope="col" i18n="@@nicknamestation">Nickname</th>
-      <th scope="col" i18n="@@statusstation" *ngIf="isGateway">Status</th>
-      <th scope="col" i18n="@@frequencystation" *ngIf="isGateway">Frequency</th>
-      <th scope="col" i18n="@@frequencymode" *ngIf="isGateway">Mode</th>
-      <th scope="col" i18n="@@frequencyupdate">Update</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let frequency of frequencies; let i = index">
-      <td class="b title" scope="row">
-        <span class="span-table">Alias</span>
-        {{frequency.alias}}
-      </td>
-      <td class="b" scope="row">
-        <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
-        <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]"
-          [hidden]="editArray[i] == false" maxlength="25" />
-        <span [hidden]="editArray[i] == true">{{nicknameArray[i]}}</span>
-      </td>
-      <td class="b" scope="row" *ngIf="isGateway">
-        <span class="span-table" i18n="@@statusstationlabel">Status</span>
-        <div [hidden]="editArray[i] == false">
-          <span>OFF</span>
-          <div class="switch">
-            <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
-            <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
+  <div class="flexible m-t-25">
+    <h2 i18n="@@stationsonthisnetwork">Station information</h2>
+    <hint [showHint]="false" [hint]="'stations'"></hint>
+  </div>
+  <div *ngIf="currentUser.admin">
+  <div class="alert" *ngIf="!frequencies || !frequencies.length" i18n="@@therearenostatons">There are no stations</div>
+  <table style="width:100%" *ngIf="frequencies && frequencies.length">
+    <thead>
+      <tr align="left">
+        <th scope="col" i18n="@@aliasstation">Alias</th>
+        <th scope="col" i18n="@@nicknamestation">Nickname</th>
+        <th scope="col" i18n="@@statusstation" *ngIf="isGateway">Status</th>
+        <th scope="col" i18n="@@frequencystation" *ngIf="isGateway">Frequency</th>
+        <th scope="col" i18n="@@frequencymode" *ngIf="isGateway">Mode</th>
+        <th scope="col" i18n="@@frequencyupdate">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let frequency of frequencies; let i = index">
+        <td class="b title" scope="row">
+          <span class="span-table">Alias</span>
+          {{frequency.alias}}
+        </td>
+        <td class="b" scope="row">
+          <span class="span-table" i18n="@@nicknamestationlabel">Nickname</span>
+          <input type="text" class="midbt" name="nickname{{i}}" [(ngModel)]="nicknameArray[i]"
+            [hidden]="editArray[i] == false" maxlength="25" />
+          <span [hidden]="editArray[i] == true">{{nicknameArray[i]}}</span>
+        </td>
+        <td class="b" scope="row" *ngIf="isGateway">
+          <span class="span-table" i18n="@@statusstationlabel">Status</span>
+          <div [hidden]="editArray[i] == false">
+            <span>OFF</span>
+            <div class="switch">
+              <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
+              <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
+            </div>
+            <span>ON</span>
           </div>
-          <span>ON</span>
-        </div>
 
-        <span [hidden]="editArray[i] == true">{{enableArray[i] == true ? 'ON' : 'OFF'}}</span>
-      </td>
-      <td class="b" scope="row" *ngIf="isGateway">
-        <span class="span-table" i18n="@@frequencystationlabel">Frequency</span>
-        <input type="number" class="midbt text-right" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
-          [(ngModel)]="frequencyArray[i]" [disabled]="enableArray[i] == false ? true : false"
-          [hidden]="editArray[i] == false" />
-        <span [hidden]="editArray[i] == true">{{frequencyArray[i]}}</span>
-        kHz
-      </td>
-      <td class="b" *ngIf="isGateway">
-        <span class="span-table" i18n="@@modestationlabel">Mode</span>
-        <div [hidden]="enableArray[i] == false || editArray[i] == false ? true : false">
-          <span>USB</span>
-          <div class="switch">
-            <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
-              [disabled]="enableArray[i] == false ? true : false" />
-            <span class="slider round-uc {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)"
-              [checked]="modeArray[i]"></span>
+          <span [hidden]="editArray[i] == true">{{enableArray[i] == true ? 'ON' : 'OFF'}}</span>
+        </td>
+        <td class="b" scope="row" *ngIf="isGateway">
+          <span class="span-table" i18n="@@frequencystationlabel">Frequency</span>
+          <input type="number" class="midbt text-right" name="frequency{{i}}" [min]="freqmin" [max]="freqmax"
+            [(ngModel)]="frequencyArray[i]" [disabled]="enableArray[i] == false ? true : false"
+            [hidden]="editArray[i] == false" />
+          <span [hidden]="editArray[i] == true">{{frequencyArray[i]}}</span>
+          kHz
+        </td>
+        <td class="b" *ngIf="isGateway">
+          <span class="span-table" i18n="@@modestationlabel">Mode</span>
+          <div [hidden]="enableArray[i] == false || editArray[i] == false ? true : false">
+            <span>USB</span>
+            <div class="switch">
+              <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
+                [disabled]="enableArray[i] == false ? true : false" />
+              <span class="slider round-uc {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)"
+                [checked]="modeArray[i]"></span>
+            </div>
+            <span>LSB</span>
           </div>
-          <span>LSB</span>
-        </div>
-        <div [hidden]="enableArray[i] == true && editArray[i] == true ? true : false">
-          <span>{{modeArray[i] == true ? 'LSB' : 'USB'}}</span>
-        </div>
-      </td>
-      <td>
-        <button (click)="startEditing(i)" [hidden]="editArray[i] == true || pendingUpdate"
-          i18n="@@frequencyeditbutton">edit</button>
-        <button (click)="updateItem(frequency, i)" [hidden]="editArray[i] == false"
-          i18n="@@frequencyupdatebutton">update</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<div>
-  <div class="overall alert" *ngIf="errorAlert==true">
-    <div class="cv">
-      <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-      <span>{{error}}</span>
-      <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-        close
-      </button>
+          <div [hidden]="enableArray[i] == true && editArray[i] == true ? true : false">
+            <span>{{modeArray[i] == true ? 'LSB' : 'USB'}}</span>
+          </div>
+        </td>
+        <td>
+          <button (click)="startEditing(i)" [hidden]="editArray[i] == true || pendingUpdate"
+            i18n="@@frequencyeditbutton">edit</button>
+          <button (click)="updateItem(frequency, i)" [hidden]="editArray[i] == false"
+            i18n="@@frequencyupdatebutton">update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <div class="overall alert" *ngIf="errorAlert==true">
+      <div class="cv">
+        <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
+        <span>{{error}}</span>
+        <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
+      </div>
     </div>
   </div>
+</div>
+<div *ngIf="!currentUser.admin">
+  <span i18n="@@needtobeadmin">
+    Need to be an admin to access this
+  </span>
 </div>

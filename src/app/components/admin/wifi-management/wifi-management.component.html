@@ -1,9 +1,9 @@
 <loading [loading]="loading"></loading>
-<div class="">
-  <div class="flexible">
-    <h1 i18n="@@wifiandethernetmanagertitle">Wi-Fi & Ethernet manager</h1>
-    <hint [showHint]="false" [hint]="'wifi'"></hint>
-  </div>
+<div class="flexible">
+  <h1 i18n="@@wifiandethernetmanagertitle">Wi-Fi & Ethernet manager</h1>
+  <hint [showHint]="false" [hint]="'wifi'"></hint>
+</div>
+<div class="" *ngIf="currentUser.admin">
   <div class="row">
     <div class="flexible">
       <div class="half-row">
@@ -150,4 +150,9 @@
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="!currentUser.admin">
+  <span i18n="@@needtobeadmin">
+    Need to be an admin to access this
+  </span>
 </div>
