@@ -34,7 +34,7 @@
             <a routerLink="/radio-config">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/ham-radio.svg">
+                        <img _ngcontent-dpr-c68="" title="Radio configuration" src="assets/svg/ham-radio.svg">
                     </div>
                     <div i18n="@@radioconfig">
                         Radio configuration
@@ -44,7 +44,7 @@
             <a routerLink="/user-manage" *ngIf="!requireLogin || (requireLogin && admin)">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/circle-user.svg">
+                        <img _ngcontent-dpr-c68="" title="User management" src="assets/svg/circle-user.svg">
                     </div>
                     <div class="row" i18n="@@adminmanage">
                         User management
@@ -54,7 +54,7 @@
             <a routerLink="/message-config" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/comments.svg">
+                        <img _ngcontent-dpr-c68="" title="Messages configuration" src="assets/svg/comments.svg">
                     </div>
                     <div i18n="@@messageadm">
                         Messages configuration
@@ -64,7 +64,7 @@
             <a *ngIf="isGateway && admin" routerLink="/schedule">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/clock.svg">
+                        <img _ngcontent-dpr-c68="" title="Transmission schedule" src="assets/svg/clock.svg">
                     </div>
                     <div i18n="@@scheduling">
                         Transmission schedule
@@ -74,7 +74,7 @@
             <a routerLink="/transmission" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/transmit-antenna.svg">
+                        <img _ngcontent-dpr-c68="" title="Transmission list" src="assets/svg/transmit-antenna.svg">
                     </div>
                     <div i18n="@@transmissionlista">
                         Transmission list
@@ -84,7 +84,7 @@
             <a routerLink="/station-info" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/broadcast-tower.svg">
+                        <img _ngcontent-dpr-c68="" title="Stations information" src="assets/svg/broadcast-tower.svg">
                     </div>
                     <div i18n="@@stationinformationcard">
                         Stations information
@@ -94,7 +94,7 @@
             <a routerLink="/wifi-manage" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/wifi-solid.svg">
+                        <img _ngcontent-dpr-c68="" title=" Wi-Fi & Ethernet manager" src="assets/svg/wifi-solid.svg">
                     </div>
                     <div i18n="@@wifimanagercard">
                         Wi-Fi & Ethernet manager
@@ -104,7 +104,7 @@
             <a routerLink="/log" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="messages" src="assets/svg/compass.svg">
+                        <img _ngcontent-dpr-c68="" title="Detailed log" src="assets/svg/compass.svg">
                     </div>
                     <div i18n="@@detailedlog">
                         Detailed log
@@ -144,10 +144,8 @@
         <span i18n="@@alertbrowserxp">
             To a better HERMES experience use the chromium/chrome browser
         </span>
-        <div class="icon">
-            <a (click)="closeBrowserAlert()">
-                <img title="compose" src="assets/svg/x.svg">
-            </a>
-        </div>
+        <button class="m-t-10" (click)="closeBrowserAlert()" i18n="@@closeerrorbutton">
+            close
+        </button>
     </div>
 </div>

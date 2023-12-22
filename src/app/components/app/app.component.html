@@ -24,6 +24,7 @@
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
         <span class="nav-frequency" *ngIf="radio">{{radio.mode}} {{radio.freq}} kHz</span>
+        <span class="nav-operation-mode" *ngIf="radio">{{radio.perfil == 1 ? 'analog' : 'digital'}}</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
@@ -58,9 +59,9 @@
           <div class="cv">
             <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
             <span>{{error}}</span>
-            <div class="icon"><a (click)="closeError()">
-                <img title="compose" src="assets/svg/x.svg"></a>
-            </div>
+            <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbuttonchangeconfig">
+              close
+            </button>
           </div>
         </div>
       </ng-template>

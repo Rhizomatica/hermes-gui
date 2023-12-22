@@ -68,11 +68,11 @@
             no file selected
           </p> -->
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeError"> File's too big, max size is
-            <b>{{maxSize}}</b>
+          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeErrorMessage">
+            File's too big, max size is <b>20.48MB</b>
           </p>
+          
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-          <hint [showHint]="false" [hint]="'attachfile'"></hint>
           <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
@@ -80,8 +80,12 @@
           <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
           i18n="@@camfile">camera</button> 
           <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button> -->
-          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove
-            file</button>
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
+            file
+          </button>
+
+          <hint [showHint]="false" [hint]="'attachfile'"></hint>
+          
           <div *ngIf="sending">
             <div class="blobber">
               <div class="tx" i18n="@@uploadingfile">uploading file...</div>
@@ -109,11 +113,12 @@
       <div id="cryptopass" *ngIf=isEncrypted>
         <label for="passwd">
           <span i18n="@@typethepassword">Type the password</span>
-          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" (input)="checkpwd(passwd,repasswd)" />
+          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" maxlength="20"
+            (input)="checkpwd(passwd,repasswd)" />
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword2">Retype the password</span>
-          <input type="password" [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"
+          <input type="password" [(ngModel)]="repasswd" minlength="4" maxlength="20" (input)="checkpwd(passwd,repasswd)"
             [ngModelOptions]="{standalone: true}" />
         </label>
         <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
@@ -135,9 +140,9 @@
       <div class="cv">
         <span i18n="@@errorsendingmsg">There was an error on sending your message <br /><br /></span>
         <span>{{error}}</span>
-        <div class="icon"><a (click)="closeError()">
-            <img title="close" src="assets/svg/x.svg"></a>
-        </div>
+        <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
       </div>
     </div>
     <div class="alert" [hidden]="!fileIsProcessed" i18n="@@messagesenttolist">
@@ -149,18 +154,16 @@
         <recorder [file]="url" [maxSize]="maxSize" [fileName]="fileName" [fileSelected]="fileSelected"
           (emitteFileOP)="addFileItemEmitted($event)"></recorder>
 
-        <div class="icon m-t-25"><a (click)="closeaudioRecorder()">
-            <img title="close" src="assets/svg/x.svg"></a>
-        </div>
+        <button class="m-t-10" (click)="closeaudioRecorder()" i18n="@@closeerrorbutton">
+          close
+        </button>
       </div>
     </div>
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
-        <div class="icon">
-          <a (click)="closeWebCamDesktop()">
-            <img title="close" src="assets/svg/x.svg">
-          </a>
-        </div>
+        <button class="m-t-10" (click)="closeWebCamDesktop()" i18n="@@closeerrorbutton">
+          close
+        </button>
         <video class="m-t-50" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
         <div>

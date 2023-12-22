@@ -1,9 +1,9 @@
 <loading [loading]="loading"></loading>
-<div class="">
-  <div class="flexible">
-    <h1 i18n="@@wifiandethernetmanagertitle">Wi-Fi & Ethernet manager</h1>
-    <hint [showHint]="false" [hint]="'wifi'"></hint>
-  </div>
+<div class="flexible">
+  <h1 i18n="@@wifiandethernetmanagertitle">Wi-Fi & Ethernet manager</h1>
+  <hint [showHint]="false" [hint]="'wifi'"></hint>
+</div>
+<div class="" *ngIf="currentUser.admin">
   <div class="row">
     <div class="flexible">
       <div class="half-row">
@@ -50,12 +50,6 @@
       </div>
       <div class="flex-right half-row">
         <table *ngIf="system" style="width:100%;">
-          <!-- <thead>
-            <tr align="left">
-              <th>Item</th>
-              <th>Value</th>
-            </tr>
-          </thead> -->
           <tbody>
             <tr>
               <td class="b" i18n="@@alias">Alias</td>
@@ -77,23 +71,88 @@
         </table>
       </div>
     </div>
+    <hr />
+    <h1 i18n="@@mediaaccesscontroltitle" class="m-t-25">
+      Media Access Control
+      <hint [showHint]="false" [hint]="'mediaAccessControl'"></hint>
+    </h1>
+    <div class="row m-t-25">
+      <div class="flexible half-row">
+        <form #formMacFilter="ngForm">
+          <span i18n="@@macfiltertitle">{{macFilter ? 'Disable' : 'Enable'}} MAC Filter</span>
+          <div class="switch float-right">
+            <input type="checkbox" name="macFilter" [checked]="macFilter" [value]="macFilter">
+            <span class="slider round" (click)="toggleMACFilter(formMacFilter)"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row m-t-25">
+      <span i18n="@@addnewmacaddress">Add new MAC address</span>
+      <div class="row">
+        <form #fNewMACAddress="ngForm">
+          <div class="flexible">
+            <div class="half-row">
+              <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
+                [disabled]="!macFilter" />
+              <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
+                [disabled]="!macFilter">add</button>
+            </div>
+          </div>
+        </form>
+        <div class="overall alert" *ngIf="msgMACListPatternError">
+          <div class="cv">
+            <span i18n="@@patternmacaddress">
+              MAC address pattern wrong, please type it again.
+              Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, -
+            </span>
+            <div class="row m-t-10">
+              <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
+                close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div *ngIf="macFilter">
+        <h1 class="m-t-25" i18n="@@acceptmaclisttitle">Accepted MAC address list</h1>
+        <div class="row m-t-25">
+          <p *ngIf="!macList || !macList.length || macList[0] == ''" i18n="@@emptymacaddresslist">
+            Empty MAC address list
+          </p>
+        </div>
+        <div class="row m-t-10" *ngFor="let item of macList">
+          <span class="click" (click)="removeMACAddress(item)" *ngIf="item !== ''" title="remove">
+            <img class="inlineicon" src="assets/svg/times.svg">{{item}}
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
-      <span i18n="@@errorcustomerror">There was an error on processing your request <br /><br /></span>
-      <span>{{error}}</span>
-      <div class="icon"><a (click)="closeError()">
-          <img title="close" src="assets/svg/x.svg"></a>
+      <span i18n="@@errorcustomerror">There was an error on processing your request</span>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
       </div>
     </div>
   </div>
-  <div class="overall alert" [hidden]="errorAlertPatterns==false">
+  <div class="overall alert" *ngIf="errorAlertPatterns">
     <div class="cv">
-      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations. <br /><br /></span>
-      <span>{{error}}</span>
-      <div class="icon"><a (click)="closeError()">
-          <img title="close" src="assets/svg/x.svg"></a>
+      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations.</span>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbuttonwifi">
+          close
+        </button>
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="!currentUser.admin">
+  <span i18n="@@needtobeadmin">
+    Need to be an admin to access this
+  </span>
 </div>

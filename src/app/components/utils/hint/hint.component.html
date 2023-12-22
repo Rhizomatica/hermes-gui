@@ -19,8 +19,8 @@
       </p>
       <hr />
       <p class="m-t-10">
-        Probably your credentials were created and provided before. If you have no access to this information
-        or you forgot your password search for the system administrator to provide or change it for you.
+        Your credentials were created and provided beforehand, most likely. If you have no access to this information
+        or you forgot your password contact for the system administrator.
       </p>
     </div>
 
@@ -30,31 +30,32 @@
         Use the voice panel to communicate via voice PTT (push to talk).
       </p>
       <p class="m-t-25">
-        Step - Use the step button or select the digit to change easily the radio frequency.
+        Step - Use the step button or select the number to easily change the frequency of the radio.
       </p>
       <p>
-        Volume - Volume input to regulate your speaker volume.
+        Volume - Volume control to regulate the speaker volume.
       </p>
       <p>
-        Reset Protection - If the radio turn the protection ON you can reset the protection selecting (reset).
+        Reset Protection - If the radio turns the protection ON you can reset the protection selecting (Reset). This
+        usually happens when the antenna does not match the transmission frequency.
       </p>
       <p>
-        Mode - You can change the operating mode (USB/LSB) switching the mode option button.
+        Mode - You can change the operating mode (USB/LSB) by toggling the Mode option button.
       </p>
     </div>
 
     <div *ngIf="hint == 'messages'" i18n="@@hintmessages">
       <h1 class="cv-title">Messages</h1>
       <p>
-        List of public received messages.
+        List of public messages received.
       </p>
       <p>
         Hermes system allows transmission of text and files between connected stations, through public messages, sent
-        through this interface or private messages, though Deltachat application or webmail interface.
+        through this interface or private messages, though the Deltachat application or webmail interface.
       </p>
       <p>
-        The Messages page you can see the public, send messages and also if you have the permissions you can send a new
-        message for another station.
+        On the Messages page you can see the public, sent messages. If you have system permissions you can send a new
+        message to another station.
       </p>
     </div>
 
@@ -64,8 +65,9 @@
         List of sent messages, outbox.
       </p>
       <p class="m-t-25">
-        *Note: seen a sent message in this list does not mean the message was received by the destination or even
-        transmitted. Check the <a routerLink="/transmission">transmission list</a> to verify the transmission status of
+        *Note: When a sent message appears in this list it does not mean the message was received by the destination or
+        even transmitted. Check the <a routerLink="/transmission">transmission list</a> to verify the transmission
+        status of
         your sent messages.
       </p>
     </div>
@@ -73,19 +75,19 @@
     <div *ngIf="hint == 'message'" i18n="@@hintmessage">
       <h1 class="cv-title">Message</h1>
       <p>
-        On message received detail you can see all message information, title, message, file, date and time, origin and
-        destinations. Select reply button for answer the message. </p>
+        The message received detail allow you to see all message information: title, message, file, date and time,
+        origin and destinations. Select the reply button to answer the message. </p>
       <p class="m-t-10">
-        *Note: if it is about a protected message, typing the correct password (same defined previously by the
-        emitter/origin) you can access to the message content.
+        *Note: If the message is protected, type the correct password (defined previously by the
+        emitter/origin) to access the message content.
       </p>
     </div>
 
     <div *ngIf="hint == 'newmessage'" i18n="@@hintnewmessage">
       <h1 class="cv-title">New message</h1>
       <p>
-        On Compose a new message you can: Protecting messages, you will set a passcode before sending it and after
-        opening that message you have to provide the same passcode. The receiver has to know the same passcode to read
+        When composing a new message you can protect messages with a passcode before sending. Opening the message will
+        require entering the same passcode. The receiver of the protected message must know the passcode to read
         the entire message and access the attached files.
       </p>
     </div>
@@ -93,22 +95,24 @@
     <div *ngIf="hint == 'attachfile'" i18n="@@hintattachfile">
       <h1 class="cv-title">Attach file</h1>
       <p>
-        Attach a file per message, it is possible to attach images, audio documents, etc.
+        Attach a file to your message. It is possible to attach images, audio documents, etc.
       </p>
       <p>
-        Accepted formats: .doc, .jpeg, .png, .xls, .json, .xml, ...
+        Accepted formats:
+        .gif, .jpeg, .png, .tiff, .webp, .svg+xml, .pjpeg, .x-jps, .doc, .xls, .json, .xml, .aac, .mpeg, .ogg, .ogx,
+        .opus, .wav, .x-wav, .webm, .3gpp, .3gpp2
       </p>
       <p>
-        *Note: File attachments are constrained to 20kb sizes. The system will accept inputs for image and sound up to
-        30mB and for other files up to 2mb. Message packages with size greater than 20kb may not be transmitted.
+        *Note: The system will accept image and sound files up to 20.48 mB. The system will
+        compress attachments, however, message packages greater than 71.68 mB will not be transmitted.
       </p>
     </div>
 
     <div *ngIf="hint == 'email'" i18n="@@hintemail">
       <h1 class="cv-title">Email</h1>
       <p>
-        The Email page you can find the Webmail system, Deltachat downloads and the stations email list, also you can
-        find emergency email contact to unexpected or emergency situations.
+        On the Email page you can find the Webmail system, Deltachat downloads and the stations email list. You can also
+        find emergency email contacts for unexpected or emergency situations.
       </p>
       <p class="m-t-25">
         *Note: To access the webmail you have to use the same credentials used to access the HERMES system.
@@ -118,8 +122,8 @@
     <div *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat">
       <h1 class="cv-title">Deltachat</h1>
       <p>
-        Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications
-        (similar to WhatsApp).
+        Through the Deltachat app, you can use emails to conduct personal message exchange communications
+        (similar to WhatsApp or SMS).
       </p>
       <div class="video-hint">
         <video width="500" height="225" controls>
@@ -151,41 +155,52 @@
         frequency so they can communicate with each other.
       </p>
       <p>
-        *Note: Changing the frequency can stop all send and receive transmissions.
+        *Note: Changing the frequency can stop or interrupt the sending and reception of transmissions.
       </p>
       <p class="m-t-10">
-        SWR - Standing Wave Ratio. It indicates how efficiently power is transmitted from the radio transmitter to the
+        SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the
         antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the
         system will operate efficiently. A high SWR suggests that the antenna is not set to the same frequency as the
-        transmitter or that it has some damage. The transmission will not be optimal and trying to operate the system
-        with a high SWR can damage the transmitter.
+        transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system
+        with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode.
       </p>
       <p class="m-t-10">
         Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can
         shorten the transmission range and preserve battery capacity.
       </p>
       <p class="m-t-10">
-        Operation mode - TX / RX ????
+        Operation mode (TX/RX) - TX stands for transmitter and RX stands for receiver.
       </p>
       <p class="m-t-10">
-        Serial Number - Identifies your radio equipment.
+        Serial Number - Identifies your radio equipments unique serial number.
       </p>
     </div>
 
     <div *ngIf="hint == 'frequency'" i18n="@@hintfrequency">
-      <h1 class="cv-title">Frequency</h1>
+      <h1 class="cv-title">Digital data frequency</h1>
       <p>
         Digital Data frequency for messages and files transmission.
       </p>
       <p>
-        *Note: Changing the frequency can stop all send and receive transmissions.
+        Note: Changing the frequency can stop or interrupttheall sending and reception ofive transmissions.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'analogFrequency'" i18n="@@hintanalogfrequency">
+      <h1 class="cv-title">Analog frequency</h1>
+      <p>
+        Analog frequency for voice usage.
+      </p>
+      <p>
+        *Note: This frequency is not related to the message and emails transmission and only applies to voice
+        transmission and reception.
       </p>
     </div>
 
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
       <h1 class="cv-title">Threshold</h1>
       <p>
-        threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission
+        Threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission
         will halt.
       </p>
     </div>
@@ -194,7 +209,7 @@
       <h1 class="cv-title">Mode</h1>
       <p>
         The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can
-        communicate with each other.
+        communicate with each other optimally.
       </p>
     </div>
 
@@ -202,14 +217,14 @@
       <h1 class="cv-title">PTT (Push to talk)</h1>
       <p>
         Push To Talk. This function simulates pressing the PTT button on the physical microphone. Used only for testing
-        purposes when tunning the system.
+        purposes when tuning the system.
       </p>
     </div>
 
     <div *ngIf="hint == 'reboot'" i18n="@@hintreboot">
       <h1 class="cv-title">Reboot</h1>
       <p>
-        Reboot your HERMES system.
+        Reboot the HERMES system.
       </p>
     </div>
 
@@ -219,48 +234,48 @@
         Reset/restore your radio to the default HERMES configuration. You won't lose your messages.
       </p>
       <p class="m-t-25">
-        *Note: Restoring your radio to the default configurations can stop all send and receive transmissions.
+        *Note: Restoring your radio to the default configurations can stop or interrupt sending and reception of
+        transmissions.
       </p>
     </div>
 
     <div *ngIf="hint == 'resetprotection'" i18n="@@hintresetprotection">
       <h1 class="cv-title">Reset protection</h1>
       <p>
-        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt the
-        transmission to avoid damage to the equipment. Click reset to resume system operation.
+        If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt
+        transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why
+        the system went over the threshold.
       </p>
     </div>
 
     <div *ngIf="hint == 'usermanagement'" i18n="@@hintusermanagement">
       <h1 class="cv-title">User management</h1>
       <p>
-        On User management you can update your own information (Phone number and password) or delete your user.
+        In User management you can update your own information (Phone number and password) or delete your user.
       </p>
       <p *ngIf="currentUser.admin">
-        If you are an administrator user you can create, update and delete all users with exception of the root user.
+        If you are an administrator you can create, update and delete all users with exception of the root user.
       </p>
       <p class="m-t-25">
-        *Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore.
+        *Note: if you delete your user credentials you won't be able to access the HERMES system anymore.
       </p>
     </div>
 
     <div *ngIf="hint == 'messageconfig'" i18n="@@hintmessageconfig">
       <h1 class="cv-title">Message Configuration</h1>
       <p>
-        Manage which profile has permission for send messages and attach files. </p>
+        Manage which user profile has permission to send messages and attach files. </p>
       <p>
-        Broken files can consume your storage, clean broken files to free your storage from unnecessary files.
+        Broken files can consume your storage, clean broken files to free your storage by eliminating unnecessary files.
       </p>
     </div>
 
     <div *ngIf="hint == 'schedules'" i18n="@@hintschedules">
       <h1 class="cv-title">Transmission schedule</h1>
       <p>
-        Manage your transmissions schedules, by time period and stations.
-        As the communication between the stations are unidirectional, the transmissions are schedules to happen
-        acconding to the central station, alternating between reception and transmission events.
-        The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All
-        communication between stations are encrypted and happen outside the internet.
+        Manage your transmission schedules, by time period and station name.
+        As communication between stations is unidirectional, transmissions must be scheduled to happen according to the
+        central station, alternating between reception and transmission with different stations at different times.
         Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive,
         depending on the amount of messages in the queue and the gateway station's schedule of operation.
       </p>
@@ -269,13 +284,15 @@
     <div *ngIf="hint == 'transmissionlist'" i18n="@@hinttransmissionlist">
       <h1 class="cv-title">Transmission list</h1>
       <p>
-        Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A
-        system administrator can cancel the packages before they are sent, and also delete the sent and received
-        messages. This is a task that need to be done often to avoid that the space in the server ends.
+        When you press send on a message, it is a transmission queue before its final destination. A
+        system administrator can cancel the messages in the queue before they are sent, and also delete the sent and
+        received messages. Deleted sent and received messages periodically can help avoid the hard drive from filling
+        up.
       </p>
       <p>
-        In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit
-        now" link. This can interrupt receiving messages from other stations for a while.
+        In an emergency, the system administrator can force message transmission of the queue by clicking on the
+        "transmit
+        now" button. This can interrupt receiving messages on the Gateway from other stations for a while.
       </p>
     </div>
 
@@ -289,7 +306,7 @@
         Alias - Station identification.
       </p>
       <p>
-        Nickname - Name to easy or representative identification.
+        Nickname - Name for easy or representative identification.
       </p>
       <p>
         Status - Connection status between stations.
@@ -305,37 +322,36 @@
     <div *ngIf="hint == 'wifi'" i18n="@@hintwifi">
       <h1 class="cv-title">Wi-Fi & Ethernet manager</h1>
       <p>
-        Wi-Fi & Ethernet manager, configure Wi-Fi SSID (network name), change password connection and check Wi-Fi and
-        ethernet information.
+        Wi-Fi & Ethernet manager, configure Wi-Fi SSID (network name), change password and check Wi-Fi and ethernet
+        information.
       </p>
       <p class="m-t-10">
-        *Note: Change the SSID or the Wi-Fi password will disconnect everybody from this network.
+        *Note: Changing the SSID or the Wi-Fi password will disconnect everybody from the Wi-Fi network.
       </p>
     </div>
 
     <div *ngIf="hint == 'troubleshooting'" i18n="@@hinttroubleshooting">
       <h1 class="cv-title">Troubleshooting</h1>
       <p>
-        To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an
-        antenna with a transmitter.
-
         To know what to do in case of an error, you first need to know which component is causing the problem.
 
         To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the
         easiest way is to test access from another device, or from another browser on the same device. If the problem is
-        only with you, it is possible that the problem is in the network settings. Check below the necessary settings to
-        access the Hermes network:
+        only with you, it is possible that the problem is in the network settings of your device. Check below the
+        necessary settings to access the HERMES network:
 
         If this does not solve your problem, try cleaning your browser's history and logging in again, or change
         browsers. If none of this resolves the problem, it is possible that your device is incompatible with the
         network.
 
-        In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct
-        position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the
-        transmitter.
+        <span *ngIf="bitx == 'S'">
+          In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct
+        </span> position of the power supply wires and check the position and integrity of the Antenna, coaxial cable,
+        and the transmitter.
 
-        If the messages in the transmission list are not being transmitted over time, check if the radio settings have
-        been changed, in which case it could be that the other stations are offline. To remedy you could restore the
+        If the messages in the transmission list are not being transmit, check if the radio settings have
+        been changed, in which case it could be that the other stations are offline or on a different frequency. To
+        remedy you could restore the
         factory default settings.
 
         If the problem is with the digital radio, there will be an error message when the administrator goes into
@@ -347,7 +363,19 @@
       </p>
     </div>
 
+    <div *ngIf="hint == 'mediaAccessControl'" i18n="@@hintmediaaccesscontrol">
+      <h1 class="cv-title">Media Access Control (MAC)</h1>
+      <p>
+        A Media Access Control (MAC) address, sometimes referred to as a hardware or physical address, is a unique,
+        12-character alphanumeric attribute that is used to identify individual electronic devices on a network.
 
+        In this section you can enable or disable the MAC verification in reason of restrict the WiFi access. Add a new
+        MAC address to provide access permission to the Wi-Fi HERMES for a unique device.
+      </p>
+      <p class="m-t-10">
+        An example of a MAC address is: 00-B0-D0-63-C2-26.
+      </p>
+    </div>
 
     <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
       close

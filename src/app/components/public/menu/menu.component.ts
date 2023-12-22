@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   errorAlert: boolean = false
   radio: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
+  isGateway: boolean = GlobalConstants.gateway
 
   constructor(
     private authenticationService: AuthenticationService,

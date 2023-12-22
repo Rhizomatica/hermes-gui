@@ -18,24 +18,21 @@
                 password</button>
         </form>
     </div>
-    <div class="date"></div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <div *ngIf="message.file">
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                <div
-                    *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage && message.secure && uncrypted)">
+                <div *ngIf="fileType == 'image'">
                     <img id="image" class="messageImg"
                         src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
-                <div *ngIf="fileAttr && fileAttr.isAudio">
-                    <player [playing]="'false'" [mimetype]="message.mimetype" [fileId]="message.fileid" [url]="url"
-                        [secured]="message.secure" [password]="passString"></player>
-
+                <div *ngIf="fileType == 'audio' || fileType == 'video'">
+                    <player [playing]="'false'" [type]="fileType" [mimetype]="message.file.mimetype"
+                        [fileId]="message.fileid" [url]="url" [secured]="message.secure" [password]="passString">
+                    </player>
                 </div>
             </a>
-            <button (click)="rotateImage()" class="pull-right"
-                *ngIf="(fileAttr && fileAttr.isImage && !message.secure) || (fileAttr && fileAttr.isImage && message.secure && uncrypted)">
+            <button *ngIf="fileType == 'image'" (click)="rotateImage()" class="pull-right">
                 <img title="rotate" src="assets/svg/redo.svg">
             </button>
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
@@ -83,11 +80,9 @@
             <div class="cv">
                 <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
                 <span>{{error}}</span>
-                <div class="icon">
-                    <a (click)="closeError()">
-                        <img title="compose" src="assets/svg/x.svg">
-                    </a>
-                </div>
+                <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+                    close
+                </button>
             </div>
         </div>
     </div>

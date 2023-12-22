@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/_services/api.service';
 import { User } from '../../../interfaces/user'
-// import { CustomError } from '../../../interfaces/customerror'
-// import { UserService } from '../../../_services/user.service'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { WifiManagerService } from '../../../_services/wifi-manager.service';
 
@@ -31,7 +29,11 @@ export class WiFiManagementComponent implements OnInit {
   passwordUnmatch = false;
   passwordMin = false
   system: any
-  
+  macFilter: boolean = false
+  macList: string[]
+  msgMACListPatternError: boolean = false
+  includedKeysMacList: number[]
+  newMACAddress: string = ''
 
   constructor(
     private apiService: ApiService,
@@ -49,6 +51,8 @@ export class WiFiManagementComponent implements OnInit {
         this.wiFiChannel = data.channel
         this.wiFiSSID = data.ssid
         this.wiFiPassphrase = data.wpa_passphrase
+        this.macFilter = !data.macaddr_acl || data.macaddr_acl == 0 ? false : true
+        this.macList = data.accept_mac_file
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -65,6 +69,8 @@ export class WiFiManagementComponent implements OnInit {
       this.errorAlertPatterns = true;
       return
     }
+
+    f.value.macaddr_acl = this.macFilter == true ? '1' : '0' //Format
 
     this.loading = true
     this.wifiManagerService.changeWiFiName(f.value).subscribe(
@@ -86,7 +92,6 @@ export class WiFiManagementComponent implements OnInit {
       return
     }
   }
-
 
   checkForm(f) {
     if (!f.value.ssid) {
@@ -117,7 +122,6 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   setExcludedKeys() {
-    // ?, ", $, [, \, ], +. and space
     this.excludedKeys = [32, 52, 187, 191, 219, 220, 221, 222]
   }
 
@@ -152,6 +156,69 @@ export class WiFiManagementComponent implements OnInit {
     )
   }
 
+  public toggleMACFilter(f: NgForm) {
+    this.macFilter = this.macFilter == true ? false : true //Toggle
+    f.value.macFilter = this.macFilter == true ? '1' : '0' //Format
+
+    this.wifiManagerService.toggleMACFilter(f.value).subscribe(
+      (res: any) => {
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false
+      }
+    );
+  }
+
+  public addMACAddress(f: NgForm) {
+    this.loading = true
+    
+    if (!this.validateMACAddress(f.value.macAddress)) {
+      this.msgMACListPatternError = true
+      this.loading = false
+      return
+    }
+
+    this.wifiManagerService.updateMACList(f.value).subscribe(
+      (res: any) => {
+        this.loading = false
+
+        this.getWiFiConfig()
+
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
+  }
+
+  validateMACAddress(macAddress) {
+    const macRegex = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i
+
+    // Check if the cleaned MAC address matches the regular expression
+    return macAddress.match(macRegex)
+  }
+
+  public closeMACAddressError() {
+    this.msgMACListPatternError = false
+  }
+
+  public removeMACAddress(address){
+    this.loading = true
+
+    this.wifiManagerService.removeMACAddress(address).subscribe(
+      (res: any) => {
+        this.loading = false
+        this.getWiFiConfig()
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.getWiFiConfig()

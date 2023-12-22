@@ -181,7 +181,13 @@ export class AppComponent implements OnInit, OnDestroy {
       this.idleState = "TIMED_OUT"
       this.resetIdle();
       this.authenticationService.logout();
-      this.router.navigate(['/login']);
+
+      if (GlobalConstants.requireLogin)
+        this.router.navigate(['/login']);
+
+      if (!GlobalConstants.requireLogin)
+        this.router.navigate(['/home']);
+
       this.websocketService.closeConnection()
     })
 
@@ -201,6 +207,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.countdown = null;
   }
 
+
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
     this.loading = true
@@ -214,7 +221,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (event instanceof ActivationEnd) {
 
         //Redirect login if reload page...
-        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home' ) {
+        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
           this.router.navigate(['home'])
         }
       }

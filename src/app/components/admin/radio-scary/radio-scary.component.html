@@ -30,11 +30,9 @@
         <div class="cv">
           <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
           <span>{{error}}</span>
-          <div class="icon">
-            <a (click)="closeError()">
-              <img title="close" src="assets/svg/x.svg">
-            </a>
-          </div>
+          <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+            close
+          </button>
         </div>
       </div>
     </form>

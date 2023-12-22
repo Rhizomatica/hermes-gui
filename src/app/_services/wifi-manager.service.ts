@@ -42,6 +42,35 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
+  toggleMACFilter(values): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/wifi/mac/filter`;
+    return this.http.post(url, values).pipe(
+      map((res: any) => {
+        this.text = res;
+        return this.text;
+      }),
+      catchError(this.handleError));
+  }
+
+  updateMACList(values): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/wifi/mac/address`;
+    return this.http.post(url, values).pipe(
+      map((res: any) => {
+        this.text = res;
+        return this.text;
+      }),
+      catchError(this.handleError));
+  }
+
+  public removeMACAddress(address) {
+    const url = `${GlobalConstants.apiURL}/wifi/mac/address/${address}`;
+    return this.http.delete(url).pipe(
+      map((res: any) => {
+        return this.text;
+      }),
+      catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }
