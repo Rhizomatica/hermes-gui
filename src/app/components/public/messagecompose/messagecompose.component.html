@@ -68,7 +68,7 @@
             no file selected
           </p> -->
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeError">
+          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeErrorMessage">
             File's too big, max size is <b>20.48MB</b>
           </p>
           
