@@ -88,10 +88,10 @@
       </div>
     </div>
     <div class="row m-t-25">
-      <span i18n="@@addnewmacaddress">Add new MAC address</span>
       <form #fNewMACAddress="ngForm">
         <div class="flexible">
           <div class="half-row">
+            <span i18n="@@addnewmacaddress">Add new MAC address</span>
             <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
               [disabled]="!macFilter" />
             <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
@@ -121,9 +121,23 @@
           </p>
         </div>
         <div class="row m-t-10" *ngFor="let item of macList">
-          <span class="click" (click)="removeMACAddress(item)" *ngIf="item !== ''" title="remove">
+          <span class="click" (click)="confirmRemoveMACAddress(item)" *ngIf="item !== ''" title="remove">
             <img class="inlineicon" src="assets/svg/times.svg">{{item}}
           </span>
+        </div>
+        <div class="overall alert" *ngIf="removeMACAddressConfirmation">
+          <div class="cv">
+            <span i18n="@@confirmremovemacaddress">Are you sure that you want to remove the MAC address -
+              {{macAddressToDelete}} ?</span>
+            <div class="row m-t-10">
+              <button (click)="confirmRemoveMACAddress()" i18n="@@closeerrorbutton">
+                close
+              </button>
+              <button (click)="removeMACAddress()" class="m-l-10" i18n="@@deltemacaddressbutton">
+                delete
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
