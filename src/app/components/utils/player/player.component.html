@@ -1,5 +1,5 @@
 <div class="player">
-  <div class="row m-t-50">
+  <div class="row m-t-25">
     <div *ngIf="type == 'audio'">
       <audio controls autoplay="{{playing}}" class="messageAudio" #audioplayer>
         <source src="{{url}}/file/{{fileId}}{{secured ? password : ''}}" canplaythrough="loadingAudio()"
