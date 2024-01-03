@@ -48,6 +48,7 @@ export class TransmissionListComponent implements OnInit {
   }
 
   cancelTransmission(): void {
+    this.deleteMessage = false
     this.loading = true
     this.uucpService.cancelTransmission(this.jobToDelete.uuidhost, this.jobToDelete.uuiduucp).subscribe(
       (res: any) => {
