@@ -16,7 +16,7 @@
     <div>
       <ng-container *ngIf="!isEditing">
         <div id="userlist" class="multiplist2 users m-t-10">
-          <input id="searchbox1" [(ngModel)]="searchUser"  placeholder="search" i18n-placeholder />
+          <input id="searchbox1" [(ngModel)]="searchUser" placeholder="search" i18n-placeholder />
           <div class="userlist" *ngFor="let user of users | filter:searchUser;" (click)="onSelect(user)">
             <div class="adm">
               <span *ngIf="user.admin" class="alert">
@@ -42,22 +42,23 @@
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
         <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder
-          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)" maxlength="100"/>
+          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"
+          maxlength="100" />
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
         name is required
       </div>
       <label>
         <span i18n="@@phonenumber">Phone number</span>
-        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number" maxlength="25"/>
+        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number"
+          maxlength="25" />
       </label>
       <div class="selector"></div>
       <hr>
       <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
-      <label *ngIf="showPassword">
-        <span i18n="@@passwordlabeluser">Password</span>
-        <br />
+      <div *ngIf="showPassword">
         <label for="passwd">
+          <span i18n="@@passwordlabeluser">Password</span>
           <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password"
             minlength="6" (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderpassword"
             i18n-placeholder placeholder="password" />
@@ -74,7 +75,7 @@
         <div [hidden]=!passMin class="error" i18n="@@strongpassword">
           password must have at least 6 characters
         </div>
-      </label>
+      </div>
       <label class="m-t-25" *ngIf="isadmin">
         <span i18n="@@isadmin">Is admin</span>
         <div class="switch">
@@ -109,8 +110,7 @@
           <span i18n="@@areyousureupdate">Are you sure you want to update</span> {{selectedUser.name}}?<br />
           <span i18n="@@thisactioncannot">This action cannot be undone!</span>
           <br />
-          <button type="submit" (click)="updateAlert()" [disabled]="f.invalid"
-            i18n="@@cancel">cancel</button>
+          <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
           <button class="m-l-10" type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
             i18n="@@update">update</button>
         </div>
