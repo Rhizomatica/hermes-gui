@@ -89,28 +89,26 @@
     </div>
     <div class="row m-t-25">
       <span i18n="@@addnewmacaddress">Add new MAC address</span>
-      <div class="row">
-        <form #fNewMACAddress="ngForm">
-          <div class="flexible">
-            <div class="half-row">
-              <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
-                [disabled]="!macFilter" />
-              <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
-                [disabled]="!macFilter">add</button>
-            </div>
+      <form #fNewMACAddress="ngForm">
+        <div class="flexible">
+          <div class="half-row">
+            <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
+              [disabled]="!macFilter" />
+            <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
+              [disabled]="!macFilter">add</button>
           </div>
-        </form>
-        <div class="overall alert" *ngIf="msgMACListPatternError">
-          <div class="cv">
-            <span i18n="@@patternmacaddress">
-              MAC address pattern wrong, please type it again.
-              Accepted characters: 0 - 9, A - F, :, -
-            </span>
-            <div class="row m-t-10">
-              <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
-                close
-              </button>
-            </div>
+        </div>
+      </form>
+      <div class="overall alert" *ngIf="msgMACListPatternError">
+        <div class="cv">
+          <span i18n="@@patternmacaddress">
+            MAC address pattern wrong, please type it again.
+            Accepted characters: 0 - 9, A - F, :, -
+          </span>
+          <div class="row m-t-10">
+            <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
+              close
+            </button>
           </div>
         </div>
       </div>
