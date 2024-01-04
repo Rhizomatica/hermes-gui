@@ -47,7 +47,6 @@ export class MessagecomposeComponent implements OnInit {
   public errormsg: any;
   public fileid: any;
   public fileSelected = false;
-  public sending = false;
   public nodename: any;
   public maxSize: any = 20480000; //20.48MB
   public isGateway: boolean = GlobalConstants.gateway
@@ -245,7 +244,6 @@ export class MessagecomposeComponent implements OnInit {
 
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
-    this.sending = true;
     this.loading = true;
 
     if (!this.isGateway) {
@@ -270,25 +268,21 @@ export class MessagecomposeComponent implements OnInit {
           f.value.fileid = value['id'];
           f.value.mimetype = value['mimetype'];
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
-          this.sending = false;
           const res = this.sendMessageContinue(f);
         },
         (err) => {
           this.errormsg = err;
           this.errorAlert = true;
-          this.sending = false;
           this.loading = false;
         }
       );
     }
     else {
       const res = this.sendMessageContinue(f);
-      this.sending = false;
     }
   }
 
   sendMessageContinue(f: NgForm) {
-    this.sending = false;
     this.messageService.sendMessage(f.value, this.nodename).subscribe(
       (res: any) => {
         this.res = res;

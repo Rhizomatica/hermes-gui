@@ -83,15 +83,7 @@
           <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
             file
           </button>
-
           <hint [showHint]="false" [hint]="'attachfile'"></hint>
-          
-          <div *ngIf="sending">
-            <div class="blobber">
-              <div class="tx" i18n="@@uploadingfile">uploading file...</div>
-              <div class="square"></div>
-            </div>
-          </div>
         </ng-container>
         <div *ngIf="message && message.id && message.file">
           <br>
