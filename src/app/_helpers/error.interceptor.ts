@@ -40,7 +40,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     public englishError(errorStatus) {
-            
+
         switch (errorStatus) {
             case 500:
                 return 'Internal Server error, please try again. Contact support if the problem persists.'
