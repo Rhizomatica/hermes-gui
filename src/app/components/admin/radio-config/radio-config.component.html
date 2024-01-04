@@ -180,10 +180,11 @@
         </form>
         <form #fgps="ngForm" class="formdata field" *ngIf="isAdmin">
           <span i18n="@@radioprotection">Protection ({{radio.protection ? 'ON' : 'OFF'}})</span>
-          <button (click)="resetProtection()" i18n="@resetprotection1" class="m-l-10">reset</button>
           <div class="float-right">
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
+          <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1" class="m-l-10 float-right">reset</button>
+
 
         </form>
         <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
