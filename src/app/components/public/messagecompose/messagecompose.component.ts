@@ -35,8 +35,8 @@ export class MessagecomposeComponent implements OnInit {
   public serverConfig: any;
   public allowfile: any;
   public allowhmp;
-  public allowCompose:boolean = false;
-  public allowUpload:boolean = false;
+  public allowCompose: boolean = false;
+  public allowUpload: boolean = false;
   public currentUser: User;
   public isAdmin = false;
   public passunMatch = false;
@@ -48,7 +48,8 @@ export class MessagecomposeComponent implements OnInit {
   public fileid: any;
   public fileSelected = false;
   public nodename: any;
-  public maxSize: any = 20480000; //20.48MB
+  public maxSize: any = 20480; //20.48MB
+  public maxSizeText: string = '20.48 kB'
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
   public camPicture: any;
@@ -122,12 +123,12 @@ export class MessagecomposeComponent implements OnInit {
   verifyFileUploadPermission() {
     switch (this.allowfile) {
       case 'users':
-        if (this.currentUser) 
+        if (this.currentUser)
           this.allowUpload = true;
         break;
       case 'admin':
-          if (this.isAdmin) 
-            this.allowUpload = true;
+        if (this.isAdmin)
+          this.allowUpload = true;
         break;
       case 'all':
         this.allowUpload = true;
@@ -218,6 +219,9 @@ export class MessagecomposeComponent implements OnInit {
     if (file) {
       this.file = file;
 
+
+      this.typeSizeRule(file.type)
+
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
@@ -232,6 +236,21 @@ export class MessagecomposeComponent implements OnInit {
       return file;
 
     }
+  }
+
+  typeSizeRule(fileType) {
+    fileType = this.utils.getFileType(fileType)
+
+    //Common files 20.48 KB, image or audio  files 31.45 MB (due to compression)
+    if (fileType == 'audio' || fileType == 'image') {
+      this.maxSize = 31457280
+      this.maxSizeText = '31.45 MB'
+      return
+    }
+
+    //default size (other types)
+    this.maxSize = 20480
+    this.maxSizeText = '20.48 kB'
   }
 
   removeFile() {
