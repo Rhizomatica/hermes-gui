@@ -58,16 +58,18 @@
           <div class="row">
             <span *ngIf="job.type!=='HMP'">
               <img class="inlineiconj" src="assets/svg/envelope.svg">
-              E-mail
+              E-mail: {{job.emails}}
             </span>
-            <span *ngIf="job.type!=='HMP'">
-              <img class="inlineiconj" src="assets/svg/comment.svg" *ngIf="job.type=='HMP'">
-              Message
+            <span *ngIf="job.type=='HMP'">
+              <img class="inlineiconj" src="assets/svg/comment.svg">
+              Message: {{job.uuiduucp}}
             </span>
-            <span *ngIf="job.type!=='HMP'">{{job.emails}}</span>
-            <span *ngIf="job.type=='HMP'">{{job.uuiduucp}}</span>
-            <span *ngIf="job.messageId">{{job.messageId}} - {{job.messageName}}</span>
-            <span *ngIf="job.messageFile">{{job.messageFile}} - {{job.messageType}}</span>
+          </div>
+          <div class="row" *ngIf="job.messageId">
+            <span i18n="@@messagetitle">Message title: </span>{{job.messageName}}
+          </div>
+          <div class="row" *ngIf="job.messageFile">
+            <span i18n="@@messagefile">File: </span> {{job.messageMimeType}} / {{job.messageFile}}
           </div>
           <div class="row">
             <span i18n="@@destinationt"> Destination:</span>{{job.uuidhost}}
