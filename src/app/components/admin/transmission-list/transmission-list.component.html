@@ -68,7 +68,7 @@
           <div class="row" *ngIf="job.messageId">
             <span i18n="@@messagetitle">Title: </span>{{job.messageName}}
           </div>
-          <div class="row" *ngIf="job.messageFile">
+          <div class="row" *ngIf="job.messageFile && job.messageSecure == 0">
             <span i18n="@@messagefile">File: </span> {{job.messageMimeType}} / {{job.messageFile}}
           </div>
           <div class="row">
