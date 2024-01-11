@@ -189,12 +189,7 @@ export class RadioConfigComponent implements OnInit {
     this.loading = true
 
     if (f.value.refthreshold) {
-
-      var refthresholdString = f.value.refthreshold.toString()
-
-      if (refthresholdString.includes("."))
-        f.value.refthreshold = f.value.refthreshold * 10
-
+      f.value.refthreshold = f.value.refthreshold * 10
     }
 
     this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
