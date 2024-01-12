@@ -119,6 +119,7 @@ export class SentMessagesComponent implements OnInit {
     }
   }
 
+  //not using
   transmitNow(): void {
     this.uucpService.callSystems().subscribe(
       (res: any) => {
