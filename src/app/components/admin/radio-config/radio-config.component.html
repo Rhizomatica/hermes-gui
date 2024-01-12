@@ -39,21 +39,11 @@
               SWR
               <br />
               <span>
-                <!-- {{radio.swr | slice:0:9}} -->
                 {{radio.swr}}
               </span>
             </h3>
           </div>
         </div>
-        <!-- <div class="card">
-          <div class="row">
-            <h3>
-              <span i18n="@reflected">REF </span>
-              <br />
-              ({{radio.ref_watts ? radio.ref_watts : 0}} W)
-            </h3>
-          </div>
-        </div> -->
         <div class="card">
           <div class="row">
             <h3>
@@ -86,7 +76,7 @@
       </div>
       <div class="radio" *ngIf="radio && radio.freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}} kHz
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -183,8 +173,8 @@
           <div class="float-right">
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
-          <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1" class="m-l-10 float-right">reset</button>
-
+          <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1"
+            class="m-l-10 float-right">reset</button>
 
         </form>
         <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
@@ -195,15 +185,27 @@
             <hint [showHint]="false" [hint]="'reset'" class="float-right"></hint>
           </div>
         </form>
+
+        <form #fanalogfreq="ngForm" class="formdata field">
+          <span i18n="@@changeanalogfrequency">Radio analog frequency: {{radio.freq}} kHz
+            <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
+          </span>
+          <div class="flexible">
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq"
+              [(ngModel)]="analogfreq" value={{analogfreq}}>
+            <button class="midbt" (click)="changeAnalogFrequency()" [disabled]="fanalogfreq.invalid"
+              i18n="@@changeanalogfreqr0">
+              change analog frequency
+            </button>
+          </div>
+        </form>
+
         <form #freboot="ngForm" class="formdata field" *ngIf="isAdmin">
           <div class="m-l-10">
             <button class="" (click)="confirmReboot()">
               <span i18n="@@reboot">reboot</span>
             </button>
             <hint [showHint]="false" [hint]="'reboot'" class="float-right"></hint>
-            <!-- <button class="m-l-10" (click)="confirmShutDown()">
-              <span i18n="@@shutdown">shut down</span><br />
-            </button> -->
           </div>
         </form>
 
@@ -218,21 +220,6 @@
             </p>
           </div>
         </form>
-
-        <hr />
-        <!-- <form #fanalogfreq="ngForm" class="formdata field">
-          <span i18n="@@changeanalogfrequency">Radio analog frequency: {{radio.freq}} kHz
-            <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
-          </span>
-          <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq"
-              [(ngModel)]="analogfreq" value={{analogfreq}}>
-            <button class="midbt" (click)="changeAnalogFrequency()" [disabled]="fanalogfreq.invalid"
-              i18n="@@changeanalogfreqr0">
-              change analog frequency
-            </button>
-          </div>
-        </form> -->
       </div>
 
       <!-- ALERTS -->
@@ -268,18 +255,7 @@
           </button>
         </div>
       </div>
-      <!-- <div class="overall alert" [hidden]="shuttingDown==false">
-        <div class="cv">
-          <span i18n="@@confirmshutdown"> Are you sure you want to shut down the Hermes system?
-            <br />
-            This will stop messages transmission and reception.
-            <br />
-          </span>
-          <button (click)="cancelShutDown()" i18n="@@cancels1">cancel</button> <button class="m-l-10"
-            (click)="shutDown()" i18n="@@shutdown1">shut
-            down</button>
-        </div>
-      </div> -->
+
       <div class="overall alert" [hidden]="restarting==false">
         <div class="cv">
           <span i18n="@@confirmreboot"> Are you sure you want to reboot the Hermes system?

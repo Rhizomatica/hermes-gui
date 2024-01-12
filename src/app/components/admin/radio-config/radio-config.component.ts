@@ -364,7 +364,7 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeAnalogFrequency(f: NgForm) {
+  changeAnalogFrequency(f: NgForm) { //TODO - different function?
     this.loading = true
     const realfreq = f.value.analogFreq * 1000;
     this.confirmSet = false
