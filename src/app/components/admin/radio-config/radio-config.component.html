@@ -163,6 +163,19 @@
             </div>
           </div>
         </form>
+        <form class="formdata field" *ngIf="isAdmin">
+          <span i18n="@@radioprofilelabel">Radio profile</span>
+          <div class="float-right flex-right">
+            <span i18n="@@digitallabel">Digital</span>
+            <div class="switch">
+              <input type="checkbox" name="mode" [checked]="radio.profile">
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
+                [checked]="toggleProfile"></span>
+            </div>
+            <span i18n="@@analogLabel">Analg</span>
+            <hint [showHint]="false" [hint]="'mode'"></hint>
+          </div>
+        </form>
         <form #fgps="ngForm" class="formdata field" *ngIf="hasGps && bitx !== 'S' && isAdmin">
           <span i18n="@@labelgpscalibration">GPS Calibration</span>
           <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"

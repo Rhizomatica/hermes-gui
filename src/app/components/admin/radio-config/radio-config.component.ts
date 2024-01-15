@@ -56,6 +56,7 @@ export class RadioConfigComponent implements OnInit {
   bitx = GlobalConstants.bitx
   sosEmergency: boolean = false
   confirmChangeProtection: boolean = false;
+  toggleProfile: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -376,6 +377,18 @@ export class RadioConfigComponent implements OnInit {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
+      }
+    );
+  }
+
+  changeProfile(event) {
+    this.toggleProfile = this.radio.profile === 1 ? 2 : 1;
+    this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
+      (res: any) => {
+
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
       }
     );
   }
