@@ -49,10 +49,9 @@ export class SharedService {
   });
 
   setRadioObjShared(data) {
-    //TODO - Dual frequency
-    // this.observeOperatingProfileMode(data)
     this.mountRadioObj(data)
     this.setSharedObj()
+    this.observeOperatingProfileMode()
   }
 
   setSharedObj() {
@@ -108,11 +107,9 @@ export class SharedService {
     this.radioObj.next(this.radioObj.value)
   }
 
-  observeOperatingProfileMode(data) {
-    if (data.profile != null && data.profile !== this.storedRadioObj.profile) {
-      if (data.profile == 1) { //analog
-        this.router.navigate(['/voice']);
-      }
+  observeOperatingProfileMode() {
+    if (this.radioObj.value.profile != null && this.radioObj.value.profile == 1) { //analog
+      this.router.navigate(['/voice']); //navigate to voice (PTT hardware button)
     }
   }
 }
