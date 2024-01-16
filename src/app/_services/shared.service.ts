@@ -3,6 +3,7 @@ import { BehaviorSubject, empty } from 'rxjs';
 import { Radio } from '../interfaces/radio';
 import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
+import { GlobalConstants } from '../global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -113,7 +114,7 @@ export class SharedService {
   }
 
   observeOperatingProfileMode() {
-    if (this.radioObj.value.profile_active_idx != null && this.radioObj.value.profile_active_idx == 0) { //analog or fonia
+    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value.profile_active_idx != null && this.radioObj.value.profile_active_idx == 0) { //analog or fonia
       this.router.navigate(['/voice']); //navigate to voice (PTT hardware button)
     }
   }
