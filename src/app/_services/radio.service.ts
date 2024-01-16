@@ -29,8 +29,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioMode(mode: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/mode/${mode}`;
+  public setRadioMode(mode: string, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/mode/${mode}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

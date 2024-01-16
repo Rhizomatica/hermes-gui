@@ -129,12 +129,12 @@
           </div>
         </form>
         <form class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@changeradiomode">Mode</span>
+          <span i18n="@@changeradiomode">Digital Mode</span>
           <div class="float-right flex-right">
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{radio.mode}}"
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.mode}}"
                 [checked]="modeSwitch"></span>
             </div>
             <span>LSB</span>
@@ -200,7 +200,7 @@
         </form>
 
         <form #fanalogfreq="ngForm" class="formdata field">
-          <span i18n="@@changeanalogfrequency">Radio analog frequency: {{radio.freq}} kHz
+          <span i18n="@@changeanalogfrequency">Phony frequency: {{radio.freq}} kHz
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -210,6 +210,20 @@
               i18n="@@changeanalogfreqr0">
               change analog frequency
             </button>
+          </div>
+        </form>
+
+        <form class="formdata field" *ngIf="isAdmin">
+          <span i18n="@@phonymode">Phony Mode</span>
+          <div class="float-right flex-right">
+            <span>USB</span>
+            <div class="switch">
+              <input type="checkbox" name="mode" [checked]="phonyModeSwitch">
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{radio.mode}}"
+                [checked]="phonyModeSwitch"></span>
+            </div>
+            <span>LSB</span>
+            <hint [showHint]="false" [hint]="'mode'"></hint>
           </div>
         </form>
 

@@ -8,7 +8,6 @@ import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
-import { type } from 'os';
 
 @Component({
   selector: 'app-radio-config',
@@ -33,30 +32,31 @@ export class RadioConfigComponent implements OnInit {
   loading = true
   modeSwitch: boolean
   gpsMessage: any
-  realValue: number;
-  freqmin = 500;
-  freqmax = 30000;
-  min = 500000;
-  max = 300000000;
-  shuttingDown = false;
-  restarting = false;
-  shuttingDownNow = false;
-  rebootingDownNow = false;
+  realValue: number
+  freqmin = 500
+  freqmax = 30000
+  min = 500000
+  max = 300000000
+  shuttingDown = false
+  restarting = false
+  shuttingDownNow = false
+  rebootingDownNow = false
   alertBrowserXP: Boolean = false
-  loginForm = false;
+  loginForm = false
   refthreshold: any
   power: any
-  realfreq: any;
-  led: any;
-  ptt: any;
-  frek: number;
+  realfreq: any
+  led: any
+  ptt: any
+  frek: number
   serial: string
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
   sosEmergency: boolean = false
-  confirmChangeProtection: boolean = false;
+  confirmChangeProtection: boolean = false
   toggleProfile: number = 1
+  phonyModeSwitch: boolean
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -158,9 +158,17 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeMode(event) {
-    this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
+  changeMode(event, profile: number) {
+
+    var mode = null
+
+    if (profile == 0)
+      mode = this.phonyModeSwitch === true ? false : true;
+
+    if (profile == 1)
+      mode = this.modeSwitch === true ? false : true;
+
+    this.radioService.setRadioMode(mode ? 'LSB' : 'USB', profile).subscribe(
       (res: any) => {
 
       }, (err) => {
@@ -367,7 +375,8 @@ export class RadioConfigComponent implements OnInit {
   ngOnInit(): void {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
-    this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
+    this.modeSwitch = this.radio.digital_mode == 'LSB' ? true : false
+    this.phonyModeSwitch = this.radio.analog_mode == 'LSB' ? true : false
     this.frek = parseFloat(this.radio.freq) * 1000
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
