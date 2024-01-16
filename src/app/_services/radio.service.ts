@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { AlertService } from '../_services/alert.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { GlobalConstants } from '../global-constants';
-import { interval } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class RadioService {
   login = false;
   serverReturn: any;
@@ -20,14 +18,10 @@ export class RadioService {
   error = Error;
 
   constructor(
-    private http: HttpClient,
-    private alertService: AlertService
-  ) { }
+    private http: HttpClient) { }
 
-
-
-  public setRadioFreq(freq: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/freq/${freq}`;
+  public setRadioFreq(freq: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/freq/${freq}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -279,7 +273,7 @@ export class RadioService {
       }),
       catchError(this.handleError));
   }
-  
+
 
   private handleError(error: HttpErrorResponse) {
     return throwError(error);

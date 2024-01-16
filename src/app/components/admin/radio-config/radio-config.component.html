@@ -100,7 +100,7 @@
               </span>
               <br />
               <button class="m-t-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-              <button class="m-l-10" (click)="changeFrequency(ffreq)" i18n="@@changer">change</button>
+              <button class="m-l-10" (click)="changeFrequency(ffreq, 1)" i18n="@@changer">change</button>
             </div>
           </div>
         </form>
@@ -206,7 +206,7 @@
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq"
               [(ngModel)]="analogfreq" value={{analogfreq}}>
-            <button class="midbt" (click)="changeAnalogFrequency()" [disabled]="fanalogfreq.invalid"
+            <button class="midbt" (click)="changeFrequency($fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
               i18n="@@changeanalogfreqr0">
               change analog frequency
             </button>

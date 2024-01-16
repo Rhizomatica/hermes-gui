@@ -141,11 +141,12 @@ export class RadioConfigComponent implements OnInit {
     this.alterFreq = this.alterFreq ? false : true
   }
 
-  changeFrequency(f: NgForm) {
+  changeFrequency(f: NgForm, radioProfile: number) {
     this.loading = true
     const realfreq = f.value.frek * 1000;
     this.confirmSet = false
-    this.radioService.setRadioFreq(realfreq).subscribe(
+
+    this.radioService.setRadioFreq(realfreq, radioProfile).subscribe(
       (res: any) => {
         this.radio.freq = this.utils.formatFrequency(res);
         this.loading = false
@@ -293,15 +294,6 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  // confirmShutDown() {
-  //   this.shuttingDown = true;
-  // }
-
-  // cancelShutDown() {
-  //   this.shuttingDown = false;
-  //   this.shuttingDownNow = false;
-  // }
-
   confirmReboot() {
     this.restarting = true;
   }
@@ -319,11 +311,6 @@ export class RadioConfigComponent implements OnInit {
     this.restarting = false;
     this.shuttingDownNow = false;
   }
-
-  // shutDown() {
-  //   this.shuttingDownNow = true;
-  //   this.apiService.sysShutdown();
-  // }
 
   reboot() {
     this.rebootingDownNow = true;
@@ -361,22 +348,6 @@ export class RadioConfigComponent implements OnInit {
       (err) => {
         this.error = err;
         this.radioError = true;
-      }
-    );
-  }
-
-  changeAnalogFrequency(f: NgForm) { //TODO - different function?
-    this.loading = true
-    const realfreq = f.value.analogFreq * 1000;
-    this.confirmSet = false
-    this.radioService.setRadioFreq(realfreq).subscribe(
-      (res: any) => {
-        this.radio.freq = this.utils.formatFrequency(res);
-        this.loading = false
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.loading = false
       }
     );
   }
