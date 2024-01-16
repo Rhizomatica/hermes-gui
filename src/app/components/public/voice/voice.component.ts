@@ -21,7 +21,6 @@ export class VoiceComponent implements OnInit {
   loading: boolean = false
   error: string
   errorAlert: boolean = false
-  mode: string
   radio: Radio
   step: number = null
   modeSwitch: boolean
@@ -69,10 +68,10 @@ export class VoiceComponent implements OnInit {
   }
 
   splitFrequency() {
-    if (!this.radio || !this.radio.freq || this.radio.freq == 0)
+    if (!this.radio || !this.radio.analog_frequency || this.radio.analog_frequency == 0)
       return
 
-    this.frequencyAux = this.radio.freq.toString()
+    this.frequencyAux = this.radio.analog_frequency.toString()
     this.frequencyAux = this.frequencyAux.replace(/,/g, "")
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
 
@@ -89,7 +88,7 @@ export class VoiceComponent implements OnInit {
     this.loading = true
     this.radioService.setRadioFreq((f.value.frequency * 1000)).subscribe(
       (res: any) => {
-        this.radio.freq = this.utils.formatFrequency(res);
+        this.radio.analog_frequency = this.utils.formatFrequency(res);
         this.loading = false
         this.splitFrequency()
       }, (err) => {
@@ -117,7 +116,7 @@ export class VoiceComponent implements OnInit {
 
         this.loading = false
 
-        if (res === null && this.radio.freq) {
+        if (res === null && this.radio.analog_frequency) {
           this.setInitialStep()
           return
         }
@@ -245,7 +244,7 @@ export class VoiceComponent implements OnInit {
     this.sharedService.radioObj.subscribe(message => {
 
       this.radio = this.sharedService.radioObj.value
-      this.modeSwitch = this.radio.digital_mode == 'LSB' ? true : false
+      this.modeSwitch = this.radio.analog_mode == 'LSB' ? true : false
       this.splitFrequency()
     })
 
