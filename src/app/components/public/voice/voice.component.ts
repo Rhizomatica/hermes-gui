@@ -219,9 +219,12 @@ export class VoiceComponent implements OnInit {
     );
   }
 
-  changeOperateModeProfile(){
-    //Profile id = 2 - analog
-    this.radioService.changeOperateModeProfile(2).subscribe(
+  changeOperateModeProfile() {
+    //Profile id = 0 - analog / fonia
+    if (this.radio.profile_active_idx == 0)
+      return
+    
+    this.radioService.changeOperateModeProfile(0).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.profile_active_idx = res.profile;
@@ -237,8 +240,7 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //TODO - Dual frequency
-    // this.changeOperateModeProfile()
+    this.changeOperateModeProfile()
 
     this.sharedService.radioObj.subscribe(message => {
 
