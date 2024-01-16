@@ -2,8 +2,8 @@ export interface Radio {
   freq: number,
   digital_frequency: number,
   analog_frequency: number,
-  digital_mode: string,
-  analog_mode: string,
+  analog_mode: string, //0 - fonia
+  digital_mode: string, //1
   protection: boolean,
   tx: boolean,
   rx: boolean,
