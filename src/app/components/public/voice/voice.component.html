@@ -83,7 +83,7 @@
         <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.freq">
           <span>USB</span>
           <div class="switch">
-            <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.mode}}" [checked]="modeSwitch">
+            <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.digital_mode}}" [checked]="modeSwitch">
             <span class="slider round-uc" (click)="changeMode($event)"></span>
           </div>
           <span>LSB</span>

@@ -224,7 +224,7 @@ export class VoiceComponent implements OnInit {
     this.radioService.changeOperateModeProfile(2).subscribe(
       (res: any) => {
         if (res === 1) {
-          this.radio.profile = res.profile;
+          this.radio.profile_active_idx = res.profile;
         }
       },
       (err) => {
@@ -243,7 +243,7 @@ export class VoiceComponent implements OnInit {
     this.sharedService.radioObj.subscribe(message => {
 
       this.radio = this.sharedService.radioObj.value
-      this.modeSwitch = this.radio.mode == 'LSB' ? true : false
+      this.modeSwitch = this.radio.digital_mode == 'LSB' ? true : false
       this.splitFrequency()
     })
 

@@ -130,7 +130,7 @@ export class WebsocketService {
     }
 
     changeOperateModeProfile() {
-        if (this.radioObj && this.radioObj.profile == 2) {
+        if (this.radioObj && this.radioObj.profile_active_idx == 1) {
             //Profile id = 1 - digital
             this.radioService.changeOperateModeProfile(1).subscribe(
                 (res: any) => {

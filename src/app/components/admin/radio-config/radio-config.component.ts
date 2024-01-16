@@ -382,7 +382,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeProfile(event) {
-    this.toggleProfile = this.radio.profile === 1 ? 2 : 1;
+    this.toggleProfile = this.radio.profile_active_idx === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
       (res: any) => {
 
