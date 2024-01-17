@@ -23,13 +23,23 @@
         </h1>
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
-        <span class="nav-frequency" *ngIf="radio && radio.profile_active_idx == 0">
-          {{radio.analog_mode}} {{radio.analog_frequency}} kHz
-        </span>
-        <span class="nav-frequency" *ngIf="radio && radio.profile_active_idx == 1">
-          {{radio.digital_mode}} {{radio.digital_frequency}} kHz
-        </span>
-        <span class="nav-operation-mode" *ngIf="radio">{{radio.profile_active_idx == 0 ? 'analog' : 'digital'}}</span>
+        <div *ngIf="radio && radio.profile_active_idx == 0">
+          <span class="nav-frequency" >
+            {{radio.analog_mode}} {{radio.analog_frequency}} kHz
+          </span>
+          <span class="nav-operation-mode">
+            analog
+          </span>
+        </div> 
+
+        <div *ngIf="radio && radio.profile_active_idx == 1">
+          <span class="nav-frequency" >
+            {{radio.digital_mode}} {{radio.digital_frequency}} kHz
+          </span>
+          <span class="nav-operation-mode">
+            digital
+          </span>
+        </div>        
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
