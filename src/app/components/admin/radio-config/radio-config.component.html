@@ -26,7 +26,7 @@
             <h3>
               <span i18n="@currentradiofreq">Data frequency</span>
               <br />
-              <span> {{radio.freq}} </span>
+              <span> {{radio.digital_frequency}} </span>
               kHz
               <br />
               <span> {{radio.digital_mode}} </span>
@@ -76,7 +76,7 @@
       </div>
       <div class="radio" *ngIf="radio && radio.freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.freq}}kHz
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.digital_frequency}}kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -200,7 +200,7 @@
         </form>
 
         <form #fanalogfreq="ngForm" class="formdata field">
-          <span i18n="@@changeanalogfrequency">Phony frequency: {{radio.freq}} kHz
+          <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.analog_frequency}} kHz
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
