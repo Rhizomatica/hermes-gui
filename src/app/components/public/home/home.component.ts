@@ -90,13 +90,6 @@ export class homeComponent implements OnInit {
     this.radio.freq = this.radio.freq == 0 || this.radio.freq == null ? 0 : this.radio.freq / 1000
   }
 
-  // ngOnChanges(change) {
-  //   change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
-  //   this.radio = change.radioObj.value
-  //   this.formatFrequency()
-  //   this.loading = false
-  // }
-
   ngOnInit(): void {
     this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light';
     this.radio = this.sharedService.radioObj.value
