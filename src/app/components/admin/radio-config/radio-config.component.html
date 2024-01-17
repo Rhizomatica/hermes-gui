@@ -168,12 +168,12 @@
           <div class="float-right flex-right">
             <span i18n="@@digitallabel">Digital</span>
             <div class="switch">
-              <input type="checkbox" name="mode" [checked]="radio.profile">
+              <input type="checkbox" name="profile" [checked]="radio.profile">
               <span class="slider round-uc" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
                 [checked]="toggleProfile"></span>
             </div>
             <span i18n="@@analogLabel">Analg</span>
-            <hint [showHint]="false" [hint]="'mode'"></hint>
+            <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
         </form>
         <form #fgps="ngForm" class="formdata field" *ngIf="hasGps && bitx !== 'S' && isAdmin">
@@ -218,7 +218,7 @@
           <div class="float-right flex-right">
             <span>USB</span>
             <div class="switch">
-              <input type="checkbox" name="mode" [checked]="phonyModeSwitch">
+              <input type="checkbox" name="phonymode" [checked]="phonyModeSwitch">
               <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{radio.mode}}"
                 [checked]="phonyModeSwitch"></span>
             </div>
