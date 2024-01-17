@@ -47,7 +47,7 @@ export class VoiceComponent implements OnInit {
 
   changeMode(event) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', 0).subscribe(
       (res: any) => {
 
       }, (err) => {
@@ -86,7 +86,7 @@ export class VoiceComponent implements OnInit {
 
   changeFrequency(f: NgForm) {
     this.loading = true
-    this.radioService.setRadioFreq((f.value.frequency * 1000)).subscribe(
+    this.radioService.setRadioFreq((f.value.frequency * 1000), 0).subscribe(
       (res: any) => {
         this.radio.analog_frequency = this.utils.formatFrequency(res);
         this.loading = false
