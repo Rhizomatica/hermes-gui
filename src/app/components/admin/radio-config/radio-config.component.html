@@ -80,8 +80,8 @@
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="frek"
-              value={{frek}}>
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
+              value={{p1_frek}}>
             <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
               change frequency
             </button>
@@ -195,9 +195,9 @@
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="analogfreq"
-              [(ngModel)]="analogfreq" value={{analogfreq}}>
-            <button class="midbt" (click)="changeFrequency($fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek"
+              [(ngModel)]="p0_frek" value={{p0_frek}}>
+            <button class="midbt" (click)="changeFrequency(fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
               i18n="@@changeanalogfreqr0">
               change analog frequency
             </button>

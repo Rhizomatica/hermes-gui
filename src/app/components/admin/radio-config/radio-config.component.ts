@@ -49,7 +49,8 @@ export class RadioConfigComponent implements OnInit {
   realfreq: any
   led: any
   ptt: any
-  frek: number
+  p0_frek: number
+  p1_frek: number
   serial: string
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
@@ -383,7 +384,8 @@ export class RadioConfigComponent implements OnInit {
     this.radio = this.sharedService.radioObj.value
     this.phonyModeSwitch = this.radio.p0_mode == 'LSB' ? true : false
     this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
-    this.frek = parseFloat(this.radio.p1_freq) * 1000
+    this.p0_frek = parseFloat(this.radio.p0_freq) * 1000
+    this.p1_frek = parseFloat(this.radio.p1_freq) * 1000
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }
