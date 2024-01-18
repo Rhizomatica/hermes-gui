@@ -96,9 +96,9 @@ export class SharedService {
 
     this.radioObj.value.connection = false
     this.radioObj.value.p0_freq = utils.formatFrequency(1085500)
-    this.radioObj.value.p1_freq = utils.formatFrequency(1085500)
+    this.radioObj.value.p1_freq = utils.formatFrequency(1075000)
     this.radioObj.value.p0_mode = 'USB'
-    this.radioObj.value.p1_mode = 'USB'
+    this.radioObj.value.p1_mode = 'LSB'
     this.radioObj.value.tx = false
     this.radioObj.value.rx = true
     this.radioObj.value.fwd_watts = '1.0'

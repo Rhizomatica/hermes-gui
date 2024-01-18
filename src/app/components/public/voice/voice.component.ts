@@ -222,7 +222,7 @@ export class VoiceComponent implements OnInit {
     //Profile id = 0 - analog / fonia
     if (this.radio.profile == 0)
       return
-    
+
     this.radioService.changeOperateModeProfile(0).subscribe(
       (res: any) => {
         if (res === 1) {
@@ -239,11 +239,9 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.changeOperateModeProfile()
-
     this.sharedService.radioObj.subscribe(message => {
-
       this.radio = this.sharedService.radioObj.value
+      this.changeOperateModeProfile()
       this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
       this.splitFrequency()
     })
