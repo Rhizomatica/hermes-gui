@@ -68,10 +68,10 @@ export class VoiceComponent implements OnInit {
   }
 
   splitFrequency() {
-    if (!this.radio || !this.radio.analog_frequency || this.radio.analog_frequency == 0)
+    if (!this.radio || !this.radio.p0_freq || this.radio.p0_freq == 0)
       return
 
-    this.frequencyAux = this.radio.analog_frequency.toString()
+    this.frequencyAux = this.radio.p0_freq.toString()
     this.frequencyAux = this.frequencyAux.replace(/,/g, "")
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
 
@@ -88,7 +88,7 @@ export class VoiceComponent implements OnInit {
     this.loading = true
     this.radioService.setRadioFreq((f.value.frequency * 1000), 0).subscribe(
       (res: any) => {
-        this.radio.analog_frequency = this.utils.formatFrequency(res);
+        this.radio.p0_freq = this.utils.formatFrequency(res);
         this.loading = false
         this.splitFrequency()
       }, (err) => {
@@ -116,7 +116,7 @@ export class VoiceComponent implements OnInit {
 
         this.loading = false
 
-        if (res === null && this.radio.analog_frequency) {
+        if (res === null && this.radio.p0_freq) {
           this.setInitialStep()
           return
         }
@@ -220,13 +220,13 @@ export class VoiceComponent implements OnInit {
 
   changeOperateModeProfile() {
     //Profile id = 0 - analog / fonia
-    if (this.radio.profile_active_idx == 0)
+    if (this.radio.profile == 0)
       return
     
     this.radioService.changeOperateModeProfile(0).subscribe(
       (res: any) => {
         if (res === 1) {
-          this.radio.profile_active_idx = res.profile;
+          this.radio.profile = res.profile;
         }
       },
       (err) => {
@@ -244,7 +244,7 @@ export class VoiceComponent implements OnInit {
     this.sharedService.radioObj.subscribe(message => {
 
       this.radio = this.sharedService.radioObj.value
-      this.modeSwitch = this.radio.analog_mode == 'LSB' ? true : false
+      this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
       this.splitFrequency()
     })
 

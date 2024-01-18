@@ -1,9 +1,8 @@
 export interface Radio {
-  freq: number,
-  digital_frequency: number,
-  analog_frequency: number,
-  analog_mode: string, //0 - fonia
-  digital_mode: string, //1
+  p0_freq: number,
+  p1_freq: number,
+  p0_mode: string,
+  p1_mode: string,
   protection: boolean,
   tx: boolean,
   rx: boolean,
@@ -16,6 +15,7 @@ export interface Radio {
   connection: boolean,
   ptt: boolean,
   step: number,
-  volume: number,
-  profile_active_idx: number
+  p0_volume: number,
+  p1_volume: number,
+  profile: number
 }

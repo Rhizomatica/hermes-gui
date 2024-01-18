@@ -1,13 +1,13 @@
 <div class="container sysadm home">
     <div class="row">
         <div class="flexible">
-            <a routerLink="/voice" *ngIf="showVoiceCard && radio.analog_frequency !== null">
+            <a routerLink="/voice" *ngIf="showVoiceCard && radio.p0_freq !== null">
                 <div class="card voice">
                     <div class="m-t-25">
-                        <b>{{radio.analog_frequency}} kHz</b>
+                        <b>{{radio.p0_freq}} kHz</b>
                     </div>
                     <div i18n="@@voicecard">
-                        {{radio.analog_mode}}
+                        {{radio.p0_mode}}
                     </div>
                 </div>
             </a>

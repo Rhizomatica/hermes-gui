@@ -26,10 +26,10 @@
             <h3>
               <span i18n="@currentradiofreq">Data frequency</span>
               <br />
-              <span> {{radio.digital_frequency}} </span>
+              <span> {{radio.p1_freq}} </span>
               kHz
               <br />
-              <span> {{radio.digital_mode}} </span>
+              <span> {{radio.p1_mode}} </span>
             </h3>
           </div>
         </div>
@@ -74,9 +74,9 @@
           </div>
         </div>
       </div>
-      <div class="radio" *ngIf="radio && radio.freq">
+      <div class="radio" *ngIf="radio && radio.p1_freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.digital_frequency}}kHz
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.p1_freq}}kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -134,7 +134,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.mode}}"
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.p1_mode}}"
                 [checked]="modeSwitch"></span>
             </div>
             <span>LSB</span>
@@ -191,7 +191,7 @@
           </div>
         </form>
         <form #fanalogfreq="ngForm" class="formdata field">
-          <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.analog_frequency}} kHz
+          <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.p0_freq}} kHz
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -210,7 +210,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="phonymode" [checked]="phonyModeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{radio.mode}}"
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event)" value="{{radio.p0_mode}}"
                 [checked]="phonyModeSwitch"></span>
             </div>
             <span>LSB</span>

@@ -8,6 +8,7 @@ import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { profile } from 'console';
 
 @Component({
   selector: 'app-radio-config',
@@ -69,7 +70,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   get value(): number {
-    this.realValue = this.radio.freq;
+    this.realValue = this.radio.p1_freq;
     return this.realValue;
   }
 
@@ -148,8 +149,13 @@ export class RadioConfigComponent implements OnInit {
 
     this.radioService.setRadioFreq(realfreq, radioProfile).subscribe(
       (res: any) => {
-        this.radio.freq = this.utils.formatFrequency(res);
-        this.loading = false
+        if(radioProfile == 0)
+          this.radio.p0_freq = this.utils.formatFrequency(res);
+        
+        if(radioProfile == 1)
+          this.radio.p1_freq = this.utils.formatFrequency(res);
+
+          this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -361,7 +367,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeProfile(event) {
-    this.toggleProfile = this.radio.profile_active_idx === 0 ? 1 : 0;
+    this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
       (res: any) => {
 
@@ -375,9 +381,9 @@ export class RadioConfigComponent implements OnInit {
   ngOnInit(): void {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
-    this.modeSwitch = this.radio.digital_mode == 'LSB' ? true : false
-    this.phonyModeSwitch = this.radio.analog_mode == 'LSB' ? true : false
-    this.frek = parseFloat(this.radio.freq) * 1000
+    this.phonyModeSwitch = this.radio.p0_mode == 'LSB' ? true : false
+    this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+    this.frek = parseFloat(this.radio.p1_freq) * 1000
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }

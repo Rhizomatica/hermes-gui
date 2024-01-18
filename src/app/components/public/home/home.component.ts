@@ -87,7 +87,7 @@ export class homeComponent implements OnInit {
   }
 
   formatFrequency() {
-    this.radio.freq = this.radio.freq == 0 || this.radio.freq == null ? 0 : this.radio.freq / 1000
+    this.radio.p1_freq = this.radio.p1_freq == 0 || this.radio.p1_freq == null ? 0 : this.radio.p1_freq / 1000
   }
 
   ngOnInit(): void {
