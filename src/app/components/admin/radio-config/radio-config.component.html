@@ -129,7 +129,7 @@
           </div>
         </form>
         <form class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@changeradiomode">Digital Mode</span>
+          <span i18n="@@changeradiomode">Data Mode</span>
           <div class="float-right flex-right">
             <span>USB</span>
             <div class="switch">
@@ -199,7 +199,7 @@
               [(ngModel)]="p0_frek" value={{p0_frek}}>
             <button class="midbt" (click)="changeFrequency(fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
               i18n="@@changeanalogfreqr0">
-              change analog frequency
+              change frequency
             </button>
           </div>
         </form>
