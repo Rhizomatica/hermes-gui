@@ -37,6 +37,7 @@ export class SharedService {
 
   public storedRadioObj = <Radio>({
     connection: null,
+    led: null,
     p0_freq: null,
     p1_freq: null,
     p0_mode: null,
@@ -58,6 +59,7 @@ export class SharedService {
 
   setSharedObj() {
     this.radioObj.value.connection = this.storedRadioObj.connection
+    this.radioObj.value.led = this.storedRadioObj.led
     this.radioObj.value.p0_freq = this.storedRadioObj.p0_freq
     this.radioObj.value.p1_freq = this.storedRadioObj.p1_freq
     this.radioObj.value.p0_mode = this.storedRadioObj.p0_mode
@@ -78,6 +80,7 @@ export class SharedService {
     var utils = new UtilsService()
 
     this.storedRadioObj.connection = newObj.connection == null ? this.storedRadioObj.connection : newObj.connection
+    this.storedRadioObj.led = newObj.led == null ? this.storedRadioObj.led : newObj.led
     this.storedRadioObj.p0_freq = newObj.p0_freq == null ? this.storedRadioObj.p0_freq : utils.formatFrequency(newObj.p0_freq)
     this.storedRadioObj.p1_freq = newObj.p1_freq == null ? this.storedRadioObj.p1_freq : utils.formatFrequency(newObj.p1_freq)
     this.storedRadioObj.p0_mode = newObj.p0_mode == null ? this.storedRadioObj.p0_mode : newObj.p0_mode
@@ -95,6 +98,7 @@ export class SharedService {
     var utils = new UtilsService()
 
     this.radioObj.value.connection = false
+    this.radioObj.value.led = false
     this.radioObj.value.p0_freq = utils.formatFrequency(1085500)
     this.radioObj.value.p1_freq = utils.formatFrequency(1075000)
     this.radioObj.value.p0_mode = 'USB'
