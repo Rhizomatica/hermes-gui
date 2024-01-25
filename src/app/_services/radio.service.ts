@@ -39,8 +39,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioBfo(bfo: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}`;
+  public setRadioBfo(bfo: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

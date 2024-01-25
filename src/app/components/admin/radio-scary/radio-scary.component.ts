@@ -48,7 +48,7 @@ export class RadioScaryComponent implements OnInit {
   }
 
   changeBfo(f: NgForm) {
-    this.radioService.setRadioBfo(f.value.bfo).subscribe(
+    this.radioService.setRadioBfo(f.value.bfo, this.digitalRadioModeID).subscribe(
       (res: any) => {
         this.res = res;
         this.radio.bfo = res;
