@@ -91,8 +91,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioFrequency(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/freq`;
+  //Ain't using
+  public getRadioFrequency(radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/freq/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
