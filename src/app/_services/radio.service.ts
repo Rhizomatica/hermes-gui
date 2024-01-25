@@ -69,8 +69,8 @@ export class RadioService {
   }
 
   //TODO - Ain't using
-  public getRadioPower(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/power`;
+  public getRadioPower(radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/power/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
