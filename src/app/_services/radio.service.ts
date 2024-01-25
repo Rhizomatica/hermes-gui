@@ -190,8 +190,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public radioRestoreDefaults(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/default`;
+  public radioRestoreDefaults(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/default/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

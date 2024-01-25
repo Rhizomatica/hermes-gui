@@ -260,7 +260,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   async resetRadio() {
-    await this.radioService.radioRestoreDefaults().subscribe(
+    await this.radioService.radioRestoreDefaults(this.digitalModeProfileID).subscribe(
       (res: any) => {
         this.reseting = false;
       },
