@@ -211,7 +211,7 @@ export class RadioConfigComponent implements OnInit {
       f.value.refthreshold = f.value.refthreshold * 10
     }
 
-    this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
+    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.digitalModeProfileID).subscribe(
       (res: any) => {
         this.radio.refthreshold = res / 10;
         this.refthreshold = res / 10

@@ -127,8 +127,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioRefThreshold(value: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}`;
+  public setRadioRefThreshold(value: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -159,7 +159,7 @@ export class RadioService {
     var route = '/radio/tone/' + value
 
     if (GlobalConstants.bitx == 'S') {
-      route = '/radio/tone/sbitx/'+ value + '/' + radioProfile
+      route = '/radio/tone/sbitx/' + value + '/' + radioProfile
     }
 
     const url = `${GlobalConstants.apiURL}${route}`;
