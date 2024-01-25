@@ -68,10 +68,10 @@ export class VoiceComponent implements OnInit {
   }
 
   splitFrequency() {
-    if (!this.radio || !this.radio.p0_freq || this.radio.p0_freq == 0)
+    if (!this.radio || !this.radio.p1_freq || this.radio.p1_freq == 0)
       return
 
-    this.frequencyAux = this.radio.p0_freq.toString()
+    this.frequencyAux = this.radio.p1_freq.toString()
     this.frequencyAux = this.frequencyAux.replace(/,/g, "")
     this.frequencyAux = this.frequencyAux.replace(/\./g, "")
 
@@ -88,7 +88,7 @@ export class VoiceComponent implements OnInit {
     this.loading = true
     this.radioService.setRadioFreq((f.value.frequency * 1000), 0).subscribe(
       (res: any) => {
-        this.radio.p0_freq = this.utils.formatFrequency(res);
+        this.radio.p1_freq = this.utils.formatFrequency(res);
         this.loading = false
         this.splitFrequency()
       }, (err) => {
@@ -116,7 +116,7 @@ export class VoiceComponent implements OnInit {
 
         this.loading = false
 
-        if (res === null && this.radio.p0_freq) {
+        if (res === null && this.radio.p1_freq) {
           this.setInitialStep()
           return
         }
@@ -219,11 +219,11 @@ export class VoiceComponent implements OnInit {
   }
 
   changeOperateModeProfile() {
-    //Profile id = 0 - analog / fonia
-    if (this.radio.profile == 0)
+    //Profile id = 1 - analog / fonia
+    if (this.radio.profile == 1)
       return
 
-    this.radioService.changeOperateModeProfile(0).subscribe(
+    this.radioService.changeOperateModeProfile(1).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.profile = res.profile;

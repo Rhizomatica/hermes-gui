@@ -28,17 +28,17 @@
             {{radio.p0_mode}} {{radio.p0_freq}} kHz
           </span>
           <span class="nav-operation-mode">
-            phony
+            digital
           </span>
-        </div> 
+        </div>   
         <div *ngIf="radio && radio.profile == 1">
           <span class="nav-frequency" >
             {{radio.p1_mode}} {{radio.p1_freq}} kHz
           </span>
           <span class="nav-operation-mode">
-            digital
+            phony
           </span>
-        </div>        
+        </div>      
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">

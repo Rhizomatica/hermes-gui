@@ -26,10 +26,10 @@
             <h3>
               <span i18n="@currentradiofreq">Data frequency</span>
               <br />
-              <span> {{radio.p1_freq}} </span>
+              <span> {{radio.p0_freq}} </span>
               kHz
               <br />
-              <span> {{radio.p1_mode}} </span>
+              <span> {{radio.p0_mode}} </span>
             </h3>
           </div>
         </div>
@@ -74,14 +74,14 @@
           </div>
         </div>
       </div>
-      <div class="radio" *ngIf="radio && radio.p1_freq">
+      <div class="radio" *ngIf="radio && radio.p0_freq">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.p1_freq}}kHz
+          <span i18n="@@changefrequency">Radio data frequency: {{radio.p0_freq}}kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
-              value={{p1_frek}}>
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
+              value={{p0_frek}}>
             <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
               change frequency
             </button>
@@ -100,7 +100,7 @@
               </span>
               <br />
               <button class="m-t-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-              <button class="m-l-10" (click)="changeFrequency(ffreq, 1)" i18n="@@changer">change</button>
+              <button class="m-l-10" (click)="changeFrequency(ffreq, 0)" i18n="@@changer">change</button>
             </div>
           </div>
         </form>
@@ -134,7 +134,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
                 [checked]="modeSwitch"></span>
             </div>
             <span>LSB</span>
@@ -190,13 +190,13 @@
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
         </form>
-        <form #fanalogfreq="ngForm" class="formdata field">
-          <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.p0_freq}} kHz
+        <form #fanalogfreq="ngForm" class="formdata field" *ngIf="radio && radio.p1_freq">
+          <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.p1_freq}} kHz
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek"
-              [(ngModel)]="p0_frek" value={{p0_frek}}>
+              [(ngModel)]="p1_frek" value={{p1_frek}}>
             <button class="midbt" (click)="changeFrequency(fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
               i18n="@@changeanalogfreqr0">
               change frequency
@@ -210,7 +210,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="phonymode" [checked]="phonyModeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
+              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
                 [checked]="phonyModeSwitch"></span>
             </div>
             <span>LSB</span>

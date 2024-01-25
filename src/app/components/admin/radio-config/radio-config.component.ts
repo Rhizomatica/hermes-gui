@@ -170,11 +170,11 @@ export class RadioConfigComponent implements OnInit {
     var mode = null
 
     if (profile == 0)
-      mode = this.phonyModeSwitch === true ? false : true;
-
-    if (profile == 1)
       mode = this.modeSwitch === true ? false : true;
 
+    if (profile == 1)
+      mode = this.phonyModeSwitch === true ? false : true;
+    
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', profile).subscribe(
       (res: any) => {
 

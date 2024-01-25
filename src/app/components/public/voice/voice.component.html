@@ -1,9 +1,9 @@
 <loading [loading]="loading"></loading>
 <div class="radiophony" *ngIf="radio !== null">
-  <h2 i18n="@@loadingfrequency" *ngIf="!radio.p0_freq">
+  <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
     loading radio status...
   </h2>
-  <div class="transciever-panel" *ngIf="radio.p0_freq">
+  <div class="transciever-panel" *ngIf="radio.p1_freq">
     <div class="data">
       <div class="data-body frequency">
         <div *ngIf="!inputFrequencyFlag">
@@ -80,10 +80,10 @@
         <div class="data-title" i18n="@@modevoice">
           Phony Mode
         </div>
-        <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.p0_freq">
+        <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.p1_freq">
           <span>USB</span>
           <div class="switch">
-            <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.p0_mode}}" [checked]="modeSwitch">
+            <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.p1_mode}}" [checked]="modeSwitch">
             <span class="slider round-uc" (click)="changeMode($event)"></span>
           </div>
           <span>LSB</span>
