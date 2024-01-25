@@ -27,14 +27,21 @@ export class ErrorInterceptor implements HttpInterceptor {
         switch (language) {
             case 'en-US':
                 message = this.englishError(errorStatus)
+                break
             case 'pt':
                 message = this.portugueseError(errorStatus)
+                break
             case 'es':
                 message = this.spanishError(errorStatus)
+                break
             case 'fr':
                 message = this.françaisError(errorStatus)
+                break
             // case 'ar':
             //     message = this.arabicError(errorStatus)
+            default:
+                message = this.englishError(errorStatus)
+                break
         }
         return message
     }
