@@ -246,7 +246,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection().subscribe(
+    this.radioService.radioResetProtection(this.digitalModeProfileID).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.protection = false;

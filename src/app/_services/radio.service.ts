@@ -181,8 +181,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public radioResetProtection(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/protection`;
+  public radioResetProtection(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/protection/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

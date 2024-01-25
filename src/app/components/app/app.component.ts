@@ -99,23 +99,6 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
-
-  confirmReset() {
-    this.radioService.radioResetProtection().subscribe(
-      (res: any) => {
-        this.res = res;
-        if (this.res === 1) {
-          this.radio.protection = true;
-          this.protection = this.radio.protection;
-        }
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
-
   showServerAlert() {
     if (!this.serverError) {
       this.serverError = true;
