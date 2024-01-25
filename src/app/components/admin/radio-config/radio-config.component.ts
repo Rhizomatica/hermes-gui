@@ -167,17 +167,17 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeMode(event, profile: number) {
+  changeMode(event, radioProfile: number) {
 
     var mode = null
 
-    if (profile == 0)
+    if (radioProfile == 0)
       mode = this.modeSwitch === true ? false : true;
 
-    if (profile == 1)
+    if (radioProfile == 1)
       mode = this.phonyModeSwitch === true ? false : true;
     
-    this.radioService.setRadioMode(mode ? 'LSB' : 'USB', profile).subscribe(
+    this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
       (res: any) => {
 
       }, (err) => {
@@ -384,8 +384,8 @@ export class RadioConfigComponent implements OnInit {
   ngOnInit(): void {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
-    this.phonyModeSwitch = this.radio.p0_mode == 'LSB' ? true : false
-    this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+    this.phonyModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+    this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
     this.p0_frek = parseFloat(this.radio.p0_freq) * 1000
     this.p1_frek = parseFloat(this.radio.p1_freq) * 1000
     this.isAdmin = this.currentUser && this.currentUser.admin
