@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { GlobalConstants } from '../global-constants';
+import { profile } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -150,15 +151,15 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioTone(value: string): Observable<{}> {
+  public setRadioTone(value: string, radioProfile: number): Observable<{}> {
 
-    var route = '/radio/tone/'
+    var route = '/radio/tone/' + value
 
     if (GlobalConstants.bitx == 'S') {
-      route = '/radio/tone/sbitx/'
+      route = '/radio/tone/sbitx/'+ value + '/' + radioProfile
     }
 
-    const url = `${GlobalConstants.apiURL}${route}${value}`;
+    const url = `${GlobalConstants.apiURL}${route}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

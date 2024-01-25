@@ -298,7 +298,7 @@ export class RadioConfigComponent implements OnInit {
 
   testTone(f) {
     this.testtone = f;
-    this.radioService.setRadioTone(f).subscribe(
+    this.radioService.setRadioTone(f, this.digitalModeProfileID).subscribe(
       (res: any) => {
         this.radio.testtone = res;
         this.toneOn = res === '0' ? false : true
