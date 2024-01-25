@@ -60,7 +60,7 @@ export class RadioScaryComponent implements OnInit {
   }
 
   changeMasterCall(f: NgForm) {
-    this.radioService.setRadioMastercal(f.value.mastercal).subscribe(
+    this.radioService.setRadioMastercal(f.value.mastercal, this.digitalRadioModeID).subscribe(
       (res: any) => {
         this.res = res;
         this.radio.mastercal = res;

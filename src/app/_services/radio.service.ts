@@ -48,8 +48,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioMastercal(mastercal: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}`;
+  public setRadioMastercal(mastercal: number, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
