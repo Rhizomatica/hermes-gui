@@ -59,8 +59,8 @@ export class RadioConfigComponent implements OnInit {
   confirmChangeProtection: boolean = false
   toggleProfile: number = 1
   phonyModeSwitch: boolean
-  digitalRadioModeID: number = 0
-  phonyRadioModeID: number = 1
+  digitalModeProfileID: number = 0
+  phonyModeProfileID: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -91,7 +91,7 @@ export class RadioConfigComponent implements OnInit {
 
   changePtt() {
     this.loading = true
-    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF').subscribe(
+    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.digitalModeProfileID).subscribe(
       (res: any) => {
 
         this.radio.tx = res == 'ON' ? true : false
@@ -116,7 +116,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   public pttOn(f) {
-    this.radioService.setRadioPTT(f).subscribe(
+    this.radioService.setRadioPTT(f, this.digitalModeProfileID).subscribe(
       (res: any) => {
         this.radio.ptt = res;
         this.radio.tx = true;
@@ -336,7 +336,7 @@ export class RadioConfigComponent implements OnInit {
 
   getRadioStatus() {
     this.loading = true
-    this.radioService.getRadioStatus(this.digitalRadioModeID).subscribe(
+    this.radioService.getRadioStatus(this.phonyModeProfileID).subscribe(
       (res: any) => {
         this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;

@@ -141,8 +141,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioPTT(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/ptt/${value}`;
+  public setRadioPTT(value: string, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/ptt/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
