@@ -169,8 +169,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioConnected(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/connection/${value}`;
+  //Ain't using
+  public setRadioConnected(value: string, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/connection/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
