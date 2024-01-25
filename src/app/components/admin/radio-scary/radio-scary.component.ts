@@ -23,6 +23,8 @@ export class RadioScaryComponent implements OnInit {
   radioError: boolean
   currentUser: User
   isAdmin: boolean
+  digitalRadioModeID: number = 0
+  phonyRadioModeID: number = 1
   
   constructor(
     private authenticationService: AuthenticationService,
@@ -31,7 +33,7 @@ export class RadioScaryComponent implements OnInit {
   }
 
   getRadioStatus(): void {
-    this.radioService.getRadioStatus().subscribe(
+    this.radioService.getRadioStatus(this.digitalRadioModeID).subscribe(
       (res: any) => {
         this.radio = res;
         this.bfo = this.radio.bfo;
