@@ -56,8 +56,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioStatus(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio`;
+  public getRadioStatus(profile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/${profile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {

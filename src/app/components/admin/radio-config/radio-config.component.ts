@@ -59,6 +59,8 @@ export class RadioConfigComponent implements OnInit {
   confirmChangeProtection: boolean = false
   toggleProfile: number = 1
   phonyModeSwitch: boolean
+  digitalRadioModeID: number = 0
+  phonyRadioModeID: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -334,7 +336,7 @@ export class RadioConfigComponent implements OnInit {
 
   getRadioStatus() {
     this.loading = true
-    this.radioService.getRadioStatus().subscribe(
+    this.radioService.getRadioStatus(this.digitalRadioModeID).subscribe(
       (res: any) => {
         this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;
