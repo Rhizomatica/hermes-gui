@@ -11,7 +11,7 @@ import { GlobalConstants } from '../global-constants';
 
 export class SharedService {
 
-  router: Router
+  constructor(private router:Router){}
 
   public radioObj = new BehaviorSubject<Radio>({
     p0_freq: null,
@@ -54,7 +54,7 @@ export class SharedService {
   setRadioObjShared(data) {
     this.mountRadioObj(data)
     this.setSharedObj()
-    this.observeOperatingProfileMode()
+    // this.observeOperatingProfileMode()
   }
 
   setSharedObj() {
@@ -114,7 +114,7 @@ export class SharedService {
   }
 
   observeOperatingProfileMode() {
-    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value.profile != null && this.radioObj.value.profile == 1) { //analog or fonia
+    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value != null && this.radioObj.value.profile == 1) { //analog or fonia
       this.router.navigate(['/voice']); //navigate to voice (PTT hardware button)
     }
   }
