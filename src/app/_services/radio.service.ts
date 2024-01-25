@@ -103,8 +103,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioBfo(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/bfo`;
+  //Ain't using
+  public getRadioBfo(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/bfo/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
