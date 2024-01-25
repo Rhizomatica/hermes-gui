@@ -29,6 +29,7 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   frequencyAux: string
   subject = new BehaviorSubject(this.radioService);
+  phonyModeProfileID: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -47,7 +48,7 @@ export class VoiceComponent implements OnInit {
 
   changeMode(event) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', 0).subscribe(
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.phonyModeProfileID).subscribe(
       (res: any) => {
 
       }, (err) => {
@@ -86,7 +87,7 @@ export class VoiceComponent implements OnInit {
 
   changeFrequency(f: NgForm) {
     this.loading = true
-    this.radioService.setRadioFreq((f.value.frequency * 1000), 0).subscribe(
+    this.radioService.setRadioFreq((f.value.frequency * 1000), this.phonyModeProfileID).subscribe(
       (res: any) => {
         this.radio.p1_freq = this.utils.formatFrequency(res);
         this.loading = false
