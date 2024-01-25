@@ -115,8 +115,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioRefThreshold(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/refthreshold`;
+  //Ain't using
+  public getRadioRefThreshold(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/refthreshold/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
