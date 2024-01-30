@@ -240,11 +240,12 @@ export class VoiceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.changeOperateModeProfile()
-
     this.sharedService.radioObj.subscribe(message => {
+
       this.radio = this.sharedService.radioObj.value
-      this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
+      this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+
+      this.changeOperateModeProfile()
       this.splitFrequency()
     })
 
