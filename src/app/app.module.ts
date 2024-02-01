@@ -38,7 +38,6 @@ import { ScheduleComponent } from './components/admin/schedule/schedule.componen
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoginFormComponent } from './components/public/login-form/login-form.component';
-import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
@@ -85,7 +84,6 @@ registerLocaleData(localeEs);
     ScheduleComponent,
     TransmissionListComponent,
     LoginFormComponent,
-    RadioScaryComponent,
     LoadingComponent,
     SwitchComponent,
     PlayerComponent,
