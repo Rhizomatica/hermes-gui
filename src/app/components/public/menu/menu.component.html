@@ -11,7 +11,7 @@
     <img title="home" src="assets/svg/house.svg">
     Home
   </a>
-  <a routerLink="/voice" i18n="@@voicemenu" *ngIf="radio.p1_freq !== null">
+  <a routerLink="/voice" i18n="@@voicemenu" *ngIf="showVoiceMenuItem && radio.p1_freq">
     <img title="voice" src="assets/svg/walkie-talkie.svg">
     Voice
   </a>

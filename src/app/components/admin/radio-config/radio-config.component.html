@@ -163,7 +163,7 @@
             </div>
           </div>
         </form>
-        
+
         <form #fgps="ngForm" class="formdata field" *ngIf="hasGps && bitx !== 'S' && isAdmin">
           <span i18n="@@labelgpscalibration">GPS Calibration</span>
           <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
@@ -177,7 +177,7 @@
           <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1"
             class="m-l-10 float-right">reset</button>
         </form>
-        <form class="formdata field" *ngIf="isAdmin">
+        <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
           <span i18n="@@radioprofilelabel">Radio profile</span>
           <div class="float-right flex-right">
             <span i18n="@@digitallabel">Digital</span>
@@ -190,13 +190,13 @@
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
         </form>
-        <form #fanalogfreq="ngForm" class="formdata field" *ngIf="radio && radio.p1_freq">
+        <form #fanalogfreq="ngForm" class="formdata field" *ngIf="radio && radio.p1_freq && bitx == 'S'">
           <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.p1_freq}} kHz
             <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek"
-              [(ngModel)]="p1_frek" value={{p1_frek}}>
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
+              value={{p1_frek}}>
             <button class="midbt" (click)="changeFrequency(fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
               i18n="@@changeanalogfreqr0">
               change frequency
@@ -204,7 +204,7 @@
           </div>
         </form>
 
-        <form class="formdata field" *ngIf="isAdmin">
+        <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
           <span i18n="@@phonymode">Phony Mode</span>
           <div class="float-right flex-right">
             <span>USB</span>
@@ -217,7 +217,7 @@
             <hint [showHint]="false" [hint]="'mode'"></hint>
           </div>
         </form>
-        
+
         <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
           <div class="m-l-10">
             <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">

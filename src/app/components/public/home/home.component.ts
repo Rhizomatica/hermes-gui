@@ -37,7 +37,9 @@ export class homeComponent implements OnInit {
       this.websocketService.startService()
     }
 
-    if (utils.isItRuningLocal() && utils.isSBitxRadio())
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+      this.showVoiceCard = true
+    else
       this.showVoiceCard = false
   }
 
@@ -46,7 +48,7 @@ export class homeComponent implements OnInit {
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
   alertBrowserXP: boolean = false
-  showVoiceCard: boolean = true
+  showVoiceCard: boolean = false
   isGateway: boolean = GlobalConstants.gateway
   radio: Radio
   requireLogin: boolean = GlobalConstants.requireLogin

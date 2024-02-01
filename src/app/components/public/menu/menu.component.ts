@@ -6,6 +6,7 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'menu',
@@ -23,16 +24,23 @@ export class MenuComponent implements OnInit {
   radio: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
   isGateway: boolean = GlobalConstants.gateway
+  showVoiceMenuItem: boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
     private sharedService: SharedService,
     private router: Router,
-    private websocketService: WebsocketService
+    private websocketService: WebsocketService,
+    private utils: UtilsService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
+
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+      this.showVoiceMenuItem = true
+    else
+      this.showVoiceMenuItem = false
   }
 
   public closeError() {
