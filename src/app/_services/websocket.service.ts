@@ -84,7 +84,6 @@ export class WebsocketService {
 
         this.messages.subscribe(data => {
             this.sharedService.setRadioObjShared(data)
-            this.checkingPTTHardwareCommand()
 
         }, async err => {
 
@@ -99,12 +98,6 @@ export class WebsocketService {
         }, () => {
             console.log('complete, closing websocket connection...')
         })
-    }
-
-    checkingPTTHardwareCommand() {
-        if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio() && this.radioObj.ptt) {
-            this.router.navigate(['/voice'])
-        }
     }
 
     keepWebSocketAlive() {
