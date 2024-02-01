@@ -11,7 +11,7 @@ import { GlobalConstants } from '../global-constants';
 
 export class SharedService {
 
-  constructor(private router:Router){}
+  constructor(private router: Router) { }
 
   public radioObj = new BehaviorSubject<Radio>({
     p0_freq: null,
@@ -54,7 +54,7 @@ export class SharedService {
   setRadioObjShared(data) {
     this.mountRadioObj(data)
     this.setSharedObj()
-    // this.observeOperatingProfileMode()
+    this.observeOperatingProfileMode()
   }
 
   setSharedObj() {
@@ -71,6 +71,7 @@ export class SharedService {
     this.radioObj.value.protection = this.storedRadioObj.protection
     this.radioObj.value.p1_volume = this.storedRadioObj.p1_volume
     this.radioObj.value.profile = this.storedRadioObj.profile
+    this.radioObj.value.ptt = this.storedRadioObj.ptt
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -92,6 +93,7 @@ export class SharedService {
     this.storedRadioObj.protection = newObj.protection == null ? this.storedRadioObj.protection : newObj.protection
     this.storedRadioObj.p1_volume = newObj.p1_volume == null ? this.storedRadioObj.p1_volume : newObj.p1_volume
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
+    this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
   }
 
   mountRadioObjDemo() {
@@ -110,11 +112,12 @@ export class SharedService {
     this.radioObj.value.protection = null
     this.radioObj.value.p0_volume = 60
     this.radioObj.value.profile = 1
+    this.radioObj.value.ptt = false
     this.radioObj.next(this.radioObj.value)
   }
 
   observeOperatingProfileMode() {
-    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value != null && this.radioObj.value.profile == 1) { //analog or fonia
+    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value && this.radioObj.value.profile == 1 && this.storedRadioObj.ptt == false && this.radioObj.value.ptt == true) { //analog or fonia
       this.router.navigate(['/voice']); //navigate to voice (PTT hardware button)
     }
   }
