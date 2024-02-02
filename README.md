@@ -7,18 +7,17 @@ This project is a friendly user interface for HERMES - High-frequency Emergency 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12.
 
-- angular-devkit/architect: 0.1402.12
-- angular-devkit/build-angular: 14.2.12
-- angular-devkit/core: 14.2.12
-- angular-devkit/schematics: 14.2.12
-- angular/cli: 14.2.12
-- schematics/angular: 14.2.12
-- rxjs: 6.6.7
-- typescript: 4.8.4
-
-- Angular CLI: 14.2.12
-- Node: 18.17.1
-- Package Manager: npm 9.6.7 
+angular-devkit/architect: 0.1402.12  
+angular-devkit/build-angular: 14.2.12  
+angular-devkit/core: 14.2.12  
+angular-devkit/schematics: 14.2.12  
+angular/cli: 14.2.12  
+schematics/angular: 14.2.12  
+rxjs: 6.6.7  
+typescript: 4.8.4  
+Angular CLI: 14.2.12  
+Node: 18.17.1  
+Package Manager: npm 9.6.7 
 
 
 ## Install node, npm
@@ -78,8 +77,8 @@ Remove all files in dist folder `rm -r dist/`
 Run `ng build --configuration production` to build the project.
 
 To publish your artifacts copy the files stored in the `/dist` to `/var/www/html/` directory
-`cp -a dist/hermes/pt /var/www/html/`
-`cp -a dist/hermes/es /var/www/html/`
+`cp -a dist/hermes/pt /var/www/html/`  
+`cp -a dist/hermes/es /var/www/html/`  
 `cp -a dist/hermes/en-US/ /var/www/html/`
 
 Done
