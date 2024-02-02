@@ -7,18 +7,18 @@ This project is a friendly user interface for HERMES - High-frequency Emergency 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12.
 
-angular-devkit/architect: 0.1402.12
-angular-devkit/build-angular: 14.2.12
-angular-devkit/core: 14.2.12
-angular-devkit/schematics: 14.2.12
-angular/cli: 14.2.12
-schematics/angular: 14.2.12
-rxjs: 6.6.7
-typescript: 4.8.4
+- angular-devkit/architect: 0.1402.12.
+- angular-devkit/build-angular: 14.2.12
+- angular-devkit/core: 14.2.12
+- angular-devkit/schematics: 14.2.12
+- angular/cli: 14.2.12
+- schematics/angular: 14.2.12
+- rxjs: 6.6.7
+- typescript: 4.8.4
 
-Angular CLI: 14.2.12
-Node: 18.17.1
-Package Manager: npm 9.6.7 
+- Angular CLI: 14.2.12
+- Node: 18.17.1
+- Package Manager: npm 9.6.7 
 
 
 ## Install node, npm
