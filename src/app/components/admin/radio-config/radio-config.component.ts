@@ -59,7 +59,7 @@ export class RadioConfigComponent implements OnInit {
   confirmChangeProtection: boolean = false
   toggleProfile: number = 1
   phonyModeSwitch: boolean
-  digitalModeProfileID: number = 0
+  dataModeProfileID: number = 0
   phonyModeProfileID: number = 1
 
   constructor(
@@ -91,7 +91,7 @@ export class RadioConfigComponent implements OnInit {
 
   changePtt() {
     this.loading = true
-    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.digitalModeProfileID).subscribe(
+    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe(
       (res: any) => {
 
         this.radio.tx = res == 'ON' ? true : false
@@ -116,7 +116,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   public pttOn(f) {
-    this.radioService.setRadioPTT(f, this.digitalModeProfileID).subscribe(
+    this.radioService.setRadioPTT(f, this.dataModeProfileID).subscribe(
       (res: any) => {
         this.radio.ptt = res;
         this.radio.tx = true;
@@ -216,7 +216,7 @@ export class RadioConfigComponent implements OnInit {
       f.value.refthreshold = f.value.refthreshold * 10
     }
 
-    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.digitalModeProfileID).subscribe(
+    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.dataModeProfileID).subscribe(
       (res: any) => {
         this.radio.refthreshold = res / 10;
         this.refthreshold = res / 10
@@ -251,7 +251,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection(this.digitalModeProfileID).subscribe(
+    this.radioService.radioResetProtection(this.dataModeProfileID).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.protection = false;
@@ -265,7 +265,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   async resetRadio() {
-    await this.radioService.radioRestoreDefaults(this.digitalModeProfileID).subscribe(
+    await this.radioService.radioRestoreDefaults(this.dataModeProfileID).subscribe(
       (res: any) => {
         this.reseting = false;
       },
@@ -303,7 +303,7 @@ export class RadioConfigComponent implements OnInit {
 
   testTone(f) {
     this.testtone = f;
-    this.radioService.setRadioTone(f, this.digitalModeProfileID).subscribe(
+    this.radioService.setRadioTone(f, this.dataModeProfileID).subscribe(
       (res: any) => {
         this.radio.testtone = res;
         this.toneOn = res === '0' ? false : true

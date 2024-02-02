@@ -180,13 +180,13 @@
         <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
           <span i18n="@@radioprofilelabel">Radio profile</span>
           <div class="float-right flex-right">
-            <span i18n="@@digitallabel">Digital</span>
+            <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
               <span class="slider round-uc" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
                 [checked]="toggleProfile"></span>
             </div>
-            <span i18n="@@analogLabel">Analg</span>
+            <span i18n="@@analogLabel">Phony</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
         </form>
