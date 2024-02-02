@@ -57,7 +57,7 @@
             <div class="switch">
               <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
                 [disabled]="enableArray[i] == false ? true : false" />
-              <span class="slider round-uc {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)"
+              <span class="slider round-uc one-color {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)"
                 [checked]="modeArray[i]"></span>
             </div>
             <span>LSB</span>

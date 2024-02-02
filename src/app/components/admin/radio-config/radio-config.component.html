@@ -134,7 +134,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
+              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
                 [checked]="modeSwitch"></span>
             </div>
             <span>LSB</span>
@@ -183,7 +183,7 @@
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
+              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
                 [checked]="toggleProfile"></span>
             </div>
             <span i18n="@@analogLabel">Phony</span>
@@ -210,7 +210,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="phonymode" [checked]="phonyModeSwitch">
-              <span class="slider round-uc" *ngIf="isAdmin" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
+              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
                 [checked]="phonyModeSwitch"></span>
             </div>
             <span>LSB</span>

@@ -464,6 +464,10 @@ textarea {
   transition: .4s;
 }
 
+.slider.one-color:before {
+  background-color: @clr;
+  border: @clr 0.5px solid;
+}
 
 input:checked+.slider:before {
   -webkit-transform: translateX(19px);
@@ -481,6 +485,12 @@ input:checked+.slider:before {
   border-radius: 50%;
   background-color: #b8b8b8;
   border: #b8b8b8 0.5px solid;
+}
+
+.slider.round-uc.one-color:before {
+  border-radius: 50%;
+  background-color: @clr;
+  border: @clr 0.5px solid;
 }
 
 .slider.round-uc.disable:before {
