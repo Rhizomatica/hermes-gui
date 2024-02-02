@@ -1,15 +1,20 @@
-# HERMES
+# HERMES GUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12
+This project is a friendly user interface for HERMES - High-frequency Emergency and Rural Multimedia Exchange System. Telecommunications system that provides digital telecommunications. It's being developed by [Rhizomatica](https://www.rhizomatica.org/).
 
-@angular-devkit/architect       0.1402.12
-@angular-devkit/build-angular   14.2.12
-@angular-devkit/core            14.2.12
-@angular-devkit/schematics      14.2.12
-@angular/cli                    14.2.12
-@schematics/angular             14.2.12
-rxjs                            6.6.7
-typescript                      4.8.4
+![HERMES-GUI Home Screenshot](/src/assets/img/hermes-gui-home-readme.png)
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12.
+
+angular-devkit/architect: 0.1402.12
+angular-devkit/build-angular: 14.2.12
+angular-devkit/core: 14.2.12
+angular-devkit/schematics: 14.2.12
+angular/cli: 14.2.12
+schematics/angular: 14.2.12
+rxjs: 6.6.7
+typescript: 4.8.4
 
 Angular CLI: 14.2.12
 Node: 18.17.1
@@ -22,12 +27,16 @@ Package Manager: npm 9.6.7
 - Run 'npm install' inside the project path.
 
 
-## HERMES GUI .env configuration
-Create an .env file like a .env.example in root directory.
-Check and configure .env file with your parameters and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
+## Environments file (.env) configuration
+
+Create an `.env` file like a `.env.example` in root directory.
+Check and configure `.env` file with your parameters and run `npx ts-node setEnv.ts` to set `.env` values in `enviroment.ts`.
+
 
 > [!TIP]
-> Envirotments (.env) parameters configuration  
+> Environments (.env) parameters explanation 
+
+
 - LOCAL (boolean)
     - If running local you can easily change the `serverIP` in `global-constants.ts` used for local or remote HTTP requests / Websocket connection.
 
@@ -36,13 +45,13 @@ Check and configure .env file with your parameters and run `npx ts-node setEnv.t
     - And also used by [hermes-installer](https://github.com/Rhizomatica/hermes-installer) project. Runing installer it will clone the `main` branch if production (true). If production (false) it will clone `development` branch. 
 
 - DOMAIN (string)
-    - Used to nomination and identification of the HERMES station.
+    - Used to nomination and identification of the HERMES station (station.hermes.radio).
 
 - GATEWAY (boolean)
     - When HERMES station is a gateway machine (true) it will enable the schedules and stations information modules.
 
 - BITX (string)
-    - Hardware version - UBITX or SBITX
+    - Hardware version - UBITX (U) or SBITX (S)
     - SBITX includes voice and dual frequency options (phony and data transmission).
 
 - HAS_GPS (boolean)
@@ -53,7 +62,6 @@ Check and configure .env file with your parameters and run `npx ts-node setEnv.t
 
 - EMERGENCY_EMAIL (string)
     - Configure emergency email address. Available in the email screen and used for SOS Emergency function.
-
 
 ## Development server
 
