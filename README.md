@@ -78,9 +78,9 @@ Remove all files in dist folder `rm -r dist/`
 Run `ng build --configuration production` to build the project.
 
 To publish your artifacts copy the files stored in the `/dist` to `/var/www/html/` directory
-    `cp -a dist/hermes/pt /var/www/html/`
-    `cp -a dist/hermes/es /var/www/html/`
-    `cp -a dist/hermes/en-US/ /var/www/html/`
+    - `cp -a dist/hermes/pt /var/www/html/`
+    - `cp -a dist/hermes/es /var/www/html/`
+    - `cp -a dist/hermes/en-US/ /var/www/html/`
 
 Done
 
