@@ -1,29 +1,63 @@
-# Hermes
+# HERMES
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12
 
-Angular: 13.2.6
-Angular CLI: 13.2.6
-Node: 12.22.5
-Package Manager: npm 8.5.2
+@angular-devkit/architect       0.1402.12
+@angular-devkit/build-angular   14.2.12
+@angular-devkit/core            14.2.12
+@angular-devkit/schematics      14.2.12
+@angular/cli                    14.2.12
+@schematics/angular             14.2.12
+rxjs                            6.6.7
+typescript                      4.8.4
+
+Angular CLI: 14.2.12
+Node: 18.17.1
+Package Manager: npm 9.6.7 
 
 
 ## Install node, npm
 
-Install node preferably(V12.22.5) and npm (node package manager) in your distro
+- Install node preferably(v18.17.1) and npm (node package manager) in your distro.
+- Run 'npm install' inside the project path.
 
-Run 'npm install' inside the project path
+
+## HERMES GUI .env configuration
+Create an .env file like a .env.example in root directory.
+Check and configure .env file with your parameters and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
+
+> [!TIP]
+> Envirotments (.env) parameters configuration  
+- LOCAL (boolean)
+    - If running local you can easily change the `serverIP` in `global-constants.ts` used for local or remote HTTP requests / Websocket connection.
+
+- PRODUCTION (boolean)
+    - If production (true), angular core will activate `enableProdMode()` script.
+    - And also used by [hermes-installer](https://github.com/Rhizomatica/hermes-installer) project. Runing installer it will clone the `main` branch if production (true). If production (false) it will clone `development` branch. 
+
+- DOMAIN (string)
+    - Used to nomination and identification of the HERMES station.
+
+- GATEWAY (boolean)
+    - When HERMES station is a gateway machine (true) it will enable the schedules and stations information modules.
+
+- BITX (string)
+    - Hardware version - UBITX or SBITX
+    - SBITX includes voice and dual frequency options (phony and data transmission).
+
+- HAS_GPS (boolean)
+    - Used for GPS calibration function in the radio configuration screen.
+
+- REQUIRE_LOGIN (boolean)
+    - Required login (true) forces authentication for HERMES GUI system access.
+
+- EMERGENCY_EMAIL (string)
+    - Configure emergency email address. Available in the email screen and used for SOS Emergency function.
 
 
 ## Development server
 
-Configure .env file with your parameters and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
-
-Run `ng serve --configuration=en` for a dev server in english, you can change the language to spanish (ng serve --configuration=es) or portuguese (ng serve --configuration=pt) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve --configuration=en` for a dev server in english (en), you can change the language to spanish (es), portuguese (pt) or french (fr) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build & Publish
 
@@ -31,17 +65,19 @@ Access remotly machine in port 22 with `ssh -p 22 hermes@[my_host_ip]`
 type `sudo su` to admin verification 
 Set origin main branch `git checkout main`
 Update project `git pull`
-Create an .env file like a .env.example in root directory
-Check and configure .env file with your parameters DEV/PROD and run `npx ts-node setEnv.ts` to set .env values in enviroment.ts.
-Remove all files in dist folder `rm -r dist/`
-Run `npm run build / ng build` to build the project. The build artifacts will be stored in the `dist` directory.
-Copy them in `/var/www/html/` directory
-    `cp -a dist/hermes/pt /var/www/html/`
-    `cp -a dist/hermes/es /var/www/html/`
-    `cp -a dist/hermes/en-US/ /var/www/html/`
-Done 
-Navigate to [HERMES](https://[my_host_ip])
 
+Remove all files in dist folder `rm -r dist/`
+Run `ng build --configuration production` to build the project.
+
+To publish your artifacts copy the files stored in the `/dist` to `/var/www/html/` directory.
+
+`cp -a dist/hermes/pt /var/www/html/`
+`cp -a dist/hermes/es /var/www/html/`
+`cp -a dist/hermes/en-US/ /var/www/html/`
+
+Done
+
+Navigate to [HERMES](https://[my_host_ip])
 
 ## Running unit tests
 
@@ -50,6 +86,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Further help
 
