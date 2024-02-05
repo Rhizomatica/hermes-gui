@@ -46,7 +46,19 @@
         <div class="card">
           <div class="row">
             <h3>
-              Standing Wave Ratio (SWR):
+              <span i18n="@currentvoicefrequency">Voice frequency:</span>
+              <br />
+              <span> {{radio.p1_freq}} </span>
+              kHz
+              <br />
+              <span> {{radio.p1_mode}} </span>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <span i18n="@swrlabelcard">Standing Wave Ratio (SWR):</span>
               <br />
               <span>
                 {{radio.swr}}
@@ -83,18 +95,8 @@
             </h3>
           </div>
         </div>
-        <div class="card">
-          <div class="row">
-            <h3>
-              <div i18n="@@serial">Serial number:
-                <br />
-                {{serial}}
-              </div>
-            </h3>
-          </div>
-        </div>
       </div>
-      <div class="radio" *ngIf="radio && radio.p0_freq">
+      <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
           <span i18n="@@changefrequency">Radio data frequency: {{radio.p0_freq}}kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
@@ -124,6 +126,49 @@
             </div>
           </div>
         </form>
+
+        <form #fvoicefreq="ngForm" class="formdata field" *ngIf="radio && bitx == 'S'">
+          <span i18n="@@changevoicefrequency">Radio voice frequency: {{radio.p1_freq}} kHz
+            <hint [showHint]="false" [hint]="'voiceFrequency'" class="float-right"></hint>
+          </span>
+          <div class="flexible">
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
+              value={{p1_frek}}>
+            <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
+              i18n="@@changevoicefreqr0">
+              change frequency
+            </button>
+          </div>
+        </form>
+        
+        <form class="formdata field" *ngIf="isAdmin">
+          <span i18n="@@changeradiomode">Data Mode</span>
+          <div class="float-right flex-right">
+            <span>USB</span>
+            <div class="switch">
+              <input type="checkbox" name="mode" [checked]="modeSwitch">
+              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 0)"
+                value="{{radio.p0_mode}}" [checked]="modeSwitch"></span>
+            </div>
+            <span>LSB</span>
+            <hint [showHint]="false" [hint]="'mode'"></hint>
+          </div>
+        </form>
+
+        <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
+          <span i18n="@@voicemode">Voice Mode</span>
+          <div class="float-right flex-right">
+            <span>USB</span>
+            <div class="switch">
+              <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
+              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 1)"
+                value="{{radio.p1_mode}}" [checked]="voiceModeSwitch"></span>
+            </div>
+            <span>LSB</span>
+            <hint [showHint]="false" [hint]="'mode'"></hint>
+          </div>
+        </form>
+
         <form #frefthreshold="ngForm" class="formdata field" *ngIf="isAdmin">
           <span i18n="@@prottheshold">Protection activation threshold level <hint [showHint]="false"
               [hint]="'threshold'" class="float-right"></hint></span>
@@ -148,19 +193,16 @@
             </div>
           </div>
         </form>
-        <form class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@changeradiomode">Data Mode</span>
-          <div class="float-right flex-right">
-            <span>USB</span>
-            <div class="switch">
-              <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
-                [checked]="modeSwitch"></span>
-            </div>
-            <span>LSB</span>
-            <hint [showHint]="false" [hint]="'mode'"></hint>
+
+        <form #fgps="ngForm" class="formdata field" *ngIf="isAdmin">
+          <span i18n="@@radioprotection">Protection ({{radio.protection ? 'ON' : 'OFF'}})</span>
+          <div class="float-right">
+            <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
+          <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1"
+            class="m-l-10 float-right">reset</button>
         </form>
+
         <form #fptt="ngForm" class="formdata field" *ngIf="isAdmin">
           <span>PTT ({{radio.tx == false ? 'OFF' : 'ON'}}) <hint [showHint]="false" [hint]="'ptt'" class="float-right">
             </hint></span>
@@ -189,52 +231,18 @@
           <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
             i18n="@@startgpscalibration">Start</button>
         </form>
-        <form #fgps="ngForm" class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@radioprotection">Protection ({{radio.protection ? 'ON' : 'OFF'}})</span>
-          <div class="float-right">
-            <hint [showHint]="false" [hint]="'resetprotection'"></hint>
-          </div>
-          <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1"
-            class="m-l-10 float-right">reset</button>
-        </form>
+       
         <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
           <span i18n="@@radioprofilelabel">Radio profile</span>
           <div class="float-right flex-right">
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
-              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
-                [checked]="toggleProfile"></span>
+              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeProfile($event)"
+                value="{{radio.profile}}" [checked]="toggleProfile"></span>
             </div>
             <span i18n="@@voiceLabel">Voice</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
-          </div>
-        </form>
-        <form #fvoicefreq="ngForm" class="formdata field" *ngIf="radio && radio.p1_freq && bitx == 'S'">
-          <span i18n="@@changevoicefrequency">Radio voice frequency: {{radio.p1_freq}} kHz
-            <hint [showHint]="false" [hint]="'voiceFrequency'" class="float-right"></hint>
-          </span>
-          <div class="flexible">
-            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
-              value={{p1_frek}}>
-            <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
-              i18n="@@changevoicefreqr0">
-              change frequency
-            </button>
-          </div>
-        </form>
-
-        <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
-          <span i18n="@@voicemode">Voice Mode</span>
-          <div class="float-right flex-right">
-            <span>USB</span>
-            <div class="switch">
-              <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
-              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
-                [checked]="voiceModeSwitch"></span>
-            </div>
-            <span>LSB</span>
-            <hint [showHint]="false" [hint]="'mode'"></hint>
           </div>
         </form>
 
@@ -265,6 +273,15 @@
               Use this button <b>only in dangerous or emergency situations.</b>
               It is going to erase all data from HERMES system.
             </p>
+          </div>
+        </form>
+
+        <form #fserial="ngForm" class="formdata field">
+          <div class="m-l-10">
+            <span i18n="@@serial">Serial number</span>
+            <div class="float-right flex-right">
+              {{serial}}
+            </div>
           </div>
         </form>
       </div>
