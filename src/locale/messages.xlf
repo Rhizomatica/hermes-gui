@@ -677,29 +677,29 @@
           <context context-type="linenumber">203,205</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="analogLabel" datatype="html">
-        <source>Phony</source>
+      <trans-unit id="voiceLabel" datatype="html">
+        <source>Voice</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">209,211</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="changeanalogfrequency" datatype="html">
-        <source>Radio phony frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;&apos;analogFrequency&apos;&quot; class=&quot;float-right&quot;&gt;"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
+      <trans-unit id="changevoicefrequency" datatype="html">
+        <source>Radio voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;&apos;voiceFrequency&apos;&quot; class=&quot;float-right&quot;&gt;"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">214,216</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="changeanalogfreqr0" datatype="html">
+      <trans-unit id="changevoicefreqr0" datatype="html">
         <source> change frequency </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">222,227</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="phonymode" datatype="html">
-        <source>Phony Mode</source>
+      <trans-unit id="voicemode" datatype="html">
+        <source>Voice Mode</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">228,231</context>
@@ -1890,7 +1890,7 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="radiophonymenu" datatype="html">
+      <trans-unit id="radiovoicemenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;&gt;"/> Home </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
@@ -2344,7 +2344,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="modevoice" datatype="html">
-        <source> Phony Mode </source>
+        <source> Voice Mode </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
           <context context-type="linenumber">80,82</context>
@@ -2562,7 +2562,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="hintradioconfig" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>Radio Configuration<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> The Radio Configuration page you can find all information about the Radio Phony and Data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;&gt;"/> Radio Status - radio connection status (connected / disconnected). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> *Note: Changing the frequency can stop or interrupt the sending and reception of transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR suggests that the antenna is not set to the same frequency as the transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Operation mode (TX/RX) - TX stands for transmitter and RX stands for receiver. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Serial Number - Identifies your radio equipments unique serial number. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>Radio Configuration<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> The Radio Configuration page you can find all information about the Radio Voice and Data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;&gt;"/> Radio Status - radio connection status (connected / disconnected). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> *Note: Changing the frequency can stop or interrupt the sending and reception of transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR suggests that the antenna is not set to the same frequency as the transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Operation mode (TX/RX) - TX stands for transmitter and RX stands for receiver. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;&gt;"/> Serial Number - Identifies your radio equipments unique serial number. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">144,174</context>
@@ -2575,8 +2575,8 @@
           <context context-type="linenumber">178,184</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="hintanalogfrequency" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>Phony frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Phony frequency for voice usage. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> *Note: This frequency is not related to the message and emails transmission and only applies to voice transmission and reception. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+      <trans-unit id="hintvoicefrequency" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>Voice frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Voice frequency for voice usage. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> *Note: This frequency is not related to the message and emails transmission and only applies to voice transmission and reception. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">188,195</context>
@@ -2597,7 +2597,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="hintradioprofile" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>Radio Profile<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Choose the radio profile for operation. Phony for voice or data for data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>Radio Profile<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Choose the radio profile for operation. Voice radio or data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">215,218</context>
