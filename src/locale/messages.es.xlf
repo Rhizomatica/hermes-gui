@@ -1654,17 +1654,6 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
           <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="serial" datatype="html">
-        <source>Serial number</source>
-        <target state="new">
-<x id="INTERPOLATION" equiv-text="{{radio.serial}}"/>
-<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
-  Numero de serie </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">281</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="areyousurechangesett" datatype="html">
         <source>Are you sure you want to change radio settings? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This may cause the system to stop. </source>
         <target state="new">Seguro de querer cambiar la configuración de la radio? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
@@ -2276,6 +2265,14 @@ esto puede hacer que el sistema se detenga</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">273</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seriallabel" datatype="html">
+        <source>Serial number</source>
+        <target state="new">Serial number</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">281,284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreboot" datatype="html">

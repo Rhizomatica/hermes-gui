@@ -588,14 +588,6 @@
           <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="serial" datatype="html">
-        <source>Serial number</source>
-        <target state="new">Numéro de série <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{serial}}"/> </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">281</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="changefrequency" datatype="html">
         <source>Radio data frequency: <x id="INTERPOLATION" equiv-text="{{radio.p0_freq}}"/>kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'frequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
         <target state="new">Fréquence données radio : <x id="INTERPOLATION" equiv-text="{{radio.freq}}"/>kHz</target>
@@ -820,6 +812,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">273</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seriallabel" datatype="html">
+        <source>Serial number</source>
+        <target state="new">Serial number</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">281,284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreset" datatype="html">
