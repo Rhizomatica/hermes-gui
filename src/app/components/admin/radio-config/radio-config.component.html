@@ -24,7 +24,17 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@currentradiofreq">Data frequency</span>
+              <span i18n="@currentprofilecard">Radio mode profile:</span>
+              <br />
+              <span *ngIf="radio.profile == 0"> Data </span>
+              <span *ngIf="radio.profile == 1"> Phony </span>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <span i18n="@currentradiofreq">Data frequency:</span>
               <br />
               <span> {{radio.p0_freq}} </span>
               kHz
@@ -36,7 +46,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              SWR
+              Standing Wave Ratio (SWR):
               <br />
               <span>
                 {{radio.swr}}
@@ -47,7 +57,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@forward">Power</span>
+              <span i18n="@forward">Power:</span>
               <br />
               {{radio.fwd_watts ? radio.fwd_watts : 0}} W
             </h3>
@@ -56,7 +66,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@@operationmode">Operation mode</span>
+              <span i18n="@@operationmode">Operation mode:</span>
               <br />
               <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
               <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
@@ -66,7 +76,17 @@
         <div class="card">
           <div class="row">
             <h3>
-              <div i18n="@@serial">Serial number
+              <div i18n="@@protectionlabelcard">Protection:
+                <br />
+                {{radio.protection ? 'ON' : 'OFF'}}
+              </div>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <div i18n="@@serial">Serial number:
                 <br />
                 {{serial}}
               </div>
