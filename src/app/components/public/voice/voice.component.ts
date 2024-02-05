@@ -29,7 +29,7 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   frequencyAux: string
   subject = new BehaviorSubject(this.radioService);
-  phonyModeProfileID: number = 1
+  voiceModeProfileID: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -48,7 +48,7 @@ export class VoiceComponent implements OnInit {
 
   changeMode(event) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.phonyModeProfileID).subscribe(
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe(
       (res: any) => {
 
       }, (err) => {
@@ -87,7 +87,7 @@ export class VoiceComponent implements OnInit {
 
   changeFrequency(f: NgForm) {
     this.loading = true
-    this.radioService.setRadioFreq((f.value.frequency * 1000), this.phonyModeProfileID).subscribe(
+    this.radioService.setRadioFreq((f.value.frequency * 1000), this.voiceModeProfileID).subscribe(
       (res: any) => {
         this.radio.p1_freq = this.utils.formatFrequency(res);
         this.loading = false
@@ -206,7 +206,7 @@ export class VoiceComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection(this.phonyModeProfileID).subscribe(
+    this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.protection = false;
@@ -220,7 +220,7 @@ export class VoiceComponent implements OnInit {
   }
 
   changeOperateModeProfile() {
-    //Profile id = 1 - analog / fonia
+    //Profile id = 1 - voice / fonia
     if (this.radio.profile == 1)
       return
 

@@ -1,5 +1,5 @@
 <loading [loading]="loading"></loading>
-<div class="radiophony" *ngIf="radio !== null">
+<div class="radiovoice" *ngIf="radio !== null">
   <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
     loading radio status...
   </h2>
@@ -78,7 +78,7 @@
       </div>
       <div class="data">
         <div class="data-title" i18n="@@modevoice">
-          Phony Mode
+          Voice Mode
         </div>
         <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.p1_freq">
           <span>USB</span>

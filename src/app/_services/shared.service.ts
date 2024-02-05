@@ -117,7 +117,7 @@ export class SharedService {
   }
 
   observeOperatingProfileMode() {
-    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value && this.radioObj.value.profile == 1 && this.storedRadioObj.ptt == false && this.radioObj.value.ptt == true) { //analog or fonia
+    if (GlobalConstants.local && GlobalConstants.bitx == 'S' && this.radioObj.value && this.radioObj.value.profile == 1 && this.storedRadioObj.ptt == false && this.radioObj.value.ptt == true) { //analog or voice
       this.router.navigate(['/voice']); //navigate to voice (PTT hardware button)
     }
   }

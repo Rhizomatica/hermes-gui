@@ -27,7 +27,7 @@
               <span i18n="@currentprofilecard">Radio mode profile:</span>
               <br />
               <span *ngIf="radio.profile == 0"> Data </span>
-              <span *ngIf="radio.profile == 1"> Phony </span>
+              <span *ngIf="radio.profile == 1"> Voice </span>
             </h3>
           </div>
         </div>
@@ -206,32 +206,32 @@
               <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeProfile($event)" value="{{radio.profile}}"
                 [checked]="toggleProfile"></span>
             </div>
-            <span i18n="@@analogLabel">Phony</span>
+            <span i18n="@@voiceLabel">Voice</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
         </form>
-        <form #fanalogfreq="ngForm" class="formdata field" *ngIf="radio && radio.p1_freq && bitx == 'S'">
-          <span i18n="@@changeanalogfrequency">Radio phony frequency: {{radio.p1_freq}} kHz
-            <hint [showHint]="false" [hint]="'analogFrequency'" class="float-right"></hint>
+        <form #fvoicefreq="ngForm" class="formdata field" *ngIf="radio && radio.p1_freq && bitx == 'S'">
+          <span i18n="@@changevoicefrequency">Radio voice frequency: {{radio.p1_freq}} kHz
+            <hint [showHint]="false" [hint]="'voiceFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
               value={{p1_frek}}>
-            <button class="midbt" (click)="changeFrequency(fanalogfreq, 1)" [disabled]="fanalogfreq.invalid"
-              i18n="@@changeanalogfreqr0">
+            <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
+              i18n="@@changevoicefreqr0">
               change frequency
             </button>
           </div>
         </form>
 
         <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
-          <span i18n="@@phonymode">Phony Mode</span>
+          <span i18n="@@voicemode">Voice Mode</span>
           <div class="float-right flex-right">
             <span>USB</span>
             <div class="switch">
-              <input type="checkbox" name="phonymode" [checked]="phonyModeSwitch">
+              <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
               <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
-                [checked]="phonyModeSwitch"></span>
+                [checked]="voiceModeSwitch"></span>
             </div>
             <span>LSB</span>
             <hint [showHint]="false" [hint]="'mode'"></hint>

@@ -58,9 +58,9 @@ export class RadioConfigComponent implements OnInit {
   sosEmergency: boolean = false
   confirmChangeProtection: boolean = false
   toggleProfile: number = 1
-  phonyModeSwitch: boolean
+  voiceModeSwitch: boolean
   dataModeProfileID: number = 0
-  phonyModeProfileID: number = 1
+  voiceModeProfileID: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -178,8 +178,8 @@ export class RadioConfigComponent implements OnInit {
     }
 
     if (radioProfile == 1){
-      this.phonyModeSwitch = this.phonyModeSwitch === true ? false : true;
-      mode = this.phonyModeSwitch
+      this.voiceModeSwitch = this.voiceModeSwitch === true ? false : true;
+      mode = this.voiceModeSwitch
     }
     
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
@@ -341,7 +341,7 @@ export class RadioConfigComponent implements OnInit {
 
   getRadioStatus() {
     this.loading = true
-    this.radioService.getRadioStatus(this.phonyModeProfileID).subscribe(
+    this.radioService.getRadioStatus(this.voiceModeProfileID).subscribe(
       (res: any) => {
         this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;
@@ -389,7 +389,7 @@ export class RadioConfigComponent implements OnInit {
   ngOnInit(): void {
     this.getRadioStatus()
     this.radio = this.sharedService.radioObj.value
-    this.phonyModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+    this.voiceModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
     this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
     this.p0_frek = parseFloat(this.radio.p0_freq) * 1000
     this.p1_frek = parseFloat(this.radio.p1_freq) * 1000

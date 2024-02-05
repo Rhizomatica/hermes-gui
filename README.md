@@ -52,7 +52,7 @@ Check and configure `.env` file with your parameters and run `npx ts-node setEnv
 
 - BITX (string)
     - Hardware version - UBITX (U) or SBITX (S)
-    - SBITX includes voice and dual frequency options (phony and data transmission).
+    - SBITX includes voice and dual frequency options (voice and data transmission).
 
 - HAS_GPS (boolean)
     - Used for GPS calibration function in the radio configuration screen.
