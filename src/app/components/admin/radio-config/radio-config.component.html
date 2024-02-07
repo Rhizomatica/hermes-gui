@@ -140,7 +140,7 @@
             </button>
           </div>
         </form>
-        
+
         <form class="formdata field" *ngIf="isAdmin">
           <span i18n="@@changeradiomode">Data Mode</span>
           <div class="float-right flex-right">
@@ -170,12 +170,12 @@
         </form>
 
         <form #frefthreshold="ngForm" class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@prottheshold">Protection activation threshold level <hint [showHint]="false"
-              [hint]="'threshold'" class="float-right"></hint></span>
+          <span i18n="@@prottheshold">Protection activation threshold level
+            <hint [showHint]="false" [hint]="'threshold'" class="float-right"></hint>
+          </span>
           <div class="flexible">
             <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
               value={{refthreshold}}>
-
             <button class="midbt" (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
               i18n="@@changetre1">change
               threshold</button>
@@ -195,12 +195,16 @@
         </form>
 
         <form #fgps="ngForm" class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@radioprotection">Protection ({{radio.protection ? 'ON' : 'OFF'}})</span>
+          <span i18n="@@radioprotectionlabel">Protection</span>
           <div class="float-right">
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
-          <button (click)="resetProtection()" *ngIf="radio.protection" i18n="@resetprotection1"
-            class="m-l-10 float-right">reset</button>
+          <div class="row m-t-10">
+            <button disabled *ngIf="radio.protection">OFF</button>
+            <button (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="!radio.protection">
+              reset protection
+            </button>
+          </div>
         </form>
 
         <form #fptt="ngForm" class="formdata field" *ngIf="isAdmin">
@@ -231,7 +235,7 @@
           <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
             i18n="@@startgpscalibration">Start</button>
         </form>
-       
+
         <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
           <span i18n="@@radioprofilelabel">Radio profile</span>
           <div class="float-right flex-right">
@@ -247,7 +251,7 @@
         </form>
 
         <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
-          <div class="m-l-10">
+          <div class="row">
             <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">
               reset to default
             </button>
@@ -256,8 +260,8 @@
         </form>
 
         <form #freboot="ngForm" class="formdata field" *ngIf="isAdmin">
-          <div class="m-l-10">
-            <button class="" (click)="confirmReboot()">
+          <div  class="row">
+            <button (click)="confirmReboot()">
               <span i18n="@@reboot">reboot</span>
             </button>
             <hint [showHint]="false" [hint]="'reboot'" class="float-right"></hint>
@@ -265,7 +269,7 @@
         </form>
 
         <form #femergency="ngForm" class="formdata field">
-          <div class="m-l-10">
+          <div class="row">
             <button class="danger" (click)="sosEmergencyConfirmation()">
               <span i18n="@@sosemergency">SOS emergency</span>
             </button>
@@ -280,7 +284,7 @@
           <div class="m-l-10">
             <span i18n="@@seriallabel">Serial number</span>
             <div class="float-right flex-right">
-              {{serial}}
+              <b>{{serial}}</b>
             </div>
           </div>
         </form>
