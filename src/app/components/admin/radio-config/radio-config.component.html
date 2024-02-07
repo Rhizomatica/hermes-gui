@@ -200,8 +200,8 @@
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
           <div class="row m-t-10">
-            <button disabled *ngIf="radio.protection">OFF</button>
-            <button (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="!radio.protection">
+            <button disabled *ngIf="!radio.protection">OFF</button>
+            <button (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="radio.protection">
               reset protection
             </button>
           </div>
