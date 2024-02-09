@@ -53,6 +53,7 @@ export class homeComponent implements OnInit {
   radio: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
   @Input() radioObj: Radio
+  self = self.location.host
 
   logOff() {
     this.authenticationService.logout();

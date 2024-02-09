@@ -34,7 +34,7 @@ export class UtilsService {
   }
 
   isItRuningLocal() {
-    return self.location.host === 'localhost:4200' || self.location.host === '127.0.0.1:4200' ? true : false
+    return self.location.host === 'localhost:4200' || self.location.host === '127.0.1.1:4200' ? true : false
   }
 
   isSBitxRadio() {
