@@ -17,5 +17,6 @@ export interface Radio {
   step: number,
   p0_volume: number,
   p1_volume: number,
-  profile: number
+  profile: number,
+  p1_freq_splited: Array<string>
 }

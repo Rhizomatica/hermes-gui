@@ -33,6 +33,7 @@ export class SharedService {
     p0_volume: null,
     p1_volume: null,
     profile: null,
+    p1_freq_splited: null,
   });
 
   public storedRadioObj = <Radio>({
@@ -48,7 +49,8 @@ export class SharedService {
     swr: '1.0',
     protection: null,
     p0_volume: null,
-    profile: null
+    profile: null,
+    p1_freq_splited: null
   });
 
   setRadioObjShared(data) {
@@ -72,7 +74,7 @@ export class SharedService {
     this.radioObj.value.p1_volume = this.storedRadioObj.p1_volume
     this.radioObj.value.profile = this.storedRadioObj.profile
     this.radioObj.value.ptt = this.storedRadioObj.ptt
-
+    this.radioObj.value.p1_freq_splited = this.storedRadioObj.p1_freq_splited
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -94,6 +96,7 @@ export class SharedService {
     this.storedRadioObj.p1_volume = newObj.p1_volume == null ? this.storedRadioObj.p1_volume : newObj.p1_volume
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
+    this.storedRadioObj.p1_freq_splited = utils.splitFrequency(this.storedRadioObj.p1_freq)
   }
 
   mountRadioObjDemo() {
@@ -113,6 +116,7 @@ export class SharedService {
     this.radioObj.value.p0_volume = 60
     this.radioObj.value.profile = 1
     this.radioObj.value.ptt = false
+    this.radioObj.value.p1_freq_splited = utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.next(this.radioObj.value)
   }
 

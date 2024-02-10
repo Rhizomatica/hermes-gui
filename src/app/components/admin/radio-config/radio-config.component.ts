@@ -152,13 +152,13 @@ export class RadioConfigComponent implements OnInit {
 
     this.radioService.setRadioFreq(realfreq, radioProfile).subscribe(
       (res: any) => {
-        if(radioProfile == 0)
+        if (radioProfile == 0)
           this.radio.p0_freq = this.utils.formatFrequency(res);
-        
-        if(radioProfile == 1)
+
+        if (radioProfile == 1)
           this.radio.p1_freq = this.utils.formatFrequency(res);
 
-          this.loading = false
+        this.loading = false
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -171,17 +171,17 @@ export class RadioConfigComponent implements OnInit {
 
     var mode = null
 
-    if (radioProfile == 0){
+    if (radioProfile == 0) {
       this.modeSwitch = this.modeSwitch === true ? false : true
       mode = this.modeSwitch
 
     }
 
-    if (radioProfile == 1){
+    if (radioProfile == 1) {
       this.voiceModeSwitch = this.voiceModeSwitch === true ? false : true;
       mode = this.voiceModeSwitch
     }
-    
+
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
       (res: any) => {
 

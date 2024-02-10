@@ -44,7 +44,7 @@ export class UtilsService {
 
   getFileType(fileType) {
 
-    if(!fileType){
+    if (!fileType) {
       return null
     }
 
@@ -91,5 +91,19 @@ export class UtilsService {
       return ''
 
     return new Date(date).toLocaleDateString('pt', { day: "numeric", month: "numeric", year: "numeric", hour: '2-digit', hour12: true, minute: "2-digit" })
+  }
+
+  splitFrequency(freq) {
+    freq = freq.toString()
+    freq = freq.replace(/,/g, "")
+    freq = freq.replace(/\./g, "")
+
+    if (freq.length == 6)
+      freq = "0" + freq
+
+    if (freq.length == 5)
+      freq = "00" + freq
+
+    return freq.toString().split('')
   }
 }
