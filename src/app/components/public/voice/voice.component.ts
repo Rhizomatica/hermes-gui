@@ -41,7 +41,7 @@ export class VoiceComponent implements OnInit {
   }
 
   public closeError() {
-    this.errorAlert = false;
+    this.errorAlert = false
   }
 
   changeMode(event) {
@@ -50,8 +50,8 @@ export class VoiceComponent implements OnInit {
       (res: any) => {
 
       }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
       }
     );
   }
@@ -175,12 +175,12 @@ export class VoiceComponent implements OnInit {
     this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe(
       (res: any) => {
         if (res === 1) {
-          this.radio.protection = false;
+          this.radio.protection = false
         }
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
       }
     );
   }
@@ -193,12 +193,12 @@ export class VoiceComponent implements OnInit {
     this.radioService.changeOperateModeProfile(1).subscribe(
       (res: any) => {
         if (res === 1) {
-          this.radio.profile = res.profile;
+          this.radio.profile = res.profile
         }
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
       }
     );
   }
@@ -206,13 +206,11 @@ export class VoiceComponent implements OnInit {
   restartVoiceTimeout(){
     this.radioService.restartVoiceTimeout().subscribe(
       (res: any) => {
-        if (res === 1) {
-          this.radio.p1_timeout_connection = res.p1_timeout_connection;
-        }
+        return res
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err        
+        this.errorAlert = true
       }
     );
   }

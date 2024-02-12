@@ -34,7 +34,7 @@ export class SharedService {
     p1_volume: null,
     profile: null,
     p1_freq_splited: null,
-    p1_timeout_connection: null
+    timeout: null
   });
 
   public storedRadioObj = <Radio>({
@@ -52,7 +52,7 @@ export class SharedService {
     p0_volume: null,
     profile: null,
     p1_freq_splited: null,
-    p1_timeout_connection:null
+    timeout:null
   });
 
   setRadioObjShared(data) {
@@ -77,7 +77,7 @@ export class SharedService {
     this.radioObj.value.profile = this.storedRadioObj.profile
     this.radioObj.value.ptt = this.storedRadioObj.ptt
     this.radioObj.value.p1_freq_splited = this.storedRadioObj.p1_freq_splited
-    this.radioObj.value.p1_timeout_connection = this.storedRadioObj.p1_timeout_connection
+    this.radioObj.value.timeout = this.storedRadioObj.timeout
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -100,7 +100,7 @@ export class SharedService {
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = utils.splitFrequency(this.storedRadioObj.p1_freq)
-    this.storedRadioObj.p1_timeout_connection = newObj.p1_timeout_connection == null ? this.storedRadioObj.p1_timeout_connection : newObj.p1_timeout_connection
+    this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : newObj.timeout
   }
 
   mountRadioObjDemo() {
@@ -121,7 +121,7 @@ export class SharedService {
     this.radioObj.value.profile = 1
     this.radioObj.value.ptt = false
     this.radioObj.value.p1_freq_splited = utils.splitFrequency(this.radioObj.value.p1_freq)
-    this.radioObj.value.p1_timeout_connection = 300
+    this.radioObj.value.timeout = 300
     this.radioObj.next(this.radioObj.value)
   }
 
