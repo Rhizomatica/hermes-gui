@@ -203,6 +203,20 @@ export class VoiceComponent implements OnInit {
     );
   }
 
+  restartVoiceTimeout(){
+    this.radioService.restartVoiceTimeout().subscribe(
+      (res: any) => {
+        if (res === 1) {
+          this.radio.p1_timeout_connection = res.p1_timeout_connection;
+        }
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
     this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false 

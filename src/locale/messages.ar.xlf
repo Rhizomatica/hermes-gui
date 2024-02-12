@@ -565,7 +565,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationrx" datatype="html">
@@ -577,7 +577,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionlabelcard" datatype="html">
@@ -796,7 +796,7 @@
         <note priority="1" from="description">@resetprotectionvoice</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
@@ -2649,12 +2649,28 @@
           <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="timeoutlabel" datatype="html">
+        <source> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.p1_timeout_connection}}"/> </source>
+        <target state="new"> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.p1_timeout_connection}}"/> </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="timeoutrestarttiplabel" datatype="html">
+        <source> Click to restart timeout... </source>
+        <target state="new"> Click to restart timeout... </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="powervoice" datatype="html">
         <source> Power </source>
         <target state="new"> Power </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">39,41</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stepvoice" datatype="html">
@@ -2662,7 +2678,7 @@
         <target state="new">step</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionvoice" datatype="html">
@@ -2670,7 +2686,7 @@
         <target state="new"> Protection </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">71,73</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="modevoice" datatype="html">
@@ -2678,7 +2694,7 @@
         <target state="new"> Mode </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">80,82</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="websocketerror" datatype="html">
@@ -2686,7 +2702,7 @@
         <target state="new">There was an error on processing your request </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="updatevoicepage" datatype="html">
@@ -2694,7 +2710,7 @@
         <target state="new">reload page</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="systemupgradeu" datatype="html">

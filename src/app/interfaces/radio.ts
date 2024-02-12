@@ -18,5 +18,6 @@ export interface Radio {
   p0_volume: number,
   p1_volume: number,
   profile: number,
-  p1_freq_splited: Array<string>
+  p1_freq_splited: Array<string>,
+  p1_timeout_connection: number
 }
