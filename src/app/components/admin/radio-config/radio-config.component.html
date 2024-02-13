@@ -237,7 +237,8 @@
         </form>
 
         <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
-          <span i18n="@@radioprofilelabel">Radio profile ({{radio.timeout}})</span>
+          <span i18n="@@radioprofilelabel">Radio profile <span
+              *ngIf="radio.profile == 1">({{radio.timeout}})</span></span>
           <div class="float-right flex-right">
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
@@ -260,7 +261,7 @@
         </form>
 
         <form #freboot="ngForm" class="formdata field" *ngIf="isAdmin">
-          <div  class="row">
+          <div class="row">
             <button (click)="confirmReboot()">
               <span i18n="@@reboot">reboot</span>
             </button>

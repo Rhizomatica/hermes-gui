@@ -31,13 +31,16 @@
             </datalist> -->
         </form>
       </div>
-      <div class="data-title m-t-25" i18n="@@timeoutlabel">
+      <div class="data-title m-t-25" i18n="@@timeoutlabel" *ngIf="radio.profile == 1">
         Voice timeout: {{radio.timeout}}
       </div>
       <div class="data-body">
-        <span i18n="@@timeoutrestarttiplabel">
+        <span i18n="@@timeoutrestarttiplabel" *ngIf="radio.profile == 1">
           Click to restart the timeout...
         </span>
+        <b i18n="@@activatevoicelabel" *ngIf="radio.profile == 0" (click)="changeOperateModeProfile()">
+          Click to activate the voice
+        </b>
       </div>
     </div>
 
