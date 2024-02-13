@@ -100,7 +100,7 @@ export class SharedService {
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = utils.splitFrequency(this.storedRadioObj.p1_freq)
-    this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : newObj.timeout
+    this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : utils.formatTimeCounter(newObj.timeout)
   }
 
   mountRadioObjDemo() {
@@ -121,7 +121,7 @@ export class SharedService {
     this.radioObj.value.profile = 1
     this.radioObj.value.ptt = false
     this.radioObj.value.p1_freq_splited = utils.splitFrequency(this.radioObj.value.p1_freq)
-    this.radioObj.value.timeout = 300
+    this.radioObj.value.timeout = utils.formatTimeCounter('300')
     this.radioObj.next(this.radioObj.value)
   }
 

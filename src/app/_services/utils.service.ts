@@ -106,4 +106,11 @@ export class UtilsService {
 
     return freq.toString().split('')
   }
+
+  formatTimeCounter(seconds){
+    if(seconds >= 60)
+      return parseFloat((seconds / 60).toString()) + " min"
+
+      return seconds + " sec"
+    }
 }
