@@ -24,10 +24,10 @@
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
         <div *ngIf="radio && radio.profile == 0">
-          <span class="nav-frequency" >
+          <span class="nav-frequency">
             {{radio.p0_mode}} {{radio.p0_freq}} kHz
           </span>
-          <span class="nav-operation-mode">
+          <span class="nav-operation-mode" i18n="@@datanavlabel">
             data
           </span>
         </div>   
@@ -35,7 +35,7 @@
           <span class="nav-frequency" >
             {{radio.p1_mode}} {{radio.p1_freq}} kHz
           </span>
-          <span class="nav-operation-mode">
+          <span class="nav-operation-mode" i18n="@@voicenavlabel">
             voice
           </span>
         </div>      
