@@ -141,13 +141,13 @@
           </div>
         </form>
 
-        <form class="formdata field" *ngIf="isAdmin">
+        <form class="formdata field">
           <span i18n="@@changeradiomode">Data Mode</span>
           <div class="float-right flex-right">
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 0)"
+              <span class="slider round-uc one-color" (click)="changeMode($event, 0)"
                 value="{{radio.p0_mode}}" [checked]="modeSwitch"></span>
             </div>
             <span>LSB</span>
@@ -155,13 +155,13 @@
           </div>
         </form>
 
-        <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
+        <form class="formdata field" *ngIf="bitx == 'S'">
           <span i18n="@@voicemode">Voice Mode</span>
           <div class="float-right flex-right">
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
-              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeMode($event, 1)"
+              <span class="slider round-uc one-color" (click)="changeMode($event, 1)"
                 value="{{radio.p1_mode}}" [checked]="voiceModeSwitch"></span>
             </div>
             <span>LSB</span>
