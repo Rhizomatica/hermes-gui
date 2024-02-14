@@ -190,11 +190,31 @@ export class VoiceComponent implements OnInit {
     if (this.radio.profile == 1)
       return
 
+    this.loading = true
     this.radioService.changeOperateModeProfile(1).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.profile = res.profile
+          this.loading = false
         }
+      },
+      (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
+  }
+
+  restartVoiceTimeout() {
+
+    if (this.radio.profile == 0) {
+      return this.changeOperateModeProfile()
+    }
+
+    this.radioService.restartVoiceTimeout().subscribe(
+      (res: any) => {
+        return res
       },
       (err) => {
         this.error = err
@@ -203,21 +223,9 @@ export class VoiceComponent implements OnInit {
     );
   }
 
-  restartVoiceTimeout(){
-    this.radioService.restartVoiceTimeout().subscribe(
-      (res: any) => {
-        return res
-      },
-      (err) => {
-        this.error = err        
-        this.errorAlert = true
-      }
-    );
-  }
-
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
-    this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false 
+    this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
     this.changeOperateModeProfile()
     this.getSavedStep()
   }

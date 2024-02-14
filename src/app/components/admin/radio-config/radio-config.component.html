@@ -236,18 +236,27 @@
             i18n="@@startgpscalibration">Start</button>
         </form>
 
-        <form class="formdata field" *ngIf="isAdmin && bitx == 'S'">
+        <form class="formdata field" *ngIf="bitx == 'S'">
           <span i18n="@@radioprofilelabel">Radio profile <span
               *ngIf="radio.profile == 1">({{radio.timeout}})</span></span>
           <div class="float-right flex-right">
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
-              <span class="slider round-uc one-color" *ngIf="isAdmin" (click)="changeProfile($event)"
+              <span class="slider round-uc one-color" (click)="changeProfile($event)"
                 value="{{radio.profile}}" [checked]="toggleProfile"></span>
             </div>
             <span i18n="@@voiceLabel">Voice</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
+          </div>
+        </form>
+
+        <form #fserial="ngForm" class="formdata field">
+          <div class="m-l-10">
+            <span i18n="@@seriallabel">Serial number</span>
+            <div class="float-right flex-right">
+              <b>{{serial}}</b>
+            </div>
           </div>
         </form>
 
@@ -278,15 +287,6 @@
               Use this button <b>only in dangerous or emergency situations.</b>
               It is going to erase all data from HERMES system.
             </p>
-          </div>
-        </form>
-
-        <form #fserial="ngForm" class="formdata field">
-          <div class="m-l-10">
-            <span i18n="@@seriallabel">Serial number</span>
-            <div class="float-right flex-right">
-              <b>{{serial}}</b>
-            </div>
           </div>
         </form>
       </div>
