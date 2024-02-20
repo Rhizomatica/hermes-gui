@@ -73,7 +73,7 @@
       </trans-unit>
       <trans-unit id="countdowninactivite" datatype="html">
         <source>Inactive user. Countdown for logoff</source>
-        <target state="new">Inactive user. Countdown for logoff</target>
+        <target state="new">Usuario inactivo. Cuenta regresiva para cerrar sesión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">87</context>
@@ -1297,7 +1297,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="mediaaccesscontroltitle" datatype="html">
         <source> Media Access Control <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'mediaAccessControl'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
-        <target state="new">Media Access Control</target>
+        <target state="new">El control de acceso a medios (MAC)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">75</context>
@@ -1305,7 +1305,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="macfiltertitle" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Disable' : 'Enable'}}"/> MAC Filter</source>
-        <target state="new">Enable/Disable MAC Filter</target>
+        <target state="new"> <x id="INTERPOLATION" equiv-text="{{macFilter ? 'Desactivar' : 'activar'}}"/> Filtro MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">82</context>
@@ -1313,7 +1313,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="addnewmacaddress" datatype="html">
         <source>Add new MAC address</source>
-        <target state="new">Add new MAC address</target>
+        <target state="new">Agregar nueva dirección MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">94</context>
@@ -1321,7 +1321,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="savemacaddress" datatype="html">
         <source>add</source>
-        <target state="new">save</target>
+        <target state="new">incluir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">98</context>
@@ -1329,7 +1329,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="patternmacaddress" datatype="html">
         <source> MAC address pattern wrong, please type it again. Accepted characters: 0 - 9, A - F, :, - </source>
-        <target state="new"> Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, ENTER </target>
+        <target state="new"> El patrón de dirección MAC es incorrecto, escríbalo nuevamente. Caracteres aceptados: 0 - 9, A - F, :, -</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">104</context>
@@ -1337,7 +1337,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="closemacaddresspatern" datatype="html">
         <source> close </source>
-        <target state="new"> close </target>
+        <target state="new"> cerrar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">109</context>
@@ -1345,7 +1345,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="acceptmaclisttitle" datatype="html">
         <source>Accepted MAC address list</source>
-        <target state="new">Accepted MAC address list</target>
+        <target state="new">Lista de direcciones MAC aceptadas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">117</context>
@@ -1353,7 +1353,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="emptymacaddresslist" datatype="html">
         <source> Empty MAC address list </source>
-        <target state="new"> Empty MAC address list </target>
+        <target state="new"> Lista de direcciones MAC vacía </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">119</context>
@@ -1361,7 +1361,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="confirmremovemacaddress" datatype="html">
         <source>Are you sure that you want to remove the MAC address - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</source>
-        <target state="new">Are you sure that you want to remove the MAC address - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</target>
+        <target state="new">¿Está seguro de que desea eliminar la dirección MAC - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">130,131</context>
@@ -1369,7 +1369,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="deltemacaddressbutton" datatype="html">
         <source> delete </source>
-        <target state="new"> delete </target>
+        <target state="new"> eliminar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">136,138</context>
@@ -1377,7 +1377,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="errorcustomerror" datatype="html">
         <source>There was an error on processing your request</source>
-        <target state="new">There was an error on processing your request</target>
+        <target state="new">Hubo un error al procesar su solicitud.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">147</context>
@@ -1579,7 +1579,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="cc75ed8f76ae0eab9b6a82aebd1e514bf976d79a" datatype="html">
         <source>Data frequency:</source>
-        <target state="new">Data frequency:</target>
+        <target state="new">Frecuencia de datos:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">37,40</context>
@@ -1588,7 +1588,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="a4ad329f5cff2aff37275e020d1e2715bb4fb35b" datatype="html">
         <source>Voice frequency:</source>
-        <target state="new">Voice frequency:</target>
+        <target state="new">Frecuencia de voz:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">49,53</context>
@@ -1597,7 +1597,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="7f5e240cce8262aec11bc8ba69aa57f8c5e48151" datatype="html">
         <source>Standing Wave Ratio (SWR):</source>
-        <target state="new">Standing Wave Ratio (SWR):</target>
+        <target state="new">Relación de onda estacionaria (SWR):</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">61,65</context>
@@ -1664,7 +1664,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="protectionlabelcard" datatype="html">
         <source>Protection: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'ON' : 'OFF'}}"/> </source>
-        <target state="new">Protection: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'ON' : 'OFF'}}"/> </target>
+        <target state="new">Protección: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'Encendido' : 'Apagado'}}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">91</context>
@@ -1689,7 +1689,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="cancelr0" datatype="html">
         <source>cancel</source>
-        <target state="new">cancel</target>
+        <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">124</context>
@@ -1779,7 +1779,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="digitallabel" datatype="html">
         <source>Data</source>
-        <target state="new">Digital</target>
+        <target state="new">Datos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">243</context>
@@ -1787,7 +1787,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="voiceLabel" datatype="html">
         <source>Voice</source>
-        <target state="new">Voice</target>
+        <target state="new">Voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">249</context>
@@ -1795,7 +1795,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="changevoicefrequency" datatype="html">
         <source>Radio voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
-        <target state="new">Radio voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
+        <target state="new">Frecuencia de voz de radio: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">131</context>
@@ -1811,7 +1811,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="voicemode" datatype="html">
         <source>Voice Mode</source>
-        <target state="new">Voice Mode</target>
+        <target state="new">Modo de voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">159</context>
@@ -1819,7 +1819,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="cancelsendptt" datatype="html">
         <source>cancel</source>
-        <target state="new">cancel</target>
+        <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">226</context>
@@ -1867,7 +1867,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="radioprotectionlabel" datatype="html">
         <source>Protection</source>
-        <target state="new">Protection</target>
+        <target state="new">Proteccion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">198,200</context>
@@ -2048,7 +2048,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="modevoice" datatype="html">
         <source> Voice Mode </source>
-        <target state="new"> Modo </target>
+        <target state="new"> Modo de voz </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
           <context context-type="linenumber">93</context>
@@ -2511,8 +2511,8 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="debb193605bf7cb6b3f4c4cd64e709fa040c93c4" datatype="html">
         <source> Are you sure you want to restore the factory system?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> this will delete all users, emails and messages !!! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new"> Are you sure you want to restore the factory system?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
- this will delete all users, emails and messages !!! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+        <target state="new"> ¿Estás seguro de que quieres restaurar el sistema de fábrica?<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+ ¡Esto eliminará todos los usuarios, correos electrónicos y mensajes! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </target>
         <context-group purpose="location">
@@ -2523,7 +2523,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="confirm" datatype="html">
         <source>confirm</source>
-        <target state="new">confirm</target>
+        <target state="new">confirmar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">19</context>
@@ -2792,7 +2792,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintresetprotection" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reset protection<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why the system went over the threshold. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reset protection<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Reset protection <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Restablecer protección<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Restablecer protección <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">248</context>
@@ -2864,7 +2864,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="closehintbutton" datatype="html">
         <source> close </source>
-        <target state="new"> close </target>
+        <target state="new"> cerrar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">385</context>
