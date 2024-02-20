@@ -105,7 +105,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             case 413:
                 return 'Le fichier est trop volumineux, la taille maximum est 20.48 MB'
             case 431:
-                return 'Request exceeds the size allowed by the server.'
+                return 'La demande dépasse la taille autorisée par le serveur.'
         }
 
         return errorStatus

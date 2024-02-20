@@ -301,7 +301,7 @@
       </trans-unit>
       <trans-unit id="needtobeadmin" datatype="html">
         <source> Need to be an admin to access this </source>
-        <target state="new"> Accès restreint aux administrateurs </target>
+        <target state="new"> Accès restreint aux administrateur </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">131</context>
@@ -432,7 +432,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cleanup" datatype="html">
-        <source>clean up broken files</source>
+        <source>clean up lost files</source>
         <target state="new">nettoyer les fichiers perdus</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
@@ -457,7 +457,7 @@
       </trans-unit>
       <trans-unit id="needtobeadmin2" datatype="html">
         <source> Need to be an admin to access this </source>
-        <target state="new"> Accès restreint aux administrateurs </target>
+        <target state="new"> Accès restreint aux administrateur </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
           <context context-type="linenumber">51</context>
@@ -505,7 +505,7 @@
       </trans-unit>
       <trans-unit id="08bbbfc5a1a2b8a07e5b0db4bc84e284eb34cc36" datatype="html">
         <source>Radio profile:</source>
-        <target state="new">Radio profile:</target>
+        <target state="new">Profil radio:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">27,30</context>
@@ -532,7 +532,7 @@
       </trans-unit>
       <trans-unit id="7f5e240cce8262aec11bc8ba69aa57f8c5e48151" datatype="html">
         <source>Standing Wave Ratio (SWR):</source>
-        <target state="new">Standing Wave Ratio (SWR):</target>
+        <target state="new">Rapport d'onde stationnaire (SWR) :</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">61,65</context>
@@ -712,7 +712,7 @@
       <trans-unit id="radioprofilelabel" datatype="html">
         <source>Radio profile <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span
               *ngIf=&quot;radio.profile == 1&quot;>"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
-        <target state="new">Radio profile</target>
+        <target state="new">Profil radio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">240</context>
@@ -720,7 +720,7 @@
       </trans-unit>
       <trans-unit id="digitallabel" datatype="html">
         <source>Data</source>
-        <target state="new">Digital</target>
+        <target state="new">Données</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">243</context>
@@ -728,7 +728,7 @@
       </trans-unit>
       <trans-unit id="voiceLabel" datatype="html">
         <source>Voice</source>
-        <target state="new">Voice</target>
+        <target state="new">Voix</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">249</context>
@@ -736,7 +736,7 @@
       </trans-unit>
       <trans-unit id="changevoicefrequency" datatype="html">
         <source>Radio voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
-        <target state="new">Radio voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
+        <target state="new">Fréquence radio voix : <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">131</context>
@@ -752,7 +752,7 @@
       </trans-unit>
       <trans-unit id="voicemode" datatype="html">
         <source>Voice Mode</source>
-        <target state="new">Voice Mode</target>
+        <target state="new">Mode voix</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">159</context>
@@ -924,7 +924,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosmessage" datatype="html">
-        <source> Are you sure do you want to start a SOS EMERGENCY operation? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> It is going to erase all data from HERMES system. </source>
+        <source> Are you sure that you want to start a SOS EMERGENCY operation? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> It is going to erase all data from HERMES system. </source>
         <target state="new"> Êtes vous sûr de vouloir débuter une opération SOS URGENCE ? Cela va effacer toute les données de votre système HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -933,7 +933,7 @@
       </trans-unit>
       <trans-unit id="cancelsosbutton" datatype="html">
         <source> cancel </source>
-        <target state="new"> cancel </target>
+        <target state="new"> annuler </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">356</context>
@@ -1093,7 +1093,7 @@
       </trans-unit>
       <trans-unit id="therearenostatons" datatype="html">
         <source>There are no stations</source>
-        <target state="new">There are no stations</target>
+        <target state="new">Aucune station</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context>
           <context context-type="linenumber">8</context>
@@ -1253,7 +1253,7 @@
       </trans-unit>
       <trans-unit id="messagetitle" datatype="html">
         <source>Title: </source>
-        <target state="new">Titre: </target>
+        <target state="new">Titre : </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">69</context>
@@ -1261,7 +1261,7 @@
       </trans-unit>
       <trans-unit id="messagefile" datatype="html">
         <source>File: </source>
-        <target state="new">fichier: </target>
+        <target state="new">Fichier : </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">72</context>
@@ -1629,7 +1629,7 @@
       </trans-unit>
       <trans-unit id="f5ab5850a8a8f5100a6906d41f1b8056676ec1da" datatype="html">
         <source>Retype the Wi-Fi passphrase</source>
-        <target state="new">retapez la phrase secrète Wi-Fi</target>
+        <target state="new">Retapez la phrase secrète Wi-Fi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">41</context>
@@ -1677,7 +1677,7 @@
       </trans-unit>
       <trans-unit id="mediaaccesscontroltitle" datatype="html">
         <source> Media Access Control <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'mediaAccessControl'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
-        <target state="new">Media Access Control</target>
+        <target state="new">Contrôle d’accès au support “MAC”</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">75</context>
@@ -1685,7 +1685,7 @@
       </trans-unit>
       <trans-unit id="macfiltertitle" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Disable' : 'Enable'}}"/> MAC Filter</source>
-        <target state="new">Enable/Disable MAC Filter</target>
+        <target state="new"><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Désactiver' : 'Activer'}}"/>le filtre MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">82</context>
@@ -1693,7 +1693,7 @@
       </trans-unit>
       <trans-unit id="addnewmacaddress" datatype="html">
         <source>Add new MAC address</source>
-        <target state="new">Add new MAC address</target>
+        <target state="new">Ajouter une nouvelle adresse MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">94</context>
@@ -1701,7 +1701,7 @@
       </trans-unit>
       <trans-unit id="savemacaddress" datatype="html">
         <source>add</source>
-        <target state="new">save</target>
+        <target state="new">ajouter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">98</context>
@@ -1709,7 +1709,7 @@
       </trans-unit>
       <trans-unit id="patternmacaddress" datatype="html">
         <source> MAC address pattern wrong, please type it again. Accepted characters: 0 - 9, A - F, :, - </source>
-        <target state="new"> Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, ENTER </target>
+        <target state="new"> Nomenclature de l'adresse MAC est incorrecte, essayer de nouveau. Les caractères acceptés sont 0-9, A-F, :, - </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">104</context>
@@ -1717,7 +1717,7 @@
       </trans-unit>
       <trans-unit id="closemacaddresspatern" datatype="html">
         <source> close </source>
-        <target state="new"> close </target>
+        <target state="new"> fermer </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">109</context>
@@ -1725,7 +1725,7 @@
       </trans-unit>
       <trans-unit id="acceptmaclisttitle" datatype="html">
         <source>Accepted MAC address list</source>
-        <target state="new">Accepted MAC address list</target>
+        <target state="new">Liste des adresses MAC acceptées</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">117</context>
@@ -1733,7 +1733,7 @@
       </trans-unit>
       <trans-unit id="emptymacaddresslist" datatype="html">
         <source> Empty MAC address list </source>
-        <target state="new"> Empty MAC address list </target>
+        <target state="new"> Vider la liste des adresses MAC </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">119</context>
@@ -1741,7 +1741,7 @@
       </trans-unit>
       <trans-unit id="confirmremovemacaddress" datatype="html">
         <source>Are you sure that you want to remove the MAC address - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</source>
-        <target state="new">Are you sure that you want to remove the MAC address - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</target>
+        <target state="new">Êtes vous certain de vouloir enlever l’adresse MAC - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">130,131</context>
@@ -1749,7 +1749,7 @@
       </trans-unit>
       <trans-unit id="deltemacaddressbutton" datatype="html">
         <source> delete </source>
-        <target state="new"> delete </target>
+        <target state="new"> détruire </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">136,138</context>
@@ -1773,7 +1773,7 @@
       </trans-unit>
       <trans-unit id="closeerrorbuttonwifi" datatype="html">
         <source> close </source>
-        <target state="new"> terminer </target>
+        <target state="new"> fermer </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">159</context>
@@ -1781,7 +1781,7 @@
       </trans-unit>
       <trans-unit id="datanavlabel" datatype="html">
         <source> data </source>
-        <target state="new"> data </target>
+        <target state="new"> données </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">30,32</context>
@@ -1789,7 +1789,7 @@
       </trans-unit>
       <trans-unit id="voicenavlabel" datatype="html">
         <source> voice </source>
-        <target state="new"> voice </target>
+        <target state="new"> voix </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">38,40</context>
@@ -2474,7 +2474,7 @@
       </trans-unit>
       <trans-unit id="fileSizeErrorMessage" datatype="html">
         <source> File's too big, max size for this type is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/> <x id="INTERPOLATION" equiv-text="{{maxSizeText}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/></source>
-        <target state="new"> Le fichier est trop volumineux, la taille maximum est <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/> <x id="INTERPOLATION" equiv-text="{{maxSizeText}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/></target>
+        <target state="new"> Le fichier est trop volumineux, la taille maximum pour ce type de fichier est <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/> <x id="INTERPOLATION" equiv-text="{{maxSizeText}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">72,74</context>
@@ -2855,7 +2855,7 @@
       </trans-unit>
       <trans-unit id="needtobeadmin1" datatype="html">
         <source> Need to be an admin to access this </source>
-        <target state="new"> Accès restreint aux administrateurs </target>
+        <target state="new"> Accès restreint aux administrateur </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/upgrade/upgrade.component.html</context>
           <context context-type="linenumber">67,69</context>
