@@ -107,10 +107,18 @@ export class UtilsService {
     return freq.toString().split('')
   }
 
-  formatTimeCounter(seconds){
-    if(seconds >= 60)
-      return parseFloat((seconds / 60).toString()) + " min"
+  formatTimeCounter(seconds) {
 
-      return seconds + " sec"
+    if (seconds >= 60){
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+  
+      const formattedMinutes = minutes.toString().padStart(2, "0");
+      const formattedSeconds = remainingSeconds.toString().padStart(2, "0");
+      
+      return `${formattedMinutes}:${formattedSeconds} min`
     }
+
+    return seconds + " sec"
+  }
 }
