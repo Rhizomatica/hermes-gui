@@ -207,11 +207,6 @@ export class VoiceComponent implements OnInit {
   }
 
   restartVoiceTimeout() {
-
-    if (this.radio.profile == 0) {
-      return this.changeOperateModeProfile()
-    }
-
     this.radioService.restartVoiceTimeout().subscribe(
       (res: any) => {
         return res
