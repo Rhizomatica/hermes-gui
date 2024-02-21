@@ -3,11 +3,6 @@
   <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
     loading radio status...
   </h2>
-  <div class="row">
-    {{this.route}}
-    <br />
-    {{this.route2}}
-  </div>
   <div class="transciever-panel" *ngIf="radio.p1_freq">
     <div class="data">
       <div class="data-body frequency">
@@ -37,15 +32,12 @@
         </form>
       </div>
       <div class="data-title m-t-25">
-        <span i18n="@@timeoutlabel" *ngIf="radio.profile == 1">
+        <span i18n="@@timeoutlabel">
           Voice timeout: {{radio.timeout}}
-        </span>
-        <span i18n="@@activatevoicelabel" *ngIf="radio.profile == 0">
-          Touch to activate the voice
         </span>
       </div>
       <div class="data-body">
-        <span i18n="@@timeoutrestarttiplabel" *ngIf="radio.profile == 1">
+        <span i18n="@@timeoutrestarttiplabel">
           Touch to restart the timeout
         </span>
       </div>

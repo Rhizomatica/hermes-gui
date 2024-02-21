@@ -6,8 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
-import { UtilsService } from 'src/app/_services/utils.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'voice',
@@ -29,15 +27,11 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
-  route = self.location.pathname
-  route2 = this.router.url
-  
+
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
-    private sharedService: SharedService,
-    private utils: UtilsService,
-    private router: Router
+    private sharedService: SharedService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
