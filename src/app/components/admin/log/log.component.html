@@ -5,21 +5,13 @@
 </div>
 <div *ngIf="currentUser.admin">
     <div class="row" *ngIf="system">
-        <div class="row">
-            <span i18n="@@statusmachine">Status: </span>
-            <div *ngIf="!system.status" class="redcircle"></div>
-            <div *ngIf="system.status" class="greencircle"></div>
-            {{system.status == true ? 'ON' : 'OFF'}}
-        </div>
-        <div class="row">
-            <span i18n="@@freespace">Free Space: </span>
-            {{system.diskfree}} GB
-            <div class="row m-t-10">
-                <span *ngIf="criticSpace" class="alert" i18n="storagelow">
-                    System storage is low! Please delete messages and
-                    files
-                </span>
-            </div>
+        <span i18n="@@freespace">Free Space: </span>
+        {{system.diskfree}} GB
+        <div class="row m-t-10">
+            <span *ngIf="criticSpace" class="alert" i18n="storagelow">
+                System storage is low! Please delete messages and
+                files
+            </span>
         </div>
     </div>
     <h2 class="m-t-25" i18n="@@logstitle">Logs</h2>
