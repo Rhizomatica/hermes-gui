@@ -4,7 +4,6 @@ import { Radio } from '../interfaces/radio';
 import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
 import { GlobalConstants } from '../global-constants';
-import { utils } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -98,7 +97,7 @@ export class SharedService {
     this.storedRadioObj.p1_volume = newObj.p1_volume == null ? this.storedRadioObj.p1_volume : newObj.p1_volume
 
     this.observeOperatingProfileMode(newObj.profile)
-
+  
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = this.utils.splitFrequency(this.storedRadioObj.p1_freq)
@@ -128,7 +127,7 @@ export class SharedService {
 
   observeOperatingProfileMode(newProfile) {
     //kick user from voice screen if new profile is data
-    if (GlobalConstants.bitx == 'S' && this.utils.isItRuningLocal() && this.storedRadioObj.profile == 1 && newProfile == 0 && self.location.pathname == '/voice') {
+    if (GlobalConstants.bitx == 'S' && this.utils.isItRuningLocal() && this.storedRadioObj.profile == 1 && newProfile == 0 && this.router.url == '/voice') {
       this.router.navigate(['/home']);
     }
   }
