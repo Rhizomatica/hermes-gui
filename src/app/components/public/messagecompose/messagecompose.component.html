@@ -93,15 +93,12 @@
           <img src={{$event.target.files[0].content}}>
         </div>
       </div>
-      <label class="passprotect">
-        <span class="icon lock">
+      <div class="passprotect">
           <button i18n="@@protectpssw" (click)="encrypted()">
-            <img title="messages" src="assets/svg/lock.svg">
             protect message
           </button>
-          <!-- <input type="checkbox" unckecked/> -->
-        </span>
-      </label>
+        <hint [showHint]="false" [hint]="'protectmessage'"></hint>
+        </div>
       <div id="cryptopass" *ngIf=isEncrypted>
         <label for="passwd">
           <span i18n="@@typethepassword">Type the password</span>
