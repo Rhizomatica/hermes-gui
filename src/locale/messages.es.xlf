@@ -53,11 +53,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
-        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. </source><!-- <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea. -->
-        <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br>"/>
-        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;icon&quot;>"/>
-        <x id="TAG_IMG" ctype="image" equiv-text="&lt;img (click)=&quot;showServerAlert()&quot; title=&quot;mail&quot; src=&quot;assets/svg/times.svg&quot;>"/>
-        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+        <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. </source>
+        <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">66</context>
@@ -68,11 +65,11 @@
         <target state="new"> cerrar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="countdowninactivite" datatype="html">
@@ -80,21 +77,19 @@
         <target state="new">Usuario inactivo. Cuenta regresiva para cerrar sesión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
         <source> There was an error on changing configuration </source>
-        <target state="new">Hubo un error al cambiar la configuración  <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-  </target>
+        <target state="new">Hubo un error al cambiar la configuración </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">313</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpscalibrationsuccess" datatype="html">
@@ -254,8 +249,7 @@
       </trans-unit>
       <trans-unit id="errorrequest" datatype="html">
         <source> There was an error on your request </source>
-        <target state="new">Hubo un error en su solicitud<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-</target>
+        <target state="new">Hubo un error en su solicitud </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
           <context context-type="linenumber">25</context>
@@ -919,9 +913,7 @@
       </trans-unit>
       <trans-unit id="errorchanging config" datatype="html">
         <source> There was an error on changing config </source>
-        <target state="new">Hubo un error al cambiar la configuración <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-</target>
+        <target state="new">Hubo un error al cambiar la configuración </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/message-config/message-config.component.html</context>
           <context context-type="linenumber">42</context>
@@ -2058,9 +2050,7 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="errorprocessing" datatype="html">
         <source> There was an error on processing your request </source>
-        <target state="new">Error al procesar su solicitud. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-</target>
+        <target state="new">Error al procesar su solicitud </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">102</context>

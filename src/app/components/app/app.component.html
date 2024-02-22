@@ -64,9 +64,7 @@
         </div>
         <div *ngIf="serverError">
           <span i18n="@@areadyonmsg">
-            If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
-            your system is corrupted. Please contact the support or the people you are usually in touch with. The support
-            email is {{emergencyEmail}}.
+            If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is {{emergencyEmail}}.
           </span>
           <div class="row m-t-10">
             <button (click)="showServerAlert()" i18n="@@closeerrorbuttonchangeconfig">
