@@ -93,11 +93,17 @@
 </div>
 <div class="overall alert" *ngIf="errorAlert==true">
   <div class="cv">
-    <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-    <!-- <span>{{error}}</span> -->
-    <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-      close
-    </button>
+    <span i18n="@@errorprocessing">
+      There was an error on processing your request
+    </span>
+    <div class="row m-t-10">
+      {{error}}
+    </div>
+    <div class="row m-t-10">
+      <button (click)="closeError()" i18n="@@closeerrorbutton">
+        close
+      </button>
+    </div>
   </div>
 </div>
 <div *ngIf="!currentUser.admin">

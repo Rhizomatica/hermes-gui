@@ -26,7 +26,7 @@ export class MessagecomposeComponent implements OnInit {
   public res: any;
   public stations: Station[];
   public fileIsProcessing = false;
-  public fileIsProcessed = false;
+  public fileIsProcessed = false; // TODO - not using
   public isEncrypted = false;
   public message: Message;
   public passMatch = false;

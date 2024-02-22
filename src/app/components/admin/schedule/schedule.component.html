@@ -7,8 +7,8 @@
     <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
     <hr />
     <b i18n="@@currentschedules">Current schedules:</b>
-    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio
-        transmission<br />
+    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">
+        There are no schedules for radio transmission <br />
     </div>
     <ul *ngIf="schedules.length > 0" id="schedulelist" class="multiplist3" [(ng-model)]="schedules">
         <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">
@@ -21,12 +21,17 @@
     </ul>
     <div class="overall alert" *ngIf="errorAlert">
         <div class="cv">
-            <span i18n="@@errorrequest">There was an error on your request<br />
+            <span i18n="@@errorrequest">
+                There was an error on your request
             </span>
-            <span>{{error}}</span>
-            <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-                close
-            </button>
+            <div class="row m-t-10">
+                {{error}}
+            </div>
+            <div class="row m-t-10">
+                <button (click)="closeError()" i18n="@@closeerrorbutton">
+                    close
+                </button>
+            </div>
         </div>
     </div>
     <div class="gateway" *ngIf="isEditing">
@@ -94,5 +99,7 @@
     </div>
 </div>
 <div>
-    <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">You need admin privileges to access this page</p>
+    <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">
+        You need admin privileges to access this page
+    </p>
 </div>
