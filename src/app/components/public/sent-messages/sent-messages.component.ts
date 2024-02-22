@@ -142,8 +142,11 @@ export class SentMessagesComponent implements OnInit {
           this.loading = false
         }
 
-        this.sentMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
-        this.sentMessages = this.sentMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) });
+        if(res.length >= 0){
+          this.noMessages = false;
+          this.sentMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
+          this.sentMessages = this.sentMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) });
+        }
 
         this.loading = false
       },
