@@ -54,7 +54,8 @@
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
         <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. </source>
-        <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. </target>
+        <target state="new"> Si ve un mensaje de "servidor desconectado", pero su servidor debería estar encendido, o parece estarlo, es posible que su sistema esté dañado. Si ya intentó acceder a HERMES desde otros dispositivos y el problema persiste, es posible que deba llevar su estación a un lugar con Internet y comunicarse con los proveedores en support@hermes.radio para programar una sesión de soporte de mantenimiento en línea <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>
+. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">66</context>
@@ -150,7 +151,12 @@
       </trans-unit>
       <trans-unit id="configuredeltachat" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Configure deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/><x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'deltachat'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
-        <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/><x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'deltachat'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <target state="new">
+        <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+      <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'deltachat'&quot;>"/>
+      <x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/>
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
           <context context-type="linenumber">40,41</context>
@@ -174,7 +180,10 @@
       </trans-unit>
       <trans-unit id="emailsuport" datatype="html">
         <source>If you have a problem and are not sure who to write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:{{emergencyEmail}}&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
-        <target state="new">Si tienes un problema y no estás seguro a quién escribir  <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/><x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
+        <target state="new">Si tienes un problema y no estás seguro a quién escribir  <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:assistancesap@invisiblechildren.com&quot;>"/>
+  <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>
+  <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/email/email.component.html</context>
           <context context-type="linenumber">68</context>
@@ -493,7 +502,9 @@
       </trans-unit>
       <trans-unit id="instructions" datatype="html">
         <source>To login to the system, put your username and password <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'login'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
-        <target>Para acceder a las funciones de administración, introducir su nombre de usuario y contraseña <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'login'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <target>Para acceder a las funciones de administración, introducir su nombre de usuario y contraseña <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'login'&quot;>"/>
+<x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
           <context context-type="linenumber">7</context>
@@ -509,7 +520,9 @@
       </trans-unit>
       <trans-unit id="voicemenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;voice&quot; src=&quot;assets/svg/walkie-talkie.svg&quot;>"/> Voice </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;voice&quot; src=&quot;assets/svg/walkie-talkie.svg&quot;>"/> Voz </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;voice&quot; src=&quot;assets/svg/walkie-talkie.svg&quot;>"/>
+ Voz </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">15</context>
@@ -517,7 +530,9 @@
       </trans-unit>
       <trans-unit id="messagemenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;>"/> Messages </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;>"/> Mensajes </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;messages&quot; src=&quot;assets/svg/comment.svg&quot;>"/>
+ Mensajes </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">19</context>
@@ -525,7 +540,9 @@
       </trans-unit>
       <trans-unit id="emailmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;email&quot; src=&quot;assets/svg/envelope.svg&quot;>"/> Email </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;email&quot; src=&quot;assets/svg/envelope.svg&quot;>"/> Email </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;email&quot; src=&quot;assets/svg/envelope.svg&quot;>"/>
+ Email </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">23</context>
@@ -533,7 +550,9 @@
       </trans-unit>
       <trans-unit id="loginmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/> Login </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/> Admin </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/>
+ Admin </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">59</context>
@@ -541,7 +560,9 @@
       </trans-unit>
       <trans-unit id="radioconfigmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;radio-config&quot; src=&quot;assets/svg/ham-radio.svg&quot;>"/> Radio Configuration </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;radio-config&quot; src=&quot;assets/svg/ham-radio.svg&quot;>"/> Configuración de radio </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;radio-config&quot; src=&quot;assets/svg/ham-radio.svg&quot;>"/>
+ Configuración de radio </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">27</context>
@@ -549,7 +570,9 @@
       </trans-unit>
       <trans-unit id="usermanagegmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;user-manage&quot; src=&quot;assets/svg/circle-user.svg&quot;>"/> User management </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;user-manage&quot; src=&quot;assets/svg/circle-user.svg&quot;>"/> User management </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;user-manage&quot; src=&quot;assets/svg/circle-user.svg&quot;>"/>
+ User management </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">31</context>
@@ -557,7 +580,9 @@
       </trans-unit>
       <trans-unit id="messageadmmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/comments.svg&quot;>"/> Message configuration </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/comments.svg&quot;>"/> Configuración de mensajes </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/comments.svg&quot;>"/>
+ Configuración de mensajes </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">35,37</context>
@@ -565,7 +590,9 @@
       </trans-unit>
       <trans-unit id="schedulingmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/clock.svg&quot;>"/> Transmission schedule </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/clock.svg&quot;>"/> Horario de transmisión </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/clock.svg&quot;>"/>
+ Horario de transmisión </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">39,41</context>
@@ -573,7 +600,9 @@
       </trans-unit>
       <trans-unit id="transmissionlistmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/transmit-antenna.svg&quot;>"/> Transmission list </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/transmit-antenna.svg&quot;>"/> Lista de transmisión </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/transmit-antenna.svg&quot;>"/>
+ Lista de transmisión </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">43,45</context>
@@ -581,7 +610,9 @@
       </trans-unit>
       <trans-unit id="stationinformationmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/broadcast-tower.svg&quot;>"/> Station information </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/broadcast-tower.svg&quot;>"/> Información de las estaciónes </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/broadcast-tower.svg&quot;>"/>
+ Información de las estaciónes </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">47,49</context>
@@ -589,7 +620,9 @@
       </trans-unit>
       <trans-unit id="wifimanagermenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/wifi-solid.svg&quot;>"/> Wi-Fi &amp; Ethernet manager </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/wifi-solid.svg&quot;>"/> Administración de Wi-Fi &amp; Ethernet</target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/wifi-solid.svg&quot;>"/>
+ Administración de Wi-Fi &amp; Ethernet</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">51,53</context>
@@ -597,7 +630,9 @@
       </trans-unit>
       <trans-unit id="detailedlogmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/compass.svg&quot;>"/> Detailed log </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/compass.svg&quot;>"/> Log detallado </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/compass.svg&quot;>"/>
+ Log detallado </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">55,57</context>
@@ -613,7 +648,9 @@
       </trans-unit>
       <trans-unit id="errorcustomerrormenu" datatype="html">
         <source>There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new">There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new">There was an error on precessing your request <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">71</context>
@@ -709,7 +746,9 @@
       </trans-unit>
       <trans-unit id="radiovoicemenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;>"/> Home </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;>"/> Home </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;home&quot; src=&quot;assets/svg/house.svg&quot;>"/>
+ Home </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">11,13</context>
@@ -784,7 +823,9 @@
       </trans-unit>
       <trans-unit id="deleteMessageDetail" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> delete </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/> eliminar </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;delete&quot; src=&quot;assets/svg/trash-alt.svg&quot;>"/>
+ eliminar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">55</context>
@@ -792,7 +833,9 @@
       </trans-unit>
       <trans-unit id="replymessage" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;reply&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/> reply </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;reply&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/> contestar </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;reply&quot; src=&quot;assets/svg/reply-solid.svg&quot;>"/>
+ contestar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">61</context>
@@ -800,7 +843,9 @@
       </trans-unit>
       <trans-unit id="areyousuredeletemsgdetail" datatype="html">
         <source>Are you sure you want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new">¿Seguro que quieres borrar este mensaje? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new">¿Seguro que quieres borrar este mensaje? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
           <context context-type="linenumber">69</context>
@@ -983,7 +1028,10 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="fileSizeErrorMessage" datatype="html">
         <source> File's too big, max size for this type is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/> <x id="INTERPOLATION" equiv-text="{{maxSizeText}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/></source>
-        <target state="new"> El archivo es demasiado grande, el tamaño máximo para este tipo es  <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/> <x id="INTERPOLATION" equiv-text="{{maxSizeText}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/></target>
+        <target state="new"> El archivo es demasiado grande, el tamaño máximo para este tipo es  <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+<x id="INTERPOLATION" equiv-text="{{maxSizeText}}"/>
+<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/p"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messagecompose/messagecompose.component.html</context>
           <context context-type="linenumber">72,74</context>
@@ -1183,7 +1231,9 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="newmessage" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/> nueva </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new message&quot; src=&quot;assets/svg/edit.svg&quot;>"/>
+ nueva </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">10</context>
@@ -1191,7 +1241,8 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="62a8e3dc60a7c5aa0d84d1aae02ac17f8f8c0dbc" datatype="html">
         <source>There are no public messages<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new">There are no public messages<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new">There are no public messages<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <note priority="1" from="description">cannotaccessmessages</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
@@ -1284,7 +1335,9 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="macfiltertitle" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Disable' : 'Enable'}}"/> MAC Filter</source>
-        <target state="new"> <x id="INTERPOLATION" equiv-text="{{macFilter ? 'Desactivar' : 'activar'}}"/> Filtro MAC</target>
+        <target state="new">
+<x id="INTERPOLATION" equiv-text="{{macFilter ? 'Desactivar' : 'activar'}}"/>
+ Filtro MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">84</context>
@@ -1340,7 +1393,8 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="confirmremovemacaddress" datatype="html">
         <source>Are you sure that you want to remove the MAC address - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</source>
-        <target state="new">¿Está seguro de que desea eliminar la dirección MAC - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/> ?</target>
+        <target state="new">¿Está seguro de que desea eliminar la dirección MAC - <x id="INTERPOLATION" equiv-text="{{macAddressToDelete}}"/>
+ ?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">132</context>
@@ -1643,7 +1697,9 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="protectionlabelcard" datatype="html">
         <source>Protection: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'ON' : 'OFF'}}"/> </source>
-        <target state="new">Protección: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'Encendido' : 'Apagado'}}"/> </target>
+        <target state="new">Protección: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="INTERPOLATION" equiv-text="{{radio.protection ? 'Encendido' : 'Apagado'}}"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">91</context>
@@ -1692,7 +1748,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="advisechangedatafrequency" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>DO NOT<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> you have been asked by the manager to change the data transmission frequency of the radio. </source>
-        <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>NO <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> que el administrador le haya pedido que cambie la frecuencia de transmisión de datos de la radio. </target>
+        <target state="new">
+<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+NO <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+ utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+ que el administrador le haya pedido que cambie la frecuencia de transmisión de datos de la radio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">112</context>
@@ -1733,7 +1794,8 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="suresendpttmessage" datatype="html">
         <source> Are you sure you want to send PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This can cause irreparable problems. </source>
-        <target state="new">¿Estás seguro de que quieres enviar PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Esto puede causar problemas irreparables. </target>
+        <target state="new">¿Estás seguro de que quieres enviar PTT? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+ Esto puede causar problemas irreparables. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">221</context>
@@ -1774,7 +1836,10 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="changevoicefrequency" datatype="html">
         <source>Radio voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
-        <target state="new">Frecuencia de voz de radio: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
+        <target state="new">Frecuencia de voz de radio: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/>
+ kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/>
+<x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">131</context>
@@ -1822,7 +1887,8 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="confirmthreshold" datatype="html">
         <source>Are you sure you want to change radio protection threshold? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This may cause the system to stop and damage your radio. </source>
-        <target state="new">¿Está seguro de que desea cambiar el umbral de protección radioeléctrica? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Esto puede hacer que el sistema se detenga y dañe su radio. </target>
+        <target state="new">¿Está seguro de que desea cambiar el umbral de protección radioeléctrica? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+ Esto puede hacer que el sistema se detenga y dañe su radio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">185</context>
@@ -1928,7 +1994,9 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="compose1sent" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;new&quot; src=&quot;assets/svg/edit.svg&quot;>"/> new </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/> nueva </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;compose&quot; src=&quot;assets/svg/edit.svg&quot;>"/>
+ nueva </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">10</context>
@@ -1936,7 +2004,9 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="publicmessagebutton" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;sent&quot; src=&quot;assets/svg/envelope.svg&quot;>"/> public messages </source>
-        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;sent&quot; src=&quot;assets/svg/envelope.svg&quot;>"/> mensajes públicos </target>
+        <target state="new">
+<x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;sent&quot; src=&quot;assets/svg/envelope.svg&quot;>"/>
+ mensajes públicos </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">16,18</context>
@@ -1944,7 +2014,8 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="0a3f26b89a0229a153a298dfd2c6ef4110432fd3" datatype="html">
         <source>There are no sent messages<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new">There are no sent messages<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new">There are no sent messages<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">23,24</context>
@@ -1953,7 +2024,9 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="areyousuredeletemsgsent" datatype="html">
         <source>Are you sure yo want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new">¿Seguro que quieres borrar este mensaje? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new">¿Seguro que quieres borrar este mensaje? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">56</context>
@@ -1969,7 +2042,8 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="volumevoice" datatype="html">
         <source> Volume: <x id="INTERPOLATION" equiv-text="{{radio.p1_volume}}"/> </source>
-        <target state="new"> Volumen: <x id="INTERPOLATION" equiv-text="{{volume}}"/> </target>
+        <target state="new"> Volumen: <x id="INTERPOLATION" equiv-text="{{volume}}"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
           <context context-type="linenumber">18,20</context>
@@ -1977,7 +2051,8 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="timeoutlabel" datatype="html">
         <source> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/> </source>
-        <target state="new"> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.p1_timeout_connection}}"/> </target>
+        <target state="new"> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.p1_timeout_connection}}"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
           <context context-type="linenumber">35</context>
@@ -2282,7 +2357,9 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="sosemergencylabel" datatype="html">
         <source> Use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only in dangerous or emergency situations.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is going to erase all data from HERMES system. </source>
-        <target state="new"> Utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>sólo en situaciones peligrosas o de emergencia. <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Borrará todos los datos del sistema HERMES. </target>
+        <target state="new"> Utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+sólo en situaciones peligrosas o de emergencia. <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+ Borrará todos los datos del sistema HERMES. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">287</context>
@@ -2340,7 +2417,9 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="confirmsosmessage" datatype="html">
         <source> Are you sure that you want to start a SOS EMERGENCY operation? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> It is going to erase all data from HERMES system. </source>
-        <target state="new"> ¿Estás seguro de que quieres iniciar una operación de EMERGENCIA SOS? Borrará todos los datos del sistema HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new"> ¿Estás seguro de que quieres iniciar una operación de EMERGENCIA SOS? Borrará todos los datos del sistema HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">356</context>
@@ -2584,7 +2663,9 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="confirmshutdowncomponent" datatype="html">
         <source> Are you sure you want to shut down Hermes system? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This will stop messages transmission and reception. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new"> ¿Está seguro de que desea cerrar el sistema Hermes? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></target>
+        <target state="new"> ¿Está seguro de que desea cerrar el sistema Hermes? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+ Esto detendrá la transmisión y recepción de mensajes. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/floatbutton/floatbutton.component.html</context>
           <context context-type="linenumber">10</context>
@@ -2616,7 +2697,22 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintlogin" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Login<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Use your required credentials to access the HERMES system. e.g. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Username:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> hermes <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Password:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> hermes1234 <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="HORIZONTAL_RULE" ctype="x-hr" equiv-text="&lt;hr />"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Your credentials were created and provided beforehand, most likely. If you have no access to this information or you forgot your password contact for the system administrator. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Login<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Use your required credentials to access the HERMES system. e.g. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Username:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> hermes <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Password:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> hermes1234 <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="HORIZONTAL_RULE" ctype="x-hr" equiv-text="&lt;hr />"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Probably your credentials were created and provided before. If you have no access to this information or you forgot your password search for the system administrator to provide or change it for you. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Login<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Use your required credentials to access the HERMES system. e.g. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+Username:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+ hermes <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
+Password:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+ hermes1234 <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="HORIZONTAL_RULE" ctype="x-hr" equiv-text="&lt;hr />"/>
+<x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ Probably your credentials were created and provided before. If you have no access to this information or you forgot your password search for the system administrator to provide or change it for you. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">12</context>
@@ -2624,7 +2720,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintvoice" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Voice<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Use the voice panel to communicate via voice PTT (push to talk). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> Step - Use the step button or select the number to easily change the frequency of the radio. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Volume - Volume control to regulate the speaker volume. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Reset Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON that means the antenna does not match the transmission frequency. You can reset the protection selecting (Reset). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Mode - You can change the operating mode (USB/LSB) by toggling the Mode option button. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Timeout - When the timout finish the voice will be interrupted, by clicking on the screen or on any option the timeout restart <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Voice<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Use the voice panel to communicate via voice PTT (push to talk) <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Voice<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Use the voice panel to communicate via voice PTT (push to talk) <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">28</context>
@@ -2632,7 +2733,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintmessages" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of public messages received. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Hermes system allows transmission of text and files between connected stations, through public messages, sent through this interface or private messages, though the Deltachat application or webmail interface. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> On the Messages page you can see the public and sent messages option. If you have system permissions you can send a new message to another station selecting the button NEW. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Hermes system allows transmission of text and files between connected stations, through public messages, sent through this interface or private messages, though Deltachat application or webmail interface. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The Messages page you can see the public, send messages and also if you have the permissions you can send a new message for another station. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Hermes system allows transmission of text and files between connected stations, through public messages, sent through this interface or private messages, though Deltachat application or webmail interface. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The Messages page you can see the public, send messages and also if you have the permissions you can send a new message for another station. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">53</context>
@@ -2640,7 +2748,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintsentmessages" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Sent messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages, outbox. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: When a sent message appears in this list it does not mean the message was received by the destination or even transmitted. Check the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;/transmission&quot;>"/>transmission list<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> to verify the transmission status of your sent messages. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Sent messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages, outbox. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: seen a sent message in this list does not mean the message was received by the destination or even transmitted. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Sent messages<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ List of sent messages, outbox. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ *Note: seen a sent message in this list does not mean the message was received by the destination or even transmitted. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">68</context>
@@ -2648,7 +2763,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintmessage" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The message received detail allows you to see all message information: title, message, file, date and time, origin and destinations. Select the reply button to answer the message. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The message received detail allows you to see all message information: title, message, file, date and time, origin and destinations. Select the reply button to answer the message. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The message received detail allows you to see all message information: title, message, file, date and time, origin and destinations. Select the reply button to answer the message. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">81</context>
@@ -2656,7 +2776,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintnewmessage" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>New message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Compose a new message with title (subject) and description (message). When composing a new message you can protect messages with a password before sending by clicking 'protect message' and attach files by clicking 'select file'. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>New message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> On Compose a new message you can: Protecting messages, you will set a passcode before sending it and after opening that message you have to provide the same passcode. The receiver has to know the same passcode to read the entire message and access the attached files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+New message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ On Compose a new message you can: Protecting messages, you will set a passcode before sending it and after opening that message you have to provide the same passcode. The receiver has to know the same passcode to read the entire message and access the attached files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">89</context>
@@ -2664,7 +2789,16 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintattachfile" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Attach file<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Attach a file to your message. It is possible to attach images, audio recordings, documents, etc. By clicking 'select file'. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Accepted formats: The system will accept all types of files. For images and audio files the size limit is 31.45 MB, for other kinds of files the size limit is 20.48 kB. If the file will not attach, check the file size. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: The system will compress attachments, however, message packages greater than 71.68 MB will not be transmitted. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Attach file<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Attach a file per message, it is possible to attach images, audio documents, etc. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Accepted formats: .doc, .jpeg, .png, .xls, .json, .xml, ... <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: File attachments are constrained to 20kb sizes. The system will accept inputs for image and sound up to 30mB and for other files up to 2mb. Message packages with size greater than 20kb may not be transmitted. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Attach file<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Attach a file per message, it is possible to attach images, audio documents, etc. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Accepted formats: .doc, .jpeg, .png, .xls, .json, .xml, ... <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ *Note: File attachments are constrained to 20kb sizes. The system will accept inputs for image and sound up to 30mB and for other files up to 2mb. Message packages with size greater than 20kb may not be transmitted. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">98</context>
@@ -2672,7 +2806,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintprotectedmessage" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Protected message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: If the message is protected, type the correct password ( defined previously by the emitter/origin) to access the message content. It is important to note that the emitter and the receiver should previously agree which password to use for those cases. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Protected message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: If the message is protected, type the correct password ( defined previously by the emitter/origin) to access the message content. It is important to note that the emitter and the receiver should previously agree which password to use for those cases. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Protected message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ *Note: If the message is protected, type the correct password ( defined previously by the emitter/origin) to access the message content. It is important to note that the emitter and the receiver should previously agree which password to use for those cases. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">116</context>
@@ -2680,7 +2819,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintprotectmessage" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Protect message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Protecting the message with a password means the recipient will be required to enter the same password. The receiver must know the password to read the entire message and access the attached file. If you password protect the message, you must be sure the password is shared with the recipient. Otherwise they will not be able to open the message. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Protect message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Protecting the message with a password means the recipient will be required to enter the same password. The receiver must know the password to read the entire message and access the attached file. If you password protect the message, you must be sure the password is shared with the recipient. Otherwise they will not be able to open the message. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Protect message<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ Protecting the message with a password means the recipient will be required to enter the same password. The receiver must know the password to read the entire message and access the attached file. If you password protect the message, you must be sure the password is shared with the recipient. Otherwise they will not be able to open the message. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">126</context>
@@ -2688,7 +2832,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintemail" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Email<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> On the Email page you can find the Webmail system, Deltachat, downloads and the stations email list. You can also find emergency email contacts for unexpected or emergency situations. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: To access the webmail you have to use the same credentials used to access the HERMES system. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Email<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The Email page you can find the Webmail system, Deltachat downloads and the stations email list, also you can find emergency email contact to unexpected or emergency situations. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: To access the webmail you have to use the same credentials used to access the HERMES system. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Email<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The Email page you can find the Webmail system, Deltachat downloads and the stations email list, also you can find emergency email contact to unexpected or emergency situations. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ *Note: To access the webmail you have to use the same credentials used to access the HERMES system. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">136</context>
@@ -2696,7 +2847,19 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintdeltachat" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Deltachat<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Through the Deltachat app, you can use emails to conduct personal message exchanges (similar to WhatsApp or SMS). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div class=&quot;video-hint&quot;>"/><x id="START_TAG_VIDEO" ctype="x-video" equiv-text="&lt;video width=&quot;500&quot; height=&quot;225&quot; controls>"/><x id="TAG_SOURCE" ctype="x-source" equiv-text="&lt;source src=&quot;videos/{{language}}/deltachat.mp4&quot; type=&quot;video/mp4&quot;>"/><x id="CLOSE_TAG_VIDEO" ctype="x-video" equiv-text="&lt;/video>"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the server-based image and audio compression to work properly, otherwise image and audio exchange will not be possible. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off. delivered. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> If you wish, you can also turn on email delivery monitoring to check if your emails were correctly. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Deltachat<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to WhatsApp). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_TAG_VIDEO" ctype="x-video" equiv-text="&lt;video width=&quot;500&quot; height=&quot;225&quot; controls>"/><x id="TAG_SOURCE" ctype="x-source" equiv-text="&lt;source src=&quot;videos/deltachat.mp4&quot; type=&quot;video/mp4&quot;>"/><x id="CLOSE_TAG_VIDEO" ctype="x-video" equiv-text="&lt;/video>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the server-based image and audio compression to work properly, otherwise image and audio exchange will not be possible. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Deltachat<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Through the Deltachat app, one can use HERMES emails to conduct personal message exchange communications (similar to WhatsApp). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_TAG_VIDEO" ctype="x-video" equiv-text="&lt;video width=&quot;500&quot; height=&quot;225&quot; controls>"/>
+<x id="TAG_SOURCE" ctype="x-source" equiv-text="&lt;source src=&quot;videos/deltachat.mp4&quot; type=&quot;video/mp4&quot;>"/>
+<x id="CLOSE_TAG_VIDEO" ctype="x-video" equiv-text="&lt;/video>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the server-based image and audio compression to work properly, otherwise image and audio exchange will not be possible. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly delivered. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">148</context>
@@ -2704,7 +2867,26 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintradioconfig" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Configuration<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The Radio Configuration page you can find all information about the Radio Voice and Data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> Radio Status - radio connection status (connected / disconnected). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Radio profile - current radio mode operation profile (voice / data) <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: Changing the frequency can stop or interrupt the sending and reception of transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Voice frequency - Frequency used to transmit (PTT) and receive voice transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR (2.5 or above) suggests that the antenna is not set to the same frequency as the transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Operation mode (TX/RX) - TX stands for transmitter and RX stands for receiver. The mode is available for data and voice transmission separately. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Serial Number - Identifies your radio equipments unique serial number. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Config<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The Radio Configuration page you can find all information about the Radio Analog and Digital transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> Radio Status - radio connection status (connected / disconnected) <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Data Digital frequency - frequency used for messages and files transmission <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> SWR - Standing Wave Ratio. It's a measure of how well a radio's antenna system matches the transmitter. A low SWR reading indicates that the antenna is transmitting an optimal radio frequency power. A high SWR can reflect enough power back into the radio to create enough heat to damage the final RF transistor. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Operation mode - TX / RX <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Serial Number - Identify your radio equipment <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> **Note: Changing the frequency can stop all send and receive transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Radio Config<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The Radio Configuration page you can find all information about the Radio Analog and Digital transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/>
+ Radio Status - radio connection status (connected / disconnected) <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ Data Digital frequency - frequency used for messages and files transmission <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ SWR - Standing Wave Ratio. It's a measure of how well a radio's antenna system matches the transmitter. A low SWR reading indicates that the antenna is transmitting an optimal radio frequency power. A high SWR can reflect enough power back into the radio to create enough heat to damage the final RF transistor. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ Operation mode - TX / RX <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ Serial Number - Identify your radio equipment <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/>
+ **Note: Changing the frequency can stop all send and receive transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">174</context>
@@ -2712,7 +2894,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintfrequency" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Data frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Data frequency for messages and files transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Note: Changing the frequency can stop or interrupt the sending and reception of transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Digital frequency for messages and files transmission <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Digital frequency for messages and files transmission <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">216</context>
@@ -2720,7 +2907,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintvoicefrequency" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Voice frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Voice frequency for voice usage. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: This frequency is not related to the message and emails transmission and only applies to voice transmission and reception. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Voice frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Voice frequency for voice usage. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> *Note: This frequency is not related to the message and emails transmission and only applies to voice transmission and reception. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Voice frequency<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Voice frequency for voice usage. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ *Note: This frequency is not related to the message and emails transmission and only applies to voice transmission and reception. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">226</context>
@@ -2728,7 +2922,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintthreshold" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Threshold<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Threshold of SWR allowed. If the SWR level goes above (of 2.5) this threshold protection will be enabled and transmission will halt. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Threshold<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Threshold <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Threshold<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Threshold <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">237</context>
@@ -2736,7 +2935,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintmode" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Mode<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The radio can operate on two different modes USB / LSB. All stations need to be on the same mode so they can communicate with each other optimally. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Mode<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> The radio can operate on two different modes USB / LSB. LSB and USB are single-sideband radio modes. LSB stands for Lower Side Band and USB stands for Upper Side Band. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Mode<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ The radio can operate on two different modes USB / LSB. LSB and USB are single-sideband radio modes. LSB stands for Lower Side Band and USB stands for Upper Side Band. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">245</context>
@@ -2744,7 +2948,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintradioprofile" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Profile<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Toggle the radio profile button to choose the radio operation mode profile. Voice radio or data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Perfil de la radio<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Choose the radio profile for operation. Phony for voice or digital for data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Perfil de la radio<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Choose the radio profile for operation. Phony for voice or digital for data transmission. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">253</context>
@@ -2752,7 +2961,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintptt" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>PTT (Push to talk)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Push To Talk. PPT should remain OFF unless it is being used for testing. This function simulates pressing the PTT button on the physical microphone. Used only for testing purposes when tuning the system. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>PTT (Push to talk)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Test push to talk ... <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+PTT (Push to talk)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Test push to talk ... <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">260</context>
@@ -2760,7 +2974,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintreboot" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reboot<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Reboot the HERMES system by clicking the Reboot button. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reboot<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Reboot <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Reboot<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Reboot <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">269</context>
@@ -2768,7 +2987,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hint" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reset to default<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Select ‘Reset’ to Reset/restore your radio to the default HERMES configuration. You will not lose your messages. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: Restoring your radio to the default configurations can stop or interrupt sending and reception of transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reset to default<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Reset/restore your radio to the default HERMES configuration. You won't lose your messages. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: Restoring your radio to the default configurations can stop all send and receive transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Reset to default<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Reset/restore your radio to the default HERMES configuration. You won't lose your messages. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/>
+ *Note: Restoring your radio to the default configurations can stop all send and receive transmissions. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">276</context>
@@ -2776,7 +3002,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintresetprotection" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Reset protection<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why the system went over the threshold. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Restablecer protección<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Restablecer protección <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Restablecer protección<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Restablecer protección <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">287</context>
@@ -2784,7 +3015,16 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintusermanagement" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> In User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser.admin&quot;>"/> If you are an administrator you can create, update and delete all users with exception of the root user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: if you delete your user credentials you won't be able to access the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> On User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> **Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> If you are an administrator user you can create, update and delete users. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ On User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ **Note: if you delete your user credentials you won't be capable of accessing the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ If you are an administrator user you can create, update and delete users. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">296</context>
@@ -2792,7 +3032,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintmessageconfig" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Message Configuration<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Manage which user profile has permission to send messages and attach files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Lost files can consume your storage, clean broken files to free your storage by clicking 'Clean up lost files' and eliminate unnecessary files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Message Configuration<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Manage who can send messages and attach files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Broken files can consume your storage, clean broken files to free your storage from unnecessary files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Message Configuration<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Manage who can send messages and attach files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Broken files can consume your storage, clean broken files to free your storage from unnecessary files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">309</context>
@@ -2800,7 +3047,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintschedules" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Transmission schedule<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Manage your transmission schedules, by time period and station name. As communication between stations is unidirectional, transmissions must be scheduled to happen according to the central station, alternating between reception and transmission with different stations at different times. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the gateway station's schedule of operation. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Transmission schedule<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Manage your transmissions schedules, by time period and stations. As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central station, alternating between reception and transmission events. The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All communication between stations are encrypted and happen outside the internet. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the gateway station's schedule of operation. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Transmission schedule<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Manage your transmissions schedules, by time period and stations. As the communication between the stations are unidirectional, the transmissions are schedules to happen acconding to the central station, alternating between reception and transmission events. The system uses a digital radio that schedules transmissions between stations using the UUCP protocol. All communication between stations are encrypted and happen outside the internet. Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending on the amount of messages in the queue and the gateway station's schedule of operation. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">318</context>
@@ -2808,7 +3060,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hinttransmissionlist" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Transmission list<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> When you press send on a message, it is a transmission queue before its final destination. A system administrator can cancel the messages in the queue before they are sent, and also delete the sent and received messages. Deleting sent and received messages periodically can help avoid the hard drive from filling up. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> In an emergency, the system administrator can force message transmission of the queue by clicking on the "force" button. This can interrupt receiving messages on the Gateway from other stations for a while. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Transmission list<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Transmission list<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Once the messages are sent, they will go to a transmission queue before arriving at their final destination. A system administrator can cancel the packages before they are sent, and also delete the sent and received messages. This is a task that need to be done often to avoid that the space in the server ends. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ In an emergency case, the system administrator can force message transmission queue by clicking on the "transmit now" link. This can interrupt receiving messages from other stations for a while. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">329</context>
@@ -2816,7 +3075,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintstations" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Stations Information<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> Alias - Station identification. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Nickname - Name for easy or representative identification. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Status - Connection status between stations. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Frequency - Preferred data frequency for connection between stations. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Mode - Preferred mode for connection between stations (USB/LSB). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Stations Information<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Stations Information<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Manage the stations network, giving nicknames for each station and configuring the preferred transmission data frequency and mode for each connection or enable and disable connections. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">343</context>
@@ -2824,7 +3088,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintwifi" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Wi-Fi &amp; Ethernet manager<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Wi-Fi &amp; Ethernet manager, configure Wi-Fi SSID (network name), change password and check Wi-Fi and ethernet information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: Changing the SSID or the Wi-Fi password will disconnect everybody from the Wi-Fi network. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Wi-Fi &amp; Ethernet manager<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Wi-Fi &amp; Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and ethernet information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Wi-Fi &amp; Ethernet manager<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ Wi-Fi &amp; Ethernet manager, configure wi-fi SSID (network name), change password connection and check wi-fi and ethernet information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">366</context>
@@ -2832,7 +3101,12 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hinttroubleshooting" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Troubleshooting<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> To know what to do in case of an error, you first need to know which component is causing the problem. To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings of your device. Check below the necessary settings to access the HERMES network: If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network. <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;bitx == 'S'&quot;>"/> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter. If the messages in the transmission list are not being transmit, check if the radio settings have been changed, in which case it could be that the other stations are offline or on a different frequency. To remedy you could restore the factory default settings. If the problem is with the data radio, there will be an error message when the administrator goes into Administration -> radio configuration. If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Troubleshooting<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter. To know what to do in case of an error, you first need to know which component is causing the problem. To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network: If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network. In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter. If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings. If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration. If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Troubleshooting<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ To access the system, three main components are needed: a smartphone or a computer, a HERMES server and an antenna with a transmitter. To know what to do in case of an error, you first need to know which component is causing the problem. To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings. Check below the necessary settings to access the Hermes network: If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network. In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter. If the messages in the transmission list are not being transmitted over time, check if the radio settings have been changed, in which case it could be that the other stations are offline. To remedy you could restore the factory default settings. If the problem is with the digital radio, there will be an error message when the administrator goes into Administration -> radio configuration. If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">377</context>
@@ -2840,7 +3114,14 @@ esto puede hacer que el sistema se detenga</target>
       </trans-unit>
       <trans-unit id="hintmediaaccesscontrol" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> A Media Access Control (MAC) address, sometimes referred to as a hardware or physical address, is a unique, 12-character alphanumeric attribute that is used to identify individual electronic devices on a network. In this section you can enable or disable the MAC verification in reason of restrict the WiFi access. Add a new MAC address to provide access permission to the Wi-Fi HERMES for a unique device. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> An example of a MAC address is: 00-B0-D0-63-C2-26. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> A Media Access Control (MAC) address, sometimes referred to as a hardware or physical address, is a unique, 12-character alphanumeric attribute that is used to identify individual electronic devices on a network. In this section you can enable or disable the MAC verification in reason of restrict the WiFi access. Add a new MAC address to provide access permission to the Wi-Fi HERMES for a unique device. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> An example of a MAC address is: 00-B0-D0-63-C2-26. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new">
+<x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>
+Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
+<x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+ A Media Access Control (MAC) address, sometimes referred to as a hardware or physical address, is a unique, 12-character alphanumeric attribute that is used to identify individual electronic devices on a network. In this section you can enable or disable the MAC verification in reason of restrict the WiFi access. Add a new MAC address to provide access permission to the Wi-Fi HERMES for a unique device. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+<x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/>
+ An example of a MAC address is: 00-B0-D0-63-C2-26. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">410</context>
