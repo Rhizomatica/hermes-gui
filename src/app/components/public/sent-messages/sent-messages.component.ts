@@ -139,7 +139,6 @@ export class SentMessagesComponent implements OnInit {
 
         if (res.length == 0) {
           this.noMessages = true;
-          this.loading = false
         }
 
         if(res.length >= 0){

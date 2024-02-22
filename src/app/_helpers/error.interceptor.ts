@@ -49,49 +49,49 @@ export class ErrorInterceptor implements HttpInterceptor {
     public englishError(errorStatus) {
 
         switch (errorStatus) {
-            case 500:
-                return 'Internal Server error, please try again. Contact support if the problem persists.'
             case 400:
                 return 'Service not found.'
             case 413:
                 return 'File is too big, max size is 20.48 MB'
             case 431:
                 return 'Request exceeds the size allowed by the server.'
+            case 500:
+                return 'Internal Server error, please try again. Contact support if the problem persists.'
+            default:
+                return 'Internal Server error, please try again. Contact support if the problem persists.'
         }
-
-        return errorStatus
     }
 
     public portugueseError(errorStatus) {
 
         switch (errorStatus) {
-            case 500:
-                return 'Erro interno no Servidor, por favor tente novamente. Entre em contato com o suporte se o problema persistir.'
             case 400:
                 return 'Serviço não encontrado.'
             case 413:
                 return 'Tamanho do arquivo é muito grande, tamanho maximo é de 20.48 MB.'
             case 431:
                 return 'Requisição excede o tamanho permitido pelo servidor.'
+            case 500:
+                return 'Erro interno no Servidor, por favor tente novamente. Entre em contato com o suporte se o problema persistir.'
+            default:
+                return 'Erro interno no Servidor, por favor tente novamente. Entre em contato com o suporte se o problema persistir.'
         }
-
-        return errorStatus
     }
 
     public spanishError(errorStatus) {
 
         switch (errorStatus) {
-            case 500:
-                return 'Error interno del servidor, inténtalo de nuevo. Póngase en contacto con el soporte si el problema persiste.'
             case 400:
                 return 'Servicio no encontrado.'
             case 413:
                 return 'El tamaño del archivo es muy grande, el tamaño máximo es 20,48 MB.'
             case 431:
                 return 'La solicitud excede el tamaño permitido por el servidor.'
+            case 500:
+                return 'Error interno del servidor, inténtalo de nuevo. Póngase en contacto con el soporte si el problema persiste.'
+            default:
+                return 'Error interno del servidor, inténtalo de nuevo. Póngase en contacto con el soporte si el problema persiste.'
         }
-
-        return errorStatus
     }
 
 
@@ -120,5 +120,4 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     //     return errorStatus
     // }
-
 }
