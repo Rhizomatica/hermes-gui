@@ -849,6 +849,15 @@ input:checked+.slider:before {
   font-size: 1em;
 }
 
+.alertcard {
+  font-size: 0.8em;
+  border: solid 1.5px #ff6600;
+  border-radius: 3px;
+  background-color: @bkclr;
+  padding: 1em;
+  width: 97%;
+  margin-bottom: 0.5em;
+}
 
 .multiplist {
   display: block;
@@ -1105,7 +1114,6 @@ menu {
 
   a {
     text-decoration: none;
-
   }
 
   .date {
@@ -1597,6 +1605,12 @@ tr:nth-child(odd) {
     }
   }
 
+  .card.voice.disabled{
+    background-color: transparent;
+    border: solid 1.5px @bkclr;
+    background-color: @mclr;
+    color: @bkclr
+  }
 
   .switch {
     background-color: @bkclr;
@@ -1671,6 +1685,15 @@ tr:nth-child(odd) {
     color: @bkclr;
   }
 
+  .alertcard {
+    font-size: 0.8em;
+    border: solid 1.5px #ff6600;
+    border-radius: 3px;
+    background-color: #333333;
+    padding: 1em;
+    width: 97%;
+    margin-bottom: 0.5em;
+  }
 }
 
 .syspusher {
@@ -1814,8 +1837,14 @@ tr:nth-child(odd) {
 .card.voice {
   background-color: @clr;
   border: solid 1.5px @clr;
-
   color: @bkclr;
+}
+
+.card.voice.disabled{
+  background-color: transparent;
+  border: solid 1.5px #000;
+  background-color: @bkclr;
+  color: #000
 }
 
 .card.connected {

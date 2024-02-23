@@ -54,6 +54,8 @@ export class homeComponent implements OnInit {
   requireLogin: boolean = GlobalConstants.requireLogin
   @Input() radioObj: Radio
   self = self.location.host
+  showAlert: boolean = true
+  alertMessage: string = 'Radio data transmiting now... please wait for use the voice mode.'
 
   logOff() {
     this.authenticationService.logout();

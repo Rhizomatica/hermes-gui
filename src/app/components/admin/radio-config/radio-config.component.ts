@@ -375,6 +375,10 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeProfile(event) {
+    
+    if(this.radio.connetion) 
+      return
+
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
       (res: any) => {

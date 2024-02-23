@@ -9,7 +9,7 @@
   <div>
     <form *ngIf="radio">
       <div class="flexible">
-        <div class="card {{ radio.connection === true ? 'connected' : 'disconnected' }}">
+        <div class="card {{ radio.connection ? 'connected' : 'disconnected' }}">
           <div class="row">
             <h3>
               <span *ngIf="radio.connection">
@@ -237,9 +237,10 @@
         </form>
 
         <form class="formdata field" *ngIf="bitx == 'S'">
-          <span i18n="@@radioprofilelabel">Radio profile <span
-              *ngIf="radio.profile == 1">({{radio.timeout}})</span></span>
-          <div class="float-right flex-right">
+          <span i18n="@@radioprofilelabel">Radio profile
+            <span *ngIf="radio.profile == 1">({{radio.timeout}})</span>
+          </span>
+          <div class="float-right flex-right" *ngIf="!radio.connection">
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
@@ -247,6 +248,10 @@
                 [checked]="toggleProfile"></span>
             </div>
             <span i18n="@@voiceLabel">Voice</span>
+            <hint [showHint]="false" [hint]="'radioprofile'"></hint>
+          </div>
+          <div class="float-right flex-right" *ngIf="radio.connection">
+            {{radio.profile == 0 ? 'Data' : 'Voice'}}
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
         </form>
@@ -313,9 +318,9 @@
             There was an error on changing configuration
           </span>
           <div class="row m-t-10">
-          {{error}}  
+            {{error}}
           </div>
-            <div class="row m-t-10">
+          <div class="row m-t-10">
             <button (click)="closeError()" i18n="@@closeerrorbutton">
               close
             </button>
