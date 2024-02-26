@@ -150,9 +150,9 @@
         Through the Deltachat app, you can use emails to conduct personal message exchanges (similar to WhatsApp or
         SMS).
       </p>
-      <div class="video-hint">
+      <div class="video-hint" *ngIf="language == 'fr'">
         <video width="500" height="225" controls>
-          <source src="videos/{{language}}/deltachat.mp4" type="video/mp4">
+          <source src="assets/videos/deltachat1.mp4" type="video/mp4">
         </video>
       </div>
       <p>
@@ -160,6 +160,11 @@
         server-based image and audio compression to work properly, otherwise image and audio exchange will not be
         possible.
       </p>
+      <div class="video-hint" *ngIf="language == 'fr'">
+        <video width="500" height="225" controls>
+          <source src="assets/videos/deltachat2.mp4" type="video/mp4">
+        </video>
+      </div>
       <p>
         The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn
         off.
@@ -168,6 +173,26 @@
       <p>
         If you wish, you can also turn on email delivery monitoring to check if your emails were correctly.
       </p>
+      <div *ngIf="language != 'fr'">
+        <img class="infoimg" title="Deltachat Advanced settings" src="assets/img/adv_p2pe_es.jpeg" />
+        <p>
+          Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by
+          another Deltachat application. In order to be able to interact with e-mails from any e-mail client software,
+          enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <span
+            class="icon"><img src="assets/svg/bars-solid.svg"></span> ) -> Settings -> Chats and Media -> Show Classic
+          E-Mails -> All.
+        </p>
+        <img class="infoimg" title="Deltachat email settings" src="assets/img/allemails_es.jpeg" />
+        <p>
+          In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed
+          trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address
+          and password fields should be filled, as shown below. The user and password will be the same as those created
+          when first creating a login on HERMES and for use with the RoundCube webmail, such as:
+          username@
+          {{domain}}.
+          <img class="infoimg" title="Deltachat login" src="assets/img/login_es.jpeg" />
+        </p>
+      </div>
     </div>
 
     <div *ngIf="hint == 'radioconfig'" i18n="@@hintradioconfig">
@@ -252,7 +277,11 @@
     <div *ngIf="hint == 'radioprofile'" i18n="@@hintradioprofile">
       <h1 class="cv-title">Radio Profile</h1>
       <p>
-        Toggle the radio profile button to choose the radio  operation mode profile. Voice radio or data transmission.
+        Toggle the radio profile button to choose the radio operation mode profile. Voice radio or data transmission.
+      </p>
+      <p class="m-t-10">
+        *Note: If the radio data is connected transmitting you cannot change the profile for voice. Please wait until
+        the transmission finishes.
       </p>
     </div>
 
@@ -310,7 +339,8 @@
       <p>
         Manage which user profile has permission to send messages and attach files. </p>
       <p>
-        Lost files can consume your storage, clean broken files to free your storage by clicking 'Clean up lost files' and eliminate unnecessary files.
+        Lost files can consume your storage, clean broken files to free your storage by clicking 'Clean up lost files'
+        and eliminate unnecessary files.
       </p>
     </div>
 
