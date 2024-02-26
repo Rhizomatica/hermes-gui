@@ -1,6 +1,6 @@
 <div class=" login formdata">
    <form #f="ngForm" id="loginform" novalidate>
-      <h1>Hermes</h1>
+      <h1>HERMES - V3.1.4</h1>
       <div class="row m-t-25">
          <a routerLink="/languages" i18n="@@chooselanguage">Choose your language</a>
       </div>
@@ -22,10 +22,6 @@
          <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log in</button>
          <a routerLink="/home" class="m-l-10" i18n="@@continuewithoutlogin" *ngIf="!requireLogin">Continue without login
          </a>
-      </div>
-      
-      <div class="icon m-t-50">
-         V3.1.4
       </div>
    </form>
 </div>
