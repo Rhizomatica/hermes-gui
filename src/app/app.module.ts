@@ -11,7 +11,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
-import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
@@ -68,7 +67,6 @@ registerLocaleData(localeEs);
     LogComponent,
     StationInformationComponent,
     UserManagementComponent,
-    UpgradeComponent,
     MessagecomposeComponent,
     LoginComponent,
     LanguagesComponent,

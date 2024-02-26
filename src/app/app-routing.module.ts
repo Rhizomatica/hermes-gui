@@ -8,7 +8,6 @@ import { LogComponent } from './components/admin/log/log.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
-import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
@@ -39,7 +38,6 @@ const routes: Routes = [
   { path: 'compose', component: MessagecomposeComponent },
   { path: 'response/:origin', component: MessagecomposeComponent },
   { path: 'station-info', component: StationInformationComponent },
-  { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
   { path: 'message-config', component: MessageConfigComponent },
