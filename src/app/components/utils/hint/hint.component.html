@@ -150,6 +150,10 @@
       <p>
         Through the Deltachat app, you can use emails to conduct personal message exchanges (similar to WhatsApp or
         SMS).
+
+        Keep
+        in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending
+        on the amount of messages in the queue and the gateway station's schedule of operation.
       </p>
       <p>
         The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the
@@ -165,7 +169,7 @@
         If you wish, you can also turn on email delivery monitoring to check if your emails were correctly.
       </p>
       <div *ngIf="language != 'fr'">
-        <img class="infoimg" title="Deltachat Advanced settings" src="assets/img/adv_p2pe_es.jpeg" />
+        <img class="infoimg" title="Deltachat Advanced settings" src="assets/img/adv_p2pe_{{language}}.jpeg" />
         <p>
           Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by
           another Deltachat application. In order to be able to interact with e-mails from any e-mail client software,
@@ -173,7 +177,7 @@
             class="icon"><img src="assets/svg/bars-solid.svg"></span> ) -> Settings -> Chats and Media -> Show Classic
           E-Mails -> All.
         </p>
-        <img class="infoimg" title="Deltachat email settings" src="assets/img/allemails_es.jpeg" />
+        <img class="infoimg" title="Deltachat email settings" src="assets/img/allemails_{{language}}.jpeg" />
         <p>
           In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed
           trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address
@@ -181,7 +185,7 @@
           when first creating a login on HERMES and for use with the RoundCube webmail, such as:
           username@
           {{domain}}.
-          <img class="infoimg" title="Deltachat login" src="assets/img/login_es.jpeg" />
+          <img class="infoimg" title="Deltachat login" src="assets/img/login_{{language}}.jpeg" />
         </p>
       </div>
     </div>
