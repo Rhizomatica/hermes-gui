@@ -144,27 +144,18 @@
       </p>
     </div>
 
-    <div *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat">
+    <div *ngIf="hint == 'deltachat'">
+      <!-- <div *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat"> -->
       <h1 class="cv-title">Deltachat</h1>
       <p>
         Through the Deltachat app, you can use emails to conduct personal message exchanges (similar to WhatsApp or
         SMS).
       </p>
-      <div class="video-hint" *ngIf="language == 'fr'">
-        <video width="500" height="225" controls>
-          <source src="assets/videos/deltachat1.mp4" type="video/mp4">
-        </video>
-      </div>
       <p>
         The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the
         server-based image and audio compression to work properly, otherwise image and audio exchange will not be
         possible.
       </p>
-      <div class="video-hint" *ngIf="language == 'fr'">
-        <video width="500" height="225" controls>
-          <source src="assets/videos/deltachat2.mp4" type="video/mp4">
-        </video>
-      </div>
       <p>
         The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn
         off.
