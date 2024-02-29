@@ -47,6 +47,20 @@
         Timeout - When the timout finish the voice will be interrupted, by clicking on the screen or on any option the
         timeout restart
       </p>
+      <p class="m-t-10">
+        *Note: If the SWR is too high, transmit a test signal.
+        Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W).
+        Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to
+        turn OFF the “PTT” button.
+
+        If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct
+        ranges, the HERMES system is ready for operation.
+
+        If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment,
+        including:
+        the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
+        temperature of radio, smell of burning), the antenna condition.
+      </p>
     </div>
 
     <div *ngIf="hint == 'messages'" i18n="@@hintmessages">
@@ -313,6 +327,20 @@
         transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why
         the system went over the threshold.
       </p>
+      <p class="m-t-10">
+        *Note: If the SWR is too high, transmit a test signal.
+        Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W).
+        Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to
+        turn OFF the “PTT” button.
+
+        If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct
+        ranges, the HERMES system is ready for operation.
+
+        If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment,
+        including:
+        the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
+        temperature of radio, smell of burning), the antenna condition.
+      </p>
     </div>
 
     <div *ngIf="hint == 'usermanagement'" i18n="@@hintusermanagement">
@@ -411,7 +439,7 @@
         browsers. If none of this resolves the problem, it is possible that your device is incompatible with the
         network.
 
-        <span *ngIf="bitx == 'S'">
+        <span *ngIf="bitx == 'U'">
           In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct
         </span> position of the power supply wires and check the position and integrity of the Antenna, coaxial cable,
         and the transmitter.
@@ -427,6 +455,20 @@
         If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it
         could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place
         with internet for online maintenance.
+      </p>
+      <p class="m-t-10">
+        *Note: If the SWR is too high, transmit a test signal.
+        Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W).
+        Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to
+        turn OFF the “PTT” button.
+
+        If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct
+        ranges, the HERMES system is ready for operation.
+
+        If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment,
+        including:
+        the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
+        temperature of radio, smell of burning), the antenna condition.
       </p>
     </div>
 
