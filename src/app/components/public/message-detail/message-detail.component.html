@@ -36,17 +36,19 @@
             <button *ngIf="fileType == 'image'" (click)="rotateImage()" class="pull-right">
                 <img title="rotate" src="assets/svg/redo.svg">
             </button>
-            <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                {{message.file}}
-            </a>
+            <div class="m-t-25">
+                <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
+                    {{message.file}}
+                </a>
+            </div>
         </div>
     </div>
     <hr />
     <div *ngIf="!noMessage">
         <small>
-            <p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
-            <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
-            <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
+            <p class="msginf"><b i18n="@@Origin">Origin:</b> {{message.orig}}</p>
+            <p class="msginf"><b i18n="@@desnitation">Destination:</b> {{message.dest}}</p>
+            <p class="msgdate"><b i18n="@@sentat">Sent at:</b> {{message.sent_at}}</p>
         </small>
     </div>
     <div class="flex m-t-25" *ngIf="allowCompose">
