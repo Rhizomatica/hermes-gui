@@ -98,7 +98,7 @@
       </div>
       <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Radio data frequency: {{radio.p0_freq}}kHz
+          <span i18n="@@changefrequency">Data frequency: {{radio.p0_freq}}kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -128,7 +128,7 @@
         </form>
 
         <form #fvoicefreq="ngForm" class="formdata field" *ngIf="radio && bitx == 'S'">
-          <span i18n="@@changevoicefrequency">Radio voice frequency: {{radio.p1_freq}} kHz
+          <span i18n="@@changevoicefrequency">Voice frequency: {{radio.p1_freq}} kHz
             <hint [showHint]="false" [hint]="'voiceFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
