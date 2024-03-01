@@ -16,8 +16,8 @@
             <input name="pass" type="password" ngModel required>
             <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">check
                 password</button>
+            <hint [showHint]="false" [hint]="'protectedmessage'"></hint>
         </form>
-        <hint [showHint]="false" [hint]="'protectedmessage'"></hint>
     </div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
