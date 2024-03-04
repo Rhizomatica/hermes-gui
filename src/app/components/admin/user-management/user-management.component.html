@@ -97,22 +97,23 @@
       </span>
       <div class="overall" *ngIf="deleteUser">
         <div class="cv">
-          <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?<br />
-          <!-- <span i18n="@@thisactioncannot">this action cannot be undone!</span> -->
-          <br />
-          <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
-          <button class="m-l-10" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
-            i18n="@@deleteuser">delete user</button>
+          <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?
+          <div class="row m-t-10">
+            <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+            <button class="m-l-10" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
+              i18n="@@deleteuser">delete user</button>
+          </div>
         </div>
       </div>
       <div class="overall" *ngIf="updateUser">
         <div class="cv">
           <span i18n="@@areyousureupdate">Are you sure you want to update</span> {{selectedUser.name}}?<br />
           <span i18n="@@thisactioncannot">This action cannot be undone!</span>
-          <br />
-          <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
-          <button class="m-l-10" type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
-            i18n="@@update">update</button>
+          <div class="row m-t-10">
+            <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
+            <button class="m-l-10" type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
+              i18n="@@update">update</button>
+          </div>
         </div>
       </div>
       <div class="overall alert" [hidden]="errorAlert==false">
@@ -120,7 +121,6 @@
           <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on processing your request </span>
           <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exists please choose another
             email</span>
-          <br /><br />
           <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
             close
           </button>

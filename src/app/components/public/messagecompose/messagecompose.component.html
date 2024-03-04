@@ -128,7 +128,7 @@
     <div class="overall alert" [hidden]="errorAlert==false">
       <div class="cv">
         <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
-        <div class="row m-t-25">{{errormsg}}</div>
+        <div class="row m-t-10">{{errormsg}}</div>
         <div class="row m-t-10">
           <button (click)="closeError()" i18n="@@closeerrorbutton">
             close
@@ -157,7 +157,7 @@
         </button>
         <video class="m-t-50" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
-        <div>
+        <div class="row m-t-10">
           <button i18n="@@Capture" (click)="capture($event)">Capture</button>
         </div>
       </div>

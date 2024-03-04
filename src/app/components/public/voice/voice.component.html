@@ -105,9 +105,9 @@
 <div class="overall alert" [hidden]="errorAlert==false">
   <div class="cv">
     <span i18n="@@websocketerror">There was an error on processing your request </span>
-    {{error}}
-    <div class="icon">
-      <button class="m-t-10" (click)="updatePage()" i18n="@@updatevoicepage">reload page</button>
+    <div class="row m-t-10">
+      {{error}}
     </div>
+    <button class="m-t-10" (click)="updatePage()" i18n="@@updatevoicepage">reload page</button>
   </div>
 </div>
