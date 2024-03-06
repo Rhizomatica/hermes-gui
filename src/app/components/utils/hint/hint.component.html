@@ -158,15 +158,15 @@
       </p>
     </div>
 
-    <div *ngIf="hint == 'deltachat'">
-      <!-- <div *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat"> -->
+    <div *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat">
       <h1 class="cv-title">Deltachat</h1>
-      <p>
+      <p class="m-t-10">
         Through the Deltachat app, you can use emails to conduct personal message exchanges (similar to WhatsApp or
         SMS).
-
-        Keep
-        in mind that due to the scheduling of transmission of the messages, they may take a while to arrive, depending
+      </p>
+      <p class="m-t-10">
+        Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive,
+        depending
         on the amount of messages in the queue and the gateway station's schedule of operation.
       </p>
       <p>
@@ -204,8 +204,7 @@
         trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address
         and password fields should be filled, as shown below. The user and password will be the same as those created
         when first creating a login on HERMES and for use with the RoundCube webmail, such as:
-        username@
-        {{domain}}.
+        username@{{domain}}.
         <img class="infoimg" title="Deltachat login" src="assets/img/login_en-US.jpeg" />
       </p>
     </div>
