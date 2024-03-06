@@ -66,16 +66,16 @@
             </span>
           </div>
           <div class="row" *ngIf="job.messageId">
-            <span i18n="@@messagetitle">Title: </span>{{job.messageName}}
+            <b i18n="@@messagetitle">Title: </b>{{job.messageName}}
           </div>
           <div class="row" *ngIf="job.messageFile && job.messageSecure == 0">
-            <span i18n="@@messagefile">File: </span> {{job.messageMimeType}} / {{job.messageFile}}
+            <b i18n="@@messagefile">File: </b> {{job.messageMimeType}} / {{job.messageFile}}
           </div>
           <div class="row">
-            <span i18n="@@destinationt"> Destination:</span>{{job.uuidhost}}
+            <b i18n="@@destinationt"> Destination:</b>{{job.uuidhost}}
           </div>
           <div class="row">
-            <span i18n="@@destisizet">Size:</span> {{job.size}} B
+            <b i18n="@@destisizet">Size:</b> {{job.size}} B
           </div>
           <div class="row" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp">
             <a i18n="@@forcetransmitting">Transmitting... </a>
