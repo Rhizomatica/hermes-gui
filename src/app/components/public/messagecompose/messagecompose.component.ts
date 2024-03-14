@@ -12,7 +12,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Frequency } from 'src/app/interfaces/frequency';
 import { GlobalConstants } from '../../../global-constants';
 import { UtilsService } from 'src/app/_services/utils.service';
-
 @Component({
   selector: 'app-messagecompose',
   templateUrl: './messagecompose.component.html',

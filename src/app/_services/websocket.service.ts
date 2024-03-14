@@ -10,7 +10,6 @@ import { UtilsService } from "./utils.service";
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { RadioService } from "./radio.service";
-import { resourceUsage } from "process";
 
 export interface Message {
     source: string;

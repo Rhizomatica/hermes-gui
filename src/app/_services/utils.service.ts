@@ -94,6 +94,10 @@ export class UtilsService {
   }
 
   splitFrequency(freq) {
+
+    if(!freq)
+      return null
+
     freq = freq.toString()
     freq = freq.replace(/,/g, "")
     freq = freq.replace(/\./g, "")

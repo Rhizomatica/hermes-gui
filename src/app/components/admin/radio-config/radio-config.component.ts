@@ -8,7 +8,6 @@ import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
-import { profile } from 'console';
 
 @Component({
   selector: 'app-radio-config',
