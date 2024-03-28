@@ -101,6 +101,9 @@ angular-pwa app running at `http://127.0.0.1:9000/en-US/home` or `localhost:9000
 so on the global-constants.ts the API Server IP should be defined with the same IP Address (ORIGIN) from the angular-pwa app : `http://127.0.0.1:8080/api` or `localhost:8080/api`
 
 Avoid run the HERMES as a service during your development.
+Running HERMES locally as a service (service worker) the angular live reloads does not work.
+So build your project again running `ng build` after change your code and run `http-server -p 9000 -c-l dist/hermes`
+to restart the project.
 
 
 ## Running unit tests
