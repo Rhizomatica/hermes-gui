@@ -12,155 +12,96 @@
 
 <div id="appcontainer">
   <div class="fullpage">
-    <nav id="mainnav" *ngIf="system">
-      <a routerLink='/landing' class="logo-link">
+    <!-- TODO - Create component -->
+    <nav *ngIf="system && (currentPage != 'home' && currentPage != 'languages')">
+      <a routerLink='/home' class="logo-link"
+        [style.pointer-events]="disableNavigationsRequireLoginNoUser() ? 'none' : 'auto'"
+        (keydown.enter)="!disableNavigationsRequireLoginNoUser()">
         <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
-        <h1 class="sitetitle" *ngIf="system"><span>{{system.domain}}</span></h1>
+        <h1 class="sitetitle" *ngIf="system">
+          <span>{{system.domain}}</span>
+        </h1>
       </a>
-      <a routerLink="/messages" i18n="@@messages">
-        <img title="messages" src="assets/svg/comment.svg">
-        messages
+      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
+        <div *ngIf="radio && radio.profile == 0">
+          <span class="nav-frequency">
+            {{radio.p0_mode}} {{radio.p0_freq}} kHz
+          </span>
+          <span class="nav-operation-mode" i18n="@@datanavlabel">
+            data
+          </span>
+        </div>
+        <div *ngIf="radio && radio.profile == 1">
+          <span class="nav-frequency">
+            {{radio.p1_mode}} {{radio.p1_freq}} kHz
+          </span>
+          <span class="nav-operation-mode" i18n="@@voicenavlabel">
+            voice
+          </span>
+        </div>
+        <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
-      <a routerLink="/email" i18n="@@email">
-        <img title="mail" src="assets/svg/envelope.svg">
-        email</a>
-      <a routerLink="/admin" i18n="@admin">
-        <img title="admin" src="assets/svg/tools.svg">
-        admin
+      <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
+        <img title="close" src="assets/svg/times.svg">
       </a>
-      <a routerLink="/help" i18n="@@help">
-        <img title="help" src="assets/svg/question-circle-regular.svg">
-        help
-      </a>
-      <a class="icon" routerLink="/login" *ngIf="!currentUser">
-        <span class="logged" i18n="@@login1">login</span>
-        <br />
-        <img title="Log In" src="assets/svg/sign-in-alt-solid.svg">
-      </a>
-      <a class="icon" (click)="logout()" *ngIf="currentUser">
-        <img title="logged as {{currentUser.email}} /  {{currentUser.admin}}  -> click to logout"
-          src="assets/svg/sign-out-alt-solid.svg">
-        <br />
-        <span class="logged" i18n="@@logout1">logout</span>
-        <span class="topuser">
-          <span>{{currentUser.email}}</span>
-        </span>
-      </a>
-      <ng-template #loggedOut>
-        <span class="servericon"></span>
-        <a class="icon" routerLink="/login">
-          <img title="Log In" src="assets/svg/sign-in-alt-solid.svg"><br>
-          <span class="logged" i18n="@@login1">login</span>
-        </a>
-      </ng-template>
     </nav>
 
     <div class="formfield">
       <div class="language m-b-10" (click)="installPWA()" *ngIf="deferredPrompt">
-        <img title="install" src="assets/svg/material icons/arrow_circle_down-24px.svg" />
+        <img title="install" src="assets/svg/arrow-down.svg" />
         <span i18n="@installhermesappng">Install HERMES APP </span>
       </div>
+      
+    <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
+
+    <div class="formfield {{currentPage}}">
+
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
+
+      <!-- TODO - Create component -->
       <ng-template #serverOff>
         <hr>
-        <!-- TODO - Criar Tradução -->
-        <p i18n="hermes503Http">503 Service Unavaliable</p>
+        <p i18n="hermes503Http">503 Service Unavailable</p>
         <p i18n="hermesoffline">Hermes server is offline, please turn the station on.
         </p>
         <br>
-        <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">If your server is already
-          on click here</div>
-
-        <div *ngIf="serverError" i18n="@@areadyonmsg">
-          If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
-          your
-          system is corrupted. If you already tried to access HERMES from other devices and the problem persists, you
-          may
-          need to take your station to a place with internet and contact the vendors at support@hermes.radio to schedule
-          an online maintenance support session.
-          <br>
-          <span class="icon"><img (click)="showServerAlert()" title="close" src="assets/svg/times.svg"> </span>
+        <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">
+          If your server is already on click here
+        </div>
+        <div *ngIf="serverError">
+          <span i18n="@@areadyonmsg">
+            If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is {{emergencyEmail}}.
+          </span>
+          <div class="row m-t-10">
+            <button (click)="showServerAlert()" i18n="@@closeerrorbuttonchangeconfig">
+              close
+            </button>
+          </div>
         </div>
         <div class="overall alert" *ngIf="errorAlert==true">
           <div class="cv">
-            <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
-            <span>{{error}}</span>
-            <div class="icon"><a (click)="closeError()">
-                <img title="compose" src="assets/svg/x.svg"></a>
+            <span i18n="@@errorchangingconfig">
+              There was an error on changing configuration
+            </span>
+            <div class="row m-t-10">
+              {{error}}
+            </div>
+            <div class="row m-t-10">
+              <button (click)="closeError()" i18n="@@closeerrorbuttonchangeconfig">
+                close
+              </button>
             </div>
           </div>
         </div>
       </ng-template>
     </div>
-    <div class="overall" *ngIf="changeLanguage">
-      <div class="cv">
-        <nav class="flags">
-          <a i18n="@@portugues" class="flag" routerLink="" (click)="setLanguage('pt')"><img title="messages"
-              src="assets/svg/brasil.svg">Português</a>
-          <a i18n="@@espanhol" class="flag" routerLink="" (click)="setLanguage('es')"><img title="messages"
-              src="assets/svg/espanha.svg">Español</a>
-          <a i18n="@@english" class="flag" routerLink="" (click)="setLanguage('en-US')"><img title="messages"
-              src="assets/svg/reino-unido.svg">English</a>
-        </nav>
-      </div>
-    </div>
+    <floatbutton></floatbutton>
   </div>
-
-  <loading [loading]="loading"></loading>
-
-  <footer [ngClass]="fullStats ? 'footer big' : 'footer'">
-    <ng-container *ngIf="system">
-      <div class="dr">
-        <div class="drb" (click)="onToggle('HR')"></div>
-      </div>
-      <span class="footerinfo">
-        Version: 2.1 |
-        <span i18n="stationa">Station:</span> {{system.name}}
-        <span *ngIf="currentUser">
-          <span *ngIf="currentUser.admin === true" i18n="@@isadministrator"> is administrator</span></span>
-        <span *ngIf="!system">
-          &#124; <span i18n="@@serveroff0">server off</span>
-        </span>
-        <span i18n="@@statusa0">| Status: </span>
-        <div *ngIf="!system.status" class="redcircle" (click)="showFullStatus()"> </div>
-        <div *ngIf="system.status" class="greencircle"> </div>
-        <span *ngIf="currentUser"> | <span i18n="@@freespace">Free Space:</span> {{system.diskfree /1024 /1024 |
-          number}}
-          GB</span>
-        <div *ngIf="fullStats">
-          <!--Uucp bridge: <div [ngClass]="{'redcircle' : !system.piduucp , 'greencircle' : system.piduucp }" title='uuardop {{system.piduucp}}'></div>-->
-          UUCP: <div [ngClass]="{'redcircle' : !system.piduuardop , 'greencircle' : system.piduuardop }"
-            title='uuardop {{system.piduucp}}'></div>
-          &#124; Database: <div [ngClass]="{'redcircle' : !system.piddb , 'greencircle' : system.piddb }"
-            title='mysql {{system.piddb}}'></div>
-          &#124; Modem: <div [ngClass]="{'redcircle' : !system.pidmodem , 'greencircle' : system.pidmodem }"></div>
-          &#124; Radio: <div [ngClass]="{'redcircle' : !system.pidradio , 'greencircle' : system.pidradio }"
-            title='uuardop {{system.piduucp}}'></div>
-          &#124; Inbox: <div [ngClass]="{'redcircle' : !system.pidhmp , 'greencircle' : system.pidhmp }"></div>
-          &#124; Email: <div [ngClass]="{'redcircle' : !system.pidpf , 'greencircle' : system.pidpf }"></div>
-        </div>
-        <br><span *ngIf="criticSpace" class="alert" i18n="storagelow">System storage is low! please delete messages and
-          files</span>
-      </span>
-    </ng-container>
-    <span *ngIf="!system" i18n="@@stationoffline">
-      Hermes station offline <figure class="redcircle"></figure>
-    </span>
-  </footer>
-
-  <div class="overall alert" *ngIf="installPromotion">
+  <div class="overall alert" *ngIf="countdown && !isLoginPage">
     <div class="cv">
-      <span i18n="@@installappmsg">Do you like install HERMES APP?<br /><br /></span>
-      <div class="icon">
-        <a (click)="closeInstallapp()">
-          <img title="close" src="assets/svg/x.svg">
-        </a>
-      </div>
-      <div class="row">
-        <a (click)="installPWA()">
-          Install
-        </a>
-      </div>
+      <span i18n="@@countdowninactivite">Inactive user. Countdown for logoff</span>
+      <div class="row"><b>{{countdown}} sec</b></div>
     </div>
   </div>
+  <loading [loading]="loading"></loading>
 </div>

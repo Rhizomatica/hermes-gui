@@ -3,24 +3,25 @@
         <div>
             <div class="flexible">
                 <h2 i18n="@@sentmessages">Sent Messages </h2>
+                <hint [showHint]="false" [hint]="'sentmessages'"></hint>
                 <div class="row">
                     <button *ngIf="allowCompose" routerLink="/compose">
-                        <span i18n="@@compose1">
-                            <img title="compose" src="assets/svg/edit.svg">
-                            Compose
+                        <span i18n="@@compose1sent">
+                            <img title="new" src="assets/svg/edit.svg">
+                            new
                         </span>
                     </button>
                     <button class="m-l-10" routerLink="/messages">
-                        <span i18n="@@publicmessages2">
-                            <img title="sent" src="assets/svg/comment.svg">
-                            messages
+                        <span i18n="@@publicmessagebutton">
+                            <img title="sent" src="assets/svg/envelope.svg">
+                            public messages
                         </span>
                     </button>
                 </div>
             </div>
-            <input placeholder="Search Messages" i18n-placeholder id="searchbox1" [(ngModel)]="searchMessages" />
-            <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">Alert: Cannot access
-                sent messages<br />
+            <input id="searchbox1" [(ngModel)]="searchMessages" placeholder="search" i18n-placeholder />
+            <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">There are no sent
+                messages<br />
             </div>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist sent">
@@ -30,7 +31,7 @@
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
                                 <div class="row">
-                                    <span class="date">{{message.orig}}, {{message.sent_at | date:'d/M/yy, h:mm'}}</span>
+                                    <span class="date">{{message.orig}}, {{message.sent_at}}</span>
                                 </div>
                                 <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                                     <span class="ls">{{message.name}}</span>
@@ -52,27 +53,30 @@
             </div>
             <div class="overall alert" *ngIf="deleteMessage">
                 <div class="cv">
-                    <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
+                    <span i18n="@@areyousuredeletemsgsent">Are you sure yo want to delete this message? <br /><br />
                     </span>
                     <span>{{selectedMessage.name}}</span>
-                    <div class="icon"><a (click)="showDelete()">
-                            <img title="cancel" src="assets/svg/x.svg"><button i18n="@@cancelmt">cancel</button></a>
-                    </div>
-                    <div class="icon">
-                        <img title="confirm" src="assets/svg/trash-alt.svg"><button (click)="deleteThisMessage()"
-                            i18n="@@confirmmt">confirm</button>
+                    <div class="row m-t-10">
+                        <button i18n="@@cancelmt" (click)="showDelete()">cancel</button>
+                        <button (click)="deleteThisMessage()" i18n="@@confirmmt" class="m-l-10">confirm</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-            <div class="overall alert" *ngIf="errorAlert==true">
-                <div class="cv">
-                    <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-                    <span>{{error}}</span>
-                    <div class="icon"><a (click)="closeError()">
-                            <img src="assets/svg/x.svg"></a>
-                    </div>
+    </div>
+    <div>
+        <div class="overall alert" *ngIf="errorAlert==true">
+            <div class="cv">
+                <span i18n="@@errorprocessing">
+                    There was an error on processing your request
+                </span>
+                <div class="row m-t-10">
+                    {{error}}
+                </div>
+                <div class="row m-t-10">
+                    <button (click)="closeError()" i18n="@@closeerrorbutton">
+                        close
+                    </button>
                 </div>
             </div>
         </div>

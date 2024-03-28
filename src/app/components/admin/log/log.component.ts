@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
-import { interval } from 'rxjs';
+import { CustomErrorsService } from '../../../_services/custom-errors.service';
+import { CustomError } from '../../../interfaces/customerror'
+import { UtilsService } from 'src/app/_services/utils.service';
 
 export interface LogList {
   line: string;
@@ -14,6 +16,7 @@ export interface LogList {
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.less']
 })
+
 export class LogComponent implements OnInit, OnDestroy {
 
   uLog = false;
@@ -27,14 +30,22 @@ export class LogComponent implements OnInit, OnDestroy {
   uucpDebugLog: any;
   error = Error;
   log: LogList;
-  public intervallTimer = interval(10000);
-  private subscription1;
-  private subscription2;
-  private subscription3;
   errorAlert = false;
   loading = false
+  customErrors: CustomError[]
+  visibleArray: any = []
+  searchError: string
+  customLog: boolean
+  system: any
+  criticSpace = false;
+  confirmDeleteAllLogs = false;
 
-  constructor(private authenticationService: AuthenticationService, private apiService: ApiService) {
+
+  constructor(private authenticationService: AuthenticationService,
+    private apiService: ApiService,
+    private customErrorsService: CustomErrorsService,
+    private utils: UtilsService
+  ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -43,14 +54,8 @@ export class LogComponent implements OnInit, OnDestroy {
     this.uLog = true;
     this.eLog = false;
     this.dLog = false;
+    this.customLog = false;
     this.getLogUucp();
-    this.subscription1 = this.intervallTimer.subscribe(() => this.getLogUucp());
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
-    };
-    if (this.subscription3) {
-      this.subscription3.unsubscribe();
-    }
   }
 
   showEmailLog() {
@@ -58,14 +63,8 @@ export class LogComponent implements OnInit, OnDestroy {
     this.uLog = false;
     this.eLog = true;
     this.dLog = false;
+    this.customLog = false;
     this.getLogMail();
-    this.subscription2 = this.intervallTimer.subscribe(() => this.getLogMail());
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
-    };
-    if (this.subscription3) {
-      this.subscription3.unsubscribe();
-    }
   }
 
   showDebugLog() {
@@ -73,16 +72,18 @@ export class LogComponent implements OnInit, OnDestroy {
     this.uLog = false;
     this.eLog = false;
     this.dLog = true;
+    this.customLog = false;
     this.getLogUucpDebug();
-    this.subscription3 = this.intervallTimer.subscribe(() => this.getLogUucpDebug());
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
-    };
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
-    }
   }
 
+  showCustomLogs() {
+    this.loading = true
+    this.uLog = false;
+    this.eLog = false;
+    this.dLog = false;
+    this.customLog = true;
+    this.getCustomErrors();
+  }
 
   getLogUucp() {
     this.apiService.getUucpLog().subscribe(
@@ -139,11 +140,109 @@ export class LogComponent implements OnInit, OnDestroy {
     this.errorAlert = false;
   }
 
-  ngOnInit(): void {
-    // this.getLogUucp();
-    // this.getLogMail();
-    // this.getLogUucpDebug();
+  getCustomErrors() {
+    this.loading = true
+    this.customErrorsService.getCustomErrors().subscribe(
+      (data: any) => {
+        this.customErrors = data.sort((a, b) => { return new Date(a.created_at) < new Date(b.created_at) ? 1 : -1; });
+        this.customErrors = this.customErrors.filter((a) => { return a.created_at = this.utils.formatDate(a.created_at) });
 
+        this.loading = false;
+        this.loadVisibleArray(data)
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
+  loadVisibleArray(data) {
+    this.visibleArray = []
+    data.forEach(item => {
+      this.visibleArray.push(false)
+    });
+  }
+
+  viewLog(i) {
+    for (let index = 0; index < this.visibleArray.length; index++) {
+      this.visibleArray[index] = false
+    }
+
+    this.visibleArray[i] = true
+  }
+
+
+  confirmDeleteAllCustomError() {
+    this.confirmDeleteAllLogs = true
+  }
+
+  closedeleteconfirmation() {
+    this.confirmDeleteAllLogs = false
+  }
+
+  deleteCustomError(id) {
+    this.loading = true
+
+    if (!id)
+      this.deleteAllCustomError()
+
+    if (id)
+      this.deleteCustomErrorById(id)
+  }
+
+  deleteAllCustomError() {
+    this.customErrorsService.deleteAllCustomError().subscribe(
+      (data: any) => {
+        this.showCustomLogs()
+        this.loading = false
+        this.confirmDeleteAllLogs = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+        this.confirmDeleteAllLogs = false
+      }
+    );
+  }
+
+  deleteCustomErrorById(id) {
+    this.customErrorsService.deleteCustomError(id).subscribe(
+      (data: any) => {
+        this.showCustomLogs()
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
+  getSystemStatus(): void {
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+        this.system = res
+        if (this.system.diskfree < 10485760) {
+          this.criticSpace = true;
+        }
+
+        this.system.diskfree = (this.system.diskfree  /1024 /1024).toFixed(3)
+
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.getSystemStatus()
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
@@ -152,15 +251,6 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription1) {
-      this.subscription1.unsubscribe();
-    };
-    if (this.subscription2) {
-      this.subscription2.unsubscribe();
-    }
-    if (this.subscription3) {
-      this.subscription3.unsubscribe();
-    }
   }
 
 }

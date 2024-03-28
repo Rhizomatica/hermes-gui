@@ -1,0 +1,105 @@
+<loading [loading]="loading"></loading>
+<div *ngIf="isAdmin">
+    <div class="flexible">
+        <h2 class="" i18n="@@transmissionschedules">Transmission schedule</h2>
+        <hint [showHint]="false" [hint]="'schedules'"></hint>
+    </div>
+    <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
+    <hr />
+    <b i18n="@@currentschedules">Current schedules:</b>
+    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">
+        There are no schedules for radio transmission <br />
+    </div>
+    <ul *ngIf="schedules.length > 0" id="schedulelist" class="multiplist3" [(ng-model)]="schedules">
+        <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">
+            <small>
+                <div [ngClass]="{'redcircle' : !schedule.enable , 'greencircle' : schedule.enable }" title='enabled'>
+                </div>
+            </small>
+            {{schedule.title}} ({{schedule.starttime}} - {{schedule.stoptime}})
+        </li>
+    </ul>
+    <div class="overall alert" *ngIf="errorAlert">
+        <div class="cv">
+            <span i18n="@@errorrequest">
+                There was an error on your request
+            </span>
+            <div class="row m-t-10">
+                {{error}}
+            </div>
+            <div class="row m-t-10">
+                <button (click)="closeError()" i18n="@@closeerrorbutton">
+                    close
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="gateway" *ngIf="isEditing">
+        <hr>
+        <h3 class="flex-right">{{localDateHour}}</h3>
+        <form #f="ngForm" id="timeform" novalidate>
+            <label>
+                <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
+                <input name="title" [(ngModel)]="selectedSchedule.title" i18n="@@mwyn" required />
+                <p i18n="@@initialtime" class="m-t-10">Start transmission hour: </p>
+                <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" name="starttime"
+                    [(ngModel)]="selectedSchedule.starttime" type="time" id="starttime" required
+                    value="selectedSchedule.starttime" pattern="[0-9]{2}:[0-9]{2}" step="60" />
+            </label>
+            <label>
+                <p i18n="@@finatime" class="m-t-10">Stop transmission hour:</p>
+                <input (change)="compareTime(selectedSchedule.starttime, selectedSchedule.stoptime)" type="time"
+                    name="stoptime" id="stoptime" [(ngModel)]="selectedSchedule.stoptime"
+                    value="selectedSchedule.stoptime" required pattern="[0-9]{2}:[0-9]{2}" step="60" />
+                <p class="alert" *ngIf="timeerror" i18n="@@timewarning">Stop transmission hour must be bigger than
+                    start time</p>
+            </label>
+            <ng-container class="m-t-10">
+                <p i18n="@@selectstationsgw" class="m-t-10">
+                    Select station:
+                </p>
+                <ng-select id="selmult" #getModelValue="ngModel" name="stations" [selectableGroup]="true"
+                    [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
+                    [selectableGroupAsModel]="true" [closeOnSelect]="false" [(ngModel)]="selectedSchedule.stations"
+                    multiple=true required>
+                    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                            [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                            [ngModelOptions]="{standalone: true}" />{{item.alias}}
+                    </ng-template>
+                </ng-select>
+            </ng-container>
+
+            <label class="m-t-25">
+                <span i18n="@@enable">Enable</span>
+                <div class="switch">
+                    <input type="checkbox" name="enable" [(ngModel)]="selectedSchedule.enable">
+                    <span class="slider round"></span>
+                </div>
+            </label>
+            <br />
+            <button [disabled]="f.invalid || timeerror" *ngIf="!emptySchedule" type="button" i18n="@@changetime"
+                (click)="updateSchedule(selectedSchedule.id, f)">
+                update
+            </button>
+            <button class="m-l-10" [disabled]="f.invalid || timeerror" *ngIf="emptySchedule" type="button"
+                i18n="@@newschedule" (click)="createSchedule(f)">
+                create schedule
+            </button>
+            <span *ngIf="!emptySchedule">
+                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule"
+                    (click)="deleteSchedule(selectedSchedule.id)">
+                    delete schedule
+                </button>
+            </span>
+        </form>
+    </div>
+</div>
+<div>
+    <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">
+        You need admin privileges to access this page
+    </p>
+</div>

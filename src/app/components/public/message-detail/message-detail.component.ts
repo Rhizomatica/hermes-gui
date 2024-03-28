@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 import { User } from '../../../interfaces/user';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
+import { UtilsService } from 'src/app/_services/utils.service';
 // import { ScriptService } from '../../../_services/script.service';
 
 @Component({
@@ -24,15 +25,12 @@ export class MessageDetailComponent implements OnInit {
   public messageImage: Blob;
   public isEncrypted = false;
   url = GlobalConstants.apiURL;
-  noMessage = false;
-  noImage = false;
   wrongPass = false;
   uncrypted = false;
-  isAudio = false;
-  isImage = false;
+  fileType: string = null
+  noMessage = false;
   pass = '';
   passString = '';
-  audioLoading = false;
   allowCompose = false;
   currentUser: User;
   allowhmp = 'root';
@@ -41,6 +39,7 @@ export class MessageDetailComponent implements OnInit {
   selectedMessage: Message
   errorAlert = false
   loading = false
+  degree: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,7 +48,8 @@ export class MessageDetailComponent implements OnInit {
     private location: Location,
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
-    // private scripts: ScriptService,
+    private utils: UtilsService,
+    private renderer: Renderer2
 
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -71,10 +71,11 @@ export class MessageDetailComponent implements OnInit {
   sendPassword(id: number, f: NgForm): void {
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {
-        if (res.text !== '') {
-          this.message.text = res.text;
+        if (res.message && res.message !== '') {
+          this.message.text = res.message;
           this.uncrypted = true;
           this.passString = '?i=' + f.value.pass;
+          this.wrongPass = false;
         }
         else {
           this.uncrypted = false;
@@ -88,12 +89,6 @@ export class MessageDetailComponent implements OnInit {
     );
   }
 
-
-  loadingAudio() {
-    if (this.audioLoading)
-      this.audioLoading = false
-  }
-
   getMessage(): void {
     this.loading = true
     const id = +this.route.snapshot.paramMap.get('id');
@@ -103,48 +98,12 @@ export class MessageDetailComponent implements OnInit {
       (res: any) => {
         this.message = res;
         if (this.message.file === '') {
-          this.noImage = true;
+          this.fileType = null
         } else {
-          switch (this.message.mimetype) {
-            //TODO - Separar (levar para utils)
-            case '':
-              this.noImage = true;
-              this.isAudio = false;
-              break;
-            case 'image/bmp':
-            case 'image/gif':
-            case 'image/jpeg':
-            case 'image/png':
-            case 'image/tiff':
-            case 'image/webp':
-            case 'image/svg+xml':
-            case 'image/pjpeg':
-            case 'image/x-jps':
-              this.noImage = true;
-              this.isImage = true;
-              this.isAudio = false;
-              break;
-            case 'audio/aac':
-            case 'audio/mpeg':
-            case 'audio/ogg':
-            case 'audio/ogx':
-            case 'audio/opus':
-            case 'audio/wav':
-            case 'audio/x-wav':
-            case 'audio/webm':
-            case 'audio/3gpp':
-            case 'audio/3gpp2':
-              this.noImage = false;
-              this.isImage = false;
-              this.isAudio = true;
-              this.audioLoading = true;
-              break;
-            default:
-              this.noImage = false;
-              this.isAudio = false;
-              this.isImage = false;
-          }
+          this.fileType = this.utils.getFileType(this.message.mimetype)
         }
+
+        this.message.sent_at = this.utils.formatDate(this.message.sent_at)
 
         this.loading = false
       },
@@ -166,7 +125,7 @@ export class MessageDetailComponent implements OnInit {
       },
       (err) => {
         this.error = err;
-        this.noImage = true;
+        this.fileType = null;
         this.loading = false
       }
     );
@@ -248,6 +207,21 @@ export class MessageDetailComponent implements OnInit {
 
   closeError() {
     this.errorAlert = false;
+  }
+
+  rotateImage() {
+    const image = document.getElementById('image')
+
+    this.degree += 90
+
+    this.renderer.setStyle(
+      image,
+      'transform',
+      `rotate(${this.degree}deg)`
+    )
+
+    if (image.offsetWidth > image.offsetHeight)
+      image.style.width = '400px'
   }
 
   ngOnInit(): void {

@@ -1,73 +1,137 @@
 import { Injectable, Optional, Inject } from "@angular/core";
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { GlobalConstants } from '../global-constants';
+import { SharedService } from "./shared.service";
+import { Radio } from "../interfaces/radio";
+import { UtilsService } from "./utils.service";
+import { Router } from '@angular/router';
+import { interval } from 'rxjs';
+import { RadioService } from "./radio.service";
 
 export interface Message {
     source: string;
     content: string;
 }
 
-// @Injectable()
-export class WebsocketService {
-    private subject: AnonymousSubject<MessageEvent>;
-    public messages: Subject<Message>;
+// https://indepth.dev/tutorials/angular/how-to-implement-websockets-in-angular-project
 
-    constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string) {
-        this.messages = <Subject<Message>>this.connect(`${
-            // GlobalConstants.webSocketUrl
-            GlobalConstants.radioRemoteWSUrl
-        }/${_serviceRoute}`).pipe(
-            map(
-                (response: MessageEvent): Message => {
-                    return JSON.parse(response.data);
-                }
-            )
+@Injectable()
+export class WebsocketService {
+    private subject: AnonymousSubject<MessageEvent>
+    public messages: Subject<Message>
+    public ws: WebSocket
+    public radioObj: Radio
+    public intervallTimerKeepWebSocketAlive = interval(9000)
+    private requireLogin: boolean = GlobalConstants.requireLogin
+
+    constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
+        private sharedService?: SharedService,
+        private utils?: UtilsService,
+        private radioService?: RadioService,
+        private router?: Router) { }
+
+    public startService() {
+        console.log('Starting websocket...')
+        this.messages = <Subject<Message>>this.connect(`${GlobalConstants.webSocketUrl}`).pipe(
+            map((response: MessageEvent): Message => {
+                return JSON.parse(response.data)
+            })
         );
+
+        this.subscribeMessages()
     }
 
     public connect(url): AnonymousSubject<MessageEvent> {
         if (!this.subject) {
-            this.subject = this.create(url);
+            this.subject = this.create(url)
         }
         return this.subject;
     }
 
     private create(url): AnonymousSubject<MessageEvent> {
-        let ws = new WebSocket(url);
+        this.ws = new WebSocket(url);
 
         let observable = new Observable((obs: Observer<MessageEvent>) => {
-            ws.onmessage = obs.next.bind(obs);
-            ws.onerror = obs.error.bind(obs);
-            ws.onclose = obs.complete.bind(obs);
-            return ws.close.bind(ws);
+            this.ws.onmessage = obs.next.bind(obs)
+            this.ws.onerror = obs.error.bind(obs)
+            this.ws.onclose = obs.complete.bind(obs)
+            return this.ws.close.bind(this.ws)
         });
 
         let observer = {
             error: null,
             complete: null,
             next: (data: Object) => {
-                if (ws.readyState === WebSocket.OPEN) {
-                    ws.send(JSON.stringify(data));
+                if (this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(data))
                 }
             }
         };
-        return new AnonymousSubject<MessageEvent>(observer, observable);
+
+        return new AnonymousSubject<MessageEvent>(observer, observable)
+    }
+
+
+    subscribeMessages() {
+
+        this.sharedService.radioObj.subscribe({
+            next: newValue => this.radioObj
+        });
+
+        this.messages.subscribe(data => {
+            this.sharedService.setRadioObjShared(data)
+
+        }, async err => {
+
+            if (this.ws && this.ws.OPEN == 1)
+                this.closeConnection()
+
+            this.keepWebSocketAlive()
+
+            if (self.location.hostname === 'demo.hermes.radio')
+                this.sharedService.mountRadioObjDemo()
+
+        }, () => {
+            console.log('complete, closing websocket connection...')
+        })
+    }
+
+    keepWebSocketAlive() {
+        const subs = this.intervallTimerKeepWebSocketAlive.subscribe(val => {
+            console.log('keep alive...')
+            this.startService()
+            this.subscribeMessages()
+        });
+    }
+
+    closeConnection() {
+
+        //TODO - Dual frequency
+        // this.changeOperateModeProfile()
+
+        if (this.requireLogin && this.ws && this.ws.OPEN == 1) {
+            this.ws.close()
+            this.messages.complete()
+            this.messages = null
+            this.ws = null
+            this.subject = null
+        }
+    }
+
+    changeOperateModeProfile() {
+        if (this.radioObj && this.radioObj.profile == 1) {
+            //Profile id = 1 - digital/data
+            this.radioService.changeOperateModeProfile(1).subscribe(
+                (res: any) => {
+                    return res
+                }
+            );
+        }
+
     }
 }
 
 
-// sendMsg() {
-//     let message = {
-//       source: '',
-//       content: ''
-//     };
-//     message.source = 'localhost';
-//     message.content = this.content;
-
-//     this.sent.push(message);
-//     this.websocketService.messages.next(message);
-//   }

@@ -1,0 +1,163 @@
+<div class="container sysadm home">
+    <div class="row">
+        <div class="alertcard flexible" *ngIf="radio.connection">
+            <span class="greencircle"></span>
+            <b class="m-l-10" i18n="@@transmissioncardalerttitle">
+                Radio connected
+            </b>
+            <div class="row">
+                <p i18n="@@transmissioncardalertmesage">
+                    Data connection on going... 
+                    Voice mode blocked
+                </p>
+            </div>
+        </div>
+        <div class="flexible">
+            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
+                <div class="card voice {{(radio.connection) && ('disabled')}}">
+                    <div class="m-t-25">
+                        <b>{{radio.p1_freq}} kHz</b>
+                    </div>
+                    <div i18n="@@voicecard">
+                        {{radio.p1_mode}}
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/messages">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/comment.svg">
+                    </div>
+                    <div class="card-title" i18n="@@messagescard">
+                        Messages
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/email">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Email" src="assets/svg/envelope.svg">
+                    </div>
+                    <div i18n="@@emailcard">
+                        E-mail
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/radio-config">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Radio configuration" src="assets/svg/ham-radio.svg">
+                    </div>
+                    <div i18n="@@radioconfig">
+                        Radio configuration
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/user-manage" *ngIf="!requireLogin || (requireLogin && admin)">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="User management" src="assets/svg/circle-user.svg">
+                    </div>
+                    <div class="row" i18n="@@adminmanage">
+                        User management
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/message-config" *ngIf="admin">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Messages configuration" src="assets/svg/comments.svg">
+                    </div>
+                    <div i18n="@@messageadm">
+                        Messages configuration
+                    </div>
+                </div>
+            </a>
+            <a *ngIf="isGateway && admin" routerLink="/schedule">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Transmission schedule" src="assets/svg/clock.svg">
+                    </div>
+                    <div i18n="@@scheduling">
+                        Transmission schedule
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/transmission" *ngIf="admin">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Transmission list" src="assets/svg/transmit-antenna.svg">
+                    </div>
+                    <div i18n="@@transmissionlista">
+                        Transmission list
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/station-info" *ngIf="admin">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Stations information" src="assets/svg/broadcast-tower.svg">
+                    </div>
+                    <div i18n="@@stationinformationcard">
+                        Stations information
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/wifi-manage" *ngIf="admin">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title=" Wi-Fi & Ethernet manager" src="assets/svg/wifi-solid.svg">
+                    </div>
+                    <div i18n="@@wifimanagercard">
+                        Wi-Fi & Ethernet manager
+                    </div>
+                </div>
+            </a>
+            <a routerLink="/log" *ngIf="admin">
+                <div class="card">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Detailed log" src="assets/svg/compass.svg">
+                    </div>
+                    <div i18n="@@detailedlog">
+                        Detailed log
+                    </div>
+                </div>
+            </a>
+            <div class="shut m-t-10">
+                <button (click)="toggle()" class="midbt {{currentTheme}}">
+                    <span i18n="@@darktheme" *ngIf="currentTheme == 'light'">
+                        Dark theme
+                    </span>
+                    <span i18n="@@lighttheme" *ngIf="currentTheme == 'dark'">
+                        Light theme
+                    </span>
+                    <br />
+                </button>
+                <button routerLink="/login" class="midbt m-t-10" *ngIf="!currentUser">
+                    <span i18n="@@loginbutton">
+                        Login
+                    </span>
+                    <br />
+                    <img class="btnicon" title="send" src="assets/svg/sign-in-alt-solid.svg">
+                </button>
+                <button class="midbt m-t-10" (click)="logOff()" *ngIf="currentUser">
+                    <span i18n="@@logoutbutton">
+                        Logout
+                    </span>
+                    <br />
+                    <img class="btnicon" title="send" src="assets/svg/sign-out-alt-solid.svg">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overall alert" *ngIf="alertBrowserXP">
+    <div class="cv">
+        <span i18n="@@alertbrowserxp">
+            To a better HERMES experience use the chromium/chrome browser
+        </span>
+        <button class="m-t-10" (click)="closeBrowserAlert()" i18n="@@closeerrorbutton">
+            close
+        </button>
+    </div>
+</div>

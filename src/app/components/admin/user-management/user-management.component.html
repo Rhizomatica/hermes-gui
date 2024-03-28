@@ -1,20 +1,22 @@
 <loading [loading]="loading"></loading>
 <div class="">
   <div class="flexible">
-    <h2 i18n="@@admmanage">User Management</h2>
+    <h2 i18n="@@admmanage" *ngIf="!isEditing">User Management</h2>
+    <h2 *ngIf="isEditing">
+      <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
+      <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
+    </h2>
+    <hint [showHint]="false" [hint]="'usermanagement'"></hint>
+
     <div class="row">
       <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>
   </div>
   <div *ngIf="currentUser">
     <div>
-      <h5 *ngIf="isEditing">
-        <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
-        <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
-      </h5>
       <ng-container *ngIf="!isEditing">
         <div id="userlist" class="multiplist2 users m-t-10">
-          <input id="searchbox1" placeholder="Search Users" [(ngModel)]="searchUser" i18n-placeholder />
+          <input id="searchbox1" [(ngModel)]="searchUser" placeholder="search" i18n-placeholder />
           <div class="userlist" *ngFor="let user of users | filter:searchUser;" (click)="onSelect(user)">
             <div class="adm">
               <span *ngIf="user.admin" class="alert">
@@ -31,47 +33,51 @@
   <ng-container *ngIf="selectedUser">
     <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
       <label for="email">
-        email
+        Email
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
-          placeholder="write the username" (focusout)="checkFullName(selectedUser.name)">
+          placeholder="write the username" (focusout)="checkFullName(selectedUser.name)" maxlength="100">
       </label>
-      <a>{{selectedUser.email}}@{{system && system.domain}}</a> 
+      <a>{{selectedUser.email}}@{{domain}}</a>
       <label for="name">
-        <span i18n="@@name">full name</span>
-        <input name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"/>
+        <span i18n="@@name">Name</span>
+        <p *ngIf="!newUsername">{{selectedUser.name}}</p>
+        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder
+          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"
+          maxlength="100" />
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
-        full name is required
+        name is required
       </div>
       <label>
-        <span i18n="@@phonenumber">phone number</span>
-        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number" />
+        <span i18n="@@phonenumber">Phone number</span>
+        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number"
+          maxlength="25" />
       </label>
       <div class="selector"></div>
       <hr>
       <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
-      <label *ngIf="showPassword">
-        <span i18n="@@passwordlabeluser">password</span>
-        <br />
+      <div *ngIf="showPassword">
         <label for="passwd">
-          <input id="password" name="password" type="password" [(ngModel)]="selectedUser.password" required
-            ii18n-placeholder placeholder="password" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" />
+          <span i18n="@@passwordlabeluser">Password</span>
+          <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password"
+            minlength="6" (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderpassword"
+            i18n-placeholder placeholder="password" />
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword">Retype the password</span>
           <input type="password" [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" />
+            (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderretypepassword" i18n-placeholder
+            placeholder="retype password" />
         </label>
-        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
-          passwords doesn't match
+        <div [hidden]=!passunMatch class="error" i18n="@@passdontmatchuser">
+          passwords don't match
         </div>
         <div [hidden]=!passMin class="error" i18n="@@strongpassword">
           password must have at least 6 characters
         </div>
-      </label>
+      </div>
       <label class="m-t-25" *ngIf="isadmin">
-        <span i18n="@@isadmin">is admin</span>
+        <span i18n="@@isadmin">Is admin</span>
         <div class="switch">
           <input type="checkbox" name="admin" [(ngModel)]="selectedUser.admin" [enabled]="flagAdmin">
           <span class="slider round"></span>
@@ -84,38 +90,40 @@
         [disabled]="f.invalid">update</button>
       <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
         [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
-        <span *ngIf="selectedUser.email !== 'root'">
-          <button class="m-l-10 m-t-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin" [hidden]="emptyUser">delete
-            user</button>
-        </span>
+      <span *ngIf="selectedUser.email !== 'root'">
+        <button class="m-l-10 m-t-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
+          [hidden]="emptyUser">delete
+          user</button>
+      </span>
       <div class="overall" *ngIf="deleteUser">
         <div class="cv">
-          <span i18n="@@areyousuredelete">Are you sure you want to delete </span>{{selectedUser.name}}?<br />
-          <span i18n="@@thisactioncannot">this action cannot be undone!</span>
-          <br />
-          <button type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
-            i18n="@@deleteuser">delete user</button>
-          <button class="m-l-10" type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+          <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?
+          <div class="row m-t-10">
+            <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+            <button class="m-l-10" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
+              i18n="@@deleteuser">delete user</button>
+          </div>
         </div>
       </div>
       <div class="overall" *ngIf="updateUser">
         <div class="cv">
-          <span i18n="@@areyousureupdate">Are you sure you wanna update</span> {{selectedUser.name}}?<br />
-          <span i18n="@@thisactioncannot">this action cannot be undone!</span>
-          <br />
-          <button type="submit" (click)="onSubmitUpdate(selectedUser.emailid,f)" [disabled]="f.invalid"
-            i18n="@@update">update</button>
-          <button class="m-l-10" type="submit" (click)="updateAlert()" [disabled]="f.invalid"
-            i18n="@@cancel">cancel</button>
+          <span i18n="@@areyousureupdate">Are you sure you want to update</span> {{selectedUser.name}}?<br />
+          <span i18n="@@thisactioncannot">This action cannot be undone!</span>
+          <div class="row m-t-10">
+            <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
+            <button class="m-l-10" type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
+              i18n="@@update">update</button>
+          </div>
         </div>
       </div>
       <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
-          <span i18n="@@errormanagemet">There was an error on precessing your request <br /><br /></span>
-          <span>{{error}}</span>
-          <div class="icon"><a (click)="closeError()">
-              <img title="close" src="assets/svg/x.svg"></a>
-          </div>
+          <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on processing your request </span>
+          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exists please choose another
+            email</span>
+          <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
+            close
+          </button>
         </div>
       </div>
     </form>

@@ -1,56 +1,134 @@
 <loading [loading]="loading"></loading>
-<h2>Logs</h2>
-<button (click)="showUucpLog()">
-    <span i18n="@@uucplog">UUcp Log</span>
-</button>
-<button class="m-l-10" (click)="showEmailLog()">
-    <span i18n="@@emaillog">Email Log</span>
-</button>
+<div class="flexible m-t-25">
+    <h2 i18n="@@troubleshootinghintlabel">Troubleshooting</h2>
+    <hint [showHint]="false" [hint]="'troubleshooting'"></hint>
+</div>
+<div *ngIf="currentUser.admin">
+    <div class="row" *ngIf="system">
+        <span i18n="@@freespace">Free Space: </span>
+        {{system.diskfree}} GB
+        <div class="row m-t-10">
+            <span *ngIf="criticSpace" class="alert" i18n="storagelow">
+                System storage is low! Please delete messages and
+                files
+            </span>
+        </div>
+    </div>
+    <h2 class="m-t-25" i18n="@@logstitle">Logs</h2>
+    <button (click)="showCustomLogs()">
+        <span i18n="@@errorlogbutton">error log</span>
+    </button>
+    <button class="m-l-10" (click)="showUucpLog()">
+        <span i18n="@@uucplog">UUcp log</span>
+    </button>
+    <button class="m-l-10 m-t-10" (click)="showEmailLog()">
+        <span i18n="@@emaillog">email log</span>
+    </button>
 
-<div class="formdata m-t-25" *ngIf="uLog">
-    <h3 i18n="@@uucpllogsog2">uucp log</h3>
-    <hr />
-    <div class="logs">
-        <section>
-            <div *ngFor="let log of uucpLog">
-                <p> {{log}}</p>
-            </div>
-            <br>
-        </section>
-    </div>
-</div>
-<div class="formdata m-t-25" *ngIf="eLog">
-    <h3 i18n="@@emaillog2">email log</h3>
-    <hr />
-    <div class="logs">
-        <section>
-            <div *ngFor="let log of mailLog">
-                <p>{{log}}</p>
-            </div>
-        </section>
-        <br>
-    </div>
-</div>
-<div class="formdata m-t-25" *ngIf="dLog">
-    <h3 i18n="@@debuglog2">uucp debug log</h3>
-    <hr />
-    <div class="logs">
-        <section>
-            <div *ngFor="let log of uucpDebugLog">
-                <p>{{log}}</p>
-            </div>
-        </section>
-        <br />
-    </div>
-</div>
-<div>
-    <div class="overall alert" *ngIf="errorAlert==true">
-        <div class="cv">
-            <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-            <span>{{error}}</span>
-            <div class="icon"><a (click)="closeError()">
-                    <img title="compose" src="assets/svg/x.svg"></a>
+    <div class="formdata m-t-25" *ngIf="customLog">
+        <h3 i18n="@@errorlog">Error log</h3>
+        <div class="row">
+            <button class="m-t-10" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
+                delete all
+            </button>
+            <input id="searchbox1" i18n-placeholder placeholder="search" [(ngModel)]="searchError" />
+            <div class="multiplist">
+                <div class="item m-t-10" *ngFor="let error of customErrors | filter:searchError; let i = index"
+                    (click)="viewLog(i)">
+                    <p>
+                        <b i18n="@@customerrordatehour">Date Hour: </b>
+                        {{error.created_at}}
+                        <button class="m-l-10 float-right">
+                            <img class="icon" src="assets/svg/eye.svg">
+                        </button>
+                    </p>
+                    <div class="row m-t-10 " [hidden]="visibleArray[i] == false ? true : false">
+                        <p><b i18n="@@customerrorcode">Error code:</b> {{error.error_code}}</p>
+                        <p><b i18n="@@customerrorcstation">Station:</b> {{error.station}}</p>
+                        <p><b i18n="@@customerrorcontroller">Controller: </b> {{error.controller}}</p>
+                        <p><b i18n="@@customerrormessage">Message:</b></p>
+                        <p>{{error.error_message}}</p>
+                        <!-- <p><b>Stack Trace:</b></p>
+                    <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p> -->
+                        <p>
+                            <button class="m-t-10" i18n="@@btndeletecustomerror" (click)="deleteCustomError(error.id)">
+                                delete
+                            </button>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="formdata m-t-25" *ngIf="uLog">
+        <h3 i18n="@@uucpllogsog2">UUcp log</h3>
+        <div class="logs">
+            <section class="multiplist">
+                <div class="item" *ngFor="let log of uucpLog">
+                    <p class="m-t-10"> {{log}}</p>
+                </div>
+                <br>
+            </section>
+        </div>
+    </div>
+    <div class="formdata m-t-25" *ngIf="eLog">
+        <h3 i18n="@@emaillog2">Email log</h3>
+        <div class="logs">
+            <section class="multiplist">
+                <div class="item" *ngFor="let log of mailLog">
+                    <p class="m-t-10">{{log}}</p>
+                </div>
+            </section>
+            <br>
+        </div>
+    </div>
+    <div class="formdata m-t-25" *ngIf="dLog">
+        <h3 i18n="@@debuglog2">UUcp debug log</h3>
+        <hr />
+        <div class="logs">
+            <section>
+                <div *ngFor="let log of uucpDebugLog">
+                    <p>{{log}}</p>
+                    <hr />
+                </div>
+            </section>
+            <br />
+        </div>
+    </div>
+    <div>
+        <div class="overall alert" *ngIf="errorAlert==true">
+            <div class="cv">
+                <span i18n="@@errorprocessing">
+                    There was an error on processing your request
+                </span>
+                <div class="row m-t-10">
+                    {{error}}
+                </div>
+                <div class="row m-t-10">
+                    <button (click)="closeError()" i18n="@@closeerrorbutton">
+                        close
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="overall alert" *ngIf="confirmDeleteAllLogs==true">
+            <div class="cv">
+                <span i18n="@@deleteallcustomerrosconfirmation">
+                    Are you sure you want to delete all error logs?
+                </span>
+                <div class="row m-t-10">
+                    <button type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">
+                        delete all
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!currentUser.admin">
+    <span i18n="@@needtobeadmin">
+        Need to be an admin to access this
+    </span>
 </div>

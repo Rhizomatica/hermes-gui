@@ -1,0 +1,172 @@
+<loading [loading]="loading"></loading>
+<div class="flexible">
+  <h1 i18n="@@wifiandethernetmanagertitle">Wi-Fi & Ethernet manager</h1>
+  <hint [showHint]="false" [hint]="'wifi'"></hint>
+</div>
+<div class="" *ngIf="currentUser.admin">
+  <div class="row">
+    <div class="flexible">
+      <div class="half-row">
+        <form #f="ngForm">
+          <div class="m-t-10">
+            <p i18n="@@ssidnetworkname">SSID Network name</p>
+            <div [hidden]=!msgPatternChars class="error" i18n="@@ssidrules">
+              Unaccepted characters: ?, ", $, [, \, ], +, . and space
+            </div>
+            <input type="text" name="ssid" [(ngModel)]="wiFiSSID" required minlength="3" maxlength="32"
+              (keyup)="_keyUp($event)" />
+          </div>
+          <div class="m-t-10">
+            <p i18n="@@networkchanel">Channel</p>
+            <select class="row" name="channel" [(ngModel)]="wiFiChannel">
+              <option [selected]="currentChannel" value="{{channel}}" *ngFor="let channel of channels">{{channel}}
+              </option>
+            </select>
+          </div>
+          <div class="m-t-10">
+            <p i18n="@@networkpassprase">Passphrase</p>
+            <div [hidden]=!passwordMin class="error" i18n="@@wifistrongpassword">
+              password must have at least 8 characters
+            </div>
+            <input type="password" name="wpa_passphrase" [(ngModel)]="wiFiPassphrase" required maxlength="32"
+              (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+          </div>
+          <div class="m-t-10">
+            <p i18n="@@networkconfirmpassprase">Confirm Passphrase</p>
+            <div [hidden]=!passwordUnmatch class="error" i18n="@@passdontmatchwifi">
+              passwords don't match
+            </div>
+            <input type="password" name="wpa_passphrase_retype" [(ngModel)]="wiFiRetypePassphrase" required
+              maxlength="32" i18n="@@networkconfirmpasspraseplaceholder" i18n-placeholder
+              placeholder="Retype the Wi-Fi passphrase" (input)="checkpass(wiFiPassphrase,wiFiRetypePassphrase)" />
+          </div>
+          <div class="row m-t-25">
+            <button (click)="saveWifiConfig(f)"
+              [disabled]="!wiFiSSID || wiFiSSID.length < 3 || !wiFiPassphrase || !wiFiRetypePassphrase || passwordUnmatch || passwordMin"
+              i18n="@@savewificonfigbutton"> save
+              changes</button>
+          </div>
+        </form>
+      </div>
+      <div class="flex-right half-row">
+        <table *ngIf="system" style="width:100%;">
+          <tbody>
+            <tr>
+              <td class="b" i18n="@@alias">Alias</td>
+              <td>{{system.name}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@domai">Domain</td>
+              <td>{{system.domain}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@nodename">Node Name</td>
+              <td>{{system.nodename}}</td>
+            </tr>
+            <tr>
+              <td class="b" i18n="@@ip">IP address</td>
+              <td>{{system.ip[0]}} / {{system.ip[1]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr />
+    <div class="flexible m-t-25">
+      <h1 i18n="@@mediaaccesscontroltitle">
+        Media Access Control
+      </h1>
+      <hint [showHint]="false" [hint]="'mediaAccessControl'"></hint>
+    </div>
+    <div class="row m-t-25">
+      <div class="flexible half-row">
+        <form #formMacFilter="ngForm">
+          <span i18n="@@macfiltertitle">{{macFilter ? 'Disable' : 'Enable'}} MAC Filter</span>
+          <div class="switch float-right">
+            <input type="checkbox" name="macFilter" [checked]="macFilter" [value]="macFilter">
+            <span class="slider round" (click)="toggleMACFilter(formMacFilter)"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row m-t-25">
+      <form #fNewMACAddress="ngForm">
+        <div class="flexible">
+          <div class="half-row">
+            <span i18n="@@addnewmacaddress">Add new MAC address</span>
+            <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
+              [disabled]="!macFilter" />
+            <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
+              [disabled]="!macFilter">add</button>
+          </div>
+        </div>
+      </form>
+      <div class="overall alert" *ngIf="msgMACListPatternError">
+        <div class="cv">
+          <span i18n="@@patternmacaddress">
+            MAC address pattern wrong, please type it again.
+            Accepted characters: 0 - 9, A - F, :, -
+          </span>
+          <div class="row m-t-10">
+            <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
+              close
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div *ngIf="macFilter">
+        <h1 class="m-t-25" i18n="@@acceptmaclisttitle">Accepted MAC address list</h1>
+        <div class="row m-t-25">
+          <p *ngIf="!macList || !macList.length || macList[0] == ''" i18n="@@emptymacaddresslist">
+            Empty MAC address list
+          </p>
+        </div>
+        <div class="row m-t-10" *ngFor="let item of macList">
+          <span class="click" (click)="confirmRemoveMACAddress(item)" *ngIf="item !== ''" title="remove">
+            <img class="inlineicon" src="assets/svg/times.svg">{{item}}
+          </span>
+        </div>
+        <div class="overall alert" *ngIf="removeMACAddressConfirmation">
+          <div class="cv">
+            <span i18n="@@confirmremovemacaddress">Are you sure that you want to remove the MAC address -
+              {{macAddressToDelete}} ?</span>
+            <div class="row m-t-10">
+              <button (click)="confirmRemoveMACAddress()" i18n="@@closeerrorbutton">
+                close
+              </button>
+              <button (click)="removeMACAddress()" class="m-l-10" i18n="@@deltemacaddressbutton">
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errorcustomerror">There was an error on processing your request</span>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="overall alert" *ngIf="errorAlertPatterns">
+    <div class="cv">
+      <span i18n="@@errorPatternsWifi"> Verify the patterns to save the WiFi configurations.</span>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbuttonwifi">
+          close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!currentUser.admin">
+  <span i18n="@@needtobeadmin">
+    Need to be an admin to access this
+  </span>
+</div>

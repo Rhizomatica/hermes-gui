@@ -10,69 +10,80 @@
 </div>
 
 <div id="compose" class="" *ngIf="allowCompose">
-  <h2>
-    <div class="icon" i18n="@@sendpublic">
-      send your public message to another station</div>
-  </h2>
+  <div class="flexible">
+    <h2 i18n="@@sendpublic">
+      New message
+    </h2>
+    <hint [showHint]="false" [hint]="'newmessage'"></hint>
+  </div>
+
   <form #f="ngForm" class="formdata" novalidate>
     <div [hidden]="fileIsProcessing==true">
+      <label class="selstation">
+        <span i18n="@@selectstation1" class="space">To</span>
+        <ng-container *ngIf="stations">
+          <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
+            <option *ngFor="let station of stations" value="{{station.alias}}">
+              {{station.alias}}
+              <!-- {{station.nickname}} -->
+            </option>
+          </select>
+          <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
+            [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
+            [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true required>
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+              <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
+                [ngModelOptions]="{standalone: true}" />
+              {{item.alias}}
+              <!-- {{item.nickname}} -->
+            </ng-template>
+          </ng-select>
+        </ng-container>
+      </label>
       <label for="name">
-        <span i18n="@@description">Description</span>:
+        <span i18n="@@description">Subject</span>
         <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140"
           i18n-placeholder placeholder="Describe your message" />
       </label>
       <label for="text">
-        <span i18n="@@messageComposeLabel">Message</span>:
+        <span i18n="@@messageComposeLabel">Message</span>
         <br />
-        <textarea name="text" [(ngModel)]="message.text" required rows="5" cols="35" maxlength="1400" i18n-placeholder
+        <textarea name="text" [(ngModel)]="message.text" required rows="8" cols="35" maxlength="1400" i18n-placeholder
           placeholder="write the message"></textarea>
-      </label>
-      <label class="selstation">
-        <span class="icon"><img title="messages" src="assets/svg/broadcast-tower.svg">
-          <span i18n="@@selectstation1" class="space">select station:</span><br>
-          <br>
-          <ng-container *ngIf="stations">
-            <select *ngIf="!isGateway" name="dest" [(ngModel)]="message.dest" required>
-              <option *ngFor="let station of stations" value="{{station.name}}">{{station.alias}}</option>
-            </select>
-            <ng-select id="selmult" #getModelValue="ngModel" *ngIf="isGateway" name="dest" [selectableGroup]="true"
-              [items]="stations" bindValue="alias" groupBy="selectedAllGroup" bindLabel="alias"
-              [selectableGroupAsModel]="false" [closeOnSelect]="false" [(ngModel)]="message.dest" multiple=true
-              required>
-              <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                  [ngModelOptions]="{standalone: true}" /> <span i18n="@@selectall"> Select All</span>
-              </ng-template>
-              <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                <input id="item-{{index}}" type="checkbox" [(ngModel)]="item$.selected"
-                  [ngModelOptions]="{standalone: true}" />{{item.alias}}
-              </ng-template>
-            </ng-select>
-          </ng-container>
-        </span>
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>
-          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)" style="display: none;" #fileCamUpload>
+          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)"
+            style="display: none;" #fileCamUpload>
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-          <span i18n="@@attachfile" class="m-t-10">Attach File: </span>
-          <p i18n="@@nofile" class="fileName">{{fileName || "no file selected"}}</p>
+          <!-- <span i18n="@@attachfile" class="m-t-10">Attach File: </span> -->
+          <p class="fileName" *ngIf="fileName">
+            {{fileName}}
+          </p>
+          <!-- <p i18n="@@nofile" class="fileName" *ngIf="!fileName">
+            no file selected
+          </p> -->
           <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+          <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeErrorMessage">
+            File's too big, max size for this type is <b> {{maxSizeText}}</b>
+          </p>
+          
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
+          <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
           #fileCamUpload>
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
           i18n="@@camfile">camera</button>
           <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
           i18n="@@camfile">camera</button> 
-          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button>
-          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile" class="m-l-10">remove file</button>
-          <div *ngIf="sending">
-            <div class="blobber">
-              <div class="tx" i18n="@@uploadingfile">uploading file...</div>
-              <div class="square"></div>
-            </div>
-          </div>
+          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button> -->
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
+            file
+          </button>
+          <hint [showHint]="false" [hint]="'attachfile'"></hint>
         </ng-container>
         <div *ngIf="message && message.id && message.file">
           <br>
@@ -82,24 +93,25 @@
           <img src={{$event.target.files[0].content}}>
         </div>
       </div>
-      <label class="passprotect" *ngIf="fileSelected">
-        <span class="icon lock"><img title="messages" src="assets/svg/lock.svg">
-          <span i18n="@@protectpssw">protect with password</span>:
-          <input type="checkbox" unckecked (change)="encrypted()" />
-        </span>
-      </label>
+      <div class="passprotect">
+          <button i18n="@@protectpssw" (click)="encrypted()">
+            protect message
+          </button>
+        <hint [showHint]="false" [hint]="'protectmessage'"></hint>
+        </div>
       <div id="cryptopass" *ngIf=isEncrypted>
         <label for="passwd">
           <span i18n="@@typethepassword">Type the password</span>
-          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" (input)="checkpwd(passwd,repasswd)" />
+          <input type="password" name="pass" [(ngModel)]="passwd" minlength="4" maxlength="20"
+            (input)="checkpwd(passwd,repasswd)" />
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword2">Retype the password</span>
-          <input type="password" [(ngModel)]="repasswd" minlength="4" (input)="checkpwd(passwd,repasswd)"
+          <input type="password" [(ngModel)]="repasswd" minlength="4" maxlength="20" (input)="checkpwd(passwd,repasswd)"
             [ngModelOptions]="{standalone: true}" />
         </label>
         <div [hidden]=!passunMatch class="error" i18n="@@passdontmatch">
-          passwords doesn't match
+          passwords don't match
         </div>
         <div [hidden]=!passMin class="error" i18n="@@passempty">
           passwords can't be empty
@@ -108,18 +120,19 @@
       <span></span>
       <div class="m-t-10">
         <button type="submit" (click)="sendMessage(f)"
-          [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">send
-          message<br />
-          <img class="btnicon" title="send" src="assets/svg/paper-plane.svg">
+          [disabled]="!message.dest.length || !message.name || (isEncrypted && !passMatch)" i18n="@@sendmessage">
+          send message
         </button>
       </div>
     </div>
     <div class="overall alert" [hidden]="errorAlert==false">
       <div class="cv">
-        <span i18n="@@errorsendingmsg">There was an error on sending your message <br /><br /></span>
-        <span>{{error}}</span>
-        <div class="icon"><a (click)="closeError()">
-            <img title="close" src="assets/svg/x.svg"></a>
+        <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
+        <div class="row m-t-10">{{errormsg}}</div>
+        <div class="row m-t-10">
+          <button (click)="closeError()" i18n="@@closeerrorbutton">
+            close
+          </button>
         </div>
       </div>
     </div>
@@ -130,23 +143,21 @@
     <div class="overall alert" *ngIf="audioRecorderOverall">
       <div class="cv">
         <recorder [file]="url" [maxSize]="maxSize" [fileName]="fileName" [fileSelected]="fileSelected"
-        (emitteFileOP)="addFileItemEmitted($event)"></recorder>    
-        
-        <div class="icon m-t-25"><a (click)="closeaudioRecorder()">
-            <img title="close" src="assets/svg/x.svg"></a>
-        </div>
+          (emitteFileOP)="addFileItemEmitted($event)"></recorder>
+
+        <button class="m-t-10" (click)="closeaudioRecorder()" i18n="@@closeerrorbutton">
+          close
+        </button>
       </div>
     </div>
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
-        <div class="icon">
-          <a (click)="closeWebCamDesktop()">
-            <img title="close" src="assets/svg/x.svg">
-          </a>
-        </div>
+        <button class="m-t-10" (click)="closeWebCamDesktop()" i18n="@@closeerrorbutton">
+          close
+        </button>
         <video class="m-t-50" width="680" height="480" #video></video>
         <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
-        <div>
+        <div class="row m-t-10">
           <button i18n="@@Capture" (click)="capture($event)">Capture</button>
         </div>
       </div>

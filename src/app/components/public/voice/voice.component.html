@@ -1,0 +1,113 @@
+<loading [loading]="loading"></loading>
+<div class="radiovoice" *ngIf="radio !== null" (click)="restartVoiceTimeout()">
+  <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
+    loading radio status...
+  </h2>
+  <div class="transciever-panel" *ngIf="radio.p1_freq">
+    <div class="data">
+      <div class="data-body frequency">
+        <div *ngIf="!inputFrequencyFlag">
+          <span *ngFor="let digit of radio.p1_freq_splited; let i = index" (click)="changeStepDigit(i)"><span
+              class="{{step == i ? 'color': ''}}">{{digit}}</span><span
+              *ngIf="(radio.p1_freq_splited.length == 6 && i == 0) || (radio.p1_freq_splited.length == 7 && i == 1) ">.</span><span
+              *ngIf="i == radio.p1_freq_splited.length - 3">,</span>
+          </span>
+          <span class="text-sm"> kHz</span>
+        </div>
+      </div>
+      <div class="data-title m-t-25" i18n="@@volumevoice">
+        Volume: {{radio.p1_volume}}
+      </div>
+      <div class="data-body">
+        <form #fvolume="ngForm" class="formdata">
+          <input type="range" name="volume" min="0" max="100" step="10" value="{{radio.p1_volume}}"
+            ngModel="{{radio.p1_volume}}" (change)="changeVolume(fvolume)" />
+          <!-- <datalist id="markers">
+              <option value="0">0</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="75">75</option>
+              <option value="100">100</option>
+            </datalist> -->
+        </form>
+      </div>
+      <div class="data-title m-t-25">
+        <span i18n="@@timeoutlabel">
+          Voice timeout: {{radio.timeout}}
+        </span>
+      </div>
+      <div class="data-body">
+        <span i18n="@@timeoutrestarttiplabel">
+          Touch to restart the timeout
+        </span>
+      </div>
+    </div>
+
+    <hint [showHint]="false" [hint]="'voice'"></hint>
+    <div class="info-panel">
+      <div class="data">
+        <div class="data-title" i18n="@@powervoice">
+          Power
+        </div>
+        <div class="data-body">
+          {{radio.fwd_watts ? radio.fwd_watts : 0}} W
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          SWR
+        </div>
+        <div class="data-body">
+          {{radio.swr ? radio.swr : 0}}
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-body">
+          <button (click)="changeStep()" *ngIf="!inputFrequencyFlag" i18n="@@stepvoice">step</button>
+        </div>
+      </div>
+    </div>
+    <div class="info-panel">
+      <div class="data">
+        <div class="data-title">
+          PTT
+        </div>
+        <div class="data-body">
+          <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
+          <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title" i18n="@@protectionvoice">
+          Protection
+        </div>
+        <div class="data-body">
+          {{radio.protection ? 'ON' : 'OFF'}}
+          <button (click)="resetProtection()" [hidden]="!radio.protection" i18n="@resetprotectionvoice">reset</button>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title" i18n="@@modevoice">
+          Voice Mode
+        </div>
+        <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.p1_freq">
+          <span>USB</span>
+          <div class="switch">
+            <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.p1_mode}}" [checked]="modeSwitch">
+            <span class="slider round-uc one-color" (click)="changeMode($event)"></span>
+          </div>
+          <span>LSB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overall alert" [hidden]="errorAlert==false">
+  <div class="cv">
+    <span i18n="@@websocketerror">There was an error on processing your request </span>
+    <div class="row m-t-10">
+      {{error}}
+    </div>
+    <button class="m-t-10" (click)="updatePage()" i18n="@@updatevoicepage">reload page</button>
+  </div>
+</div>

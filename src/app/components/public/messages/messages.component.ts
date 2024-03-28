@@ -5,6 +5,7 @@ import { AlertService } from '../../../_services/alert.service';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'app-messages',
@@ -34,7 +35,8 @@ export class MessagesComponent implements OnInit {
     private messageService: MessageService,
     private alertService: AlertService,
     private apiService: ApiService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -48,13 +50,15 @@ export class MessagesComponent implements OnInit {
     this.messageService.getMessagesByType('inbox').subscribe(
       (res: any) => {
         this.inboxMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
+
         if (this.inboxMessages.length == 0) {
           this.noMessages = true;
         } else {
+          this.inboxMessages = this.inboxMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) })
           this.noMessages = false;
         }
         this.loading = false
-        
+
       },
       (err) => {
         this.error = err;

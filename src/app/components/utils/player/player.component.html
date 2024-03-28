@@ -1,9 +1,17 @@
 <div class="player">
-  <div class="row m-t-50">
-    <audio controls autoplay="{{playing}}" class="messageAudio" #audioplayer>
-      <source src="{{url}}/file/{{fileId}}{{secured ? password : ''}}"
-          canplaythrough="loadingAudio()" type="{{mimetype}}" />
-      your browser does not support this type of audio
-    </audio>
+  <div class="row m-t-25">
+    <div *ngIf="type == 'audio'">
+      <audio controls autoplay="{{playing}}" class="messageAudio" #audioplayer>
+        <source src="{{url}}/file/{{fileId}}{{secured ? password : ''}}" canplaythrough="loadingAudio()"
+          type="{{mimetype}}" />
+        your browser does not support this type of audio
+      </audio>
+    </div>
+    <div *ngIf="type == 'video'">
+      <video width="320" height="240" controls autoplay>
+        <source src="{{url}}/file/{{fileId}}{{secured ? password : ''}}" type="{{mimetype}}">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 </div>

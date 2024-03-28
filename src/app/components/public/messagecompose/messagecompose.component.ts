@@ -6,9 +6,12 @@ import { Station } from '../../../interfaces/station';
 import { StationService } from '../../../_services/station.service';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
+import { FrequencyService } from '../../../_services/frequency.service';
 import { User } from '../../../interfaces/user';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { Frequency } from 'src/app/interfaces/frequency';
+import { GlobalConstants } from '../../../global-constants';
+import { UtilsService } from 'src/app/_services/utils.service';
 @Component({
   selector: 'app-messagecompose',
   templateUrl: './messagecompose.component.html',
@@ -22,7 +25,7 @@ export class MessagecomposeComponent implements OnInit {
   public res: any;
   public stations: Station[];
   public fileIsProcessing = false;
-  public fileIsProcessed = false;
+  public fileIsProcessed = false; // TODO - not using
   public isEncrypted = false;
   public message: Message;
   public passMatch = false;
@@ -30,7 +33,9 @@ export class MessagecomposeComponent implements OnInit {
   public repasswd;
   public serverConfig: any;
   public allowfile: any;
-  public allowUpload = false;
+  public allowhmp;
+  public allowCompose: boolean = false;
+  public allowUpload: boolean = false;
   public currentUser: User;
   public isAdmin = false;
   public passunMatch = false;
@@ -41,14 +46,11 @@ export class MessagecomposeComponent implements OnInit {
   public errormsg: any;
   public fileid: any;
   public fileSelected = false;
-  public sending = false;
   public nodename: any;
-  public maxSize: any = 31457280;
-  public isGateway: boolean;
-  public system: any;
+  public maxSize: any = 20480; //20.48MB
+  public maxSizeText: string = '20.48 kB'
+  public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
-  public allowhmp;
-  public allowCompose = false;
   public camPicture: any;
   public loading = true
   public mobile: any
@@ -56,6 +58,8 @@ export class MessagecomposeComponent implements OnInit {
   public WIDTH = 640;
   public HEIGHT = 480;
   public audioRecorderOverall = false
+  public frequencies: Frequency[]
+  fileSizeError: boolean = false
 
   @ViewChild("canvas")
   public canvas: ElementRef;
@@ -68,7 +72,10 @@ export class MessagecomposeComponent implements OnInit {
     private apiService: ApiService,
     private stationService: StationService,
     private authenticationService: AuthenticationService,
-    private router: Router) {
+    private frequencyService: FrequencyService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -83,56 +90,8 @@ export class MessagecomposeComponent implements OnInit {
         this.allowhmp = res.allowhmp;
         this.nodename = res.nodename;
 
-        switch (this.allowfile) {
-          case 'users':
-            if (this.currentUser) {
-              this.allowUpload = true;
-            } else {
-              this.allowUpload = false;
-            }
-            break;
-          case 'admin':
-            if (this.currentUser) {
-              if (this.isAdmin) {
-                this.allowUpload = true;
-              } else {
-                this.allowUpload = false;
-              }
-            } else {
-              this.allowUpload = false;
-            }
-            break;
-          case 'all':
-            this.allowUpload = true;
-            break;
-          default:
-            this.allowUpload = false;
-        }
-        switch (this.allowhmp) {
-          case 'users':
-            if (this.currentUser) {
-              this.allowCompose = true;
-            } else {
-              this.allowCompose = false;
-            }
-            break;
-          case 'admin':
-            if (this.currentUser) {
-              if (this.isAdmin) {
-                this.allowCompose = true;
-              } else {
-                this.allowCompose = false;
-              }
-            } else {
-              this.allowCompose = false;
-            }
-            break;
-          case 'all':
-            this.allowCompose = true;
-            break;
-          default:
-            this.allowCompose = false;
-        }
+        this.verifyWriteMessagePermission()
+        this.verifyFileUploadPermission()
 
         return res;
       },
@@ -144,18 +103,36 @@ export class MessagecomposeComponent implements OnInit {
     );
   }
 
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        this.isGateway = this.system.gateway;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
+  verifyWriteMessagePermission() {
+    switch (this.allowhmp) {
+      case 'users':
+        if (this.currentUser)
+          this.allowCompose = true;
+        break;
+      case 'admin':
+        if (this.isAdmin)
+          this.allowCompose = true;
+        break;
+      case 'all':
+        this.allowCompose = true;
+        break;
+    }
+  }
+
+  verifyFileUploadPermission() {
+    switch (this.allowfile) {
+      case 'users':
+        if (this.currentUser)
+          this.allowUpload = true;
+        break;
+      case 'admin':
+        if (this.isAdmin)
+          this.allowUpload = true;
+        break;
+      case 'all':
+        this.allowUpload = true;
+        break;
+    }
   }
 
   onFileCamSelected(e) {
@@ -182,7 +159,7 @@ export class MessagecomposeComponent implements OnInit {
           base_image.onload = () => {
             this.drawImageToCanvas(base_image)
           }
-      
+
         }
         //  else {
         //   this.error = "You have no output video device";
@@ -218,8 +195,8 @@ export class MessagecomposeComponent implements OnInit {
       ia[i] = byteString.charCodeAt(i);
     }
 
-     //TODO - formato da imagem com problema para envio
-     //TODO - Já seta so de abrir a webcam não deveria setar (usar outra variavel?)
+    //TODO - formato da imagem com problema para envio
+    //TODO - Já seta so de abrir a webcam não deveria setar (usar outra variavel?)
     this.file = new Blob([ia], { type: mimeString })
     this.fileName = window.URL.createObjectURL(this.file)
   }
@@ -240,42 +217,39 @@ export class MessagecomposeComponent implements OnInit {
     let file: File = event.target.files[0];
     if (file) {
       this.file = file;
-      switch (this.file.type) {
-        case 'image/bmp':
-        case 'image/gif':
-        case 'image/jpeg':
-        case 'image/png':
-        case 'image/webp':
-        case 'image/svg+xml':
-        case 'image/pjpeg':
-        case 'image/x-jps':
-        case 'audio/aac':
-        case 'audio/mpeg':
-        case 'audio/ogg':
-        case 'audio/ogx':
-        case 'audio/opus':
-        case 'audio/wav':
-        case 'audio/x-wav':
-        case 'audio/webm':
-        case 'audio/3gpp':
-        case 'audio/3gpp2':
-          this.maxSize = 31457280;
-          break;
-        default:
-          this.maxSize = 2097152;
-      }
+
+
+      this.typeSizeRule(file.type)
+
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
+        this.fileSizeError = false
         return file;
       }
-      else {
-        this.fileName = 'file too big | archivo muy grande ';
-        this.file = null;
-        file = null;
-        return file;
-      }
+
+      this.fileName = ' - ';
+      this.fileSizeError = true
+      this.file = null;
+      file = null;
+      return file;
+
     }
+  }
+
+  typeSizeRule(fileType) {
+    fileType = this.utils.getFileType(fileType)
+
+    //Common files 20.48 KB, image or audio  files 31.45 MB (due to compression)
+    if (fileType == 'audio' || fileType == 'image') {
+      this.maxSize = 31457280
+      this.maxSizeText = '31.45 MB'
+      return
+    }
+
+    //default size (other types)
+    this.maxSize = 20480
+    this.maxSizeText = '20.48 kB'
   }
 
   removeFile() {
@@ -288,13 +262,20 @@ export class MessagecomposeComponent implements OnInit {
 
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
-    this.sending = true;
     this.loading = true;
 
     if (!this.isGateway) {
       var str = f.value.dest;
       var arr = [];
-      arr.push(str);
+
+      if (Array.isArray(f.value.dest)) {
+        arr = f.value.dest
+      }
+
+      if (!Array.isArray(f.value.dest)) {
+        arr.push(str);
+      }
+
       f.value.dest = arr;
     }
     // File exists?
@@ -305,26 +286,21 @@ export class MessagecomposeComponent implements OnInit {
           f.value.fileid = value['id'];
           f.value.mimetype = value['mimetype'];
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
-          this.sending = false;
           const res = this.sendMessageContinue(f);
         },
         (err) => {
           this.errormsg = err;
           this.errorAlert = true;
-          this.sending = false;
           this.loading = false;
         }
       );
     }
     else {
       const res = this.sendMessageContinue(f);
-      this.sending = false;
     }
   }
 
   sendMessageContinue(f: NgForm) {
-    this.sending = false;
-
     this.messageService.sendMessage(f.value, this.nodename).subscribe(
       (res: any) => {
         this.res = res;
@@ -348,14 +324,6 @@ export class MessagecomposeComponent implements OnInit {
 
   closeWebCamDesktop() {
     this.webCamDesktop = false
-  }
-  // TODO check to remove
-  newMessage() {
-    // this.router.navigate(['/compose']);
-    this.fileIsProcessing = false;
-    this.message.name = '';
-    this.message.text = '';
-    this.message.file = '';
   }
 
   encrypted() {
@@ -422,7 +390,36 @@ export class MessagecomposeComponent implements OnInit {
     this.errormsg = 'Can not play audio in your browser';
   }
 
-  // TODO double check start params on inbox
+  getAliasOrigin(originName) {
+    if (!originName)
+      return null
+
+    return this.stations.filter((a) => { return a.name === originName })[0].alias
+  }
+
+  public getFrequencies(): void {
+    this.loading = true
+    this.frequencyService.getFrequencies().subscribe(
+      (data: any) => {
+        this.frequencies = data;
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false;
+      }
+    );
+  }
+
+  getNickName(stations): void {
+    stations.forEach(station => {
+      this.frequencies.forEach(frequency => {
+        if (station.alias === frequency.alias && frequency.nickname != null)
+          station.nickname = " - " + frequency.nickname
+      })
+    })
+  }
+
   ngOnInit(): void {
     this.message = {
       id: null,
@@ -443,15 +440,33 @@ export class MessagecomposeComponent implements OnInit {
 
     this.mobile = this.isMobile()
     this.getSysConfig();
-    this.getSystemStatus();
+    this.getFrequencies();
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()
       .subscribe(stations => {
         this.stations = stations;
-        this.selectedStations = [this.stations[0].id];
-        this.selectAllForDropdownItems(this.stations);
+
+        if (this.stations.length > 0) {
+          this.selectedStations = [this.stations[0].id];
+          this.selectAllForDropdownItems(this.stations);
+
+          var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
+
+          if (origin) {
+            if (Array.isArray(origin)) {
+              this.message.dest = origin
+            }
+
+            if (!Array.isArray(origin)) {
+              this.message.dest = [origin]
+            }
+          }
+        }
+
         this.loading = false
+
+        this.getNickName(stations)
       });
   }
 

@@ -7,13 +7,14 @@ require('dotenv').config()
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
-   appName: '${process.env.APP_NAME}',
-   apiUrl: '${process.env.API_URL}',
-   production: '${process.env.PRODUCTION}',
-   radioRemoteUrl: '${process.env.RADIO_REMOTE_URL}',
-   webSocketUrl: '${process.env.WEBSOCKET_URL}',
-   radioRemoteWSUrl: '${process.env.RADIO_REMOTE_WS_URL}',
-   hasGPS: '${process.env.HAS_GPS}'
+    local: ${process.env.LOCAL},
+    production: ${process.env.PRODUCTION},
+    domain: '${process.env.DOMAIN}',
+    gateway: ${process.env.GATEWAY},
+    bitx: '${process.env.BITX}',
+    hasGPS: ${process.env.HAS_GPS},
+    requireLogin: ${process.env.REQUIRE_LOGIN},
+    emergencyEmail: '${process.env.EMERGENCY_EMAIL}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

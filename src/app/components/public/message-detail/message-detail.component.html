@@ -2,103 +2,95 @@
 <loading [loading]="loading"></loading>
 
 <div *ngIf="message" class="messages">
-    <h3><span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
-        {{message.name}}</h3>
-    <div class="formdata" *ngIf="message.secure && !uncrypted">
-        <p i18n="@@encryptedmessage">Encrypted message, type the password:</p>
+    <div class="flexible">
+        <h2>
+            <span *ngIf="message.secure"><img class="inlineicon" src="assets/svg/lock.svg" /></span>
+            {{message.name}}
+        </h2>
+        <hint [showHint]="false" [hint]="'message'"></hint>
+    </div>
+    <div class="formdata" *ngIf="message.secure && uncrypted === false">
+        <p i18n="@@encryptedmessage">Protected message, type the password:</p>
         <p class="alert" *ngIf="wrongPass" i18n="@@ewrongpassword">wrong password, please try again</p>
         <form #e="ngForm" id="secureform" novalidate>
             <input name="pass" type="password" ngModel required>
-            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">submit</button>
+            <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">check
+                password</button>
+            <hint [showHint]="false" [hint]="'protectedmessage'"></hint>
         </form>
     </div>
-    <!--
-    <div class="blobber">
-        <div class="tx">decoding message...</div>
-      <div class="square"></div>
-    </div>
-    -->
-    <div class="date"></div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
         <p>{{message.text}}</p>
         <div *ngIf="message.file">
-            <span i18n="@@File">File: </span>
             <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                {{message.file}}
-                <div *ngIf="isImage">
-                    <img class="messageImg" src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
+                <div *ngIf="fileType == 'image'">
+                    <img id="image" class="messageImg"
+                        src="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}" />
                 </div>
-                <div *ngIf="isAudio">
-                    <!--
-                    <div class="blobber" *ngIf="audioLoading">
-                        <div class="tx"i18n="@@loadingaudio">decrypting audio...</div>
-                        <div class="square"></div>
-                    </div>
-                   -->
-                    <player [playing]="'false'" [mimetype]="message.mimetype" [fileId]="message.fileid" 
-                        [url]="url" [secured]="message.secure" [password]="passString"></player>
-
+                <div *ngIf="fileType == 'audio' || fileType == 'video'">
+                    <player [playing]="'false'" [type]="fileType" [mimetype]="message.file.mimetype"
+                        [fileId]="message.fileid" [url]="url" [secured]="message.secure" [password]="passString">
+                    </player>
                 </div>
             </a>
-            <!-- <a target="_new" href="{{url}}/file/{{message.fileid}}&pass='teste'" >  {{message.file}}</a>-->
+            <button *ngIf="fileType == 'image'" (click)="rotateImage()" class="pull-right">
+                <img title="rotate" src="assets/svg/redo.svg">
+            </button>
+            <div class="m-t-25">
+                <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
+                    {{message.file}}
+                </a>
+            </div>
         </div>
     </div>
-
+    <hr />
     <div *ngIf="!noMessage">
         <small>
-            <p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
-            <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
-            <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at | date:'d/M/yy, h:mm'}}</p>
-            <p class="msgid">Id: {{message.id}}</p>
+            <p class="msginf"><b i18n="@@Origin">Origin:</b> {{message.orig}}</p>
+            <p class="msginf"><b i18n="@@desnitation">Destination:</b> {{message.dest}}</p>
+            <p class="msgdate"><b i18n="@@sentat">Sent at:</b> {{message.sent_at}}</p>
         </small>
     </div>
     <div class="flex m-t-25" *ngIf="allowCompose">
-        <!-- <button routerLink="/compose">
-            <img title="edit" src="assets/svg/edit.svg">
-            <span i18n="@@compose1"> Compose</span>
-        </button> -->
         <button (click)="showDelete(message)" [hidden]="currentUser.admin !== 1">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
-                Delete
+                delete
             </span>
         </button>
-        <button class="m-l-10" routerLink="/compose">
-            <span i18n="@@compose1">
-                <img title="compose" src="assets/svg/edit.svg">
-                Compose
+        <button class="m-l-10" routerLink="/response/{{message.orig}}">
+            <span i18n="@@replymessage">
+                <img title="reply" src="assets/svg/reply-solid.svg">
+                reply
             </span>
         </button>
     </div>
 
     <div class="overall alert" *ngIf="deleteMessage">
         <div class="cv">
-            <span i18n="@@areyousuredeletemsg">Are you sure yo want to delete this message? <br /><br />
+            <span i18n="@@areyousuredeletemsgdetail">Are you sure you want to delete this message? <br /><br />
             </span>
             <span>{{selectedMessage.name}}</span>
-            <div class="icon">
-                <a (click)="showDelete()">
-                    <img title="cancel" src="assets/svg/x.svg">
-                    <button i18n="@@cancelmt">cancel</button>
-                </a>
+            <div class="row m-t-25">
+                <button (click)="showDelete()" i18n="@@cancelmt">cancel</button>
+                <button class="m-l-10" (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
             </div>
-            <div class="icon">
-                <!-- <a routerLink='/messages' routerLinkActive="none"> -->
-                    <img title="confirm" src="assets/svg/trash-alt.svg">
-                    <button (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
-                <!-- </a> -->
-            </div>
+
         </div>
     </div>
     <div>
         <div class="overall alert" *ngIf="errorAlert==true">
             <div class="cv">
-                <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-                <span>{{error}}</span>
-                <div class="icon">
-                    <a (click)="closeError()">
-                        <img title="compose" src="assets/svg/x.svg">
-                    </a>
+                <span i18n="@@errorprocessing">
+                    There was an error on processing your request
+                </span>
+                <div class="row m-t-10">
+                    {{error}}
+                </div>
+                <div class="row m-t-10">
+                    <button (click)="closeError()" i18n="@@closeerrorbutton">
+                        close
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,21 @@
+<loading [loading]="loading"></loading>
+<div class="float">
+  <button class="floatbutton" (click)="confirmShutDown()">
+    <img src="assets/svg/power-off-solid.svg">
+    <b>shutdown</b>
+  </button>
+</div>
+<div class="overall alert" *ngIf="shuttingDown">
+  <div class="cv">
+    <span i18n="@@confirmshutdowncomponent"> Are you sure you want to shut down Hermes system?
+      <br />
+      This will stop messages transmission and reception.
+      <br />
+    </span>
+    <button class="m-t-10" (click)="cancelShutDown()" i18n="@@shutdownbuttoncomponentcancel">
+      cancel
+    </button>
+    <button class="m-l-10" (click)="shutDown()" i18n="@@shutdownbuttoncomponentconfirmation">
+      shutdown</button>
+  </div>
+</div>

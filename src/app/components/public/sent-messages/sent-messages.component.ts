@@ -7,6 +7,7 @@ import { UUCPService } from '../../../_services/uucp.service';
 import { AlertService } from '../../../_services/alert.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'app-sent-messages',
@@ -45,7 +46,7 @@ export class SentMessagesComponent implements OnInit {
     private apiService: ApiService,
     private alertService: AlertService,
     private authenticationService: AuthenticationService,
-  ) {
+    private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -69,16 +70,16 @@ export class SentMessagesComponent implements OnInit {
     );
   }
 
-  cancelMail(host, id): void {
-    this.uucpService.cancelMail(host, id).subscribe(
-      (res: any) => {
-        this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
+  // cancelMail(host, id, language): void {
+  //   this.uucpService.cancelMail(host, id, language).subscribe(
+  //     (res: any) => {
+  //       this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
+  //     }, (err) => {
+  //       this.error = err;
+  //       this.errorAlert = true;
+  //     }
+  //   );
+  // }
 
   showDelete() {
     if (this.deleteMessage) {
@@ -118,6 +119,7 @@ export class SentMessagesComponent implements OnInit {
     }
   }
 
+  //not using
   transmitNow(): void {
     this.uucpService.callSystems().subscribe(
       (res: any) => {
@@ -134,8 +136,17 @@ export class SentMessagesComponent implements OnInit {
     this.loading = true
     this.messageService.getMessagesByType('sent').subscribe(
       res => {
-        this.sentMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
-        this.noMessages = false;
+
+        if (res.length == 0) {
+          this.noMessages = true;
+        }
+
+        if(res.length >= 0){
+          this.noMessages = false;
+          this.sentMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
+          this.sentMessages = this.sentMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) });
+        }
+
         this.loading = false
       },
       (err) => {
@@ -165,12 +176,12 @@ export class SentMessagesComponent implements OnInit {
   }
 
   getQueueSize() {
-    if (this.queue) { 
-        let soma = 0;
-        for (let i = 0; i < this.queue.length; i++) {
-          soma += parseInt(this.queue[i].size, 10);
-          return soma;
-        }
+    if (this.queue) {
+      let soma = 0;
+      for (let i = 0; i < this.queue.length; i++) {
+        soma += parseInt(this.queue[i].size, 10);
+        return soma;
+      }
     }
   }
 
@@ -211,7 +222,7 @@ export class SentMessagesComponent implements OnInit {
   ngOnInit(): void {
     this.getSentMessages();
     this.getSysConfig();
-    if(this.currentUser)
+    if (this.currentUser)
       this.isadmin = this.currentUser.admin;
   }
 }

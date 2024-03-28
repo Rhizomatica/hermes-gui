@@ -3,6 +3,7 @@ import { User } from '../../../interfaces/user';
 import { UserService } from '../../../_services/user.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-email',
@@ -14,19 +15,20 @@ export class EmailComponent implements OnInit {
 
   linksOn = false;
   currentUser: User;
-  users: any;
   error = Error;
   errorAlert = false;
   emailto = [];
-  system: any;
-  domain: string;
+  users: any;
+  domain: string
+  emergencyEmail: string
 
   constructor(
-    private userService: UserService,
     private authenticationService: AuthenticationService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private userService: UserService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.emergencyEmail = GlobalConstants.emergencyEmail
   }
 
   getUsers(): void {
@@ -34,26 +36,12 @@ export class EmailComponent implements OnInit {
       (res: any) => {
         this.users = res;
         for (let i = 0; i < Object.keys(this.users).length; i++) {
-          this.users[i].fullmail = this.users[i].email + this.domain;
+          this.users[i].fullmail = this.users[i].email + '@' + GlobalConstants.domain;
         }
       }), (err) => {
         this.error = err;
         this.errorAlert = true;
       };
-  }
-
-  getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
-        this.system = res;
-        this.domain = '@' + this.system.domain;
-        this.getUsers();
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
   }
 
   selectAllForDropdownItems(items: any[]) {
@@ -72,14 +60,12 @@ export class EmailComponent implements OnInit {
       this.linksOn = true;
     }
   }
-  
+
   closeError() {
     this.errorAlert = false;
   }
 
   ngOnInit(): void {
     this.getUsers();
-    this.getSystemStatus();
   }
-
 }

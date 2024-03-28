@@ -1,11 +1,11 @@
-// EXAMPLE after run - npx ts-node setEnv.ts ***
-// export const environment = {
-//    appName: 'HERMES',
-//    apiUrl: 'http://10.8.0.2/',
-//    production: 'false'
-// };
-
-
 export const environment = {
-   production:false
+    local: true,
+    production: false,
+    serverIP: '10.8.0.128',
+    domain: 'estacao.hermes.radio',
+    gateway: true,
+    bitx: 'S',
+    hasGPS: false,
+    generalLogin: true,
+    emergencyEmail: 'help@hermes.radio'
 };

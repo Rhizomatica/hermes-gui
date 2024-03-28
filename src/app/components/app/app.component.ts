@@ -1,29 +1,35 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, interval } from 'rxjs';
+import { Component, OnInit, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { DecimalPipe, Location } from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
-import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { RadioService } from '../../_services/radio.service';
+import { UtilsService } from '../../_services/utils.service';
+import { WebsocketService } from 'src/app/_services/websocket.service';
+import { GlobalConstants } from 'src/app/global-constants';
+import { DarkModeService } from 'angular-dark-mode';
+import { SharedService } from 'src/app/_services/shared.service';
+import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
+// import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
+  providers: [DecimalPipe,
+    WebsocketService,
+    { provide: '_serviceRoute', useValue: 'websocket' }
+  ]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   currentUser: User;
-  public iTimer = interval(30000);
   serverRes: any;
   error: any;
   system: any;
   fullStats = false;
   serverError = false;
-  criticSpace = false;
-  toggleButton = document.querySelector('.dark-button');
-  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   radio: any;
   protection = true;
   radioError = false;
@@ -35,79 +41,63 @@ export class AppComponent implements OnInit {
   changeLanguage = false
   deferredPrompt: any
   installPromotion: boolean = false
+  title = 'hermes.radio'
+  isMenuPage: boolean
+  currentPage = GlobalConstants.requireLogin ? "login" : 'home'
+  currentUrl = GlobalConstants.requireLogin ? "login" : 'home'
+  received = [];
+  sent = [];
+  content = ''
+  idleState = "NOT_STARTED";
+  countdown?: number = null
+  isLoginPage: boolean = null
+  emergencyEmail = GlobalConstants.emergencyEmail
+  routerObserver = null
 
-  title = 'hermes.radio';
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
     private radioService: RadioService,
-    private darkModeService: DarkModeService
+    private utils: UtilsService,
+    private location: Location,
+    private websocketService: WebsocketService,
+    private sharedService: SharedService,
+    private idle: Idle,
+    // private keepalive: Keepalive, 
+    private cd: ChangeDetectorRef
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
+    this.startIdleDetector()
   }
+
+  sendMsg() {
+    let message = {
+      source: '',
+      content: ''
+    };
+
+    message.source = 'localhost';
+    message.content = this.content;
+
+    this.sent.push(message);
+    this.websocketService.messages.next(message);
+  }
+
 
   getSystemStatus(): void {
     this.apiService.getStatus().subscribe(
       (res: any) => {
         this.system = res;
-        if (this.system.diskfree < 10485760) {
-          this.criticSpace = true;
-        }
-        return res;
+        this.system.domain = this.system.domain == "hermes.radio" ? "demo.hermes.radio" : this.system.domain
+        this.loading = false
       },
       (err) => {
         this.error = err;
+        this.loading = false
       }
     );
-  }
-
-  resetProtection() {
-    if (this.resetting === true) {
-      this.resetting = false;
-    } else {
-      this.resetting = true;
-    }
-  }
-
-  confirmReset() {
-    this.radioService.radioResetProtection().subscribe(
-      (res: any) => {
-        this.res = res;
-        if (this.res === 1) {
-          this.radio.protection = true;
-          this.protection = this.radio.protection;
-        }
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
-
-  getRadioStatus(): void {
-    this.radioService.getRadioStatus().subscribe(
-      (res: any) => {
-        this.radio = res;
-        this.protection = this.radio.protection;
-        this.loading = false;
-        return res;
-      },
-      (err) => {
-        this.error = err;
-        this.radioError = true;
-        this.loading = false;
-      }
-    );
-  }
-
-  showFullStatus() {
-    if (!this.fullStats) {
-      this.fullStats = true;
-    } else {
-      this.fullStats = false;
-    }
   }
 
   showServerAlert() {
@@ -118,31 +108,20 @@ export class AppComponent implements OnInit {
     }
   }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-    this.currentUser = null;
-  }
-
-  onToggle(): void {
-    this.darkModeService.toggle();
-  }
-
   onActivate(event) {
     window.scrollTo(0, 0)
   }
 
-  changeLanguageModal(){
-    this.changeLanguage = this.changeLanguage ? false : true
+  checkLanguage() {
+    !localStorage.getItem('language') ? this.router.navigate(['/languages']) : null;
   }
 
-  checkLanguage(){
-    this.changeLanguage = !localStorage.getItem('language') ? true : false
+  closeMobileMenu() {
+    this.location.back();
   }
 
-  setLanguage(language){
-    localStorage.setItem('language', language)
-    window.open('/'+language, '_self')
+  checkIsMenuPage() {
+    this.isMenuPage = this.router.url == '/menu' ? true : false
   }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
@@ -151,22 +130,22 @@ export class AppComponent implements OnInit {
     // Impede que o mini-infobar apareça em mobile
     e.preventDefault();
     this.deferredPrompt = e;
-    if(!this.deferredPrompt){
+    if (!this.deferredPrompt) {
       this.showInstallPromotion();
     }
     console.log(`'beforeinstallprompt' event was fired.`);
   }
 
-  showInstallPromotion(){
+  showInstallPromotion() {
     console.log("deferred" + this.deferredPrompt)
     this.installPromotion = true
   }
 
-  closeInstallapp(){
+  closeInstallapp() {
     this.installPromotion = false
   }
 
-  installPWA(): void{
+  installPWA(): void {
     this.deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
     this.deferredPrompt.userChoice
@@ -180,17 +159,85 @@ export class AppComponent implements OnInit {
       });
   }
 
-  hideInstallPromotion(){
-    if(!this.deferredPrompt){
+  hideInstallPromotion() {
+    if (!this.deferredPrompt) {
       this.deferredPrompt = null;
     }
   }
+  checkIsLoginPage() {
+    this.isLoginPage = this.router.url == '/login' ? true : false
+  }
+
+  updateBreadcrumb() {
+    this.currentPage = this.router.url.split("/")[1]
+    this.currentUrl = this.router.url
+  }
+
+  checkRequireLogin() {
+    GlobalConstants.requireLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
+  }
+
+  disableNavigationsRequireLoginNoUser() {
+    if (GlobalConstants.requireLogin && this.currentUser == null) {
+      return true
+    }
+    return false
+  }
+
+  startIdleDetector() {
+    this.idle.setIdle(600)
+    this.idle.setTimeout(30)
+    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
+
+    this.idle.onIdleStart.subscribe(() => {
+      this.idleState = "IDLE";
+    })
+
+    // do something when the user is no longer idle
+    this.idle.onIdleEnd.subscribe(() => {
+      this.idleState = "NOT_IDLE"
+      this.countdown = null;
+      this.cd.detectChanges() // how do i avoid this kludge?
+    })
+
+    // do something when the user has timed out
+    this.idle.onTimeout.subscribe(() => {
+      this.idleState = "TIMED_OUT"
+      this.resetIdle();
+      this.authenticationService.logout();
+
+      if (GlobalConstants.requireLogin)
+        this.router.navigate(['/login']);
+
+      if (!GlobalConstants.requireLogin)
+        this.router.navigate(['/home']);
+
+      this.websocketService.closeConnection()
+    })
+
+    // do something as the timeout countdown does its thing
+    this.idle.onTimeoutWarning.subscribe(seconds => {
+      this.countdown = seconds
+    });
+
+    this.idle.watch()
+  }
+
+  resetIdle() {
+    // we'll call this method when we want to start/reset the idle process
+    // reset any component state and be sure to call idle.watch()
+    this.idle.watch();
+    this.idleState = "NOT_IDLE";
+    this.countdown = null;
+  }
+
 
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
+    this.loading = true
+    this.checkRequireLogin()
     this.getSystemStatus();
-    this.getRadioStatus();
-    this.subscript = this.iTimer.subscribe(() => this.getSystemStatus());
+    this.utils.isMobile()
     this.checkLanguage()
 
     window.addEventListener('appinstalled', () => {
@@ -199,7 +246,33 @@ export class AppComponent implements OnInit {
       // Limpar o deferredPrompt para que seja coletado
       this.deferredPrompt = null;
       console.log('PWA was installed');
+
+      this.radio = this.sharedService.radioObj.value
+
+      this.routerObserver = this.router.events.subscribe((event) => {
+        if (event instanceof ActivationEnd) {
+
+          //Redirect login if reload page...
+          if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
+            this.router.navigate(['home'])
+          }
+        }
+
+        if (event instanceof NavigationEnd) {
+
+          this.checkIsMenuPage()
+          this.checkIsLoginPage()
+          this.updateBreadcrumb()
+
+          if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
+            this.websocketService.startService()
+          }
+        }
+      });
     });
   }
 
+  ngOnDestroy() {
+    this.routerObserver.unsubscribe();
+  }
 }
