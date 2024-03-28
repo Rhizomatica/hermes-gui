@@ -67,10 +67,6 @@ Check and configure `.env` file with your parameters and run `npx ts-node setEnv
 
 Run `ng serve --configuration=en` for a dev server in english (en), you can change the language to spanish (es), portuguese (pt) or french (fr) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## PWA (SERVICE WORKER)
-To run HERMES angular-pwa server
-
-`http-server -p 9000 -c-l dist/hermes`
 
 ## Build & Publish
 
@@ -90,6 +86,22 @@ To publish your artifacts copy the files stored in the `/dist` to `/var/www/html
 Done
 
 Navigate to [HERMES](https://[my_host_ip])
+
+
+## Publish and Run HERMES as PWA APP (SERVICE WORKER)
+
+For running HERMES as a service run `http-server -p 9000 -c-l dist/hermes`
+
+**Note: The angular-pwa (service worker) must access an API and Web Socket from the same ORIGIN. It means they must to be hosted in the same server. And also the HERMES angular-pwa version requires a SSL Certificate for production environment.
+
+For more details read [Angular Service Worker](http://angular.io/guide/service-worker-getting-started)
+
+E.g. 
+angular-pwa app running at `http://127.0.0.1:9000/en-US/home` or `localhost:9000/en-US/home`
+so on the global-constants.ts the API Server IP should be defined with the same IP Address (ORIGIN) from the angular-pwa app : `http://127.0.0.1:8080/api` or `localhost:8080/api`
+
+Avoid run the HERMES as a service during your development.
+
 
 ## Running unit tests
 
