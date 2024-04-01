@@ -679,7 +679,7 @@ SAP<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="changeradiomode" datatype="html">
         <source>Data Mode</source>
-        <target state="new">Mode</target>
+        <target state="new">Mode Données</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">145</context>
@@ -1303,7 +1303,7 @@ seulement en cas de situation dangereuse.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equ
       </trans-unit>
       <trans-unit id="destinationt" datatype="html">
         <source> Destination:</source>
-        <target state="new"> destination :</target>
+        <target state="new"> Destination :</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">75</context>
@@ -1311,7 +1311,7 @@ seulement en cas de situation dangereuse.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equ
       </trans-unit>
       <trans-unit id="destisizet" datatype="html">
         <source>Size:</source>
-        <target state="new">taille :</target>
+        <target state="new">Taille :</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/transmission-list/transmission-list.component.html</context>
           <context context-type="linenumber">78</context>
@@ -3112,7 +3112,14 @@ Mode<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
          Si cela ne résout pas votre problème, essayez de nettoyer l'historique de votre navigateur et de vous reconnecter, ou changez de navigateur. Si rien de tout cela ne résout le problème, il est possible que votre appareil soit incompatible avec le réseau.
  
   
- <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;bitx == 'U'&quot;>"/> En cas de problème au niveau de l'Antenne, une LED s'allumera sur le boîtier serveur, dans ce cas, vérifiez la bonne position des fils d'alimentation et vérifiez la <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>  position et l'intégrité de l'Antenne, du câble coaxial et de l'émetteur. Si les messages de la liste de transmission ne sont pas transmis, vérifiez si les paramètres radio ont été modifiés, auquel cas il se peut que les autres stations soient hors ligne ou sur une fréquence différente. Pour y remédier, vous pouvez restaurer les paramètres d'usine par défaut. Si le problème vient de la radio numérique, il y aura un message d'erreur lorsque l'administrateur entrera dans Administration -> configuration radio. Si vous recevez un message indiquant que le serveur est hors ligne, votre équipement est probablement éteint. Si le message persiste, il se peut qu'une partie du système soit corrompue. Dans ce cas, vous devrez peut-être apporter votre équipement dans un endroit doté d'Internet pour une maintenance en ligne. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: If the SWR is too high, transmit a test signal. Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W). Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to turn OFF the “PTT” button. If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct ranges, the HERMES system is ready for operation. If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment, including: the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v, temperature of radio, smell of burning), the antenna condition. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+ <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;bitx == 'U'&quot;>"/> En cas de problème au niveau de l'Antenne, une LED s'allumera sur le boîtier serveur, dans ce cas, vérifiez la bonne position des fils d'alimentation et vérifiez la <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>  position et l'intégrité de l'Antenne, du câble coaxial et de l'émetteur. Si les messages de la liste de transmission ne sont pas transmis, vérifiez si les paramètres radio ont été modifiés, auquel cas il se peut que les autres stations soient hors ligne ou sur une fréquence différente. Pour y remédier, vous pouvez restaurer les paramètres d'usine par défaut. Si le problème vient de la radio numérique, il y aura un message d'erreur lorsque l'administrateur entrera dans Administration -> configuration radio. Si vous recevez un message indiquant que le serveur est hors ligne, votre équipement est probablement éteint. Si le message persiste, il se peut qu'une partie du système soit corrompue. Dans ce cas, vous devrez peut-être apporter votre équipement dans un endroit doté d'Internet pour une maintenance en ligne. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Remarque : si le SWR est trop élevé, transmettez un signal de test.
+         Allez dans Configuration radio, allumez le bouton « PTT ». Vérifiez le niveau « Puissance » (doit être compris entre 15W et 30W).
+         Vérifiez le SWR (doit être inférieur à 2,0). Vérifiez la « Protection » (doit être désactivée). Après les lectures, cliquez pour désactiver le bouton « PTT ».
+
+         Si la protection reste « OFF » après le test de transmission et que les lectures de puissance et de SWR sont dans les plages correctes, le système HERMES est prêt à fonctionner.
+
+         Si l'alimentation et le SWR ne sont pas dans les plages correctes ou si la protection est activée, vérifiez l'équipement, notamment : les câbles (état et connexions appropriées), la radio (connexions des câbles, tension entre 12 et 14 V, température de la radio, odeur de combustion), l'état de l'antenne.
+ <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">437</context>
