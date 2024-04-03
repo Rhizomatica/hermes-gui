@@ -2050,7 +2050,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="radioprofilelabel" datatype="html">
         <source>Radio profile <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1&quot;>"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
-        <target state="new">Perfil do rádio</target>
+        <target state="new">Perfil do rádio<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1&quot;>"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">240</context>
@@ -2401,7 +2401,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="timeoutlabel" datatype="html">
         <source> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/> </source>
-        <target state="new"> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.p1_timeout_connection}}"/>
+        <target state="new"> Tempo limite de voz: <x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
@@ -2410,7 +2410,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="timeoutrestarttiplabel" datatype="html">
         <source> Touch to restart the timeout </source>
-        <target state="new"> Click to restart timeout... </target>
+        <target state="new"> Toque para reiniciar o tempo limite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
           <context context-type="linenumber">40</context>
