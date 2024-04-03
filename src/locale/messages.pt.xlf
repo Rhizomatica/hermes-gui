@@ -306,12 +306,20 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="confirmationdeleteschedule" datatype="html">
+        <source> Confirm deletion of the schedule - <x id="INTERPOLATION" equiv-text="{{selectedSchedule.title}}"/>? </source>
+        <target state="new"> Confirmar exclusão da programação - <x id="INTERPOLATION" equiv-text="{{selectedSchedule.title}}"/>? </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="needadm" datatype="html">
         <source> You need admin privileges to access this page </source>
         <target state="translated">Você precisa ter privilégios de administrador para acessar essa página</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorlogbutton" datatype="html">
@@ -420,6 +428,10 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="uucpllogsog2" datatype="html">
@@ -2519,6 +2531,10 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
           <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
+          <context context-type="linenumber">105</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context>

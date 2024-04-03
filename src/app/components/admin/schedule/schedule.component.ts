@@ -30,8 +30,9 @@ export class ScheduleComponent implements OnInit {
   updateAlert = false;
   timeerror = false;
   loading = true;
-  localDateHour = null
-  
+  localDateHour = null;
+  confirmDeleteSchedule: boolean = false;
+
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -101,47 +102,50 @@ export class ScheduleComponent implements OnInit {
     this.updateAlert = true;
   }
 
+  confirmDelete() {
+    this.confirmDeleteSchedule = !this.confirmDeleteSchedule ? true : false
+  }
+
   public getSchedules(): void {
     this.apiService.getSchedules().subscribe(
       (res: any) => {
-        this.schedules = res;
+        this.schedules = res
         this.loading = false
-
-       this.formatTime(this.schedules)
-        
+        this.formatTime(this.schedules)
       },
       (err) => {
         this.error = err;
-        this.errorAlert = true;
+        this.errorAlert = true
         this.loading = false
       }
     );
   }
 
-  formatTime(schedules){
-     schedules.forEach(schedule => {
+  formatTime(schedules) {
+    schedules.forEach(schedule => {
       schedule.starttime = schedule.starttime.toString().slice(0, -3)
       schedule.stoptime = schedule.stoptime.toString().slice(0, -3)
     });
   }
 
   newSchedule() {
-    this.isEditing = true;
-    this.selectedSchedule = [];
-    this.emptySchedule = true;
+    this.isEditing = true
+    this.selectedSchedule = []
+    this.emptySchedule = true
   }
 
   async deleteSchedule($id): Promise<void> {
     this.loading = true
-    this.isEditing = false;
-    this.selectedSchedule = [];
-    this.emptySchedule = true;
+    this.isEditing = false
+    this.selectedSchedule = []
+    this.emptySchedule = true
+    this.confirmDeleteSchedule = false
     await this.apiService.deleteSchedule($id).subscribe(
       (data: any) => {
-        this.getSchedules();
+        this.getSchedules()
       }, (err) => {
         this.error = err
-        this.errorAlert = true;
+        this.errorAlert = true
         this.loading = false
       }
     );
@@ -175,14 +179,14 @@ export class ScheduleComponent implements OnInit {
 
   onSelect(schedule): void {
     this.selectedSchedule = schedule;
-    if(this.selectedSchedule.starttime >= 8){
+    if (this.selectedSchedule.starttime >= 8) {
       this.formatTime([this.selectedSchedule])
     }
     this.isEditing = true;
     this.emptySchedule = false;
   }
 
-  setLocalDateHour(){
+  setLocalDateHour() {
     this.localDateHour = new Date();
     const yyyy = this.localDateHour.getFullYear();
     let mm = this.localDateHour.getMonth() + 1; // Months start at 0!

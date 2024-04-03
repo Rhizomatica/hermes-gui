@@ -91,10 +91,25 @@
             </button>
             <span *ngIf="!emptySchedule">
                 <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule"
-                    (click)="deleteSchedule(selectedSchedule.id)">
+                    (click)="confirmDelete()">
                     delete schedule
                 </button>
             </span>
+            <div class="overall alert" *ngIf="confirmDeleteSchedule">
+                <div class="cv">
+                    <span i18n="@@confirmationdeleteschedule">
+                        Confirm deletion of the schedule - {{selectedSchedule.title}}?
+                    </span>
+                    <div class="row m-t-10">
+                        <button (click)="confirmDelete()" i18n="@@closeerrorbutton">
+                            close
+                        </button>
+                        <button (click)="deleteSchedule(selectedSchedule.id)" i18n="@@btndeletecustomerror">
+                            delete
+                        </button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>

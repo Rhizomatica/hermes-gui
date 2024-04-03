@@ -126,6 +126,10 @@
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">54,56</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
+          <context context-type="linenumber">108,111</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="uucpllogsog2" datatype="html">
         <source>UUcp log</source>
@@ -192,6 +196,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
           <context context-type="linenumber">32,37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
+          <context context-type="linenumber">105,107</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/station-information/station-information.component.html</context>
@@ -934,14 +942,21 @@
         <source> delete schedule </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
-          <context context-type="linenumber">95,99</context>
+          <context context-type="linenumber">95,98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmationdeleteschedule" datatype="html">
+        <source> Confirm deletion of the schedule - <x id="INTERPOLATION" equiv-text="{{selectedSchedule.title}}"/>? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
+          <context context-type="linenumber">101,102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="needadm" datatype="html">
         <source> You need admin privileges to access this page </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
-          <context context-type="linenumber">103,105</context>
+          <context context-type="linenumber">118,120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stationsonthisnetwork" datatype="html">
