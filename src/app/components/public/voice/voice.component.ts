@@ -70,8 +70,12 @@ export class VoiceComponent implements OnInit {
   }
 
   changeStepDigit(index) {
-    this.step = index
-    this.updateStep()
+    
+    if (index == 0)
+      return
+      
+      this.step = index
+      this.updateStep()
   }
 
   getSavedStep() {

@@ -3,6 +3,7 @@
   <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
     loading radio status...
   </h2>
+  <hint [showHint]="false" [hint]="'voice'"></hint>
   <div class="transciever-panel" *ngIf="radio.p1_freq">
     <div class="data">
       <div class="data-body frequency">
@@ -43,7 +44,6 @@
       </div>
     </div>
 
-    <hint [showHint]="false" [hint]="'voice'"></hint>
     <div class="info-panel">
       <div class="data">
         <div class="data-title" i18n="@@powervoice">
