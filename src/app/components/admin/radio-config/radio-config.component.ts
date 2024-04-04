@@ -8,6 +8,7 @@ import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-radio-config',
@@ -66,7 +67,8 @@ export class RadioConfigComponent implements OnInit {
     private radioService: RadioService,
     private apiService: ApiService,
     private sharedService: SharedService,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private router: Router
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -387,6 +389,10 @@ export class RadioConfigComponent implements OnInit {
         this.errorAlert = true;
       }
     );
+  }
+
+  reload(){
+    this.router.navigate(['/home']);
   }
 
   ngOnInit(): void {
