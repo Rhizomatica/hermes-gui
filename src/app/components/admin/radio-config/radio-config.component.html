@@ -257,24 +257,24 @@
         </form>
 
         <form #fvoicetoggletimeout="ngForm" class="formdata field" *ngIf="bitx == 'S'">
-          <div>
-            <span i18n="@@timeoutstatuslabel">Timeout ({{timeoutStatus == false ? 'OFF' : 'ON'}})</span>
-            <div class="switch float-right" *ngIf="isAdmin">
-              <input type="checkbox" name="timeoutStatus" [checked]="timeoutStatus" [disabled]="!isAdmin">
-              <span class="slider round" (click)="toggleTimeout()" value="{{timeoutStatus}}"
-                [checked]="timeoutStatus"></span>
-            </div>
-            <div class="float-right" *ngIf="!isAdmin">
-              {{formatedTimeout}} min
-            </div>
-            <div class="row" *ngIf="isAdmin">
-              <input type="number" [min]="5" [max]="60" pattern="[0-9]" class="midbt m-t-10" name="timeout"
-                [(ngModel)]="formatedTimeout" value={{formatedTimeout}} [disabled]="!timeoutStatus">
-              <button class="midbt" (click)="changeTimeout(fvoicetoggletimeout)" [disabled]="!timeoutStatus"
-                i18n="@@changetimeout">
-                change timeout
-              </button>
-            </div>
+          <span i18n="@@timeoutstatuslabel">Timeout ({{timeoutStatus == false ? 'OFF' : 'ON'}})
+            <hint [showHint]="false" [hint]="'hinttimeoutconfig'" class="float-right"></hint>
+          </span>
+          <div class="switch float-right" *ngIf="isAdmin">
+            <input type="checkbox" name="timeoutStatus" [checked]="timeoutStatus" [disabled]="!isAdmin">
+            <span class="slider round" (click)="toggleTimeout()" value="{{timeoutStatus}}"
+              [checked]="timeoutStatus"></span>
+          </div>
+          <div class="float-right" *ngIf="!isAdmin">
+            {{formatedTimeout}} min
+          </div>
+          <div class="row" *ngIf="isAdmin">
+            <input type="number" [min]="5" [max]="60" pattern="[0-9]" class="midbt m-t-10" name="timeout"
+              [(ngModel)]="formatedTimeout" value={{formatedTimeout}} [disabled]="!timeoutStatus">
+            <button class="midbt" (click)="changeTimeout(fvoicetoggletimeout)" [disabled]="!timeoutStatus"
+              i18n="@@changetimeout">
+              change timeout
+            </button>
           </div>
         </form>
 

@@ -2084,6 +2084,22 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">250</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="timeoutstatuslabel" datatype="html">
+        <source>Timeout (<x id="INTERPOLATION" equiv-text="{{timeoutStatus == false ? 'OFF' : 'ON'}}"/>) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'hinttimeoutconfig'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
+        <target state="new">Timeout (<x id="INTERPOLATION" equiv-text="{{timeoutStatus == false ? 'OFF' : 'ON'}}"/>) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'hinttimeoutconfig'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">260,262</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="changetimeout" datatype="html">
+        <source> change timeout </source>
+        <target state="new"> change timeout </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">276,281</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="changevoicefrequency" datatype="html">
         <source>Voice frequency: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/> kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'voiceFrequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
         <target state="new">Frequência de voz: <x id="INTERPOLATION" equiv-text="{{radio.p1_freq}}"/>
@@ -2174,7 +2190,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> cancelar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">307</context>
+          <context context-type="linenumber">329</context>
         </context-group>
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
@@ -2182,7 +2198,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">configurações de fábrica </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">271</context>
+          <context context-type="linenumber">293</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreset" datatype="html">
@@ -2190,7 +2206,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated"> Tem certeza que deseja redefinir para as configurações? </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">303</context>
+          <context context-type="linenumber">325</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reset1" datatype="html">
@@ -2198,7 +2214,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> resetar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">310</context>
+          <context context-type="linenumber">332</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
@@ -2206,7 +2222,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Houve um erro ao alterar as configurações </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">318</context>
+          <context context-type="linenumber">340</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
@@ -2218,7 +2234,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">GPS calibrado com sucesso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">332</context>
+          <context context-type="linenumber">354</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closeerrorbuttongps" datatype="html">
@@ -2226,7 +2242,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> fechar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">334</context>
+          <context context-type="linenumber">356</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ysyncronizenow" datatype="html">
@@ -2526,7 +2542,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">325</context>
+          <context context-type="linenumber">347</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
@@ -2694,7 +2710,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">reiniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">280</context>
+          <context context-type="linenumber">302</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sosemergency" datatype="html">
@@ -2702,7 +2718,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">emergência SOS</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">289</context>
+          <context context-type="linenumber">311</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sosemergencylabel" datatype="html">
@@ -2712,7 +2728,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
  Isso apagará todos os dados do sistema HERMES. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">292</context>
+          <context context-type="linenumber">314</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seriallabel" datatype="html">
@@ -2720,7 +2736,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="new">Número de serie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">261</context>
+          <context context-type="linenumber">283</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmits" datatype="html">
@@ -2746,7 +2762,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">341</context>
+          <context context-type="linenumber">363</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
@@ -2754,7 +2770,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="final">cancel</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">346</context>
+          <context context-type="linenumber">368</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot1" datatype="html">
@@ -2762,7 +2778,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="final">reiniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">347</context>
+          <context context-type="linenumber">369</context>
         </context-group>
       </trans-unit>
       <trans-unit id="rebootingsystemlabel" datatype="html">
@@ -2770,7 +2786,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="new">Reiniciando sistema</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">352</context>
+          <context context-type="linenumber">374</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closeerrorbuttonrebooting" datatype="html">
@@ -2778,7 +2794,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="new"> fechar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">354</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosmessage" datatype="html">
@@ -2788,7 +2804,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">361</context>
+          <context context-type="linenumber">383</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelsosbutton" datatype="html">
@@ -2796,7 +2812,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="new"> cancelar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">367</context>
+          <context context-type="linenumber">389</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmsosbutton" datatype="html">
@@ -2804,7 +2820,7 @@ apenas em situações perigosas ou de emergência. <x id="CLOSE_BOLD_TEXT" ctype
         <target state="new"> confirmar Emergência SOS </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">370</context>
+          <context context-type="linenumber">392</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">
@@ -3099,6 +3115,14 @@ Perfil da rádio<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/
           <context context-type="linenumber">294</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="hinttimeoutconfig" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Timeout<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes. With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Timeout<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes. With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
+          <context context-type="linenumber">305,309</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="hintptt" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>PTT (Push to talk)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Push To Talk. PPT should remain OFF unless it is being used for testing. This function simulates pressing the PTT button on the physical microphone. Used only for testing purposes when tuning the system. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
         <target state="new">
@@ -3109,7 +3133,7 @@ PTT (Push to talk)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">305</context>
+          <context context-type="linenumber">313</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintreboot" datatype="html">
@@ -3122,7 +3146,7 @@ Reinício (reboot)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">314</context>
+          <context context-type="linenumber">322</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hint" datatype="html">
@@ -3137,7 +3161,7 @@ Restaurar ao padrão<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">321</context>
+          <context context-type="linenumber">329</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintresetprotection" datatype="html">
@@ -3150,7 +3174,7 @@ Redefinir proteção<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">332</context>
+          <context context-type="linenumber">340</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintusermanagement" datatype="html">
@@ -3162,7 +3186,7 @@ Gerenciamento de usuários<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
  Gerenciamento de usuários você pode atualizar suas próprias informações (número de telefone e senha) ou excluir seu usuário.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser.admin&quot;>"/> Se você for um administrador, poderá criar, atualizar e excluir todos os usuários, exceto o usuário root. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Nota: se você excluir suas credenciais de usuário, não poderá mais acessar o sistema HERMES. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">355</context>
+          <context context-type="linenumber">363</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintmessageconfig" datatype="html">
@@ -3172,7 +3196,7 @@ Gerenciamento de usuários<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
 Configuração de mensagem<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Gerencie qual perfil de usuário tem permissão para enviar mensagens e anexar arquivos. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Arquivos perdidos podem consumir seu armazenamento, limpe arquivos quebrados para liberar seu armazenamento clicando em ‘Limpar arquivos perdidos’ e elimine arquivos desnecessários. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">368</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintschedules" datatype="html">
@@ -3185,7 +3209,7 @@ Cronograma de transmissão<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">378</context>
+          <context context-type="linenumber">386</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hinttransmissionlist" datatype="html">
@@ -3200,7 +3224,7 @@ Lista de transmissão<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">389</context>
+          <context context-type="linenumber">397</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintstations" datatype="html">
@@ -3210,7 +3234,7 @@ Lista de transmissão<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/
 Informações sobre estações<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Gerencie a rede de estações, dando apelidos para cada estação e configurando a frequência e modo de transmissão de dados preferencial para cada conexão ou habilite e desabilite conexões. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> Alias - Identificação da estação. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Apelido – Nome para identificação fácil ou representativa. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Status - Status da conexão entre estações.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Frequência - Frequência de dados preferida para conexão entre estações.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Mode - Modo preferido para conexão entre estações (USB/LSB). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">403</context>
+          <context context-type="linenumber">411</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintwifi" datatype="html">
@@ -3220,7 +3244,7 @@ Informações sobre estações<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-te
 Wi-Fi e Gerenciador Ethernet<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Wi-Fi e Gerenciador Ethernet configure o SSID do Wi-Fi (nome da rede), altere a senha e verifique as informações do Wi-Fi e Ethernet. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Nota: Alterar o SSID ou a senha do Wi-Fi desconectará todos da rede Wi-Fi. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">426</context>
+          <context context-type="linenumber">434</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hinttroubleshooting" datatype="html">
@@ -3230,7 +3254,7 @@ Wi-Fi e Gerenciador Ethernet<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text
 Solução de problemas<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Para saber o que fazer em caso de erro, primeiro você precisa saber qual componente está causando o problema. Para saber se o problema é do dispositivo conectado à rede (celular, tablet, computador), a maneira mais fácil é testar o acesso de outro dispositivo, ou de outro navegador no mesmo dispositivo. Se o problema for apenas com você, é possível que o problema esteja nas configurações de rede do seu dispositivo. Confira abaixo as configurações necessárias para acessar a rede HERMES: Caso isso não resolva seu problema, tente limpar o histórico do seu navegador e fazer login novamente, ou trocar de navegador. Se nada disso resolver o problema, é possível que seu dispositivo seja incompatível com a rede. <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;bitx == 'U'&quot;>"/> Em caso de problema na Antena, um LED acenderá na caixa do servidor, neste caso verifique o correto <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> posição dos fios da fonte de alimentação e verifique a posição e integridade da antena, do cabo coaxial e do transmissor. Se as mensagens da lista de transmissão não estiverem sendo transmitidas, verifique se as configurações do rádio foram alteradas, caso em que as outras estações podem estar offline ou em frequência diferente. Para remediar você pode restaurar as configurações padrão de fábrica. Se o problema for no rádio de dados, aparecerá uma mensagem de erro quando o administrador entrar em Administração -> configuração do rádio. Se você receber uma mensagem dizendo que o servidor está offline, provavelmente seu equipamento está desligado. Se a mensagem persistir, pode ser que alguma parte do sistema esteja corrompida. Neste caso, pode ser necessário levar seu equipamento a um local com internet para manutenção online. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Nota: Se a SWR estiver muito alta, transmita um sinal de teste. Vá para configuração do Rádio, ligue o botão “PTT”. Verifique o nível de “Power” (deve estar entre 15W e 30W). Verifique o SWR (deve ser inferior a 2,0). Verifique a “Proteção” (deve estar DESLIGADA). Após as leituras, clique para desligar o botão “PTT”. Se a proteção permanecer “DESLIGADA” após o teste de transmissão, e as leituras de Potência e SWR estiverem nas faixas corretas, o sistema HERMES está pronto para operação. Se a potência e o SWR não estiverem nas faixas corretas ou se a proteção estiver ligada, verifique o equipamento, incluindo: os cabos (condição e conexões adequadas), o rádio (conexões dos cabos, tensão entre 12 - 14v, temperatura do rádio, cheiro de queima), a condição da antena.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">437</context>
+          <context context-type="linenumber">445</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintmediaaccesscontrol" datatype="html">
@@ -3240,7 +3264,7 @@ Solução de problemas<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;
 Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Um endereço Media Access Control (MAC), às vezes chamado de hardware ou endereço físico, é um atributo alfanumérico exclusivo de 12 caracteres usado para identificar dispositivos eletrônicos individuais em uma rede. Nesta seção você pode ativar ou desativar a verificação MAC para restringir o acesso WiFi. Adicione um novo endereço MAC para fornecer permissão de acesso ao Wi-Fi HERMES para um dispositivo exclusivo.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Um exemplo de endereço MAC é: 00-B0-D0-63-C2-26. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">484</context>
+          <context context-type="linenumber">492</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closehintbutton" datatype="html">
@@ -3248,7 +3272,7 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <target state="new"> fechar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">497</context>
+          <context context-type="linenumber">505</context>
         </context-group>
       </trans-unit>
       <trans-unit id="blinkrecording" datatype="html">

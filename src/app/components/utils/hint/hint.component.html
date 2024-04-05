@@ -300,6 +300,14 @@
         the transmission finishes.
       </p>
     </div>
+    
+    <div *ngIf="hint == 'hinttimeoutconfig'" i18n="@@hinttimeoutconfig">
+      <h1 class="cv-title">Radio Timeout</h1>
+      <p>
+        Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes.
+        With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite.
+      </p>
+    </div>
 
     <div *ngIf="hint == 'ptt'" i18n="@@hintptt">
       <h1 class="cv-title">PTT (Push to talk)</h1>
