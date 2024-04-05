@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
-import { NgForm } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
@@ -61,6 +61,9 @@ export class RadioConfigComponent implements OnInit {
   voiceModeSwitch: boolean
   dataModeProfileID: number = 0
   voiceModeProfileID: number = 1
+  timeoutStatus: number = 0
+  timeoutDefault: number = 600
+  formatedTimeout: number = 0
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -376,8 +379,8 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeProfile(event) {
-    
-    if(this.radio.connetion) 
+
+    if (this.radio.connetion)
       return
 
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
@@ -391,12 +394,73 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  reload(){
+  reload() {
     this.router.navigate(['/home']);
+  }
+
+  toggleTimeout() {
+
+    var newTimeout = 0
+
+    if (this.timeoutStatus == 0) {
+      this.timeoutStatus = 1 //toggle
+      newTimeout = this.timeoutDefault
+      this.formatedTimeout = this.timeoutDefault / 60
+    }
+    else if (this.timeoutStatus == 1) {
+      this.timeoutStatus = 0 //toggle
+      newTimeout = -1
+      this.formatedTimeout = 0
+    }
+
+    this.radioService.setTimeoutConfig(newTimeout).subscribe(
+      (res: any) => {
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+      }
+    );
+  }
+
+  getTimeoutConfig() {
+
+    this.radioService.getTimeoutConfig().subscribe(
+      (res: any) => {
+        if (res < 0) {
+          this.timeoutStatus = 0
+          this.formatedTimeout = 0
+          return
+        }
+
+        this.timeoutStatus = 1
+        this.formatedTimeout = res / 60
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+      }
+    );
+
+  }
+
+  changeTimeout(f: NgForm) {
+
+    var newTimeout = f.value.timeout * 60
+
+    this.loading = true
+    this.radioService.setTimeoutConfig(newTimeout).subscribe(
+      (res: any) => {
+        this.loading = false
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
   }
 
   ngOnInit(): void {
     this.getRadioStatus()
+    this.getTimeoutConfig()
     this.radio = this.sharedService.radioObj.value
     this.voiceModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
     this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
