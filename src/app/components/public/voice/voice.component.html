@@ -32,15 +32,17 @@
             </datalist> -->
         </form>
       </div>
-      <div class="data-title m-t-25">
-        <span i18n="@@timeoutlabel">
-          Voice timeout: {{radio.timeout}}
-        </span>
-      </div>
-      <div class="data-body">
-        <span i18n="@@timeoutrestarttiplabel">
-          Touch to restart the timeout
-        </span>
+      <div *ngIf="radio.timeout > 0">
+        <div class="data-title m-t-25">
+          <span i18n="@@timeoutlabel">
+            Voice timeout: {{radio.timeout}}
+          </span>
+        </div>
+        <div class="data-body">
+          <span i18n="@@timeoutrestarttiplabel">
+            Touch to restart the timeout
+          </span>
+        </div>
       </div>
     </div>
 

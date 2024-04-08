@@ -70,12 +70,12 @@ export class VoiceComponent implements OnInit {
   }
 
   changeStepDigit(index) {
-    
+
     if (index == 0)
       return
-      
-      this.step = index
-      this.updateStep()
+
+    this.step = index
+    this.updateStep()
   }
 
   getSavedStep() {
@@ -209,6 +209,9 @@ export class VoiceComponent implements OnInit {
   }
 
   restartVoiceTimeout() {
+    if (parseInt(this.radio.timeout) <= 0)
+      return
+
     this.radioService.restartVoiceTimeout().subscribe(
       (res: any) => {
         return res
