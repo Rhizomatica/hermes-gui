@@ -5,8 +5,9 @@
         <hint [showHint]="false" [hint]="'schedules'"></hint>
     </div>
     <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
-    <hr />
-    <b i18n="@@currentschedules">Current schedules:</b>
+    <div class="row m-t-25">
+        <b i18n="@@currentschedules">Current schedules:</b>
+    </div>
     <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">
         There are no schedules for radio transmission <br />
     </div>
@@ -35,8 +36,6 @@
         </div>
     </div>
     <div class="gateway" *ngIf="isEditing">
-        <hr>
-        <h3 class="flex-right">{{localDateHour}}</h3>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
                 <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
@@ -90,8 +89,7 @@
                 create schedule
             </button>
             <span *ngIf="!emptySchedule">
-                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule"
-                    (click)="confirmDelete()">
+                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule" (click)="confirmDelete()">
                     delete schedule
                 </button>
             </span>
@@ -104,7 +102,8 @@
                         <button (click)="confirmDelete()" i18n="@@closeerrorbutton">
                             close
                         </button>
-                        <button (click)="deleteSchedule(selectedSchedule.id)" class="m-l-10" i18n="@@btndeletecustomerror">
+                        <button (click)="deleteSchedule(selectedSchedule.id)" class="m-l-10"
+                            i18n="@@btndeletecustomerror">
                             delete
                         </button>
                     </div>
