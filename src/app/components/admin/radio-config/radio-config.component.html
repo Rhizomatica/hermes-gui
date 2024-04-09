@@ -238,7 +238,7 @@
 
         <form class="formdata field" *ngIf="bitx == 'S'">
           <span i18n="@@radioprofilelabel">Radio profile
-            <span *ngIf="radio.profile == 1">({{radio.timeout}})</span>
+            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{radio.timeout}})</span>
           </span>
           <div class="float-right flex-right" *ngIf="!radio.connection">
             <span i18n="@@digitallabel">Data</span>
