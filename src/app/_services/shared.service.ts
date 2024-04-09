@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, empty } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Radio } from '../interfaces/radio';
 import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
@@ -35,7 +35,8 @@ export class SharedService {
     p1_volume: null,
     profile: null,
     p1_freq_splited: null,
-    timeout: null
+    timeout: null,
+    server_date_time: null
   });
 
   public storedRadioObj = <Radio>({
@@ -53,7 +54,8 @@ export class SharedService {
     p0_volume: null,
     profile: null,
     p1_freq_splited: null,
-    timeout: null
+    timeout: null,
+    server_date_time: null
   });
 
   setRadioObjShared(data) {
@@ -78,6 +80,7 @@ export class SharedService {
     this.radioObj.value.ptt = this.storedRadioObj.ptt
     this.radioObj.value.p1_freq_splited = this.storedRadioObj.p1_freq_splited
     this.radioObj.value.timeout = this.storedRadioObj.timeout
+    this.radioObj.value.server_date_time = this.storedRadioObj.server_date_time
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -97,11 +100,12 @@ export class SharedService {
     this.storedRadioObj.p1_volume = newObj.p1_volume == null ? this.storedRadioObj.p1_volume : newObj.p1_volume
 
     this.observeOperatingProfileMode(newObj.profile)
-  
+
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = this.utils.splitFrequency(this.storedRadioObj.p1_freq)
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
+    this.storedRadioObj.server_date_time = newObj.server_date_time == null ? this.storedRadioObj.server_date_time : newObj.server_date_time    
   }
 
   mountRadioObjDemo() {
@@ -122,6 +126,8 @@ export class SharedService {
     this.radioObj.value.ptt = false
     this.radioObj.value.p1_freq_splited = this.utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.value.timeout = this.utils.formatTimeCounter('300')
+    this.radioObj.value.server_date_time = new Date('08/04/2024 13:03:01')
+
     this.radioObj.next(this.radioObj.value)
   }
 

@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { ApiService } from '../../../_services/api.service';
 import { StationService } from '../../../_services/station.service';
 import { NgForm } from '@angular/forms';
+import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
   selector: 'app-schedule',
@@ -30,13 +31,14 @@ export class ScheduleComponent implements OnInit {
   updateAlert = false;
   timeerror = false;
   loading = true;
-  localDateHour = null;
+  serverDateTime = null;
   confirmDeleteSchedule: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
     private apiService: ApiService,
-    private stationService: StationService) {
+    private stationService: StationService,
+    private sharedService: SharedService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -186,24 +188,14 @@ export class ScheduleComponent implements OnInit {
     this.emptySchedule = false;
   }
 
-  setLocalDateHour() {
-    this.localDateHour = new Date();
-    const yyyy = this.localDateHour.getFullYear();
-    let mm = this.localDateHour.getMonth() + 1; // Months start at 0!
-    let dd = this.localDateHour.getDate();
-
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-
-    this.localDateHour = dd + '/' + mm + '/' + yyyy + " " + new Date().toLocaleTimeString();
-  }
-
   ngOnInit(): void {
     this.schedules = [];
     this.selectedSchedule = [];
     this.getSchedules();
     this.getStations();
-    this.setLocalDateHour()
+
+    this.serverDateTime = this.sharedService.radioObj.value.server_date_time
+
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
     } else {
