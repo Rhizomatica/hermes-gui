@@ -194,7 +194,7 @@ export class ScheduleComponent implements OnInit {
     this.getSchedules();
     this.getStations();
 
-    this.serverDateTime = this.sharedService.radioObj.value.server_date_time
+    this.serverDateTime = this.sharedService.radioObj.value.datetime
 
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;

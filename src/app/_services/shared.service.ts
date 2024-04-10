@@ -36,7 +36,7 @@ export class SharedService {
     profile: null,
     p1_freq_splited: null,
     timeout: null,
-    server_date_time: null
+    datetime: null
   });
 
   public storedRadioObj = <Radio>({
@@ -55,7 +55,7 @@ export class SharedService {
     profile: null,
     p1_freq_splited: null,
     timeout: null,
-    server_date_time: null
+    datetime: null
   });
 
   setRadioObjShared(data) {
@@ -80,7 +80,7 @@ export class SharedService {
     this.radioObj.value.ptt = this.storedRadioObj.ptt
     this.radioObj.value.p1_freq_splited = this.storedRadioObj.p1_freq_splited
     this.radioObj.value.timeout = this.storedRadioObj.timeout
-    this.radioObj.value.server_date_time = this.storedRadioObj.server_date_time
+    this.radioObj.value.datetime = this.storedRadioObj.datetime
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -105,7 +105,7 @@ export class SharedService {
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = this.utils.splitFrequency(this.storedRadioObj.p1_freq)
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
-    this.storedRadioObj.server_date_time = newObj.server_date_time == null ? this.storedRadioObj.server_date_time : newObj.server_date_time    
+    this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime    
   }
 
   mountRadioObjDemo() {
@@ -126,7 +126,7 @@ export class SharedService {
     this.radioObj.value.ptt = false
     this.radioObj.value.p1_freq_splited = this.utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.value.timeout = this.utils.formatTimeCounter('300')
-    this.radioObj.value.server_date_time = new Date('08/04/2024 13:03:01')
+    this.radioObj.value.datetime = new Date('08/04/2024 13:03:01')
 
     this.radioObj.next(this.radioObj.value)
   }

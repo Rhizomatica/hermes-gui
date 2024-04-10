@@ -20,5 +20,5 @@ export interface Radio {
   profile: number,
   p1_freq_splited: Array<string>,
   timeout: string,
-  server_date_time: Date,
+  datetime: Date,
 }
