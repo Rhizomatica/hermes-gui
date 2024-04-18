@@ -1,22 +1,25 @@
 <div class="row m-b-50">
-  <div *ngIf="recording">
-    <i class="redcircle Blink"></i> &nbsp; {{minutesLabel}} : {{secondsLabel}}
-    <br />
-    <span i18n="@@blinkrecording" class="m-l-10">recording...</span>
-  </div>
-  <button (click)="initiateRecording()" *ngIf="!recording && !file" i18n="@@startrecord" class="green">
-    Start Recording
-  </button>
-  <button (click)="stopRecording()" *ngIf="recording" i18n="@@stoprecord"> Stop Recording </button>
-  <div class="row m-t-25" *ngIf="file">
-    <audio controls="">
+  <div class="row m-t-25">
+    <audio controls="" autoplay="" name="media" *ngIf="file">
       <source [src]="sanitize(fileName)" type="audio/wav" name="audioFileUrl">
     </audio>
-    <!-- <player [playing]="'false'" [mimetype]="'audio/wav'" [fileId]="null" [url]="sanitize(file)" [secured]="false"
+    <p class="m-t-10">
+      <a [href]="sanitize(fileName)">
+        {{fileName}}
+      </a>
+      <a (click)="removeFile()" class="icon" *ngIf="file">
+        <img src="assets/svg/trash-alt.svg">
+      </a>
+    </p>
+    <!-- <player [playing]="'false'" [mimetype]="'audio/wav'" [fileId]="null" [url]="sanitize(fileName)" [secured]="false"
       [password]="null"></player> -->
-      
-    <a (click)="removeFile()" class="icon">
-      <img src="assets/svg/trash-alt.svg">
-    </a>
   </div>
+  <div *ngIf="recording">
+    <i class="redcircle Blink"></i> &nbsp; {{minutesLabel}} : {{secondsLabel}} <span i18n="@@blinkrecording"
+      class="m-l-10">recording...</span>
+  </div>
+  <button (click)="initiateRecording()" *ngIf="!recording && !file" i18n="@@startrecord" class="green">
+    start Recording
+  </button>
+  <button (click)="stopRecording()" *ngIf="recording" i18n="@@stoprecord" class="m-t-10"> stop Recording </button>
 </div>

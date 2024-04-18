@@ -143,7 +143,7 @@
 
     <div class="overall alert" *ngIf="audioRecorderOverall">
       <div class="cv">
-        <recorder [file]="url" [maxSize]="maxSize" [fileName]="fileName" [fileSelected]="fileSelected"
+        <recorder [file]="url" [fileName]="fileName" [fileSelected]="fileSelected"
           (emitteFileOP)="addFileItemEmitted($event)"></recorder>
 
         <button class="m-t-10" (click)="closeaudioRecorder()" i18n="@@closeerrorbutton">
