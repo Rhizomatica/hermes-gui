@@ -71,15 +71,16 @@
           <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeErrorMessage">
             File's too big, max size for this type is <b> {{maxSizeText}}</b>
           </p>
-          
+
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-          <!-- <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
-          #fileCamUpload>
+          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
+            #fileCamUpload>
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
-          i18n="@@camfile">camera</button>
+            i18n="@@camfile">camera</button>
           <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
-          i18n="@@camfile">camera</button> 
-          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio recorder</button> -->
+            i18n="@@camfile">camera</button>
+          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio
+            recorder</button>
           <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
             file
           </button>
@@ -94,11 +95,11 @@
         </div>
       </div>
       <div class="passprotect">
-          <button i18n="@@protectpssw" (click)="encrypted()">
-            protect message
-          </button>
+        <button i18n="@@protectpssw" (click)="encrypted()">
+          protect message
+        </button>
         <hint [showHint]="false" [hint]="'protectmessage'"></hint>
-        </div>
+      </div>
       <div id="cryptopass" *ngIf=isEncrypted>
         <label for="passwd">
           <span i18n="@@typethepassword">Type the password</span>
@@ -152,13 +153,13 @@
     </div>
     <div class="overall alert" [hidden]="!webCamDesktop" id="webCamDesktop">
       <div class="cv">
-        <button class="m-t-10" (click)="closeWebCamDesktop()" i18n="@@closeerrorbutton">
-          close
-        </button>
-        <video class="m-t-50" width="680" height="480" #video></video>
-        <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas></canvas>
-        <div class="row m-t-10">
-          <button i18n="@@Capture" (click)="capture($event)">Capture</button>
+        <video class="m-t-50" width="300" height="300" #video></video>
+        <canvas id="canvas" [width]="WIDTH" [height]="HEIGHT" #canvas class="m-l-10"></canvas>
+        <div class="row">
+          <button class="m-t-10" i18n="@@capture" (click)="capture($event)">capture</button>
+          <button class="m-t-10 m-l-10" (click)="closeWebCamDesktop()" i18n="@@closeerrorbutton">
+            close
+          </button>
         </div>
       </div>
     </div>

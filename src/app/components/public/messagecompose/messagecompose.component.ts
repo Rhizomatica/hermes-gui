@@ -55,8 +55,8 @@ export class MessagecomposeComponent implements OnInit {
   public loading = true
   public mobile: any
   public webCamDesktop = false
-  public WIDTH = 640;
-  public HEIGHT = 480;
+  public WIDTH = 300;
+  public HEIGHT = 225;
   public audioRecorderOverall = false
   public frequencies: Frequency[]
   fileSizeError: boolean = false
@@ -257,6 +257,7 @@ export class MessagecomposeComponent implements OnInit {
     this.file = null;
     this.fileSelected = false;
     this.isEncrypted = false
+    this.canvas.nativeElement.getContext('2d').clearRect(0, 0, this.WIDTH, this.HEIGHT);
     return this.file;
   }
 
