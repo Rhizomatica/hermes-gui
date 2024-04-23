@@ -6,8 +6,6 @@ import { map } from 'rxjs/operators';
 import { GlobalConstants } from '../global-constants';
 import { SharedService } from "./shared.service";
 import { Radio } from "../interfaces/radio";
-import { UtilsService } from "./utils.service";
-import { Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { RadioService } from "./radio.service";
 
@@ -29,9 +27,7 @@ export class WebsocketService {
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
         private sharedService?: SharedService,
-        private utils?: UtilsService,
-        private radioService?: RadioService,
-        private router?: Router) { }
+        private radioService?: RadioService) { }
 
     public startService() {
         console.log('Starting websocket...')

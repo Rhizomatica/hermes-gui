@@ -281,6 +281,24 @@ export class RadioService {
       catchError(this.handleError));
   }
 
+  public getTimeoutConfig(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/voice/timeout/config`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  public setTimeoutConfig(time): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/voice/timeout/config/${time}`;
+    return this.http.post(url, null).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }

@@ -4,9 +4,11 @@
         <h2 class="" i18n="@@transmissionschedules">Transmission schedule</h2>
         <hint [showHint]="false" [hint]="'schedules'"></hint>
     </div>
+    <h3 class="flex-right">{{serverDateTime}}</h3>
     <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
-    <hr />
-    <b i18n="@@currentschedules">Current schedules:</b>
+    <div class="row m-t-25">
+        <b i18n="@@currentschedules">Current schedules:</b>
+    </div>
     <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">
         There are no schedules for radio transmission <br />
     </div>
@@ -35,8 +37,6 @@
         </div>
     </div>
     <div class="gateway" *ngIf="isEditing">
-        <hr>
-        <h3 class="flex-right">{{localDateHour}}</h3>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
                 <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
@@ -90,11 +90,26 @@
                 create schedule
             </button>
             <span *ngIf="!emptySchedule">
-                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule"
-                    (click)="deleteSchedule(selectedSchedule.id)">
+                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule" (click)="confirmDelete()">
                     delete schedule
                 </button>
             </span>
+            <div class="overall alert" *ngIf="confirmDeleteSchedule">
+                <div class="cv">
+                    <span i18n="@@confirmationdeleteschedule">
+                        Confirm deletion of the schedule - {{selectedSchedule.title}}?
+                    </span>
+                    <div class="row m-t-10">
+                        <button (click)="confirmDelete()" i18n="@@closeerrorbutton">
+                            close
+                        </button>
+                        <button (click)="deleteSchedule(selectedSchedule.id)" class="m-l-10"
+                            i18n="@@btndeletecustomerror">
+                            delete
+                        </button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>

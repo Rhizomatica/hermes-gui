@@ -98,14 +98,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     public françaisError(errorStatus) {
 
         switch (errorStatus) {
-            case 500:
-                return 'Erreur interne de serveur, veuillez essayer de nouveau. Contactez le support si le problème persiste.'
             case 400:
                 return 'Service introuvable.'
             case 413:
                 return 'Le fichier est trop volumineux, la taille maximum est 20.48 MB'
             case 431:
                 return 'La demande dépasse la taille autorisée par le serveur.'
+            case 500:
+                return 'Erreur interne de serveur, veuillez essayer de nouveau. Contactez le support si le problème persiste.'
         }
 
         return errorStatus

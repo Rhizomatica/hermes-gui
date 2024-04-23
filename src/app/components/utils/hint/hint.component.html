@@ -61,7 +61,7 @@
         the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
         temperature of radio, smell of burning), the antenna condition.
 
-        In case of more details for troubleshooting you can find more in the Troubleshooting Guide document.
+        If you need more details for troubleshooting you can find it in the HERMES Troubleshooting Guide document.
       </p>
     </div>
 
@@ -298,6 +298,14 @@
       <p class="m-t-10">
         *Note: If the radio data is connected transmitting you cannot change the profile for voice. Please wait until
         the transmission finishes.
+      </p>
+    </div>
+    
+    <div *ngIf="hint == 'hinttimeoutconfig'" i18n="@@hinttimeoutconfig">
+      <h1 class="cv-title">Radio Timeout</h1>
+      <p>
+        Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes.
+        With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite.
       </p>
     </div>
 
