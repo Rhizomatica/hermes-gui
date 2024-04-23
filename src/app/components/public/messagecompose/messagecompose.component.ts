@@ -265,6 +265,9 @@ export class MessagecomposeComponent implements OnInit {
     //turn on animation
     this.loading = true;
 
+    if (this.file instanceof File == false)
+      this.quackFile()
+
     if (!this.isGateway) {
       var str = f.value.dest;
       var arr = [];
@@ -299,6 +302,18 @@ export class MessagecomposeComponent implements OnInit {
     else {
       const res = this.sendMessageContinue(f);
     }
+  }
+
+  quackFile() {
+
+    this.file = {
+      'name': this.fileName,
+      'lastModified': new Date()
+    }
+
+    this.file = new File([this.file], this.fileName, {
+      type: this.file.type
+    });
   }
 
   sendMessageContinue(f: NgForm) {

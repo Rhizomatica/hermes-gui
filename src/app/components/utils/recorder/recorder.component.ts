@@ -23,7 +23,7 @@ export class RecorderComponent implements OnChanges {
   }
 
   @Input() recording: boolean
-  @Input() file: string
+  @Input() file: File
   @Input() fileName: any
 
   public maxSize: number
@@ -98,9 +98,6 @@ export class RecorderComponent implements OnChanges {
   }
 
   processRecording(blob) {
-
-    console.log(blob.size)
-    console.log(this.maxSize)
     if (blob.size < this.maxSize) {
       // let file: File = event.target.files[0];
       this.file = blob
@@ -108,9 +105,6 @@ export class RecorderComponent implements OnChanges {
       this.setFileOP(this.file)
       return
     }
-
-    // this.fileName = 'file too big | archivo muy grande ';
-    // this.file = null;
   }
 
 
