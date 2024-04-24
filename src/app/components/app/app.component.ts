@@ -239,6 +239,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
+    this.radio = this.sharedService.radioObj.value
 
     window.addEventListener('appinstalled', () => {
       // Esconder a promoção de instalação fornecida pela app
@@ -246,29 +247,28 @@ export class AppComponent implements OnInit, OnDestroy {
       // Limpar o deferredPrompt para que seja coletado
       this.deferredPrompt = null;
       console.log('PWA was installed');
+    });
 
-      this.radio = this.sharedService.radioObj.value
+    this.routerObserver = this.router.events.subscribe((event) => {
+      if (event instanceof ActivationEnd) {
 
-      this.routerObserver = this.router.events.subscribe((event) => {
-        if (event instanceof ActivationEnd) {
-
-          //Redirect login if reload page...
-          if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
-            this.router.navigate(['home'])
-          }
+        //Redirect login if reload page...
+        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
+          this.router.navigate(['home'])
         }
+      }
 
-        if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
 
-          this.checkIsMenuPage()
-          this.checkIsLoginPage()
-          this.updateBreadcrumb()
+        this.checkIsMenuPage()
+        this.checkIsLoginPage()
+        this.updateBreadcrumb()
+        console.log('navegou')
 
-          if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
-            this.websocketService.startService()
-          }
+        if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
+          this.websocketService.startService()
         }
-      });
+      }
     });
   }
 

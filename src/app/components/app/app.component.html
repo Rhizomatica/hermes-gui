@@ -46,15 +46,14 @@
       </a>
     </nav>
 
-    <div class="formfield">
+    <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
+
+    <div class="formfield {{currentPage}}">
+
       <div class="language m-b-10" (click)="installPWA()" *ngIf="deferredPrompt">
         <img title="install" src="assets/svg/arrow-down.svg" />
         <span i18n="@installhermesappng">Install HERMES APP </span>
       </div>
-      
-    <breadcrumb [currentPage]="currentPage" [currentUrl]="currentUrl"></breadcrumb>
-
-    <div class="formfield {{currentPage}}">
 
       <router-outlet *ngIf="system || loading; else serverOff" (activate)="onActivate($event)"></router-outlet>
 
