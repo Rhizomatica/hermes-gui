@@ -241,14 +241,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.checkLanguage()
     this.radio = this.sharedService.radioObj.value
 
-    window.addEventListener('appinstalled', () => {
-      // Esconder a promoção de instalação fornecida pela app
-      this.hideInstallPromotion();
-      // Limpar o deferredPrompt para que seja coletado
-      this.deferredPrompt = null;
-      console.log('PWA was installed');
-    });
-
     this.routerObserver = this.router.events.subscribe((event) => {
       if (event instanceof ActivationEnd) {
 
@@ -269,6 +261,14 @@ export class AppComponent implements OnInit, OnDestroy {
           this.websocketService.startService()
         }
       }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      // Esconder a promoção de instalação fornecida pela app
+      this.hideInstallPromotion();
+      // Limpar o deferredPrompt para que seja coletado
+      this.deferredPrompt = null;
+      console.log('PWA was installed');
     });
   }
 
