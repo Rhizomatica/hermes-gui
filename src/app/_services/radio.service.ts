@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { AlertService } from '../_services/alert.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { GlobalConstants } from '../global-constants';
-import { interval } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class RadioService {
   login = false;
   serverReturn: any;
@@ -20,14 +18,10 @@ export class RadioService {
   error = Error;
 
   constructor(
-    private http: HttpClient,
-    private alertService: AlertService
-  ) { }
+    private http: HttpClient) { }
 
-
-
-  public setRadioFreq(freq: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/freq/${freq}`;
+  public setRadioFreq(freq: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/freq/${freq}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -35,8 +29,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioMode(mode: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/mode/${mode}`;
+  public setRadioMode(mode: string, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/mode/${mode}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -44,8 +38,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioBfo(bfo: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}`;
+  public setRadioBfo(bfo: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/bfo/${bfo}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -53,8 +47,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioMastercal(mastercal: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}`;
+  public setRadioMastercal(mastercal: number, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/mastercal/${mastercal}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -62,8 +56,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioStatus(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio`;
+  public getRadioStatus(profile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/${profile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -73,8 +67,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioPower(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/power`;
+  //TODO - Ain't using
+  public getRadioPower(radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/power/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -95,8 +90,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioFrequency(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/freq`;
+  //Ain't using
+  public getRadioFrequency(radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/freq/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -106,8 +102,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioBfo(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/bfo`;
+  //Ain't using
+  public getRadioBfo(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/bfo/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -117,8 +114,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioRefThreshold(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/refthreshold`;
+  //Ain't using
+  public getRadioRefThreshold(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/refthreshold/${radioProfile}`;
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -128,8 +126,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioRefThreshold(value: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}`;
+  public setRadioRefThreshold(value: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/refthreshold/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -137,8 +135,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioRefThresholdv(value: number): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/refthresholdv/${value}`;
+  //Ain't using
+  public setRadioRefThresholdv(value: number, radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/refthresholdv/${value}${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -146,8 +145,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioPTT(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/ptt/${value}`;
+  public setRadioPTT(value: string, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/ptt/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -155,15 +154,15 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioTone(value: string): Observable<{}> {
+  public setRadioTone(value: string, radioProfile: number): Observable<{}> {
 
-    var route = '/radio/tone/'
+    var route = '/radio/tone/' + value
 
     if (GlobalConstants.bitx == 'S') {
-      route = '/radio/tone/sbitx/'
+      route = '/radio/tone/sbitx/' + value + '/' + radioProfile
     }
 
-    const url = `${GlobalConstants.apiURL}${route}${value}`;
+    const url = `${GlobalConstants.apiURL}${route}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -171,8 +170,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioConnected(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/connection/${value}`;
+  //Ain't using
+  public setRadioConnected(value: string, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/connection/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -180,8 +180,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public radioResetProtection(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/protection`;
+  public radioResetProtection(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/protection/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -189,8 +189,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public radioRestoreDefaults(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/default`;
+  public radioRestoreDefaults(radioProfile: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/default/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -198,8 +198,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioLed(value: string): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/led/${value}`;
+  //Ain't using
+  public setRadioLed(value: string, radioProfile): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/led/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -264,6 +265,33 @@ export class RadioService {
 
   public changeOperateModeProfile(profile: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/radio/profile/${profile}`;
+    return this.http.post(url, null).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  public restartVoiceTimeout(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/voice/timeout`;
+    return this.http.post(url, null).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  public getTimeoutConfig(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/voice/timeout/config`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  public setTimeoutConfig(time): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/voice/timeout/config/${time}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

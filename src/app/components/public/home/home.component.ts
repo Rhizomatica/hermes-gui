@@ -37,7 +37,9 @@ export class homeComponent implements OnInit {
       this.websocketService.startService()
     }
 
-    if (utils.isItRuningLocal() && utils.isSBitxRadio())
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+      this.showVoiceCard = true
+    else
       this.showVoiceCard = false
   }
 
@@ -46,11 +48,14 @@ export class homeComponent implements OnInit {
   darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
   alertBrowserXP: boolean = false
-  showVoiceCard: boolean = true
+  showVoiceCard: boolean = false
   isGateway: boolean = GlobalConstants.gateway
   radio: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
   @Input() radioObj: Radio
+  self = self.location.host
+  showAlert: boolean = true
+  alertMessage: string = 'Radio data transmiting now... please wait for use the voice mode.'
 
   logOff() {
     this.authenticationService.logout();
@@ -87,15 +92,8 @@ export class homeComponent implements OnInit {
   }
 
   formatFrequency() {
-    this.radio.freq = this.radio.freq == 0 || this.radio.freq == null ? 0 : this.radio.freq / 1000
+    this.radio.p1_freq = this.radio.p1_freq == 0 || this.radio.p1_freq == null ? 0 : this.radio.p1_freq / 1000
   }
-
-  // ngOnChanges(change) {
-  //   change.radioObj && change.radioObj.currentValue != change.radioObj.previousValue ? this.radio = change.radioObj.currentValue : null
-  //   this.radio = change.radioObj.value
-  //   this.formatFrequency()
-  //   this.loading = false
-  // }
 
   ngOnInit(): void {
     this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light';

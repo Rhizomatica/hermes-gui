@@ -5,25 +5,16 @@
 </div>
 <div *ngIf="currentUser.admin">
     <div class="row" *ngIf="system">
-        <div class="row">
-            <span i18n="@@statusmachine">Status: </span>
-            <div *ngIf="!system.status" class="redcircle"></div>
-            <div *ngIf="system.status" class="greencircle"></div>
-            {{system.status == true ? 'ON' : 'OFF'}}
-        </div>
-
-        <div class="row">
-            <span i18n="@@freespace">Free Space: </span>
-            {{system.diskfree}} GB
-            <div class="row m-t-10">
-                <span *ngIf="criticSpace" class="alert" i18n="storagelow">
-                    System storage is low! please delete messages and
-                    files
-                </span>
-            </div>
+        <span i18n="@@freespace">Free Space: </span>
+        {{system.diskfree}} GB
+        <div class="row m-t-10">
+            <span *ngIf="criticSpace" class="alert" i18n="storagelow">
+                System storage is low! Please delete messages and
+                files
+            </span>
         </div>
     </div>
-    <h2 class="m-t-25">Logs</h2>
+    <h2 class="m-t-25" i18n="@@logstitle">Logs</h2>
     <button (click)="showCustomLogs()">
         <span i18n="@@errorlogbutton">error log</span>
     </button>
@@ -72,7 +63,6 @@
 
     <div class="formdata m-t-25" *ngIf="uLog">
         <h3 i18n="@@uucpllogsog2">UUcp log</h3>
-        <!-- <hr /> -->
         <div class="logs">
             <section class="multiplist">
                 <div class="item" *ngFor="let log of uucpLog">
@@ -84,7 +74,6 @@
     </div>
     <div class="formdata m-t-25" *ngIf="eLog">
         <h3 i18n="@@emaillog2">Email log</h3>
-        <!-- <hr /> -->
         <div class="logs">
             <section class="multiplist">
                 <div class="item" *ngFor="let log of mailLog">
@@ -110,20 +99,30 @@
     <div>
         <div class="overall alert" *ngIf="errorAlert==true">
             <div class="cv">
-                <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-                <span>{{error}}</span>
-                <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-                    close
-                </button>
+                <span i18n="@@errorprocessing">
+                    There was an error on processing your request
+                </span>
+                <div class="row m-t-10">
+                    {{error}}
+                </div>
+                <div class="row m-t-10">
+                    <button (click)="closeError()" i18n="@@closeerrorbutton">
+                        close
+                    </button>
+                </div>
             </div>
         </div>
         <div class="overall alert" *ngIf="confirmDeleteAllLogs==true">
             <div class="cv">
-                <span i18n="@@deleteallcustomerrosconfirmation"> Are you sure you want to delete all error logs? </span>
-                <br /><br />
-                <button type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
-                <button class="m-l-10" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete
-                    all</button>
+                <span i18n="@@deleteallcustomerrosconfirmation">
+                    Are you sure you want to delete all error logs?
+                </span>
+                <div class="row m-t-10">
+                    <button type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
+                    <button class="m-l-10" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">
+                        delete all
+                    </button>
+                </div>
             </div>
         </div>
     </div>

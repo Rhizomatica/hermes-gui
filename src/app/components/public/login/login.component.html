@@ -1,7 +1,10 @@
 <div class=" login formdata">
    <form #f="ngForm" id="loginform" novalidate>
-      <h1>Hermes</h1>
-      <p i18n="@@instructions">To login to the system, put your username and password
+      <h1>HERMES - V3.4.9</h1>
+      <div class="row m-t-25">
+         <a routerLink="/languages" i18n="@@chooselanguage">Choose your language</a>
+      </div>
+      <p i18n="@@instructions" class="m-t-25">To login to the system, put your username and password
          <hint [showHint]="false" [hint]="'login'"></hint>
       </p>
       <hr>
@@ -17,10 +20,8 @@
       </label>
       <div class="row">
          <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log in</button>
-      </div>
-
-      <div class="row m-t-25">
-         <a routerLink="/languages" i18n="@@chooselanguage">Choose your language</a>
+         <a routerLink="/home" class="m-l-10" i18n="@@continuewithoutlogin" *ngIf="!requireLogin">Continue without login
+         </a>
       </div>
    </form>
 </div>

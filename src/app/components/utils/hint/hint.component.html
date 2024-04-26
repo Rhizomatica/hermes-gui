@@ -36,11 +36,32 @@
         Volume - Volume control to regulate the speaker volume.
       </p>
       <p>
-        Reset Protection - If the radio turns the protection ON you can reset the protection selecting (Reset). This
-        usually happens when the antenna does not match the transmission frequency.
+        Reset Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON
+        that means the antenna does not match the transmission frequency. You can reset the protection selecting
+        (Reset).
       </p>
       <p>
         Mode - You can change the operating mode (USB/LSB) by toggling the Mode option button.
+      </p>
+      <p>
+        Timeout - When the timout finish the voice will be interrupted, by clicking on the screen or on any option the
+        timeout restart
+      </p>
+      <p class="m-t-10">
+        *Note: If the SWR is too high, transmit a test signal.
+        Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W).
+        Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to
+        turn OFF the “PTT” button.
+
+        If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct
+        ranges, the HERMES system is ready for operation.
+
+        If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment,
+        including:
+        the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
+        temperature of radio, smell of burning), the antenna condition.
+
+        If you need more details for troubleshooting you can find it in the HERMES Troubleshooting Guide document.
       </p>
     </div>
 
@@ -54,8 +75,8 @@
         through this interface or private messages, though the Deltachat application or webmail interface.
       </p>
       <p>
-        On the Messages page you can see the public, sent messages. If you have system permissions you can send a new
-        message to another station.
+        On the Messages page you can see the public and sent messages option. If you have system permissions you can
+        send a new message to another station selecting the button NEW.
       </p>
     </div>
 
@@ -75,43 +96,63 @@
     <div *ngIf="hint == 'message'" i18n="@@hintmessage">
       <h1 class="cv-title">Message</h1>
       <p>
-        The message received detail allow you to see all message information: title, message, file, date and time,
-        origin and destinations. Select the reply button to answer the message. </p>
-      <p class="m-t-10">
-        *Note: If the message is protected, type the correct password (defined previously by the
-        emitter/origin) to access the message content.
+        The message received detail allows you to see all message information: title, message, file, date and time,
+        origin and destinations. Select the reply button to answer the message.
       </p>
     </div>
 
     <div *ngIf="hint == 'newmessage'" i18n="@@hintnewmessage">
       <h1 class="cv-title">New message</h1>
       <p>
-        When composing a new message you can protect messages with a passcode before sending. Opening the message will
-        require entering the same passcode. The receiver of the protected message must know the passcode to read
-        the entire message and access the attached files.
+        Compose a new message with title (subject) and description (message).
+        When composing a new message you can protect messages with a password before sending by clicking 'protect
+        message' and attach files by clicking 'select file'.
       </p>
     </div>
 
     <div *ngIf="hint == 'attachfile'" i18n="@@hintattachfile">
       <h1 class="cv-title">Attach file</h1>
       <p>
-        Attach a file to your message. It is possible to attach images, audio documents, etc.
+        Attach a file to your message. It is possible to attach images, audio recordings, documents, etc. By clicking
+        'select file'.
       </p>
       <p>
         Accepted formats:
-        .gif, .jpeg, .png, .tiff, .webp, .svg+xml, .pjpeg, .x-jps, .doc, .xls, .json, .xml, .aac, .mpeg, .ogg, .ogx,
-        .opus, .wav, .x-wav, .webm, .3gpp, .3gpp2
+        The system will accept all types of files. For images and audio files the size limit is 31.45 MB, for other
+        kinds of files the size limit is 20.48 kB.
+        If the file will not attach, check the file size, if it is too large the user should send another smaller file.
       </p>
       <p>
-        *Note: The system will accept image and sound files up to 20.48 mB. The system will
-        compress attachments, however, message packages greater than 71.68 mB will not be transmitted.
+        *Note: The system will compress attachments, however, message packages greater than 71.68 MB will not be
+        transmitted.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'protectedmessage'" i18n="@@hintprotectedmessage">
+      <h1 class="cv-title">Protected message</h1>
+      <p class="m-t-10">
+        *Note: If the message is protected, type the correct password ( defined previously by the
+        emitter/origin) to access the message content.
+        It is important to note that the emitter and the receiver should previously agree which password to use for
+        those cases.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'protectmessage'" i18n="@@hintprotectmessage">
+      <h1 class="cv-title">Protect message</h1>
+      <p class="m-t-10">
+        Protecting the message with a password means the recipient will be required to enter the same password. The
+        receiver must know the password to read the entire message and access the attached file. If you password protect
+        the message, you must be sure the password is shared with the recipient. Otherwise they will not be able to open
+        the message.
       </p>
     </div>
 
     <div *ngIf="hint == 'email'" i18n="@@hintemail">
       <h1 class="cv-title">Email</h1>
       <p>
-        On the Email page you can find the Webmail system, Deltachat downloads and the stations email list. You can also
+        On the Email page you can find the Webmail system, Deltachat, downloads and the stations email list. You can
+        also
         find emergency email contacts for unexpected or emergency situations.
       </p>
       <p class="m-t-25">
@@ -121,15 +162,15 @@
 
     <div *ngIf="hint == 'deltachat'" i18n="@@hintdeltachat">
       <h1 class="cv-title">Deltachat</h1>
-      <p>
-        Through the Deltachat app, you can use emails to conduct personal message exchange communications
-        (similar to WhatsApp or SMS).
+      <p class="m-t-10">
+        Through the Deltachat app, you can use emails to conduct personal message exchanges (similar to WhatsApp or
+        SMS).
       </p>
-      <div class="video-hint">
-        <video width="500" height="225" controls>
-          <source src="videos/{{language}}/deltachat.mp4" type="video/mp4">
-        </video>
-      </div>
+      <p class="m-t-10">
+        Keep in mind that due to the scheduling of transmission of the messages, they may take a while to arrive,
+        depending
+        on the amount of messages in the queue and the gateway station's schedule of operation.
+      </p>
       <p>
         The HERMES system includes a compression system. End-to-end encryption should be disabled in order to allow the
         server-based image and audio compression to work properly, otherwise image and audio exchange will not be
@@ -137,30 +178,65 @@
       </p>
       <p>
         The steps to find this feature in Deltachat are: -> Advanced -> Autocrypt, Prefer End-To-End Encryption: turn
-        off: If you wish, you can also turn on email delivery monitoring to check if your emails were correctly
+        off.
         delivered.
+      </p>
+      <p>
+        If you wish, you can also turn on email delivery monitoring to check if your emails were correctly sent.
+      </p>
+      <img class="infoimg" title="Deltachat Advanced settings" src="assets/img/adv_p2pe_{{language}}.jpeg" />
+      <p>
+        Deltachat, by default, tags its emails and show only the "known" messages (emails) that was sent by
+        another Deltachat application. In order to be able to interact with e-mails from any e-mail client software,
+        enable the option "show all emails". The steps to find this feature in Deltachat are: Burger Menu ( <span
+          class="icon"><img src="assets/svg/bars-solid.svg"></span> ) -> Settings -> Chats and Media -> Show Classic
+        E-Mails -> All.
+      </p>
+      <img class="infoimg" title="Deltachat email settings" src="assets/img/allemails_{{language}}.jpeg" />
+
+      <p class="m-t-10">
+        After tag Show All Classic E-Mails you must turn off the read receipts in the same screen (Settings -> Chats
+        and Media -> Read Receipts) to avoid receipts that will consume your band and storage with large confirmation
+        e-mails.
+      </p>
+      <img class="infoimg" title="Read reacipts" src="assets/img/read_receipts_off_{{language}}.jpeg" />
+
+      <p>
+        In order to configure DeltaChat, first an e-mail account should be created, on the creat user session, acessed
+        trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address
+        and password fields should be filled, as shown below. The user and password will be the same as those created
+        when first creating a login on HERMES and for use with the RoundCube webmail, such as:
+        username@{{domain}}.
+        <img class="infoimg" title="Deltachat login" src="assets/img/login_{{language}}.jpeg" />
       </p>
     </div>
 
     <div *ngIf="hint == 'radioconfig'" i18n="@@hintradioconfig">
       <h1 class="cv-title">Radio Configuration</h1>
       <p>
-        The Radio Configuration page you can find all information about the Radio Analog and Digital transmission.
+        The Radio Configuration page you can find all information about the Radio Voice and Data transmission.
       </p>
       <p class="m-t-25">
         Radio Status - radio connection status (connected / disconnected).
       </p>
       <p class="m-t-10">
-        Digital Data frequency - Frequency used to transmit messages and files. All stations need to be on the same
+        Radio profile - current radio mode operation profile (voice / data)
+      </p>
+      <p class="m-t-10">
+        Data frequency - Frequency used to transmit messages and files. All stations need to be on the same
         frequency so they can communicate with each other.
       </p>
       <p>
         *Note: Changing the frequency can stop or interrupt the sending and reception of transmissions.
       </p>
       <p class="m-t-10">
+        Voice frequency - Frequency used to transmit (PTT) and receive voice transmission.
+      </p>
+      <p class="m-t-10">
         SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the
         antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the
-        system will operate efficiently. A high SWR suggests that the antenna is not set to the same frequency as the
+        system will operate efficiently. A high SWR (2.5 or above) suggests that the antenna is not set to the same
+        frequency as the
         transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system
         with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode.
       </p>
@@ -169,7 +245,8 @@
         shorten the transmission range and preserve battery capacity.
       </p>
       <p class="m-t-10">
-        Operation mode (TX/RX) - TX stands for transmitter and RX stands for receiver.
+        Operation mode (TX/RX) - TX stands for transmitter and RX stands for receiver. The mode is available for data
+        and voice transmission separately.
       </p>
       <p class="m-t-10">
         Serial Number - Identifies your radio equipments unique serial number.
@@ -177,19 +254,19 @@
     </div>
 
     <div *ngIf="hint == 'frequency'" i18n="@@hintfrequency">
-      <h1 class="cv-title">Digital data frequency</h1>
+      <h1 class="cv-title">Data frequency</h1>
       <p>
-        Digital Data frequency for messages and files transmission.
+        Data frequency for messages and files transmission.
       </p>
       <p>
-        Note: Changing the frequency can stop or interrupttheall sending and reception ofive transmissions.
+        Note: Changing the frequency can stop or interrupt the sending and reception of transmissions.
       </p>
     </div>
 
-    <div *ngIf="hint == 'analogFrequency'" i18n="@@hintanalogfrequency">
-      <h1 class="cv-title">Analog frequency</h1>
+    <div *ngIf="hint == 'voiceFrequency'" i18n="@@hintvoicefrequency">
+      <h1 class="cv-title">Voice frequency</h1>
       <p>
-        Analog frequency for voice usage.
+        Voice frequency for voice usage.
       </p>
       <p>
         *Note: This frequency is not related to the message and emails transmission and only applies to voice
@@ -200,8 +277,8 @@
     <div *ngIf="hint == 'threshold'" i18n="@@hintthreshold">
       <h1 class="cv-title">Threshold</h1>
       <p>
-        Threshold of SWR allowed. If the SWR level goes above this threshold protection will be enabled and transmission
-        will halt.
+        Threshold of SWR allowed. If the SWR level goes above (of 2.5) this threshold protection will be enabled and
+        transmission will halt.
       </p>
     </div>
 
@@ -213,10 +290,30 @@
       </p>
     </div>
 
+    <div *ngIf="hint == 'radioprofile'" i18n="@@hintradioprofile">
+      <h1 class="cv-title">Radio Profile</h1>
+      <p>
+        Toggle the radio profile button to choose the radio operation mode profile. Voice radio or data transmission.
+      </p>
+      <p class="m-t-10">
+        *Note: If the radio data is connected transmitting you cannot change the profile for voice. Please wait until
+        the transmission finishes.
+      </p>
+    </div>
+    
+    <div *ngIf="hint == 'hinttimeoutconfig'" i18n="@@hinttimeoutconfig">
+      <h1 class="cv-title">Radio Timeout</h1>
+      <p>
+        Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes.
+        With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite.
+      </p>
+    </div>
+
     <div *ngIf="hint == 'ptt'" i18n="@@hintptt">
       <h1 class="cv-title">PTT (Push to talk)</h1>
       <p>
-        Push To Talk. This function simulates pressing the PTT button on the physical microphone. Used only for testing
+        Push To Talk. PPT should remain OFF unless it is being used for testing. This function simulates pressing the
+        PTT button on the physical microphone. Used only for testing
         purposes when tuning the system.
       </p>
     </div>
@@ -224,14 +321,14 @@
     <div *ngIf="hint == 'reboot'" i18n="@@hintreboot">
       <h1 class="cv-title">Reboot</h1>
       <p>
-        Reboot the HERMES system.
+        Reboot the HERMES system by clicking the Reboot button.
       </p>
     </div>
 
     <div *ngIf="hint == 'reset'" i18n="@@hint">
       <h1 class="cv-title">Reset to default</h1>
       <p>
-        Reset/restore your radio to the default HERMES configuration. You won't lose your messages.
+        Select ‘Reset’ to Reset/restore your radio to the default HERMES configuration. You will not lose your messages.
       </p>
       <p class="m-t-25">
         *Note: Restoring your radio to the default configurations can stop or interrupt sending and reception of
@@ -245,6 +342,20 @@
         If the SWR goes above the threshold set on “Protection activation threshold level” this function will halt
         transmission to avoid damage to the equipment. Click reset to resume system operation, having first reviewed why
         the system went over the threshold.
+      </p>
+      <p class="m-t-10">
+        *Note: If the SWR is too high, transmit a test signal.
+        Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W).
+        Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to
+        turn OFF the “PTT” button.
+
+        If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct
+        ranges, the HERMES system is ready for operation.
+
+        If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment,
+        including:
+        the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
+        temperature of radio, smell of burning), the antenna condition.
       </p>
     </div>
 
@@ -266,7 +377,8 @@
       <p>
         Manage which user profile has permission to send messages and attach files. </p>
       <p>
-        Broken files can consume your storage, clean broken files to free your storage by eliminating unnecessary files.
+        Lost files can consume your storage, clean broken files to free your storage by clicking 'Clean up lost files'
+        and eliminate unnecessary files.
       </p>
     </div>
 
@@ -286,13 +398,12 @@
       <p>
         When you press send on a message, it is a transmission queue before its final destination. A
         system administrator can cancel the messages in the queue before they are sent, and also delete the sent and
-        received messages. Deleted sent and received messages periodically can help avoid the hard drive from filling
+        received messages. Deleting sent and received messages periodically can help avoid the hard drive from filling
         up.
       </p>
       <p>
         In an emergency, the system administrator can force message transmission of the queue by clicking on the
-        "transmit
-        now" button. This can interrupt receiving messages on the Gateway from other stations for a while.
+        "force" button. This can interrupt receiving messages on the Gateway from other stations for a while.
       </p>
     </div>
 
@@ -305,16 +416,16 @@
       <p class="m-t-25">
         Alias - Station identification.
       </p>
-      <p>
+      <p class="m-t-10">
         Nickname - Name for easy or representative identification.
       </p>
-      <p>
+      <p class="m-t-10">
         Status - Connection status between stations.
       </p>
-      <p>
-        Frequency - Preferred digital data frequency for connection between stations.
+      <p class="m-t-10">
+        Frequency - Preferred data frequency for connection between stations.
       </p>
-      <p>
+      <p class="m-t-10">
         Mode - Preferred mode for connection between stations (USB/LSB).
       </p>
     </div>
@@ -344,7 +455,7 @@
         browsers. If none of this resolves the problem, it is possible that your device is incompatible with the
         network.
 
-        <span *ngIf="bitx == 'S'">
+        <span *ngIf="bitx == 'U'">
           In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct
         </span> position of the power supply wires and check the position and integrity of the Antenna, coaxial cable,
         and the transmitter.
@@ -354,12 +465,26 @@
         remedy you could restore the
         factory default settings.
 
-        If the problem is with the digital radio, there will be an error message when the administrator goes into
+        If the problem is with the data radio, there will be an error message when the administrator goes into
         Administration -> radio configuration.
 
         If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it
         could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place
         with internet for online maintenance.
+      </p>
+      <p class="m-t-10">
+        *Note: If the SWR is too high, transmit a test signal.
+        Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W).
+        Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to
+        turn OFF the “PTT” button.
+
+        If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct
+        ranges, the HERMES system is ready for operation.
+
+        If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment,
+        including:
+        the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v,
+        temperature of radio, smell of burning), the antenna condition.
       </p>
     </div>
 

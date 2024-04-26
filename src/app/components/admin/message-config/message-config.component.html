@@ -30,25 +30,31 @@
         </form>
         <form #f="ngForm" class="m-t-10">
             <p i18n="@@cleanuptext">
-                When sending messages it's possible that broken files are stored in the server, please click here to
+                When sending messages it's possible that lost files are stored in the server, please click here to
                 clean up the system:
             </p>
-            <button *ngIf="!cleaned" i18n="@@cleanup" (click)="cleanUp()">clean up broken files</button> <span
+            <button *ngIf="!cleaned" i18n="@@cleanup" (click)="cleanUp()">Clean up lost files</button> <span
                 i18n="@@Cleaned" class="alert" i18n="@@cleanup" *ngIf="cleaned">Cleaned!</span>
         </form>
     </div>
     <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
-            <span i18n="@@errorchanging config">There was an error on changing config <br /><br /></span>
-            <span>{{error}}</span>
-            <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-                close
-            </button>
+            <span i18n="@@errorchanging config">
+                There was an error on changing config
+            </span>
+            <div class="row m-t-10">
+                <span>{{error}}</span>
+            </div>
+            <div class="row m-t-10">
+                <button (click)="closeError()" i18n="@@closeerrorbutton">
+                    close
+                </button>
+            </div>
         </div>
     </div>
 </div>
 <div *ngIf="!isAdmin">
-    <span i18n="@@needtobeadmin2">
+    <span i18n="@@needtobeadmin">
         Need to be an admin to access this
     </span>
 </div>

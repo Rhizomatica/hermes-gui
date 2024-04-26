@@ -11,7 +11,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogComponent } from './components/admin/log/log.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
-import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
@@ -37,8 +36,6 @@ import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
-import { LoginFormComponent } from './components/public/login-form/login-form.component';
-import { RadioScaryComponent } from './components/admin/radio-scary/radio-scary.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { PlayerComponent } from './components/utils/player/player.component';
@@ -70,7 +67,6 @@ registerLocaleData(localeEs);
     LogComponent,
     StationInformationComponent,
     UserManagementComponent,
-    UpgradeComponent,
     MessagecomposeComponent,
     LoginComponent,
     LanguagesComponent,
@@ -84,8 +80,6 @@ registerLocaleData(localeEs);
     FrequencyPipe,
     ScheduleComponent,
     TransmissionListComponent,
-    LoginFormComponent,
-    RadioScaryComponent,
     LoadingComponent,
     SwitchComponent,
     PlayerComponent,

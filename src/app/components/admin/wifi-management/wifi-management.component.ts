@@ -34,6 +34,8 @@ export class WiFiManagementComponent implements OnInit {
   msgMACListPatternError: boolean = false
   includedKeysMacList: number[]
   newMACAddress: string = ''
+  removeMACAddressConfirmation: boolean = false
+  macAddressToDelete: string = null
 
   constructor(
     private apiService: ApiService,
@@ -205,10 +207,24 @@ export class WiFiManagementComponent implements OnInit {
     this.msgMACListPatternError = false
   }
 
-  public removeMACAddress(address){
+
+  public confirmRemoveMACAddress(address){
+
+    if(!this.removeMACAddressConfirmation){
+      this.removeMACAddressConfirmation = true
+      this.macAddressToDelete = address
+      return
+    }
+
+    this.removeMACAddressConfirmation = false
+    this.macAddressToDelete = null
+  }
+
+  public removeMACAddress(){
+    this.removeMACAddressConfirmation = false
     this.loading = true
 
-    this.wifiManagerService.removeMACAddress(address).subscribe(
+    this.wifiManagerService.removeMACAddress(this.macAddressToDelete).subscribe(
       (res: any) => {
         this.loading = false
         this.getWiFiConfig()

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { RadioService } from 'src/app/_services/radio.service';
@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
-import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'voice',
@@ -21,21 +20,18 @@ export class VoiceComponent implements OnInit {
   loading: boolean = false
   error: string
   errorAlert: boolean = false
-  mode: string
   radio: Radio
   step: number = null
   modeSwitch: boolean
-  placesArray: Array<String>
   freqmin: number = 500
   freqmax: number = 30000
-  frequencyAux: string
   subject = new BehaviorSubject(this.radioService);
+  voiceModeProfileID: number = 1
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
-    private sharedService: SharedService,
-    private utils: UtilsService
+    private sharedService: SharedService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
@@ -43,17 +39,17 @@ export class VoiceComponent implements OnInit {
   }
 
   public closeError() {
-    this.errorAlert = false;
+    this.errorAlert = false
   }
 
   changeMode(event) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe(
       (res: any) => {
 
       }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
       }
     );
   }
@@ -61,51 +57,23 @@ export class VoiceComponent implements OnInit {
   changeStep() {
     this.step--
 
-    if (this.step < 0 || this.step == 0 && this.placesArray.length == 7) {
-      this.step = this.placesArray.length - 1
+    if (this.step < 0 || this.step == 0 && this.radio.p1_freq_splited.length == 7) {
+      this.step = this.radio.p1_freq_splited.length - 1
     }
 
     this.updateStep()
   }
 
-  splitFrequency() {
-    if (!this.radio || !this.radio.freq || this.radio.freq == 0)
-      return
-
-    this.frequencyAux = this.radio.freq.toString()
-    this.frequencyAux = this.frequencyAux.replace(/,/g, "")
-    this.frequencyAux = this.frequencyAux.replace(/\./g, "")
-
-    if (this.frequencyAux.length == 6)
-      this.frequencyAux = "0" + this.frequencyAux
-
-    if (this.frequencyAux.length == 5)
-      this.frequencyAux = "00" + this.frequencyAux
-
-    this.placesArray = this.frequencyAux.toString().split('')
-  }
-
-  changeFrequency(f: NgForm) {
-    this.loading = true
-    this.radioService.setRadioFreq((f.value.frequency * 1000)).subscribe(
-      (res: any) => {
-        this.radio.freq = this.utils.formatFrequency(res);
-        this.loading = false
-        this.splitFrequency()
-      }, (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.loading = false
-      }
-    );
-  }
-
   setInitialStep() {
-    if (this.placesArray.length > 0)
-      this.step = this.placesArray.length - 1
+    if (this.radio.p1_freq_splited.length > 0)
+      this.step = this.radio.p1_freq_splited.length - 1
   }
 
   changeStepDigit(index) {
+
+    if (index == 0)
+      return
+
     this.step = index
     this.updateStep()
   }
@@ -117,7 +85,7 @@ export class VoiceComponent implements OnInit {
 
         this.loading = false
 
-        if (res === null && this.radio.freq) {
+        if (res === null && this.radio.p1_freq) {
           this.setInitialStep()
           return
         }
@@ -206,47 +174,59 @@ export class VoiceComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection().subscribe(
+    this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe(
       (res: any) => {
         if (res === 1) {
-          this.radio.protection = false;
+          this.radio.protection = false
         }
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
       }
     );
   }
 
-  changeOperateModeProfile(){
-    //Profile id = 2 - analog
-    this.radioService.changeOperateModeProfile(2).subscribe(
+  changeOperateModeProfile() {
+    //Profile id = 1 - voice / fonia
+    if (this.radio.profile == 1)
+      return
+
+    this.loading = true
+    this.radioService.changeOperateModeProfile(1).subscribe(
       (res: any) => {
         if (res === 1) {
-          this.radio.profile = res.profile;
+          this.radio.profile = res.profile
+          this.loading = false
         }
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
       }
     );
   }
 
+  restartVoiceTimeout() {
+    if (parseInt(this.radio.timeout) <= 0)
+      return
+
+    this.radioService.restartVoiceTimeout().subscribe(
+      (res: any) => {
+        return res
+      },
+      (err) => {
+        this.error = err
+        this.errorAlert = true
+      }
+    );
+  }
 
   ngOnInit(): void {
-
-    //TODO - Dual frequency
-    // this.changeOperateModeProfile()
-
-    this.sharedService.radioObj.subscribe(message => {
-
-      this.radio = this.sharedService.radioObj.value
-      this.modeSwitch = this.radio.mode == 'LSB' ? true : false
-      this.splitFrequency()
-    })
-
+    this.radio = this.sharedService.radioObj.value
+    this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+    this.changeOperateModeProfile()
     this.getSavedStep()
   }
 }

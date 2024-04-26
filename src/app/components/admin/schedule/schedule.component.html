@@ -4,11 +4,13 @@
         <h2 class="" i18n="@@transmissionschedules">Transmission schedule</h2>
         <hint [showHint]="false" [hint]="'schedules'"></hint>
     </div>
+    <h3 class="flex-right">{{serverDateTime}}</h3>
     <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
-    <hr />
-    <b i18n="@@currentschedules">Current schedules:</b>
-    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio
-        transmission<br />
+    <div class="row m-t-25">
+        <b i18n="@@currentschedules">Current schedules:</b>
+    </div>
+    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">
+        There are no schedules for radio transmission <br />
     </div>
     <ul *ngIf="schedules.length > 0" id="schedulelist" class="multiplist3" [(ng-model)]="schedules">
         <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">
@@ -21,17 +23,20 @@
     </ul>
     <div class="overall alert" *ngIf="errorAlert">
         <div class="cv">
-            <span i18n="@@errorrequest">There was an error on your request<br />
+            <span i18n="@@errorrequest">
+                There was an error on your request
             </span>
-            <span>{{error}}</span>
-            <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-                close
-            </button>
+            <div class="row m-t-10">
+                {{error}}
+            </div>
+            <div class="row m-t-10">
+                <button (click)="closeError()" i18n="@@closeerrorbutton">
+                    close
+                </button>
+            </div>
         </div>
     </div>
     <div class="gateway" *ngIf="isEditing">
-        <hr>
-        <h3 class="flex-right">{{localDateHour}}</h3>
         <form #f="ngForm" id="timeform" novalidate>
             <label>
                 <p i18n="@@schedtitle" class="m-t-10">Schedule Title</p>
@@ -85,14 +90,31 @@
                 create schedule
             </button>
             <span *ngIf="!emptySchedule">
-                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule"
-                    (click)="deleteSchedule(selectedSchedule.id)">
+                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule" (click)="confirmDelete()">
                     delete schedule
                 </button>
             </span>
+            <div class="overall alert" *ngIf="confirmDeleteSchedule">
+                <div class="cv">
+                    <span i18n="@@confirmationdeleteschedule">
+                        Confirm deletion of the schedule - {{selectedSchedule.title}}?
+                    </span>
+                    <div class="row m-t-10">
+                        <button (click)="confirmDelete()" i18n="@@closeerrorbutton">
+                            close
+                        </button>
+                        <button (click)="deleteSchedule(selectedSchedule.id)" class="m-l-10"
+                            i18n="@@btndeletecustomerror">
+                            delete
+                        </button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>
 <div>
-    <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">You need admin privileges to access this page</p>
+    <p class="alert" *ngIf="!isAdmin" i18n="@@needadm">
+        You need admin privileges to access this page
+    </p>
 </div>

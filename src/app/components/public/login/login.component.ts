@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { NgForm } from '@angular/forms';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   error = Error;
   success = false;
   wrong = false;
+  requireLogin: boolean = GlobalConstants.requireLogin
 
   constructor(private router: Router,
     private authenticationService: AuthenticationService) { }

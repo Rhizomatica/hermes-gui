@@ -371,6 +371,7 @@ textarea {
   margin-left: 12.5%;
   top: 7em;
   padding-bottom: 1em;
+  word-wrap: break-word;
 
 
   .textarea {
@@ -464,6 +465,10 @@ textarea {
   transition: .4s;
 }
 
+.slider.one-color:before {
+  background-color: @clr;
+  border: @clr 0.5px solid;
+}
 
 input:checked+.slider:before {
   -webkit-transform: translateX(19px);
@@ -481,6 +486,12 @@ input:checked+.slider:before {
   border-radius: 50%;
   background-color: #b8b8b8;
   border: #b8b8b8 0.5px solid;
+}
+
+.slider.round-uc.one-color:before {
+  border-radius: 50%;
+  background-color: @clr;
+  border: @clr 0.5px solid;
 }
 
 .slider.round-uc.disable:before {
@@ -752,6 +763,7 @@ input:checked+.slider:before {
 #radioconf {
   .card {
     line-height: 1.3em;
+    width: 23.5%;
 
     small {
       font-size: 0.6em;
@@ -838,6 +850,15 @@ input:checked+.slider:before {
   font-size: 1em;
 }
 
+.alertcard {
+  font-size: 0.8em;
+  border: solid 1.5px #ff6600;
+  border-radius: 3px;
+  background-color: @bkclr;
+  padding: 1em;
+  width: 97%;
+  margin-bottom: 0.5em;
+}
 
 .multiplist {
   display: block;
@@ -1094,7 +1115,6 @@ menu {
 
   a {
     text-decoration: none;
-
   }
 
   .date {
@@ -1239,6 +1259,13 @@ input.ng-invalid {
     width: 5em;
   }
 
+  .infoimg {
+    width: 60vmin;
+    height: auto;
+    margin: 1em auto;
+    text-align: center;
+  }
+
   .rotating {
     animation: rotate 1s infinite;
   }
@@ -1283,23 +1310,6 @@ input.ng-invalid {
   display: inline-block;
 }
 
-.blobber {
-  width: calc(100% - 1em);
-  height: 50px;
-  position: relative;
-}
-
-.blobber .square {
-  width: 0.6em;
-  height: 0.6em;
-  border-radius: 50%;
-  background-color: @clr;
-  position: absolute;
-  animation-name: blobber;
-  animation-duration: 6s;
-  animation-iteration-count: infinite;
-}
-
 .help {
 
   h2,
@@ -1327,13 +1337,6 @@ input.ng-invalid {
     width: 98%;
   }
 
-}
-
-.infoimg {
-  width: 60vmin;
-  height: auto;
-  margin: 1em auto;
-  text-align: center;
 }
 
 .fullimg {
@@ -1603,6 +1606,12 @@ tr:nth-child(odd) {
     }
   }
 
+  .card.voice.disabled{
+    background-color: transparent;
+    border: solid 1.5px @bkclr;
+    background-color: @mclr;
+    color: @bkclr
+  }
 
   .switch {
     background-color: @bkclr;
@@ -1677,6 +1686,15 @@ tr:nth-child(odd) {
     color: @bkclr;
   }
 
+  .alertcard {
+    font-size: 0.8em;
+    border: solid 1.5px #ff6600;
+    border-radius: 3px;
+    background-color: #333333;
+    padding: 1em;
+    width: 97%;
+    margin-bottom: 0.5em;
+  }
 }
 
 .syspusher {
@@ -1820,8 +1838,14 @@ tr:nth-child(odd) {
 .card.voice {
   background-color: @clr;
   border: solid 1.5px @clr;
-
   color: @bkclr;
+}
+
+.card.voice.disabled{
+  background-color: transparent;
+  border: solid 1.5px #000;
+  background-color: @bkclr;
+  color: #000
 }
 
 .card.connected {
@@ -2179,13 +2203,6 @@ tr:nth-child(odd) {
   background-color: @actvclr;
 }
 
-.video-hint {
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-  padding: 2%;
-}
-
 video {
   max-width: 100%;
   height: auto;
@@ -2279,7 +2296,7 @@ video {
   }
 
 
-  .radiophony {
+  .radiovoice {
     .transciever-panel {
 
       .data {
@@ -2289,7 +2306,7 @@ video {
 
 
         .data-title {
-          font-size: 1em;
+          font-size: 0.9em;
           padding-bottom: 15px;
         }
 
@@ -2454,8 +2471,13 @@ video {
     }
   }
 
+  
   #radioconf {
     .card {
+      line-height: 1.3em;
+      width: 48%;
+      height: 7em;
+  
       small {
         font-size: 0.8em;
       }
@@ -2635,7 +2657,7 @@ video {
     }
   }
 
-  .radiophony {
+  .radiovoice {
     .transciever-panel {
 
       .data {

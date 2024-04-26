@@ -78,8 +78,10 @@
   <br />
   <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
-      <span i18n="@@errormanagement">There was an error on processing your request <br /><br /></span>
-      <span>{{error}}</span>
+      <span i18n="@@errormanagement">There was an error on processing your request </span>
+      <div class="row m-t-10">
+        <span>{{error}}</span>
+      </div>
       <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
         close
       </button>

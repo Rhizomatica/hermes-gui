@@ -1,13 +1,25 @@
 <div class="container sysadm home">
     <div class="row">
+        <div class="alertcard flexible" *ngIf="radio.connection">
+            <span class="greencircle"></span>
+            <b class="m-l-10" i18n="@@transmissioncardalerttitle">
+                Radio connected
+            </b>
+            <div class="row">
+                <p i18n="@@transmissioncardalertmesage">
+                    Data connection on going... 
+                    Voice mode blocked
+                </p>
+            </div>
+        </div>
         <div class="flexible">
-            <a routerLink="/voice" *ngIf="showVoiceCard && radio.freq !== null">
-                <div class="card voice">
+            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
+                <div class="card voice {{(radio.connection) && ('disabled')}}">
                     <div class="m-t-25">
-                        <b>{{radio.freq}} kHz</b>
+                        <b>{{radio.p1_freq}} kHz</b>
                     </div>
                     <div i18n="@@voicecard">
-                        {{radio.mode}}
+                        {{radio.p1_mode}}
                     </div>
                 </div>
             </a>

@@ -1,10 +1,10 @@
 <loading [loading]="loading"></loading>
 
-  <div class="flexible m-t-25">
-    <h2 i18n="@@stationsonthisnetwork">Station information</h2>
-    <hint [showHint]="false" [hint]="'stations'"></hint>
-  </div>
-  <div *ngIf="currentUser.admin">
+<div class="flexible m-t-25">
+  <h2 i18n="@@stationsonthisnetwork">Station information</h2>
+  <hint [showHint]="false" [hint]="'stations'"></hint>
+</div>
+<div *ngIf="currentUser.admin">
   <div class="alert" *ngIf="!frequencies || !frequencies.length" i18n="@@therearenostatons">There are no stations</div>
   <table style="width:100%" *ngIf="frequencies && frequencies.length">
     <thead>
@@ -34,7 +34,7 @@
           <div [hidden]="editArray[i] == false">
             <span>OFF</span>
             <div class="switch">
-              <input type="checkbox" name="enable{i}}" [checked]="enableArray[i]" />
+              <input type="checkbox" name="enable{{i}}" [checked]="enableArray[i]" />
               <span class="slider round-uc" [checked]="enableArray[i]" (click)="changeEnableSwitch(i)"></span>
             </div>
             <span>ON</span>
@@ -57,8 +57,8 @@
             <div class="switch">
               <input type="checkbox" name="mode{{i}}" [checked]="modeArray[i]"
                 [disabled]="enableArray[i] == false ? true : false" />
-              <span class="slider round-uc {{enableArray[i] == false ? 'disable' : ''}}" (click)="changeModeSwitch(i)"
-                [checked]="modeArray[i]"></span>
+              <span class="slider round-uc one-color {{enableArray[i] == false ? 'disable' : ''}}"
+                (click)="changeModeSwitch(i)" [checked]="modeArray[i]"></span>
             </div>
             <span>LSB</span>
           </div>
@@ -78,11 +78,17 @@
   <div>
     <div class="overall alert" *ngIf="errorAlert==true">
       <div class="cv">
-        <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-        <span>{{error}}</span>
-        <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-          close
-        </button>
+        <span i18n="@@errorprocessing">
+          There was an error on processing your request
+        </span>
+        <div class="row m-t-10">
+          {{error}}
+        </div>
+        <div class="row m-t-10">
+          <button (click)="closeError()" i18n="@@closeerrorbutton">
+            close
+          </button>
+        </div>
       </div>
     </div>
   </div>

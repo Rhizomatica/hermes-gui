@@ -12,7 +12,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Frequency } from 'src/app/interfaces/frequency';
 import { GlobalConstants } from '../../../global-constants';
 import { UtilsService } from 'src/app/_services/utils.service';
-
 @Component({
   selector: 'app-messagecompose',
   templateUrl: './messagecompose.component.html',
@@ -26,7 +25,7 @@ export class MessagecomposeComponent implements OnInit {
   public res: any;
   public stations: Station[];
   public fileIsProcessing = false;
-  public fileIsProcessed = false;
+  public fileIsProcessed = false; // TODO - not using
   public isEncrypted = false;
   public message: Message;
   public passMatch = false;
@@ -35,8 +34,8 @@ export class MessagecomposeComponent implements OnInit {
   public serverConfig: any;
   public allowfile: any;
   public allowhmp;
-  public allowCompose:boolean = false;
-  public allowUpload:boolean = false;
+  public allowCompose: boolean = false;
+  public allowUpload: boolean = false;
   public currentUser: User;
   public isAdmin = false;
   public passunMatch = false;
@@ -47,9 +46,9 @@ export class MessagecomposeComponent implements OnInit {
   public errormsg: any;
   public fileid: any;
   public fileSelected = false;
-  public sending = false;
   public nodename: any;
-  public maxSize: any = 20480000; //20.48MB
+  public maxSize: any = 20480; //20.48MB
+  public maxSizeText: string = '20.48 kB'
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
   public camPicture: any;
@@ -123,12 +122,12 @@ export class MessagecomposeComponent implements OnInit {
   verifyFileUploadPermission() {
     switch (this.allowfile) {
       case 'users':
-        if (this.currentUser) 
+        if (this.currentUser)
           this.allowUpload = true;
         break;
       case 'admin':
-          if (this.isAdmin) 
-            this.allowUpload = true;
+        if (this.isAdmin)
+          this.allowUpload = true;
         break;
       case 'all':
         this.allowUpload = true;
@@ -219,6 +218,9 @@ export class MessagecomposeComponent implements OnInit {
     if (file) {
       this.file = file;
 
+
+      this.typeSizeRule(file.type)
+
       if (file.size < this.maxSize) {
         this.fileName = file.name;
         this.fileSelected = true;
@@ -235,6 +237,21 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
+  typeSizeRule(fileType) {
+    fileType = this.utils.getFileType(fileType)
+
+    //Common files 20.48 KB, image or audio  files 31.45 MB (due to compression)
+    if (fileType == 'audio' || fileType == 'image') {
+      this.maxSize = 31457280
+      this.maxSizeText = '31.45 MB'
+      return
+    }
+
+    //default size (other types)
+    this.maxSize = 20480
+    this.maxSizeText = '20.48 kB'
+  }
+
   removeFile() {
     this.fileName = '';
     this.file = null;
@@ -245,7 +262,6 @@ export class MessagecomposeComponent implements OnInit {
 
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
-    this.sending = true;
     this.loading = true;
 
     if (!this.isGateway) {
@@ -270,25 +286,21 @@ export class MessagecomposeComponent implements OnInit {
           f.value.fileid = value['id'];
           f.value.mimetype = value['mimetype'];
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
-          this.sending = false;
           const res = this.sendMessageContinue(f);
         },
         (err) => {
           this.errormsg = err;
           this.errorAlert = true;
-          this.sending = false;
           this.loading = false;
         }
       );
     }
     else {
       const res = this.sendMessageContinue(f);
-      this.sending = false;
     }
   }
 
   sendMessageContinue(f: NgForm) {
-    this.sending = false;
     this.messageService.sendMessage(f.value, this.nodename).subscribe(
       (res: any) => {
         this.res = res;

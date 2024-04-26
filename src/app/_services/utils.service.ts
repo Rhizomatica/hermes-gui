@@ -34,7 +34,7 @@ export class UtilsService {
   }
 
   isItRuningLocal() {
-    return window.location.href === 'http://localhost:4200/' || window.location.href === 'http://127.0.0.1:4200/' ? true : false
+    return self.location.host === 'localhost:4200' || self.location.host === '127.0.1.1' ? true : false
   }
 
   isSBitxRadio() {
@@ -44,7 +44,7 @@ export class UtilsService {
 
   getFileType(fileType) {
 
-    if(!fileType){
+    if (!fileType) {
       return null
     }
 
@@ -91,5 +91,38 @@ export class UtilsService {
       return ''
 
     return new Date(date).toLocaleDateString('pt', { day: "numeric", month: "numeric", year: "numeric", hour: '2-digit', hour12: true, minute: "2-digit" })
+  }
+
+  splitFrequency(freq) {
+
+    if(!freq)
+      return null
+
+    freq = freq.toString()
+    freq = freq.replace(/,/g, "")
+    freq = freq.replace(/\./g, "")
+
+    if (freq.length == 6)
+      freq = "0" + freq
+
+    if (freq.length == 5)
+      freq = "00" + freq
+
+    return freq.toString().split('')
+  }
+
+  formatTimeCounter(seconds) {
+
+    if (seconds >= 60){
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+  
+      const formattedMinutes = minutes.toString().padStart(2, "0");
+      const formattedSeconds = remainingSeconds.toString().padStart(2, "0");
+      
+      return `${formattedMinutes}:${formattedSeconds} min`
+    }
+
+    return seconds + " sec"
   }
 }

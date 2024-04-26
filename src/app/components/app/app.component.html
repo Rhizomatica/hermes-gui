@@ -23,8 +23,22 @@
         </h1>
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
-        <span class="nav-frequency" *ngIf="radio">{{radio.mode}} {{radio.freq}} kHz</span>
-        <span class="nav-operation-mode" *ngIf="radio">{{radio.perfil == 1 ? 'analog' : 'digital'}}</span>
+        <div *ngIf="radio && radio.profile == 0">
+          <span class="nav-frequency">
+            {{radio.p0_mode}} {{radio.p0_freq}} kHz
+          </span>
+          <span class="nav-operation-mode" i18n="@@datanavlabel">
+            data
+          </span>
+        </div>
+        <div *ngIf="radio && radio.profile == 1">
+          <span class="nav-frequency">
+            {{radio.p1_mode}} {{radio.p1_freq}} kHz
+          </span>
+          <span class="nav-operation-mode" i18n="@@voicenavlabel">
+            voice
+          </span>
+        </div>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
@@ -45,23 +59,32 @@
         <p i18n="hermesoffline">Hermes server is offline, please turn the station on.
         </p>
         <br>
-        <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">If your server is already
-          on click here</div>
-
-        <div *ngIf="serverError" i18n="@@areadyonmsg">
-          If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
-          your system is corrupted. Please contact the support or the people you are usually in touch with. The support
-          email is {{emergencyEmail}}.
-          <br>
-          <span class="icon"><img (click)="showServerAlert()" title="close" src="assets/svg/times.svg"> </span>
+        <div class="alert" *ngIf="!serverError" (click)="showServerAlert()" i18n="@@areadyon">
+          If your server is already on click here
+        </div>
+        <div *ngIf="serverError">
+          <span i18n="@@areadyonmsg">
+            If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is {{emergencyEmail}}.
+          </span>
+          <div class="row m-t-10">
+            <button (click)="showServerAlert()" i18n="@@closeerrorbuttonchangeconfig">
+              close
+            </button>
+          </div>
         </div>
         <div class="overall alert" *ngIf="errorAlert==true">
           <div class="cv">
-            <span i18n="@@errorchangingconfig">There was an error on changing configuration <br /><br /></span>
-            <span>{{error}}</span>
-            <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbuttonchangeconfig">
-              close
-            </button>
+            <span i18n="@@errorchangingconfig">
+              There was an error on changing configuration
+            </span>
+            <div class="row m-t-10">
+              {{error}}
+            </div>
+            <div class="row m-t-10">
+              <button (click)="closeError()" i18n="@@closeerrorbuttonchangeconfig">
+                close
+              </button>
+            </div>
           </div>
         </div>
       </ng-template>
@@ -71,7 +94,7 @@
   <div class="overall alert" *ngIf="countdown && !isLoginPage">
     <div class="cv">
       <span i18n="@@countdowninactivite">Inactive user. Countdown for logoff</span>
-      <div class="row"><b>{{countdown}}</b></div>
+      <div class="row"><b>{{countdown}} sec</b></div>
     </div>
   </div>
   <loading [loading]="loading"></loading>

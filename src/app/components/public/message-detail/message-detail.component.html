@@ -16,6 +16,7 @@
             <input name="pass" type="password" ngModel required>
             <button type="submit" class="m-t-10" (click)="sendPassword(message.id,e)" i18n="@@verifyPswd">check
                 password</button>
+            <hint [showHint]="false" [hint]="'protectedmessage'"></hint>
         </form>
     </div>
     <div class="messagebody" *ngIf="!message.secure || uncrypted">
@@ -35,17 +36,19 @@
             <button *ngIf="fileType == 'image'" (click)="rotateImage()" class="pull-right">
                 <img title="rotate" src="assets/svg/redo.svg">
             </button>
-            <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
-                {{message.file}}
-            </a>
+            <div class="m-t-25">
+                <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
+                    {{message.file}}
+                </a>
+            </div>
         </div>
     </div>
     <hr />
     <div *ngIf="!noMessage">
         <small>
-            <p class="msginf" i18n="@@Origin">Origin: {{message.orig}}</p>
-            <p class="msginf" i18n="@@desnitation">Destination: {{message.dest}}</p>
-            <p class="msgdate" i18n="@@sentat">Sent at: {{message.sent_at}}</p>
+            <p class="msginf"><b i18n="@@Origin">Origin:</b> {{message.orig}}</p>
+            <p class="msginf"><b i18n="@@desnitation">Destination:</b> {{message.dest}}</p>
+            <p class="msgdate"><b i18n="@@sentat">Sent at:</b> {{message.sent_at}}</p>
         </small>
     </div>
     <div class="flex m-t-25" *ngIf="allowCompose">
@@ -78,11 +81,17 @@
     <div>
         <div class="overall alert" *ngIf="errorAlert==true">
             <div class="cv">
-                <span i18n="@@errorprocessing">There was an error on processing your request <br /><br /></span>
-                <span>{{error}}</span>
-                <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
-                    close
-                </button>
+                <span i18n="@@errorprocessing">
+                    There was an error on processing your request
+                </span>
+                <div class="row m-t-10">
+                    {{error}}
+                </div>
+                <div class="row m-t-10">
+                    <button (click)="closeError()" i18n="@@closeerrorbutton">
+                        close
+                    </button>
+                </div>
             </div>
         </div>
     </div>

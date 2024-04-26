@@ -72,10 +72,12 @@
       </div>
     </div>
     <hr />
-    <h1 i18n="@@mediaaccesscontroltitle" class="m-t-25">
-      Media Access Control
+    <div class="flexible m-t-25">
+      <h1 i18n="@@mediaaccesscontroltitle">
+        Media Access Control
+      </h1>
       <hint [showHint]="false" [hint]="'mediaAccessControl'"></hint>
-    </h1>
+    </div>
     <div class="row m-t-25">
       <div class="flexible half-row">
         <form #formMacFilter="ngForm">
@@ -88,29 +90,27 @@
       </div>
     </div>
     <div class="row m-t-25">
-      <span i18n="@@addnewmacaddress">Add new MAC address</span>
-      <div class="row">
-        <form #fNewMACAddress="ngForm">
-          <div class="flexible">
-            <div class="half-row">
-              <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
-                [disabled]="!macFilter" />
-              <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
-                [disabled]="!macFilter">add</button>
-            </div>
+      <form #fNewMACAddress="ngForm">
+        <div class="flexible">
+          <div class="half-row">
+            <span i18n="@@addnewmacaddress">Add new MAC address</span>
+            <input type="text" required minlength="8" maxlength="17" name="macAddress" [(ngModel)]="newMACAddress"
+              [disabled]="!macFilter" />
+            <button class="m-t-25" (click)="addMACAddress(fNewMACAddress)" i18n="@@savemacaddress"
+              [disabled]="!macFilter">add</button>
           </div>
-        </form>
-        <div class="overall alert" *ngIf="msgMACListPatternError">
-          <div class="cv">
-            <span i18n="@@patternmacaddress">
-              MAC address pattern wrong, please type it again.
-              Accepted characters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, :, -
-            </span>
-            <div class="row m-t-10">
-              <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
-                close
-              </button>
-            </div>
+        </div>
+      </form>
+      <div class="overall alert" *ngIf="msgMACListPatternError">
+        <div class="cv">
+          <span i18n="@@patternmacaddress">
+            MAC address pattern wrong, please type it again.
+            Accepted characters: 0 - 9, A - F, :, -
+          </span>
+          <div class="row m-t-10">
+            <button (click)="closeMACAddressError()" i18n="@@closemacaddresspatern">
+              close
+            </button>
           </div>
         </div>
       </div>
@@ -123,9 +123,23 @@
           </p>
         </div>
         <div class="row m-t-10" *ngFor="let item of macList">
-          <span class="click" (click)="removeMACAddress(item)" *ngIf="item !== ''" title="remove">
+          <span class="click" (click)="confirmRemoveMACAddress(item)" *ngIf="item !== ''" title="remove">
             <img class="inlineicon" src="assets/svg/times.svg">{{item}}
           </span>
+        </div>
+        <div class="overall alert" *ngIf="removeMACAddressConfirmation">
+          <div class="cv">
+            <span i18n="@@confirmremovemacaddress">Are you sure that you want to remove the MAC address -
+              {{macAddressToDelete}} ?</span>
+            <div class="row m-t-10">
+              <button (click)="confirmRemoveMACAddress()" i18n="@@closeerrorbutton">
+                close
+              </button>
+              <button (click)="removeMACAddress()" class="m-l-10" i18n="@@deltemacaddressbutton">
+                delete
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

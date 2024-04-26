@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
-import { NgForm } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
@@ -8,7 +8,7 @@ import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
-import { type } from 'os';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-radio-config',
@@ -33,42 +33,51 @@ export class RadioConfigComponent implements OnInit {
   loading = true
   modeSwitch: boolean
   gpsMessage: any
-  realValue: number;
-  freqmin = 500;
-  freqmax = 30000;
-  min = 500000;
-  max = 300000000;
-  shuttingDown = false;
-  restarting = false;
-  shuttingDownNow = false;
-  rebootingDownNow = false;
+  realValue: number
+  freqmin = 500
+  freqmax = 30000
+  min = 500000
+  max = 300000000
+  shuttingDown = false
+  restarting = false
+  shuttingDownNow = false
+  rebootingDownNow = false
   alertBrowserXP: Boolean = false
-  loginForm = false;
+  loginForm = false
   refthreshold: any
   power: any
-  realfreq: any;
-  led: any;
-  ptt: any;
-  frek: number;
+  realfreq: any
+  led: any
+  ptt: any
+  p0_frek: number
+  p1_frek: number
   serial: string
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
   sosEmergency: boolean = false
-  confirmChangeProtection: boolean = false;
+  confirmChangeProtection: boolean = false
+  toggleProfile: number = 1
+  voiceModeSwitch: boolean
+  dataModeProfileID: number = 0
+  voiceModeProfileID: number = 1
+  timeoutStatus: number = 0
+  timeoutDefault: number = 600
+  formatedTimeout: number = 0
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
     private apiService: ApiService,
     private sharedService: SharedService,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private router: Router
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   get value(): number {
-    this.realValue = this.radio.freq;
+    this.realValue = this.radio.p1_freq;
     return this.realValue;
   }
 
@@ -86,7 +95,7 @@ export class RadioConfigComponent implements OnInit {
 
   changePtt() {
     this.loading = true
-    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF').subscribe(
+    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe(
       (res: any) => {
 
         this.radio.tx = res == 'ON' ? true : false
@@ -111,7 +120,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   public pttOn(f) {
-    this.radioService.setRadioPTT(f).subscribe(
+    this.radioService.setRadioPTT(f, this.dataModeProfileID).subscribe(
       (res: any) => {
         this.radio.ptt = res;
         this.radio.tx = true;
@@ -140,13 +149,19 @@ export class RadioConfigComponent implements OnInit {
     this.alterFreq = this.alterFreq ? false : true
   }
 
-  changeFrequency(f: NgForm) {
+  changeFrequency(f: NgForm, radioProfile: number) {
     this.loading = true
     const realfreq = f.value.frek * 1000;
     this.confirmSet = false
-    this.radioService.setRadioFreq(realfreq).subscribe(
+
+    this.radioService.setRadioFreq(realfreq, radioProfile).subscribe(
       (res: any) => {
-        this.radio.freq = this.utils.formatFrequency(res);
+        if (radioProfile == 0)
+          this.radio.p0_freq = this.utils.formatFrequency(res);
+
+        if (radioProfile == 1)
+          this.radio.p1_freq = this.utils.formatFrequency(res);
+
         this.loading = false
       }, (err) => {
         this.error = err;
@@ -156,9 +171,22 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeMode(event) {
-    this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB').subscribe(
+  changeMode(event, radioProfile: number) {
+
+    var mode = null
+
+    if (radioProfile == 0) {
+      this.modeSwitch = this.modeSwitch === true ? false : true
+      mode = this.modeSwitch
+
+    }
+
+    if (radioProfile == 1) {
+      this.voiceModeSwitch = this.voiceModeSwitch === true ? false : true;
+      mode = this.voiceModeSwitch
+    }
+
+    this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
       (res: any) => {
 
       }, (err) => {
@@ -189,15 +217,10 @@ export class RadioConfigComponent implements OnInit {
     this.loading = true
 
     if (f.value.refthreshold) {
-
-      var refthresholdString = f.value.refthreshold.toString()
-
-      if (refthresholdString.includes("."))
-        f.value.refthreshold = f.value.refthreshold * 10
-
+      f.value.refthreshold = f.value.refthreshold * 10
     }
 
-    this.radioService.setRadioRefThreshold(f.value.refthreshold).subscribe(
+    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.dataModeProfileID).subscribe(
       (res: any) => {
         this.radio.refthreshold = res / 10;
         this.refthreshold = res / 10
@@ -232,7 +255,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection().subscribe(
+    this.radioService.radioResetProtection(this.dataModeProfileID).subscribe(
       (res: any) => {
         if (res === 1) {
           this.radio.protection = false;
@@ -246,7 +269,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   async resetRadio() {
-    await this.radioService.radioRestoreDefaults().subscribe(
+    await this.radioService.radioRestoreDefaults(this.dataModeProfileID).subscribe(
       (res: any) => {
         this.reseting = false;
       },
@@ -284,7 +307,7 @@ export class RadioConfigComponent implements OnInit {
 
   testTone(f) {
     this.testtone = f;
-    this.radioService.setRadioTone(f).subscribe(
+    this.radioService.setRadioTone(f, this.dataModeProfileID).subscribe(
       (res: any) => {
         this.radio.testtone = res;
         this.toneOn = res === '0' ? false : true
@@ -296,15 +319,6 @@ export class RadioConfigComponent implements OnInit {
       }
     );
   }
-
-  // confirmShutDown() {
-  //   this.shuttingDown = true;
-  // }
-
-  // cancelShutDown() {
-  //   this.shuttingDown = false;
-  //   this.shuttingDownNow = false;
-  // }
 
   confirmReboot() {
     this.restarting = true;
@@ -324,11 +338,6 @@ export class RadioConfigComponent implements OnInit {
     this.shuttingDownNow = false;
   }
 
-  // shutDown() {
-  //   this.shuttingDownNow = true;
-  //   this.apiService.sysShutdown();
-  // }
-
   reboot() {
     this.rebootingDownNow = true;
     this.apiService.sysReboot();
@@ -336,7 +345,7 @@ export class RadioConfigComponent implements OnInit {
 
   getRadioStatus() {
     this.loading = true
-    this.radioService.getRadioStatus().subscribe(
+    this.radioService.getRadioStatus(this.voiceModeProfileID).subscribe(
       (res: any) => {
         this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;
@@ -369,17 +378,81 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  changeAnalogFrequency(f: NgForm) {
-    this.loading = true
-    const realfreq = f.value.analogFreq * 1000;
-    this.confirmSet = false
-    this.radioService.setRadioFreq(realfreq).subscribe(
+  changeProfile(event) {
+
+    if (this.radio.connetion)
+      return
+
+    this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
+    this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
       (res: any) => {
-        this.radio.freq = this.utils.formatFrequency(res);
-        this.loading = false
+
       }, (err) => {
         this.error = err;
         this.errorAlert = true;
+      }
+    );
+  }
+
+  reload() {
+    this.router.navigate(['/home']);
+  }
+
+  toggleTimeout() {
+
+    var newTimeout = 0
+
+    if (this.timeoutStatus == 0) {
+      this.timeoutStatus = 1 //toggle
+      newTimeout = this.timeoutDefault
+      this.formatedTimeout = this.timeoutDefault / 60
+    }
+    else if (this.timeoutStatus == 1) {
+      this.timeoutStatus = 0 //toggle
+      newTimeout = -1
+      this.formatedTimeout = 0
+    }
+
+    this.radioService.setTimeoutConfig(newTimeout).subscribe(
+      (res: any) => {
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+      }
+    );
+  }
+
+  getTimeoutConfig() {
+
+    this.radioService.getTimeoutConfig().subscribe(
+      (res: any) => {
+        if (res < 0) {
+          this.timeoutStatus = 0
+          this.formatedTimeout = 0
+          return
+        }
+
+        this.timeoutStatus = 1
+        this.formatedTimeout = res / 60
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
+      }
+    );
+
+  }
+
+  changeTimeout(f: NgForm) {
+
+    var newTimeout = f.value.timeout * 60
+
+    this.loading = true
+    this.radioService.setTimeoutConfig(newTimeout).subscribe(
+      (res: any) => {
+        this.loading = false
+      }, (err) => {
+        this.error = err
+        this.errorAlert = true
         this.loading = false
       }
     );
@@ -387,9 +460,12 @@ export class RadioConfigComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRadioStatus()
+    this.getTimeoutConfig()
     this.radio = this.sharedService.radioObj.value
-    this.modeSwitch = this.radio.mode == 'LSB' ? true : false;
-    this.frek = parseFloat(this.radio.freq) * 1000
+    this.voiceModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
+    this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
+    this.p0_frek = parseFloat(this.radio.p0_freq) * 1000
+    this.p1_frek = parseFloat(this.radio.p1_freq) * 1000
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }

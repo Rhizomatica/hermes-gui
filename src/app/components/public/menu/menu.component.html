@@ -7,11 +7,11 @@
   </b>
 </div>
 <div class="phonemenu">
-  <a routerLink="/home" i18n="@@radiophonymenu">
+  <a routerLink="/home" i18n="@@radiovoicemenu">
     <img title="home" src="assets/svg/house.svg">
     Home
   </a>
-  <a routerLink="/voice" i18n="@@voicemenu" *ngIf="radio.freq !== null">
+  <a routerLink="/voice" i18n="@@voicemenu" *ngIf="showVoiceMenuItem && radio.p1_freq">
     <img title="voice" src="assets/svg/walkie-talkie.svg">
     Voice
   </a>
@@ -68,8 +68,10 @@
 </div>
 <div class="overall alert" [hidden]="errorAlert==false">
   <div class="cv">
-    <span i18n="@@errorcustomerrormenu">There was an error on precessing your request <br /><br /></span>
-    <span>{{error}}</span>
+    <span i18n="@@errorcustomerrormenu">There was an error on precessing your request </span>
+    <div class="row m-t-10">
+      <span>{{error}}</span>
+    </div>
     <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
       close
     </button>
