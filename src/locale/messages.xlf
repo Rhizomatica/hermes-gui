@@ -498,7 +498,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationrx" datatype="html">
@@ -509,7 +509,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionlabelcard" datatype="html">
@@ -675,7 +675,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="radioprofilelabel" datatype="html">
-        <source>Radio profile <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1&quot;&gt;"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <source>Radio profile <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1 &amp;&amp; radio.timeout &gt; 0&quot;&gt;"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">240,242</context>
@@ -693,20 +693,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">250,252</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="timeoutstatuslabel" datatype="html">
-        <source>Timeout (<x id="INTERPOLATION" equiv-text="{{timeoutStatus == false ? &apos;OFF&apos; : &apos;ON&apos;}}"/>) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;&apos;hinttimeoutconfig&apos;&quot; class=&quot;float-right&quot;&gt;"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">260,262</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="changetimeout" datatype="html">
-        <source> change timeout </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">276,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seriallabel" datatype="html">
@@ -2338,42 +2324,42 @@
         <source> Voice timeout: <x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">36,38</context>
+          <context context-type="linenumber">37,39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="timeoutrestarttiplabel" datatype="html">
         <source> Touch to restart the timeout </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">41,43</context>
+          <context context-type="linenumber">42,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="powervoice" datatype="html">
         <source> Power </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">49,51</context>
+          <context context-type="linenumber">51,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stepvoice" datatype="html">
         <source>step</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionvoice" datatype="html">
         <source> Protection </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">81,83</context>
+          <context context-type="linenumber">83,85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="878de3ad44e634ecaf219427d948689bd975e1af" datatype="html">
         <source>reset</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <note priority="1" from="description">@resetprotectionvoice</note>
       </trans-unit>
@@ -2381,21 +2367,21 @@
         <source> Voice Mode </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">90,92</context>
+          <context context-type="linenumber">92,94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="websocketerror" datatype="html">
         <source>There was an error on processing your request </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="updatevoicepage" datatype="html">
         <source>reload page</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmshutdowncomponent" datatype="html">

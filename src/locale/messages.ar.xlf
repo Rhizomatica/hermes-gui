@@ -551,7 +551,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationrx" datatype="html">
@@ -563,7 +563,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionlabelcard" datatype="html">
@@ -718,7 +718,7 @@ UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprofilelabel" datatype="html">
-        <source>Radio profile <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1&quot;>"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
+        <source>Radio profile <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1 &amp;&amp; radio.timeout > 0&quot;>"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
         <target state="new">Radio profile</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -739,22 +739,6 @@ UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">250</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="timeoutstatuslabel" datatype="html">
-        <source>Timeout (<x id="INTERPOLATION" equiv-text="{{timeoutStatus == false ? 'OFF' : 'ON'}}"/>) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'hinttimeoutconfig'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></source>
-        <target state="new">Timeout (<x id="INTERPOLATION" equiv-text="{{timeoutStatus == false ? 'OFF' : 'ON'}}"/>) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'hinttimeoutconfig'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">260,262</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="changetimeout" datatype="html">
-        <source> change timeout </source>
-        <target state="new"> change timeout </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">276,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changevoicefrequency" datatype="html">
@@ -815,7 +799,7 @@ UNLESS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <note priority="1" from="description">@resetprotectionvoice</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="resettodefault" datatype="html">
@@ -2756,7 +2740,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="timeoutrestarttiplabel" datatype="html">
@@ -2764,7 +2748,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new"> Click to restart timeout... </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="powervoice" datatype="html">
@@ -2772,7 +2756,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new"> Power </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stepvoice" datatype="html">
@@ -2780,7 +2764,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new">step</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionvoice" datatype="html">
@@ -2788,7 +2772,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new"> Protection </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="modevoice" datatype="html">
@@ -2796,7 +2780,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new"> Mode </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">92</context>
         </context-group>
       </trans-unit>
       <trans-unit id="websocketerror" datatype="html">
@@ -2804,7 +2788,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new">There was an error on processing your request </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="updatevoicepage" datatype="html">
@@ -2812,7 +2796,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
         <target state="new">reload page</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmshutdowncomponent" datatype="html">
