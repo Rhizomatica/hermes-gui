@@ -1,0 +1,29 @@
+<loading [loading]="loading"></loading>
+<div class="flexible m-t-25">
+    <h2 i18n="@@gpsgeolocation">GPS Geolocation</h2>
+    <hint [showHint]="false" [hint]="'gpshint'"></hint>
+</div>
+<div class="row">
+    <p>Stored geolocation files</p>
+</div>
+<hr />
+<div *ngIf="currentUser.admin" class="m-t-25">
+    <div class="row" *ngIf="files">
+        <div class="m-t-10" *ngFor="let file of files">
+            <p (click)="dowloadFile(file)">
+                <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">
+                {{file}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!files">
+        <p i18n="@@emptyfileslist">
+            There are no stored geolocation files
+        </p>
+    </div>
+</div>
+<div *ngIf="!currentUser.admin">
+    <span i18n="@@needtobeadmin">
+        Need to be an admin to access this
+    </span>
+</div>
