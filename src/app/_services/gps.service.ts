@@ -69,6 +69,16 @@ export class GPSService {
       }),
       catchError(this.handleError));
   }  
+
+  public toggleGPS(status): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/status/${status}`;
+    return this.http.post(url, null).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }  
+  
   
   private handleError(error: HttpErrorResponse) {
     return throwError(error);

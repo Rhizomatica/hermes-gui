@@ -26,8 +26,9 @@ export class GPSComponent implements OnInit, OnDestroy {
   files: string[]
   url = GlobalConstants.apiURL
   delay: number = 120
-  dump: number = 600
+  dump: number = 3600
   currentCoordinates: string = "21.0420223,105.8212841"
+  status: boolean = true
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -41,10 +42,13 @@ export class GPSComponent implements OnInit, OnDestroy {
 
 
   getGPSFiles(): void {
+    this.loading = true
     this.gpsService.getStoredGPSFiles().subscribe(
       (res: any) => {
         if (res && res.message)
           this.files = res.message
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -54,10 +58,13 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   getCurrentCoordinates() {
+    this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
         if (res && res.message)
           this.currentCoordinates = res.message
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -94,6 +101,27 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   updateGPSFileDumpTime(f: NgForm) {
     this.gpsService.updateGPSFileDumpTime(f.value.dump).subscribe(
+      (res: any) => {
+        if (res && res.message)
+          this.delay = res.message
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  toggleGPS(f: NgForm) {
+
+    if(this.status){
+      this.status = false
+    }
+    else if(!this.status){
+      this.status = true
+    }
+
+    this.gpsService.toggleGPS(this.status).subscribe(
       (res: any) => {
         if (res && res.message)
           this.delay = res.message

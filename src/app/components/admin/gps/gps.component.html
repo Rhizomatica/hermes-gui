@@ -13,8 +13,7 @@
 <div class="m-t-25">
     <div class="flexible">
         <div class="half-row" *ngIf="files">
-            <p i18n="@@geolocationfilestitle">Stored geolocation files</p>
-            <hr />
+            <span i18n="@@geolocationfilestitle">Stored geolocation files</span>
             <div class="m-t-25" *ngFor="let file of files">
                 <p (click)="dowloadFile(file)">
                     <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">
@@ -30,25 +29,37 @@
 
         <div class="flex-right half-row">
             <div class="row">
-                <p i18n="@@gpsconfigurationstitle">GPS configurations</p>
-                <hr />
+                <form #formToggleGPS="ngForm" class="formdata">
+                    <span i18n="@@gpsmanagement">GPS management</span>
+                    <div class="float-right flex-right" *ngIf="admin">
+                        <span>ON</span>
+                        <div class="switch">
+                            <input type="checkbox" name="status" [checked]="status">
+                            <span class="slider round-uc one-color" (click)="toggleGPS(formToggleGPS)"></span>
+                        </div>
+                        <span>OFF</span>
+                    </div>
+                    <div class="float-right flex-right" *ngIf="!admin">
+                        {{status == true ? 'ON' : 'OFF'}}
+                    </div>
+                </form>
                 <div class="row m-t-25">
-                    <form #formDelayGps="ngForm" class="formdata field">
+                    <form #formDelayGps="ngForm" class="formdata">
                         <span i18n="@@recorddelay">Record delay</span> (sec)
                         <div class="flexible m-t-10">
-                            <input type="number" name="delay" class="midbt" [(ngModel)]="delay" [disabled]="!admin"
-                                [min]="1" [max]="120" />
+                            <input type="number" name="delay" [(ngModel)]="delay" [disabled]="!admin" [min]="1"
+                                [max]="120" />
                             <button (click)="updateGPSDelay(formDelayGps)" i18n="@@update"
                                 [disabled]="!admin">update</button>
                         </div>
                     </form>
                 </div>
-                <div class="row">
-                    <form #formFileDumpTime="ngForm" class="formdata field">
+                <div class="row m-t-25">
+                    <form #formFileDumpTime="ngForm" class="formdata">
                         <span i18n="@@filedumptime">File dump time</span> (sec)
                         <div class="flexible m-t-10">
-                            <input type="number" name="dump" class="midbt" [(ngModel)]="dump" [disabled]="!admin"
-                                [min]="600" [max]="3600" />
+                            <input type="number" name="dump" [(ngModel)]="dump" [disabled]="!admin" [min]="600"
+                                [max]="3600" />
                             <button (click)="updateGPSFileDumpTime(formFileDumpTime)" i18n="@@update"
                                 [disabled]="!admin">update</button>
                         </div>
