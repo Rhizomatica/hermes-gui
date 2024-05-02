@@ -3,23 +3,41 @@
     <h2 i18n="@@gpsgeolocation">GPS Geolocation</h2>
     <hint [showHint]="false" [hint]="'gpshint'"></hint>
 </div>
-<div class="row">
-    <p>Stored geolocation files</p>
-</div>
-<hr />
 <div *ngIf="currentUser.admin" class="m-t-25">
-    <div class="row" *ngIf="files">
-        <div class="m-t-10" *ngFor="let file of files">
-            <p (click)="dowloadFile(file)">
-                <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">
-                {{file}}
-            </p>
+    <div class="flexible">
+        <div class="half-row" *ngIf="files">
+            <p i18n="@@geolocationfilestitle">Stored geolocation files</p>
+            <hr />
+            <div class="m-t-25" *ngFor="let file of files">
+                <p (click)="dowloadFile(file)">
+                    <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">
+                    {{file}}
+                </p>
+            </div>
+            <div class="m-t-10" *ngIf="!files">
+                <p i18n="@@emptyfileslist">
+                    There are no stored geolocation files
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="row" *ngIf="!files">
-        <p i18n="@@emptyfileslist">
-            There are no stored geolocation files
-        </p>
+
+        <div class="flex-right half-row">
+            <div class="row">
+                <p i18n="@@gpsconfigurationstitle">GPS configurations</p>
+                <hr />
+                <div class="row m-t-25">
+                    <form #formDelayGps="ngForm">
+                        <span i18n="@@gpsrecorddelay">GPS record delay</span>
+                        <div class="flexible m-t-10">
+                            <input type="number" name="delay" class="midbt" [(ngModel)]="delay"
+                                [disabled]="!currentUser.admin" maxlength="1" [min]="1" [max]="120" />
+                            <button class="midbt" (click)="updateGPSDelay(formDelayGps)" i18n="@@update"
+                                [disabled]="!currentUser.admin">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div *ngIf="!currentUser.admin">
