@@ -19,18 +19,24 @@ export interface LogList {
 export class GPSComponent implements OnInit, OnDestroy {
 
   currentUser: User
+  admin: boolean = false
   error = Error
   errorAlert = false
   loading = false
   files: string[]
   url = GlobalConstants.apiURL
-  delay: number = 1
+  delay: number = 120
   dump: number = 600
+  currentCoordinates: string = "21.0420223,105.8212841"
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(x => {
+      this.currentUser = x
+      if (this.currentUser)
+        this.admin = this.currentUser.admin
+    });
   }
 
 
@@ -47,7 +53,20 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  dowloadFile(file){
+  getCurrentCoordinates() {
+    this.gpsService.getCurrentCoordinates().subscribe(
+      (res: any) => {
+        if (res && res.message)
+          this.currentCoordinates = res.message
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  dowloadFile(file) {
     this.gpsService.getStoredGPSFileByName(file).subscribe(
       (res: any) => {
         if (res && res.message)
@@ -60,7 +79,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateGPSDelay(f: NgForm){
+  updateGPSDelay(f: NgForm) {
     this.gpsService.updateGPSDelay(f.value.delay).subscribe(
       (res: any) => {
         if (res && res.message)
@@ -73,7 +92,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateGPSFileDumpTime(f: NgForm){
+  updateGPSFileDumpTime(f: NgForm) {
     this.gpsService.updateGPSFileDumpTime(f.value.dump).subscribe(
       (res: any) => {
         if (res && res.message)
@@ -85,9 +104,10 @@ export class GPSComponent implements OnInit, OnDestroy {
       }
     );
   }
-  
+
   ngOnInit(): void {
     this.getGPSFiles()
+    this.getCurrentCoordinates()
   }
 
   ngOnDestroy() {

@@ -1,9 +1,16 @@
 <loading [loading]="loading"></loading>
-<div class="flexible m-t-25">
+<div class="flexible">
     <h2 i18n="@@gpsgeolocation">GPS Geolocation</h2>
     <hint [showHint]="false" [hint]="'gpshint'"></hint>
 </div>
-<div *ngIf="currentUser.admin" class="m-t-25">
+<div class="row m-t-10">
+    <p class="location">
+        <span i18n="@@currentcoordinates">Current coordinates</span>
+        <br />
+        {{currentCoordinates}}
+    </p>
+</div>
+<div class="m-t-25">
     <div class="flexible">
         <div class="half-row" *ngIf="files">
             <p i18n="@@geolocationfilestitle">Stored geolocation files</p>
@@ -26,33 +33,28 @@
                 <p i18n="@@gpsconfigurationstitle">GPS configurations</p>
                 <hr />
                 <div class="row m-t-25">
-                    <form #formDelayGps="ngForm">
+                    <form #formDelayGps="ngForm" class="formdata field">
                         <span i18n="@@recorddelay">Record delay</span> (sec)
                         <div class="flexible m-t-10">
-                            <input type="number" name="delay" class="midbt" [(ngModel)]="delay"
-                                [disabled]="!currentUser.admin" [min]="1" [max]="120" />
-                            <button class="midbt" (click)="updateGPSDelay(formDelayGps)" i18n="@@update"
-                                [disabled]="!currentUser.admin">update</button>
+                            <input type="number" name="delay" class="midbt" [(ngModel)]="delay" [disabled]="!admin"
+                                [min]="1" [max]="120" />
+                            <button (click)="updateGPSDelay(formDelayGps)" i18n="@@update"
+                                [disabled]="!admin">update</button>
                         </div>
                     </form>
                 </div>
-                <div class="row m-t-25">
-                    <form #formFileDumpTime="ngForm">
+                <div class="row">
+                    <form #formFileDumpTime="ngForm" class="formdata field">
                         <span i18n="@@filedumptime">File dump time</span> (sec)
                         <div class="flexible m-t-10">
-                            <input type="number" name="dump" class="midbt" [(ngModel)]="dump"
-                                [disabled]="!currentUser.admin" [min]="600" [max]="3600" />
-                            <button class="midbt" (click)="updateGPSFileDumpTime(formFileDumpTime)" i18n="@@update"
-                                [disabled]="!currentUser.admin">update</button>
+                            <input type="number" name="dump" class="midbt" [(ngModel)]="dump" [disabled]="!admin"
+                                [min]="600" [max]="3600" />
+                            <button (click)="updateGPSFileDumpTime(formFileDumpTime)" i18n="@@update"
+                                [disabled]="!admin">update</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div *ngIf="!currentUser.admin">
-    <span i18n="@@needtobeadmin">
-        Need to be an admin to access this
-    </span>
 </div>

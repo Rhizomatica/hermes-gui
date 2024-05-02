@@ -1606,7 +1606,7 @@ tr:nth-child(odd) {
     }
   }
 
-  .card.voice.disabled{
+  .card.voice.disabled {
     background-color: transparent;
     border: solid 1.5px @bkclr;
     background-color: @mclr;
@@ -1694,6 +1694,10 @@ tr:nth-child(odd) {
     padding: 1em;
     width: 97%;
     margin-bottom: 0.5em;
+  }
+
+  .location {
+    background-color: @mclr;
   }
 }
 
@@ -1841,7 +1845,7 @@ tr:nth-child(odd) {
   color: @bkclr;
 }
 
-.card.voice.disabled{
+.card.voice.disabled {
   background-color: transparent;
   border: solid 1.5px #000;
   background-color: @bkclr;
@@ -2212,6 +2216,16 @@ video {
   cursor: pointer;
 }
 
+.location {
+  text-align: center;
+  font-size: 1.5em;
+  border: 3px solid @clr;
+  border-radius: 5px;
+  padding: 25px;
+  color: @clr;
+  background-color: #fff;
+}
+
 
 @media (max-width: 800px) and (min-width: 700px) {
 
@@ -2471,13 +2485,13 @@ video {
     }
   }
 
-  
+
   #radioconf {
     .card {
       line-height: 1.3em;
       width: 48%;
       height: 7em;
-  
+
       small {
         font-size: 0.8em;
       }
