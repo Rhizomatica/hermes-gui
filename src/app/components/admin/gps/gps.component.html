@@ -27,11 +27,22 @@
                 <hr />
                 <div class="row m-t-25">
                     <form #formDelayGps="ngForm">
-                        <span i18n="@@gpsrecorddelay">GPS record delay</span>
+                        <span i18n="@@recorddelay">Record delay</span> (sec)
                         <div class="flexible m-t-10">
                             <input type="number" name="delay" class="midbt" [(ngModel)]="delay"
-                                [disabled]="!currentUser.admin" maxlength="1" [min]="1" [max]="120" />
+                                [disabled]="!currentUser.admin" [min]="1" [max]="120" />
                             <button class="midbt" (click)="updateGPSDelay(formDelayGps)" i18n="@@update"
+                                [disabled]="!currentUser.admin">update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row m-t-25">
+                    <form #formFileDumpTime="ngForm">
+                        <span i18n="@@filedumptime">File dump time</span> (sec)
+                        <div class="flexible m-t-10">
+                            <input type="number" name="dump" class="midbt" [(ngModel)]="dump"
+                                [disabled]="!currentUser.admin" [min]="600" [max]="3600" />
+                            <button class="midbt" (click)="updateGPSFileDumpTime(formFileDumpTime)" i18n="@@update"
                                 [disabled]="!currentUser.admin">update</button>
                         </div>
                     </form>

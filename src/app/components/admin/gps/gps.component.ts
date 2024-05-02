@@ -25,6 +25,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   files: string[]
   url = GlobalConstants.apiURL
   delay: number = 1
+  dump: number = 600
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -72,6 +73,19 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
+  updateGPSFileDumpTime(f: NgForm){
+    this.gpsService.updateGPSFileDumpTime(f.value.dump).subscribe(
+      (res: any) => {
+        if (res && res.message)
+          this.delay = res.message
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+  
   ngOnInit(): void {
     this.getGPSFiles()
   }
