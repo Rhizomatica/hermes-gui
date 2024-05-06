@@ -14,19 +14,20 @@
     <div class="flexible">
         <div class="half-row" *ngIf="files">
             <span i18n="@@geolocationfilestitle">Stored geolocation files</span>
-            <div class="m-t-25" *ngFor="let file of files">
-                <p (click)="dowloadFile(file)">
-                    <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">
-                    {{file}}
-                </p>
-            </div>
-            <div class="m-t-10" *ngIf="!files">
-                <p i18n="@@emptyfileslist">
-                    There are no stored geolocation files
-                </p>
+            <div class="gps-stored-files">
+                <div class="m-t-25" *ngFor="let file of files">
+                    <p (click)="dowloadFile(file)">
+                        <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">
+                        {{file}}
+                    </p>
+                </div>
+                <div class="m-t-10" *ngIf="!files">
+                    <p i18n="@@emptyfileslist">
+                        There are no stored geolocation files
+                    </p>
+                </div>
             </div>
         </div>
-
         <div class="flex-right half-row">
             <div class="row">
                 <form #formToggleGPS="ngForm" class="formdata">
