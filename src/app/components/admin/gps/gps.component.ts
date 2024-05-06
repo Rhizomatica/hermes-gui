@@ -25,8 +25,8 @@ export class GPSComponent implements OnInit, OnDestroy {
   loading = false
   files: string[]
   url = GlobalConstants.apiURL
-  delay: number = 120
-  dump: number = 3600
+  interval: number = 120
+  range: number = 3600
   currentCoordinates: string = "21.0420223,105.8212841"
   status: boolean = true
 
@@ -86,11 +86,11 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateGPSDelay(f: NgForm) {
-    this.gpsService.updateGPSDelay(f.value.delay).subscribe(
+  updateGPSInterval(f: NgForm) {
+    this.gpsService.updateGPSInterval(f.value.delay).subscribe(
       (res: any) => {
         if (res && res.message)
-          this.delay = res.message
+          this.interval = res.message
       },
       (err) => {
         this.error = err;
@@ -99,11 +99,11 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateGPSFileDumpTime(f: NgForm) {
-    this.gpsService.updateGPSFileDumpTime(f.value.dump).subscribe(
+  updateGPSFileRange(f: NgForm) {
+    this.gpsService.updateGPSFileRange(f.value.range).subscribe(
       (res: any) => {
         if (res && res.message)
-          this.delay = res.message
+          this.range = res.message
       },
       (err) => {
         this.error = err;
@@ -124,7 +124,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.toggleGPS(this.status).subscribe(
       (res: any) => {
         if (res && res.message)
-          this.delay = res.message
+          this.interval = res.message
       },
       (err) => {
         this.error = err;

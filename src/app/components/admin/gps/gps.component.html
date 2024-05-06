@@ -44,23 +44,23 @@
                     </div>
                 </form>
                 <div class="row m-t-25">
-                    <form #formDelayGps="ngForm" class="formdata">
-                        <span i18n="@@recorddelay">Record delay</span> (sec)
+                    <form #formGpsInterval="ngForm" class="formdata">
+                        <span i18n="@@captureinterval">Capture interval</span> (sec)
                         <div class="flexible m-t-10">
-                            <input type="number" name="delay" [(ngModel)]="delay" [disabled]="!admin" [min]="1"
+                            <input type="number" name="interval" [(ngModel)]="interval" [disabled]="!admin" [min]="1"
                                 [max]="120" />
-                            <button (click)="updateGPSDelay(formDelayGps)" i18n="@@update"
+                            <button (click)="updateGPSInterval(formGpsInterval)" i18n="@@update"
                                 [disabled]="!admin">update</button>
                         </div>
                     </form>
                 </div>
                 <div class="row m-t-25">
-                    <form #formFileDumpTime="ngForm" class="formdata">
-                        <span i18n="@@filedumptime">File dump time</span> (sec)
+                    <form #formFileRange="ngForm" class="formdata">
+                        <span i18n="@@capturefilerange">Capture file range</span> (sec)
                         <div class="flexible m-t-10">
-                            <input type="number" name="dump" [(ngModel)]="dump" [disabled]="!admin" [min]="600"
+                            <input type="number" name="range" [(ngModel)]="range" [disabled]="!admin" [min]="600"
                                 [max]="3600" />
-                            <button (click)="updateGPSFileDumpTime(formFileDumpTime)" i18n="@@update"
+                            <button (click)="updateGPSFileRange(formFileRange)" i18n="@@update"
                                 [disabled]="!admin">update</button>
                         </div>
                     </form>

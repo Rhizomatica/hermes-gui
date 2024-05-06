@@ -52,8 +52,8 @@ export class GPSService {
       catchError(this.handleError));
   }
 
-  public updateGPSDelay(seconds): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/geolocation/delay/${seconds}`;
+  public updateGPSInterval(seconds): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/interval/${seconds}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
@@ -61,8 +61,8 @@ export class GPSService {
       catchError(this.handleError));
   }  
 
-  public updateGPSFileDumpTime(seconds): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/geolocation/dump/${seconds}`;
+  public updateGPSFileRange(seconds): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/file/range/${seconds}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
