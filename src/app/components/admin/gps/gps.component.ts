@@ -27,7 +27,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   url = GlobalConstants.apiURL
   interval: number = 120
   range: number = 3600
-  currentCoordinates: string = "21.0420223,105.8212841"
+  currentCoordinates: string = "21.0420223, 105.8212841"
   status: boolean = true
 
   constructor(private authenticationService: AuthenticationService,
