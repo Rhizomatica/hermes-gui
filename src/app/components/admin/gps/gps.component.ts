@@ -133,6 +133,19 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
+  deleteAllStoredFiles(){
+    this.gpsService.deleteAllStoredFiles().subscribe(
+      (res: any) => {
+        if (res && res.message)
+          this.files = []
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.getGPSFiles()
     this.getCurrentCoordinates()

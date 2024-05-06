@@ -78,7 +78,15 @@ export class GPSService {
       }),
       catchError(this.handleError));
   }  
-  
+
+  public deleteAllStoredFiles(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/delete`;
+    return this.http.delete(url, null).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }    
   
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
