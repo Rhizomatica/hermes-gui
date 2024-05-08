@@ -24,11 +24,12 @@ export class GPSComponent implements OnInit, OnDestroy {
   errorAlert = false
   loading = false
   files: string[]
-  url = GlobalConstants.apiURL
+  // url = GlobalConstants.apiURL
   interval: number = 120
   range: number = 3600
   currentCoordinates: string = "21.0420223, 105.8212841"
   status: boolean = true
+  url:string = `${GlobalConstants.apiURL}/geolocation/file`
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -39,7 +40,6 @@ export class GPSComponent implements OnInit, OnDestroy {
         this.admin = this.currentUser.admin
     });
   }
-
 
   getGPSFiles(): void {
     this.loading = true
@@ -65,19 +65,6 @@ export class GPSComponent implements OnInit, OnDestroy {
           this.currentCoordinates = res.message
 
         this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-      }
-    );
-  }
-
-  dowloadFile(file) {
-    this.gpsService.getStoredGPSFileByName(file).subscribe(
-      (res: any) => {
-        if (res && res.message)
-          this.files = res.message
       },
       (err) => {
         this.error = err;
