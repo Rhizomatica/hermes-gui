@@ -29,7 +29,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   range: number = 3600
   currentCoordinates: string = "21.0420223, 105.8212841"
   status: boolean = true
-  url:string = `${GlobalConstants.apiURL}/geolocation/file`
+  url: string = `${GlobalConstants.apiURL}/geolocation/file`
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -74,10 +74,13 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   updateGPSInterval(f: NgForm) {
+    this.loading = true
     this.gpsService.updateGPSInterval(f.value.delay).subscribe(
       (res: any) => {
         if (res && res.message)
           this.interval = res.message
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -87,10 +90,13 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   updateGPSFileRange(f: NgForm) {
+    this.loading = true
     this.gpsService.updateGPSFileRange(f.value.range).subscribe(
       (res: any) => {
         if (res && res.message)
           this.range = res.message
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -101,10 +107,10 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   toggleGPS(f: NgForm) {
 
-    if(this.status){
+    if (this.status) {
       this.status = false
     }
-    else if(!this.status){
+    else if (!this.status) {
       this.status = true
     }
 
@@ -120,11 +126,12 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  deleteAllStoredFiles(){
+  deleteAllStoredFiles() {
+    this.loading = true
     this.gpsService.deleteAllStoredFiles().subscribe(
       (res: any) => {
-        if (res && res.message)
-          this.files = []
+        if (res)
+          this.getGPSFiles()
       },
       (err) => {
         this.error = err;

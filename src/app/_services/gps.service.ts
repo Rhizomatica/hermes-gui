@@ -72,7 +72,7 @@ export class GPSService {
 
   public deleteAllStoredFiles(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/delete`;
-    return this.http.delete(url, null).pipe(
+    return this.http.delete(url).pipe(
       map((res: any) => {
         return res;
       }),
