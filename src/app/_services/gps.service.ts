@@ -33,7 +33,6 @@ export class GPSService {
 
   public getCurrentCoordinates(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/coordinates`;
-    const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
         this.serverReturn = res;

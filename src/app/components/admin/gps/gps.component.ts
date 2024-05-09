@@ -77,9 +77,9 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   updateGPSInterval(f: NgForm) {
     this.loading = true
-    this.gpsService.updateGPSInterval(f.value.delay).subscribe(
+    this.gpsService.updateGPSInterval(f.value.interval).subscribe(
       (res: any) => {
-        if (res && res.message)
+        if (res)
           this.interval = res
 
         this.loading = false
@@ -95,7 +95,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.loading = true
     this.gpsService.updateGPSFileRange(f.value.range).subscribe(
       (res: any) => {
-        if (res && res.message)
+        if (res)
           this.range = res
 
         this.loading = false
@@ -118,8 +118,9 @@ export class GPSComponent implements OnInit, OnDestroy {
 
     this.gpsService.toggleGPS(this.status).subscribe(
       (res: any) => {
-        if (res && res.message)
-          this.status = res
+        if (res)
+          console.log(res)
+          // this.status = res
       },
       (err) => {
         this.error = err;
