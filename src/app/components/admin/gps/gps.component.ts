@@ -80,7 +80,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.updateGPSInterval(f.value.delay).subscribe(
       (res: any) => {
         if (res && res.message)
-          this.interval = res.message
+          this.interval = res
 
         this.loading = false
       },
@@ -96,7 +96,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.updateGPSFileRange(f.value.range).subscribe(
       (res: any) => {
         if (res && res.message)
-          this.range = res.message
+          this.range = res
 
         this.loading = false
       },
@@ -119,7 +119,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.toggleGPS(this.status).subscribe(
       (res: any) => {
         if (res && res.message)
-          this.interval = res.message
+          this.status = res
       },
       (err) => {
         this.error = err;
