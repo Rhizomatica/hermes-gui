@@ -24,10 +24,10 @@ export class GPSComponent implements OnInit, OnDestroy {
   errorAlert = false
   loading = false
   files: string[]
-  // url = GlobalConstants.apiURL
   interval: number = 120
   range: number = 3600
-  currentCoordinates: string = "21.0420223, 105.8212841"
+  currentLatitude: number = 21.0420223
+  currentLongitude: number = 105.8212841
   status: boolean = true
   url: string = `${GlobalConstants.apiURL}/geolocation/file`
 
@@ -61,8 +61,10 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
-        if (res && res.message)
-          this.currentCoordinates = res.message
+        if (res && res.message){
+          this.currentLatitude = res.latitude
+          this.currentLongitude = res.longitude
+        }
 
         this.loading = false
       },
