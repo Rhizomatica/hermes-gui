@@ -46,8 +46,8 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.loading = true
     this.gpsService.getStoredGPSFiles().subscribe(
       (res: any) => {
-        if (res && res.message)
-          this.files = res.message
+        if (res)
+          this.files = res
 
         this.loading = false
       },
@@ -78,7 +78,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
-        if (res && res.message) {
+        if (res) {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
         }
@@ -136,8 +136,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.toggleGPS(this.status).subscribe(
       (res: any) => {
         if (res)
-          console.log(res)
-        // this.status = res
+           this.status = res
       },
       (err) => {
         this.error = err;
