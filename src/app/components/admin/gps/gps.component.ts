@@ -26,9 +26,9 @@ export class GPSComponent implements OnInit, OnDestroy {
   files: string[]
   interval: number = 120
   range: number = 3600
-  currentLatitude: number = 21.0420223
-  currentLongitude: number = 105.8212841
-  status: boolean = true
+  currentLatitude: number = null
+  currentLongitude: number = null
+  status: boolean = false
   urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
   urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
 
@@ -58,11 +58,27 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
+  getGPSStatus(): void {
+    this.loading = true
+    this.gpsService.getGPSStatus().subscribe(
+      (res: any) => {
+        if (res)
+          this.status = res.status
+
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   getCurrentCoordinates() {
     this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
-        if (res && res.message){
+        if (res && res.message) {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
         }
@@ -121,7 +137,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       (res: any) => {
         if (res)
           console.log(res)
-          // this.status = res
+        // this.status = res
       },
       (err) => {
         this.error = err;
@@ -146,6 +162,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getGPSFiles()
+    this.getGPSStatus()
     this.getCurrentCoordinates()
   }
 

@@ -24,8 +24,7 @@ export class GPSService {
     const output = this.http.get(url);
     return this.http.get(url).pipe(
       map((res: any) => {
-        this.serverReturn = res;
-        return this.serverReturn;
+        return res;
       }),
       catchError(this.handleError)
     )
@@ -35,8 +34,17 @@ export class GPSService {
     const url = `${GlobalConstants.apiURL}/geolocation/coordinates`;
     return this.http.get(url).pipe(
       map((res: any) => {
-        this.serverReturn = res;
-        return this.serverReturn;
+        return res;
+      }),
+      catchError(this.handleError)
+    )
+  }
+
+  public getGPSStatus(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/status`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
       }),
       catchError(this.handleError)
     )
@@ -49,7 +57,7 @@ export class GPSService {
         return res;
       }),
       catchError(this.handleError));
-  }  
+  }
 
   public updateGPSFileRange(seconds): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/file/range/${seconds}`;
@@ -58,7 +66,7 @@ export class GPSService {
         return res;
       }),
       catchError(this.handleError));
-  }  
+  }
 
   public toggleGPS(status): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/status/${status}`;
@@ -67,7 +75,7 @@ export class GPSService {
         return res;
       }),
       catchError(this.handleError));
-  }  
+  }
 
   public deleteAllStoredFiles(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/delete`;
@@ -76,8 +84,8 @@ export class GPSService {
         return res;
       }),
       catchError(this.handleError));
-  }    
-  
+  }
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }
