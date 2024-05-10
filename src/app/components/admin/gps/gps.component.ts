@@ -29,7 +29,8 @@ export class GPSComponent implements OnInit, OnDestroy {
   currentLatitude: number = 21.0420223
   currentLongitude: number = 105.8212841
   status: boolean = true
-  url: string = `${GlobalConstants.apiURL}/geolocation/file`
+  urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
+  urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
