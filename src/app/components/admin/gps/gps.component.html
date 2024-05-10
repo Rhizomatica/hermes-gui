@@ -18,7 +18,7 @@
                     <a href="{{urlDownloadFile}}/{{file}}">
                         <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">{{file}}</a>
                 </div>
-                <div class="m-t-10" *ngIf="!files">
+                <div class="m-t-10" *ngIf="!files || files.length == 0">
                     <p i18n="@@emptyfileslist">
                         There are no stored geolocation files
                     </p>
@@ -34,12 +34,12 @@
                 <form #formToggleGPS="ngForm" class="formdata">
                     <span i18n="@@gpsmanagement">GPS management</span>
                     <div class="float-right flex-right" *ngIf="admin">
-                        <span>ON</span>
+                        <span>OFF</span>
                         <div class="switch">
                             <input type="checkbox" name="status" [checked]="status">
-                            <span class="slider round-uc one-color" (click)="toggleGPS(formToggleGPS)"></span>
+                            <span class="slider round-uc" (click)="toggleGPS(formToggleGPS)"></span>
                         </div>
-                        <span>OFF</span>
+                        <span>ON</span>
                     </div>
                     <div class="float-right flex-right" *ngIf="!admin">
                         {{status == true ? 'ON' : 'OFF'}}
