@@ -4,6 +4,9 @@ import { AuthenticationService } from '../../../_services/authentication.service
 import { GPSService } from '../../../_services/gps.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { NgForm } from '@angular/forms';
+import * as am5 from "@amcharts/amcharts5";
+import * as am5map from "@amcharts/amcharts5/map";
+import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh.js";
 
 export interface LogList {
   line: string;
@@ -159,10 +162,32 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
+
+  startMap() {
+    let root = am5.Root.new("chartmap");
+    let chart = root.container.children.push(
+      am5map.MapChart.new(root, {
+        projection: am5map.geoEqualEarth(),
+        panX: "rotateX",
+        panY: "rotateY"
+      })
+    );
+
+    let polygonSeries = chart.series.push(
+      am5map.MapPolygonSeries.new(root, {
+        geoJSON: am5geodata_bangladeshHigh
+      })
+    );
+
+    chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+  }
+
   ngOnInit(): void {
     this.getGPSFiles()
     this.getGPSStatus()
     this.getCurrentCoordinates()
+    this.startMap()
   }
 
   ngOnDestroy() {
