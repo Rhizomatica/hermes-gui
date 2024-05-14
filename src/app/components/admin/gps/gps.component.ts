@@ -7,7 +7,8 @@ import { NgForm } from '@angular/forms';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh.js";
-import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
+// import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated"
 
 export interface LogList {
   line: string;
@@ -86,14 +87,16 @@ export class GPSComponent implements OnInit, OnDestroy {
         if (res && res.latitude != null && res.longitude != null) {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
-          // this.pointSeries.set({
-          //   long: 90.289087,
-          //   lat: 21.620688,
-          //   name: "Current Location"
-          // })
 
-          this.startMap()
+          //TODO - Rever regra... (pulling inicializacao e atualizacao)
+          //update map
+          // this.pointSeries.pushDataItem({ latitude: 51.470020, longitude: -0.454296 });
 
+          this.pointSeries.data.setAll([{
+            lat: this.currentLatitude,
+            long: this.currentLongitude,
+            name: "Current Location"
+          }]);
         }
 
         this.loading = false
@@ -174,13 +177,20 @@ export class GPSComponent implements OnInit, OnDestroy {
 
 
   startMap() {
+
+    //Chart
     let root = am5.Root.new("chartmap");
     let chart = root.container.children.push(
       am5map.MapChart.new(root, {
         panX: "rotateX",
-        projection: am5map.geoMercator()
+        projection: am5map.geoMercator(),
+        focusable: true
       })
     );
+
+    root.setThemes([
+      am5themes_Animated.new(root)
+    ])
 
     //TODO - Style for zoomControl
     // chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
@@ -191,7 +201,25 @@ export class GPSComponent implements OnInit, OnDestroy {
       strokeWidth: 2.5
     }));
 
+    // chart.zoomToGeoPoint({
+    //   longitude: this.currentLongitude, latitude: this.currentLatitude
+    // }, 1.5, true);
 
+    //End chart
+
+    // Graticule Series
+    let graticuleSeries = chart.series.unshift(
+      am5map.GraticuleSeries.new(root, {
+        step: 1
+      })
+    );
+
+    graticuleSeries.mapLines.template.setAll({
+      stroke: am5.color(0x000000),
+      strokeOpacity: 0.1,
+    });
+
+    // PolygonSeries
     let polygonSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
         geoJSON: am5geodata_bangladeshHigh
@@ -210,44 +238,40 @@ export class GPSComponent implements OnInit, OnDestroy {
       fill: am5.color("#f60")
     });
 
+    // TODO - Zoom clicked item
+    // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/
+    // polygonSeries.mapPolygons.template.events.on("click", function(ev) {
+    //   polygonSeries.zoomToDataItem(ev.target.dataItem);
+    // });
+
+    //Point Series
     this.pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {
       latitudeField: "lat",
-      longitudeField: "long"
+      longitudeField: "long",
+      position: "absolute",
+      autoScale: true,
+      polygonIdField: "polygonId"
     }));
 
     this.pointSeries.bullets.push(function () {
       var circle = am5.Circle.new(root, {
         radius: 5,
         fill: am5.color("#f60"),
-        tooltipText: "{name}"
-      });
-
-      circle.events.on("click", function (ev) {
-        console.log("cliked on..")
-        // alert("Clicked on " + ev.target.dataItem.dataContext.name)
-
+        tooltipText: "{name}",
+        height: 50
       });
 
       return am5.Bullet.new(root, {
         sprite: circle
       });
     });
-
-    this.pointSeries.data.setAll([{
-      lat: 21.620688,
-      long: 90.289087,
-      name: "Ocean Test"
-    }, {
-      lat: this.currentLatitude,
-      long: this.currentLongitude,
-      name: "Current Location"
-    }]);
   }
 
   ngOnInit(): void {
     this.getGPSFiles()
     this.getGPSStatus()
     this.getCurrentCoordinates()
+    this.startMap()
   }
 
   ngOnDestroy() {
