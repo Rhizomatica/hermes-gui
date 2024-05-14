@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh.js";
+import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
 
 export interface LogList {
   line: string;
@@ -34,6 +35,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   status: boolean = false
   urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
   urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
+  pointSeries = null
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -81,9 +83,17 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
-        if (res) {
+        if (res && res.latitude != null && res.longitude != null) {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
+          // this.pointSeries.set({
+          //   long: 90.289087,
+          //   lat: 21.620688,
+          //   name: "Current Location"
+          // })
+
+          this.startMap()
+
         }
 
         this.loading = false
@@ -167,8 +177,8 @@ export class GPSComponent implements OnInit, OnDestroy {
     let root = am5.Root.new("chartmap");
     let chart = root.container.children.push(
       am5map.MapChart.new(root, {
-        projection: am5map.geoEqualEarth(),
-        panX: "rotateX"
+        panX: "rotateX",
+        projection: am5map.geoMercator()
       })
     );
 
@@ -191,15 +201,53 @@ export class GPSComponent implements OnInit, OnDestroy {
     polygonSeries.mapPolygons.template.setAll({
       stroke: am5.color("#90daee"),
       strokeWidth: 0.5,
-      fill: am5.color("#f5f3f3")
-    });    
+      fill: am5.color("#f5f3f3"),
+      tooltipText: "{name}",
+      interactive: true
+    });
+
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      fill: am5.color("#f60")
+    });
+
+    this.pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+      latitudeField: "lat",
+      longitudeField: "long"
+    }));
+
+    this.pointSeries.bullets.push(function () {
+      var circle = am5.Circle.new(root, {
+        radius: 5,
+        fill: am5.color("#f60"),
+        tooltipText: "{name}"
+      });
+
+      circle.events.on("click", function (ev) {
+        console.log("cliked on..")
+        // alert("Clicked on " + ev.target.dataItem.dataContext.name)
+
+      });
+
+      return am5.Bullet.new(root, {
+        sprite: circle
+      });
+    });
+
+    this.pointSeries.data.setAll([{
+      lat: 21.620688,
+      long: 90.289087,
+      name: "Ocean Test"
+    }, {
+      lat: this.currentLatitude,
+      long: this.currentLongitude,
+      name: "Current Location"
+    }]);
   }
 
   ngOnInit(): void {
     this.getGPSFiles()
     this.getGPSStatus()
     this.getCurrentCoordinates()
-    this.startMap()
   }
 
   ngOnDestroy() {
