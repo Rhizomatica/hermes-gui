@@ -172,14 +172,27 @@ export class GPSComponent implements OnInit, OnDestroy {
       })
     );
 
+    //TODO - Style for zoomControl
+    // chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+    chart.chartContainer.set("background", am5.Rectangle.new(root, {
+      fill: am5.color("#90daee"),
+      stroke: am5.color("#f60"),
+      strokeWidth: 2.5
+    }));
+
+
     let polygonSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
         geoJSON: am5geodata_bangladeshHigh
       })
     );
 
-    chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-
+    polygonSeries.mapPolygons.template.setAll({
+      stroke: am5.color("#90daee"),
+      strokeWidth: 0.5,
+      fill: am5.color("#f5f3f3")
+    });    
   }
 
   ngOnInit(): void {
