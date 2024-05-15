@@ -321,7 +321,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.getInterval()
     this.getFileRangeTime()
     this.getEmail()
-    this.getCurrentCoordinates()
+    this.getCurrentCoordinates() //10 em 10 sec
     this.startMap()
   }
 

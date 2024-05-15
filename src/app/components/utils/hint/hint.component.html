@@ -300,12 +300,14 @@
         the transmission finishes.
       </p>
     </div>
-    
+
     <div *ngIf="hint == 'hinttimeoutconfig'" i18n="@@hinttimeoutconfig">
       <h1 class="cv-title">Radio Timeout</h1>
       <p>
-        Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes.
-        With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite.
+        Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period
+        between 5 and 60 minutes.
+        With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the
+        configured timeout of inactivite.
       </p>
     </div>
 
@@ -503,11 +505,49 @@
     </div>
 
     <div *ngIf="hint == 'gpshint'" i18n="@@gpshint">
-      <h1 class="cv-title">Media Access Control (MAC)</h1>
+      <h1 class="cv-title"> Global Positioning System (GPS) </h1>
       <p>
-        Global Positioning System
+        Here you can track your current location using the map or consulting the latitude and longitude and if you need
+        you can export your tracking location data.
+      </p>
+      <p class="m-t-10">
+        Manage the geolocation storing options: Status (ON/OFF), Interval, file range and email
+      </p>
+      <p class="m-t-10">
+        *Note: delete the stored files for periodically and keep your radio hard drive with free space
       </p>
     </div>
+
+    <div *ngIf="hint == 'gpsstoredfileshint'" i18n="@@gpsstoredfileshint">
+      <h1 class="cv-title">Stored geolocation files</h1>
+      <p>
+        Download the stored gps files and import your GPS location data to another GIS Mapping Software.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'gpsintervalhint'" i18n="@@gpsintervalhint">
+      <h1 class="cv-title">Capture interval</h1>
+      <p>
+        Configure the interval time for capturing and storing your location.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'gpsfilerangehint'" i18n="@@gpsfilerangehint">
+      <h1 class="cv-title">Capture file range</h1>
+      <p>
+        Configure the file range rule to define how large you want your (.CSV) files. 
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'gpsemail'" i18n="@@gpsemail">
+      <h1 class="cv-title">GPS Email</h1>
+      <p>
+        Configure the desired email to send your tracking stored location files. 
+      </p>
+    </div>
+    
+
+
 
     <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
       close

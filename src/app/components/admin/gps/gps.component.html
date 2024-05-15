@@ -15,7 +15,9 @@
 <div class="m-t-25">
     <div class="flexible">
         <div class="half-row" *ngIf="files">
-            <span i18n="@@geolocationfilestitle">Stored geolocation files</span>
+            <span i18n="@@geolocationfilestitle">Stored geolocation files
+                <hint [showHint]="false" [hint]="'gpsstoredfileshint'"></hint>
+            </span>
             <div class="gps-stored-files">
                 <div class="m-t-25" *ngFor="let file of files">
                     <a href="{{urlDownloadFile}}/{{file}}">
@@ -50,7 +52,9 @@
                 </form>
                 <div class="row m-t-25">
                     <form #formGpsInterval="ngForm" class="formdata">
-                        <span i18n="@@captureinterval">Capture interval</span> (sec)
+                        <span i18n="@@captureinterval">Capture interval (seconds)
+                            <hint [showHint]="false" [hint]="'gpsintervalhint'" class="float-right"></hint>
+                        </span>
                         <div class="flexible m-t-10">
                             <input type="number" name="interval" [(ngModel)]="interval" [disabled]="!admin" [min]="1"
                                 [max]="180" />
@@ -61,7 +65,9 @@
                 </div>
                 <div class="row m-t-25">
                     <form #formFileRange="ngForm" class="formdata">
-                        <span i18n="@@capturefilerange">Capture file range</span> (sec)
+                        <span i18n="@@capturefilerange">Capture file range (sec)
+                            <hint [showHint]="false" [hint]="'gpsfilerangehint'" class="float-right"></hint>
+                        </span>
                         <div class="flexible m-t-10">
                             <input type="number" name="range" [(ngModel)]="range" [disabled]="!admin" [min]="240"
                                 [max]="86400" />
@@ -70,9 +76,11 @@
                         </div>
                     </form>
                 </div>
-                <div class="row m-t-25">
+                <div class="row m-t-25 m-b-10">
                     <form #formGPSemail="ngForm" class="formdata">
-                        <span i18n="@@email">Email</span> (sec)
+                        <span i18n="@@email">Email
+                            <hint [showHint]="false" [hint]="'gpsemail'" class="float-right"></hint>
+                        </span>
                         <div class="flexible m-t-10">
                             <input type="email" name="email" [(ngModel)]="email" [disabled]="!admin" />
                             <button (click)="updateGPSEmail(formGPSemail)" i18n="@@update"
