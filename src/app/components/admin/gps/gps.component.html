@@ -70,6 +70,16 @@
                         </div>
                     </form>
                 </div>
+                <div class="row m-t-25">
+                    <form #formGPSemail="ngForm" class="formdata">
+                        <span i18n="@@email">Email</span> (sec)
+                        <div class="flexible m-t-10">
+                            <input type="email" name="email" [(ngModel)]="email" [disabled]="!admin" />
+                            <button (click)="updateGPSEmail(formGPSemail)" i18n="@@update"
+                                [disabled]="!admin">update</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

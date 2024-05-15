@@ -8,7 +8,6 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh.js";
 // import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
-import am5themes_Animated from "@amcharts/amcharts5/themes/Animated"
 
 export interface LogList {
   line: string;
@@ -31,6 +30,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   files: string[]
   interval: number = 120
   range: number = 3600
+  email: string = null
   currentLatitude: number = null
   currentLongitude: number = null
   status: boolean = false
@@ -80,7 +80,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  getInterval(){
+  getInterval() {
     this.loading = true
     this.gpsService.getInterval().subscribe(
       (res: any) => {
@@ -96,13 +96,29 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  getFileRangeTime(){
+  getFileRangeTime() {
     this.loading = true
     this.gpsService.getFileRangeTime().subscribe(
       (res: any) => {
         if (res)
           this.range = res
 
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  getEmail() {
+    this.loading = true
+    this.gpsService.getEmail().subscribe(
+      (res: any) => {
+        if (res)
+          this.email = res
+        
         this.loading = false
       },
       (err) => {
@@ -150,11 +166,6 @@ export class GPSComponent implements OnInit, OnDestroy {
         focusable: true
       })
     );
-
-    //Remover...
-    root.setThemes([
-      am5themes_Animated.new(root)
-    ])
 
     //TODO - Style for zoomControl
     // chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
@@ -256,6 +267,19 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
+  updateGPSEmail(f: NgForm) {
+    this.loading = true
+    this.gpsService.updateGPSEmail(f.value.email).subscribe(
+      (res: any) => {
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   toggleGPS(f: NgForm) {
 
     if (this.status) {
@@ -296,6 +320,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.getGPSStatus()
     this.getInterval()
     this.getFileRangeTime()
+    this.getEmail()
     this.getCurrentCoordinates()
     this.startMap()
   }

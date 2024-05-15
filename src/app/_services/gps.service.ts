@@ -70,6 +70,16 @@ export class GPSService {
     )
   }
 
+  public getEmail(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/email`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError)
+    )
+  }
+
   public updateGPSInterval(seconds): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/interval/${seconds}`;
     return this.http.post(url, null).pipe(
@@ -81,6 +91,15 @@ export class GPSService {
 
   public updateFileRangeTime(seconds): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/filetime/${seconds}`;
+    return this.http.post(url, null).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  public updateGPSEmail(email): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/email/${email}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;
