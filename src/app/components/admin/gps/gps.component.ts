@@ -69,7 +69,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.getGPSStatus().subscribe(
       (res: any) => {
         if (res)
-          this.status = res.status
+          this.status = res
 
         this.loading = false
       },
