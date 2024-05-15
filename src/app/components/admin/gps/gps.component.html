@@ -4,9 +4,12 @@
     <hint [showHint]="false" [hint]="'gpshint'"></hint>
 </div>
 <div class="row m-t-10">
-    <p class="location">
+    <p class="location" *ngIf="currentLatitude && currentLongitude" >
         <span i18n="@@latitude">Latitude:</span> {{currentLatitude}},
         <span i18n="@@longitude">Longitude:</span> {{currentLongitude}}
+    </p>
+    <p class="location" *ngIf="!currentLatitude && !currentLongitude" i18n="@@unavailablecurrentlocation">
+        Unavailable current location
     </p>
 </div>
 <div class="row">
