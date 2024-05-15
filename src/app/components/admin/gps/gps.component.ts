@@ -7,12 +7,9 @@ import { NgForm } from '@angular/forms';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh.js";
-// import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
+import { Subscription, interval } from 'rxjs';
 
-export interface LogList {
-  line: string;
-  content: string;
-}
+// import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
 
 @Component({
   selector: 'gps',
@@ -38,6 +35,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
   pointSeries = null
   deleteConfirmation = false
+  poolCoordinates: Subscription
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -150,6 +148,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.error = err;
+        this.loading = false
       }
     );
   }
@@ -330,13 +329,18 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.getInterval()
     this.getFileRangeTime()
     this.getEmail()
-    this.getCurrentCoordinates() //10 em 10 sec
+    this.getCurrentCoordinates() //First call
+
+    //Pool current coordinates
+    this.poolCoordinates = interval(10000).subscribe((val) => {
+      this.getCurrentCoordinates()
+    });
+
     this.startMap()
   }
 
   ngOnDestroy() {
+    if (this.poolCoordinates)
+      this.poolCoordinates.unsubscribe()
   }
-
 }
-
-
