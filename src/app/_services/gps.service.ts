@@ -50,8 +50,6 @@ export class GPSService {
     )
   }
 
-  
-
   public getInterval(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/interval`;
     return this.http.get(url).pipe(

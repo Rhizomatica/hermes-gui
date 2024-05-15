@@ -139,74 +139,6 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateGPSInterval(f: NgForm) {
-    this.loading = true
-    this.gpsService.updateGPSInterval(f.value.interval).subscribe(
-      (res: any) => {
-        if (res)
-          this.interval = res
-
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-      }
-    );
-  }
-
-  updateGPSFileRange(f: NgForm) {
-    this.loading = true
-    this.gpsService.updateGPSFileRange(f.value.range).subscribe(
-      (res: any) => {
-        if (res)
-          this.range = res
-
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-      }
-    );
-  }
-
-  toggleGPS(f: NgForm) {
-
-    if (this.status) {
-      this.status = false
-    }
-    else if (!this.status) {
-      this.status = true
-    }
-
-    this.gpsService.toggleGPS(this.status).subscribe(
-      (res: any) => {
-        if (res)
-          this.status = res
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-      }
-    );
-  }
-
-  deleteAllStoredFiles() {
-    this.loading = true
-    this.gpsService.deleteAllStoredFiles().subscribe(
-      (res: any) => {
-        if (res)
-          this.getGPSFiles()
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-      }
-    );
-  }
-
-
   startMap() {
 
     //Chart
@@ -296,6 +228,67 @@ export class GPSComponent implements OnInit, OnDestroy {
         sprite: circle
       });
     });
+  }
+
+  updateGPSInterval(f: NgForm) {
+    this.loading = true
+    this.gpsService.updateGPSInterval(f.value.interval).subscribe(
+      (res: any) => {
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  updateGPSFileRange(f: NgForm) {
+    this.loading = true
+    this.gpsService.updateGPSFileRange(f.value.range).subscribe(
+      (res: any) => {
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  toggleGPS(f: NgForm) {
+
+    if (this.status) {
+      this.status = false
+    }
+    else if (!this.status) {
+      this.status = true
+    }
+
+    this.gpsService.toggleGPS(this.status).subscribe(
+      (res: any) => {
+        if (res)
+          this.status = res
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  deleteAllStoredFiles() {
+    this.loading = true
+    this.gpsService.deleteAllStoredFiles().subscribe(
+      (res: any) => {
+        if (res)
+          this.getGPSFiles()
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
   }
 
   ngOnInit(): void {
