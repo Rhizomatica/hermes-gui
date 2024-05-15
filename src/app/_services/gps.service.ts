@@ -79,8 +79,8 @@ export class GPSService {
       catchError(this.handleError));
   }
 
-  public updateGPSFileRange(seconds): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/geolocation/file/range/${seconds}`;
+  public updateFileRangeTime(seconds): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/filetime/${seconds}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
         return res;

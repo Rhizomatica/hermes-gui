@@ -243,9 +243,9 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateGPSFileRange(f: NgForm) {
+  updateFileRangeTime(f: NgForm) {
     this.loading = true
-    this.gpsService.updateGPSFileRange(f.value.range).subscribe(
+    this.gpsService.updateFileRangeTime(f.value.range).subscribe(
       (res: any) => {
         this.loading = false
       },
