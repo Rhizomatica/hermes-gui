@@ -84,7 +84,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
-        if (res && res.latitude != null && res.longitude != null) {
+        if (res && res.latitude !== null && res.longitude !== null) {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
 
@@ -92,14 +92,13 @@ export class GPSComponent implements OnInit, OnDestroy {
           //update map
           // this.pointSeries.pushDataItem({ latitude: 51.470020, longitude: -0.454296 });
 
+          //Mapa deve andar junto com a localizacao? Focus?
           this.pointSeries.data.setAll([{
             lat: this.currentLatitude,
             long: this.currentLongitude,
             name: "Current Location"
           }]);
         }
-
-        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -188,6 +187,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       })
     );
 
+    //Remover...
     root.setThemes([
       am5themes_Animated.new(root)
     ])
@@ -201,6 +201,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       strokeWidth: 2.5
     }));
 
+    //TODO - start map focused
     // chart.zoomToGeoPoint({
     //   longitude: this.currentLongitude, latitude: this.currentLatitude
     // }, 1.5, true);
@@ -249,16 +250,14 @@ export class GPSComponent implements OnInit, OnDestroy {
       latitudeField: "lat",
       longitudeField: "long",
       position: "absolute",
-      autoScale: true,
       polygonIdField: "polygonId"
     }));
 
     this.pointSeries.bullets.push(function () {
       var circle = am5.Circle.new(root, {
-        radius: 5,
+        radius: 4,
         fill: am5.color("#f60"),
-        tooltipText: "{name}",
-        height: 50
+        tooltipText: "{name}"
       });
 
       return am5.Bullet.new(root, {
