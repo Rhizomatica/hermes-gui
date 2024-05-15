@@ -80,6 +80,22 @@ export class GPSComponent implements OnInit, OnDestroy {
     );
   }
 
+  getInterval(){
+    this.loading = true
+    this.gpsService.getInterval().subscribe(
+      (res: any) => {
+        if (res)
+          this.interval = res
+
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   getFileRangeTime(){
     this.loading = true
     this.gpsService.getFileRangeTime().subscribe(
@@ -285,6 +301,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getGPSFiles()
     this.getGPSStatus()
+    this.getInterval()
     this.getFileRangeTime()
     this.getCurrentCoordinates()
     this.startMap()
