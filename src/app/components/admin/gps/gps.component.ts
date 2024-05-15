@@ -37,6 +37,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
   urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
   pointSeries = null
+  deleteConfirmation = false
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -118,7 +119,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       (res: any) => {
         if (res)
           this.email = res
-        
+
         this.loading = false
       },
       (err) => {
@@ -129,7 +130,6 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   getCurrentCoordinates() {
-    this.loading = true
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
         if (res && res.latitude !== null && res.longitude !== null) {
@@ -150,7 +150,6 @@ export class GPSComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.error = err;
-        this.loading = false
       }
     );
   }
@@ -296,17 +295,27 @@ export class GPSComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.error = err;
-        this.loading = false
       }
     );
   }
 
   deleteAllStoredFiles() {
+    if (!this.deleteConfirmation)
+      return this.deleteConfirmation = true
+
+
+    if (this.deleteConfirmation)
+      return this.deleteConfirmation = false
+  }
+
+  confirmDeleteAllStoredFiles() {
+    this.deleteConfirmation = false
     this.loading = true
     this.gpsService.deleteAllStoredFiles().subscribe(
       (res: any) => {
         if (res)
           this.getGPSFiles()
+        this.loading = false
       },
       (err) => {
         this.error = err;
