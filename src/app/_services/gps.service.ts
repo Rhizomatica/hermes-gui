@@ -50,6 +50,16 @@ export class GPSService {
     )
   }
 
+  public getFileRangeTime(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/filetime`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError)
+    )
+  }
+
   public updateGPSInterval(seconds): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/interval/${seconds}`;
     return this.http.post(url, null).pipe(
