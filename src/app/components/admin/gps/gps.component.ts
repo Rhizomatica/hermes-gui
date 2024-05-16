@@ -289,8 +289,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
     this.gpsService.toggleGPS(this.status).subscribe(
       (res: any) => {
-        if (res)
-          this.status = res
+        return null
       },
       (err) => {
         this.error = err;
