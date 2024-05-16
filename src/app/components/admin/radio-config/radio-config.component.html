@@ -287,14 +287,14 @@
           </div>
         </form>
 
-        <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
+        <!-- <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
           <div class="row">
             <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">
               reset to default
             </button>
             <hint [showHint]="false" [hint]="'reset'" class="float-right"></hint>
           </div>
-        </form>
+        </form> -->
 
         <form #freboot="ngForm" class="formdata field" *ngIf="isAdmin">
           <div class="row">
