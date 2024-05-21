@@ -125,6 +125,15 @@ export class GPSService {
       catchError(this.handleError));
   }
 
+  public SOSEmergency(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/geolocation/sos`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }

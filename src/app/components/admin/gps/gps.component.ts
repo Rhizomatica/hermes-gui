@@ -36,6 +36,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   pointSeries = null
   deleteConfirmation = false
   poolCoordinates: Subscription
+  confirmSOS: boolean = false
 
   constructor(private authenticationService: AuthenticationService,
     private gpsService: GPSService
@@ -314,6 +315,29 @@ export class GPSComponent implements OnInit, OnDestroy {
         if (res)
           this.getGPSFiles()
         this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
+  SOSEmergency() {
+    if(this.confirmSOS)
+      return this.confirmSOS = false
+    
+
+    if(!this.confirmSOS)
+      return this.confirmSOS = true
+  }
+
+  confirmSOSEmergency(){
+    this.loading = true
+    this.gpsService.SOSEmergency().subscribe(
+      (res: any) => {
+        if (res)
+          this.loading = false
       },
       (err) => {
         this.error = err;
