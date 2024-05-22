@@ -55,7 +55,7 @@ export class RadioConfigComponent implements OnInit {
   localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
-  sosEmergency: boolean = false
+  eraseSDCard: boolean = false
   confirmChangeProtection: boolean = false
   toggleProfile: number = 1
   voiceModeSwitch: boolean
@@ -359,15 +359,15 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  sosEmergencyConfirmation() {
-    if (this.sosEmergency)
-      return this.sosEmergency = false
+  eraseSDCardConfirmation() {
+    if (this.eraseSDCard)
+      return this.eraseSDCard = false
 
-    this.sosEmergency = true
+    this.eraseSDCard = true
   }
 
-  callSOSEmergency() {
-    this.radioService.sosEmergency().subscribe(
+  callEraseSDCard() {
+    this.radioService.eraseSDCard().subscribe(
       (res: any) => {
         return res;
       },
