@@ -25,8 +25,8 @@ export class GPSComponent implements OnInit, OnDestroy {
   errorAlert = false
   loading = false
   files: string[]
-  interval: number = 120
-  range: number = 3600
+  interval: number = 0
+  range: number = 0
   email: string = null
   currentLatitude: number = null
   currentLongitude: number = null
@@ -101,7 +101,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.gpsService.getFileRangeTime().subscribe(
       (res: any) => {
         if (res)
-          this.range = res
+          this.range = parseInt(res) / 60
 
         this.loading = false
       },
@@ -255,6 +255,11 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   updateFileRangeTime(f: NgForm) {
     this.loading = true
+
+    if (f.value.range) {
+      f.value.range = parseInt(f.value.range) * 60
+    }
+
     this.gpsService.updateFileRangeTime(f.value.range).subscribe(
       (res: any) => {
         this.loading = false
@@ -324,15 +329,15 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   SOSEmergency() {
-    if(this.confirmSOS)
+    if (this.confirmSOS)
       return this.confirmSOS = false
-    
 
-    if(!this.confirmSOS)
+
+    if (!this.confirmSOS)
       return this.confirmSOS = true
   }
 
-  confirmSOSEmergency(){
+  confirmSOSEmergency() {
     this.loading = true
     this.gpsService.SOSEmergency().subscribe(
       (res: any) => {
