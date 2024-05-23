@@ -204,9 +204,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     polygonSeries.mapPolygons.template.setAll({
       stroke: am5.color("#90daee"),
       strokeWidth: 0.5,
-      fill: am5.color("#f5f3f3"),
-      tooltipText: "{name}",
-      interactive: true
+      fill: am5.color("#f5f3f3")
     });
 
     polygonSeries.mapPolygons.template.states.create("hover", {
