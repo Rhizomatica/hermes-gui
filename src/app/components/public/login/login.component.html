@@ -1,6 +1,6 @@
 <div class=" login formdata">
    <form #f="ngForm" id="loginform" novalidate>
-      <h1>HERMES - V3.7.4</h1>
+      <h1>HERMES - V3.8.4</h1>
       <div class="row m-t-25">
          <a routerLink="/languages" i18n="@@chooselanguage">Choose your language</a>
       </div>
@@ -9,19 +9,31 @@
       </p>
       <hr>
       <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
-      <label>
-         <p i18n="@@username:">username:</p>
-         <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
-      </label>
-      <label>
-         <p i18n="@@password">password:</p>
-         <input type="password" name="password" required i18n="@@ipass" placeholder="Password" i18n-placeholder
-            ngModel />
-      </label>
-      <div class="row">
-         <button class="m-t-10 m-b-10" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log in</button>
-         <a routerLink="/home" class="m-l-10" i18n="@@continuewithoutlogin" *ngIf="!requireLogin">Continue without login
-         </a>
+      <div class="flexible">
+         <div class="half-row login">
+            <label>
+               <p i18n="@@username:">username:</p>
+               <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
+            </label>
+            <label>
+               <p i18n="@@password">password:</p>
+               <input type="password" name="password" required i18n="@@ipass" placeholder="Password" i18n-placeholder
+                  ngModel />
+            </label>
+         </div>
+         <div class="half-row login flex-right m-l-10">
+            <div class="row">
+               <button class="login-button" (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log
+                  in</button>
+
+               <div class="row">
+                  <a routerLink="/home" i18n="@@continuewithoutlogin" *ngIf="!requireLogin">Continue
+                     without
+                     login
+                  </a>
+               </div>
+            </div>
+         </div>
       </div>
    </form>
 </div>
