@@ -166,8 +166,20 @@ export class GPSComponent implements OnInit, OnDestroy {
       })
     );
 
-    //TODO - Style for zoomControl
-    // chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+    const zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+    zoomControl.minusButton.setAll({
+      background: am5.Rectangle.new(root, {
+        fill: am5.color("#f60"),
+        fillOpacity: 0.6
+      })
+    });
+    zoomControl.plusButton.setAll({
+      background: am5.Rectangle.new(root, {
+        fill: am5.color("#f60"),
+        fillOpacity: 0.6
+      })
+    });
 
     chart.chartContainer.set("background", am5.Rectangle.new(root, {
       fill: am5.color("#90daee"),
@@ -236,6 +248,13 @@ export class GPSComponent implements OnInit, OnDestroy {
         sprite: circle
       });
     });
+
+    //For testing a fake spot*****
+    // this.pointSeries.data.setAll([{
+    //   lat: this.currentLatitude,
+    //   long: this.currentLongitude,
+    //   name: "Current Location"
+    // }]);
   }
 
   updateGPSInterval(f: NgForm) {
