@@ -108,8 +108,8 @@
                             <hint [showHint]="false" [hint]="'gpsfilerangehint'" class="float-right"></hint>
                         </span>
                         <div class="flexible m-t-10">
-                            <input type="number" name="range" [(ngModel)]="range" [disabled]="!admin" [min]="240"
-                                [max]="86400" required />
+                            <input type="number" name="range" [(ngModel)]="range" [disabled]="!admin" [min]="4"
+                                [max]="1440" required />
                             <button (click)="updateFileRangeTime(formFileRange)" i18n="@@update"
                                 [disabled]="!admin || formFileRange.invalid">update</button>
                         </div>
