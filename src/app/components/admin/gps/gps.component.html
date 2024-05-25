@@ -96,7 +96,7 @@
                         </span>
                         <div class="flexible m-t-10">
                             <input type="number" name="interval" [(ngModel)]="interval" [disabled]="!admin" [min]="1"
-                                [max]="180" required />
+                                [max]="14400" required />
                             <button (click)="updateGPSInterval(formGpsInterval)" i18n="@@update"
                                 [disabled]="!admin || formGpsInterval.invalid">update</button>
                         </div>
@@ -109,7 +109,7 @@
                         </span>
                         <div class="flexible m-t-10">
                             <input type="number" name="range" [(ngModel)]="range" [disabled]="!admin" [min]="4"
-                                [max]="1440" required />
+                                [max]="86400" required />
                             <button (click)="updateFileRangeTime(formFileRange)" i18n="@@update"
                                 [disabled]="!admin || formFileRange.invalid">update</button>
                         </div>
