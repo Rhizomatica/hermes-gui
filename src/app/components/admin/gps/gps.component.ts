@@ -355,6 +355,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   confirmSOSEmergency() {
+    this.confirmSOS = false
     this.loading = true
     this.gpsService.SOSEmergency().subscribe(
       (res: any) => {
