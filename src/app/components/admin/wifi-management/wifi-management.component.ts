@@ -25,7 +25,7 @@ export class WiFiManagementComponent implements OnInit {
   wiFiPassphrase: string
   wiFiChannel: number = 1
   msgPatternChars: boolean = false
-  excludedKeys: number[]
+  excludedKeys: string[]
   passwordUnmatch = false;
   passwordMin = false
   system: any
@@ -87,8 +87,7 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   _keyUp(event: any) {
-    const keyCode = event.keyCode;
-    if (this.excludedKeys.includes(keyCode)) {
+    if (this.excludedKeys.includes(event.key) || event.keyCode == 220) {
       event.target.value = event.target.value.replace(event.key, "");
       this.msgPatternChars = true
       return
@@ -124,7 +123,7 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   setExcludedKeys() {
-    this.excludedKeys = [32, 52, 187, 191, 219, 220, 221, 222]
+    this.excludedKeys = ["?", "'", '"' , "$", "[", "]", "+", ".", " "]
   }
 
   checkpass(password, retypePassword) {
