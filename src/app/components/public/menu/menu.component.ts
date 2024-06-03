@@ -24,6 +24,7 @@ export class MenuComponent implements OnInit {
   radio: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
   isGateway: boolean = GlobalConstants.gateway
+  hasGPS: boolean = GlobalConstants.hasGPS
   showVoiceMenuItem: boolean = false
 
   constructor(

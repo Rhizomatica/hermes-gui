@@ -51,6 +51,10 @@
     <img src="assets/svg/wifi-solid.svg">
     Wi-Fi & Ethernet manager
   </a>
+  <a routerLink="/log" i18n="@@gpsgeolocationmenu" *ngIf="hasGPS">
+    <img src="assets/svg/globe-americas.svg">
+    GPS Geolocation
+  </a>
   <a routerLink="/log" i18n="@@detailedlogmenu" *ngIf="admin">
     <img src="assets/svg/compass.svg">
     Detailed log
