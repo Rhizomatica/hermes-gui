@@ -64,7 +64,7 @@ input {
   select {
     line-height: 2.1em;
     font-size: 1em;
-    height: 48px;
+    height: 40px;
   }
 
 
@@ -1606,7 +1606,7 @@ tr:nth-child(odd) {
     }
   }
 
-  .card.voice.disabled{
+  .card.voice.disabled {
     background-color: transparent;
     border: solid 1.5px @bkclr;
     background-color: @mclr;
@@ -1694,6 +1694,10 @@ tr:nth-child(odd) {
     padding: 1em;
     width: 97%;
     margin-bottom: 0.5em;
+  }
+
+  .location {
+    background-color: @mclr;
   }
 }
 
@@ -1841,7 +1845,7 @@ tr:nth-child(odd) {
   color: @bkclr;
 }
 
-.card.voice.disabled{
+.card.voice.disabled {
   background-color: transparent;
   border: solid 1.5px #000;
   background-color: @bkclr;
@@ -2212,6 +2216,33 @@ video {
   cursor: pointer;
 }
 
+.location {
+  text-align: center;
+  font-size: 1em;
+  border: 1px solid @clr;
+  border-radius: 3px;
+  padding: 15px;
+  color: @clr;
+  background-color: #fff;
+  margin-top: 50px;
+}
+
+.gps-stored-files{
+  height: 270px;
+  overflow:scroll;
+  overflow-x:hidden;
+}
+
+#chartmap{
+  width: 100%; 
+  height: 325px;
+  border-radius: 3px;
+}
+
+.login-button{
+  margin-top:45px;
+  margin-bottom:15px
+}
 
 @media (max-width: 800px) and (min-width: 700px) {
 
@@ -2229,6 +2260,11 @@ video {
 
   .half-row {
     width: 100%;
+    margin-top: 10px;
+  }
+
+  .half-row.login{
+    width: 49%;
     margin-top: 10px;
   }
 
@@ -2347,6 +2383,10 @@ video {
   //     margin-top: 7px;
   //   }
   // }
+
+  .flex-right {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 700px) {
@@ -2471,13 +2511,13 @@ video {
     }
   }
 
-  
+
   #radioconf {
     .card {
       line-height: 1.3em;
       width: 48%;
       height: 7em;
-  
+
       small {
         font-size: 0.8em;
       }
@@ -2691,6 +2731,11 @@ video {
   //     margin-top: 7px;
   //   }
   // }
+
+  .login-button{
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
 }
 
 .transciever-panel {

@@ -1,0 +1,133 @@
+<loading [loading]="loading"></loading>
+<div class="flexible">
+    <h2 i18n="@@gpsgeolocation">GPS Geolocation</h2>
+    <hint [showHint]="false" [hint]="'gpshint'"></hint>
+</div>
+<div class="row float-right">
+    <button (click)="SOSEmergency()" i18n="@@sosemergency" class="danger">SOS Emergency</button>
+    <div class="overall alert" *ngIf="confirmSOS">
+        <div class="cv">
+            <span i18n="@@confirmdeltealgpslfiles">
+                Are you sure you want to send a SOS Emergency message?
+            </span>
+            <div class="row m-t-10">
+                <button i18n="@@cancel" (click)="SOSEmergency()">
+                    cancel
+                </button>
+                <button class="m-l-10 danger" (click)="confirmSOSEmergency()" i18n="@@sosemergency">
+                    SOS Emergency
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p class="location" *ngIf="currentLatitude && currentLongitude">
+        <span i18n="@@latitude">Latitude:</span> {{currentLatitude}},
+        <span i18n="@@longitude">Longitude:</span> {{currentLongitude}}
+    </p>
+    <p class="location" *ngIf="!currentLatitude && !currentLongitude" i18n="@@currentlocationunavailable">
+        Current location unavailable
+    </p>
+</div>
+<div class="row">
+    <div id="chartmap"></div>
+</div>
+<div class="m-t-25">
+    <div class="flexible">
+        <div class="half-row" *ngIf="files">
+            <span i18n="@@geolocationfilestitle">Stored geolocation files
+                <hint [showHint]="false" [hint]="'gpsstoredfileshint'"></hint>
+            </span>
+            <div class="row" *ngIf="files && files.length > 0">
+                <div class="gps-stored-files">
+                    <div class="m-t-25" *ngFor="let file of files">
+                        <a href="{{urlDownloadFile}}/{{file}}">
+                            <img class="inlineicon" title="download" src="assets/svg/arrow-down.svg">{{file}}</a>
+                    </div>
+                </div>
+                <div class="row m-t-10 m-b-10">
+                    <a href="{{urlDownloadAll}}"><button i18n="@@downloadall">download all</button></a>
+                    <button class="m-l-10" i18n="@@deletedall" (click)="deleteAllStoredFiles()">delete all</button>
+
+                    <div class="overall alert" *ngIf="deleteConfirmation">
+                        <div class="cv">
+                            <span i18n="@@confirmdeltealgpslfiles">
+                                Are you sure you want delete all files? You will lose all your tracking location data.
+                            </span>
+                            <div class="row m-t-10">
+                                <button i18n="@@cancel" (click)="deleteAllStoredFiles()">
+                                    cancel
+                                </button>
+                                <button class="m-l-10" (click)="confirmDeleteAllStoredFiles()" i18n="@@deleteall">
+                                    delete all
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-t-25" *ngIf="!files || files.length == 0">
+                <p i18n="@@emptyfileslist">
+                    There are no stored geolocation files
+                </p>
+            </div>
+        </div>
+        <div class="flex-right half-row">
+            <div class="row">
+                <form #formToggleGPS="ngForm" class="formdata">
+                    <span i18n="@@gpsmanagement">GPS management</span>
+                    <div class="float-right flex-right" *ngIf="admin">
+                        <span>OFF</span>
+                        <div class="switch">
+                            <input type="checkbox" name="status" [checked]="status">
+                            <span class="slider round-uc" (click)="toggleGPS(formToggleGPS)"></span>
+                        </div>
+                        <span>ON</span>
+                    </div>
+                    <div class="float-right flex-right" *ngIf="!admin">
+                        {{status == true ? 'ON' : 'OFF'}}
+                    </div>
+                </form>
+                <div class="row m-t-25">
+                    <form #formGpsInterval="ngForm" class="formdata">
+                        <span i18n="@@captureinterval">Capture interval (seconds)
+                            <hint [showHint]="false" [hint]="'gpsintervalhint'" class="float-right"></hint>
+                        </span>
+                        <div class="flexible m-t-10">
+                            <input type="number" name="interval" [(ngModel)]="interval" [disabled]="!admin" [min]="1"
+                                [max]="14400" required />
+                            <button (click)="updateGPSInterval(formGpsInterval)" i18n="@@update"
+                                [disabled]="!admin || formGpsInterval.invalid">update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row m-t-25">
+                    <form #formFileRange="ngForm" class="formdata">
+                        <span i18n="@@capturefilerange">Capture file range (minutes)
+                            <hint [showHint]="false" [hint]="'gpsfilerangehint'" class="float-right"></hint>
+                        </span>
+                        <div class="flexible m-t-10">
+                            <input type="number" name="range" [(ngModel)]="range" [disabled]="!admin" [min]="4"
+                                [max]="86400" required />
+                            <button (click)="updateFileRangeTime(formFileRange)" i18n="@@update"
+                                [disabled]="!admin || formFileRange.invalid">update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row m-t-25 m-b-10">
+                    <form #formGPSemail="ngForm" class="formdata">
+                        <span i18n="@@email">Email
+                            <hint [showHint]="false" [hint]="'gpsemail'" class="float-right"></hint>
+                        </span>
+                        <div class="flexible m-t-10">
+                            <input type="email" name="email" [(ngModel)]="email" [disabled]="!admin" required />
+                            <button (click)="updateGPSEmail(formGPSemail)" i18n="@@update"
+                                [disabled]="!admin || formGPSemail.invalid">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

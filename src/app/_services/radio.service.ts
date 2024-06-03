@@ -253,8 +253,8 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public sosEmergency(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/radio/sosemergency/`;
+  public eraseSDCard(): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/radio/erasesdcard/`;
     return this.http.get(url).pipe(
       map((res: any) => {
         return res;

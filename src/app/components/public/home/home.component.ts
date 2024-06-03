@@ -56,6 +56,7 @@ export class homeComponent implements OnInit {
   self = self.location.host
   showAlert: boolean = true
   alertMessage: string = 'Radio data transmiting now... please wait for use the voice mode.'
+  hasGPS: boolean = GlobalConstants.hasGPS
 
   logOff() {
     this.authenticationService.logout();

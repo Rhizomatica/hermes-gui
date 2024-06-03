@@ -39,6 +39,7 @@ export class UserManagementComponent implements OnInit {
   fullNameEmpty = false
   domain: String = GlobalConstants.domain
   errorUserAlreadyExist = false
+  selectedUserEmail = null
 
   constructor(
     private userService: UserService,
@@ -164,17 +165,21 @@ export class UserManagementComponent implements OnInit {
       return
 
     this.selectedUser = user;
+    this.selectedUserEmail = user.email
     this.isEditing = true;
     this.showPassword = false
     this.emptyUser = false;
   }
 
-  updateThis() {
-    this.onSelect(this.currentUser);
-  }
-
   onSubmitUpdate(id: number, f: NgForm): void {
     this.loading = true
+
+    if(!f.value.email)
+      f.value.email = this.selectedUserEmail
+
+    if(!f.value.admin)
+        f.value.admin = false
+
     this.userService.updateUser(id, f.value).subscribe(
       (res: any) => {
         // this.users = res;

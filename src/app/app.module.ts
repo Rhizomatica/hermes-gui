@@ -47,6 +47,7 @@ import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.co
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { HintComponent } from './components/utils/hint/hint.component';
+import { GPSComponent } from './components/admin/gps/gps.component';
 
 
 registerLocaleData(localeEn);
@@ -89,7 +90,8 @@ registerLocaleData(localeEs);
     VoiceComponent,
     BreadcrumbComponent,
     FloatButtonComponent,
-    HintComponent
+    HintComponent,
+    GPSComponent
   ],
   imports: [
     BrowserModule,

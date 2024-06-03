@@ -287,14 +287,14 @@
           </div>
         </form>
 
-        <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
+        <!-- <form #fdefault="ngForm" class="formdata field" *ngIf="isAdmin">
           <div class="row">
             <button *ngIf="isAdmin" i18n="@@resettodefault" (click)="confirmReset()">
               reset to default
             </button>
             <hint [showHint]="false" [hint]="'reset'" class="float-right"></hint>
           </div>
-        </form>
+        </form> -->
 
         <form #freboot="ngForm" class="formdata field" *ngIf="isAdmin">
           <div class="row">
@@ -307,10 +307,10 @@
 
         <form #femergency="ngForm" class="formdata field">
           <div class="row">
-            <button class="danger" (click)="sosEmergencyConfirmation()">
-              <span i18n="@@sosemergency">SOS emergency</span>
+            <button class="danger" (click)="eraseSDCardConfirmation()">
+              <span i18n="@@sosemergency">Erase SD Card</span>
             </button>
-            <p class="m-t-10" i18n="@@sosemergencylabel" *ngIf="!isAdmin">
+            <p class="m-t-10" i18n="@@erasesdcardlabel" *ngIf="!isAdmin">
               Use this button <b>only in dangerous or emergency situations.</b>
               It is going to erase all data from HERMES system.
             </p>
@@ -377,19 +377,19 @@
         </button>
       </div>
 
-      <div class="overall alert" *ngIf="sosEmergency">
+      <div class="overall alert" *ngIf="eraseSDCard">
         <div class="cv">
-          <span i18n="@@confirmsosmessage">
-            Are you sure that you want to start a SOS EMERGENCY operation?
+          <span i18n="@@confirmerasesdcardmessage">
+            Are you sure that you want to start a Erase SD Card operation?
             <br />
             It is going to erase all data from HERMES system.
           </span>
           <div class="row m-t-10">
-            <button i18n="@@cancelsosbutton" (click)="sosEmergencyConfirmation()">
+            <button i18n="@@cancel" (click)="eraseSDCardConfirmation()">
               cancel
             </button>
-            <button class="m-l-10" (click)="callSOSEmergency()" i18n="@@confirmsosbutton">
-              confirm SOS Emergency
+            <button class="m-l-10 danger" (click)="callEraseSDCard()" i18n="@@confirmerasesdcardbutton">
+              confirm erase SD card
             </button>
           </div>
         </div>
