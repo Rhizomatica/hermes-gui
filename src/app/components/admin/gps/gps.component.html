@@ -7,16 +7,12 @@
     <button (click)="SOSEmergency()" i18n="@@sosemergency" class="danger">SOS Emergency</button>
     <div class="overall alert" *ngIf="confirmSOS">
         <div class="cv">
-            <span i18n="@@confirmdeltealgpslfiles">
+            <span i18n="@@confirmsosemergencygpsmessage">
                 Are you sure you want to send a SOS Emergency message?
             </span>
             <div class="row m-t-10">
-                <button i18n="@@cancel" (click)="SOSEmergency()">
-                    cancel
-                </button>
-                <button class="m-l-10 danger" (click)="confirmSOSEmergency()" i18n="@@sosemergency">
-                    SOS Emergency
-                </button>
+                <button i18n="@@cancel" (click)="SOSEmergency()">cancel</button>
+                <button class="m-l-10 danger" (click)="confirmSOSEmergency()" i18n="@@sosemergency">SOS Emergency</button>
             </div>
         </div>
     </div>
@@ -56,9 +52,7 @@
                                 Are you sure you want delete all files? You will lose all your tracking location data.
                             </span>
                             <div class="row m-t-10">
-                                <button i18n="@@cancel" (click)="deleteAllStoredFiles()">
-                                    cancel
-                                </button>
+                                <button i18n="@@cancel" (click)="deleteAllStoredFiles()">cancel</button>
                                 <button class="m-l-10" (click)="confirmDeleteAllStoredFiles()" i18n="@@deleteall">
                                     delete all
                                 </button>
