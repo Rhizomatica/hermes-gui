@@ -55,7 +55,8 @@ Check and configure `.env` file with your parameters and run `npx ts-node setEnv
     - SBITX includes voice and dual frequency options (voice and data transmission).
 
 - HAS_GPS (boolean)
-    - Used for GPS calibration function in the radio configuration screen.
+    - Used for enable GPS Geolocation module component
+    - Track and store your current geolocation
 
 - REQUIRE_LOGIN (boolean)
     - Required login (true) forces authentication for HERMES GUI system access.
