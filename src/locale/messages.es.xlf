@@ -2,6 +2,18 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="gpsgeolocation" datatype="html">
+        <source>GPS Geolocation</source>
+        <target state="new">Geolocalización GPS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="troubleshootinghintlabel" datatype="html">
         <source>Troubleshooting</source>
         <target state="new">Solución de problemas</target>
@@ -557,7 +569,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
  Admin </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioconfigmenu" datatype="html">
@@ -630,6 +642,14 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">51,53</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="gpsgeolocationmenu" datatype="html">
+        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/globe-americas.svg&quot;>"/> GPS Geolocation </source>
+        <target state="new"><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/globe-americas.svg&quot;>"/> Geolocalización GPS </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
+          <context context-type="linenumber">55,57</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="detailedlogmenu" datatype="html">
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;assets/svg/compass.svg&quot;>"/> Detailed log </source>
         <target state="new">
@@ -637,7 +657,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
  Log detallado </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">55,57</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logoutmenu" datatype="html">
@@ -645,7 +665,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Cerrar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorcustomerrormenu" datatype="html">
@@ -653,7 +673,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">There was an error on precessing your request </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="username:" datatype="html">
@@ -661,7 +681,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target>nombre de usuario:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
@@ -669,7 +689,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">nombre de usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="password" datatype="html">
@@ -677,7 +697,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target>contraseña:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
@@ -685,7 +705,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Contraseña</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="log_in" datatype="html">
@@ -693,7 +713,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target>aceder</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="continuewithoutlogin" datatype="html">
@@ -701,7 +721,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Continuar sin sesión </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
-          <context context-type="linenumber">23,24</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chooselanguage" datatype="html">
@@ -1887,14 +1907,6 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">198,200</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="resettodefault" datatype="html">
-        <source> reset to default </source>
-        <target state="new">configuración de fábrica</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">293</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="confirmreset" datatype="html">
         <source> Are you sure you want to reset the radio to the default configuration? </source>
         <target state="new"> ¿Está seguro de que desea restablecer la radio a la configuración predeterminada? </target>
@@ -2169,11 +2181,11 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">159</context>
+          <context context-type="linenumber">167</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">79</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/message-detail/message-detail.component.html</context>
@@ -2212,8 +2224,36 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <source> delete all </source>
         <target state="new">eliminar todos</target>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emptyfileslist" datatype="html">
+        <source> There are no stored geolocation files </source>
+        <target state="new"> No hay archivos de geolocalización almacenados </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">65,67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gpsmanagement" datatype="html">
+        <source>GPS management</source>
+        <target state="new">Gestión GPS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="captureinterval" datatype="html">
+        <source>Capture interval (seconds) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsintervalhint'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
+        <target state="new">Intervalo de captura (segundos) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsintervalhint'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="needtobeadmin" datatype="html">
@@ -2301,7 +2341,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Log detallado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot" datatype="html">
@@ -2312,22 +2352,40 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">302</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="sosemergency" datatype="html">
-        <source>SOS emergency</source>
-        <target state="new">emergencia SOS</target>
+      <trans-unit id="erasesdcardlabel" datatype="html">
+        <source>Erase SD Card</source>
+        <target state="new">Borra la tarjeta SD</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">311</context>
+          <context context-type="linenumber">311,313</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="sosemergencylabel" datatype="html">
+      <trans-unit id="erasesdcardmessage" datatype="html">
         <source> Use this button <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only in dangerous or emergency situations.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is going to erase all data from HERMES system. </source>
-        <target state="new"> Utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>
-sólo en situaciones peligrosas o de emergencia. <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
- Borrará todos los datos del sistema HERMES. </target>
+        <target state="new"> Utilice este botón <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>only sólo en situaciones peligrosas o de emergencia.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>Borrará todos los datos del sistema HERMES. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">314</context>
+          <context context-type="linenumber">314,316</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sosemergency" datatype="html">
+        <source>SOS Emergency</source>
+        <target state="new">Emergencia SOS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmsosemergencygpsmessage" datatype="html">
+        <source> Are you sure you want to send a SOS Emergency message? </source>
+        <target state="new"> ¿Estás seguro de que quieres enviar un mensaje de emergencia SOS? </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">10,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seriallabel" datatype="html">
@@ -2380,30 +2438,20 @@ sólo en situaciones peligrosas o de emergencia. <x id="CLOSE_BOLD_TEXT" ctype="
           <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="confirmsosmessage" datatype="html">
-        <source> Are you sure that you want to start a SOS EMERGENCY operation? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> It is going to erase all data from HERMES system. </source>
-        <target state="new"> ¿Estás seguro de que quieres iniciar una operación de EMERGENCIA SOS? Borrará todos los datos del sistema HERMES. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
-<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
-</target>
+      <trans-unit id="confirmerasesdcardmessage" datatype="html">
+        <source> Are you sure that you want to start a Erase SD Card operation? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> It is going to erase all data from HERMES system. </source>
+        <target state="new">¿Está seguro de que desea iniciar una operación de borrado de tarjeta SD? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Borrará todos los datos del sistema HERMES. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">383</context>
+          <context context-type="linenumber">383,386</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cancelsosbutton" datatype="html">
-        <source> cancel </source>
-        <target state="new"> cancelar </target>
+      <trans-unit id="confirmerasesdcardbutton" datatype="html">
+        <source> confirm erase SD card </source>
+        <target state="new"> confirmar borrar tarjeta SD </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">389</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="confirmsosbutton" datatype="html">
-        <source> confirm SOS Emergency </source>
-        <target state="new"> confirmar Emergencia SOS </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">392</context>
+          <context context-type="linenumber">390,396</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">
@@ -2411,7 +2459,7 @@ sólo en situaciones peligrosas o de emergencia. <x id="CLOSE_BOLD_TEXT" ctype="
         <target state="new"> Para una mejor experiencia con HERMES, use el navegador chromium/chrome </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">156</context>
+          <context context-type="linenumber">164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="destisizet" datatype="html">
@@ -2766,7 +2814,7 @@ PTT (Push to talk)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">313</context>
+          <context context-type="linenumber">315</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintreboot" datatype="html">
@@ -2777,7 +2825,7 @@ Reinicie<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">322</context>
+          <context context-type="linenumber">324</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hint" datatype="html">
@@ -2788,7 +2836,7 @@ Restablecen a los predeterminados<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">329</context>
+          <context context-type="linenumber">331</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintresetprotection" datatype="html">
@@ -2799,7 +2847,7 @@ Restablecer protección<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">340</context>
+          <context context-type="linenumber">342</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintusermanagement" datatype="html">
@@ -2807,7 +2855,7 @@ Restablecer protección<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt
         <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Gestión de usuarios<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> En Gestión de usuarios podrás actualizar tu propia información (Número de teléfono y contraseña) o eliminar tu usuario. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser.admin&quot;>"/> Si es administrador, puede crear, actualizar y eliminar todos los usuarios a excepción del usuario root. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Nota: si eliminas tus credenciales de usuario ya no podrás acceder al sistema HERMES. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">363</context>
+          <context context-type="linenumber">365</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintmessageconfig" datatype="html">
@@ -2818,7 +2866,7 @@ Configuración de mensajes<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">376</context>
+          <context context-type="linenumber">378</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintschedules" datatype="html">
@@ -2829,7 +2877,7 @@ Horario de transmisión<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">386</context>
+          <context context-type="linenumber">388</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hinttransmissionlist" datatype="html">
@@ -2840,7 +2888,7 @@ Lista de transmisión<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">397</context>
+          <context context-type="linenumber">399</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintstations" datatype="html">
@@ -2851,7 +2899,7 @@ Información de estaciones<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">411</context>
+          <context context-type="linenumber">413</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintwifi" datatype="html">
@@ -2862,7 +2910,7 @@ Wi-Fi y administrador de ethernet<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">434</context>
+          <context context-type="linenumber">436</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hinttroubleshooting" datatype="html">
@@ -2873,7 +2921,7 @@ Solución de problemas<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">445</context>
+          <context context-type="linenumber">447</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hintmediaaccesscontrol" datatype="html">
@@ -2884,7 +2932,47 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">492</context>
+          <context context-type="linenumber">494</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gpshint" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/> Global Positioning System (GPS) <x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Here you can track your current location using the map or consulting the latitude and longitude and if you need you can export your tracking location data. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Manage the geolocation storing options: Status (ON/OFF), Interval, file range and email <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: delete the stored files for periodically and keep your radio hard drive with free space <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/> Sistema de Posicionamiento Global (GPS) <x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Aquí puede rastrear su ubicación actual usando el mapa o consultando la latitud y longitud y, si lo necesita, puede exportar los datos de su ubicación de seguimiento. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> Administre las opciones de almacenamiento de geolocalización: Estado (ON/OFF), Intervalo, rango de archivos y correo electrónico <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Nota: borre los archivos almacenados periódicamente y mantenga el disco duro de su radio con espacio libre <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
+          <context context-type="linenumber">508,518</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gpsstoredfileshint" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Stored geolocation files<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Download the stored gps files and import your GPS location data to another GIS Mapping Software. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Archivos de geolocalización almacenados<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Descargue los archivos gps almacenados e importe los datos de su ubicación GPS a otro software de mapeo GIS. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
+          <context context-type="linenumber">522,525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gpsintervalhint" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Capture interval<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Configure the interval time for capturing and storing your location. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Intervalo de captura<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Configure el intervalo de tiempo para capturar y almacenar su ubicación. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
+          <context context-type="linenumber">529,532</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gpsfilerangehint" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Capture file range<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Configure the file range rule to define how large you want your (.CSV) files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Intervalo de arquivos de captura<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Configure la regla de rango de archivos para definir el tamaño que desea para sus archivos (.CSV). <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
+          <context context-type="linenumber">536,539</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gpsemail" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>GPS Email<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Configure the desired email to send your tracking stored location files. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Correo electrónico (email) GPS<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Configure el correo electrónico deseado para enviar sus archivos de ubicación almacenados de seguimiento. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
+          <context context-type="linenumber">543,546</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closehintbutton" datatype="html">
@@ -2892,7 +2980,7 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <target state="new"> cerrar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">505</context>
+          <context context-type="linenumber">552</context>
         </context-group>
       </trans-unit>
       <trans-unit id="blinkrecording" datatype="html">
@@ -3035,8 +3123,20 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <source>cancel</source>
         <target>cancelar</target>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/log/log.component.html</context>
           <context context-type="linenumber">121</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">388</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
@@ -3045,6 +3145,62 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="latitude" datatype="html">
+        <source>Latitude:</source>
+        <target state="new">Latitud:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="longitude" datatype="html">
+        <source>Longitude:</source>
+        <target state="new">Longitud:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="currentlocationunavailable" datatype="html">
+        <source> Current location unavailable </source>
+        <target state="new"> Ubicación actual no disponible </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="geolocationfilestitle" datatype="html">
+        <source>Stored geolocation files <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsstoredfileshint'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
+        <target state="new">Archivos de geolocalización almacenados <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsstoredfileshint'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="downloadall" datatype="html">
+        <source>download all</source>
+        <target state="new">descargar todo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deletedall" datatype="html">
+        <source>delete all</source>
+        <target state="new">eliminar todos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmdeltealgpslfiles" datatype="html">
+        <source> Are you sure you want delete all files? You will lose all your tracking location data. </source>
+        <target state="new"> ¿Está seguro de que desea eliminar todos los archivos? Perderá todos sus datos de ubicación de seguimiento. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">51,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousureupdate" datatype="html">
@@ -3059,8 +3215,36 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <source>update</source>
         <target>actualizar</target>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
           <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="capturefilerange" datatype="html">
+        <source>Capture file range (minutes) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsfilerangehint'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
+        <target state="new">Rango de archivos de captura (minutos) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsfilerangehint'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source>Email <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsemail'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
+        <target state="new">Email <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'gpsemail'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/gps/gps.component.html</context>
+          <context context-type="linenumber">114,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="usererror" datatype="html">
@@ -3188,7 +3372,7 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <target state="new"> Tema oscuro </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">128</context>
+          <context context-type="linenumber">136</context>
         </context-group>
       </trans-unit>
       <trans-unit id="lighttheme" datatype="html">
@@ -3196,7 +3380,7 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <target state="new"> Tema claro </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">131</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loginbutton" datatype="html">
@@ -3204,7 +3388,7 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <target state="new"> Login </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">137</context>
+          <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logoutbutton" datatype="html">
@@ -3212,7 +3396,7 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
         <target state="new"> Cerrar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">144</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit><!-- <trans-unit id="landingtext" datatype="html">
         <source>High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym, HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified visual interface accessed via smartphone or computer, allowing for the transmission and reception of data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be easily encrypted and password-protected by the sender. HERMES, both architecture designs and software, is free and open-source. </source><target state="new">High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym, HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified visual interface accessed via smartphone or computer, allowing for the transmission and reception of data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be easily encrypted and password-protected by the sender. HERMES, both architecture designs and software, is free and open-source. </target>

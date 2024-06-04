@@ -308,9 +308,9 @@
         <form #femergency="ngForm" class="formdata field">
           <div class="row">
             <button class="danger" (click)="eraseSDCardConfirmation()">
-              <span i18n="@@sosemergency">Erase SD Card</span>
+              <span i18n="@@erasesdcardlabel">Erase SD Card</span>
             </button>
-            <p class="m-t-10" i18n="@@erasesdcardlabel" *ngIf="!isAdmin">
+            <p class="m-t-10" i18n="@@erasesdcardmessage" *ngIf="!isAdmin">
               Use this button <b>only in dangerous or emergency situations.</b>
               It is going to erase all data from HERMES system.
             </p>
@@ -385,9 +385,7 @@
             It is going to erase all data from HERMES system.
           </span>
           <div class="row m-t-10">
-            <button i18n="@@cancel" (click)="eraseSDCardConfirmation()">
-              cancel
-            </button>
+            <button i18n="@@cancel" (click)="eraseSDCardConfirmation()">cancel</button>
             <button class="m-l-10 danger" (click)="callEraseSDCard()" i18n="@@confirmerasesdcardbutton">
               confirm erase SD card
             </button>
