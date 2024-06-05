@@ -30,6 +30,8 @@ export class GPSComponent implements OnInit, OnDestroy {
   email: string = null
   currentLatitude: number = null
   currentLongitude: number = null
+  // currentLatitude: number = 21.732970
+  // currentLongitude: number = 89.882957
   status: boolean = false
   urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
   urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
@@ -187,12 +189,6 @@ export class GPSComponent implements OnInit, OnDestroy {
       strokeWidth: 2.5
     }));
 
-    //TODO - start map focused
-    // chart.zoomToGeoPoint({
-    //   longitude: this.currentLongitude, latitude: this.currentLatitude
-    // }, 1.5, true);
-
-    //End chart
 
     // Graticule Series
     let graticuleSeries = chart.series.unshift(
@@ -223,11 +219,15 @@ export class GPSComponent implements OnInit, OnDestroy {
       fill: am5.color("#f60")
     });
 
-    // TODO - Zoom clicked item
-    // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/
-    // polygonSeries.mapPolygons.template.events.on("click", function(ev) {
-    //   polygonSeries.zoomToDataItem(ev.target.dataItem);
-    // });
+    var latitude = this.currentLatitude
+    var longitude = this.currentLongitude
+
+    polygonSeries.events.on("datavalidated", function () {
+      chart.zoomToGeoPoint({
+        longitude: longitude,
+        latitude: latitude 
+      }, 15);
+    });
 
     //Point Series
     this.pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {
