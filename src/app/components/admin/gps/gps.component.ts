@@ -137,11 +137,6 @@ export class GPSComponent implements OnInit, OnDestroy {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
 
-          //TODO - Rever regra... (pulling inicializacao e atualizacao)
-          //update map
-          // this.pointSeries.pushDataItem({ latitude: 51.470020, longitude: -0.454296 });
-
-          //Mapa deve andar junto com a localizacao? Focus?
           this.pointSeries.data.setAll([{
             lat: this.currentLatitude,
             long: this.currentLongitude,
@@ -158,6 +153,9 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   startMap() {
 
+    var latitude = this.currentLatitude
+    var longitude = this.currentLongitude
+
     //Chart
     let root = am5.Root.new("chartmap");
     let chart = root.container.children.push(
@@ -168,6 +166,12 @@ export class GPSComponent implements OnInit, OnDestroy {
       })
     );
 
+    chart.chartContainer.set("background", am5.Rectangle.new(root, {
+      fill: am5.color("#90daee"),
+      stroke: am5.color("#f60"),
+      strokeWidth: 2.5
+    }));
+
     const zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
     zoomControl.minusButton.setAll({
@@ -176,6 +180,7 @@ export class GPSComponent implements OnInit, OnDestroy {
         fillOpacity: 0.6
       })
     });
+
     zoomControl.plusButton.setAll({
       background: am5.Rectangle.new(root, {
         fill: am5.color("#f60"),
@@ -183,12 +188,36 @@ export class GPSComponent implements OnInit, OnDestroy {
       })
     });
 
-    chart.chartContainer.set("background", am5.Rectangle.new(root, {
-      fill: am5.color("#90daee"),
-      stroke: am5.color("#f60"),
-      strokeWidth: 2.5
+
+    let homeButton = chart.children.push(am5.Button.new(root, {
+      paddingTop: 10,
+      paddingBottom: 10,
+      marginRight: 10,
+      marginTop: 10,
+      x: am5.percent(99.2),
+      y: am5.percent(2.3),
+      centerX: am5.percent(100),
+      opacity: 0,
+      interactiveChildren: false,
+      background: am5.Rectangle.new(root, {
+        fill: am5.color("#f60"),
+        fillOpacity: 0.8
+      }),
+      icon: am5.Graphics.new(root, {
+        svgPath: "M16,8 L14,8 L14,16 L10,16 L10,10 L6,10 L6,16 L2,16 L2,8 L0,8 L8,0 L16,8 Z M16,8",
+        fill: am5.color("#fff")
+      })
     }));
 
+    homeButton.show();
+
+    homeButton.events.on("click", function () {
+      chart.goHome();
+      // chart.zoomToGeoPoint({
+      //   longitude: longitude,
+      //   latitude: latitude
+      // }, 15);
+    });
 
     // Graticule Series
     let graticuleSeries = chart.series.unshift(
@@ -219,13 +248,10 @@ export class GPSComponent implements OnInit, OnDestroy {
       fill: am5.color("#f60")
     });
 
-    var latitude = this.currentLatitude
-    var longitude = this.currentLongitude
-
     polygonSeries.events.on("datavalidated", function () {
       chart.zoomToGeoPoint({
         longitude: longitude,
-        latitude: latitude 
+        latitude: latitude
       }, 15);
     });
 
