@@ -24,6 +24,15 @@ body {
   font-family: 'Rubik', sans-serif;
   min-height: 100vh !important;
   height: 100%;
+  
+  //Prevent text selection
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
 }
 
 * {
@@ -2725,12 +2734,6 @@ video {
       }
     }
   }
-
-  // nav {
-  //   .burguer {
-  //     margin-top: 7px;
-  //   }
-  // }
 
   .login-button{
     margin-top: 0;
