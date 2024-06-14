@@ -1,0 +1,28 @@
+<loading [loading]="loading"></loading>
+<div class="row">
+  <h2 i18n="@@smsmassagelabel">SMS Message</h2>
+</div>
+<span>{{phoneNumber}}</span>
+<div class="messages-box">
+  <div *ngFor="let message of messages; let i = index">
+    <span class="balloon {{message.type == 1 ? 'sent': ''}}">{{message.text}}</span>
+  </div>
+</div>
+
+<div class="row m-t-10">
+  <form #f="ngForm" class="formdata" novalidate class="m-t-10">
+    <textarea name="text" required rows="1" cols="35" maxlength="1400" i18n-placeholder
+      placeholder="write the message"></textarea>
+    <button (click)="sendSMS(f)" i18n="@@send">send</button>
+  </form>
+</div>
+
+<div class="overall alert" [hidden]="errorAlert==false">
+  <div class="cv">
+    <span i18n="@@websocketerror">There was an error on processing your request </span>
+    <div class="row m-t-10">
+      {{error}}
+    </div>
+    <button class="m-t-10" (click)="closeError()" i18n="@@close">close</button>
+  </div>
+</div>

@@ -24,7 +24,7 @@ body {
   font-family: 'Rubik', sans-serif;
   min-height: 100vh !important;
   height: 100%;
-  
+
   //Prevent text selection
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -32,7 +32,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
+
 }
 
 * {
@@ -2236,22 +2236,53 @@ video {
   margin-top: 50px;
 }
 
-.gps-stored-files{
+.gps-stored-files {
   height: 270px;
-  overflow:scroll;
-  overflow-x:hidden;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-#chartmap{
-  width: 100%; 
+#chartmap {
+  width: 100%;
   height: 325px;
   border-radius: 3px;
 }
 
-.login-button{
-  margin-top:45px;
-  margin-bottom:15px
+.login-button {
+  margin-top: 45px;
+  margin-bottom: 15px
 }
+
+.messages-box {
+  border: 1px solid #333;
+  border-radius: 2px;
+  padding: 15px;
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.balloon {
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid @clr;
+  border-radius: 10px;
+  background-color: @bkclr;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.balloon.sent {
+  float: right;
+  text-align: right;
+  border: 1px solid @mclr;
+}
+
+
 
 @media (max-width: 800px) and (min-width: 700px) {
 
@@ -2272,7 +2303,7 @@ video {
     margin-top: 10px;
   }
 
-  .half-row.login{
+  .half-row.login {
     width: 49%;
     margin-top: 10px;
   }
@@ -2735,7 +2766,7 @@ video {
     }
   }
 
-  .login-button{
+  .login-button {
     margin-top: 0;
     margin-bottom: 10px;
   }

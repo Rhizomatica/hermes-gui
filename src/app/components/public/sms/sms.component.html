@@ -1,0 +1,30 @@
+<loading [loading]="loading"></loading>
+<div class="row">
+  <h2 i18n="@@smsmassagelabel">SMS Message</h2>
+</div>
+<div class="row">
+  <div class="messages maincontainer" *ngIf="message != null && messages.length > 0">
+    <div class="multiplist">
+      <div class="item" *ngFor="let message of messages | filter:searchMessages;">
+        <div class="maininfo">
+          <a routerLink="/smschat/{{message.id}}">
+            <span class="ls">{{message.phoneNumber}}</span>
+            <span class="date ls">{{message.date}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="!messages || messages.length == 0">
+  <span>No SMS messages until now</span>
+</div>
+<div class="overall alert" [hidden]="errorAlert==false">
+  <div class="cv">
+    <span i18n="@@websocketerror">There was an error on processing your request </span>
+    <div class="row m-t-10">
+      {{error}}
+    </div>
+    <button class="m-t-10" (click)="closeError()" i18n="@@close">close</button>
+  </div>
+</div>

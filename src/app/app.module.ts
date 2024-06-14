@@ -48,6 +48,8 @@ import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { HintComponent } from './components/utils/hint/hint.component';
 import { GPSComponent } from './components/admin/gps/gps.component';
+import { SMSComponent } from './components/public/sms/sms.component';
+import { SMSChatComponent } from './components/public/smschat/smschat.component';
 
 
 registerLocaleData(localeEn);
@@ -91,7 +93,9 @@ registerLocaleData(localeEs);
     BreadcrumbComponent,
     FloatButtonComponent,
     HintComponent,
-    GPSComponent
+    GPSComponent,
+    SMSComponent,
+    SMSChatComponent,
   ],
   imports: [
     BrowserModule,

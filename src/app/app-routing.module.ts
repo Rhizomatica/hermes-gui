@@ -27,6 +27,8 @@ import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.co
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
 import { HintComponent } from './components/utils/hint/hint.component';
 import { GPSComponent } from './components/admin/gps/gps.component';
+import { SMSComponent } from './components/public/sms/sms.component';
+import { SMSChatComponent } from './components/public/smschat/smschat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -57,7 +59,9 @@ const routes: Routes = [
   { path: 'breadcrumb', component: BreadcrumbComponent },
   { path: 'floatbutton', component: FloatButtonComponent },
   { path: 'hint', component: HintComponent },
-  { path: 'gps', component: GPSComponent }
+  { path: 'gps', component: GPSComponent },
+  { path: 'sms', component: SMSComponent },
+  { path: 'smschat/:id', component: SMSChatComponent }
 ];
 
 @NgModule({
