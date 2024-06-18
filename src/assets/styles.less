@@ -2299,6 +2299,30 @@ video {
   border-radius: 20px 20px 3px 20px;
 }
 
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .data{
+    width: 25%;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .data-title{
+    color: @clr;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .data-body{
+    padding-left: 5px;
+    margin-top: 5px;
+    font-size: 0.9em
+  }
+}
+
 
 
 @media (max-width: 800px) and (min-width: 700px) {
