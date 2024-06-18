@@ -1708,6 +1708,21 @@ tr:nth-child(odd) {
   .location {
     background-color: @mclr;
   }
+
+  .messages-box {
+    border: 1px solid @bkclr;
+  }  
+
+  .balloon {
+    border: 1px solid @clr;
+    background-color: @mclr;
+  }
+  
+  .balloon.sent {
+    border: 1px solid @mclr;
+    background-color: @clr;
+  }
+  
 }
 
 .syspusher {
@@ -2263,23 +2278,25 @@ video {
 }
 
 .balloon {
-  margin-bottom: 5px;
-  padding: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
   border: 1px solid @clr;
-  border-radius: 10px;
+  border-radius: 20px 20px 20px 3px;
   background-color: @bkclr;
   height: auto;
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: fit-content;
+  max-width: 70%;
   word-wrap: break-word;
   word-break: break-all;
 }
 
 .balloon.sent {
-  float: right;
-  text-align: right;
-  border: 1px solid @mclr;
+  border: 1px solid @clr;
+  background-color: @clr;
+  color: @bkclr;
+  border-radius: 20px 20px 3px 20px;
 }
 
 
