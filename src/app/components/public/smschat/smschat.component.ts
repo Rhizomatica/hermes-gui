@@ -41,21 +41,21 @@ export class SMSChatComponent implements OnInit {
 
   getMessages() {
     this.message.id = 1
-    this.message.text = "Hello"
+    this.message.text = "Hello!!"
     this.message.phoneNumber = "+5531999885874"
     this.message.type = 0 //received
     this.message.date = this.utilsService.formatDate(new Date())
     this.messages.push(this.message)
 
     this.message1.id = 2
-    this.message1.text = "Hello!!! How are you?"
+    this.message1.text = "How are you?"
     this.message1.phoneNumber = "+5531999885874"
     this.message1.type = 1 //sent
     this.message1.date = this.utilsService.formatDate(new Date())
     this.messages.push(this.message1)
 
     this.message2.id = 3
-    this.message2.text = "Hellooo"
+    this.message2.text = "Just testing the SMS message..."
     this.message2.phoneNumber = "+5531999885874"
     this.message2.type = 0 //received
     this.message2.date = this.utilsService.formatDate(new Date())

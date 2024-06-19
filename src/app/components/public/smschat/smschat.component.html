@@ -1,9 +1,15 @@
 <loading [loading]="loading"></loading>
-<div class="row">
+<div class="flexible">
   <h2 i18n="@@smsmassagelabel">SMS Message</h2>
+  <hint [showHint]="false" [hint]="'smschat'"></hint>
 </div>
-<span>{{phoneNumber}}</span>
-<div class="messages-box">
+<div class="row">
+  <span i18n="@@phonenumber">Phone Number: </span> {{phoneNumber}}
+  <button class="float-right">
+    delete conversation
+  </button>
+</div>
+<div class="messages-box m-t-25">
   <div *ngFor="let message of messages; let i = index">
     <div class="row flexible {{message.type == 1 ? 'float-right': ''}}">
       <span class="balloon {{message.type == 1 ? 'sent': ''}}">{{message.text}}</span>
