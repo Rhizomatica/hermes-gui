@@ -535,19 +535,75 @@
     <div *ngIf="hint == 'gpsfilerangehint'" i18n="@@gpsfilerangehint">
       <h1 class="cv-title">Capture file range</h1>
       <p>
-        Configure the file range rule to define how large you want your (.CSV) files. 
+        Configure the file range rule to define how large you want your (.CSV) files.
       </p>
     </div>
 
     <div *ngIf="hint == 'gpsemail'" i18n="@@gpsemail">
       <h1 class="cv-title">GPS Email</h1>
       <p>
-        Configure the desired email to send your tracking stored location files. 
+        Configure the desired email to send your tracking stored location files.
       </p>
     </div>
-    
 
-
+    <div *ngIf="hint == 'operatorpanel'" i18n="@@operatorpanel">
+      <h1 class="cv-title">Operator Panel</h1>
+      <p>
+        <span class="greencircle"></span>
+        ON / CONNECTED / ACTIVE
+        <br />
+        <span class="redcircle"></span>
+        OFF / DISCTONNECTED / INACTIVE
+      </p>
+      <p class="m-t-10">
+        Frequency
+      </p>
+      <p>
+        Standing Wave Ratio (SWR)
+      </p>
+      <p>
+        Power
+      </p>
+      <p>
+        Protection
+      </p>
+      <p>
+        Transmission Status
+      </p>
+      <p>
+        Modem Status
+      </p>
+      <p>
+        Signal-to-noise ratio (SNR)
+      </p>
+      <p>
+        Bitrate
+      </p>
+      <p>
+        Transmission List
+      </p>
+      <p>
+        Pending Transmission
+      </p>
+      <p>
+        Successful Transmission
+      </p>
+      <p>
+        Unsuccessful Transmission
+      </p>
+      <p>
+        Scheduled transmission
+      </p>
+      <p>
+        GPS Status
+      </p>
+      <p>
+        Remote Devices
+      </p>
+      <p>
+        LocalStorage
+      </p>
+    </div>
 
     <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
       close

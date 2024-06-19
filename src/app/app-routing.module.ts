@@ -29,6 +29,7 @@ import { HintComponent } from './components/utils/hint/hint.component';
 import { GPSComponent } from './components/admin/gps/gps.component';
 import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
+import { OperatorComponent } from './components/public/operator/operator.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -61,7 +62,8 @@ const routes: Routes = [
   { path: 'hint', component: HintComponent },
   { path: 'gps', component: GPSComponent },
   { path: 'sms', component: SMSComponent },
-  { path: 'smschat/:id', component: SMSChatComponent }
+  { path: 'smschat/:id', component: SMSChatComponent },
+  { path: 'operator', component: OperatorComponent }
 ];
 
 @NgModule({

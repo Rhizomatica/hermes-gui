@@ -50,6 +50,7 @@ import { HintComponent } from './components/utils/hint/hint.component';
 import { GPSComponent } from './components/admin/gps/gps.component';
 import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
+import { OperatorComponent } from './components/public/operator/operator.component';
 
 
 registerLocaleData(localeEn);
@@ -96,6 +97,7 @@ registerLocaleData(localeEs);
     GPSComponent,
     SMSComponent,
     SMSChatComponent,
+    OperatorComponent
   ],
   imports: [
     BrowserModule,
