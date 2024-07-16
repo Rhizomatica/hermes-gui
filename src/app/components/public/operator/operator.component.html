@@ -4,7 +4,7 @@
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
     <div class="row m-t-10">
-        <div class="row">
+        <div class="row" *ngIf="radio.connection">
             <div class="alertcard flexible">
                 <span class="greencircle"></span>
                 <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
@@ -148,7 +148,7 @@
                     Local Storage
                 </div>
                 <div class="data-body">
-                    45.5 GB free
+                    {{diskSpace}} GB free
                 </div>
             </div>
         </div>

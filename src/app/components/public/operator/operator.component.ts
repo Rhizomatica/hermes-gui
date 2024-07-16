@@ -4,6 +4,7 @@ import { User } from 'src/app/interfaces/user';
 import { RadioService } from '../../../_services/radio.service';
 import { Subscription, interval } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
+import { ApiService } from 'src/app/_services/api.service';
 
 @Component({
   selector: 'operator',
@@ -20,11 +21,15 @@ export class OperatorComponent implements OnInit {
   error: Error
   poolSystemData: Subscription
   radio: any = []
+  diskSpace: string = '0'
+
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private apiService: ApiService
+
 
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -48,12 +53,27 @@ export class OperatorComponent implements OnInit {
     // );
   }
 
+  getSystemStatus(): void {
+    this.loading = true
+    this.apiService.getStatus().subscribe(
+      (res: any) => {
+
+        this.diskSpace = (res.diskfree /1024 /1024).toFixed(3)
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
 
     // this.getSchedules()
     // this.getGPSStatus()
-    // this.getSystemStatus()
+    this.getSystemStatus()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
       this.getSystemData()
