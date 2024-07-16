@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
 import { User } from 'src/app/interfaces/user';
 import { RadioService } from '../../../_services/radio.service';
 import { Subscription, interval } from 'rxjs';
+import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
   selector: 'operator',
@@ -18,10 +19,13 @@ export class OperatorComponent implements OnInit {
   loading: boolean = false
   error: Error
   poolSystemData: Subscription
+  radio: any = []
 
   constructor(
     private authenticationService: AuthenticationService,
-    private radioService: RadioService
+    private radioService: RadioService,
+    private sharedService: SharedService
+
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
@@ -45,10 +49,30 @@ export class OperatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSystemData()
+    this.radio = this.sharedService.radioObj.value
+
+    // this.getSchedules()
+    // this.getGPSStatus()
+    // this.getSystemStatus()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
       this.getSystemData()
     });
+
+
+    // Modem Status
+    // Signal-to-noise ratio (SNR) --new
+    // Bitrate --new
+    // Transmission List -- maybe from transmission list
+    // Pending Transmission -- maybe from transmission list
+    // Successful Transmission
+    // Re-transmissions count
+    //
+    
+    // ONE API CALL
+    // Scheduled transmission
+    // GPS Status
+    // Remote Devices --new
+    // Local Storage
   }
 }

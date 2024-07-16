@@ -18,9 +18,11 @@
                     Data Frequency
                 </div>
                 <div class="data-body">
-                    7.050.000 kHz
+                    <span *ngIf="radio.p0_freq">p0_freq</span>
+                    <span *ngIf="radio.p1_freq">p1_freq</span>
                     <br />
-                    USB
+                    <span *ngIf="radio.p0_mode">p0_mode</span>
+                    <span *ngIf="radio.p1_mode">p1_mode</span>
                 </div>
             </div>
             <div class="data">
@@ -28,7 +30,7 @@
                     Standing Wave Ratio (SWR)
                 </div>
                 <div class="data-body">
-                    2.0
+                    {{radio.swr}}
                 </div>
             </div>
             <div class="data">
@@ -36,7 +38,7 @@
                     Power
                 </div>
                 <div class="data-body">
-                    19.5 W
+                    {{radio.fwd_watts}} W
                 </div>
             </div>
             <div class="data">
@@ -44,8 +46,9 @@
                     Protection
                 </div>
                 <div class="data-body">
-                    <span class="greencircle"></span>
-                    OFF
+                    <span class="redcircle" *ngIf="radio.protection"></span>
+                    <span class="greencircle" *ngIf="!radio.protection"></span>
+                    {{radio.protection ? 'ON' : 'OFF'}}
                 </div>
             </div>
             <div class="data">
@@ -53,7 +56,8 @@
                     Transmission Status
                 </div>
                 <div class="data-body">
-                    TX
+                    <div *ngIf="radio.tx"> TX </div>
+                    <div *ngIf="radio.rx"> RX </div>
                 </div>
             </div>
             <div class="data">
