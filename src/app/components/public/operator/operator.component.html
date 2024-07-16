@@ -122,8 +122,9 @@
                     Scheduled transmission
                 </div>
                 <div class="data-body">
-                    <span class="greencircle"></span>
-                    Active
+                    <span class="redcircle" *ngIf="!activeSchedule"></span>
+                    <span class="greencircle" *ngIf="activeSchedule"></span>
+                    {{activeSchedule ? 'Active' : 'Inactive'}}
                 </div>
             </div>
             <div class="data">
