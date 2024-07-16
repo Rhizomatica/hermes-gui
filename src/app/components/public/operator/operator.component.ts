@@ -5,6 +5,7 @@ import { Subscription, interval } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { GPSService } from 'src/app/_services/gps.service';
+import { UUCPService } from 'src/app/_services/uucp.service';
 
 @Component({
   selector: 'operator',
@@ -24,12 +25,16 @@ export class OperatorComponent implements OnInit {
   diskSpace: string = '0'
   gpsStatus: boolean
   activeSchedule: boolean = false
+  queueSize: number = 0
+  queueSizeB: number = 0
+
 
   constructor(
     private authenticationService: AuthenticationService,
     private sharedService: SharedService,
     private apiService: ApiService,
-    private gpsService: GPSService) {
+    private gpsService: GPSService,
+    private uucpService: UUCPService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
@@ -86,31 +91,53 @@ export class OperatorComponent implements OnInit {
     );
   }
 
+  getQueue(): void {
+    this.loading = true
+    this.uucpService.getQueue().subscribe(
+      res => {
+        this.queueSize = res.length
+        if (Object.keys(res).length > 0) {
+          this.getQueueSizeB(res)
+        }
+        this.loading = false
+      },
+      (err) => {
+        this.error = err
+        this.loading = false
+      }
+    );
+  }
+
+  //Maybe go to utils?
+  getQueueSizeB(queue) {
+    if (queue && queue.length > 0) {
+      for (let i = 0; i < Object.keys(queue).length; i++) {
+        this.queueSizeB += parseInt(queue[i].size)
+      }
+    }
+  }
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
 
     this.getSchedules()
     this.getGPSStatus()
-    this.getSystemStatus()
+    this.getSystemStatus() //Disk free space
+    this.getQueue()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
       // this.getSystemData()
+    this.getQueue() // TODO - needed?
     });
-
 
     // Modem Status
     // Signal-to-noise ratio (SNR) --new
     // Bitrate --new
-    // Transmission List -- maybe from transmission list
-    // Pending Transmission -- maybe from transmission list
-    // Successful Transmission
+    // Successful Transmission --new
     // Re-transmissions count
     //
 
     // ONE API CALL
-    // Scheduled transmission
-    // GPS Status
     // Remote Devices --new
-    // Local Storage
   }
 }
