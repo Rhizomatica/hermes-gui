@@ -5,6 +5,7 @@ import { RadioService } from '../../../_services/radio.service';
 import { Subscription, interval } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { ApiService } from 'src/app/_services/api.service';
+import { GPSService } from 'src/app/_services/gps.service';
 
 @Component({
   selector: 'operator',
@@ -22,13 +23,15 @@ export class OperatorComponent implements OnInit {
   poolSystemData: Subscription
   radio: any = []
   diskSpace: string = '0'
-
+  gpsStatus: boolean
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
     private sharedService: SharedService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private gpsService: GPSService
+
 
 
   ) {
@@ -53,6 +56,22 @@ export class OperatorComponent implements OnInit {
     // );
   }
 
+  getGPSStatus(): void {
+    this.loading = true
+    this.gpsService.getGPSStatus().subscribe(
+      (res: any) => {
+        if (res)
+          this.gpsStatus = res
+
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   getSystemStatus(): void {
     this.loading = true
     this.apiService.getStatus().subscribe(
@@ -72,7 +91,7 @@ export class OperatorComponent implements OnInit {
     this.radio = this.sharedService.radioObj.value
 
     // this.getSchedules()
-    // this.getGPSStatus()
+    this.getGPSStatus()
     this.getSystemStatus()
 
     this.poolSystemData = interval(10000).subscribe((val) => {

@@ -131,8 +131,9 @@
                     GPS Status
                 </div>
                 <div class="data-body">
-                    <span class="greencircle"></span>
-                    Connected
+                    <span class="redcircle" *ngIf="!gpsStatus"></span>
+                    <span class="greencircle" *ngIf="gpsStatus"></span>
+                    {{gpsStatus ? 'Active' : 'Inactive'}}
                 </div>
             </div>
             <div class="data">
