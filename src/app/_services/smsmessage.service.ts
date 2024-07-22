@@ -49,6 +49,16 @@ export class SMSMessageService {
     );
   }
 
+  deleteMessage(id: number) {
+    const url = `${GlobalConstants.apiURL}/sms/message/${id}`;
+    return this.http.delete<SMSMessage>(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     this.message = [];
     return throwError(error);

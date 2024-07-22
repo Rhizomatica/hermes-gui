@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
 import { User } from '../../../interfaces/user'
-import { AuthenticationService } from '../../../_services/authentication.service';
-import { UtilsService } from 'src/app/_services/utils.service';
-import { SMSMessageService } from 'src/app/_services/smsmessage.service';
-import { SMSMessage } from 'src/app/interfaces/smsmessage';
-import { NgForm } from '@angular/forms';
+import { AuthenticationService } from '../../../_services/authentication.service'
+import { UtilsService } from 'src/app/_services/utils.service'
+import { SMSMessageService } from 'src/app/_services/smsmessage.service'
+import { SMSMessage } from 'src/app/interfaces/smsmessage'
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'smschat',
@@ -24,8 +25,12 @@ export class SMSChatComponent implements OnInit {
   message: SMSMessage = null
   message1: SMSMessage = null
   message2: SMSMessage = null
+  delete: boolean = false
+  chatId: number = null
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private authenticationService: AuthenticationService,
     private smsMessageService: SMSMessageService,
     private utilsService: UtilsService,
@@ -70,9 +75,9 @@ export class SMSChatComponent implements OnInit {
           this.phoneNumber = res[0].phoneNumber
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.loading = false;
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
       }
     );
   }
@@ -83,14 +88,41 @@ export class SMSChatComponent implements OnInit {
         this.messages.push(f.value.text)
       },
       (err) => {
-        this.error = err;
-        this.errorAlert = true;
-        this.loading = false;
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
+      }
+    );
+  }
+
+  deleteConfirmation() {
+    if (this.delete)
+      return this.delete = false
+
+    if (!this.delete)
+      return this.delete = true
+
+  }
+
+  deleteChat() {
+    this.delete = false
+    this.loading = true
+    this.smsMessageService.deleteMessage(this.chatId).subscribe(
+      (res: any) => {
+        this.loading = false
+        this.router.navigate(['/sms'])
+      },
+      (err) => {
+        this.error = err
+        this.errorAlert = true
+        this.loading = false
       }
     );
   }
 
   ngOnInit(): void {
+
+    this.chatId = parseInt(this.route.snapshot.paramMap.get('id'))
 
     this.message = {
       id: 0,

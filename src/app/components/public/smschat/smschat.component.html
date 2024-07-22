@@ -5,9 +5,16 @@
 </div>
 <div class="row">
   <span i18n="@@phonenumber">Phone number</span> {{phoneNumber}}
-  <button class="float-right">
-    delete conversation
+  <button class="float-right" (click)="deleteConfirmation()" i18n="@@deletesmschatbutton">
+    delete SMS chat
   </button>
+  <div class="overall alert" [hidden]="delete==false">
+    <div class="cv">
+      <span i18n="@@deletesmsconfirmation">Do you want to delete this chat? It is going to delete all the exchanged messages with this phone number. It cannot be undone.</span>
+      <button class="m-t-10" (click)="deleteConfirmation()" i18n="@@close">close</button>
+      <button class="m-l-10 m-t-10" (click)="deleteChat()" i18n="@@delete">delete</button>
+    </div>
+  </div>
 </div>
 <div class="messages-box m-t-25">
   <div *ngFor="let message of messages; let i = index">
@@ -20,7 +27,7 @@
 <div class="row m-t-10">
   <form #f="ngForm" class="formdata" novalidate class="m-t-10">
     <textarea name="text" required rows="2" cols="35" maxlength="1400" i18n-placeholder
-      placeholder="write the message"></textarea>
+      placeholder="message"></textarea>
     <button (click)="sendSMS(f)" i18n="@@send">send</button>
   </form>
 </div>
