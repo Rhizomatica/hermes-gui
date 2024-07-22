@@ -556,52 +556,66 @@
         OFF / DISCTONNECTED / INACTIVE
       </p>
       <p class="m-t-10">
-        Frequency - 
+        Frequency -
       </p>
       <p>
-        Standing Wave Ratio (SWR) - 
+        Standing Wave Ratio (SWR) -
       </p>
       <p>
-        Power - 
+        Power -
       </p>
       <p>
-        Protection - 
+        Protection -
       </p>
       <p>
-        Transmission Status - 
+        Transmschatission Status -
       </p>
       <p>
-        Modem Status - 
+        Modem Status -
       </p>
       <p>
-        Signal-to-noise ratio (SNR) - 
+        Signal-to-noise ratio (SNR) -
       </p>
       <p>
-        Bitrate - 
+        Bitrate -
       </p>
       <p>
-        Transmission List - 
+        Transmission List -
       </p>
       <p>
-        Pending Transmission - 
+        Pending Transmission -
       </p>
       <p>
-        Successful Transmission - 
+        Successful Transmission -
       </p>
       <p>
-        Re-transmissions count - 
+        Re-transmissions count -
       </p>
       <p>
-        Scheduled transmission - 
+        Scheduled transmission -
       </p>
       <p>
-        GPS Status - 
+        GPS Status -
       </p>
       <p>
-        Remote Devices - 
+        Remote Devices -
       </p>
       <p>
-        LocalStorage - 
+        LocalStorage -
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'smslist'" i18n="@@smslisthint">
+      <h1 class="cv-title">SMS List</h1>
+      <p>
+        List of sent messages using the SMS chat system ordered and agroupped by phone number
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'smschat'" i18n="@@smschathint">
+      <h1 class="cv-title">SMS Chat</h1>
+      <p>
+        Use SMS Chat to exchange messages using the SMS service with any phone number.
       </p>
     </div>
 

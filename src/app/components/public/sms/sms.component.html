@@ -1,6 +1,9 @@
 <loading [loading]="loading"></loading>
 <div class="row">
+</div>
+<div class="flexible">
   <h2 i18n="@@smsmassagelabel">SMS Message</h2>
+  <hint [showHint]="false" [hint]="'smslist'"></hint>
 </div>
 <div class="row">
   <div class="messages maincontainer" *ngIf="message != null && messages.length > 0">
