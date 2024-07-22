@@ -4,8 +4,31 @@
 <div class="flexible">
   <h2 i18n="@@smsmassagelabel">SMS Message</h2>
   <hint [showHint]="false" [hint]="'smslist'"></hint>
+  <div class="row">
+    <button (click)="newMessage()" i18n="@@newmessage">
+      new message
+    </button>
+    <div class="overall alert" [hidden]="startChat==false">
+      <div class="cv">
+        <span i18n="@@newmessagelabel">Type the phone number to start a new SMS chat </span>
+        <br />
+        <span i18n="@@phonenumberpatternlabel">Example: </span> +1 123-456-7890
+        <div class="row m-t-10">
+          <form #f="ngForm">
+            <input i18n="@@phonenumber" name="phoneNumber" [(ngModel)]="phoneNumber" required maxlength="16"
+              i18n-placeholder placeholder="Phone number" (keyup)="validatePhoneNumber(f)" />
+            <div class="m-t-10">
+              <button (click)="newMessage()" i18n="@@close">close</button>
+              <button class="m-l-10" (click)="sendNewMessage(f)" i18n="@@send"
+                [disabled]="!this.phoneNumberValidator">send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="row">
+<div class="row m-t-10">
   <div class="messages maincontainer" *ngIf="message != null && messages.length > 0">
     <div class="multiplist">
       <div class="item" *ngFor="let message of filteredMessages | filter:searchMessages;">
