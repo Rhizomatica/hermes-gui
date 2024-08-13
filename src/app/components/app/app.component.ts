@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd, ActivationEnd } from '@angular/router';
-import { DecimalPipe, Location, NgSwitchCase } from '@angular/common';
+import { Component, OnInit, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { DecimalPipe, Location } from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
@@ -11,7 +11,6 @@ import { GlobalConstants } from 'src/app/global-constants';
 import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-import { Observable, Subscribable } from 'rxjs';
 // import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
@@ -40,6 +39,8 @@ export class AppComponent implements OnInit, OnDestroy {
   subscript: any;
   loading = true;
   changeLanguage = false
+  deferredPrompt: any
+  installPromotion: boolean = false
   title = 'hermes.radio'
   isMenuPage: boolean
   currentPage = GlobalConstants.requireLogin ? "login" : 'home'
@@ -123,6 +124,46 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isMenuPage = this.router.url == '/menu' ? true : false
   }
 
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onbeforeinstallprompt(e) {
+    console.log("Service Worker is started")
+    // Impede que o mini-infobar apareça em mobile
+    e.preventDefault();
+    this.deferredPrompt = e;
+    if (!this.deferredPrompt) {
+      this.showInstallPromotion();
+    }
+    console.log(`'beforeinstallprompt' event was fired.`);
+  }
+
+  showInstallPromotion() {
+    console.log("deferred" + this.deferredPrompt)
+    this.installPromotion = true
+  }
+
+  closeInstallapp() {
+    this.installPromotion = false
+  }
+
+  installPWA(): void {
+    this.deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    this.deferredPrompt.userChoice
+      .then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        this.deferredPrompt = null;
+      });
+  }
+
+  hideInstallPromotion() {
+    if (!this.deferredPrompt) {
+      this.deferredPrompt = null;
+    }
+  }
   checkIsLoginPage() {
     this.isLoginPage = this.router.url == '/login' ? true : false
   }
@@ -214,12 +255,20 @@ export class AppComponent implements OnInit, OnDestroy {
         this.checkIsMenuPage()
         this.checkIsLoginPage()
         this.updateBreadcrumb()
+        console.log('navegou')
 
         if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
           this.websocketService.startService()
         }
       }
+    });
 
+    window.addEventListener('appinstalled', () => {
+      // Esconder a promoção de instalação fornecida pela app
+      this.hideInstallPromotion();
+      // Limpar o deferredPrompt para que seja coletado
+      this.deferredPrompt = null;
+      console.log('PWA was installed');
     });
   }
 

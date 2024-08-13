@@ -13,9 +13,8 @@ export class RecorderComponent implements OnChanges {
   constructor(private domSanitizer: DomSanitizer) {
     this.recording = false
     this.file = null
-    this.maxSize = 0
+    this.maxSize = 31457280
     this.fileName = null
-
     this.record = null
     this.timeRecording = 0
     this.secondsLabel = "00"
@@ -24,10 +23,10 @@ export class RecorderComponent implements OnChanges {
   }
 
   @Input() recording: boolean
-  @Input() file: string
+  @Input() file: File
   @Input() fileName: any
-  @Input() maxSize: number
 
+  public maxSize: number
   public record: any
   public timeRecording: any
   public secondsLabel: string
@@ -106,9 +105,22 @@ export class RecorderComponent implements OnChanges {
       this.setFileOP(this.file)
       return
     }
+  }
 
-    this.fileName = 'file too big | archivo muy grande ';
-    this.file = null;
+
+  convertDataURIToBinary(dataURI) {
+    var BASE64_MARKER = ';base64,';
+
+    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+    var base64 = dataURI.substring(base64Index);
+    var raw = window.atob(base64);
+    var rawLength = raw.length;
+    var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+    for (var i = 0; i < rawLength; i++) {
+      array[i] = raw.charCodeAt(i);
+    }
+    return array;
   }
 
   cancelInterval() {

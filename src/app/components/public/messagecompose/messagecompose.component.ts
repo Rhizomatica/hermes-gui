@@ -55,8 +55,8 @@ export class MessagecomposeComponent implements OnInit {
   public loading = true
   public mobile: any
   public webCamDesktop = false
-  public WIDTH = 640;
-  public HEIGHT = 480;
+  public WIDTH = 300;
+  public HEIGHT = 225;
   public audioRecorderOverall = false
   public frequencies: Frequency[]
   fileSizeError: boolean = false
@@ -257,12 +257,16 @@ export class MessagecomposeComponent implements OnInit {
     this.file = null;
     this.fileSelected = false;
     this.isEncrypted = false
+    this.canvas.nativeElement.getContext('2d').clearRect(0, 0, this.WIDTH, this.HEIGHT);
     return this.file;
   }
 
   async sendMessage(f: NgForm): Promise<void> {
     //turn on animation
     this.loading = true;
+
+    if (this.file instanceof File == false)
+      this.quackFile()
 
     if (!this.isGateway) {
       var str = f.value.dest;
@@ -298,6 +302,18 @@ export class MessagecomposeComponent implements OnInit {
     else {
       const res = this.sendMessageContinue(f);
     }
+  }
+
+  quackFile() {
+
+    this.file = {
+      'name': this.fileName,
+      'lastModified': new Date()
+    }
+
+    this.file = new File([this.file], this.fileName, {
+      type: this.file.type
+    });
   }
 
   sendMessageContinue(f: NgForm) {

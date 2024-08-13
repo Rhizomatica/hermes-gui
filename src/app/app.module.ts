@@ -38,6 +38,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { MenuComponent } from './components/public/menu/menu.component';
@@ -108,6 +110,15 @@ registerLocaleData(localeEs);
     Ng2SearchPipeModule,
     AngularFileUploaderModule,
     NgSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      // enabled: Boolean(environment.production),
+      enabled: Boolean(true),
+
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    
     NgIdleKeepaliveModule.forRoot()
   ],
   providers: [

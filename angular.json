@@ -34,7 +34,8 @@
             "localize": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/assets/styles.less"
@@ -49,6 +50,8 @@
             "sourceMap": true,
             "optimization": true,
             "namedChunks": true,
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json",
             "allowedCommonJsDependencies":[
               "rxjs/internal/Subject"
             ]
@@ -245,7 +248,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.png",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/assets/styles.less"
