@@ -53,6 +53,7 @@ import { GPSComponent } from './components/admin/gps/gps.component';
 import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
 import { OperatorComponent } from './components/public/operator/operator.component';
+import { GlobalConstants } from './global-constants';
 
 
 registerLocaleData(localeEn);
@@ -111,9 +112,7 @@ registerLocaleData(localeEs);
     AngularFileUploaderModule,
     NgSelectModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      // enabled: Boolean(environment.production),
-      enabled: Boolean(true),
-
+      enabled: Boolean(GlobalConstants.production), 
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'

@@ -4,8 +4,8 @@ export class GlobalConstants {
 
 
   public static local = environment.local
-  public static serverIP = '10.8.0.132'
-  public static producion = environment.production
+  public static serverIP = '10.70.96.11'
+  public static production = environment.production
   public static apiURL = this.local ? `https://${this.serverIP}/api` : `https://${self.location.hostname}/api`
   public static webSocketUrl = this.local ? `wss://${this.serverIP}:8080/websocket` : `wss://${self.location.hostname + ':8080/websocket'}`
   public static domain = environment.domain
