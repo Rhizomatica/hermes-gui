@@ -16,9 +16,21 @@ export class LoginComponent implements OnInit {
   success = false;
   wrong = false;
   requireLogin: boolean = GlobalConstants.requireLogin
+  login: boolean = false
 
   constructor(private router: Router,
     private authenticationService: AuthenticationService) { }
+
+
+  loginOverall() {
+    if (!this.login) {
+      return this.login = true
+    }
+
+    if (this.login) {
+      return this.login = false
+    }
+  }
 
 
   submitLogin(f: NgForm): void {
