@@ -120,6 +120,10 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   verifyFileUploadPermission() {
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+      return this.allowUpload = false
+
+
     switch (this.allowfile) {
       case 'users':
         if (this.currentUser)
