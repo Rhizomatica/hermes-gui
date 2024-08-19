@@ -161,14 +161,11 @@ export class VoiceComponent implements OnInit {
   }
 
   changeVolume(f: NgForm) {
-    this.loading = true
     this.radioService.changeVolume(f.value.volume).subscribe(
       (res: any) => {
-        this.loading = false
+        
       }, (err) => {
         this.error = err;
-        // this.errorAlert = true
-        this.loading = false
       }
     );
   }
