@@ -255,7 +255,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.checkIsMenuPage()
         this.checkIsLoginPage()
         this.updateBreadcrumb()
-        console.log('navegou')
 
         if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
           this.websocketService.startService()

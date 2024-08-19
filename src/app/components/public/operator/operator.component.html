@@ -14,15 +14,21 @@
         </div>
         <div class="operator-panel">
             <div class="data">
-                <div class="data-title" i18n="@@frequency">
-                    Data Frequency
+                <div class="data-title">
+                    {{radio.profile == 0 ? 'Data' : 'Voice'}} <span i18n="@@frequency">Frequency</span>
                 </div>
                 <div class="data-body">
-                    <span *ngIf="radio.p0_freq">{{radio.p0_freq}}</span>
-                    <span *ngIf="radio.p1_freq">{{radio.p1_freq}}</span>
-                    <br />
-                    <span *ngIf="radio.p0_mode">{{radio.p0_mode}}</span>
-                    <span *ngIf="radio.p1_mode">{{radio.p1_mode}}</span>
+                    <div *ngIf="radio.profile == 0">
+                        <span>{{radio.p0_freq}}</span>
+                        <br />
+                        <span>{{radio.p0_mode}}</span>
+                    </div>
+
+                    <div *ngIf="radio.profile == 1">
+                        <span>{{radio.p1_freq}}</span>
+                        <br />
+                        <span>{{radio.p1_mode}}</span>
+                    </div>
                 </div>
             </div>
             <div class="data">
