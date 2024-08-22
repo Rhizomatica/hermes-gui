@@ -482,11 +482,11 @@ export class MessagecomposeComponent implements OnInit {
               this.message.dest = [origin]
             }
           }
+
+          this.getNickName(stations)
         }
 
         this.loading = false
-
-        this.getNickName(stations)
       });
   }
 
