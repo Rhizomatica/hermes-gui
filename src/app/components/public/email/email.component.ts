@@ -21,7 +21,7 @@ export class EmailComponent implements OnInit {
   users: any;
   domain: string
   emergencyEmail: string
-  sbitx:boolean = GlobalConstants.bitx == "s" ? true : false
+  sbitx:boolean = null
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -30,6 +30,7 @@ export class EmailComponent implements OnInit {
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     this.emergencyEmail = GlobalConstants.emergencyEmail
+    this.sbitx = GlobalConstants.bitx == "S" ? true : false
   }
 
   getUsers(): void {
