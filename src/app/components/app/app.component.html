@@ -69,7 +69,9 @@
         </div>
         <div *ngIf="serverError">
           <span i18n="@@areadyonmsg">
-            If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is {{emergencyEmail}}.
+            If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that
+            your system is corrupted. Please contact the support or the people you are usually in touch with. The
+            support email is {{emergencyEmail}}.
           </span>
           <div class="row m-t-10">
             <button (click)="showServerAlert()" i18n="@@closeerrorbuttonchangeconfig">
@@ -91,6 +93,14 @@
               </button>
             </div>
           </div>
+        </div>
+        <div class="row m-t-25">
+          <a href=".">
+            <div class="icon">
+              <img src="assets/svg/redo.svg" class="icon"> 
+              <span class="m-l-10" i18n="@@reloadpage">reload page</span>
+            </div>
+          </a>
         </div>
       </ng-template>
     </div>
