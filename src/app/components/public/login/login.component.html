@@ -32,7 +32,7 @@
                      ngModel />
                </label>
             </div>
-            <div class="m-t-25">
+            <div class="row m-t-25">
                <div class="row">
                   <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log
                      in</button>
@@ -41,8 +41,16 @@
                   </button>
                </div>
             </div>
+            <div class="row m-t-25" *ngIf="!requireLogin">
+               <p i18n="@@noaccount">Don't have an account?</p>
+               <a routerLink="/user-manage">
+                 <button i18n="@@createbtn">create an account</button>
+               </a>
+             </div>
          </div>
       </form>
+
+      
    </div>
 
 </div>
