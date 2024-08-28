@@ -21,6 +21,7 @@ export class EmailComponent implements OnInit {
   users: any;
   domain: string
   emergencyEmail: string
+  sbitx:boolean = GlobalConstants.bitx == "s" ? true : false
 
   constructor(
     private authenticationService: AuthenticationService,

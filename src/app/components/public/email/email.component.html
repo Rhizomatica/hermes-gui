@@ -42,7 +42,7 @@
     </p>
     <hr />
   </div>
-  <div class="m-t-25">
+  <div class="m-t-25" *ngIf="!sbitx">
     <h2 i18n="@@selectusers">Select users to send e-mail:</h2>
     <ng-container *ngIf="users">
       <ng-select id="selmult" #getModelValue="ngModel" name="email" [selectableGroup]="true" [items]="users"
@@ -64,7 +64,7 @@
     </a>
   </div>
   <br />
-  <div class="row">
+  <div class="row" *ngIf="!sbitx">
     <p i18n="@@emailsuport">If you have a problem and are not sure who to write to
       <a href="mailto:{{emergencyEmail}}">{{emergencyEmail}}</a>
     </p>
