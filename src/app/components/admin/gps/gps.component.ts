@@ -6,7 +6,8 @@ import { GlobalConstants } from 'src/app/global-constants';
 import { NgForm } from '@angular/forms';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-import am5geodata_worldHigh from "../../../../assets/maps/worldHigh.js";
+// import am5geodata_worldHigh from "../../../../assets/maps/worldHigh.js";
+import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh";
 import { Subscription, interval } from 'rxjs';
 
 // import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
@@ -51,86 +52,90 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   getGPSFiles(): void {
-    this.loading = true
+    // this.loading = true
     this.gpsService.getStoredGPSFiles().subscribe(
       (res: any) => {
         if (res)
           this.files = res
 
-        this.loading = false
+        // this.loading = false
       },
       (err) => {
         this.error = err;
-        this.loading = false
+        // this.loading = false
       }
     );
   }
 
   getGPSStatus(): void {
-    this.loading = true
+    // this.loading = true
     this.gpsService.getGPSStatus().subscribe(
       (res: any) => {
         if (res)
           this.status = res
 
-        this.loading = false
+        // this.loading = false
       },
       (err) => {
         this.error = err;
-        this.loading = false
+        // this.loading = false
       }
     );
   }
 
   getInterval() {
-    this.loading = true
+    // this.loading = true
     this.gpsService.getInterval().subscribe(
       (res: any) => {
         if (res)
           this.interval = res
 
-        this.loading = false
+        // this.loading = false
       },
       (err) => {
         this.error = err;
-        this.loading = false
+        // this.loading = false
       }
     );
   }
 
   getFileRangeTime() {
-    this.loading = true
+    // this.loading = true
     this.gpsService.getFileRangeTime().subscribe(
       (res: any) => {
         if (res)
           this.range = parseInt(res) / 60
 
-        this.loading = false
+        // this.loading = false
       },
       (err) => {
         this.error = err;
-        this.loading = false
+        // this.loading = false
       }
     );
   }
 
   getEmail() {
-    this.loading = true
+    // this.loading = true
     this.gpsService.getEmail().subscribe(
       (res: any) => {
         if (res)
           this.email = res
 
-        this.loading = false
+        // this.loading = false
       },
       (err) => {
         this.error = err;
-        this.loading = false
+        // this.loading = false
       }
     );
   }
 
   getCurrentCoordinates() {
+    
+    if(!this.currentLatitude && !this.currentLongitude)
+      this.loading = true
+    
     this.gpsService.getCurrentCoordinates().subscribe(
       (res: any) => {
         if (res && res.latitude !== null && res.longitude !== null) {
@@ -143,6 +148,8 @@ export class GPSComponent implements OnInit, OnDestroy {
             name: "Current Location"
           }]);
         }
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -152,7 +159,6 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   startMap() {
-    this.loading = true
     var latitude = this.currentLatitude
     var longitude = this.currentLongitude
 
@@ -234,7 +240,7 @@ export class GPSComponent implements OnInit, OnDestroy {
     // PolygonSeries
     let polygonSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
-        geoJSON: am5geodata_worldHigh
+        geoJSON: am5geodata_bangladeshHigh
       })
     );
 
@@ -281,8 +287,6 @@ export class GPSComponent implements OnInit, OnDestroy {
     //   long: this.currentLongitude,
     //   name: "Current Location"
     // }]);
-
-    this.loading = false
   }
 
   updateGPSInterval(f: NgForm) {
@@ -398,19 +402,20 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loading = true
     this.getGPSFiles()
     this.getGPSStatus()
     this.getInterval()
     this.getFileRangeTime()
     this.getEmail()
     this.getCurrentCoordinates() //First call
+    this.startMap()
 
     //Pool current coordinates
     this.poolCoordinates = interval(10000).subscribe((val) => {
       this.getCurrentCoordinates()
     });
 
-    this.startMap()
   }
 
   ngOnDestroy() {
