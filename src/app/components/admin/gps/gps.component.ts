@@ -6,7 +6,6 @@ import { GlobalConstants } from 'src/app/global-constants';
 import { NgForm } from '@angular/forms';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-// import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh.js";
 import am5geodata_worldHigh from "../../../../assets/maps/worldHigh.js";
 import { Subscription, interval } from 'rxjs';
 
@@ -29,10 +28,10 @@ export class GPSComponent implements OnInit, OnDestroy {
   interval: number = 0
   range: number = 0
   email: string = null
-  // currentLatitude: number = null
-  // currentLongitude: number = null
-  currentLatitude: number = 21.732970
-  currentLongitude: number = 89.882957
+  currentLatitude: number = null
+  currentLongitude: number = null
+  // currentLatitude: number = 21.732970
+  // currentLongitude: number = 89.882957
   status: boolean = false
   urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
   urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
@@ -153,7 +152,7 @@ export class GPSComponent implements OnInit, OnDestroy {
   }
 
   startMap() {
-
+    this.loading = true
     var latitude = this.currentLatitude
     var longitude = this.currentLongitude
 
@@ -277,11 +276,13 @@ export class GPSComponent implements OnInit, OnDestroy {
     });
 
     //For testing a fake spot*****
-    this.pointSeries.data.setAll([{
-      lat: this.currentLatitude,
-      long: this.currentLongitude,
-      name: "Current Location"
-    }]);
+    // this.pointSeries.data.setAll([{
+    //   lat: this.currentLatitude,
+    //   long: this.currentLongitude,
+    //   name: "Current Location"
+    // }]);
+
+    this.loading = false
   }
 
   updateGPSInterval(f: NgForm) {
