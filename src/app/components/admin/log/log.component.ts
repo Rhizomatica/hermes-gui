@@ -6,7 +6,6 @@ import { CustomErrorsService } from '../../../_services/custom-errors.service';
 import { CustomError } from '../../../interfaces/customerror'
 import { UtilsService } from 'src/app/_services/utils.service';
 
-
 export interface LogList {
   line: string;
   content: string;
@@ -40,7 +39,7 @@ export class LogComponent implements OnInit, OnDestroy {
   system: any
   criticSpace = false;
   confirmDeleteAllLogs = false;
-  hostname: string = null
+
 
   constructor(private authenticationService: AuthenticationService,
     private apiService: ApiService,
@@ -231,7 +230,7 @@ export class LogComponent implements OnInit, OnDestroy {
           this.criticSpace = true;
         }
 
-        this.system.diskfree = (this.system.diskfree / 1024 / 1024).toFixed(3)
+        this.system.diskfree = (this.system.diskfree  /1024 /1024).toFixed(3)
 
         this.loading = false
       },
@@ -249,8 +248,6 @@ export class LogComponent implements OnInit, OnDestroy {
     } else {
       this.isAdmin = false;
     }
-
-    this.hostname = window.location.hostname
   }
 
   ngOnDestroy() {
