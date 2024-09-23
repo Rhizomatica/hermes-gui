@@ -95,22 +95,22 @@
             </h3>
           </div>
         </div>
-        <div class="card" *ngIf="radio.bitrate">
+        <div class="card" *ngIf="radio.bitrate != null">
           <div class="row">
             <h3>
               <div i18n="@@bitrate">Bitrate:
                 <br />
-                {{radio.bitrate}} bps
+                {{radio.bitrate}}
               </div>
             </h3>
           </div>
         </div>
-        <div class="card" *ngIf="radio.snr">
+        <div class="card" *ngIf="radio.snr != null">
           <div class="row">
             <h3>
               <div i18n="@@SNR">Signal to Noise (SNR):
                 <br />
-                {{radio.snr}} db
+                {{radio.snr}}
               </div>
             </h3>
           </div>
