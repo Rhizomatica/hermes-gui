@@ -79,6 +79,13 @@ export class UtilsService {
     return (parseInt(swr) / 10).toFixed(1).toString()
   }
 
+  formatDecimal(num) {
+    if (!num)
+      return '0'
+
+    return (parseInt(num) / 10).toFixed(1).toString()
+  }
+
   formatPower(fwd) {
     if (!fwd)
       return '0'
