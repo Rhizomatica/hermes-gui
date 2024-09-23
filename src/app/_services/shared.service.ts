@@ -114,7 +114,7 @@ export class SharedService {
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
     this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime    
     this.storedRadioObj.snr = newObj.snr == null ? this.storedRadioObj.snr : this.utils.formatDecimal(newObj.snr)    
-    this.storedRadioObj.bitrate = newObj.bitrate == null ? this.storedRadioObj.bitrate : this.utils.formatDecimal(newObj.bitrate)    
+    this.storedRadioObj.bitrate = newObj.bitrate == null ? this.storedRadioObj.bitrate : newObj.bitrate    
   }
 
   mountRadioObjDemo() {
@@ -136,8 +136,8 @@ export class SharedService {
     this.radioObj.value.p1_freq_splited = this.utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.value.timeout = this.utils.formatTimeCounter('300')
     this.radioObj.value.datetime = new Date('08/04/2024 13:03:01')
-    this.radioObj.value.snr = '1.8'
-    this.radioObj.value.bitrate = '3.5'
+    this.radioObj.value.snr = '15.3'
+    this.radioObj.value.bitrate = '363'
 
     this.radioObj.next(this.radioObj.value)
   }
