@@ -32,7 +32,7 @@
             </datalist> -->
         </form>
       </div>
-      <div *ngIf="radio.timeout != null">
+      <div *ngIf="radio.timeout > 0">
         <div class="data-title m-t-25">
           <span i18n="@@timeoutlabel">
             Voice timeout: {{radio.timeout}}

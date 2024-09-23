@@ -95,27 +95,6 @@
             </h3>
           </div>
         </div>
-        <div class="card" *ngIf="radio.bitrate">
-          <div class="row">
-            <h3>
-              <div i18n="@@bitrate">Bitrate:
-                <br />
-                {{radio.bitrate}}
-              </div>
-            </h3>
-          </div>
-        </div>
-        <div class="card" *ngIf="radio.snr">
-          <div class="row">
-            <h3>
-              <div i18n="@@SNR">Signal to Noise (SNR):
-                <br />
-                {{radio.snr}}
-              </div>
-            </h3>
-          </div>
-        </div>
-        
       </div>
       <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
