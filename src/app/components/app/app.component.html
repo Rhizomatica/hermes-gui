@@ -17,10 +17,7 @@
       <a routerLink='/home' class="logo-link"
         [style.pointer-events]="disableNavigationsRequireLoginNoUser() ? 'none' : 'auto'"
         (keydown.enter)="!disableNavigationsRequireLoginNoUser()">
-        <img title="Hermes logo" src="assets/img/logohermes.png" class="logo">
-        <h1 class="sitetitle" *ngIf="system">
-          <span>{{system.domain}}</span>
-        </h1>
+        <img title="Hermes logo" src="assets/img/logo-hermes-500.png" class="logo">
       </a>
       <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
         <div *ngIf="radio && radio.profile == 0">
@@ -39,6 +36,7 @@
             voice
           </span>
         </div>
+        <span *ngIf="system" class="nav-domain">{{system.domain}}</span>
         <img title="menu" src="assets/svg/bars-solid.svg">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">

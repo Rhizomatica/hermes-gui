@@ -24,15 +24,13 @@ body {
   font-family: 'Rubik', sans-serif;
   min-height: 100vh !important;
   height: 100%;
-
-  //Prevent text selection
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
+//Prevent text selection
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
 * {
@@ -251,7 +249,7 @@ nav {
   background-color: @bkclr;
   z-index: 1;
   position: fixed;
-  padding: 10px 13px;
+  padding: 2px 15px 2px 0px;
   top: 0;
 
   a {
@@ -268,7 +266,6 @@ nav {
 
   .logo {
     width: 10em;
-    margin-left: 1.2em;
   }
 
   img:hover {
@@ -292,7 +289,7 @@ nav {
     position: absolute;
     float: right;
     right: 60px;
-    top: 35%;
+    top: 25%;
     margin: 0 auto;
   }
 
@@ -300,7 +297,15 @@ nav {
     position: absolute;
     float: right;
     right: 60px;
-    top: 55%;
+    top: 40%;
+    margin: 0 auto;
+  }
+
+  .nav-domain {
+    position: absolute;
+    float: right;
+    right: 60px;
+    top: 60%;
     margin: 0 auto;
   }
 }
@@ -315,16 +320,6 @@ textarea {
   width: 100%;
 }
 
-.sitetitle {
-  color: @clr;
-  font-size: 1em;
-  line-height: 1em;
-  position: relative;
-  font-weight: 400;
-  word-wrap: break-word;
-  width: 160px;
-  text-align: center;
-}
 
 .bordered {
   border-bottom: 2px solid black;
@@ -1523,7 +1518,7 @@ tr:nth-child(odd) {
   }
 
   .logo {
-    filter: brightness(200%);
+    filter: invert(1);
   }
 
   .overall {
@@ -2174,13 +2169,14 @@ tr:nth-child(odd) {
 }
 
 .breadcrumb {
-  top: 60px;
+  top: 70px;
   position: absolute;
   width: 100%;
   padding-left: 3em;
   vertical-align: middle;
   margin: auto 0;
   height: 37px;
+  
 
   a {
     font-style: normal;
@@ -2253,7 +2249,7 @@ video {
   padding: 15px;
   color: @clr;
   background-color: #fff;
-  margin-top: 50px
+  margin-top: 50px;
 }
 
 .gps-stored-files {
@@ -2266,6 +2262,11 @@ video {
   width: 100%;
   height: 325px;
   border-radius: 3px;
+}
+
+.login-button {
+  margin-top: 45px;
+  margin-bottom: 15px
 }
 
 .messages-box {
@@ -2345,6 +2346,11 @@ video {
 
   .half-row {
     width: 100%;
+    margin-top: 10px;
+  }
+
+  .half-row.login {
+    width: 49%;
     margin-top: 10px;
   }
 
@@ -2543,6 +2549,12 @@ video {
     padding: 0 0 15px;
   }
 
+  nav {
+    .logo {
+      width: 8.5em;
+    }
+  }
+
   .navmain {
     justify-content: left;
     position: left;
@@ -2550,17 +2562,6 @@ video {
     a {
       min-width: calc(58% - 0.25em);
     }
-
-    .logo {
-      width: 10em;
-    }
-
-    .sitetitle {
-      font-size: 0.9em;
-      text-align: left;
-      margin-left: 19px;
-    }
-
   }
 
   .formdata {
@@ -2769,6 +2770,7 @@ video {
 
   .breadcrumb {
     padding-left: 2%;
+    top: 60px;
   }
 
   .phonemenu {
@@ -2804,6 +2806,11 @@ video {
         }
       }
     }
+  }
+
+  .login-button {
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 }
 
