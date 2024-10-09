@@ -195,6 +195,121 @@ export class OperatorComponent implements OnInit {
         visible: true
       });
 
+      console.log(data)
+      series.data.setAll(data);
+    }
+
+    createSeries("Series with breaks", "value", "openValue");
+
+
+    let scrollbarX = am5xy.XYChartScrollbar.new(root, {
+      orientation: "horizontal",
+      height: 30
+    });
+
+    chart.set("scrollbarX", scrollbarX);
+
+    let sbxAxis = scrollbarX.chart.xAxes.push(am5xy.DateAxis.new(root, {
+      baseInterval: { timeUnit: "millisecond", count: 1 },
+      renderer: am5xy.AxisRendererX.new(root, {
+        opposite: false,
+        strokeOpacity: 0,
+        minorGridEnabled: true,
+        minGridDistance: 100
+      })
+    }));
+
+    let sbyAxis = scrollbarX.chart.yAxes.push(am5xy.ValueAxis.new(root, {
+      renderer: am5xy.AxisRendererY.new(root, {})
+    }));
+
+    let sbseries = scrollbarX.chart.series.push(am5xy.LineSeries.new(root, {
+      xAxis: sbxAxis,
+      yAxis: sbyAxis,
+      valueYField: "visits",
+      valueXField: "date"
+    }));
+
+    sbseries.data.setAll(data);
+  }
+
+  startSNRGraph(): void {
+
+    // https://www.amcharts.com/demos/area-with-time-based-data/
+
+    var root = am5.Root.new("snrChart");
+
+    // root.setThemes([
+    //   am5themes_Animated.new(root)
+    // ]);
+
+    var chart = root.container.children.push(
+      am5xy.XYChart.new(root, {
+        panX: true,
+        panY: true,
+        wheelY: "zoomX",
+        layout: root.verticalLayout,
+        pinchZoomX: true
+      })
+    );
+
+    // Craete Y-axis
+    var yAxis = chart.yAxes.push(
+      am5xy.ValueAxis.new(root, {
+        maxDeviation: 1,
+        renderer: am5xy.AxisRendererY.new(root, {
+          pan: "zoom"
+        })
+      })
+    );
+
+    // Create X-Axis
+    var xAxis = chart.xAxes.push(
+      am5xy.DateAxis.new(root, {
+        baseInterval: { timeUnit: "millisecond", count: 1 },
+        renderer: am5xy.AxisRendererX.new(root, {
+          minGridDistance: 100,
+          pan: "zoom",
+          minorGridEnabled: true
+        })
+      })
+    );
+
+    let data = []; //this.getBitrateData()
+
+    let visits = 0;
+    for (var i = 0; i < 10000; i++) {
+      // some random number
+      visits = Math.round(Math.random() * (213 - 200) + 200);
+      data.push({
+        date: new Date().getMilliseconds(),
+        visits: visits
+      });
+    }
+
+    // Create series
+    function createSeries(name, field, openField) {
+      var series = chart.series.push(
+        am5xy.LineSeries.new(root, {
+          name: name,
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: "visits",
+          valueXField: "date",
+          openValueYField: openField,
+          fill: am5.color("#f60"),
+          stroke: am5.color("#f60")
+        })
+      );
+      series.strokes.template.setAll({
+        strokeWidth: 1.5
+      });
+      series.fills.template.setAll({
+        fillOpacity: 0.3,
+        visible: true
+      });
+
+      console.log(data)
       series.data.setAll(data);
     }
 
@@ -246,6 +361,7 @@ export class OperatorComponent implements OnInit {
     })
 
     this.startBitrateGraph()
+    this.startSNRGraph()
 
 
     // Modem Status
