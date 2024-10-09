@@ -115,7 +115,7 @@
             </h3>
           </div>
         </div>
-        
+
       </div>
       <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
@@ -124,7 +124,7 @@
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
-              value={{p0_frek}}>
+              value={{p0_frek}} step="0.01">
             <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
               change frequency
             </button>
@@ -154,7 +154,7 @@
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
-              value={{p1_frek}}>
+              value={{p1_frek}} step="0.01">
             <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
               i18n="@@changevoicefreqr0">
               change frequency

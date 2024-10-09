@@ -464,8 +464,8 @@ export class RadioConfigComponent implements OnInit {
     this.radio = this.sharedService.radioObj.value
     this.voiceModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
     this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
-    this.p0_frek = parseFloat(this.radio.p0_freq) * 1000
-    this.p1_frek = parseFloat(this.radio.p1_freq) * 1000
+    this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
+    this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }
