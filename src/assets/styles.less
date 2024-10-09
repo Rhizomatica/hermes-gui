@@ -24,13 +24,13 @@ body {
   font-family: 'Rubik', sans-serif;
   min-height: 100vh !important;
   height: 100%;
-//Prevent text selection
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+  //Prevent text selection
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 * {
@@ -1710,18 +1710,18 @@ tr:nth-child(odd) {
 
   .messages-box {
     border: 1px solid @bkclr;
-  }  
+  }
 
   .balloon {
     border: 1px solid @clr;
     background-color: @mclr;
   }
-  
+
   .balloon.sent {
     border: 1px solid @mclr;
     background-color: @clr;
   }
-  
+
 }
 
 .syspusher {
@@ -2176,7 +2176,7 @@ tr:nth-child(odd) {
   vertical-align: middle;
   margin: auto 0;
   height: 37px;
-  
+
 
   a {
     font-style: normal;
@@ -2276,7 +2276,7 @@ video {
   width: 100%;
   height: 280px;
   overflow-y: scroll;
-  margin-top:10px
+  margin-top: 10px
 }
 
 .balloon {
@@ -2306,19 +2306,25 @@ video {
   flex-direction: row;
   flex-wrap: wrap;
 
-  .data{
+  .data {
     width: 25%;
     padding: 10px;
     flex-direction: column;
   }
 
-  .data-title{
+  .data-graph {
+    width: 50%;
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  .data-title {
     color: @clr;
     font-size: 1em;
     font-weight: bold;
   }
 
-  .data-body{
+  .data-body {
     padding-left: 5px;
     margin-top: 5px;
     font-size: 0.9em
