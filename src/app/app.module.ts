@@ -54,6 +54,7 @@ import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
 import { OperatorComponent } from './components/public/operator/operator.component';
 import { GlobalConstants } from './global-constants';
+import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 
 
 registerLocaleData(localeEn);
@@ -100,7 +101,8 @@ registerLocaleData(localeEs);
     GPSComponent,
     SMSComponent,
     SMSChatComponent,
-    OperatorComponent
+    OperatorComponent,
+    XYGraphComponent
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,7 @@ import { GPSComponent } from './components/admin/gps/gps.component';
 import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
 import { OperatorComponent } from './components/public/operator/operator.component';
+import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -63,7 +64,8 @@ const routes: Routes = [
   { path: 'gps', component: GPSComponent },
   { path: 'sms', component: SMSComponent },
   { path: 'smschat/:id', component: SMSChatComponent },
-  { path: 'operator', component: OperatorComponent }
+  { path: 'operator', component: OperatorComponent },
+  { path: 'xygraph', component: XYGraphComponent }
 ];
 
 @NgModule({
