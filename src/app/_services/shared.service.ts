@@ -38,7 +38,9 @@ export class SharedService {
     timeout: null,
     datetime: null,
     snr: null,
-    bitrate: null
+    bitrate: null,
+    bitrateHistory: null,
+    snrHistory: null
   });
 
   public storedRadioObj = <Radio>({
@@ -59,7 +61,9 @@ export class SharedService {
     timeout: null,
     datetime: null,
     snr: null,
-    bitrate: null
+    bitrate: null,
+    bitrateHistory: [],
+    snrHistory: []
   });
 
   setRadioObjShared(data) {
@@ -87,6 +91,8 @@ export class SharedService {
     this.radioObj.value.datetime = this.storedRadioObj.datetime
     this.radioObj.value.snr = this.storedRadioObj.snr
     this.radioObj.value.bitrate = this.storedRadioObj.bitrate
+    this.radioObj.value.bitrateHistory = this.storedRadioObj.bitrateHistory
+    this.radioObj.value.snrHistory = this.storedRadioObj.snrHistory
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -112,9 +118,12 @@ export class SharedService {
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = this.utils.splitFrequency(this.storedRadioObj.p1_freq)
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
-    this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime    
-    this.storedRadioObj.snr = newObj.snr == null ? this.storedRadioObj.snr : this.utils.formatDecimal(newObj.snr)    
-    this.storedRadioObj.bitrate = newObj.bitrate == null ? this.storedRadioObj.bitrate : newObj.bitrate    
+    this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime
+    this.storedRadioObj.snr = newObj.snr == null ? this.storedRadioObj.snr : this.utils.formatDecimal(newObj.snr)
+    this.storedRadioObj.bitrate = newObj.bitrate == null ? this.storedRadioObj.bitrate : newObj.bitrate
+
+    this.prepareBitrateHistory()
+    this.prepareSNRHistory()
   }
 
   mountRadioObjDemo() {
@@ -147,5 +156,39 @@ export class SharedService {
     if (GlobalConstants.bitx == 'S' && this.utils.isItRuningLocal() && this.storedRadioObj.profile == 1 && newProfile == 0 && this.router.url == '/voice') {
       this.router.navigate(['/home']);
     }
+  }
+
+  prepareBitrateHistory() {
+
+    if (!this.storedRadioObj.bitrate.length)
+      return
+
+    var bitrateData = new Object()
+    bitrateData = {
+      date: new Date(),
+      snr: this.storedRadioObj.bitrate
+    }
+
+    this.storedRadioObj.bitrateHistory.push(bitrateData)
+
+    if (this.storedRadioObj.bitrateHistory.length > 500)
+      this.storedRadioObj.bitrateHistory.shift()
+  }
+
+  prepareSNRHistory() {
+
+    if (!this.storedRadioObj.snr.length)
+      return
+
+    var snrData = new Object()
+    snrData = {
+      date: new Date(),
+      snr: this.storedRadioObj.snr
+    }
+
+    this.storedRadioObj.snrHistory.push(snrData)
+
+    if (this.storedRadioObj.snrHistory.length > 500)
+      this.storedRadioObj.snrHistory.shift()
   }
 }

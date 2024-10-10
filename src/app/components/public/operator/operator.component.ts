@@ -121,40 +121,6 @@ export class OperatorComponent implements OnInit {
     }
   }
 
-  getBitrateData(){
-    this.bitrateData = []; //this.getBitrateData()
-
-    let visits = 0;
-    for (var i = 0; i < 10000; i++) {
-      // some random number
-      visits = Math.round(Math.random() * (213 - 200) + 200);
-
-      let item = new Object({
-        date: new Date().getMilliseconds(),
-        visits: visits
-      });
-
-      this.bitrateData.push(item);
-    }
-  }
-
-  getSNRData(){
-    this.snrData = []; //this.getBitrateData()
-
-    let visits = 0;
-    for (var i = 0; i < 10000; i++) {
-      // some random number
-      visits = Math.round(Math.random() * (213 - 200) + 200);
-
-      let item = new Object({
-        date: new Date().getMilliseconds(),
-        visits: visits
-      });
-
-      this.snrData.push(item);
-    }
-  }
-
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
 
@@ -167,9 +133,6 @@ export class OperatorComponent implements OnInit {
       // this.getSystemData()
       this.getQueue() // TODO - needed?
     })
-
-    this.getBitrateData()
-    this.getSNRData()
 
     // Modem Status
     // Signal-to-noise ratio (SNR) --new
