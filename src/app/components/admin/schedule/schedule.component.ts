@@ -33,6 +33,7 @@ export class ScheduleComponent implements OnInit {
   loading = true;
   serverDateTime = null;
   confirmDeleteSchedule: boolean = false;
+  public radio: any = []
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -194,7 +195,7 @@ export class ScheduleComponent implements OnInit {
     this.getSchedules();
     this.getStations();
 
-    this.serverDateTime = this.sharedService.radioObj.value.datetime
+    this.radio = this.sharedService.radioObj.value
 
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
