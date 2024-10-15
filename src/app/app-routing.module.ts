@@ -31,6 +31,7 @@ import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
 import { OperatorComponent } from './components/public/operator/operator.component';
 import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
+import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -65,7 +66,9 @@ const routes: Routes = [
   { path: 'sms', component: SMSComponent },
   { path: 'smschat/:id', component: SMSChatComponent },
   { path: 'operator', component: OperatorComponent },
-  { path: 'xygraph', component: XYGraphComponent }
+  { path: 'xygraph', component: XYGraphComponent },
+  { path: 'clockhandgraph', component: ClockHandGraphComponent }
+  
 ];
 
 @NgModule({
