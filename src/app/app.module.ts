@@ -56,6 +56,7 @@ import { OperatorComponent } from './components/public/operator/operator.compone
 import { GlobalConstants } from './global-constants';
 import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
+import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 
 
 registerLocaleData(localeEn);
@@ -104,7 +105,8 @@ registerLocaleData(localeEs);
     SMSChatComponent,
     OperatorComponent,
     XYGraphComponent,
-    ClockHandGraphComponent
+    ClockHandGraphComponent,
+    MapGraphComponent
   ],
   imports: [
     BrowserModule,

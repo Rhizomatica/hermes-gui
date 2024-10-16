@@ -13,6 +13,7 @@ const envConfigFile = `export const environment = {
     gateway: ${process.env.GATEWAY},
     bitx: '${process.env.BITX}',
     hasGPS: ${process.env.HAS_GPS},
+    gpsMap: '${process.env.GPS_MAP}',
     requireLogin: ${process.env.REQUIRE_LOGIN},
     emergencyEmail: '${process.env.EMERGENCY_EMAIL}'
 };`;

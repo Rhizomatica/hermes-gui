@@ -32,6 +32,7 @@ import { SMSChatComponent } from './components/public/smschat/smschat.component'
 import { OperatorComponent } from './components/public/operator/operator.component';
 import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
+import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -67,7 +68,8 @@ const routes: Routes = [
   { path: 'smschat/:id', component: SMSChatComponent },
   { path: 'operator', component: OperatorComponent },
   { path: 'xygraph', component: XYGraphComponent },
-  { path: 'clockhandgraph', component: ClockHandGraphComponent }
+  { path: 'clockhandgraph', component: ClockHandGraphComponent },
+  { path: 'mapgraph', component: MapGraphComponent }
   
 ];
 

@@ -12,7 +12,8 @@
             </span>
             <div class="row m-t-10">
                 <button i18n="@@cancel" (click)="SOSEmergency()">cancel</button>
-                <button class="m-l-10 danger" (click)="confirmSOSEmergency()" i18n="@@sosemergency">SOS Emergency</button>
+                <button class="m-l-10 danger" (click)="confirmSOSEmergency()" i18n="@@sosemergency">SOS
+                    Emergency</button>
             </div>
         </div>
     </div>
@@ -27,7 +28,8 @@
     </p>
 </div>
 <div class="row">
-    <div id="chartmap"></div>
+    <mapgraph graphElementID="gpsChart" [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude">
+    </mapgraph>
 </div>
 <div class="m-t-25">
     <div class="flexible">
