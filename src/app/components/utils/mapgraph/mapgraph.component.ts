@@ -30,11 +30,16 @@ export class MapGraphComponent implements OnChanges {
 
   pointSeries: any
 
-
   ngOnChanges(change) {
     if(change && change.currentLongitude.currentValue != change.currentLongitude.previousValue){
       this.currentLatitude = change.currentLatitude.currentValue
       this.currentLongitude = change.currentLongitude.currentValue
+
+      this.pointSeries.data.setAll([{
+        lat: this.currentLatitude,
+        long: this.currentLongitude,
+        name: "Current Location"
+      }]);
     }
   }
 
@@ -73,7 +78,6 @@ export class MapGraphComponent implements OnChanges {
         fillOpacity: 0.6
       })
     });
-
 
     let homeButton = chart.children.push(am5.Button.new(root, {
       paddingTop: 10,
