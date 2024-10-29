@@ -20,6 +20,8 @@ export class MapGraphComponent implements OnChanges {
     this.currentLatitude = null
     this.currentLongitude = null
     this.pointSeries = null
+    this.polygonSeries = null
+    this.chart = null
   }
 
   @Input() graphElementID: string
@@ -29,9 +31,11 @@ export class MapGraphComponent implements OnChanges {
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   pointSeries: any
+  polygonSeries: any
+  chart: any
 
   ngOnChanges(change) {
-    if(change && change.currentLongitude.currentValue != change.currentLongitude.previousValue){
+    if (change && change.currentLongitude.currentValue != change.currentLongitude.previousValue) {
       this.currentLatitude = change.currentLatitude.currentValue
       this.currentLongitude = change.currentLongitude.currentValue
 
@@ -40,22 +44,41 @@ export class MapGraphComponent implements OnChanges {
         long: this.currentLongitude,
         name: "Current Location"
       }]);
+
+      var latitude = this.currentLatitude
+      var longitude = this.currentLongitude
+
+      // if(this.chart){
+
+      //   let chart = this.chart
+      //   this.polygonSeries.events.on("datavalidated", function () {
+      //     chart.zoomToGeoPoint({
+      //       longitude: longitude,
+      //       latitude: latitude
+      //     }, 10);
+      //   });
+      // }
+
+
     }
   }
 
   startMapChart() {
     var latitude = this.currentLatitude
     var longitude = this.currentLongitude
-
     //Chart
     let root = am5.Root.new(this.graphElementID);
-    let chart = root.container.children.push(
+    this.chart = root.container.children.push(
       am5map.MapChart.new(root, {
         panX: "rotateX",
         projection: am5map.geoMercator(),
-        focusable: true
+        focusable: true,
+        homeZoomLevel: 3.5,
+        homeGeoPoint: { longitude: longitude, latitude: latitude }
       })
     );
+
+    var chart = this.chart
 
     chart.chartContainer.set("background", am5.Rectangle.new(root, {
       fill: am5.color("#90daee"),
@@ -121,11 +144,11 @@ export class MapGraphComponent implements OnChanges {
       strokeOpacity: 0.1,
     });
 
-    let polygonSeries = null
+    // let polygonSeries = null
 
     // PolygonSeries
     if (GlobalConstants.gpsMap == 'brazil') {
-      polygonSeries = chart.series.push(
+      this.polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_brazilHigh
         })
@@ -133,7 +156,7 @@ export class MapGraphComponent implements OnChanges {
     }
 
     if (GlobalConstants.gpsMap == 'bangladesh') {
-      polygonSeries = chart.series.push(
+      this.polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_bangladeshHigh
         })
@@ -141,28 +164,33 @@ export class MapGraphComponent implements OnChanges {
     }
 
     if (GlobalConstants.gpsMap == 'central africa') {
-      polygonSeries = chart.series.push(
+      this.polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_centralAfricanRepublicHigh
         })
       );
     }
 
-    polygonSeries.mapPolygons.template.setAll({
+    this.polygonSeries.mapPolygons.template.setAll({
       stroke: am5.color("#90daee"),
       strokeWidth: 0.5,
       fill: am5.color("#f5f3f3")
     });
 
-    polygonSeries.mapPolygons.template.states.create("hover", {
+    this.polygonSeries.mapPolygons.template.states.create("hover", {
       fill: am5.color("#f60")
     });
 
-    polygonSeries.events.on("datavalidated", function () {
-      chart.zoomToGeoPoint({
-        longitude: longitude,
-        latitude: latitude
-      }, 15);
+    // this.polygonSeries.events.on("datavalidated", function () {
+    //   console.log('entrou')
+    //   chart.zoomToGeoPoint({
+    //     longitude: longitude,
+    //     latitude: latitude
+    //   }, 10);
+    // });
+
+    this.polygonSeries.events.on("datavalidated", function() {
+      chart.goHome();
     });
 
     //Point Series
