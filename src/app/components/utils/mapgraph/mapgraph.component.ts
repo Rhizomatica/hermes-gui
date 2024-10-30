@@ -35,6 +35,10 @@ export class MapGraphComponent implements OnChanges {
   chart: any
 
   ngOnChanges(change) {
+
+    if (!this.chart)
+      this.startMapChart()
+
     if (change && change.currentLongitude.currentValue != change.currentLongitude.previousValue) {
       this.currentLatitude = change.currentLatitude.currentValue
       this.currentLongitude = change.currentLongitude.currentValue
@@ -45,25 +49,18 @@ export class MapGraphComponent implements OnChanges {
         name: "Current Location"
       }]);
 
-      var latitude = this.currentLatitude
-      var longitude = this.currentLongitude
-
-      // if(this.chart){
-
-      //   let chart = this.chart
-      //   this.polygonSeries.events.on("datavalidated", function () {
-      //     chart.zoomToGeoPoint({
-      //       longitude: longitude,
-      //       latitude: latitude
-      //     }, 10);
-      //   });
-      // }
-
-
+      let chart = this.chart
+      this.polygonSeries.events.on("datavalidated", function () {
+          chart.goHome();
+      })
     }
   }
 
   startMapChart() {
+
+    if (!this.currentLatitude)
+      return
+
     var latitude = this.currentLatitude
     var longitude = this.currentLongitude
     //Chart
@@ -126,10 +123,6 @@ export class MapGraphComponent implements OnChanges {
 
     homeButton.events.on("click", function () {
       chart.goHome();
-      // chart.zoomToGeoPoint({
-      //   longitude: longitude,
-      //   latitude: latitude
-      // }, 15);
     });
 
     // Graticule Series
@@ -181,18 +174,6 @@ export class MapGraphComponent implements OnChanges {
       fill: am5.color("#f60")
     });
 
-    // this.polygonSeries.events.on("datavalidated", function () {
-    //   console.log('entrou')
-    //   chart.zoomToGeoPoint({
-    //     longitude: longitude,
-    //     latitude: latitude
-    //   }, 10);
-    // });
-
-    this.polygonSeries.events.on("datavalidated", function() {
-      chart.goHome();
-    });
-
     //Point Series
     this.pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {
       latitudeField: "lat",
@@ -225,9 +206,5 @@ export class MapGraphComponent implements OnChanges {
       long: this.currentLongitude,
       name: "Current Location"
     }]);
-  }
-
-  ngAfterViewInit() {
-    this.startMapChart()
   }
 }
