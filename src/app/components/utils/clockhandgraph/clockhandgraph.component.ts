@@ -38,7 +38,13 @@ export class ClockHandGraphComponent implements OnChanges {
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   ngOnChanges(change) {
-    change && change.graphElementID.currentValue != change.graphElementID.previousValue ? this.graphElementID = change.graphElementID.currentValue : null
+    if (change && change.hand1Data.currentValue != change.hand1Data.previousValue) {
+      this.hand1Label = change.hand1Label.currentValue
+      this.hand2Label = change.hand2Label.currentValue
+      this.hand1Data = change.hand1Data.currentValue
+      this.hand2Data = change.hand2Data.currentValue
+    }
+    console.log(this.hand1Data)
   }
 
   startGaugeChart() {
