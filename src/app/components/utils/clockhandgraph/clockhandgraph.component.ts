@@ -44,7 +44,6 @@ export class ClockHandGraphComponent implements OnChanges {
       this.hand1Data = change.hand1Data.currentValue
       this.hand2Data = change.hand2Data.currentValue
     }
-    console.log(this.hand1Data)
   }
 
   startGaugeChart() {

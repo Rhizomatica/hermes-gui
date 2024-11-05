@@ -14,20 +14,36 @@ export class XYGraphComponent implements OnChanges {
   constructor() {
     this.graphElementID = null
     this.graphData = null
+    this.series = null
   }
 
   @Input() graphElementID: string
   @Input() graphData: []
 
+  series: any
+
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   ngOnChanges(change) {
-    change && change.graphElementID.currentValue != change.graphElementID.previousValue ? this.graphElementID = change.graphElementID.currentValue : null
+
+    if (change) {
+      this.graphElementID = change.graphElementID.currentValue
+      this.graphData = change.graphData.currentValue
+
+      console.log("series" + this.series)
+
+      if (this.series) {
+        console.log("entrou")
+        console.log(this.graphData)
+        this.series.data.setAll(this.graphData);
+      }
+    }
   }
 
   startXYGraph(): void {
     var elementID = this.graphElementID
-    var data = this.graphData
+
+    // https://www.amcharts.com/demos/area-with-time-based-data/
 
     var root = am5.Root.new(elementID);
 
@@ -67,63 +83,60 @@ export class XYGraphComponent implements OnChanges {
       })
     );
 
-    // Create series
-    function createSeries(name, field, openField) {
-      var series = chart.series.push(
-        am5xy.LineSeries.new(root, {
-          name: name,
-          xAxis: xAxis,
-          yAxis: yAxis,
-          valueYField: "visits",
-          valueXField: "date",
-          openValueYField: openField,
-          fill: am5.color("#f60"),
-          stroke: am5.color("#f60")
-        })
-      );
-      series.strokes.template.setAll({
-        strokeWidth: 1.5
-      });
-      series.fills.template.setAll({
-        fillOpacity: 0.3,
-        visible: true
-      });
+    this.series = chart.series.push(
+      am5xy.LineSeries.new(root, {
+        name: "Series with breaks",
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueXField: "date",
+        valueYField: "value",
+        openValueYField: "openValue",
+        fill: am5.color("#f60"),
+        stroke: am5.color("#f60"),
+        minDistance: 10
+      })
+    );
 
-      series.data.setAll(data);
-    }
-
-    createSeries("Series with breaks", "value", "openValue");
-
-
-    let scrollbarX = am5xy.XYChartScrollbar.new(root, {
-      orientation: "horizontal",
-      height: 30
+    this.series.strokes.template.setAll({
+      strokeWidth: 0
     });
 
-    chart.set("scrollbarX", scrollbarX);
+    this.series.fills.template.setAll({
+      fillOpacity: 0.3,
+      visible: true
+    });
 
-    let sbxAxis = scrollbarX.chart.xAxes.push(am5xy.DateAxis.new(root, {
-      baseInterval: { timeUnit: "millisecond", count: 1 },
-      renderer: am5xy.AxisRendererX.new(root, {
-        opposite: false,
-        strokeOpacity: 0,
-        minorGridEnabled: true,
-        minGridDistance: 100
-      })
-    }));
+    this.series.data.setAll(this.graphData);
 
-    let sbyAxis = scrollbarX.chart.yAxes.push(am5xy.ValueAxis.new(root, {
-      renderer: am5xy.AxisRendererY.new(root, {})
-    }));
+    // let scrollbarX = am5xy.XYChartScrollbar.new(root, {
+    //   orientation: "horizontal",
+    //   height: 30
+    // });
 
-    let sbseries = scrollbarX.chart.series.push(am5xy.LineSeries.new(root, {
-      xAxis: sbxAxis,
-      yAxis: sbyAxis,
-      valueYField: "visits",
-      valueXField: "date"
-    }));
+    // chart.set("scrollbarX", scrollbarX);
 
-    sbseries.data.setAll(data);
+    // let sbxAxis = scrollbarX.chart.xAxes.push(am5xy.DateAxis.new(root, {
+    //   baseInterval: { timeUnit: "millisecond", count: 1 },
+    //   renderer: am5xy.AxisRendererX.new(root, {
+    //     opposite: false,
+    //     strokeOpacity: 0,
+    //     minorGridEnabled: true,
+    //     minGridDistance: 100
+    //   })
+    // }));
+
+    // let sbyAxis = scrollbarX.chart.yAxes.push(am5xy.ValueAxis.new(root, {
+    //   renderer: am5xy.AxisRendererY.new(root, {})
+    // }));
+
+    // let sbseries = scrollbarX.chart.series.push(am5xy.LineSeries.new(root, {
+    //   xAxis: sbxAxis,
+    //   yAxis: sbyAxis,
+    //   valueYField: "visits",
+    //   valueXField: "date"
+    // }));
+
+    // sbseries.data.setAll(data);
   }
 
   ngAfterViewInit() {

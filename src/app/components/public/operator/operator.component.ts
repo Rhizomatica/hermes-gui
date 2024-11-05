@@ -6,7 +6,8 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { GPSService } from 'src/app/_services/gps.service';
 import { UUCPService } from 'src/app/_services/uucp.service';
-
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
 
 @Component({
   selector: 'operator',
@@ -30,6 +31,7 @@ export class OperatorComponent implements OnInit {
   queueSizeB: number = 0
   bitrateData: any = []
   snrData: any = []
+
 
 
   constructor(

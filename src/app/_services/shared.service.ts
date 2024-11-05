@@ -160,13 +160,13 @@ export class SharedService {
 
   prepareBitrateHistory() {
 
-    if (!this.storedRadioObj.bitrate.length)
+    if (!this.storedRadioObj.bitrate)
       return
 
     var bitrateData = new Object()
     bitrateData = {
-      date: new Date(),
-      snr: this.storedRadioObj.bitrate
+      date: new Date().getMilliseconds(),
+      value: this.storedRadioObj.bitrate
     }
 
     this.storedRadioObj.bitrateHistory.push(bitrateData)
@@ -177,13 +177,13 @@ export class SharedService {
 
   prepareSNRHistory() {
 
-    if (!this.storedRadioObj.snr.length)
+    if (!this.storedRadioObj.snr)
       return
 
     var snrData = new Object()
     snrData = {
       date: new Date(),
-      snr: this.storedRadioObj.snr
+      value: this.storedRadioObj.snr
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
