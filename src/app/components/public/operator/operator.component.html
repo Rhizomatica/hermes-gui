@@ -34,7 +34,7 @@
                     <div class="row">
                         {{radio.bitrate}} bps
                     </div>
-                    <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory"></xygraph>
+                    <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory" [bitrateLength]="radio.bitrateLength"></xygraph>
                 </div>
             </div>
             <div class="data-graph">

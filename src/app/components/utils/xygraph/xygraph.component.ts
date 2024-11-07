@@ -1,6 +1,8 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+
 
 @Component({
   selector: 'xygraph',
@@ -15,29 +17,27 @@ export class XYGraphComponent implements OnChanges {
     this.graphElementID = null
     this.graphData = null
     this.series = null
+    this.bitrateLength = null
+    this.xAxis = null
   }
 
   @Input() graphElementID: string
   @Input() graphData: []
+  @Input() bitrateLength: number
 
   series: any
+  xAxis: any
 
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   ngOnChanges(change) {
+    change && change.graphElementID && change.graphElementID.currentValue != change.graphElementID.previousValue ? this.graphElementID = change.graphElementID.currentValue : null
 
-    if (change) {
-      this.graphElementID = change.graphElementID.currentValue
-      this.graphData = change.graphData.currentValue
+    change && change.graphData && change.graphData.currentValue != change.graphData.previousValue ? this.graphData = change.graphData.currentValue : null
 
-      console.log("series" + this.series)
+    change && change.bitrateLength && change.bitrateLength.currentValue != change.bitrateLength.previousValue ? this.bitrateLength = change.bitrateLength.currentValue : null
 
-      if (this.series) {
-        console.log("entrou")
-        console.log(this.graphData)
-        this.series.data.setAll(this.graphData);
-      }
-    }
+    this.addData()
   }
 
   startXYGraph(): void {
@@ -47,99 +47,142 @@ export class XYGraphComponent implements OnChanges {
 
     var root = am5.Root.new(elementID);
 
-    // root.setThemes([
-    //   am5themes_Animated.new(root)
-    // ]);
+    root.setThemes([
+      am5themes_Animated.new(root)
+    ]);
 
-    var chart = root.container.children.push(
-      am5xy.XYChart.new(root, {
-        panX: true,
-        panY: true,
-        wheelY: "zoomX",
-        layout: root.verticalLayout,
-        pinchZoomX: true
+    // Create chart
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/
+    let chart = root.container.children.push(am5xy.XYChart.new(root, {
+      focusable: true,
+      panX: true,
+      panY: true,
+      wheelX: "panX",
+      wheelY: "zoomX"
+    }));
+
+    let easing = am5.ease.linear;
+
+    // Create axes
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+    this.xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+      maxDeviation: 0.5,
+      extraMin: -0.1,
+      extraMax: 0.1,
+      groupData: false,
+      baseInterval: {
+        timeUnit: "second",
+        count: 1
+      },
+      renderer: am5xy.AxisRendererX.new(root, {
+        minorGridEnabled: true,
+        minGridDistance: 60
+      }),
+      tooltip: am5.Tooltip.new(root, {})
+    }));
+
+    var xAxis = this.xAxis
+
+    let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+      renderer: am5xy.AxisRendererY.new(root, {})
+    }));
+
+
+    // Add series
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+    this.series = chart.series.push(am5xy.LineSeries.new(root, {
+      minBulletDistance: 10,
+      name: "Series 1",
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: "value",
+      valueXField: "date",
+      stroke: am5.color("#f60"),
+      fill: am5.color("#f60"),
+      tooltip: am5.Tooltip.new(root, {
+        pointerOrientation: "horizontal",
+        labelText: "{valueY}"
       })
-    );
-
-    // Craete Y-axis
-    var yAxis = chart.yAxes.push(
-      am5xy.ValueAxis.new(root, {
-        maxDeviation: 1,
-        renderer: am5xy.AxisRendererY.new(root, {
-          pan: "zoom"
-        })
-      })
-    );
-
-    // Create X-Axis
-    var xAxis = chart.xAxes.push(
-      am5xy.DateAxis.new(root, {
-        baseInterval: { timeUnit: "millisecond", count: 1 },
-        renderer: am5xy.AxisRendererX.new(root, {
-          minGridDistance: 100,
-          pan: "zoom",
-          minorGridEnabled: true
-        })
-      })
-    );
-
-    this.series = chart.series.push(
-      am5xy.LineSeries.new(root, {
-        name: "Series with breaks",
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueXField: "date",
-        valueYField: "value",
-        openValueYField: "openValue",
-        fill: am5.color("#f60"),
-        stroke: am5.color("#f60"),
-        minDistance: 10
-      })
-    );
-
-    this.series.strokes.template.setAll({
-      strokeWidth: 0
-    });
-
-    this.series.fills.template.setAll({
-      fillOpacity: 0.3,
-      visible: true
-    });
+    }));
 
     this.series.data.setAll(this.graphData);
 
-    // let scrollbarX = am5xy.XYChartScrollbar.new(root, {
-    //   orientation: "horizontal",
-    //   height: 30
-    // });
+    this.series.bullets.push(function () {
+      return am5.Bullet.new(root, {
+        locationX: undefined,
+        sprite: am5.Circle.new(root, {
+          radius: 4,
+          stroke: am5.color("#f60"),
+          fill: am5.color("#f60")
+        })
+      })
+    });
 
-    // chart.set("scrollbarX", scrollbarX);
 
-    // let sbxAxis = scrollbarX.chart.xAxes.push(am5xy.DateAxis.new(root, {
-    //   baseInterval: { timeUnit: "millisecond", count: 1 },
-    //   renderer: am5xy.AxisRendererX.new(root, {
-    //     opposite: false,
-    //     strokeOpacity: 0,
-    //     minorGridEnabled: true,
-    //     minGridDistance: 100
-    //   })
-    // }));
+    // Add cursor
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+    let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+      xAxis: xAxis
+    }));
 
-    // let sbyAxis = scrollbarX.chart.yAxes.push(am5xy.ValueAxis.new(root, {
-    //   renderer: am5xy.AxisRendererY.new(root, {})
-    // }));
+    cursor.lineY.set("visible", false);
 
-    // let sbseries = scrollbarX.chart.series.push(am5xy.LineSeries.new(root, {
-    //   xAxis: sbxAxis,
-    //   yAxis: sbyAxis,
-    //   valueYField: "visits",
-    //   valueXField: "date"
-    // }));
+    this.series.data.push(this.graphData)
+  }
 
-    // sbseries.data.setAll(data);
+  addData() {
+
+    console.log(this.graphData[this.graphData.length - 1])
+
+    if (!this.series)
+      return
+
+    let lastDataItem = this.series.dataItems[this.series.dataItems.length - 1];
+
+    let lastValue = this.graphData[this.graphData.length - 2]['value']
+    let lastDate = this.graphData[this.graphData.length - 2]['date'];
+    let newValue = this.graphData[this.graphData.length - 1]['value']
+
+    let time = am5.time.add(new Date(lastDate), "second", 1).getTime();
+    this.series.data.removeIndex(0);
+    this.series.data.push({
+      date: time,
+      value: newValue
+    })
+
+    let easing = am5.ease.linear;
+
+    let newDataItem = this.series.dataItems[this.series.dataItems.length - 1];
+
+    newDataItem.animate({
+      key: "valueYWorking",
+      to: newValue,
+      from: lastValue,
+      duration: 600,
+      easing: easing
+    });
+
+    let animation = newDataItem.animate({
+      key: "locationX",
+      to: 0.5,
+      from: -0.5,
+      duration: 600
+    });
+
+    if (animation) {
+      let xAxis = this.xAxis
+      let tooltip = this.xAxis.get("tooltip");
+      if (tooltip && !tooltip.isHidden()) {
+        animation.events.on("stopped", function () {
+          xAxis.updateTooltip();
+        })
+      }
+    }
   }
 
   ngAfterViewInit() {
     this.startXYGraph()
   }
+
+  // https://www.amcharts.com/demos/live-data/
 }
