@@ -32,17 +32,40 @@ export class ClockHandGraphComponent implements OnChanges {
 
   axis1: []
   axis2: []
-  hand1: []
-  hand2: []
+  hand1: any
+  hand2: any
 
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   ngOnChanges(change) {
     if (change && change.hand1Data.currentValue != change.hand1Data.previousValue) {
-      this.hand1Label = change.hand1Label.currentValue
-      this.hand2Label = change.hand2Label.currentValue
+      
       this.hand1Data = change.hand1Data.currentValue
+
+      if(!this.hand1)
+        return 
+
+      this.hand1.get("sprite").dataItem.animate({
+        key: "value",
+        to: change.hand1Data.currentValue,
+        duration: 800,
+        easing: am5.ease.out(am5.ease.cubic)
+      });
+    }
+
+    if (change && change.hand2Data.currentValue != change.hand2Data.previousValue) {
+      
       this.hand2Data = change.hand2Data.currentValue
+
+      if(!this.hand2)
+        return 
+
+      this.hand2.get("sprite").dataItem.animate({
+        key: "value",
+        to: change.hand2Data.currentValue,
+        duration: 800,
+        easing: am5.ease.out(am5.ease.cubic)
+      });
     }
   }
 
@@ -66,8 +89,9 @@ export class ClockHandGraphComponent implements OnChanges {
     this.axis1 = this.createAxis(0, 300, -180, -95, am5.color('#f60'), this.hand1Label, chart, root);
     this.axis2 = this.createAxis(0, 100, -85, 0, am5.color('#FF9955'), this.hand2Label, chart, root);
 
-    var hand1 = this.createHand(this.axis1, this.hand1Data, root);
-    var hand2 = this.createHand(this.axis2, this.hand2Data, root);
+    this.hand1 = this.createHand(this.axis1, this.hand1Data, root);
+    this.hand2 = this.createHand(this.axis2, this.hand2Data, root);
+    console.log(this.hand1)
   }
 
   createAxis(min, max, start, end, color, label, chart, root) {
