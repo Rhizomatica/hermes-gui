@@ -91,7 +91,7 @@ export class ClockHandGraphComponent implements OnChanges {
 
     this.hand1 = this.createHand(this.axis1, this.hand1Data, root);
     this.hand2 = this.createHand(this.axis2, this.hand2Data, root);
-    console.log(this.hand1)
+    // console.log(this.hand1)
   }
 
   createAxis(min, max, start, end, color, label, chart, root) {

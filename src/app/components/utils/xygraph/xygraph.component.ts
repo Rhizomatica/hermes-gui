@@ -132,18 +132,25 @@ export class XYGraphComponent implements OnChanges {
 
   addData() {
 
-    console.log(this.graphData[this.graphData.length - 1])
 
     if (!this.series)
       return
 
-    let lastDataItem = this.series.dataItems[this.series.dataItems.length - 1];
 
     let lastValue = this.graphData[this.graphData.length - 2]['value']
     let lastDate = this.graphData[this.graphData.length - 2]['date'];
     let newValue = this.graphData[this.graphData.length - 1]['value']
 
-    let time = am5.time.add(new Date(lastDate), "second", 1).getTime();
+    var today = new Date();
+    var year = today.getFullYear()
+    var month = today.getMonth()
+    var day = today.getDay()
+    var hour = today.getHours()
+    var minute = today.getMinutes()
+
+    console.log(this.graphData)
+
+    let time = am5.time.add(new Date( year, month, day, hour, minute, lastDate), "second", 1).getTime();
     this.series.data.removeIndex(0);
     this.series.data.push({
       date: time,
