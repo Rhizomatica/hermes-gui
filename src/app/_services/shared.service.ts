@@ -170,19 +170,22 @@ export class SharedService {
       return
 
     var bitrateData = new Object()
-    // let date = new Date()
-    // let hour = date.getHours()
-    // let minute = date.getMinutes()
-    // let seconds = date.getSeconds()
-    // date = new Date(hour + ":" + minute + ":" + seconds)
+    var today = new Date();
+    var year = today.getFullYear()
+    var month = today.getMonth()
+    var day = today.getDay()
+    var hour = today.getHours()
+    var minute = today.getMinutes()
+    var second = today.getSeconds()
+
     bitrateData = {
-      date: new Date().getSeconds(),
+      date: new Date( year, month, day, hour, minute, second),
       value: this.storedRadioObj.bitrate
     }
 
     this.storedRadioObj.bitrateHistory.push(bitrateData)
 
-    if (this.storedRadioObj.bitrateHistory.length > 1000) {
+    if (this.storedRadioObj.bitrateHistory.length > 10) {
       this.storedRadioObj.bitrateHistory.shift()
       this.storedRadioObj.bitrateHistory.shift()
     }

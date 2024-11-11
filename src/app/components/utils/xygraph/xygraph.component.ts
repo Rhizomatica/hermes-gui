@@ -19,6 +19,7 @@ export class XYGraphComponent implements OnChanges {
     this.series = null
     this.bitrateLength = null
     this.xAxis = null
+    this.chart = null
   }
 
   @Input() graphElementID: string
@@ -27,6 +28,7 @@ export class XYGraphComponent implements OnChanges {
 
   series: any
   xAxis: any
+  chart: any
 
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
@@ -53,13 +55,15 @@ export class XYGraphComponent implements OnChanges {
 
     // Create chart
     // https://www.amcharts.com/docs/v5/charts/xy-chart/
-    let chart = root.container.children.push(am5xy.XYChart.new(root, {
+    this.chart = root.container.children.push(am5xy.XYChart.new(root, {
       focusable: true,
       panX: true,
       panY: true,
       wheelX: "panX",
       wheelY: "zoomX"
     }));
+
+    let chart = this.chart
 
     let easing = am5.ease.linear;
 
@@ -125,7 +129,7 @@ export class XYGraphComponent implements OnChanges {
       xAxis: xAxis
     }));
 
-    cursor.lineY.set("visible", false);
+    cursor.lineY.set("visible", false)
 
     this.series.data.push(this.graphData)
   }
@@ -136,21 +140,11 @@ export class XYGraphComponent implements OnChanges {
     if (!this.series)
       return
 
-
     let lastValue = this.graphData[this.graphData.length - 2]['value']
-    let lastDate = this.graphData[this.graphData.length - 2]['date'];
+    let lastDate = this.graphData[this.graphData.length - 2]['date']
     let newValue = this.graphData[this.graphData.length - 1]['value']
 
-    var today = new Date();
-    var year = today.getFullYear()
-    var month = today.getMonth()
-    var day = today.getDay()
-    var hour = today.getHours()
-    var minute = today.getMinutes()
-
-    console.log(this.graphData)
-
-    let time = am5.time.add(new Date( year, month, day, hour, minute, lastDate), "second", 1).getTime();
+    let time = am5.time.add(new Date(lastDate), "second", 1).getTime()
     this.series.data.removeIndex(0);
     this.series.data.push({
       date: time,
@@ -159,7 +153,7 @@ export class XYGraphComponent implements OnChanges {
 
     let easing = am5.ease.linear;
 
-    let newDataItem = this.series.dataItems[this.series.dataItems.length - 1];
+    let newDataItem = this.series.dataItems[this.series.dataItems.length - 1]
 
     newDataItem.animate({
       key: "valueYWorking",
@@ -191,5 +185,14 @@ export class XYGraphComponent implements OnChanges {
     this.startXYGraph()
   }
 
+  ngOnDestroy(){
+    // this.chart.clear()
+    if(this && this.chart){
+      this.chart.dispose();
+      this.chart = null
+    }
+
+
+  }
   // https://www.amcharts.com/demos/live-data/
 }
