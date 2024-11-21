@@ -74,6 +74,7 @@ export class XYGraphComponent implements OnChanges {
       extraMin: -0.1,
       extraMax: 0.1,
       groupData: false,
+      visible: false,
       baseInterval: {
         timeUnit: "second",
         count: 1
