@@ -17,14 +17,14 @@ export class XYGraphComponent implements OnChanges {
     this.graphElementID = null
     this.graphData = null
     this.series = null
-    this.bitrateLength = null
+    this.dataLength = null
     this.xAxis = null
     this.chart = null
   }
 
   @Input() graphElementID: string
   @Input() graphData: []
-  @Input() bitrateLength: number
+  @Input() dataLength: number
 
   series: any
   xAxis: any
@@ -37,7 +37,7 @@ export class XYGraphComponent implements OnChanges {
 
     change && change.graphData && change.graphData.currentValue != change.graphData.previousValue ? this.graphData = change.graphData.currentValue : null
 
-    change && change.bitrateLength && change.bitrateLength.currentValue != change.bitrateLength.previousValue ? this.bitrateLength = change.bitrateLength.currentValue : null
+    change && change.dataLength && change.dataLength.currentValue != change.dataLength.previousValue ? this.dataLength = change.dataLength.currentValue : null
 
     this.addData()
   }

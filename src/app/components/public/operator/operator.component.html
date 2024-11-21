@@ -15,12 +15,9 @@
         <div class="operator-panel">
             <div class="data-graph">
                 <div class="data-title" i18n="@@swr">
-                    Standing Wave Ratio (SWR)
+                    Standing Wave Ratio (SWR) - {{radio.swr}}
                 </div>
-                <div class="data-body">
-                    <div class="row">
-                        {{radio.swr}}
-                    </div>
+                <div class="data-body m-t-10">
                     <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.fwd_watts"
                         [hand2Data]="radio.ref_watts" hand1Label="forward(W)" hand2Label="reflected(W)">
                     </clockhandgraph>
@@ -31,10 +28,12 @@
                     Bitrate
                 </div>
                 <div class="data-body">
-                    <div class="row">
-                        {{radio.bitrate}} bps
-                    </div>
-                    <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory" [bitrateLength]="radio.bitrateLength"></xygraph>
+                    <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory"
+                        [dataLength]="radio.bitrateLength" *ngIf="radio.bitrateLength > 0"></xygraph>
+                    <p *ngIf="radio.bitrateLength == 0" class="m-t-25" i18n="@@unavailabledata">
+                        Unavailable Data
+                    </p>
+
                 </div>
             </div>
             <div class="data-graph">
@@ -42,29 +41,44 @@
                     Signal-to-noise ratio (SNR)
                 </div>
                 <div class="data-body">
-                    <div class="row">
-                        1.2 dB
-                    </div>
-                    <!-- <xygraph graphElementID="snrChart" [graphData]="radio.snrHistory"></xygraph> -->
+                    <xygraph graphElementID="snrChart" [graphData]="radio.snrHistory" [dataLength]="radio.snrLength"
+                        *ngIf="radio.snrLength > 0"></xygraph>
+                    <p *ngIf="radio.snrLength == 0" i18n="@@unavailabledata">
+                        Unavailable Data
+                    </p>
+                </div>
+            </div>
+            <div class="data-graph" *ngIf="hasGps">
+                <div class="data-title" i18n="@@gpsstatus">
+                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
+                    <span class="greencircle" *ngIf="gpsStatus"></span>
+                    {{gpsStatus ? 'Active' : 'Inactive'}}
+                </div>
+                <div class="data-body">
+                    <!-- <mapgraph graphElementID="gpsChart" [currentLatitude]="currentLatitude"
+                        [currentLongitude]="currentLongitude">
+                    </mapgraph> -->
                 </div>
             </div>
             <div class="row m-t-25"></div>
             <div class="data">
                 <div class="data-title">
-                    {{radio.profile == 0 ? 'Data' : 'Voice'}} <span i18n="@@frequency">Frequency</span>
+                    <span i18n="@@datafrequency">Data Frequency</span>
                 </div>
                 <div class="data-body">
-                    <div *ngIf="radio.profile == 0">
-                        <span>{{radio.p0_freq}}</span>
-                        <br />
-                        <span>{{radio.p0_mode}}</span>
-                    </div>
-
-                    <div *ngIf="radio.profile == 1">
-                        <span>{{radio.p1_freq}}</span>
-                        <br />
-                        <span>{{radio.p1_mode}}</span>
-                    </div>
+                    <span>{{radio.p0_freq}}</span>
+                    <br />
+                    <span>{{radio.p0_mode}}</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@voicefrequency">Voice Frequency</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.p1_freq}}</span>
+                    <br />
+                    <span>{{radio.p1_mode}}</span>
                 </div>
             </div>
             <div class="data">
@@ -100,7 +114,7 @@
                 </div>
                 <div class="data-body">
                     <span class="greencircle"></span>
-                    Connected
+                    Connected ***
                 </div>
             </div>
             <div class="data">
@@ -108,7 +122,7 @@
                     Transmission List
                 </div>
                 <div class="data-body">
-                    {{queueSize}} message(s) waiting
+                    33 message(s) waiting ***
                 </div>
             </div>
             <div class="data">
@@ -116,7 +130,7 @@
                     Pending Transmission
                 </div>
                 <div class="data-body">
-                    {{queueSizeB}} bytes
+                    {{queueSize}} bytes
                 </div>
             </div>
             <div class="data">
@@ -124,7 +138,7 @@
                     Successful Transmission
                 </div>
                 <div class="data-body">
-                    10500 bytes
+                    10500 bytes***
                 </div>
             </div>
             <div class="data">
@@ -132,7 +146,7 @@
                     Re-transmissions count
                 </div>
                 <div class="data-body">
-                    15
+                    15 ***
                 </div>
             </div>
             <div class="data">
@@ -146,21 +160,11 @@
                 </div>
             </div>
             <div class="data">
-                <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status
-                </div>
-                <div class="data-body">
-                    <span class="redcircle" *ngIf="!gpsStatus"></span>
-                    <span class="greencircle" *ngIf="gpsStatus"></span>
-                    {{gpsStatus ? 'Active' : 'Inactive'}}
-                </div>
-            </div>
-            <div class="data">
                 <div class="data-title" i18n="@@remotedevices">
                     Remote Devices
                 </div>
                 <div class="data-body">
-                    4 device(s) connected
+                    4 device(s) connected ***
                 </div>
             </div>
             <div class="data">

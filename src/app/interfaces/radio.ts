@@ -22,8 +22,9 @@ export interface Radio {
   timeout: string,
   datetime: Date,
   snr: string,
+  snrHistory: Array<object>
+  snrLength: number,
   bitrate: string,
   bitrateHistory: Array<object>,
-  bitrateLength: number,
-  snrHistory: Array<object>
+  bitrateLength: number
 }

@@ -38,10 +38,11 @@ export class SharedService {
     timeout: null,
     datetime: null,
     snr: null,
+    snrHistory: null,
+    snrLength: null,
     bitrate: null,
     bitrateHistory: null,
-    bitrateLength: null,
-    snrHistory: null
+    bitrateLength: null
   });
 
   public storedRadioObj = <Radio>({
@@ -62,10 +63,11 @@ export class SharedService {
     timeout: null,
     datetime: null,
     snr: null,
+    snrHistory: [],
+    snrLength: null,
     bitrate: null,
     bitrateHistory: [],
-    bitrateLength: null,
-    snrHistory: []
+    bitrateLength: null
   });
 
   setRadioObjShared(data) {
@@ -92,10 +94,11 @@ export class SharedService {
     this.radioObj.value.timeout = this.storedRadioObj.timeout
     this.radioObj.value.datetime = this.storedRadioObj.datetime
     this.radioObj.value.snr = this.storedRadioObj.snr
+    this.radioObj.value.snrHistory = this.storedRadioObj.snrHistory
+    this.radioObj.value.snrLength = this.storedRadioObj.snrLength
     this.radioObj.value.bitrate = this.storedRadioObj.bitrate
     this.radioObj.value.bitrateHistory = this.storedRadioObj.bitrateHistory
     this.radioObj.value.bitrateLength = this.storedRadioObj.bitrateLength
-    this.radioObj.value.snrHistory = this.storedRadioObj.snrHistory
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -123,13 +126,11 @@ export class SharedService {
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
     this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime
     this.storedRadioObj.snr = newObj.snr == null ? this.storedRadioObj.snr : this.utils.formatDecimal(newObj.snr)
+    this.prepareSNRHistory()
+    this.storedRadioObj.snrLength = this.storedRadioObj.snrHistory.length
     this.storedRadioObj.bitrate = newObj.bitrate == null ? this.storedRadioObj.bitrate : newObj.bitrate
-
     this.prepareBitrateHistory()
-
     this.storedRadioObj.bitrateLength = this.storedRadioObj.bitrateHistory.length
-
-    // this.prepareSNRHistory()
   }
 
   mountRadioObjDemo() {
@@ -166,7 +167,7 @@ export class SharedService {
 
   prepareBitrateHistory() {
 
-    if (!this.storedRadioObj.bitrate)
+    if (!this.storedRadioObj.bitrate || this.storedRadioObj.bitrate == '0')
       return
 
     var bitrateData = new Object()
@@ -179,7 +180,7 @@ export class SharedService {
     var second = today.getSeconds()
 
     bitrateData = {
-      date: new Date( year, month, day, hour, minute, second),
+      date: new Date(year, month, day, hour, minute, second),
       value: this.storedRadioObj.bitrate
     }
 
@@ -192,19 +193,30 @@ export class SharedService {
   }
 
   prepareSNRHistory() {
-
-    if (!this.storedRadioObj.snr)
+    
+    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == '0')
       return
 
     var snrData = new Object()
+    var today = new Date();
+    var year = today.getFullYear()
+    var month = today.getMonth()
+    var day = today.getDay()
+    var hour = today.getHours()
+    var minute = today.getMinutes()
+    var second = today.getSeconds()
+
     snrData = {
-      date: new Date(),
+      date: new Date(year, month, day, hour, minute, second),
       value: this.storedRadioObj.snr
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
 
-    if (this.storedRadioObj.snrHistory.length > 500)
+    if (this.storedRadioObj.snrHistory.length > 10) {
       this.storedRadioObj.snrHistory.shift()
+      this.storedRadioObj.snrHistory.shift()
+    }
+    console.log(this.storedRadioObj.snrHistory)
   }
 }
