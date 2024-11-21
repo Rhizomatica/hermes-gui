@@ -55,7 +55,8 @@
                     {{gpsStatus ? 'Active' : 'Inactive'}}
                 </div>
                 <div class="data-body">
-                    <mapgraph graphElementID="gpsChart" [currentLatitude]="currentLatitude"
+                    <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
+                    <mapgraph graphElementID="gpsChartOperator" [currentLatitude]="currentLatitude"
                         [currentLongitude]="currentLongitude">
                     </mapgraph>
                 </div>

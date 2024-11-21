@@ -152,12 +152,11 @@ export class OperatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
-
+    this.getCurrentCoordinates()
     this.getSchedules()
     this.getGPSStatus()
     this.getSystemStatus() //Disk free space
     this.getQueue()
-    this.getCurrentCoordinates()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
       // this.getSystemData()
