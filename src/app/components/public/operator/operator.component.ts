@@ -6,8 +6,8 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { GPSService } from 'src/app/_services/gps.service';
 import { UUCPService } from 'src/app/_services/uucp.service';
-import * as am5 from "@amcharts/amcharts5";
-import * as am5xy from "@amcharts/amcharts5/xy";
+import { GlobalConstants } from 'src/app/global-constants';
+
 
 @Component({
   selector: 'operator',
@@ -31,8 +31,9 @@ export class OperatorComponent implements OnInit {
   queueSizeB: number = 0
   bitrateData: any = []
   snrData: any = []
-
-
+  currentLatitude: null
+  currentLongitude: null
+  hasGps: boolean = GlobalConstants.hasGPS
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -122,6 +123,33 @@ export class OperatorComponent implements OnInit {
     }
   }
 
+  getCurrentCoordinates() {
+
+    if (!this.currentLatitude && !this.currentLongitude)
+      this.loading = true
+
+    this.gpsService.getCurrentCoordinates().subscribe(
+      (res: any) => {
+        if (res && res.latitude !== null && res.longitude !== null) {
+          this.currentLatitude = res.latitude
+          this.currentLongitude = res.longitude
+
+          // this.pointSeries.data.setAll([{
+          //   lat: this.currentLatitude,
+          //   long: this.currentLongitude,
+          //   name: "Current Location"
+          // }]);
+        }
+
+        this.loading = false
+      },
+      (err) => {
+        this.error = err;
+        this.loading = false
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
 
@@ -129,6 +157,7 @@ export class OperatorComponent implements OnInit {
     this.getGPSStatus()
     this.getSystemStatus() //Disk free space
     this.getQueue()
+    this.getCurrentCoordinates()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
       // this.getSystemData()
