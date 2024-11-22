@@ -2981,7 +2981,7 @@ Only admin users can send messages to other stations, if you are an admin, pleas
       </trans-unit>
       <trans-unit id="bitrate" datatype="html">
         <source>Bitrate: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.bitrate}}"/> bps </source>
-        <target state="new"> Bitrate </target>
+        <target state="new"> Bitrate: <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.bitrate}}"/> bps  </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">102</context>
