@@ -10,11 +10,9 @@
    <hr>
    <div class="row m-t-25">
       <button (click)="loginOverall()" i18n="@@loginToHERMES">
-         log in to HERMES
+         HERMES login
       </button>
-      <a routerLink="/home" i18n="@@continuewithoutlogin" *ngIf="!requireLogin" class="m-l-10">Continue
-         without
-         login
+      <a routerLink="/home" i18n="@@continuewithoutlogin" *ngIf="!requireLogin" class="m-l-10">Continue without login
       </a>
    </div>
    <div class="overall alert" *ngIf="login">
@@ -44,13 +42,13 @@
             <div class="row m-t-25" *ngIf="!requireLogin">
                <p i18n="@@noaccount">Don't have an account?</p>
                <a routerLink="/user-manage">
-                 <button i18n="@@createbtn">create an account</button>
+                  <button i18n="@@createbtn">create an account</button>
                </a>
-             </div>
+            </div>
          </div>
       </form>
 
-      
+
    </div>
 
 </div>
