@@ -97,7 +97,7 @@ export class ClockHandGraphComponent implements OnChanges {
   createAxis(min, max, start, end, color, label, chart, root) {
     var axisRenderer = am5radar.AxisRendererCircular.new(root, {
       strokeOpacity: 0.1,
-      minGridDistance: 30,
+      minGridDistance: 50,
       startAngle: start,
       endAngle: end,
       stroke: color
@@ -146,8 +146,8 @@ export class ClockHandGraphComponent implements OnChanges {
     rangeDataItem.get("label").setAll({
       text: label,
       inside: true,
-      radius: 5,
-      fontSize: "0.9em",
+      radius: 8,
+      fontSize: "0.8em",
     });
 
     return axis;
@@ -163,7 +163,7 @@ export class ClockHandGraphComponent implements OnChanges {
     var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
       sprite: am5radar.ClockHand.new(root, {
         radius: am5.percent(90),
-        innerRadius: am5.percent(70)
+        innerRadius: am5.percent(50)
       })
     }));
 
