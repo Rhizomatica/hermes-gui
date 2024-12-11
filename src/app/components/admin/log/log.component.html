@@ -28,7 +28,7 @@
     <div class="formdata m-t-25" *ngIf="customLog">
         <h3 i18n="@@errorlog">Error log</h3>
         <div class="row">
-            <button class="m-t-10" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
+            <button class="m-t-10 danger" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
                 delete all
             </button>
             <input id="searchbox1" i18n-placeholder placeholder="search" [(ngModel)]="searchError" />
@@ -51,7 +51,7 @@
                         <!-- <p><b>Stack Trace:</b></p>
                     <p> {{error.stacktrace == null ? '-' : error.stacktrace}}</p> -->
                         <p>
-                            <button class="m-t-10" i18n="@@btndeletecustomerror" (click)="deleteCustomError(error.id)">
+                            <button class="m-t-10 danger" i18n="@@btndeletecustomerror" (click)="deleteCustomError(error.id)">
                                 delete
                             </button>
                         </p>
@@ -119,7 +119,7 @@
                 </span>
                 <div class="row m-t-10">
                     <button type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
-                    <button class="m-l-10" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">
+                    <button class="m-l-10 danger" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">
                         delete all
                     </button>
                 </div>

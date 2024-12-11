@@ -52,7 +52,7 @@
         </small>
     </div>
     <div class="flex m-t-25" *ngIf="allowCompose">
-        <button (click)="showDelete(message)" [hidden]="!currentUser || currentUser.admin !== 1">
+        <button (click)="showDelete(message)" class="danger" [hidden]="!currentUser || currentUser.admin !== 1">
             <span i18n="@@deleteMessageDetail">
                 <img title="delete" src="assets/svg/trash-alt.svg">
                 delete
@@ -73,7 +73,7 @@
             <span>{{selectedMessage.name}}</span>
             <div class="row m-t-25">
                 <button (click)="showDelete()" i18n="@@cancelmt">cancel</button>
-                <button class="m-l-10" (click)="deleteThisMessage()" i18n="@@confirmmt">confirm</button>
+                <button class="m-l-10 danger" (click)="deleteThisMessage()" i18n="@@delete">delete</button>
             </div>
 
         </div>

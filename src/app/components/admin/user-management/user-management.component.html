@@ -91,7 +91,7 @@
       <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
         [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
       <span *ngIf="selectedUser.email !== 'root'">
-        <button class="m-l-10 m-t-10" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
+        <button class="m-l-10 m-t-10 danger" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
           [hidden]="emptyUser">delete
           user</button>
       </span>
@@ -100,7 +100,7 @@
           <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?
           <div class="row m-t-10">
             <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
-            <button class="m-l-10" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
+            <button class="m-l-10 danger" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
               i18n="@@deleteuser">delete user</button>
           </div>
         </div>

@@ -90,7 +90,7 @@
                 create schedule
             </button>
             <span *ngIf="!emptySchedule">
-                <button class="m-l-10 m-t-10" type="button" i18n="@@deletechedule" (click)="confirmDelete()">
+                <button class="m-l-10 m-t-10 danger" type="button" i18n="@@deletechedule" (click)="confirmDelete()">
                     delete schedule
                 </button>
             </span>
@@ -103,7 +103,7 @@
                         <button (click)="confirmDelete()" i18n="@@closeerrorbutton">
                             close
                         </button>
-                        <button (click)="deleteSchedule(selectedSchedule.id)" class="m-l-10"
+                        <button (click)="deleteSchedule(selectedSchedule.id)" class="m-l-10 danger"
                             i18n="@@btndeletecustomerror">
                             delete
                         </button>
