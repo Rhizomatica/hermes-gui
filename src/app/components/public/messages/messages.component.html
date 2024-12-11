@@ -32,7 +32,7 @@
                             (click)="selectMessage(message);showDelete()">
                         <div>
                             <div class="row">
-                                <span class="date ls">{{message.orig}}, {{message.sent_at}}
+                                <span class="date ls"><span i18n="@@from">From:</span> {{message.orig}}, {{message.sent_at}}
                                 </span>
                             </div>
                             <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">

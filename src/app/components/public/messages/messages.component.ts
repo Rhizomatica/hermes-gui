@@ -203,7 +203,7 @@ export class MessagesComponent implements OnInit {
       this.stations = stations
     });
   }
-
+  
   ngOnInit(): void {
     this.getStations()
     this.getInboxMessages()

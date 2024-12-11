@@ -31,7 +31,7 @@
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
                                 <div class="row">
-                                    <span class="date">{{message.orig}}, {{message.sent_at}}</span>
+                                    <span class="date"><span i18n="@@from">From:</span> {{message.orig}}, {{message.sent_at}}</span>
                                 </div>
                                 <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
                                     <span class="ls">{{message.name}}</span>

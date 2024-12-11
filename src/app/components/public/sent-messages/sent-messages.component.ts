@@ -8,6 +8,8 @@ import { AlertService } from '../../../_services/alert.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { Station } from 'src/app/interfaces/station';
+import { StationService } from 'src/app/_services/station.service';
 
 @Component({
   selector: 'app-sent-messages',
@@ -39,6 +41,7 @@ export class SentMessagesComponent implements OnInit {
   allowhmp: string;
   deleteMessage = false;
   loading = true
+  stations: Station[]
 
   constructor(
     private messageService: MessageService,
@@ -46,12 +49,19 @@ export class SentMessagesComponent implements OnInit {
     private apiService: ApiService,
     private alertService: AlertService,
     private authenticationService: AuthenticationService,
+    private stationService: StationService,
     private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   closeError() {
     this.errorAlert = false;
+  }
+
+  getStations() {
+    this.stationService.getStations().subscribe(stations => {
+      this.stations = stations
+    });
   }
 
   onSelect(message: Message): void {
@@ -147,6 +157,8 @@ export class SentMessagesComponent implements OnInit {
           this.sentMessages = this.sentMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) });
         }
 
+        this.getAliasOrigin()
+
         this.loading = false
       },
       (err) => {
@@ -155,6 +167,12 @@ export class SentMessagesComponent implements OnInit {
         this.loading = false
       }
     );
+  }
+
+  getAliasOrigin() {
+    this.sentMessages.forEach(item => {
+      item.orig = this.stations.filter((a) => { return a.name === item.orig })[0].alias
+    })
   }
 
   getQueue(): void {
@@ -220,9 +238,10 @@ export class SentMessagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSentMessages();
-    this.getSysConfig();
+    this.getStations()
+    this.getSentMessages()
+    this.getSysConfig()
     if (this.currentUser)
-      this.isadmin = this.currentUser.admin;
+      this.isadmin = this.currentUser.admin
   }
 }
