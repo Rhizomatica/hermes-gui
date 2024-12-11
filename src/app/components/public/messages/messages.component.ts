@@ -6,6 +6,8 @@ import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ApiService } from '../../../_services/api.service';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { Station } from 'src/app/interfaces/station';
+import { StationService } from 'src/app/_services/station.service';
 
 @Component({
   selector: 'app-messages',
@@ -30,12 +32,14 @@ export class MessagesComponent implements OnInit {
   deleteMessage = false;
   errorAlert = false;
   loading = true;
+  public stations: Station[];
 
   constructor(
     private messageService: MessageService,
     private alertService: AlertService,
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
+    private stationService: StationService,
     private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -57,8 +61,10 @@ export class MessagesComponent implements OnInit {
           this.inboxMessages = this.inboxMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) })
           this.noMessages = false;
         }
-        this.loading = false
 
+        this.getAliasOrigin()
+
+        this.loading = false
       },
       (err) => {
         this.error = err;
@@ -68,6 +74,11 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+  getAliasOrigin() {
+    this.inboxMessages.forEach(item => {
+      item.orig = this.stations.filter((a) => { return a.name === item.orig })[0].alias
+    })
+  }
   showDelete() {
     if (this.deleteMessage) {
       this.deleteMessage = false;
@@ -187,14 +198,20 @@ export class MessagesComponent implements OnInit {
     this.errorAlert = false;
   }
 
-  ngOnInit(): void {
-    this.getInboxMessages();
-    this.getSysConfig();
+  getStations() {
+    this.stationService.getStations().subscribe(stations => {
+      this.stations = stations
+    });
+  }
 
+  ngOnInit(): void {
+    this.getStations()
+    this.getInboxMessages()
+    this.getSysConfig()
     if (this.currentUser) {
-      this.isadmin = this.currentUser.admin;
+      this.isadmin = this.currentUser.admin
     } else {
-      this.isadmin = false;
+      this.isadmin = false
     }
   }
 }
