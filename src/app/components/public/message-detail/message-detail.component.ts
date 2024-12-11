@@ -10,6 +10,8 @@ import { User } from '../../../interfaces/user';
 import { ApiService } from '../../../_services/api.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { StationService } from 'src/app/_services/station.service';
+import { Station } from 'src/app/interfaces/station';
 // import { ScriptService } from '../../../_services/script.service';
 
 @Component({
@@ -39,7 +41,8 @@ export class MessageDetailComponent implements OnInit {
   selectedMessage: Message
   errorAlert = false
   loading = false
-  degree: number = 0;
+  degree: number = 0
+  stations: Station[]
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +52,7 @@ export class MessageDetailComponent implements OnInit {
     private apiService: ApiService,
     private authenticationService: AuthenticationService,
     private utils: UtilsService,
+    private stationService: StationService,
     private renderer: Renderer2
 
   ) {
@@ -104,6 +108,7 @@ export class MessageDetailComponent implements OnInit {
         }
 
         this.message.sent_at = this.utils.formatDate(this.message.sent_at)
+        this.message.orig = this.stations.filter((a) => { return a.name === this.message.orig })[0].alias
 
         this.loading = false
       },
@@ -224,10 +229,18 @@ export class MessageDetailComponent implements OnInit {
       image.style.width = '400px'
   }
 
+  getStations() {
+    this.stationService.getStations().subscribe(stations => {
+      this.stations = stations
+
+      this.getMessage()
+      this.getSysConfig()
+    })
+  }
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.getMessage();
-    this.getSysConfig();
+    this.getStations()
   }
 
 }

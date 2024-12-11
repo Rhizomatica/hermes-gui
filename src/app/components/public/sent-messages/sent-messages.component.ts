@@ -61,6 +61,9 @@ export class SentMessagesComponent implements OnInit {
   getStations() {
     this.stationService.getStations().subscribe(stations => {
       this.stations = stations
+      
+      this.getSentMessages()
+      this.getSysConfig()
     });
   }
 
@@ -239,8 +242,6 @@ export class SentMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStations()
-    this.getSentMessages()
-    this.getSysConfig()
     if (this.currentUser)
       this.isadmin = this.currentUser.admin
   }

@@ -79,6 +79,7 @@ export class MessagesComponent implements OnInit {
       item.orig = this.stations.filter((a) => { return a.name === item.orig })[0].alias
     })
   }
+
   showDelete() {
     if (this.deleteMessage) {
       this.deleteMessage = false;
@@ -201,13 +202,15 @@ export class MessagesComponent implements OnInit {
   getStations() {
     this.stationService.getStations().subscribe(stations => {
       this.stations = stations
+
+      this.getInboxMessages()
+      this.getSysConfig()
     });
   }
-  
+
   ngOnInit(): void {
     this.getStations()
-    this.getInboxMessages()
-    this.getSysConfig()
+
     if (this.currentUser) {
       this.isadmin = this.currentUser.admin
     } else {
