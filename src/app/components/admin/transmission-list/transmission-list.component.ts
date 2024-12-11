@@ -5,6 +5,8 @@ import { User } from '../../../interfaces/user';
 import { MessageService } from '../../../_services/message.service';
 import { UUCPService } from '../../../_services/uucp.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
+import { Station } from 'src/app/interfaces/station';
+import { StationService } from 'src/app/_services/station.service';
 
 @Component({
   selector: 'app-transmission-list',
@@ -32,13 +34,15 @@ export class TransmissionListComponent implements OnInit {
   loading = true
   jobToForce: UUCPQueue
   queueSize = 0
-  deleteMessage:boolean = false
-  jobToDelete:UUCPQueue
+  deleteMessage: boolean = false
+  jobToDelete: UUCPQueue
+  stations: Station[]
 
   constructor(
     private messageService: MessageService,
     private uucpService: UUCPService,
     private authenticationService: AuthenticationService,
+    private stationService: StationService,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
   }
@@ -162,6 +166,11 @@ export class TransmissionListComponent implements OnInit {
           this.noQueue = false
           this.getQueueSize()
         }
+
+        this.queue.forEach(item => {
+          item.uuidhost = this.stations.filter((a) => { return a.name === item.uuidhost })[0].alias
+        });
+        
         this.loading = false
       },
       (err) => {
@@ -180,10 +189,17 @@ export class TransmissionListComponent implements OnInit {
     }
   }
 
+  getStations() {
+    this.stationService.getStations().subscribe(stations => {
+      this.stations = stations
+      this.getMessages()
+    })
+  }
+
   ngOnInit(): void {
     this.loading = true
-    this.getMessages()
-    if(this.currentUser)
+    this.getStations()
+    if (this.currentUser)
       this.isadmin = this.currentUser.admin
   }
 }
