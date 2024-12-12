@@ -85,11 +85,11 @@
         <!-- <switch i18n="" name="admin" label="is admin" (click)="changeAdmin($event)" [enabled]="flagAdmin" [value]="flagAdmin"></switch> -->
       </label>
       <br />
-      <button (click)="cancelCreate()" i18n="@@mwcancel">cancel</button>
-      <button class="m-l-10 m-t-10" type="submit" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
+      <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch"
+        i18n="@@mcreateuser">create user</button>
+      <button class="m-t-10" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
         [disabled]="f.invalid">update</button>
-      <button class="m-l-10" type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)"
-        [disabled]="f.invalid || passunMatch" i18n="@@mcreateuser">create user</button>
+      <button (click)="cancelCreate()" class="m-l-10" i18n="@@mwcancel">cancel</button>
       <span *ngIf="selectedUser.email !== 'root'">
         <button class="m-l-10 m-t-10 danger" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
           [hidden]="emptyUser">delete
@@ -99,8 +99,8 @@
         <div class="cv">
           <span i18n="@@areyousuredelete">Are you sure you want to delete </span> {{selectedUser.name}} ?
           <div class="row m-t-10">
-            <button type="submit" (click)="deleteAlert()" i18n="@@cancel">cancel</button>
-            <button class="m-l-10 danger" type="submit" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
+            <button (click)="deleteAlert()" i18n="@@cancel">cancel</button>
+            <button class="m-l-10 danger" (click)="onSubmitDelete(selectedUser.emailid, selectedUser.email)"
               i18n="@@deleteuser">delete user</button>
           </div>
         </div>
@@ -110,8 +110,8 @@
           <span i18n="@@areyousureupdate">Are you sure you want to update</span> {{selectedUser.name}}?<br />
           <span i18n="@@thisactioncannot">This action cannot be undone!</span>
           <div class="row m-t-10">
-            <button type="submit" (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
-            <button class="m-l-10" type="submit" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
+            <button (click)="updateAlert()" [disabled]="f.invalid" i18n="@@cancel">cancel</button>
+            <button class="m-l-10" (click)="onSubmitUpdate(selectedUser.id,f)" [disabled]="f.invalid"
               i18n="@@update">update</button>
           </div>
         </div>
