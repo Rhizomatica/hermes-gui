@@ -39,10 +39,13 @@ export class MapGraphComponent implements OnChanges {
     if (!this.chart)
       this.startMapChart()
 
-    if (change && change.currentLongitude.currentValue != change.currentLongitude.previousValue) {
+    if (change && change.currentLongitude && change.currentLongitude.currentValue != change.currentLongitude.previousValue) {
       this.currentLatitude = change.currentLatitude.currentValue
       this.currentLongitude = change.currentLongitude.currentValue
 
+      if(!this.pointSeries)
+        return
+      
       this.pointSeries.data.setAll([{
         lat: this.currentLatitude,
         long: this.currentLongitude,
