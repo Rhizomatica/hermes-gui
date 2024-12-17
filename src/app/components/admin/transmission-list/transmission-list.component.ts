@@ -37,6 +37,7 @@ export class TransmissionListComponent implements OnInit {
   deleteMessage: boolean = false
   jobToDelete: UUCPQueue
   stations: Station[]
+  transmissionProgress: string = "25%"
 
   constructor(
     private messageService: MessageService,

@@ -1,0 +1,8 @@
+<div *ngIf="value">
+  <div class="m-t-50">
+    <span i18n="@@loading">loading...</span>
+    <div class="progressbar">
+      <div class="orange" [style.width]="value">{{value}}</div>
+    </div>
+  </div>
+</div>

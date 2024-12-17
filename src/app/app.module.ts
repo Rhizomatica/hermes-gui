@@ -57,6 +57,7 @@ import { GlobalConstants } from './global-constants';
 import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
+import { ProgressBarComponent } from './components/utils/progressbar/progressbar.component';
 
 
 registerLocaleData(localeEn);
@@ -106,7 +107,8 @@ registerLocaleData(localeEs);
     OperatorComponent,
     XYGraphComponent,
     ClockHandGraphComponent,
-    MapGraphComponent
+    MapGraphComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,

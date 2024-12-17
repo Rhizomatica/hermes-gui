@@ -40,6 +40,7 @@
   <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
   <div class="queue messages m-t-25">
     <div class="multiplist1">
+      <progressbar [value]="transmissionProgress"></progressbar>
       <div *ngFor="let job of queue" class="item">
         <div class="maininfo">
           <a>
