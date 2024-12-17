@@ -64,6 +64,17 @@
             <div class="row m-t-25"></div>
             <div class="data">
                 <div class="data-title">
+                    <span i18n="@@radioprofile">Radio profile</span>
+                </div>
+                <div class="data-body" *ngIf="radio.profile == 0">
+                    <span i18n="@@data">Data</span>
+                </div>
+                <div class="data-body" *ngIf="radio.profile == 1">
+                <span i18n="@@voice">Voice</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
                     <span i18n="@@datafrequency">Data Frequency</span>
                 </div>
                 <div class="data-body">
