@@ -40,7 +40,6 @@
   <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
   <div class="queue messages m-t-25">
     <div class="multiplist1">
-      <progressbar [value]="transmissionProgress"></progressbar>
       <div *ngFor="let job of queue" class="item">
         <div class="maininfo">
           <a>
@@ -81,6 +80,7 @@
           <div class="row" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp">
             <a i18n="@@forcetransmitting">Transmitting... </a>
           </div>
+          <!-- <progressbar  [value]="transmissionProgress" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp"></progressbar> -->
         </div>
         <div class="row-reverse">
           <button *ngIf="isadmin && !jobToForce" (click)="confTransmit(job)">
