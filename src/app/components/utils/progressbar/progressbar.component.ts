@@ -8,10 +8,10 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class ProgressBarComponent implements OnChanges {
 
   constructor() {
-    this.value = true
+    this.value = null
   }
 
-  @Input() value: boolean
+  @Input() value: string
 
   ngOnChanges(change) {
     change && change.value.currentValue != change.value.previousValue ? this.value = change.value.currentValue : null
