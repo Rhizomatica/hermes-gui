@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { GPSService } from 'src/app/_services/gps.service';
 import { UUCPService } from 'src/app/_services/uucp.service';
 import { GlobalConstants } from 'src/app/global-constants';
+import { percent } from '@amcharts/amcharts5';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class OperatorComponent implements OnInit {
   currentLatitude: null
   currentLongitude: null
   hasGps: boolean = GlobalConstants.hasGPS
+  diskUsage: string = "0"
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -86,8 +88,10 @@ export class OperatorComponent implements OnInit {
     this.loading = true
     this.apiService.getStatus().subscribe(
       (res: any) => {
-
-        this.diskSpace = (res.diskfree / 1024 / 1024).toFixed(3)
+        res.diskfree = res.diskfree / 1024 / 1024
+        this.diskSpace = (res.diskfree).toFixed(3)
+        var percentage = ((32 - res.diskfree) / 32) * 100
+        this.diskUsage = percentage.toFixed(2) + "%"
         this.loading = false
       },
       (err) => {
