@@ -1,11 +1,9 @@
 export const environment = {
-    local: true,
-    production: false,
-    domain: 'local.hermes.radio',
-    gateway: true,
-    bitx: 'S',
-    hasGPS: true,
-    gpsMap: 'brazil',
-    requireLogin: false,
-    emergencyEmail: 'help@hermes.radio'
+   appName: 'HERMES',
+   apiUrl: 'https://10.8.0.122/api',
+   production: 'false',
+   radioRemoteUrl: 'http://127.0.0.1:5500/',
+   webSocketUrl: 'ws://localhost:3000',
+   radioRemoteWSUrl: 'wss://localhost:8888/WSaudioRX',
+   hasGPS: 'false'
 };
