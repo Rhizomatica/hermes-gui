@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { GlobalConstants } from 'src/app/global-constants';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
@@ -13,7 +13,7 @@ import am5geodata_centralAfricanRepublicHigh from "../../../../assets/maps/centr
   styleUrls: ['./mapgraph.component.less']
 })
 
-export class MapGraphComponent implements OnChanges {
+export class MapGraphComponent implements OnChanges, OnInit {
 
   constructor() {
     this.graphElementID = null
@@ -32,20 +32,24 @@ export class MapGraphComponent implements OnChanges {
 
   pointSeries: any
   polygonSeries: any
-  chart: any
+  chart: any = null
 
   ngOnChanges(change) {
 
-    if (!this.chart)
+    if (this.chart)
       this.startMapChart()
+
+    console.log(this.chart)
+    console.log("changed")
+
 
     if (change && change.currentLongitude && change.currentLongitude.currentValue != change.currentLongitude.previousValue) {
       this.currentLatitude = change.currentLatitude.currentValue
       this.currentLongitude = change.currentLongitude.currentValue
 
-      if(!this.pointSeries)
+      if (!this.pointSeries)
         return
-      
+
       this.pointSeries.data.setAll([{
         lat: this.currentLatitude,
         long: this.currentLongitude,
@@ -54,12 +58,14 @@ export class MapGraphComponent implements OnChanges {
 
       let chart = this.chart
       this.polygonSeries.events.on("datavalidated", function () {
-          chart.goHome();
+        chart.goHome();
       })
     }
   }
 
   startMapChart() {
+
+    console.log(this.currentLatitude)
 
     if (!this.currentLatitude)
       return
@@ -79,7 +85,8 @@ export class MapGraphComponent implements OnChanges {
     );
 
     var chart = this.chart
-
+    console.log(chart)
+    
     chart.chartContainer.set("background", am5.Rectangle.new(root, {
       fill: am5.color("#90daee"),
       stroke: am5.color("#f60"),
@@ -209,5 +216,14 @@ export class MapGraphComponent implements OnChanges {
       long: this.currentLongitude,
       name: "Current Location"
     }]);
+
+    console.log(this.chart)
+
+  }
+
+  ngOnInit(): void {
+    console.log("init")
+    // if (!this.chart)
+      this.startMapChart()
   }
 }
