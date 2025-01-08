@@ -24,9 +24,7 @@
                 </div>
             </div>
             <div class="data-graph">
-                <div class="data-title" i18n="@@bitrate">
-                    Bitrate
-                </div>
+                <div class="data-title" i18n="@@bitrate">Bitrate</div>
                 <div class="data-body">
                     <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory"
                         [dataLength]="radio.bitrateLength" *ngIf="radio.bitrateLength > 0"></xygraph>
@@ -37,9 +35,7 @@
                 </div>
             </div>
             <div class="data-graph">
-                <div class="data-title" i18n="@@SNR">
-                    Signal-to-noise ratio (SNR)
-                </div>
+                <div class="data-title" i18n="@@SNR">Signal-to-noise ratio (SNR)</div>
                 <div class="data-body">
                     <xygraph graphElementID="snrChart" [graphData]="radio.snrHistory" [dataLength]="radio.snrLength"
                         *ngIf="radio.snrLength > 0"></xygraph>

@@ -34,9 +34,7 @@
                <div class="row">
                   <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log
                      in</button>
-                  <button class="m-l-10" (click)="loginOverall()" i18n="@@close">
-                     close
-                  </button>
+                  <button class="m-l-10" (click)="loginOverall()" i18n="@@close">close</button>
                </div>
             </div>
             <div class="row m-t-25" *ngIf="!requireLogin">

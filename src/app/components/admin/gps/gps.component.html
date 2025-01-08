@@ -23,9 +23,8 @@
         <span i18n="@@latitude">Latitude:</span> {{currentLatitude}},
         <span i18n="@@longitude">Longitude:</span> {{currentLongitude}}
     </p>
-    <p class="location" *ngIf="!currentLatitude && !currentLongitude" i18n="@@currentlocationunavailable">
-        Current location unavailable
-    </p>
+    <p class="location" *ngIf="!currentLatitude && !currentLongitude" i18n="@@currentlocationunavailable">Current
+        location unavailable</p>
 </div>
 <div class="row">
     <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude">
@@ -46,7 +45,8 @@
                 </div>
                 <div class="row m-t-10 m-b-10">
                     <a href="{{urlDownloadAll}}"><button i18n="@@downloadall">download all</button></a>
-                    <button class="m-l-10 danger" i18n="@@deletedall" (click)="deleteAllStoredFiles()">delete all</button>
+                    <button class="m-l-10 danger" i18n="@@deletedall" (click)="deleteAllStoredFiles()">delete
+                        all</button>
 
                     <div class="overall alert" *ngIf="deleteConfirmation">
                         <div class="cv">
@@ -55,7 +55,8 @@
                             </span>
                             <div class="row m-t-10">
                                 <button i18n="@@cancel" (click)="deleteAllStoredFiles()">cancel</button>
-                                <button class="m-l-10 danger" (click)="confirmDeleteAllStoredFiles()" i18n="@@deleteall">
+                                <button class="m-l-10 danger" (click)="confirmDeleteAllStoredFiles()"
+                                    i18n="@@deleteall">
                                     delete all
                                 </button>
                             </div>
