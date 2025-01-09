@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { OperatorComponent } from './operator.component';
 
 describe('OperatorComponent', () => {
