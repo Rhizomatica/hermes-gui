@@ -249,6 +249,16 @@
         and voice transmission separately.
       </p>
       <p class="m-t-10">
+       Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON
+        that means the antenna does not match the transmission frequency. You can reset the protection selecting
+        (Reset).
+      <p class="m-t-10">
+        Bitrate - Amount of audio data transferred each second.
+      </p>
+      <p class="m-t-10">
+        Signal-to-noise ratio (SNR) - The ratio of the signal's strength to the noise level.
+      </p>
+      <p class="m-t-10">
         Serial Number - Identifies your radio equipments unique serial number.
       </p>
     </div>
@@ -556,34 +566,49 @@
         OFF / DISCTONNECTED / INACTIVE
       </p>
       <p class="m-t-10">
-        Frequency -
+        SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR (2.5 or above) suggests that the antenna is not set to the same frequency as the transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode. 
       </p>
       <p>
-        Standing Wave Ratio (SWR) -
+        Bitrate - Amount of audio data transferred each second.
       </p>
       <p>
-        Power -
+        Signal-to-noise ratio (SNR) - The ratio of the signal's strength to the noise level.
       </p>
       <p>
-        Protection -
+        GPS status - Geolocation tracking and recording status.
       </p>
       <p>
-        Transmschatission Status -
+        Radio profile - current radio mode operation profile (voice / data).
       </p>
       <p>
+        Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other. 
+      </p>
+      <p>
+        Voice frequency - Frequency used to transmit (PTT) and receive voice transmission. 
+      </p>
+      <p>
+        Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. 
+      </p>
+      <p>
+        Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON
+        that means the antenna does not match the transmission frequency. You can reset the protection selecting
+        (Reset).
+      </p>
+      <p>
+        Transmission status - Radio transmission connection status (connected / disconnected). 
+      </p>
+      <p>
+        Pending Transmission - Pending messages transmissions waiting on the queue.
+      </p>
+      <p>
+        Scheduled transmission - Active scheduled transmission
+      </p>
+      <p>
+        Local storage - Internal storage
+      </p>
+
+      <!-- <p>
         Modem Status -
-      </p>
-      <p>
-        Signal-to-noise ratio (SNR) -
-      </p>
-      <p>
-        Bitrate -
-      </p>
-      <p>
-        Transmission List -
-      </p>
-      <p>
-        Pending Transmission -
       </p>
       <p>
         Successful Transmission -
@@ -592,17 +617,8 @@
         Re-transmissions count -
       </p>
       <p>
-        Scheduled transmission -
-      </p>
-      <p>
-        GPS Status -
-      </p>
-      <p>
         Remote Devices -
-      </p>
-      <p>
-        LocalStorage -
-      </p>
+      </p> -->
     </div>
 
     <div *ngIf="hint == 'smslist'" i18n="@@smslisthint">
@@ -622,5 +638,6 @@
     <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
       close
     </button>
+
   </div>
 </div>
