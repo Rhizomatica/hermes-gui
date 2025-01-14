@@ -310,6 +310,9 @@ export class MessagecomposeComponent implements OnInit {
 
   quackFile() {
 
+    if(!this.fileName)
+      return
+    
     this.file = {
       'name': this.fileName,
       'lastModified': new Date()
