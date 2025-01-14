@@ -62,7 +62,7 @@
             </span>
             <span *ngIf="job.type=='HMP'">
               <img class="inlineiconj" src="assets/svg/comment.svg">
-              Message: {{job.uuiduucp}}
+              <b i18n="@@message">Message</b>: {{job.uuiduucp}}
             </span>
           </div>
           <div class="row" *ngIf="job.messageId">
