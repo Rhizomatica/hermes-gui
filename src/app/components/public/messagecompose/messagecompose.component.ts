@@ -483,7 +483,7 @@ export class MessagecomposeComponent implements OnInit {
             }
           }
 
-          this.getNickName(stations)
+          // this.getNickName(stations)
         }
 
         this.loading = false
