@@ -77,10 +77,10 @@
             #fileCamUpload>
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
             i18n="@@camfile">camera</button>
-          <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
-            i18n="@@camfile">camera</button>
-          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio
-            recorder</button>
+          <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
+            i18n="@@camfile">camera</button> -->
+          <!-- <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio
+            recorder</button> -->
           <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
             file
           </button>
