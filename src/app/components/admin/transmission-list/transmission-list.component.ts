@@ -167,9 +167,9 @@ export class TransmissionListComponent implements OnInit {
           this.noQueue = false
           this.getQueueSize()
         }
-
+        
         this.queue.forEach(item => {
-          item.uuidhost = this.stations.filter((a) => { return a.name === item.uuidhost })[0].alias
+          item.dest = this.stations.filter((a) => { return a.name === item.uuidhost })[0].alias
         });
         
         this.loading = false
