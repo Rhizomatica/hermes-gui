@@ -1863,9 +1863,7 @@ SAP<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="macfiltertitle" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Disable' : 'Enable'}}"/> MAC Filter</source>
-        <target state="new">
-<x id="INTERPOLATION" equiv-text="{{macFilter ? 'Désactiver' : 'Activer'}}"/>
-le filtre MAC</target>
+        <target state="new"><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Désactiver' : 'Activer'}}"/> le filtre MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">84</context>

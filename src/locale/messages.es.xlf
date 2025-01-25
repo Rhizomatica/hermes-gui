@@ -1524,8 +1524,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="macfiltertitle" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Disable' : 'Enable'}}"/> MAC Filter</source>
-        <target state="new">
-<x id="INTERPOLATION" equiv-text="{{macFilter ? 'Desactivar' : 'activar'}}"/>
+        <target state="new"><x id="INTERPOLATION" equiv-text="{{macFilter ? 'Desactivar' : 'activar'}}"/>
  Filtro MAC</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
