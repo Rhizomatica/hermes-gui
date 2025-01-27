@@ -200,7 +200,6 @@ export class UserManagementComponent implements OnInit {
     this.loading = true
     this.userService.deleteUser(id, email).subscribe(
       (res: any) => {
-        this.users = res;
         this.getUsers();
       },
       (err) => {
