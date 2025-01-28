@@ -140,6 +140,7 @@ On assets folder you find links to svgs and image files used on the interface de
 
 On the locale folder there are the xlf files for translation. For the translations, we are using i18n angular module. To generate translations, you need to use `ng extract-i18n --output-path src/locale/` to generate the messages,xlf file and then `xliffmerge --profile xliffmerge.json pt es fr ar` to transpose the new data to both messages.es.xlf and messages.pt.xlf, where you can input the new tranlation tokens. 
 
+if `xliffmerge` library not installed please visit (https://www.npmjs.com/package/ngx-i18nsupport)
 
 
 

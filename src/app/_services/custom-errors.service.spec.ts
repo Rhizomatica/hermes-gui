@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { FrequencyService } from './frequency.service';
+import { CustomErrorsService } from './custom-errors.service';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('FrequencyService', () => {
-  let service: FrequencyService;
+describe('CustomErrorsService', () => {
+  let service: CustomErrorsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -11,7 +11,7 @@ describe('FrequencyService', () => {
         HttpClientModule
       ]
     });
-    service = TestBed.inject(FrequencyService);
+    service = TestBed.inject(CustomErrorsService);
   });
 
   it('should be created', () => {

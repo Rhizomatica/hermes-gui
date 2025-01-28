@@ -33,9 +33,9 @@ describe('GPSService', () => {
   })
 
   //APP GENERALS
-  it('should test url server status', () => {
+  it('should test url gps files', () => {
     const spy = spyOn(http, 'get').and.callThrough()
     service.getStoredGPSFiles()
-    expect(spy).toHaveBeenCalledWith(`${GlobalConstants.apiURL}/sys/status`);
+    expect(spy).toHaveBeenCalledWith(`${GlobalConstants.apiURL}/geolocation/files`);
   })
 });

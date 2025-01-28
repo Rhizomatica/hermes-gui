@@ -57,33 +57,33 @@
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>
-          <input type="file" capture="camera" accept="image/*" name="cameraInput" (change)="onFileCamSelected($event)"
-            style="display: none;" #fileCamUpload>
-          <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
-          <!-- <span i18n="@@attachfile" class="m-t-10">Attach File: </span> -->
+
           <p class="fileName" *ngIf="fileName">
             {{fileName}}
           </p>
-          <!-- <p i18n="@@nofile" class="fileName" *ngIf="!fileName">
-            no file selected
-          </p> -->
-          <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
           <p class="error" *ngIf="fileSizeError" i18n="@@fileSizeErrorMessage">
             File's too big, max size for this type is <b> {{maxSizeText}}</b>
           </p>
 
+          <!-- Attach file from device -->
           <button *ngIf="!fileSelected" (click)="fileUpload.click()" i18n="@@selfile">select file</button>
-          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
-            #fileCamUpload>
+          <input type="file" name="fileup" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+
+          <!-- Open Native Camera -->
           <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
             i18n="@@camfile">camera</button>
-          <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
-            i18n="@@camfile">camera</button>
-          <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio
-            recorder</button>
+          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
+            #fileCamUpload>
+
           <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
             file
           </button>
+
+          <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
+            i18n="@@camfile">camera</button> -->
+          <!-- <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio
+            recorder</button> -->
+
           <hint [showHint]="false" [hint]="'attachfile'"></hint>
         </ng-container>
         <div *ngIf="message && message.id && message.file">

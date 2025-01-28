@@ -1,5 +1,5 @@
 <div class="login formdata">
-   <h1>HERMES - V3.24.19</h1>
+   <h1>HERMES - V3.55.59</h1>
    <p>Rhizomatica</p>
    <div class="row m-t-25">
       <a routerLink="/languages" i18n="@@chooselanguage">Choose your language</a>
@@ -34,9 +34,7 @@
                <div class="row">
                   <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log
                      in</button>
-                  <button class="m-l-10" (click)="loginOverall()" i18n="@@close">
-                     close
-                  </button>
+                  <button class="m-l-10" (click)="loginOverall()" i18n="@@close">close</button>
                </div>
             </div>
             <div class="row m-t-25" *ngIf="!requireLogin">

@@ -310,6 +310,9 @@ export class MessagecomposeComponent implements OnInit {
 
   quackFile() {
 
+    if(!this.fileName)
+      return
+    
     this.file = {
       'name': this.fileName,
       'lastModified': new Date()
@@ -410,13 +413,6 @@ export class MessagecomposeComponent implements OnInit {
     this.errormsg = 'Can not play audio in your browser';
   }
 
-  getAliasOrigin(originName) {
-    if (!originName)
-      return null
-
-    return this.stations.filter((a) => { return a.name === originName })[0].alias
-  }
-
   public getFrequencies(): void {
     this.loading = true
     this.frequencyService.getFrequencies().subscribe(
@@ -471,7 +467,7 @@ export class MessagecomposeComponent implements OnInit {
           this.selectedStations = [this.stations[0].id];
           this.selectAllForDropdownItems(this.stations);
 
-          var origin = this.getAliasOrigin(this.activatedRoute.snapshot.paramMap.get("origin"))
+          var origin = this.activatedRoute.snapshot.paramMap.get("origin")
 
           if (origin) {
             if (Array.isArray(origin)) {
@@ -483,7 +479,7 @@ export class MessagecomposeComponent implements OnInit {
             }
           }
 
-          this.getNickName(stations)
+          // this.getNickName(stations)
         }
 
         this.loading = false

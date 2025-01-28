@@ -24,7 +24,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@currentprofilecard">Radio profile:</span>
+              <span i18n="@currentprofilecard">Radio profile</span>
               <br />
               <span *ngIf="radio.profile == 0"> Data </span>
               <span *ngIf="radio.profile == 1"> Voice </span>
@@ -34,7 +34,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@currentradiofreq">Data frequency:</span>
+              <span i18n="@currentradiofreq">Data frequency</span>
               <br />
               <span> {{radio.p0_freq}} </span>
               kHz
@@ -46,7 +46,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@currentvoicefrequency">Voice frequency:</span>
+              <span i18n="@currentvoicefrequency">Voice frequency</span>
               <br />
               <span> {{radio.p1_freq}} </span>
               kHz
@@ -58,7 +58,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@swrlabelcard">Standing Wave Ratio (SWR):</span>
+              <span i18n="@swrlabelcard">Standing Wave Ratio (SWR)</span>
               <br />
               <span>
                 {{radio.swr}}
@@ -69,7 +69,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@forward">Power:</span>
+              <span i18n="@forward">Power</span>
               <br />
               {{radio.fwd_watts ? radio.fwd_watts : 0}} W
             </h3>
@@ -78,7 +78,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <span i18n="@@operationmode">Operation mode:</span>
+              <span i18n="@@operationmode">Operation mode</span>
               <br />
               <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
               <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
@@ -88,7 +88,7 @@
         <div class="card">
           <div class="row">
             <h3>
-              <div i18n="@@protectionlabelcard">Protection:
+              <div i18n="@@protectionlabelcard">Protection
                 <br />
                 {{radio.protection ? 'ON' : 'OFF'}}
               </div>
@@ -99,7 +99,7 @@
           <div class="row">
             <h3>
               <div>
-                <span i18n="@@bitrate">Bitrate:</span>
+                <span i18n="@@bitrate">Bitrate</span>
                 <br />
                 {{radio.bitrate}} bps
               </div>
@@ -110,7 +110,7 @@
           <div class="row">
             <h3>
               <div>
-                <span i18n="@@SNR">Signal to Noise (SNR):</span>
+                <span i18n="@@SNR">Signal-to-noise ratio (SNR)</span>
                 <br />
                 {{radio.snr}} db
               </div>

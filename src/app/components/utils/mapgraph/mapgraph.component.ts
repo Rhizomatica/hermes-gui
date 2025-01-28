@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { GlobalConstants } from 'src/app/global-constants';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
@@ -13,18 +13,16 @@ import am5geodata_centralAfricanRepublicHigh from "../../../../assets/maps/centr
   styleUrls: ['./mapgraph.component.less']
 })
 
-export class MapGraphComponent implements OnChanges {
+export class MapGraphComponent implements OnChanges, OnInit {
 
   constructor() {
-    this.graphElementID = null
-    this.currentLatitude = null
-    this.currentLongitude = null
+    this.currentLatitude = 0
+    this.currentLongitude = 0
     this.pointSeries = null
     this.polygonSeries = null
     this.chart = null
   }
 
-  @Input() graphElementID: string
   @Input() currentLatitude: number
   @Input() currentLongitude: number
 
@@ -36,38 +34,36 @@ export class MapGraphComponent implements OnChanges {
 
   ngOnChanges(change) {
 
-    if (!this.chart)
-      this.startMapChart()
-
-    if (change && change.currentLongitude && change.currentLongitude.currentValue != change.currentLongitude.previousValue) {
+    if (change && change.currentLatitude && change.currentLatitude.currentValue != change.currentLatitude.previousValue)
       this.currentLatitude = change.currentLatitude.currentValue
+
+    if (change && change.currentLongitude && change.currentLongitude.currentValue != change.currentLongitude.previousValue)
       this.currentLongitude = change.currentLongitude.currentValue
 
-      if(!this.pointSeries)
-        return
-      
-      this.pointSeries.data.setAll([{
-        lat: this.currentLatitude,
-        long: this.currentLongitude,
-        name: "Current Location"
-      }]);
+    if (!this.pointSeries)
+      return
 
-      let chart = this.chart
-      this.polygonSeries.events.on("datavalidated", function () {
-          chart.goHome();
-      })
-    }
+    this.pointSeries.data.setAll([{
+      lat: this.currentLatitude,
+      long: this.currentLongitude,
+      name: "Current Location"
+    }]);
+
+    let chart = this.chart
+    this.polygonSeries.events.on("datavalidated", function () {
+      chart.goHome();
+    })
   }
 
   startMapChart() {
 
-    if (!this.currentLatitude)
-      return
+    // if (!this.currentLatitude)
+    //   return
 
     var latitude = this.currentLatitude
     var longitude = this.currentLongitude
     //Chart
-    let root = am5.Root.new(this.graphElementID);
+    let root = am5.Root.new("mapgraph");
     this.chart = root.container.children.push(
       am5map.MapChart.new(root, {
         panX: "rotateX",
@@ -209,5 +205,9 @@ export class MapGraphComponent implements OnChanges {
       long: this.currentLongitude,
       name: "Current Location"
     }]);
+  }
+
+  ngOnInit(){
+      this.startMapChart()
   }
 }

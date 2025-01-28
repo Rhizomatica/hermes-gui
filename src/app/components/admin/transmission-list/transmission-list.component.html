@@ -62,7 +62,7 @@
             </span>
             <span *ngIf="job.type=='HMP'">
               <img class="inlineiconj" src="assets/svg/comment.svg">
-              Message: {{job.uuiduucp}}
+              <b i18n="@@message">Message</b>: {{job.uuiduucp}}
             </span>
           </div>
           <div class="row" *ngIf="job.messageId">
@@ -72,7 +72,7 @@
             <b i18n="@@messagefile">File: </b> {{job.messageMimeType}} / {{job.messageFile}}
           </div>
           <div class="row">
-            <b i18n="@@destinationt"> Destination:</b>{{job.uuidhost}}
+            <b i18n="@@destinationt"> Destination:</b> {{job.dest}}
           </div>
           <div class="row">
             <b i18n="@@destisizet">Size:</b> {{job.size}} B
@@ -107,7 +107,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="!currentUser.admin">
+<div *ngIf="!isadmin">
   <span i18n="@@needtobeadmin">
     Need to be an admin to access this
   </span>

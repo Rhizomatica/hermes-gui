@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GPSComponent } from './gps.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('GPSComponent', () => {
   let component: GPSComponent;
@@ -9,7 +10,7 @@ describe('GPSComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [GPSComponent],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule, FormsModule]
     })
       .compileComponents();
   });
