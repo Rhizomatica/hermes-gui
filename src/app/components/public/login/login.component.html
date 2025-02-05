@@ -9,44 +9,42 @@
    </p>
    <hr>
    <div class="row m-t-25">
-      <button (click)="loginOverall()" i18n="@@loginToHERMES">
-         HERMES login
-      </button>
-      <a routerLink="/home" i18n="@@continuewithoutlogin" *ngIf="!requireLogin" class="m-l-10">Continue without login
-      </a>
-   </div>
-   <div class="overall alert" *ngIf="login">
       <form #f="ngForm" id="loginform" novalidate>
-         <div class="flexible login">
-            <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
-            <div class="row">
-               <label>
-                  <p i18n="@@username:">username:</p>
-                  <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
-               </label>
-               <label>
-                  <p i18n="@@password">password:</p>
-                  <input type="password" name="password" required i18n="@@ipass" placeholder="Password" i18n-placeholder
-                     ngModel />
-               </label>
-            </div>
-            <div class="row m-t-25">
+         <div class="flexible" style="margin:auto 0">
+            <div class="column">
+               <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
                <div class="row">
+                  <label>
+                     <!-- <p i18n="@@username:">username:</p> -->
+                     <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
+                  </label>
+                  <label>
+                     <!-- <p i18n="@@password">password:</p> -->
+                     <input type="password" name="password" required i18n="@@ipass" placeholder="Password"
+                        i18n-placeholder ngModel />
+                  </label>
+               </div>
+            </div>
+            <div class="column">
+               <div class="row m-t-10 m-l-10">
                   <button (click)="submitLogin(f)" [disabled]="f.invalid" i18n="@@log_in">log
                      in</button>
                   <button class="m-l-10" (click)="loginOverall()" i18n="@@close">close</button>
                </div>
             </div>
-            <div class="row m-t-25" *ngIf="!requireLogin">
-               <p i18n="@@noaccount">Don't have an account?</p>
-               <a routerLink="/user-manage">
-                  <button i18n="@@createbtn">create an account</button>
-               </a>
-            </div>
          </div>
+
       </form>
-
-
+      <div class="row m-t-25">
+         <a routerLink="/home" i18n="@@continuewithoutlogin" *ngIf="!requireLogin">Continue without login
+         </a>
+      </div>
+      <div class="row m-t-50" *ngIf="!requireLogin">
+         <p i18n="@@noaccount">Don't have an account?</p>
+         <a routerLink="/user-manage">
+            <button i18n="@@createbtn">create an account</button>
+         </a>
+      </div>
+     
    </div>
-
 </div>
