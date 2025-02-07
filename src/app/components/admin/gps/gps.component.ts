@@ -47,111 +47,73 @@ export class GPSComponent implements OnInit, OnDestroy {
     });
   }
 
-  getGPSFiles(): void {
-    // this.loading = true
-    this.gpsService.getStoredGPSFiles().subscribe(
-      (res: any) => {
-        if (res)
-          this.files = res
-
-        // this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        // this.loading = false
+  async getGPSFiles(): Promise<void> {
+    try {
+      const res: any = await this.gpsService.getStoredGPSFiles().toPromise();
+      if (res) {
+        this.files = res;
       }
-    );
+    } catch (err) {
+      this.error = err;
+    }
   }
 
-  getGPSStatus(): void {
-    // this.loading = true
-    this.gpsService.getGPSStatus().subscribe(
-      (res: any) => {
-        if (res)
-          this.status = res
-
-        // this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        // this.loading = false
+  async getGPSStatus(): Promise<void> {
+    try {
+      const res: any = await this.gpsService.getGPSStatus().toPromise();
+      if (res) {
+        this.status = res;
       }
-    );
+    } catch (err) {
+      this.error = err;
+    }
   }
 
-  getInterval() {
-    // this.loading = true
-    this.gpsService.getInterval().subscribe(
-      (res: any) => {
-        if (res)
-          this.interval = res
-
-        // this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        // this.loading = false
+  async getInterval(): Promise<void> {
+    try {
+      const res: any = await this.gpsService.getInterval().toPromise();
+      if (res) {
+        this.interval = res;
       }
-    );
+    } catch (err) {
+      this.error = err;
+    }
   }
 
-  getFileRangeTime() {
-    // this.loading = true
-    this.gpsService.getFileRangeTime().subscribe(
-      (res: any) => {
-        if (res)
-          this.range = parseInt(res) / 60
-
-        // this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        // this.loading = false
+  async getFileRangeTime(): Promise<void> {
+    try {
+      const res: any = await this.gpsService.getFileRangeTime().toPromise();
+      if (res) {
+        this.range = parseInt(res) / 60;
       }
-    );
+    } catch (err) {
+      this.error = err;
+    }
   }
 
-  getEmail() {
-    // this.loading = true
-    this.gpsService.getEmail().subscribe(
-      (res: any) => {
-        if (res)
-          this.email = res
-
-        // this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        // this.loading = false
+  async getEmail(): Promise<void> {
+    try {
+      const res: any = await this.gpsService.getEmail().toPromise();
+      if (res) {
+        this.email = res;
       }
-    );
+    } catch (err) {
+      this.error = err;
+    }
   }
 
-  getCurrentCoordinates() {
-
-    if (!this.currentLatitude && !this.currentLongitude)
-      this.loading = true
-
-    this.gpsService.getCurrentCoordinates().subscribe(
-      (res: any) => {
-        if (res && res.latitude !== null && res.longitude !== null) {
-          this.currentLatitude = res.latitude
-          this.currentLongitude = res.longitude
-
-          // this.pointSeries.data.setAll([{
-          //   lat: this.currentLatitude,
-          //   long: this.currentLongitude,
-          //   name: "Current Location"
-          // }]);
-        }
-
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
+  async getCurrentCoordinates(): Promise<void> {
+    try {
+      const res: any = await this.gpsService.getCurrentCoordinates().toPromise();
+      if (res && res.latitude !== null && res.longitude !== null) {
+        this.currentLatitude = res.latitude;
+        this.currentLongitude = res.longitude;
       }
-    );
+      this.loading = false;
+    } catch (err) {
+      this.error = err;
+      this.loading = false;
+    }
   }
 
   updateGPSInterval(f: NgForm) {

@@ -2,10 +2,7 @@ import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@ang
 import { GlobalConstants } from 'src/app/global-constants';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-// import am5geodata_worldHigh from "../../../../assets/maps/worldHigh.js";
-import am5geodata_brazilHigh from "../../../../assets/maps/brazilHigh";
 import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh";
-import am5geodata_centralAfricanRepublicHigh from "../../../../assets/maps/centralAfricanRepublicHigh";
 
 @Component({
   selector: 'mapgraph',
@@ -55,7 +52,7 @@ export class MapGraphComponent implements OnChanges, OnInit {
     })
   }
 
-  startMapChart() {
+  async startMapChart() {
 
     // if (!this.currentLatitude)
     //   return
@@ -136,32 +133,19 @@ export class MapGraphComponent implements OnChanges, OnInit {
       strokeOpacity: 0.1,
     });
 
-    // let polygonSeries = null
-
     // PolygonSeries
+    var geoJson = am5geodata_bangladeshHigh
+
     if (GlobalConstants.gpsMap == 'brazil') {
-      this.polygonSeries = chart.series.push(
-        am5map.MapPolygonSeries.new(root, {
-          geoJSON: am5geodata_brazilHigh
-        })
-      );
+      console.log(GlobalConstants.gpsMap)
+      geoJson = await import("../../../../assets/maps/brazilHigh").then(module => module.default);
     }
 
-    if (GlobalConstants.gpsMap == 'bangladesh') {
-      this.polygonSeries = chart.series.push(
-        am5map.MapPolygonSeries.new(root, {
-          geoJSON: am5geodata_bangladeshHigh
-        })
-      );
-    }
-
-    if (GlobalConstants.gpsMap == 'central africa') {
-      this.polygonSeries = chart.series.push(
-        am5map.MapPolygonSeries.new(root, {
-          geoJSON: am5geodata_centralAfricanRepublicHigh
-        })
-      );
-    }
+    this.polygonSeries = chart.series.push(
+      am5map.MapPolygonSeries.new(root, {
+        geoJSON: geoJson
+      })
+    );
 
     this.polygonSeries.mapPolygons.template.setAll({
       stroke: am5.color("#90daee"),

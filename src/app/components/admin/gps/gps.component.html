@@ -27,7 +27,7 @@
         location unavailable</p>
 </div>
 <div class="row">
-    <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude">
+    <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude" *ngIf="currentLatitude">
     </mapgraph>
 </div>
 <div class="m-t-25">
