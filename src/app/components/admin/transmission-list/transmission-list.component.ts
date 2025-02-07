@@ -166,12 +166,12 @@ export class TransmissionListComponent implements OnInit {
         } else {
           this.noQueue = false
           this.getQueueSize()
+
+          this.queue.forEach(item => {
+            item.dest = this.stations.filter((a) => { return a.name === item.uuidhost })[0].alias
+          });
         }
-        
-        this.queue.forEach(item => {
-          item.dest = this.stations.filter((a) => { return a.name === item.uuidhost })[0].alias
-        });
-        
+
         this.loading = false
       },
       (err) => {
