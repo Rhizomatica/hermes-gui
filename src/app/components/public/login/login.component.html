@@ -1,5 +1,5 @@
 <div class="login formdata">
-   <h1>HERMES - V3.55.59</h1>
+   <h1>HERMES - V3.58.61</h1>
    <p>Rhizomatica</p>
    <div class="row m-t-25">
       <a routerLink="/languages" i18n="@@chooselanguage">Choose your language</a>
@@ -15,11 +15,9 @@
                <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
                <div class="row">
                   <label>
-                     <!-- <p i18n="@@username:">username:</p> -->
                      <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
                   </label>
                   <label>
-                     <!-- <p i18n="@@password">password:</p> -->
                      <input type="password" name="password" required i18n="@@ipass" placeholder="Password"
                         i18n-placeholder ngModel />
                   </label>
@@ -32,7 +30,6 @@
                </div>
             </div>
          </div>
-
       </form>
       <div class="row m-t-25">
          <a routerLink="/home" i18n="@@continuewithoutlogin" *ngIf="!requireLogin">Continue without login
@@ -44,6 +41,5 @@
             <button i18n="@@createbtn">create an account</button>
          </a>
       </div>
-     
    </div>
 </div>
