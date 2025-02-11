@@ -12,7 +12,6 @@
       <form #f="ngForm" id="loginform" novalidate>
          <div class="flexible" style="margin:auto 0">
             <div class="column">
-               <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
                <div class="row">
                   <label>
                      <input type="text" name="email" required placeholder="Login" i18n-placeholder ngModel />
@@ -22,6 +21,7 @@
                         i18n-placeholder ngModel />
                   </label>
                </div>
+               <p class="alert" *ngIf="wrong" i18n="@@wrong2">wrong username or password</p>
             </div>
             <div class="column">
                <div class="row m-t-10 m-l-10">
