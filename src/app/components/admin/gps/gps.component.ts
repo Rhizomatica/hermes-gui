@@ -55,6 +55,8 @@ export class GPSComponent implements OnInit, OnDestroy {
       }
     } catch (err) {
       this.error = err;
+      this.errorAlert = true
+      this.loading = false;
     }
   }
 
@@ -66,6 +68,8 @@ export class GPSComponent implements OnInit, OnDestroy {
       }
     } catch (err) {
       this.error = err;
+      this.errorAlert = true
+      this.loading = false;
     }
   }
 
@@ -77,6 +81,8 @@ export class GPSComponent implements OnInit, OnDestroy {
       }
     } catch (err) {
       this.error = err;
+      this.errorAlert = true
+      this.loading = false;
     }
   }
 
@@ -88,6 +94,8 @@ export class GPSComponent implements OnInit, OnDestroy {
       }
     } catch (err) {
       this.error = err;
+      this.errorAlert = true
+      this.loading = false;
     }
   }
 
@@ -99,6 +107,8 @@ export class GPSComponent implements OnInit, OnDestroy {
       }
     } catch (err) {
       this.error = err;
+      this.errorAlert = true
+      this.loading = false;
     }
   }
 
@@ -125,6 +135,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       (err) => {
         this.error = err;
         this.loading = false
+        this.errorAlert = true
       }
     );
   }
@@ -143,6 +154,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       (err) => {
         this.error = err;
         this.loading = false
+        this.errorAlert = true
       }
     );
   }
@@ -156,6 +168,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       (err) => {
         this.error = err;
         this.loading = false
+        this.errorAlert = true
       }
     );
   }
@@ -175,6 +188,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       },
       (err) => {
         this.error = err;
+        this.errorAlert = true
       }
     );
   }
@@ -200,6 +214,7 @@ export class GPSComponent implements OnInit, OnDestroy {
       (err) => {
         this.error = err;
         this.loading = false
+        this.errorAlert = true
       }
     );
   }
@@ -224,8 +239,13 @@ export class GPSComponent implements OnInit, OnDestroy {
       (err) => {
         this.error = err;
         this.loading = false
+        this.errorAlert = true
       }
     );
+  }
+
+  closeError(): void {
+    this.errorAlert = false;
   }
 
   ngOnInit(): void {
