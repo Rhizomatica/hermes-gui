@@ -53,7 +53,7 @@
                 <div class="data-body">
                     <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
                     <mapgraph [currentLatitude]="currentLatitude"
-                        [currentLongitude]="currentLongitude">
+                        [currentLongitude]="currentLongitude" *ngIf="currentLatitude">
                     </mapgraph>
                 </div>
             </div>
