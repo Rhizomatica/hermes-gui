@@ -137,7 +137,6 @@ export class MapGraphComponent implements OnChanges, OnInit {
     var geoJson = am5geodata_bangladeshHigh
 
     if (GlobalConstants.gpsMap == 'brazil') {
-      console.log(GlobalConstants.gpsMap)
       geoJson = await import("../../../../assets/maps/brazilHigh").then(module => module.default);
     }
 

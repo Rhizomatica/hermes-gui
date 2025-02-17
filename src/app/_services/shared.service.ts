@@ -208,7 +208,7 @@ export class SharedService {
 
     snrData = {
       date: new Date(year, month, day, hour, minute, second),
-      value: this.storedRadioObj.snr
+      value: parseInt(this.storedRadioObj.snr)
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
@@ -217,6 +217,5 @@ export class SharedService {
       this.storedRadioObj.snrHistory.shift()
       this.storedRadioObj.snrHistory.shift()
     }
-    console.log(this.storedRadioObj.snrHistory)
   }
 }
