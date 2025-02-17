@@ -38,7 +38,7 @@ export class ClockHandGraphComponent implements OnChanges {
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   ngOnChanges(change) {
-    if (change && change.hand1Data.currentValue != change.hand1Data.previousValue) {
+    if (change && change.hand1Data && change.hand1Data.currentValue != change.hand1Data.previousValue) {
       
       this.hand1Data = change.hand1Data.currentValue
 
@@ -53,7 +53,7 @@ export class ClockHandGraphComponent implements OnChanges {
       });
     }
 
-    if (change && change.hand2Data.currentValue != change.hand2Data.previousValue) {
+    if (change && change.hand2Data && change.hand2Data.currentValue != change.hand2Data.previousValue) {
       
       this.hand2Data = change.hand2Data.currentValue
 
@@ -91,7 +91,6 @@ export class ClockHandGraphComponent implements OnChanges {
 
     this.hand1 = this.createHand(this.axis1, this.hand1Data, root);
     this.hand2 = this.createHand(this.axis2, this.hand2Data, root);
-    // console.log(this.hand1)
   }
 
   createAxis(min, max, start, end, color, label, chart, root) {

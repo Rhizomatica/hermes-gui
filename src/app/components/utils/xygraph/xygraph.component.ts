@@ -137,7 +137,6 @@ export class XYGraphComponent implements OnChanges {
 
   addData() {
 
-
     if (!this.series)
       return
 
