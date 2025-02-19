@@ -1057,7 +1057,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="ssidrules" datatype="html">
         <source> Unaccepted characters: ?, ", $, [, \, ], +, . and space </source>
-        <target state="translated"> Caracteres no aceptados: ?, ", $, [, \, ], +, . y espacio </target>
+        <target state="translated"> Caracteres não aceitos: ?, ", $, [, \, ], +, . e espaço </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">13</context>
@@ -1148,6 +1148,10 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       <trans-unit id="operatorpanel" datatype="html">
         <source>Operator Panel</source>
         <target state="new">Painel do operador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
           <context context-type="linenumber">3</context>
@@ -1641,10 +1645,6 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/messages/messages.component.html</context>
           <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
-          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousuredeletemsg" datatype="html">
@@ -2687,6 +2687,14 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">23,24</context>
         </context-group>
         <note priority="1" from="description">cannotaccesssentmessages</note>
+      </trans-unit>
+      <trans-unit id="to" datatype="html">
+        <source>To:</source>
+        <target state="new">Para:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="areyousuredeletemsgsent" datatype="html">
         <source>Are you sure yo want to delete this message? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
