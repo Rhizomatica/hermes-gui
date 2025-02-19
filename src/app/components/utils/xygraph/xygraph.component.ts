@@ -3,7 +3,6 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-
 @Component({
   selector: 'xygraph',
   templateUrl: './xygraph.component.html',
@@ -81,7 +80,7 @@ export class XYGraphComponent implements OnChanges {
       },
       renderer: am5xy.AxisRendererX.new(root, {
         minorGridEnabled: true,
-        minGridDistance: 60
+        minGridDistance: 100
       }),
       tooltip: am5.Tooltip.new(root, {})
     }));
@@ -191,8 +190,6 @@ export class XYGraphComponent implements OnChanges {
       this.chart.dispose();
       this.chart = null
     }
-
-
   }
   // https://www.amcharts.com/demos/live-data/
 }
