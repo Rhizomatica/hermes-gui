@@ -62,6 +62,15 @@
             </div>
             <div class="row m-t-25"></div>
             <div class="data">
+                <div class="data-title" i18n="@@transmissionstatus">
+                    Transmission Status
+                </div>
+                <div class="data-body">
+                    <div *ngIf="radio.tx"> TX </div>
+                    <div *ngIf="radio.rx"> RX </div>
+                </div>
+            </div>
+            <div class="data">
                 <div class="data-title">
                     <span i18n="@@radioprofile">Radio profile</span>
                 </div>
@@ -108,15 +117,6 @@
                     <span class="redcircle" *ngIf="radio.protection"></span>
                     <span class="greencircle" *ngIf="!radio.protection"></span>
                     {{radio.protection ? 'ON' : 'OFF'}}
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title" i18n="@@transmissionstatus">
-                    Transmission Status
-                </div>
-                <div class="data-body">
-                    <div *ngIf="radio.tx"> TX </div>
-                    <div *ngIf="radio.rx"> RX </div>
                 </div>
             </div>
             <!-- <div class="data">
