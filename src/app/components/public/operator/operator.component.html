@@ -4,7 +4,7 @@
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
     <div class="row m-t-10">
-        <div class="row" *ngIf="radio.connection">
+        <div class="row m-t-25" *ngIf="radio.connection">
             <div class="alertcard flexible">
                 <span class="greencircle"></span>
                 <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
@@ -12,7 +12,23 @@
                 </b>
             </div>
         </div>
-        <div class="operator-panel">
+        <div class="operator-panel m-t-25">
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@bytestransmitted">Bytes Transmitted</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bytes_transmitted}}</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@bytesreceived">Bytes Received</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bytes_received}}</span>
+                </div>
+            </div>
             <div class="data-graph">
                 <div class="data-title" i18n="@@swr">
                     Standing Wave Ratio (SWR) - {{radio.swr}}
@@ -42,19 +58,6 @@
                     <p *ngIf="radio.snrLength == 0" i18n="@@unavailabledata">
                         Unavailable Data
                     </p>
-                </div>
-            </div>
-            <div class="data-graph" *ngIf="hasGps">
-                <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
-                    <span class="greencircle" *ngIf="gpsStatus"></span>
-                    {{gpsStatus ? 'Active' : 'Inactive'}}
-                </div>
-                <div class="data-body">
-                    <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
-                    <mapgraph [currentLatitude]="currentLatitude"
-                        [currentLongitude]="currentLongitude" *ngIf="currentLatitude">
-                    </mapgraph>
                 </div>
             </div>
             <div class="row m-t-25"></div>
@@ -182,6 +185,19 @@
                 <div class="data-body">
                     {{diskSpace}} GB <span i18n="@@free">free</span>
                     <progressbar [value]="diskUsage"></progressbar>
+                </div>
+            </div>
+            <div class="row" *ngIf="hasGps">
+                <div class="data-title" i18n="@@gpsstatus">
+                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
+                    <span class="greencircle" *ngIf="gpsStatus"></span>
+                    {{gpsStatus ? 'Active' : 'Inactive'}}
+                </div>
+                <div class="data-body">
+                    <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
+                    <mapgraph [currentLatitude]="currentLatitude"
+                        [currentLongitude]="currentLongitude" *ngIf="currentLatitude">
+                    </mapgraph>
                 </div>
             </div>
         </div>
