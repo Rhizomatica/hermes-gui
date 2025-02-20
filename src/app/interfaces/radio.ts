@@ -26,5 +26,7 @@ export interface Radio {
   snrLength: number,
   bitrate: string,
   bitrateHistory: Array<object>,
-  bitrateLength: number
+  bitrateLength: number,
+  bytes_received: number,
+  bytes_transmitted: number
 }
