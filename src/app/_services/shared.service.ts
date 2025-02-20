@@ -198,7 +198,7 @@ export class SharedService {
 
     this.storedRadioObj.bitrateHistory.push(bitrateData)
 
-    if (this.storedRadioObj.bitrateHistory.length > 10) {
+    if (this.storedRadioObj.bitrateHistory.length > 10000) {
       this.storedRadioObj.bitrateHistory.shift()
       this.storedRadioObj.bitrateHistory.shift()
     }
@@ -225,7 +225,7 @@ export class SharedService {
 
     this.storedRadioObj.snrHistory.push(snrData)
 
-    if (this.storedRadioObj.snrHistory.length > 10) {
+    if (this.storedRadioObj.snrHistory.length > 10000) {
       this.storedRadioObj.snrHistory.shift()
       this.storedRadioObj.snrHistory.shift()
     }
