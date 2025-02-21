@@ -18,7 +18,8 @@
                     <span i18n="@@swr">Standing Wave Ratio (SWR)</span> - {{radio.swr}}
                 </div>
                 <div class="data-body m-t-10">
-                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.swr" hand1Label="swr" [minAxis1]="1" [maxAxis1]="4">
+                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.swr" hand1Label="swr" [minAxis1]="1"
+                        [maxAxis1]="4">
                     </clockhandgraph>
                 </div>
             </div>
@@ -27,7 +28,9 @@
                     <span i18n="@@power">Power</span> - {{radio.fwd_watts}} W
                 </div>
                 <div class="data-body">
-                    
+                    <clockhandgraph graphElementID="powerChart" [hand1Data]="radio.fwd_watts" hand1Label="forward(W)"
+                        [minAxis1]="0" [maxAxis1]="100">
+                    </clockhandgraph>
                 </div>
             </div>
             <div class="data-graph">
@@ -77,7 +80,7 @@
                     <div *ngIf="radio.rx"> RX </div>
                 </div>
             </div>
-          
+
             <div class="data">
                 <div class="data-title">
                     <span i18n="@@radioprofile">Radio profile</span>
@@ -109,7 +112,7 @@
                     <span>{{radio.p1_mode}}</span>
                 </div>
             </div>
-            
+
             <div class="data">
                 <div class="data-title" i18n="@@protection">
                     Protection
