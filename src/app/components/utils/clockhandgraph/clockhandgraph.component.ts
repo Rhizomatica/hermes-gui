@@ -22,6 +22,10 @@ export class ClockHandGraphComponent implements OnChanges {
     this.axis2 = null
     this.hand1 = null
     this.hand2 = null
+    this.minAxis1 = null
+    this.maxAxis1 = null
+    this.minAxis2 = null
+    this.maxAxis2 = null
   }
 
   @Input() graphElementID: string
@@ -29,6 +33,10 @@ export class ClockHandGraphComponent implements OnChanges {
   @Input() hand2Data: number
   @Input() hand1Label: string
   @Input() hand2Label: string
+  @Input() minAxis1: number
+  @Input() maxAxis1: number
+  @Input() minAxis2: number
+  @Input() maxAxis2: number
 
   axis1: []
   axis2: []
@@ -39,11 +47,11 @@ export class ClockHandGraphComponent implements OnChanges {
 
   ngOnChanges(change) {
     if (change && change.hand1Data && change.hand1Data.currentValue != change.hand1Data.previousValue) {
-      
+
       this.hand1Data = change.hand1Data.currentValue
 
-      if(!this.hand1)
-        return 
+      if (!this.hand1Data || !this.hand1)
+        return
 
       this.hand1.get("sprite").dataItem.animate({
         key: "value",
@@ -54,11 +62,11 @@ export class ClockHandGraphComponent implements OnChanges {
     }
 
     if (change && change.hand2Data && change.hand2Data.currentValue != change.hand2Data.previousValue) {
-      
+
       this.hand2Data = change.hand2Data.currentValue
 
-      if(!this.hand2)
-        return 
+      if (!this.hand2Data || !this.hand2)
+        return
 
       this.hand2.get("sprite").dataItem.animate({
         key: "value",
@@ -70,8 +78,9 @@ export class ClockHandGraphComponent implements OnChanges {
   }
 
   startGaugeChart() {
+    var elementID = this.graphElementID
 
-    var root = am5.Root.new("swrChart");
+    var root = am5.Root.new(elementID);
 
     // root.setThemes([
     //   am5themes_Animated.new(root)
@@ -86,11 +95,19 @@ export class ClockHandGraphComponent implements OnChanges {
       })
     );
 
-    this.axis1 = this.createAxis(0, 300, -180, -95, am5.color('#f60'), this.hand1Label, chart, root);
-    this.axis2 = this.createAxis(0, 100, -85, 0, am5.color('#FF9955'), this.hand2Label, chart, root);
+    let endAngle = -95
+    if(!this.hand2Data){
+      endAngle = 0
+    }
 
+    this.axis1 = this.createAxis(this.minAxis1, this.maxAxis1, -180, endAngle, am5.color('#f60'), this.hand1Label, chart, root);
     this.hand1 = this.createHand(this.axis1, this.hand1Data, root);
-    this.hand2 = this.createHand(this.axis2, this.hand2Data, root);
+
+    if (this.hand2Data) {
+      this.axis2 = this.createAxis(this.minAxis2, this.maxAxis2, -85, 0, am5.color('#FF9955'), this.hand2Label, chart, root);
+      this.hand2 = this.createHand(this.axis2, this.hand2Data, root);
+    }
+
   }
 
   createAxis(min, max, start, end, color, label, chart, root) {

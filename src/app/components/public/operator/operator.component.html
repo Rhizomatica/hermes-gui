@@ -13,30 +13,21 @@
             </div>
         </div>
         <div class="operator-panel m-t-25">
-            <div class="data">
+            <div class="data-graph">
                 <div class="data-title">
-                    <span i18n="@@bytestransmitted">Bytes Transmitted</span>
+                    <span i18n="@@swr">Standing Wave Ratio (SWR)</span> - {{radio.swr}}
                 </div>
-                <div class="data-body">
-                    <span>{{radio.bytes_transmitted}}</span>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@bytesreceived">Bytes Received</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.bytes_received}}</span>
+                <div class="data-body m-t-10">
+                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.swr" hand1Label="swr" [minAxis1]="1" [maxAxis1]="4">
+                    </clockhandgraph>
                 </div>
             </div>
             <div class="data-graph">
-                <div class="data-title" i18n="@@swr">
-                    Standing Wave Ratio (SWR) - {{radio.swr}}
+                <div class="data-title">
+                    <span i18n="@@power">Power</span> - {{radio.fwd_watts}} W
                 </div>
-                <div class="data-body m-t-10">
-                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.fwd_watts"
-                        [hand2Data]="radio.ref_watts" hand1Label="forward(W)" hand2Label="reflected(W)">
-                    </clockhandgraph>
+                <div class="data-body">
+                    
                 </div>
             </div>
             <div class="data-graph">
@@ -62,6 +53,22 @@
             </div>
             <div class="row m-t-25"></div>
             <div class="data">
+                <div class="data-title">
+                    <span i18n="@@bytestransmitted">Bytes Transmitted</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bytes_transmitted}}</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@bytesreceived">Bytes Received</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bytes_received}}</span>
+                </div>
+            </div>
+            <div class="data">
                 <div class="data-title" i18n="@@transmissionstatus">
                     Transmission Status
                 </div>
@@ -70,6 +77,7 @@
                     <div *ngIf="radio.rx"> RX </div>
                 </div>
             </div>
+          
             <div class="data">
                 <div class="data-title">
                     <span i18n="@@radioprofile">Radio profile</span>
@@ -78,7 +86,7 @@
                     <span i18n="@@data">Data</span>
                 </div>
                 <div class="data-body" *ngIf="radio.profile == 1">
-                <span i18n="@@voice">Voice</span>
+                    <span i18n="@@voice">Voice</span>
                 </div>
             </div>
             <div class="data">
@@ -101,14 +109,7 @@
                     <span>{{radio.p1_mode}}</span>
                 </div>
             </div>
-            <div class="data">
-                <div class="data-title" i18n="@@power">
-                    Power
-                </div>
-                <div class="data-body">
-                    {{radio.fwd_watts}} W
-                </div>
-            </div>
+            
             <div class="data">
                 <div class="data-title" i18n="@@protection">
                     Protection
@@ -195,8 +196,8 @@
                 </div>
                 <div class="data-body">
                     <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
-                    <mapgraph [currentLatitude]="currentLatitude"
-                        [currentLongitude]="currentLongitude" *ngIf="currentLatitude">
+                    <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
+                        *ngIf="currentLatitude">
                     </mapgraph>
                 </div>
             </div>
