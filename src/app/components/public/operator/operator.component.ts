@@ -154,6 +154,24 @@ export class OperatorComponent implements OnInit {
     );
   }
 
+  stopTransmission(): void{
+        // this.uucpService.stopTransmission(, this.nodename).subscribe(
+        //   (res: any) => {
+        //     this.res = res;
+        //     this.fileIsProcessing = true;
+        //     this.file = [];
+        //     this.fileName = '';
+        //     this.loading = false;
+        //     this.router.navigate(['/sent']);
+        //   },
+        //   (err) => {
+        //     this.errormsg = err;
+        //     this.errorAlert = true;
+        //     this.loading = false;
+        //   }
+        // );
+  }
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
     this.getCurrentCoordinates()

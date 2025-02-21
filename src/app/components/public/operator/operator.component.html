@@ -56,6 +56,15 @@
             </div>
             <div class="row m-t-25"></div>
             <div class="data">
+                <div class="data-title" i18n="@@transmissionstatus">
+                    Transmission Status
+                </div>
+                <div class="data-body">
+                    <div *ngIf="radio.tx"> TX </div>
+                    <div *ngIf="radio.rx"> RX </div>
+                </div>
+            </div>
+            <div class="data">
                 <div class="data-title">
                     <span i18n="@@bytestransmitted">Bytes Transmitted</span>
                 </div>
@@ -72,15 +81,11 @@
                 </div>
             </div>
             <div class="data">
-                <div class="data-title" i18n="@@transmissionstatus">
-                    Transmission Status
-                </div>
                 <div class="data-body">
-                    <div *ngIf="radio.tx"> TX </div>
-                    <div *ngIf="radio.rx"> RX </div>
+                    <button (click)="stopTransmission()" i18n="@@stoptransmission">stop transmission</button>
                 </div>
             </div>
-
+            <div class="row m-t-25"></div>
             <div class="data">
                 <div class="data-title">
                     <span i18n="@@radioprofile">Radio profile</span>
