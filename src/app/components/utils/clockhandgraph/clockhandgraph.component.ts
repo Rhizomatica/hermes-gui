@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/cor
 import * as am5 from "@amcharts/amcharts5";
 import * as am5radar from "@amcharts/amcharts5/radar";
 import * as am5xy from "@amcharts/amcharts5/xy";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 @Component({
   selector: 'clockhandgraph',
@@ -38,10 +39,12 @@ export class ClockHandGraphComponent implements OnChanges {
   @Input() minAxis2: number
   @Input() maxAxis2: number
 
-  axis1: []
-  axis2: []
+  axis1: any
+  axis2: any
   hand1: any
   hand2: any
+  axisRange1: any
+  axisRange2: any
 
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
@@ -55,8 +58,16 @@ export class ClockHandGraphComponent implements OnChanges {
 
       this.hand1.get("sprite").dataItem.animate({
         key: "value",
+        from: change.hand1Data.previousValue,
         to: change.hand1Data.currentValue,
-        duration: 800,
+        duration: 600,
+        easing: am5.ease.out(am5.ease.cubic)
+      });
+
+      this.axisRange1.animate({
+        key: "value",
+        to: change.hand1Data.currentValue,
+        duration: 600,
         easing: am5.ease.out(am5.ease.cubic)
       });
     }
@@ -71,7 +82,14 @@ export class ClockHandGraphComponent implements OnChanges {
       this.hand2.get("sprite").dataItem.animate({
         key: "value",
         to: change.hand2Data.currentValue,
-        duration: 800,
+        duration: 600,
+        easing: am5.ease.out(am5.ease.cubic)
+      });
+
+      this.axisRange2.animate({
+        key: "value",
+        to: change.hand1Data.currentValue,
+        duration: 600,
         easing: am5.ease.out(am5.ease.cubic)
       });
     }
@@ -82,9 +100,9 @@ export class ClockHandGraphComponent implements OnChanges {
 
     var root = am5.Root.new(elementID);
 
-    // root.setThemes([
-    //   am5themes_Animated.new(root)
-    // ]);
+    root.setThemes([
+      am5themes_Animated.new(root)
+    ]);
 
     var chart = root.container.children.push(
       am5radar.RadarChart.new(root, {
@@ -96,7 +114,7 @@ export class ClockHandGraphComponent implements OnChanges {
     );
 
     let endAngle = -95
-    if(!this.hand2Data){
+    if (!this.hand2Data) {
       endAngle = 0
     }
 
@@ -144,7 +162,9 @@ export class ClockHandGraphComponent implements OnChanges {
       endValue: max
     });
 
-    var range = axis.createAxisRange(rangeDataItem);
+    rangeDataItem.set("value", 0);
+
+    axis.createAxisRange(rangeDataItem);
 
     rangeDataItem.get("axisFill").setAll({
       visible: true,
@@ -165,6 +185,13 @@ export class ClockHandGraphComponent implements OnChanges {
       radius: 8,
       fontSize: "0.8em",
     });
+
+    //Define the axis range (1 or 2), to be used in the ngOnChanges method
+    if (start == -180) {
+      this.axisRange1 = rangeDataItem
+    } else {
+      this.axisRange2 = rangeDataItem
+    }
 
     return axis;
   }
