@@ -944,7 +944,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">206</context>
         </context-group>
       </trans-unit>
       <trans-unit id="geolocationfilestitle" datatype="html">
@@ -1666,11 +1666,11 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         </context-group>
       </trans-unit>
       <trans-unit id="swr" datatype="html">
-        <source> Standing Wave Ratio (SWR) - <x id="INTERPOLATION" equiv-text="{{radio.swr}}"/> </source>
-        <target state="new"> Razão de onda estacionária (SWR) - <x id="INTERPOLATION" equiv-text="{{radio.swr}}"/></target>
+        <source>Standing Wave Ratio (SWR)</source>
+        <target state="new"> Razão de onda estacionária (SWR)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="unavailabledata" datatype="html">
@@ -1678,19 +1678,19 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Dados indisponíveis </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="power" datatype="html">
-        <source> Power </source>
-        <target state="new"> Potência </target>
+        <source>Power</source>
+        <target state="new">Potência</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protection" datatype="html">
@@ -1698,7 +1698,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Proteção </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmissionstatus" datatype="html">
@@ -1706,7 +1706,31 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Status de transmissão </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bytestransmitted" datatype="html">
+        <source>Bytes Transmitted</source>
+        <target state="new">Bytes transmitidos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bytesreceived" datatype="html">
+        <source>Bytes Received</source>
+        <target state="new">Bytes recebidos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="stoptransmission" datatype="html">
+        <source>stop transmission</source>
+        <target state="new">parar transmissão</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bitrate" datatype="html">
@@ -1718,7 +1742,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="SNR" datatype="html">
@@ -1730,7 +1754,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="pendingtransmission" datatype="html">
@@ -1738,7 +1762,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Transmissões pendentes </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">137</context>
+          <context context-type="linenumber">149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="scheduledtransmission" datatype="html">
@@ -1746,7 +1770,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Transmissões agendadas </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">161</context>
+          <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpsstatus" datatype="html">
@@ -1754,7 +1778,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Estado do GPS <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;redcircle&quot; *ngIf=&quot;!gpsStatus&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span class=&quot;greencircle&quot; *ngIf=&quot;gpsStatus&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> <x id="INTERPOLATION" equiv-text="{{gpsStatus ? 'Ativo' : 'Inativo'}}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">200</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprofile" datatype="html">
@@ -1762,7 +1786,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Radio profile</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="data" datatype="html">
@@ -1770,7 +1794,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Data</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voice" datatype="html">
@@ -1778,7 +1802,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Voice</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="datafrequency" datatype="html">
@@ -1786,7 +1810,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Frequência de dados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voicefrequency" datatype="html">
@@ -1794,7 +1818,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Frequência de voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="localstorage" datatype="html">
@@ -1802,7 +1826,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Armazenamento local </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">179</context>
+          <context context-type="linenumber">191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="free" datatype="html">
@@ -1810,7 +1834,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">livre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">183</context>
+          <context context-type="linenumber">195</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelmt" datatype="html">
