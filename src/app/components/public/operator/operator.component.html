@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="data">
-                <div class="data-body">
+                <div class="data-body" *ngIf="radio.connection">
                     <button (click)="stopTransmission()" i18n="@@stoptransmission">stop transmission</button>
                 </div>
             </div>
