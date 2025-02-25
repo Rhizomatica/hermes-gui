@@ -212,3 +212,15 @@
         </div>
     </div>
 </div>
+
+<div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
+      <div class="row m-t-10">{{errormsg}}</div>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
+      </div>
+    </div>
+  </div>

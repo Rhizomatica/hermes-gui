@@ -23,6 +23,8 @@ export class OperatorComponent implements OnInit {
   systemData: object
   loading: boolean = false
   error: Error
+  errorAlert: boolean = false
+  errormsg:string = ""
   poolSystemData: Subscription
   radio: any = []
   diskSpace: string = '0'
@@ -154,22 +156,24 @@ export class OperatorComponent implements OnInit {
     );
   }
 
-  stopTransmission(): void{
-        // this.uucpService.stopTransmission(, this.nodename).subscribe(
-        //   (res: any) => {
-        //     this.res = res;
-        //     this.fileIsProcessing = true;
-        //     this.file = [];
-        //     this.fileName = '';
-        //     this.loading = false;
-        //     this.router.navigate(['/sent']);
-        //   },
-        //   (err) => {
-        //     this.errormsg = err;
-        //     this.errorAlert = true;
-        //     this.loading = false;
-        //   }
-        // );
+  stopTransmission(): void {
+    this.loading = true;
+
+    this.uucpService.stopTransmission().subscribe(
+      (res: any) => {
+        this.loading = false
+      },
+      (err) => {
+        this.errormsg = err;
+        this.errorAlert = true
+        this.loading = false;
+      }
+    );
+  }
+
+  closeError() {
+    this.errorAlert = false;
+    this.errormsg = ""
   }
 
   ngOnInit(): void {
@@ -181,8 +185,7 @@ export class OperatorComponent implements OnInit {
     this.getQueue()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
-      // this.getSystemData()
-      this.getQueue() // TODO - needed?
+      this.getQueue()
     })
 
     // Modem Status
