@@ -185,6 +185,11 @@ export class OperatorComponent implements OnInit {
     this.getQueue()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
+
+      //Pause while connection is active
+      if(this.radio.connection)
+        return 
+
       this.getQueue()
     })
 
