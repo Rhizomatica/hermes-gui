@@ -81,9 +81,9 @@ export class UtilsService {
 
   formatDecimal(num) {
     if (!num)
-      return '0'
+      return 0
 
-    return (parseInt(num) / 10).toFixed(1).toString()
+    return parseInt(num) / 10
   }
 
   formatPower(fwd) {

@@ -21,7 +21,7 @@ export interface Radio {
   p1_freq_splited: Array<string>,
   timeout: string,
   datetime: Date,
-  snr: string,
+  snr: number,
   snrHistory: Array<object>
   snrLength: number,
   bitrate: string,

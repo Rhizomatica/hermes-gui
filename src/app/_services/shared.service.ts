@@ -162,7 +162,7 @@ export class SharedService {
     this.radioObj.value.p1_freq_splited = this.utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.value.timeout = this.utils.formatTimeCounter('300')
     this.radioObj.value.datetime = new Date('08/04/2024 13:03:01')
-    this.radioObj.value.snr = '15.3'
+    this.radioObj.value.snr = 15.3
     this.radioObj.value.bitrate = '363'
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
@@ -206,7 +206,7 @@ export class SharedService {
 
   prepareSNRHistory() {
     
-    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == '0')
+    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == 0)
       return
 
     var snrData = new Object()
@@ -220,11 +220,11 @@ export class SharedService {
 
     snrData = {
       date: new Date(year, month, day, hour, minute, second),
-      value: parseInt(this.storedRadioObj.snr)
+      value: this.storedRadioObj.snr
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
-
+    
     if (this.storedRadioObj.snrHistory.length > 10000) {
       this.storedRadioObj.snrHistory.shift()
       this.storedRadioObj.snrHistory.shift()
