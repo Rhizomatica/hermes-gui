@@ -1,10 +1,12 @@
+<loading [loading]="loading"></loading>
+
 <div class="container sysadm home">
     <div class="flexible">
         <h1 i18n="@@operatorpanel">Operator Panel</h1>
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
     <div class="row m-t-10">
-        <div class="row" *ngIf="radio.connection">
+        <div class="row m-t-25" *ngIf="radio.connection">
             <div class="alertcard flexible">
                 <span class="greencircle"></span>
                 <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
@@ -12,14 +14,24 @@
                 </b>
             </div>
         </div>
-        <div class="operator-panel">
+        <div class="operator-panel m-t-25">
             <div class="data-graph">
-                <div class="data-title" i18n="@@swr">
-                    Standing Wave Ratio (SWR) - {{radio.swr}}
+                <div class="data-title">
+                    <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
                 </div>
                 <div class="data-body m-t-10">
-                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.fwd_watts"
-                        [hand2Data]="radio.ref_watts" hand1Label="forward(W)" hand2Label="reflected(W)">
+                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.swr" hand1Label="swr" [minAxis1]="1"
+                        [maxAxis1]="4">
+                    </clockhandgraph>
+                </div>
+            </div>
+            <div class="data-graph">
+                <div class="data-title">
+                    <span i18n="@@power">Power</span>
+                </div>
+                <div class="data-body">
+                    <clockhandgraph graphElementID="powerChart" [hand1Data]="radio.fwd_watts" hand1Label="forward(W)"
+                        [minAxis1]="0" [maxAxis1]="100">
                     </clockhandgraph>
                 </div>
             </div>
@@ -44,17 +56,35 @@
                     </p>
                 </div>
             </div>
-            <div class="data-graph" *ngIf="hasGps">
-                <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
-                    <span class="greencircle" *ngIf="gpsStatus"></span>
-                    {{gpsStatus ? 'Active' : 'Inactive'}}
+            <div class="row m-t-25"></div>
+            <div class="data">
+                <div class="data-title" i18n="@@transmissionstatus">
+                    Transmission Status
                 </div>
                 <div class="data-body">
-                    <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
-                    <mapgraph [currentLatitude]="currentLatitude"
-                        [currentLongitude]="currentLongitude">
-                    </mapgraph>
+                    <div *ngIf="radio.tx"> TX </div>
+                    <div *ngIf="radio.rx"> RX </div>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@bytestransmitted">Bytes Transmitted</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bytes_transmitted}}</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@bytesreceived">Bytes Received</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bytes_received}}</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-body" *ngIf="radio.connection">
+                    <button (click)="stopTransmission()" i18n="@@stoptransmission">stop transmission</button>
                 </div>
             </div>
             <div class="row m-t-25"></div>
@@ -66,7 +96,7 @@
                     <span i18n="@@data">Data</span>
                 </div>
                 <div class="data-body" *ngIf="radio.profile == 1">
-                <span i18n="@@voice">Voice</span>
+                    <span i18n="@@voice">Voice</span>
                 </div>
             </div>
             <div class="data">
@@ -89,31 +119,15 @@
                     <span>{{radio.p1_mode}}</span>
                 </div>
             </div>
-            <div class="data">
-                <div class="data-title" i18n="@@power">
-                    Power
-                </div>
-                <div class="data-body">
-                    {{radio.fwd_watts}} W
-                </div>
-            </div>
+
             <div class="data">
                 <div class="data-title" i18n="@@protection">
                     Protection
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="radio.protection"></span>
-                    <span class="greencircle" *ngIf="!radio.protection"></span>
+                    <span class="redcircle" *ngIf="!radio.protection"></span>
+                    <span class="greencircle" *ngIf="radio.protection"></span>
                     {{radio.protection ? 'ON' : 'OFF'}}
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title" i18n="@@transmissionstatus">
-                    Transmission Status
-                </div>
-                <div class="data-body">
-                    <div *ngIf="radio.tx"> TX </div>
-                    <div *ngIf="radio.rx"> RX </div>
                 </div>
             </div>
             <!-- <div class="data">
@@ -164,7 +178,7 @@
                 <div class="data-body">
                     <span class="redcircle" *ngIf="!activeSchedule"></span>
                     <span class="greencircle" *ngIf="activeSchedule"></span>
-                    {{activeSchedule ? 'Active' : 'Inactive'}}
+                    {{activeSchedule ? 'ON' : 'OFF'}}
                 </div>
             </div>
             <!-- <div class="data">
@@ -184,6 +198,31 @@
                     <progressbar [value]="diskUsage"></progressbar>
                 </div>
             </div>
+            <div class="row" *ngIf="hasGps">
+                <div class="data-title" i18n="@@gpsstatus">
+                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
+                    <span class="greencircle" *ngIf="gpsStatus"></span>
+                    {{gpsStatus ? 'ON' : 'OFF'}}
+                </div>
+                <div class="data-body">
+                    <p *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</p>
+                    <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
+                        *ngIf="currentLatitude">
+                    </mapgraph>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<div class="overall alert" [hidden]="errorAlert==false">
+    <div class="cv">
+      <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
+      <div class="row m-t-10">{{errormsg}}</div>
+      <div class="row m-t-10">
+        <button (click)="closeError()" i18n="@@closeerrorbutton">
+          close
+        </button>
+      </div>
+    </div>
+  </div>

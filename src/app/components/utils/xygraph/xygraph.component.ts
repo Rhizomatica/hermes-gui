@@ -1,9 +1,9 @@
 import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-
-
+import { SharedService } from 'src/app/_services/shared.service';
 @Component({
   selector: 'xygraph',
   templateUrl: './xygraph.component.html',
@@ -13,13 +13,16 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export class XYGraphComponent implements OnChanges {
 
-  constructor() {
+  constructor(
+    sharedService: SharedService
+  ) {
     this.graphElementID = null
     this.graphData = null
     this.series = null
     this.dataLength = null
     this.xAxis = null
     this.chart = null
+    this.sharedService = sharedService
   }
 
   @Input() graphElementID: string
@@ -29,6 +32,9 @@ export class XYGraphComponent implements OnChanges {
   series: any
   xAxis: any
   chart: any
+  sharedService: SharedService
+  poolSystemData: Subscription
+  
 
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
@@ -81,7 +87,7 @@ export class XYGraphComponent implements OnChanges {
       },
       renderer: am5xy.AxisRendererX.new(root, {
         minorGridEnabled: true,
-        minGridDistance: 60
+        minGridDistance: 100
       }),
       tooltip: am5.Tooltip.new(root, {})
     }));
@@ -137,22 +143,25 @@ export class XYGraphComponent implements OnChanges {
 
   addData() {
 
-
     if (!this.series)
       return
 
     let lastValue = this.graphData[this.graphData.length - 2]['value']
     let lastDate = this.graphData[this.graphData.length - 2]['date']
+    // let lastDataItem = this.series.dataItems[this.series.dataItems.length - 1];
+    // let lastValue = lastDataItem.get("valueY");
+    // let lastDate = new Date(lastDataItem.get("valueX"));
+
     let newValue = this.graphData[this.graphData.length - 1]['value']
 
     let time = am5.time.add(new Date(lastDate), "second", 1).getTime()
+
     this.series.data.removeIndex(0);
+    
     this.series.data.push({
       date: time,
       value: newValue
     })
-
-    let easing = am5.ease.linear;
 
     let newDataItem = this.series.dataItems[this.series.dataItems.length - 1]
 
@@ -161,7 +170,7 @@ export class XYGraphComponent implements OnChanges {
       to: newValue,
       from: lastValue,
       duration: 600,
-      easing: easing
+      easing: am5.ease.linear
     });
 
     let animation = newDataItem.animate({
@@ -183,7 +192,13 @@ export class XYGraphComponent implements OnChanges {
   }
 
   ngAfterViewInit() {
+
     this.startXYGraph()
+
+    // this.poolSystemData = interval(10000).subscribe((val) => {
+    //   this.addData()
+    // })
+
   }
 
   ngOnDestroy(){
@@ -191,9 +206,9 @@ export class XYGraphComponent implements OnChanges {
     if(this && this.chart){
       this.chart.dispose();
       this.chart = null
+      this.sharedService.storedRadioObj.bitrateHistory = []
+      this.sharedService.storedRadioObj.snrHistory = []
     }
-
-
   }
   // https://www.amcharts.com/demos/live-data/
 }

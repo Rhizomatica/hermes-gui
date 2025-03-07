@@ -42,7 +42,9 @@ export class SharedService {
     snrLength: null,
     bitrate: null,
     bitrateHistory: null,
-    bitrateLength: null
+    bitrateLength: null,
+    bytes_received: null,
+    bytes_transmitted: null
   });
 
   public storedRadioObj = <Radio>({
@@ -67,7 +69,9 @@ export class SharedService {
     snrLength: null,
     bitrate: null,
     bitrateHistory: [],
-    bitrateLength: null
+    bitrateLength: null,
+    bytes_received: null,
+    bytes_transmitted: null
   });
 
   setRadioObjShared(data) {
@@ -99,6 +103,9 @@ export class SharedService {
     this.radioObj.value.bitrate = this.storedRadioObj.bitrate
     this.radioObj.value.bitrateHistory = this.storedRadioObj.bitrateHistory
     this.radioObj.value.bitrateLength = this.storedRadioObj.bitrateLength
+    this.radioObj.value.bitrateLength = this.storedRadioObj.bitrateLength
+    this.radioObj.value.bytes_received = this.storedRadioObj.bytes_received
+    this.radioObj.value.bytes_transmitted = this.storedRadioObj.bytes_transmitted
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -131,6 +138,9 @@ export class SharedService {
     this.storedRadioObj.bitrate = newObj.bitrate == null ? this.storedRadioObj.bitrate : newObj.bitrate
     this.prepareBitrateHistory()
     this.storedRadioObj.bitrateLength = this.storedRadioObj.bitrateHistory.length
+    this.storedRadioObj.bytes_received = newObj.bytes_received == null ? this.storedRadioObj.bytes_received : newObj.bytes_received
+    this.storedRadioObj.bytes_transmitted = newObj.bytes_transmitted == null ? this.storedRadioObj.bytes_transmitted : newObj.bytes_transmitted
+
   }
 
   mountRadioObjDemo() {
@@ -152,8 +162,10 @@ export class SharedService {
     this.radioObj.value.p1_freq_splited = this.utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.value.timeout = this.utils.formatTimeCounter('300')
     this.radioObj.value.datetime = new Date('08/04/2024 13:03:01')
-    this.radioObj.value.snr = '15.3'
+    this.radioObj.value.snr = 15.3
     this.radioObj.value.bitrate = '363'
+    this.radioObj.value.bytes_received = 12
+    this.radioObj.value.bytes_transmitted = 5
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -186,7 +198,7 @@ export class SharedService {
 
     this.storedRadioObj.bitrateHistory.push(bitrateData)
 
-    if (this.storedRadioObj.bitrateHistory.length > 10) {
+    if (this.storedRadioObj.bitrateHistory.length > 10000) {
       this.storedRadioObj.bitrateHistory.shift()
       this.storedRadioObj.bitrateHistory.shift()
     }
@@ -194,7 +206,7 @@ export class SharedService {
 
   prepareSNRHistory() {
     
-    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == '0')
+    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == 0)
       return
 
     var snrData = new Object()
@@ -212,11 +224,10 @@ export class SharedService {
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
-
-    if (this.storedRadioObj.snrHistory.length > 10) {
+    
+    if (this.storedRadioObj.snrHistory.length > 10000) {
       this.storedRadioObj.snrHistory.shift()
       this.storedRadioObj.snrHistory.shift()
     }
-    console.log(this.storedRadioObj.snrHistory)
   }
 }

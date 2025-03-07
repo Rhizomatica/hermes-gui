@@ -134,8 +134,6 @@ describe('ApiService', () => {
 
   it('should get schedules defined', (done: DoneFn) => {
     service.getSchedules().subscribe(data => {
-      // schedules = data
-      // console.log(' MAOI- ' + schedules.title)
       expect(data).toBeDefined()
       done()
     })

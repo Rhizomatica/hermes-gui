@@ -23,6 +23,8 @@ export class OperatorComponent implements OnInit {
   systemData: object
   loading: boolean = false
   error: Error
+  errorAlert: boolean = false
+  errormsg:string = ""
   poolSystemData: Subscription
   radio: any = []
   diskSpace: string = '0'
@@ -154,6 +156,26 @@ export class OperatorComponent implements OnInit {
     );
   }
 
+  stopTransmission(): void {
+    this.loading = true;
+
+    this.uucpService.stopTransmission().subscribe(
+      (res: any) => {
+        this.loading = false
+      },
+      (err) => {
+        this.errormsg = err;
+        this.errorAlert = true
+        this.loading = false;
+      }
+    );
+  }
+
+  closeError() {
+    this.errorAlert = false;
+    this.errormsg = ""
+  }
+
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
     this.getCurrentCoordinates()
@@ -163,8 +185,12 @@ export class OperatorComponent implements OnInit {
     this.getQueue()
 
     this.poolSystemData = interval(10000).subscribe((val) => {
-      // this.getSystemData()
-      this.getQueue() // TODO - needed?
+
+      //Pause while connection is active
+      if(this.radio.connection)
+        return 
+
+      this.getQueue()
     })
 
     // Modem Status

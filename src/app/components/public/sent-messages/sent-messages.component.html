@@ -31,9 +31,9 @@
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
                                 <div class="row">
-                                    <span class="date"><span i18n="@@from">From:</span> {{message.orig}}, {{message.sent_at}}</span>
+                                    <span class="date"><span i18n="@@to">To:</span> {{message.orig}}, {{message.sent_at}}</span>
                                 </div>
-                                <a routerLink="/message/{{message.id}}" title="{{message.id}} from {{message.dest}}">
+                                <a routerLink="/message/{{message.id}}" title="{{message.id}} to {{message.dest}}">
                                     <span class="ls">{{message.name}}</span>
                                 </a>
                                 <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg"
