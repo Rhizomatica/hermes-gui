@@ -125,8 +125,8 @@
                     Protection
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="radio.protection"></span>
-                    <span class="greencircle" *ngIf="!radio.protection"></span>
+                    <span class="redcircle" *ngIf="!radio.protection"></span>
+                    <span class="greencircle" *ngIf="radio.protection"></span>
                     {{radio.protection ? 'ON' : 'OFF'}}
                 </div>
             </div>
