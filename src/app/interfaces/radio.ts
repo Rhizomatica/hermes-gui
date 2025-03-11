@@ -28,5 +28,6 @@ export interface Radio {
   bitrateHistory: Array<object>,
   bitrateLength: number,
   bytes_received: number,
-  bytes_transmitted: number
+  bytes_transmitted: number,
+  message: string
 }
