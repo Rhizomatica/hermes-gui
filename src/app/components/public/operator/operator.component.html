@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="operator-panel m-t-25">
-            <div class="data-graph">
+            <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title">
                     <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
                 </div>
@@ -25,7 +25,16 @@
                     </clockhandgraph>
                 </div>
             </div>
-            <div class="data-graph">
+            <div class="data" *ngIf="!showGraph">
+                <div class="data-title">
+                    <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.swr}}</span>
+                </div>
+            </div>
+
+            <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title">
                     <span i18n="@@power">Power</span>
                 </div>
@@ -35,7 +44,15 @@
                     </clockhandgraph>
                 </div>
             </div>
-            <div class="data-graph">
+            <div class="data" *ngIf="!showGraph">
+                <div class="data-title">
+                    <span i18n="@@power">Power</span>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.fwd_watts}}</span>
+                </div>
+            </div>
+            <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title" i18n="@@bitrate">Bitrate</div>
                 <div class="data-body">
                     <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory"
@@ -43,10 +60,17 @@
                     <p *ngIf="radio.bitrateLength == 0" class="m-t-25" i18n="@@unavailabledata">
                         Unavailable Data
                     </p>
-
                 </div>
             </div>
-            <div class="data-graph">
+            <div class="data" *ngIf="!showGraph">
+                <div class="data-title">
+                    <div class="data-title" i18n="@@bitrate">Bitrate</div>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.bitrate}}</span>
+                </div>
+            </div>
+            <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title" i18n="@@SNR">Signal-to-noise ratio (SNR)</div>
                 <div class="data-body">
                     <xygraph graphElementID="snrChart" [graphData]="radio.snrHistory" [dataLength]="radio.snrLength"
@@ -54,6 +78,14 @@
                     <p *ngIf="radio.snrLength == 0" i18n="@@unavailabledata">
                         Unavailable Data
                     </p>
+                </div>
+            </div>
+            <div class="data" *ngIf="!showGraph">
+                <div class="data-title">
+                    <div class="data-title" i18n="@@SNR">Signal-to-noise ratio (SNR)</div>
+                </div>
+                <div class="data-body">
+                    <span>{{radio.snr}}</span>
                 </div>
             </div>
             <div class="row m-t-25"></div>
@@ -217,12 +249,12 @@
 
 <div class="overall alert" [hidden]="errorAlert==false">
     <div class="cv">
-      <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
-      <div class="row m-t-10">{{errormsg}}</div>
-      <div class="row m-t-10">
-        <button (click)="closeError()" i18n="@@closeerrorbutton">
-          close
-        </button>
-      </div>
+        <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
+        <div class="row m-t-10">{{errormsg}}</div>
+        <div class="row m-t-10">
+            <button (click)="closeError()" i18n="@@closeerrorbutton">
+                close
+            </button>
+        </div>
     </div>
-  </div>
+</div>

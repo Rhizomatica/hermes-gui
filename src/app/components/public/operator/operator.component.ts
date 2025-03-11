@@ -8,6 +8,7 @@ import { GPSService } from 'src/app/_services/gps.service';
 import { UUCPService } from 'src/app/_services/uucp.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { percent } from '@amcharts/amcharts5';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 
 @Component({
@@ -38,16 +39,24 @@ export class OperatorComponent implements OnInit {
   currentLongitude: null
   hasGps: boolean = GlobalConstants.hasGPS
   diskUsage: string = "0"
+  showGraph: boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
     private sharedService: SharedService,
     private apiService: ApiService,
     private gpsService: GPSService,
-    private uucpService: UUCPService) {
+    private uucpService: UUCPService,
+    private utils: UtilsService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
+
+    //Hide graph compenents if not running on local and not SBitxRadio
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+      this.showGraph = false
+    else
+      this.showGraph = true
   }
 
   public getSchedules(): void {
