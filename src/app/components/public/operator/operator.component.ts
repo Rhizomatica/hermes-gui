@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { User } from 'src/app/interfaces/user';
-import { Subscription, interval } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { GPSService } from 'src/app/_services/gps.service';
@@ -26,13 +25,11 @@ export class OperatorComponent implements OnInit {
   error: Error
   errorAlert: boolean = false
   errormsg:string = ""
-  poolSystemData: Subscription
   radio: any = []
   diskSpace: string = '0'
   gpsStatus: boolean
   activeSchedule: boolean = false
   queueSize: number = 0
-  queueSizeB: number = 0
   bitrateData: any = []
   snrData: any = []
   currentLatitude: null
@@ -112,32 +109,6 @@ export class OperatorComponent implements OnInit {
     );
   }
 
-  getQueue(): void {
-    this.loading = true
-    this.uucpService.getQueue().subscribe(
-      res => {
-        this.queueSize = res.length
-        if (Object.keys(res).length > 0) {
-          this.getQueueSizeB(res)
-        }
-        this.loading = false
-      },
-      (err) => {
-        this.error = err
-        this.loading = false
-      }
-    );
-  }
-
-  //Maybe go to utils?
-  getQueueSizeB(queue) {
-    if (queue && queue.length > 0) {
-      for (let i = 0; i < Object.keys(queue).length; i++) {
-        this.queueSizeB += parseInt(queue[i].size)
-      }
-    }
-  }
-
   getCurrentCoordinates() {
 
     if (!this.currentLatitude && !this.currentLongitude)
@@ -191,16 +162,6 @@ export class OperatorComponent implements OnInit {
     this.getSchedules()
     this.getGPSStatus()
     this.getSystemStatus() //Disk free space
-    this.getQueue()
-
-    this.poolSystemData = interval(10000).subscribe((val) => {
-
-      //Pause while connection is active
-      if(this.radio.connection)
-        return 
-
-      this.getQueue()
-    })
 
     // Modem Status
     // Signal-to-noise ratio (SNR) --new
