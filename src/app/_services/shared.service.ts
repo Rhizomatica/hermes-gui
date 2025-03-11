@@ -44,7 +44,8 @@ export class SharedService {
     bitrateHistory: null,
     bitrateLength: null,
     bytes_received: null,
-    bytes_transmitted: null
+    bytes_transmitted: null,
+    message: null
   });
 
   public storedRadioObj = <Radio>({
@@ -71,7 +72,8 @@ export class SharedService {
     bitrateHistory: [],
     bitrateLength: null,
     bytes_received: null,
-    bytes_transmitted: null
+    bytes_transmitted: null,
+    message: null
   });
 
   setRadioObjShared(data) {
@@ -106,6 +108,7 @@ export class SharedService {
     this.radioObj.value.bitrateLength = this.storedRadioObj.bitrateLength
     this.radioObj.value.bytes_received = this.storedRadioObj.bytes_received
     this.radioObj.value.bytes_transmitted = this.storedRadioObj.bytes_transmitted
+    this.radioObj.value.message = this.storedRadioObj.message
 
     this.radioObj.next(this.radioObj.value)
   }
@@ -140,6 +143,7 @@ export class SharedService {
     this.storedRadioObj.bitrateLength = this.storedRadioObj.bitrateHistory.length
     this.storedRadioObj.bytes_received = newObj.bytes_received == null ? this.storedRadioObj.bytes_received : newObj.bytes_received
     this.storedRadioObj.bytes_transmitted = newObj.bytes_transmitted == null ? this.storedRadioObj.bytes_transmitted : newObj.bytes_transmitted
+    this.storedRadioObj.message = newObj.message == null ? this.storedRadioObj.message : newObj.message
 
   }
 
@@ -166,6 +170,7 @@ export class SharedService {
     this.radioObj.value.bitrate = '363'
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
+    this.radioObj.value.message = 'This is a demo version' 
 
     this.radioObj.next(this.radioObj.value)
   }

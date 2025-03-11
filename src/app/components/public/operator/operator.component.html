@@ -26,8 +26,16 @@
                 </div>
             </div>
             <div class="data">
-                <div class="data-body" *ngIf="radio.connection">
-                    <button (click)="stopTransmission()" i18n="@@stoptransmission">stop transmission</button>
+                <div class="data-body">
+                    <button (click)="stopTransmission()" i18n="@@stoptransmission" [disabled]="!radio.connection">stop transmission</button>
+                </div>
+            </div>
+            <div class="data-graph">
+                <div class="data-title" i18n="@@connectionstatus">
+                    Connection status
+                </div>
+                <div class="data-body">
+                    {{radio.message}}
                 </div>
             </div>
             <div class="row m-t-25"></div>
