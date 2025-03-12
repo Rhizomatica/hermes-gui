@@ -5,7 +5,7 @@
         <h1 i18n="@@operatorpanel">Operator Panel</h1>
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
-    <div class="row m-t-10">
+    <div class="row">
         <div class="row m-t-25" *ngIf="radio.connection">
             <div class="alertcard flexible">
                 <span class="greencircle"></span>
@@ -27,7 +27,8 @@
             </div>
             <div class="data">
                 <div class="data-body">
-                    <button (click)="stopTransmission()" i18n="@@stoptransmission" [disabled]="!radio.connection">stop transmission</button>
+                    <button (click)="stopTransmission()" i18n="@@stoptransmission" [disabled]="!radio.connection">stop
+                        transmission</button>
                 </div>
             </div>
             <div class="data-graph">
@@ -38,7 +39,7 @@
                     {{radio.message}}
                 </div>
             </div>
-            <div class="row m-t-25"></div>
+            <div class="row"></div>
             <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title">
                     <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
@@ -75,8 +76,6 @@
                 <div class="data-body">
                     <span>{{radio.fwd_watts}}</span>
                 </div>
-                <div class="row m-t-25"></div>
-
             </div>
             <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title" i18n="@@bitrate">Bitrate</div>
@@ -114,11 +113,9 @@
                     <span>{{radio.snr}}</span>
                 </div>
             </div>
-            <div class="row m-t-25"></div>
+            <div class="row"></div>
             <div class="data">
-                <div class="data-title" i18n="@@transmissionstatus">
-                    Transmission Status
-                </div>
+                <div class="data-title" i18n="@@operationmode">Operation mode</div>
                 <div class="data-body">
                     <div *ngIf="radio.tx"> TX </div>
                     <div *ngIf="radio.rx"> RX </div>
@@ -150,7 +147,7 @@
                     {{radio.protection ? 'ON' : 'OFF'}}
                 </div>
             </div>
-            <div class="row m-t-25"></div>
+            <div class="row"></div>
             <div class="data">
                 <div class="data-title">
                     <span i18n="@@radioprofile">Radio profile</span>
