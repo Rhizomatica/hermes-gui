@@ -27,7 +27,8 @@
             </div>
             <div class="data">
                 <div class="data-body">
-                    <button (click)="stopTransmission()" i18n="@@stoptransmission" [disabled]="!radio.connection">stop transmission</button>
+                    <button (click)="stopTransmission()" i18n="@@stoptransmission" [disabled]="!radio.connection">stop
+                        transmission</button>
                 </div>
             </div>
             <div class="data-graph">
@@ -114,9 +115,7 @@
             </div>
             <div class="row"></div>
             <div class="data">
-                <div class="data-title" i18n="@@transmissionstatus">
-                    Transmission Status
-                </div>
+                <div class="data-title" i18n="@@operationmode">Operation mode</div>
                 <div class="data-body">
                     <div *ngIf="radio.tx"> TX </div>
                     <div *ngIf="radio.rx"> RX </div>
