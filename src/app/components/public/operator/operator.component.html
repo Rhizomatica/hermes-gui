@@ -61,7 +61,7 @@
 
             <div class="data-graph" *ngIf="showGraph">
                 <div class="data-title">
-                    <span i18n="@@power">Power</span>
+                    <span i18n="@@power">Power(W)</span>
                 </div>
                 <div class="data-body">
                     <clockhandgraph graphElementID="powerChart" [hand1Data]="radio.fwd_watts" hand1Label="forward(W)"
@@ -71,14 +71,14 @@
             </div>
             <div class="data" *ngIf="!showGraph">
                 <div class="data-title">
-                    <span i18n="@@power">Power</span>
+                    <span i18n="@@power">Power(W)</span>
                 </div>
                 <div class="data-body">
                     <span>{{radio.fwd_watts}}</span>
                 </div>
             </div>
             <div class="data-graph" *ngIf="showGraph">
-                <div class="data-title" i18n="@@bitrate">Bitrate</div>
+                <div class="data-title" i18n="@@bitrate">Bitrate(bps)</div>
                 <div class="data-body">
                     <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory"
                         [dataLength]="radio.bitrateLength" *ngIf="radio.bitrateLength > 0"></xygraph>
@@ -89,7 +89,7 @@
             </div>
             <div class="data" *ngIf="!showGraph">
                 <div class="data-title">
-                    <div class="data-title" i18n="@@bitrate">Bitrate</div>
+                    <div class="data-title" i18n="@@bitrate">Bitrate(bps)</div>
                 </div>
                 <div class="data-body">
                     <span>{{radio.bitrate}}</span>
