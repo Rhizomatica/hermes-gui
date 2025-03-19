@@ -6,7 +6,6 @@ import { ApiService } from 'src/app/_services/api.service';
 import { GPSService } from 'src/app/_services/gps.service';
 import { UUCPService } from 'src/app/_services/uucp.service';
 import { GlobalConstants } from 'src/app/global-constants';
-import { percent } from '@amcharts/amcharts5';
 import { UtilsService } from 'src/app/_services/utils.service';
 
 
@@ -49,7 +48,6 @@ export class OperatorComponent implements OnInit {
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
-    //Hide graph compenents if not running on local and not SBitxRadio
     if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
       this.showGraph = false
     else
@@ -70,14 +68,17 @@ export class OperatorComponent implements OnInit {
       },
       (err) => {
         this.error = err;
-        // this.errorAlert = true
         this.loading = false
       }
     );
   }
 
   getGPSStatus(): void {
+    if(!this.hasGps)
+      return
+
     this.loading = true
+    
     this.gpsService.getGPSStatus().subscribe(
       (res: any) => {
         if (res)
@@ -111,6 +112,9 @@ export class OperatorComponent implements OnInit {
 
   getCurrentCoordinates() {
 
+    if(!this.hasGps || !this.gpsStatus)
+      return
+
     if (!this.currentLatitude && !this.currentLongitude)
       this.loading = true
 
@@ -120,11 +124,6 @@ export class OperatorComponent implements OnInit {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
 
-          // this.pointSeries.data.setAll([{
-          //   lat: this.currentLatitude,
-          //   long: this.currentLongitude,
-          //   name: "Current Location"
-          // }]);
         }
 
         this.loading = false
@@ -162,15 +161,5 @@ export class OperatorComponent implements OnInit {
     this.getSchedules()
     this.getGPSStatus()
     this.getSystemStatus() //Disk free space
-
-    // Modem Status
-    // Signal-to-noise ratio (SNR) --new
-    // Bitrate --new
-    // Successful Transmission --new
-    // Re-transmissions count
-    //
-
-    // ONE API CALL
-    // Remote Devices --new
   }
 }

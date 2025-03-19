@@ -63,13 +63,6 @@ export class ClockHandGraphComponent implements OnChanges {
         duration: 600,
         easing: am5.ease.out(am5.ease.cubic)
       });
-
-      this.axisRange1.animate({
-        key: "value",
-        to: change.hand1Data.currentValue,
-        duration: 600,
-        easing: am5.ease.out(am5.ease.cubic)
-      });
     }
 
     if (change && change.hand2Data && change.hand2Data.currentValue != change.hand2Data.previousValue) {
@@ -82,13 +75,6 @@ export class ClockHandGraphComponent implements OnChanges {
       this.hand2.get("sprite").dataItem.animate({
         key: "value",
         to: change.hand2Data.currentValue,
-        duration: 600,
-        easing: am5.ease.out(am5.ease.cubic)
-      });
-
-      this.axisRange2.animate({
-        key: "value",
-        to: change.hand1Data.currentValue,
         duration: 600,
         easing: am5.ease.out(am5.ease.cubic)
       });
@@ -224,7 +210,7 @@ export class ClockHandGraphComponent implements OnChanges {
     hand.get("sprite").dataItem.animate({
       key: "value",
       to: data,
-      duration: 800,
+      duration: 600,
       easing: am5.ease.out(am5.ease.cubic)
     });
 

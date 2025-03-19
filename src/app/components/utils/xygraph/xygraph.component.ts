@@ -34,7 +34,7 @@ export class XYGraphComponent implements OnChanges {
   chart: any
   sharedService: SharedService
   poolSystemData: Subscription
-  
+
 
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
@@ -89,7 +89,6 @@ export class XYGraphComponent implements OnChanges {
         minorGridEnabled: true,
         minGridDistance: 100
       }),
-      tooltip: am5.Tooltip.new(root, {})
     }));
 
     var xAxis = this.xAxis
@@ -157,7 +156,7 @@ export class XYGraphComponent implements OnChanges {
     let time = am5.time.add(new Date(lastDate), "second", 1).getTime()
 
     this.series.data.removeIndex(0);
-    
+
     this.series.data.push({
       date: time,
       value: newValue
@@ -195,15 +194,11 @@ export class XYGraphComponent implements OnChanges {
 
     this.startXYGraph()
 
-    // this.poolSystemData = interval(10000).subscribe((val) => {
-    //   this.addData()
-    // })
-
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     // this.chart.clear()
-    if(this && this.chart){
+    if (this && this.chart) {
       this.chart.dispose();
       this.chart = null
       this.sharedService.storedRadioObj.bitrateHistory = []
