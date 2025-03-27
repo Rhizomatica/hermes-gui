@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run:  npm install
+        run:  npm install --legacy-peer-deps
 
       #matrix to make many .env files???
       - name: Make .env file
