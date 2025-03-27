@@ -41,7 +41,7 @@ jobs:
 
       - name: Make environments file
         run: npx ts-node setEnv.ts
-        working-directory: ./src/ 
+        working-directory: ./ 
 
       - name: Build project
         run: ng build
