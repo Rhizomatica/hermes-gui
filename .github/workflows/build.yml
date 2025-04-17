@@ -25,7 +25,6 @@ jobs:
       - name: Install dependencies
         run:  npm install --legacy-peer-deps
 
-      #matrix to make many .env files???
       - name: Make .env file
         uses: SpicyPizza/create-envfile@v2.0
         with:

@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgIdleKeepaliveModule } from "@ng-idle/keepalive";
 
 describe('AppComponent', () => {
 
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule,
+        NgIdleKeepaliveModule.forRoot()
       ],
       declarations: [
         AppComponent

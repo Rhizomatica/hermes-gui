@@ -3,7 +3,7 @@
     <h2 i18n="@@troubleshootinghintlabel">Troubleshooting</h2>
     <hint [showHint]="false" [hint]="'troubleshooting'"></hint>
 </div>
-<div *ngIf="currentUser.admin">
+<div *ngIf="currentUser && currentUser.admin">
     <div class="row" *ngIf="system">
         <span i18n="@@freespace">Free Space: </span>
         {{system.diskfree}} GB
@@ -127,7 +127,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="!currentUser.admin">
+<div *ngIf="!currentUser || !currentUser.admin">
     <span i18n="@@needtobeadmin">
         Need to be an admin to access this
     </span>

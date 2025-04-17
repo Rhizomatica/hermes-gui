@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-languages',
+  selector: 'languages',
   templateUrl: './languages.component.html',
   styleUrls: ['./languages.component.less'],
 })

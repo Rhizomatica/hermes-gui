@@ -376,7 +376,7 @@
       <p>
         In User management you can update your own information (Phone number and password) or delete your user.
       </p>
-      <p *ngIf="currentUser.admin">
+      <p *ngIf="currentUser && currentUser.admin">
         If you are an administrator you can create, update and delete all users with exception of the root user.
       </p>
       <p class="m-t-25">

@@ -12,12 +12,14 @@ import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
   providers: [DecimalPipe,
+    RouterModule,
     WebsocketService,
     { provide: '_serviceRoute', useValue: 'websocket' }
   ]

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RadioConfigComponent } from './radio-config.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('RadioConfigComponent', () => {
   let component: RadioConfigComponent;
@@ -9,7 +10,7 @@ describe('RadioConfigComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RadioConfigComponent],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule, ReactiveFormsModule]
     })
       .compileComponents();
   });
