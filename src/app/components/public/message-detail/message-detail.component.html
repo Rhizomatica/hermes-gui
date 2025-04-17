@@ -58,7 +58,7 @@
                 delete
             </span>
         </button>
-        <button class="m-l-10" routerLink="/response/{{message.orig}}">
+        <button class="m-l-10" routerLink="/response/{{message.orig}}" *ngIf="message.orig !== 'local'">
             <span i18n="@@replymessage">
                 <img title="reply" src="assets/svg/reply-solid.svg">
                 reply
