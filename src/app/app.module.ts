@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
@@ -133,13 +133,15 @@ registerLocaleData(localeEs);
   ],
   providers: [
     DecimalPipe,
+    { provide: LOCALE_ID, useValue: 'en-US' },
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: LOCALE_ID, useValue: 'es' },
     { provide: LOCALE_ID, useValue: 'fr' },
-    { provide: LOCALE_ID, useValue: 'sag' },
+    // { provide: LOCALE_ID, useValue: 'ar' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
