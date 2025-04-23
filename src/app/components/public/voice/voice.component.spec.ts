@@ -4,7 +4,7 @@ import { VoiceComponent } from './voice.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-describe('CustomErrorsComponent', () => {
+describe('VoiceComponent', () => {
   let component: VoiceComponent;
   let fixture: ComponentFixture<VoiceComponent>;
 
