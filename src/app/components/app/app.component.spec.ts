@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgIdleKeepaliveModule } from "@ng-idle/keepalive";
+import { LanguagesComponent } from "../public/languages/languages.component";
 
 describe('AppComponent', () => {
 
@@ -15,7 +16,10 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientModule,
-        NgIdleKeepaliveModule.forRoot()
+        NgIdleKeepaliveModule.forRoot(),
+         RouterTestingModule.withRoutes(
+        [{path: 'languages', component: LanguagesComponent}]
+      )
       ],
       declarations: [
         AppComponent
