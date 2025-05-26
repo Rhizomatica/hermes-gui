@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MenuComponent } from './menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { WebsocketService } from 'src/app/_services/websocket.service';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -15,7 +16,10 @@ describe('MenuComponent', () => {
         RouterTestingModule,
         HttpClientModule,
         ReactiveFormsModule,
-        FormsModule]
+        FormsModule
+      ],
+      providers: [WebsocketService]
+
     })
       .compileComponents();
   });

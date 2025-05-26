@@ -3,6 +3,7 @@ import { homeComponent } from './home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { WebsocketService } from 'src/app/_services/websocket.service';
 
 describe('homeComponent', () => {
   let component: homeComponent;
@@ -12,7 +13,8 @@ describe('homeComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [homeComponent],
       imports: [HttpClientModule,
-        Ng2SearchPipeModule, FormsModule]
+        Ng2SearchPipeModule, FormsModule],
+      providers: [WebsocketService]
     })
       .compileComponents();
   });
