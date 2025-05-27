@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import { ApiService } from './api.service'
-import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { GlobalConstants } from '../global-constants';
-import { Schedule } from '../interfaces/schedule'
+import { HttpClientModule, HttpClient } from '@angular/common/http'
 
 describe('ApiService', () => {
   let service: ApiService,
