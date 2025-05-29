@@ -10,7 +10,6 @@ jobs:
   # continuos-integration:
   # runs-on: ubuntu-latest
     runs-on: self-hosted
-
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
@@ -25,18 +24,18 @@ jobs:
       - name: Install dependencies
         run:  npm install --legacy-peer-deps
 
-      - name: Make .env file
-        uses: SpicyPizza/create-envfile@v2.0
-        with:
-          envkey_LOCAL: true
-          envkey_PRODUCTION: false
-          envkey_DOMAIN: estacao4.hermes.radio
-          envkey_GATEWAY: true
-          envkey_BITX: S
-          envkey_HAS_GPS: true
-          envkey_GPS_MAP: brazil
-          envkey_REQUIRE_LOGIN: false
-          envkey_EMERGENCY_EMAIL: help@hermes.radio
+      # - name: Make .env file
+      #   uses: SpicyPizza/create-envfile@v2.0
+      #   with:
+      #     envkey_LOCAL: true
+      #     envkey_PRODUCTION: false
+      #     envkey_DOMAIN: estacao4.hermes.radio
+      #     envkey_GATEWAY: true
+      #     envkey_BITX: S
+      #     envkey_HAS_GPS: true
+      #     envkey_GPS_MAP: brazil
+      #     envkey_REQUIRE_LOGIN: false
+      #     envkey_EMERGENCY_EMAIL: help@hermes.radio
 
       - name: Make environments file
         run: npx ts-node setEnv.ts
