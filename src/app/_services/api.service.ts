@@ -62,17 +62,6 @@ export class ApiService {
 
   }
 
-  //Nao existe rota na API
-  public sysRestore(): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/sys/restore`; // get api:sys/restore
-    return this.http.get(url).pipe(
-      map((res: any) => {
-        this.serverReturn = res;
-        return this.serverReturn;
-      }),
-      catchError(this.handleError));
-  }
-
   public setFileConfig(allowfile: string): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/sys/config`;
     const formData: FormData = new FormData();
