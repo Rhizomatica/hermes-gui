@@ -15,8 +15,11 @@
         <div class="flexible">
             <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
                 <div class="card {{(radio.connection) && ('disabled')}}">
-                    <div class="m-t-25">
-                        <b>{{radio.p1_freq}} kHz</b>
+                     <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Chat" src="assets/svg/waveform.svg">
+                    </div>
+                    <div>
+                        Voice {{radio.p1_freq}} kHz
                     </div>
                     <div i18n="@@voicecard">
                         {{radio.p1_mode}}
@@ -36,7 +39,7 @@
             <a routerLink="/messages">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/comment.svg">
+                        <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/message-text.svg">
                     </div>
                     <div class="card-title" i18n="@@messagescard">
                         Messages
@@ -46,7 +49,7 @@
             <a routerLink="/email">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Email" src="assets/svg/envelope.svg">
+                        <img _ngcontent-dpr-c68="" title="Email" src="assets/svg/email.svg">
                     </div>
                     <div i18n="@@emailcard">
                         E-mail
@@ -66,7 +69,7 @@
             <a routerLink="/operator">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Operator Panel" src="assets/svg/walkie-talkie.svg">
+                        <img _ngcontent-dpr-c68="" title="Operator Panel" src="assets/svg/radio-handheld.svg">
                     </div>
                     <div i18n="@@operatorpanel">Operator Panel</div>
                 </div>
@@ -74,7 +77,7 @@
             <a routerLink="/radio-config">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Radio configuration" src="assets/svg/ham-radio.svg">
+                        <img _ngcontent-dpr-c68="" title="Radio configuration" src="assets/svg/radio.svg">
                     </div>
                     <div i18n="@@radioconfig">
                         Radio configuration
@@ -84,7 +87,7 @@
             <a routerLink="/user-manage" *ngIf="!requireLogin || (requireLogin && admin)">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="User management" src="assets/svg/circle-user.svg">
+                        <img _ngcontent-dpr-c68="" title="User management" src="assets/svg/account-group.svg">
                     </div>
                     <div class="row" i18n="@@adminmanage">
                         User management
@@ -94,7 +97,7 @@
             <a routerLink="/message-config" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Messages configuration" src="assets/svg/comment-config.svg">
+                        <img _ngcontent-dpr-c68="" title="Messages configuration" src="assets/svg/message-cog.svg">
                     </div>
                     <div i18n="@@messageadm">
                         Messages configuration
@@ -104,7 +107,7 @@
             <a *ngIf="isGateway && admin" routerLink="/schedule">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Transmission schedule" src="assets/svg/clock.svg">
+                        <img _ngcontent-dpr-c68="" title="Transmission schedule" src="assets/svg/clock-time-eight.svg">
                     </div>
                     <div i18n="@@scheduling">
                         Transmission schedule
@@ -114,7 +117,7 @@
             <a routerLink="/transmission" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Transmission list" src="assets/svg/transmit-antenna.svg">
+                        <img _ngcontent-dpr-c68="" title="Transmission list" src="assets/svg/transmission-tower-export.svg">
                     </div>
                     <div i18n="@@transmissionlista">
                         Transmission list
@@ -124,7 +127,7 @@
             <a routerLink="/station-info" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Stations information" src="assets/svg/broadcast-tower.svg">
+                        <img _ngcontent-dpr-c68="" title="Stations information" src="assets/svg/transmission-tower.svg">
                     </div>
                     <div i18n="@@stationinformationcard">
                         Stations information
@@ -134,7 +137,7 @@
             <a routerLink="/wifi-manage" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title=" Wi-Fi & Ethernet manager" src="assets/svg/wifi-solid.svg">
+                        <img _ngcontent-dpr-c68="" title=" Wi-Fi & Ethernet manager" src="assets/svg/wifi-cog.svg">
                     </div>
                     <div i18n="@@wifimanagercard">
                         Wi-Fi & Ethernet manager
@@ -144,7 +147,7 @@
             <a routerLink="/gps" *ngIf="hasGPS">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="GPS" src="assets/svg/globe-americas.svg">
+                        <img _ngcontent-dpr-c68="" title="GPS" src="assets/svg/crosshairs-gps.svg">
                     </div>
                     <div i18n="@@gpsgeolocation">GPS Geolocation</div>
                 </div>
@@ -152,7 +155,7 @@
             <a routerLink="/log" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Detailed log" src="assets/svg/compass.svg">
+                        <img _ngcontent-dpr-c68="" title="Detailed log" src="assets/svg/alert.svg">
                     </div>
                     <div i18n="@@detailedlog">
                         Detailed log
@@ -174,14 +177,14 @@
                         Login
                     </span>
                     <br />
-                    <img class="btnicon" title="send" src="assets/svg/sign-in-alt-solid.svg">
+                    <img class="btnicon" title="send" src="assets/svg/login.svg">
                 </button>
                 <button class="midbt m-t-10" (click)="logOff()" *ngIf="currentUser">
                     <span i18n="@@logoutbutton">
                         Logout
                     </span>
                     <br />
-                    <img class="btnicon" title="send" src="assets/svg/sign-out-alt-solid.svg">
+                    <img class="btnicon" title="send" src="assets/svg/logout.svg">
                 </button>
             </div>
         </div>

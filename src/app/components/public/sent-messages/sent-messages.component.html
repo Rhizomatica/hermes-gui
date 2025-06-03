@@ -7,13 +7,11 @@
                 <div class="row">
                     <button *ngIf="allowCompose" routerLink="/compose">
                         <span i18n="@@compose1sent">
-                            <img title="new" src="assets/svg/edit.svg">
                             new
                         </span>
                     </button>
                     <button class="m-l-10" routerLink="/messages">
                         <span i18n="@@publicmessagebutton">
-                            <img title="sent" src="assets/svg/envelope.svg">
                             public messages
                         </span>
                     </button>
@@ -27,7 +25,7 @@
                 <div class="multiplist sent">
                     <div class="item" *ngFor="let message of sentMessages | filter:searchMessages">
                         <div class="maininfo">
-                            <img class="inlineicon right" title="trash" src="assets/svg/trash-alt.svg"
+                            <img class="inlineicon right" title="trash" src="assets/svg/trash.svg"
                                 [hidden]="!isadmin" (click)="selectMessage(message);showDelete()">
                             <div>
                                 <div class="row">
@@ -39,7 +37,7 @@
                                 <img class="inlineicon ls" title="lock" src="assets/svg/lock.svg"
                                     *ngIf="message.secure">
                                 <span *ngIf="message.file">
-                                    <img class="inlineicon ls" title="file" src="assets/svg/paperclip-solid.svg">
+                                    <img class="inlineicon ls" title="file" src="assets/svg/paperclip.svg">
                                 </span>
                                 <div>
                                 </div>

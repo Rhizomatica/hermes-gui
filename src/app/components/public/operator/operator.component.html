@@ -142,8 +142,7 @@
                     Protection
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="!radio.protection"></span>
-                    <span class="greencircle" *ngIf="radio.protection"></span>
+                    <img class="icon" title="protection on" src="assets/svg/radio-off.svg" *ngIf="radio.protection">
                     {{radio.protection ? 'ON' : 'OFF'}}
                 </div>
             </div>

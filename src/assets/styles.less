@@ -6,6 +6,8 @@
 @vstclr: #c96;
 @mclr: #333;
 @bkclr: #fff;
+@boxshadow: rgba(0, 0, 0, 0.2) -2px 3px 8px, rgba(0, 0, 0, 0.19) -2px 0px 15px;
+
 @desktop: ~"only screen and (min-width: 992px)";
 
 @font-face {
@@ -51,6 +53,10 @@ button,
 input {
   font-family: "Rubik-regular", sans-serif;
   margin: 0;
+}
+
+button{
+  box-shadow: @boxshadow;
 }
 
 @media screen {
@@ -243,7 +249,7 @@ nav {
   font-size: 0.6em;
   font-family: "Rubik-regular";
   line-height: 0.8em;
-  border-bottom: 1px solid @mclr;
+  // border-bottom: 1px solid @mclr;
   width: 100%;
   display: flex;
   background-color: @bkclr;
@@ -251,6 +257,8 @@ nav {
   position: fixed;
   padding: 2px 15px 2px 0px;
   top: 0;
+  box-shadow: @boxshadow;
+
 
   a {
     text-decoration: none;
@@ -817,7 +825,6 @@ input:checked+.slider:before {
 
 
 .field {
-  border-top: 1px solid @mclr;
   padding: 10px 0 15px;
 }
 
@@ -1183,7 +1190,7 @@ button:disabled {
 }
 
 .inlineicon {
-  width: 12px;
+  width: 18px;
   filter: invert(27%) brightness(200%);
   margin-right: 0.5em;
   margin-left: 0.5em;
@@ -1202,8 +1209,8 @@ button:disabled {
 }
 
 .inlineiconlink {
-  width: 12px;
-  margin: 0 5px;
+  width: 18px;
+  margin: 0;
   position: relative;
   top: 2px;
   filter: invert(27%) brightness(800%);
@@ -1436,6 +1443,10 @@ tr:nth-child(odd) {
 }
 
 .dark-mode {
+  input, input[type=text], input[type=number], input[type=email], input[type=tel], input[type=password], input[type=search], option, select{
+    color: #fff;
+    background-color: @mclr;
+  }
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #ccc;
@@ -1478,7 +1489,6 @@ tr:nth-child(odd) {
   }
 
   nav {
-    border-bottom: 1px solid #5c5b5b;
     position: fixed;
     width: 100%;
     top: 0;
@@ -1847,6 +1857,10 @@ tr:nth-child(odd) {
   a {
     text-decoration: none;
   }
+
+   .flexible .card {
+    width: 45vw;
+  }
 }
 
 .column {
@@ -1856,18 +1870,18 @@ tr:nth-child(odd) {
 
 .card {
   flex-direction: column;
-  border: solid 1.5px #000;
   border-radius: 3px;
   padding: 2em 1em 1em;
   margin: 0.4em 1vmin;
   display: block;
   text-align: center;
   font-size: 0.8em;
-  width: 18em;
+  width: 95%;
   height: 8.5em;
   line-height: 1em;
   background-color: @bkclr;
   color: #000;
+  box-shadow: @boxshadow;
 }
 
 .card.voice {
@@ -1896,6 +1910,7 @@ tr:nth-child(odd) {
 .card-icon {
   display: block;
   margin: auto;
+    filter: invert(25%) contrast(124%);
 }
 
 .card-icon img {
@@ -2077,11 +2092,11 @@ tr:nth-child(odd) {
   flex-wrap: wrap;
 
   form {
-    border: 1px solid #000;
     border-radius: 3px;
     padding: 0.5em;
     margin: 0.5em 1%;
     line-height: 35px;
+    box-shadow: @boxshadow;
   }
 }
 
@@ -2331,6 +2346,10 @@ video {
     margin-top: 5px;
     font-size: 0.9em;
     min-height: 5em;
+
+    .icon {
+      width: 25px;
+    }
   }
 }
 
