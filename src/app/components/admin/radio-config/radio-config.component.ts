@@ -46,6 +46,7 @@ export class RadioConfigComponent implements OnInit {
   loginForm = false
   refthreshold: any
   power: any
+  powerlevel: number
   realfreq: any
   led: any
   ptt: any
@@ -64,6 +65,7 @@ export class RadioConfigComponent implements OnInit {
   timeoutStatus: number = 0
   timeoutDefault: number = 600
   formatedTimeout: number = 0
+  confirmationChangePowerLevel:boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -224,6 +226,35 @@ export class RadioConfigComponent implements OnInit {
       (res: any) => {
         this.radio.refthreshold = res / 10;
         this.refthreshold = res / 10
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
+  confirmChangePowerLevel() {
+    if (this.confirmationChangePowerLevel) {
+      this.confirmationChangePowerLevel = false;
+    } else {
+      this.confirmationChangePowerLevel = true;
+    }
+  }
+
+  updatePowerLevel(f: NgForm) {
+    this.confirmationChangePowerLevel = false
+    this.loading = true
+
+    if(f.value.powerlevel) {
+      f.value.powerlevel = f.value.powerlevel * 10
+    }
+
+    this.radioService.setRadioRefPowerLevel(f.value.powerlevel).subscribe(
+      (res: any) => {
+        this.radio.powerlevel = res / 10;
+        this.powerlevel = res / 10
         this.loading = false
       }, (err) => {
         this.error = err;

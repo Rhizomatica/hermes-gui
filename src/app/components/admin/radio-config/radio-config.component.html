@@ -117,6 +117,17 @@
             </h3>
           </div>
         </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <div>
+                <span i18n="@@powerlevel">Power Level</span>
+                <br />
+                {{radio.power_level}} W
+              </div>
+            </h3>
+          </div>
+        </div>
 
       </div>
       <div class="radio" *ngIf="radio">
@@ -212,6 +223,30 @@
               <br />
               <button class="m-t-10" (click)="confirmChangeThreshold()" i18n="@@cancelrchangeprotection">cancel</button>
               <button class="m-l-10" (click)="changeRefThreshold(frefthreshold)"
+                i18n="@@changeprotection">change</button>
+            </div>
+          </div>
+        </form>
+
+        <form #formPowerLevel="ngForm" class="formdata field" *ngIf="isAdmin">
+          <span i18n="@@powerlevel">Power Level
+            <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
+          </span>
+          <div class="flexible">
+            <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="powerlevel"
+              value={{powerlevel}}>
+            <button class="midbt" (click)="confirmChangePowerLevel()"
+              i18n="@@updatepowerlevel">update power level</button>
+          </div>
+          <div class="overall alert" *ngIf="confirmationChangePowerLevel">
+            <div class="cv">
+              <span i18n="@@confirmpowerlevel">Are you sure you want to change radio power level?
+                <br />
+                This may cause the system to stop and damage your radio.
+              </span>
+              <br />
+              <button class="m-t-10" (click)="confirmChangePowerLevel()" i18n="@@cancelrchangeprotection">cancel</button>
+              <button class="m-l-10" (click)="updatePowerLevel(formPowerLevel)"
                 i18n="@@changeprotection">change</button>
             </div>
           </div>
