@@ -24,18 +24,17 @@ jobs:
       - name: Install dependencies
         run:  npm install --legacy-peer-deps
 
-      # - name: Make .env file
-      #   uses: SpicyPizza/create-envfile@v2.0
-      #   with:
-      #     envkey_LOCAL: true
-      #     envkey_PRODUCTION: false
-      #     envkey_DOMAIN: estacao4.hermes.radio
-      #     envkey_GATEWAY: true
-      #     envkey_BITX: S
-      #     envkey_HAS_GPS: true
-      #     envkey_GPS_MAP: brazil
-      #     envkey_REQUIRE_LOGIN: false
-      #     envkey_EMERGENCY_EMAIL: help@hermes.radio
+      - name: Make .env file
+        run:  |
+          echo "${{ secrets.LOCAL }}" > .env
+          echo "${{ secrets.PRODUCTION }}" > .env
+          echo "${{ secrets.DOMAIN }}" > .env
+          echo "${{ secrets.GATEWAY }}" > .env
+          echo "${{ secrets.BITX }}" > .env
+          echo "${{ secrets.HAS_GPS }}" > .env
+          echo "${{ secrets.GPS_MAP }}" > .env
+          echo "${{ secrets.REQUIRE_LOGIN }}" > .env
+          echo "${{ secrets.EMERGENCY_EMAIL }}" > .env
 
       - name: Make environments file
         run: npx ts-node setEnv.ts
