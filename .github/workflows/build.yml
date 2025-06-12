@@ -5,60 +5,62 @@ on:
     # branches:
       # ['main']
       # ['build-action']
+env:
+  env_var: ${{ vars.estacao.hermes.radio }}
 jobs:
-  build:
-  # continuos-integration:
-  # runs-on: ubuntu-latest
-    runs-on: self-hosted
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
+    build:
+    # continuos-integration:
+    # runs-on: ubuntu-latest
+      runs-on: self-hosted
+      steps:
+        - name: Use variables
+          run: |
+            echo "repository variable : $DOMAIN"
+          env: 
+            LOCAL: ${{ env.LOCAL }}
+            PRODUCTION: ${{ env.PRODUCTION }}
+            DOMAIN: ${{ env.DOMAIN }}
+            GATEWAY: ${{ env.GATEWAY }}
+            BITX: ${{ env.BITX }}
+            HAS_GPS: ${{ env.HAS_GPS }}
+            GPS_MAP: ${{ env.GPS_MAP }}
+            REQUIRE_LOGIN: ${{ env.REQUIRE_LOGIN }}
+            EMERGENCY_EMAIL: ${{ env.EMERGENCY_EMAIL }}
+        - name: Checkout branch
+          uses: actions/checkout@v4
 
-      - name: Setup node/npm
-        uses: actions/setup-node@v4
-        with:
-          cache-dependency-path: ./package-lock.json
-          node-version: '18.19.0'
-          cache: 'npm'
+        - name: Setup node/npm
+          uses: actions/setup-node@v4
+          with:
+            cache-dependency-path: ./package-lock.json
+            node-version: '18.19.0'
+            cache: 'npm'
 
-      - name: Install dependencies
-        run:  npm install --legacy-peer-deps
+        - name: Install dependencies
+          run:  npm install --legacy-peer-deps
+        - name: Make environments file
+          run: npx ts-node setEnv.ts
+          working-directory: ./ 
 
-      - name: Make .env file
-        run:  |
-          echo "${{ secrets.LOCAL }}" > .env
-          echo "${{ secrets.PRODUCTION }}" > .env
-          echo "${{ secrets.DOMAIN }}" > .env
-          echo "${{ secrets.GATEWAY }}" > .env
-          echo "${{ secrets.BITX }}" > .env
-          echo "${{ secrets.HAS_GPS }}" > .env
-          echo "${{ secrets.GPS_MAP }}" > .env
-          echo "${{ secrets.REQUIRE_LOGIN }}" > .env
-          echo "${{ secrets.EMERGENCY_EMAIL }}" > .env
+        - name: Build project
+          run: ng build
+          working-directory: ./src/
 
-      - name: Make environments file
-        run: npx ts-node setEnv.ts
-        working-directory: ./ 
+        - name: Run unit tests via Karma
+          run: ng test
+          working-directory: ./src/
 
-      - name: Build project
-        run: ng build
-        working-directory: ./src/
+      # opening browser (maybe cypress config)
+      # - name: Run e2e tests
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     build: npm run build
+      #     start: npm start
+      #     working-directory: ./src/
 
-      - name: Run unit tests via Karma
-        run: ng test
-        working-directory: ./src/
+        - uses: actions/upload-artifact@v4
+          with:
+            name: hermes-gui-artifact
+            path: ./dist/hermes
 
-    # opening browser (maybe cypress config)
-    # - name: Run e2e tests
-    #   uses: cypress-io/github-action@v6
-    #   with:
-    #     build: npm run build
-    #     start: npm start
-    #     working-directory: ./src/
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: hermes-gui-artifact
-          path: ./dist/hermes
-
-    
+      
