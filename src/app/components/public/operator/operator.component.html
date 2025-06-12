@@ -142,7 +142,6 @@
                     Protection
                 </div>
                 <div class="data-body">
-                    <img class="icon" title="protection on" src="assets/svg/radio-off.svg" *ngIf="radio.protection">
                     {{radio.protection ? 'ON' : 'OFF'}}
                 </div>
             </div>
@@ -255,13 +254,26 @@
     </div>
 </div>
 
-<div class="overall alert" [hidden]="errorAlert==false">
+<div class="overall alert" *ngIf="errorAlert">
     <div class="cv">
         <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
         <div class="row m-t-10">{{errormsg}}</div>
         <div class="row m-t-10">
             <button (click)="closeError()" i18n="@@closeerrorbutton">
                 close
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="overall alert" ngIf="radio.protection">
+    <div class="cv">
+        <span i18n="@@radioprotectionoperator">Radio protection acctivated. Reset the protection, reconfigure your radio
+            settings and try again. For more details: Reset Protection <hint [showHint]="false" [hint]="'resetprotection'"></hint>
+        </span>
+        <div class="row m-t-10">
+            <button (click)="resetProtection()" i18n="@@resetprotectionbutton" class="m-l-10">
+                reset protection
             </button>
         </div>
     </div>
