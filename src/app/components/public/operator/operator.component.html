@@ -237,7 +237,7 @@
                     <progressbar [value]="diskUsage"></progressbar>
                 </div>
             </div>
-            <div class="row" *ngIf="hasGps">
+            <div class="data" *ngIf="hasGps">
                 <div class="data-title" i18n="@@gpsstatus">
                     GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
                     <span class="greencircle" *ngIf="gpsStatus"></span>
@@ -266,7 +266,7 @@
     </div>
 </div>
 
-<div class="overall alert" ngIf="radio.protection">
+<div class="overall alert" *ngIf="radio.protection">
     <div class="cv">
         <span i18n="@@radioprotectionoperator">Radio protection acctivated. Reset the protection, reconfigure your radio
             settings and try again. For more details: Reset Protection <hint [showHint]="false" [hint]="'resetprotection'"></hint>
