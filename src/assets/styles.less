@@ -20,7 +20,6 @@
   src: url("./fonts/Rubik-Regular.woff2") format("woff"),
 }
 
-
 html,
 body {
   font-family: 'Rubik', sans-serif;
@@ -55,8 +54,14 @@ input {
   margin: 0;
 }
 
-button{
+button {
   box-shadow: @boxshadow;
+}
+
+.email a {
+  .card {
+     min-width: 240px;
+  }
 }
 
 @media screen {
@@ -216,12 +221,6 @@ a {
   color: @clr;
 }
 
-
-// a:active {
-//   color: #c96;
-// }
-
-
 a:visited {
   color: @mclr;
 }
@@ -249,7 +248,6 @@ nav {
   font-size: 0.6em;
   font-family: "Rubik-regular";
   line-height: 0.8em;
-  // border-bottom: 1px solid @mclr;
   width: 100%;
   display: flex;
   background-color: @bkclr;
@@ -457,7 +455,6 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0px;
-  // background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
   margin: auto 0;
@@ -608,10 +605,6 @@ input:checked+.slider:before {
 
 }
 
-.flags img {
-  // width: 1.8em;
-}
-
 .stname {
   display: inline-block;
   width: 25%;
@@ -736,7 +729,7 @@ input:checked+.slider:before {
     float: right;
     position: relative;
     padding: 0.35em;
-    width: calc(41% - 1em);
+    width: 25%;
     font-size: 0.4em;
     line-height: 0.85em;
     height: 3.4em;
@@ -848,7 +841,7 @@ input:checked+.slider:before {
     font-size: 0.7em;
     height: 4.4em;
     border-radius: 3px;
-    width: 20.5em;
+    width: 22.5em;
 
     img {
       width: 1em;
@@ -1442,308 +1435,11 @@ tr:nth-child(odd) {
   display: none;
 }
 
-.dark-mode {
-  input, input[type=text], input[type=number], input[type=email], input[type=tel], input[type=password], input[type=search], option, select{
-    color: #fff;
-    background-color: @mclr;
-  }
-  ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ccc;
-    opacity: 1;
-    /* Firefox */
-  }
-
-  :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #ccc;
-  }
-
-  ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #ccc;
-  }
-
-  a:visited {
-    color: @bkclr;
-  }
-
-  hr {
-    border-top: 1px solid #fff;
-    border-bottom: 0;
-    border-left: 0;
-    border-right: 0;
-  }
-
-  .radio {
-    form {
-      border-color: #fff;
-    }
-  }
-
-  .supicons img,
-  nav img,
-  .btn img,
-  .icon img {
-    filter: invert(100%);
-  }
-
-  nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background-color: @mclr;
-
-    .flag img {
-      filter: invert(0);
-      width: 50%;
-    }
-  }
-
-  .footer {
-    background-color: @mclr;
-    border-top: 2px solid #fff;
-  }
-
-  .dr {
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    outline: 0;
-    left: 0;
-
-    .drb {
-      display: block;
-      border-top: 2em solid white;
-      border-right: 2em solid #333;
-    }
-  }
-
-  .messages .date {
-    color: #999;
-  }
-
-  audio {
-    filter: invert(100%);
-  }
-
-  .logo {
-    filter: invert(1);
-  }
-
-  .overall {
-    background-color: #333;
-    color: @bkclr;
-
-    img {
-      filter: invert(100%);
-    }
-
-    .flags img {
-      filter: invert(0%);
-    }
-  }
-
-  .bordered {
-    border-bottom: 2px solid #fff;
-  }
-
-  #selmult {
-    border-color: #fff;
-  }
-
-
-
-  .formfield {
-
-    #searchbox1 {
-      background-color: @mclr;
-      border: 1px solid #666;
-    }
-  }
-
-  .userlist {
-    border-bottom: #999 1px solid;
-  }
-
-  .btn-messages-lading {
-    background-color: @mclr;
-
-    a {
-      color: @bkclr;
-    }
-
-    img {
-      filter: invert(100%);
-    }
-  }
-
-  .btn-mail-lading {
-    background-color: @clr;
-
-    a {
-      color: @bkclr;
-    }
-
-    img {
-      filter: invert(100%);
-    }
-  }
-
-  .card-icon {
-    filter: invert(100%);
-  }
-
-  .card {
-    border-color: @bkclr;
-    background-color: @mclr;
-    color: @bkclr;
-
-    .action {
-      background-color: @clr;
-    }
-  }
-
-  .card.connected {
-    border-color: green;
-  }
-
-  .card.disconnected {
-    border-color: red;
-  }
-
-  a {
-    .card {
-      color: #FFF;
-      cursor: pointer;
-
-    }
-  }
-
-  .card.voice.disabled {
-    background-color: transparent;
-    border: solid 1.5px @bkclr;
-    background-color: @mclr;
-    color: @bkclr
-  }
-
-  .switch {
-    background-color: @bkclr;
-  }
-
-  .appinstaller {
-    background-color: @mclr;
-
-    img {
-      filter: invert(100%);
-    }
-  }
-
-  tr:nth-child(even) {
-    background: @mclr
-  }
-
-  tr:nth-child(odd) {
-    background: rgb(73, 73, 73)
-  }
-
-  .connected {
-    color: #3af773;
-  }
-
-  .phonemenu {
-    img {
-      filter: invert(100%);
-      // width: 5%;
-    }
-  }
-
-  .breadcrumb {
-    a {
-      color: @bkclr;
-
-      img {
-        filter: invert(100%);
-      }
-    }
-  }
-
-  .card.voice {
-    border: @clr;
-  }
-
-  .card.voice .card-icon {
-    filter: invert(0%);
-  }
-
-  .float {
-    .floatbutton {
-      background-color: @bkclr;
-
-      img {
-        filter: invert(0%);
-      }
-    }
-  }
-
-  input[type=range] {
-    background-color: #2d3436;
-  }
-
-  .multiplist {
-    .item {
-      border-bottom: #999 1px solid;
-    }
-
-    .item:last-child {
-      border-bottom: 0;
-    }
-  }
-
-  .menu a {
-    color: @bkclr;
-  }
-
-  .alertcard {
-    font-size: 0.8em;
-    border: solid 1.5px #ff6600;
-    border-radius: 3px;
-    background-color: #333333;
-    padding: 1em;
-    width: 97%;
-    margin-bottom: 0.5em;
-  }
-
-  .location {
-    background-color: @mclr;
-  }
-
-  .messages-box {
-    border: 1px solid @bkclr;
-  }
-
-  .balloon {
-    border: 1px solid @clr;
-    background-color: @mclr;
-  }
-
-  .balloon.sent {
-    border: 1px solid @mclr;
-    background-color: @clr;
-  }
-
-  // canvas{
-  //   filter: invert(1);
-  // }
-
-}
-
 .syspusher {
   height: 2em;
   display: block;
   clear: both;
 }
-
 
 .maintitle {
   margin-top: 1em;
@@ -1858,7 +1554,7 @@ tr:nth-child(odd) {
     text-decoration: none;
   }
 
-   .flexible .card {
+  .flexible .card {
     width: 45vw;
   }
 }
@@ -1882,7 +1578,7 @@ tr:nth-child(odd) {
   background-color: @bkclr;
   color: #000;
   box-shadow: @boxshadow;
-  min-width: 200px;
+  min-width: 21%;
 }
 
 .card.voice {
@@ -1911,7 +1607,7 @@ tr:nth-child(odd) {
 .card-icon {
   display: block;
   margin: auto;
-    filter: invert(25%) contrast(124%);
+  filter: invert(25%) contrast(124%);
 }
 
 .card-icon img {
@@ -2158,7 +1854,6 @@ tr:nth-child(odd) {
   a {
     flex-direction: column;
     border-bottom: 0.5px solid rgb(163, 163, 163);
-    // margin-right: 50px;
   }
 
   a:link {
@@ -2354,9 +2049,386 @@ video {
   }
 }
 
-.flexible.login {
-  // padding: 5% 35%;
+.transciever-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 100%;
+  margin-left: 0;
+
+  .data {
+    padding: 30px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .data-title {
+      justify-content: flex-start;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding-bottom: 20px;
+    }
+
+    .data-body {
+      font-size: 1.5em;
+      align-items: stretch;
+    }
+
+    .data-body.frequency {
+      font-size: 5.5em;
+      font-family: monospace;
+      line-height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .data-switch {
+      font-size: 1em;
+    }
+
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
+
+// .slider {
+//   -webkit-appearance: none;
+//   width: 100%;
+//   height: 15px;
+//   border-radius: 5px;
+//   background: #d3d3d3;
+//   outline: none;
+//   opacity: 0.7;
+//   -webkit-transition: .2s;
+//   transition: opacity .2s;
+// }
+
+// .slider::-webkit-slider-thumb {
+//   -webkit-appearance: none;
+//   appearance: none;
+//   width: 25px;
+//   height: 25px;
+//   border-radius: 50%;
+//   background: #04AA6D;
+//   cursor: pointer;
+// }
+
+// .slider::-moz-range-thumb {
+//   width: 25px;
+//   height: 25px;
+//   border-radius: 50%;
+//   background: #04AA6D;
+//   cursor: pointer;
+// }
+
+.dark-mode {
+
+  input,
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=tel],
+  input[type=password],
+  input[type=search],
+  option,
+  select {
+    color: #fff;
+    background-color: @mclr;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1;
+    /* Firefox */
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #ccc;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #ccc;
+  }
+
+  a:visited {
+    color: @bkclr;
+  }
+
+  hr {
+    border-top: 1px solid #fff;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .radio {
+    form {
+      border-color: #fff;
+    }
+  }
+
+  .supicons img,
+  nav img,
+  .btn img,
+  .icon img {
+    filter: invert(100%);
+  }
+
+  nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: @mclr;
+
+    .flag img {
+      filter: invert(0);
+      width: 50%;
+    }
+  }
+
+  .footer {
+    background-color: @mclr;
+    border-top: 2px solid #fff;
+  }
+
+  .dr {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    outline: 0;
+    left: 0;
+
+    .drb {
+      display: block;
+      border-top: 2em solid white;
+      border-right: 2em solid #333;
+    }
+  }
+
+  .messages .date {
+    color: #999;
+  }
+
+  audio {
+    filter: invert(100%);
+  }
+
+  .logo {
+    filter: invert(1);
+  }
+
+  .overall {
+    background-color: #333;
+    color: @bkclr;
+
+    img {
+      filter: invert(100%);
+    }
+
+    .flags img {
+      filter: invert(0%);
+    }
+  }
+
+  .bordered {
+    border-bottom: 2px solid #fff;
+  }
+
+  #selmult {
+    border-color: #fff;
+  }
+
+
+
+  .formfield {
+
+    #searchbox1 {
+      background-color: @mclr;
+      border: 1px solid #666;
+    }
+  }
+
+  .userlist {
+    border-bottom: #999 1px solid;
+  }
+
+  .btn-messages-lading {
+    background-color: @mclr;
+
+    a {
+      color: @bkclr;
+    }
+
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  .btn-mail-lading {
+    background-color: @clr;
+
+    a {
+      color: @bkclr;
+    }
+
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  .card-icon {
+    filter: invert(100%);
+  }
+
+  .card {
+    border-color: @bkclr;
+    background-color: @mclr;
+    color: @bkclr;
+
+    .action {
+      background-color: @clr;
+    }
+  }
+
+  .card.connected {
+    border-color: green;
+  }
+
+  .card.disconnected {
+    border-color: red;
+  }
+
+  a {
+    .card {
+      color: #FFF;
+      cursor: pointer;
+
+    }
+  }
+
+  .card.voice.disabled {
+    background-color: transparent;
+    border: solid 1.5px @bkclr;
+    background-color: @mclr;
+    color: @bkclr
+  }
+
+  .switch {
+    background-color: @bkclr;
+  }
+
+  .appinstaller {
+    background-color: @mclr;
+
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  tr:nth-child(even) {
+    background: @mclr
+  }
+
+  tr:nth-child(odd) {
+    background: rgb(73, 73, 73)
+  }
+
+  .connected {
+    color: #3af773;
+  }
+
+  .phonemenu {
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  .breadcrumb {
+    a {
+      color: @bkclr;
+
+      img {
+        filter: invert(100%);
+      }
+    }
+  }
+
+  .card.voice {
+    border: @clr;
+  }
+
+  .card.voice .card-icon {
+    filter: invert(0%);
+  }
+
+  .float {
+    .floatbutton {
+      background-color: @bkclr;
+
+      img {
+        filter: invert(0%);
+      }
+    }
+  }
+
+  input[type=range] {
+    background-color: #2d3436;
+  }
+
+  .multiplist {
+    .item {
+      border-bottom: #999 1px solid;
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .menu a {
+    color: @bkclr;
+  }
+
+  .alertcard {
+    font-size: 0.8em;
+    border: solid 1.5px #ff6600;
+    border-radius: 3px;
+    background-color: #333333;
+    padding: 1em;
+    width: 97%;
+    margin-bottom: 0.5em;
+  }
+
+  .location {
+    background-color: @mclr;
+  }
+
+  .messages-box {
+    border: 1px solid @bkclr;
+  }
+
+  .balloon {
+    border: 1px solid @clr;
+    background-color: @mclr;
+  }
+
+  .balloon.sent {
+    border: 1px solid @mclr;
+    background-color: @clr;
+  }
+}
+
+
+//Responsive
 
 @media (max-width: 800px) and (min-width: 700px) {
 
@@ -2442,7 +2514,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 20.5em;
+    width: 21.5em;
   }
 
 
@@ -2492,12 +2564,6 @@ video {
 
   }
 
-  // nav {
-  //   .burguer {
-  //     margin-top: 7px;
-  //   }
-  // }
-
   .flex-right {
     margin-left: 0;
   }
@@ -2515,10 +2581,6 @@ video {
       font-size: .8em;
       min-height: 3em;
     }
-  }
-
-  .flexible.login {
-    // padding: 5% 25%;
   }
 }
 
@@ -2672,7 +2734,6 @@ video {
   }
 
   .card-icon {
-    // filter: brightness(0.5);
     margin-bottom: 0;
     margin-top: 0.5em;
   }
@@ -2869,58 +2930,6 @@ video {
     .data-graph {
       width: 100%;
     }
-  }
-
-  .flexible.login {
-    // padding: 5% 15%;
-  }
-}
-
-.transciever-panel {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  width: 100%;
-  margin-left: 0;
-
-  .data {
-    padding: 30px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .data-title {
-      justify-content: flex-start;
-      font-size: 1.5em;
-      font-weight: 600;
-      padding-bottom: 20px;
-    }
-
-    .data-body {
-      font-size: 1.5em;
-      align-items: stretch;
-    }
-
-    .data-body.frequency {
-      font-size: 5.5em;
-      font-family: monospace;
-      line-height: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    .data-switch {
-      font-size: 1em;
-    }
-
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
   }
 }
 
