@@ -60,7 +60,7 @@ button {
 
 .email a {
   .card {
-     min-width: 240px;
+    min-width: 240px;
   }
 }
 
@@ -2097,35 +2097,40 @@ video {
   }
 }
 
-// .slider {
-//   -webkit-appearance: none;
-//   width: 100%;
-//   height: 15px;
-//   border-radius: 5px;
-//   background: #d3d3d3;
-//   outline: none;
-//   opacity: 0.7;
-//   -webkit-transition: .2s;
-//   transition: opacity .2s;
-// }
+.slidercontainer {
+  width: 100%;
+  margin: 10px;
+}
 
-// .slider::-webkit-slider-thumb {
-//   -webkit-appearance: none;
-//   appearance: none;
-//   width: 25px;
-//   height: 25px;
-//   border-radius: 50%;
-//   background: #04AA6D;
-//   cursor: pointer;
-// }
+.slider-input {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #727272;
+  outline: none;
+  // opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
 
-// .slider::-moz-range-thumb {
-//   width: 25px;
-//   height: 25px;
-//   border-radius: 50%;
-//   background: #04AA6D;
-//   cursor: pointer;
-// }
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: @clr;
+  cursor: pointer;
+}
+
+.slider-input::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: @clr;
+  cursor: pointer;
+}
 
 .dark-mode {
 
@@ -2424,6 +2429,10 @@ video {
   .balloon.sent {
     border: 1px solid @mclr;
     background-color: @clr;
+  }
+
+  .slider-input {
+    background-color: #FFF;
   }
 }
 

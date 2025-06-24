@@ -7,7 +7,6 @@
             <div class="row">
                 <button *ngIf="allowCompose" routerLink="/compose">
                     <span i18n="@@newmessage">
-                        <img title="new message" src="assets/svg/edit.svg">
                         new
                     </span>
                 </button>
@@ -52,7 +51,9 @@
                 <span>{{selectedMessage.name}}</span>
                 <div class="row m-t-10">
                     <button i18n="@@cancelmt" (click)="showDelete()">cancel</button>
-                    <button (click)="deleteThisMessage()" i18n="@@delete" class="m-l-10 danger">delete</button>
+                    <button (click)="deleteThisMessage()" i18n="@@delete" class="m-l-10 danger">
+                        delete
+                    </button>
                 </div>
             </div>
         </div>
