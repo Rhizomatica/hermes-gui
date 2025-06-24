@@ -123,7 +123,7 @@
               <div>
                 <span i18n="@@powerleveldata">Data Power Level</span>
                 <br />
-                {{dataPowerLevel}} %
+                {{dataPowerLevel}}%
               </div>
             </h3>
           </div>
@@ -134,7 +134,7 @@
               <div>
                 <span i18n="@@powerlevelvoice">Voice Power Level</span>
                 <br />
-                {{voicePowerLevel}} %
+                {{voicePowerLevel}}%
               </div>
             </h3>
           </div>
@@ -253,7 +253,7 @@
         </form>
 
          <form #dataFormPowerLevel="ngForm" class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@datapowerlevel">Data Power Level ({{dataPowerLevel}} %)
+          <span i18n="@@datapowerlevel">Data Power Level ({{dataPowerLevel}}%)
             <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -265,7 +265,7 @@
         </form>
 
         <form #voiceFormPowerLevel="ngForm" class="formdata field">
-          <span i18n="@@voicepowerlevel">Voice Power Level  ({{voicePowerLevel}} %)
+          <span i18n="@@voicepowerlevel">Voice Power Level  ({{voicePowerLevel}}%)
             <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -350,7 +350,7 @@
         <form #fserial="ngForm" class="formdata field">
           <div class="m-l-10">
             <span i18n="@@seriallabel">Serial number</span>
-            <div class="float-right flex-right">
+            <div class="row">
               <b>{{serial}}</b>
             </div>
           </div>
