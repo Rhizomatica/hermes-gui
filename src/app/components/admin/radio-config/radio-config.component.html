@@ -121,9 +121,20 @@
           <div class="row">
             <h3>
               <div>
-                <span i18n="@@powerlevel">Power Level</span>
+                <span i18n="@@powerleveldata">Data Power Level</span>
                 <br />
-                {{powerLevel}} %
+                {{dataPowerLevel}} %
+              </div>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <div>
+                <span i18n="@@powerlevelvoice">Voice Power Level</span>
+                <br />
+                {{voicePowerLevel}} %
               </div>
             </h3>
           </div>
@@ -242,7 +253,7 @@
         </form>
 
          <form #dataFormPowerLevel="ngForm" class="formdata field" *ngIf="isAdmin">
-          <span i18n="@@powerleveldata">Data Power Level ({{dataPowerLevel}} %)
+          <span i18n="@@datapowerlevel">Data Power Level ({{dataPowerLevel}} %)
             <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
           </span>
           <div class="flexible">
