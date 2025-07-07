@@ -51,7 +51,6 @@ export class MessagecomposeComponent implements OnInit {
   public maxSizeText: string = '20.48 kB'
   public isGateway: boolean = GlobalConstants.gateway
   public selectedStations = [];
-  public camPicture: any;
   public loading = true
   public mobile: any
   public webCamDesktop = false
@@ -139,11 +138,6 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-  onFileCamSelected(e) {
-    this.camPicture = e.target.files[0]
-    this.onFileSelected(e)
-  }
-
   async openWebCamDesktop() {
     this.webCamDesktop = true
     this.dataURItoBlob(this.canvas.nativeElement.toDataURL("image/png"));
@@ -222,7 +216,6 @@ export class MessagecomposeComponent implements OnInit {
     if (file) {
       this.file = file;
 
-
       this.typeSizeRule(file.type)
 
       if (file.size < this.maxSize) {
@@ -273,18 +266,12 @@ export class MessagecomposeComponent implements OnInit {
       this.quackFile()
 
     if (!this.isGateway) {
-      var str = f.value.dest;
       var arr = [];
 
-      if (Array.isArray(f.value.dest)) {
-        arr = f.value.dest
-      }
-
       if (!Array.isArray(f.value.dest)) {
-        arr.push(str);
+        arr.push(f.value.dest);
+        f.value.dest = arr;
       }
-
-      f.value.dest = arr;
     }
     // File exists?
     if (this.file) {
@@ -294,7 +281,6 @@ export class MessagecomposeComponent implements OnInit {
           f.value.fileid = value['id'];
           f.value.mimetype = value['mimetype'];
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
-          const res = this.sendMessageContinue(f);
         },
         (err) => {
           this.errormsg = err;
@@ -303,9 +289,7 @@ export class MessagecomposeComponent implements OnInit {
         }
       );
     }
-    else {
       const res = this.sendMessageContinue(f);
-    }
   }
 
   quackFile() {
