@@ -72,14 +72,19 @@
           <!-- Open Native Camera -->
           <!-- <button class="m-l-10" *ngIf="!fileSelected && mobile" (click)="fileCamUpload.click()"
             i18n="@@camfile">camera</button>
-          <input type="file" accept="image/*" capture="user" (change)="onFileSelected($event)" style="display: none;"
+          <input type="file" accept="image/*" capture="user" (change)="onFileCamSelected($event)" style="display: none;"
             #fileCamUpload> -->
 
-          <!-- Open web camera -->
+         
+          <!-- Open Web Camera -->
           <!-- <button class="m-l-10" *ngIf="!fileSelected && !mobile" (click)="openWebCamDesktop()"
             i18n="@@camfile">camera</button> -->
           <!-- <button *ngIf="!fileSelected" (click)="audioRecorder()" i18n="@@audiorecorder" class="m-l-10">audio
             recorder</button> -->
+
+          <button *ngIf="fileSelected || file" (click)="removeFile()" i18n="@@remfile">remove
+            file
+          </button>
 
           <hint [showHint]="false" [hint]="'attachfile'"></hint>
         </ng-container>

@@ -324,6 +324,8 @@ label {
 textarea {
   resize: vertical;
   width: 100%;
+  background-color: @mclr;
+  color: @bkclr;
 }
 
 
@@ -732,7 +734,7 @@ input:checked+.slider:before {
     width: 25%;
     font-size: 0.4em;
     line-height: 0.85em;
-    height: 3.4em;
+    height: 3em;
     margin-left: 0.1em;
   }
 
@@ -856,12 +858,12 @@ input:checked+.slider:before {
 
 .alertcard {
   font-size: 0.8em;
-  border: solid 1.5px #ff6600;
   border-radius: 3px;
   background-color: @bkclr;
   padding: 1em;
-  width: 97%;
+  width: 100%;
   margin-bottom: 0.5em;
+  box-shadow: @boxshadow;
 }
 
 .multiplist {
@@ -2405,13 +2407,7 @@ video {
   }
 
   .alertcard {
-    font-size: 0.8em;
-    border: solid 1.5px #ff6600;
-    border-radius: 3px;
     background-color: #333333;
-    padding: 1em;
-    width: 97%;
-    margin-bottom: 0.5em;
   }
 
   .location {
@@ -2520,11 +2516,11 @@ video {
   }
 
   .card {
-    width: 18em;
+    width: 19.5em;
   }
 
   .shut button.midbt {
-    width: 20.5em;
+    width: 22em;
   }
 
 
@@ -2591,6 +2587,10 @@ video {
       font-size: .8em;
       min-height: 3em;
     }
+  }
+
+  .alertcard {
+    width: 100%;
   }
 }
 
@@ -2940,6 +2940,10 @@ video {
     .data-graph {
       width: 100%;
     }
+  }
+
+  .alertcard {
+    width: 96%;
   }
 }
 
