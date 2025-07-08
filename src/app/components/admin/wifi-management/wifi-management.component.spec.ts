@@ -4,7 +4,7 @@ import { WiFiManagementComponent } from './wifi-management.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-describe('CustomErrorsComponent', () => {
+describe('WiFiManagementComponent', () => {
   let component: WiFiManagementComponent;
   let fixture: ComponentFixture<WiFiManagementComponent>;
 

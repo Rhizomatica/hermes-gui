@@ -20,7 +20,7 @@
           <div class="userlist" *ngFor="let user of users | filter:searchUser;" (click)="onSelect(user)">
             <div class="adm">
               <span *ngIf="user.admin" class="alert">
-                <img class="inlineicon" title="admin" src="assets/svg/wrench.svg">
+                <img class="inlineicon" title="admin" src="assets/svg/account-star.svg">
               </span>
             </div>
             <div class="uemail">{{user.email}}</div>

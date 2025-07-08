@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
-import { Form, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
@@ -46,6 +46,8 @@ export class RadioConfigComponent implements OnInit {
   loginForm = false
   refthreshold: any
   power: any
+  voicePowerLevel: number
+  dataPowerLevel: number
   realfreq: any
   led: any
   ptt: any
@@ -434,7 +436,10 @@ export class RadioConfigComponent implements OnInit {
 
         this.timeoutStatus = 1
         this.formatedTimeout = res / 60
-      }, (err) => {
+        return res;
+      }
+      , (err) => {
+        console.log(err)
         this.error = err
         this.errorAlert = true
       }
@@ -458,6 +463,51 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
+  getRadioPowerLevel() {
+    this.loading = true
+    this.radioService.getRadioPowerLevel(0).subscribe(
+      (res: any) => {
+        this.dataPowerLevel = res;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+
+    this.radioService.getRadioPowerLevel(1).subscribe(
+      (res: any) => {
+        this.voicePowerLevel = res;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
+
+   updatePowerLevel(f: NgForm, profile: number) {
+    this.loading = true
+    f.value.profile = profile;
+
+    if(profile == 0){
+      f.value.powerLevel = this.dataPowerLevel;
+    }
+     if(profile == 1){
+      f.value.powerLevel = this.voicePowerLevel;
+    }
+
+    this.radioService.setRadioPowerLevel(f.value).subscribe(
+      (res: any) => {
+        this.loading = false
+      }, (err) => {
+        this.error = err;
+        this.loading = false
+        this.errorAlert = true;
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.getRadioStatus()
     this.getTimeoutConfig()
@@ -466,6 +516,7 @@ export class RadioConfigComponent implements OnInit {
     this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
     this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
     this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
+    this.getRadioPowerLevel();
     this.isAdmin = this.currentUser && this.currentUser.admin
     this.loading = false
   }

@@ -299,6 +299,24 @@ export class RadioService {
       catchError(this.handleError));
   }
 
+  public getRadioPowerLevel(profile: number): Observable<{ number }> {
+    const url = `${GlobalConstants.apiURL}/radio/powerlevel/${profile}`;
+    return this.http.get<number>(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
+  public setRadioPowerLevel(powerLevelObject): Observable<{ number }> {
+    const url = `${GlobalConstants.apiURL}/radio/powerlevel/`;
+    return this.http.post<number>(url, powerLevelObject).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }

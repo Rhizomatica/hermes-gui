@@ -292,6 +292,14 @@
       </p>
     </div>
 
+    <div *ngIf="hint == 'powerlevel'" i18n="@@hintpowerlevel">
+      <h1 class="cv-title">Power Level</h1>
+      <p>
+        Power level for the radio transmission. It is best practice to use the minimum power needed to make contact.
+        Using a lower power setting can shorten the transmission range and preserve battery capacity.
+      </p>
+    </div>
+
     <div *ngIf="hint == 'mode'" i18n="@@hintmode">
       <h1 class="cv-title">Mode</h1>
       <p>
@@ -376,7 +384,7 @@
       <p>
         In User management you can update your own information (Phone number and password) or delete your user.
       </p>
-      <p *ngIf="currentUser.admin">
+      <p *ngIf="currentUser && currentUser.admin">
         If you are an administrator you can create, update and delete all users with exception of the root user.
       </p>
       <p class="m-t-25">

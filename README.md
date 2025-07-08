@@ -106,7 +106,6 @@ Running HERMES locally as a service (service worker) the angular live reloads do
 So build your project again running `ng build` after change your code and run `http-server -p 9000 -c-l dist/hermes`
 to restart the project.
 
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -114,6 +113,50 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## GITHUB Actions runner, Build & Delivery 
+
+First you need the self-hosted runner installed, follow the link for more details. 
+
+[GITHUB - Managing access to self-hosted runners using groups](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups)
+
+
+1. Configure your self-hosted runner.
+    - Configure it as default
+        - group: default
+        - runner: $machine_name
+
+    . Access the ./actions-runner Folder
+    After configuration, you'll need to be in the actions-runner directory to run the runner.
+
+    Linux/macOS: cd /path/to/your/actions-runner
+
+2. Run the Work with ./run.sh
+Once you're in the actions-runner directory, this command will start the runner application. It will then connect to GitHub and wait for jobs to be assigned.
+
+    - Linux/macOS: ./run.sh
+
+    Important: Running this command directly in your terminal will keep the runner active as long as the terminal window is open. For a more robust, persistent setup, especially in production, you should configure the runner as a service (e.g., using systemd for Linux, launchd for macOS, or a Windows Service).
+
+    Triggering Your Build and Delivery Workflow
+    Now that your runner is ready, let's look at the development and delivery process.
+
+3. Make a Pull Request to the main Branch
+This is standard practice for contributing code:
+
+    Create a new branch from main to work on your changes (e.g., git checkout -b my-new-feature).
+    Implement your changes and commit them to your new branch.
+    Push your branch to GitHub (git push origin my-new-feature).
+    Create a Pull Request from your feature branch to the main branch of Rhizomatica/hermes-gui.
+    Once your Pull Request is reviewed and approved (and typically merged into main), your self-hosted runner will spring into action!
+
+    Monitoring Your Build and Delivery
+    Your GitHub Actions workflow, defined in build.yml, will automatically trigger. Your self-hosted runner will pick up this job and execute the build and publish process.
+
+    You can monitor the progress of your build and delivery workflow in real-time here:
+    [GITHUB BUILD AND DELIVERY](https://github.com/Rhizomatica/hermes-gui/actions/workflows/build.yml)
+
+    Tip: If your build is successful, the artifact (e.g., your compiled application, distribution files) will be generated and made available for download directly from the workflow run details page on GitHub.
 
 ## Code scaffolding
 

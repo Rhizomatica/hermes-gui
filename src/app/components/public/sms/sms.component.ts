@@ -28,6 +28,7 @@ export class SMSComponent implements OnInit {
   startChat: boolean = false
   phoneNumber: string = ""
   phoneNumberValidator: boolean = false
+  searchMessages: string = ""
 
   constructor(
     private router: Router,

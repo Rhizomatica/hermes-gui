@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../app/_helpers/auth.guard';
+import { HintComponent } from './components/utils/hint/hint.component';
+import { LoadingComponent } from './components/utils/loading/loading.component';
 import { homeComponent } from './components/public/home/home.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
@@ -17,7 +19,6 @@ import { RadioConfigComponent } from './components/admin/radio-config/radio-conf
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
-import { LoadingComponent } from './components/utils/loading/loading.component';
 import { PlayerComponent } from './components/utils/player/player.component';
 import { RecorderComponent } from './components/utils/recorder/recorder.component';
 import { MenuComponent } from './components/public/menu/menu.component';
@@ -25,7 +26,6 @@ import { WiFiManagementComponent } from './components/admin/wifi-management/wifi
 import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
-import { HintComponent } from './components/utils/hint/hint.component';
 import { GPSComponent } from './components/admin/gps/gps.component';
 import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
@@ -38,6 +38,8 @@ import { ProgressBarComponent } from './components/utils/progressbar/progressbar
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: homeComponent },
+  { path: 'hint', component: HintComponent },
+  { path: 'loading', component: LoadingComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
@@ -55,7 +57,6 @@ const routes: Routes = [
   { path: 'schedule', component: ScheduleComponent },
   { path: 'transmission', component: TransmissionListComponent },
   { path: 'switch', component: SwitchComponent },
-  { path: 'loading', component: LoadingComponent },
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
@@ -63,7 +64,6 @@ const routes: Routes = [
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent },
   { path: 'floatbutton', component: FloatButtonComponent },
-  { path: 'hint', component: HintComponent },
   { path: 'gps', component: GPSComponent },
   { path: 'sms', component: SMSComponent },
   { path: 'smschat/:id', component: SMSChatComponent },

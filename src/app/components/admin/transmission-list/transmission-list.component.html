@@ -44,9 +44,9 @@
         <div class="maininfo">
           <a>
             <span *ngIf="isadmin">
-              <img class="inlineicon" title="cancel mail" src="assets/svg/trash-alt.svg" *ngIf="job.type!=='HMP'"
+              <img class="inlineicon" title="cancel mail" src="assets/svg/trash.svg" *ngIf="job.type!=='HMP'"
                 (click)="cancelMail(job.uuidhost,job.uuiduucp)">
-              <img class="inlineicon" title="cancel message" src="assets/svg/trash-alt.svg" *ngIf="job.type=='HMP'"
+              <img class="inlineicon" title="cancel message" src="assets/svg/trash.svg" *ngIf="job.type=='HMP'"
                 (click)="confirmCancelTransmission(job)">
             </span>
           </a>
@@ -57,11 +57,11 @@
         <div class="info">
           <div class="row">
             <span *ngIf="job.type!=='HMP'">
-              <img class="inlineiconj" src="assets/svg/envelope.svg">
+              <img class="inlineicon" src="assets/svg/email.svg">
               E-mail: {{job.emails}}
             </span>
             <span *ngIf="job.type=='HMP'">
-              <img class="inlineiconj" src="assets/svg/comment.svg">
+              <img class="inlineicon" src="assets/svg/message-text.svg">
               <b i18n="@@message">Message</b>: {{job.uuiduucp}}
             </span>
           </div>
@@ -84,8 +84,9 @@
         </div>
         <div class="row-reverse">
           <button *ngIf="isadmin && !jobToForce" (click)="confTransmit(job)">
-            <span i18n="@@transmitnow">force</span> <img class="inlineiconlink" title="force"
-              src="assets/svg/arrow-right.svg" [hidden]="!isadmin">
+            <img class="inlineiconlink" title="force"
+              src="assets/svg/sync.svg">
+            <span i18n="@@transmitnow">force</span> 
           </button>
         </div>
       </div>

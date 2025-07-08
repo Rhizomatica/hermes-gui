@@ -34,7 +34,7 @@
                 </div>
             </a>
             <button *ngIf="fileType == 'image'" (click)="rotateImage()" class="pull-right">
-                <img title="rotate" src="assets/svg/redo.svg">
+                <img title="rotate" src="assets/svg/file-rotate-right.svg">
             </button>
             <div class="m-t-25">
                 <a target="_new" href="{{url}}/file/{{message.fileid}}{{message.secure ? passString : ''}}">
@@ -54,13 +54,12 @@
     <div class="flex m-t-25" *ngIf="allowCompose">
         <button (click)="showDelete(message)" class="danger" [hidden]="!currentUser || currentUser.admin !== 1">
             <span i18n="@@deleteMessageDetail">
-                <img title="delete" src="assets/svg/trash-alt.svg">
                 delete
             </span>
         </button>
         <button class="m-l-10" routerLink="/response/{{message.orig}}" *ngIf="message.orig !== 'local'">
             <span i18n="@@replymessage">
-                <img title="reply" src="assets/svg/reply-solid.svg">
+                <img title="reply" src="assets/svg/reply.svg">
                 reply
             </span>
         </button>

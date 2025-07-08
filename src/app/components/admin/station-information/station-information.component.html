@@ -4,7 +4,7 @@
   <h2 i18n="@@stationsonthisnetwork">Station information</h2>
   <hint [showHint]="false" [hint]="'stations'"></hint>
 </div>
-<div *ngIf="currentUser.admin">
+<div *ngIf="currentUser && currentUser.admin">
   <div class="alert" *ngIf="!frequencies || !frequencies.length" i18n="@@therearenostatons">There are no stations</div>
   <table style="width:100%" *ngIf="frequencies && frequencies.length">
     <thead>
@@ -93,7 +93,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="!currentUser.admin">
+<div *ngIf="!currentUser || !currentUser.admin">
   <span i18n="@@needtobeadmin">
     Need to be an admin to access this
   </span>

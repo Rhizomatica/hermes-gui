@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StationInformationComponent } from './station-information.component';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('NetadminComponent', () => {
+describe('StationInformationComponent', () => {
   let component: StationInformationComponent;
   let fixture: ComponentFixture<StationInformationComponent>;
 

@@ -29,8 +29,9 @@
   </div>
 </div>
 <div class="row m-t-10">
-  <div class="messages maincontainer" *ngIf="message != null && messages.length > 0">
+  <div class="messages maincontainer" *ngIf="filteredMessages != null && filteredMessages.length > 0">
     <div class="multiplist">
+      <input id="searchbox1" [(ngModel)]="searchMessages" placeholder="search" i18n-placeholder />
       <div class="item" *ngFor="let message of filteredMessages | filter:searchMessages;">
         <div class="maininfo">
           <a routerLink="/smschat/{{message.id}}">

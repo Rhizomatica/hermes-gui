@@ -99,7 +99,7 @@
           <div class="row">
             <h3>
               <div>
-                <span i18n="@@bitrate">Bitrate</span>
+                <span i18n="@@bitrate">Bitrate(bps)</span>
                 <br />
                 {{radio.bitrate}} bps
               </div>
@@ -117,11 +117,33 @@
             </h3>
           </div>
         </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <div>
+                <span i18n="@@powerleveldata">Data Power Level</span>
+                <br />
+                {{dataPowerLevel}}%
+              </div>
+            </h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>
+              <div>
+                <span i18n="@@powerlevelvoice">Voice Power Level</span>
+                <br />
+                {{voicePowerLevel}}%
+              </div>
+            </h3>
+          </div>
+        </div>
 
       </div>
       <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency">Data frequency: {{radio.p0_freq}}kHz
+          <span i18n="@@changefrequency">Data frequency: {{radio.p0_freq}} kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -217,7 +239,7 @@
           </div>
         </form>
 
-        <form #fgps="ngForm" class="formdata field" *ngIf="isAdmin">
+        <form #formProtection="ngForm" class="formdata field" *ngIf="isAdmin">
           <span i18n="@@radioprotectionlabel">Protection</span>
           <div class="float-right">
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
@@ -227,6 +249,30 @@
             <button (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="radio.protection">
               reset protection
             </button>
+          </div>
+        </form>
+
+         <form #dataFormPowerLevel="ngForm" class="formdata field" *ngIf="isAdmin">
+          <span i18n="@@datapowerlevel">Data Power Level ({{dataPowerLevel}}%)
+            <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
+          </span>
+          <div class="flexible">
+            <div class="slidercontainer">
+              <input type="range" min="0" max="100" step="2" [value]="dataPowerLevel" class="slider-input" [(ngModel)]="dataPowerLevel" name="dataPowerLevel"
+                (change)="updatePowerLevel(dataFormPowerLevel, 0)">
+            </div>
+          </div>
+        </form>
+
+        <form #voiceFormPowerLevel="ngForm" class="formdata field">
+          <span i18n="@@voicepowerlevel">Voice Power Level  ({{voicePowerLevel}}%)
+            <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
+          </span>
+          <div class="flexible">
+            <div class="slidercontainer">
+              <input type="range" min="0" max="100" step="2" [value]="voicePowerLevel" class="slider-input" [(ngModel)]="voicePowerLevel" name="voicePowerLevel"
+                (change)="updatePowerLevel(voiceFormPowerLevel, 1)">
+            </div>
           </div>
         </form>
 
@@ -304,7 +350,7 @@
         <form #fserial="ngForm" class="formdata field">
           <div class="m-l-10">
             <span i18n="@@seriallabel">Serial number</span>
-            <div class="float-right flex-right">
+            <div class="row">
               <b>{{serial}}</b>
             </div>
           </div>

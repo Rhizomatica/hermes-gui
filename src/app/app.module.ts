@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { homeComponent } from './components/public/home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -8,6 +9,8 @@ import { MessagesComponent } from './components/public/messages/messages.compone
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HintComponent } from './components/utils/hint/hint.component';
+import { LoadingComponent } from './components/utils/loading/loading.component';
 import { LogComponent } from './components/admin/log/log.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
@@ -36,7 +39,6 @@ import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TransmissionListComponent } from './components/admin/transmission-list/transmission-list.component';
-import { LoadingComponent } from './components/utils/loading/loading.component';
 import { SwitchComponent } from './components/utils/switch/switch.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -48,7 +50,6 @@ import { VoiceComponent } from './components/public/voice/voice.component';
 import { BreadcrumbComponent } from './components/utils/breadcrumb/breadcrumb.component';
 import { FloatButtonComponent } from './components/utils/floatbutton/floatbutton.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
-import { HintComponent } from './components/utils/hint/hint.component';
 import { GPSComponent } from './components/admin/gps/gps.component';
 import { SMSComponent } from './components/public/sms/sms.component';
 import { SMSChatComponent } from './components/public/smschat/smschat.component';
@@ -75,6 +76,8 @@ registerLocaleData(localeEs);
     homeComponent,
     MessagesComponent,
     MessageDetailComponent,
+    HintComponent,
+    LoadingComponent,
     LogComponent,
     StationInformationComponent,
     UserManagementComponent,
@@ -91,7 +94,6 @@ registerLocaleData(localeEs);
     FrequencyPipe,
     ScheduleComponent,
     TransmissionListComponent,
-    LoadingComponent,
     SwitchComponent,
     PlayerComponent,
     RecorderComponent,
@@ -100,7 +102,6 @@ registerLocaleData(localeEs);
     VoiceComponent,
     BreadcrumbComponent,
     FloatButtonComponent,
-    HintComponent,
     GPSComponent,
     SMSComponent,
     SMSChatComponent,
@@ -112,6 +113,8 @@ registerLocaleData(localeEs);
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    RouterModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -130,13 +133,15 @@ registerLocaleData(localeEs);
   ],
   providers: [
     DecimalPipe,
+    { provide: LOCALE_ID, useValue: 'en-US' },
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: LOCALE_ID, useValue: 'es' },
     { provide: LOCALE_ID, useValue: 'fr' },
-    { provide: LOCALE_ID, useValue: 'sag' },
+    // { provide: LOCALE_ID, useValue: 'ar' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
