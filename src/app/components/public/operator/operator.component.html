@@ -267,3 +267,16 @@
         </div>
     </div>
 </div>
+
+<div class="overall alert" ngIf="radio.protection">
+    <div class="cv">
+        <span i18n="@@radioprotectionoperator">Radio protection activated. Reset the protection, reconfigure your radio
+            settings and try again. For more details: Reset Protection <hint [showHint]="false" [hint]="'resetprotection'"></hint>
+        </span>
+        <div class="row m-t-10">
+            <button (click)="resetProtection()" i18n="@@resetprotectionbutton" class="m-l-10">
+                reset protection
+            </button>
+        </div>
+    </div>
+</div>
