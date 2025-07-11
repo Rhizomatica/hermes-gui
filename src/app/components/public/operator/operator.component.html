@@ -10,7 +10,7 @@
             <div class="alertcard flexible">
                 <span class="greencircle"></span>
                 <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
-                    Radio connected - Data/Voice connection on going...
+                    Radio connected - Data/Voice connection ongoing...
                 </b>
             </div>
         </div>
@@ -263,6 +263,19 @@
         <div class="row m-t-10">
             <button (click)="closeError()" i18n="@@closeerrorbutton">
                 close
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="overall alert" *ngIf="radio.protection">
+    <div class="cv">
+        <span i18n="@@radioprotectionoperator">Radio protection activated. Reset the protection, reconfigure your radio
+            settings and try again. For more details: Reset Protection <hint [showHint]="false" [hint]="'resetprotection'"></hint>
+        </span>
+        <div class="row m-t-10">
+            <button (click)="resetProtection()" i18n="@@resetprotectionbutton" class="m-l-10">
+                reset protection
             </button>
         </div>
     </div>

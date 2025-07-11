@@ -7,6 +7,7 @@ import { GPSService } from 'src/app/_services/gps.service';
 import { UUCPService } from 'src/app/_services/uucp.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { RadioService } from 'src/app/_services/radio.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class OperatorComponent implements OnInit {
   loading: boolean = false
   error: Error
   errorAlert: boolean = false
-  errormsg:string = ""
+  errormsg: string = ""
   radio: any = []
   diskSpace: string = '0'
   gpsStatus: boolean
@@ -43,7 +44,8 @@ export class OperatorComponent implements OnInit {
     private apiService: ApiService,
     private gpsService: GPSService,
     private uucpService: UUCPService,
-    private utils: UtilsService) {
+    private utils: UtilsService,
+    private radioService: RadioService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
@@ -74,11 +76,11 @@ export class OperatorComponent implements OnInit {
   }
 
   getGPSStatus(): void {
-    if(!this.hasGps)
+    if (!this.hasGps)
       return
 
     this.loading = true
-    
+
     this.gpsService.getGPSStatus().subscribe(
       (res: any) => {
         if (res)
@@ -112,7 +114,7 @@ export class OperatorComponent implements OnInit {
 
   getCurrentCoordinates() {
 
-    if(!this.hasGps || !this.gpsStatus)
+    if (!this.hasGps || !this.gpsStatus)
       return
 
     if (!this.currentLatitude && !this.currentLongitude)
@@ -153,6 +155,20 @@ export class OperatorComponent implements OnInit {
   closeError() {
     this.errorAlert = false;
     this.errormsg = ""
+  }
+
+  resetProtection() {
+    this.radioService.radioResetProtection(this.radio.profile).subscribe(
+      (res: any) => {
+        if (res === 1) {
+          this.radio.protection = false;
+        }
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
   }
 
   ngOnInit(): void {

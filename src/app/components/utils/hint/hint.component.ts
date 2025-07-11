@@ -15,6 +15,8 @@ export class HintComponent {
     private authenticationService: AuthenticationService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.showHint = false
+    this.hint = null
   }
 
   @Input() showHint: boolean

@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="reloadpage" datatype="html">
         <source>reload page</source>
-        <target state="new">reload page</target>
+        <target state="new">recargar página</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">99</context>
@@ -258,7 +258,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
       </trans-unit>
       <trans-unit id="transmissioncardalertmesage" datatype="html">
-        <source> Data connection on going... Voice mode blocked </source>
+        <source> Data connection ongoing... Voice mode blocked </source>
         <target state="new"> Conexión de datos en curso... Modo de voz bloqueado </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
@@ -457,6 +457,10 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">22</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/sms/sms.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="customerrordatehour" datatype="html">
         <source>Date Hour: </source>
@@ -586,7 +590,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/> Login </source>
         <target state="new">
 <x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;login&quot; src=&quot;assets/svg/sign-in-alt-solid.svg&quot;>"/>
- Admin </target>
+ Aceder </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">71</context>
@@ -606,7 +610,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;user-manage&quot; src=&quot;assets/svg/circle-user.svg&quot;>"/> User management </source>
         <target state="new">
 <x id="TAG_IMG" ctype="image" equiv-text="&lt;img title=&quot;user-manage&quot; src=&quot;assets/svg/circle-user.svg&quot;>"/>
- User management </target>
+ Gestión de usuarios </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
           <context context-type="linenumber">39</context>
@@ -714,7 +718,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="log_in" datatype="html">
         <source>log in</source>
-        <target>aceder</target>
+        <target>Aceder</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/login/login.component.html</context>
           <context context-type="linenumber">28</context>
@@ -1281,7 +1285,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         </context-group>
       </trans-unit>
       <trans-unit id="operatortransmissionstatuslabel" datatype="html">
-        <source> Radio connected - Data/Voice connection on going... </source>
+        <source> Radio connected - Data/Voice connection ongoing... </source>
         <target state="new"> Radio conectada - Conexión de datos/voz en curso... </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
@@ -1373,7 +1377,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         </context-group>
       </trans-unit>
       <trans-unit id="bitrate" datatype="html">
-        <source>Bitrate(bps)</source>
+        <source>Bitrate</source>
         <target state="new">Tasa de bits(bps)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -1418,6 +1422,22 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
           <context context-type="linenumber">243</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="radioprotectionoperator" datatype="html">
+        <source>Radio protection activated. Reset the protection, reconfigure your radio settings and try again. For more details: Reset Protection <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'resetprotection'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
+        <target state="new">Protección de radio activada. Restablezca la protección, reconfigure la radio y vuelva a intentarlo. Para más detalles: Restablecer protección <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'resetprotection'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">273</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resetprotectionbutton" datatype="html">
+        <source> reset protection </source>
+        <target state="new"> reset protection </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">277</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprofile" datatype="html">
@@ -1618,7 +1638,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="errorPatternsWifi" datatype="html">
         <source> Verify the patterns to save the WiFi configurations.</source>
-        <target state="new"> Verify the patterns to save the WiFi configurations.</target>
+        <target state="new"> Verificar los patrones para guardar las configuraciones WiFi.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
           <context context-type="linenumber">159</context>
@@ -1634,7 +1654,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="datanavlabel" datatype="html">
         <source> data </source>
-        <target state="new"> data </target>
+        <target state="new"> datos </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">27</context>
@@ -1642,7 +1662,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="voicenavlabel" datatype="html">
         <source> voice </source>
-        <target state="new"> voice </target>
+        <target state="new"> voz </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
           <context context-type="linenumber">35</context>
@@ -1659,7 +1679,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="90644bd636009a71889350b5db6cbfeab7013d21" datatype="html">
         <source>503 Service Unavailable</source>
-        <target state="new">503 Service Unavailable</target>
+        <target state="new">503 Servicio No Disponible</target>
         <note priority="1" from="description">hermes503Http</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
@@ -1865,7 +1885,7 @@ Solo los usuarios administradores pueden enviar mensajes a otras estaciones, si 
       </trans-unit>
       <trans-unit id="cannotaccessradio" datatype="html">
         <source>Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/></source>
-        <target state="new">Alert: Cannot access radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
+        <target state="new">Alerta: No se puede acceder a la radio<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
@@ -2365,7 +2385,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Hubo un error al procesar su solicitud. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sms/sms.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/smschat/smschat.component.html</context>
@@ -2429,7 +2449,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sms/sms.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/smschat/smschat.component.html</context>
@@ -3172,7 +3192,7 @@ Perfil de radio<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
       </trans-unit>
       <trans-unit id="hinttimeoutconfig" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Timeout<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes. With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Timeout<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Toggle the radio timeout to enable or disable the voice timout. If enable you can configure the timout period between 5 and 60 minutes. With the timeout enable the HERMES will change the operation profile back to Data mode everytime after reach the configured timeout of inactivite. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Radio Timeout<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Active o desactive el tiempo de espera de la radio. Si lo activa, puede configurar el tiempo de espera entre 5 y 60 minutos. Al activar el tiempo de espera, HERMES volverá al modo de datos cada vez que se alcance el tiempo de inactividad configurado. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">315</context>
@@ -3223,7 +3243,7 @@ Restablecer protección<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt
         </context-group>
       </trans-unit>
       <trans-unit id="hintusermanagement" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> In User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser.admin&quot;>"/> If you are an administrator you can create, update and delete all users with exception of the root user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: if you delete your user credentials you won't be able to access the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> In User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser &amp;&amp; currentUser.admin&quot;>"/> If you are an administrator you can create, update and delete all users with exception of the root user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Note: if you delete your user credentials you won't be able to access the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
         <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Gestión de usuarios<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> En Gestión de usuarios podrás actualizar tu propia información (Número de teléfono y contraseña) o eliminar tu usuario. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser.admin&quot;>"/> Si es administrador, puede crear, actualizar y eliminar todos los usuarios a excepción del usuario root. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;>"/> *Nota: si eliminas tus credenciales de usuario ya no podrás acceder al sistema HERMES. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
