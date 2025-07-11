@@ -1,0 +1,65 @@
+name: BUILD AND DELIVERY HERMES-GUI ARTIFACT
+on: 
+  # pull_request:
+    push:
+    # branches:
+      # ['main']
+      # ['build-action']
+jobs:
+  build:
+  # continuos-integration:
+  # runs-on: ubuntu-latest
+    runs-on: self-hosted
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup node/npm
+        uses: actions/setup-node@v4
+        with:
+          cache-dependency-path: ./package-lock.json
+          node-version: '18.19.0'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run:  npm install --legacy-peer-deps
+
+      # - name: Make .env file
+      #   uses: SpicyPizza/create-envfile@v2.0
+      #   with:
+      #     envkey_LOCAL: true
+      #     envkey_PRODUCTION: false
+      #     envkey_DOMAIN: estacao4.hermes.radio
+      #     envkey_GATEWAY: true
+      #     envkey_BITX: S
+      #     envkey_HAS_GPS: true
+      #     envkey_GPS_MAP: brazil
+      #     envkey_REQUIRE_LOGIN: false
+      #     envkey_EMERGENCY_EMAIL: help@hermes.radio
+
+      - name: Make environments file
+        run: npx ts-node setEnv.ts
+        working-directory: ./ 
+
+      - name: Build project
+        run: ng build
+        working-directory: ./src/
+
+      - name: Run unit tests via Karma
+        run: ng test
+        working-directory: ./src/
+
+    # opening browser (maybe cypress config)
+    # - name: Run e2e tests
+    #   uses: cypress-io/github-action@v6
+    #   with:
+    #     build: npm run build
+    #     start: npm start
+    #     working-directory: ./src/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hermes-gui-artifact
+          path: ./dist/hermes
+
+    

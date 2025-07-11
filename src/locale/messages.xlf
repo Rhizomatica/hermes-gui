@@ -356,6 +356,10 @@
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
           <context context-type="linenumber">22</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/sms/sms.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="customerrordatehour" datatype="html">
         <source>Date Hour: </source>
@@ -695,7 +699,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="bitrate" datatype="html">
-        <source>Bitrate(bps)</source>
+        <source>Bitrate</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
           <context context-type="linenumber">102,105</context>
@@ -1912,7 +1916,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="transmissioncardalertmesage" datatype="html">
-        <source> Data connection on going... Voice mode blocked </source>
+        <source> Data connection ongoing... Voice mode blocked </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
           <context context-type="linenumber">9,12</context>
@@ -2508,7 +2512,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="operatortransmissionstatuslabel" datatype="html">
-        <source> Radio connected - Data/Voice connection on going... </source>
+        <source> Radio connected - Data/Voice connection ongoing... </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
           <context context-type="linenumber">12,14</context>
@@ -2652,6 +2656,20 @@
           <context context-type="linenumber">243,247</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="radioprotectionoperator" datatype="html">
+        <source>Radio protection activated. Reset the protection, reconfigure your radio settings and try again. For more details: Reset Protection <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;&apos;resetprotection&apos;&quot;&gt;"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">273,274</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resetprotectionbutton" datatype="html">
+        <source> reset protection </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">277,279</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="sentmessages" datatype="html">
         <source>Sent Messages </source>
         <context-group purpose="location">
@@ -2742,7 +2760,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sms/sms.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/smschat/smschat.component.html</context>
@@ -2768,7 +2786,7 @@
         <source>There was an error on processing your request </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sms/sms.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/smschat/smschat.component.html</context>
@@ -3055,7 +3073,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="hintusermanagement" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> In User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser.admin&quot;&gt;"/> If you are an administrator you can create, update and delete all users with exception of the root user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;&gt;"/> *Note: if you delete your user credentials you won&apos;t be able to access the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;&gt;"/>User management<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> In User management you can update your own information (Phone number and password) or delete your user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p *ngIf=&quot;currentUser &amp;&amp; currentUser.admin&quot;&gt;"/> If you are an administrator you can create, update and delete all users with exception of the root user. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH_2" equiv-text="&lt;p class=&quot;m-t-25&quot;&gt;"/> *Note: if you delete your user credentials you won&apos;t be able to access the HERMES system anymore. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
           <context context-type="linenumber">375,384</context>
