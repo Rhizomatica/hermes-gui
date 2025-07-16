@@ -8,63 +8,63 @@
 </div>
 <div class="phonemenu">
   <a routerLink="/home" i18n="@@radiovoicemenu">
-    <img title="home" src="assets/svg/house.svg">
+    <img title="home" src="assets/svg/home.svg">
     Home
   </a>
   <a routerLink="/voice" i18n="@@voicemenu" *ngIf="showVoiceMenuItem && radio.p1_freq">
-    <img title="voice" src="assets/svg/walkie-talkie.svg">
+    <img title="voice" src="assets/svg/waveform.svg">
     Voice
   </a>
   <a routerLink="/messages" i18n="@@messagemenu">
-    <img title="messages" src="assets/svg/comment.svg">
+    <img title="messages" src="assets/svg/message-text.svg">
     Messages
   </a>
   <a routerLink="/email" i18n="@@emailmenu">
-    <img title="email" src="assets/svg/envelope.svg">
+    <img title="email" src="assets/svg/email.svg">
     Email
   </a>
   <!-- <a routerLink="/sms" i18n="@@smsmessagemenu">
     <img title="sms" src="assets/svg/paper-plane.svg">
     SMS Message
   </a> -->
-  <!-- <a routerLink="/operator" i18n="@@operatorpanelmenu">
-    <img title="operator panel" src="assets/svg/walkie-talkie.svg">
+  <a routerLink="/operator" i18n="@@operatorpanelmenu">
+    <img title="operator panel" src="assets/svg/radio-handheld.svg">
     Operator Panel
-  </a> -->
+  </a>
   <a routerLink="/radio-config" i18n="@@radioconfigmenu">
-    <img title="radio-config" src="assets/svg/ham-radio.svg">
+    <img title="radio-config" src="assets/svg/radio.svg">
     Radio Configuration
   </a>
   <a routerLink="/user-manage" i18n="@@usermanagegmenu" *ngIf="!requireLogin || (requireLogin && admin)">
-    <img title="user-manage" src="assets/svg/circle-user.svg">
+    <img title="user-manage" src="assets/svg/account-group.svg">
     User management
   </a>
   <a routerLink="/message-config" i18n="@@messageadmmenu" *ngIf="admin">
-    <img src="assets/svg/comment-config.svg">
+    <img src="assets/svg/message-text.svg">
     Message configuration
   </a>
   <a routerLink="/schedule" i18n="@@schedulingmenu" *ngIf="isGateway && admin">
-    <img src="assets/svg/clock.svg">
+    <img src="assets/svg/clock-time-eight.svg">
     Transmission schedule
   </a>
   <a routerLink="/transmission" i18n="@@transmissionlistmenu" *ngIf="admin">
-    <img src="assets/svg/transmit-antenna.svg">
+    <img src="assets/svg/transmission-tower-export.svg">
     Transmission list
   </a>
   <a routerLink="/station-info" i18n="@@stationinformationmenu" *ngIf="admin">
-    <img src="assets/svg/broadcast-tower.svg">
+    <img src="assets/svg/transmission-tower.svg">
     Station information
   </a>
   <a routerLink="/wifi-manage" i18n="@@wifimanagermenu" *ngIf="admin">
-    <img src="assets/svg/wifi-solid.svg">
+    <img src="assets/svg/wifi-cog.svg">
     Wi-Fi & Ethernet manager
   </a>
   <a routerLink="/gps" i18n="@@gpsgeolocationmenu" *ngIf="hasGPS">
-    <img src="assets/svg/globe-americas.svg">
+    <img src="assets/svg/crosshairs-gps.svg">
     GPS Geolocation
   </a>
   <a routerLink="/log" i18n="@@detailedlogmenu" *ngIf="admin">
-    <img src="assets/svg/compass.svg">
+    <img src="assets/svg/alert.svg">
     Detailed log
   </a>
   <a routerLink="/login" i18n="@@loginmenu" *ngIf="!currentUser">
@@ -72,7 +72,7 @@
     Login
   </a>
   <a routerLink="" (click)="logout()" *ngIf="currentUser">
-    <img src="assets/svg/sign-out-alt-solid.svg">
+    <img src="assets/svg/logout.svg">
     <span class="logged" i18n="@@logoutmenu">
       Logout
     </span>
