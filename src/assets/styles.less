@@ -83,6 +83,7 @@ button {
     line-height: 2.1em;
     font-size: 1em;
     height: 40px;
+    border-radius: 3px;
   }
 
 
@@ -324,7 +325,6 @@ label {
 textarea {
   resize: vertical;
   width: 100%;
-  background-color: @mclr;
   color: @bkclr;
 }
 
@@ -719,8 +719,6 @@ input:checked+.slider:before {
     }
   }
 
-
-
   input.midbt {
     width: 60%;
     margin-right: 0.1em;
@@ -731,11 +729,12 @@ input:checked+.slider:before {
     float: right;
     position: relative;
     padding: 0.35em;
-    width: 25%;
+    width: 27%;
     font-size: 0.4em;
     line-height: 0.85em;
     height: 3em;
     margin-left: 0.1em;
+    border-radius:3px
   }
 
   p {
@@ -1574,7 +1573,7 @@ tr:nth-child(odd) {
   display: block;
   text-align: center;
   font-size: 0.8em;
-  width: 95%;
+  width: 20.6rem;
   height: 8.5em;
   line-height: 1em;
   background-color: @bkclr;
@@ -1613,7 +1612,7 @@ tr:nth-child(odd) {
 }
 
 .card-icon img {
-  width: 20%;
+  width: 3rem;
 }
 
 .m-t-10 {
@@ -2150,6 +2149,10 @@ video {
     background-color: @mclr;
   }
 
+  textarea {
+    background-color: @mclr;
+  }  
+
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #ccc;
@@ -2517,6 +2520,10 @@ video {
 
   .card {
     width: 19.5em;
+
+    .card-title {
+      font-size: 1em;
+    }
   }
 
   .shut button.midbt {
@@ -2712,6 +2719,10 @@ video {
     width: 100%;
     height: 23vmin;
 
+    .card-title {
+      font-size: .8em;
+    }
+
     img {
       width: 7vmin;
     }
@@ -2839,6 +2850,10 @@ video {
 
   .radio {
     display: inline;
+
+    form{
+      font-size: 1.2rem;
+    }
   }
 
   .formfield {
