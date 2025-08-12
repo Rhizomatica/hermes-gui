@@ -46,14 +46,12 @@
       </label>
       <label for="name">
         <span i18n="@@description">Subject</span>
-        <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140"
-          i18n-placeholder placeholder="Describe your message" />
+        <br /><input i18n="@@describemessage" name="name" [(ngModel)]="message.name" required maxlength="140" />
       </label>
       <label for="text">
         <span i18n="@@messageComposeLabel">Message</span>
         <br />
-        <textarea name="text" [(ngModel)]="message.text" required rows="8" cols="35" maxlength="1400" i18n-placeholder
-          placeholder="write the message"></textarea>
+        <textarea name="text" [(ngModel)]="message.text" required rows="8" cols="35" maxlength="1400" ></textarea>
       </label>
       <div class="uploader m-t-25" *ngIf="allowUpload">
         <ng-container>

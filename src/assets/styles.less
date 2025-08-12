@@ -83,6 +83,7 @@ button {
     line-height: 2.1em;
     font-size: 1em;
     height: 40px;
+    border-radius: 3px;
   }
 
 
@@ -324,7 +325,6 @@ label {
 textarea {
   resize: vertical;
   width: 100%;
-  background-color: @mclr;
   color: @bkclr;
 }
 
@@ -719,8 +719,6 @@ input:checked+.slider:before {
     }
   }
 
-
-
   input.midbt {
     width: 60%;
     margin-right: 0.1em;
@@ -731,11 +729,13 @@ input:checked+.slider:before {
     float: right;
     position: relative;
     padding: 0.35em;
-    width: 25%;
-    font-size: 0.4em;
+    width: 27%;
+    font-size: .6em;
     line-height: 0.85em;
     height: 3em;
     margin-left: 0.1em;
+    border-radius:3px;
+    top: 11px;
   }
 
   p {
@@ -1574,7 +1574,7 @@ tr:nth-child(odd) {
   display: block;
   text-align: center;
   font-size: 0.8em;
-  width: 95%;
+  width: 20.6rem;
   height: 8.5em;
   line-height: 1em;
   background-color: @bkclr;
@@ -1613,7 +1613,7 @@ tr:nth-child(odd) {
 }
 
 .card-icon img {
-  width: 20%;
+  width: 3rem;
 }
 
 .m-t-10 {
@@ -1796,6 +1796,7 @@ tr:nth-child(odd) {
     margin: 0.5em 1%;
     line-height: 35px;
     box-shadow: @boxshadow;
+    width: 48%;
   }
 }
 
@@ -2150,6 +2151,10 @@ video {
     background-color: @mclr;
   }
 
+  textarea {
+    background-color: @mclr;
+  }  
+
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #ccc;
@@ -2436,7 +2441,16 @@ video {
 
 //Responsive
 
-@media (max-width: 800px) and (min-width: 700px) {
+@media (max-width: 11700px) {
+
+  .card {
+    width: 20em;
+  }
+
+}
+
+
+@media (max-width: 900px) {
 
   .formfield {
     padding-right: 3em;
@@ -2516,11 +2530,15 @@ video {
   }
 
   .card {
-    width: 19.5em;
+    width: 18em;
+
+    .card-title {
+      font-size: 1em;
+    }
   }
 
   .shut button.midbt {
-    width: 22em;
+    width: 20.5em;
   }
 
 
@@ -2539,7 +2557,7 @@ video {
         }
 
         .data-body {
-          font-size: 0.9em;
+          font-size: 0.8em;
 
           button {
             margin: 8px;
@@ -2712,6 +2730,10 @@ video {
     width: 100%;
     height: 23vmin;
 
+    .card-title {
+      font-size: .8em;
+    }
+
     img {
       width: 7vmin;
     }
@@ -2839,6 +2861,10 @@ video {
 
   .radio {
     display: inline;
+
+    form{
+      font-size: 1.2rem;
+    }
   }
 
   .formfield {
@@ -2959,67 +2985,67 @@ video {
   }
 }
 
-@media (min-width:720px) {
+// @media (min-width:720px) {
 
-  input,
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  body {}
+//   input,
+//   input[type="text"],
+//   input[type="number"],
+//   input[type="email"],
+//   input[type="tel"],
+//   body {}
 
-  input[type="password"],
-  input[type="search"],
-  option,
-  select,
-  textarea {
-    font-size: 1em;
-  }
+//   input[type="password"],
+//   input[type="search"],
+//   option,
+//   select,
+//   textarea {
+//     font-size: 1em;
+//   }
 
-  button {
-    font-size: 1em;
-    padding: 0.3em 0.5em;
-  }
+//   button {
+//     font-size: 1em;
+//     padding: 0.3em 0.5em;
+//   }
 
-  #spaceadm {
-    height: 2em;
-    display: block;
-  }
+//   #spaceadm {
+//     height: 2em;
+//     display: block;
+//   }
 
-  input[type="file"] {
-    font-size: 1em;
-  }
+//   input[type="file"] {
+//     font-size: 1em;
+//   }
 
-  .space {
-    line-height: 1.5em;
-  }
+//   .space {
+//     line-height: 1.5em;
+//   }
 
-  .formdata {
-    button.midbt {
-      font-size: 0.8em;
-      line-height: 0.85em;
-      height: 2.4em;
-      margin-left: 0.1em;
-      margin-top: 0.6em;
-      width: min-content;
-      padding: 6px;
+//   .formdata {
+//     button.midbt {
+//       font-size: 0.8em;
+//       line-height: 0.85em;
+//       height: 2.4em;
+//       margin-left: 0.1em;
+//       margin-top: 0.6em;
+//       width: min-content;
+//       padding: 6px;
 
-    }
+//     }
 
-    input.midbt {
-      height: 1.9em;
-    }
-  }
+//     input.midbt {
+//       height: 1.9em;
+//     }
+//   }
 
-  .messages {
-    .size {
-      line-height: 1em;
-    }
-  }
+//   .messages {
+//     .size {
+//       line-height: 1em;
+//     }
+//   }
 
-  .radio {
-    form {
-      width: 48%;
-    }
-  }
-}
+//   .radio {
+//     form {
+//       width: 48%;
+//     }
+//   }
+// }

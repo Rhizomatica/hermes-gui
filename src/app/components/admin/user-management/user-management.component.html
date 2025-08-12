@@ -16,7 +16,7 @@
     <div>
       <ng-container *ngIf="!isEditing">
         <div id="userlist" class="multiplist2 users m-t-10">
-          <input id="searchbox1" [(ngModel)]="searchUser" placeholder="search" i18n-placeholder />
+          <input id="searchbox1" [(ngModel)]="searchUser" placeholder="search" />
           <div class="userlist" *ngFor="let user of users | filter:searchUser;" (click)="onSelect(user)">
             <div class="adm">
               <span *ngIf="user.admin" class="alert">
@@ -34,15 +34,13 @@
     <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
       <label for="email">
         Email
-        <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required i18n-placeholder
-          placeholder="write the username" (focusout)="checkFullName(selectedUser.name)" maxlength="100">
+        <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required (focusout)="checkFullName(selectedUser.name)" maxlength="100">
       </label>
       <a>{{selectedUser.email + '@' + domain}}</a>
       <label for="name">
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
-        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required i18n-placeholder
-          placeholder="write your full name" class="required" (focusout)="checkFullName(selectedUser.name)"
+        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required (focusout)="checkFullName(selectedUser.name)"
           maxlength="100" />
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
@@ -50,8 +48,7 @@
       </div>
       <label>
         <span i18n="@@phonenumber">Phone number</span>
-        <br /><input name="phone" [(ngModel)]="selectedUser.phone" i18n-placeholder placeholder="phone number"
-          maxlength="25" />
+        <br /><input name="phone" [(ngModel)]="selectedUser.phone" maxlength="25" />
       </label>
       <div class="selector"></div>
       <hr>
@@ -60,14 +57,12 @@
         <label for="passwd">
           <span i18n="@@passwordlabeluser">Password</span>
           <input id="password" name="password" type="password" required [(ngModel)]="selectedUser.password"
-            minlength="6" (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderpassword"
-            i18n-placeholder placeholder="password" />
+            minlength="6" (input)="checkpass(selectedUser.password,repasswd)" />
         </label>
         <label for="repasswd">
           <span i18n="@@retypethepassword">Retype the password</span>
           <input type="password" [(ngModel)]="repasswd" [ngModelOptions]="{standalone: true}" minlength="6"
-            (input)="checkpass(selectedUser.password,repasswd)" i18n="@@placeholderretypepassword" i18n-placeholder
-            placeholder="retype password" />
+            (input)="checkpass(selectedUser.password,repasswd)" />
         </label>
         <div [hidden]=!passunMatch class="error" i18n="@@passdontmatchuser">
           passwords don't match
