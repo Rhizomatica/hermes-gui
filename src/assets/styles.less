@@ -730,11 +730,12 @@ input:checked+.slider:before {
     position: relative;
     padding: 0.35em;
     width: 27%;
-    font-size: 0.4em;
+    font-size: .6em;
     line-height: 0.85em;
     height: 3em;
     margin-left: 0.1em;
-    border-radius:3px
+    border-radius:3px;
+    top: 11px;
   }
 
   p {
@@ -1795,6 +1796,7 @@ tr:nth-child(odd) {
     margin: 0.5em 1%;
     line-height: 35px;
     box-shadow: @boxshadow;
+    width: 48%;
   }
 }
 
@@ -2439,7 +2441,16 @@ video {
 
 //Responsive
 
-@media (max-width: 800px) and (min-width: 700px) {
+@media (max-width: 11700px) {
+
+  .card {
+    width: 20em;
+  }
+
+}
+
+
+@media (max-width: 900px) {
 
   .formfield {
     padding-right: 3em;
@@ -2519,7 +2530,7 @@ video {
   }
 
   .card {
-    width: 19.5em;
+    width: 18em;
 
     .card-title {
       font-size: 1em;
@@ -2527,7 +2538,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 22em;
+    width: 20.5em;
   }
 
 
@@ -2546,7 +2557,7 @@ video {
         }
 
         .data-body {
-          font-size: 0.9em;
+          font-size: 0.8em;
 
           button {
             margin: 8px;
@@ -2974,67 +2985,67 @@ video {
   }
 }
 
-@media (min-width:720px) {
+// @media (min-width:720px) {
 
-  input,
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  body {}
+//   input,
+//   input[type="text"],
+//   input[type="number"],
+//   input[type="email"],
+//   input[type="tel"],
+//   body {}
 
-  input[type="password"],
-  input[type="search"],
-  option,
-  select,
-  textarea {
-    font-size: 1em;
-  }
+//   input[type="password"],
+//   input[type="search"],
+//   option,
+//   select,
+//   textarea {
+//     font-size: 1em;
+//   }
 
-  button {
-    font-size: 1em;
-    padding: 0.3em 0.5em;
-  }
+//   button {
+//     font-size: 1em;
+//     padding: 0.3em 0.5em;
+//   }
 
-  #spaceadm {
-    height: 2em;
-    display: block;
-  }
+//   #spaceadm {
+//     height: 2em;
+//     display: block;
+//   }
 
-  input[type="file"] {
-    font-size: 1em;
-  }
+//   input[type="file"] {
+//     font-size: 1em;
+//   }
 
-  .space {
-    line-height: 1.5em;
-  }
+//   .space {
+//     line-height: 1.5em;
+//   }
 
-  .formdata {
-    button.midbt {
-      font-size: 0.8em;
-      line-height: 0.85em;
-      height: 2.4em;
-      margin-left: 0.1em;
-      margin-top: 0.6em;
-      width: min-content;
-      padding: 6px;
+//   .formdata {
+//     button.midbt {
+//       font-size: 0.8em;
+//       line-height: 0.85em;
+//       height: 2.4em;
+//       margin-left: 0.1em;
+//       margin-top: 0.6em;
+//       width: min-content;
+//       padding: 6px;
 
-    }
+//     }
 
-    input.midbt {
-      height: 1.9em;
-    }
-  }
+//     input.midbt {
+//       height: 1.9em;
+//     }
+//   }
 
-  .messages {
-    .size {
-      line-height: 1em;
-    }
-  }
+//   .messages {
+//     .size {
+//       line-height: 1em;
+//     }
+//   }
 
-  .radio {
-    form {
-      width: 48%;
-    }
-  }
-}
+//   .radio {
+//     form {
+//       width: 48%;
+//     }
+//   }
+// }
