@@ -191,12 +191,6 @@ hr {
   border-right: 0;
 }
 
-
-h2 {
-  font-size: 1.1em;
-  margin-bottom: 1em;
-}
-
 button {
   border: 0;
   background-color: @clr;
@@ -243,8 +237,6 @@ a:visited.dark-mode {
   font-size: 0.9em;
 }
 
-
-
 nav {
   font-size: 0.6em;
   font-family: "Rubik-regular";
@@ -257,7 +249,6 @@ nav {
   padding: 2px 15px 2px 0px;
   top: 0;
   box-shadow: @boxshadow;
-
 
   a {
     text-decoration: none;
@@ -553,9 +544,6 @@ input:checked+.slider:before {
   top: 0.15em;
 }
 
-
-
-
 .userstatus {
   position: absolute;
   top: 0;
@@ -666,8 +654,6 @@ input:checked+.slider:before {
   text-align: center;
 }
 
-
-
 .navicons {
   position: relative;
   padding-top: 0.1em;
@@ -685,7 +671,6 @@ input:checked+.slider:before {
   text-align: right;
 }
 
-
 .supicons {
   position: absolute;
   top: 0.25em;
@@ -696,11 +681,9 @@ input:checked+.slider:before {
   }
 }
 
-
 .btn:hover {
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
-
 
 .formdata {
 
@@ -734,7 +717,7 @@ input:checked+.slider:before {
     line-height: 0.85em;
     height: 3em;
     margin-left: 0.1em;
-    border-radius:3px;
+    border-radius: 3px;
     top: 11px;
   }
 
@@ -764,8 +747,6 @@ input:checked+.slider:before {
     margin-top: 10px;
   }
 }
-
-
 
 #radioconf {
   .card {
@@ -816,8 +797,6 @@ input:checked+.slider:before {
     margin-bottom: 0.2em;
   }
 }
-
-
 
 .field {
   padding: 10px 0 15px;
@@ -896,8 +875,6 @@ input:checked+.slider:before {
     border-top: #999 1px solid;
   }
 }
-
-
 
 .multiplist2 {
   display: block;
@@ -992,7 +969,6 @@ input:checked+.slider:before {
   }
 }
 
-
 #messagecompose {
   textarea {
     width: 100%;
@@ -1006,13 +982,10 @@ input:checked+.slider:before {
 
 }
 
-
 .formfield input.searchbox {
   position: relative;
   right: 0;
 }
-
-
 
 input.searchbox2 {
   position: relative;
@@ -1410,7 +1383,6 @@ input.ng-invalid {
   }
 }
 
-
 .dr {
   display: inline-block;
   width: 2em;
@@ -1709,7 +1681,6 @@ tr:nth-child(odd) {
   img {
     width: 2em;
   }
-
 
   span {
     font-size: 1em;
@@ -2153,7 +2124,7 @@ video {
 
   textarea {
     background-color: @mclr;
-  }  
+  }
 
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -2441,12 +2412,89 @@ video {
 
 //Responsive
 
-@media (max-width: 11700px) {
+// @media (max-width: 11700px) {
 
-  .card {
-    width: 20em;
+//   .card {
+//     width: 20em;
+//   }
+
+// }
+
+
+@media (max-width: 1300px) {
+  body {
+    font-size: 0.9rem;
   }
 
+  h1 {
+    font-size: 1em;
+  }
+
+  h2 {
+    font-size: 0.9em;
+  }
+
+  h3 {
+    font-size: 0.9em;
+  }
+
+  input, input[type=text], input[type=number], input[type=email], input[type=tel], input[type=password], input[type=search], option, select {
+    font-size: 0.9em;
+}
+
+  #radioconf {
+    .card {
+      line-height: 1.3em;
+      width: 12.5rem;
+
+      small {
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  .card {
+    width: 24em;
+    height: 12em;
+
+    .card-icon img {
+      width: 68px;
+    }
+  }
+
+  .shut button.midbt {
+    width: 20.5em;
+    font-size: .6rem !important;
+  }
+
+  .radio form {
+    width: 44%;
+  }
+
+  .formdata button.midbt {
+    font-size: .9em;
+    margin-top: 0;
+    width: 33%;
+  }
+
+  .radio-config-label {
+    font-size: .8rem !important;
+    font-weight: 600;
+  }
+
+  nav img {
+    width: 2em;
+  }
+
+
+
+  .formfield {
+    padding-right: 4em;
+    padding-left: 4em;
+    top: 10em;
+  }
+
+  
 }
 
 
@@ -2462,7 +2510,6 @@ video {
   .formfield.radio-config {
     max-width: 100%;
   }
-
 
   .half-row {
     width: 100%;
@@ -2530,7 +2577,7 @@ video {
   }
 
   .card {
-    width: 18em;
+    width: 17em;
 
     .card-title {
       font-size: 1em;
@@ -2862,7 +2909,7 @@ video {
   .radio {
     display: inline;
 
-    form{
+    form {
       font-size: 1.2rem;
     }
   }
@@ -2984,68 +3031,3 @@ video {
     }
   }
 }
-
-// @media (min-width:720px) {
-
-//   input,
-//   input[type="text"],
-//   input[type="number"],
-//   input[type="email"],
-//   input[type="tel"],
-//   body {}
-
-//   input[type="password"],
-//   input[type="search"],
-//   option,
-//   select,
-//   textarea {
-//     font-size: 1em;
-//   }
-
-//   button {
-//     font-size: 1em;
-//     padding: 0.3em 0.5em;
-//   }
-
-//   #spaceadm {
-//     height: 2em;
-//     display: block;
-//   }
-
-//   input[type="file"] {
-//     font-size: 1em;
-//   }
-
-//   .space {
-//     line-height: 1.5em;
-//   }
-
-//   .formdata {
-//     button.midbt {
-//       font-size: 0.8em;
-//       line-height: 0.85em;
-//       height: 2.4em;
-//       margin-left: 0.1em;
-//       margin-top: 0.6em;
-//       width: min-content;
-//       padding: 6px;
-
-//     }
-
-//     input.midbt {
-//       height: 1.9em;
-//     }
-//   }
-
-//   .messages {
-//     .size {
-//       line-height: 1em;
-//     }
-//   }
-
-//   .radio {
-//     form {
-//       width: 48%;
-//     }
-//   }
-// }
