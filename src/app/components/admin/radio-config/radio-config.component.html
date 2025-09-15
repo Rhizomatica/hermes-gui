@@ -192,9 +192,10 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round-uc one-color" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
+              <span class="slider round" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
                 [checked]="modeSwitch"></span>
             </div>
+            
             <span>LSB</span>
             <hint [showHint]="false" [hint]="'mode'"></hint>
           </div>
@@ -206,7 +207,7 @@
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
-              <span class="slider round-uc one-color" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
+              <span class="slider round" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
                 [checked]="voiceModeSwitch"></span>
             </div>
             <span>LSB</span>
@@ -313,7 +314,7 @@
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
-              <span class="slider round-uc one-color" (click)="changeProfile($event)" value="{{radio.profile}}"
+              <span class="slider round" (click)="changeProfile($event)" value="{{radio.profile}}"
                 [checked]="toggleProfile"></span>
             </div>
             <span i18n="@@voiceLabel">Voice</span>
