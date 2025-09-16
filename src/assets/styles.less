@@ -2412,7 +2412,19 @@ video {
 
 //-------------------------Responsive
 
-@media (max-width: 700px) {
+
+@media (max-width: 1300px) {
+  body {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  table {
+    font-size: 1.4rem;
+  }
 
   input,
   input[type="text"],
@@ -2423,364 +2435,141 @@ video {
   input[type="search"],
   option,
   select {
-    line-height: 2em;
-    font-size: 1em;
+    height: 3.2rem;
+  }
+
+  textarea {
+    font-size: 1.5rem;
   }
 
   p {
-    line-height: 30px;
+    font-size: 1.6rem;
   }
 
-  table {
-    border: 0;
-    width: 100%;
-    table-layout: fixed;
+  nav .nav-domain,
+  nav .nav-frequency,
+  nav .nav-operation-mode {
+    right: 6%;
   }
 
-  table caption {
-    font-size: 1.3em;
-  }
-
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  table tr {
-    display: block;
-    margin-bottom: .3em;
-  }
-
-  table td {
-    display: block;
-    word-wrap: break-word;
-    padding: 15px;
-    border-bottom: 0.5px solid rgb(163, 163, 163);
-
-    input.midbt {
-      width: 60% !important;
-      margin-right: 0.1em;
-    }
-  }
-
-  table td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  table td:last-child {
-    border-bottom: 0;
-  }
-
-  .span-table {
-    display: flex;
-    flex-direction: column;
-    padding: 0 0 15px;
-  }
-
-  nav {
-    .logo {
-      width: 8.5em;
-    }
-  }
-
-  .navmain {
-    justify-content: left;
-    position: left;
-
-    a {
-      min-width: calc(58% - 0.25em);
-    }
-  }
-
-  .formdata {
-    button.midbt {
-      font-size: 0.7em;
-      margin-top: 0.6em;
-    }
-
-    input {
-      font-size: 0.9em;
-    }
-  }
-
-  .flexible .card {
-    margin-left: 0.6vw;
-    width: 45vw;
+  nav img {
+    width: 1.8em;
   }
 
   .card {
-    flex-direction: column;
-    padding: 2vmin;
-    margin: 1vmin;
-    width: 100%;
-    height: 23vmin;
-
-    .card-title {
-      font-size: .8em;
-    }
-
-    img {
-      width: 7vmin;
-    }
+    width: 21.5em;
   }
 
-
-  #radioconf {
-    .card {
-      line-height: 1.3em;
-      width: 48%;
-      height: 7em;
-
-      small {
-        font-size: 0.8em;
-      }
-    }
-  }
-
-  .messages {
-    .date {
-      max-width: 20%;
-      line-height: 1em;
-    }
-  }
-
-  .shut {
-
-    width: 95vw;
-
-    button.midbt {
-      font-size: 0.8em;
-      height: 15vmin;
-      width: 45vw;
-      margin-right: 5vw;
-    }
-  }
-
-  .card-icon {
-    margin-bottom: 0;
-    margin-top: 0.5em;
-  }
-
-  .home {
-    display: grid;
-    height: 72vh;
-
-    h1 {
-      font-size: 1.5em;
-      text-align: center;
-    }
-
-    .hello {
-      height: auto;
-
-      h1 {
-        font-size: 3vmin;
-      }
-    }
-
-    h4 {
-      font-size: 3vmin;
-      margin-bottom: 0px;
-      text-align: left;
-    }
-  }
-
-  .btn-messages-lading {
-    background-color: @bkclr;
-    display: inline;
-    width: 100%;
+  .breadcrumb {
+    top: 110px;
     padding: 1em;
-
-    a {
-      font-size: 1.5em;
-      margin-top: 10px;
-      text-decoration: none;
-    }
-
-    a>img {
-      margin: auto;
-    }
   }
 
-  .btn-mail-lading {
-    background-color: @clr;
-    display: inline;
-    width: 100%;
-    padding: 1em;
-
-    a {
-      font-size: 1.5em;
-      margin-top: 10px;
-      text-decoration: none;
-      color: @bkclr;
-    }
-
-    a>img {
-      margin: auto;
-      filter: invert(100%);
-    }
+  .breadcrumb a {
+    font-size: 1.4rem;
   }
 
-  .hello {
-    display: inline;
-    background-color: @clr;
-    width: 100%;
-    padding: 30px 10px 10px 10px;
-    line-height: 20px;
-    text-align: justify;
-    height: 60vh;
-    text-justify: left;
-    font-size: 4vw;
+  .card-icon img {
+    width: 3.9em;
   }
 
-  .footerinfo {
-    font-size: 0.8em;
+  .email a .card {
+    min-width: 34.5rem;
   }
 
-  .multiplist3 {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9em;
-    width: 100%;
-  }
-
-  .radio {
-    display: inline;
-
-    form {
-      font-size: 1.2rem;
-    }
+  .shut button.midbt {
+    font-size: .7em;
+    height: 4.6em;
+    border-radius: 3px;
+    width: 24.5em;
   }
 
   .formfield {
-    padding-right: 3em;
-    padding-left: 3em;
     max-width: 100%;
     margin-left: 0%;
-    padding: 0.5em;
-    top: 6em;
-    height: fit-content;
+    padding: 0 2em;
+  }
+
+  .formfield #searchbox1 {
+    height: 3.2rem;
+    font-size: .9em;
+  }
+
+  .formdata label input {
+    height: 3.2rem;
+    font-size: 1.4rem;
+  }
+
+  .formdata button.midbt {
+    font-size: .6em;
+    height: 3.2rem;
+  }
+
+  .formdata input.midbt {
+    width: 60%;
+    margin-right: .1em;
+    height: 3.2rem;
+    font-size: 1.4rem;
   }
 
   .formfield.radio-config {
     max-width: 100%;
   }
 
-  .topuser {
-    display: none;
+  .radio form {
+    border-radius: 3px;
+    padding: .5em 1em 1em;
+    line-height: 1em;
+    margin: .2em;
+    width: 48%
   }
 
-  .messages {
-
-    .maininfo {
-      flex-direction: row;
-    }
-
-    .info {
-      flex-direction: row-reverse;
-      padding-left: 8px;
-    }
-
-    a {
-      word-wrap: break-word;
-    }
+  .transciever-panel .data {
+    padding: 10px 30px;
   }
 
-  .half-row {
-    width: 100%;
-    margin-top: 25px;
-    margin-left: 0px;
+  .transciever-panel .data .data-body {
+    font-size: 0.9em;
   }
 
-  .fullfrequency {
-    display: inline-block;
-    width: 500px;
-    font-size: 3rem;
-    line-height: 5rem;
+  .transciever-panel .data .data-body.frequency {
+    font-size: 2.5em;
   }
 
-  .hidden-xs {
-    display: none;
+  .transciever-panel .data .data-title {
+    font-size: 0.9em;
   }
 
-  .breadcrumb {
-    padding-left: 2%;
-    top: 60px;
+  .slider {
+    top: 0 !important
   }
 
-  .phonemenu {
-    img {
-      width: 8%;
-    }
+  .slider:before {
+    top: 0 !important;
   }
 
-  .radiovoice {
-    .transciever-panel {
-
-      .data {
-
-        padding: 15px;
-        margin: 5px;
-
-
-        .data-title {
-          font-size: 1.1em;
-          padding-bottom: 15px;
-        }
-
-        .data-body {
-          font-size: 1.1em;
-
-          button {
-            margin: 8px;
-          }
-        }
-
-        .data-body.frequency {
-          font-size: 2.8em;
-        }
-      }
-    }
+  .switch {
+    height: 28px;
   }
 
-  .login-button {
-    margin-top: 0;
-    margin-bottom: 10px;
+  .location {
+    margin-top: 70px;
   }
 
-  .operator-panel {
-
-    .data {
-      width: 50%;
-    }
-
-    .data-graph {
-      width: 100%;
-    }
+  .float .floatbutton {
+    height: 1.5em;
   }
 
-  .alertcard {
-    width: 96%;
-  }
-
-  .email a {
-    .card {
-      min-width: 50%;
-    }
-  }
+  // .cv-hint p {
+  //   font-size: 1.6rem;
+  // }
 }
 
-
 @media (max-width: 900px) {
+
+  body {
+    font-size: 1.4rem;
+  }
 
   .formfield {
     padding-right: 3em;
@@ -2867,7 +2656,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 20.5em;
+    width: 19.5em;
   }
 
 
@@ -2947,18 +2736,8 @@ video {
   }
 }
 
-@media (max-width: 1300px) {
-  body {
-    font-size: 2rem;
-  }
 
-  p {
-    font-size: 1.4rem;
-  }
-
-  table {
-    font-size: 1.4rem;
-  }
+@media (max-width: 700px) {
 
   input,
   input[type="text"],
@@ -2969,121 +2748,382 @@ video {
   input[type="search"],
   option,
   select {
-    height: 3.2rem;
+    line-height: 2em;
+    font-size: 1em;
   }
 
-  textarea {
-    font-size: 1.5rem;
+  p {
+    line-height: 30px;
+    font-size: 1.4rem;
+  }
+
+  table {
+    border: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: .3em;
+  }
+
+  table td {
+    display: block;
+    word-wrap: break-word;
+    padding: 15px;
+    border-bottom: 0.5px solid rgb(163, 163, 163);
+
+    input.midbt {
+      width: 60% !important;
+      margin-right: 0.1em;
+    }
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  .span-table {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 15px;
+  }
+
+  nav {
+    .logo {
+      width: 8.5em;
+    }
+  }
+
+  .navmain {
+    justify-content: left;
+    position: left;
+
+    a {
+      min-width: calc(58% - 0.25em);
+    }
   }
 
   nav .nav-domain,
   nav .nav-frequency,
   nav .nav-operation-mode {
-    right: 6%;
+    right: 12%;
   }
 
-  nav img {
-    width: 1.8em;
+  .formdata {
+    button.midbt {
+      font-size: 0.7em;
+      margin-top: 0;
+      width: 37%;
+      height: 2rem;
+    }
+
+    input {
+      font-size: 0.9em;
+    }
+  }
+
+  .flexible .card {
+    margin-left: 0.6vw;
+    width: 45vw;
   }
 
   .card {
-    width: 21.5em;
+    flex-direction: column;
+    padding: 2vmin;
+    margin: 1vmin;
+    width: 100%;
+    height: 23vmin;
+
+    .card-title {
+      font-size: .8em;
+    }
+
+    img {
+      width: 7vmin;
+    }
   }
 
-  .breadcrumb {
-    top: 110px;
+
+  #radioconf {
+    .card {
+      line-height: 1.3em;
+      width: 48%;
+      height: 7em;
+
+      small {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .messages {
+    .date {
+      max-width: 20%;
+      line-height: 1em;
+    }
+  }
+
+  .shut {
+
+    width: 95vw;
+
+    button.midbt {
+      font-size: 0.8em;
+      height: 15vmin;
+      width: 45vw;
+      margin-right: 5vw;
+    }
+  }
+
+  .card-icon {
+    margin-bottom: 0;
+    margin-top: 0.5em;
+  }
+
+  .home {
+    display: grid;
+    height: 72vh;
+
+    h1 {
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .hello {
+      height: auto;
+
+      h1 {
+        font-size: 3vmin;
+      }
+    }
+
+    h4 {
+      font-size: 3vmin;
+      margin-bottom: 0px;
+      text-align: left;
+    }
+  }
+
+  .btn-messages-lading {
+    background-color: @bkclr;
+    display: inline;
+    width: 100%;
     padding: 1em;
+
+    a {
+      font-size: 1.5em;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    a>img {
+      margin: auto;
+    }
   }
 
-  .breadcrumb a {
-    font-size: 1.4rem;
+  .btn-mail-lading {
+    background-color: @clr;
+    display: inline;
+    width: 100%;
+    padding: 1em;
+
+    a {
+      font-size: 1.5em;
+      margin-top: 10px;
+      text-decoration: none;
+      color: @bkclr;
+    }
+
+    a>img {
+      margin: auto;
+      filter: invert(100%);
+    }
   }
 
-  .card-icon img {
-    width: 3.9em !important;
+  .hello {
+    display: inline;
+    background-color: @clr;
+    width: 100%;
+    padding: 30px 10px 10px 10px;
+    line-height: 20px;
+    text-align: justify;
+    height: 60vh;
+    text-justify: left;
+    font-size: 4vw;
   }
 
-  .email a .card {
-    width: 34.5rem;
+  .footerinfo {
+    font-size: 0.8em;
   }
 
-  .shut button.midbt {
-    font-size: .7em;
-    height: 4.6em;
-    border-radius: 3px;
-    width: 24.5em;
+  .multiplist3 {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+    width: 100%;
+  }
+
+  .radio {
+    display: flex;
+
+    form {
+      font-size: 1rem;
+    }
   }
 
   .formfield {
+    padding-right: 3em;
+    padding-left: 3em;
     max-width: 100%;
     margin-left: 0%;
-    padding: 0 2em;
-  }
-
-  .formfield #searchbox1 {
-    height: 3.2rem;
-    font-size: .9em;
-  }
-
-  .formdata label input {
-    height: 3.2rem;
-    font-size: 1.4rem;
-  }
-
-  .formdata button.midbt {
-    font-size: .6em;
-    height: 3.2rem;
-  }
-
-  .formdata input.midbt {
-    width: 60%;
-    margin-right: .1em;
-    height: 3.2rem;
-    font-size: 1.4rem;
+    padding: 0.5em;
+    top: 6em;
+    height: fit-content;
   }
 
   .formfield.radio-config {
     max-width: 100%;
   }
 
-  .radio form {
-    border-radius: 3px;
-    padding: .5em 1em 1em;
-    line-height: 1em;
-    margin: .2em;
-    width: 48%
+  .topuser {
+    display: none;
   }
 
-  .transciever-panel .data .data-body {
-    font-size: 0.9em;
+  .messages {
+
+    .maininfo {
+      flex-direction: row;
+    }
+
+    .info {
+      flex-direction: row-reverse;
+      padding-left: 8px;
+    }
+
+    a {
+      word-wrap: break-word;
+    }
   }
 
-  .transciever-panel .data .data-body.frequency {
-    font-size: 2.5em;
+  .half-row {
+    width: 100%;
+    margin-top: 25px;
+    margin-left: 0px;
   }
 
-  .transciever-panel .data .data-title {
-    font-size: 0.9em;
+  .fullfrequency {
+    display: inline-block;
+    width: 500px;
+    font-size: 3rem;
+    line-height: 5rem;
   }
 
-  .slider {
-    top: 0 !important
+  .hidden-xs {
+    display: none;
   }
 
-  .slider:before {
-    top: 0 !important;
+  .breadcrumb {
+    padding-left: 2%;
+    top: 40px;
+
+    a {
+      font-size: 0.9rem;
+    }
   }
 
-  .switch {
-    height: 28px;
+  .phonemenu {
+    img {
+      width: 8%;
+    }
   }
 
-  .location {
-    margin-top: 70px;
+  .radiovoice {
+    .transciever-panel {
+
+      .data {
+
+        padding: 15px;
+        margin: 5px;
+
+
+        .data-title {
+          font-size: 1.1em;
+          padding-bottom: 15px;
+        }
+
+        .data-body {
+          font-size: 1.1em;
+
+          button {
+            margin: 8px;
+          }
+        }
+
+        .data-body.frequency {
+          font-size: 2.8em;
+        }
+      }
+    }
   }
 
-  .float .floatbutton {
-    height: 1.5em;
+  .login-button {
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 
+  .operator-panel {
+
+    .data {
+      width: 50%;
+    }
+
+    .data-graph {
+      width: 100%;
+    }
+  }
+
+  .alertcard {
+    width: 96%;
+  }
+
+  .email a {
+    .card {
+      min-width: 50%;
+    }
+  }
+
+  .progressbar[_ngcontent-fhq-c77] {
+    height: 27px;
+  }
+
+  .formdata input.midbt {
+    width: 60%;
+    margin-right: .1em;
+    height: 2rem;
+    font-size: 1rem;
+  }
 }

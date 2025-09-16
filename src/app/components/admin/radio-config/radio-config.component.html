@@ -1,6 +1,6 @@
 <loading [loading]="loading"></loading>
 <div id="radioconf">
-  <div class="flexible">
+  <div class="flexible m-b-25">
     <h2 *ngIf="isAdmin" i18n="@@radioconft">Radio Configuration</h2>
     <h2 *ngIf="!isAdmin" i18n="@@radioinfo">Radio Information</h2>
     <hint [showHint]="false" [hint]="'radioconfig'"></hint>
@@ -143,14 +143,14 @@
       </div>
       <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
-          <span i18n="@@changefrequency" class="radio-config-label">Data frequency: {{radio.p0_freq}} kHz
+          <span i18n="@@changefrequency" class="radio-config-label">Data frequency: <br /> {{radio.p0_freq}} kHz
             <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
               value={{p0_frek}} step="0.01">
             <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
-              change frequency
+              change
             </button>
             <div class="row m-t-10" *ngIf="!isAdmin">
               <p i18n="@@advisechangedatafrequency">
@@ -173,7 +173,7 @@
         </form>
 
         <form #fvoicefreq="ngForm" class="formdata field" *ngIf="radio && bitx == 'S'">
-          <span i18n="@@changevoicefrequency" class="radio-config-label">Voice frequency: {{radio.p1_freq}} kHz
+          <span i18n="@@changevoicefrequency" class="radio-config-label">Voice frequency: <br /> {{radio.p1_freq}} kHz
             <hint [showHint]="false" [hint]="'voiceFrequency'" class="float-right"></hint>
           </span>
           <div class="flexible">
@@ -181,7 +181,7 @@
               value={{p1_frek}} step="0.01">
             <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
               i18n="@@changevoicefreqr0">
-              change frequency
+              change
             </button>
           </div>
         </form>
@@ -223,8 +223,7 @@
             <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
               value={{refthreshold}}>
             <button class="midbt" (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
-              i18n="@@changetre1">change
-              threshold</button>
+              i18n="@@changetre1">change</button>
           </div>
           <div class="overall alert" *ngIf="confirmChangeProtection">
             <div class="cv">
