@@ -2948,51 +2948,38 @@ video {
 }
 
 @media (max-width: 1300px) {
-  :root {
-    --size-m: 1.4em;
-    --size-s: 1.2em;
-    --size-xs: 0.8em;
-    --input-height: 3.2em;
-    --button-height: 4.6em;
-  }
-
   body {
-    font-size: 2em;
+    font-size: 2rem;
   }
 
-  p, textarea {
-    font-size: var(--size-m);
+  p {
+    font-size: 1.4rem;
   }
 
   table {
-    font-size: var(--size-s);
+    font-size: 1.2rem;
   }
 
-  input:not([type="submit"]),
+  input,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="search"],
+  option,
   select {
-    height: var(--input-height);
+    height: 3.2rem;
   }
 
-  input#searchbox1 {
-    font-size: 0.9em;
+  nav .nav-domain,
+  nav .nav-frequency,
+  nav .nav-operation-mode {
+    right: 6%;
   }
 
-  .formdata input,
-  .formdata label input {
-    font-size: var(--size-m);
-    height: var(--input-height);
-  }
-
-  nav {
-    .nav-domain,
-    .nav-frequency,
-    .nav-operation-mode {
-      right: 6%;
-    }
-
-    img {
-      width: 1.8em;
-    }
+  nav img {
+    width: 1.8em;
   }
 
   .card {
@@ -3001,20 +2988,20 @@ video {
 
   .breadcrumb {
     top: 120px;
-    font-size: var(--size-xs);
+    font-size: 0.8rem;
   }
 
   .card-icon img {
-    width: 3.9em;
+    width: 3.9em !important;
   }
 
   .email a .card {
-    width: 29.5em;
+    width: 29.5rem;
   }
 
   .shut button.midbt {
-    font-size: 0.7em;
-    height: var(--button-height);
+    font-size: .7em;
+    height: 4.6em;
     border-radius: 3px;
     width: 22.5em;
   }
@@ -3022,122 +3009,59 @@ video {
   .formfield {
     max-width: calc(95% - 4px);
     margin-left: 2.5%;
+  }
 
-    &.radio-config {
-      max-width: 94%;
-    }
+  .formfield #searchbox1 {
+    height: 3.2rem;
+    font-size: .9em;
+  }
+
+  .formdata label input {
+    height: 3.2rem;
+    font-size: 1.4rem;
   }
 
   .formdata button.midbt {
-    font-size: 0.6em;
-    height: var(--input-height);
+    font-size: .6em;
+    height: 3.2rem;
   }
 
   .formdata input.midbt {
     width: 60%;
-    margin-right: 0.1em;
-    height: var(--input-height);
-    font-size: var(--size-m);
+    margin-right: .1em;
+    height: 3.2rem;
+    font-size: 1.4rem;
   }
 
-  .transciever-panel .data {
-    .data-body {
-      font-size: 0.9em;
+  textarea {
+    font-size: 1.4rem;
+  }
 
-      &.frequency {
-        font-size: 2.5em;
-      }
-    }
+  .formfield.radio-config {
+    max-width: 94%;
+  }
 
-    .data-title {
-      font-size: 0.9em;
-    }
+  .transciever-panel .data .data-body {
+    font-size: 0.9em;
+  }
+
+  .transciever-panel .data .data-body.frequency {
+    font-size: 2.5em;
+  }
+
+  .transciever-panel .data .data-title {
+    font-size: 0.9em;
   }
 
   .slider {
-    top: 0;
-    &:before {
-      top: 0;
-    }
+    top: 0 !important
+  }
+
+  .slider:before {
+    top: 0 !important;
   }
 
   .switch {
     height: 28px;
   }
-
-
-  // ---------------------------------
-
-  // body {
-  //   font-size: 2rem;
-  // }
-
-  // // .breadcrumb {
-  // //   top: 112px;
-  // //   font-size: 0.8rem;
-  // // }
-
-  // .card {
-  //   width: 21.5em;
-  // }
-
-  // .card-icon img {
-  //   width: 3.9em !important;
-  // }
-
-  // // #radioconf .card {
-  // //   width: 20em;
-  // // }
-
-  // .shut button.midbt {
-  //   font-size: .7em;
-  //   height: 4.4em;
-  //   border-radius: 3px;
-  //   width: 24.5em;
-  // }
-
-  // .formfield {
-  //   max-width: calc(95% - 4px);
-  //   margin-left: 2.5%;
-  // }
-
-  // .formdata button.midbt {
-  //   font-size: .7em;
-  //   margin-top: 0;
-  //   width: 33%;
-  //   height: 2.7em;
-  // }
-
-  // .formfield.radio-config {
-  //   max-width: 94%;
-  // }
-
-  // // .transciever-panel .data .data-body {
-  // //   font-size: 0.9em;
-  // // }
-
-  // // .transciever-panel .data .data-body.frequency {
-  // //       font-size: 2em;
-  // // }
-
-  // // .transciever-panel .data .data-title {
-  // //   font-size: 0.9em;
-  // // }
-
-  // // nav img {
-  // //   width: 1.8em;
-  // // }
-
-  // // input,
-  // // input[type="text"],
-  // // input[type="number"],
-  // // input[type="email"],
-  // // input[type="tel"],
-  // // input[type="password"],
-  // // input[type="search"],
-  // // option,
-  // // select {
-  // //   height: 56px;
-  // // }
-
 }
