@@ -64,6 +64,10 @@ Check and configure `.env` file with your parameters and run `npx ts-node setEnv
 - EMERGENCY_EMAIL (string)
     - Configure emergency email address. Available in the email screen and used for SOS Emergency function.
 
+- LOCALE_ID (string)
+    - Configure the locale id for translation and style adaptations (eg. ar-styles.less)
+
+
 ## Development server
 
 Run `ng serve --configuration=en` for a dev server in english (en), you can change the language to spanish (es), portuguese (pt) or french (fr) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
