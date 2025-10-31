@@ -137,7 +137,7 @@ registerLocaleData(localeEs);
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: LOCALE_ID, useValue: 'es' },
     { provide: LOCALE_ID, useValue: 'fr' },
-    // { provide: LOCALE_ID, useValue: 'ar' },
+    { provide: LOCALE_ID, useValue: 'ar' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

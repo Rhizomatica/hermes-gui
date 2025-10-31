@@ -55,6 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoginPage: boolean = null
   emergencyEmail = GlobalConstants.emergencyEmail
   routerObserver = null
+  localeId = GlobalConstants.localeId
 
   constructor(
     private router: Router,
@@ -72,6 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     this.startIdleDetector()
+    this.importArStyles()
   }
 
   sendMsg() {
@@ -271,6 +273,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.deferredPrompt = null;
       console.log('PWA was installed');
     });
+  }
+
+  importArStyles() {
+    if(this.localeId==='ar')
+      document.body.classList.add('ar');
   }
 
   ngOnDestroy() {
