@@ -191,6 +191,12 @@ hr {
   border-right: 0;
 }
 
+
+h2 {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+
 button {
   border: 0;
   background-color: @clr;
@@ -237,6 +243,8 @@ a:visited.dark-mode {
   font-size: 0.9em;
 }
 
+
+
 nav {
   font-size: 0.6em;
   font-family: "Rubik-regular";
@@ -249,6 +257,7 @@ nav {
   padding: 2px 15px 2px 0px;
   top: 0;
   box-shadow: @boxshadow;
+
 
   a {
     text-decoration: none;
@@ -544,6 +553,9 @@ input:checked+.slider:before {
   top: 0.15em;
 }
 
+
+
+
 .userstatus {
   position: absolute;
   top: 0;
@@ -654,6 +666,8 @@ input:checked+.slider:before {
   text-align: center;
 }
 
+
+
 .navicons {
   position: relative;
   padding-top: 0.1em;
@@ -671,6 +685,7 @@ input:checked+.slider:before {
   text-align: right;
 }
 
+
 .supicons {
   position: absolute;
   top: 0.25em;
@@ -681,9 +696,11 @@ input:checked+.slider:before {
   }
 }
 
+
 .btn:hover {
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
+
 
 .formdata {
 
@@ -748,6 +765,8 @@ input:checked+.slider:before {
   }
 }
 
+
+
 #radioconf {
   .card {
     line-height: 1.3em;
@@ -797,6 +816,8 @@ input:checked+.slider:before {
     margin-bottom: 0.2em;
   }
 }
+
+
 
 .field {
   padding: 10px 0 15px;
@@ -875,6 +896,8 @@ input:checked+.slider:before {
     border-top: #999 1px solid;
   }
 }
+
+
 
 .multiplist2 {
   display: block;
@@ -969,6 +992,7 @@ input:checked+.slider:before {
   }
 }
 
+
 #messagecompose {
   textarea {
     width: 100%;
@@ -982,10 +1006,13 @@ input:checked+.slider:before {
 
 }
 
+
 .formfield input.searchbox {
   position: relative;
   right: 0;
 }
+
+
 
 input.searchbox2 {
   position: relative;
@@ -1005,7 +1032,7 @@ input.searchbox2 {
     width: calc(100% - 4px);
   }
 
-  input[type="checkbox"] {
+  input[type=checkbox] {
     position: absolute;
     right: 0px;
     top: 15px;
@@ -1383,6 +1410,7 @@ input.ng-invalid {
   }
 }
 
+
 .dr {
   display: inline-block;
   width: 2em;
@@ -1681,6 +1709,7 @@ tr:nth-child(odd) {
   img {
     width: 2em;
   }
+
 
   span {
     font-size: 1em;
@@ -2110,12 +2139,12 @@ video {
 .dark-mode {
 
   input,
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="password"],
-  input[type="search"],
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=tel],
+  input[type=password],
+  input[type=search],
   option,
   select {
     color: #fff;
@@ -2364,7 +2393,7 @@ video {
     }
   }
 
-  input[type="range"] {
+  input[type=range] {
     background-color: #FFF;
   }
 
@@ -2410,166 +2439,18 @@ video {
 }
 
 
-//-------------------------Responsive
+//Responsive
 
-
-@media (max-width: 1300px) {
-  body {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 1.4rem;
-  }
-
-  table {
-    font-size: 1.4rem;
-  }
-
-  input,
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="password"],
-  input[type="search"],
-  option,
-  select {
-    height: 3.2rem;
-  }
-
-  textarea {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 1.6rem;
-  }
-
-  nav .nav-domain,
-  nav .nav-frequency,
-  nav .nav-operation-mode {
-    right: 6%;
-  }
-
-  nav img {
-    width: 1.8em;
-  }
+@media (max-width: 11700px) {
 
   .card {
-    width: 21.5em;
+    width: 20em;
   }
 
-  .breadcrumb {
-    top: 110px;
-    padding: 1em;
-  }
-
-  .breadcrumb a {
-    font-size: 1.4rem;
-  }
-
-  .card-icon img {
-    width: 3.9em;
-  }
-
-  .email a .card {
-    min-width: 34.5rem;
-  }
-
-  .shut button.midbt {
-    font-size: .7em;
-    height: 4.6em;
-    border-radius: 3px;
-    width: 24.5em;
-  }
-
-  .formfield {
-    max-width: 100%;
-    margin-left: 0%;
-    padding: 0 2em;
-  }
-
-  .formfield #searchbox1 {
-    height: 3.2rem;
-    font-size: .9em;
-  }
-
-  .formdata label input {
-    height: 3.2rem;
-    font-size: 1.4rem;
-  }
-
-  .formdata button.midbt {
-    font-size: .6em;
-    height: 3.2rem;
-  }
-
-  .formdata input.midbt {
-    width: 60%;
-    margin-right: .1em;
-    height: 3.2rem;
-    font-size: 1.4rem;
-  }
-
-  .formfield.radio-config {
-    max-width: 100%;
-  }
-
-  .radio form {
-    border-radius: 3px;
-    padding: .5em 1em 1em;
-    line-height: 1em;
-    margin: .2em;
-    width: 48%
-  }
-
-  .transciever-panel .data {
-    padding: 10px 30px;
-  }
-
-  .transciever-panel .data .data-body {
-    font-size: 0.9em;
-  }
-
-  .transciever-panel .data .data-body.frequency {
-    font-size: 2.5em;
-  }
-
-  .transciever-panel .data .data-title {
-    font-size: 0.9em;
-  }
-
-  .slider {
-    top: 0 !important
-  }
-
-  .slider:before {
-    top: 0 !important;
-  }
-
-  .switch {
-    height: 28px;
-  }
-
-  .location {
-    margin-top: 70px;
-  }
-
-  .float .floatbutton {
-    height: 1.5em;
-  }
-
-  // .cv-hint p {
-  //   font-size: 1.6rem;
-  // }
 }
 
-@media (max-width: 900px) {
 
-  body {
-    font-size: 1.4rem;
-  }
+@media (max-width: 900px) {
 
   .formfield {
     padding-right: 3em;
@@ -2581,6 +2462,7 @@ video {
   .formfield.radio-config {
     max-width: 100%;
   }
+
 
   .half-row {
     width: 100%;
@@ -2648,7 +2530,7 @@ video {
   }
 
   .card {
-    width: 17em;
+    width: 18em;
 
     .card-title {
       font-size: 1em;
@@ -2656,7 +2538,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 19.5em;
+    width: 20.5em;
   }
 
 
@@ -2683,7 +2565,7 @@ video {
         }
 
         .data-body.frequency {
-          font-size: 2.1em;
+          font-size: 2.7em;
         }
 
         .data-body.frequency:hover {
@@ -2736,16 +2618,15 @@ video {
   }
 }
 
-
 @media (max-width: 700px) {
 
   input,
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="password"],
-  input[type="search"],
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=tel],
+  input[type=password],
+  input[type=search],
   option,
   select {
     line-height: 2em;
@@ -2754,7 +2635,6 @@ video {
 
   p {
     line-height: 30px;
-    font-size: 1.4rem;
   }
 
   table {
@@ -2827,18 +2707,10 @@ video {
     }
   }
 
-  nav .nav-domain,
-  nav .nav-frequency,
-  nav .nav-operation-mode {
-    right: 12%;
-  }
-
   .formdata {
     button.midbt {
       font-size: 0.7em;
-      margin-top: 0;
-      width: 37%;
-      height: 2rem;
+      margin-top: 0.6em;
     }
 
     input {
@@ -2909,7 +2781,7 @@ video {
     height: 72vh;
 
     h1 {
-      font-size: 1.2em;
+      font-size: 1.5em;
       text-align: center;
     }
 
@@ -2988,10 +2860,10 @@ video {
   }
 
   .radio {
-    display: flex;
+    display: inline;
 
     form {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   }
 
@@ -3048,11 +2920,7 @@ video {
 
   .breadcrumb {
     padding-left: 2%;
-    top: 40px;
-
-    a {
-      font-size: 0.9rem;
-    }
+    top: 60px;
   }
 
   .phonemenu {
@@ -3115,15 +2983,28 @@ video {
       min-width: 50%;
     }
   }
+}
 
-  .progressbar[_ngcontent-fhq-c77] {
-    height: 27px;
+
+@media (max-width: 1920px) {
+
+  #radioconf {
+    .card {
+      line-height: 1.3em;
+        width: 31.5%;
+
+      small {
+        font-size: 0.6em;
+      }
+    }
   }
 
-  .formdata input.midbt {
-    width: 60%;
-    margin-right: .1em;
-    height: 2rem;
-    font-size: 1rem;
+  .card {
+    width: 21.5em;
   }
+
+  .shut button.midbt {
+    width: 24.5em;
+  }
+
 }

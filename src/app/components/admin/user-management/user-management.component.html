@@ -1,16 +1,17 @@
 <loading [loading]="loading"></loading>
 <div class="">
-  <div class="flexible m-b-25">
+  <div class="flexible">
     <h2 i18n="@@admmanage" *ngIf="!isEditing">User Management</h2>
     <h2 *ngIf="isEditing">
       <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
       <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
     </h2>
     <hint [showHint]="false" [hint]="'usermanagement'"></hint>
-  </div>
-  <div class="row">
+
+    <div class="row">
       <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
     </div>
+  </div>
   <div *ngIf="currentUser">
     <div>
       <ng-container *ngIf="!isEditing">
