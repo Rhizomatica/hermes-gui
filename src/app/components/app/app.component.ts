@@ -275,10 +275,10 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  importArStyles() {
-    if(this.localeId==='ar')
-      document.body.classList.add('ar');
-  }
+  // importArStyles() {
+  //   if(this.localeId==='ar')
+  //     document.body.classList.add('ar');
+  // }
 
   ngOnDestroy() {
     this.routerObserver.unsubscribe();
