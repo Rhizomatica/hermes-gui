@@ -15,8 +15,7 @@ const envConfigFile = `export const environment = {
     hasGPS: ${process.env.HAS_GPS},
     gpsMap: '${process.env.GPS_MAP}',
     requireLogin: ${process.env.REQUIRE_LOGIN},
-    emergencyEmail: '${process.env.EMERGENCY_EMAIL}',
-    localeId: '${process.env.LOCALE_ID}'
+    emergencyEmail: '${process.env.EMERGENCY_EMAIL}'
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');
