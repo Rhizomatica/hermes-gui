@@ -2,7 +2,7 @@
     <loading [loading]="loading"></loading>
     <div *ngIf="!loginForm">
         <div class="flexible">
-            <h2 i18n="@@publicmessages1" class="m-b-25">Public Messages </h2>
+            <h2 i18n="@@publicmessages1" class="">Public Messages </h2>
             <hint [showHint]="false" [hint]="'messages'"></hint>
             <div class="row">
                 <button *ngIf="allowCompose" routerLink="/compose">
