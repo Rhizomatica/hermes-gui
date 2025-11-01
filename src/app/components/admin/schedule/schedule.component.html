@@ -1,11 +1,20 @@
 <loading [loading]="loading"></loading>
 <div *ngIf="isAdmin">
     <div class="flexible">
-        <h2 class="" i18n="@@transmissionschedules">Transmission schedule</h2>
+        <h2 i18n="@@transmissionschedules">Transmission schedule</h2>
         <hint [showHint]="false" [hint]="'schedules'"></hint>
     </div>
-    <h3 class="flex-right">{{radio.datetime}}</h3>
-    <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
+    <div class="flexible row m-t-25">
+        <div class="half-row">
+            <button (click)="newSchedule()" i18n="@@createschedule">create schedule</button>
+        </div>
+        <div class="half-row flex-right m-t-10">
+            <h3>{{radio.datetime}}</h3>
+        </div>
+
+
+    </div>
+
     <div class="row m-t-25">
         <b i18n="@@currentschedules">Current schedules:</b>
     </div>
