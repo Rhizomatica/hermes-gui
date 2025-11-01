@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoginPage: boolean = null
   emergencyEmail = GlobalConstants.emergencyEmail
   routerObserver = null
-  localeId = GlobalConstants.localeId
+  // localeId = GlobalConstants.localeId
 
   constructor(
     private router: Router,
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     this.startIdleDetector()
-    this.importArStyles()
+    // this.importArStyles()
   }
 
   sendMsg() {
