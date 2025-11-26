@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     this.startIdleDetector()
-    this.importArStyles()
+    this.importArabicStyles()
   }
 
   sendMsg() {
@@ -275,7 +275,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  importArStyles() {
+  importArabicStyles() {
     if(this.localeId==='ar')
       document.body.classList.add('ar');
   }
