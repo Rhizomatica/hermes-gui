@@ -35,6 +35,8 @@ import localeEs from '@angular/common/locales/es';
 import localePt from '@angular/common/locales/pt';
 import localeFr from '@angular/common/locales/fr';
 import localeEn from '@angular/common/locales/en';
+import localeAr from '@angular/common/locales/ar';
+
 import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -65,8 +67,7 @@ registerLocaleData(localeEn);
 registerLocaleData(localeFr);
 registerLocaleData(localePt);
 registerLocaleData(localeEs);
-//TODO - Missing localeSag
-
+registerLocaleData(localeAr);
 @NgModule({
   exports: [
     CommonModule

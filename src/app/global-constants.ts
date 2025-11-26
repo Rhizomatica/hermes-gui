@@ -15,7 +15,7 @@ export class GlobalConstants {
   public static gpsMap = environment.gpsMap
   public static requireLogin = environment.requireLogin
   public static emergencyEmail = environment.emergencyEmail
-
+  public static localeId = environment.localeId
   public static httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
