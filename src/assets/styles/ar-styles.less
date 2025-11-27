@@ -1,31 +1,49 @@
 
-@boxw: 29em;
-
-body.ar nav .nav-domain,
-nav .nav-frequency,
-nav .nav-operation-mode {
-    right: 75%;
-}
-
-body.ar nav img {
-    width: 1.8em;
-    left: 20px;
-}
-
-body.ar .logo {
-    width: 160px;
-}
-
-button{
-    margin-right: 15px;
-}
-
 
 @media (max-width: 1300px) {
+
+    @boxw: 29em;
+
+    body.ar nav .nav-domain,
+    nav .nav-frequency,
+    nav .nav-operation-mode {
+        right: 77%;
+    }
+
+    nav .nav-domain, nav .nav-frequency, nav .nav-operation-mode {
+        right: 77%;
+    }
+
+    body.ar nav img {
+        width: 1.8em;
+        left: 20px;
+    }
+
+    body.ar .logo {
+        width: 160px;
+    }
+
+    nav .burguer {
+        padding-left: 20px;
+    }
+
+    button{
+        margin-right: 15px;
+    }
+
     .card {
-        width: 16.8em;
+        width: 21.5em;
     }
     .shut button.midbt {
-        width: 18.5em;
+        width: 23.5em;
     }
+
+    .formfield #searchbox1 {
+        background: #fff 3% no-repeat url(../svg/magnifying-glass-solid.svg);
+    }
+    
+    .rotated-svg {
+        transform: rotate(180deg); /* Rotates the element 45 degrees clockwise */
+        transform-origin: center center; /* Sets the rotation origin to the center of the element */
+}
 }

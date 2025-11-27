@@ -19,6 +19,7 @@ export class BreadcrumbComponent implements OnChanges {
   @Input() currentUrl: string
   pages = []
   requireLogin: boolean = GlobalConstants.requireLogin
+  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
 
   ngOnInit(): void { }
 
@@ -55,7 +56,12 @@ export class BreadcrumbComponent implements OnChanges {
 
   addBreadCrumbItem() {
     //insere novo item no breadcrumb
-    this.pages.push(JSON.parse('{"name":"' + this.currentPage + '", "url":"' + this.currentUrl + '"}'))
+    const parsedBreadcrumb = JSON.parse('{"name":"' + this.currentPage + '", "url":"' + this.currentUrl + '"}')
+   
+    if(this.isArabic)
+      this.pages.unshift(parsedBreadcrumb)
+    else 
+      this.pages.push(parsedBreadcrumb)
   }
 
   removeBreadCrumbItem() {
