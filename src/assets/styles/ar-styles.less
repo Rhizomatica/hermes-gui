@@ -19,12 +19,19 @@ body.ar .rotated-svg {
 }
 
 body.ar .float {
-    left: 10px;
-    right: 0
+    position: fixed;
+    left: 15px;
 }
 
 body.ar .float .floatbutton {
-    float: left;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 body.ar label {
@@ -43,12 +50,17 @@ body.ar nav .burguer {
     padding-left: 20px;
 }
 
-body.ar .formfield {
-    margin-left: 0%;
+.formfield {
     margin-right: 12.5%;
 }
 
+
 @media (max-width: 1300px) {
+
+    body.ar .fullpage {
+        padding-bottom: 200px;
+        margin-bottom: 200px;
+    }
 
     body.ar nav .nav-domain,
     nav .nav-frequency,
@@ -70,5 +82,47 @@ body.ar .formfield {
 
     body.ar .shut button.midbt {
         width: 23.5em;
+    }
+
+    body.ar .formfield {
+        margin-left: 0%;
+        margin-right: 1.5%;
+        padding-bottom: 150px;
+    }
+}
+
+@media (max-width: 700px) {
+    body.ar .flexible .card {
+        margin-left: .6vw;
+        width: 45vw;
+    }
+
+    body.ar .shut button.midbt {
+        width: 9.5em;
+        margin-left: 15px;
+    }
+
+    body.ar .radio form {
+        font-size: 1rem;
+        width: 98%;
+    }
+
+    body.ar nav .nav-domain,
+    nav .nav-frequency,
+    nav .nav-operation-mode {
+        right: 45%;
+    }
+
+    body.ar nav .burguer {
+        padding-left: 0px;
+    }
+
+    body.ar .userlist .uemail {
+        padding-right: 0.7em;
+    }
+
+    body.ar .formdata button.midbt {
+        font-size: 1.4em;
+        width: 33%;
     }
 }
