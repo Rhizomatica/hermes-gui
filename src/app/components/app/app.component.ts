@@ -276,8 +276,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   importArabicStyles() {
-    if(this.localeId==='ar')
+    var currentLanguage = localStorage.getItem('language')
+
+    if(this.localeId === 'ar' && currentLanguage === 'ar')
       document.body.classList.add('ar');
+    else  
+      document.body.classList.remove('ar');
   }
 
   ngOnDestroy() {
