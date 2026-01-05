@@ -34,6 +34,7 @@ import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 import { ProgressBarComponent } from './components/utils/progressbar/progressbar.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent },
+  { path: 'user-list', component: UserListComponent },
   { path: 'user-manage', component: UserManagementComponent },
   { path: 'user-manage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },

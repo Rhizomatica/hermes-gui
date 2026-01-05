@@ -66,12 +66,7 @@ export class MessageDetailComponent implements OnInit {
       this.isEncrypted = true;
     }
   }
-
-  getMessageOld(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessage(id).subscribe(message => this.message);
-  }
-
+  
   sendPassword(id: number, f: NgForm): void {
     this.messageService.uncrypt(id, f.value).subscribe(
       (res: any) => {

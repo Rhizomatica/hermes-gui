@@ -1,41 +1,20 @@
 <loading [loading]="loading"></loading>
 <div class="">
-  <div class="flexible m-b-25">
-    <h2 i18n="@@admmanage" *ngIf="!isEditing">User Management</h2>
-    <h2 *ngIf="isEditing">
-      <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
-      <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
-    </h2>
-    <hint [showHint]="false" [hint]="'usermanagement'"></hint>
-  </div>
-  <div class="row">
-      <button class="m-l-10" i18n="@@createadm" (click)="newUser()" *ngIf="!isEditing">create user</button>
-    </div>
-  <div *ngIf="currentUser">
-    <div>
-      <ng-container *ngIf="!isEditing">
-        <div id="userlist" class="multiplist2 users m-t-10">
-          <input id="searchbox1" [(ngModel)]="searchUser" placeholder="search" />
-          <div class="userlist" *ngFor="let user of users | filter:searchUser;" (click)="onSelect(user)">
-            <div class="adm">
-              <span *ngIf="user.admin" class="alert">
-                <img class="inlineicon" title="admin" src="assets/svg/account-star.svg">
-              </span>
-            </div>
-            <div class="uemail">{{user.email}}</div>
-            <div class="uname">{{user.name}}</div>
-          </div>
-        </div>
-      </ng-container>
-    </div>
-  </div>
   <ng-container *ngIf="selectedUser">
-    <form *ngIf="isEditing" #f="ngForm" id="userdata" class="formdata" novalidate>
+    <div class="flexible m-b-25">
+      <h2>
+        <span *ngIf="!emptyUser" i18n="@@edtusers">Edit user</span>
+        <span *ngIf="emptyUser" i18n="@@createusers">Create User</span>
+      </h2>
+      <hint [showHint]="false" [hint]="'usermanagement'"></hint>
+    </div>
+ 
+    <form #f="ngForm" id="userdata" class="formdata" novalidate>
       <label for="email">
         Email
         <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required (focusout)="checkFullName(selectedUser.name)" maxlength="100">
       </label>
-      <a>{{selectedUser.email + '@' + domain}}</a>
+      <a>{{selectedUser?.email + '@' + domain}}</a>
       <label for="name">
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
@@ -51,7 +30,7 @@
       </label>
       <div class="selector"></div>
       <hr>
-      <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
+      <button *ngIf="!emptyUser && (currentUser.admin || currentUser.id == selectedUser.id)" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
       <div *ngIf="showPassword">
         <label for="passwd">
           <span i18n="@@passwordlabeluser">Password</span>
@@ -82,11 +61,11 @@
       <button type="submit" [hidden]="!emptyUser" (click)="onSubmitCreate(f)" [disabled]="f.invalid || passunMatch"
         i18n="@@mcreateuser">create user</button>
       <button class="m-t-10" [hidden]="emptyUser" (click)="updateAlert()" i18n="@@mupd"
-        [disabled]="f.invalid">update</button>
-      <button (click)="cancelCreate()" class="m-l-10" i18n="@@mwcancel">cancel</button>
+        [disabled]="f.invalid || !currentUser?.admin && currentUser?.id != selectedUser?.id">update</button>
+      <button routerLink="/user-list" class="m-l-10" i18n="@@mwcancel">cancel</button>
       <span *ngIf="selectedUser.email !== 'root'">
-        <button class="m-l-10 m-t-10 danger" (click)="deleteAlert()" i18n="@@delusr" [disabled]="admin"
-          [hidden]="emptyUser">delete
+        <button class="m-l-10 m-t-10 danger" (click)="deleteAlert()" i18n="@@delusr"
+          [hidden]="emptyUser || !currentUser?.admin && currentUser?.id != selectedUser?.id">delete
           user</button>
       </span>
       <div class="overall" *ngIf="deleteUser">
