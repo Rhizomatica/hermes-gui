@@ -62,6 +62,7 @@ import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 import { ProgressBarComponent } from './components/utils/progressbar/progressbar.component';
+import { RadioConnectionAlertComponent } from './components/utils/radio-connection-alert/radio-connection-alert.component';
 
 
 registerLocaleData(localeEn);
@@ -112,7 +113,8 @@ registerLocaleData(localeAr);
     XYGraphComponent,
     ClockHandGraphComponent,
     MapGraphComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    RadioConnectionAlertComponent
   ],
   imports: [
     BrowserModule,

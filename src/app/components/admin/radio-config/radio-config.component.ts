@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
 import { NgForm } from '@angular/forms';
-import { DecimalPipe } from '@angular/common';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../interfaces/user';
 import { GlobalConstants } from '../../../global-constants';
@@ -13,14 +12,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-radio-config',
   templateUrl: './radio-config.component.html',
-  styleUrls: ['./radio-config.component.less'],
-  providers: [DecimalPipe]
+  styleUrls: ['./radio-config.component.less']
 })
 
 export class RadioConfigComponent implements OnInit {
   public radio: any = []
   error: Error
-  alterFreq = false
   confirmSet = false
   confirmSendPTT = false
   reseting = false
@@ -36,25 +33,15 @@ export class RadioConfigComponent implements OnInit {
   realValue: number
   freqmin = 500
   freqmax = 30000
-  min = 500000
-  max = 300000000
-  shuttingDown = false
   restarting = false
   shuttingDownNow = false
   rebootingDownNow = false
-  alertBrowserXP: Boolean = false
-  loginForm = false
   refthreshold: any
-  power: any
   voicePowerLevel: number
   dataPowerLevel: number
-  realfreq: any
-  led: any
-  ptt: any
   p0_frek: number
   p1_frek: number
   serial: string
-  localUsing: boolean
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
   eraseSDCard: boolean = false
@@ -67,6 +54,7 @@ export class RadioConfigComponent implements OnInit {
   timeoutDefault: number = 600
   formatedTimeout: number = 0
   isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  toggleDigital: number = 0
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -122,34 +110,8 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  public pttOn(f) {
-    this.radioService.setRadioPTT(f, this.dataModeProfileID).subscribe(
-      (res: any) => {
-        this.radio.ptt = res;
-        this.radio.tx = true;
-        this.radio.rx = false;
-
-        if (this.ptt == "ON") {
-          this.testTone(0);
-        }
-
-        if (this.ptt == "OFF") {
-          this.testTone(600);
-        }
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
-
   confirmReset() {
-    this.reseting = this.reseting ? false : true
-  }
-
-  screenFreq(): void {
-    this.alterFreq = this.alterFreq ? false : true
+    this.reseting = !this.reseting
   }
 
   changeFrequency(f: NgForm, radioProfile: number) {
@@ -175,24 +137,19 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeMode(event, radioProfile: number) {
+    let mode: boolean;
 
-    var mode = null
-
-    if (radioProfile == 0) {
-      this.modeSwitch = this.modeSwitch === true ? false : true
-      mode = this.modeSwitch
-
-    }
-
-    if (radioProfile == 1) {
-      this.voiceModeSwitch = this.voiceModeSwitch === true ? false : true;
-      mode = this.voiceModeSwitch
+    if (radioProfile === 0) {
+      this.modeSwitch = !this.modeSwitch;
+      mode = this.modeSwitch;
+    } else if (radioProfile === 1) {
+      this.voiceModeSwitch = !this.voiceModeSwitch;
+      mode = this.voiceModeSwitch;
     }
 
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
-      (res: any) => {
-
-      }, (err) => {
+      (res: any) => {},
+      (err) => {
         this.error = err;
         this.errorAlert = true;
       }
@@ -200,19 +157,11 @@ export class RadioConfigComponent implements OnInit {
   }
 
   confirmChange() {
-    if (this.confirmSet) {
-      this.confirmSet = false;
-    } else {
-      this.confirmSet = true;
-    }
+    this.confirmSet = !this.confirmSet
   }
 
   confirmChangeThreshold() {
-    if (this.confirmChangeProtection) {
-      this.confirmChangeProtection = false;
-    } else {
-      this.confirmChangeProtection = true;
-    }
+    this.confirmChangeProtection = !this.confirmChangeProtection
   }
 
   changeRefThreshold(f: NgForm) {
@@ -242,19 +191,7 @@ export class RadioConfigComponent implements OnInit {
       return
     }
 
-    if (this.confirmSendPTT) {
-      this.confirmSendPTT = false;
-    } else {
-      this.confirmSendPTT = true;
-    }
-  }
-
-  screenSet() {
-    if (this.confirmSet) {
-      this.confirmSet = false;
-    } else {
-      this.confirmSet = true;
-    }
+    this.confirmSendPTT = !this.confirmSendPTT
   }
 
   resetProtection() {
@@ -304,10 +241,6 @@ export class RadioConfigComponent implements OnInit {
     this.gpsMessage = null
   }
 
-  submitSet() {
-    this.confirmSet = this.confirmSet ? false : true
-  }
-
   testTone(f) {
     this.testtone = f;
     this.radioService.setRadioTone(f, this.dataModeProfileID).subscribe(
@@ -332,15 +265,6 @@ export class RadioConfigComponent implements OnInit {
     this.shuttingDownNow = false;
   }
 
-  confirmRestart() {
-    this.restarting = true;
-  }
-
-  cancelRestart() {
-    this.restarting = false;
-    this.shuttingDownNow = false;
-  }
-
   reboot() {
     this.rebootingDownNow = true;
     this.apiService.sysReboot();
@@ -352,7 +276,6 @@ export class RadioConfigComponent implements OnInit {
       (res: any) => {
         this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;
-        // this.ptt = this.radio.tx ? 'ON' : 'OFF'
         return res;
       },
       (err) => {
@@ -388,9 +311,8 @@ export class RadioConfigComponent implements OnInit {
 
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
-      (res: any) => {
-
-      }, (err) => {
+      (res: any) => {},
+      (err) => {
         this.error = err;
         this.errorAlert = true;
       }
@@ -402,64 +324,49 @@ export class RadioConfigComponent implements OnInit {
   }
 
   toggleTimeout() {
-
-    var newTimeout = 0
-
-    if (this.timeoutStatus == 0) {
-      this.timeoutStatus = 1 //toggle
-      newTimeout = this.timeoutDefault
-      this.formatedTimeout = this.timeoutDefault / 60
-    }
-    else if (this.timeoutStatus == 1) {
-      this.timeoutStatus = 0 //toggle
-      newTimeout = -1
-      this.formatedTimeout = 0
-    }
+    const newTimeout = this.timeoutStatus === 0 ? this.timeoutDefault : -1;
+    this.timeoutStatus = this.timeoutStatus === 0 ? 1 : 0;
+    this.formatedTimeout = this.timeoutStatus === 0 ? 0 : this.timeoutDefault / 60;
 
     this.radioService.setTimeoutConfig(newTimeout).subscribe(
-      (res: any) => {
-      }, (err) => {
-        this.error = err
-        this.errorAlert = true
+      (res: any) => {},
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
       }
     );
   }
 
   getTimeoutConfig() {
-
     this.radioService.getTimeoutConfig().subscribe(
       (res: any) => {
         if (res < 0) {
-          this.timeoutStatus = 0
-          this.formatedTimeout = 0
-          return
+          this.timeoutStatus = 0;
+          this.formatedTimeout = 0;
+        } else {
+          this.timeoutStatus = 1;
+          this.formatedTimeout = res / 60;
         }
-
-        this.timeoutStatus = 1
-        this.formatedTimeout = res / 60
-        return res;
-      }
-      , (err) => {
-        console.log(err)
-        this.error = err
-        this.errorAlert = true
+      },
+      (err) => {
+        console.log(err);
+        this.error = err;
+        this.errorAlert = true;
       }
     );
-
   }
 
   changeTimeout(f: NgForm) {
-
-    var newTimeout = f.value.timeout * 60
-
-    this.loading = true
+    const newTimeout = f.value.timeout * 60;
+    this.loading = true;
     this.radioService.setTimeoutConfig(newTimeout).subscribe(
       (res: any) => {
-        this.loading = false
-      }, (err) => {
-        this.error = err
-        this.errorAlert = true
-        this.loading = false
+        this.loading = false;
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false;
       }
     );
   }
@@ -490,13 +397,7 @@ export class RadioConfigComponent implements OnInit {
    updatePowerLevel(f: NgForm, profile: number) {
     this.loading = true
     f.value.profile = profile;
-
-    if(profile == 0){
-      f.value.powerLevel = this.dataPowerLevel;
-    }
-     if(profile == 1){
-      f.value.powerLevel = this.voicePowerLevel;
-    }
+    f.value.powerLevel = profile === 0 ? this.dataPowerLevel : this.voicePowerLevel;
 
     this.radioService.setRadioPowerLevel(f.value).subscribe(
       (res: any) => {
@@ -509,16 +410,33 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
+
+  toggleDigitalVoice(event) {
+
+    if (this.radio.connetion)
+      return
+
+    this.toggleDigital = this.radio.profile === 0 ? 1 : 0;
+    this.radioService.toggleDigital(this.toggleDigital).subscribe(
+      (res: any) => {},
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
+
+
   ngOnInit(): void {
     this.getRadioStatus()
     this.getTimeoutConfig()
     this.radio = this.sharedService.radioObj.value
-    this.voiceModeSwitch = this.radio.p1_mode == 'LSB' ? true : false
-    this.modeSwitch = this.radio.p0_mode == 'LSB' ? true : false
+    this.voiceModeSwitch = this.radio.p1_mode === 'LSB'
+    this.modeSwitch = this.radio.p0_mode === 'LSB'
     this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
     this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
     this.getRadioPowerLevel();
-    this.isAdmin = this.currentUser && this.currentUser.admin
+    this.isAdmin = this.currentUser?.admin
     this.loading = false
   }
 }
