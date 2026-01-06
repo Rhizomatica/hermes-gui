@@ -10,7 +10,7 @@
   <input id="searchbox1" [(ngModel)]="searchUser" placeholder="search" />
   <div class="adm">
     <div class="userlist" *ngFor="let user of users | filter:searchUser;">
-      <a routerLink="/user-manage/{{user.email}}">
+      <a routerLink="/user-manage/{{user.id}}">
         <span *ngIf="user.admin" class="alert">
           <img class="inlineicon" title="admin" src="assets/svg/account-star.svg">
         </span>
