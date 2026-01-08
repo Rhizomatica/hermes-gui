@@ -3,9 +3,23 @@
   <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
     loading radio status...
   </h2>
-  <hint [showHint]="false" [hint]="'voice'"></hint>
+
   <div class="transciever-panel" *ngIf="radio.p1_freq">
+    <hint [showHint]="false" [hint]="'voice'"></hint>
+
     <div class="data">
+      <div class="data-title">
+        <span i18n="@@radiodigitalvoicemode">Digital voice</span>
+      </div>
+      <div class="">
+        <span i18n="@@off">OFF</span>
+        <div class="switch">
+          <input type="checkbox" name="digital" [checked]="radio.digital">
+          <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.digital}}"
+            [checked]="toggleDigital"></span>
+        </div>
+        <span i18n="@@on">ON</span>
+      </div>
       <div class="data-body frequency">
         <div *ngIf="!inputFrequencyFlag">
           <span *ngFor="let digit of radio.p1_freq_splited; let i = index" (click)="changeStepDigit(i)"><span
@@ -92,13 +106,16 @@
         <div class="data-title" i18n="@@modevoice">
           Voice Mode
         </div>
-        <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.p1_freq">
+        <div class="data-switch" *ngIf="!inputFrequencyFlag && radio.p1_freq && radio.digital == 0">
           <span>USB</span>
           <div class="switch">
             <input type="checkbox" name="mode" [checked]="modeSwitch" value="{{radio.p1_mode}}" [checked]="modeSwitch">
             <span class="slider round" (click)="changeMode($event)"></span>
           </div>
           <span>LSB</span>
+        </div>
+        <div class="data-body">
+          {{radio.p1_mode}}
         </div>
       </div>
     </div>

@@ -416,7 +416,7 @@ export class RadioConfigComponent implements OnInit {
     if (this.radio.connetion)
       return
 
-    this.toggleDigital = this.radio.profile === 0 ? 1 : 0;
+    this.toggleDigital = this.toggleDigital === 0 ? 1 : 0;
     this.radioService.toggleDigital(this.toggleDigital).subscribe(
       (res: any) => {},
       (err) => {
@@ -425,7 +425,6 @@ export class RadioConfigComponent implements OnInit {
       }
     );
   }
-
 
   ngOnInit(): void {
     this.getRadioStatus()

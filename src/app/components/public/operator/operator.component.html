@@ -159,6 +159,18 @@
             </div>
             <div class="data">
                 <div class="data-title">
+                    <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
+                        Digital voice
+                    </span>
+                </div>
+                <div class="data-body">
+                    <span class="redcircle" *ngIf="radio.digital == 0"></span>
+                    <span class="greencircle" *ngIf="radio.digital == 1"></span>
+                    {{radio.digital == 0 ? 'OFF' : 'ON'}}
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
                     <span i18n="@@datafrequency">Data Frequency</span>
                 </div>
                 <div class="data-body">
@@ -269,7 +281,8 @@
 <div class="overall alert" *ngIf="radio.protection">
     <div class="cv">
         <span i18n="@@radioprotectionoperator">Radio protection activated. Reset the protection, reconfigure your radio
-            settings and try again. For more details: Reset Protection <hint [showHint]="false" [hint]="'resetprotection'"></hint>
+            settings and try again. For more details: Reset Protection <hint [showHint]="false"
+                [hint]="'resetprotection'"></hint>
         </span>
         <div class="row m-t-10">
             <button (click)="resetProtection()" i18n="@@resetprotectionbutton" class="m-l-10">

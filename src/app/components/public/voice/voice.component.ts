@@ -29,6 +29,7 @@ export class VoiceComponent implements OnInit {
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
   isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  toggleDigital: number = 0
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -165,7 +166,7 @@ export class VoiceComponent implements OnInit {
   changeVolume(f: NgForm) {
     this.radioService.changeVolume(f.value.volume).subscribe(
       (res: any) => {
-        
+
       }, (err) => {
         this.error = err;
       }
@@ -218,6 +219,21 @@ export class VoiceComponent implements OnInit {
       (err) => {
         this.error = err
         this.errorAlert = true
+      }
+    );
+  }
+
+  toggleDigitalVoice(event) {
+
+    if (this.radio.connection)
+      return
+
+    this.toggleDigital = this.toggleDigital === 0 ? 1 : 0;
+    this.radioService.toggleDigital(this.toggleDigital).subscribe(
+      (res: any) => { },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
       }
     );
   }

@@ -75,7 +75,7 @@ export class SharedService {
     bytes_received: null,
     bytes_transmitted: null,
     message: null,
-    digital: null
+    digital: 0
   });
 
   setRadioObjShared(data) {
@@ -174,7 +174,7 @@ export class SharedService {
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
     this.radioObj.value.message = 'This is a demo version' 
-    this.radioObj.value.digital = false
+    this.radioObj.value.digital = 0
     this.radioObj.next(this.radioObj.value)
   }
 

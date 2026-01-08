@@ -200,9 +200,9 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public toggleDigital(digital): Observable<{ number }> {
+  public toggleDigital(value: number): Observable<{ number }> {
     const url = `${GlobalConstants.apiURL}/radio/voice/digital`;
-    return this.http.post<number>(url, digital).pipe(
+    return this.http.post<number>(url, value).pipe(
       map((res: any) => {
         return res;
       }),

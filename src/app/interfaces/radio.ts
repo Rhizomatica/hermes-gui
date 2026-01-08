@@ -30,5 +30,5 @@ export interface Radio {
   bytes_received: number,
   bytes_transmitted: number,
   message: string
-  digital: boolean
+  digital: number
 }

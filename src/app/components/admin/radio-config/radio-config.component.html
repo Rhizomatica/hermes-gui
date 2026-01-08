@@ -1,7 +1,7 @@
 <loading [loading]="loading"></loading>
 <div id="radioconf">
   <div class="flexible m-b-25">
-    <h2 *ngIf="isAdmin" i18n="@@radioconft">Radio Configuration</h2>
+    <h2 i18n="@@radioconft">Radio Configuration</h2>
     <hint [showHint]="false" [hint]="'radioconfig'"></hint>
   </div>
   <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
@@ -38,17 +38,17 @@
       <form class="formdata field" *ngIf="bitx == 'S' && radio.profile === 1">
         <div class="row">
           <span i18n="@@radiodigitalvoicemode" class="radio-config-label">Digital voice
-            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{radio.timeout}})</span>
+            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{radio.digital}})</span>
           </span>
           <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
             <span i18n="@@off">OFF</span>
             <div class="switch">
-              <input type="checkbox" name="profile" [checked]="radio.digital">
+              <input type="checkbox" name="digital" [checked]="radio.digital">
               <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.digital}}"
                 [checked]="toggleDigital"></span>
             </div>
             <span i18n="@@on">ON</span>
-            <hint [showHint]="false" [hint]="'radioprofile'"></hint>
+            <hint [showHint]="false" [hint]="'digitalvoice'"></hint>
           </div>
           <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="radio.connection">
             {{radio.profile == 0 ? 'Data' : 'Voice'}}
@@ -123,15 +123,18 @@
 
       <form class="formdata field" *ngIf="bitx == 'S' && radio.profile == 1">
         <span i18n="@@voicemode" class="radio-config-label">Voice Mode</span>
-        <div [ngClass]="{'float-right flex-right': !isArabic}">
+        <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="radio.digital == 0">
           <span>USB</span>
           <div class="switch">
-            <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
+            <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch" [disabled]="radio.digital === 1">
             <span class="slider round" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
               [checked]="voiceModeSwitch"></span>
           </div>
           <span>LSB</span>
           <hint [showHint]="false" [hint]="'mode'"></hint>
+        </div>
+        <div *ngIf="radio.digital == 1">
+          {{radio.p1_mode}}
         </div>
       </form>
 
@@ -190,7 +193,8 @@
         <div class="flexible">
           <div class="slidercontainer">
             <input type="range" min="0" max="100" step="2" [value]="voicePowerLevel" class="slider-input"
-              [(ngModel)]="voicePowerLevel" name="voicePowerLevel" (change)="updatePowerLevel(voiceFormPowerLevel, 1)">
+              [(ngModel)]="voicePowerLevel" name="voicePowerLevel" (change)="updatePowerLevel(voiceFormPowerLevel, 1)"
+              [disabled]="radio.digital === 1">
           </div>
         </div>
       </form>
