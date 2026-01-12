@@ -4,6 +4,7 @@ import { Radio } from '../interfaces/radio';
 import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
 import { GlobalConstants } from '../global-constants';
+import { WebRTCService } from './webrtc.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { GlobalConstants } from '../global-constants';
 
 export class SharedService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private webRTCService: WebRTCService) { }
   utils = new UtilsService()
 
   public radioObj = new BehaviorSubject<Radio>({
@@ -146,7 +147,15 @@ export class SharedService {
     this.storedRadioObj.bytes_received = newObj.bytes_received == null ? this.storedRadioObj.bytes_received : newObj.bytes_received
     this.storedRadioObj.bytes_transmitted = newObj.bytes_transmitted == null ? this.storedRadioObj.bytes_transmitted : newObj.bytes_transmitted
     this.storedRadioObj.message = newObj.message == null ? this.storedRadioObj.message : newObj.message
+    const previousDigital = this.storedRadioObj.digital
     this.storedRadioObj.digital = newObj.digital == null ? this.storedRadioObj.digital : newObj.digital
+
+    // Handle WebRTC digital audio streaming
+    if (previousDigital !== this.storedRadioObj.digital) {
+      this.webRTCService.startDigitalAudioStream().catch(error => {
+        console.error('Failed to start/stop digital audio stream:', error);
+      });
+    }
 
   }
 
@@ -173,7 +182,7 @@ export class SharedService {
     this.radioObj.value.bitrate = '363'
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
-    this.radioObj.value.message = 'This is a demo version' 
+    this.radioObj.value.message = 'This is a demo version'
     this.radioObj.value.digital = 0
     this.radioObj.next(this.radioObj.value)
   }
@@ -213,7 +222,7 @@ export class SharedService {
   }
 
   prepareSNRHistory() {
-    
+
     if (!this.storedRadioObj.snr || this.storedRadioObj.snr == 0)
       return
 
@@ -232,7 +241,7 @@ export class SharedService {
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
-    
+
     if (this.storedRadioObj.snrHistory.length > 10000) {
       this.storedRadioObj.snrHistory.shift()
       this.storedRadioObj.snrHistory.shift()
