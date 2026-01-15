@@ -456,7 +456,7 @@ textarea {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
+  height: 21.5px;
   width: 26px;
   left: -5px;
   min-width: min-content;
@@ -497,9 +497,8 @@ input:checked+.slider:before {
 }
 
 .slider.round-uc.disable:before {
-  background-color: #727272;
-  border: #727272 0.5px solid;
-
+  background-color: #b8b8b8;
+  border: #b8b8b8 0.5px solid;
 }
 
 .container {
@@ -685,7 +684,14 @@ input:checked+.slider:before {
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
 .formdata {
+  flex: 1 1 40%;
 
   label {
     margin-top: 10px;
@@ -799,7 +805,7 @@ input:checked+.slider:before {
 }
 
 .field {
-  padding: 10px 0 15px;
+  padding: 10px 25px 15px;
 }
 
 .shut {
@@ -2062,6 +2068,7 @@ video {
       line-height: 100%;
       display: flex;
       align-items: center;
+      margin-top: 40px;
     }
 
     .data-switch {
@@ -2087,7 +2094,7 @@ video {
   width: 88%;
   height: 15px;
   border-radius: 5px;
-  background: #727272;
+  background: #b8b8b8;
   outline: none;
   // opacity: 0.7;
   -webkit-transition: .2s;
