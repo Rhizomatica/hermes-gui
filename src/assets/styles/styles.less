@@ -84,8 +84,8 @@ button {
     font-size: 1em;
     height: 40px;
     border-radius: 3px;
+    border: 1px solid #cecece;
   }
-
 
   button {
     font-size: 0.9em;
@@ -317,6 +317,7 @@ textarea {
   resize: vertical;
   width: 100%;
   color: @mclr;
+  border: 1px solid #cecece
 }
 
 
@@ -393,7 +394,7 @@ textarea {
     width: calc(100% - 0.12em);
     background: #fff 98% no-repeat url(../svg/magnifying-glass-solid.svg);
     background-size: 1em 1em;
-    border: 1px solid @mclr;
+    border: 1px solid #cecece;
     font-size: 0.9em;
   }
 
@@ -699,7 +700,7 @@ input:checked+.slider:before {
 
     input {
       width: 100%;
-      border: 1px solid #888;
+      border: 1px solid #cecece;
       border-radius: 3px;
     }
 
@@ -924,7 +925,7 @@ input:checked+.slider:before {
 
 .multiplist3 {
   min-height: 1.5em;
-  border: 1px solid #888;
+  border: 1px solid #cecece;
   list-style: none;
   list-style-position: inside;
   line-height: 50px;
@@ -1443,7 +1444,7 @@ tr:nth-child(odd) {
 
 #selmult {
   border-radius: 0;
-  border: 1px solid black;
+  border: 1px solid #cecece;
   min-height: 2.25em;
   line-height: 1.75em;
 
@@ -1462,12 +1463,12 @@ tr:nth-child(odd) {
 .ng-select .ng-arrow-wrapper {
   width: 1em;
   height: 0;
-  border-right: 1em solid @mclr;
+  border-right: 1em solid #cecece;
   border-bottom: 1em solid white;
 }
 
 .dark-mode {
-  
+
   textarea {
     color: @bkclr;
   }
@@ -2132,10 +2133,16 @@ video {
   select {
     color: #fff;
     background-color: @mclr;
+    border: 1px solid #666;
+  }
+
+  .formdata label input {
+    border: 1px solid #666;
   }
 
   textarea {
     background-color: @mclr;
+    border: 1px solid #666;
   }
 
   ::placeholder {
@@ -2240,10 +2247,8 @@ video {
   }
 
   #selmult {
-    border-color: #fff;
+    border: 1px solid #666
   }
-
-
 
   .formfield {
 
@@ -2505,11 +2510,13 @@ video {
   .formfield #searchbox1 {
     height: 3.2rem;
     font-size: .9em;
+    border: 1px solid #cecece;
   }
 
   .formdata label input {
     height: 3.2rem;
     font-size: 1.4rem;
+    border: 1px solid #cecece;
   }
 
   .formdata button.midbt {
@@ -2522,6 +2529,7 @@ video {
     margin-right: .1em;
     height: 3.2rem;
     font-size: 1.4rem;
+    border: 1px solid #cecece;
   }
 
   .formfield.radio-config {
