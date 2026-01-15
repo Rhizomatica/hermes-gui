@@ -121,7 +121,7 @@
         </div>
       </form>
 
-      <form class="formdata field" *ngIf="bitx == 'S' && radio.profile == 1">
+      <form class="formdata field" *ngIf="bitx == 'S' && radio.profile == 1 && radio.digital == 1">
         <span i18n="@@voicemode" class="radio-config-label">Voice Mode</span>
         <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="radio.digital == 0">
           <span>USB</span>
