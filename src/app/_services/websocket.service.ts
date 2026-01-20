@@ -105,9 +105,6 @@ export class WebsocketService {
 
     closeConnection() {
 
-        //TODO - Dual frequency
-        // this.changeOperateModeProfile()
-
         if (this.requireLogin && this.ws && this.ws.OPEN == 1) {
             this.ws.close()
             this.messages.complete()
