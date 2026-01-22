@@ -19,7 +19,8 @@
         (keydown.enter)="!disableNavigationsRequireLoginNoUser()">
         <img title="Hermes logo" src="assets/img/logo-hermes-500.png" class="logo">
       </a>
-      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage && !disableNavigationsRequireLoginNoUser()">
+      <a routerLink="/menu" class="float-right burguer" *ngIf="!isMenuPage"
+        [style.pointer-events]="disableNavigationsRequireLoginNoUser() ? 'none' : 'auto'">
         <div *ngIf="radio && radio.profile == 0">
           <span class="nav-frequency">
             {{radio.p0_mode}} {{radio.p0_freq}} kHz
@@ -37,7 +38,7 @@
           </span>
         </div>
         <span *ngIf="system" class="nav-domain">{{system.domain}}</span>
-        <img title="menu" src="assets/svg/bars-solid.svg">
+        <img title="menu" src="assets/svg/bars-solid.svg" *ngIf="!disableNavigationsRequireLoginNoUser()">
       </a>
       <a class="float-right burguer" (click)="closeMobileMenu()" *ngIf="isMenuPage">
         <img title="close" src="assets/svg/times.svg">
@@ -100,8 +101,8 @@
           </a>
         </div>
       </ng-template>
+      <floatbutton></floatbutton>
     </div>
-    <floatbutton></floatbutton>
   </div>
   <div class="overall alert" *ngIf="countdown && !isLoginPage">
     <div class="cv">

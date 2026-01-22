@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'voice',
@@ -27,6 +28,7 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
+  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
 
   constructor(
     private authenticationService: AuthenticationService,

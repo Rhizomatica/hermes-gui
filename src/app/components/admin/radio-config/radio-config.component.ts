@@ -66,6 +66,7 @@ export class RadioConfigComponent implements OnInit {
   timeoutStatus: number = 0
   timeoutDefault: number = 600
   formatedTimeout: number = 0
+  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
 
   constructor(
     private authenticationService: AuthenticationService,

@@ -19,6 +19,7 @@ export class BreadcrumbComponent implements OnChanges {
   @Input() currentUrl: string
   pages = []
   requireLogin: boolean = GlobalConstants.requireLogin
+  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
 
   ngOnInit(): void { }
 
@@ -55,17 +56,34 @@ export class BreadcrumbComponent implements OnChanges {
 
   addBreadCrumbItem() {
     //insere novo item no breadcrumb
-    this.pages.push(JSON.parse('{"name":"' + this.currentPage + '", "url":"' + this.currentUrl + '"}'))
+    const parsedBreadcrumb = JSON.parse('{"name":"' + this.currentPage + '", "url":"' + this.currentUrl + '"}')
+
+    if (this.isArabic)
+      this.pages.unshift(parsedBreadcrumb)
+    else
+      this.pages.push(parsedBreadcrumb)
   }
 
   removeBreadCrumbItem() {
-    //Se ja foi encontrado remove ao renavegar pelo breadcrumb
-    for (var i = this.pages.length; i >= 0; i--) {
-      //Encontrou pagina corrente sai do loop
-      if (this.pages[i - 1].name == this.currentPage) {
-        return
+    if (this.isArabic) {
+      // Logic for Arabic (inverted: iterate from start, remove from start with shift())
+      for (var i = 0; i < this.pages.length; i++) {
+        // Encontrou pagina corrente sai do loop
+        if (this.pages[i].name == this.currentPage) {
+          return;
+        }
+        this.pages.shift();
+        i--; // Decrement i because the array length changes and elements shift position
       }
-      this.pages.pop()
+    } else {
+      // Original logic (Non-Arabic: iterate from end, remove from end with pop())
+      for (var i = this.pages.length; i > 0; i--) {
+        // Encontrou pagina corrente sai do loop
+        if (this.pages[i - 1].name == this.currentPage) {
+          return;
+        }
+        this.pages.pop();
+      }
     }
   }
 

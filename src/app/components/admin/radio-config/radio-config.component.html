@@ -144,7 +144,7 @@
       <div class="radio" *ngIf="radio">
         <form #ffreq="ngForm" class="formdata field">
           <span i18n="@@changefrequency" class="radio-config-label">Data frequency: <br /> {{radio.p0_freq}} kHz
-            <hint [showHint]="false" [hint]="'frequency'" class="float-right"></hint>
+            <hint [showHint]="false" [hint]="'frequency'" [ngClass]="{'float-right': !isArabic}"></hint>
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
@@ -174,7 +174,7 @@
 
         <form #fvoicefreq="ngForm" class="formdata field" *ngIf="radio && bitx == 'S'">
           <span i18n="@@changevoicefrequency" class="radio-config-label">Voice frequency: <br /> {{radio.p1_freq}} kHz
-            <hint [showHint]="false" [hint]="'voiceFrequency'" class="float-right"></hint>
+            <hint [showHint]="false" [hint]="'voiceFrequency'" [ngClass]="{'float-right': !isArabic}"></hint>
           </span>
           <div class="flexible">
             <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
@@ -188,7 +188,7 @@
 
         <form class="formdata field">
           <span i18n="@@changeradiomode" class="radio-config-label">Data Mode</span>
-          <div class="float-right flex-right">
+          <div [ngClass]="{'float-right flex-right': !isArabic}">
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
@@ -197,13 +197,13 @@
             </div>
             
             <span>LSB</span>
-            <hint [showHint]="false" [hint]="'mode'"></hint>
+            <hint [showHint]="false" hint="mode"></hint>
           </div>
         </form>
 
         <form class="formdata field" *ngIf="bitx == 'S'">
           <span i18n="@@voicemode" class="radio-config-label">Voice Mode</span>
-          <div class="float-right flex-right">
+          <div [ngClass]="{'float-right flex-right': !isArabic}">
             <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch">
@@ -217,7 +217,7 @@
 
         <form #frefthreshold="ngForm" class="formdata field" *ngIf="isAdmin">
           <span i18n="@@prottheshold" class="radio-config-label">Protection activation threshold level
-            <hint [showHint]="false" [hint]="'threshold'" class="float-right"></hint>
+            <hint [showHint]="false" [hint]="'threshold'" [ngClass]="{'float-right': !isArabic}"></hint>
           </span>
           <div class="flexible">
             <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
@@ -241,7 +241,7 @@
 
         <form #formProtection="ngForm" class="formdata field" *ngIf="isAdmin">
           <span i18n="@@radioprotectionlabel" class="radio-config-label">Protection</span>
-          <div class="float-right">
+          <div [ngClass]="{'float-right': !isArabic}">
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
           <div class="row m-t-10">
@@ -254,7 +254,7 @@
 
          <form #dataFormPowerLevel="ngForm" class="formdata field" *ngIf="isAdmin">
           <span i18n="@@datapowerlevel" class="radio-config-label">Data Power Level ({{dataPowerLevel}}%)
-            <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
+            <hint [showHint]="false" [hint]="'powerlevel'" [ngClass]="{'float-right': !isArabic}"></hint>
           </span>
           <div class="flexible">
             <div class="slidercontainer">
@@ -266,7 +266,7 @@
 
         <form #voiceFormPowerLevel="ngForm" class="formdata field">
           <span i18n="@@voicepowerlevel" class="radio-config-label">Voice Power Level  ({{voicePowerLevel}}%)
-            <hint [showHint]="false" [hint]="'powerlevel'" class="float-right"></hint>
+            <hint [showHint]="false" [hint]="'powerlevel'" [ngClass]="{'float-right': !isArabic}"></hint>
           </span>
           <div class="flexible">
             <div class="slidercontainer">
@@ -277,9 +277,9 @@
         </form>
 
         <form #fptt="ngForm" class="formdata field" *ngIf="isAdmin">
-          <span class="radio-config-label">PTT ({{radio.tx == false ? 'OFF' : 'ON'}}) <hint [showHint]="false" [hint]="'ptt'" class="float-right">
+          <span class="radio-config-label">PTT ({{radio.tx == false ? 'OFF' : 'ON'}}) <hint [showHint]="false" [hint]="'ptt'" [ngClass]="{'float-right': !isArabic}">
             </hint></span>
-          <div class="switch float-right">
+          <div class="switch" [ngClass]="{'float-right': !isArabic}">
             <input type="checkbox" name="mode" [checked]="radio.tx">
             <span class="slider round" *ngIf="isAdmin" (click)="confirmChangePTT($event)" value="{{radio.tx}}"
               [checked]="radio.tx"></span>
@@ -301,7 +301,7 @@
 
         <form #fgps="ngForm" class="formdata field" *ngIf="hasGps && bitx !== 'S' && isAdmin">
           <span i18n="@@labelgpscalibration" class="radio-config-label">GPS Calibration</span>
-          <button type="submit" name="gps" class="float-right" (click)="gpsStartCalibration()"
+          <button type="submit" name="gps" [ngClass]="{'float-right': !isArabic}" (click)="gpsStartCalibration()"
             i18n="@@startgpscalibration">Start</button>
         </form>
 
@@ -309,7 +309,7 @@
           <span i18n="@@radioprofilelabel" class="radio-config-label">Profile
             <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{radio.timeout}})</span>
           </span>
-          <div class="float-right flex-right" *ngIf="!radio.connection">
+          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
@@ -319,7 +319,7 @@
             <span i18n="@@voiceLabel">Voice</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
-          <div class="float-right flex-right" *ngIf="radio.connection">
+          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="radio.connection">
             {{radio.profile == 0 ? 'Data' : 'Voice'}}
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
@@ -370,7 +370,7 @@
             <button (click)="confirmReboot()">
               <span i18n="@@reboot">reboot</span>
             </button>
-            <hint [showHint]="false" [hint]="'reboot'" class="float-right"></hint>
+            <hint [showHint]="false" [hint]="'reboot'" [ngClass]="{'float-right': !isArabic}"></hint>
           </div>
         </form>
 
