@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
     this.admin = false
-    this.websocketService.closeConnection()
+    // this.websocketService.closeConnection() --- IGNORE ---
   }
 
   ngOnInit(): void {

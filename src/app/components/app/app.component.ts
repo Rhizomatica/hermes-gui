@@ -216,7 +216,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (!GlobalConstants.requireLogin)
         this.router.navigate(['/home']);
 
-      this.websocketService.closeConnection()
+      //  this.websocketService.closeConnection() --- IGNORE ---
     })
 
     // do something as the timeout countdown does its thing
@@ -260,7 +260,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.checkIsLoginPage()
         this.updateBreadcrumb()
 
-        if (!GlobalConstants.requireLogin && !this.websocketService.messages) {
+        if (!this.websocketService.messages) {
           this.websocketService.startService()
         }
       }
@@ -278,9 +278,9 @@ export class AppComponent implements OnInit, OnDestroy {
   importArabicStyles() {
     var currentLanguage = localStorage.getItem('language')
 
-    if(this.localeId === 'ar' && currentLanguage === 'ar')
+    if (this.localeId === 'ar' && currentLanguage === 'ar')
       document.body.classList.add('ar');
-    else  
+    else
       document.body.classList.remove('ar');
   }
 

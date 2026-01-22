@@ -84,8 +84,8 @@ button {
     font-size: 1em;
     height: 40px;
     border-radius: 3px;
+    border: 1px solid #cecece;
   }
-
 
   button {
     font-size: 0.9em;
@@ -213,7 +213,7 @@ button:hover {
 }
 
 a {
-  color: @clr;
+  color: @mclr;
 }
 
 a:visited {
@@ -317,6 +317,7 @@ textarea {
   resize: vertical;
   width: 100%;
   color: @mclr;
+  border: 1px solid #cecece
 }
 
 
@@ -393,7 +394,7 @@ textarea {
     width: calc(100% - 0.12em);
     background: #fff 98% no-repeat url(../svg/magnifying-glass-solid.svg);
     background-size: 1em 1em;
-    border: 1px solid @mclr;
+    border: 1px solid #cecece;
     font-size: 0.9em;
   }
 
@@ -456,7 +457,7 @@ textarea {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
+  height: 21.5px;
   width: 26px;
   left: -5px;
   min-width: min-content;
@@ -497,9 +498,8 @@ input:checked+.slider:before {
 }
 
 .slider.round-uc.disable:before {
-  background-color: #727272;
-  border: #727272 0.5px solid;
-
+  background-color: #b8b8b8;
+  border: #b8b8b8 0.5px solid;
 }
 
 .container {
@@ -700,7 +700,7 @@ input:checked+.slider:before {
 
     input {
       width: 100%;
-      border: 1px solid #888;
+      border: 1px solid #cecece;
       border-radius: 3px;
     }
 
@@ -829,7 +829,8 @@ input:checked+.slider:before {
     font-size: 0.7em;
     height: 4.4em;
     border-radius: 3px;
-    width: 22.5em;
+    width: 20.5em;
+    margin-left: 15px;
 
     img {
       width: 1em;
@@ -925,7 +926,7 @@ input:checked+.slider:before {
 
 .multiplist3 {
   min-height: 1.5em;
-  border: 1px solid #888;
+  border: 1px solid #cecece;
   list-style: none;
   list-style-position: inside;
   line-height: 50px;
@@ -1444,7 +1445,7 @@ tr:nth-child(odd) {
 
 #selmult {
   border-radius: 0;
-  border: 1px solid black;
+  border: 1px solid #cecece;
   min-height: 2.25em;
   line-height: 1.75em;
 
@@ -1463,12 +1464,12 @@ tr:nth-child(odd) {
 .ng-select .ng-arrow-wrapper {
   width: 1em;
   height: 0;
-  border-right: 1em solid @mclr;
+  border-right: 1em solid #cecece;
   border-bottom: 1em solid white;
 }
 
 .dark-mode {
-  
+
   textarea {
     color: @bkclr;
   }
@@ -1538,6 +1539,7 @@ tr:nth-child(odd) {
 
   a {
     text-decoration: none;
+    color: @bkclr;
   }
 
   .flexible .card {
@@ -1917,8 +1919,9 @@ tr:nth-child(odd) {
     }
 
     img {
-      width: 0.9em;
+      width: 1.4em;
       filter: invert(100%);
+      margin-top: 4px;
     }
   }
 }
@@ -2095,7 +2098,7 @@ video {
   width: 88%;
   height: 15px;
   border-radius: 5px;
-  background: #727272;
+  background: #b8b8b8;
   outline: none;
   // opacity: 0.7;
   -webkit-transition: .2s;
@@ -2133,10 +2136,20 @@ video {
   select {
     color: #fff;
     background-color: @mclr;
+    border: 1px solid #666;
+  }
+
+  a {
+    color: @bkclr;
+  }
+
+  .formdata label input {
+    border: 1px solid #666;
   }
 
   textarea {
     background-color: @mclr;
+    border: 1px solid #666;
   }
 
   ::placeholder {
@@ -2241,10 +2254,8 @@ video {
   }
 
   #selmult {
-    border-color: #fff;
+    border: 1px solid #666
   }
-
-
 
   .formfield {
 
@@ -2470,7 +2481,7 @@ video {
   }
 
   .card {
-    width: 21.5em;
+    width: 14em;
   }
 
   .breadcrumb {
@@ -2494,7 +2505,7 @@ video {
     font-size: .7em;
     height: 4.6em;
     border-radius: 3px;
-    width: 24.5em;
+    width: 15em;
   }
 
   .formfield {
@@ -2506,11 +2517,13 @@ video {
   .formfield #searchbox1 {
     height: 3.2rem;
     font-size: .9em;
+    border: 1px solid #cecece;
   }
 
   .formdata label input {
     height: 3.2rem;
     font-size: 1.4rem;
+    border: 1px solid #cecece;
   }
 
   .formdata button.midbt {
@@ -2523,6 +2536,7 @@ video {
     margin-right: .1em;
     height: 3.2rem;
     font-size: 1.4rem;
+    border: 1px solid #cecece;
   }
 
   .formfield.radio-config {
@@ -2570,7 +2584,9 @@ video {
   }
 
   .float .floatbutton {
-    height: 1.5em;
+    width: 65px;
+    height: 2.3em;
+    margin-top: 2px;
   }
 
   // .cv-hint p {
@@ -2669,7 +2685,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 19.5em;
+    width: 17.5em;
   }
 
 
@@ -2746,6 +2762,11 @@ video {
     .card {
       min-width: 50%;
     }
+  }
+
+  .float .floatbutton {
+    width: 50px;
+    margin-top: 2px;
   }
 }
 
@@ -2906,9 +2927,10 @@ video {
 
     button.midbt {
       font-size: 0.8em;
-      height: 15vmin;
+      height: 20vmin;
       width: 45vw;
       margin-right: 5vw;
+      margin-left: 0;
     }
   }
 
