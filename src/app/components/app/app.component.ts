@@ -116,8 +116,8 @@ export class AppComponent implements OnInit, OnDestroy {
     window.scrollTo(0, 0)
   }
 
-  checkLanguage() {
-    !localStorage.getItem('language') ? this.router.navigate(['/languages']) : null;
+   checkLanguage() {
+    !localStorage.getItem('language') ? localStorage.setItem('language', GlobalConstants.localeId) : null;
   }
 
   closeMobileMenu() {
@@ -168,6 +168,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.deferredPrompt = null;
     }
   }
+
   checkIsLoginPage() {
     this.isLoginPage = this.router.url == '/login' ? true : false
   }
