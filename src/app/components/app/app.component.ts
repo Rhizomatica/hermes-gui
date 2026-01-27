@@ -116,7 +116,7 @@ export class AppComponent implements OnInit, OnDestroy {
     window.scrollTo(0, 0)
   }
 
-   checkLanguage() {
+  checkLanguage() {
     !localStorage.getItem('language') ? localStorage.setItem('language', GlobalConstants.localeId) : null;
   }
 
@@ -277,12 +277,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   importArabicStyles() {
-    var currentLanguage = localStorage.getItem('language')
+    const storedLanguage = localStorage.getItem('language');
+    const language = storedLanguage && storedLanguage.length
+      ? storedLanguage
+      : this.localeId;
 
-    if (this.localeId === 'ar' && currentLanguage === 'ar')
-      document.body.classList.add('ar');
-    else
-      document.body.classList.remove('ar');
+    document.body.classList.toggle('ar', language === 'ar');
   }
 
   ngOnDestroy() {
