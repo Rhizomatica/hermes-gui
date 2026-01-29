@@ -1,28 +1,19 @@
 <loading [loading]="loading"></loading>
+
 <div class="overall alert" *ngIf="confirmTransmit">
   <div class="cv">
-    <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in
-      case of emergency<br /></span>
-    <div class="icon m-t-10">
-      <a (click)="closeOveralTransmission()">
-        <button i18n="@@cancelsTransmission">
-          cancel
-        </button>
-      </a>
-    </div>
-    <div class="icon m-t-10">
-      <a (click)="transmitNow()">
-        <button i18n="@@transmits">
-          transmit now
-        </button>
-      </a>
+    <span i18n="@@ysyncronizenow">Are you sure you want to synchronize now? <br /> This should be used only in case of
+      emergency<br /></span>
+    <div class="row m-t-10">
+      <button (click)="closeOveralTransmission()" i18n="@@cancelsTransmission">cancel</button>
+      <button class="m-l-10" (click)="transmitNow()" i18n="@@transmits">transmit now</button>
     </div>
   </div>
 </div>
+
 <div class="overall alert" *ngIf="deleteMessage">
   <div class="cv">
-    <span i18n="@@deletetransmissionconfirmation">Are you sure you want to cancel this
-      transmission?</span>
+    <span i18n="@@deletetransmissionconfirmation">Are you sure you want to cancel this transmission?</span>
     <div class="row m-t-10">
       <button (click)="confirmCancelTransmission()" i18n="@@canceloperationcanceltransmission">cancel</button>
       <button class="m-l-10 danger" (click)="cancelTransmission()" i18n="@@confirmcanceltransmission">confirm</button>
@@ -35,64 +26,68 @@
     <h2 i18n="@@transmissionlistt">Transmission list</h2>
     <hint [showHint]="false" [hint]="'transmissionlist'"></hint>
   </div>
+
   <p i18n="@@listsize" class="m-t-10">Total size of files to transmit: {{ queueSize }} B</p>
-  <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list<br /></div>
-  <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit<br /></div>
-  <div class="queue messages m-t-25">
-    <div class="multiplist1">
-      <div *ngFor="let job of queue" class="item">
-        <div class="maininfo">
-          <a>
-            <span *ngIf="isadmin">
-              <img class="inlineicon" title="cancel mail" src="assets/svg/trash.svg" *ngIf="job.type!=='HMP'"
-                (click)="cancelMail(job.uuidhost,job.uuiduucp)">
-              <img class="inlineicon" title="cancel message" src="assets/svg/trash.svg" *ngIf="job.type=='HMP'"
-                (click)="confirmCancelTransmission(job)">
-            </span>
-          </a>
-          <div class="row">
-            <span>{{job.time}} {{job.date}} </span>
-          </div>
-        </div>
-        <div class="info">
-          <div class="row">
-            <span *ngIf="job.type!=='HMP'">
-              <img class="inlineicon" src="assets/svg/email.svg">
-              E-mail: {{job.emails}}
-            </span>
-            <span *ngIf="job.type=='HMP'">
-              <img class="inlineicon" src="assets/svg/message-text.svg">
-              <b i18n="@@message">Message</b>: {{job.uuiduucp}}
-            </span>
-          </div>
-          <div class="row" *ngIf="job.messageId">
-            <b i18n="@@messagetitle">Title: </b>{{job.messageName}}
-          </div>
-          <div class="row" *ngIf="job.messageFile && job.messageSecure == 0">
-            <b i18n="@@messagefile">File: </b> {{job.messageMimeType}} / {{job.messageFile}}
-          </div>
-          <div class="row">
-            <b i18n="@@destinationt"> Destination:</b> {{job.dest}}
-          </div>
-          <div class="row">
-            <b i18n="@@destisizet">Size:</b> {{job.size}} B
-          </div>
-          <div class="row" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp">
-            <a i18n="@@forcetransmitting">Transmitting... </a>
-          </div>
-          <!-- <progressbar  [value]="transmissionProgress" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp"></progressbar> -->
-        </div>
-        <div class="row-reverse">
-          <button *ngIf="isadmin && !jobToForce" (click)="confTransmit(job)">
-            <img class="inlineiconlink" title="force"
-              src="assets/svg/sync.svg">
-            <span i18n="@@transmitnow">force</span> 
-          </button>
-        </div>
+
+  <div class="alert" *ngIf="noUUcp" i18n="@@cannotaccessuucp">Alert: Cannot access transmission list</div>
+  <div class="alert" *ngIf="noQueue" i18n="@@noqueue">There are no messages to transmit</div>
+
+  <div class="queue messages m-t-25" *ngIf="queue && queue.length">
+    <div *ngFor="let job of queue" class="item">
+      <div class="row m-t-25">
+        <b i18n="@@datetime">Date Time:</b> {{job.time}} {{job.date}}
+      </div>
+
+      <div class="row">
+        <span *ngIf="job.type!=='HMP'">
+          <b>E-mail:</b> {{job.emails}}
+          <img class="inlineicon" src="assets/svg/email.svg">
+        </span>
+        <span *ngIf="job.type=='HMP'">
+          <b i18n="@@message">Message:</b> {{job.uuiduucp}}
+          <img class="inlineicon" src="assets/svg/message-text.svg">
+
+        </span>
+      </div>
+
+      <div class="row" *ngIf="job.messageId">
+        <b i18n="@@messagetitle">Title:</b> {{job.messageName}}
+      </div>
+
+      <div class="row" *ngIf="job.messageFile && job.messageSecure == 0">
+        <b i18n="@@messagefile">File:</b> {{job.messageMimeType}} / {{job.messageFile}}
+      </div>
+
+      <div class="row">
+        <b i18n="@@destinationt">Destination:</b> {{job.dest}}
+      </div>
+
+      <div class="row">
+        <b i18n="@@destisizet">Size:</b> {{job.size}} B
+      </div>
+
+      <div class="row" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp">
+        <a i18n="@@forcetransmitting">Transmitting...</a>
+      </div>
+
+      <div class="row m-t-10" *ngIf="isadmin && !jobToForce">
+        <button (click)="confTransmit(job)">
+          <span i18n="@@transmitnow">transmit now</span>
+        </button>
+
+        <button *ngIf="job.type!=='HMP'" (click)="cancelMail(job.uuidhost,job.uuiduucp)" class="danger m-l-10">
+          <span i18n="@@delete">delete</span>
+        </button>
+
+        <button *ngIf="job.type=='HMP'" (click)="confirmCancelTransmission(job)" class="danger m-l-10">
+          <span i18n="@@delete">delete</span>
+        </button>
+
       </div>
     </div>
   </div>
 </div>
+
 <div class="overall alert" *ngIf="errorAlert==true">
   <div class="cv">
     <span i18n="@@errorprocessing">
@@ -108,6 +103,7 @@
     </div>
   </div>
 </div>
+
 <div *ngIf="!isadmin">
   <span i18n="@@needtobeadmin">
     Need to be an admin to access this

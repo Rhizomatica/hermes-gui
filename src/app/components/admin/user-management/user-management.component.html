@@ -50,7 +50,6 @@
         <br /><input name="phone" [(ngModel)]="selectedUser.phone" maxlength="25" />
       </label>
       <div class="selector"></div>
-      <hr>
       <button *ngIf="!emptyUser" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
       <div *ngIf="showPassword">
         <label for="passwd">
