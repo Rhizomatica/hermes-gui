@@ -117,7 +117,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   checkLanguage() {
-    !localStorage.getItem('language') ? this.router.navigate(['/languages']) : null;
+    !localStorage.getItem('language') ? localStorage.setItem('language', GlobalConstants.localeId) : null;
   }
 
   closeMobileMenu() {
@@ -168,6 +168,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.deferredPrompt = null;
     }
   }
+
   checkIsLoginPage() {
     this.isLoginPage = this.router.url == '/login' ? true : false
   }
@@ -276,12 +277,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   importArabicStyles() {
-    var currentLanguage = localStorage.getItem('language')
+    const storedLanguage = localStorage.getItem('language');
+    const language = storedLanguage && storedLanguage.length
+      ? storedLanguage
+      : this.localeId;
 
-    if (this.localeId === 'ar' && currentLanguage === 'ar')
-      document.body.classList.add('ar');
-    else
-      document.body.classList.remove('ar');
+    document.body.classList.toggle('ar', language === 'ar');
   }
 
   ngOnDestroy() {
