@@ -233,7 +233,7 @@ a:visited.dark-mode {
 }
 
 .ls {
-  margin-left: 2px;
+  margin-left: 10px;
   font-size: 0.9em;
 }
 
@@ -1130,7 +1130,7 @@ menu {
 
   .item {
     border-bottom: #999 1px solid;
-    padding: 0 0 25px 10px;
+    padding: 0 0 15px 10px;
   }
 }
 
@@ -1167,10 +1167,11 @@ button:disabled {
 }
 
 .inlineicon {
-  width: 18px;
+  width: 22px;
   filter: invert(27%) brightness(200%);
   margin-right: 0.5em;
   margin-left: 0.5em;
+  vertical-align: middle;
 }
 
 .inlineicon .right {
@@ -2475,6 +2476,10 @@ video {
     font-size: 1.6rem;
   }
 
+  table {
+    font-size: 1.7rem;
+  }
+
   nav .nav-domain,
   nav .nav-frequency,
   nav .nav-operation-mode {
@@ -2487,6 +2492,7 @@ video {
 
   .card {
     width: 14em;
+    padding: 1.4em 1em 1em;
   }
 
   .breadcrumb {
@@ -2507,8 +2513,8 @@ video {
   }
 
   .shut button.midbt {
-    font-size: .7em;
-    height: 4.6em;
+    font-size: .65em;
+    height: 5em;
     border-radius: 3px;
     width: 15em;
   }
@@ -2601,6 +2607,10 @@ video {
   .slider:before {
     height: 26.5px;
   }
+
+  .inlineicon {
+    width: 35px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2610,8 +2620,7 @@ video {
   }
 
   .formfield {
-    padding-right: 3em;
-    padding-left: 3em;
+    padding: 0 3em 3em 3em;
     max-width: 100%;
     margin-left: 0%;
   }
@@ -2694,7 +2703,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 17.5em;
+    width: 18.5em;
   }
 
 
@@ -2785,6 +2794,25 @@ video {
       font-size: 0.8em;
     }
   }
+
+  .formdata input.midbt {
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .formdata button.midbt {
+    font-size: .7em;
+    height: 3rem;
+    width: 37%;
+  }
+
+  .inlineicon {
+    width: 22px;
+  }
+
+  .radio form {
+    line-height: 1.5em;
+  }
 }
 
 
@@ -2812,6 +2840,7 @@ video {
     border: 0;
     width: 100%;
     table-layout: fixed;
+    font-size: 1.4rem;
   }
 
   table caption {
@@ -2885,11 +2914,14 @@ video {
   }
 
   .formdata {
+
+    flex: 0 0 97%;
+
     button.midbt {
-      font-size: 0.7em;
+      font-size: 0.8em;
       margin-top: 0;
       width: 37%;
-      height: 2rem;
+      // height: 2rem;
     }
 
     input {
@@ -2907,14 +2939,14 @@ video {
     padding: 2vmin;
     margin: 1vmin;
     width: 100%;
-    height: 23vmin;
+    height: 24vmin;
 
     .card-title {
-      font-size: .8em;
+      font-size: .85em;
     }
 
     img {
-      width: 7vmin;
+      width: 9vmin;
     }
   }
 
@@ -2943,8 +2975,8 @@ video {
     width: 95vw;
 
     button.midbt {
-      font-size: 0.8em;
-      height: 20vmin;
+      font-size: 0.7em;
+      height: 15vmin;
       width: 45vw;
       margin-right: 5vw;
       margin-left: 0;
@@ -3043,7 +3075,9 @@ video {
     display: flex;
 
     form {
-      font-size: 1rem;
+      font-size: 1.4rem;
+      padding: 1em;
+      line-height: 1.4em;
     }
   }
 
@@ -3171,7 +3205,10 @@ video {
   .formdata input.midbt {
     width: 60%;
     margin-right: .1em;
-    height: 2rem;
-    font-size: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .inlineicon {
+    width: 22px;
   }
 }
