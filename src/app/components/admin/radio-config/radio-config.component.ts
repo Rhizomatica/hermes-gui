@@ -55,6 +55,7 @@ export class RadioConfigComponent implements OnInit {
   formatedTimeout: number = 0
   isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
   toggleDigital: number = 0
+  digitalVoice: string = 'OFF'
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -148,7 +149,7 @@ export class RadioConfigComponent implements OnInit {
     }
 
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
-      (res: any) => {},
+      (res: any) => { },
       (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -311,7 +312,7 @@ export class RadioConfigComponent implements OnInit {
 
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
-      (res: any) => {},
+      (res: any) => { },
       (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -329,7 +330,7 @@ export class RadioConfigComponent implements OnInit {
     this.formatedTimeout = this.timeoutStatus === 0 ? 0 : this.timeoutDefault / 60;
 
     this.radioService.setTimeoutConfig(newTimeout).subscribe(
-      (res: any) => {},
+      (res: any) => { },
       (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -394,7 +395,7 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-   updatePowerLevel(f: NgForm, profile: number) {
+  updatePowerLevel(f: NgForm, profile: number) {
     this.loading = true
     f.value.profile = profile;
     f.value.powerLevel = profile === 0 ? this.dataPowerLevel : this.voicePowerLevel;
@@ -410,15 +411,26 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
+  getDigitalVoice() {
+    this.radioService.getDigitalVoice().subscribe(
+      (res: any) => {
+        this.digitalVoice = res
+      },
+      (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    );
+  }
 
   toggleDigitalVoice(event) {
+    if(!this.digitalVoice) return
 
-    if (this.radio.connetion)
-      return
+    const digitalValue = this.digitalVoice === 'OFF' ? 1 : 0;
+    this.digitalVoice = this.digitalVoice === 'OFF' ? 'ON' : 'OFF';
 
-    this.toggleDigital = this.toggleDigital === 0 ? 1 : 0;
-    this.radioService.toggleDigital(this.toggleDigital).subscribe(
-      (res: any) => {},
+    this.radioService.toggleDigital(digitalValue).subscribe(
+      (res: any) => { },
       (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -434,7 +446,8 @@ export class RadioConfigComponent implements OnInit {
     this.modeSwitch = this.radio.p0_mode === 'LSB'
     this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
     this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
-    this.getRadioPowerLevel();
+    this.getRadioPowerLevel()
+    this.getDigitalVoice()
     this.isAdmin = this.currentUser?.admin
     this.loading = false
   }

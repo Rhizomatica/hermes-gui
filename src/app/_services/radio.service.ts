@@ -209,6 +209,15 @@ export class RadioService {
       catchError(this.handleError));
   }
 
+  public getDigitalVoice(): Observable<{ string }> {
+    const url = `${GlobalConstants.apiURL}/radio/voice/digital`;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(this.handleError));
+  }
+  
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }
