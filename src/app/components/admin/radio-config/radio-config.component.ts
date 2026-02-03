@@ -424,13 +424,17 @@ export class RadioConfigComponent implements OnInit {
   }
 
   toggleDigitalVoice(event) {
-    if(!this.digitalVoice) return
+    if (!this.digitalVoice) return
 
     const digitalValue = this.digitalVoice === 'OFF' ? 1 : 0;
+    console.log(digitalValue)
     this.digitalVoice = this.digitalVoice === 'OFF' ? 'ON' : 'OFF';
 
     this.radioService.toggleDigital(digitalValue).subscribe(
-      (res: any) => { },
+      (res: any) => {
+
+        this.getDigitalVoice()
+      },
       (err) => {
         this.error = err;
         this.errorAlert = true;

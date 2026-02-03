@@ -201,15 +201,15 @@ export class RadioService {
   }
 
   public toggleDigital(value: number): Observable<{ number }> {
-    const url = `${GlobalConstants.apiURL}/radio/voice/digital`;
-    return this.http.post<number>(url, value).pipe(
+    const url = `${GlobalConstants.apiURL}/radio/voice/digital/${value}`;
+    return this.http.post<number>(url, null).pipe(
       map((res: any) => {
         return res;
       }),
       catchError(this.handleError));
   }
 
-  public getDigitalVoice(): Observable<{ string }> {
+  public getDigitalVoice(): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/radio/voice/digital`;
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -217,7 +217,7 @@ export class RadioService {
       }),
       catchError(this.handleError));
   }
-  
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   }
