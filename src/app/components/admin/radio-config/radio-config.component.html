@@ -120,9 +120,9 @@
         </div>
       </form>
 
-      <form class="formdata field" *ngIf="bitx == 'S' && radio.profile == 1 && radio.digital == 1">
+      <form class="formdata field" *ngIf="bitx == 'S' && radio.profile == 1">
         <span i18n="@@voicemode" class="radio-config-label">Voice Mode</span>
-        <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="radio.digital == 0">
+        <div [ngClass]="{'float-right flex-right': !isArabic}">
           <span>USB</span>
           <div class="switch">
             <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch" [disabled]="radio.digital === 1">
