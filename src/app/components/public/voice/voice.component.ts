@@ -224,20 +224,22 @@ export class VoiceComponent implements OnInit {
   }
 
   toggleDigitalVoice(event) {
+    if (!this.radio.p1_digital_voice) return
 
-    if (this.radio.connection)
-      return
+    this.loading = true;
+    const digitalValue = this.radio.p1_digital_voice == 1 ? 0 : 1;
 
-    this.toggleDigital = this.toggleDigital === 0 ? 1 : 0;
-    this.radioService.toggleDigital(this.toggleDigital).subscribe(
-      (res: any) => { },
+    this.radioService.toggleDigital(digitalValue).subscribe(
+      (res: any) => {
+        this.loading = false;
+      },
       (err) => {
         this.error = err;
         this.errorAlert = true;
       }
     );
   }
-
+  
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
     this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false

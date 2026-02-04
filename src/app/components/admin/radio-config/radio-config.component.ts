@@ -55,7 +55,6 @@ export class RadioConfigComponent implements OnInit {
   formatedTimeout: number = 0
   isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
   toggleDigital: number = 0
-  digitalVoice: string = 'OFF'
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -411,29 +410,15 @@ export class RadioConfigComponent implements OnInit {
     );
   }
 
-  getDigitalVoice() {
-    this.radioService.getDigitalVoice().subscribe(
-      (res: any) => {
-        this.digitalVoice = res
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    );
-  }
-
   toggleDigitalVoice(event) {
-    if (!this.digitalVoice) return
+    if (!this.radio.p1_digital_voice) return
 
-    const digitalValue = this.digitalVoice === 'OFF' ? 1 : 0;
-    console.log(digitalValue)
-    this.digitalVoice = this.digitalVoice === 'OFF' ? 'ON' : 'OFF';
+    this.loading = true;
+    const digitalValue = this.radio.p1_digital_voice == 1 ? 0 : 1;
 
     this.radioService.toggleDigital(digitalValue).subscribe(
       (res: any) => {
-
-        this.getDigitalVoice()
+        this.loading = false;
       },
       (err) => {
         this.error = err;
@@ -451,7 +436,6 @@ export class RadioConfigComponent implements OnInit {
     this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
     this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
     this.getRadioPowerLevel()
-    this.getDigitalVoice()
     this.isAdmin = this.currentUser?.admin
     this.loading = false
   }

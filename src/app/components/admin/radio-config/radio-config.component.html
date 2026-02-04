@@ -42,8 +42,8 @@
           <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
             <span i18n="@@off">OFF</span>
             <div class="switch">
-              <input type="checkbox" name="digital" [checked]="digitalVoice == 'ON'">
-              <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{digitalVoice}}"
+              <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice == 1">
+              <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.p1_digital_voice}}"
                 [checked]="toggleDigital"></span>
             </div>
             <span i18n="@@on">ON</span>

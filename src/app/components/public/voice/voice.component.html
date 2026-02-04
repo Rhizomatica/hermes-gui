@@ -14,8 +14,8 @@
       <div class="">
         <span i18n="@@off">OFF</span>
         <div class="switch">
-          <input type="checkbox" name="digital" [checked]="radio.digital">
-          <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.digital}}"
+          <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice == 1">
+          <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.p1_digital_voice}}"
             [checked]="toggleDigital"></span>
         </div>
         <span i18n="@@on">ON</span>
