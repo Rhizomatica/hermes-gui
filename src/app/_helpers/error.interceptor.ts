@@ -35,10 +35,10 @@ export class ErrorInterceptor implements HttpInterceptor {
                 message = this.spanishError(errorStatus)
                 break
             case 'fr':
-                message = this.françaisError(errorStatus)
+                message = this.francaisError(errorStatus)
                 break
-            // case 'ar':
-            //     message = this.arabicError(errorStatus)
+            case 'ar':
+                message = this.arabicError(errorStatus)
             default:
                 message = this.englishError(errorStatus)
                 break
@@ -95,7 +95,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
 
-    public françaisError(errorStatus) {
+    public francaisError(errorStatus) {
 
         switch (errorStatus) {
             case 400:
@@ -111,13 +111,19 @@ export class ErrorInterceptor implements HttpInterceptor {
         return errorStatus
     }
 
-    // public arabicError(errorStatus) {
-    //     if (errorStatus == 500)
-    //         return ''
+   public arabicError(errorStatus) {
 
-    //     if (errorStatus == 400)
-    //         return ''
+        switch (errorStatus) {
+            case 400:
+                return 'لم يتم العثور على الخدمة.'
+            case 413:
+                return 'الملف كبير جدًا؛ الحد الأقصى للحجم هو 20.48 ميجابايت.'
+            case 431:
+                return 'يتجاوز حجم الطلب الحد المسموح به من قبل الخادم.'
+            case 500:
+                return 'حدث خطأ في الخادم الداخلي، يرجى المحاولة مرة أخرى. تواصل مع الدعم الفني إذا استمرت المشكلة.'
+        }
 
-    //     return errorStatus
-    // }
+        return errorStatus
+    }
 }
