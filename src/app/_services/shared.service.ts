@@ -45,7 +45,8 @@ export class SharedService {
     bitrateLength: null,
     bytes_received: null,
     bytes_transmitted: null,
-    message: null
+    message: null,
+    p1_digital_voice: null
   });
 
   public storedRadioObj = <Radio>({
@@ -73,7 +74,8 @@ export class SharedService {
     bitrateLength: null,
     bytes_received: null,
     bytes_transmitted: null,
-    message: null
+    message: null,
+    p1_digital_voice: 0
   });
 
   setRadioObjShared(data) {
@@ -109,7 +111,7 @@ export class SharedService {
     this.radioObj.value.bytes_received = this.storedRadioObj.bytes_received
     this.radioObj.value.bytes_transmitted = this.storedRadioObj.bytes_transmitted
     this.radioObj.value.message = this.storedRadioObj.message
-
+    this.radioObj.value.p1_digital_voice = this.storedRadioObj.p1_digital_voice
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -144,6 +146,8 @@ export class SharedService {
     this.storedRadioObj.bytes_received = newObj.bytes_received == null ? this.storedRadioObj.bytes_received : newObj.bytes_received
     this.storedRadioObj.bytes_transmitted = newObj.bytes_transmitted == null ? this.storedRadioObj.bytes_transmitted : newObj.bytes_transmitted
     this.storedRadioObj.message = newObj.message == null ? this.storedRadioObj.message : newObj.message
+    const previousDigital = this.storedRadioObj.p1_digital_voice
+    this.storedRadioObj.p1_digital_voice = newObj.p1_digital_voice == null ? this.storedRadioObj.p1_digital_voice : newObj.p1_digital_voice
 
   }
 
@@ -170,8 +174,8 @@ export class SharedService {
     this.radioObj.value.bitrate = '363'
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
-    this.radioObj.value.message = 'This is a demo version' 
-
+    this.radioObj.value.message = 'This is a demo version'
+    this.radioObj.value.p1_digital_voice = 0
     this.radioObj.next(this.radioObj.value)
   }
 
@@ -210,7 +214,7 @@ export class SharedService {
   }
 
   prepareSNRHistory() {
-    
+
     if (!this.storedRadioObj.snr || this.storedRadioObj.snr == 0)
       return
 
@@ -229,7 +233,7 @@ export class SharedService {
     }
 
     this.storedRadioObj.snrHistory.push(snrData)
-    
+
     if (this.storedRadioObj.snrHistory.length > 10000) {
       this.storedRadioObj.snrHistory.shift()
       this.storedRadioObj.snrHistory.shift()

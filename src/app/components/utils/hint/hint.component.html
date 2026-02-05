@@ -249,7 +249,7 @@
         and voice transmission separately.
       </p>
       <p class="m-t-10">
-       Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON
+        Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON
         that means the antenna does not match the transmission frequency. You can reset the protection selecting
         (Reset).
       <p class="m-t-10">
@@ -574,7 +574,12 @@
         OFF / DISCONNECTED / INACTIVE
       </p>
       <p class="m-t-10">
-        SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the system will operate efficiently. A high SWR (2.5 or above) suggests that the antenna is not set to the same frequency as the transmitter or that it is damaged. The transmission will not be optimal and trying to operate the system with a high SWR can damage the transmitter and will likely cause the radio to go into protection Mode. 
+        SWR - Standing Wave Ratio. This indicates how efficiently power is transmitted from the radio transmitter to the
+        antenna. A low SWR (close to 1) indicates that the antenna is set to the correct operating frequency and the
+        system will operate efficiently. A high SWR (2.5 or above) suggests that the antenna is not set to the same
+        frequency as the transmitter or that it is damaged. The transmission will not be optimal and trying to operate
+        the system with a high SWR can damage the transmitter and will likely cause the radio to go into protection
+        Mode.
       </p>
       <p>
         Bitrate - Amount of audio data transferred each second.
@@ -589,13 +594,15 @@
         Radio profile - current radio mode operation profile (voice / data).
       </p>
       <p>
-        Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so they can communicate with each other. 
+        Data frequency - Frequency used to transmit messages and files. All stations need to be on the same frequency so
+        they can communicate with each other.
       </p>
       <p>
-        Voice frequency - Frequency used to transmit (PTT) and receive voice transmission. 
+        Voice frequency - Frequency used to transmit (PTT) and receive voice transmission.
       </p>
       <p>
-        Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can shorten the transmission range and preserve battery capacity. 
+        Power - It is best practice to use the minimum power needed to make contact. Using a lower power setting can
+        shorten the transmission range and preserve battery capacity.
       </p>
       <p>
         Protection - For proper functioning the protection must be OFF. When the radio turns the protection ON
@@ -603,7 +610,7 @@
         (Reset).
       </p>
       <p>
-        Transmission status - Radio transmission connection status (connected / disconnected). 
+        Transmission status - Radio transmission connection status (connected / disconnected).
       </p>
       <p>
         Pending Transmission - Pending messages transmissions waiting on the queue.
@@ -640,6 +647,14 @@
       <h1 class="cv-title">SMS Chat</h1>
       <p>
         Use SMS Chat to exchange messages using the SMS service with any phone number.
+      </p>
+    </div>
+
+    <div *ngIf="hint == 'digitalvoice'" i18n="@@digitalvoicehint">
+      <h1 class="cv-title">SMS Chat</h1>
+      <p>
+        Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient, and
+        data-rich communication than traditional analog modes.
       </p>
     </div>
 

@@ -14,6 +14,7 @@ import { LoadingComponent } from './components/utils/loading/loading.component';
 import { LogComponent } from './components/admin/log/log.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { LanguagesComponent } from './components/public/languages/languages.component';
@@ -61,6 +62,7 @@ import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 import { ProgressBarComponent } from './components/utils/progressbar/progressbar.component';
+import { RadioConnectionAlertComponent } from './components/utils/radio-connection-alert/radio-connection-alert.component';
 
 
 registerLocaleData(localeEn);
@@ -82,6 +84,7 @@ registerLocaleData(localeAr);
     LogComponent,
     StationInformationComponent,
     UserManagementComponent,
+    UserListComponent,
     MessagecomposeComponent,
     LoginComponent,
     LanguagesComponent,
@@ -110,7 +113,8 @@ registerLocaleData(localeAr);
     XYGraphComponent,
     ClockHandGraphComponent,
     MapGraphComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    RadioConnectionAlertComponent
   ],
   imports: [
     BrowserModule,

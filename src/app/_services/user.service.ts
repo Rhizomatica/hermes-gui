@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { AlertService } from './alert.service';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User } from '../interfaces/user';
-// import { isBoolean } from 'util';
 import { GlobalConstants } from '../global-constants';
 
 @Injectable({
@@ -13,11 +11,7 @@ import { GlobalConstants } from '../global-constants';
 export class UserService {
 
   constructor(
-    private http: HttpClient,
-    private alertService: AlertService) { }
-
-  users: User[];
-  user: User;
+    private http: HttpClient) { }
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -28,10 +22,13 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get(GlobalConstants.apiURL + '/user').pipe(
-      map((res: any) => {
-        this.users = res;
-        return this.users;
-      }),
+      map((res: any) => res),
+      catchError(this.handleError));
+  }
+
+  getUser(id: string): Observable<User> {
+    return this.http.get(GlobalConstants.apiURL + '/user/' + id).pipe(
+      map((res: any) => res.message),
       catchError(this.handleError));
   }
 
@@ -63,7 +60,6 @@ export class UserService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    this.users = [];
     return throwError(error);
   }
 
