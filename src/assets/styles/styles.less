@@ -757,11 +757,22 @@ input:checked+.slider:before {
 
 #radioconf {
   .card {
-    line-height: 1.3em;
+    line-height: 1.5em;
     width: 23.5%;
+    text-align: left;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
 
     small {
       font-size: 0.6em;
+    }
+
+    .card-value {
+      margin-top: auto;
+      font-size: 3rem;
+      color: #333333;
     }
   }
 }
@@ -2185,6 +2196,7 @@ video {
   .radio {
     form {
       border-color: #fff;
+      background-color: @mclr
     }
   }
 
@@ -2436,6 +2448,14 @@ video {
 
   .flexible a {
     color: @bkclr;
+  }
+
+  #radioconf {
+    .card {
+      .card-value {
+        color: @bkclr
+      }
+    }
   }
 }
 
@@ -2814,6 +2834,23 @@ video {
   .radio form {
     line-height: 1.5em;
   }
+
+  .card {
+    height: 8em;
+  }
+
+  #radioconf .card {
+    font-size: 1.3rem;
+    line-height: 1.2em;
+  }
+
+  #radioconf .card .card-value {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.3rem;
+  }
 }
 
 
@@ -2956,10 +2993,16 @@ video {
     .card {
       line-height: 1.3em;
       width: 48%;
-      height: 7em;
+      height: 8.5em;
+      font-size: 1rem;
+      font-size: 1.4rem;
 
       small {
         font-size: 0.8em;
+      }
+
+      .card-value {
+        font-size: 2.2rem;
       }
     }
   }
@@ -3194,7 +3237,7 @@ video {
   }
 
   .alertcard {
-    width: 96%;
+    width: 100%;
   }
 
   .email a {

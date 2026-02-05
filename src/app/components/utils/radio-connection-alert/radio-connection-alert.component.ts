@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SharedService } from 'src/app/_services/shared.service';
+import { Radio } from 'src/app/interfaces/radio';
 
 @Component({
   selector: 'app-radio-connection-alert',
@@ -6,4 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./radio-connection-alert.component.less']
 })
 export class RadioConnectionAlertComponent {
+  
+  public radio: Radio
+
+  constructor(private sharedService: SharedService
+  ) {
+    this.radio = this.sharedService.radioObj.value
+  }
 }

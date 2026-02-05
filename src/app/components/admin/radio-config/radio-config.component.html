@@ -6,7 +6,44 @@
   </div>
   <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
   <div>
-    <app-radio-connection-alert *ngIf="radio.connection"></app-radio-connection-alert>
+    <app-radio-connection-alert></app-radio-connection-alert>
+    <div class="flexible m-t-15 m-b-15">
+      <div class="card">
+        <div class="row">
+          <span i18n="@swrlabelcard">Standing Wave Ratio (SWR)</span>
+        </div>
+        <div class="card-value">
+          {{radio.swr}}
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <span i18n="@forward">Power</span>
+        </div>
+        <div class="card-value">
+          {{radio.fwd_watts ? radio.fwd_watts : 0}} W
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <span i18n="@@operationmode">Operation mode</span>
+        </div>
+        <div class="card-value">
+          <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
+          <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <span i18n="@@SNR">Signal-to-noise ratio (SNR)</span>
+        </div>
+        <div class="card-value">
+          {{radio.snr}} db
+        </div>
+      </div>
+    </div>
+
+
     <div *ngIf="radio" class="radio form-container">
       <form class="formdata field" *ngIf="bitx == 'S'">
         <div class="row">

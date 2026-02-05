@@ -1,12 +1,24 @@
-<div class="alertcard flexible">
+
+<div class="alertcard flexible" *ngIf="radio.connection">
     <span class="greencircle"></span>
     <b class="m-l-10" i18n="@@transmissioncardalerttitle">
         Radio connected
     </b>
     <div class="row">
         <p i18n="@@transmissioncardalertmesage">
-            Data connection ongoing...
-            Voice mode blocked
+            Data connection ongoing... Voice mode blocked.
+        </p>
+    </div>
+</div>
+
+<div class="alertcard flexible" *ngIf="!radio.connection">
+    <span class="redcircle"></span>
+    <b class="m-l-10" i18n="@@radiodisconnected">
+        Radio disconnected
+    </b>
+    <div class="row">
+        <p i18n="@@notransmissioncardalertmesage">
+            No transmission occurring. Voice mode available.
         </p>
     </div>
 </div>
