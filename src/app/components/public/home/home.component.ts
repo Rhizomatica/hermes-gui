@@ -16,7 +16,7 @@ import { WebsocketService } from 'src/app/_services/websocket.service';
   styleUrls: ['./home.component.less']
 })
 
-export class homeComponent implements OnInit {
+export class HomeComponent implements OnInit {
   [x: string]: any;
 
 

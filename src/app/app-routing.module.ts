@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../app/_helpers/auth.guard';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './_helpers/auth.guard';
 import { HintComponent } from './components/utils/hint/hint.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
-import { homeComponent } from './components/public/home/home.component';
+import { HomeComponent } from './components/public/home/home.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
@@ -37,7 +37,7 @@ import { ProgressBarComponent } from './components/utils/progressbar/progressbar
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: homeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'hint', component: HintComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'messages', component: MessagesComponent },

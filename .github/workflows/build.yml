@@ -49,15 +49,6 @@ jobs:
         - name: Run unit tests via Karma
           run: ng test
           working-directory: ./src/
-
-      # opening browser (maybe cypress config)
-      # - name: Run e2e tests
-      #   uses: cypress-io/github-action@v6
-      #   with:
-      #     build: npm run build
-      #     start: npm start
-      #     working-directory: ./src/
-
         - uses: actions/upload-artifact@v4
           with:
             name: hermes-gui-artifact
