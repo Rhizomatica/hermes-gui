@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@ang
 import { GlobalConstants } from 'src/app/global-constants';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh";
+import am5geodata_bangladeshHigh from "../../../../maps/bangladeshHigh";
 
 @Component({
   selector: 'mapgraph',
@@ -137,7 +137,7 @@ export class MapGraphComponent implements OnChanges, OnInit {
     var geoJson = am5geodata_bangladeshHigh
 
     if (GlobalConstants.gpsMap == 'brazil') {
-      geoJson = await import("../../../../assets/maps/brazilHigh").then(module => module.default);
+      geoJson = await import("../../../../maps/brazilHigh").then(module => module.default);
     }
 
     this.polygonSeries = chart.series.push(
