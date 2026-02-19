@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StationInformationComponent } from './station-information.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('StationInformationComponent', () => {
   let component: StationInformationComponent;
@@ -8,9 +8,10 @@ describe('StationInformationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StationInformationComponent],
-      imports: [HttpClientModule]
-    })
+    declarations: [StationInformationComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
       .compileComponents();
   });
 

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { DecimalPipe, registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -70,74 +70,64 @@ registerLocaleData(localePt);
 registerLocaleData(localeEs);
 registerLocaleData(localeAr);
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    MessagesComponent,
-    MessageDetailComponent,
-    MessagecomposeComponent,
-    SentMessagesComponent,
-    LoginComponent,
-    LanguagesComponent,
-    EmailComponent,
-    MenuComponent,
-    VoiceComponent,
-    SMSComponent,
-    SMSChatComponent,
-    OperatorComponent,
-
-    LogComponent,
-    StationInformationComponent,
-    UserManagementComponent,
-    MessageConfigComponent,
-    RadioConfigComponent,
-    ScheduleComponent,
-    TransmissionListComponent,
-    WiFiManagementComponent,
-    GPSComponent,
-
-    HintComponent,
-    LoadingComponent,
-    SwitchComponent,
-    PlayerComponent,
-    RecorderComponent,
-    BreadcrumbComponent,
-    FloatButtonComponent,
-    XYGraphComponent,
-    ClockHandGraphComponent,
-    MapGraphComponent,
-    ProgressBarComponent,
-
-    SameUsernameDirective,
-    RetypeDirective,
-    UserExistDirective,
-    FilterPipe
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgSelectModule,
-    NgIdleKeepaliveModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-    AppRoutingModule
-  ],
-  providers: [
-    DecimalPipe,
-    { provide: LOCALE_ID, useValue: 'en-US' }, { provide: LOCALE_ID, useValue: 'pt' },
-    { provide: LOCALE_ID, useValue: 'es' },
-    { provide: LOCALE_ID, useValue: 'fr' },
-    { provide: LOCALE_ID, useValue: 'ar' },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
-
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        MessagesComponent,
+        MessageDetailComponent,
+        MessagecomposeComponent,
+        SentMessagesComponent,
+        LoginComponent,
+        LanguagesComponent,
+        EmailComponent,
+        MenuComponent,
+        VoiceComponent,
+        SMSComponent,
+        SMSChatComponent,
+        OperatorComponent,
+        LogComponent,
+        StationInformationComponent,
+        UserManagementComponent,
+        MessageConfigComponent,
+        RadioConfigComponent,
+        ScheduleComponent,
+        TransmissionListComponent,
+        WiFiManagementComponent,
+        GPSComponent,
+        HintComponent,
+        LoadingComponent,
+        SwitchComponent,
+        PlayerComponent,
+        RecorderComponent,
+        BreadcrumbComponent,
+        FloatButtonComponent,
+        XYGraphComponent,
+        ClockHandGraphComponent,
+        MapGraphComponent,
+        ProgressBarComponent,
+        SameUsernameDirective,
+        RetypeDirective,
+        UserExistDirective,
+        FilterPipe
+    ],
+    bootstrap: [AppComponent],
+    schemas: [NO_ERRORS_SCHEMA], imports: [BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgSelectModule,
+        NgIdleKeepaliveModule.forRoot(),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        AppRoutingModule], providers: [
+        DecimalPipe,
+        { provide: LOCALE_ID, useValue: 'en-US' }, { provide: LOCALE_ID, useValue: 'pt' },
+        { provide: LOCALE_ID, useValue: 'es' },
+        { provide: LOCALE_ID, useValue: 'fr' },
+        { provide: LOCALE_ID, useValue: 'ar' },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { VoiceComponent } from './voice.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('VoiceComponent', () => {
@@ -10,13 +10,12 @@ describe('VoiceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VoiceComponent],
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
+    declarations: [VoiceComponent],
+    imports: [RouterTestingModule,
         ReactiveFormsModule,
-        FormsModule]
-    })
+        FormsModule],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
       .compileComponents();
   });
 

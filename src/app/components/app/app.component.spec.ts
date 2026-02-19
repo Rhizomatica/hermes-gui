@@ -2,7 +2,7 @@ import { } from "jasmine"
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgIdleKeepaliveModule } from "@ng-idle/keepalive";
 import { LanguagesComponent } from "../public/languages/languages.component";
 
@@ -13,18 +13,14 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
-        NgIdleKeepaliveModule.forRoot(),
-         RouterTestingModule.withRoutes(
-        [{path: 'languages', component: LanguagesComponent}]
-      )
-      ],
-      declarations: [
+    declarations: [
         AppComponent
-      ],
-    }).compileComponents();
+    ],
+    imports: [RouterTestingModule,
+        NgIdleKeepaliveModule.forRoot(),
+        RouterTestingModule.withRoutes([{ path: 'languages', component: LanguagesComponent }])],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+}).compileComponents();
 
 
     fixture = TestBed.createComponent(AppComponent);

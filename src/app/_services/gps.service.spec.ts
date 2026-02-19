@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import { GPSService } from './gps.service'
-import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { GlobalConstants } from '../global-constants';
 
 describe('GPSService', () => {
@@ -13,13 +13,12 @@ describe('GPSService', () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000
 
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule
-      ],
-      providers: [
-        GPSService
-      ]
-    })
+    imports: [],
+    providers: [
+        GPSService,
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
     service = TestBed.inject(GPSService)
     http = TestBed.inject(HttpClient)
   })

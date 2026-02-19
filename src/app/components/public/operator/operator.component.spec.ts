@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { OperatorComponent } from './operator.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('OperatorComponent', () => {
@@ -10,14 +10,12 @@ describe('OperatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OperatorComponent],
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
+    declarations: [OperatorComponent],
+    imports: [RouterTestingModule,
         ReactiveFormsModule,
-        FormsModule
-      ]
-    })
+        FormsModule],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
       .compileComponents();
   });
 
