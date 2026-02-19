@@ -47,12 +47,9 @@ import { SameUsernameDirective } from './directives/same-username.directive';
 import { RetypeDirective } from './directives/retype.directive';
 import { UserExistDirective } from './directives/user-exist.directive';
 
-import { FrequencyPipe } from './frequency.pipe';
-
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -65,6 +62,7 @@ import localeAr from '@angular/common/locales/ar';
 
 import { environment } from '../environments/environment';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FilterPipe } from './pipes/filter.pipe';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
@@ -114,14 +112,13 @@ registerLocaleData(localeAr);
     SameUsernameDirective,
     RetypeDirective,
     UserExistDirective,
-    FrequencyPipe
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule,
     NgSelectModule,
     NgIdleKeepaliveModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {

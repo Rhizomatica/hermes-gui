@@ -252,7 +252,6 @@ export class LogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
   }
-
 }
 
 

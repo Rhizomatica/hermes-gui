@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 
@@ -12,8 +11,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      imports: [HttpClientModule,
-        Ng2SearchPipeModule, FormsModule],
+      imports: [HttpClientModule],
       providers: [WebsocketService]
     })
       .compileComponents();
