@@ -109,33 +109,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hermes:build"
+            "buildTarget": "hermes:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hermes:build:production"
+              "buildTarget": "hermes:build:production"
             },
             "development": {
-              "browserTarget": "hermes:build:development"
+              "buildTarget": "hermes:build:development"
             },
             "pt": {
-              "browserTarget": "hermes:build:development,pt"
+              "buildTarget": "hermes:build:development,pt"
             },
             "es": {
-              "browserTarget": "hermes:build:development,es"
+              "buildTarget": "hermes:build:development,es"
             },
             "fr": {
-              "browserTarget": "hermes:build:development,fr"
+              "buildTarget": "hermes:build:development,fr"
             },
             "ar": {
-              "browserTarget": "hermes:build:development,ar"
+              "buildTarget": "hermes:build:development,ar"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hermes:build",
+            "buildTarget": "hermes:build",
             "outputPath": "src/locale"
           }
         },
