@@ -48,7 +48,7 @@ export class MessageService {
     try {
       const response = await this.http.post(url, formData, { params, headers });
 
-      return response.toPromise();
+      return lastValueFrom(response);
     } catch (error) {
       await this.handleError(error);
     }

@@ -8,11 +8,11 @@ import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
-import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
 import { RouterModule, Routes } from '@angular/router';
+import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -68,9 +68,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private sharedService: SharedService,
     private idle: Idle,
     // private keepalive: Keepalive, 
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private theme: ThemeService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
 
     this.startIdleDetector()
     this.importArabicStyles()
@@ -239,6 +241,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
+    this.theme.init();
     this.loading = true
     this.checkRequireLogin()
     this.getSystemStatus();
