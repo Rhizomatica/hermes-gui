@@ -88,7 +88,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light';
+    const stored = localStorage.getItem('dark-mode');
+    this.currentTheme = stored ? JSON.parse(stored).darkMode ? 'dark' : 'light' : 'light';
+    
     this.radio = this.sharedService.radioObj.value
   }
 }

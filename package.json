@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "extract-i18n": "ng xi18n --output-path src/locale && xliffmerge --profile xliffmerge.json pt es fr ar"
+    "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge --profile xliffmerge.json pt es fr ar",
+    "build-i18n": "npm run build -- --localize"
   },
   "dependencies": {
     "@amcharts/amcharts5": "^5.9.8",

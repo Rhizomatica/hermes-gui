@@ -64,6 +64,7 @@ import localeEs from '@angular/common/locales/es';
 import localeAr from '@angular/common/locales/ar';
 
 import { environment } from '../environments/environment';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
@@ -138,6 +139,8 @@ registerLocaleData(localeAr);
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
+
 })
 export class AppModule { }

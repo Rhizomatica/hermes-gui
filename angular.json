@@ -7,7 +7,6 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
@@ -17,7 +16,6 @@
           "ar": "src/locale/messages.ar.xlf"
         }
       },
-
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -25,28 +23,25 @@
             "outputPath": "dist/hermes",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
-
             "assets": [
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest"
             ],
-
             "styles": [
               "src/styles/styles.less"
             ],
-
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
-
             "allowedCommonJsDependencies": [
               "polylabel",
               "recordrtc"
             ]
           },
-
           "configurations": {
             "production": {
               "aot": true,
@@ -64,10 +59,37 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "pt": {
+              "aot": true,
+              "outputPath": "dist/hermes/pt/",
+              "i18nFile": "src/locale/messages.pt.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "pt"
+            },
+            "es": {
+              "aot": true,
+              "outputPath": "dist/hermes/es/",
+              "i18nFile": "src/locale/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es"
+            },
+            "fr": {
+              "aot": true,
+              "outputPath": "dist/hermes/fr/",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr"
+            },
+            "ar": {
+              "aot": true,
+              "outputPath": "dist/hermes/ar/",
+              "i18nFile": "src/locale/messages.ar.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ar"
             }
           }
         },
-
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
@@ -79,7 +101,6 @@
             }
           }
         },
-
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -87,12 +108,13 @@
             "outputPath": "src/locale"
           }
         },
-
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
@@ -107,7 +129,6 @@
       }
     }
   },
-
   "cli": {
     "analytics": false
   }

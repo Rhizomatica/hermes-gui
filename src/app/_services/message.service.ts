@@ -34,14 +34,16 @@ export class MessageService {
     const formData: FormData = new FormData();
     formData.append('fileup', file);
     formData.append('pass', pass);
-    const params = new HttpParams();
+    const params = new HttpParams()
+      .set('reportProgress', 'true')
+      .set('observe', 'events');
     const headers = new HttpHeaders();
 
     // add this to be able to show progress on interface
     params.set('reportProgress', 'true');
     params.set('observe', 'events');
     headers.set('Access-Control-Allow-Origin', '*');
-    
+
     headers.set('Content-Type', null);
     headers.set('Accept', 'multipart/form-data');
 

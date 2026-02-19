@@ -37,7 +37,7 @@ import { ProgressBarComponent } from './components/utils/progressbar/progressbar
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'hint', component: HintComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'messages', component: MessagesComponent },
@@ -72,7 +72,7 @@ const routes: Routes = [
   { path: 'clockhandgraph', component: ClockHandGraphComponent },
   { path: 'mapgraph', component: MapGraphComponent },
   { path: 'progressbar', component: ProgressBarComponent }
-  
+
 ];
 
 @NgModule({

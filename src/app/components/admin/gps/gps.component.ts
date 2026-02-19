@@ -5,7 +5,7 @@ import { GPSService } from '../../../_services/gps.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { NgForm } from '@angular/forms';
 
-import { Subscription, interval } from 'rxjs';
+import { Subscription, interval, lastValueFrom } from 'rxjs';
 // import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
 
 @Component({
@@ -49,7 +49,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getGPSFiles(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getStoredGPSFiles().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getStoredGPSFiles()); 
       if (res) {
         this.files = res;
       }
@@ -62,7 +62,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getGPSStatus(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getGPSStatus().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getGPSStatus());
       if (res) {
         this.status = res;
       }
@@ -75,7 +75,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getInterval(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getInterval().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getInterval());
       if (res) {
         this.interval = res;
       }
@@ -88,7 +88,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getFileRangeTime(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getFileRangeTime().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getFileRangeTime());
       if (res) {
         this.range = parseInt(res) / 60;
       }
@@ -101,7 +101,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getEmail(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getEmail().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getEmail());
       if (res) {
         this.email = res;
       }
@@ -114,7 +114,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getCurrentCoordinates(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getCurrentCoordinates().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getCurrentCoordinates());
       if (res && res.latitude !== null && res.longitude !== null) {
         this.currentLatitude = res.latitude;
         this.currentLongitude = res.longitude;
