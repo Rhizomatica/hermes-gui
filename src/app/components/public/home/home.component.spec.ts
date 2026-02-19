@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { homeComponent } from './home.component';
+import { HomeComponent } from './home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 
-describe('homeComponent', () => {
-  let component: homeComponent;
-  let fixture: ComponentFixture<homeComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [homeComponent],
+      declarations: [HomeComponent],
       imports: [HttpClientModule,
         Ng2SearchPipeModule, FormsModule],
       providers: [WebsocketService]
@@ -20,7 +20,7 @@ describe('homeComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(homeComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

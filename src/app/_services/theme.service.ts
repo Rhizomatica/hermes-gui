@@ -12,7 +12,7 @@ export class ThemeService {
   }
 
   init() {
-    const saved = localStorage.getItem('dark-mode');
+    const saved = localStorage.getItem( 'dark-mode');
     if (saved === '1') {
       this.dark = true;
       document.body.classList.add('dark');

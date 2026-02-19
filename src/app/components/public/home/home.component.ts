@@ -21,12 +21,12 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    private authenticationService: AuthenticationService,
+     private authenticationService: AuthenticationService,
     private themeService: ThemeService,
     private router: Router,
     private utils: UtilsService,
     private sharedService: SharedService,
-    private websocketService: WebsocketService
+    private websocketService: WebsocketService,
   ) {
     this.checkBrowser(utils.detectBrowserName())
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
 
   currentUser: User = null
   admin: boolean = false
-  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
   alertBrowserXP: boolean = false
   showVoiceCard: boolean = false
@@ -66,7 +65,6 @@ export class HomeComponent implements OnInit {
   }
 
   toggle(): void {
-
     this.themeService.toggle();
   }
 

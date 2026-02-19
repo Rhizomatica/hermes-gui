@@ -60,33 +60,49 @@
                 }
               ]
             },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "pt": {
-              "aot": true,
-              "outputPath": "dist/hermes/pt/",
-              "i18nFile": "src/locale/messages.pt.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "pt"
+              "localize": [
+                "pt"
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             },
             "es": {
-              "aot": true,
-              "outputPath": "dist/hermes/es/",
-              "i18nFile": "src/locale/messages.es.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "es"
+              "localize": [
+                "es"
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             },
             "fr": {
-              "aot": true,
-              "outputPath": "dist/hermes/fr/",
-              "i18nFile": "src/locale/messages.fr.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "fr"
+              "localize": [
+                "fr"
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             },
             "ar": {
-              "aot": true,
-              "outputPath": "dist/hermes/ar/",
-              "i18nFile": "src/locale/messages.ar.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "ar"
+              "localize": [
+                "ar"
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             }
           }
         },
@@ -98,6 +114,21 @@
           "configurations": {
             "production": {
               "browserTarget": "hermes:build:production"
+            },
+            "development": {
+              "browserTarget": "hermes:build:development"
+            },
+            "pt": {
+              "browserTarget": "hermes:build:development,pt"
+            },
+            "es": {
+              "browserTarget": "hermes:build:development,es"
+            },
+            "fr": {
+              "browserTarget": "hermes:build:development,fr"
+            },
+            "ar": {
+              "browserTarget": "hermes:build:development,ar"
             }
           }
         },
