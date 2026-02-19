@@ -20,6 +20,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": [
+              "en-US",
+              "pt",
+              "es",
+              "fr",
+              "ar"
+            ],
             "outputPath": {
               "base": "dist/hermes"
             },
