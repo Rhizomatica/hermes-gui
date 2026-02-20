@@ -14,7 +14,7 @@ rxjs: 7.8.2
 typescript: 5.2.2  
 
 Angular CLI: 18.2.21  
-Node: 18.17.1  
+Node: v20.20.0  
 Package Manager: npm 9.6.7 
 
 
