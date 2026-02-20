@@ -93,17 +93,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
         this.system = res;
         this.system.domain = this.system.domain == "hermes.radio" ? "demo.hermes.radio" : this.system.domain
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   showServerAlert() {
@@ -181,6 +181,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   checkRequireLogin() {
+    if (this.router.url === '/login' || this.router.url === '/') return
+
     GlobalConstants.requireLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
   }
 
@@ -250,14 +252,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.radio = this.sharedService.radioObj.value
 
     this.routerObserver = this.router.events.subscribe((event) => {
-      if (event instanceof ActivationEnd) {
-
-        //Redirect login if reload page...
-        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
-          this.router.navigate(['home'])
-        }
-      }
-
       if (event instanceof NavigationEnd) {
 
         this.checkIsMenuPage()
