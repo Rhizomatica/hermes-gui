@@ -1,5 +1,5 @@
 import { Injectable, Optional, Inject } from "@angular/core";
-import { Observable, Observer, Subject } from 'rxjs';
+import { Observable, Observer, Subject, Subscription } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { map } from 'rxjs/operators';
 
@@ -24,6 +24,8 @@ export class WebsocketService {
     public radioObj: Radio
     public intervallTimerKeepWebSocketAlive = interval(9000)
     private requireLogin: boolean = GlobalConstants.requireLogin
+    private messagesSubscription: Subscription = null;
+    private keepAliveSubscription: Subscription = null;
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
         private sharedService?: SharedService,
@@ -72,35 +74,37 @@ export class WebsocketService {
 
 
     subscribeMessages() {
+        // Avoid creating multiple subscriptions for the same messages Subject
+        if (!this.messages) return;
 
-        this.sharedService.radioObj.subscribe({
-            next: newValue => this.radioObj
-        });
+        if (!this.messagesSubscription || this.messagesSubscription.closed) {
+            this.messagesSubscription = this.messages.subscribe(data => {
+                this.sharedService.setRadioObjShared(data)
 
-        this.messages.subscribe(data => {
-            this.sharedService.setRadioObjShared(data)
+            }, async err => {
 
-        }, async err => {
+                if (this.ws && this.ws.OPEN == 1)
+                    this.closeConnection()
 
-            if (this.ws && this.ws.OPEN == 1)
-                this.closeConnection()
+                this.keepWebSocketAlive()
 
-            this.keepWebSocketAlive()
+                if (self.location.hostname === 'demo.hermes.radio')
+                    this.sharedService.mountRadioObjDemo()
 
-            if (self.location.hostname === 'demo.hermes.radio')
-                this.sharedService.mountRadioObjDemo()
-
-        }, () => {
-            console.log('complete, closing websocket connection...')
-        })
+            }, () => {
+                console.log('complete, closing websocket connection...')
+            });
+        }
     }
 
     keepWebSocketAlive() {
-        const subs = this.intervallTimerKeepWebSocketAlive.subscribe(val => {
-            console.log('keep alive...')
-            this.startService()
-            this.subscribeMessages()
-        });
+        // Only start the keep-alive timer once
+        if (!this.keepAliveSubscription || this.keepAliveSubscription.closed) {
+            this.keepAliveSubscription = this.intervallTimerKeepWebSocketAlive.subscribe(val => {
+                console.log('keep alive...')
+                this.startService()
+            });
+        }
     }
 
     closeConnection() {
