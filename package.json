@@ -1,16 +1,16 @@
 {
   "name": "hermes",
-  "version": "3.97.111",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration development --localize=false",
+    "build-prod": "ng build --configuration production --localize",
     "test": "ng test",
     "lint": "ng lint",
-    "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge --profile xliffmerge.json pt es fr ar",
-    "build-i18n": "npm run build -- --localize"
-  },
+    "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge --profile xliffmerge.json pt es fr ar"
+    },
   "dependencies": {
     "@amcharts/amcharts5": "^5.9.8",
     "@angular/animations": "^18.2.14",
@@ -49,13 +49,13 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^46.9.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "jasmine-core": "^5.1.2",
+    "jasmine-core": "^6.0.1",
     "jasmine-spec-reporter": "^7.0.0",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "^2.2.1",
     "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
+    "karma-jasmine-html-reporter": "^2.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2"
   },
