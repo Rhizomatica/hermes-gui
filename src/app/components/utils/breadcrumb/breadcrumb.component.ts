@@ -24,7 +24,7 @@ export class BreadcrumbComponent implements OnChanges {
   ngOnInit(): void { }
 
   ngOnChanges(change) {
-    change.currentPage && change.currentPage.currentValue != change.currentPage.previousValue ? this.currentPage = change.currentPage.currentValue : null
+    change.currentPage && change.currentPage.currentValue != change.currentPage.previousValue ? this.currentPage = change.currentPage.currentValue.split('?', 1)[0] : null
 
     //Nao insere no breadcrumb login nem menu page
     if (this.currentPage == 'login') {
