@@ -3,9 +3,23 @@
   <h2 i18n="@@loadingfrequency" *ngIf="!radio.p1_freq">
     loading radio status...
   </h2>
-  <hint [showHint]="false" [hint]="'voice'"></hint>
+
   <div class="transciever-panel" *ngIf="radio.p1_freq">
+    <hint [showHint]="false" [hint]="'voice'"></hint>
+
     <div class="data">
+      <div class="data-title">
+        <span i18n="@@radiodigitalvoicemode">Digital voice</span>
+      </div>
+      <div class="">
+        <span i18n="@@off">OFF</span>
+        <div class="switch">
+          <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice == 1">
+          <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.p1_digital_voice}}"
+            [checked]="toggleDigital"></span>
+        </div>
+        <span i18n="@@on">ON</span>
+      </div>
       <div class="data-body frequency">
         <div *ngIf="!inputFrequencyFlag">
           <span *ngFor="let digit of radio.p1_freq_splited; let i = index" (click)="changeStepDigit(i)"><span
@@ -88,7 +102,7 @@
           <button (click)="resetProtection()" [hidden]="!radio.protection" i18n="@resetprotectionvoice">reset</button>
         </div>
       </div>
-      <div class="data">
+      <div class="data" *ngIf="radio.digital == 0">
         <div class="data-title" i18n="@@modevoice">
           Voice Mode
         </div>

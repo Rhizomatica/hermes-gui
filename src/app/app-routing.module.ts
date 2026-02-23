@@ -34,6 +34,7 @@ import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 import { ProgressBarComponent } from './components/utils/progressbar/progressbar.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

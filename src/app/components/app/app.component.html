@@ -33,9 +33,14 @@
           <span class="nav-frequency">
             {{radio.p1_mode}} {{radio.p1_freq}} kHz
           </span>
-          <span class="nav-operation-mode" i18n="@@voicenavlabel">
-            voice
-          </span>
+          <div class="nav-operation-mode">
+            <span i18n="@@digital" *ngIf="radio.p1_digital_voice == 1">
+              digital
+            </span>
+            <span i18n="@@voicenavlabel">
+              voice
+            </span>
+          </div>
         </div>
         <span *ngIf="system" class="nav-domain">{{system.domain}}</span>
         <img title="menu" src="assets/svg/bars-solid.svg" *ngIf="!disableNavigationsRequireLoginNoUser()">

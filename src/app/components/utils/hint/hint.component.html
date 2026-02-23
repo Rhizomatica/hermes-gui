@@ -650,6 +650,14 @@
       </p>
     </div>
 
+    <div *ngIf="hint == 'digitalvoice'" i18n="@@digitalvoicehint">
+      <h1 class="cv-title">SMS Chat</h1>
+      <p>
+        Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient, and
+        data-rich communication than traditional analog modes.
+      </p>
+    </div>
+
     <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
       close
     </button>

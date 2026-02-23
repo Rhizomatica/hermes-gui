@@ -29,6 +29,7 @@ export class VoiceComponent implements OnInit {
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
   isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  toggleDigital: number = 0
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -224,6 +225,23 @@ export class VoiceComponent implements OnInit {
       error: (err) => {
         this.error = err
         this.errorAlert = true
+      }
+    });
+  }
+
+  toggleDigitalVoice(event) {
+    if (!this.radio.p1_digital_voice) return
+
+    this.loading = true;
+    const digitalValue = this.radio.p1_digital_voice == 1 ? 0 : 1;
+
+    this.radioService.toggleDigital(digitalValue).subscribe({
+      next: (res: any) => {
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = err;
+        this.errorAlert = true;
       }
     });
   }

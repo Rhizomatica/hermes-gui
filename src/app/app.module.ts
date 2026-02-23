@@ -24,6 +24,7 @@ import { OperatorComponent } from './components/public/operator/operator.compone
 import { LogComponent } from './components/admin/log/log.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { MessageConfigComponent } from './components/admin/message-config/message-config.component';
 import { RadioConfigComponent } from './components/admin/radio-config/radio-config.component';
 import { ScheduleComponent } from './components/admin/schedule/schedule.component';
@@ -63,6 +64,7 @@ import localeAr from '@angular/common/locales/ar';
 import { environment } from '../environments/environment';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FilterPipe } from './pipes/filter.pipe';
+import { RadioConnectionAlertComponent } from './components/utils/radio-connection-alert/radio-connection-alert.component';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
@@ -108,7 +110,10 @@ registerLocaleData(localeAr);
         SameUsernameDirective,
         RetypeDirective,
         UserExistDirective,
-        FilterPipe
+        FilterPipe,
+        UserListComponent,
+        RadioConnectionAlertComponent
+
     ],
     bootstrap: [AppComponent],
     schemas: [NO_ERRORS_SCHEMA], imports: [BrowserModule,
