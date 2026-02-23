@@ -55,31 +55,33 @@ export class TransmissionListComponent implements OnInit {
   cancelTransmission(): void {
     this.deleteMessage = false
     this.loading = true
-    this.uucpService.cancelTransmission(this.jobToDelete.uuidhost, this.jobToDelete.uuiduucp).subscribe(
-      (res: any) => {
+    this.uucpService.cancelTransmission(this.jobToDelete.uuidhost, this.jobToDelete.uuiduucp).subscribe({
+      next: (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== this.jobToDelete.uuiduucp)
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   cancelMail(host, id): void {
     this.loading = true
     var language = localStorage.getItem('language')
-    this.uucpService.cancelMail(host, id, language).subscribe(
-      (res: any) => {
+    this.uucpService.cancelMail(host, id, language).subscribe({
+      next: (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id)
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   showTransmission() {
@@ -101,15 +103,15 @@ export class TransmissionListComponent implements OnInit {
 
   removeMessage(message: Message): void {
     this.sentMessages = this.sentMessages.filter(obj => obj !== message)
-    this.messageService.deleteMessage(message.id).subscribe(
-      (res: any) => {
+    this.messageService.deleteMessage(message.id).subscribe({
+      next: (res: any) => {
         this.message = res
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
   }
 
   confTransmit(job: UUCPQueue) {
@@ -123,32 +125,32 @@ export class TransmissionListComponent implements OnInit {
 
   transmitNow(): void {
     this.confirmTransmit = false
-    this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe(
-      (res: any) => {
+    this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe({
+      next: (res: any) => {
         this.getMessages()
         this.jobToForce = null
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.confirmTransmit = false
         this.loading = false
       }
-    );
+    });
   }
 
   getMessages(): void {
-    this.messageService.getMessagesByType('sent').subscribe(
-      res => {
+    this.messageService.getMessagesByType('sent').subscribe({
+      next: (res) => {
         this.sentMessages = res
         this.getQueue()
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.noMessages = true
         this.loading = false
       }
-    );
+    });
   }
 
   closeOveralTransmission() {
@@ -157,8 +159,8 @@ export class TransmissionListComponent implements OnInit {
   }
 
   getQueue(): void {
-    this.uucpService.getQueue().subscribe(
-      res => {
+    this.uucpService.getQueue().subscribe({
+      next: (res) => {
         this.queue = res
         if (Object.keys(this.queue).length == 0) {
           this.noQueue = true
@@ -174,12 +176,12 @@ export class TransmissionListComponent implements OnInit {
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.noUUcp = true
         this.loading = false
       }
-    );
+    });
   }
 
   getQueueSize() {
@@ -191,9 +193,11 @@ export class TransmissionListComponent implements OnInit {
   }
 
   getStations() {
-    this.stationService.getStations().subscribe(stations => {
-      this.stations = stations
-      this.getMessages()
+    this.stationService.getStations().subscribe({
+      next: (stations) => {
+        this.stations = stations
+        this.getMessages()
+      }
     })
   }
 

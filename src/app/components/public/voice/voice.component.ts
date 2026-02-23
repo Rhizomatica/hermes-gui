@@ -46,14 +46,15 @@ export class VoiceComponent implements OnInit {
 
   changeMode(event) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe({
+      next: (res: any) => {
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
   }
 
   changeStep() {
@@ -82,8 +83,8 @@ export class VoiceComponent implements OnInit {
 
   getSavedStep() {
     this.loading = true
-    this.radioService.getStep().subscribe(
-      (res: any) => {
+    this.radioService.getStep().subscribe({
+      next: (res: any) => {
 
         this.loading = false
 
@@ -94,27 +95,29 @@ export class VoiceComponent implements OnInit {
 
         this.setStepCode(res)
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   updateStep() {
-    this.radioService.updateStep(this.setStepValue()).subscribe(
-      (res: any) => {
+    this.radioService.updateStep(this.setStepValue()).subscribe({
+      next: (res: any) => {
         if (res != true || res != 1) {
           this.error = res
           this.errorAlert = true;
         }
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   setStepCode(value) {
@@ -163,27 +166,30 @@ export class VoiceComponent implements OnInit {
   }
 
   changeVolume(f: NgForm) {
-    this.radioService.changeVolume(f.value.volume).subscribe(
-      (res: any) => {
-        
-      }, (err) => {
+
+    this.radioService.changeVolume(f.value.volume).subscribe({
+      next: (res: any) => {
+
+      },
+      error: (err) => {
         this.error = err;
       }
-    );
+    });
   }
 
+
   resetProtection() {
-    this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe({
+      next: (res: any) => {
         if (res === 1) {
           this.radio.protection = false
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
   }
 
   changeOperateModeProfile() {
@@ -192,34 +198,34 @@ export class VoiceComponent implements OnInit {
       return
 
     this.loading = true
-    this.radioService.changeOperateModeProfile(1).subscribe(
-      (res: any) => {
+    this.radioService.changeOperateModeProfile(1).subscribe({
+      next: (res: any) => {
         if (res === 1) {
           this.radio.profile = res.profile
           this.loading = false
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    })
   }
 
   restartVoiceTimeout() {
     if (parseInt(this.radio.timeout) <= 0)
       return
 
-    this.radioService.restartVoiceTimeout().subscribe(
-      (res: any) => {
+    this.radioService.restartVoiceTimeout().subscribe({
+      next: (res: any) => {
         return res
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
   }
 
   ngOnInit(): void {

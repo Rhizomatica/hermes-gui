@@ -36,13 +36,14 @@ export class FloatButtonComponent {
   shutDown() {
     this.shuttingDownNow = true
     this.loading = true
-    this.apiService.sysShutdown().subscribe(
-      (data: any) => {
+    this.apiService.sysShutdown().subscribe({
+      next: (data: any) => {
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.loading = false;
       }
-    );
+    });
     this.loading = false
   }
 }

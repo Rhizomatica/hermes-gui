@@ -46,8 +46,8 @@ export class StationInformationComponent implements OnInit {
 
   public getFrequencies(): void {
     this.loading = true
-    this.frequencyService.getFrequencies().subscribe(
-      (data: any) => {
+    this.frequencyService.getFrequencies().subscribe({
+      next: (data: any) => {
         this.frequencies = data;
         this.loadArrayFrequencies(data)
         this.loadArrayNickname(data)
@@ -55,12 +55,13 @@ export class StationInformationComponent implements OnInit {
         this.loadArrayEnable(data)
         this.loadArrayEdit(data)
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   loadArrayFrequencies(data) {
@@ -164,14 +165,15 @@ export class StationInformationComponent implements OnInit {
     if (frequency.frequency === null)
       return
 
-    this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe(
-      (res: any) => {
+    this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe({
+      next: (res: any) => {
         this.getFrequencies()
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
       }
-    );
+    });
   }
 
   public getStationFrequency(data, index) {
@@ -187,15 +189,17 @@ export class StationInformationComponent implements OnInit {
   }
 
   public getStations(index): void {
-    this.stationService.getStations().subscribe(
-      (data: any) => {
+    this.stationService.getStations().subscribe({
+      next: (data: any) => {
         this.getStationFrequency(data, index)
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
+    }
     );
   }
 

@@ -49,7 +49,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getGPSFiles(): Promise<void> {
     try {
-      const res: any = await lastValueFrom(this.gpsService.getStoredGPSFiles()); 
+      const res: any = await lastValueFrom(this.gpsService.getStoredGPSFiles());
       if (res) {
         this.files = res;
       }
@@ -128,16 +128,14 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   updateGPSInterval(f: NgForm) {
     this.loading = true
-    this.gpsService.updateGPSInterval(f.value.interval).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
+    this.gpsService.updateGPSInterval(f.value.interval).subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   updateFileRangeTime(f: NgForm) {
@@ -147,30 +145,26 @@ export class GPSComponent implements OnInit, OnDestroy {
       f.value.range = parseInt(f.value.range) * 60
     }
 
-    this.gpsService.updateFileRangeTime(f.value.range).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
+    this.gpsService.updateFileRangeTime(f.value.range).subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   updateGPSEmail(f: NgForm) {
     this.loading = true
-    this.gpsService.updateGPSEmail(f.value.email).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
+    this.gpsService.updateGPSEmail(f.value.email).subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   toggleGPS(f: NgForm) {
@@ -182,15 +176,14 @@ export class GPSComponent implements OnInit, OnDestroy {
       this.status = true
     }
 
-    this.gpsService.toggleGPS(this.status).subscribe(
-      (res: any) => {
-        return null
-      },
-      (err) => {
+    this.gpsService.toggleGPS(this.status).subscribe({
+      error: (err) => {
         this.error = err;
+        this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   deleteAllStoredFiles() {
@@ -205,18 +198,19 @@ export class GPSComponent implements OnInit, OnDestroy {
   confirmDeleteAllStoredFiles() {
     this.deleteConfirmation = false
     this.loading = true
-    this.gpsService.deleteAllStoredFiles().subscribe(
-      (res: any) => {
+    this.gpsService.deleteAllStoredFiles()
+    .subscribe({
+      next: (res: any) => {
         if (res)
           this.getGPSFiles()
-        this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   SOSEmergency() {
@@ -231,17 +225,14 @@ export class GPSComponent implements OnInit, OnDestroy {
   confirmSOSEmergency() {
     this.confirmSOS = false
     this.loading = true
-    this.gpsService.SOSEmergency().subscribe(
-      (res: any) => {
-        if (res)
-          this.loading = false
-      },
-      (err) => {
+    this.gpsService.SOSEmergency().subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   closeError(): void {

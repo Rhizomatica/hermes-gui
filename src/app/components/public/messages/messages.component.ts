@@ -51,8 +51,8 @@ export class MessagesComponent implements OnInit {
 
   getInboxMessages(): void {
     this.loading = true
-    this.messageService.getMessagesByType('inbox').subscribe(
-      (res: any) => {
+    this.messageService.getMessagesByType('inbox').subscribe({
+      next: (res: any) => {
         this.inboxMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
 
         if (this.inboxMessages.length == 0) {
@@ -66,12 +66,12 @@ export class MessagesComponent implements OnInit {
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   getAliasOrigin() {
@@ -114,34 +114,34 @@ export class MessagesComponent implements OnInit {
     this.loading = true
     let msgId = 0;
     msgId = this.selectedMessage.id;
-    this.messageService.deleteMessage(msgId).subscribe(
-      (res: any) => {
+    this.messageService.deleteMessage(msgId).subscribe({
+      next: (res: any) => {
         this.message = res;
         this.getInboxMessages();
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
     this.deleteMessage = false;
   }
 
   getSysConfig(): void {
-    this.apiService.getSysConfig().subscribe(
-      (res: any) => {
+    this.apiService.getSysConfig().subscribe({
+      next: (res: any) => {
         this.serverConfig = res;
         this.allowhmp = res.allowhmp;
         this.checkHmp();
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.allowCompose = false;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   showlogin() {
@@ -200,11 +200,13 @@ export class MessagesComponent implements OnInit {
   }
 
   getStations() {
-    this.stationService.getStations().subscribe(stations => {
-      this.stations = stations
+    this.stationService.getStations().subscribe({
+      next: (stations) => {
+        this.stations = stations
 
-      this.getInboxMessages()
-      this.getSysConfig()
+        this.getInboxMessages()
+        this.getSysConfig()
+      }
     });
   }
 

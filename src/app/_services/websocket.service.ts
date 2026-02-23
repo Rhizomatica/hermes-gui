@@ -78,21 +78,22 @@ export class WebsocketService {
         if (!this.messages) return;
 
         if (!this.messagesSubscription || this.messagesSubscription.closed) {
-            this.messagesSubscription = this.messages.subscribe(data => {
-                this.sharedService.setRadioObjShared(data)
+            this.messagesSubscription = this.messages.subscribe({
+                next: (data) => {
+                    this.sharedService.setRadioObjShared(data);
+                },
+                error: async (err) => {
+                    if (this.ws && this.ws.OPEN == 1)
+                        this.closeConnection();
 
-            }, async err => {
+                    this.keepWebSocketAlive();
 
-                if (this.ws && this.ws.OPEN == 1)
-                    this.closeConnection()
-
-                this.keepWebSocketAlive()
-
-                if (self.location.hostname === 'demo.hermes.radio')
-                    this.sharedService.mountRadioObjDemo()
-
-            }, () => {
-                console.log('complete, closing websocket connection...')
+                    if (self.location.hostname === 'demo.hermes.radio')
+                        this.sharedService.mountRadioObjDemo();
+                },
+                complete: () => {
+                    console.log('complete, closing websocket connection...');
+                }
             });
         }
     }
@@ -100,32 +101,51 @@ export class WebsocketService {
     keepWebSocketAlive() {
         // Only start the keep-alive timer once
         if (!this.keepAliveSubscription || this.keepAliveSubscription.closed) {
-            this.keepAliveSubscription = this.intervallTimerKeepWebSocketAlive.subscribe(val => {
-                console.log('keep alive...')
-                this.startService()
+            this.keepAliveSubscription = this.intervallTimerKeepWebSocketAlive.subscribe({
+                next: (val) => {
+                    console.log('keep alive...')
+                    this.startService()
+                }
             });
         }
     }
 
     closeConnection() {
 
-        if (this.requireLogin && this.ws && this.ws.OPEN == 1) {
-            this.ws.close()
-            this.messages.complete()
-            this.messages = null
-            this.ws = null
-            this.subject = null
+        // Safely unsubscribe and teardown subscriptions and websocket
+        if (this.messagesSubscription && !this.messagesSubscription.closed) {
+            this.messagesSubscription.unsubscribe();
+            this.messagesSubscription = null;
         }
+
+        if (this.keepAliveSubscription && !this.keepAliveSubscription.closed) {
+            this.keepAliveSubscription.unsubscribe();
+            this.keepAliveSubscription = null;
+        }
+
+        if (this.requireLogin && this.ws && this.ws.OPEN == 1) {
+            try {
+                this.ws.close();
+            } catch (e) { }
+        }
+
+        if (this.messages) {
+            try { this.messages.complete(); } catch (e) { }
+            this.messages = null;
+        }
+
+        this.ws = null;
+        this.subject = null;
     }
 
     changeOperateModeProfile() {
         if (this.radioObj && this.radioObj.profile == 1) {
             //Profile id = 1 - digital/data
-            this.radioService.changeOperateModeProfile(1).subscribe(
-                (res: any) => {
+            this.radioService.changeOperateModeProfile(1).subscribe({
+                next: (res: any) => {
                     return res
                 }
-            );
+            });
         }
 
     }

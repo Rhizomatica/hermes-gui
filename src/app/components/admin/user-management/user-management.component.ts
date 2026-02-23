@@ -146,17 +146,17 @@ export class UserManagementComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (res: any) => {
+    this.userService.getUsers().subscribe({
+      next: (res: any) => {
         this.users = res;
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   onSelect(user): void {
@@ -175,23 +175,23 @@ export class UserManagementComponent implements OnInit {
   onSubmitUpdate(id: number, f: NgForm): void {
     this.loading = true
 
-    if(!f.value.email)
+    if (!f.value.email)
       f.value.email = this.selectedUserEmail
 
-    if(!f.value.admin)
-        f.value.admin = false
+    if (!f.value.admin)
+      f.value.admin = false
 
-    this.userService.updateUser(id, f.value).subscribe(
-      (res: any) => {
+    this.userService.updateUser(id, f.value).subscribe({
+      next: (res: any) => {
         // this.users = res;
         this.getUsers();
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.getUsers();
       }
-    );
+    });
     this.selectedUser = [];
     this.updateUser = false;
     this.isEditing = false;
@@ -199,16 +199,16 @@ export class UserManagementComponent implements OnInit {
 
   onSubmitDelete(id: number, email: string): void {
     this.loading = true
-    this.userService.deleteUser(id, email).subscribe(
-      (res: any) => {
+    this.userService.deleteUser(id, email).subscribe({
+      next: (res: any) => {
         this.getUsers();
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.getUsers();
       }
-    );
+    });
     this.deleteUser = false;
     this.isEditing = false;
   }
@@ -216,19 +216,20 @@ export class UserManagementComponent implements OnInit {
   async onSubmitCreate(f: NgForm): Promise<void> {
     this.loading = true
     f.value.location = 'local';
-    await this.userService.createUser(f.value).subscribe(
-      (res: any) => {
+    await this.userService.createUser(f.value).subscribe({
+      next: (res: any) => {
         this.getUsers();
         this.isEditing = false;
         this.loading = false
-      },(err) => {
+      },
+      error: (err) => {
         this.loading = false
         this.errorAlert = true;
         if (err == 409) {
           this.errorUserAlreadyExist = true
         }
       }
-    );
+    });
   }
 
   changeAdmin($event: Event) {
@@ -243,8 +244,10 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    this.stationService.getStations()
-      .subscribe(stations => this.stations = stations);
+    this.stationService.getStations().subscribe({
+      next: (stations) => this.stations = stations
+    })
+
     if (this.currentUser) {
       this.isadmin = this.currentUser.admin;
     } else {
