@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
 
   toggle(): void {
     this.themeService.toggle();
+    this.currentTheme = this.themeService.isDark ? 'dark' : 'light';
   }
 
   checkBrowser(browser) {
@@ -87,7 +88,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const stored = localStorage.getItem('dark-mode');
-    this.currentTheme = stored ? JSON.parse(stored).darkMode ? 'dark' : 'light' : 'light';
+    this.currentTheme = stored === '1' ? 'dark' : 'light';
     
     this.radio = this.sharedService.radioObj.value
   }

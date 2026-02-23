@@ -123,10 +123,10 @@ export class UserManagementComponent implements OnInit {
       error: (err) => {
         this.error = err;
         this.errorAlert = true;
-        this.getUsers();
       }
-  });
-    this.selectedUser = [];
+    });
+
+    this.selectedUser = null;
     this.updateUser = false;
   }
 
