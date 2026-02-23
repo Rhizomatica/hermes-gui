@@ -4,7 +4,7 @@ import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { MessageService } from '../../../_services/message.service';
 import { ApiService } from '../../../_services/api.service';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { GlobalConstants } from '../../../global-constants';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,7 +23,7 @@ export class MessageConfigComponent implements OnInit {
   selectedMessages = false;
   allowfile: any;
   allowhmp: any;
-  allowUp: UntypedFormGroup;
+  allowUp: FormGroup;
   errorAlert = false;
   noSystem = false;
   isAdmin = false;

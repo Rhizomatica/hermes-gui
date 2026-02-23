@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
@@ -42,7 +42,7 @@ export class RadioConfigComponent implements OnInit {
   restarting = false
   shuttingDownNow = false
   rebootingDownNow = false
-  alertBrowserXP: Boolean = false
+  alertBrowserXP: boolean = false
   loginForm = false
   refthreshold: any
   power: any
@@ -275,7 +275,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   async resetRadio() {
-    await this.radioService.radioRestoreDefaults(this.dataModeProfileID).subscribe({
+    this.radioService.radioRestoreDefaults(this.dataModeProfileID).subscribe({
       next: (res: any) => {
         this.reseting = false;
       },

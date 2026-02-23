@@ -198,35 +198,43 @@ export class AppComponent implements OnInit, OnDestroy {
     this.idle.setTimeout(30)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
-    this.idle.onIdleStart.subscribe(() => {
-      this.idleState = "IDLE";
+    this.idle.onIdleStart.subscribe({
+      next: () => {
+        this.idleState = "IDLE";
+      }
     })
 
     // do something when the user is no longer idle
-    this.idle.onIdleEnd.subscribe(() => {
-      this.idleState = "NOT_IDLE"
-      this.countdown = null;
-      this.cd.detectChanges() // how do i avoid this kludge?
+    this.idle.onIdleEnd.subscribe({
+      next: () => {
+        this.idleState = "NOT_IDLE"
+        this.countdown = null;
+        this.cd.detectChanges() // how do i avoid this kludge?
+      }
     })
 
     // do something when the user has timed out
-    this.idle.onTimeout.subscribe(() => {
-      this.idleState = "TIMED_OUT"
-      this.resetIdle();
-      this.authenticationService.logout();
+    this.idle.onTimeout.subscribe({
+      next: () => {
+        this.idleState = "TIMED_OUT"
+        this.resetIdle();
+        this.authenticationService.logout();
 
-      if (GlobalConstants.requireLogin)
-        this.router.navigate(['/login']);
+        if (GlobalConstants.requireLogin)
+          this.router.navigate(['/login']);
 
-      if (!GlobalConstants.requireLogin)
-        this.router.navigate(['/home']);
+        if (!GlobalConstants.requireLogin)
+          this.router.navigate(['/home']);
 
-      //  this.websocketService.closeConnection() --- IGNORE ---
+        //  this.websocketService.closeConnection() --- IGNORE ---
+      }
     })
 
     // do something as the timeout countdown does its thing
-    this.idle.onTimeoutWarning.subscribe(seconds => {
-      this.countdown = seconds
+    this.idle.onTimeoutWarning.subscribe({
+      next: (seconds) => {
+        this.countdown = seconds
+      }
     });
 
     this.idle.watch()

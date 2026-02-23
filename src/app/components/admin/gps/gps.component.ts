@@ -249,8 +249,10 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.getCurrentCoordinates() //First call
 
     //Pool current coordinates
-    this.poolCoordinates = interval(10000).subscribe((val) => {
-      this.getCurrentCoordinates()
+    this.poolCoordinates = interval(10000).subscribe({
+      next: () => {
+        this.getCurrentCoordinates()
+      }
     });
 
   }

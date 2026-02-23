@@ -113,8 +113,7 @@ export class ScheduleComponent implements OnInit {
 
   public getSchedules(): void {
 
-    this.apiService.getSchedules().subscribe(
-      {
+    this.apiService.getSchedules().subscribe({
         next: (res: any) => {
           this.schedules = res
           this.loading = false
@@ -125,8 +124,7 @@ export class ScheduleComponent implements OnInit {
           this.errorAlert = true
           this.loading = false
         }
-      }
-    );
+      });
   }
 
   formatTime(schedules) {
@@ -148,7 +146,7 @@ export class ScheduleComponent implements OnInit {
     this.selectedSchedule = []
     this.emptySchedule = true
     this.confirmDeleteSchedule = false
-    await this.apiService.deleteSchedule($id).subscribe({
+    this.apiService.deleteSchedule($id).subscribe({
       next: (data: any) => {
         this.getSchedules()
       },
