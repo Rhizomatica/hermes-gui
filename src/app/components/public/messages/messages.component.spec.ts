@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MessagesComponent } from './messages.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { FilterPipe } from '../../../pipes/filter.pipe';
 
 describe('MessagesComponent', () => {
   let component: MessagesComponent;
@@ -8,7 +9,7 @@ describe('MessagesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [MessagesComponent],
+    declarations: [MessagesComponent, FilterPipe],
     imports: [],
     providers: [provideHttpClient(withInterceptorsFromDi())]
 })

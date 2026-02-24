@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing'
 import { GPSService } from './gps.service'
 import { HttpClient, HttpErrorResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { GlobalConstants } from '../global-constants'
-import jest from '@jest/globals'
 
 describe('GPSService', () => {
   let service: GPSService,
