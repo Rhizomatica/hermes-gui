@@ -119,12 +119,24 @@ to restart the project.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). This uses Jasmine for testing and generates coverage reports.
+This project uses [Jest](https://jestjs.io/) with [jest-preset-angular](https://thymikee.github.io/jest-preset-angular/) for unit testing.
 
-Alternatively, use the npm script:
+Run all tests:
 ```bash
 npm test
 ```
+
+Run tests in watch mode:
+```bash
+npm run test:watch
+```
+
+Run tests with coverage report:
+```bash
+npm run test:coverage
+```
+
+Coverage reports are generated in the `coverage/hermes` directory in HTML, LCOV, and text-summary formats.
 
 ## Running end-to-end tests
 

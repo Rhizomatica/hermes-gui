@@ -1,16 +1,15 @@
 import { TestBed } from '@angular/core/testing'
 import { GPSService } from './gps.service'
 import { HttpClient, HttpErrorResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
-import { GlobalConstants } from '../global-constants';
+import { GlobalConstants } from '../global-constants'
+import jest from '@jest/globals'
 
 describe('GPSService', () => {
   let service: GPSService,
-    http: HttpClient,
-    originalTimeout
+    http: HttpClient
 
   beforeEach(() => {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000
+    jest.setTimeout(1000000)
 
     TestBed.configureTestingModule({
     imports: [],
@@ -24,7 +23,7 @@ describe('GPSService', () => {
   })
 
   afterEach(function () {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout
+    jest.setTimeout(5000)
   })
 
   it('should be created', () => {
@@ -33,7 +32,7 @@ describe('GPSService', () => {
 
   //APP GENERALS
   it('should test url gps files', () => {
-    const spy = spyOn(http, 'get').and.callThrough()
+    const spy = jest.spyOn(http, 'get')
     service.getStoredGPSFiles()
     expect(spy).toHaveBeenCalledWith(`${GlobalConstants.apiURL}/geolocation/files`);
   })

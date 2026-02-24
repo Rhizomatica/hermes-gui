@@ -5,11 +5,9 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/
 describe('ApiService', () => {
   let service: ApiService,
     http: HttpClient,
-    originalTimeout,
     schedules: any
     beforeEach(() => {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000
+    jest.setTimeout(1000000)
 
     TestBed.configureTestingModule({
     imports: [],
@@ -23,7 +21,7 @@ describe('ApiService', () => {
   })
 
   afterEach(function () {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout
+    jest.setTimeout(5000)
   })
 
   it('should be created', () => {

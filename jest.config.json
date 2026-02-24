@@ -1,0 +1,25 @@
+{
+  "preset": "jest-preset-angular",
+  "setupFilesAfterEnv": ["<rootDir>/setup-jest.ts"],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(ts|js|html)$": [
+      "jest-preset-angular",
+      {
+        "tsconfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
+    ]
+  },
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/src/$1"
+  },
+  "testMatch": ["**/src/**/*.spec.ts"],
+  "collectCoverageFrom": [
+    "src/app/**/*.ts",
+    "!src/app/**/*.module.ts",
+    "!src/app/**/*.spec.ts"
+  ],
+  "coverageDirectory": "coverage/hermes",
+  "coverageReporters": ["html", "lcov", "text-summary"]
+}
