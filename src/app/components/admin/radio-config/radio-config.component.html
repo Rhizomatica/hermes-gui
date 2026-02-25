@@ -73,9 +73,11 @@
       </form>
       <form class="formdata field" *ngIf="bitx == 'S' && radio.profile === 1">
         <div class="row">
-          <span i18n="@@radiodigitalvoicemode" class="radio-config-label">Digital voice
-            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
+          <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
+            Digital voice
           </span>
+          <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
+
           <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
             <span i18n="@@off">OFF</span>
             <div class="switch">

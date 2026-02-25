@@ -11,7 +11,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">151</context>
+          <context context-type="linenumber">140</context>
         </context-group>
       </trans-unit>
       <trans-unit id="troubleshootinghintlabel" datatype="html">
@@ -52,7 +52,7 @@
         <target state="translated">Se o seu servidor já está ligado, por favor clicar aqui.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
@@ -61,7 +61,7 @@
 . </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closeerrorbuttonchangeconfig" datatype="html">
@@ -69,11 +69,11 @@
         <target state="new"> fechar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">82</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reloadpage" datatype="html">
@@ -81,7 +81,7 @@
         <target state="new">recarregar página</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="countdowninactivite" datatype="html">
@@ -89,7 +89,7 @@
         <target state="new">Usuário inativo. Contagem regressiva para logoff</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e_mail" datatype="html">
@@ -192,17 +192,42 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <source> Radio connected </source>
         <target state="new"> Rádio conectado </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="sourcefile">src/app/components/utils/radio-connection-alert/radio-connection-alert.component.html</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmissioncardalertmesage" datatype="html">
-        <source> Data connection ongoing... Voice mode blocked </source>
+        <source> Data connection ongoing... Voice mode blocked. </source>
         <target state="new"> Conexão de dados em andamento... Modo de voz bloqueado </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="sourcefile">src/app/components/utils/radio-connection-alert/radio-connection-alert.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="radiodisconnected" datatype="html">
+        <source> Radio disconnected </source>
+        <target state="new"> Rádio desconectado </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/radio-connection-alert/radio-connection-alert.component.html</context>
+          <context context-type="linenumber">17,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="notransmissioncardalertmesage" datatype="html">
+        <source> No transmission occurring. Voice mode available. </source>
+        <target state="new"> Nenhuma transmissão em andamento. Modo de voz disponível. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/radio-connection-alert/radio-connection-alert.component.html</context>
+          <context context-type="linenumber">21,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2694137384040801612" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{label}}"/> <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div class=&quot;switch&quot;>"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;{{inputName}}&quot; [(ngModel)]=&quot;enabled&quot; value=&quot;{{value}}&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;slider round one-color&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/></source>
+        <target state="new"> <x id="INTERPOLATION" equiv-text="{{label}}"/> <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div class=&quot;switch&quot;>"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;{{inputName}}&quot; [(ngModel)]=&quot;enabled&quot; value=&quot;{{value}}&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;slider round one-color&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/utils/switch/switch.component.html</context>
+          <context context-type="linenumber">2,7</context>
+        </context-group>
+        <note priority="1" from="description">{{i18n}}</note>
       </trans-unit>
       <trans-unit id="transmissionschedules" datatype="html">
         <source>Transmission schedule</source>
@@ -703,19 +728,19 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
       </trans-unit>
       <trans-unit id="admmanage" datatype="html">
-        <source>User Management</source>
+        <source>Users</source>
         <target>Administração de usuários</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="sourcefile">src/app/components/admin/user-list/user-list.component.html</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createadm" datatype="html">
         <source>create user</source>
         <target>criar usuário</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="sourcefile">src/app/components/admin/user-list/user-list.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="edtusers" datatype="html">
@@ -739,7 +764,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Nome</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fullnamerequired" datatype="html">
@@ -747,7 +772,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated"> o nome completo é obrigatório </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="phonenumber" datatype="html">
@@ -755,7 +780,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">Número de telefone</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/smschat/smschat.component.html</context>
@@ -775,7 +800,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> a senha deve ter pelo menos 6 caracteres </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="isadmin" datatype="html">
@@ -783,7 +808,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">administrador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changepassword" datatype="html">
@@ -791,7 +816,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">mudar a senha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordlabeluser" datatype="html">
@@ -799,7 +824,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">Senha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="mwcancel" datatype="html">
@@ -807,7 +832,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="delusr" datatype="html">
@@ -815,7 +840,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">deletar usuário</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="mupd" datatype="html">
@@ -823,7 +848,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">atualizar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="mcreateuser" datatype="html">
@@ -831,7 +856,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">criar usuário</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousuredelete" datatype="html">
@@ -839,7 +864,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">Tem certeza que quer deletar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="thisactioncannot" datatype="html">
@@ -847,7 +872,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target>Essa ação não pode ser desfeita!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deleteuser" datatype="html">
@@ -855,7 +880,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target>deletar usuário</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel" datatype="html">
@@ -875,15 +900,15 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">457</context>
+          <context context-type="linenumber">368</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">95</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="latitude" datatype="html">
@@ -911,7 +936,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">247</context>
+          <context context-type="linenumber">259</context>
         </context-group>
       </trans-unit>
       <trans-unit id="geolocationfilestitle" datatype="html">
@@ -951,7 +976,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target>Tem certeza que quer atualizar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="update" datatype="html">
@@ -971,7 +996,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="capturefilerange" datatype="html">
@@ -991,11 +1016,15 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
       </trans-unit>
       <trans-unit id="usererror" datatype="html">
-        <source>There was an error on processing your request </source>
+        <source>There was an error loading the content</source>
         <target state="translated">Ocorreu um erro ao processar sua solicitação </target>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/user-list/user-list.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="usererrorexist" datatype="html">
@@ -1003,7 +1032,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Este usuário já existe, por favor, escolha outro e-mail</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wifiandethernetmanagertitle" datatype="html">
@@ -1091,7 +1120,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="messagescard" datatype="html">
@@ -1099,7 +1128,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Mensagens </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailcard" datatype="html">
@@ -1107,7 +1136,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> E-mail </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operatorpanel" datatype="html">
@@ -1115,7 +1144,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Painel do operador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
@@ -1127,7 +1156,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Tema escuro </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">167</context>
+          <context context-type="linenumber">156</context>
         </context-group>
       </trans-unit>
       <trans-unit id="lighttheme" datatype="html">
@@ -1135,7 +1164,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Tema claro </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">170</context>
+          <context context-type="linenumber">159</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loginbutton" datatype="html">
@@ -1143,7 +1172,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> acessar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">176</context>
+          <context context-type="linenumber">165</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logoutbutton" datatype="html">
@@ -1151,7 +1180,7 @@ Configurar deltachat<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Sair </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">183</context>
+          <context context-type="linenumber">172</context>
         </context-group>
       </trans-unit><!-- <trans-unit id="landingtext" datatype="html">
         <source>High-frequency Emergency and Rural Multimedia Exchange System The High-frequency Emergency and Rural Multimedia Exchange System, better known by its acronym, HERMES, provides affordable digital telecommunications over shortwave/HF radio using a simplified visual interface accessed via smartphone or computer, allowing for the transmission and reception of data (chat, audio, documents, photos, GPS coordinates, etc). For security, this information can be easily encrypted and password-protected by the sender. HERMES, both architecture designs and software, is free and open-source. </source>
@@ -1479,7 +1508,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="final">reescrever a senha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passdontmatchuser" datatype="html">
@@ -1487,7 +1516,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> senhas não coincidem </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passdontmatch" datatype="html">
@@ -1523,7 +1552,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">259</context>
+          <context context-type="linenumber">271</context>
         </context-group>
       </trans-unit>
       <context-group purpose="location">
@@ -1676,10 +1705,6 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <source>Bitrate(bps)</source>
         <target state="new">Taxa de bits(bps)</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">102</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
           <context context-type="linenumber">81</context>
         </context-group>
@@ -1693,7 +1718,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Relação sinal-ruído (SNR)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
@@ -1704,28 +1729,12 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
           <context context-type="linenumber">110</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="powerleveldata" datatype="html">
-        <source>Data Power Level</source>
-        <target state="new">Nível de potência de dados</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">124,128</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="powerlevelvoice" datatype="html">
-        <source>Voice Power Level</source>
-        <target state="new">Nível de potência de voz</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">135,139</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="scheduledtransmission" datatype="html">
         <source> Scheduled transmission </source>
         <target state="new"> Transmissões agendadas </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">215</context>
+          <context context-type="linenumber">227</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpsstatus" datatype="html">
@@ -1733,15 +1742,16 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Estado do GPS <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;redcircle&quot; *ngIf=&quot;!gpsStatus&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span class=&quot;greencircle&quot; *ngIf=&quot;gpsStatus&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> <x id="INTERPOLATION" equiv-text="{{gpsStatus ? 'Ativo' : 'Inativo'}}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">242</context>
+          <context context-type="linenumber">254</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprotectionoperator" datatype="html">
-        <source>Radio protection activated. Reset the protection, reconfigure your radio settings and try again. For more details: Reset Protection <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'resetprotection'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
+        <source>Radio protection activated. Reset the protection, reconfigure your radio settings and try again. For more details: Reset Protection <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot;
+                [hint]=&quot;'resetprotection'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></source>
         <target state="new">Proteção de rádio ativada. Redefina a proteção, reconfigure o rádio e tente novamente. Para mais detalhes: Redefinir proteção<x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'resetprotection'&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;/hint>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">271,272</context>
+          <context context-type="linenumber">283</context>
         </context-group>
       </trans-unit>
       <trans-unit id="resetprotectionbutton" datatype="html">
@@ -1749,7 +1759,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> reset protection </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">276</context>
+          <context context-type="linenumber">289</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprotectionoperator" datatype="html">
@@ -1797,7 +1807,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Frequência de dados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">162</context>
+          <context context-type="linenumber">174</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voicefrequency" datatype="html">
@@ -1805,7 +1815,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">Frequência de voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">172</context>
+          <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="localstorage" datatype="html">
@@ -1813,7 +1823,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new"> Armazenamento local </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">233</context>
+          <context context-type="linenumber">245</context>
         </context-group>
       </trans-unit>
       <trans-unit id="free" datatype="html">
@@ -1821,7 +1831,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="new">livre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">236</context>
+          <context context-type="linenumber">248</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelmt" datatype="html">
@@ -1862,7 +1872,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="final"> Gerenciador de Wi-Fi &amp; Ethernet </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">142</context>
+          <context context-type="linenumber">131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ip" datatype="html">
@@ -1987,40 +1997,48 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="digital" datatype="html">
+        <source> digital </source>
+        <target state="new"> digital </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/app/app.component.html</context>
+          <context context-type="linenumber">38,41</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="voicenavlabel" datatype="html">
         <source> voice </source>
         <target state="new"> voice </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7943720295391526893" datatype="html">
         <source>Install HERMES APP </source>
         <target state="new">Install HERMES APP </target>
+        <note priority="1" from="description">@installhermesappng</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">54,57</context>
+          <context context-type="linenumber">59</context>
         </context-group>
-        <note priority="1" from="description">@installhermesappng</note>
       </trans-unit>
       <trans-unit id="901127479506943605" datatype="html">
         <source>503 Service Unavailable</source>
         <target state="new">503 Service Unavailable</target>
+        <note priority="1" from="description">hermes503Http</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">62,63</context>
+          <context context-type="linenumber">67</context>
         </context-group>
-        <note priority="1" from="description">hermes503Http</note>
       </trans-unit>
       <trans-unit id="2816309514570848382" datatype="html">
         <source>Hermes server is offline, please turn the station on. </source>
         <target state="new">Hermes server is offline, please turn the station on. </target>
+        <note priority="1" from="description">hermesoffline</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">63,66</context>
+          <context context-type="linenumber">68</context>
         </context-group>
-        <note priority="1" from="description">hermesoffline</note>
       </trans-unit>
       <trans-unit id="nodename" datatype="html">
         <source>Node Name</source>
@@ -2150,73 +2168,22 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="conectedr" datatype="html">
-        <source>Connected</source>
-        <target state="final">Conectado</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="disconectedr" datatype="html">
-        <source>Disconnected</source>
-        <target state="final">Desconectado</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4512414826951355285" datatype="html">
-        <source>Radio profile</source>
-        <target state="new">Radio profile</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">27,30</context>
-        </context-group>
-        <note priority="1" from="description">@currentprofilecard</note>
-      </trans-unit>
-      <trans-unit id="8643693101122694911" datatype="html">
-        <source>Data frequency</source>
-        <target state="new">Data frequency</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">37,40</context>
-        </context-group>
-        <note priority="1" from="description">@currentradiofreq</note>
-      </trans-unit>
-      <trans-unit id="857662227531222844" datatype="html">
-        <source>Voice frequency</source>
-        <target state="new">Voice frequency</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">49,53</context>
-        </context-group>
-        <note priority="1" from="description">@currentvoicefrequency</note>
-      </trans-unit>
       <trans-unit id="4905431822645077110" datatype="html">
         <source>Standing Wave Ratio (SWR)</source>
         <target state="new">Standing Wave Ratio (SWR)</target>
+        <note priority="1" from="description">@swrlabelcard</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">61,65</context>
+          <context context-type="linenumber">13</context>
         </context-group>
-        <note priority="1" from="description">@swrlabelcard</note>
       </trans-unit>
       <trans-unit id="5690241527890097775" datatype="html">
         <source>Power</source>
         <target state="new">Power</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">72,74</context>
-        </context-group>
         <note priority="1" from="description">@forward</note>
-      </trans-unit>
-      <trans-unit id="radioinfo" datatype="html">
-        <source>Radio Information</source>
-        <target state="final">Informações do rádio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cannotaccessradio" datatype="html">
@@ -2225,7 +2192,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationmode" datatype="html">
@@ -2233,7 +2200,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="translated">Modo de operação</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
@@ -2261,11 +2228,11 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="final"> TX</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="operationrx" datatype="html">
@@ -2273,21 +2240,11 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="final"> RX</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">79</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="protectionlabelcard" datatype="html">
-        <source>Protection <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> <x id="INTERPOLATION" equiv-text="{{radio.protection ? 'ON' : 'OFF'}}"/> </source>
-        <target state="new">Proteção <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
-<x id="INTERPOLATION" equiv-text="{{radio.protection ? 'Ligado' : 'Desligado'}}"/>
-</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="areyousurechangesett" datatype="html">
@@ -2296,7 +2253,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
  Isso pode encerrar o sistema. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">164</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changer" datatype="html">
@@ -2304,7 +2261,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="final">mudar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">170</context>
+          <context context-type="linenumber">128</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelr0" datatype="html">
@@ -2312,7 +2269,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
         <target state="final">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">169</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changefrequency" datatype="html">
@@ -2321,7 +2278,7 @@ Apenas usuários admin podem enviar mensagens para outras estações, se você f
 kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'frequency'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changefreqr0" datatype="html">
@@ -2329,7 +2286,7 @@ kHz <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;
         <target state="final"> mudar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">153</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="advisechangedatafrequency" datatype="html">
@@ -2342,7 +2299,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
   que o gerente lhe peça para alterar a frequência de transmissão de dados do rádio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">157</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="labelgpscalibration" datatype="html">
@@ -2350,7 +2307,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">Calibração  GPS</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">303</context>
+          <context context-type="linenumber">265</context>
         </context-group>
       </trans-unit>
       <trans-unit id="startgpscalibration" datatype="html">
@@ -2358,7 +2315,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">Iniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">305</context>
+          <context context-type="linenumber">267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="datapowerlevel" datatype="html">
@@ -2366,7 +2323,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Nível de potência de dados (<x id="INTERPOLATION" equiv-text="{{dataPowerLevel}}"/> %) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'powerlevel'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">256,258</context>
+          <context context-type="linenumber">216</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voicepowerlevel" datatype="html">
@@ -2374,7 +2331,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Nível de potência de voz (<x id="INTERPOLATION" equiv-text="{{voicePowerLevel}}"/> %) <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'powerlevel'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">268,270</context>
+          <context context-type="linenumber">228</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changeradiomode" datatype="html">
@@ -2382,7 +2339,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Modo de dados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">190</context>
+          <context context-type="linenumber">148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="suresendpttmessage" datatype="html">
@@ -2391,7 +2348,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
  Isso pode causar problemas irreparáveis. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">290</context>
+          <context context-type="linenumber">252</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sendptt" datatype="html">
@@ -2399,7 +2356,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">enviar PTT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">296</context>
+          <context context-type="linenumber">258</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprofilelabel" datatype="html">
@@ -2407,7 +2364,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Perfil<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;radio.profile == 1&quot;>"/>(<x id="INTERPOLATION" equiv-text="{{radio.timeout}}"/>)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">310</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="digitallabel" datatype="html">
@@ -2415,7 +2372,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Dados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">313</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voiceLabel" datatype="html">
@@ -2423,7 +2380,63 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">319</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="radioprofilesubtitle" datatype="html">
+        <source> The radio profile defines the radio operational mode : VOICE for PTT voice calls or DATA for data transmission (messages, email and GPS signal) </source>
+        <target state="new"> O perfil de rádio define o modo de operação do rádio: VOZ para chamadas de voz PTT ou DADOS para transmissão de dados (mensagens, e-mail e sinal de GPS). </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">69,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="radiodigitalvoicemode" datatype="html">
+        <source> Digital voice </source>
+        <target state="new">Voz digital </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
+          <context context-type="linenumber">163</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="off" datatype="html">
+        <source>OFF</source>
+        <target state="new">OFF</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="on" datatype="html">
+        <source>ON</source>
+        <target state="new">ON</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="radiodigitalvoicesubtitle" datatype="html">
+        <source> Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient, and data-rich communication than traditional analog modes. </source>
+        <target state="new"> Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient, and data-rich communication than traditional analog modes. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changevoicefrequency" datatype="html">
@@ -2434,7 +2447,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">176</context>
+          <context context-type="linenumber">134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changevoicefreqr0" datatype="html">
@@ -2442,7 +2455,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> mudar a frequência </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">184</context>
+          <context context-type="linenumber">142</context>
         </context-group>
       </trans-unit>
       <trans-unit id="voicemode" datatype="html">
@@ -2450,7 +2463,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Modo de voz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">205</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelsendptt" datatype="html">
@@ -2458,7 +2471,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">295</context>
+          <context context-type="linenumber">257</context>
         </context-group>
       </trans-unit>
       <trans-unit id="prottheshold" datatype="html">
@@ -2466,7 +2479,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Nível limite de ativação de proteção <x id="START_TAG_HINT" ctype="x-hint" equiv-text="&lt;hint [showHint]=&quot;false&quot; [hint]=&quot;'threshold'&quot; class=&quot;float-right&quot;>"/><x id="CLOSE_TAG_HINT" ctype="x-hint" equiv-text="&lt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">219</context>
+          <context context-type="linenumber">180</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changetre1" datatype="html">
@@ -2474,7 +2487,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">mudar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">226</context>
+          <context context-type="linenumber">187</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmthreshold" datatype="html">
@@ -2484,7 +2497,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
  Isso pode fazer com que o sistema pare e danifique seu rádio. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">230</context>
+          <context context-type="linenumber">191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancelrchangeprotection" datatype="html">
@@ -2492,7 +2505,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">235</context>
+          <context context-type="linenumber">196</context>
         </context-group>
       </trans-unit>
       <trans-unit id="changeprotection" datatype="html">
@@ -2500,7 +2513,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">alterar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">237</context>
+          <context context-type="linenumber">197</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioprotectionlabel" datatype="html">
@@ -2508,24 +2521,24 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Proteção</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">243</context>
+          <context context-type="linenumber">203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1480461886067437975" datatype="html">
         <source> reset protection </source>
         <target state="new"> reset protection </target>
+        <note priority="1" from="description">@resetprotectionbutton</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">250,255</context>
+          <context context-type="linenumber">210</context>
         </context-group>
-        <note priority="1" from="description">@resetprotectionbutton</note>
       </trans-unit>
       <trans-unit id="cancelr" datatype="html">
         <source> cancel </source>
         <target state="final"> cancelar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">398</context>
+          <context context-type="linenumber">309</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmreset" datatype="html">
@@ -2533,7 +2546,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated"> Tem certeza que deseja redefinir para as configurações? </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">394</context>
+          <context context-type="linenumber">305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reset1" datatype="html">
@@ -2541,7 +2554,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> resetar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">401</context>
+          <context context-type="linenumber">312</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorchangingconfig" datatype="html">
@@ -2549,11 +2562,11 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated">Houve um erro ao alterar as configurações </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">409</context>
+          <context context-type="linenumber">320</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/app/app.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="gpscalibrationsuccess" datatype="html">
@@ -2561,7 +2574,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">GPS calibrado com sucesso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">423</context>
+          <context context-type="linenumber">334</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closeerrorbuttongps" datatype="html">
@@ -2569,7 +2582,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> fechar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">425</context>
+          <context context-type="linenumber">336</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ysyncronizenow" datatype="html">
@@ -2812,7 +2825,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="timeoutlabel" datatype="html">
@@ -2821,7 +2834,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="timeoutrestarttiplabel" datatype="html">
@@ -2829,7 +2842,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Toque para reiniciar o tempo limite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="powervoice" datatype="html">
@@ -2837,7 +2850,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Potência </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="protectionvoice" datatype="html">
@@ -2845,24 +2858,24 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Proteção </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1029122298839770722" datatype="html">
         <source>reset</source>
         <target state="new">reset</target>
+        <note priority="1" from="description">@resetprotectionvoice</note>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">88,92</context>
+          <context context-type="linenumber">104</context>
         </context-group>
-        <note priority="1" from="description">@resetprotectionvoice</note>
       </trans-unit>
       <trans-unit id="modevoice" datatype="html">
         <source> Voice Mode </source>
         <target state="new"> Modo </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stepvoice" datatype="html">
@@ -2870,7 +2883,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">etapa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="websocketerror" datatype="html">
@@ -2886,7 +2899,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deletesmschatbutton" datatype="html">
@@ -2978,7 +2991,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">recarregar página</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/voice/voice.component.html</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="errorprocessing" datatype="html">
@@ -3026,7 +3039,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">416</context>
+          <context context-type="linenumber">327</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/schedule/schedule.component.html</context>
@@ -3045,8 +3058,12 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
           <context context-type="linenumber">101</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/admin/user-list/user-list.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/user-management/user-management.component.html</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">104</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/wifi-management/wifi-management.component.html</context>
@@ -3062,7 +3079,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">198</context>
+          <context context-type="linenumber">187</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/menu/menu.component.html</context>
@@ -3090,7 +3107,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
-          <context context-type="linenumber">263</context>
+          <context context-type="linenumber">275</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/sent-messages/sent-messages.component.html</context>
@@ -3170,7 +3187,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Administração de usuários </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="messageadm" datatype="html">
@@ -3178,7 +3195,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Configurações de Mensagens</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">102</context>
+          <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="detailedlog" datatype="html">
@@ -3186,7 +3203,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Log Detalhado </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="radioconfig" datatype="html">
@@ -3194,7 +3211,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Configuração do Rádio </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="scheduling" datatype="html">
@@ -3202,7 +3219,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="translated"> Agendamento de transmissão </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmissionlista" datatype="html">
@@ -3210,7 +3227,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Lista de transmissão </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stationinformationcard" datatype="html">
@@ -3218,7 +3235,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Informações das estações </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">132</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot" datatype="html">
@@ -3226,7 +3243,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">reiniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">371</context>
+          <context context-type="linenumber">282</context>
         </context-group>
       </trans-unit>
       <trans-unit id="erasesdcardlabel" datatype="html">
@@ -3234,7 +3251,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Apagar cartão SD</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">380</context>
+          <context context-type="linenumber">291</context>
         </context-group>
       </trans-unit>
       <trans-unit id="erasesdcardmessage" datatype="html">
@@ -3242,7 +3259,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Use este botão <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>apenas em situações perigosas ou de emergência.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Isso apagará todos os dados do sistema HERMES. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">383</context>
+          <context context-type="linenumber">294</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sosemergency" datatype="html">
@@ -3270,7 +3287,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Número de serie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">352</context>
+          <context context-type="linenumber">272</context>
         </context-group>
       </trans-unit>
       <trans-unit id="transmits" datatype="html">
@@ -3296,7 +3313,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">432</context>
+          <context context-type="linenumber">343</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancels2" datatype="html">
@@ -3304,7 +3321,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">cancel</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">437</context>
+          <context context-type="linenumber">348</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reboot1" datatype="html">
@@ -3312,7 +3329,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final">reiniciar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">438</context>
+          <context context-type="linenumber">349</context>
         </context-group>
       </trans-unit>
       <trans-unit id="rebootingsystemlabel" datatype="html">
@@ -3320,7 +3337,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new">Reiniciando sistema</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">443</context>
+          <context context-type="linenumber">354</context>
         </context-group>
       </trans-unit>
       <trans-unit id="closeerrorbuttonrebooting" datatype="html">
@@ -3328,7 +3345,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> fechar </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">445</context>
+          <context context-type="linenumber">356</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmerasesdcardmessage" datatype="html">
@@ -3336,7 +3353,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> Tem certeza de que deseja iniciar uma operação de apagamento do cartão SD? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> Isso apagará todos os dados do sistema HERMES. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">452</context>
+          <context context-type="linenumber">363</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmerasesdcardbutton" datatype="html">
@@ -3344,7 +3361,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="new"> confirmar apagar cartão SD </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/admin/radio-config/radio-config.component.html</context>
-          <context context-type="linenumber">459</context>
+          <context context-type="linenumber">370</context>
         </context-group>
       </trans-unit>
       <trans-unit id="alertbrowserxp" datatype="html">
@@ -3352,7 +3369,7 @@ A MENOS<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
         <target state="final"> Para uma melhor experiência HERMES, use o navegador chromium/chrome </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/home/home.component.html</context>
-          <context context-type="linenumber">195</context>
+          <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirmshutdowncomponent" datatype="html">
@@ -3830,62 +3847,21 @@ Media Access Control (MAC)<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="
           <context context-type="linenumber">568</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="smslisthint" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>SMS List<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages using the SMS chat system ordered and agroupped by phone number <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>SMS List<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> List of sent messages using the SMS chat system ordered and agroupped by phone number <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+      <trans-unit id="digitalvoicehint" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Digital Voice<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient, and data-rich communication than traditional analog modes. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
+        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Voz digital<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> O modo de voz digital via rádio converte a fala analógica em dados digitais, permitindo uma comunicação mais clara, eficiente e rica em dados do que os modos analógicos tradicionais. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">640</context>
+          <context context-type="linenumber">654,661</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="smschathint" datatype="html">
-        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>SMS Chat<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Use SMS Chat to exchange messages using the SMS service with any phone number. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
-        <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>SMS Chat<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Use o SMS Chat para trocar mensagens usando o serviço SMS com qualquer número de telefone. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></target>
+      <trans-unit id="closehint" datatype="html">
+        <source>close</source>
+        <target state="new">fechar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">647</context>
+          <context context-type="linenumber">662</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="closehintbutton" datatype="html">
-        <source> close </source>
-        <target state="new"> fechar </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/utils/hint/hint.component.html</context>
-          <context context-type="linenumber">654</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="blinkrecording" datatype="html">
-        <source>recording...</source>
-        <target state="new">gravando...</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/utils/recorder/recorder.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="startrecord" datatype="html">
-        <source> start Recording </source>
-        <target state="translated"> Empezar a grabar </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/utils/recorder/recorder.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="stoprecord" datatype="html">
-        <source> stop Recording </source>
-        <target state="translated"> Parar gravação </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/utils/recorder/recorder.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2694137384040801612" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{label}}"/> <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div class=&quot;switch&quot;>"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;{{inputName}}&quot; [(ngModel)]=&quot;enabled&quot; value=&quot;{{value}}&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;slider round one-color&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/></source>
-        <target state="new"> <x id="INTERPOLATION" equiv-text="{{label}}"/> <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div class=&quot;switch&quot;>"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;checkbox&quot; name=&quot;{{inputName}}&quot; [(ngModel)]=&quot;enabled&quot; value=&quot;{{value}}&quot;>"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;slider round one-color&quot;>"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/utils/switch/switch.component.html</context>
-          <context context-type="linenumber">2,7</context>
-        </context-group>
-        <note priority="1" from="description">{{i18n}}</note>
       </trans-unit>
     </body>
   </file>
