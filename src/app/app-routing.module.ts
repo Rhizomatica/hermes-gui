@@ -7,6 +7,7 @@ import { HomeComponent } from './components/public/home/home.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
@@ -34,7 +35,6 @@ import { XYGraphComponent } from './components/utils/xygraph/xygraph.component';
 import { ClockHandGraphComponent } from './components/utils/clockhandgraph/clockhandgraph.component';
 import { MapGraphComponent } from './components/utils/mapgraph/mapgraph.component';
 import { ProgressBarComponent } from './components/utils/progressbar/progressbar.component';
-import { UserListComponent } from './components/admin/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'message/:id', component: MessageDetailComponent },
   { path: 'log', component: LogComponent, canActivate: [AuthGuard] },
+  { path: 'user-list', component: UserListComponent },
   { path: 'user-manage', component: UserManagementComponent },
   { path: 'user-manage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },
