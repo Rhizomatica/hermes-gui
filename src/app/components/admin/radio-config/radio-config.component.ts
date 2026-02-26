@@ -87,6 +87,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changePtt() {
+    
     this.loading = true
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe({
       next: (res: any) => {
@@ -213,8 +214,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   confirmChangePTT() {
-    if (this.radio.tx == true) {
-      this.changePtt()
+    if (this.radio.connection) {
       return
     }
 
