@@ -54,8 +54,7 @@
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
-              <span class="slider round" (click)="changeProfile($event)" value="{{radio.profile}}"
-                [checked]="toggleProfile"></span>
+              <span class="slider round" (click)="changeProfile($event)" value="{{radio.profile}}"></span>
             </div>
             <span i18n="@@voiceLabel">Voice</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
@@ -77,13 +76,12 @@
             Digital voice
           </span>
           <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
-
-          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
+          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">            
             <span i18n="@@off">OFF</span>
             <div class="switch">
-              <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice == 1">
-              <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.p1_digital_voice}}"
-                [checked]="toggleDigital"></span>
+              <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice">
+              <span class="slider round" (click)="toggleDigitalVoice($event)"
+                :value="{{radio.p1_digital_voice}}"></span>
             </div>
             <span i18n="@@on">ON</span>
             <hint [showHint]="false" [hint]="'digitalvoice'"></hint>

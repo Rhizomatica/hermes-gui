@@ -174,7 +174,7 @@ export class RadioConfigComponent implements OnInit {
     }
 
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe({
-      next: (res: any) => { },     
+      next: (res: any) => { },
       error: (err) => {
         this.error = err;
         this.errorAlert = true;
@@ -377,12 +377,12 @@ export class RadioConfigComponent implements OnInit {
           this.formatedTimeout = res / 60;
         }
       },
-       error: (err) => {
+      error: (err) => {
         console.log(err);
         this.error = err;
         this.errorAlert = true;
       }
-  });
+    });
 
   }
 
@@ -441,21 +441,22 @@ export class RadioConfigComponent implements OnInit {
     });
   }
 
-  toggleDigitalVoice(event) {
-    if (!this.radio.p1_digital_voice) return
+  toggleDigitalVoice(event: any) {
+    if (this.radio.p1_digital_voice == null) return
 
     this.loading = true;
-    const digitalValue = this.radio.p1_digital_voice == 1 ? 0 : 1;
+    const digitalValue = this.radio.p1_digital_voice == true ? 0 : 1;
 
-    this.radioService.toggleDigital(digitalValue).subscribe(
-      (res: any) => {
-        this.loading = false;
+    this.radioService.toggleDigital(digitalValue).subscribe({
+      next: (res: any) => {
+        this.toggleDigital = res;
+        this.radio.p1_digital_voice = res == 1 ? true : false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   ngOnInit(): void {
