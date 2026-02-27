@@ -1,0 +1,12 @@
+# Browsers that Angular will target during compilation.
+# Adding Chrome 87 ensures Qt5WebEngine 5.15.18 (Chromium 87) compatibility:
+# static class blocks (e.g. static{this.__symbol__=te;}) require Chrome 94+,
+# so including Chrome 87 here forces the build pipeline to downlevel them.
+
+last 2 Chrome versions
+Chrome >= 87
+last 1 Firefox version
+Firefox ESR
+last 2 Edge major versions
+last 2 Safari major versions
+last 2 iOS major versions
