@@ -462,13 +462,21 @@ export class RadioConfigComponent implements OnInit {
   ngOnInit(): void {
     this.getRadioStatus()
     this.getTimeoutConfig()
-    this.radio = this.sharedService.radioObj.value
-    this.voiceModeSwitch = this.radio.p1_mode === 'LSB'
-    this.modeSwitch = this.radio.p0_mode === 'LSB'
-    this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
-    this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
     this.getRadioPowerLevel()
     this.isAdmin = this.currentUser?.admin
+
+    this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+      this.voiceModeSwitch = radio.p1_mode === 'LSB';
+      this.modeSwitch = radio.p0_mode === 'LSB';
+      if (radio.p0_freq && this.p0_frek == null) {
+        this.p0_frek = this.utils.parseFormattedFrequency(radio.p0_freq);
+      }
+      if (radio.p1_freq && this.p1_frek == null) {
+        this.p1_frek = this.utils.parseFormattedFrequency(radio.p1_freq);
+      }
+    });
+
     this.loading = false
   }
 }

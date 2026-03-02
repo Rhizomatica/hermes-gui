@@ -72,6 +72,12 @@ export class UtilsService {
     return freq.replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, "."); //Format number with dots
   }
 
+  parseFormattedFrequency(freq: any): number {
+    if (!freq) return 0;
+    const normalized = freq.toString().replace(/\./g, '').replace(',', '.');
+    return Math.round(parseFloat(normalized));
+  }
+
   formatSWR(swr) {
     if (!swr)
       return '1.0'

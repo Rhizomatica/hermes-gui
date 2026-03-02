@@ -104,7 +104,7 @@
         </span>
         <div class="flexible">
           <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
-            value={{p0_frek}} step="0.01">
+            value={{p0_frek}} step="1">
           <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
             change
           </button>
@@ -134,7 +134,7 @@
         </span>
         <div class="flexible">
           <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
-            value={{p1_frek}} step="0.01">
+            value={{p1_frek}} step="1">
           <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
             i18n="@@changevoicefreqr0">
             change
