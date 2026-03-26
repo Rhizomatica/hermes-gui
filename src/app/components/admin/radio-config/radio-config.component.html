@@ -71,7 +71,7 @@
           </p>
         </div>
       </form>
-      <form class="formdata field" *ngIf="bitx == 'S' && radio.profile === 1">
+      <!-- <form class="formdata field" *ngIf="bitx == 'S' && radio.profile === 1">
         <div class="row">
           <span i18n="@@radiodigitalvoicemode" class="radio-config-label">Digital voice
             <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
@@ -90,14 +90,12 @@
             {{radio.profile == 0 ? 'Data' : 'Voice'}}
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
           </div>
-
           <p class="m-t-10" i18n="@@radiodigitalvoicesubtitle">
             Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient, and
             data-rich communication than traditional analog modes.
           </p>
         </div>
-
-      </form>
+      </form> -->
       <form #ffreq="ngForm" class="formdata field" *ngIf="radio.profile == 0">
         <span i18n="@@changefrequency" class="radio-config-label">Data frequency: <br /> {{radio.p0_freq}} kHz
           <hint [showHint]="false" [hint]="'frequency'" [ngClass]="{'float-right': !isArabic}"></hint>
