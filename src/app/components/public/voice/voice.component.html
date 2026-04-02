@@ -8,7 +8,7 @@
     <hint [showHint]="false" [hint]="'voice'"></hint>
 
     <div class="data">
-      <!-- <div class="data-title">
+      <div class="data-title">
         <span i18n="@@radiodigitalvoicemode">Digital voice</span>
       </div>
       <div class="">
@@ -19,7 +19,7 @@
             [checked]="toggleDigital"></span>
         </div>
         <span i18n="@@on">ON</span>
-      </div> -->
+      </div>
       <div class="data-body frequency">
         <div *ngIf="!inputFrequencyFlag">
           <span *ngFor="let digit of radio.p1_freq_splited; let i = index" (click)="changeStepDigit(i)"><span
@@ -46,7 +46,7 @@
             </datalist> -->
         </form>
       </div>
-      <div *ngIf="radio.timeout !== null">
+      <div *ngIf="radio.timeout >= 0">
         <div class="data-title m-t-25">
           <span i18n="@@timeoutlabel">
             Voice timeout: {{radio.timeout}}
