@@ -6,7 +6,7 @@ export const environment = {
     bitx: 'S',
     hasGPS: true,
     gpsMap: 'brazil',
-    requireLogin: true,
+    requireLogin: false,
     emergencyEmail: 'help@hermes.radio',
     localeId: 'en'
 };
