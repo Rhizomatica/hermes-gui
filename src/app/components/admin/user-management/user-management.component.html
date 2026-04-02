@@ -8,18 +8,19 @@
       </h2>
       <hint [showHint]="false" [hint]="'usermanagement'"></hint>
     </div>
- 
+
     <form #f="ngForm" id="userdata" class="formdata" novalidate>
       <label for="email">
         Email
-        <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required (focusout)="checkFullName(selectedUser.name)" maxlength="100">
+        <input *ngIf="emptyUser" name="email" [(ngModel)]="selectedUser.email" required
+          (focusout)="checkFullName(selectedUser.name)" maxlength="100">
       </label>
       <a>{{selectedUser?.email + '@' + domain}}</a>
       <label for="name">
         <span i18n="@@name">Name</span>
         <p *ngIf="!newUsername">{{selectedUser.name}}</p>
-        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required (focusout)="checkFullName(selectedUser.name)"
-          maxlength="100" />
+        <input *ngIf="newUsername" name="name" [(ngModel)]="selectedUser.name" required
+          (focusout)="checkFullName(selectedUser.name)" maxlength="100" />
       </label>
       <div [hidden]=!fullNameEmpty class="error" i18n="@@fullnamerequired">
         name is required
@@ -30,7 +31,8 @@
       </label>
       <div class="selector"></div>
       <hr>
-      <button *ngIf="!emptyUser && (currentUser.admin || currentUser.id == selectedUser.id)" i18n="@@changepassword" (click)="showPasswordField()">change password</button>
+      <button *ngIf="!emptyUser && (currentUser.admin || currentUser.id == selectedUser.id)" i18n="@@changepassword"
+        (click)="showPasswordField()">change password</button>
       <div *ngIf="showPassword">
         <label for="passwd">
           <span i18n="@@passwordlabeluser">Password</span>
@@ -91,9 +93,13 @@
       </div>
       <div class="overall alert" [hidden]="errorAlert==false">
         <div class="cv">
-          <span i18n="@@usererror" *ngIf="!errorUserAlreadyExist">There was an error on processing your request </span>
-          <span i18n="@@usererrorexist" *ngIf="errorUserAlreadyExist">This user already exists please choose another
-            email</span>
+          <div *ngIf="!errorUserAlreadyExist">
+            <span i18n="@@usererror">There was an error loading the content</span>
+          </div>
+          <div *ngIf="errorUserAlreadyExist">
+            <span i18n="@@usererrorexist">This user already exists please choose another
+              email</span>
+          </div>
           <button class="m-t-10" (click)="closeError()" i18n="@@closeerrorbutton">
             close
           </button>

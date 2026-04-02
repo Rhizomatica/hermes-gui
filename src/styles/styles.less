@@ -12,12 +12,12 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-Light.woff2") format("woff"),
+  src: url("../assets/fonts/Rubik-Light.woff2") format("woff"),
 }
 
 @font-face {
   font-family: "Rubik-regular";
-  src: url("../fonts/Rubik-Regular.woff2") format("woff"),
+  src: url("../assets/fonts/Rubik-Regular.woff2") format("woff"),
 }
 
 html,
@@ -88,7 +88,7 @@ button {
   }
 
   button {
-    font-size: 0.9em;
+    font-size: 0.8em;
     padding: 0.3em 0.5em;
 
     a {
@@ -392,7 +392,7 @@ textarea {
     right: 0;
     margin: 1em 0.06em 1em;
     width: calc(100% - 0.12em);
-    background: #fff 98% no-repeat url(../svg/magnifying-glass-solid.svg);
+    background: #fff 98% no-repeat url(../assets/svg/magnifying-glass-solid.svg);
     background-size: 1em 1em;
     border: 1px solid #cecece;
     font-size: 0.9em;
@@ -720,9 +720,9 @@ input:checked+.slider:before {
     position: relative;
     padding: 0.35em;
     width: 27%;
-    font-size: .6em;
+    font-size: 1.1em;
     line-height: 0.85em;
-    height: 3em;
+    height: 1.7em;
     margin-left: 0.1em;
     border-radius: 3px;
     top: 11px;
@@ -2511,7 +2511,7 @@ video {
   }
 
   .card {
-    width: 14em;
+    width: 22rem;
     padding: 1.4em 1em 1em;
   }
 
@@ -2631,6 +2631,10 @@ video {
   .inlineicon {
     width: 35px;
   }
+
+  #radioconf .card {
+    width: 22.9%;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2640,7 +2644,7 @@ video {
   }
 
   .formfield {
-    padding: 0 3em 3em 3em;
+    // padding: 0 3em 3em 3em;
     max-width: 100%;
     margin-left: 0%;
   }
@@ -2715,7 +2719,7 @@ video {
   }
 
   .card {
-    width: 17em;
+    width: 18.4em;
 
     .card-title {
       font-size: 1em;
@@ -2723,7 +2727,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 18.5em;
+    width: 20.5em;
     height: 4.7em;
   }
 
@@ -2842,6 +2846,7 @@ video {
   #radioconf .card {
     font-size: 1.3rem;
     line-height: 1.2em;
+    width: 47.5%;
   }
 
   #radioconf .card .card-value {

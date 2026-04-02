@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserManagementComponent } from './user-management.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { of } from 'rxjs';
 
 describe('UserManagementComponent', () => {
   let component: UserManagementComponent;
@@ -8,9 +11,22 @@ describe('UserManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserManagementComponent],
-      imports: [HttpClientModule]
-    })
+    declarations: [UserManagementComponent],
+    imports: [FormsModule],
+    providers: [
+      provideHttpClient(withInterceptorsFromDi()),
+      {
+        provide: ActivatedRoute,
+        useValue: {
+          params: of({}),
+          queryParams: of({}),
+          snapshot: {
+            paramMap: convertToParamMap({})
+          }
+        }
+      }
+    ]
+})
       .compileComponents();
   });
 

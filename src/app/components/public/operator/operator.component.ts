@@ -58,8 +58,8 @@ export class OperatorComponent implements OnInit {
 
   public getSchedules(): void {
     this.loading = true
-    this.apiService.getSchedules().subscribe(
-      (res: any) => {
+    this.apiService.getSchedules().subscribe({
+      next: (res: any) => {
 
         var enabledSchedules = res.filter((a) => { return a.enable == 1 })
 
@@ -68,11 +68,11 @@ export class OperatorComponent implements OnInit {
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   getGPSStatus(): void {
@@ -81,35 +81,35 @@ export class OperatorComponent implements OnInit {
 
     this.loading = true
 
-    this.gpsService.getGPSStatus().subscribe(
-      (res: any) => {
+    this.gpsService.getGPSStatus().subscribe({
+      next: (res: any) => {
         if (res)
           this.gpsStatus = res
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   getSystemStatus(): void {
     this.loading = true
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
         res.diskfree = res.diskfree / 1024 / 1024
         this.diskSpace = (res.diskfree).toFixed(3)
         var percentage = ((32 - res.diskfree) / 32) * 100
         this.diskUsage = percentage.toFixed(2) + "%"
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   getCurrentCoordinates() {
@@ -120,8 +120,8 @@ export class OperatorComponent implements OnInit {
     if (!this.currentLatitude && !this.currentLongitude)
       this.loading = true
 
-    this.gpsService.getCurrentCoordinates().subscribe(
-      (res: any) => {
+    this.gpsService.getCurrentCoordinates().subscribe({
+      next: (res: any) => {
         if (res && res.latitude !== null && res.longitude !== null) {
           this.currentLatitude = res.latitude
           this.currentLongitude = res.longitude
@@ -130,26 +130,26 @@ export class OperatorComponent implements OnInit {
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   stopTransmission(): void {
     this.loading = true;
 
-    this.uucpService.stopTransmission().subscribe(
-      (res: any) => {
+    this.uucpService.stopTransmission().subscribe({
+      next: (res: any) => {
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.errormsg = err;
         this.errorAlert = true
         this.loading = false;
       }
-    );
+    });
   }
 
   closeError() {
@@ -158,17 +158,17 @@ export class OperatorComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection(this.radio.profile).subscribe(
-      (res: any) => {
+    this.radioService.radioResetProtection(this.radio.profile).subscribe({
+      next: (res: any) => {
         if (res === 1) {
           this.radio.protection = false;
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   ngOnInit(): void {

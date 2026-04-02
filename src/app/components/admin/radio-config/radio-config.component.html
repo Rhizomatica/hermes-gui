@@ -10,7 +10,7 @@
     <div class="flexible m-t-15 m-b-15">
       <div class="card">
         <div class="row">
-          <span i18n="@swrlabelcard">Standing Wave Ratio (SWR)</span>
+          <span i18n="@@swrlabelcard">Standing Wave Ratio (SWR)</span>
         </div>
         <div class="card-value">
           {{radio.swr}}
@@ -18,7 +18,7 @@
       </div>
       <div class="card">
         <div class="row">
-          <span i18n="@forward">Power</span>
+          <span i18n="@@forward">Power</span>
         </div>
         <div class="card-value">
           {{radio.fwd_watts ? radio.fwd_watts : 0}} W
@@ -54,8 +54,7 @@
             <span i18n="@@digitallabel">Data</span>
             <div class="switch">
               <input type="checkbox" name="profile" [checked]="radio.profile">
-              <span class="slider round" (click)="changeProfile($event)" value="{{radio.profile}}"
-                [checked]="toggleProfile"></span>
+              <span class="slider round" (click)="changeProfile($event)" value="{{radio.profile}}"></span>
             </div>
             <span i18n="@@voiceLabel">Voice</span>
             <hint [showHint]="false" [hint]="'radioprofile'"></hint>
@@ -73,15 +72,16 @@
       </form>
       <form class="formdata field" *ngIf="bitx == 'S' && radio.profile === 1">
         <div class="row">
-          <span i18n="@@radiodigitalvoicemode" class="radio-config-label">Digital voice
-            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
+          <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
+            Digital voice
           </span>
-          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
+          <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
+          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">            
             <span i18n="@@off">OFF</span>
             <div class="switch">
-              <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice == 1">
-              <span class="slider round" (click)="toggleDigitalVoice($event)" value="{{radio.p1_digital_voice}}"
-                [checked]="toggleDigital"></span>
+              <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice">
+              <span class="slider round" (click)="toggleDigitalVoice($event)"
+                :value="{{radio.p1_digital_voice}}"></span>
             </div>
             <span i18n="@@on">ON</span>
             <hint [showHint]="false" [hint]="'digitalvoice'"></hint>
@@ -104,7 +104,7 @@
         </span>
         <div class="flexible">
           <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
-            value={{p0_frek}} step="0.01">
+            value={{p0_frek}} step="1">
           <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
             change
           </button>
@@ -134,7 +134,7 @@
         </span>
         <div class="flexible">
           <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
-            value={{p1_frek}} step="0.01">
+            value={{p1_frek}} step="1">
           <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
             i18n="@@changevoicefreqr0">
             change
@@ -174,6 +174,30 @@
         </div>
       </form>
 
+      <form #fptt="ngForm" class="formdata field" *ngIf="isAdmin && radio.profile == 0">
+        <span class="radio-config-label">PTT ({{radio.tx == false ? 'OFF' : 'ON'}}) <hint [showHint]="false"
+            [hint]="'ptt'" [ngClass]="{'float-right': !isArabic}">
+          </hint></span>
+        <div class="switch" [ngClass]="{'float-right': !isArabic}">
+          <input type="checkbox" name="mode" [checked]="radio.tx">
+          <span class="slider round" *ngIf="isAdmin" (click)="confirmChangePTT($event)" value="{{radio.tx}}"
+            [checked]="radio.tx" [disabled]="radio.connection"></span>
+        </div>
+        <div class="overall alert" *ngIf="confirmSendPTT">
+          <div class="cv">
+            <span i18n="@@suresendpttmessage">
+              Are you sure you want to send PTT?
+              <br />
+              This can cause irreparable problems.
+            </span>
+            <div class="row m-t-10">
+              <button (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
+              <button (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send PTT</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
       <form #frefthreshold="ngForm" class="formdata field" *ngIf="isAdmin && radio.profile == 0">
         <span i18n="@@prottheshold" class="radio-config-label">Protection activation threshold level
           <hint [showHint]="false" [hint]="'threshold'" [ngClass]="{'float-right': !isArabic}"></hint>
@@ -231,30 +255,6 @@
             <input type="range" min="0" max="100" step="2" [value]="voicePowerLevel" class="slider-input"
               [(ngModel)]="voicePowerLevel" name="voicePowerLevel" (change)="updatePowerLevel(voiceFormPowerLevel, 1)"
               [disabled]="radio.digital === 1">
-          </div>
-        </div>
-      </form>
-
-      <form #fptt="ngForm" class="formdata field" *ngIf="isAdmin && radio.profile == 0">
-        <span class="radio-config-label">PTT ({{radio.tx == false ? 'OFF' : 'ON'}}) <hint [showHint]="false"
-            [hint]="'ptt'" [ngClass]="{'float-right': !isArabic}">
-          </hint></span>
-        <div class="switch" [ngClass]="{'float-right': !isArabic}">
-          <input type="checkbox" name="mode" [checked]="radio.tx">
-          <span class="slider round" *ngIf="isAdmin" (click)="confirmChangePTT($event)" value="{{radio.tx}}"
-            [checked]="radio.tx"></span>
-        </div>
-        <div class="overall alert" *ngIf="confirmSendPTT">
-          <div class="cv">
-            <span i18n="@@suresendpttmessage">
-              Are you sure you want to send PTT?
-              <br />
-              This can cause irreparable problems.
-            </span>
-            <div class="row m-t-10">
-              <button (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
-              <button (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send PTT</button>
-            </div>
           </div>
         </div>
       </form>

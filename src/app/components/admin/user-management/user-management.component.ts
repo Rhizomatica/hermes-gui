@@ -111,53 +111,55 @@ export class UserManagementComponent implements OnInit {
     this.loading = true;
 
     if (!f.value.email)
-      f.value.email = this.selectedUserEmail;
+      f.value.email = this.selectedUserEmail
 
     if (!f.value.admin)
-      f.value.admin = false;
+      f.value.admin = false
 
-    this.userService.updateUser(id, f.value).subscribe(
-      (res: any) => {
+    this.userService.updateUser(id, f.value).subscribe({
+      next: (res: any) => {
         this.router.navigate(['/user-list']);
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
+
     this.selectedUser = null;
     this.updateUser = false;
   }
 
   onSubmitDelete(id: number, email: string): void {
     this.loading = true;
-    this.userService.deleteUser(id, email).subscribe(
-      (res: any) => {
+    this.userService.deleteUser(id, email).subscribe({
+      next: (res: any) => {
         this.router.navigate(['/user-list']);
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
     this.deleteUser = false;
   }
 
   onSubmitCreate(f: NgForm): void {
     this.loading = true;
     f.value.location = 'local';
-    this.userService.createUser(f.value).subscribe(
-      (res: any) => {
+    this.userService.createUser(f.value).subscribe({
+      next: (res: any) => {
         this.loading = false;
         this.router.navigate(['/user-list']);
-      }, (err) => {
+      },
+      error: (err) => {
         this.loading = false;
         this.errorAlert = true;
         if (err.status == 409) {
           this.errorUserAlreadyExist = true;
         }
       }
-    );
+    });
   }
 
   getUser(): void {

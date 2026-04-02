@@ -68,31 +68,31 @@ export class SMSChatComponent implements OnInit {
 
     this.phoneNumber = "+5531999885874"
 
-    this.smsMessageService.getMessages().subscribe(
-      (res: any) => {
+    this.smsMessageService.getMessages().subscribe({
+      next: (res: any) => {
         this.messages = res
         if (res && res.length > 0)
           this.phoneNumber = res[0].phoneNumber
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   sendSMS(f: NgForm) {
-    this.smsMessageService.sendMessage(this.message).subscribe(
-      (res: any) => {
+    this.smsMessageService.sendMessage(this.message).subscribe({
+      next: (res: any) => {
         this.messages.push(f.value.text)
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   deleteConfirmation() {
@@ -107,17 +107,17 @@ export class SMSChatComponent implements OnInit {
   deleteChat() {
     this.delete = false
     this.loading = true
-    this.smsMessageService.deleteMessage(this.chatId).subscribe(
-      (res: any) => {
+    this.smsMessageService.deleteMessage(this.chatId).subscribe({
+      next: (res: any) => {
         this.loading = false
         this.router.navigate(['/sms'])
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   ngOnInit(): void {

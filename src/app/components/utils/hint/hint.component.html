@@ -206,7 +206,7 @@
         trhough admin or email link on the main menu. In order to login to an e-mail account, only the e-mail address
         and password fields should be filled, as shown below. The user and password will be the same as those created
         when first creating a login on HERMES and for use with the RoundCube webmail, such as:
-        username@{{domain}}.
+        username&#64;{{domain}}.
         <img class="infoimg" title="Deltachat login" src="assets/img/login_{{language}}.jpeg" />
       </p>
     </div>
@@ -636,14 +636,14 @@
       </p> -->
     </div>
 
-    <div *ngIf="hint == 'smslist'" i18n="@@smslisthint">
+    <div *ngIf="hint == 'smslist'">
       <h1 class="cv-title">SMS List</h1>
       <p>
         List of sent messages using the SMS chat system ordered and agroupped by phone number
       </p>
     </div>
 
-    <div *ngIf="hint == 'smschat'" i18n="@@smschathint">
+    <div *ngIf="hint == 'smschat'">
       <h1 class="cv-title">SMS Chat</h1>
       <p>
         Use SMS Chat to exchange messages using the SMS service with any phone number.
@@ -658,8 +658,8 @@
       </p>
     </div>
 
-    <button class="m-t-10" (click)="toggleHint()" i18n="@@closehintbutton">
-      close
+    <button class="m-t-10" (click)="toggleHint()">
+      <span i18n="@@closehint">close</span>
     </button>
 
   </div>

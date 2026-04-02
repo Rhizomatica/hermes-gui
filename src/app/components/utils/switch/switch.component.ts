@@ -1,41 +1,44 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, OnChanges, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'switch',
   templateUrl: './switch.component.html',
   styleUrls: ['./switch.component.less']
 })
-export class SwitchComponent implements OnChanges {
+export class SwitchComponent implements OnChanges, OnInit {
 
-  constructor() {
-    this.inputName = 'Switch';
-    this.label = 'switch'
-    this.i18n = 'Translate';
-    this.enabled = ''
-    this.value = 0
-    this.customFunction = function () { console.log("Custom function called with param: " + this.disabled); }
-  }
+  @Input() inputName: string = 'Switch';
+  @Input() label: string = 'switch';
+  @Input() i18n: string = 'Translate';
+  @Input() enabled: string = '';
+  @Input() value: number = 0;
 
-  @Input() inputName: string
-  @Input() label: string
-  @Input() i18n: string
-  @Input() enabled: string
-  @Input() value: number
-  @Input() customFunction: any
 
-  onSwitch() {
-    try {
-      eval(this.customFunction)
-    } catch (error) {
-      console.log(error)
+  @Input() customFunction?: (component: SwitchComponent) => void;
+
+  constructor() {}
+
+  onSwitch(): void {
+    if (this.customFunction) {
+      try {
+        this.customFunction(this);
+      } catch (error) {
+        console.error('Error executing customFunction:', error);
+      }
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  ngOnChanges(change) {    
-    change.enabled && change.enabled.currentValue != change.enabled.previousValue ? this.enabled = change.name.currentValue: null
-    change.value && change.value.currentValue != change.value.previousValue ? this.value = change.value.currentValue: null
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['enabled'] &&
+        changes['enabled'].currentValue !== changes['enabled'].previousValue) {
+      this.enabled = changes['enabled'].currentValue;
+    }
+
+    if (changes['value'] &&
+        changes['value'].currentValue !== changes['value'].previousValue) {
+      this.value = changes['value'].currentValue;
+    }
   }
 }

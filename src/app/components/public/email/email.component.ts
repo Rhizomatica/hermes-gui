@@ -34,16 +34,18 @@ export class EmailComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (res: any) => {
+    this.userService.getUsers().subscribe({
+      next: (res: any) => {
         this.users = res;
         for (let i = 0; i < Object.keys(this.users).length; i++) {
           this.users[i].fullmail = this.users[i].email + '@' + GlobalConstants.domain;
         }
-      }), (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
-      };
+      }
+    });
   }
 
   selectAllForDropdownItems(items: any[]) {

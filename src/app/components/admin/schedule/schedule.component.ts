@@ -44,8 +44,8 @@ export class ScheduleComponent implements OnInit {
   }
 
   public getStations(): void {
-    this.stationService.getStations().subscribe(
-      (data: any) => {
+    this.stationService.getStations().subscribe({
+      next: (data: any) => {
         this.stations = data;
         this.stations = this.stations.filter(e => e.alias !== 'central' && e.alias !== 'gw' && e.alias !== 'local');
         for (var i in this.stations) {
@@ -60,12 +60,13 @@ export class ScheduleComponent implements OnInit {
         }
         this.loading = false
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   public closeError() {
@@ -90,15 +91,16 @@ export class ScheduleComponent implements OnInit {
     f.value.stoptime += ":00"
 
     this.loading = true
-    this.apiService.updateSchedule(id, f.value).subscribe(
-      (res: any) => {
+    this.apiService.updateSchedule(id, f.value).subscribe({
+      next: (res: any) => {
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   confirmChange() {
@@ -110,18 +112,19 @@ export class ScheduleComponent implements OnInit {
   }
 
   public getSchedules(): void {
-    this.apiService.getSchedules().subscribe(
-      (res: any) => {
-        this.schedules = res
-        this.loading = false
-        this.formatTime(this.schedules)
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true
-        this.loading = false
-      }
-    );
+
+    this.apiService.getSchedules().subscribe({
+        next: (res: any) => {
+          this.schedules = res
+          this.loading = false
+          this.formatTime(this.schedules)
+        },
+        error: (err) => {
+          this.error = err;
+          this.errorAlert = true
+          this.loading = false
+        }
+      });
   }
 
   formatTime(schedules) {
@@ -143,15 +146,16 @@ export class ScheduleComponent implements OnInit {
     this.selectedSchedule = []
     this.emptySchedule = true
     this.confirmDeleteSchedule = false
-    await this.apiService.deleteSchedule($id).subscribe(
-      (data: any) => {
+    this.apiService.deleteSchedule($id).subscribe({
+      next: (data: any) => {
         this.getSchedules()
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
 
   }
 
@@ -164,17 +168,17 @@ export class ScheduleComponent implements OnInit {
 
     f.value.starttime += ":00"
     f.value.stoptime += ":00"
-
-    await this.apiService.createSchedule(f.value).subscribe(
-      (data: any) => {
+    this.apiService.createSchedule(f.value).subscribe({
+      next: (data: any) => {
         this.getSchedules();
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
         this.errorAlert = true
       }
-    );
+    });
 
     this.isEditing = false;
   }

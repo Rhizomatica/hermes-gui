@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MessagesComponent } from './messages.component';
-import { HttpClientModule } from '@angular/common/http';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { FilterPipe } from '../../../pipes/filter.pipe';
 
 describe('MessagesComponent', () => {
   let component: MessagesComponent;
@@ -9,10 +9,10 @@ describe('MessagesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessagesComponent],
-      imports: [HttpClientModule,
-        Ng2SearchPipeModule]
-    })
+    declarations: [MessagesComponent, FilterPipe],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
       .compileComponents();
   });
 

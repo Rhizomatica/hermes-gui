@@ -4,7 +4,7 @@ import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { MessageService } from '../../../_services/message.service';
 import { ApiService } from '../../../_services/api.service';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { GlobalConstants } from '../../../global-constants';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,7 +23,7 @@ export class MessageConfigComponent implements OnInit {
   selectedMessages = false;
   allowfile: any;
   allowhmp: any;
-  allowUp: UntypedFormGroup;
+  allowUp: FormGroup;
   errorAlert = false;
   noSystem = false;
   isAdmin = false;
@@ -41,8 +41,8 @@ export class MessageConfigComponent implements OnInit {
   }
 
   getSysConfig(): void {
-    this.apiService.getSysConfig().subscribe(
-      (res: any) => {
+    this.apiService.getSysConfig().subscribe({
+      next: (res: any) => {
         
         if (this.requireLogin) {
           this.updateRuleForRequireLogin(res)
@@ -56,13 +56,13 @@ export class MessageConfigComponent implements OnInit {
         this.loading = false
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.noSystem = true;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   closeError() {
@@ -87,15 +87,15 @@ export class MessageConfigComponent implements OnInit {
 
   cleanUp() {
     this.cleaned = true;
-    this.messageService.deleteFile().subscribe(
-      (res: any) => {
+    this.messageService.deleteFile().subscribe({
+      next: (res: any) => {
         this.messages = res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    )
+    })
   }
 
   // getMessages(): void {
@@ -112,32 +112,32 @@ export class MessageConfigComponent implements OnInit {
 
   setUploadPermission(value: string) {
     this.loading = true
-    this.apiService.setFileConfig(value).subscribe(
-      (res: any) => {
+    this.apiService.setFileConfig(value).subscribe({
+      next: (res: any) => {
         // this.allowfile = res.allowfile;
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   setComposePermission(value: string) {
     this.loading = true
-    this.apiService.setMsgConfig(value).subscribe(
-      (res: any) => {
+    this.apiService.setMsgConfig(value).subscribe({
+      next: (res: any) => {
         // this.allowhmp = res.allowhmp;
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   updateRuleForRequireLogin(data) {

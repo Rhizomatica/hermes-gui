@@ -5,7 +5,7 @@ import { GPSService } from '../../../_services/gps.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { NgForm } from '@angular/forms';
 
-import { Subscription, interval } from 'rxjs';
+import { Subscription, interval, lastValueFrom } from 'rxjs';
 // import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
 
 @Component({
@@ -49,7 +49,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getGPSFiles(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getStoredGPSFiles().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getStoredGPSFiles());
       if (res) {
         this.files = res;
       }
@@ -62,7 +62,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getGPSStatus(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getGPSStatus().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getGPSStatus());
       if (res) {
         this.status = res;
       }
@@ -75,7 +75,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getInterval(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getInterval().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getInterval());
       if (res) {
         this.interval = res;
       }
@@ -88,7 +88,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getFileRangeTime(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getFileRangeTime().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getFileRangeTime());
       if (res) {
         this.range = parseInt(res) / 60;
       }
@@ -101,7 +101,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getEmail(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getEmail().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getEmail());
       if (res) {
         this.email = res;
       }
@@ -114,7 +114,7 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   async getCurrentCoordinates(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getCurrentCoordinates().toPromise();
+      const res: any = await lastValueFrom(this.gpsService.getCurrentCoordinates());
       if (res && res.latitude !== null && res.longitude !== null) {
         this.currentLatitude = res.latitude;
         this.currentLongitude = res.longitude;
@@ -128,16 +128,14 @@ export class GPSComponent implements OnInit, OnDestroy {
 
   updateGPSInterval(f: NgForm) {
     this.loading = true
-    this.gpsService.updateGPSInterval(f.value.interval).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
+    this.gpsService.updateGPSInterval(f.value.interval).subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   updateFileRangeTime(f: NgForm) {
@@ -147,30 +145,26 @@ export class GPSComponent implements OnInit, OnDestroy {
       f.value.range = parseInt(f.value.range) * 60
     }
 
-    this.gpsService.updateFileRangeTime(f.value.range).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
+    this.gpsService.updateFileRangeTime(f.value.range).subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   updateGPSEmail(f: NgForm) {
     this.loading = true
-    this.gpsService.updateGPSEmail(f.value.email).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
+    this.gpsService.updateGPSEmail(f.value.email).subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   toggleGPS(f: NgForm) {
@@ -182,15 +176,14 @@ export class GPSComponent implements OnInit, OnDestroy {
       this.status = true
     }
 
-    this.gpsService.toggleGPS(this.status).subscribe(
-      (res: any) => {
-        return null
-      },
-      (err) => {
+    this.gpsService.toggleGPS(this.status).subscribe({
+      error: (err) => {
         this.error = err;
+        this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   deleteAllStoredFiles() {
@@ -205,18 +198,19 @@ export class GPSComponent implements OnInit, OnDestroy {
   confirmDeleteAllStoredFiles() {
     this.deleteConfirmation = false
     this.loading = true
-    this.gpsService.deleteAllStoredFiles().subscribe(
-      (res: any) => {
+    this.gpsService.deleteAllStoredFiles()
+    .subscribe({
+      next: (res: any) => {
         if (res)
           this.getGPSFiles()
-        this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   SOSEmergency() {
@@ -231,17 +225,14 @@ export class GPSComponent implements OnInit, OnDestroy {
   confirmSOSEmergency() {
     this.confirmSOS = false
     this.loading = true
-    this.gpsService.SOSEmergency().subscribe(
-      (res: any) => {
-        if (res)
-          this.loading = false
-      },
-      (err) => {
+    this.gpsService.SOSEmergency().subscribe({
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true
-      }
-    );
+      },
+      complete: () => this.loading = false
+    });
   }
 
   closeError(): void {
@@ -258,8 +249,10 @@ export class GPSComponent implements OnInit, OnDestroy {
     this.getCurrentCoordinates() //First call
 
     //Pool current coordinates
-    this.poolCoordinates = interval(10000).subscribe((val) => {
-      this.getCurrentCoordinates()
+    this.poolCoordinates = interval(10000).subscribe({
+      next: () => {
+        this.getCurrentCoordinates()
+      }
     });
 
   }

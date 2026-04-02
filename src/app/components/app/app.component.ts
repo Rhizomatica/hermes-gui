@@ -8,18 +8,18 @@ import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
-import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
 import { RouterModule, Routes } from '@angular/router';
+import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [DecimalPipe,
-    RouterModule,
+  providers: [
+    DecimalPipe,
     WebsocketService,
     { provide: '_serviceRoute', useValue: 'websocket' }
   ]
@@ -68,9 +68,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private sharedService: SharedService,
     private idle: Idle,
     // private keepalive: Keepalive, 
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private theme: ThemeService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
 
     this.startIdleDetector()
     this.importArabicStyles()
@@ -91,17 +93,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
         this.system = res;
         this.system.domain = this.system.domain == "hermes.radio" ? "demo.hermes.radio" : this.system.domain
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   showServerAlert() {
@@ -179,6 +181,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   checkRequireLogin() {
+    if (this.router.url === '/login' || this.router.url === '/') return
+
     GlobalConstants.requireLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
   }
 
@@ -194,35 +198,43 @@ export class AppComponent implements OnInit, OnDestroy {
     this.idle.setTimeout(30)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
-    this.idle.onIdleStart.subscribe(() => {
-      this.idleState = "IDLE";
+    this.idle.onIdleStart.subscribe({
+      next: () => {
+        this.idleState = "IDLE";
+      }
     })
 
     // do something when the user is no longer idle
-    this.idle.onIdleEnd.subscribe(() => {
-      this.idleState = "NOT_IDLE"
-      this.countdown = null;
-      this.cd.detectChanges() // how do i avoid this kludge?
+    this.idle.onIdleEnd.subscribe({
+      next: () => {
+        this.idleState = "NOT_IDLE"
+        this.countdown = null;
+        this.cd.detectChanges() // how do i avoid this kludge?
+      }
     })
 
     // do something when the user has timed out
-    this.idle.onTimeout.subscribe(() => {
-      this.idleState = "TIMED_OUT"
-      this.resetIdle();
-      this.authenticationService.logout();
+    this.idle.onTimeout.subscribe({
+      next: () => {
+        this.idleState = "TIMED_OUT"
+        this.resetIdle();
+        this.authenticationService.logout();
 
-      if (GlobalConstants.requireLogin)
-        this.router.navigate(['/login']);
+        if (GlobalConstants.requireLogin)
+          this.router.navigate(['/login']);
 
-      if (!GlobalConstants.requireLogin)
-        this.router.navigate(['/home']);
+        if (!GlobalConstants.requireLogin)
+          this.router.navigate(['/home']);
 
-      //  this.websocketService.closeConnection() --- IGNORE ---
+        //  this.websocketService.closeConnection() --- IGNORE ---
+      }
     })
 
     // do something as the timeout countdown does its thing
-    this.idle.onTimeoutWarning.subscribe(seconds => {
-      this.countdown = seconds
+    this.idle.onTimeoutWarning.subscribe({
+      next: (seconds) => {
+        this.countdown = seconds
+      }
     });
 
     this.idle.watch()
@@ -239,6 +251,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
+    this.theme.init();
     this.loading = true
     this.checkRequireLogin()
     this.getSystemStatus();
@@ -247,14 +260,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.radio = this.sharedService.radioObj.value
 
     this.routerObserver = this.router.events.subscribe((event) => {
-      if (event instanceof ActivationEnd) {
-
-        //Redirect login if reload page...
-        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
-          this.router.navigate(['home'])
-        }
-      }
-
       if (event instanceof NavigationEnd) {
 
         this.checkIsMenuPage()
@@ -286,6 +291,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routerObserver.unsubscribe();
+    if (this.routerObserver) {
+      this.routerObserver.unsubscribe();
+    }
   }
 }

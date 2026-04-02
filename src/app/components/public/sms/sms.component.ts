@@ -126,16 +126,16 @@ export class SMSComponent implements OnInit {
     this.message.type = 1 //sent
     this.message.date = this.utilsService.formatDate(new Date())
 
-    this.smsMessageService.sendMessage(this.message).subscribe(
-      (res: any) => {
+    this.smsMessageService.sendMessage(this.message).subscribe({
+      next: (res: any) => {
         this.router.navigate([`/smschat/${res.id}}`]);
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false;
       }
-    );
+    });
   }
 
   ngOnInit(): void {

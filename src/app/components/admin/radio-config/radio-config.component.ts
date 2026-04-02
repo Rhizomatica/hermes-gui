@@ -36,6 +36,8 @@ export class RadioConfigComponent implements OnInit {
   restarting = false
   shuttingDownNow = false
   rebootingDownNow = false
+  alertBrowserXP: boolean = false
+  loginForm = false
   refthreshold: any
   voicePowerLevel: number
   dataPowerLevel: number
@@ -85,9 +87,10 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changePtt() {
+    
     this.loading = true
-    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe({
+      next: (res: any) => {
 
         this.radio.tx = res == 'ON' ? true : false
 
@@ -102,12 +105,35 @@ export class RadioConfigComponent implements OnInit {
         this.confirmSendPTT = false
         this.loading = false
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
+  }
+
+  public pttOn(f) {
+    this.radioService.setRadioPTT(f, this.dataModeProfileID).subscribe({
+      next: (res: any) => {
+        this.radio.ptt = res;
+        this.radio.tx = true;
+        this.radio.rx = false;
+
+        if (this.radio.ptt == "ON") {
+          this.testTone(0);
+        }
+
+        if (this.radio.ptt == "OFF") {
+          this.testTone(600);
+        }
+      },
+      error: (err) => {
+        this.error = err;
+        this.errorAlert = true;
+      }
+    });
   }
 
   confirmReset() {
@@ -119,8 +145,8 @@ export class RadioConfigComponent implements OnInit {
     const realfreq = f.value.frek * 1000;
     this.confirmSet = false
 
-    this.radioService.setRadioFreq(realfreq, radioProfile).subscribe(
-      (res: any) => {
+    this.radioService.setRadioFreq(realfreq, radioProfile).subscribe({
+      next: (res: any) => {
         if (radioProfile == 0)
           this.radio.p0_freq = this.utils.formatFrequency(res);
 
@@ -128,12 +154,13 @@ export class RadioConfigComponent implements OnInit {
           this.radio.p1_freq = this.utils.formatFrequency(res);
 
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   changeMode(event, radioProfile: number) {
@@ -147,13 +174,13 @@ export class RadioConfigComponent implements OnInit {
       mode = this.voiceModeSwitch;
     }
 
-    this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe(
-      (res: any) => { },
-      (err) => {
+    this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe({
+      next: (res: any) => { },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   confirmChange() {
@@ -172,22 +199,22 @@ export class RadioConfigComponent implements OnInit {
       f.value.refthreshold = f.value.refthreshold * 10
     }
 
-    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.dataModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.dataModeProfileID).subscribe({
+      next: (res: any) => {
         this.radio.refthreshold = res / 10;
         this.refthreshold = res / 10
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   confirmChangePTT() {
-    if (this.radio.tx == true) {
-      this.changePtt()
+    if (this.radio.connection) {
       return
     }
 
@@ -195,42 +222,42 @@ export class RadioConfigComponent implements OnInit {
   }
 
   resetProtection() {
-    this.radioService.radioResetProtection(this.dataModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.radioResetProtection(this.dataModeProfileID).subscribe({
+      next: (res: any) => {
         if (res === 1) {
           this.radio.protection = false;
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   async resetRadio() {
-    await this.radioService.radioRestoreDefaults(this.dataModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.radioRestoreDefaults(this.dataModeProfileID).subscribe({
+      next: (res: any) => {
         this.reseting = false;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.reseting = false;
       }
-    );
+    });
   }
 
   gpsStartCalibration() {
-    this.radioService.gpsStartCalibration().subscribe(
-      (res: any) => {
+    this.radioService.gpsStartCalibration().subscribe({
+      next: (res: any) => {
         this.gpsMessage = res
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   closeError() {
@@ -243,17 +270,18 @@ export class RadioConfigComponent implements OnInit {
 
   testTone(f) {
     this.testtone = f;
-    this.radioService.setRadioTone(f, this.dataModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.setRadioTone(f, this.dataModeProfileID).subscribe({
+      next: (res: any) => {
         this.radio.testtone = res;
         this.toneOn = res === '0' ? false : true
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.loading = false
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   confirmReboot() {
@@ -272,17 +300,17 @@ export class RadioConfigComponent implements OnInit {
 
   getRadioStatus() {
     this.loading = true
-    this.radioService.getRadioStatus(this.voiceModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.getRadioStatus(this.voiceModeProfileID).subscribe({
+      next: (res: any) => {
         this.refthreshold = res.refthreshold ? res.refthreshold / 10 : 0;
         this.serial = res.serial;
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.radioError = true;
       }
-    );
+    });
   }
 
   eraseSDCardConfirmation() {
@@ -293,30 +321,30 @@ export class RadioConfigComponent implements OnInit {
   }
 
   callEraseSDCard() {
-    this.radioService.eraseSDCard().subscribe(
-      (res: any) => {
+    this.radioService.eraseSDCard().subscribe({
+      next: (res: any) => {
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.radioError = true;
       }
-    );
+    });
   }
 
   changeProfile(event) {
-
     if (this.radio.connetion)
       return
 
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
-    this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe(
-      (res: any) => { },
-      (err) => {
+    this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe({
+      next: (res: any) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   reload() {
@@ -324,22 +352,23 @@ export class RadioConfigComponent implements OnInit {
   }
 
   toggleTimeout() {
+
     const newTimeout = this.timeoutStatus === 0 ? this.timeoutDefault : -1;
     this.timeoutStatus = this.timeoutStatus === 0 ? 1 : 0;
     this.formatedTimeout = this.timeoutStatus === 0 ? 0 : this.timeoutDefault / 60;
-
-    this.radioService.setTimeoutConfig(newTimeout).subscribe(
-      (res: any) => { },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true;
+    this.radioService.setTimeoutConfig(newTimeout).subscribe({
+      next: (res: any) => {
+      },
+      error: (err) => {
+        this.error = err
+        this.errorAlert = true
       }
-    );
+    });
   }
 
   getTimeoutConfig() {
-    this.radioService.getTimeoutConfig().subscribe(
-      (res: any) => {
+    this.radioService.getTimeoutConfig().subscribe({
+      next: (res: any) => {
         if (res < 0) {
           this.timeoutStatus = 0;
           this.formatedTimeout = 0;
@@ -348,50 +377,51 @@ export class RadioConfigComponent implements OnInit {
           this.formatedTimeout = res / 60;
         }
       },
-      (err) => {
+      error: (err) => {
         console.log(err);
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
+
   }
 
   changeTimeout(f: NgForm) {
     const newTimeout = f.value.timeout * 60;
     this.loading = true;
-    this.radioService.setTimeoutConfig(newTimeout).subscribe(
-      (res: any) => {
+    this.radioService.setTimeoutConfig(newTimeout).subscribe({
+      next: (res: any) => {
         this.loading = false;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false;
       }
-    );
+    });
   }
 
   getRadioPowerLevel() {
     this.loading = true
-    this.radioService.getRadioPowerLevel(0).subscribe(
-      (res: any) => {
+    this.radioService.getRadioPowerLevel(0).subscribe({
+      next: (res: any) => {
         this.dataPowerLevel = res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
 
-    this.radioService.getRadioPowerLevel(1).subscribe(
-      (res: any) => {
+    this.radioService.getRadioPowerLevel(1).subscribe({
+      next: (res: any) => {
         this.voicePowerLevel = res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   updatePowerLevel(f: NgForm, profile: number) {
@@ -399,44 +429,54 @@ export class RadioConfigComponent implements OnInit {
     f.value.profile = profile;
     f.value.powerLevel = profile === 0 ? this.dataPowerLevel : this.voicePowerLevel;
 
-    this.radioService.setRadioPowerLevel(f.value).subscribe(
-      (res: any) => {
+    this.radioService.setRadioPowerLevel(f.value).subscribe({
+      next: (res: any) => {
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true;
       }
-    );
+    });
   }
 
-  toggleDigitalVoice(event) {
-    if (!this.radio.p1_digital_voice) return
+  toggleDigitalVoice(event: any) {
+    if (this.radio.p1_digital_voice == null) return
 
     this.loading = true;
-    const digitalValue = this.radio.p1_digital_voice == 1 ? 0 : 1;
+    const digitalValue = this.radio.p1_digital_voice == true ? 0 : 1;
 
-    this.radioService.toggleDigital(digitalValue).subscribe(
-      (res: any) => {
-        this.loading = false;
+    this.radioService.toggleDigital(digitalValue).subscribe({
+      next: (res: any) => {
+        this.toggleDigital = res;
+        this.radio.p1_digital_voice = res == 1 ? true : false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   ngOnInit(): void {
     this.getRadioStatus()
     this.getTimeoutConfig()
-    this.radio = this.sharedService.radioObj.value
-    this.voiceModeSwitch = this.radio.p1_mode === 'LSB'
-    this.modeSwitch = this.radio.p0_mode === 'LSB'
-    this.p0_frek = parseFloat((parseFloat(this.radio.p0_freq) * 1000).toFixed(2))
-    this.p1_frek = parseFloat((parseFloat(this.radio.p1_freq) * 1000).toFixed(2))
     this.getRadioPowerLevel()
     this.isAdmin = this.currentUser?.admin
+
+    this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+      this.voiceModeSwitch = radio.p1_mode === 'LSB';
+      this.modeSwitch = radio.p0_mode === 'LSB';
+      if (radio.p0_freq && this.p0_frek == null) {
+        this.p0_frek = this.utils.parseFormattedFrequency(radio.p0_freq);
+      }
+      if (radio.p1_freq && this.p1_frek == null) {
+        this.p1_frek = this.utils.parseFormattedFrequency(radio.p1_freq);
+      }
+    });
+
     this.loading = false
   }
 }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MessageConfigComponent } from './message-config.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('MessageadmComponent', () => {
   let component: MessageConfigComponent;
@@ -8,9 +8,10 @@ describe('MessageadmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessageConfigComponent],
-      imports: [HttpClientModule]
-    })
+    declarations: [MessageConfigComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
       .compileComponents();
   });
 

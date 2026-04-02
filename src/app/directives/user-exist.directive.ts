@@ -39,14 +39,14 @@ export class UserExistDirective implements Validator, OnInit {
   constructor(private userService: UserService) {}
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (res: any) => {
+    this.userService.getUsers().subscribe({
+      next: (res: any) => {
         this.userList = res;
       },
-      (err) => {
+      error: (err) => {
         this.userList = err;
       }
-    );
+    });
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {

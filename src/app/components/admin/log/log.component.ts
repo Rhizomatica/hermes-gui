@@ -86,48 +86,48 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   getLogUucp() {
-    this.apiService.getUucpLog().subscribe(
-      (res: any) => {
-        this.uucpLog = res;
-        this.loading = false
-        return res;
+    this.apiService.getUucpLog().subscribe({
+      next: (res: any) => {
+      this.uucpLog = res;
+      this.loading = false;
+      return res;
       },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true
-        this.loading = false
+      error: (err) => {
+      this.error = err;
+      this.errorAlert = true;
+      this.loading = false;
       }
-    );
+    });
   }
 
   getLogMail() {
-    this.apiService.getMailLog().subscribe(
-      (res: any) => {
+    this.apiService.getMailLog().subscribe({
+      next: (res: any) => {
         this.mailLog = res;
         this.loading = false
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   getLogUucpDebug() {
-    this.apiService.getUucpDebugLog().subscribe(
-      (res: any) => {
+    this.apiService.getUucpDebugLog().subscribe({
+      next: (res: any) => {
         this.uucpDebugLog = res;
         this.loading = false
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   closeLogs() {
@@ -142,20 +142,20 @@ export class LogComponent implements OnInit, OnDestroy {
 
   getCustomErrors() {
     this.loading = true
-    this.customErrorsService.getCustomErrors().subscribe(
-      (data: any) => {
+    this.customErrorsService.getCustomErrors().subscribe({
+      next: (data: any) => {
         this.customErrors = data.sort((a, b) => { return new Date(a.created_at) < new Date(b.created_at) ? 1 : -1; });
         this.customErrors = this.customErrors.filter((a) => { return a.created_at = this.utils.formatDate(a.created_at) });
 
         this.loading = false;
         this.loadVisibleArray(data)
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   loadVisibleArray(data) {
@@ -193,38 +193,38 @@ export class LogComponent implements OnInit, OnDestroy {
   }
 
   deleteAllCustomError() {
-    this.customErrorsService.deleteAllCustomError().subscribe(
-      (data: any) => {
+    this.customErrorsService.deleteAllCustomError().subscribe({
+      next: (data: any) => {
         this.showCustomLogs()
         this.loading = false
         this.confirmDeleteAllLogs = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true;
         this.confirmDeleteAllLogs = false
       }
-    );
+    });
   }
 
   deleteCustomErrorById(id) {
-    this.customErrorsService.deleteCustomError(id).subscribe(
-      (data: any) => {
+    this.customErrorsService.deleteCustomError(id).subscribe({
+      next: (data: any) => {
         this.showCustomLogs()
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
         this.system = res
         if (this.system.diskfree < 10485760) {
           this.criticSpace = true;
@@ -234,11 +234,11 @@ export class LogComponent implements OnInit, OnDestroy {
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   ngOnInit(): void {
@@ -252,7 +252,6 @@ export class LogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
   }
-
 }
 
 

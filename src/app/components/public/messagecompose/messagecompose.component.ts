@@ -82,8 +82,8 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   getSysConfig(): void {
-    this.apiService.getSysConfig().subscribe(
-      (res: any) => {
+    this.apiService.getSysConfig().subscribe({
+      next: (res: any) => {
         this.serverConfig = res;
         this.allowfile = res.allowfile;
         this.allowhmp = res.allowhmp;
@@ -94,12 +94,12 @@ export class MessagecomposeComponent implements OnInit {
 
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.allowUpload = false;
       }
-    );
+    });
   }
 
   verifyWriteMessagePermission() {
@@ -289,14 +289,14 @@ export class MessagecomposeComponent implements OnInit {
         }
       );
     }
-      const res = this.sendMessageContinue(f);
+    const res = this.sendMessageContinue(f);
   }
 
   quackFile() {
 
-    if(!this.fileName)
+    if (!this.fileName)
       return
-    
+
     this.file = {
       'name': this.fileName,
       'lastModified': new Date()
@@ -308,8 +308,8 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   sendMessageContinue(f: NgForm) {
-    this.messageService.sendMessage(f.value, this.nodename).subscribe(
-      (res: any) => {
+    this.messageService.sendMessage(f.value, this.nodename).subscribe({
+      next: (res: any) => {
         this.res = res;
         this.fileIsProcessing = true;
         this.file = [];
@@ -317,12 +317,12 @@ export class MessagecomposeComponent implements OnInit {
         this.loading = false;
         this.router.navigate(['/sent']);
       },
-      (err) => {
+      error: (err) => {
         this.errormsg = err;
         this.errorAlert = true;
         this.loading = false;
       }
-    );
+    });
   }
 
   closeError() {
@@ -399,16 +399,17 @@ export class MessagecomposeComponent implements OnInit {
 
   public getFrequencies(): void {
     this.loading = true
-    this.frequencyService.getFrequencies().subscribe(
-      (data: any) => {
+    this.frequencyService.getFrequencies().subscribe({
+      next: (data: any) => {
         this.frequencies = data;
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false;
       }
-    );
+    });
   }
 
   getNickName(stations): void {
@@ -444,30 +445,36 @@ export class MessagecomposeComponent implements OnInit {
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()
-      .subscribe(stations => {
-        this.stations = stations;
+      .subscribe({
+        next: (stations => {
+          this.stations = stations;
 
-        if (this.stations.length > 0) {
-          this.selectedStations = [this.stations[0].id];
-          this.selectAllForDropdownItems(this.stations);
+          if (this.stations.length > 0) {
+            this.selectedStations = [this.stations[0].id];
+            this.selectAllForDropdownItems(this.stations);
 
-          var origin = this.activatedRoute.snapshot.paramMap.get("origin")
+            var origin = this.activatedRoute.snapshot.paramMap.get("origin")
 
-          if (origin) {
-            if (Array.isArray(origin)) {
-              this.message.dest = origin
+            if (origin) {
+              if (Array.isArray(origin)) {
+                this.message.dest = origin
+              }
+
+              if (!Array.isArray(origin)) {
+                this.message.dest = [origin]
+              }
             }
 
-            if (!Array.isArray(origin)) {
-              this.message.dest = [origin]
-            }
+            // this.getNickName(stations)
           }
 
-          // this.getNickName(stations)
+          this.loading = false
+        }),
+        error: (err) => {
+          this.error = err;
+          this.errorAlert = true;
+          this.loading = false
         }
-
-        this.loading = false
-      });
+      })
   }
-
 }

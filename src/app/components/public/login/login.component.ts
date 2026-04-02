@@ -34,18 +34,18 @@ export class LoginComponent implements OnInit {
 
 
   submitLogin(f: NgForm): void {
-    this.authenticationService.login(f.value.email, f.value.password).subscribe(
-      (res: any) => {
+    this.authenticationService.login(f.value.email, f.value.password).subscribe({
+      next: (res: any) => {
         this.res = res;
         this.wrong = false;
         this.router.navigate(['/home']);
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.wrong = true;
       }
-    );
+    });
   }
 
   submitTest(f: NgForm): void {

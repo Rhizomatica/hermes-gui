@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SentMessagesComponent } from './sent-messages.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('SentMessagesComponent', () => {
   let component: SentMessagesComponent;
@@ -8,9 +8,10 @@ describe('SentMessagesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SentMessagesComponent ],
-      imports: [HttpClientModule]
-    })
+    declarations: [SentMessagesComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   });
 
