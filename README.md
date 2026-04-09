@@ -15,7 +15,7 @@ typescript: 5.2.2
 
 Angular CLI: 18.2.21  
 Node: v20.20.0  
-Package Manager: npm 9.6.7 
+Package Manager: npm 10.8.2 
 
 
 ## Install node, npm

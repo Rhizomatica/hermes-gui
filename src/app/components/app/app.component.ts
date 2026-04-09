@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
 import { DecimalPipe, Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
@@ -26,7 +27,7 @@ import { ThemeService } from 'src/app/_services/theme.service';
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-  currentUser: User;
+  currentUser: User | undefined;
   serverRes: any;
   error: any;
   system: any;
@@ -44,17 +45,17 @@ export class AppComponent implements OnInit, OnDestroy {
   deferredPrompt: any
   installPromotion: boolean = false
   title = 'hermes.radio'
-  isMenuPage: boolean
+  isMenuPage: boolean | null = null
   currentPage = GlobalConstants.requireLogin ? "login" : 'home'
   currentUrl = GlobalConstants.requireLogin ? "login" : 'home'
-  received = [];
-  sent = [];
+  received: Array<{ source: string; content: string }> = [];
+  sent: Array<{ source: string; content: string }> = [];
   content = ''
   idleState = "NOT_STARTED";
-  countdown?: number = null
-  isLoginPage: boolean = null
+  countdown?: number | null = null
+  isLoginPage: boolean | null = null
   emergencyEmail = GlobalConstants.emergencyEmail
-  routerObserver = null
+  routerObserver: Subscription | null = null
   localeId = GlobalConstants.localeId
 
   constructor(
@@ -114,7 +115,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  onActivate(event) {
+  onActivate() {
     window.scrollTo(0, 0)
   }
 
@@ -131,7 +132,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
-  onbeforeinstallprompt(e) {
+  onbeforeinstallprompt(e: { preventDefault: () => void; }) {
     console.log("Service Worker is started")
     // Impede que o mini-infobar apareça em mobile
     e.preventDefault();
@@ -155,7 +156,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
     this.deferredPrompt.userChoice
-      .then((choiceResult) => {
+      .then((choiceResult: { outcome: string; }) => {
         if (choiceResult.outcome === 'accepted') {
           console.log('User accepted the A2HS prompt');
         } else {
@@ -232,7 +233,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // do something as the timeout countdown does its thing
     this.idle.onTimeoutWarning.subscribe({
-      next: (seconds) => {
+      next: (seconds: number | null | undefined) => {
         this.countdown = seconds
       }
     });
