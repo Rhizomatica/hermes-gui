@@ -16,9 +16,8 @@ export class CustomErrorsService {
 
   }
 
-  customErrors: CustomError[];
-  customError: CustomError;
-  text: string;
+  customError!: CustomError;
+  text: string = '';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,10 +28,9 @@ export class CustomErrorsService {
 
   getCustomErrors(): Observable<CustomError[]> {
     const url = `${GlobalConstants.apiURL}/customerrors`;
-    return this.http.get(url).pipe(
-      map((res: any) => {
-        this.customErrors = res;
-        return this.customErrors;
+    return this.http.get<CustomError[]>(url).pipe(
+      map((res: CustomError[]) => {
+        return res;
       }),
       catchError(this.handleError));
   }
@@ -58,7 +56,7 @@ export class CustomErrorsService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    this.customErrors = [];
+    this.customError = {} as CustomError;
     return throwError(error);
   }
 
