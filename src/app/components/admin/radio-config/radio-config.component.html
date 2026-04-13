@@ -76,7 +76,7 @@
             Digital voice
           </span>
           <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
-          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">            
+          <div [ngClass]="{'float-right flex-right': !isArabic}" *ngIf="!radio.connection">
             <span i18n="@@off">OFF</span>
             <div class="switch">
               <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice">
@@ -103,18 +103,23 @@
           <hint [showHint]="false" [hint]="'frequency'" [ngClass]="{'float-right': !isArabic}"></hint>
         </span>
         <div class="flexible">
-          <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
-            value={{p0_frek}} step="1">
-          <button class="midbt" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
-            change
-          </button>
-          <div class="row m-t-10" *ngIf="!isAdmin">
-            <p i18n="@@advisechangedatafrequency">
-              <b>DO NOT</b> use this button <b>UNLESS</b> you have been asked by the manager to change the data
-              transmission frequency of the radio.
-            </p>
+          <div class="row">
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p0_frek"
+              value={{p0_frek}} step="1">
+          </div>
+          <div class="row">
+            <button (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">
+              change
+            </button>
           </div>
         </div>
+        <div class="row m-t-10" *ngIf="!isAdmin">
+          <p i18n="@@advisechangedatafrequency">
+            <b>DO NOT</b> use this button <b>UNLESS</b> you have been asked by the manager to change the data
+            transmission frequency of the radio.
+          </p>
+        </div>
+
         <div class="overall alert" *ngIf="confirmSet">
           <div class="cv">
             <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
@@ -133,12 +138,16 @@
           <hint [showHint]="false" [hint]="'voiceFrequency'" [ngClass]="{'float-right': !isArabic}"></hint>
         </span>
         <div class="flexible">
-          <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
-            value={{p1_frek}} step="1">
-          <button class="midbt" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
-            i18n="@@changevoicefreqr0">
-            change
-          </button>
+          <div class="row">
+            <input type="number" [min]="freqmin" [max]="freqmax" class="midbt m-t-10" name="frek" [(ngModel)]="p1_frek"
+              value={{p1_frek}} step="1">
+          </div>
+          <div class="row">
+            <button (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
+              i18n="@@changevoicefreqr0">
+              change
+            </button>
+          </div>
         </div>
       </form>
 
@@ -197,16 +206,20 @@
           </div>
         </div>
       </form>
-      
+
       <form #frefthreshold="ngForm" class="formdata field" *ngIf="isAdmin && radio.profile == 0">
         <span i18n="@@prottheshold" class="radio-config-label">Protection activation threshold level
           <hint [showHint]="false" [hint]="'threshold'" [ngClass]="{'float-right': !isArabic}"></hint>
         </span>
         <div class="flexible">
-          <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
-            value={{refthreshold}}>
-          <button class="midbt" (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
-            i18n="@@changetre1">change</button>
+          <div class="row">
+            <input type="number" [max]="1023" class="midbt m-t-10" name="refthreshold" [(ngModel)]="refthreshold"
+              value={{refthreshold}}>
+          </div>
+          <div class="row">
+            <button (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
+              i18n="@@changetre1">change</button>
+          </div>
         </div>
         <div class="overall alert" *ngIf="confirmChangeProtection">
           <div class="cv">

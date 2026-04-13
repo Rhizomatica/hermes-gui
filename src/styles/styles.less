@@ -54,10 +54,6 @@ input {
   margin: 0;
 }
 
-button {
-  box-shadow: @boxshadow;
-}
-
 .email a {
   .card {
     min-width: 300px;
@@ -85,25 +81,6 @@ button {
     height: 40px;
     border-radius: 3px;
     border: 1px solid #cecece;
-  }
-
-  button {
-    font-size: 0.8em;
-    padding: 0.3em 0.5em;
-
-    a {
-      color: @bkclr;
-    }
-
-    a:visited {
-      color: @bkclr;
-    }
-
-    img {
-      width: 1em;
-      filter: invert(100%);
-    }
-
   }
 
   input[type="file"] {
@@ -178,7 +155,7 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-  outline: 1px @vstclr;
+  outline: 1px solid @vstclr;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -192,24 +169,33 @@ hr {
 }
 
 button {
+  box-shadow: @boxshadow;
+  font-size: 0.8em;
+  padding: 0.3em 0.5em;
   border: 0;
   background-color: @clr;
   color: white;
   font-weight: bold;
-  border-radius: 0.1em;
-
+  border-radius: 3px;
+  cursor: pointer;
 
   a {
+    color: @bkclr;
     text-decoration: none;
   }
 
   a:visited {
     color: @bkclr;
   }
+
+  img {
+    width: 1em;
+    filter: invert(100%);
+  }
 }
 
 button:hover {
-  background-color: @clr;
+  background-color: darken(@clr, 10%);
 }
 
 a {
@@ -558,10 +544,6 @@ input:checked+.slider:before {
     }
   }
 
-  button {
-    background-color: #666
-  }
-
 }
 
 .error {
@@ -720,11 +702,8 @@ input:checked+.slider:before {
     position: relative;
     padding: 0.35em;
     width: 27%;
-    font-size: 1.1em;
-    line-height: 0.85em;
-    height: 1.7em;
+    height: 40px;
     margin-left: 0.1em;
-    border-radius: 3px;
     top: 11px;
   }
 
@@ -837,9 +816,7 @@ input:checked+.slider:before {
   }
 
   button.midbt {
-    font-size: 0.7em;
     height: 4.4em;
-    border-radius: 3px;
     width: 20.5em;
     margin-left: 15px;
 
@@ -1063,25 +1040,18 @@ menu {
 
 .uploader .btn {
   background-color: @clr;
-  color: @mclr;
+  color: white;
   padding: 2px;
   width: 60%;
   margin: 3px auto;
   text-align: center;
   display: block;
-  font-weight: bold;
-  font-size: 12px;
 }
 
 .uploader p {
   word-wrap: break-word;
   margin-top: 1em;
   margin-bottom: 1em;
-}
-
-.uploader .btn:hover {
-  color: #fff;
-  font-weight: bold;
 }
 
 .uploader #default .resetBtn {
@@ -1164,7 +1134,8 @@ menu {
 button:disabled {
   background-color: #eee;
   color: #aaa;
-  cursor: auto;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .neutral {
@@ -1925,7 +1896,6 @@ tr:nth-child(odd) {
     border-radius: 3px;
     background-color: @mclr;
     color: @bkclr;
-    font-size: 0.7em;
 
     b {
       display: none;
@@ -1950,7 +1920,7 @@ tr:nth-child(odd) {
 
 .danger:hover {
   color: @bkclr;
-  background-color: @actvclr;
+  background-color: darken(@actvclr, 10%);
 }
 
 video {
@@ -2533,9 +2503,7 @@ video {
   }
 
   .shut button.midbt {
-    font-size: .65em;
     height: 5em;
-    border-radius: 3px;
     width: 15.5em;
   }
 
@@ -2558,7 +2526,6 @@ video {
   }
 
   .formdata button.midbt {
-    font-size: .6em;
     height: 3.2rem;
   }
 
@@ -2826,7 +2793,6 @@ video {
   }
 
   .formdata button.midbt {
-    font-size: .7em;
     height: 3rem;
     width: 37%;
   }
