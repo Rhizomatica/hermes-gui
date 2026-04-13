@@ -1,0 +1,75 @@
+.radio-config-label {
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
+.rc-settings-list {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.2) -2px 3px 8px, rgba(0, 0, 0, 0.19) -2px 0px 15px;
+  background-color: #fff;
+}
+
+.rc-settings-item {
+  width: 100%;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0;
+  line-height: 2em;
+}
+
+.rc-settings-item:last-child {
+  border-bottom: none;
+}
+
+.rc-setting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1em;
+}
+
+.rc-setting-label {
+  flex: 1;
+
+  hint {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  p {
+    font-size: 0.85em;
+    color: #666;
+    margin: 4px 0 0;
+    line-height: 1.4em;
+  }
+}
+
+.rc-setting-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-shrink: 0;
+
+  input[type="number"] {
+    width: 120px;
+  }
+}
+
+.rc-setting-control--full {
+  flex: 1;
+}
+
+body.ar .rc-setting {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+body.ar .rc-setting-label p {
+  text-align: right;
+}

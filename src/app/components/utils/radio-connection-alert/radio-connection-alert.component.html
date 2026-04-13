@@ -17,8 +17,11 @@
         Radio disconnected
     </b>
     <div class="row">
-        <p i18n="@@notransmissioncardalertmesage">
+        <p *ngIf="radio.profile == 0" i18n="@@notransmissioncardalertmesage">
             No transmission occurring. Voice mode available.
+        </p>
+        <p *ngIf="radio.profile == 1" i18n="@@voicemodeongoing">
+            Voice mode ongoing... Change the profile to data if you want to send messages and files
         </p>
     </div>
 </div>
