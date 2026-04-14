@@ -20,7 +20,7 @@ export class LanguagesComponent implements OnInit {
 
   constructor() { }
 
-  setLanguage(language) {
+  setLanguage(language: string) {
     localStorage.setItem('language', language)
     window.open('/' + language, '_self')
   }

@@ -74,9 +74,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
-
     this.startIdleDetector()
-    this.importArabicStyles()
   }
 
   sendMsg() {
@@ -127,7 +125,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if (!stored) {
       // Detect locale from URL (production), fall back to app default
-      const detected = isLocaleUrl ? currentLocale : 'en-US';
+      const detected = isLocaleUrl ? currentLocale : GlobalConstants.localeId;
       localStorage.setItem('language', detected);
       return;
     }
@@ -277,6 +275,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
+    this.importArabicStyles()
     this.radio = this.sharedService.radioObj.value
 
     this.routerObserver = this.router.events.subscribe((event) => {
@@ -302,12 +301,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   importArabicStyles() {
+    const urlLocale = window.location.pathname.split('/')[1];
     const storedLanguage = localStorage.getItem('language');
-    const language = storedLanguage && storedLanguage.length
-      ? storedLanguage
-      : this.localeId;
-
-    document.body.classList.toggle('ar', language === 'ar');
+    // URL is the authoritative source in production (locale-prefixed builds);
+    // fall back to localStorage for dev mode where there is no locale prefix.
+    const isArabic = urlLocale === 'ar' || storedLanguage === 'ar';
+    document.body.classList.toggle('ar', isArabic);
   }
 
   ngOnDestroy() {
