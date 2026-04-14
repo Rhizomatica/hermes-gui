@@ -1,5 +1,12 @@
 <div class="container sysadm home">
     <div class="row">
+        <app-home-topbar
+            [radio]="radio"
+            [currentUser]="currentUser"
+            [currentTheme]="currentTheme"
+            (toggleTheme)="toggle()"
+            (logOut)="logOff()">
+        </app-home-topbar>
         <app-radio-connection-alert *ngIf="radio.connection"></app-radio-connection-alert>
         <div class="flexible">
             <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
@@ -9,8 +16,6 @@
                     </div>
                     <div class="card-title">
                         <span i18n="@@voicecard">Voice</span> {{radio.p1_freq}} kHz
-                        <br />
-                        {{radio.p1_mode}}
                     </div>
                 </div>
             </a>
@@ -150,31 +155,6 @@
                     </div>
                 </div>
             </a>
-            <div class="shut m-t-10">
-                <button (click)="toggle()" class="midbt {{currentTheme}}">
-                    <span i18n="@@darktheme" *ngIf="currentTheme == 'light'">
-                        Dark theme
-                    </span>
-                    <span i18n="@@lighttheme" *ngIf="currentTheme == 'dark'">
-                        Light theme
-                    </span>
-                    <br />
-                </button>
-                <button routerLink="/login" class="midbt m-t-10" *ngIf="!currentUser">
-                    <span i18n="@@loginbutton">
-                        Login
-                    </span>
-                    <br />
-                    <img class="btnicon" title="send" src="assets/svg/login.svg">
-                </button>
-                <button class="midbt m-t-10" (click)="logOff()" *ngIf="currentUser">
-                    <span i18n="@@logoutbutton">
-                        Logout
-                    </span>
-                    <br />
-                    <img class="btnicon" title="send" src="assets/svg/logout.svg">
-                </button>
-            </div>
         </div>
     </div>
 </div>

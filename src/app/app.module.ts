@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 
 import { HomeComponent } from './components/public/home/home.component';
+import { HomeTopbarComponent } from './components/public/home/home-topbar/home-topbar.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
@@ -75,6 +76,7 @@ registerLocaleData(localeAr);
 @NgModule({ declarations: [
         AppComponent,
         HomeComponent,
+        HomeTopbarComponent,
         MessagesComponent,
         MessageDetailComponent,
         MessagecomposeComponent,
