@@ -1,10 +1,8 @@
 <div class="home-topbar" [class.dark-mode]="currentTheme === 'dark'">
     <div class="home-radio-info" *ngIf="radio">
-        <span class="home-radio-badge" [class.connected]="radio.connection" [class.disconnected]="!radio.connection">
-            {{ !radio.connection ? ('Disconnected') : ('Connected') }}
-        </span>
+        <status-badge [active]="radio.connection" activeLabel="Connected" inactiveLabel="Disconnected"></status-badge>
         <span class="home-radio-detail" *ngIf="!radio.connection">
-            <span i18n="@@operationmode">{{ radio.profile == 0 ? 'Data' : 'Voice' }}</span>
+            <span i18n="@@operationmodevalue">{{ radio.profile == 0 ? 'Data' : 'Voice' }}</span>
             &middot;
             {{ radio.profile == 0 ? radio.p0_freq : radio.p1_freq }} kHz
             &middot;

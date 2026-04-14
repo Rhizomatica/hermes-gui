@@ -1,6 +1,6 @@
 
-<div class="alertcard flexible" *ngIf="radio.connection">
-    <span class="greencircle"></span>
+<div class="alertcard" *ngIf="radio.connection">
+    <status-badge [active]="true"></status-badge>
     <b class="m-l-10" i18n="@@transmissioncardalerttitle">
         Radio connected
     </b>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="alertcard flexible" *ngIf="!radio.connection">
-    <span class="redcircle"></span>
+    <status-badge [active]="false"></status-badge>
     <b class="m-l-10" i18n="@@radiodisconnected">
         Radio disconnected
     </b>

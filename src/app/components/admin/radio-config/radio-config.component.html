@@ -1,12 +1,13 @@
 <loading [loading]="loading"></loading>
+<div class="m-b-25">
+  <h2 i18n="@@radioconft">Radio Configuration</h2>
+  <hint [showHint]="false" [hint]="'radioconfig'"></hint>
+</div>
+<div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
+<app-radio-connection-alert></app-radio-connection-alert>
 <div id="radioconf">
-  <div class="flexible m-b-25">
-    <h2 i18n="@@radioconft">Radio Configuration</h2>
-    <hint [showHint]="false" [hint]="'radioconfig'"></hint>
-  </div>
-  <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
+
   <div>
-    <app-radio-connection-alert></app-radio-connection-alert>
     <div class="flexible m-t-15 m-b-15">
       <div class="card">
         <div class="row">
@@ -77,9 +78,10 @@
       <form class="rc-settings-item" *ngIf="bitx == 'S' && radio.profile === 1">
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@radiodigitalvoicemode" class="radio-config-label">Digital voice
-              <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
+            <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
+              Digital voice
             </span>
+            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
             <hint [showHint]="false" [hint]="'digitalvoice'"></hint>
             <p *ngIf="radio.connection">{{radio.p1_digital_voice ? 'ON' : 'OFF'}}</p>
             <p i18n="@@radiodigitalvoicesubtitle">
@@ -325,9 +327,7 @@
             </p>
           </div>
           <div class="rc-setting-control">
-            <button class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">
-              Erase SD Card
-            </button>
+            <button class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">Erase SD Card</button>
           </div>
         </div>
       </form>
@@ -349,7 +349,7 @@
             <hint [showHint]="false" [hint]="'reboot'"></hint>
           </div>
           <div class="rc-setting-control">
-            <button (click)="confirmReboot()" i18n="@@reboot">reboot</button>
+            <button (click)="confirmReboot()" i18n="@@reboot">Reboot</button>
           </div>
         </div>
       </form>
@@ -361,7 +361,7 @@
             <br />
           </span>
           <button (click)="cancelReboot()" class="m-t-10" i18n="@@cancels2">cancel</button>
-          <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">reboot</button>
+          <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">Reboot</button>
         </div>
       </div>
 

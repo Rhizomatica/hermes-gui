@@ -18,23 +18,19 @@
     <div class="row m-t-25">
         <b i18n="@@currentschedules">Current schedules:</b>
     </div>
-    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">
-        There are no schedules for radio transmission <br />
+    <div class="alert  m-t-10" *ngIf="schedules.length == 0" i18n="@@noschedules">There are no schedules for radio transmission <br />
     </div>
     <ul *ngIf="schedules.length > 0" id="schedulelist" class="multiplist3" [(ng-model)]="schedules">
         <li *ngFor="let schedule of schedules" (click)="onSelect(schedule)">
             <small>
-                <div [ngClass]="{'redcircle' : !schedule.enable , 'greencircle' : schedule.enable }" title='enabled'>
-                </div>
+                <status-badge [active]="schedule.enable"></status-badge>
             </small>
             {{schedule.title}} ({{schedule.starttime}} - {{schedule.stoptime}})
         </li>
     </ul>
     <div class="overall alert" *ngIf="errorAlert">
         <div class="cv">
-            <span i18n="@@errorrequest">
-                There was an error on your request
-            </span>
+            <span i18n="@@errorrequest">There was an error on your request</span>
             <div class="row m-t-10">
                 {{error}}
             </div>

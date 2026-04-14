@@ -735,9 +735,33 @@ input:checked+.slider:before {
 }
 
 #radioconf {
+  .flexible {
+    gap: 10px;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 20px;
+
+    >.card,
+    a {
+      display: flex;
+      flex: 0 0 calc(25% - 7.5px);
+      max-width: calc(25% - 7.5px);
+    }
+
+    a .card,
+    >.card {
+      flex: 1;
+      width: 100%;
+      min-width: unset;
+      height: 100%;
+      margin: 0;
+      min-height: 210px;
+    }
+  }
+
   .card {
     line-height: 1.5em;
-    width: 23.5%;
+    width: 100%;
     text-align: left;
     font-size: 1.4rem;
     display: flex;
@@ -2464,6 +2488,7 @@ video {
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
+
     a {
       display: flex;
       flex: 1 1 calc(22.22% - 7px);
@@ -2678,8 +2703,15 @@ video {
     width: 35px;
   }
 
-  #radioconf .card {
-    width: 23.5%;
+  #radioconf {
+    .flexible {
+
+      >.card,
+      a {
+        flex: 1 1 calc(33.33% - 7px);
+        max-width: calc(33.33% - 7px);
+      }
+    }
   }
 }
 
@@ -2888,14 +2920,24 @@ video {
     height: 8em;
   }
 
-  #radioconf .card {
-    font-size: 1.3rem;
-    line-height: 1.2em;
-    width: 47.5%;
-  }
+  #radioconf {
+    .flexible {
 
-  #radioconf .card .card-value {
-    font-size: 2rem;
+      >.card,
+      a {
+        flex: 1 1 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+      }
+    }
+
+    .card {
+      font-size: 1.3rem;
+      line-height: 1.2em;
+
+      .card-value {
+        font-size: 2rem;
+      }
+    }
   }
 
   p {
@@ -3053,11 +3095,18 @@ video {
 
 
   #radioconf {
+    .flexible {
+
+      >.card,
+      a {
+        flex: 0 0 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+      }
+    }
+
     .card {
       line-height: 1.3em;
-      width: 48%;
       height: 8.5em;
-      font-size: 1rem;
       font-size: 1.4rem;
 
       small {

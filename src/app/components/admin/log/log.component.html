@@ -28,16 +28,14 @@
     <div class="formdata m-t-25" *ngIf="customLog">
         <h3 i18n="@@errorlog">Error log</h3>
         <div class="row">
-            <button class="m-t-10 danger" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">
-                delete all
-            </button>
+            <button class="m-t-10 danger" i18n="@@btndeleteallcustomerror" (click)="confirmDeleteAllCustomError()">delete all</button>
             <input id="searchbox1" i18n-placeholder placeholder="search" [(ngModel)]="searchError" />
             <div class="multiplist">
                 <div class="item m-t-10" *ngFor="let error of customErrors | filter:searchError; let i = index"
                     (click)="viewLog(i)">
                     <p>
                         <b i18n="@@customerrordatehour">Date Hour: </b>
-                        {{error.created_at}}
+                        <span class="log-date">{{error.created_at}}</span>
                         <button class="m-l-10 float-right">
                             <img class="icon" src="assets/svg/chevron-down.svg">
                         </button>
@@ -119,9 +117,7 @@
                 </span>
                 <div class="row m-t-10">
                     <button type="submit" i18n="@@cancel" (click)="closedeleteconfirmation()">cancel</button>
-                    <button class="m-l-10 danger" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">
-                        delete all
-                    </button>
+                    <button class="m-l-10 danger" type="submit" (click)="deleteCustomError()" i18n="@@deleteall">delete all</button>
                 </div>
             </div>
         </div>

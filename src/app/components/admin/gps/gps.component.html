@@ -29,9 +29,7 @@
         <span i18n="@@longitude">Longitude:</span> {{ currentLongitude }}
     </p>
     <p class="location" *ngIf="currentLatitude === null || currentLongitude === null"
-        i18n="@@currentlocationunavailable">
-        Current location unavailable
-    </p>
+        i18n="@@currentlocationunavailable">Current location unavailable</p>
 </div>
 
 <div class="row">
@@ -150,7 +148,9 @@
         <span i18n="@@errorrequest">There was an error on your request</span>
         <div class="row m-t-10">{{ error }}</div>
         <div class="row m-t-10">
-            <button type="button" (click)="closeError()" i18n="@@closeerrorbutton">close</button>
+            <button type="button" (click)="closeError()" i18n="@@closeerrorbutton">
+                close
+            </button>
         </div>
     </div>
 </div>

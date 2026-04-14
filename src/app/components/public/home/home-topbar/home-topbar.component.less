@@ -18,24 +18,6 @@
     min-width: 0;
 }
 
-.home-radio-badge {
-    font-size: 0.75em;
-    font-weight: bold;
-    padding: 3px 10px;
-    border-radius: 20px;
-    white-space: nowrap;
-
-    &.connected {
-        background-color: #e6f4ea;
-        color: #2e7d32;
-    }
-
-    &.disconnected {
-        background-color: #fdecea;
-        color: #c62828;
-    }
-}
-
 .home-radio-detail {
     font-size: 0.8em;
     white-space: nowrap;
@@ -165,6 +147,17 @@
                     filter: invert(100%);
                 }
             }
+        }
+    }
+}
+
+:host-context(body.ar) {
+    .home-topbar-actions {
+        flex-direction: row-reverse;
+
+        .user-menu-dropdown {
+            right: auto;
+            left: 0;
         }
     }
 }

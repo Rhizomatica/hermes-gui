@@ -9,7 +9,7 @@
     <div class="row">
         <div class="row m-t-25" *ngIf="radio.connection">
             <div class="alertcard flexible">
-                <span class="greencircle"></span>
+                <status-badge [active]="true"></status-badge>
                 <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
                     Radio connected - Data/Voice connection ongoing...
                 </b>
@@ -21,9 +21,7 @@
                     Connection
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="!radio.connection"></span>
-                    <span class="greencircle" *ngIf="radio.connection"></span>
-                    {{radio.connection ? 'ON' : 'OFF'}}
+                    <status-badge [active]="radio.connection"></status-badge>
                 </div>
             </div>
             <div class="data">
@@ -116,7 +114,7 @@
             </div>
             <div class="row"></div>
             <div class="data">
-                <div class="data-title" i18n="@@operationmode">Operation mode</div>
+                <div class="data-title" i18n="@@operationmodelabel">Operation mode</div>
                 <div class="data-body">
                     <div *ngIf="radio.tx"> TX </div>
                     <div *ngIf="radio.rx"> RX </div>
@@ -165,9 +163,7 @@
                     </span>
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="radio.digital == 0"></span>
-                    <span class="greencircle" *ngIf="radio.digital == 1"></span>
-                    {{radio.digital == 0 ? 'OFF' : 'ON'}}
+                    <status-badge [active]="radio.digital == 1"></status-badge>
                 </div>
             </div>
             <div class="data">
@@ -228,9 +224,7 @@
                     Scheduled transmission
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="!activeSchedule"></span>
-                    <span class="greencircle" *ngIf="activeSchedule"></span>
-                    {{activeSchedule ? 'ON' : 'OFF'}}
+                    <status-badge [active]="activeSchedule"></status-badge>
                 </div>
             </div>
             <!-- <div class="data">
@@ -252,13 +246,10 @@
             </div>
             <div class="data" *ngIf="hasGps">
                 <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
-                    <span class="greencircle" *ngIf="gpsStatus"></span>
-                    {{gpsStatus ? 'ON' : 'OFF'}}
+                    GPS Status <status-badge [active]="gpsStatus"></status-badge>
                 </div>
                 <div class="data-body">
-                    <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location
-                        unavailable</span>
+                    <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</span>
                     <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
                         *ngIf="currentLatitude">
                     </mapgraph>
