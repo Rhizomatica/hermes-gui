@@ -120,7 +120,26 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   checkLanguage() {
-    !localStorage.getItem('language') ? localStorage.setItem('language', GlobalConstants.localeId) : null;
+    const validCodes = ['pt', 'es', 'fr', 'ar', 'en-US'];
+    const currentLocale = window.location.pathname.split('/')[1];
+    const isLocaleUrl = validCodes.includes(currentLocale);
+    let stored = localStorage.getItem('language');
+
+    if (!stored) {
+      // Detect locale from URL (production), fall back to app default
+      const detected = isLocaleUrl ? currentLocale : 'en-US';
+      localStorage.setItem('language', detected);
+      return;
+    }
+
+    // In dev mode the URL has no locale prefix — don't redirect
+    if (!isLocaleUrl) return;
+
+    // Already on the right locale, nothing to do
+    if (currentLocale === stored) return;
+
+    // Redirect to the stored locale (production only)
+    window.location.replace('/' + stored);
   }
 
   closeMobileMenu() {

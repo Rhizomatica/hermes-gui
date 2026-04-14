@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class LanguagesComponent implements OnInit {
 
   siteLanguage = 'English';
-  siteLocale: string;
+  siteLocale: string = '';
   languageList = [
     { code: 'pt', label: 'Português' },
     { code: 'es', label: 'Español' },
-    { code: 'en', label: 'English' },
+    { code: 'en-US', label: 'English' },
     { code: 'fr', label: 'Français' },
     { code: 'ar', label: 'Arabic' }
   ];
