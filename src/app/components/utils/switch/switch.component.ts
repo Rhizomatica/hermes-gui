@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'switch',
@@ -19,10 +19,12 @@ export class SwitchComponent implements OnChanges, OnInit {
 
 
   @Input() customFunction?: (component: SwitchComponent) => void;
+  @Output() switched = new EventEmitter<void>();
 
   constructor() {}
 
   onSwitch(): void {
+    this.switched.emit();
     if (this.customFunction) {
       try {
         this.customFunction(this);

@@ -63,7 +63,7 @@
           </div>
           <div class="rc-setting-control">
             <ng-container *ngIf="!radio.connection">
-              <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel" (click)="changeProfile($event)" [enabled]="radio.profile" [value]="radio.profile"></switch>
+              <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel" (switched)="changeProfile()" [enabled]="radio.profile" [value]="radio.profile"></switch>
             </ng-container>
           </div>
         </div>
@@ -155,7 +155,7 @@
             <p>{{radio.p0_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <switch i18n="" name="mode" keyA="USB" keyB="LSB" (click)="changeMode($event, 0)" [enabled]="radio.p0_mode" [value]="radio.p0_mode == 'LSB' ? 1 : 0"></switch>
+            <switch i18n="" name="mode" keyA="USB" keyB="LSB" (switched)="changeMode(0)" [enabled]="radio.p0_mode" [value]="radio.p0_mode == 'LSB' ? 1 : 0"></switch>
             <!-- <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
               <span class="slider round" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
@@ -174,7 +174,7 @@
             <p>{{radio.p1_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <switch i18n="" name="mode" keyA="USB" keyB="LSB" (click)="changeMode($event, 1)" [enabled]="radio.p1_mode" [value]="radio.p1_mode == 'LSB' ? 1 : 0"></switch>
+            <switch i18n="" name="mode" keyA="USB" keyB="LSB" (switched)="changeMode(1)" [enabled]="radio.p1_mode" [value]="radio.p1_mode == 'LSB' ? 1 : 0"></switch>
             <!-- <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch" [disabled]="radio.digital === 1">

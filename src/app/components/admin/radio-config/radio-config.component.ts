@@ -163,7 +163,7 @@ export class RadioConfigComponent implements OnInit {
     });
   }
 
-  changeMode(event, radioProfile: number) {
+  changeMode(radioProfile: number) {
     let mode: boolean;
 
     if (radioProfile === 0) {
@@ -332,8 +332,8 @@ export class RadioConfigComponent implements OnInit {
     });
   }
 
-  changeProfile(event) {
-    if (this.radio.connetion)
+  changeProfile() {
+    if (this.radio.connection)
       return
 
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
