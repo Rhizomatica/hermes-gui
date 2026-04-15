@@ -212,25 +212,22 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    let file: File = event.target.files[0];
+    const file: File = event.target.files[0];
     if (file) {
-      this.file = file;
+      this.typeSizeRule(file.type);
 
-      this.typeSizeRule(file.type)
-
-      if (file.size < this.maxSize) {
+      if (file.size <= this.maxSize) {
+        this.file = file;
         this.fileName = file.name;
         this.fileSelected = true;
-        this.fileSizeError = false
+        this.fileSizeError = false;
         return file;
       }
 
-      this.fileName = ' - ';
-      this.fileSizeError = true
       this.file = null;
-      file = null;
-      return file;
-
+      this.fileName = ' - ';
+      this.fileSizeError = true;
+      return null;
     }
   }
 
@@ -275,6 +272,7 @@ export class MessagecomposeComponent implements OnInit {
     }
     // File exists?
     if (this.file) {
+      let fileUploadFailed = false;
       await this.messageService.postFile(this.file, f.value.pass).then(
         (value: any) => {
           f.value.file = value['filename']; // gona change  to this default instead of image
@@ -283,11 +281,13 @@ export class MessagecomposeComponent implements OnInit {
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
         },
         (err) => {
+          fileUploadFailed = true;
           this.errormsg = err;
           this.errorAlert = true;
           this.loading = false;
         }
       );
+      if (fileUploadFailed) return;
     }
     const res = this.sendMessageContinue(f);
   }

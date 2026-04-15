@@ -1,5 +1,5 @@
 <loading [loading]="loading"></loading>
-<div class="m-b-25">
+<div class="flexible m-b-25">
   <h2 i18n="@@radioconft">Radio Configuration</h2>
   <hint [showHint]="false" [hint]="'radioconfig'"></hint>
 </div>
@@ -63,12 +63,7 @@
           </div>
           <div class="rc-setting-control">
             <ng-container *ngIf="!radio.connection">
-              <span i18n="@@digitallabel">Data</span>
-              <div class="switch">
-                <input type="checkbox" name="profile" [checked]="radio.profile">
-                <span class="slider round" (click)="changeProfile($event)" value="{{radio.profile}}"></span>
-              </div>
-              <span i18n="@@voiceLabel">Voice</span>
+              <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel" (click)="changeProfile($event)" [enabled]="radio.profile" [value]="radio.profile"></switch>
             </ng-container>
           </div>
         </div>
@@ -160,13 +155,12 @@
             <p>{{radio.p0_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <span>USB</span>
-            <div class="switch">
+            <switch i18n="" name="mode" keyA="USB" keyB="LSB" (click)="changeMode($event, 0)" [enabled]="radio.p0_mode" [value]="radio.p0_mode == 'LSB' ? 1 : 0"></switch>
+            <!-- <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
               <span class="slider round" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
                 [checked]="modeSwitch"></span>
-            </div>
-            <span>LSB</span>
+            </div> -->
           </div>
         </div>
       </form>
@@ -180,13 +174,14 @@
             <p>{{radio.p1_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <span>USB</span>
+            <switch i18n="" name="mode" keyA="USB" keyB="LSB" (click)="changeMode($event, 1)" [enabled]="radio.p1_mode" [value]="radio.p1_mode == 'LSB' ? 1 : 0"></switch>
+            <!-- <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch" [disabled]="radio.digital === 1">
               <span class="slider round" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
                 [checked]="voiceModeSwitch"></span>
             </div>
-            <span>LSB</span>
+            <span>LSB</span> -->
           </div>
         </div>
       </form>
@@ -200,11 +195,13 @@
             <p>{{radio.tx == false ? 'OFF' : 'ON'}}</p>
           </div>
           <div class="rc-setting-control" *ngIf="!radio.connection">
+            <span i18n="@@off">OFF</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="radio.tx">
               <span class="slider round" *ngIf="isAdmin" (click)="confirmChangePTT($event)" value="{{radio.tx}}"
                 [checked]="radio.tx"></span>
             </div>
+            <span i18n="@@on">ON</span>
           </div>
         </div>
         <div class="overall alert" *ngIf="confirmSendPTT">

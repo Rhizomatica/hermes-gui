@@ -1,7 +1,9 @@
-<label (click)="onSwitch()" i18n="{{i18n}}">
-  {{label}}
+<label (click)="onSwitch()" style="display:flex; align-items:center; gap:8px;">
+  <span i18n="@@{{keyA}}">{{keyA}}</span>
   <div class="switch">
-    <input type="checkbox" name="{{inputName}}" [(ngModel)]="enabled" value="{{value}}">
+    <input type="checkbox" name="{{inputName}}" [ngModel]="value">
     <span class="slider round one-color"></span>
   </div>
+  <span i18n="@@{{keyB}}">{{keyB}}</span>
+
 </label>

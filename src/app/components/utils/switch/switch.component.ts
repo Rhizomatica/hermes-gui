@@ -8,10 +8,14 @@ import { Component, OnChanges, OnInit, Input, SimpleChanges } from '@angular/cor
 export class SwitchComponent implements OnChanges, OnInit {
 
   @Input() inputName: string = 'Switch';
-  @Input() label: string = 'switch';
+  @Input() label: string = '';
   @Input() i18n: string = 'Translate';
   @Input() enabled: string = '';
   @Input() value: number = 0;
+  @Input() keyA: string = '';
+  @Input() keyB: string = '';
+  @Input() labelA: string = '';
+  @Input() labelB: string = '';
 
 
   @Input() customFunction?: (component: SwitchComponent) => void;
