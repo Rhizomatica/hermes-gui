@@ -1,7 +1,7 @@
 export const environment = {
     local: true,
     production: false,
-    domain: 'bule.hermes.radio',
+    domain: 'estacao.hermes.radio',
     gateway: true,
     bitx: 'S',
     hasGPS: true,
