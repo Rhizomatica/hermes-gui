@@ -42,8 +42,6 @@ export class AppComponent implements OnInit, OnDestroy {
   subscript: any;
   loading = true;
   changeLanguage = false
-  deferredPrompt: any
-  installPromotion: boolean = false
   title = 'hermes.radio'
   isMenuPage: boolean | null = null
   currentPage = GlobalConstants.requireLogin ? "login" : 'home'
@@ -148,47 +146,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isMenuPage = this.router.url == '/menu' ? true : false
   }
 
-  @HostListener('window:beforeinstallprompt', ['$event'])
-  onbeforeinstallprompt(e: { preventDefault: () => void; }) {
-    console.log("Service Worker is started")
-    // Impede que o mini-infobar apareça em mobile
-    e.preventDefault();
-    this.deferredPrompt = e;
-    if (!this.deferredPrompt) {
-      this.showInstallPromotion();
-    }
-    console.log(`'beforeinstallprompt' event was fired.`);
-  }
-
-  showInstallPromotion() {
-    console.log("deferred" + this.deferredPrompt)
-    this.installPromotion = true
-  }
-
-  closeInstallapp() {
-    this.installPromotion = false
-  }
-
-  installPWA(): void {
-    this.deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    this.deferredPrompt.userChoice
-      .then((choiceResult: { outcome: string; }) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
-        this.deferredPrompt = null;
-      });
-  }
-
-  hideInstallPromotion() {
-    if (!this.deferredPrompt) {
-      this.deferredPrompt = null;
-    }
-  }
-
   checkIsLoginPage() {
     this.isLoginPage = this.router.url == '/login' ? true : false
   }
@@ -289,14 +246,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.websocketService.startService()
         }
       }
-    });
-
-    window.addEventListener('appinstalled', () => {
-      // Esconder a promoção de instalação fornecida pela app
-      this.hideInstallPromotion();
-      // Limpar o deferredPrompt para que seja coletado
-      this.deferredPrompt = null;
-      console.log('PWA was installed');
     });
   }
 

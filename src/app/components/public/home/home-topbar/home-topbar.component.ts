@@ -18,6 +18,7 @@ export class HomeTopbarComponent {
   menuOpen = false;
   error: any;
   errorAlert: boolean | undefined;
+  deferredPrompt: any;
 
   constructor(private elRef: ElementRef, private radioService: RadioService) { }
 
@@ -43,6 +44,20 @@ export class HomeTopbarComponent {
         this.errorAlert = true;
       }
     });
+  }
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onbeforeinstallprompt(e: { preventDefault: () => void; }): void {
+    e.preventDefault();
+    this.deferredPrompt = e;
+  }
+
+  installPWA(): void {
+    this.deferredPrompt.prompt();
+    this.deferredPrompt.userChoice
+      .then((choiceResult: { outcome: string; }) => {
+        this.deferredPrompt = null;
+      });
   }
 
   @HostListener('document:click', ['$event'])

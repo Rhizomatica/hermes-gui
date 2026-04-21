@@ -25,8 +25,14 @@
             <div class="user-menu-dropdown" *ngIf="menuOpen">
                 <ul class="user-menu-list">
                     <li (click)="toggleTheme.emit(); closeMenu()">
+                        <span class="theme-icon" *ngIf="currentTheme == 'light'">&#9790;</span>
+                        <span class="theme-icon" *ngIf="currentTheme == 'dark'">&#9728;</span>
                         <span i18n="@@darktheme" *ngIf="currentTheme == 'light'">Dark theme</span>
                         <span i18n="@@lighttheme" *ngIf="currentTheme == 'dark'">Light theme</span>
+                    </li>
+                    <li (click)="installPWA(); closeMenu()" *ngIf="deferredPrompt">
+                        <img class="btnicon" title="install" src="assets/svg/download.svg">
+                        <span i18n="@installhermesappng">Install HERMES APP</span>
                     </li>
                     <li class="divider"></li>
                     <li routerLink="/login" (click)="closeMenu()" *ngIf="!currentUser">
