@@ -3,7 +3,23 @@ const targetPath = './src/environments/environment.ts';
 
 // Load node modules
 const fs = require('fs')
-require('dotenv').config()
+const path = require('path')
+
+// Parse .env file without requiring the dotenv package
+const envFilePath = path.resolve(process.cwd(), '.env');
+if (fs.existsSync(envFilePath)) {
+    const envContent = fs.readFileSync(envFilePath, 'utf8');
+    envContent.split(/\r?\n/).forEach(line => {
+        const match = line.match(/^([^=\s#][^=\s]*)\s*=\s*(.*?)(\s#.*)?$/);
+        if (match) {
+            const key = match[1].trim();
+            const value = match[2].trim().replace(/^(['"])(.*)\1$/, '$2');
+            if (process.env[key] === undefined) {
+                process.env[key] = value;
+            }
+        }
+    });
+}
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
