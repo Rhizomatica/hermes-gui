@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=development",
+    "start:pt": "ng serve --configuration=pt",
+    "start:es": "ng serve --configuration=es",
+    "start:fr": "ng serve --configuration=fr",
+    "start:ar": "ng serve --configuration=ar",
     "build": "ng build --configuration development --localize=false",
     "build-prod": "ng build --configuration production --localize",
     "test": "jest",
