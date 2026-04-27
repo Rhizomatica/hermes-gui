@@ -246,13 +246,17 @@
             </div>
             <div class="data" *ngIf="hasGps">
                 <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status <status-badge [active]="gpsStatus"></status-badge>
+                    GPS Status
                 </div>
                 <div class="data-body">
-                    <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</span>
-                    <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
-                        *ngIf="currentLatitude">
-                    </mapgraph>
+                    <status-badge [active]="gpsStatus"></status-badge>
+                    <div class="row">
+                        <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location
+                            unavailable</span>
+                        <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
+                            *ngIf="currentLatitude">
+                        </mapgraph>
+                    </div>
                 </div>
             </div>
         </div>

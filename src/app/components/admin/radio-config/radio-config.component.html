@@ -63,7 +63,8 @@
           </div>
           <div class="rc-setting-control">
             <ng-container *ngIf="!radio.connection">
-              <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel" (switched)="changeProfile()" [enabled]="radio.profile" [value]="radio.profile"></switch>
+              <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel"
+                (switched)="changeProfile()" [enabled]="radio.profile" [value]="radio.profile"></switch>
             </ng-container>
           </div>
         </div>
@@ -84,7 +85,7 @@
               and data-rich communication than traditional analog modes.
             </p>
           </div>
-          <div class="rc-setting-control">
+          <div>
             <ng-container *ngIf="!radio.connection">
               <span i18n="@@off">OFF</span>
               <div class="switch">
@@ -155,7 +156,8 @@
             <p>{{radio.p0_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <switch i18n="" name="mode" keyA="USB" keyB="LSB" labelA="@@usb" labelB="@@lsb" (switched)="changeMode(0)" [enabled]="radio.p0_mode" [value]="radio.p0_mode == 'LSB' ? 1 : 0"></switch>
+            <switch i18n="" name="mode" keyA="USB" keyB="LSB" labelA="@@usb" labelB="@@lsb" (switched)="changeMode(0)"
+              [enabled]="radio.p0_mode" [value]="radio.p0_mode == 'LSB' ? 1 : 0"></switch>
             <!-- <div class="switch">
               <input type="checkbox" name="mode" [checked]="modeSwitch">
               <span class="slider round" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
@@ -174,7 +176,8 @@
             <p>{{radio.p1_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <switch i18n="" name="mode" keyA="USB" keyB="LSB" labelA="@@usb" labelB="@@lsb" (switched)="changeMode(1)" [enabled]="radio.p1_mode" [value]="radio.p1_mode == 'LSB' ? 1 : 0"></switch>
+            <switch i18n="" name="mode" keyA="USB" keyB="LSB" labelA="@@usb" labelB="@@lsb" (switched)="changeMode(1)"
+              [enabled]="radio.p1_mode" [value]="radio.p1_mode == 'LSB' ? 1 : 0"></switch>
             <!-- <span>USB</span>
             <div class="switch">
               <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch" [disabled]="radio.digital === 1">
@@ -194,7 +197,7 @@
             <hint [showHint]="false" [hint]="'ptt'"></hint>
             <p>{{radio.tx == false ? 'OFF' : 'ON'}}</p>
           </div>
-          <div class="rc-setting-control" *ngIf="!radio.connection">
+          <div *ngIf="!radio.connection">
             <span i18n="@@off">OFF</span>
             <div class="switch">
               <input type="checkbox" name="mode" [checked]="radio.tx">
@@ -241,6 +244,7 @@
           <div class="rc-setting-label">
             <span i18n="@@prottheshold" class="radio-config-label">Protection activation threshold level</span>
             <hint [showHint]="false" [hint]="'threshold'"></hint>
+            <p>{{refthreshold}}</p>
           </div>
           <div class="rc-setting-control">
             <input type="number" [max]="1023" name="refthreshold" [(ngModel)]="refthreshold" value={{refthreshold}}>

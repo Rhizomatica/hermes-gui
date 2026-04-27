@@ -31,7 +31,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  gap: 1em;
+  gap: 3em;
 }
 
 .rc-setting-label {
@@ -50,10 +50,10 @@
 }
 
 .rc-setting-control {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  flex-shrink: 0;
+    display: flex;
+    /* align-items: normal; */
+    gap: .5em;
+    flex-direction: column;
 
   input[type="number"] {
     width: 120px;
@@ -71,4 +71,11 @@ body.ar .rc-setting {
 
 body.ar .rc-setting-label p {
   text-align: right;
+}
+
+
+@media (max-width: 600px) {
+  .rc-setting {
+    gap: 1em;
+  }
 }
