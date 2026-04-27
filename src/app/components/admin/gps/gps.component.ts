@@ -7,6 +7,7 @@ import { GlobalConstants } from 'src/app/global-constants';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { GPSService } from '../../../_services/gps.service';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'gps',
@@ -38,13 +39,15 @@ export class GPSComponent implements OnInit, OnDestroy {
   confirmSOS = false;
 
   private readonly destroy$ = new Subject<void>();
-  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  isArabic: boolean = false;
 
 
   constructor(
     private authenticationService: AuthenticationService,
-    private gpsService: GPSService
+    private gpsService: GPSService,
+    private utils: UtilsService
   ) {
+    this.isArabic = this.utils.isArabic();
     this.authenticationService.currentUser
       .pipe(takeUntil(this.destroy$))
       .subscribe((x) => {

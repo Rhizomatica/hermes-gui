@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { UtilsService } from 'src/app/_services/utils.service';
 import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
@@ -9,7 +10,7 @@ import { GlobalConstants } from 'src/app/global-constants';
 
 export class BreadcrumbComponent implements OnChanges {
 
-  constructor() {
+  constructor(private utils: UtilsService) {
     this.currentPage = ''
     this.currentUrl = ''
   }
@@ -19,9 +20,11 @@ export class BreadcrumbComponent implements OnChanges {
   @Input() currentUrl: string
   pages = []
   requireLogin: boolean = GlobalConstants.requireLogin
-  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  isArabic: boolean = false
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.isArabic = this.utils.isArabic();
+  }
 
   ngOnChanges(change) {
     change.currentPage && change.currentPage.currentValue != change.currentPage.previousValue ? this.currentPage = change.currentPage.currentValue.split('?', 1)[0] : null

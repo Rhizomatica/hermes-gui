@@ -108,7 +108,7 @@ export class UtilsService {
 
   splitFrequency(freq) {
 
-    if(!freq)
+    if (!freq)
       return null
 
     freq = freq.toString()
@@ -126,16 +126,25 @@ export class UtilsService {
 
   formatTimeCounter(seconds) {
 
-    if (seconds >= 60){
+    if (seconds >= 60) {
       const minutes = Math.floor(seconds / 60);
       const remainingSeconds = seconds % 60;
-  
+
       const formattedMinutes = minutes.toString().padStart(2, "0");
       const formattedSeconds = remainingSeconds.toString().padStart(2, "0");
-      
+
       return `${formattedMinutes}:${formattedSeconds} min`
     }
 
     return seconds + " sec"
+  }
+
+  public isArabic() {
+    const urlLocale = window.location.pathname.split('/')[1];
+    const storedLanguage = localStorage.getItem('language');
+    // URL is the authoritative source in production (locale-prefixed builds);
+    // fall back to localStorage for dev mode where there is no locale prefix.
+    const isArabic = urlLocale === 'ar' || storedLanguage === 'ar';
+    return isArabic;
   }
 }

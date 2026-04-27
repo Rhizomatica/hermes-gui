@@ -7,6 +7,7 @@ import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
 import { GlobalConstants } from 'src/app/global-constants';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'voice',
@@ -28,17 +29,19 @@ export class VoiceComponent implements OnInit {
   freqmax: number = 30000
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
-  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  isArabic: boolean = false
   toggleDigital: number = 0
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
+    private utils: UtilsService,
     private sharedService: SharedService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
+    this.isArabic = this.utils.isArabic();
   }
 
   public closeError() {

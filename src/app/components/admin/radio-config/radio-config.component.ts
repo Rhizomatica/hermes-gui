@@ -55,7 +55,7 @@ export class RadioConfigComponent implements OnInit {
   timeoutStatus: number = 0
   timeoutDefault: number = 600
   formatedTimeout: number = 0
-  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  isArabic: boolean = false
   toggleDigital: number = 0
 
   constructor(
@@ -66,6 +66,7 @@ export class RadioConfigComponent implements OnInit {
     private utils: UtilsService,
     private router: Router
   ) {
+    this.isArabic = this.utils.isArabic();
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
