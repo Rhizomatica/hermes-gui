@@ -88,7 +88,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changePtt() {
-    
+
     this.loading = true
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe({
       next: (res: any) => {
@@ -452,10 +452,12 @@ export class RadioConfigComponent implements OnInit {
       next: (res: any) => {
         this.toggleDigital = res;
         this.radio.p1_digital_voice = res == 1 ? true : false
+        this.loading = false;
       },
       error: (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false;
       }
     });
   }
