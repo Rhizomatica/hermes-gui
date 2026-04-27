@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -18,7 +19,8 @@ describe('AppComponent', () => {
     imports: [RouterTestingModule,
         NgIdleKeepaliveModule.forRoot(),
         RouterTestingModule.withRoutes([{ path: 'languages', component: LanguagesComponent }])],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 }).compileComponents();
 
 

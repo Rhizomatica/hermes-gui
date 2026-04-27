@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { SentMessagesComponent } from './sent-messages.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
@@ -10,7 +11,8 @@ describe('SentMessagesComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [SentMessagesComponent],
     imports: [],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 })
     .compileComponents();
   });

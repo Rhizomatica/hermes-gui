@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MenuComponent } from './menu.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -15,7 +16,8 @@ describe('MenuComponent', () => {
     imports: [RouterTestingModule,
         ReactiveFormsModule,
         FormsModule],
-    providers: [WebsocketService, provideHttpClient(withInterceptorsFromDi())]
+    providers: [WebsocketService, provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 })
       .compileComponents();
   });

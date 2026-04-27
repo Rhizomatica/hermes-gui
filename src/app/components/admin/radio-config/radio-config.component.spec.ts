@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RadioConfigComponent } from './radio-config.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +12,8 @@ describe('RadioConfigComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [RadioConfigComponent],
     imports: [ReactiveFormsModule, FormsModule],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 })
       .compileComponents();
   });

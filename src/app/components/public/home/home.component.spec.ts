@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,8 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [HomeComponent],
     imports: [],
-    providers: [WebsocketService, provideHttpClient(withInterceptorsFromDi())]
+    providers: [WebsocketService, provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 })
       .compileComponents();
   });

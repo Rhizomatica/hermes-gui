@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MessagesComponent } from './messages.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FilterPipe } from '../../../pipes/filter.pipe';
@@ -11,7 +12,8 @@ describe('MessagesComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [MessagesComponent, FilterPipe],
     imports: [],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 })
       .compileComponents();
   });

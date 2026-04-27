@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MessageDetailComponent } from './message-detail.component';
 import { Message } from '../../../interfaces/message';
 import { RouterTestingModule } from "@angular/router/testing";
@@ -12,7 +13,8 @@ describe('MessageDetailComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [MessageDetailComponent],
     imports: [RouterTestingModule],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
 })
       .compileComponents();
   });
