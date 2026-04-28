@@ -17,7 +17,7 @@ export const passMatch: ValidatorFn = (control: AbstractControl): ValidationErro
 
 export class RetypeDirective implements Validator  {
 
-  validate(control: AbstractControl): ValidationErrors {
+  validate(control: AbstractControl): ValidationErrors | null {
     return passMatch(control);
   }
 }

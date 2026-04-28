@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 
 export class RadioConfigComponent implements OnInit {
   public radio: any = []
-  error: Error
+  error!: Error
   confirmSet = false
   confirmSendPTT = false
   reseting = false
@@ -25,12 +25,12 @@ export class RadioConfigComponent implements OnInit {
   radioError = false
   testtone = '0'
   toneOn = false
-  currentUser: User
+  currentUser!: User
   isAdmin = false
   loading = true
-  modeSwitch: boolean
+  modeSwitch!: boolean
   gpsMessage: any
-  realValue: number
+  realValue: number | undefined
   freqmin = 500
   freqmax = 30000
   restarting = false
@@ -39,17 +39,17 @@ export class RadioConfigComponent implements OnInit {
   alertBrowserXP: boolean = false
   loginForm = false
   refthreshold: any
-  voicePowerLevel: number
-  dataPowerLevel: number
-  p0_frek: number
-  p1_frek: number
-  serial: string
+  voicePowerLevel!: number
+  dataPowerLevel!: number
+  p0_frek!: number
+  p1_frek!: number
+  serial!: string
   hasGps = GlobalConstants.hasGPS
   bitx = GlobalConstants.bitx
   eraseSDCard: boolean = false
   confirmChangeProtection: boolean = false
   toggleProfile: number = 1
-  voiceModeSwitch: boolean
+  voiceModeSwitch: boolean = false
   dataModeProfileID: number = 0
   voiceModeProfileID: number = 1
   timeoutStatus: number = 0
@@ -70,7 +70,7 @@ export class RadioConfigComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  get value(): number {
+  get value(): number | undefined {
     this.realValue = this.radio.p1_freq;
     return this.realValue;
   }
@@ -115,7 +115,7 @@ export class RadioConfigComponent implements OnInit {
     });
   }
 
-  public pttOn(f) {
+  public pttOn(f: string) {
     this.radioService.setRadioPTT(f, this.dataModeProfileID).subscribe({
       next: (res: any) => {
         this.radio.ptt = res;
@@ -165,7 +165,7 @@ export class RadioConfigComponent implements OnInit {
   }
 
   changeMode(radioProfile: number) {
-    let mode: boolean;
+    let mode: boolean | undefined;
 
     if (radioProfile === 0) {
       this.modeSwitch = !this.modeSwitch;
@@ -174,6 +174,8 @@ export class RadioConfigComponent implements OnInit {
       this.voiceModeSwitch = !this.voiceModeSwitch;
       mode = this.voiceModeSwitch;
     }
+
+    if (mode === undefined) return;
 
     this.radioService.setRadioMode(mode ? 'LSB' : 'USB', radioProfile).subscribe({
       next: (res: any) => { },
@@ -269,9 +271,9 @@ export class RadioConfigComponent implements OnInit {
     this.gpsMessage = null
   }
 
-  testTone(f) {
-    this.testtone = f;
-    this.radioService.setRadioTone(f, this.dataModeProfileID).subscribe({
+  testTone(f: number) {
+    this.testtone = String(f);
+    this.radioService.setRadioTone(String(f), this.dataModeProfileID).subscribe({
       next: (res: any) => {
         this.radio.testtone = res;
         this.toneOn = res === '0' ? false : true

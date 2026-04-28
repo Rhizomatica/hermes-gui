@@ -5,6 +5,8 @@ import { ApiService } from '../../../_services/api.service';
 import { StationService } from '../../../_services/station.service';
 import { NgForm } from '@angular/forms';
 import { SharedService } from 'src/app/_services/shared.service';
+import { Station } from 'src/app/interfaces/station';
+import { Schedule } from 'src/app/interfaces/schedule';
 
 @Component({
   selector: 'app-schedule',
@@ -14,7 +16,7 @@ import { SharedService } from 'src/app/_services/shared.service';
 
 export class ScheduleComponent implements OnInit {
 
-  currentUser: User;
+  currentUser!: User;
   stations: any;
   isAdmin = true;
   enabled = true;
@@ -45,9 +47,9 @@ export class ScheduleComponent implements OnInit {
 
   public getStations(): void {
     this.stationService.getStations().subscribe({
-      next: (data: any) => {
+      next: (data: Station[]) => {
         this.stations = data;
-        this.stations = this.stations.filter(e => e.alias !== 'central' && e.alias !== 'gw' && e.alias !== 'local');
+        this.stations = this.stations.filter((e: Station) => e.alias !== 'central' && e.alias !== 'gw' && e.alias !== 'local');
         for (var i in this.stations) {
           for (var j in this.enabledStations) {
             if (this.stations[i].alias == this.enabledStations[j]) {
@@ -127,7 +129,7 @@ export class ScheduleComponent implements OnInit {
       });
   }
 
-  formatTime(schedules) {
+  formatTime(schedules: Schedule[]) {
     schedules.forEach(schedule => {
       schedule.starttime = schedule.starttime.toString().slice(0, -3)
       schedule.stoptime = schedule.stoptime.toString().slice(0, -3)
@@ -140,7 +142,7 @@ export class ScheduleComponent implements OnInit {
     this.emptySchedule = true
   }
 
-  async deleteSchedule($id): Promise<void> {
+  async deleteSchedule($id: number): Promise<void> {
     this.loading = true
     this.isEditing = false
     this.selectedSchedule = []
@@ -184,7 +186,7 @@ export class ScheduleComponent implements OnInit {
   }
 
 
-  onSelect(schedule): void {
+  onSelect(schedule: Schedule): void {
     this.selectedSchedule = schedule;
     if (this.selectedSchedule.starttime >= 8) {
       this.formatTime([this.selectedSchedule])

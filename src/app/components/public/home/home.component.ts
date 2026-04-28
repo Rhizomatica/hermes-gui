@@ -43,15 +43,15 @@ export class HomeComponent implements OnInit {
       this.showVoiceCard = false
   }
 
-  currentUser: User = null
+  currentUser: User | null = null
   admin: boolean = false
   currentTheme = 'light'
   alertBrowserXP: boolean = false
   showVoiceCard: boolean = false
   isGateway: boolean = GlobalConstants.gateway
-  radio: Radio
+  radio!: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
-  @Input() radioObj: Radio
+  @Input() radioObj!: Radio
   self = self.location.host
   showAlert: boolean = true
   alertMessage: string = 'Radio data transmiting now... please wait for use the voice mode.'
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
     this.currentTheme = this.themeService.isDark ? 'dark' : 'light';
   }
 
-  checkBrowser(browser) {
+  checkBrowser(browser: string) {
     var browserWarning = localStorage.getItem('browserWarning');
 
     if (browserWarning === null && browser !== 'chrome') {
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   formatFrequency() {
-    this.radio.p1_freq = this.radio.p1_freq == 0 || this.radio.p1_freq == null ? 0 : this.radio.p1_freq / 1000
+    this.radio.p1_freq = this.radio.p1_freq == '0' || this.radio.p1_freq == null ? '0' : (parseInt(this.radio.p1_freq) / 1000).toString()
   }
 
   ngOnInit(): void {

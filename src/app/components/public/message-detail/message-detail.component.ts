@@ -22,27 +22,27 @@ import { Station } from 'src/app/interfaces/station';
 
 export class MessageDetailComponent implements OnInit {
 
-  @Input() message: Message;
-  error: Error;
-  public messageImage: Blob;
+  @Input() message!: Message;
+  error!: Error;
+  public messageImage!: Blob;
   public isEncrypted = false;
   url = GlobalConstants.apiURL;
   wrongPass = false;
   uncrypted = false;
-  fileType: string = null
+  fileType: string = ''
   noMessage = false;
   pass = '';
   passString = '';
   allowCompose = false;
-  currentUser: User;
+  currentUser!: User;
   allowhmp = 'root';
   serverConfig: any;
   deleteMessage = false;
-  selectedMessage: Message
-  errorAlert = false
-  loading = false
-  degree: number = 0
-  stations: Station[]
+  selectedMessage: Message | null = null;
+  errorAlert = false;
+  loading = false;
+  degree: number = 0;
+  stations!: Station[];
 
   constructor(
     private route: ActivatedRoute,
@@ -68,8 +68,8 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getMessageOld(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessage(id).subscribe({ next: (message) => this.message });
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+    this.messageService.getMessage(parseInt(id!)).subscribe({ next: (message) => this.message });
   }
 
   sendPassword(id: number, f: NgForm): void {
@@ -95,14 +95,14 @@ export class MessageDetailComponent implements OnInit {
 
   getMessage(): void {
     this.loading = true
-    const id = +this.route.snapshot.paramMap.get('id');
-    const file = +this.route.snapshot.paramMap.get('file');
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+    const file: string | null = this.route.snapshot.paramMap.get('file');
     const mime = '';
-    this.messageService.getMessage(id).subscribe({
+    this.messageService.getMessage(parseInt(id!)).subscribe({
       next: (res: any) => {
-        this.message = res;
+        this.message = res as Message;
         if (this.message.file === '') {
-          this.fileType = null
+          this.fileType = ''
         } else {
           this.fileType = this.utils.getFileType(this.message.mimetype)
         }
@@ -122,15 +122,15 @@ export class MessageDetailComponent implements OnInit {
 
   getMessageImage(): void {
     this.loading = true
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessageImage(id).subscribe({
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+    this.messageService.getMessageImage(parseInt(id!)).subscribe({
       next: (res: any) => {
         this.messageImage = res;
         this.loading = false
       },
       error: (err) => {
         this.error = err;
-        this.fileType = null;
+        this.fileType = '';
         this.loading = false
       }
     });
@@ -180,7 +180,7 @@ export class MessageDetailComponent implements OnInit {
     return this.allowCompose;
   }
 
-  showDelete(message) {
+  showDelete(message: Message) {
     this.selectedMessage = message
     if (this.deleteMessage) {
       this.deleteMessage = false;
@@ -194,11 +194,11 @@ export class MessageDetailComponent implements OnInit {
     this.loading = true
     this.messageService.deleteMessage(this.message.id).subscribe({
       next: (res: any) => {
-        this.message = res;
+        this.message = res as Message;
         this.deleteMessage = false;
-        this.selectedMessage = null
-        this.loading = false
-        history.back()
+        this.selectedMessage = null;
+        this.loading = false;
+        history.back();
       },
       error: (err) => {
         this.error = err;
@@ -225,7 +225,7 @@ export class MessageDetailComponent implements OnInit {
       `rotate(${this.degree}deg)`
     )
 
-    if (image.offsetWidth > image.offsetHeight)
+    if (image && image.offsetWidth > image.offsetHeight)
       image.style.width = '400px'
   }
 

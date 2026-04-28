@@ -7,7 +7,7 @@ import { GlobalConstants } from 'src/app/global-constants';
 
 export class UtilsService {
 
-  browser: string = null;
+  browser: string | null = null;
 
   public detectBrowserName() {
     const agent = window.navigator.userAgent.toLowerCase()
@@ -42,10 +42,10 @@ export class UtilsService {
   }
 
 
-  getFileType(fileType) {
+  getFileType(fileType: string): string {
 
     if (!fileType) {
-      return null
+      return ''
     }
 
     if (fileType.match('image.*'))
@@ -61,15 +61,15 @@ export class UtilsService {
 
   }
 
-  formatFrequency(freq) {
+  formatFrequency(freq: string): string {
     if (!freq)
-      return 0
+      return '0'
 
-    freq = (Math.round((freq / 1000) * 100) / 100).toFixed(2); //Set Decimal
+    let formatted = (Math.round((parseFloat(freq) / 1000) * 100) / 100).toFixed(2); //Set Decimal
 
-    freq = freq.replace(/\./g, ',') //Replace decimal dot per comma
+    formatted = formatted.replace(/\./g, ',') //Replace decimal dot per comma
 
-    return freq.replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, "."); //Format number with dots
+    return formatted.replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, "."); //Format number with dots
   }
 
   parseFormattedFrequency(freq: any): number {
@@ -78,35 +78,35 @@ export class UtilsService {
     return Math.round(parseFloat(normalized));
   }
 
-  formatSWR(swr) {
+  formatSWR(swr: string) {
     if (!swr)
       return '1.0'
 
     return (parseInt(swr) / 10).toFixed(1).toString()
   }
 
-  formatDecimal(num) {
+  formatDecimal(num: string) {
     if (!num)
-      return 0
+      return '0'
 
-    return parseInt(num) / 10
+    return (parseInt(num) / 10).toFixed(1).toString()
   }
 
-  formatPower(fwd) {
+  formatPower(fwd: string) {
     if (!fwd)
       return '0'
 
     return (parseInt(fwd) / 10).toFixed(1).toString()
   }
 
-  formatDate(date) {
+  formatDate(date: string | Date) {
     if (!date)
       return ''
 
     return new Date(date).toLocaleDateString('pt', { day: "numeric", month: "numeric", year: "numeric", hour: '2-digit', hour12: true, minute: "2-digit" })
   }
 
-  splitFrequency(freq) {
+  splitFrequency(freq: string) {
 
     if (!freq)
       return null
@@ -124,11 +124,11 @@ export class UtilsService {
     return freq.toString().split('')
   }
 
-  formatTimeCounter(seconds) {
-
-    if (seconds >= 60) {
-      const minutes = Math.floor(seconds / 60);
-      const remainingSeconds = seconds % 60;
+  formatTimeCounter(seconds: string) {
+    const parsedSeconds = parseInt(seconds);
+    if (parsedSeconds >= 60) {
+      const minutes = Math.floor(parsedSeconds / 60);
+      const remainingSeconds = parsedSeconds % 60;
 
       const formattedMinutes = minutes.toString().padStart(2, "0");
       const formattedSeconds = remainingSeconds.toString().padStart(2, "0");

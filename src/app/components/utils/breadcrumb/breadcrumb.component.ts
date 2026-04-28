@@ -18,7 +18,7 @@ export class BreadcrumbComponent implements OnChanges {
 
   @Input() currentPage: string
   @Input() currentUrl: string
-  pages = []
+  pages: Array<{ name: string, url: string }> = []
   requireLogin: boolean = GlobalConstants.requireLogin
   isArabic: boolean = false
 
@@ -26,7 +26,7 @@ export class BreadcrumbComponent implements OnChanges {
     this.isArabic = this.utils.isArabic();
   }
 
-  ngOnChanges(change) {
+  ngOnChanges(change: any) {
     change.currentPage && change.currentPage.currentValue != change.currentPage.previousValue ? this.currentPage = change.currentPage.currentValue.split('?', 1)[0] : null
 
     //Nao insere no breadcrumb login nem menu page
@@ -41,7 +41,7 @@ export class BreadcrumbComponent implements OnChanges {
 
     var found = false
     this.pages.forEach((item, index) => {
-      if (item.name == this.currentPage) {
+      if (item?.name == this.currentPage) {
         found = true
       }
     })

@@ -16,14 +16,14 @@ import { Router } from '@angular/router';
 
 export class SMSComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
-  message: SMSMessage
-  message1: SMSMessage
-  messages: SMSMessage[]
+  message!: SMSMessage
+  message1!: SMSMessage
+  messages!: SMSMessage[]
   filteredMessages: SMSMessage[] = []
   startChat: boolean = false
   phoneNumber: string = ""
@@ -145,7 +145,7 @@ export class SMSComponent implements OnInit {
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.message1 = {
@@ -153,7 +153,7 @@ export class SMSComponent implements OnInit {
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.messages = []

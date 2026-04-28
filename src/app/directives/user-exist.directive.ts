@@ -32,8 +32,8 @@ export function compareUsername(userList: any): ValidatorFn {
 })
 
 export class UserExistDirective implements Validator, OnInit {
-  @Input('appUserExist') userFound: string;
-  userList: User[];
+  @Input('appUserExist') userFound!: string;
+  userList!: User[];
 
 
   constructor(private userService: UserService) {}

@@ -11,10 +11,10 @@ import { AuthenticationService } from '../../../_services/authentication.service
 
 export class UserListComponent implements OnInit {
 
-  currentUser: User;
-  searchUser: string;
-  error: Error;
-  users: User[];
+  currentUser!: User;
+  searchUser!: string;
+  error!: Error;
+  users!: User[];
   errorAlert = false;
   loading = false;
 

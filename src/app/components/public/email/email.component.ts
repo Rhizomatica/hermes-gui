@@ -14,14 +14,14 @@ import { GlobalConstants } from 'src/app/global-constants';
 export class EmailComponent implements OnInit {
 
   linksOn = false;
-  currentUser: User;
+  currentUser!: User;
   error = Error;
   errorAlert = false;
   emailto = [];
   users: any;
-  domain: string
+  domain!: string
   emergencyEmail: string
-  sbitx:boolean = null
+  sbitx:boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -49,7 +49,7 @@ export class EmailComponent implements OnInit {
   }
 
   selectAllForDropdownItems(items: any[]) {
-    let allSelect = items => {
+    let allSelect = (items: any[]) => {
       items.forEach(element => {
         element['selectedAllGroup'] = 'selectedAllGroup';
       });

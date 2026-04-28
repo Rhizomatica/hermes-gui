@@ -15,18 +15,18 @@ import { NgForm } from '@angular/forms'
 
 export class SMSChatComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
-  messages: SMSMessage[]
-  phoneNumber: string = null
-  message: SMSMessage = null
-  message1: SMSMessage = null
-  message2: SMSMessage = null
+  messages!: SMSMessage[]
+  phoneNumber: string = ''
+  message: SMSMessage = {} as SMSMessage
+  message1: SMSMessage = {} as SMSMessage
+  message2: SMSMessage = {} as SMSMessage
   delete: boolean = false
-  chatId: number = null
+  chatId: number = 0
 
   constructor(
     private route: ActivatedRoute,
@@ -122,14 +122,14 @@ export class SMSChatComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.chatId = parseInt(this.route.snapshot.paramMap.get('id'))
+    this.chatId = parseInt(this.route.snapshot.paramMap.get('id') || '0')
 
     this.message = {
       id: 0,
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.message1 = {
@@ -137,7 +137,7 @@ export class SMSChatComponent implements OnInit {
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.message2 = {
@@ -145,7 +145,7 @@ export class SMSChatComponent implements OnInit {
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.messages = []

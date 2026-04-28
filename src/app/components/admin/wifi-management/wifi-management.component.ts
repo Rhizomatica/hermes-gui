@@ -13,29 +13,29 @@ import { WifiManagerService } from '../../../_services/wifi-manager.service';
 
 export class WiFiManagementComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
   errorAlertPatterns: boolean = false
   channels: number[] = []
-  wiFiSSID: string
-  wiFiRetypePassphrase: string
-  wiFiPassphrase: string
+  wiFiSSID!: string
+  wiFiRetypePassphrase!: string
+  wiFiPassphrase!: string
   wiFiChannel: number = 1
   msgPatternChars: boolean = false
-  excludedKeys: string[]
+  excludedKeys!: string[]
   passwordUnmatch = false;
   passwordMin = false
   system: any
   macFilter: boolean = false
-  macList: string[]
+  macList!: string[]
   msgMACListPatternError: boolean = false
-  includedKeysMacList: number[]
+  includedKeysMacList!: number[]
   newMACAddress: string = ''
   removeMACAddressConfirmation: boolean = false
-  macAddressToDelete: string = null
+  macAddressToDelete: string = ''
 
   constructor(
     private apiService: ApiService,
@@ -96,7 +96,7 @@ export class WiFiManagementComponent implements OnInit {
     }
   }
 
-  checkForm(f) {
+  checkForm(f: NgForm) {
     if (!f.value.ssid) {
       f.value.ssid = 'HERMES-DEFAULT'
     }
@@ -128,7 +128,7 @@ export class WiFiManagementComponent implements OnInit {
     this.excludedKeys = ["?", "'", '"', "$", "[", "]", "+", ".", " "]
   }
 
-  checkpass(password, retypePassword) {
+  checkpass(password: string, retypePassword: string) {
 
     if (password.length < 8) {
       this.passwordMin = true
@@ -201,7 +201,7 @@ export class WiFiManagementComponent implements OnInit {
     );
   }
 
-  validateMACAddress(macAddress) {
+  validateMACAddress(macAddress: string) {
     const macRegex = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i
 
     // Check if the cleaned MAC address matches the regular expression
@@ -213,7 +213,7 @@ export class WiFiManagementComponent implements OnInit {
   }
 
 
-  public confirmRemoveMACAddress(address) {
+  public confirmRemoveMACAddress(address: string) {
 
     if (!this.removeMACAddressConfirmation) {
       this.removeMACAddressConfirmation = true
@@ -222,7 +222,7 @@ export class WiFiManagementComponent implements OnInit {
     }
 
     this.removeMACAddressConfirmation = false
-    this.macAddressToDelete = null
+    this.macAddressToDelete = ''
   }
 
   public removeMACAddress() {

@@ -18,14 +18,14 @@ export interface Message {
 
 @Injectable()
 export class WebsocketService {
-    private subject: AnonymousSubject<MessageEvent>
-    public messages: Subject<Message>
-    public ws: WebSocket
-    public radioObj: Radio
+    private subject!: AnonymousSubject<MessageEvent>
+    public messages!: Subject<Message>
+    public ws!: WebSocket
+    public radioObj!: Radio
     public intervallTimerKeepWebSocketAlive = interval(9000)
     private requireLogin: boolean = GlobalConstants.requireLogin
-    private messagesSubscription: Subscription = null;
-    private keepAliveSubscription: Subscription = null;
+    private messagesSubscription: Subscription | null = null;
+    private keepAliveSubscription: Subscription | null = null;
 
     constructor(@Optional() @Inject('_serviceRoute') private _serviceRoute?: string,
         private sharedService?: SharedService,
@@ -42,14 +42,14 @@ export class WebsocketService {
         this.subscribeMessages()
     }
 
-    public connect(url): AnonymousSubject<MessageEvent> {
+    public connect(url: string): AnonymousSubject<MessageEvent> {
         if (!this.subject) {
             this.subject = this.create(url)
         }
         return this.subject;
     }
 
-    private create(url): AnonymousSubject<MessageEvent> {
+    private create(url: string): AnonymousSubject<MessageEvent> {
         this.ws = new WebSocket(url);
 
         let observable = new Observable((obs: Observer<MessageEvent>) => {
@@ -60,8 +60,8 @@ export class WebsocketService {
         });
 
         let observer = {
-            error: null,
-            complete: null,
+            error: null as any,
+            complete: null as any,
             next: (data: Object) => {
                 if (this.ws.readyState === WebSocket.OPEN) {
                     this.ws.send(JSON.stringify(data))
@@ -79,8 +79,8 @@ export class WebsocketService {
 
         if (!this.messagesSubscription || this.messagesSubscription.closed) {
             this.messagesSubscription = this.messages.subscribe({
-                next: (data) => {
-                    this.sharedService.setRadioObjShared(data);
+                next: (data: any) => {
+                    this.sharedService?.setRadioObjShared(data);
                 },
                 error: async (err) => {
                     if (this.ws && this.ws.OPEN == 1)
@@ -89,7 +89,7 @@ export class WebsocketService {
                     this.keepWebSocketAlive();
 
                     if (self.location.hostname === 'demo.hermes.radio')
-                        this.sharedService.mountRadioObjDemo();
+                        this.sharedService?.mountRadioObjDemo();
                 },
                 complete: () => {
                     console.log('complete, closing websocket connection...');
@@ -131,17 +131,14 @@ export class WebsocketService {
 
         if (this.messages) {
             try { this.messages.complete(); } catch (e) { }
-            this.messages = null;
         }
 
-        this.ws = null;
-        this.subject = null;
     }
 
     changeOperateModeProfile() {
         if (this.radioObj && this.radioObj.profile == 1) {
             //Profile id = 1 - digital/data
-            this.radioService.changeOperateModeProfile(1).subscribe({
+            this.radioService?.changeOperateModeProfile(1).subscribe({
                 next: (res: any) => {
                     return res
                 }

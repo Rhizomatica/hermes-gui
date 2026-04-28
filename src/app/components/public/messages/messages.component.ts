@@ -17,13 +17,13 @@ import { StationService } from 'src/app/_services/station.service';
 
 export class MessagesComponent implements OnInit {
 
-  currentUser: User;
+  currentUser!: User;
   error = Error;
-  inboxMessages: Message[];
-  message: Message;
-  selectedMessage: Message;
+  inboxMessages!: Message[];
+  message!: Message;
+  selectedMessage!: Message;
   isadmin = false;
-  searchMessages: string;
+  searchMessages!: string;
   noMessages = false;
   allowCompose = false;
   allowhmp = 'root';
@@ -32,7 +32,7 @@ export class MessagesComponent implements OnInit {
   deleteMessage = false;
   errorAlert = false;
   loading = true;
-  public stations: Station[];
+  public stations!: Station[];
 
   constructor(
     private messageService: MessageService,
@@ -53,12 +53,12 @@ export class MessagesComponent implements OnInit {
     this.loading = true
     this.messageService.getMessagesByType('inbox').subscribe({
       next: (res: any) => {
-        this.inboxMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
+        this.inboxMessages = res.sort((a: Message, b: Message) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
 
         if (this.inboxMessages.length == 0) {
           this.noMessages = true;
         } else {
-          this.inboxMessages = this.inboxMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) })
+          this.inboxMessages = this.inboxMessages.filter((a: Message) => { return a.sent_at = this.utils.formatDate(a.sent_at) })
           this.noMessages = false;
         }
 
@@ -191,7 +191,7 @@ export class MessagesComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.currentUser = null;
+    this.currentUser = {} as User;
     this.checkHmp();
   }
 

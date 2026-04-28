@@ -17,8 +17,8 @@ export class UUCPService {
     private alertService: AlertService
   ) { }
 
-  queue: UUCPQueue[];
-  job: UUCPQueue;
+  queue!: UUCPQueue[];
+  job!: UUCPQueue;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -37,7 +37,7 @@ export class UUCPService {
       catchError(this.handleError));
   }
 
-  cancelTransmission(uuhost, id): Observable<UUCPQueue[]> {
+  cancelTransmission(uuhost: string, id: string): Observable<UUCPQueue[]> {
     const url = `${GlobalConstants.apiURL}/sys/uuk/${uuhost}/${id}`;
     return this.http.delete(url).pipe(
       map((res: any) => {
@@ -47,7 +47,7 @@ export class UUCPService {
       catchError(this.handleError));
   }
 
-  cancelMail(uuhost, id, language): Observable<UUCPQueue[]> {
+  cancelMail(uuhost: string, id: number, language: string): Observable<UUCPQueue[]> {
     const url = `${GlobalConstants.apiURL}/sys/mail/${uuhost}/${id}/${language}`;
     return this.http.delete(url).pipe(
       map((res: any) => {
@@ -66,7 +66,7 @@ export class UUCPService {
       catchError(this.handleError));
   }
 
-  callSystem(uuidhost): Observable<UUCPQueue[]> {
+  callSystem(uuidhost: string): Observable<UUCPQueue[]> {
     const url = `${GlobalConstants.apiURL}/sys/uucall/${uuidhost}`;
     return this.http.get(url).pipe(
       map((res: any) => {

@@ -58,7 +58,7 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioPTT(value: string, radioProfile): Observable<{}> {
+  public setRadioPTT(value: string, radioProfile: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/radio/ptt/${value}/${radioProfile}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
@@ -173,7 +173,7 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setTimeoutConfig(time): Observable<{}> {
+  public setTimeoutConfig(time: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/radio/voice/timeout/config/${time}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
@@ -182,7 +182,7 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public getRadioPowerLevel(profile: number): Observable<{ number }> {
+  public getRadioPowerLevel(profile: number): Observable<number> {
     const url = `${GlobalConstants.apiURL}/radio/powerlevel/${profile}`;
     return this.http.get<number>(url).pipe(
       map((res: any) => {
@@ -191,7 +191,7 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public setRadioPowerLevel(powerLevelObject): Observable<{ number }> {
+  public setRadioPowerLevel(powerLevelObject: { profile: number, powerLevel: number }): Observable<number> {
     const url = `${GlobalConstants.apiURL}/radio/powerlevel/`;
     return this.http.post<number>(url, powerLevelObject).pipe(
       map((res: any) => {
@@ -200,7 +200,7 @@ export class RadioService {
       catchError(this.handleError));
   }
 
-  public toggleDigital(value: number): Observable<{ number }> {
+  public toggleDigital(value: number): Observable<number> {
     const url = `${GlobalConstants.apiURL}/radio/voice/digital/${value}`;
     return this.http.post<number>(url, null).pipe(
       map((res: any) => {

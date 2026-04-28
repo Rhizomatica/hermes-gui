@@ -17,14 +17,14 @@ import { UtilsService } from 'src/app/_services/utils.service';
 
 export class VoiceComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
-  radio: Radio
-  step: number = null
-  modeSwitch: boolean
+  radio!: Radio
+  step: number = 0
+  modeSwitch!: boolean
   freqmin: number = 500
   freqmax: number = 30000
   subject = new BehaviorSubject(this.radioService);
@@ -48,7 +48,7 @@ export class VoiceComponent implements OnInit {
     this.errorAlert = false
   }
 
-  changeMode(event) {
+  changeMode(event: any) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
     this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe({
       next: (res: any) => {
@@ -64,6 +64,9 @@ export class VoiceComponent implements OnInit {
   changeStep() {
     this.step--
 
+    if (!this.radio || !this.radio.p1_freq_splited)
+      return
+
     if (this.step < 0 || this.step == 0 && this.radio.p1_freq_splited.length == 7) {
       this.step = this.radio.p1_freq_splited.length - 1
     }
@@ -72,11 +75,13 @@ export class VoiceComponent implements OnInit {
   }
 
   setInitialStep() {
+    if (!this.radio || !this.radio.p1_freq_splited)
+      return
     if (this.radio.p1_freq_splited.length > 0)
       this.step = this.radio.p1_freq_splited.length - 1
   }
 
-  changeStepDigit(index) {
+  changeStepDigit(index: number) {
 
     if (index == 0)
       return
@@ -111,7 +116,7 @@ export class VoiceComponent implements OnInit {
   updateStep() {
     this.radioService.updateStep(this.setStepValue()).subscribe({
       next: (res: any) => {
-        if (res != true || res != 1) {
+        if (res != true && res != 1) {
           this.error = res
           this.errorAlert = true;
         }
@@ -124,7 +129,7 @@ export class VoiceComponent implements OnInit {
     });
   }
 
-  setStepCode(value) {
+  setStepCode(value: number) {
     switch (value) {
       case 1000000:
         this.step = 1;
@@ -147,7 +152,7 @@ export class VoiceComponent implements OnInit {
     }
   }
 
-  setStepValue() {
+  setStepValue(): number {
     switch (this.step) {
       case 1:
         return 1000000;
@@ -162,6 +167,7 @@ export class VoiceComponent implements OnInit {
       case 6:
         return 10;
     }
+    return 0;
   }
 
   updatePage() {
@@ -242,10 +248,12 @@ export class VoiceComponent implements OnInit {
       next: (res: any) => {
         this.toggleDigital = res;
         this.radio.p1_digital_voice = res == 1 ? true : false
+        this.loading = false;
       },
       error: (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false;
       }
     });
   }

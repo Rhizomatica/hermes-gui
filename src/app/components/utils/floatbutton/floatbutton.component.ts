@@ -16,8 +16,8 @@ export class FloatButtonComponent {
 
   }
 
-  @Input() shuttingDown: boolean
-  @Input() shuttingDownNow: boolean
+  @Input() shuttingDown!: boolean
+  @Input() shuttingDownNow!: boolean
 
   public loading: boolean = false
 

@@ -15,7 +15,7 @@ import { GlobalConstants } from '../../../global-constants';
 
 export class UserManagementComponent implements OnInit {
 
-  currentUser: User;
+  currentUser!: User;
   error: any;
   selectedUser: User | null = null;
   isadmin = false;
@@ -44,7 +44,7 @@ export class UserManagementComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  checkpass(passwd, repasswd) {
+  checkpass(passwd: string, repasswd: string) {
     if (passwd) {
       if (passwd === repasswd) {
         this.passMin = false;
@@ -64,7 +64,7 @@ export class UserManagementComponent implements OnInit {
     }
   }
 
-  checkFullName(fullName) {
+  checkFullName(fullName: string) {
     this.fullNameEmpty = !fullName || fullName.length === 0;
   }
 

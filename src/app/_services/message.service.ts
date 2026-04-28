@@ -16,9 +16,9 @@ export class MessageService {
     private alertService: AlertService
   ) { }
 
-  messages: Message[];
-  message: any[];
-  text: string;
+  messages!: Message[];
+  message!: any[];
+  text!: string;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -59,7 +59,7 @@ export class MessageService {
     }
   }
 
-  getMessagesByType($type): Observable<Message[]> {
+  getMessagesByType($type: string): Observable<Message[]> {
     const url = `${GlobalConstants.apiURL}/message/type/${$type}`; 
     return this.http.get(url).pipe(
       map((res: any) => {
@@ -84,7 +84,7 @@ export class MessageService {
     return this.http.get(url, { responseType: 'blob' });
   }
 
-  deleteMessage(id): Observable<{}> {
+  deleteMessage(id: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/${id}`; 
     return this.http.delete(url).pipe(
       map((res: any) => {
@@ -102,7 +102,7 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-  uncrypt(id: number, values): Observable<{}> {
+  uncrypt(id: number, values: any): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/uncrypt/${id}`;
     return this.http.post<Message>(url, values).pipe(
       map((res: any) => {

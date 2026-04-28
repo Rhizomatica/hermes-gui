@@ -14,7 +14,7 @@ export class WifiManagerService {
     private http: HttpClient) {
   }
 
-  text: string;
+  text!: string;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -32,7 +32,7 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
-  changeWiFiName(values): Observable<{}> {
+  changeWiFiName(values: Object): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/wifi/`;
     return this.http.post(url, values).pipe(
       map((res: any) => {
@@ -42,7 +42,7 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
-  toggleMACFilter(values): Observable<{}> {
+  toggleMACFilter(values: Object): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/wifi/mac/filter`;
     return this.http.post(url, values).pipe(
       map((res: any) => {
@@ -52,7 +52,7 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
-  updateMACList(values): Observable<{}> {
+  updateMACList(values: Object): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/wifi/mac/address`;
     return this.http.post(url, values).pipe(
       map((res: any) => {
@@ -62,7 +62,7 @@ export class WifiManagerService {
       catchError(this.handleError));
   }
 
-  public removeMACAddress(address) {
+  public removeMACAddress(address: string) {
     const url = `${GlobalConstants.apiURL}/wifi/mac/address/${address}`;
     return this.http.delete(url).pipe(
       map((res: any) => {

@@ -20,17 +20,17 @@ import { StationService } from 'src/app/_services/station.service';
 
 export class SentMessagesComponent implements OnInit {
 
-  currentUser: User;
+  currentUser!: User;
   error = Error;
   success = '';
-  messages: Message[];
-  queue: UUCPQueue[];
-  job: UUCPQueue;
-  sentMessages: Message[];
-  message: Message;
-  selectedMessage: Message; // redundant?
+  messages!: Message[];
+  queue!: UUCPQueue[];
+  job!: UUCPQueue;
+  sentMessages!: Message[];
+  message!: Message;
+  selectedMessage!: Message; // redundant?
   isadmin = false;
-  searchMessages: string;
+  searchMessages!: string;
   confirmTransmit = false;
   errorAlert = false;
   noMessages = true;
@@ -38,10 +38,10 @@ export class SentMessagesComponent implements OnInit {
   noQueue = false;
   allowCompose = false;
   serverConfig: any;
-  allowhmp: string;
+  allowhmp!: string;
   deleteMessage = false;
   loading = true
-  stations: Station[]
+  stations!: Station[]
 
   constructor(
     private messageService: MessageService,
@@ -74,7 +74,7 @@ export class SentMessagesComponent implements OnInit {
     this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
-  cancelTransmission(host, id): void {
+  cancelTransmission(host: string, id: string): void {
     this.uucpService.cancelTransmission(host, id).subscribe({
       next: (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
@@ -86,7 +86,7 @@ export class SentMessagesComponent implements OnInit {
     });
   }
 
-  // cancelMail(host, id, language): void {
+  // cancelMail(host: string, id: string, language: string): void {
   //   this.uucpService.cancelMail(host, id, language).subscribe(
   //     (res: any) => {
   //       this.queue = this.queue.filter(obj => obj.uuiduucp !== id);

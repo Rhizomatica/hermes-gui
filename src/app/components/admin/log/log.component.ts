@@ -23,19 +23,19 @@ export class LogComponent implements OnInit, OnDestroy {
   eLog = false;
   dLog = false;
   edLog = false;
-  currentUser: User;
+  currentUser!: User;
   isAdmin = true;
   uucpLog: any;
   mailLog: any;
   uucpDebugLog: any;
   error = Error;
-  log: LogList;
+  log!: LogList;
   errorAlert = false;
   loading = false
-  customErrors: CustomError[]
+  customErrors!: CustomError[]
   visibleArray: any = []
-  searchError: string
-  customLog: boolean
+  searchError!: string
+  customLog!: boolean
   system: any
   criticSpace = false;
   confirmDeleteAllLogs = false;
@@ -144,7 +144,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.loading = true
     this.customErrorsService.getCustomErrors().subscribe({
       next: (data: any) => {
-        this.customErrors = data.sort((a, b) => { return new Date(a.created_at) < new Date(b.created_at) ? 1 : -1; });
+        this.customErrors = data.sort((a: CustomError, b: CustomError) => { return new Date(a.created_at) < new Date(b.created_at) ? 1 : -1; });
         this.customErrors = this.customErrors.filter((a) => { return a.created_at = this.utils.formatDate(a.created_at) });
 
         this.loading = false;
@@ -158,14 +158,14 @@ export class LogComponent implements OnInit, OnDestroy {
     });
   }
 
-  loadVisibleArray(data) {
+  loadVisibleArray(data: CustomError[]) {
     this.visibleArray = []
     data.forEach(item => {
       this.visibleArray.push(false)
     });
   }
 
-  viewLog(i) {
+  viewLog(i: number) {
     for (let index = 0; index < this.visibleArray.length; index++) {
       this.visibleArray[index] = false
     }
@@ -182,7 +182,7 @@ export class LogComponent implements OnInit, OnDestroy {
     this.confirmDeleteAllLogs = false
   }
 
-  deleteCustomError(id) {
+  deleteCustomError(id: number) {
     this.loading = true
 
     if (!id)
@@ -208,7 +208,7 @@ export class LogComponent implements OnInit, OnDestroy {
     });
   }
 
-  deleteCustomErrorById(id) {
+  deleteCustomErrorById(id: number) {
     this.customErrorsService.deleteCustomError(id).subscribe({
       next: (data: any) => {
         this.showCustomLogs()

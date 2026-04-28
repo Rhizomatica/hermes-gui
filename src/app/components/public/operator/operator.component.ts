@@ -18,22 +18,22 @@ import { RadioService } from 'src/app/_services/radio.service';
 
 export class OperatorComponent implements OnInit {
 
-  currentUser: User = null
+  currentUser: User = {} as User
   admin: boolean = false
-  systemData: object
+  systemData!: object
   loading: boolean = false
-  error: Error
+  error!: Error
   errorAlert: boolean = false
   errormsg: string = ""
   radio: any = []
   diskSpace: string = '0'
-  gpsStatus: boolean
+  gpsStatus!: boolean
   activeSchedule: boolean = false
   queueSize: number = 0
   bitrateData: any = []
   snrData: any = []
-  currentLatitude: null
-  currentLongitude: null
+  currentLatitude!: null
+  currentLongitude!: null
   hasGps: boolean = GlobalConstants.hasGPS
   diskUsage: string = "0"
   showGraph: boolean = false
@@ -61,7 +61,7 @@ export class OperatorComponent implements OnInit {
     this.apiService.getSchedules().subscribe({
       next: (res: any) => {
 
-        var enabledSchedules = res.filter((a) => { return a.enable == 1 })
+        var enabledSchedules = res.filter((a: any) => { return a.enable == 1 })
 
         if (enabledSchedules.length > 0)
           this.activeSchedule = true

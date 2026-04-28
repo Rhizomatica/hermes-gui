@@ -16,14 +16,14 @@ import { HttpClient } from '@angular/common/http';
 
 export class MessageConfigComponent implements OnInit {
 
-  currentUser: User;
+  currentUser!: User;
   error = Error;
-  messages: Message[];
-  message: Message;
+  messages!: Message[];
+  message!: Message;
   selectedMessages = false;
   allowfile: any;
   allowhmp: any;
-  allowUp: FormGroup;
+  allowUp!: FormGroup;
   errorAlert = false;
   noSystem = false;
   isAdmin = false;
@@ -140,7 +140,7 @@ export class MessageConfigComponent implements OnInit {
     });
   }
 
-  updateRuleForRequireLogin(data) {
+  updateRuleForRequireLogin(data: { allowhmp: string; allowfile: string }) {
     if (data.allowhmp == 'all') {
       this.allowhmp = 'users'
       this.setComposePermission(this.allowhmp)

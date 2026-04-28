@@ -14,19 +14,19 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 export class ClockHandGraphComponent implements OnChanges {
 
   constructor() {
-    this.graphElementID = null
-    this.hand1Data = null
-    this.hand2Data = null
-    this.hand1Label = null
-    this.hand2Label = null
+    this.graphElementID = "clockhandgraphdiv"
+    this.hand1Data = 0
+    this.hand2Data = 0
+    this.hand1Label = ""
+    this.hand2Label = ""
     this.axis1 = null
     this.axis2 = null
     this.hand1 = null
     this.hand2 = null
-    this.minAxis1 = null
-    this.maxAxis1 = null
-    this.minAxis2 = null
-    this.maxAxis2 = null
+    this.minAxis1 = 0
+    this.maxAxis1 = 0
+    this.minAxis2 = 0
+    this.maxAxis2 = 0
   }
 
   @Input() graphElementID: string
@@ -46,9 +46,9 @@ export class ClockHandGraphComponent implements OnChanges {
   axisRange1: any
   axisRange2: any
 
-  @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
+  @ViewChild('chartElement') chartElement!: ElementRef<HTMLElement>;
 
-  ngOnChanges(change) {
+  ngOnChanges(change: any) {
     if (change && change.hand1Data && change.hand1Data.currentValue != change.hand1Data.previousValue) {
 
       this.hand1Data = change.hand1Data.currentValue
@@ -114,7 +114,7 @@ export class ClockHandGraphComponent implements OnChanges {
 
   }
 
-  createAxis(min, max, start, end, color, label, chart, root) {
+  createAxis(min: number, max: number, start: number, end: number, color: any, label: string, chart: any, root: any) {
     var axisRenderer = am5radar.AxisRendererCircular.new(root, {
       strokeOpacity: 0.1,
       minGridDistance: 50,
@@ -182,7 +182,7 @@ export class ClockHandGraphComponent implements OnChanges {
     return axis;
   }
 
-  createHand(axis, data, root) {
+  createHand(axis: any, data: number, root: any) {
 
     var color = axis.get("renderer").get("stroke");
     var handDataItem = axis.makeDataItem({

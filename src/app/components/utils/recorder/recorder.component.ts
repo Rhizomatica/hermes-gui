@@ -12,7 +12,7 @@ export class RecorderComponent implements OnChanges {
 
   constructor(private domSanitizer: DomSanitizer) {
     this.recording = false
-    this.file = null
+    this.file = {} as File
     this.maxSize = 31457280
     this.fileName = null
     this.record = null
@@ -39,7 +39,7 @@ export class RecorderComponent implements OnChanges {
     this.emitteFileOP.emit(value);
   }
 
-  ngOnChanges(change) {
+  ngOnChanges(change: any) {
     return null
   }
 
@@ -58,7 +58,7 @@ export class RecorderComponent implements OnChanges {
     this.countRecording()
   }
 
-  errorCallback(error) {
+  errorCallback(error: any) {
     this.setFileOP(null)
   }
 
@@ -78,7 +78,7 @@ export class RecorderComponent implements OnChanges {
     return valString
   }
 
-  successCallback(stream) {
+  successCallback(stream: any) {
     var options = {
       mimeType: "audio/wav",
       numberOfAudioChannels: 1,
@@ -97,7 +97,7 @@ export class RecorderComponent implements OnChanges {
     this.cancelInterval()
   }
 
-  processRecording(blob) {
+  processRecording(blob: any) {
     if (blob.size < this.maxSize) {
       // let file: File = event.target.files[0];
       this.file = blob
@@ -108,7 +108,7 @@ export class RecorderComponent implements OnChanges {
   }
 
 
-  convertDataURIToBinary(dataURI) {
+  convertDataURIToBinary(dataURI: string) {
     var BASE64_MARKER = ';base64,';
 
     var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
@@ -129,7 +129,7 @@ export class RecorderComponent implements OnChanges {
 
   removeFile() {
     this.recording = false
-    this.file = null
+    this.file = {} as File
     this.fileName = null
 
     this.record = null

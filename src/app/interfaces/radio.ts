@@ -1,6 +1,6 @@
 export interface Radio {
-  p0_freq: number,
-  p1_freq: number,
+  p0_freq: string,
+  p1_freq: string,
   p0_mode: string,
   p1_mode: string,
   protection: boolean,
@@ -18,10 +18,10 @@ export interface Radio {
   p0_volume: number,
   p1_volume: number,
   profile: number,
-  p1_freq_splited: Array<string>,
+  p1_freq_splited: Array<string> | null,
   timeout: string,
   datetime: Date,
-  snr: number,
+  snr: string,
   snrHistory: Array<object>
   snrLength: number,
   bitrate: string,

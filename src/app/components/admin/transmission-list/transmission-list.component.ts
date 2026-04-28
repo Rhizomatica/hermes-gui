@@ -16,15 +16,15 @@ import { StationService } from 'src/app/_services/station.service';
 
 export class TransmissionListComponent implements OnInit {
 
-  currentUser: User
+  currentUser!: User
   error = Error
-  messages: Message[]
-  queue: UUCPQueue[]
-  job: UUCPQueue
-  sentMessages: Message[]
-  message: Message
+  messages!: Message[]
+  queue!: UUCPQueue[]
+  job!: UUCPQueue
+  sentMessages!: Message[]
+  message!: Message
   isadmin = false
-  searchMessages: string
+  searchMessages!: string
   confirmTransmit = false
   errorAlert = false
   noMessages = false
@@ -32,11 +32,11 @@ export class TransmissionListComponent implements OnInit {
   noQueue = false
   transList = false
   loading = true
-  jobToForce: UUCPQueue
+  jobToForce!: UUCPQueue
   queueSize = 0
   deleteMessage: boolean = false
-  jobToDelete: UUCPQueue
-  stations: Station[]
+  jobToDelete!: UUCPQueue
+  stations!: Station[]
   transmissionProgress: string = "25%"
 
   constructor(
@@ -57,7 +57,7 @@ export class TransmissionListComponent implements OnInit {
     this.loading = true
     this.uucpService.cancelTransmission(this.jobToDelete.uuidhost, this.jobToDelete.uuiduucp).subscribe({
       next: (res: any) => {
-        this.queue = this.queue.filter(obj => obj.uuiduucp !== this.jobToDelete.uuiduucp)
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== this.jobToDelete?.uuiduucp)
         this.loading = false
       },
       error: (err) => {
@@ -68,12 +68,12 @@ export class TransmissionListComponent implements OnInit {
     });
   }
 
-  cancelMail(host, id): void {
+  cancelMail(host: string, id: number): void {
     this.loading = true
-    var language = localStorage.getItem('language')
+    const language = 'aa' 
     this.uucpService.cancelMail(host, id, language).subscribe({
       next: (res: any) => {
-        this.queue = this.queue.filter(obj => obj.uuiduucp !== id)
+        this.queue = this.queue.filter(obj => obj.uuiduucp !== id.toString())
         this.loading = false
       },
       error: (err) => {
@@ -128,7 +128,7 @@ export class TransmissionListComponent implements OnInit {
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe({
       next: (res: any) => {
         this.getMessages()
-        this.jobToForce = null
+        this.jobToForce = {} as UUCPQueue
       },
       error: (err) => {
         this.error = err
@@ -155,7 +155,7 @@ export class TransmissionListComponent implements OnInit {
 
   closeOveralTransmission() {
     this.confirmTransmit = false
-    this.jobToForce = null
+    this.jobToForce = {} as UUCPQueue
   }
 
   getQueue(): void {
@@ -164,7 +164,7 @@ export class TransmissionListComponent implements OnInit {
         this.queue = res
         if (Object.keys(this.queue).length == 0) {
           this.noQueue = true
-          this.queue = null
+          this.queue = [] as UUCPQueue[]
         } else {
           this.noQueue = false
           this.getQueueSize()

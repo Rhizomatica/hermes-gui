@@ -15,70 +15,76 @@ export class SharedService {
   utils = new UtilsService()
 
   public radioObj = new BehaviorSubject<Radio>({
-    p0_freq: null,
-    p1_freq: null,
-    p0_mode: null,
-    p1_mode: null,
-    protection: null,
-    tx: null,
-    rx: null,
-    led: null,
-    fwd_raw: null,
-    fwd_watts: null,
-    swr: null,
-    ref_raw: null,
-    ref_watts: null,
-    connection: null,
-    ptt: null,
-    step: null,
-    p0_volume: null,
-    p1_volume: null,
-    profile: null,
-    p1_freq_splited: null,
-    timeout: null,
-    datetime: null,
-    snr: null,
-    snrHistory: null,
-    snrLength: null,
-    bitrate: null,
-    bitrateHistory: null,
-    bitrateLength: null,
-    bytes_received: null,
-    bytes_transmitted: null,
-    message: null,
-    p1_digital_voice: null
+    p0_freq: '0',
+    p1_freq: '0',
+    p0_mode: '',
+    p1_mode: '',
+    protection: false,
+    tx: false,
+    rx: false,
+    led: false,
+    fwd_raw: 0,
+    fwd_watts: '0',
+    swr: '1.0',
+    ref_raw: 0,
+    ref_watts: 0,
+    connection: false,
+    ptt: false,
+    step: 0,
+    p0_volume: 0,
+    p1_volume: 0,
+    profile: 0,
+    p1_freq_splited: [],
+    timeout: '0',
+    datetime: new Date(),
+    snr: '0',
+    snrHistory: [],
+    snrLength: 0,
+    bitrate: '0',
+    bitrateHistory: [],
+    bitrateLength: 0,
+    bytes_received: 0,
+    bytes_transmitted: 0,
+    message: '',
+    p1_digital_voice: false
   });
 
   public storedRadioObj = <Radio>({
-    connection: null,
-    led: null,
-    p0_freq: null,
-    p1_freq: null,
-    p0_mode: null,
-    p1_mode: null,
-    tx: null,
-    rx: null,
-    fwd_watts: null,
+    p0_freq: '0',
+    p1_freq: '0',
+    p0_mode: '',
+    p1_mode: '',
+    protection: false,
+    tx: false,
+    rx: false,
+    led: false,
+    fwd_raw: 0,
+    fwd_watts: '0',
     swr: '1.0',
-    protection: null,
-    p0_volume: null,
-    profile: null,
-    p1_freq_splited: null,
-    timeout: null,
-    datetime: null,
-    snr: null,
+    ref_raw: 0,
+    ref_watts: 0,
+    connection: false,
+    ptt: false,
+    step: 0,
+    p0_volume: 0,
+    p1_volume: 0,
+    profile: 0,
+    p1_freq_splited: [],
+    timeout: '0',
+    datetime: new Date(),
+    snr: '0',
     snrHistory: [],
-    snrLength: null,
-    bitrate: null,
+    snrLength: 0,
+    bitrate: '0',
     bitrateHistory: [],
-    bitrateLength: null,
-    bytes_received: null,
-    bytes_transmitted: null,
-    message: null,
-    p1_digital_voice: null
+    bitrateLength: 0,
+    bytes_received: 0,
+    bytes_transmitted: 0,
+    message: '',
+    p1_digital_voice: false
   });
 
-  setRadioObjShared(data) {
+  setRadioObjShared(data: Radio) {
     this.mountRadioObj(data)
     this.setSharedObj()
   }
@@ -115,7 +121,7 @@ export class SharedService {
     this.radioObj.next(this.radioObj.value)
   }
 
-  mountRadioObj(newObj) {
+  mountRadioObj(newObj: Radio) {
 
     this.storedRadioObj.connection = newObj.connection == null ? this.storedRadioObj.connection : newObj.connection
     this.storedRadioObj.led = newObj.led == null ? this.storedRadioObj.led : newObj.led
@@ -152,25 +158,24 @@ export class SharedService {
   }
 
   mountRadioObjDemo() {
-
     this.radioObj.value.connection = false
     this.radioObj.value.led = false
-    this.radioObj.value.p0_freq = this.utils.formatFrequency(1085500)
-    this.radioObj.value.p1_freq = this.utils.formatFrequency(1075000)
+    this.radioObj.value.p0_freq = this.utils.formatFrequency('1085500')
+    this.radioObj.value.p1_freq = this.utils.formatFrequency('1075000')
     this.radioObj.value.p0_mode = 'USB'
     this.radioObj.value.p1_mode = 'LSB'
     this.radioObj.value.tx = false
     this.radioObj.value.rx = true
     this.radioObj.value.fwd_watts = '1.0'
     this.radioObj.value.swr = '1.98'
-    this.radioObj.value.protection = null
+    this.radioObj.value.protection = false
     this.radioObj.value.p0_volume = 60
     this.radioObj.value.profile = 1
     this.radioObj.value.ptt = false
     this.radioObj.value.p1_freq_splited = this.utils.splitFrequency(this.radioObj.value.p1_freq)
     this.radioObj.value.timeout = this.utils.formatTimeCounter('300')
     this.radioObj.value.datetime = new Date('08/04/2024 13:03:01')
-    this.radioObj.value.snr = 15.3
+    this.radioObj.value.snr = '15.3'
     this.radioObj.value.bitrate = '363'
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
@@ -179,7 +184,7 @@ export class SharedService {
     this.radioObj.next(this.radioObj.value)
   }
 
-  observeOperatingProfileMode(newProfile) {
+  observeOperatingProfileMode(newProfile: number) {
     //kick user from voice screen if new profile is data
     if (GlobalConstants.bitx == 'S' && this.utils.isItRuningLocal() && this.storedRadioObj.profile == 1 && newProfile == 0 && this.router.url == '/voice') {
       this.router.navigate(['/home']);
@@ -215,7 +220,7 @@ export class SharedService {
 
   prepareSNRHistory() {
 
-    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == 0)
+    if (!this.storedRadioObj.snr || this.storedRadioObj.snr == '0')
       return
 
     var snrData = new Object()

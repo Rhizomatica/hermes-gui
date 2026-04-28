@@ -16,15 +16,15 @@ export class HintComponent {
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     this.showHint = false
-    this.hint = null
+    this.hint = ''
   }
 
   @Input() showHint: boolean
   @Input() hint: string
 
   public loading: boolean = false
-  public language: string = null
-  public currentUser: User;
+  public language: string = 'en-US'
+  public currentUser!: User;
   public bitx: string = GlobalConstants.bitx
 
   toggleHint() {
@@ -36,7 +36,10 @@ export class HintComponent {
   }
 
   ngOnInit(): void {
-    this.language = localStorage.getItem('language')
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage) {
+      this.language = storedLanguage;
+    }
   }
 
 }
