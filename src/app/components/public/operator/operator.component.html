@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="flexible m-b-25">
-        <h1 i18n="@@operatorpanel" class="m-b-10">Operator Panel</h1>
+        <h2 i18n="@@operatorpanel">Operator Panel</h2>
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
     <div class="row">
@@ -150,10 +150,10 @@
                     <span i18n="@@radioprofile">Radio profile</span>
                 </div>
                 <div class="data-body" *ngIf="radio.profile == 0">
-                    <span i18n="@@data">Data</span>
+                    <span>Data</span>
                 </div>
                 <div class="data-body" *ngIf="radio.profile == 1">
-                    <span i18n="@@voice">Voice</span>
+                    <span>Voice</span>
                 </div>
             </div>
             <div class="data">

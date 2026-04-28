@@ -7,7 +7,7 @@
             (toggleTheme)="toggle()"
             (logOut)="logOff()">
         </app-home-topbar>
-        <div class="flexible">
+        <div class="flexible m-t-25">
             <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
                 <div class="card {{(radio.connection) && ('disabled')}}">
                      <div class="card-icon">

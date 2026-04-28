@@ -18,8 +18,7 @@
                 </div>
             </div>
             <input id="searchbox1" [(ngModel)]="searchMessages" placeholder="search" i18n-placeholder />
-            <div class="alert maincontainer" *ngIf="noMessages" i18n="cannotaccesssentmessages">There are no sent
-                messages<br />
+            <div class="alert maincontainer" *ngIf="noMessages" i18n="@@cannotaccesssentmessages">There are no sent messages
             </div>
             <div class="messages maincontainer" *ngIf="!noMessages">
                 <div class="multiplist sent">
