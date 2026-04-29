@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Message } from '../../../interfaces/message';
 import { UUCPQueue } from '../../../interfaces/uucpqueue';
 import { User } from '../../../interfaces/user';
@@ -17,7 +18,7 @@ import { RadioService } from 'src/app/_services/radio.service';
 
 export class TransmissionListComponent implements OnInit {
 
-  currentUser!: User
+  currentUser!: User | null
   error = Error
   messages!: Message[]
   queue!: UUCPQueue[]
@@ -72,7 +73,7 @@ export class TransmissionListComponent implements OnInit {
 
   cancelMail(host: string, id: number): void {
     this.loading = true
-    const language = 'aa'
+    const language = localStorage.getItem('language') ?? 'en-US'
     this.uucpService.cancelMail(host, id, language).subscribe({
       next: (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id.toString())
@@ -144,14 +145,12 @@ export class TransmissionListComponent implements OnInit {
   }
 
   async setDataProfile(): Promise<void> {
-    this.radioService.changeOperateModeProfile(0).subscribe({
-      next: (res: any) => {
-      },
-      error: (err) => {
-        this.error = err;
-        this.errorAlert = true;
-      }
-    });
+    try {
+      await firstValueFrom(this.radioService.changeOperateModeProfile(0));
+    } catch (err: any) {
+      this.error = err;
+      this.errorAlert = true;
+    }
   }
 
   getMessages(): void {
@@ -160,7 +159,7 @@ export class TransmissionListComponent implements OnInit {
         this.sentMessages = res
         this.getQueue()
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = err
         this.noMessages = true
         this.loading = false

@@ -19,14 +19,15 @@ export class SwitchComponent implements OnChanges, OnInit {
 
 
   @Input() customFunction?: (component: SwitchComponent) => void;
-  @Output() switched = new EventEmitter<void>();
+  @Output() switched = new EventEmitter<boolean>();
 
   constructor() {}
 
-  onSwitch(): void {
+  onSwitch(event: Event): void {
     if (!this.enabled) return;
 
-    this.switched.emit();
+    const checked = (event.target as HTMLInputElement).checked;
+    this.switched.emit(checked);
     if (this.customFunction) {
       try {
         this.customFunction(this);

@@ -12,7 +12,7 @@ export class RecorderComponent implements OnChanges {
 
   constructor(private domSanitizer: DomSanitizer) {
     this.recording = false
-    this.file = {} as File
+    this.file = null
     this.maxSize = 31457280
     this.fileName = null
     this.record = null
@@ -23,7 +23,7 @@ export class RecorderComponent implements OnChanges {
   }
 
   @Input() recording: boolean
-  @Input() file: File
+  @Input() file: File | null
   @Input() fileName: any
 
   public maxSize: number
@@ -129,7 +129,7 @@ export class RecorderComponent implements OnChanges {
 
   removeFile() {
     this.recording = false
-    this.file = {} as File
+    this.file = null
     this.fileName = null
 
     this.record = null

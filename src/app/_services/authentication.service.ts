@@ -8,16 +8,16 @@ import { GlobalConstants } from '../global-constants';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
+    private currentUserSubject: BehaviorSubject<User | null>;
+    public currentUser: Observable<User | null>;
 
     constructor(private http: HttpClient) {
         const currentUserData = localStorage.getItem('currentUser');
-        this.currentUserSubject = new BehaviorSubject<User>(currentUserData ? JSON.parse(currentUserData) : null);
+        this.currentUserSubject = new BehaviorSubject<User | null>(currentUserData ? JSON.parse(currentUserData) : null);
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
+    public get currentUserValue(): User | null {
         return this.currentUserSubject.value;
     }
 
@@ -39,7 +39,7 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        this.currentUserSubject.next({ } as User);
+        this.currentUserSubject.next(null);
         this.currentUser = new Observable<User>;
     }
 }
