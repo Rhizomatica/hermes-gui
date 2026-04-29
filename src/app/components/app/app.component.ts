@@ -1,5 +1,5 @@
-import { Component, OnInit, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { DecimalPipe, Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
@@ -11,8 +11,6 @@ import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-// import { Keepalive } from '@ng-idle/keepalive';
-import { RouterModule, Routes } from '@angular/router';
 import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { RadioService } from 'src/app/_services/radio.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
@@ -31,6 +31,7 @@ export class VoiceComponent implements OnInit {
   voiceModeProfileID: number = 1
   isArabic: boolean = false
   toggleDigital: number = 0
+  private radioSubscription!: Subscription
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -259,9 +260,16 @@ export class VoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.radio = this.sharedService.radioObj.value
+     this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
+
     this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
     this.changeOperateModeProfile()
     this.getSavedStep()
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe();
   }
 }

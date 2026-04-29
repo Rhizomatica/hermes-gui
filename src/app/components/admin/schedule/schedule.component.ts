@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Station } from 'src/app/interfaces/station';
 import { Schedule } from 'src/app/interfaces/schedule';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-schedule',
@@ -36,6 +37,7 @@ export class ScheduleComponent implements OnInit {
   serverDateTime = null;
   confirmDeleteSchedule: boolean = false;
   public radio: any = []
+  private radioSubscription!: Subscription
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -116,17 +118,17 @@ export class ScheduleComponent implements OnInit {
   public getSchedules(): void {
 
     this.apiService.getSchedules().subscribe({
-        next: (res: any) => {
-          this.schedules = res
-          this.loading = false
-          this.formatTime(this.schedules)
-        },
-        error: (err) => {
-          this.error = err;
-          this.errorAlert = true
-          this.loading = false
-        }
-      });
+      next: (res: any) => {
+        this.schedules = res
+        this.loading = false
+        this.formatTime(this.schedules)
+      },
+      error: (err) => {
+        this.error = err;
+        this.errorAlert = true
+        this.loading = false
+      }
+    });
   }
 
   formatTime(schedules: Schedule[]) {
@@ -201,7 +203,9 @@ export class ScheduleComponent implements OnInit {
     this.getSchedules();
     this.getStations();
 
-    this.radio = this.sharedService.radioObj.value
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
 
     if (this.currentUser) {
       this.isAdmin = this.currentUser.admin;
@@ -210,4 +214,7 @@ export class ScheduleComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe();
+  }
 }

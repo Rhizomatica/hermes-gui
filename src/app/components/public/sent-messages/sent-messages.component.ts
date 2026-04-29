@@ -174,7 +174,7 @@ export class SentMessagesComponent implements OnInit {
 
   getAliasOrigin() {
     this.sentMessages.forEach(item => {
-      item.orig = this.stations.filter((a) => { return a.name === item.orig })[0].alias
+      item.orig = this.stations.filter((a) => { return a.name === item.orig })[0]?.alias
     })
   }
 

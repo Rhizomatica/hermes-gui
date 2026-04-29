@@ -7,6 +7,7 @@ import { Radio } from 'src/app/interfaces/radio';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { UtilsService } from 'src/app/_services/utils.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'menu',
@@ -22,6 +23,7 @@ export class MenuComponent implements OnInit {
   error!: string
   errorAlert: boolean = false
   radio!: Radio
+  private radioSubscription!: Subscription
   requireLogin: boolean = GlobalConstants.requireLogin
   isGateway: boolean = GlobalConstants.gateway
   hasGPS: boolean = GlobalConstants.hasGPS
@@ -57,5 +59,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.radio = this.sharedService.radioObj.value
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe();
   }
 }
