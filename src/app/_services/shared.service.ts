@@ -46,6 +46,7 @@ export class SharedService {
     bytes_received: 0,
     bytes_transmitted: 0,
     message: '',
+    p0_digital_voice: false,
     p1_digital_voice: false
   });
 
@@ -81,6 +82,7 @@ export class SharedService {
     bytes_received: 0,
     bytes_transmitted: 0,
     message: '',
+    p0_digital_voice: false,
     p1_digital_voice: false
   });
 
@@ -128,6 +130,7 @@ export class SharedService {
     this.storedRadioObj.bytes_transmitted = newObj.bytes_transmitted == null ? this.storedRadioObj.bytes_transmitted : newObj.bytes_transmitted
     this.storedRadioObj.message = newObj.message == null ? this.storedRadioObj.message : newObj.message
     const previousDigital = this.storedRadioObj.p1_digital_voice
+    this.storedRadioObj.p0_digital_voice = newObj.p0_digital_voice == null ? this.storedRadioObj.p0_digital_voice : newObj.p0_digital_voice
     this.storedRadioObj.p1_digital_voice = newObj.p1_digital_voice == null ? this.storedRadioObj.p1_digital_voice : newObj.p1_digital_voice
 
   }
@@ -155,6 +158,7 @@ export class SharedService {
     this.radioObj.value.bytes_received = 12
     this.radioObj.value.bytes_transmitted = 5
     this.radioObj.value.message = 'This is a demo version'
+    this.radioObj.value.p0_digital_voice = false
     this.radioObj.value.p1_digital_voice = false
     this.radioObj.next(this.radioObj.value)
   }

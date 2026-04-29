@@ -30,5 +30,6 @@ export interface Radio {
   bytes_received: number,
   bytes_transmitted: number,
   message: string
+  p0_digital_voice: boolean
   p1_digital_voice: boolean
 }

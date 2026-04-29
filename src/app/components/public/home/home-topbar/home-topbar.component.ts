@@ -32,9 +32,6 @@ export class HomeTopbarComponent {
   }
 
   changeRadioProfile(): void {
-    if (this.radio?.connection)
-      return
-
     const toggleProfile = this.radio?.profile === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(toggleProfile).subscribe({
       next: (res: any) => {
