@@ -10,7 +10,7 @@ export class SwitchComponent implements OnChanges, OnInit {
   @Input() inputName: string = 'Switch';
   @Input() label: string = '';
   @Input() i18n: string = 'Translate';
-  @Input() enabled: string = '';
+  @Input() enabled: boolean = true;
   @Input() value: number = 0;
   @Input() keyA: string = '';
   @Input() keyB: string = '';
@@ -24,6 +24,8 @@ export class SwitchComponent implements OnChanges, OnInit {
   constructor() {}
 
   onSwitch(): void {
+    if (!this.enabled) return;
+
     this.switched.emit();
     if (this.customFunction) {
       try {

@@ -1,7 +1,7 @@
-<label style="display:flex; align-items:center; gap:8px;">
+<label [style.pointer-events]="enabled ? 'none' : 'auto'" [style.opacity]="enabled ? '0.5' : '1'" style="display:flex; align-items:center; gap:8px;">
   <span i18n="@@{{keyA}}">{{keyA}}</span>
   <div class="switch">
-    <input type="checkbox" name="{{inputName}}" [ngModel]="value" (change)="onSwitch()">
+    <input type="checkbox" name="{{inputName}}" [ngModel]="value" (change)="onSwitch()" [attr.disabled]="!enabled || null">
     <span class="slider round one-color"></span>
   </div>
   <span i18n="@@{{keyB}}">{{keyB}}</span>

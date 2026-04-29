@@ -1,11 +1,11 @@
 <div class="home-topbar" [class.dark-mode]="currentTheme === 'dark'">
     <div class="home-radio-info" *ngIf="radio">
         <status-badge [active]="radio.connection" activeLabel="Connected" inactiveLabel="Disconnected"></status-badge>
-        <div class="home-radio-detail" *ngIf="!radio.connection">
+        <div class="home-radio-detail">
             <!-- <span i18n="@@operationmodevalue">{{ radio.profile == 0 ? 'Data' : 'Voice' }}</span> -->
             <div class="flexible m-l-10">
                 <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel"
-                    (switched)="changeRadioProfile()" [enabled]="!radio.connection" [value]="radio.profile"></switch>
+                    (switched)="changeRadioProfile()" [enabled]="radio.connection" [value]="radio.profile"></switch>
 
                 &middot;
                 {{ radio.profile == 0 ? radio.p0_freq : radio.p1_freq }} kHz

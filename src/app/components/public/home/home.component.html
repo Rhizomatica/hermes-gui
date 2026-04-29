@@ -1,16 +1,13 @@
 <div class="container sysadm home">
     <div class="row">
-        <app-home-topbar
-            [radio]="radio"
-            [currentUser]="currentUser"
-            [currentTheme]="currentTheme"
-            (toggleTheme)="toggle()"
-            (logOut)="logOff()">
+        <app-home-topbar [radio]="radio" [currentUser]="currentUser" [currentTheme]="currentTheme"
+            (toggleTheme)="toggle()" (logOut)="logOff()">
         </app-home-topbar>
         <div class="flexible m-t-25">
-            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
+            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq"
+                [style.opacity]="radio.connection ? '0.5' : '1'">
                 <div class="card {{(radio.connection) && ('disabled')}}">
-                     <div class="card-icon">
+                    <div class="card-icon">
                         <img _ngcontent-dpr-c68="" title="Voice" src="assets/svg/waveform.svg">
                     </div>
                     <div class="card-title">
@@ -109,7 +106,8 @@
             <a routerLink="/transmission" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Transmission list" src="assets/svg/transmission-tower-export.svg">
+                        <img _ngcontent-dpr-c68="" title="Transmission list"
+                            src="assets/svg/transmission-tower-export.svg">
                     </div>
                     <div class="card-title" i18n="@@transmissionlista">
                         Transmission list
