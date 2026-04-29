@@ -1,3 +1,5 @@
 <span class="status-badge" [class.active]="active" [class.inactive]="!active">
-    <span class="status-badge-dot"></span><span class="status-badge-label">{{ active ? activeLabel : inactiveLabel }}</span>
+    <span class="status-badge-dot"></span>
+    <span class="status-badge-label" *ngIf="active" i18n="@@{{activeLabel}}">{{ activeLabel }}</span>
+    <span class="status-badge-label" *ngIf="!active" i18n="@@{{inactiveLabel}}">{{ inactiveLabel }}</span>
 </span>

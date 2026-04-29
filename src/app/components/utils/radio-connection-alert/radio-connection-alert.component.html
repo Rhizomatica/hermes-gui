@@ -1,9 +1,5 @@
-
 <div class="alertcard" *ngIf="radio.connection">
-    <status-badge [active]="true" activeLabel="Connected"></status-badge>
-    <b class="m-l-10" i18n="@@transmissioncardalerttitle">
-        Radio connected
-    </b>
+    <status-badge [active]="true" activeLabel="Connected" />
     <div class="row">
         <p i18n="@@transmissioncardalertmesage">
             Data connection ongoing... Voice mode blocked.
@@ -12,10 +8,7 @@
 </div>
 
 <div class="alertcard flexible" *ngIf="!radio.connection">
-    <status-badge [active]="radio.connection" activeLabel="Connected" inactiveLabel="Disconnected"></status-badge>
-    <!-- <b class="m-l-10" i18n="@@radiodisconnected">
-        Radio disconnected
-    </b> -->
+    <status-badge [active]="radio.connection" inactiveLabel="Disconnected" />
     <div class="row">
         <p *ngIf="radio.profile == 0" i18n="@@notransmissioncardalertmesage">
             No transmission occurring. Voice mode available.

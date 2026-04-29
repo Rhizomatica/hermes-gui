@@ -7,14 +7,8 @@
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
     <div class="row">
-        <div class="row m-t-25" *ngIf="radio.connection">
-            <div class="alertcard flexible">
-                <status-badge [active]="true"></status-badge>
-                <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
-                    Radio connected - Data/Voice connection ongoing...
-                </b>
-            </div>
-        </div>
+        <app-radio-connection-alert />
+
         <div class="operator-panel m-t-25">
             <div class="data">
                 <div class="data-title" i18n="@@connection">

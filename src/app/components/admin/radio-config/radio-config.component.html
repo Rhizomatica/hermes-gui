@@ -4,9 +4,8 @@
   <hint [showHint]="false" [hint]="'radioconfig'"></hint>
 </div>
 <div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
-<app-radio-connection-alert></app-radio-connection-alert>
+<app-radio-connection-alert />
 <div id="radioconf">
-
   <div>
     <div class="flexible m-t-15 m-b-15">
       <div class="card">
@@ -114,7 +113,8 @@
           <div class="rc-setting-control">
             <input type="number" [min]="freqmin" [max]="freqmax" name="frek" [(ngModel)]="p0_frek" value={{p0_frek}}
               step="1" (focus)="p0_frekFocused = true" (blur)="p0_frekFocused = false">
-            <button type="button" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">change</button>
+            <button type="button" (click)="confirmChange()" [disabled]="ffreq.invalid"
+              i18n="@@changefreqr0">change</button>
           </div>
         </div>
         <div class="overall alert" *ngIf="confirmSet">
@@ -259,8 +259,10 @@
               This may cause the system to stop and damage your radio.
             </span>
             <br />
-            <button type="button" class="m-t-10" (click)="confirmChangeThreshold()" i18n="@@cancelrchangeprotection">cancel</button>
-            <button type="button" class="m-l-10" (click)="changeRefThreshold(frefthreshold)" i18n="@@changeprotection">change</button>
+            <button type="button" class="m-t-10" (click)="confirmChangeThreshold()"
+              i18n="@@cancelrchangeprotection">cancel</button>
+            <button type="button" class="m-l-10" (click)="changeRefThreshold(frefthreshold)"
+              i18n="@@changeprotection">change</button>
           </div>
         </div>
       </form>
@@ -279,7 +281,8 @@
           <div class="rc-setting-control rc-setting-control--full">
             <div class="slidercontainer">
               <input type="range" min="0" max="100" step="2" [value]="radio.dataPowerLevel" class="slider-input"
-                [(ngModel)]="radio.dataPowerLevel" name="dataPowerLevel" (change)="updatePowerLevel(dataFormPowerLevel, 0)">
+                [(ngModel)]="radio.dataPowerLevel" name="dataPowerLevel"
+                (change)="updatePowerLevel(dataFormPowerLevel, 0)">
             </div>
           </div>
         </div>
@@ -328,7 +331,8 @@
             </p>
           </div>
           <div class="rc-setting-control">
-            <button type="button" class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">Erase SD Card</button>
+            <button type="button" class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">Erase SD
+              Card</button>
           </div>
         </div>
       </form>
