@@ -55,6 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
   emergencyEmail = GlobalConstants.emergencyEmail
   routerObserver: Subscription | null = null
   localeId = GlobalConstants.localeId
+  private radioSubscription!: Subscription
 
   constructor(
     private router: Router,
@@ -233,11 +234,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.utils.isMobile()
     this.checkLanguage()
     this.importArabicStyles()
-    this.radio = this.sharedService.radioObj.value
 
-    this.routerObserver = this.router.events.subscribe((event) => {
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio
+    });
+
+    this.routerObserver = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-
         this.checkIsMenuPage()
         this.checkIsLoginPage()
         this.updateBreadcrumb()
@@ -247,6 +250,10 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     });
+
+    if (!this.websocketService.messages) {
+      this.websocketService.startService()
+    }
   }
 
   importArabicStyles() {
@@ -259,8 +266,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.routerObserver) {
-      this.routerObserver.unsubscribe();
-    }
+    this.routerObserver?.unsubscribe();
+    this.radioSubscription?.unsubscribe();
   }
 }

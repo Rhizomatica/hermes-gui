@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RadioService } from '../../../_services/radio.service';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../../_services/authentication.service';
@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-radio-config',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./radio-config.component.less']
 })
 
-export class RadioConfigComponent implements OnInit {
+export class RadioConfigComponent implements OnInit, OnDestroy {
   public radio: any = []
   error!: Error
   confirmSet = false
@@ -57,6 +58,9 @@ export class RadioConfigComponent implements OnInit {
   formatedTimeout: number = 0
   isArabic: boolean = false
   toggleDigital: number = 0
+  p0_frekFocused: boolean = false
+  p1_frekFocused: boolean = false
+  private radioSubscription!: Subscription
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -217,7 +221,8 @@ export class RadioConfigComponent implements OnInit {
   }
 
   confirmChangePTT() {
-    if (this.radio.connection) {
+  if (this.radio.tx) {
+      this.changePtt()
       return
     }
 
@@ -470,19 +475,25 @@ export class RadioConfigComponent implements OnInit {
     this.getRadioPowerLevel()
     this.isAdmin = this.currentUser?.admin
 
-    this.sharedService.radioObj.subscribe(radio => {
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
       this.radio = radio;
       this.voiceModeSwitch = radio.p1_mode === 'LSB';
       this.modeSwitch = radio.p0_mode === 'LSB';
-      if (radio.p0_freq && this.p0_frek == null) {
+      // Only update the frequency inputs when the user is not actively
+      // editing them, so WS updates don't overwrite mid-typing.
+      if (radio.p0_freq && !this.p0_frekFocused) {
         this.p0_frek = this.utils.parseFormattedFrequency(radio.p0_freq);
       }
-      if (radio.p1_freq && this.p1_frek == null) {
+      if (radio.p1_freq && !this.p1_frekFocused) {
         this.p1_frek = this.utils.parseFormattedFrequency(radio.p1_freq);
       }
     });
 
     this.loading = false
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe()
   }
 }
 

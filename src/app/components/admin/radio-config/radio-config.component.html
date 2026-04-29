@@ -113,8 +113,8 @@
           </div>
           <div class="rc-setting-control">
             <input type="number" [min]="freqmin" [max]="freqmax" name="frek" [(ngModel)]="p0_frek" value={{p0_frek}}
-              step="1">
-            <button (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">change</button>
+              step="1" (focus)="p0_frekFocused = true" (blur)="p0_frekFocused = false">
+            <button type="button" (click)="confirmChange()" [disabled]="ffreq.invalid" i18n="@@changefreqr0">change</button>
           </div>
         </div>
         <div class="overall alert" *ngIf="confirmSet">
@@ -124,8 +124,8 @@
               This may cause the system to stop.
             </span>
             <br />
-            <button class="m-t-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-            <button class="m-l-10" (click)="changeFrequency(ffreq, 0)" i18n="@@changer">change</button>
+            <button type="button" class="m-t-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
+            <button type="button" class="m-l-10" (click)="changeFrequency(ffreq, 0)" i18n="@@changer">change</button>
           </div>
         </div>
       </form>
@@ -140,8 +140,8 @@
           </div>
           <div class="rc-setting-control">
             <input type="number" [min]="freqmin" [max]="freqmax" name="frek" [(ngModel)]="p1_frek" value={{p1_frek}}
-              step="1">
-            <button (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
+              step="1" (focus)="p1_frekFocused = true" (blur)="p1_frekFocused = false">
+            <button type="button" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
               i18n="@@changevoicefreqr0">change</button>
           </div>
         </div>
@@ -215,8 +215,8 @@
               This can cause irreparable problems.
             </span>
             <div class="row m-t-10">
-              <button (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
-              <button (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send PTT</button>
+              <button type="button" (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
+              <button type="button" (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send PTT</button>
             </div>
           </div>
         </div>
@@ -230,8 +230,8 @@
             <hint [showHint]="false" [hint]="'resetprotection'"></hint>
           </div>
           <div class="rc-setting-control">
-            <button disabled *ngIf="!radio.protection">OFF</button>
-            <button (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="radio.protection">
+            <button type="button" disabled *ngIf="!radio.protection">OFF</button>
+            <button type="button" (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="radio.protection">
               reset protection
             </button>
           </div>
@@ -248,7 +248,7 @@
           </div>
           <div class="rc-setting-control">
             <input type="number" [max]="1023" name="refthreshold" [(ngModel)]="refthreshold" value={{refthreshold}}>
-            <button (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
+            <button type="button" (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
               i18n="@@changetre1">change</button>
           </div>
         </div>
@@ -259,8 +259,8 @@
               This may cause the system to stop and damage your radio.
             </span>
             <br />
-            <button class="m-t-10" (click)="confirmChangeThreshold()" i18n="@@cancelrchangeprotection">cancel</button>
-            <button class="m-l-10" (click)="changeRefThreshold(frefthreshold)" i18n="@@changeprotection">change</button>
+            <button type="button" class="m-t-10" (click)="confirmChangeThreshold()" i18n="@@cancelrchangeprotection">cancel</button>
+            <button type="button" class="m-l-10" (click)="changeRefThreshold(frefthreshold)" i18n="@@changeprotection">change</button>
           </div>
         </div>
       </form>
@@ -273,13 +273,13 @@
           <div class="rc-setting-label">
             <span i18n="@@datapowerlevel" class="radio-config-label">Data Power Level</span>
             <hint [showHint]="false" [hint]="'powerlevel'"></hint>
-            <p>{{dataPowerLevel}}</p>
+            <p>{{radio.dataPowerLevel}}</p>
 
           </div>
           <div class="rc-setting-control rc-setting-control--full">
             <div class="slidercontainer">
-              <input type="range" min="0" max="100" step="2" [value]="dataPowerLevel" class="slider-input"
-                [(ngModel)]="dataPowerLevel" name="dataPowerLevel" (change)="updatePowerLevel(dataFormPowerLevel, 0)">
+              <input type="range" min="0" max="100" step="2" [value]="radio.dataPowerLevel" class="slider-input"
+                [(ngModel)]="radio.dataPowerLevel" name="dataPowerLevel" (change)="updatePowerLevel(dataFormPowerLevel, 0)">
             </div>
           </div>
         </div>

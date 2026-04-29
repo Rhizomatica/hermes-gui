@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { User } from 'src/app/interfaces/user';
 import { SharedService } from 'src/app/_services/shared.service';
@@ -8,6 +8,7 @@ import { UUCPService } from 'src/app/_services/uucp.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { RadioService } from 'src/app/_services/radio.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { RadioService } from 'src/app/_services/radio.service';
   styleUrls: ['./operator.component.less']
 })
 
-export class OperatorComponent implements OnInit {
+export class OperatorComponent implements OnInit, OnDestroy {
 
   currentUser: User = {} as User
   admin: boolean = false
@@ -37,6 +38,7 @@ export class OperatorComponent implements OnInit {
   hasGps: boolean = GlobalConstants.hasGPS
   diskUsage: string = "0"
   showGraph: boolean = false
+  private radioSubscription!: Subscription
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -172,10 +174,16 @@ export class OperatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.radio = this.sharedService.radioObj.value
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
     this.getCurrentCoordinates()
     this.getSchedules()
     this.getGPSStatus()
     this.getSystemStatus() //Disk free space
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe()
   }
 }

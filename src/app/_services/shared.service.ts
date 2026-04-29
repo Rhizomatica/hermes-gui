@@ -90,35 +90,10 @@ export class SharedService {
   }
 
   setSharedObj() {
-    this.radioObj.value.connection = this.storedRadioObj.connection
-    this.radioObj.value.led = this.storedRadioObj.led
-    this.radioObj.value.p0_freq = this.storedRadioObj.p0_freq
-    this.radioObj.value.p1_freq = this.storedRadioObj.p1_freq
-    this.radioObj.value.p0_mode = this.storedRadioObj.p0_mode
-    this.radioObj.value.p1_mode = this.storedRadioObj.p1_mode
-    this.radioObj.value.tx = this.storedRadioObj.tx
-    this.radioObj.value.rx = this.storedRadioObj.rx
-    this.radioObj.value.fwd_watts = this.storedRadioObj.fwd_watts
-    this.radioObj.value.swr = this.storedRadioObj.swr
-    this.radioObj.value.protection = this.storedRadioObj.protection
-    this.radioObj.value.p1_volume = this.storedRadioObj.p1_volume
-    this.radioObj.value.profile = this.storedRadioObj.profile
-    this.radioObj.value.ptt = this.storedRadioObj.ptt
-    this.radioObj.value.p1_freq_splited = this.storedRadioObj.p1_freq_splited
-    this.radioObj.value.timeout = this.storedRadioObj.timeout
-    this.radioObj.value.datetime = this.storedRadioObj.datetime
-    this.radioObj.value.snr = this.storedRadioObj.snr
-    this.radioObj.value.snrHistory = this.storedRadioObj.snrHistory
-    this.radioObj.value.snrLength = this.storedRadioObj.snrLength
-    this.radioObj.value.bitrate = this.storedRadioObj.bitrate
-    this.radioObj.value.bitrateHistory = this.storedRadioObj.bitrateHistory
-    this.radioObj.value.bitrateLength = this.storedRadioObj.bitrateLength
-    this.radioObj.value.bitrateLength = this.storedRadioObj.bitrateLength
-    this.radioObj.value.bytes_received = this.storedRadioObj.bytes_received
-    this.radioObj.value.bytes_transmitted = this.storedRadioObj.bytes_transmitted
-    this.radioObj.value.message = this.storedRadioObj.message
-    this.radioObj.value.p1_digital_voice = this.storedRadioObj.p1_digital_voice
-    this.radioObj.next(this.radioObj.value)
+    // Emit a new object reference so Angular change detection and all
+    // subscribers reliably receive the update (mutating .value in-place
+    // and calling next() with the same reference can silently stall).
+    this.radioObj.next({ ...this.storedRadioObj })
   }
 
   mountRadioObj(newObj: Radio) {
