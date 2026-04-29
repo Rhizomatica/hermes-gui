@@ -19,7 +19,7 @@
         <div class="user-menu">
             <div class="user-menu-trigger" (click)="toggleMenu($event)">
                 <span *ngIf="currentUser">{{ currentUser.name }}</span>
-                <span *ngIf="!currentUser" i18n="@@guestlabel">Guest</span>
+                <span *ngIf="!currentUser || !currentUser.name" i18n="@@guestlabel">Guest</span>
                 <span class="user-menu-caret">&#9662;</span>
             </div>
             <div class="user-menu-dropdown" *ngIf="menuOpen">

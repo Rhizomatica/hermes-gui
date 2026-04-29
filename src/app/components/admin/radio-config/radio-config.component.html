@@ -310,7 +310,7 @@
             <span i18n="@@labelgpscalibration" class="radio-config-label">GPS Calibration</span>
           </div>
           <div class="rc-setting-control">
-            <button type="submit" name="gps" (click)="gpsStartCalibration()" i18n="@@startgpscalibration">
+            <button type="button" name="gps" (click)="gpsStartCalibration()" i18n="@@startgpscalibration">
               Start
             </button>
           </div>
@@ -328,7 +328,7 @@
             </p>
           </div>
           <div class="rc-setting-control">
-            <button class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">Erase SD Card</button>
+            <button type="button" class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">Erase SD Card</button>
           </div>
         </div>
       </form>
@@ -350,7 +350,7 @@
             <hint [showHint]="false" [hint]="'reboot'"></hint>
           </div>
           <div class="rc-setting-control">
-            <button (click)="confirmReboot()" i18n="@@reboot">Reboot</button>
+            <button type="button" (click)="confirmReboot()" i18n="@@reboot">Reboot</button>
           </div>
         </div>
       </form>
@@ -361,14 +361,14 @@
             This will stop messages transmission and reception.
             <br />
           </span>
-          <button (click)="cancelReboot()" class="m-t-10" i18n="@@cancels2">cancel</button>
-          <button class="m-l-10" (click)="reboot()" i18n="@@reboot1">Reboot</button>
+          <button type="button" (click)="cancelReboot()" class="m-t-10" i18n="@@cancels2">cancel</button>
+          <button type="button" class="m-l-10" (click)="reboot()" i18n="@@reboot1">Reboot</button>
         </div>
       </div>
 
       <div class="overall alert" [hidden]="rebootingDownNow==false">
         <span i18n="@@rebootingsystemlabel">Rebooting System</span>
-        <button class="m-t-10" (click)="reload()" i18n="@@closeerrorbuttonrebooting">
+        <button type="button" class="m-t-10" (click)="reload()" i18n="@@closeerrorbuttonrebooting">
           close
         </button>
       </div>
@@ -381,10 +381,10 @@
           Are you sure you want to reset the radio to the default configuration?
         </span>
         <div class="row m-t-10">
-          <button i18n="@@cancelr" (click)="confirmReset()">
+          <button type="button" i18n="@@cancelr" (click)="confirmReset()">
             cancel
           </button>
-          <button class="m-l-10" (click)="resetRadio()" *ngIf="isAdmin" i18n="@@reset1">
+          <button type="button" class="m-l-10" (click)="resetRadio()" *ngIf="isAdmin" i18n="@@reset1">
             reset
           </button>
         </div>
@@ -399,7 +399,7 @@
           {{error}}
         </div>
         <div class="row m-t-10">
-          <button (click)="closeError()" i18n="@@closeerrorbutton">
+          <button type="button" (click)="closeError()" i18n="@@closeerrorbutton">
             close
           </button>
         </div>
@@ -408,7 +408,7 @@
     <div class="overall alert" *ngIf="gpsMessage">
       <div class="cv">
         <span i18n="@@gpscalibrationsuccess">GPS Calibration successful</span>
-        <button class="m-t-10" (click)="closeGPSMessage()" i18n="@@closeerrorbuttongps">
+        <button type="button" class="m-t-10" (click)="closeGPSMessage()" i18n="@@closeerrorbuttongps">
           close
         </button>
       </div>
@@ -422,8 +422,8 @@
           It is going to erase all data from HERMES system.
         </span>
         <div class="row m-t-10">
-          <button i18n="@@cancel" (click)="eraseSDCardConfirmation()">cancel</button>
-          <button class="m-l-10 danger" (click)="callEraseSDCard()" i18n="@@confirmerasesdcardbutton">
+          <button type="button" i18n="@@cancel" (click)="eraseSDCardConfirmation()">cancel</button>
+          <button type="button" class="m-l-10 danger" (click)="callEraseSDCard()" i18n="@@confirmerasesdcardbutton">
             confirm erase SD card
           </button>
         </div>
