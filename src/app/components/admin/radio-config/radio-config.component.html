@@ -61,7 +61,7 @@
             </p>
           </div>
           <div class="rc-setting-control">
-            <ng-container *ngIf="!radio.connection">
+            <ng-container>
               <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel"
                 (switched)="changeProfile()" [enabled]="radio.connection ? false : true" [value]="radio.profile">
               </switch>

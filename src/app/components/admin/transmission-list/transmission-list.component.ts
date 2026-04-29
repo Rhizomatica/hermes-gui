@@ -7,6 +7,7 @@ import { UUCPService } from '../../../_services/uucp.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { Station } from 'src/app/interfaces/station';
 import { StationService } from 'src/app/_services/station.service';
+import { RadioService } from 'src/app/_services/radio.service';
 
 @Component({
   selector: 'app-transmission-list',
@@ -44,6 +45,7 @@ export class TransmissionListComponent implements OnInit {
     private uucpService: UUCPService,
     private authenticationService: AuthenticationService,
     private stationService: StationService,
+    private radioService: RadioService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
   }
@@ -70,7 +72,7 @@ export class TransmissionListComponent implements OnInit {
 
   cancelMail(host: string, id: number): void {
     this.loading = true
-    const language = 'aa' 
+    const language = 'aa'
     this.uucpService.cancelMail(host, id, language).subscribe({
       next: (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id.toString())
@@ -123,7 +125,9 @@ export class TransmissionListComponent implements OnInit {
     }
   }
 
-  transmitNow(): void {
+  async transmitNow(): Promise<void> {
+    await this.setDataProfile()
+
     this.confirmTransmit = false
     this.uucpService.callSystem(this.jobToForce.uuidhost).subscribe({
       next: (res: any) => {
@@ -135,6 +139,17 @@ export class TransmissionListComponent implements OnInit {
         this.errorAlert = true
         this.confirmTransmit = false
         this.loading = false
+      }
+    });
+  }
+
+  async setDataProfile(): Promise<void> {
+    this.radioService.changeOperateModeProfile(0).subscribe({
+      next: (res: any) => {
+      },
+      error: (err) => {
+        this.error = err;
+        this.errorAlert = true;
       }
     });
   }

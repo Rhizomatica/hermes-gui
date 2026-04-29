@@ -221,7 +221,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   }
 
   confirmChangePTT() {
-  if (this.radio.tx) {
+    if (this.radio.tx) {
       this.changePtt()
       return
     }
@@ -344,13 +344,17 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     if (this.radio.connection)
       return
 
+    this.loading = true
+
     this.toggleProfile = this.radio.profile === 0 ? 1 : 0;
     this.radioService.changeOperateModeProfile(this.toggleProfile).subscribe({
       next: (res: any) => {
+        this.loading = false
       },
       error: (err) => {
         this.error = err;
         this.errorAlert = true;
+        this.loading = false
       }
     });
   }
