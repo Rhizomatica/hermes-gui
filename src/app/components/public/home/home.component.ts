@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { User } from 'src/app/interfaces/user';
 import { UtilsService } from 'src/app/_services/utils.service';
@@ -16,7 +16,7 @@ import { ThemeService } from 'src/app/_services/theme.service';
   styleUrls: ['./home.component.less']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   [x: string]: any;
 
 
@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
   showAlert: boolean = true
   alertMessage: string = 'Radio data transmiting now... please wait for use the voice mode.'
   hasGPS: boolean = GlobalConstants.hasGPS
+  private radioSubscription!: Subscription
 
   logOff() {
     this.authenticationService.logout();
@@ -89,7 +90,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const stored = localStorage.getItem('dark-mode');
     this.currentTheme = stored === '1' ? 'dark' : 'light';
-    
-    this.radio = this.sharedService.radioObj.value
+
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe();
   }
 }
