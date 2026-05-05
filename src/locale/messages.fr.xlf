@@ -709,7 +709,7 @@ SAP<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="confirmthreshold" datatype="html">
         <source>Are you sure you want to change radio protection threshold? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/> This may cause the system to stop and damage your radio. </source>
-        <target state="new">Etes vous certain de vouloir changer la limite de protection de la radio 
+        <target state="new">Etes vous certain de vouloir changer la limite de protection de la radio
 <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br />"/>
  ? Cela est susceptible de causer un arrêt du système et d'endommager votre radio </target>
         <context-group purpose="location">
@@ -1989,7 +1989,7 @@ SAP<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="areadyonmsg" datatype="html">
         <source> If you are seeing a "server offline" message, yet your server should, or seems to be on, it's possible that your system is corrupted. Please contact the support or the people you are usually in touch with. The support email is <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>. </source>
-        <target state="new"> 
+        <target state="new">
         Si vous voyez un message “serveur déconnecté” alors que votre serveur devrait être allumé, ou semble allumé, il est possible que votre système ne fonctionne plus. Merci de contacter Invisible Children ou les personnes avec qui vous êtes d'abitude en contact en ce qui concerne le système d'aleete précoce. L'email de support est <x id="INTERPOLATION" equiv-text="{{emergencyEmail}}"/>
 . </target>
         <context-group purpose="location">
@@ -2683,7 +2683,7 @@ Configurer deltachat <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
       </trans-unit>
       <trans-unit id="operationmodelabel" datatype="html">
         <source>Operation mode</source>
-        <target state="new">Operation mode</target>
+        <target state="new">Mode de fonctionnement</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/public/operator/operator.component.html</context>
           <context context-type="linenumber">111</context>
@@ -3675,14 +3675,14 @@ Mode<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/>
       <trans-unit id="hinttroubleshooting" datatype="html">
         <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Troubleshooting<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> To know what to do in case of an error, you first need to know which component is causing the problem. To find out if the problem is with the device connecting to the network (cell phone, tablet, computer), the easiest way is to test access from another device, or from another browser on the same device. If the problem is only with you, it is possible that the problem is in the network settings of your device. Check below the necessary settings to access the HERMES network: If this does not solve your problem, try cleaning your browser's history and logging in again, or change browsers. If none of this resolves the problem, it is possible that your device is incompatible with the network. <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;bitx == 'U'&quot;>"/> In case of problem in the Antenna, a LED will light up on the server box, in this case, check the correct <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/> position of the power supply wires and check the position and integrity of the Antenna, coaxial cable, and the transmitter. If the messages in the transmission list are not being transmit, check if the radio settings have been changed, in which case it could be that the other stations are offline or on a different frequency. To remedy you could restore the factory default settings. If the problem is with the data radio, there will be an error message when the administrator goes into Administration -> radio configuration. If you receive a message saying server offline, your equipment is likely turned off. If the message persists, it could be that some part of the system is corrupted. In this case, you may need to take your equipment to a place with internet for online maintenance. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Note: If the SWR is too high, transmit a test signal. Go to Radio configuration, turn ON the “PTT” button. Check the “Power” level (should be between 15W and 30W). Check the SWR (should be less than 2.0). Check the “Protection” (should be OFF). After the readings, click to turn OFF the “PTT” button. If the protection stays “OFF” after the transmission test, and the Power and SWR readings are in the correct ranges, the HERMES system is ready for operation. If either Power and SWR are not in the correct ranges or if the protection is on, check the equipment, including: the cables (condition and proper connections), the radio (cable connections, voltage between 12 - 14v, temperature of radio, smell of burning), the antenna condition. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/></source>
         <target state="new"><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1 class=&quot;cv-title&quot;>"/>Dépannage<x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1>"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/> Pour accéder au système, trois composants principaux sont nécessaires : un smartphone ou un ordinateur doté de la fonctionnalité Wi-Fi, un appareil HERMES et une antenne.
- 
+
          Pour savoir quoi faire en cas d'erreur, vous devez d'abord savoir quel composant est à l'origine du problème.
- 
+
          Pour savoir si le problème vient de l'appareil qui se connecte au réseau (téléphone portable, tablette, ordinateur), le plus simple est de tester l'accès depuis un autre appareil, ou depuis un autre navigateur sur le même appareil. Si le problème vient uniquement de vous, il est possible que le problème provienne des paramètres réseau de votre appareil. Vérifiez ci-dessous les paramètres nécessaires pour accéder au réseau HERMES :
- 
+
          Si cela ne résout pas votre problème, essayez de nettoyer l'historique de votre navigateur et de vous reconnecter, ou changez de navigateur. Si rien de tout cela ne résout le problème, il est possible que votre appareil soit incompatible avec le réseau.
- 
-  
+
+
  <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;bitx == 'U'&quot;>"/> En cas de problème au niveau de l'Antenne, une LED s'allumera sur le boîtier serveur, dans ce cas, vérifiez la bonne position des fils d'alimentation et vérifiez la <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>  position et l'intégrité de l'Antenne, du câble coaxial et de l'émetteur. Si les messages de la liste de transmission ne sont pas transmis, vérifiez si les paramètres radio ont été modifiés, auquel cas il se peut que les autres stations soient hors ligne ou sur une fréquence différente. Pour y remédier, vous pouvez restaurer les paramètres d'usine par défaut. Si le problème vient de la radio numérique, il y aura un message d'erreur lorsque l'administrateur entrera dans Administration -> configuration radio. Si vous recevez un message indiquant que le serveur est hors ligne, votre équipement est probablement éteint. Si le message persiste, il se peut qu'une partie du système soit corrompue. Dans ce cas, vous devrez peut-être apporter votre équipement dans un endroit doté d'Internet pour une maintenance en ligne. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/><x id="START_PARAGRAPH_1" equiv-text="&lt;p class=&quot;m-t-10&quot;>"/> *Remarque : si le SWR est trop élevé, transmettez un signal de test.
          Allez dans Configuration radio, allumez le bouton « PTT ». Vérifiez le niveau « Puissance » (doit être compris entre 15W et 30W).
          Vérifiez le SWR (doit être inférieur à 2,0). Vérifiez la « Protection » (doit être désactivée). Après les lectures, cliquez pour désactiver le bouton « PTT ».

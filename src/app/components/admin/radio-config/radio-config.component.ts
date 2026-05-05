@@ -26,7 +26,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   radioError = false
   testtone = '0'
   toneOn = false
-  currentUser!: User
+  currentUser!: User | null
   isAdmin = false
   loading = true
   modeSwitch!: boolean
@@ -60,6 +60,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   toggleDigital: number = 0
   p0_frekFocused: boolean = false
   p1_frekFocused: boolean = false
+  private pendingP0Frek: number = 0
   private radioSubscription!: Subscription
 
   constructor(
@@ -147,7 +148,8 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   changeFrequency(f: NgForm, radioProfile: number) {
     this.loading = true
-    const realfreq = f.value.frek * 1000;
+    const frek = radioProfile === 0 ? this.pendingP0Frek : this.p1_frek;
+    const realfreq = frek * 1000;
     this.confirmSet = false
 
     this.radioService.setRadioFreq(realfreq, radioProfile).subscribe({
@@ -191,6 +193,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
   }
 
   confirmChange() {
+    if (!this.confirmSet) {
+      this.pendingP0Frek = this.p0_frek
+    }
     this.confirmSet = !this.confirmSet
   }
 
@@ -202,11 +207,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.confirmChangeProtection = false
     this.loading = true
 
-    if (f.value.refthreshold) {
-      f.value.refthreshold = f.value.refthreshold * 10
-    }
+    const thresholdValue = this.refthreshold ? this.refthreshold * 10 : 0;
 
-    this.radioService.setRadioRefThreshold(f.value.refthreshold, this.dataModeProfileID).subscribe({
+    this.radioService.setRadioRefThreshold(thresholdValue, this.dataModeProfileID).subscribe({
       next: (res: any) => {
         this.radio.refthreshold = res / 10;
         this.refthreshold = res / 10
@@ -438,10 +441,9 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
   updatePowerLevel(f: NgForm, profile: number) {
     this.loading = true
-    f.value.profile = profile;
-    f.value.powerLevel = profile === 0 ? this.dataPowerLevel : this.voicePowerLevel;
+    const powerLevel = profile === 0 ? this.dataPowerLevel : this.voicePowerLevel;
 
-    this.radioService.setRadioPowerLevel(f.value).subscribe({
+    this.radioService.setRadioPowerLevel({ profile, powerLevel }).subscribe({
       next: (res: any) => {
         this.loading = false
       },
