@@ -20,23 +20,23 @@ import { UtilsService } from 'src/app/_services/utils.service';
 
 export class MessagecomposeComponent implements OnInit {
 
-  public error: Error;
+  public error!: Error;
   public fileError: any = '';
   public res: any;
-  public stations: Station[];
+  public stations!: Station[];
   public fileIsProcessing = false;
   public fileIsProcessed = false; // TODO - not using
   public isEncrypted = false;
-  public message: Message;
+  public message!: Message;
   public passMatch = false;
-  public passwd;
-  public repasswd;
+  public passwd: string | null = null;
+  public repasswd: string | null = null;
   public serverConfig: any;
   public allowfile: any;
-  public allowhmp;
+  public allowhmp: string = 'root';
   public allowCompose: boolean = false;
   public allowUpload: boolean = false;
-  public currentUser: User;
+  public currentUser!: User;
   public isAdmin = false;
   public passunMatch = false;
   public passMin = false;
@@ -50,21 +50,21 @@ export class MessagecomposeComponent implements OnInit {
   public maxSize: any = 20480; //20.48MB
   public maxSizeText: string = '20.48 kB'
   public isGateway: boolean = GlobalConstants.gateway
-  public selectedStations = [];
+  public selectedStations: any[] = [];
   public loading = true
   public mobile: any
   public webCamDesktop = false
   public WIDTH = 300;
   public HEIGHT = 225;
   public audioRecorderOverall = false
-  public frequencies: Frequency[]
+  public frequencies!: Frequency[]
   fileSizeError: boolean = false
 
   @ViewChild("canvas")
-  public canvas: ElementRef;
+  public canvas!: ElementRef;
 
   @ViewChild("video")
-  public video: ElementRef;
+  public video!: ElementRef;
 
   constructor(
     private messageService: MessageService,
@@ -82,8 +82,8 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   getSysConfig(): void {
-    this.apiService.getSysConfig().subscribe(
-      (res: any) => {
+    this.apiService.getSysConfig().subscribe({
+      next: (res: any) => {
         this.serverConfig = res;
         this.allowfile = res.allowfile;
         this.allowhmp = res.allowhmp;
@@ -94,12 +94,12 @@ export class MessagecomposeComponent implements OnInit {
 
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.allowUpload = false;
       }
-    );
+    });
   }
 
   verifyWriteMessagePermission() {
@@ -150,7 +150,7 @@ export class MessagecomposeComponent implements OnInit {
         if (stream) {
           this.video.nativeElement.srcObject = stream;
           this.video.nativeElement.play();
-          this.error = null;
+          this.error = {} as Error;
           var base_image = new Image();
           base_image.src = "../assets/svg/smile-regular.svg";
 
@@ -163,7 +163,7 @@ export class MessagecomposeComponent implements OnInit {
         //   this.error = "You have no output video device";
         // }
       } catch (e) {
-        this.error = e;
+        this.error = e as Error;
       }
     }
   }
@@ -172,13 +172,13 @@ export class MessagecomposeComponent implements OnInit {
     return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
   }
 
-  capture(e) {
+  capture(e: Event) {
     this.drawImageToCanvas(this.video.nativeElement)
     this.dataURItoBlob(this.canvas.nativeElement.toDataURL("image/png"));
     this.fileSelected = true
   }
 
-  dataURItoBlob(dataURI) {
+  dataURItoBlob(dataURI: string) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
     if (dataURI.split(',')[0].indexOf('base64') >= 0)
@@ -204,37 +204,36 @@ export class MessagecomposeComponent implements OnInit {
       .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
   }
 
-  audFileSelected(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const audSrc = URL.createObjectURL(event.target.files[0]);
+  audFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const audSrc = URL.createObjectURL(input.files[0]);
       // this.figAudio.nativeElement.src = this.audSrc;
     }
   }
 
-  onFileSelected(event) {
-    let file: File = event.target.files[0];
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file: File = input.files![0];
     if (file) {
-      this.file = file;
+      this.typeSizeRule(file.type);
 
-      this.typeSizeRule(file.type)
-
-      if (file.size < this.maxSize) {
+      if (file.size <= this.maxSize) {
+        this.file = file;
         this.fileName = file.name;
         this.fileSelected = true;
-        this.fileSizeError = false
+        this.fileSizeError = false;
         return file;
       }
 
-      this.fileName = ' - ';
-      this.fileSizeError = true
       this.file = null;
-      file = null;
-      return file;
-
+      this.fileName = ' - ';
+      this.fileSizeError = true;
+      return null;
     }
   }
 
-  typeSizeRule(fileType) {
+  typeSizeRule(fileType: string) {
     fileType = this.utils.getFileType(fileType)
 
     //Common files 20.48 KB, image or audio  files 31.45 MB (due to compression)
@@ -275,6 +274,7 @@ export class MessagecomposeComponent implements OnInit {
     }
     // File exists?
     if (this.file) {
+      let fileUploadFailed = false;
       await this.messageService.postFile(this.file, f.value.pass).then(
         (value: any) => {
           f.value.file = value['filename']; // gona change  to this default instead of image
@@ -283,20 +283,22 @@ export class MessagecomposeComponent implements OnInit {
           const filesize = value['size']; // can be use later on frontend to show how compressed the file is
         },
         (err) => {
+          fileUploadFailed = true;
           this.errormsg = err;
           this.errorAlert = true;
           this.loading = false;
         }
       );
+      if (fileUploadFailed) return;
     }
-      const res = this.sendMessageContinue(f);
+    const res = this.sendMessageContinue(f);
   }
 
   quackFile() {
 
-    if(!this.fileName)
+    if (!this.fileName)
       return
-    
+
     this.file = {
       'name': this.fileName,
       'lastModified': new Date()
@@ -308,8 +310,8 @@ export class MessagecomposeComponent implements OnInit {
   }
 
   sendMessageContinue(f: NgForm) {
-    this.messageService.sendMessage(f.value, this.nodename).subscribe(
-      (res: any) => {
+    this.messageService.sendMessage(f.value, this.nodename).subscribe({
+      next: (res: any) => {
         this.res = res;
         this.fileIsProcessing = true;
         this.file = [];
@@ -317,12 +319,12 @@ export class MessagecomposeComponent implements OnInit {
         this.loading = false;
         this.router.navigate(['/sent']);
       },
-      (err) => {
+      error: (err) => {
         this.errormsg = err;
         this.errorAlert = true;
         this.loading = false;
       }
-    );
+    });
   }
 
   closeError() {
@@ -341,7 +343,7 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-  checkpwd(passwd, repasswd) {
+  checkpwd(passwd: string, repasswd: string) {
     if (passwd) {
       if (passwd === repasswd) {
         this.passMatch = true;
@@ -358,12 +360,12 @@ export class MessagecomposeComponent implements OnInit {
     }
   }
 
-  fileUpload(files): void {
+  fileUpload(files: FileList): void {
     // this.messageService.postFile($files[0]);
   }
 
   selectAllForDropdownItems(items: any[]) {
-    let allSelect = items => {
+    let allSelect = (items: any[]) => {
       items.forEach(element => {
         element['selectedAllGroup'] = 'selectedAllGroup';
       });
@@ -380,7 +382,7 @@ export class MessagecomposeComponent implements OnInit {
     this.audioRecorderOverall = false
   }
 
-  addFileItemEmitted(event) {
+  addFileItemEmitted(event: File) {
     this.file = event
     if (this.file) {
       this.fileSelected = true;
@@ -391,7 +393,7 @@ export class MessagecomposeComponent implements OnInit {
     this.errorCallback
   }
 
-  errorCallback(error) {
+  errorCallback(error: Error) {
     this.audioRecorderOverall = false
     this.errorAlert = true
     this.errormsg = 'Can not play audio in your browser';
@@ -399,19 +401,20 @@ export class MessagecomposeComponent implements OnInit {
 
   public getFrequencies(): void {
     this.loading = true
-    this.frequencyService.getFrequencies().subscribe(
-      (data: any) => {
+    this.frequencyService.getFrequencies().subscribe({
+      next: (data: any) => {
         this.frequencies = data;
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false;
       }
-    );
+    });
   }
 
-  getNickName(stations): void {
+  getNickName(stations: Station[]): void {
     stations.forEach(station => {
       this.frequencies.forEach(frequency => {
         if (station.alias === frequency.alias && frequency.nickname != null)
@@ -422,7 +425,7 @@ export class MessagecomposeComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = {
-      id: null,
+      id: 0,
       name: '',
       orig: '',
       dest: [],
@@ -431,7 +434,7 @@ export class MessagecomposeComponent implements OnInit {
       fileid: '',
       secure: false,
       inbox: false,
-      draft: null,
+      draft: false,
       sent_at: '',
       created_at: '',
       updated_at: '',
@@ -444,30 +447,36 @@ export class MessagecomposeComponent implements OnInit {
     this.isEncrypted = false;
     this.fileIsProcessing = false;
     this.stationService.getStations()
-      .subscribe(stations => {
-        this.stations = stations;
+      .subscribe({
+        next: (stations => {
+          this.stations = stations;
 
-        if (this.stations.length > 0) {
-          this.selectedStations = [this.stations[0].id];
-          this.selectAllForDropdownItems(this.stations);
+          if (this.stations.length > 0) {
+            this.selectedStations = [this.stations[0].id];
+            this.selectAllForDropdownItems(this.stations);
 
-          var origin = this.activatedRoute.snapshot.paramMap.get("origin")
+            var origin = this.activatedRoute.snapshot.paramMap.get("origin")
 
-          if (origin) {
-            if (Array.isArray(origin)) {
-              this.message.dest = origin
+            if (origin) {
+              if (Array.isArray(origin)) {
+                this.message.dest = origin
+              }
+
+              if (!Array.isArray(origin)) {
+                this.message.dest = [origin]
+              }
             }
 
-            if (!Array.isArray(origin)) {
-              this.message.dest = [origin]
-            }
+            // this.getNickName(stations)
           }
 
-          // this.getNickName(stations)
+          this.loading = false
+        }),
+        error: (err) => {
+          this.error = err;
+          this.errorAlert = true;
+          this.loading = false
         }
-
-        this.loading = false
-      });
+      })
   }
-
 }

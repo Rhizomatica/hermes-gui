@@ -10,7 +10,7 @@ export class PlayerComponent implements OnChanges {
   constructor() {
     this.playing = true
     this.url = ""
-    this.fileId = null
+    this.fileId = 0
     this.mimetype = ""
     this.type = ""
     this.secured = false
@@ -25,7 +25,7 @@ export class PlayerComponent implements OnChanges {
   @Input() secured: boolean
   @Input() password: string
 
-  ngOnChanges(change) {
+  ngOnChanges(change: any) {
     change && change.playing.currentValue != change.playing.previousValue ? this.playing = change.playing.currentValue : null
   }
 

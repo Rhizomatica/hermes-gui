@@ -1,0 +1,193 @@
+.home-topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0px 4px 15px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.home-radio-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+.home-radio-detail {
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .flexible {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.home-topbar-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    .user-menu {
+        position: relative;
+
+        .user-menu-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: bold;
+            user-select: none;
+            white-space: nowrap;
+            color: #333;
+            background-color: rgba(0,0,0,0.06);
+            transition: background-color 0.15s;
+
+            &:hover {
+                background-color: rgba(0,0,0,0.12);
+            }
+
+            .user-menu-caret {
+                font-size: 0.8em;
+                opacity: 0.6;
+            }
+        }
+
+        .user-menu-dropdown {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 6px);
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            padding: 4px 0;
+            z-index: 100;
+            min-width: 180px;
+
+            .user-menu-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 14px;
+                    font-size: 0.8em;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba(0,0,0,0.05);
+                    }
+
+                    &.divider {
+                        height: 0;
+                        padding: 0;
+                        margin: 4px 8px;
+                        border-top: 1px solid #eee;
+                        cursor: default;
+
+                        &:hover {
+                            background-color: transparent;
+                        }
+                    }
+
+                    img.btnicon {
+                        width: 1em;
+                        height: 1em;
+                        filter: none;
+                    }
+
+                    span.theme-icon {
+                        width: 1em;
+                        height: 1em;
+                        font-size: 1em;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.home-topbar.dark-mode {
+    border-color: #444;
+
+    .home-radio-detail {
+        color: #dfe6e9;
+    }
+
+    .home-topbar-actions .user-menu {
+        .user-menu-trigger {
+            color: #fff;
+            background-color: rgba(255,255,255,0.1);
+
+            &:hover {
+                background-color: rgba(255,255,255,0.18);
+            }
+        }
+
+        .user-menu-dropdown {
+            background-color: #2d3436;
+            border-color: #555;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+
+            .user-menu-list li {
+                color: #dfe6e9;
+
+                &:hover {
+                    background-color: rgba(255,255,255,0.07);
+                }
+
+                &.divider {
+                    border-color: #444;
+                }
+
+                img.btnicon {
+                    filter: invert(100%);
+                }
+
+                span.theme-icon {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+:host-context(body.ar) {
+    .home-topbar-actions {
+        flex-direction: row-reverse;
+
+        .user-menu-dropdown {
+            right: auto;
+            left: 0;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+  
+.home-radio-detail {
+    .flexible {
+       width: 60%;
+    }
+}
+}
+
+

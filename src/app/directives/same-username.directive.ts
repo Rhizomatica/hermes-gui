@@ -30,20 +30,20 @@ export function compareUsername(userList: any): ValidatorFn {
 })
 
 export class SameUsernameDirective implements Validator, OnInit {
-  @Input('appSameUsername') userFound: string;
-  userList: User[];
+  @Input('appSameUsername') userFound!: string;
+  userList!: User[];
 
   constructor(private userService: UserService) {}
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (res: any) => {
+    this.userService.getUsers().subscribe({
+      next: (res: any) => {
         this.userList = res;
       },
-      (err) => {
+      error: (err) => {
         this.userList = err;
       }
-    );
+    });
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {

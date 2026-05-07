@@ -1,27 +1,17 @@
 <div class="container sysadm home">
     <div class="row">
-        <div class="alertcard flexible" *ngIf="radio.connection">
-            <span class="greencircle"></span>
-            <b class="m-l-10" i18n="@@transmissioncardalerttitle">
-                Radio connected
-            </b>
-            <div class="row">
-                <p i18n="@@transmissioncardalertmesage">
-                    Data connection ongoing...
-                    Voice mode blocked
-                </p>
-            </div>
-        </div>
-        <div class="flexible">
-            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq">
+        <app-home-topbar [radio]="radio" [currentUser]="currentUser" [currentTheme]="currentTheme"
+            (toggleTheme)="toggle()" (logOut)="logOff()">
+        </app-home-topbar>
+        <div class="flexible m-t-25">
+            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq"
+                [style.opacity]="radio.connection ? '0.5' : '1'">
                 <div class="card {{(radio.connection) && ('disabled')}}">
-                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Chat" src="assets/svg/waveform.svg">
+                    <div class="card-icon">
+                        <img _ngcontent-dpr-c68="" title="Voice" src="assets/svg/waveform.svg">
                     </div>
                     <div class="card-title">
                         <span i18n="@@voicecard">Voice</span> {{radio.p1_freq}} kHz
-                        <br />
-                        {{radio.p1_mode}}
                     </div>
                 </div>
             </a>
@@ -83,7 +73,7 @@
                     </div>
                 </div>
             </a>
-            <a routerLink="/user-manage" *ngIf="!requireLogin || (requireLogin && admin)">
+            <a routerLink="/user-list" *ngIf="!requireLogin || (requireLogin && admin)">
                 <div class="card">
                     <div class="card-icon">
                         <img _ngcontent-dpr-c68="" title="User management" src="assets/svg/account-group.svg">
@@ -116,7 +106,8 @@
             <a routerLink="/transmission" *ngIf="admin">
                 <div class="card">
                     <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Transmission list" src="assets/svg/transmission-tower-export.svg">
+                        <img _ngcontent-dpr-c68="" title="Transmission list"
+                            src="assets/svg/transmission-tower-export.svg">
                     </div>
                     <div class="card-title" i18n="@@transmissionlista">
                         Transmission list
@@ -161,31 +152,6 @@
                     </div>
                 </div>
             </a>
-            <div class="shut m-t-10">
-                <button (click)="toggle()" class="midbt {{currentTheme}}">
-                    <span i18n="@@darktheme" *ngIf="currentTheme == 'light'">
-                        Dark theme
-                    </span>
-                    <span i18n="@@lighttheme" *ngIf="currentTheme == 'dark'">
-                        Light theme
-                    </span>
-                    <br />
-                </button>
-                <button routerLink="/login" class="midbt m-t-10" *ngIf="!currentUser">
-                    <span i18n="@@loginbutton">
-                        Login
-                    </span>
-                    <br />
-                    <img class="btnicon" title="send" src="assets/svg/login.svg">
-                </button>
-                <button class="midbt m-t-10" (click)="logOff()" *ngIf="currentUser">
-                    <span i18n="@@logoutbutton">
-                        Logout
-                    </span>
-                    <br />
-                    <img class="btnicon" title="send" src="assets/svg/logout.svg">
-                </button>
-            </div>
         </div>
     </div>
 </div>

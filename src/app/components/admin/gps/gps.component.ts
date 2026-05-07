@@ -1,271 +1,247 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subject, interval, lastValueFrom } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs/operators';
+
+import { GlobalConstants } from 'src/app/global-constants';
 import { User } from '../../../interfaces/user';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { GPSService } from '../../../_services/gps.service';
-import { GlobalConstants } from 'src/app/global-constants';
-import { NgForm } from '@angular/forms';
-
-import { Subscription, interval } from 'rxjs';
-// import { PolylineSeries } from '@amcharts/amcharts5/.internal/charts/stock/drawing/PolylineSeries';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'gps',
   templateUrl: './gps.component.html',
   styleUrls: ['./gps.component.less']
 })
-
 export class GPSComponent implements OnInit, OnDestroy {
+  currentUser: User | null = null;
+  admin = false;
 
-  currentUser: User
-  admin: boolean = false
-  error = Error
-  errorAlert = false
-  loading = false
-  files: string[]
-  interval: number = 0
-  range: number = 0
-  email: string = null
-  currentLatitude: number = null
-  currentLongitude: number = null
-  // currentLatitude: number = 21.732970
-  // currentLongitude: number = 89.882957
-  status: boolean = false
-  urlDownloadFile: string = `${GlobalConstants.apiURL}/geolocation/file`
-  urlDownloadAll: string = `${GlobalConstants.apiURL}/geolocation/files/all`
-  pointSeries = null
-  deleteConfirmation = false
-  poolCoordinates: Subscription
-  confirmSOS: boolean = false
+  error: unknown = null;
+  errorAlert = false;
+  loading = false;
 
-  constructor(private authenticationService: AuthenticationService,
-    private gpsService: GPSService
+  files: string[] = [];
+  intervalValue = 0;
+  range = 0;
+  email: string | null = null;
+
+  currentLatitude: number | null = null;
+  currentLongitude: number | null = null;
+
+  status = false;
+
+  urlDownloadFile = `${GlobalConstants.apiURL}/geolocation/file`;
+  urlDownloadAll = `${GlobalConstants.apiURL}/geolocation/files/all`;
+
+  deleteConfirmation = false;
+  confirmSOS = false;
+
+  private readonly destroy$ = new Subject<void>();
+  isArabic: boolean = false;
+
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private gpsService: GPSService,
+    private utils: UtilsService
   ) {
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x
-      if (this.currentUser)
-        this.admin = this.currentUser.admin
-    });
+    this.isArabic = this.utils.isArabic();
+    this.authenticationService.currentUser
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((x) => {
+        this.currentUser = x;
+        this.admin = !!x?.admin;
+      });
+  }
+
+  private handleError(err: unknown): void {
+    this.error = err;
+    this.errorAlert = true;
+  }
+
+  private isStringArray(value: unknown): value is string[] {
+    return Array.isArray(value) && value.every((item) => typeof item === 'string');
+  }
+
+  private isCoordinates(
+    value: unknown
+  ): value is { latitude: number | string | null; longitude: number | string | null } {
+    return (
+      typeof value === 'object' &&
+      value !== null &&
+      'latitude' in value &&
+      'longitude' in value
+    );
   }
 
   async getGPSFiles(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getStoredGPSFiles().toPromise();
-      if (res) {
-        this.files = res;
-      }
+      const res = await lastValueFrom(this.gpsService.getStoredGPSFiles());
+      if (this.isStringArray(res)) this.files = res;
     } catch (err) {
-      this.error = err;
-      this.errorAlert = true
-      this.loading = false;
+      this.handleError(err);
     }
   }
 
   async getGPSStatus(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getGPSStatus().toPromise();
-      if (res) {
-        this.status = res;
-      }
+      const res = await lastValueFrom(this.gpsService.getGPSStatus());
+      if (typeof res === 'boolean') this.status = res;
     } catch (err) {
-      this.error = err;
-      this.errorAlert = true
-      this.loading = false;
+      this.handleError(err);
     }
   }
 
   async getInterval(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getInterval().toPromise();
-      if (res) {
-        this.interval = res;
-      }
+      const res = await lastValueFrom(this.gpsService.getInterval());
+      if (res != null) this.intervalValue = Number(res);
     } catch (err) {
-      this.error = err;
-      this.errorAlert = true
-      this.loading = false;
+      this.handleError(err);
     }
   }
 
   async getFileRangeTime(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getFileRangeTime().toPromise();
-      if (res) {
-        this.range = parseInt(res) / 60;
-      }
+      const res = await lastValueFrom(this.gpsService.getFileRangeTime());
+      if (res != null) this.range = Number(res) / 60;
     } catch (err) {
-      this.error = err;
-      this.errorAlert = true
-      this.loading = false;
+      this.handleError(err);
     }
   }
 
   async getEmail(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getEmail().toPromise();
-      if (res) {
-        this.email = res;
-      }
+      const res = await lastValueFrom(this.gpsService.getEmail());
+      if (typeof res === 'string') this.email = res;
     } catch (err) {
-      this.error = err;
-      this.errorAlert = true
-      this.loading = false;
+      this.handleError(err);
     }
   }
 
   async getCurrentCoordinates(): Promise<void> {
     try {
-      const res: any = await this.gpsService.getCurrentCoordinates().toPromise();
-      if (res && res.latitude !== null && res.longitude !== null) {
-        this.currentLatitude = res.latitude;
-        this.currentLongitude = res.longitude;
+      const res = await lastValueFrom(this.gpsService.getCurrentCoordinates());
+      if (this.isCoordinates(res) && res.latitude !== null && res.longitude !== null) {
+        this.currentLatitude = Number(res.latitude);
+        this.currentLongitude = Number(res.longitude);
       }
-      this.loading = false;
     } catch (err) {
-      this.error = err;
-      this.loading = false;
+      return
     }
   }
 
-  updateGPSInterval(f: NgForm) {
-    this.loading = true
-    this.gpsService.updateGPSInterval(f.value.interval).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-        this.errorAlert = true
-      }
-    );
+  updateGPSInterval(f: NgForm): void {
+    this.loading = true;
+    this.gpsService.updateGPSInterval(f.value.interval)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        error: (err) => this.handleError(err)
+      });
   }
 
-  updateFileRangeTime(f: NgForm) {
-    this.loading = true
+  updateFileRangeTime(f: NgForm): void {
+    this.loading = true;
+    const rangeInSeconds = f.value.range ? Number(f.value.range) * 60 : f.value.range;
 
-    if (f.value.range) {
-      f.value.range = parseInt(f.value.range) * 60
-    }
-
-    this.gpsService.updateFileRangeTime(f.value.range).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-        this.errorAlert = true
-      }
-    );
+    this.gpsService.updateFileRangeTime(rangeInSeconds)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        error: (err) => this.handleError(err)
+      });
   }
 
-  updateGPSEmail(f: NgForm) {
-    this.loading = true
-    this.gpsService.updateGPSEmail(f.value.email).subscribe(
-      (res: any) => {
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-        this.errorAlert = true
-      }
-    );
+  updateGPSEmail(f: NgForm): void {
+    this.loading = true;
+    this.gpsService.updateGPSEmail(f.value.email)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        error: (err) => this.handleError(err)
+      });
   }
 
-  toggleGPS(f: NgForm) {
+  toggleGPS(): void {
+    const nextStatus = !this.status;
+    this.status = nextStatus;
+    this.loading = true;
 
-    if (this.status) {
-      this.status = false
-    }
-    else if (!this.status) {
-      this.status = true
-    }
-
-    this.gpsService.toggleGPS(this.status).subscribe(
-      (res: any) => {
-        return null
-      },
-      (err) => {
-        this.error = err;
-        this.errorAlert = true
-      }
-    );
+    this.gpsService.toggleGPS(nextStatus)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        error: (err) => {
+          this.status = !nextStatus;
+          this.handleError(err);
+        }
+      });
   }
 
-  deleteAllStoredFiles() {
-    if (!this.deleteConfirmation)
-      return this.deleteConfirmation = true
-
-
-    if (this.deleteConfirmation)
-      return this.deleteConfirmation = false
+  deleteAllStoredFiles(): void {
+    this.deleteConfirmation = !this.deleteConfirmation;
   }
 
-  confirmDeleteAllStoredFiles() {
-    this.deleteConfirmation = false
-    this.loading = true
-    this.gpsService.deleteAllStoredFiles().subscribe(
-      (res: any) => {
-        if (res)
-          this.getGPSFiles()
-        this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-        this.errorAlert = true
-      }
-    );
+  confirmDeleteAllStoredFiles(): void {
+    this.deleteConfirmation = false;
+    this.loading = true;
+
+    this.gpsService.deleteAllStoredFiles()
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        next: () => {
+          void this.getGPSFiles();
+        },
+        error: (err) => this.handleError(err)
+      });
   }
 
-  SOSEmergency() {
-    if (this.confirmSOS)
-      return this.confirmSOS = false
-
-
-    if (!this.confirmSOS)
-      return this.confirmSOS = true
+  SOSEmergency(): void {
+    this.confirmSOS = !this.confirmSOS;
   }
 
-  confirmSOSEmergency() {
-    this.confirmSOS = false
-    this.loading = true
-    this.gpsService.SOSEmergency().subscribe(
-      (res: any) => {
-        if (res)
-          this.loading = false
-      },
-      (err) => {
-        this.error = err;
-        this.loading = false
-        this.errorAlert = true
-      }
-    );
+  confirmSOSEmergency(): void {
+    this.confirmSOS = false;
+    this.loading = true;
+
+    this.gpsService.SOSEmergency()
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        error: (err) => this.handleError(err)
+      });
   }
 
   closeError(): void {
     this.errorAlert = false;
+    this.error = null;
   }
 
-  ngOnInit(): void {
-    this.loading = true
-    this.getGPSFiles()
-    this.getGPSStatus()
-    this.getInterval()
-    this.getFileRangeTime()
-    this.getEmail()
-    this.getCurrentCoordinates() //First call
+  async ngOnInit(): Promise<void> {
+    this.loading = true;
 
-    //Pool current coordinates
-    this.poolCoordinates = interval(10000).subscribe((val) => {
+    await Promise.allSettled([
+      this.getGPSFiles(),
+      this.getGPSStatus(),
+      this.getInterval(),
+      this.getFileRangeTime(),
+      this.getEmail(),
       this.getCurrentCoordinates()
-    });
+    ]);
 
+    this.loading = false;
+
+    interval(10000)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        void this.getCurrentCoordinates();
+      });
   }
 
-  ngOnDestroy() {
-    if (this.poolCoordinates)
-      this.poolCoordinates.unsubscribe()
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  refreshMap(): void {
+    window.location.reload();
   }
 }

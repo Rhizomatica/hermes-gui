@@ -17,9 +17,9 @@ export class SMSMessageService {
     private http: HttpClient
   ) { }
 
-  messages: SMSMessage[];
-  message: any[];
-  text: string;
+  messages!: SMSMessage[];
+  message!: any[];
+  text!: string;
 
   httpOptions = {
     headers: new HttpHeaders({

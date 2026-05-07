@@ -20,17 +20,17 @@ import { StationService } from 'src/app/_services/station.service';
 
 export class SentMessagesComponent implements OnInit {
 
-  currentUser: User;
+  currentUser!: User;
   error = Error;
   success = '';
-  messages: Message[];
-  queue: UUCPQueue[];
-  job: UUCPQueue;
-  sentMessages: Message[];
-  message: Message;
-  selectedMessage: Message; // redundant?
+  messages!: Message[];
+  queue!: UUCPQueue[];
+  job!: UUCPQueue;
+  sentMessages!: Message[];
+  message!: Message;
+  selectedMessage!: Message; // redundant?
   isadmin = false;
-  searchMessages: string;
+  searchMessages!: string;
   confirmTransmit = false;
   errorAlert = false;
   noMessages = true;
@@ -38,10 +38,10 @@ export class SentMessagesComponent implements OnInit {
   noQueue = false;
   allowCompose = false;
   serverConfig: any;
-  allowhmp: string;
+  allowhmp!: string;
   deleteMessage = false;
   loading = true
-  stations: Station[]
+  stations!: Station[]
 
   constructor(
     private messageService: MessageService,
@@ -59,11 +59,13 @@ export class SentMessagesComponent implements OnInit {
   }
 
   getStations() {
-    this.stationService.getStations().subscribe(stations => {
-      this.stations = stations
-      
-      this.getSentMessages()
-      this.getSysConfig()
+    this.stationService.getStations().subscribe({
+      next: (stations) => {
+        this.stations = stations
+
+        this.getSentMessages()
+        this.getSysConfig()
+      }
     });
   }
 
@@ -72,18 +74,19 @@ export class SentMessagesComponent implements OnInit {
     this.alertService.add('mensagem lida: id=$' + message.id);
   }
 
-  cancelTransmission(host, id): void {
-    this.uucpService.cancelTransmission(host, id).subscribe(
-      (res: any) => {
+  cancelTransmission(host: string, id: string): void {
+    this.uucpService.cancelTransmission(host, id).subscribe({
+      next: (res: any) => {
         this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
-  // cancelMail(host, id, language): void {
+  // cancelMail(host: string, id: string, language: string): void {
   //   this.uucpService.cancelMail(host, id, language).subscribe(
   //     (res: any) => {
   //       this.queue = this.queue.filter(obj => obj.uuiduucp !== id);
@@ -110,17 +113,17 @@ export class SentMessagesComponent implements OnInit {
     this.loading = true
     let msgId = 0;
     msgId = this.selectedMessage.id;
-    this.messageService.deleteMessage(msgId).subscribe(
-      (res: any) => {
+    this.messageService.deleteMessage(msgId).subscribe({
+      next: (res: any) => {
         this.message = res;
         this.getSentMessages();
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
     this.deleteMessage = false;
   }
 
@@ -134,53 +137,50 @@ export class SentMessagesComponent implements OnInit {
 
   //not using
   transmitNow(): void {
-    this.uucpService.callSystems().subscribe(
-      (res: any) => {
+    this.uucpService.callSystems().subscribe({
+      next: (res: any) => {
         this.confirmTransmit = false;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   getSentMessages(): void {
     this.loading = true
-    this.messageService.getMessagesByType('sent').subscribe(
-      res => {
-
+    this.messageService.getMessagesByType('sent').subscribe({
+      next: (res) => {
         if (res.length == 0) {
           this.noMessages = true;
-        }
-
-        if(res.length >= 0){
+        } else {
           this.noMessages = false;
           this.sentMessages = res.sort((a, b) => { return new Date(a.sent_at) < new Date(b.sent_at) ? 1 : -1; });
           this.sentMessages = this.sentMessages.filter((a) => { return a.sent_at = this.utils.formatDate(a.sent_at) });
-        }
 
-        this.getAliasOrigin()
+          this.getAliasOrigin()
+        }
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.noMessages = true;
         this.loading = false
       }
-    );
+    });
   }
 
   getAliasOrigin() {
     this.sentMessages.forEach(item => {
-      item.orig = this.stations.filter((a) => { return a.name === item.orig })[0].alias
+      item.orig = this.stations.filter((a) => { return a.name === item.orig })[0]?.alias
     })
   }
 
   getQueue(): void {
-    this.uucpService.getQueue().subscribe(
-      res => {
+    this.uucpService.getQueue().subscribe({
+      next: (res) => {
         this.queue = res;
         if (Object.keys(this.queue).length == 0) {
           this.noQueue = true;
@@ -188,12 +188,12 @@ export class SentMessagesComponent implements OnInit {
           this.noQueue = false;
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.noUUcp = true;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
   getQueueSize() {
@@ -207,8 +207,8 @@ export class SentMessagesComponent implements OnInit {
   }
 
   getSysConfig(): void {
-    this.apiService.getSysConfig().subscribe(
-      (res: any) => {
+    this.apiService.getSysConfig().subscribe({
+      next: (res: any) => {
         this.serverConfig = res;
         this.allowhmp = res.allowhmp;
 
@@ -233,11 +233,11 @@ export class SentMessagesComponent implements OnInit {
         }
         return res;
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.allowCompose = false;
       }
-    );
+    });
   }
 
   ngOnInit(): void {

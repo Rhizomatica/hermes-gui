@@ -13,29 +13,29 @@ import { WifiManagerService } from '../../../_services/wifi-manager.service';
 
 export class WiFiManagementComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
   errorAlertPatterns: boolean = false
   channels: number[] = []
-  wiFiSSID: string
-  wiFiRetypePassphrase: string
-  wiFiPassphrase: string
+  wiFiSSID!: string
+  wiFiRetypePassphrase!: string
+  wiFiPassphrase!: string
   wiFiChannel: number = 1
   msgPatternChars: boolean = false
-  excludedKeys: string[]
+  excludedKeys!: string[]
   passwordUnmatch = false;
   passwordMin = false
   system: any
   macFilter: boolean = false
-  macList: string[]
+  macList!: string[]
   msgMACListPatternError: boolean = false
-  includedKeysMacList: number[]
+  includedKeysMacList!: number[]
   newMACAddress: string = ''
   removeMACAddressConfirmation: boolean = false
-  macAddressToDelete: string = null
+  macAddressToDelete: string = ''
 
   constructor(
     private apiService: ApiService,
@@ -48,20 +48,21 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   public getWiFiConfig() {
-    this.wifiManagerService.getWiFiConfig().subscribe(
-      (data: any) => {
+    this.wifiManagerService.getWiFiConfig().subscribe({
+      next: (data: any) => {
         this.wiFiChannel = data.channel
         this.wiFiSSID = data.ssid
         this.wiFiPassphrase = data.wpa_passphrase
         this.macFilter = !data.macaddr_acl || data.macaddr_acl == 0 ? false : true
         this.macList = data.accept_mac_file
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   public saveWifiConfig(f: NgForm) {
@@ -75,15 +76,16 @@ export class WiFiManagementComponent implements OnInit {
     f.value.macaddr_acl = this.macFilter == true ? '1' : '0' //Format
 
     this.loading = true
-    this.wifiManagerService.changeWiFiName(f.value).subscribe(
-      (res: any) => {
+    this.wifiManagerService.changeWiFiName(f.value).subscribe({
+      next: (res: any) => {
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   _keyUp(event: any) {
@@ -94,7 +96,7 @@ export class WiFiManagementComponent implements OnInit {
     }
   }
 
-  checkForm(f) {
+  checkForm(f: NgForm) {
     if (!f.value.ssid) {
       f.value.ssid = 'HERMES-DEFAULT'
     }
@@ -123,10 +125,10 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   setExcludedKeys() {
-    this.excludedKeys = ["?", "'", '"' , "$", "[", "]", "+", ".", " "]
+    this.excludedKeys = ["?", "'", '"', "$", "[", "]", "+", ".", " "]
   }
 
-  checkpass(password, retypePassword) {
+  checkpass(password: string, retypePassword: string) {
 
     if (password.length < 8) {
       this.passwordMin = true
@@ -144,58 +146,62 @@ export class WiFiManagementComponent implements OnInit {
   }
 
   getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
+
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
         this.system = res
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    )
+    })
   }
 
   public toggleMACFilter(f: NgForm) {
     this.macFilter = this.macFilter == true ? false : true //Toggle
     f.value.macFilter = this.macFilter == true ? '1' : '0' //Format
 
-    this.wifiManagerService.toggleMACFilter(f.value).subscribe(
-      (res: any) => {
+    this.wifiManagerService.toggleMACFilter(f.value).subscribe({
+      next: (res: any) => {
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   public addMACAddress(f: NgForm) {
     this.loading = true
-    
+
     if (!this.validateMACAddress(f.value.macAddress)) {
       this.msgMACListPatternError = true
       this.loading = false
       return
     }
-
-    this.wifiManagerService.updateMACList(f.value).subscribe(
-      (res: any) => {
+    this.wifiManagerService.updateMACList(f.value).subscribe({
+      next: (res: any) => {
         this.loading = false
 
         this.getWiFiConfig()
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
+    }
+
     );
   }
 
-  validateMACAddress(macAddress) {
+  validateMACAddress(macAddress: string) {
     const macRegex = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i
 
     // Check if the cleaned MAC address matches the regular expression
@@ -207,32 +213,32 @@ export class WiFiManagementComponent implements OnInit {
   }
 
 
-  public confirmRemoveMACAddress(address){
+  public confirmRemoveMACAddress(address: string) {
 
-    if(!this.removeMACAddressConfirmation){
+    if (!this.removeMACAddressConfirmation) {
       this.removeMACAddressConfirmation = true
       this.macAddressToDelete = address
       return
     }
 
     this.removeMACAddressConfirmation = false
-    this.macAddressToDelete = null
+    this.macAddressToDelete = ''
   }
 
-  public removeMACAddress(){
+  public removeMACAddress() {
     this.removeMACAddressConfirmation = false
     this.loading = true
-
-    this.wifiManagerService.removeMACAddress(this.macAddressToDelete).subscribe(
-      (res: any) => {
+    this.wifiManagerService.removeMACAddress(this.macAddressToDelete).subscribe({
+      next: (res: any) => {
         this.loading = false
         this.getWiFiConfig()
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   ngOnInit(): void {

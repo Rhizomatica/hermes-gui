@@ -12,7 +12,7 @@ export class GPSService {
   login = false;
   serverReturn: any;
   error = Error;
-  files: string[];
+  files!: string[];
 
   constructor(
     private http: HttpClient
@@ -80,7 +80,7 @@ export class GPSService {
     )
   }
 
-  public updateGPSInterval(seconds): Observable<{}> {
+  public updateGPSInterval(seconds: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/interval/${seconds}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
@@ -89,7 +89,7 @@ export class GPSService {
       catchError(this.handleError));
   }
 
-  public updateFileRangeTime(seconds): Observable<{}> {
+  public updateFileRangeTime(seconds: number): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/filetime/${seconds}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
@@ -98,7 +98,7 @@ export class GPSService {
       catchError(this.handleError));
   }
 
-  public updateGPSEmail(email): Observable<{}> {
+  public updateGPSEmail(email: string): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/email/${email}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {
@@ -107,7 +107,7 @@ export class GPSService {
       catchError(this.handleError));
   }
 
-  public toggleGPS(status): Observable<{}> {
+  public toggleGPS(status: boolean): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/geolocation/status/${status}`;
     return this.http.post(url, null).pipe(
       map((res: any) => {

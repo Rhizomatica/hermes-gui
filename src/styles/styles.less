@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "ar-styles.less";
 
 @boxw: 29em;
 @clr: #f60;
@@ -12,12 +13,12 @@
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-Light.woff2") format("woff"),
+  src: url("../assets/fonts/Rubik-Light.woff2") format("woff"),
 }
 
 @font-face {
   font-family: "Rubik-regular";
-  src: url("../fonts/Rubik-Regular.woff2") format("woff"),
+  src: url("../assets/fonts/Rubik-Regular.woff2") format("woff"),
 }
 
 html,
@@ -54,10 +55,6 @@ input {
   margin: 0;
 }
 
-button {
-  box-shadow: @boxshadow;
-}
-
 .email a {
   .card {
     min-width: 300px;
@@ -85,25 +82,6 @@ button {
     height: 40px;
     border-radius: 3px;
     border: 1px solid #cecece;
-  }
-
-  button {
-    font-size: 0.9em;
-    padding: 0.3em 0.5em;
-
-    a {
-      color: @bkclr;
-    }
-
-    a:visited {
-      color: @bkclr;
-    }
-
-    img {
-      width: 1em;
-      filter: invert(100%);
-    }
-
   }
 
   input[type="file"] {
@@ -178,7 +156,7 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-  outline: 1px @vstclr;
+  outline: 1px solid @vstclr;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -192,24 +170,33 @@ hr {
 }
 
 button {
+  box-shadow: @boxshadow;
+  font-size: 0.8em;
+  padding: 0.3em 0.5em;
   border: 0;
   background-color: @clr;
   color: white;
   font-weight: bold;
-  border-radius: 0.1em;
-
+  border-radius: 3px;
+  cursor: pointer;
 
   a {
+    color: @bkclr;
     text-decoration: none;
   }
 
   a:visited {
     color: @bkclr;
   }
+
+  img {
+    width: 1em;
+    filter: invert(100%);
+  }
 }
 
 button:hover {
-  background-color: @clr;
+  background-color: darken(@clr, 10%);
 }
 
 a {
@@ -376,6 +363,7 @@ textarea {
   top: 7em;
   padding-bottom: 1em;
   word-wrap: break-word;
+  padding-bottom: 30px;
 
 
   .textarea {
@@ -392,7 +380,7 @@ textarea {
     right: 0;
     margin: 1em 0.06em 1em;
     width: calc(100% - 0.12em);
-    background: #fff 98% no-repeat url(../svg/magnifying-glass-solid.svg);
+    background: #fff 98% no-repeat url(../assets/svg/magnifying-glass-solid.svg);
     background-size: 1em 1em;
     border: 1px solid #cecece;
     font-size: 0.9em;
@@ -429,11 +417,10 @@ textarea {
   height: 23px;
   border-radius: 15px;
   background-color: #727272;
-  vertical-align: bottom;
+  vertical-align: middle;
   margin-left: 10px;
   margin-right: 10px;
   line-height: 1px;
-  top: 5px;
 }
 
 .switch input {
@@ -556,10 +543,6 @@ input:checked+.slider:before {
       margin-top: 5px;
       height: 2.0em;
     }
-  }
-
-  button {
-    background-color: #666
   }
 
 }
@@ -720,11 +703,8 @@ input:checked+.slider:before {
     position: relative;
     padding: 0.35em;
     width: 27%;
-    font-size: .6em;
-    line-height: 0.85em;
-    height: 3em;
+    height: 40px;
     margin-left: 0.1em;
-    border-radius: 3px;
     top: 11px;
   }
 
@@ -756,12 +736,47 @@ input:checked+.slider:before {
 }
 
 #radioconf {
+  .flexible {
+    gap: 10px;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 20px;
+
+    >.card,
+    a {
+      display: flex;
+      flex: 0 0 calc(25% - 7.5px);
+      max-width: calc(25% - 7.5px);
+    }
+
+    a .card,
+    >.card {
+      flex: 1;
+      width: 100%;
+      min-width: unset;
+      height: 100%;
+      margin: 0;
+      min-height: 210px;
+    }
+  }
+
   .card {
-    line-height: 1.3em;
-    width: 23.5%;
+    line-height: 1.5em;
+    width: 100%;
+    text-align: left;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
 
     small {
       font-size: 0.6em;
+    }
+
+    .card-value {
+      margin-top: auto;
+      font-size: 3rem;
+      color: #333333;
     }
   }
 }
@@ -826,9 +841,7 @@ input:checked+.slider:before {
   }
 
   button.midbt {
-    font-size: 0.7em;
     height: 4.4em;
-    border-radius: 3px;
     width: 20.5em;
     margin-left: 15px;
 
@@ -847,7 +860,7 @@ input:checked+.slider:before {
   font-size: 0.8em;
   border-radius: 3px;
   background-color: @bkclr;
-  padding: 1em;
+  padding: 0 1em 1em;
   width: 100%;
   margin-bottom: 0.5em;
   box-shadow: @boxshadow;
@@ -929,7 +942,8 @@ input:checked+.slider:before {
   border: 1px solid #cecece;
   list-style: none;
   list-style-position: inside;
-  line-height: 50px;
+  line-height: 15px;
+  padding: 20px;
 }
 
 .logs {
@@ -1052,25 +1066,18 @@ menu {
 
 .uploader .btn {
   background-color: @clr;
-  color: @mclr;
+  color: white;
   padding: 2px;
   width: 60%;
   margin: 3px auto;
   text-align: center;
   display: block;
-  font-weight: bold;
-  font-size: 12px;
 }
 
 .uploader p {
   word-wrap: break-word;
   margin-top: 1em;
   margin-bottom: 1em;
-}
-
-.uploader .btn:hover {
-  color: #fff;
-  font-weight: bold;
 }
 
 .uploader #default .resetBtn {
@@ -1153,7 +1160,8 @@ menu {
 button:disabled {
   background-color: #eee;
   color: #aaa;
-  cursor: auto;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .neutral {
@@ -1685,28 +1693,6 @@ tr:nth-child(odd) {
   float: left;
 }
 
-.appinstaller {
-  background-color: @bkclr;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 1em;
-  border: 1px solid;
-  width: 97%;
-
-  img {
-    width: 2em;
-  }
-
-  span {
-    font-size: 1em;
-    display: flex;
-    margin-left: 1em;
-    margin-top: 0.5em;
-  }
-}
-
-
 .hello {
   display: flex;
   flex-direction: column;
@@ -1795,7 +1781,7 @@ tr:nth-child(odd) {
 }
 
 .half-row {
-  width: 48%;
+  width: 47%;
 }
 
 
@@ -1914,7 +1900,6 @@ tr:nth-child(odd) {
     border-radius: 3px;
     background-color: @mclr;
     color: @bkclr;
-    font-size: 0.7em;
 
     b {
       display: none;
@@ -1939,7 +1924,7 @@ tr:nth-child(odd) {
 
 .danger:hover {
   color: @bkclr;
-  background-color: @actvclr;
+  background-color: darken(@actvclr, 10%);
 }
 
 video {
@@ -2097,7 +2082,7 @@ video {
 
 .slider-input {
   -webkit-appearance: none;
-  width: 88%;
+  width: 100%;
   height: 15px;
   border-radius: 5px;
   background: #b8b8b8;
@@ -2185,6 +2170,7 @@ video {
   .radio {
     form {
       border-color: #fff;
+      background-color: @mclr
     }
   }
 
@@ -2336,14 +2322,6 @@ video {
     background-color: @bkclr;
   }
 
-  .appinstaller {
-    background-color: @mclr;
-
-    img {
-      filter: invert(100%);
-    }
-  }
-
   tr:nth-child(even) {
     background: @mclr
   }
@@ -2412,6 +2390,33 @@ video {
     background-color: #333333;
   }
 
+  .rc-settings-list {
+    border-color: #444;
+    background-color: @mclr;
+  }
+
+  .rc-settings-item {
+    border-color: #444;
+
+    .rc-setting-label p {
+      color: #9e9e9e;
+    }
+  }
+
+  .home-topbar {
+    border-color: #444;
+  }
+
+  .home-radio-badge.connected {
+    background-color: #1b3a20;
+    color: #81c784;
+  }
+
+  .home-radio-badge.disconnected {
+    background-color: #3b1a1a;
+    color: #ef9a9a;
+  }
+
   .location {
     background-color: @mclr;
   }
@@ -2437,8 +2442,56 @@ video {
   .flexible a {
     color: @bkclr;
   }
+
+  #radioconf {
+    .card {
+      .card-value {
+        color: @bkclr
+      }
+    }
+  }
 }
 
+
+//-------------------------Home page flex layout
+
+.home {
+  .flexible {
+    gap: 10px;
+    justify-content: center;
+
+    a {
+      display: flex;
+      flex: 1 1 calc(22.22% - 7px);
+      max-width: calc(22.22% - 7px);
+
+      .card {
+        flex: 1;
+        width: 100%;
+        min-width: unset;
+        height: 150px;
+        margin: 0;
+        padding: 2em 0.8em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+
+        .card-icon img {
+          width: 55px;
+          height: 55px;
+        }
+
+        .card-title {
+          font-size: 1.3em;
+          line-height: 1.2em;
+        }
+      }
+    }
+  }
+}
 
 //-------------------------Responsive
 
@@ -2491,7 +2544,7 @@ video {
   }
 
   .card {
-    width: 14em;
+    width: 22rem;
     padding: 1.4em 1em 1em;
   }
 
@@ -2513,16 +2566,31 @@ video {
   }
 
   .shut button.midbt {
-    font-size: .65em;
     height: 5em;
-    border-radius: 3px;
     width: 15.5em;
+  }
+
+  .home .flexible {
+    a {
+      flex: 1 1 calc(24.24% - 7px);
+      max-width: calc(24.24% - 7px);
+
+      .card {
+        width: 100%;
+        height: 180px;
+
+        .card-title {
+          font-size: 1em;
+          line-height: 1.3em;
+        }
+      }
+    }
   }
 
   .formfield {
     max-width: 100%;
     margin-left: 0%;
-    padding: 0 2em;
+    padding: 0 2em 2em 2em;
   }
 
   .formfield #searchbox1 {
@@ -2538,7 +2606,6 @@ video {
   }
 
   .formdata button.midbt {
-    font-size: .6em;
     height: 3.2rem;
   }
 
@@ -2552,6 +2619,7 @@ video {
 
   .formfield.radio-config {
     max-width: 100%;
+    padding-bottom: 20px;
   }
 
   .radio form {
@@ -2587,7 +2655,7 @@ video {
   }
 
   .switch {
-    height: 28px;
+    height: 27px;
   }
 
   .location {
@@ -2605,11 +2673,22 @@ video {
   // }
 
   .slider:before {
-    height: 26.5px;
+    height: 25px;
   }
 
   .inlineicon {
     width: 35px;
+  }
+
+  #radioconf {
+    .flexible {
+
+      >.card,
+      a {
+        flex: 1 1 calc(24.9% - 7px);
+        max-width: calc(24.9% - 7px);
+      }
+    }
   }
 }
 
@@ -2620,7 +2699,7 @@ video {
   }
 
   .formfield {
-    padding: 0 3em 3em 3em;
+    // padding: 0 3em 3em 3em;
     max-width: 100%;
     margin-left: 0%;
   }
@@ -2695,7 +2774,7 @@ video {
   }
 
   .card {
-    width: 17em;
+    width: 18.4em;
 
     .card-title {
       font-size: 1em;
@@ -2703,7 +2782,7 @@ video {
   }
 
   .shut button.midbt {
-    width: 18.5em;
+    width: 20.5em;
     height: 4.7em;
   }
 
@@ -2802,7 +2881,6 @@ video {
   }
 
   .formdata button.midbt {
-    font-size: .7em;
     height: 3rem;
     width: 37%;
   }
@@ -2813,6 +2891,47 @@ video {
 
   .radio form {
     line-height: 1.5em;
+  }
+
+  .card {
+    height: 8em;
+  }
+
+  #radioconf {
+    .flexible {
+
+      >.card,
+      a {
+        flex: 1 1 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+      }
+    }
+
+    .card {
+      font-size: 1.5rem;
+      line-height: 1.2em;
+
+      .card-value {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  p {
+    font-size: 1.3rem;
+  }
+
+  .home .flexible {
+    a {
+      flex: 1 1 calc(33.33% - 7px);
+      max-width: calc(33.33% - 7px);
+
+      .card {
+        width: 100%;
+        height: 135px;
+        padding: 2em 0.5em;
+      }
+    }
   }
 }
 
@@ -2953,13 +3072,26 @@ video {
 
 
   #radioconf {
+    .flexible {
+
+      >.card,
+      a {
+        flex: 0 0 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+      }
+    }
+
     .card {
       line-height: 1.3em;
-      width: 48%;
-      height: 7em;
+      height: 8.5em;
+      font-size: 1.4rem;
 
       small {
         font-size: 0.8em;
+      }
+
+      .card-value {
+        font-size: 2.2rem;
       }
     }
   }
@@ -2990,9 +3122,6 @@ video {
   }
 
   .home {
-    display: grid;
-    height: 72vh;
-
     h1 {
       font-size: 1.2em;
       text-align: center;
@@ -3010,6 +3139,32 @@ video {
       font-size: 3vmin;
       margin-bottom: 0px;
       text-align: left;
+    }
+
+    .flexible {
+      gap: 8px;
+
+      a {
+        flex: 0 0 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+
+        .card {
+          width: 100%;
+          height: 170px;
+          padding: 0.8em 0.3em;
+
+          .card-icon img {
+            width: 55px;
+            height: 55px;
+          }
+        }
+      }
+
+      .shut button.midbt {
+        flex: 0 0 auto;
+        height: auto;
+        width: auto;
+      }
     }
   }
 
@@ -3158,12 +3313,12 @@ video {
 
 
         .data-title {
-          font-size: 1.1em;
+          font-size: 1em;
           padding-bottom: 15px;
         }
 
         .data-body {
-          font-size: 1.1em;
+          font-size: 0.9em;
 
           button {
             margin: 8px;
@@ -3171,7 +3326,7 @@ video {
         }
 
         .data-body.frequency {
-          font-size: 2.8em;
+          font-size: 2.2em;
         }
       }
     }
@@ -3194,7 +3349,7 @@ video {
   }
 
   .alertcard {
-    width: 96%;
+    width: 100%;
   }
 
   .email a {
@@ -3211,5 +3366,9 @@ video {
 
   .inlineicon {
     width: 22px;
+  }
+
+  .userlist .uemail {
+    width: 26%;
   }
 }

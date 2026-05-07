@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TransmissionListComponent } from './transmission-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('TransmissionListComponent', () => {
   let component: TransmissionListComponent;
@@ -8,9 +9,11 @@ describe('TransmissionListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransmissionListComponent ],
-      imports:[HttpClientModule]
-    })
+    declarations: [TransmissionListComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

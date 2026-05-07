@@ -1,28 +1,21 @@
 <loading [loading]="loading"></loading>
 
-<div class="container sysadm home">
-    <div class="flexible">
-        <h1 i18n="@@operatorpanel" class="m-b-10">Operator Panel</h1>
+
+<div class="container">
+    <div class="flexible m-b-25">
+        <h2 i18n="@@operatorpanel">Operator Panel</h2>
         <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
     </div>
     <div class="row">
-        <div class="row m-t-25" *ngIf="radio.connection">
-            <div class="alertcard flexible">
-                <span class="greencircle"></span>
-                <b class="m-l-10" i18n="@@operatortransmissionstatuslabel">
-                    Radio connected - Data/Voice connection ongoing...
-                </b>
-            </div>
-        </div>
+        <app-radio-connection-alert></app-radio-connection-alert>
+
         <div class="operator-panel m-t-25">
             <div class="data">
                 <div class="data-title" i18n="@@connection">
                     Connection
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="!radio.connection"></span>
-                    <span class="greencircle" *ngIf="radio.connection"></span>
-                    {{radio.connection ? 'ON' : 'OFF'}}
+                    <status-badge [active]="radio.connection"></status-badge>
                 </div>
             </div>
             <div class="data">
@@ -115,7 +108,7 @@
             </div>
             <div class="row"></div>
             <div class="data">
-                <div class="data-title" i18n="@@operationmode">Operation mode</div>
+                <div class="data-title" i18n="@@operationmodelabel">Operation mode</div>
                 <div class="data-body">
                     <div *ngIf="radio.tx"> TX </div>
                     <div *ngIf="radio.rx"> RX </div>
@@ -151,10 +144,20 @@
                     <span i18n="@@radioprofile">Radio profile</span>
                 </div>
                 <div class="data-body" *ngIf="radio.profile == 0">
-                    <span i18n="@@data">Data</span>
+                    <span>Data</span>
                 </div>
                 <div class="data-body" *ngIf="radio.profile == 1">
-                    <span i18n="@@voice">Voice</span>
+                    <span>Voice</span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="data-title">
+                    <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
+                        Digital voice
+                    </span>
+                </div>
+                <div class="data-body">
+                    <status-badge [active]="radio.digital == 1"></status-badge>
                 </div>
             </div>
             <div class="data">
@@ -215,9 +218,7 @@
                     Scheduled transmission
                 </div>
                 <div class="data-body">
-                    <span class="redcircle" *ngIf="!activeSchedule"></span>
-                    <span class="greencircle" *ngIf="activeSchedule"></span>
-                    {{activeSchedule ? 'ON' : 'OFF'}}
+                    <status-badge [active]="activeSchedule"></status-badge>
                 </div>
             </div>
             <!-- <div class="data">
@@ -239,15 +240,17 @@
             </div>
             <div class="data" *ngIf="hasGps">
                 <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status <span class="redcircle" *ngIf="!gpsStatus"></span>
-                    <span class="greencircle" *ngIf="gpsStatus"></span>
-                    {{gpsStatus ? 'ON' : 'OFF'}}
+                    GPS Status
                 </div>
                 <div class="data-body">
-                    <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location unavailable</span>
-                    <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
-                        *ngIf="currentLatitude">
-                    </mapgraph>
+                    <status-badge [active]="gpsStatus"></status-badge>
+                    <div class="row">
+                        <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location
+                            unavailable</span>
+                        <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
+                            *ngIf="currentLatitude">
+                        </mapgraph>
+                    </div>
                 </div>
             </div>
         </div>
@@ -269,7 +272,8 @@
 <div class="overall alert" *ngIf="radio.protection">
     <div class="cv">
         <span i18n="@@radioprotectionoperator">Radio protection activated. Reset the protection, reconfigure your radio
-            settings and try again. For more details: Reset Protection <hint [showHint]="false" [hint]="'resetprotection'"></hint>
+            settings and try again. For more details: Reset Protection <hint [showHint]="false"
+                [hint]="'resetprotection'"></hint>
         </span>
         <div class="row m-t-10">
             <button (click)="resetProtection()" i18n="@@resetprotectionbutton" class="m-l-10">

@@ -22,27 +22,27 @@ import { Station } from 'src/app/interfaces/station';
 
 export class MessageDetailComponent implements OnInit {
 
-  @Input() message: Message;
-  error: Error;
-  public messageImage: Blob;
+  @Input() message!: Message;
+  error!: Error;
+  public messageImage!: Blob;
   public isEncrypted = false;
   url = GlobalConstants.apiURL;
   wrongPass = false;
   uncrypted = false;
-  fileType: string = null
+  fileType: string = ''
   noMessage = false;
   pass = '';
   passString = '';
   allowCompose = false;
-  currentUser: User;
+  currentUser!: User;
   allowhmp = 'root';
   serverConfig: any;
   deleteMessage = false;
-  selectedMessage: Message
-  errorAlert = false
-  loading = false
-  degree: number = 0
-  stations: Station[]
+  selectedMessage: Message | null = null;
+  errorAlert = false;
+  loading = false;
+  degree: number = 0;
+  stations!: Station[];
 
   constructor(
     private route: ActivatedRoute,
@@ -68,13 +68,13 @@ export class MessageDetailComponent implements OnInit {
   }
 
   getMessageOld(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessage(id).subscribe(message => this.message);
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+    this.messageService.getMessage(parseInt(id!)).subscribe({ next: (message) => this.message });
   }
 
   sendPassword(id: number, f: NgForm): void {
-    this.messageService.uncrypt(id, f.value).subscribe(
-      (res: any) => {
+    this.messageService.uncrypt(id, f.value).subscribe({
+      next: (res: any) => {
         if (res.message && res.message !== '') {
           this.message.text = res.message;
           this.uncrypted = true;
@@ -87,22 +87,22 @@ export class MessageDetailComponent implements OnInit {
           this.passString = '';
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
       }
-    );
+    });
   }
 
   getMessage(): void {
     this.loading = true
-    const id = +this.route.snapshot.paramMap.get('id');
-    const file = +this.route.snapshot.paramMap.get('file');
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+    const file: string | null = this.route.snapshot.paramMap.get('file');
     const mime = '';
-    this.messageService.getMessage(id).subscribe(
-      (res: any) => {
-        this.message = res;
+    this.messageService.getMessage(parseInt(id!)).subscribe({
+      next: (res: any) => {
+        this.message = res as Message;
         if (this.message.file === '') {
-          this.fileType = null
+          this.fileType = ''
         } else {
           this.fileType = this.utils.getFileType(this.message.mimetype)
         }
@@ -112,43 +112,43 @@ export class MessageDetailComponent implements OnInit {
 
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.noMessage = true;
         this.loading = false
       }
-    );
+    });
   }
 
   getMessageImage(): void {
     this.loading = true
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messageService.getMessageImage(id).subscribe(
-      (res: any) => {
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+    this.messageService.getMessageImage(parseInt(id!)).subscribe({
+      next: (res: any) => {
         this.messageImage = res;
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
-        this.fileType = null;
+        this.fileType = '';
         this.loading = false
       }
-    );
+    });
   }
 
   getSysConfig(): void {
-    this.apiService.getSysConfig().subscribe(
-      (res: any) => {
+    this.apiService.getSysConfig().subscribe({
+      next: (res: any) => {
         this.serverConfig = res;
         this.allowhmp = res.allowhmp;
         this.checkHmp();
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.allowCompose = false;
       }
-    );
+    });
   }
 
   checkHmp() {
@@ -180,7 +180,7 @@ export class MessageDetailComponent implements OnInit {
     return this.allowCompose;
   }
 
-  showDelete(message) {
+  showDelete(message: Message) {
     this.selectedMessage = message
     if (this.deleteMessage) {
       this.deleteMessage = false;
@@ -192,22 +192,22 @@ export class MessageDetailComponent implements OnInit {
   deleteThisMessage() {
     this.deleteMessage = false
     this.loading = true
-    this.messageService.deleteMessage(this.message.id).subscribe(
-      (res: any) => {
-        this.message = res;
+    this.messageService.deleteMessage(this.message.id).subscribe({
+      next: (res: any) => {
+        this.message = res as Message;
         this.deleteMessage = false;
-        this.selectedMessage = null
-        this.loading = false
-        history.back()
+        this.selectedMessage = null;
+        this.loading = false;
+        history.back();
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.deleteMessage = false;
         this.selectedMessage = null
         this.loading = false
       }
-    );
+    });
   }
 
   closeError() {
@@ -225,16 +225,18 @@ export class MessageDetailComponent implements OnInit {
       `rotate(${this.degree}deg)`
     )
 
-    if (image.offsetWidth > image.offsetHeight)
+    if (image && image.offsetWidth > image.offsetHeight)
       image.style.width = '400px'
   }
 
   getStations() {
-    this.stationService.getStations().subscribe(stations => {
-      this.stations = stations
+    this.stationService.getStations().subscribe({
+      next: (stations) => {
+        this.stations = stations
 
-      this.getMessage()
-      this.getSysConfig()
+        this.getMessage()
+        this.getSysConfig()
+      }
     })
   }
 

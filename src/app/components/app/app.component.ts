@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { DecimalPipe, Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ApiService } from '../../_services/api.service';
 import { User } from '../../interfaces/user';
@@ -8,25 +9,23 @@ import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
-import { DarkModeService } from 'angular-dark-mode';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-// import { Keepalive } from '@ng-idle/keepalive';
-import { RouterModule, Routes } from '@angular/router';
+import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [DecimalPipe,
-    RouterModule,
+  providers: [
+    DecimalPipe,
     WebsocketService,
     { provide: '_serviceRoute', useValue: 'websocket' }
   ]
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-  currentUser: User;
+  currentUser: User | undefined;
   serverRes: any;
   error: any;
   system: any;
@@ -41,21 +40,20 @@ export class AppComponent implements OnInit, OnDestroy {
   subscript: any;
   loading = true;
   changeLanguage = false
-  deferredPrompt: any
-  installPromotion: boolean = false
   title = 'hermes.radio'
-  isMenuPage: boolean
+  isMenuPage: boolean | null = null
   currentPage = GlobalConstants.requireLogin ? "login" : 'home'
   currentUrl = GlobalConstants.requireLogin ? "login" : 'home'
-  received = [];
-  sent = [];
+  received: Array<{ source: string; content: string }> = [];
+  sent: Array<{ source: string; content: string }> = [];
   content = ''
   idleState = "NOT_STARTED";
-  countdown?: number = null
-  isLoginPage: boolean = null
+  countdown?: number | null = null
+  isLoginPage: boolean | null = null
   emergencyEmail = GlobalConstants.emergencyEmail
-  routerObserver = null
+  routerObserver: Subscription | null = null
   localeId = GlobalConstants.localeId
+  private radioSubscription!: Subscription
 
   constructor(
     private router: Router,
@@ -68,12 +66,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private sharedService: SharedService,
     private idle: Idle,
     // private keepalive: Keepalive, 
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private theme: ThemeService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     this.startIdleDetector()
-    this.importArabicStyles()
   }
 
   sendMsg() {
@@ -91,17 +89,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   getSystemStatus(): void {
-    this.apiService.getStatus().subscribe(
-      (res: any) => {
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
         this.system = res;
         this.system.domain = this.system.domain == "hermes.radio" ? "demo.hermes.radio" : this.system.domain
         this.loading = false
       },
-      (err) => {
+      error: (err) => {
         this.error = err;
         this.loading = false
       }
-    );
+    });
   }
 
   showServerAlert() {
@@ -112,12 +110,31 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  onActivate(event) {
+  onActivate() {
     window.scrollTo(0, 0)
   }
 
   checkLanguage() {
-    !localStorage.getItem('language') ? localStorage.setItem('language', GlobalConstants.localeId) : null;
+    const validCodes = ['pt', 'es', 'fr', 'ar', 'en-US'];
+    const currentLocale = window.location.pathname.split('/')[1];
+    const isLocaleUrl = validCodes.includes(currentLocale);
+    let stored = localStorage.getItem('language');
+
+    if (!stored) {
+      // Detect locale from URL (production), fall back to app default
+      const detected = isLocaleUrl ? currentLocale : GlobalConstants.localeId;
+      localStorage.setItem('language', detected);
+      return;
+    }
+
+    // In dev mode the URL has no locale prefix — don't redirect
+    if (!isLocaleUrl) return;
+
+    // Already on the right locale, nothing to do
+    if (currentLocale === stored) return;
+
+    // Redirect to the stored locale (production only)
+    window.location.replace('/' + stored);
   }
 
   closeMobileMenu() {
@@ -126,47 +143,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   checkIsMenuPage() {
     this.isMenuPage = this.router.url == '/menu' ? true : false
-  }
-
-  @HostListener('window:beforeinstallprompt', ['$event'])
-  onbeforeinstallprompt(e) {
-    console.log("Service Worker is started")
-    // Impede que o mini-infobar apareça em mobile
-    e.preventDefault();
-    this.deferredPrompt = e;
-    if (!this.deferredPrompt) {
-      this.showInstallPromotion();
-    }
-    console.log(`'beforeinstallprompt' event was fired.`);
-  }
-
-  showInstallPromotion() {
-    console.log("deferred" + this.deferredPrompt)
-    this.installPromotion = true
-  }
-
-  closeInstallapp() {
-    this.installPromotion = false
-  }
-
-  installPWA(): void {
-    this.deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    this.deferredPrompt.userChoice
-      .then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
-        this.deferredPrompt = null;
-      });
-  }
-
-  hideInstallPromotion() {
-    if (!this.deferredPrompt) {
-      this.deferredPrompt = null;
-    }
   }
 
   checkIsLoginPage() {
@@ -179,6 +155,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   checkRequireLogin() {
+    if (this.router.url === '/login' || this.router.url === '/') return
+
     GlobalConstants.requireLogin == true && this.currentUser == null ? this.router.navigate(['/login']) : null;
   }
 
@@ -194,35 +172,43 @@ export class AppComponent implements OnInit, OnDestroy {
     this.idle.setTimeout(30)
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
 
-    this.idle.onIdleStart.subscribe(() => {
-      this.idleState = "IDLE";
+    this.idle.onIdleStart.subscribe({
+      next: () => {
+        this.idleState = "IDLE";
+      }
     })
 
     // do something when the user is no longer idle
-    this.idle.onIdleEnd.subscribe(() => {
-      this.idleState = "NOT_IDLE"
-      this.countdown = null;
-      this.cd.detectChanges() // how do i avoid this kludge?
+    this.idle.onIdleEnd.subscribe({
+      next: () => {
+        this.idleState = "NOT_IDLE"
+        this.countdown = null;
+        this.cd.detectChanges() // how do i avoid this kludge?
+      }
     })
 
     // do something when the user has timed out
-    this.idle.onTimeout.subscribe(() => {
-      this.idleState = "TIMED_OUT"
-      this.resetIdle();
-      this.authenticationService.logout();
+    this.idle.onTimeout.subscribe({
+      next: () => {
+        this.idleState = "TIMED_OUT"
+        this.resetIdle();
+        this.authenticationService.logout();
 
-      if (GlobalConstants.requireLogin)
-        this.router.navigate(['/login']);
+        if (GlobalConstants.requireLogin)
+          this.router.navigate(['/login']);
 
-      if (!GlobalConstants.requireLogin)
-        this.router.navigate(['/home']);
+        if (!GlobalConstants.requireLogin)
+          this.router.navigate(['/home']);
 
-      //  this.websocketService.closeConnection() --- IGNORE ---
+        //  this.websocketService.closeConnection() --- IGNORE ---
+      }
     })
 
     // do something as the timeout countdown does its thing
-    this.idle.onTimeoutWarning.subscribe(seconds => {
-      this.countdown = seconds
+    this.idle.onTimeoutWarning.subscribe({
+      next: (seconds: number | null | undefined) => {
+        this.countdown = seconds
+      }
     });
 
     this.idle.watch()
@@ -239,24 +225,20 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
+    this.theme.init();
     this.loading = true
     this.checkRequireLogin()
     this.getSystemStatus();
     this.utils.isMobile()
     this.checkLanguage()
-    this.radio = this.sharedService.radioObj.value
+    this.importArabicStyles()
 
-    this.routerObserver = this.router.events.subscribe((event) => {
-      if (event instanceof ActivationEnd) {
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio
+    });
 
-        //Redirect login if reload page...
-        if (!this.router.navigated && this.router.url !== '/login' && this.router.url !== '/languages' && this.router.url !== '/languages' && this.router.url !== '/home') {
-          this.router.navigate(['home'])
-        }
-      }
-
+    this.routerObserver = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-
         this.checkIsMenuPage()
         this.checkIsLoginPage()
         this.updateBreadcrumb()
@@ -267,25 +249,22 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
 
-    window.addEventListener('appinstalled', () => {
-      // Esconder a promoção de instalação fornecida pela app
-      this.hideInstallPromotion();
-      // Limpar o deferredPrompt para que seja coletado
-      this.deferredPrompt = null;
-      console.log('PWA was installed');
-    });
+    if (!this.websocketService.messages) {
+      this.websocketService.startService()
+    }
   }
 
   importArabicStyles() {
+    const urlLocale = window.location.pathname.split('/')[1];
     const storedLanguage = localStorage.getItem('language');
-    const language = storedLanguage && storedLanguage.length
-      ? storedLanguage
-      : this.localeId;
-
-    document.body.classList.toggle('ar', language === 'ar');
+    // URL is the authoritative source in production (locale-prefixed builds);
+    // fall back to localStorage for dev mode where there is no locale prefix.
+    const isArabic = urlLocale === 'ar' || storedLanguage === 'ar';
+    document.body.classList.toggle('ar', isArabic);
   }
 
   ngOnDestroy() {
-    this.routerObserver.unsubscribe();
+    this.routerObserver?.unsubscribe();
+    this.radioSubscription?.unsubscribe();
   }
 }

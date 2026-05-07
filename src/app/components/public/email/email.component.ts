@@ -14,14 +14,14 @@ import { GlobalConstants } from 'src/app/global-constants';
 export class EmailComponent implements OnInit {
 
   linksOn = false;
-  currentUser: User;
+  currentUser!: User;
   error = Error;
   errorAlert = false;
   emailto = [];
   users: any;
-  domain: string
+  domain!: string
   emergencyEmail: string
-  sbitx:boolean = null
+  sbitx:boolean = false
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -34,20 +34,22 @@ export class EmailComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (res: any) => {
+    this.userService.getUsers().subscribe({
+      next: (res: any) => {
         this.users = res;
         for (let i = 0; i < Object.keys(this.users).length; i++) {
           this.users[i].fullmail = this.users[i].email + '@' + GlobalConstants.domain;
         }
-      }), (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
-      };
+      }
+    });
   }
 
   selectAllForDropdownItems(items: any[]) {
-    let allSelect = items => {
+    let allSelect = (items: any[]) => {
       items.forEach(element => {
         element['selectedAllGroup'] = 'selectedAllGroup';
       });

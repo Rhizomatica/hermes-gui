@@ -15,22 +15,22 @@ import { User } from 'src/app/interfaces/user';
 
 export class StationInformationComponent implements OnInit {
 
-  currentUser: User
+  currentUser!: User
   error: any
   errorAlert = false
   loading = true
   public freqmin = 500
   public freqmax = 30000
   frequency = 7000
-  modeSwitch: boolean
-  mode: string
-  frequencies: Frequency[]
+  modeSwitch!: boolean
+  mode!: string
+  frequencies!: Frequency[]
   frequencyArray: any = [];
   modeArray: any = [];
   nicknameArray: any = [];
   enableArray: any = [];
   editArray: any = [];
-  currentFrequency: Frequency;
+  currentFrequency!: Frequency;
   pendingUpdate = false
   isGateway: boolean = GlobalConstants.gateway
 
@@ -46,8 +46,8 @@ export class StationInformationComponent implements OnInit {
 
   public getFrequencies(): void {
     this.loading = true
-    this.frequencyService.getFrequencies().subscribe(
-      (data: any) => {
+    this.frequencyService.getFrequencies().subscribe({
+      next: (data: any) => {
         this.frequencies = data;
         this.loadArrayFrequencies(data)
         this.loadArrayNickname(data)
@@ -55,43 +55,44 @@ export class StationInformationComponent implements OnInit {
         this.loadArrayEnable(data)
         this.loadArrayEdit(data)
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
-  loadArrayFrequencies(data) {
+  loadArrayFrequencies(data: Frequency[]) {
     this.frequencyArray = []
     data.forEach(item => {
       this.frequencyArray.push(item.frequency)
     });
   }
 
-  loadArrayMode(data) {
+  loadArrayMode(data: Frequency[]) {
     this.modeArray = []
     data.forEach(item => {
       this.modeArray.push(item.mode === 'LSB' ? true : false)
     });
   }
 
-  loadArrayEnable(data) {
+  loadArrayEnable(data: Frequency[]) {
     this.enableArray = []
     data.forEach(item => {
       this.enableArray.push(item.enable === 1 ? true : false)
     });
   }
 
-  loadArrayNickname(data) {
+  loadArrayNickname(data: Frequency[]) {
     this.nicknameArray = []
     data.forEach(item => {
       this.nicknameArray.push(item.nickname)
     });
   }
 
-  loadArrayEdit(data) {
+  loadArrayEdit(data: Frequency[]) {
     this.editArray = []
     data.forEach(item => {
       this.editArray.push(false)
@@ -102,7 +103,7 @@ export class StationInformationComponent implements OnInit {
     this.errorAlert = false
   }
 
-  startEditing(i) {
+  startEditing(i: number) {
 
     for (let index = 0; index < this.editArray.length; index++) {
       this.editArray[index] = false
@@ -112,7 +113,7 @@ export class StationInformationComponent implements OnInit {
     this.pendingUpdate = true
   }
 
-  changeEnableSwitch(i) {
+  changeEnableSwitch(i: number) {
     this.enableArray[i] = this.enableArray[i] == true ? false : true
 
     if (this.enableArray[i] == true)
@@ -120,35 +121,35 @@ export class StationInformationComponent implements OnInit {
 
   }
 
-  changeModeSwitch(i) {
+  changeModeSwitch(i: number) {
     if (this.enableArray[i] === false)
       return
 
     this.modeArray[i] = this.modeArray[i] == true ? false : true
   }
 
-  changeMode(newValue) {
+  changeMode(newValue: boolean) {
     this.currentFrequency.mode = newValue == true ? "LSB" : "USB"
   }
 
-  changeEnable(newValue) {
+  changeEnable(newValue: boolean) {
     this.currentFrequency.enable = newValue == true ? 1 : 0
   }
 
-  changeFrequency(newValue): void {
+  changeFrequency(newValue: number): void {
     this.currentFrequency.frequency = newValue == null ? this.frequency : newValue
   }
 
-  changeNickname(newValue): void {
+  changeNickname(newValue: string): void {
     this.currentFrequency.nickname = newValue == null ? "" : newValue
   }
 
-  setObjectFrequency(id): void {
-    this.currentFrequency = null
+  setObjectFrequency(id: number): void {
+    this.currentFrequency = {} as Frequency
     this.currentFrequency = this.frequencies.filter((a) => { return a.id == id })[0]
   }
 
-  updateItem(frequency, i): void {
+  updateItem(frequency: Frequency, i: number): void {
     this.setObjectFrequency(frequency.id)
     this.changeNickname(this.nicknameArray[i])
     this.changeEnable(this.enableArray[i])
@@ -159,22 +160,23 @@ export class StationInformationComponent implements OnInit {
     this.pendingUpdate = false
   }
 
-  update(frequency): void {
+  update(frequency: Frequency): void {
 
     if (frequency.frequency === null)
       return
 
-    this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe(
-      (res: any) => {
+    this.frequencyService.updateFrequency(frequency.id, this.currentFrequency).subscribe({
+      next: (res: any) => {
         this.getFrequencies()
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true
       }
-    );
+    });
   }
 
-  public getStationFrequency(data, index) {
+  public getStationFrequency(data: Frequency[], index: number): void {
     var stationAlias = this.frequencies[index].alias
     var newFrequency = data.filter((a) => { return a.alias == stationAlias })[0].frequency
 
@@ -186,16 +188,18 @@ export class StationInformationComponent implements OnInit {
     this.frequencyArray[index] = this.frequency
   }
 
-  public getStations(index): void {
-    this.stationService.getStations().subscribe(
-      (data: any) => {
+  public getStations(index: number): void {
+    this.stationService.getStations().subscribe({
+      next: (data: any) => {
         this.getStationFrequency(data, index)
         this.loading = false
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
+    }
     );
   }
 

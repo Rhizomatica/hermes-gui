@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { CustomErrorsService } from './custom-errors.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { GlobalConstants } from '../global-constants';
 import { CustomError } from '../interfaces/customerror';
 
@@ -12,14 +12,13 @@ describe('CustomErrorsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule,
-        HttpClientTestingModule
-      ],
-      providers: [
-        CustomErrorsService
-      ]
-    });
+    imports: [],
+    providers: [
+        CustomErrorsService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
     service = TestBed.inject(CustomErrorsService);
     http = TestBed.inject(HttpClient);
     httpMock = TestBed.inject(HttpTestingController);

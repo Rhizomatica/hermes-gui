@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AlertService } from '../_services/alert.service';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, lastValueFrom } from 'rxjs'; // Added lastValueFrom
 import { map, catchError } from 'rxjs/operators';
 import { Message } from '../interfaces/message';
-
 import { GlobalConstants } from '../global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class MessageService {
 
   constructor(
@@ -18,9 +16,9 @@ export class MessageService {
     private alertService: AlertService
   ) { }
 
-  messages: Message[];
-  message: any[];
-  text: string;
+  messages!: Message[];
+  message!: any[];
+  text!: string;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,33 +27,40 @@ export class MessageService {
     })
   };
 
-  async postFile(file: File, pass) {
-    const url = `${GlobalConstants.apiURL}/file/`; // POST api/file
+  /**
+   * Corrected postFile using async/await and lastValueFrom.
+   * Note: HttpHeaders and HttpParams are immutable, so we chain the .set() methods.
+   */
+  async postFile(file: File, pass: string) {
+    const url = `${GlobalConstants.apiURL}/file/`; 
+    
     const formData: FormData = new FormData();
     formData.append('fileup', file);
     formData.append('pass', pass);
-    const params = new HttpParams();
-    const headers = new HttpHeaders();
 
-    // add this to be able to show progress on interface
-    params.set('reportProgress', 'true');
-    params.set('observe', 'events');
-    headers.set('Access-Control-Allow-Origin', '*');
-    
-    headers.set('Content-Type', null);
-    headers.set('Accept', 'multipart/form-data');
+    // Correct way to set params and headers (they return new instances)
+    const params = new HttpParams()
+      .set('reportProgress', 'true')
+      .set('observe', 'events');
+
+    const headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Accept', 'multipart/form-data');
 
     try {
-      const response = await this.http.post(url, formData, { params, headers });
+      // 1. Get the Observable from the HTTP call
+      const response$ = this.http.post(url, formData, { params, headers });
 
-      return response.toPromise();
+      // 2. Convert Observable to Promise using lastValueFrom and await it
+      return await lastValueFrom(response$);
     } catch (error) {
-      await this.handleError(error);
+      // Re-throwing or handling the error for the component to catch
+      return this.handleError(error as HttpErrorResponse);
     }
   }
 
-  getMessagesByType($type): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message/type/${$type}`; // get api/messages/{inbox/outbox/draft}
+  getMessagesByType($type: string): Observable<Message[]> {
+    const url = `${GlobalConstants.apiURL}/message/type/${$type}`; 
     return this.http.get(url).pipe(
       map((res: any) => {
         this.messages = res;
@@ -65,7 +70,7 @@ export class MessageService {
   }
 
   getMessage(id: number): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message/${id}`; // get /message/42
+    const url = `${GlobalConstants.apiURL}/message/${id}`; 
     return this.http.get(url).pipe(
       map((res: any) => {
         this.message = res;
@@ -75,12 +80,12 @@ export class MessageService {
   }
 
   getMessageImage(id: number): Observable<Blob> {
-    const url = `${GlobalConstants.apiURL}/message/image/${id}`; // get /message/image/42
+    const url = `${GlobalConstants.apiURL}/message/image/${id}`; 
     return this.http.get(url, { responseType: 'blob' });
   }
 
-  deleteMessage(id): Observable<{}> {
-    const url = `${GlobalConstants.apiURL}/message/${id}`; // DELETE /message/42
+  deleteMessage(id: number): Observable<{}> {
+    const url = `${GlobalConstants.apiURL}/message/${id}`; 
     return this.http.delete(url).pipe(
       map((res: any) => {
         return this.messages;
@@ -97,7 +102,7 @@ export class MessageService {
       catchError(this.handleError));
   }
 
-  uncrypt(id: number, values): Observable<{}> {
+  uncrypt(id: number, values: any): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/message/uncrypt/${id}`;
     return this.http.post<Message>(url, values).pipe(
       map((res: any) => {
@@ -108,9 +113,9 @@ export class MessageService {
   }
 
   sendMessage(message: Message, origin: any): Observable<Message[]> {
-    const url = `${GlobalConstants.apiURL}/message`; // POST /message
+    const url = `${GlobalConstants.apiURL}/message`; 
     message.draft = false;
-    message.sent_at = Date();
+    message.sent_at = new Date().toISOString(); // Better practice for dates
     message.orig = origin;
     return this.http.post<Message>(url, message).pipe(
       map((res: any) => {
@@ -123,7 +128,7 @@ export class MessageService {
 
   private handleError(error: HttpErrorResponse) {
     this.message = [];
-    return throwError(error);
+    // Ensure we return an observable error for the pipe catchers
+    return throwError(() => error);
   }
 }
-

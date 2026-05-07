@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { EmailComponent } from './email.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('EmailComponent', () => {
   let component: EmailComponent;
@@ -8,9 +9,11 @@ describe('EmailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmailComponent ],
-      imports:[HttpClientModule]
-    })
+    declarations: [EmailComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

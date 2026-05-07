@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { LogComponent } from './log.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('LogComponent', () => {
   let component: LogComponent;
@@ -8,9 +9,11 @@ describe('LogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LogComponent],
-      imports: [HttpClientModule]
-    })
+    declarations: [LogComponent],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [NO_ERRORS_SCHEMA]
+})
       .compileComponents();
   });
 

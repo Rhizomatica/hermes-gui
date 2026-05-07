@@ -16,7 +16,7 @@ export class StationService {
   constructor(
     private http: HttpClient,
     private alertService: AlertService) { }
-  stations: Station[];
+  stations!: Station[];
 
   getStations(): Observable<Station[]> {
     const url = `${GlobalConstants.apiURL}/sys/stations`;

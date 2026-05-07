@@ -1,14 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
-import { DarkModeService, DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import { User } from 'src/app/interfaces/user';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { Radio } from 'src/app/interfaces/radio';
 import { SharedService } from 'src/app/_services/shared.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
+import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -16,17 +16,17 @@ import { WebsocketService } from 'src/app/_services/websocket.service';
   styleUrls: ['./home.component.less']
 })
 
-export class homeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   [x: string]: any;
 
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private darkModeService: DarkModeService,
+     private authenticationService: AuthenticationService,
+    private themeService: ThemeService,
     private router: Router,
     private utils: UtilsService,
     private sharedService: SharedService,
-    private websocketService: WebsocketService
+    private websocketService: WebsocketService,
   ) {
     this.checkBrowser(utils.detectBrowserName())
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
@@ -43,20 +43,20 @@ export class homeComponent implements OnInit {
       this.showVoiceCard = false
   }
 
-  currentUser: User = null
+  currentUser: User | null = null
   admin: boolean = false
-  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
   currentTheme = 'light'
   alertBrowserXP: boolean = false
   showVoiceCard: boolean = false
   isGateway: boolean = GlobalConstants.gateway
-  radio: Radio
+  radio!: Radio
   requireLogin: boolean = GlobalConstants.requireLogin
-  @Input() radioObj: Radio
+  @Input() radioObj!: Radio
   self = self.location.host
   showAlert: boolean = true
   alertMessage: string = 'Radio data transmiting now... please wait for use the voice mode.'
   hasGPS: boolean = GlobalConstants.hasGPS
+  private radioSubscription!: Subscription
 
   logOff() {
     this.authenticationService.logout();
@@ -66,20 +66,11 @@ export class homeComponent implements OnInit {
   }
 
   toggle(): void {
-    if (this.currentTheme == 'light') {
-      this.currentTheme = 'dark'
-      this.darkModeService.toggle();
-      return
-    }
-
-    if (this.currentTheme == 'dark') {
-      this.currentTheme = 'light'
-      this.darkModeService.toggle();
-      return
-    }
+    this.themeService.toggle();
+    this.currentTheme = this.themeService.isDark ? 'dark' : 'light';
   }
 
-  checkBrowser(browser) {
+  checkBrowser(browser: string) {
     var browserWarning = localStorage.getItem('browserWarning');
 
     if (browserWarning === null && browser !== 'chrome') {
@@ -93,11 +84,19 @@ export class homeComponent implements OnInit {
   }
 
   formatFrequency() {
-    this.radio.p1_freq = this.radio.p1_freq == 0 || this.radio.p1_freq == null ? 0 : this.radio.p1_freq / 1000
+    this.radio.p1_freq = this.radio.p1_freq == '0' || this.radio.p1_freq == null ? '0' : (parseInt(this.radio.p1_freq) / 1000).toString()
   }
 
   ngOnInit(): void {
-    this.currentTheme = JSON.parse(localStorage.getItem('dark-mode')).darkMode == true ? 'dark' : 'light';
-    this.radio = this.sharedService.radioObj.value
+    const stored = localStorage.getItem('dark-mode');
+    this.currentTheme = stored === '1' ? 'dark' : 'light';
+
+    this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe();
   }
 }

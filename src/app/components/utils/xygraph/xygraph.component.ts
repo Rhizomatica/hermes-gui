@@ -16,10 +16,10 @@ export class XYGraphComponent implements OnChanges {
   constructor(
     sharedService: SharedService
   ) {
-    this.graphElementID = null
-    this.graphData = null
+    this.graphElementID = ""
+    this.graphData = []
     this.series = null
-    this.dataLength = null
+    this.dataLength = 0
     this.xAxis = null
     this.chart = null
     this.sharedService = sharedService
@@ -33,12 +33,12 @@ export class XYGraphComponent implements OnChanges {
   xAxis: any
   chart: any
   sharedService: SharedService
-  poolSystemData: Subscription
+  poolSystemData!: Subscription
 
 
-  @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
+  @ViewChild('chartElement') chartElement!: ElementRef<HTMLElement>;
 
-  ngOnChanges(change) {
+  ngOnChanges(change: SimpleChanges) {
     change && change.graphElementID && change.graphElementID.currentValue != change.graphElementID.previousValue ? this.graphElementID = change.graphElementID.currentValue : null
 
     change && change.graphData && change.graphData.currentValue != change.graphData.previousValue ? this.graphData = change.graphData.currentValue : null

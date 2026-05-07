@@ -1,10 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
   "projects": {
     "hermes": {
       "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
@@ -14,263 +16,135 @@
           "ar": "src/locale/messages.ar.xlf"
         }
       },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "less"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/hermes",
+            "localize": [
+              "en-US",
+              "pt",
+              "es",
+              "fr",
+              "ar"
+            ],
+            "outputPath": {
+              "base": "dist/hermes"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
-            "localize": true,
             "assets": [
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/assets/styles/styles.less",
-              "src/assets/styles/ar-styles.less"
+              "src/styles/styles.less"
             ],
-            "scripts": [
-              "./node_modules/angular-dark-mode/angular-dark-mode.js"
-            ],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "aot": true,
-            "buildOptimizer": true,
-            "sourceMap": true,
-            "optimization": true,
-            "namedChunks": true,
-            "serviceWorker": true,
-            "ngswConfigPath": "ngsw-config.json",
-            "allowedCommonJsDependencies":[
-              "rxjs/internal/Subject", 
-              "polylabel", 
+            "serviceWorker": "ngsw-config.json",
+            "allowedCommonJsDependencies": [
+              "polylabel",
               "recordrtc"
-            ]
+            ],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
+              "aot": true,
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "aot": true,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "localize": [
+                "en-US"
+              ],
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             },
             "pt": {
               "localize": [
                 "pt"
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "aot": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             },
             "es": {
               "localize": [
                 "es"
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "aot": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            },
-            "en": {
-              "localize": [
-                "en-US"
-              ],
-              "optimization": true,
-              "outputHashing": "none",
-              "sourceMap": false,
-              "namedChunks": false,
-              "statsJson": false,
-              "progress": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             },
             "fr": {
               "localize": [
                 "fr"
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "aot": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             },
             "ar": {
               "localize": [
                 "ar"
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "aot": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true
             }
-          },
-          "defaultConfiguration": ""
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hermes:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "buildTarget": "hermes:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hermes:build:production"
+              "buildTarget": "hermes:build:production"
+            },
+            "development": {
+              "buildTarget": "hermes:build:development"
             },
             "pt": {
-              "browserTarget": "hermes:build:pt"
+              "buildTarget": "hermes:build:development,pt"
             },
             "es": {
-              "browserTarget": "hermes:build:es"
-            },
-            "en": {
-              "browserTarget": "hermes:build:en"
+              "buildTarget": "hermes:build:development,es"
             },
             "fr": {
-              "browserTarget": "hermes:build:fr"
+              "buildTarget": "hermes:build:development,fr"
             },
             "ar": {
-              "browserTarget": "hermes:build:ar"
+              "buildTarget": "hermes:build:development,ar"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hermes:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.png",
-              "src/assets",
-              "src/manifest.webmanifest"
-            ],
-            "styles": [
-              "src/assets/styles/styles.less",
-              "src/assets/styles/ar-styles.less"
-            ],
-            "scripts": []
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hermes:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "hermes:serve:production"
-            }
+            "buildTarget": "hermes:build",
+            "outputPath": "src/locale"
           }
         }
       }

@@ -1,0 +1,29 @@
+.item > p:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    overflow: hidden;
+
+    b {
+        flex-shrink: 0;
+    }
+
+    .log-date {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    button {
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+}
+
+.logs .item p,
+.formdata .item p {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}

@@ -15,18 +15,18 @@ import { NgForm } from '@angular/forms'
 
 export class SMSChatComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
-  messages: SMSMessage[]
-  phoneNumber: string = null
-  message: SMSMessage = null
-  message1: SMSMessage = null
-  message2: SMSMessage = null
+  messages!: SMSMessage[]
+  phoneNumber: string = ''
+  message: SMSMessage = {} as SMSMessage
+  message1: SMSMessage = {} as SMSMessage
+  message2: SMSMessage = {} as SMSMessage
   delete: boolean = false
-  chatId: number = null
+  chatId: number = 0
 
   constructor(
     private route: ActivatedRoute,
@@ -68,31 +68,31 @@ export class SMSChatComponent implements OnInit {
 
     this.phoneNumber = "+5531999885874"
 
-    this.smsMessageService.getMessages().subscribe(
-      (res: any) => {
+    this.smsMessageService.getMessages().subscribe({
+      next: (res: any) => {
         this.messages = res
         if (res && res.length > 0)
           this.phoneNumber = res[0].phoneNumber
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   sendSMS(f: NgForm) {
-    this.smsMessageService.sendMessage(this.message).subscribe(
-      (res: any) => {
+    this.smsMessageService.sendMessage(this.message).subscribe({
+      next: (res: any) => {
         this.messages.push(f.value.text)
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   deleteConfirmation() {
@@ -107,29 +107,29 @@ export class SMSChatComponent implements OnInit {
   deleteChat() {
     this.delete = false
     this.loading = true
-    this.smsMessageService.deleteMessage(this.chatId).subscribe(
-      (res: any) => {
+    this.smsMessageService.deleteMessage(this.chatId).subscribe({
+      next: (res: any) => {
         this.loading = false
         this.router.navigate(['/sms'])
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    });
   }
 
   ngOnInit(): void {
 
-    this.chatId = parseInt(this.route.snapshot.paramMap.get('id'))
+    this.chatId = parseInt(this.route.snapshot.paramMap.get('id') || '0')
 
     this.message = {
       id: 0,
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.message1 = {
@@ -137,7 +137,7 @@ export class SMSChatComponent implements OnInit {
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.message2 = {
@@ -145,7 +145,7 @@ export class SMSChatComponent implements OnInit {
       text: "",
       phoneNumber: "",
       type: 0,
-      date: null,
+      date: '',
     }
 
     this.messages = []

@@ -1,0 +1,50 @@
+<div class="home-topbar" [class.dark-mode]="currentTheme === 'dark'">
+    <div class="home-radio-info" *ngIf="radio">
+        <status-badge [active]="radio.connection" activeLabel="Connected" inactiveLabel="Disconnected"></status-badge>
+        <div class="home-radio-detail">
+            <!-- <span i18n="@@operationmodevalue">{{ radio.profile == 0 ? 'Data' : 'Voice' }}</span> -->
+            <div class="flexible m-l-10">
+                <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel"
+                    (switched)="changeRadioProfile()" [enabled]="radio.connection ? false : true" [value]="radio.profile"></switch>
+
+                &middot;
+                {{ radio.profile == 0 ? radio.p0_freq : radio.p1_freq }} kHz
+                &middot;
+                {{ radio.profile == 0 ? radio.p0_mode : radio.p1_mode }}
+            </div>
+        </div>
+    </div>
+
+    <div class="home-topbar-actions">
+        <div class="user-menu">
+            <div class="user-menu-trigger" (click)="toggleMenu($event)">
+                <span *ngIf="currentUser">{{ currentUser.name }}</span>
+                <span *ngIf="!currentUser || !currentUser.name" i18n="@@guestlabel">Guest</span>
+                <span class="user-menu-caret">&#9662;</span>
+            </div>
+            <div class="user-menu-dropdown" *ngIf="menuOpen">
+                <ul class="user-menu-list">
+                    <li (click)="toggleTheme.emit(); closeMenu()">
+                        <span class="theme-icon" *ngIf="currentTheme == 'light'">&#9790;</span>
+                        <span class="theme-icon" *ngIf="currentTheme == 'dark'">&#9728;</span>
+                        <span i18n="@@darktheme" *ngIf="currentTheme == 'light'">Dark theme</span>
+                        <span i18n="@@lighttheme" *ngIf="currentTheme == 'dark'">Light theme</span>
+                    </li>
+                    <li (click)="installPWA(); closeMenu()" *ngIf="deferredPrompt">
+                        <img class="btnicon" title="install" src="assets/svg/download.svg">
+                        <span i18n="@installhermesappng">Install HERMES APP</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li routerLink="/login" (click)="closeMenu()" *ngIf="!currentUser">
+                        <img class="btnicon" title="login" src="assets/svg/login.svg">
+                        <span i18n="@@loginbutton">Login</span>
+                    </li>
+                    <li (click)="logOut.emit(); closeMenu()" *ngIf="currentUser">
+                        <img class="btnicon" title="logout" src="assets/svg/logout.svg">
+                        <span i18n="@@logoutbutton">Logout</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

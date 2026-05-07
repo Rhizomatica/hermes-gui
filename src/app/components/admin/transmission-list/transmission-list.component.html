@@ -67,10 +67,10 @@
       </div>
 
       <div class="row" *ngIf="jobToForce && jobToForce.uuiduucp === job.uuiduucp">
-        <a i18n="@@forcetransmitting">Transmitting...</a>
+        <a i18n="@@forcetransmitting" class="color">Transmitting...</a>
       </div>
 
-      <div class="row m-t-10" *ngIf="isadmin && !jobToForce">
+      <div class="row m-t-10" *ngIf="isadmin && !jobToForce?.type">
         <button (click)="confTransmit(job)">
           <span i18n="@@transmitnow">transmit now</span>
         </button>

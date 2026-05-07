@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core'
 import { User } from '../../../interfaces/user'
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { RadioService } from 'src/app/_services/radio.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Radio } from 'src/app/interfaces/radio';
 import { NgForm } from '@angular/forms';
 import { GlobalConstants } from 'src/app/global-constants';
+import { UtilsService } from 'src/app/_services/utils.service';
 
 @Component({
   selector: 'voice',
@@ -16,48 +17,56 @@ import { GlobalConstants } from 'src/app/global-constants';
 
 export class VoiceComponent implements OnInit {
 
-  currentUser: User
-  admin: boolean
+  currentUser!: User
+  admin!: boolean
   loading: boolean = false
-  error: string
+  error!: string
   errorAlert: boolean = false
-  radio: Radio
-  step: number = null
-  modeSwitch: boolean
+  radio!: Radio
+  step: number = 0
+  modeSwitch!: boolean
   freqmin: number = 500
   freqmax: number = 30000
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
-  isArabic: boolean = GlobalConstants.localeId == 'ar' ? true : false
+  isArabic: boolean = false
+  toggleDigital: number = 0
+  private radioSubscription!: Subscription
 
   constructor(
     private authenticationService: AuthenticationService,
     private radioService: RadioService,
+    private utils: UtilsService,
     private sharedService: SharedService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
+    this.isArabic = this.utils.isArabic();
   }
 
   public closeError() {
     this.errorAlert = false
   }
 
-  changeMode(event) {
+  changeMode(event: any) {
     this.modeSwitch = this.modeSwitch === true ? false : true;
-    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.setRadioMode(this.modeSwitch ? 'LSB' : 'USB', this.voiceModeProfileID).subscribe({
+      next: (res: any) => {
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
   }
 
   changeStep() {
     this.step--
+
+    if (!this.radio || !this.radio.p1_freq_splited)
+      return
 
     if (this.step < 0 || this.step == 0 && this.radio.p1_freq_splited.length == 7) {
       this.step = this.radio.p1_freq_splited.length - 1
@@ -67,11 +76,13 @@ export class VoiceComponent implements OnInit {
   }
 
   setInitialStep() {
+    if (!this.radio || !this.radio.p1_freq_splited)
+      return
     if (this.radio.p1_freq_splited.length > 0)
       this.step = this.radio.p1_freq_splited.length - 1
   }
 
-  changeStepDigit(index) {
+  changeStepDigit(index: number) {
 
     if (index == 0)
       return
@@ -82,8 +93,8 @@ export class VoiceComponent implements OnInit {
 
   getSavedStep() {
     this.loading = true
-    this.radioService.getStep().subscribe(
-      (res: any) => {
+    this.radioService.getStep().subscribe({
+      next: (res: any) => {
 
         this.loading = false
 
@@ -94,30 +105,32 @@ export class VoiceComponent implements OnInit {
 
         this.setStepCode(res)
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
         this.loading = false
       }
-    );
+    });
   }
 
   updateStep() {
-    this.radioService.updateStep(this.setStepValue()).subscribe(
-      (res: any) => {
-        if (res != true || res != 1) {
+    this.radioService.updateStep(this.setStepValue()).subscribe({
+      next: (res: any) => {
+        if (res != true && res != 1) {
           this.error = res
           this.errorAlert = true;
         }
 
-      }, (err) => {
+      },
+      error: (err) => {
         this.error = err;
         this.errorAlert = true;
       }
-    );
+    });
   }
 
-  setStepCode(value) {
+  setStepCode(value: number) {
     switch (value) {
       case 1000000:
         this.step = 1;
@@ -140,7 +153,7 @@ export class VoiceComponent implements OnInit {
     }
   }
 
-  setStepValue() {
+  setStepValue(): number {
     switch (this.step) {
       case 1:
         return 1000000;
@@ -155,6 +168,7 @@ export class VoiceComponent implements OnInit {
       case 6:
         return 10;
     }
+    return 0;
   }
 
   updatePage() {
@@ -163,27 +177,30 @@ export class VoiceComponent implements OnInit {
   }
 
   changeVolume(f: NgForm) {
-    this.radioService.changeVolume(f.value.volume).subscribe(
-      (res: any) => {
-        
-      }, (err) => {
+
+    this.radioService.changeVolume(f.value.volume).subscribe({
+      next: (res: any) => {
+
+      },
+      error: (err) => {
         this.error = err;
       }
-    );
+    });
   }
 
+
   resetProtection() {
-    this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe(
-      (res: any) => {
+    this.radioService.radioResetProtection(this.voiceModeProfileID).subscribe({
+      next: (res: any) => {
         if (res === 1) {
           this.radio.protection = false
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
   }
 
   changeOperateModeProfile() {
@@ -192,40 +209,67 @@ export class VoiceComponent implements OnInit {
       return
 
     this.loading = true
-    this.radioService.changeOperateModeProfile(1).subscribe(
-      (res: any) => {
+    this.radioService.changeOperateModeProfile(1).subscribe({
+      next: (res: any) => {
         if (res === 1) {
           this.radio.profile = res.profile
           this.loading = false
         }
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
         this.loading = false
       }
-    );
+    })
   }
 
   restartVoiceTimeout() {
     if (parseInt(this.radio.timeout) <= 0)
       return
 
-    this.radioService.restartVoiceTimeout().subscribe(
-      (res: any) => {
+    this.radioService.restartVoiceTimeout().subscribe({
+      next: (res: any) => {
         return res
       },
-      (err) => {
+      error: (err) => {
         this.error = err
         this.errorAlert = true
       }
-    );
+    });
+  }
+
+  toggleDigitalVoice(event: any) {
+    if (this.radio.p1_digital_voice == null) return
+
+    this.loading = true;
+    const digitalValue = this.radio.p1_digital_voice == true ? 0 : 1;
+
+    this.radioService.toggleDigital(digitalValue).subscribe({
+      next: (res: any) => {
+        this.toggleDigital = res;
+        this.radio.p1_digital_voice = res == 1 ? true : false
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = err;
+        this.errorAlert = true;
+        this.loading = false;
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.radio = this.sharedService.radioObj.value
+     this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
+      this.radio = radio;
+    });
+
     this.modeSwitch = this.radio.p1_mode == 'LSB' ? true : false
     this.changeOperateModeProfile()
     this.getSavedStep()
+  }
+
+  ngOnDestroy(): void {
+    this.radioSubscription?.unsubscribe();
   }
 }

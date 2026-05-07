@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../app/_helpers/auth.guard';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './_helpers/auth.guard';
 import { HintComponent } from './components/utils/hint/hint.component';
 import { LoadingComponent } from './components/utils/loading/loading.component';
-import { homeComponent } from './components/public/home/home.component';
+import { HomeComponent } from './components/public/home/home.component';
 import { MessagesComponent } from './components/public/messages/messages.component';
 import { MessageDetailComponent } from './components/public/message-detail/message-detail.component';
 import { LogComponent } from './components/admin/log/log.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { MessagecomposeComponent } from './components/public/messagecompose/messagecompose.component';
 import { StationInformationComponent } from './components/admin/station-information/station-information.component';
@@ -37,30 +38,31 @@ import { ProgressBarComponent } from './components/utils/progressbar/progressbar
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: homeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'hint', component: HintComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'message/:id', component: MessageDetailComponent },
-  { path: 'log', component: LogComponent },
+  { path: 'log', component: LogComponent, canActivate: [AuthGuard] },
+  { path: 'user-list', component: UserListComponent },
   { path: 'user-manage', component: UserManagementComponent },
   { path: 'user-manage/:id', component: UserManagementComponent },
   { path: 'compose', component: MessagecomposeComponent },
   { path: 'response/:origin', component: MessagecomposeComponent },
-  { path: 'station-info', component: StationInformationComponent },
+  { path: 'station-info', component: StationInformationComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'languages', component: LanguagesComponent },
-  { path: 'message-config', component: MessageConfigComponent },
+  { path: 'message-config', component: MessageConfigComponent, canActivate: [AuthGuard] },
   { path: 'sent', component: SentMessagesComponent },
   { path: 'email', component: EmailComponent },
   { path: 'radio-config', component: RadioConfigComponent },
-  { path: 'schedule', component: ScheduleComponent },
-  { path: 'transmission', component: TransmissionListComponent },
+  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
+  { path: 'transmission', component: TransmissionListComponent, canActivate: [AuthGuard] },
   { path: 'switch', component: SwitchComponent },
   { path: 'player', component: PlayerComponent },
   { path: 'recorder', component: RecorderComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'wifi-manage', component: WiFiManagementComponent },
+  { path: 'wifi-manage', component: WiFiManagementComponent, canActivate: [AuthGuard] },
   { path: 'voice', component: VoiceComponent },
   { path: 'breadcrumb', component: BreadcrumbComponent },
   { path: 'floatbutton', component: FloatButtonComponent },
@@ -72,7 +74,7 @@ const routes: Routes = [
   { path: 'clockhandgraph', component: ClockHandGraphComponent },
   { path: 'mapgraph', component: MapGraphComponent },
   { path: 'progressbar', component: ProgressBarComponent }
-  
+
 ];
 
 @NgModule({

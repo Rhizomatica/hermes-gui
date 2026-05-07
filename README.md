@@ -5,20 +5,17 @@ This project is a friendly user interface for HERMES - High-frequency Emergency 
 ![HERMES-GUI Home Screenshot](/src/assets/img/hermes-gui-home-readme.png)
 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21 and has been migrated to Angular 18.
 
-@angular-devkit/architect: 0.1402.12  
-@angular-devkit/build-angular: 14.2.12  
-@angular-devkit/core: 14.2.12  
-@angular-devkit/schematics: 14.2.12  
-@angular/cli: 14.2.12  
-@schematics/angular: 14.2.12  
-rxjs: 6.6.7  
-typescript: 4.8.4  
+@angular-devkit/build-angular: 18.2.21  
+@angular/cli: 18.2.21  
+@angular/compiler-cli: 18.2.14  
+rxjs: 7.8.2  
+typescript: 5.2.2  
 
-Angular CLI: 14.2.12  
-Node: 18.17.1  
-Package Manager: npm 9.6.7 
+Angular CLI: 18.2.21  
+Node: v20.20.0  
+Package Manager: npm 10.8.2 
 
 
 ## Install node, npm
@@ -70,23 +67,33 @@ Check and configure `.env` file with your parameters and run `npx ts-node setEnv
 
 ## Development server
 
-Run `ng serve --configuration=en` for a dev server in english (en), you can change the language to spanish (es), portuguese (pt) or french (fr) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --configuration=en` for a dev server in English (en). You can change the language to Spanish (es), Portuguese (pt), French (fr), or Arabic (ar) if you wish. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Alternatively, use the npm script:
+```bash
+npm start -- --configuration=en
+```
 
 
 ## Build & Publish
 
-Access remotly machine in port 22 with `ssh -p 22 hermes@[my_host_ip]`
-type `sudo su` to admin verification 
-Set origin main branch `git checkout main`
+Access remote machine in port 22 with `ssh -p 22 hermes@[my_host_ip]`
+Type `sudo su` for admin verification 
+Set origin to main branch `git checkout main`
 Update project `git pull`
 
 Remove all files in dist folder `rm -r dist/`
-Run `ng build --configuration production` to build the project.
+Run `ng build --configuration production` to build the project with all locales enabled (en-US, es, pt, fr, ar).
 
-To publish your artifacts copy the files stored in the `/dist` to `/var/www/html/` directory  
-`cp -a dist/hermes/pt /var/www/html/`  
-`cp -a dist/hermes/es /var/www/html/`  
-`cp -a dist/hermes/en-US/ /var/www/html/`
+To publish your artifacts, copy the files stored in the `/dist/hermes` to `/var/www/html/` directory:  
+```bash
+cp -a dist/hermes/* /var/www/html/
+```
+
+Alternatively, use npm script:
+```bash
+npm run build-i18n
+```
 
 Done
 
@@ -112,11 +119,28 @@ to restart the project.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This project uses [Jest](https://jestjs.io/) with [jest-preset-angular](https://thymikee.github.io/jest-preset-angular/) for unit testing.
+
+Run all tests:
+```bash
+npm test
+```
+
+Run tests in watch mode:
+```bash
+npm run test:watch
+```
+
+Run tests with coverage report:
+```bash
+npm run test:coverage
+```
+
+Coverage reports are generated in the `coverage/hermes` directory in HTML, LCOV, and text-summary formats.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+TODO
 
 ## GITHUB Actions runner, Build & Delivery 
 
@@ -185,9 +209,34 @@ Also inside the app folder, there is the _services foder, where you can find com
 
 On assets folder you find links to svgs and image files used on the interface design.
 
-On the locale folder there are the xlf files for translation. For the translations, we are using i18n angular module. To generate translations, you need to use `ng extract-i18n --output-path src/locale/` to generate the messages,xlf file and then `xliffmerge --profile xliffmerge.json pt es fr ar` to transpose the new data to both messages.es.xlf and messages.pt.xlf, where you can input the new tranlation tokens. 
+The `locale` folder contains the XLF (XLIFF) files for translations. HERMES GUI uses Angular's i18n module for internationalization. Supported locales are English (en), Spanish (es), Portuguese (pt), French (fr), and Arabic (ar).
 
-if `xliffmerge` library not installed please visit (https://www.npmjs.com/package/ngx-i18nsupport)
+### Extracting and updating translations:
+
+1. **Extract new translation keys:**
+   ```bash
+   ng extract-i18n --output-path src/locale/
+   ```
+   This generates or updates the `messages.xlf` file with new translation tokens.
+
+2. **Merge translations to locale files:**
+   ```bash
+   npm run extract-i18n
+   ```
+   This command runs both extraction and merges new keys into `messages.es.xlf`, `messages.pt.xlf`, `messages.fr.xlf`, and `messages.ar.xlf`.
+
+3. **Add translations:**
+   Edit the corresponding `messages.[locale].xlf` files to add translations for new tokens.
+
+For more details on ngx-i18nsupport, visit: https://www.npmjs.com/package/ngx-i18nsupport
+
+### Building with translations:
+
+Run the build with localization:
+```bash
+npm run build-i18n
+```
+This creates locale-specific builds in the dist folder for each configured language.
 
 
 

@@ -2,13 +2,14 @@ import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@ang
 import { GlobalConstants } from 'src/app/global-constants';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-import am5geodata_bangladeshHigh from "../../../../assets/maps/bangladeshHigh";
+import am5geodata_bangladeshHigh from "../../../../maps/bangladeshHigh";
 
 @Component({
   selector: 'mapgraph',
   templateUrl: './mapgraph.component.html',
   styleUrls: ['./mapgraph.component.less']
 })
+
 
 export class MapGraphComponent implements OnChanges, OnInit {
 
@@ -23,13 +24,13 @@ export class MapGraphComponent implements OnChanges, OnInit {
   @Input() currentLatitude: number
   @Input() currentLongitude: number
 
-  @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
+  @ViewChild('chartElement') chartElement!: ElementRef<HTMLElement>;
 
   pointSeries: any
   polygonSeries: any
   chart: any
 
-  ngOnChanges(change) {
+  ngOnChanges(change: any) {
 
     if (change && change.currentLatitude && change.currentLatitude.currentValue != change.currentLatitude.previousValue)
       this.currentLatitude = change.currentLatitude.currentValue
@@ -137,7 +138,7 @@ export class MapGraphComponent implements OnChanges, OnInit {
     var geoJson = am5geodata_bangladeshHigh
 
     if (GlobalConstants.gpsMap == 'brazil') {
-      geoJson = await import("../../../../assets/maps/brazilHigh").then(module => module.default);
+      geoJson = await import("../../../../maps/brazilHigh" as any).then(module => module.default);
     }
 
     this.polygonSeries = chart.series.push(

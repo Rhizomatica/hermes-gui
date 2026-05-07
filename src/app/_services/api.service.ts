@@ -14,8 +14,8 @@ export class ApiService {
   login = false;
   serverReturn: any;
   error = Error;
-  schedules: Schedule[];
-  schedule: any[];
+  schedules!: Schedule[];
+  schedule!: any[];
 
   constructor(
     private http: HttpClient,
@@ -96,10 +96,10 @@ export class ApiService {
     );
   }
 
-  public getLogin(plogin, ppassword): Observable<{}> {
+  public getLogin(plogin: any, ppassword: any): Observable<{}> {
     const url = `${GlobalConstants.apiURL}/login`; // get api:sys/status
     const data = { login: plogin, password: ppassword };
-    return this.http.post(url, data[0]).pipe(
+    return this.http.post(url, data).pipe(
       map((res: any) => {
         this.serverReturn = res;
         return this.serverReturn;
@@ -185,7 +185,7 @@ export class ApiService {
   }
 
 
-  public deleteSchedule(id) {
+  public deleteSchedule(id: number) {
     const url = `${GlobalConstants.apiURL}/caller/${id}`; // POST /message
     return this.http.delete(url).pipe(
       map((res: any) => {

@@ -1,0 +1,5 @@
+<span class="status-badge" [class.active]="active" [class.inactive]="!active">
+    <span class="status-badge-dot"></span>
+    <span class="status-badge-label" *ngIf="active">{{ activeLabel }}</span>
+    <span class="status-badge-label" *ngIf="!active">{{ inactiveLabel }}</span>
+</span>

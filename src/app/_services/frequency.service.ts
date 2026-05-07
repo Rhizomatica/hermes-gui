@@ -16,9 +16,9 @@ export class FrequencyService {
     // private alertService: AlertService
   ) { }
 
-  frequencies: Frequency[];
-  frequency: any[];
-  text: string;
+  frequencies!: Frequency[];
+  frequency!: any[];
+  text!: string;
 
   httpOptions = {
     headers: new HttpHeaders({
