@@ -14,6 +14,10 @@ export class SharedService {
   constructor(private router: Router) { }
   utils = new UtilsService()
 
+  /** When true, the radio daemon WebSocket is the active data source and
+   *  the original system WebSocket should not feed radioObj. */
+  public daemonActive$ = new BehaviorSubject<boolean>(false);
+
   public radioObj = new BehaviorSubject<Radio>({
     p0_freq: '0',
     p1_freq: '0',

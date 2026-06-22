@@ -80,7 +80,10 @@ export class WebsocketService {
         if (!this.messagesSubscription || this.messagesSubscription.closed) {
             this.messagesSubscription = this.messages.subscribe({
                 next: (data: any) => {
-                    this.sharedService?.setRadioObjShared(data);
+                    // Only feed SharedService if the daemon WebSocket is NOT active
+                    if (!this.sharedService?.daemonActive$.getValue()) {
+                        this.sharedService?.setRadioObjShared(data);
+                    }
                 },
                 error: async (err) => {
                     if (this.ws && this.ws.OPEN == 1)
