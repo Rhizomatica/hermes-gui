@@ -6,6 +6,7 @@ import { User } from '../../../interfaces/user';
 import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
+import { RadioDaemonWebsocketService } from 'src/app/_services/radio-daemon-websocket.service';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -68,6 +69,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     private radioService: RadioService,
     private apiService: ApiService,
     private sharedService: SharedService,
+    private radioDaemonWebsocketService: RadioDaemonWebsocketService,
     private utils: UtilsService,
     private router: Router
   ) {
@@ -92,7 +94,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     }
   }
 
-  changePtt() {
+  changePtt(_f?: any) {
 
     this.loading = true
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe({
@@ -199,7 +201,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.confirmSet = !this.confirmSet
   }
 
-  confirmChangeThreshold() {
+  confirmChangeThreshold(_f?: any) {
     this.confirmChangeProtection = !this.confirmChangeProtection
   }
 
@@ -223,7 +225,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     });
   }
 
-  confirmChangePTT() {
+  confirmChangePTT(_event?: any) {
     if (this.radio.tx) {
       this.changePtt()
       return
@@ -479,7 +481,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.getRadioStatus()
     this.getTimeoutConfig()
     this.getRadioPowerLevel()
-    this.isAdmin = this.currentUser?.admin
+    this.isAdmin = this.currentUser?.admin ?? false
 
     this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
       this.radio = radio;
@@ -496,6 +498,31 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     });
 
     this.loading = false
+  }
+
+  /** Exposed for template binding — reflects whether the primary daemon URL is selected */
+  get daemonUsePrimary(): boolean {
+    return this.radioDaemonWebsocketService.usePrimaryUrl$.getValue();
+  }
+
+  get daemonUrlType(): string {
+    return this.daemonUsePrimary
+      ? 'Primary (8080)'
+      : 'Alternate Radio Daemon (8081)';
+  }
+
+  /** Observable for template async pipe — reflects live websocket connection status */
+  get daemonConnected$() {
+    return this.radioDaemonWebsocketService.connected$;
+  }
+
+  /**
+   * Toggle the radio-daemon websocket between the primary (8080) and
+   * alternate (8081) endpoint.
+   */
+  switchDaemonConnection(): void {
+    const current = this.radioDaemonWebsocketService.usePrimaryUrl$.getValue();
+    this.radioDaemonWebsocketService.switchConnection(!current);
   }
 
   ngOnDestroy(): void {

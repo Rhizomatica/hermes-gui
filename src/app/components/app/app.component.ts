@@ -8,6 +8,7 @@ import { User } from '../../interfaces/user';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
+import { RadioDaemonWebsocketService } from 'src/app/_services/radio-daemon-websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
@@ -63,9 +64,10 @@ export class AppComponent implements OnInit, OnDestroy {
     private utils: UtilsService,
     private location: Location,
     private websocketService: WebsocketService,
+    private radioDaemonWebsocketService: RadioDaemonWebsocketService,
     private sharedService: SharedService,
     private idle: Idle,
-    // private keepalive: Keepalive, 
+    // private keepalive: Keepalive,
     private cd: ChangeDetectorRef,
     private theme: ThemeService
   ) {
@@ -252,6 +254,11 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!this.websocketService.messages) {
       this.websocketService.startService()
     }
+
+    // Start the daemon websocket so it can be used as an alternative data source.
+    // It will NOT feed SharedService until daemonActive$ is set to true
+    // (controlled by the switch in the Radio Config page).
+    this.radioDaemonWebsocketService.startService();
   }
 
   importArabicStyles() {
