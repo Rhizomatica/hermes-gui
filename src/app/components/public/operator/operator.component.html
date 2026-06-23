@@ -2,185 +2,290 @@
 
 
 <div class="container">
-    <div class="flexible m-b-25">
-        <h2 i18n="@@operatorpanel">Operator Panel</h2>
-        <hint [showHint]="false" [hint]="'operatorpanel'"></hint>
-    </div>
-    <div class="row">
-        <app-radio-connection-alert></app-radio-connection-alert>
+  <div class="flexible m-b-25">
+    <h2 i18n="@@operatorpanel">Operator Panel</h2>
+    <hint
+      [showHint]="false"
+      [hint]="'operatorpanel'"
+    ></hint>
+  </div>
+  <div class="row">
+    <app-radio-connection-alert></app-radio-connection-alert>
 
-        <div class="operator-panel m-t-25">
-            <div class="data">
-                <div class="data-title" i18n="@@connection">
-                    Connection
-                </div>
-                <div class="data-body">
-                    <status-badge [active]="radio.connection"></status-badge>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-body">
-                    <button (click)="stopTransmission()" i18n="@@stoptransmission" [disabled]="!radio.connection">stop
-                        transmission</button>
-                </div>
-            </div>
-            <div class="data-graph">
-                <div class="data-title" i18n="@@connectionstatus">
-                    Connection status
-                </div>
-                <div class="data-body">
-                    {{radio.message}}
-                </div>
-            </div>
-            <div class="row"></div>
-            <div class="data-graph" *ngIf="showGraph">
-                <div class="data-title">
-                    <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
-                </div>
-                <div class="data-body m-t-10">
-                    <clockhandgraph graphElementID="swrChart" [hand1Data]="radio.swr" hand1Label="swr" [minAxis1]="1"
-                        [maxAxis1]="4">
-                    </clockhandgraph>
-                </div>
-            </div>
-            <div class="data" *ngIf="!showGraph">
-                <div class="data-title">
-                    <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.swr}}</span>
-                </div>
-            </div>
+    <div class="operator-panel m-t-25">
+      <div class="data">
+        <div
+          class="data-title"
+          i18n="@@connection"
+        >
+          Connection
+        </div>
+        <div class="data-body">
+          <status-badge [active]="radio.connection"></status-badge>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-body">
+          <button
+            (click)="stopTransmission()"
+            i18n="@@stoptransmission"
+            [disabled]="!radio.connection"
+          >stop
+            transmission</button>
+        </div>
+      </div>
+      <div class="data-graph">
+        <div
+          class="data-title"
+          i18n="@@connectionstatus"
+        >
+          Connection status
+        </div>
+        <div class="data-body">
+          {{radio.message}}
+        </div>
+      </div>
 
-            <div class="data-graph" *ngIf="showGraph">
-                <div class="data-title">
-                    <span i18n="@@power">Power(W)</span>
-                </div>
-                <div class="data-body">
-                    <clockhandgraph graphElementID="powerChart" [hand1Data]="radio.fwd_watts" hand1Label="forward(W)"
-                        [minAxis1]="0" [maxAxis1]="40">
-                    </clockhandgraph>
-                </div>
-            </div>
-            <div class="data" *ngIf="!showGraph">
-                <div class="data-title">
-                    <span i18n="@@power">Power(W)</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.fwd_watts}}</span>
-                </div>
-            </div>
-            <div class="data-graph" *ngIf="showGraph">
-                <div class="data-title" i18n="@@bitrate">Bitrate(bps)</div>
-                <div class="data-body">
-                    <xygraph graphElementID="bitrateChart" [graphData]="radio.bitrateHistory"
-                        [dataLength]="radio.bitrateLength" *ngIf="radio.bitrateLength > 0"></xygraph>
-                    <p *ngIf="radio.bitrateLength == 0" class="m-t-25" i18n="@@unavailabledata">
-                        Unavailable Data
-                    </p>
-                </div>
-            </div>
-            <div class="data" *ngIf="!showGraph">
-                <div class="data-title">
-                    <div class="data-title" i18n="@@bitrate">Bitrate(bps)</div>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.bitrate}}</span>
-                </div>
-            </div>
-            <div class="data-graph" *ngIf="showGraph">
-                <div class="data-title" i18n="@@SNR">Signal-to-noise ratio (SNR)</div>
-                <div class="data-body">
-                    <xygraph graphElementID="snrChart" [graphData]="radio.snrHistory" [dataLength]="radio.snrLength"
-                        *ngIf="radio.snrLength > 0"></xygraph>
-                    <p *ngIf="radio.snrLength == 0" i18n="@@unavailabledata">
-                        Unavailable Data
-                    </p>
-                </div>
-            </div>
-            <div class="data" *ngIf="!showGraph">
-                <div class="data-title">
-                    <div class="data-title" i18n="@@SNR">Signal-to-noise ratio (SNR)</div>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.snr}}</span>
-                </div>
-            </div>
-            <div class="row"></div>
-            <div class="data">
-                <div class="data-title" i18n="@@operationmodelabel">Operation mode</div>
-                <div class="data-body">
-                    <div *ngIf="radio.tx"> TX </div>
-                    <div *ngIf="radio.rx"> RX </div>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@bytestransmitted">Bytes Transmitted</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.bytes_transmitted}}</span>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@bytesreceived">Bytes Received</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.bytes_received}}</span>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title" i18n="@@protection">
-                    Protection
-                </div>
-                <div class="data-body">
-                    {{radio.protection ? 'ON' : 'OFF'}}
-                </div>
-            </div>
-            <div class="row"></div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@radioprofile">Radio profile</span>
-                </div>
-                <div class="data-body" *ngIf="radio.profile == 0">
-                    <span>Data</span>
-                </div>
-                <div class="data-body" *ngIf="radio.profile == 1">
-                    <span>Voice</span>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
-                        Digital voice
-                    </span>
-                </div>
-                <div class="data-body">
-                    <status-badge [active]="radio.digital == 1"></status-badge>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@datafrequency">Data Frequency</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.p0_freq}}</span>
-                    <br />
-                    <span>{{radio.p0_mode}}</span>
-                </div>
-            </div>
-            <div class="data">
-                <div class="data-title">
-                    <span i18n="@@voicefrequency">Voice Frequency</span>
-                </div>
-                <div class="data-body">
-                    <span>{{radio.p1_freq}}</span>
-                    <br />
-                    <span>{{radio.p1_mode}}</span>
-                </div>
-            </div>
-            <!-- <div class="data">
+      <div class="data-graph">
+        <div
+          class="data-title"
+          i18n="@@waterfall"
+        >
+          Waterfall
+        </div>
+        <div class="data-body">
+          <app-spectrum-graph
+            *ngIf="radioDaemon"
+            class="m-t-25 m-b-25"
+          ></app-spectrum-graph>
+        </div>
+      </div>
+
+      <div class="row"></div>
+      <div
+        class="data-graph"
+        *ngIf="showGraph"
+      >
+        <div class="data-title">
+          <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
+        </div>
+        <div class="data-body m-t-10">
+          <clockhandgraph
+            graphElementID="swrChart"
+            [hand1Data]="radio.swr"
+            hand1Label="swr"
+            [minAxis1]="1"
+            [maxAxis1]="4"
+          >
+          </clockhandgraph>
+        </div>
+      </div>
+      <div
+        class="data"
+        *ngIf="!showGraph"
+      >
+        <div class="data-title">
+          <span i18n="@@swr">Standing Wave Ratio (SWR)</span>
+        </div>
+        <div class="data-body">
+          <span>{{radio.swr}}</span>
+        </div>
+      </div>
+
+      <div
+        class="data-graph"
+        *ngIf="showGraph"
+      >
+        <div class="data-title">
+          <span i18n="@@power">Power(W)</span>
+        </div>
+        <div class="data-body">
+          <clockhandgraph
+            graphElementID="powerChart"
+            [hand1Data]="radio.fwd_watts"
+            hand1Label="forward(W)"
+            [minAxis1]="0"
+            [maxAxis1]="40"
+          >
+          </clockhandgraph>
+        </div>
+      </div>
+      <div
+        class="data"
+        *ngIf="!showGraph"
+      >
+        <div class="data-title">
+          <span i18n="@@power">Power(W)</span>
+        </div>
+        <div class="data-body">
+          <span>{{radio.fwd_watts}}</span>
+        </div>
+      </div>
+      <div
+        class="data-graph"
+        *ngIf="showGraph"
+      >
+        <div
+          class="data-title"
+          i18n="@@bitrate"
+        >Bitrate(bps)</div>
+        <div class="data-body">
+          <xygraph
+            graphElementID="bitrateChart"
+            [graphData]="radio.bitrateHistory"
+            [dataLength]="radio.bitrateLength"
+            *ngIf="radio.bitrateLength > 0"
+          ></xygraph>
+          <p
+            *ngIf="radio.bitrateLength == 0"
+            class="m-t-25"
+            i18n="@@unavailabledata"
+          >
+            Unavailable Data
+          </p>
+        </div>
+      </div>
+      <div
+        class="data"
+        *ngIf="!showGraph"
+      >
+        <div class="data-title">
+          <div
+            class="data-title"
+            i18n="@@bitrate"
+          >Bitrate(bps)</div>
+        </div>
+        <div class="data-body">
+          <span>{{radio.bitrate}}</span>
+        </div>
+      </div>
+      <div
+        class="data-graph"
+        *ngIf="showGraph"
+      >
+        <div
+          class="data-title"
+          i18n="@@SNR"
+        >Signal-to-noise ratio (SNR)</div>
+        <div class="data-body">
+          <xygraph
+            graphElementID="snrChart"
+            [graphData]="radio.snrHistory"
+            [dataLength]="radio.snrLength"
+            *ngIf="radio.snrLength > 0"
+          ></xygraph>
+          <p
+            *ngIf="radio.snrLength == 0"
+            i18n="@@unavailabledata"
+          >
+            Unavailable Data
+          </p>
+        </div>
+      </div>
+      <div
+        class="data"
+        *ngIf="!showGraph"
+      >
+        <div class="data-title">
+          <div
+            class="data-title"
+            i18n="@@SNR"
+          >Signal-to-noise ratio (SNR)</div>
+        </div>
+        <div class="data-body">
+          <span>{{radio.snr}}</span>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="data">
+        <div
+          class="data-title"
+          i18n="@@operationmodelabel"
+        >Operation mode</div>
+        <div class="data-body">
+          <div *ngIf="radio.tx"> TX </div>
+          <div *ngIf="radio.rx"> RX </div>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          <span i18n="@@bytestransmitted">Bytes Transmitted</span>
+        </div>
+        <div class="data-body">
+          <span>{{radio.bytes_transmitted}}</span>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          <span i18n="@@bytesreceived">Bytes Received</span>
+        </div>
+        <div class="data-body">
+          <span>{{radio.bytes_received}}</span>
+        </div>
+      </div>
+      <div class="data">
+        <div
+          class="data-title"
+          i18n="@@protection"
+        >
+          Protection
+        </div>
+        <div class="data-body">
+          {{radio.protection ? 'ON' : 'OFF'}}
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="data">
+        <div class="data-title">
+          <span i18n="@@radioprofile">Radio profile</span>
+        </div>
+        <div
+          class="data-body"
+          *ngIf="radio.profile == 0"
+        >
+          <span>Data</span>
+        </div>
+        <div
+          class="data-body"
+          *ngIf="radio.profile == 1"
+        >
+          <span>Voice</span>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          <span
+            i18n="@@radiodigitalvoicemode"
+            class="radio-config-label"
+          >
+            Digital voice
+          </span>
+        </div>
+        <div class="data-body">
+          <status-badge [active]="radio.digital == 1"></status-badge>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          <span i18n="@@datafrequency">Data Frequency</span>
+        </div>
+        <div class="data-body">
+          <span>{{radio.p0_freq}}</span>
+          <br />
+          <span>{{radio.p0_mode}}</span>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data-title">
+          <span i18n="@@voicefrequency">Voice Frequency</span>
+        </div>
+        <div class="data-body">
+          <span>{{radio.p1_freq}}</span>
+          <br />
+          <span>{{radio.p1_mode}}</span>
+        </div>
+      </div>
+      <!-- <div class="data">
                 <div class="data-title" i18n="@@modemstatus">
                     Modem Status
                 </div>
@@ -189,7 +294,7 @@
                     Connected ***
                 </div>
             </div> -->
-            <!-- <div class="data">
+      <!-- <div class="data">
                 <div class="data-title" i18n="@@transmissionlist">
                     Transmission List
                 </div>
@@ -197,7 +302,7 @@
                     33 message(s) waiting ***
                 </div>
             </div> -->
-            <!-- <div class="data">
+      <!-- <div class="data">
                 <div class="data-title" i18n="@@sucessfultransmission">
                     Successful Transmission
                 </div>
@@ -205,7 +310,7 @@
                     10500 bytes***
                 </div>
             </div> -->
-            <!-- <div class="data">
+      <!-- <div class="data">
                 <div class="data-title" i18n="@@retransmissioncount">
                     Re-transmissions count
                 </div>
@@ -213,15 +318,18 @@
                     15 ***
                 </div>
             </div> -->
-            <div class="data">
-                <div class="data-title" i18n="@@scheduledtransmission">
-                    Scheduled transmission
-                </div>
-                <div class="data-body">
-                    <status-badge [active]="activeSchedule"></status-badge>
-                </div>
-            </div>
-            <!-- <div class="data">
+      <div class="data">
+        <div
+          class="data-title"
+          i18n="@@scheduledtransmission"
+        >
+          Scheduled transmission
+        </div>
+        <div class="data-body">
+          <status-badge [active]="activeSchedule"></status-badge>
+        </div>
+      </div>
+      <!-- <div class="data">
                 <div class="data-title" i18n="@@remotedevices">
                     Remote Devices
                 </div>
@@ -229,56 +337,86 @@
                     4 device(s) connected ***
                 </div>
             </div> -->
-            <div class="data">
-                <div class="data-title" i18n="@@localstorage">
-                    Local Storage
-                </div>
-                <div class="data-body">
-                    {{diskSpace}} GB <span i18n="@@free">free</span>
-                    <progressbar [value]="diskUsage"></progressbar>
-                </div>
-            </div>
-            <div class="data" *ngIf="hasGps">
-                <div class="data-title" i18n="@@gpsstatus">
-                    GPS Status
-                </div>
-                <div class="data-body">
-                    <status-badge [active]="gpsStatus"></status-badge>
-                    <div class="row">
-                        <span *ngIf="!currentLatitude" i18n="@@currentlocationunavailable">Current location
-                            unavailable</span>
-                        <mapgraph [currentLatitude]="currentLatitude" [currentLongitude]="currentLongitude"
-                            *ngIf="currentLatitude">
-                        </mapgraph>
-                    </div>
-                </div>
-            </div>
+      <div class="data">
+        <div
+          class="data-title"
+          i18n="@@localstorage"
+        >
+          Local Storage
         </div>
+        <div class="data-body">
+          {{diskSpace}} GB <span i18n="@@free">free</span>
+          <progressbar [value]="diskUsage"></progressbar>
+        </div>
+      </div>
+      <div
+        class="data"
+        *ngIf="hasGps"
+      >
+        <div
+          class="data-title"
+          i18n="@@gpsstatus"
+        >
+          GPS Status
+        </div>
+        <div class="data-body">
+          <status-badge [active]="gpsStatus"></status-badge>
+          <div class="row">
+            <span
+              *ngIf="!currentLatitude"
+              i18n="@@currentlocationunavailable"
+            >Current location
+              unavailable</span>
+            <mapgraph
+              [currentLatitude]="currentLatitude"
+              [currentLongitude]="currentLongitude"
+              *ngIf="currentLatitude"
+            >
+            </mapgraph>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<div class="overall alert" *ngIf="errorAlert">
-    <div class="cv">
-        <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
-        <div class="row m-t-10">{{errormsg}}</div>
-        <div class="row m-t-10">
-            <button (click)="closeError()" i18n="@@closeerrorbutton">
-                close
-            </button>
-        </div>
+<div
+  class="overall alert"
+  *ngIf="errorAlert"
+>
+  <div class="cv">
+    <span i18n="@@errorsendingmsg">There was an error on sending your message</span>
+    <div class="row m-t-10">{{errormsg}}</div>
+    <div class="row m-t-10">
+      <button
+        (click)="closeError()"
+        i18n="@@closeerrorbutton"
+      >
+        close
+      </button>
     </div>
+  </div>
 </div>
 
-<div class="overall alert" *ngIf="radio.protection">
-    <div class="cv">
-        <span i18n="@@radioprotectionoperator">Radio protection activated. Reset the protection, reconfigure your radio
-            settings and try again. For more details: Reset Protection <hint [showHint]="false"
-                [hint]="'resetprotection'"></hint>
-        </span>
-        <div class="row m-t-10">
-            <button (click)="resetProtection()" i18n="@@resetprotectionbutton" class="m-l-10">
-                reset protection
-            </button>
-        </div>
+<div
+  class="overall alert"
+  *ngIf="radio.protection"
+>
+  <div class="cv">
+    <span i18n="@@radioprotectionoperator">Radio protection activated. Reset the protection, reconfigure your radio
+      settings and try again. For more details: Reset Protection <hint
+        [showHint]="false"
+        [hint]="'resetprotection'"
+      ></hint>
+    </span>
+    <div class="row m-t-10">
+      <button
+        (click)="resetProtection()"
+        i18n="@@resetprotectionbutton"
+        class="m-l-10"
+      >
+        reset protection
+      </button>
     </div>
+  </div>
 </div>

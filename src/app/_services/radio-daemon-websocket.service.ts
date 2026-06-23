@@ -13,6 +13,9 @@ export class RadioDaemonWebsocketService {
   public hello$ = new BehaviorSubject<RadioDaemonHello | null>(null);
   public connected$ = new BehaviorSubject<boolean>(false);
 
+  /** Emits FFT spectrum data as a Uint8Array of power bins received from the daemon */
+  public spectrum$ = new BehaviorSubject<Uint8Array>(new Uint8Array(0));
+
   /** Which connection URL is currently selected — true = primary, false = alternate */
   public usePrimaryUrl$ = new BehaviorSubject<boolean>(true);
 
@@ -66,6 +69,14 @@ export class RadioDaemonWebsocketService {
     };
 
     this.ws.onmessage = (event: MessageEvent) => {
+      if (event.data instanceof ArrayBuffer) {
+        const bytes = new Uint8Array(event.data);
+        if (bytes.length > 1) {
+          // First byte is a type tag (reserved), remainder is FFT power bins
+          this.spectrum$.next(bytes.slice(1));
+        }
+        return;
+      }
       if (typeof event.data !== 'string') return;
       try {
         const msg: RadioDaemonMessage = JSON.parse(event.data);

@@ -39,6 +39,7 @@ export class OperatorComponent implements OnInit, OnDestroy {
   diskUsage: string = "0"
   showGraph: boolean = false
   private radioSubscription!: Subscription
+  radioDaemon: boolean = GlobalConstants.radioDaemon
 
   constructor(
     private authenticationService: AuthenticationService,
