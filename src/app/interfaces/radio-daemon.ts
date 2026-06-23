@@ -25,6 +25,10 @@ export interface RadioDaemonState {
   step_size: number;
   tone: boolean;
   reflected_threshold: number;
+  operating_mode: number;
+  fwd: number;
+  ref_power: number;
+  swr: number;
   timeout: number;
   recording_rx: boolean;
   recording_tx: boolean;
