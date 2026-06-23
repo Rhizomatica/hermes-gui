@@ -38,7 +38,7 @@ export class RadioDaemonWebsocketService {
 
     this.usePrimaryUrl$.next(usePrimary);
 
-    const url = GlobalConstants.webSocketUrl
+    const url = GlobalConstants.radioDaemonUrl
 
     console.log(`Radio daemon websocket: switching to ${url}`);
 
@@ -48,7 +48,7 @@ export class RadioDaemonWebsocketService {
   }
 
   private get currentUrl(): string {
-    return GlobalConstants.webSocketUrl
+    return GlobalConstants.radioDaemonUrl
   }
 
   private createConnection(): void {
