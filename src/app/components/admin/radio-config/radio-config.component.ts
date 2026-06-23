@@ -6,7 +6,6 @@ import { User } from '../../../interfaces/user';
 import { GlobalConstants } from '../../../global-constants';
 import { ApiService } from 'src/app/_services/api.service';
 import { SharedService } from 'src/app/_services/shared.service';
-import { RadioDaemonWebsocketService } from 'src/app/_services/radio-daemon-websocket.service';
 import { UtilsService } from 'src/app/_services/utils.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -69,7 +68,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     private radioService: RadioService,
     private apiService: ApiService,
     private sharedService: SharedService,
-    private radioDaemonWebsocketService: RadioDaemonWebsocketService,
     private utils: UtilsService,
     private router: Router
   ) {
@@ -500,30 +498,6 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.loading = false
   }
 
-  /** Exposed for template binding — reflects whether the primary daemon URL is selected */
-  get daemonUsePrimary(): boolean {
-    return this.radioDaemonWebsocketService.usePrimaryUrl$.getValue();
-  }
-
-  get daemonUrlType(): string {
-    return this.daemonUsePrimary
-      ? 'Primary (8080)'
-      : 'Alternate Radio Daemon (8081)';
-  }
-
-  /** Observable for template async pipe — reflects live websocket connection status */
-  get daemonConnected$() {
-    return this.radioDaemonWebsocketService.connected$;
-  }
-
-  /**
-   * Toggle the radio-daemon websocket between the primary (8080) and
-   * alternate (8081) endpoint.
-   */
-  switchDaemonConnection(): void {
-    const current = this.radioDaemonWebsocketService.usePrimaryUrl$.getValue();
-    this.radioDaemonWebsocketService.switchConnection(!current);
-  }
 
   ngOnDestroy(): void {
     this.radioSubscription?.unsubscribe()

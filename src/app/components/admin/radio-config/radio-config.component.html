@@ -620,53 +620,6 @@
         </div>
       </form>
 
-      <!-- Radio Daemon Websocket Connection -->
-      <form
-        class="rc-settings-item"
-        *ngIf="isAdmin"
-      >
-        <div class="rc-setting">
-          <div class="rc-setting-label">
-            <span class="radio-config-label">Radio Daemon Connection</span>
-            <hint
-              [showHint]="false"
-              [hint]="'radiodeamonconnection'"
-            ></hint>
-            <p>
-              Select which websocket endpoint the radio should connect to.
-              Switch between the primary (port 8080) and alternate radio daemon (port 8081) connection.
-            </p>
-            <br />
-            <p>{{daemonUrlType}}</p>
-            <p
-              *ngIf="daemonConnected$ | async; else disconnected"
-              class="connected"
-            >
-              <span class='greencircle'></span> Connected
-            </p>
-            <ng-template #disconnected>
-              <p class="disconnected">
-                <span class='redcircle'></span> Disconnected
-              </p>
-            </ng-template>
-          </div>
-          <div class="rc-setting-control">
-            <ng-container>
-              <switch
-                name="daemonConnection"
-                keyA="Primary"
-                keyB="Daemon"
-                labelA="@@primary8080"
-                labelB="@@daemon8081"
-                (switched)="switchDaemonConnection()"
-                [value]="daemonUsePrimary ? 0 : 1"
-              >
-              </switch>
-            </ng-container>
-          </div>
-        </div>
-      </form>
-
       <!-- Reboot -->
       <form
         #freboot="ngForm"
