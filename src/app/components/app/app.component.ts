@@ -251,14 +251,13 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
 
-    if (!this.websocketService.messages) {
-      this.websocketService.startService()
+    if (GlobalConstants.radioDaemon) {
+      this.radioDaemonWebsocketService.startService();
+    } else {
+      if (!this.websocketService.messages) {
+        this.websocketService.startService()
+      }
     }
-
-    // Start the daemon websocket so it can be used as an alternative data source.
-    // It will NOT feed SharedService until daemonActive$ is set to true
-    // (controlled by the switch in the Radio Config page).
-    this.radioDaemonWebsocketService.startService();
   }
 
   importArabicStyles() {

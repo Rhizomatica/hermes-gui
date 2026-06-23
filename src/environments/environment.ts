@@ -8,5 +8,6 @@ export const environment = {
     gpsMap: 'brazil',
     requireLogin: false,
     emergencyEmail: 'help@hermes.radio',
-    localeId: 'en-US'
+    localeId: 'en-US',
+    radioDaemon: false
 };

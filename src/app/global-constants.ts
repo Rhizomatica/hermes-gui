@@ -7,7 +7,6 @@ export class GlobalConstants {
   public static production = environment.production
   public static apiURL = this.local ? `https://${this.serverIP}/api` : `https://${self.location.hostname}/api`
   public static webSocketUrl = this.local ? `wss://${this.serverIP}:8080/websocket` : `wss://${self.location.hostname}:8080/websocket`
-  public static radioDaemonWebSocketUrl = this.local ? `wss://${this.serverIP}:8081/websocket` : `wss://${self.location.hostname}:8081/websocket`
   public static domain = environment.domain
   public static gateway = environment.gateway
   public static bitx = environment.bitx
@@ -16,6 +15,7 @@ export class GlobalConstants {
   public static requireLogin = environment.requireLogin
   public static emergencyEmail = environment.emergencyEmail
   public static localeId = environment.localeId
+  public static radioDaemon = environment.radioDaemon
   public static httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
