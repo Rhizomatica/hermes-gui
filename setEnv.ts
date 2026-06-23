@@ -33,7 +33,7 @@ const envConfigFile = `export const environment = {
     requireLogin: ${process.env.REQUIRE_LOGIN},
     emergencyEmail: '${process.env.EMERGENCY_EMAIL}',
     localeId: '${process.env.LOCALE_ID}',
-    radioDaemon: '${process.env.RADIO_DAEMON ?? 'false'}'
+    radioDaemon: ${process.env.RADIO_DAEMON}
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');

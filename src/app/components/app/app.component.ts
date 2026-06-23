@@ -227,6 +227,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
+
+    if (GlobalConstants.radioDaemon && !this.radioDaemonWebsocketService.connected$.getValue()) {
+      this.radioDaemonWebsocketService.startService();
+    }
+
+    if (!GlobalConstants.radioDaemon && !this.websocketService.messages) {
+      this.websocketService.startService()
+    }
+
     this.theme.init();
     this.loading = true
     this.checkRequireLogin()
@@ -244,20 +253,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.checkIsMenuPage()
         this.checkIsLoginPage()
         this.updateBreadcrumb()
-
-        if (!this.websocketService.messages) {
-          this.websocketService.startService()
-        }
       }
     });
 
-    if (GlobalConstants.radioDaemon) {
-      this.radioDaemonWebsocketService.startService();
-    } else {
-      if (!this.websocketService.messages) {
-        this.websocketService.startService()
-      }
-    }
   }
 
   importArabicStyles() {

@@ -9,5 +9,5 @@ export const environment = {
     requireLogin: true,
     emergencyEmail: 'help@hermes.radio',
     localeId: 'en-US',
-    radioDaemon: 'true'
+    radioDaemon: false
 };
