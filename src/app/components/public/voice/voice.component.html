@@ -16,11 +16,11 @@
     [hint]="'voice'"
   ></hint>
 
+
   <div
     class="transciever-panel"
     *ngIf="radio.p1_freq"
   >
-
     <div class="data">
       <div class="data-title">
         <span i18n="@@radiodigitalvoicemode">
@@ -170,7 +170,6 @@
               name="mode"
               [checked]="modeSwitch"
               value="{{radio.p1_mode}}"
-              [checked]="modeSwitch"
             >
             <span
               class="slider round"
@@ -193,6 +192,11 @@
         </span>
       </div>
     </div>
+    <app-spectrum-graph
+      *ngIf="radioDaemon"
+      class="m-t-25 m-b-25"
+    ></app-spectrum-graph>
+
   </div>
 </div>
 <div

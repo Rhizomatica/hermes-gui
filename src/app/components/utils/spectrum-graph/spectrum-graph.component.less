@@ -2,11 +2,53 @@
   display: block;
   width: 100%;
 
-  canvas {
-    display: block;
-    width: 100%;
-    image-rendering: pixelated;
+  .spectrum-graph {
+    background: #111;
+    border: 1px solid #333;
     border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.2) -2px 3px 8px, rgba(0, 0, 0, 0.19) -2px 0px 15px;
+    padding: 8px;
+
+    .spectrum-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      align-items: center;
+      font: 11px monospace;
+      color: #888;
+      margin-bottom: 6px;
+
+      label { color: #8cf; }
+      span { color: #afa; }
+      input[type="range"] { width: 80px; }
+      select { background: #222; color: #0f0; border: 1px solid #333; font: 11px monospace; padding: 2px 4px; }
+    }
+
+    .spectrum-canvases {
+      .scope-canvas {
+        width: 100%;
+        height: 90px;
+        display: block;
+        background: #001016;
+        border: 1px solid #333;
+        border-bottom: none;
+      }
+
+      .wf-canvas {
+        width: 100%;
+        height: 170px;
+        display: block;
+        background: #000;
+        border: 1px solid #333;
+        image-rendering: pixelated;
+      }
+    }
+
+    .freq-axis {
+      display: flex;
+      justify-content: space-between;
+      font: 11px monospace;
+      color: #8cf;
+      padding: 3px 2px 0;
+    }
   }
 }

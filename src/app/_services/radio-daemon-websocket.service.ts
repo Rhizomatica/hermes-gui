@@ -5,6 +5,17 @@ import { RadioDaemonHello, RadioDaemonMessage, RadioDaemonState } from '../inter
 import { SharedService } from './shared.service';
 import { Radio } from '../interfaces/radio';
 
+export interface SpectrumFrame {
+  /** Sample rate in Hz */
+  sampleRate: number;
+  /** Number of FFT bins */
+  bins: number;
+  /** Hz per bin */
+  binHz: number;
+  /** Array of dB power values (one per bin) */
+  db: Float32Array;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +24,8 @@ export class RadioDaemonWebsocketService {
   public hello$ = new BehaviorSubject<RadioDaemonHello | null>(null);
   public connected$ = new BehaviorSubject<boolean>(false);
 
-  /** Emits FFT spectrum data as a Uint8Array of power bins received from the daemon */
-  public spectrum$ = new BehaviorSubject<Uint8Array>(new Uint8Array(0));
+  /** Emits parsed spectrum frames from the daemon */
+  public spectrum$ = new BehaviorSubject<SpectrumFrame | null>(null);
 
   /** Which connection URL is currently selected — true = primary, false = alternate */
   public usePrimaryUrl$ = new BehaviorSubject<boolean>(true);
@@ -60,6 +71,7 @@ export class RadioDaemonWebsocketService {
     }
 
     this.ws = new WebSocket(this.currentUrl);
+    this.ws.binaryType = 'arraybuffer';
 
     this.ws.onopen = () => {
       console.log('Radio daemon websocket connected.');
@@ -70,11 +82,7 @@ export class RadioDaemonWebsocketService {
 
     this.ws.onmessage = (event: MessageEvent) => {
       if (event.data instanceof ArrayBuffer) {
-        const bytes = new Uint8Array(event.data);
-        if (bytes.length > 1) {
-          // First byte is a type tag (reserved), remainder is FFT power bins
-          this.spectrum$.next(bytes.slice(1));
-        }
+        this.handleBinary(new Uint8Array(event.data));
         return;
       }
       if (typeof event.data !== 'string') return;
@@ -107,6 +115,36 @@ export class RadioDaemonWebsocketService {
       this.sharedService.daemonActive$.next(false);
       this.keepWebSocketAlive();
     };
+  }
+
+  /**
+   * Parse binary frames from the radio daemon.
+   *
+   * Frame format (matching hermes-radio-daemon web/index.html):
+   *   [opcode: u8][sample_rate: u32 LE][nbins: u16 LE][bin_hz: f32 LE][bins: f32 LE × nbins]
+   * Opcode 0x02 = spectrum frame.
+   */
+  private handleBinary(data: Uint8Array): void {
+    if (data.length < 11) return; // need at least opcode + sample_rate(4) + nbins(2) + bin_hz(4) = 11
+
+    const dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+    const opcode = dv.getUint8(0);
+
+    if (opcode === 0x02) {
+      const sampleRate = dv.getUint32(1, true);
+      const nbins = dv.getUint16(5, true);
+      const binHz = dv.getFloat32(7, true);
+
+      const floatCount = (data.length - 11) / 4;
+      if (floatCount < nbins || nbins < 1) return;
+
+      const db = new Float32Array(nbins);
+      for (let i = 0; i < nbins; i++) {
+        db[i] = dv.getFloat32(11 + i * 4, true);
+      }
+
+      this.spectrum$.next({ sampleRate, bins: nbins, binHz, db });
+    }
   }
 
   /**
