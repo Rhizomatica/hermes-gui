@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
-    this.startIdleDetector()
+      // this.startIdleDetector()
   }
 
   sendMsg() {
