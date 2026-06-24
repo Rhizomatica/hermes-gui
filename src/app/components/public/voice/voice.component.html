@@ -91,7 +91,7 @@
           <button (click)="resetProtection()" [hidden]="!radio.protection" i18n="@resetprotectionvoice">reset</button>
         </div>
       </div>
-      <div class="data" *ngIf="radio.digital == 0">
+      <div class="data" *ngIf="!radio.p1_digital_voice">
         <div class="data-title" i18n="@@modevoice">
           Voice Mode
         </div>
