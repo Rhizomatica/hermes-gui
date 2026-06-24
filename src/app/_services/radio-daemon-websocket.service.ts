@@ -136,6 +136,7 @@ export class RadioDaemonWebsocketService {
       p1_volume: 0,
       profile: state.profile ?? 0,
       p1_freq_splited: null,
+      timeout_raw: state.timeout ?? 0,
       timeout: String(state.timeout ?? '0'),
       datetime: new Date(),
       snr: String(state.snr ?? '0'),

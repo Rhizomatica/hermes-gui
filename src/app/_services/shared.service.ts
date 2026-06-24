@@ -39,6 +39,7 @@ export class SharedService {
     p1_volume: 0,
     profile: 0,
     p1_freq_splited: [],
+    timeout_raw: 0,
     timeout: '0',
     datetime: new Date(),
     snr: '0',
@@ -75,6 +76,7 @@ export class SharedService {
     p1_volume: 0,
     profile: 0,
     p1_freq_splited: [],
+    timeout_raw: 0,
     timeout: '0',
     datetime: new Date(),
     snr: '0',
@@ -122,6 +124,7 @@ export class SharedService {
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = this.utils.splitFrequency(this.storedRadioObj.p1_freq)
+    this.storedRadioObj.timeout_raw = newObj.timeout == null ? this.storedRadioObj.timeout_raw : parseInt(newObj.timeout)
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
     this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime
     this.storedRadioObj.snr = newObj.snr == null ? this.storedRadioObj.snr : this.utils.formatDecimal(newObj.snr)
