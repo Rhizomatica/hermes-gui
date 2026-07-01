@@ -2,6 +2,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { Subscription } from 'rxjs';
 import { RadioDaemonWebsocketService, SpectrumFrame } from 'src/app/_services/radio-daemon-websocket.service';
 import { SharedService } from 'src/app/_services/shared.service';
+import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({
   selector: 'app-spectrum-graph',
@@ -33,8 +34,11 @@ export class SpectrumGraphComponent implements OnInit, OnDestroy {
 
   constructor(
     private daemonService: RadioDaemonWebsocketService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private theme: ThemeService
   ) { }
+
+  private get isDark(): boolean { return this.theme.isDark; }
 
   ngOnInit(): void {
     const scopeCanvas = this.scopeRef.nativeElement;
@@ -43,9 +47,8 @@ export class SpectrumGraphComponent implements OnInit, OnDestroy {
     this.scopeCtx = scopeCanvas.getContext('2d')!;
     this.wfCtx = wfCanvas.getContext('2d')!;
 
-    // Start black
-    this.wfCtx.fillStyle = '#000';
-    this.wfCtx.fillRect(0, 0, wfCanvas.width, wfCanvas.height);
+    // Start with appropriate background
+    this.clearWaterfall();
 
     // Incoming spectrum frames
     this.spectrumSubscription = this.daemonService.spectrum$.subscribe(frame => {
@@ -89,8 +92,7 @@ export class SpectrumGraphComponent implements OnInit, OnDestroy {
       wfCanvas.width = bins;
       wfCanvas.height = 170;
       if (oldW !== bins) {
-        this.wfCtx.fillStyle = '#000';
-        this.wfCtx.fillRect(0, 0, wfCanvas.width, wfCanvas.height);
+        this.clearWaterfall();
       }
     }
 
@@ -98,8 +100,16 @@ export class SpectrumGraphComponent implements OnInit, OnDestroy {
     const sc = this.scopeCtx;
     sc.clearRect(0, 0, scopeCanvas.width, scopeCanvas.height);
 
+    // Theme-aware rendering
+    const dark = this.isDark;
+    const scopeBg = dark ? '#001016' : '#eef7ff';
+    const wfBg = dark ? '#000' : '#f5f5f5';
+    const gridColor = dark ? 'rgba(90,90,90,0.35)' : 'rgba(180,180,180,0.5)';
+    const traceFill = dark ? 'rgba(0,210,130,0.30)' : 'rgba(255,102,0,0.25)';
+    const traceStroke = dark ? '#2fe88a' : '#f60';
+
     // Frequency grid lines (at 1/4 marks)
-    sc.strokeStyle = 'rgba(90,90,90,0.35)';
+    sc.strokeStyle = gridColor;
     sc.lineWidth = 1;
     for (let g = 1; g < 4; g++) {
       const gx = Math.floor(bins * g / 4);
@@ -115,9 +125,9 @@ export class SpectrumGraphComponent implements OnInit, OnDestroy {
     }
     sc.lineTo(bins - 1, scopeCanvas.height);
     sc.closePath();
-    sc.fillStyle = 'rgba(0,210,130,0.30)';
+    sc.fillStyle = traceFill;
     sc.fill();
-    sc.strokeStyle = '#2fe88a';
+    sc.strokeStyle = traceStroke;
     sc.lineWidth = 1;
     sc.stroke();
 
@@ -139,6 +149,12 @@ export class SpectrumGraphComponent implements OnInit, OnDestroy {
    * HSL sweep: blue (240°) → cyan → green → yellow → red (0°)
    * turbo palette (default)
    */
+  private clearWaterfall(): void {
+    const wfCanvas = this.wfCtx.canvas;
+    this.wfCtx.fillStyle = this.isDark ? '#000' : '#f5f5f5';
+    this.wfCtx.fillRect(0, 0, wfCanvas.width, wfCanvas.height);
+  }
+
   private wfColor(t: number): string {
     if (t < 0) t = 0; if (t > 1) t = 1;
     if (this.palette === 'grey') {

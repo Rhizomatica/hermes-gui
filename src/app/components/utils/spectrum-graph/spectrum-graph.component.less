@@ -3,10 +3,12 @@
   width: 100%;
 
   .spectrum-graph {
-    background: #111;
-    border: 1px solid #333;
     border-radius: 4px;
     padding: 8px;
+
+    /* ── Dark theme (default) ── */
+    background: #111;
+    border: 1px solid #333;
 
     .spectrum-controls {
       display: flex;
@@ -49,6 +51,37 @@
       font: 11px monospace;
       color: #8cf;
       padding: 3px 2px 0;
+    }
+  }
+
+  /* ── Light theme overrides ── */
+  .spectrum-graph.light,
+  :host-context(body:not(.dark-mode)) .spectrum-graph {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+
+    .spectrum-controls {
+      color: #555;
+
+      label { color: #06c; }
+      span { color: #090; }
+      select { background: #fff; color: #222; border: 1px solid #ccc; }
+    }
+
+    .spectrum-canvases {
+      .scope-canvas {
+        background: #eef7ff;
+        border-color: #ddd;
+      }
+
+      .wf-canvas {
+        background: #f5f5f5;
+        border-color: #ddd;
+      }
+    }
+
+    .freq-axis {
+      color: #06c;
     }
   }
 }
