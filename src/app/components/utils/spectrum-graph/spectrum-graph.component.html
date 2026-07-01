@@ -1,20 +1,20 @@
 <div class="spectrum-graph">
   <!-- Controls -->
   <div class="spectrum-controls">
-    <label>Floor: <span>{{floor}}</span> dB</label>
+    <label i18n="@@floorlabel">Floor: <span>{{floor}}</span> dB</label>
     <input type="range" min="-130" max="0" [(ngModel)]="floor">
 
-    <label>Ceiling: <span>{{ceiling}}</span> dB</label>
+    <label i18n="@@ceilinglabel">Ceiling: <span>{{ceiling}}</span> dB</label>
     <input type="range" min="-130" max="0" [(ngModel)]="ceiling">
 
-    <label>Palette:</label>
+    <label i18n="@@palettelabel">Palette:</label>
     <select [(ngModel)]="palette">
-      <option value="turbo">Turbo</option>
-      <option value="grey">Grey</option>
-      <option value="green">Green</option>
+      <option value="turbo" i18n="@@turbolabel">Turbo</option>
+      <option value="grey" i18n="@@greylabel">Grey</option>
+      <option value="green" i18n="@@greenlabel">Green</option>
     </select>
 
-    <label>Speed:</label>
+    <label i18n="@@speedlabel">Speed:</label>
     <select [(ngModel)]="speed">
       <option [value]="1">1x</option>
       <option [value]="2">2x</option>
@@ -31,6 +31,6 @@
   <!-- RF Frequency axis -->
   <div class="freq-axis" *ngIf="freqHz > 0">
     <span>{{ freqHz / 1e6 | number:'1.4-4' }} MHz</span>
-    <span>{{ mode }}</span>
+    <span i18n="@@modelabel">{{ mode }}</span>
   </div>
 </div>
