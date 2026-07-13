@@ -33,4 +33,5 @@ export interface Radio {
   message: string
   p0_digital_voice: boolean
   p1_digital_voice: boolean
+  s_meter: number
 }

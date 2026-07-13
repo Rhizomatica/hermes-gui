@@ -52,7 +52,8 @@ export class SharedService {
     bytes_transmitted: 0,
     message: '',
     p0_digital_voice: false,
-    p1_digital_voice: false
+    p1_digital_voice: false,
+    s_meter: 0
   });
 
   public storedRadioObj = <Radio>({
@@ -89,7 +90,8 @@ export class SharedService {
     bytes_transmitted: 0,
     message: '',
     p0_digital_voice: false,
-    p1_digital_voice: false
+    p1_digital_voice: false,
+    s_meter: 0
   });
 
   setRadioObjShared(data: Radio) {
@@ -139,6 +141,7 @@ export class SharedService {
     const previousDigital = this.storedRadioObj.p1_digital_voice
     this.storedRadioObj.p0_digital_voice = newObj.p0_digital_voice == null ? this.storedRadioObj.p0_digital_voice : newObj.p0_digital_voice
     this.storedRadioObj.p1_digital_voice = newObj.p1_digital_voice == null ? this.storedRadioObj.p1_digital_voice : newObj.p1_digital_voice
+    this.storedRadioObj.s_meter = newObj.s_meter == null ? this.storedRadioObj.s_meter : newObj.s_meter
 
   }
 

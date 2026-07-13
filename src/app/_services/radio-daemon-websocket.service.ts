@@ -187,7 +187,8 @@ export class RadioDaemonWebsocketService {
       bytes_transmitted: state.bytes_transmitted ?? 0,
       message: '',
       p0_digital_voice: state.digital_voice ?? false,
-      p1_digital_voice: state.digital_voice ?? false
+      p1_digital_voice: state.digital_voice ?? false,
+      s_meter: state.s_meter ?? 0
     };
 
     this.sharedService.setRadioObjShared(radio);

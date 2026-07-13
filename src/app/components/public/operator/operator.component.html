@@ -87,6 +87,36 @@
         *ngIf="showGraph"
       >
         <div class="data-title">
+          <span i18n="@@smeter">S-Meter Signal Strength</span>
+        </div>
+        <div class="data-body m-t-10">
+          <clockhandgraph
+            graphElementID="smeterChart"
+            [hand1Data]="radio.s_meter"
+            hand1Label="S"
+            [minAxis1]="0"
+            [maxAxis1]="9"
+          >
+          </clockhandgraph>
+        </div>
+      </div>
+      <div
+        class="data"
+        *ngIf="!showGraph"
+      >
+        <div class="data-title">
+          <span i18n="@@smeter">S-Meter Signal Strength</span>
+        </div>
+        <div class="data-body">
+          <span>S{{radio.s_meter}}</span>
+        </div>
+      </div>
+
+      <div
+        class="data-graph"
+        *ngIf="showGraph"
+      >
+        <div class="data-title">
           <span i18n="@@power">Power(W)</span>
         </div>
         <div class="data-body">

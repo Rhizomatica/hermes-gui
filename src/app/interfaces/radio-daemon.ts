@@ -46,6 +46,7 @@ export interface RadioDaemonState {
   stream_spectrum: boolean;
   stream_recording: boolean;
   audio_bridge: boolean;
+  s_meter: number;
 }
 
 export type RadioDaemonMessage = RadioDaemonHello | RadioDaemonState;
