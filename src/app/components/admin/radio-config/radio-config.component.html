@@ -1,9 +1,16 @@
 <loading [loading]="loading"></loading>
 <div class="flexible m-b-25">
   <h2 i18n="@@radioconft">Radio Configuration</h2>
-  <hint [showHint]="false" [hint]="'radioconfig'"></hint>
+  <hint
+    [showHint]="false"
+    [hint]="'radioconfig'"
+  ></hint>
 </div>
-<div i18n="@@cannotaccessradio" class="alert" *ngIf="!radio">Alert: Cannot access radio<br /></div>
+<div
+  i18n="@@cannotaccessradio"
+  class="alert"
+  *ngIf="!radio"
+>Alert: Cannot access radio<br /></div>
 <app-radio-connection-alert></app-radio-connection-alert>
 <div id="radioconf">
   <div>
@@ -29,8 +36,14 @@
           <span i18n="@@operationmode">Operation mode</span>
         </div>
         <div class="card-value">
-          <div *ngIf="radio.tx" i18n="@@operationtx1"> TX</div>
-          <div *ngIf="radio.rx" i18n="@@operationrx"> RX</div>
+          <div
+            *ngIf="radio.tx"
+            i18n="@@operationtx1"
+          > TX</div>
+          <div
+            *ngIf="radio.rx"
+            i18n="@@operationrx"
+          > RX</div>
         </div>
       </div>
       <div class="card">
@@ -44,16 +57,28 @@
     </div>
 
 
-    <div *ngIf="radio" class="rc-settings-list">
+    <div
+      *ngIf="radio"
+      class="rc-settings-list"
+    >
 
       <!-- Profile -->
-      <form class="rc-settings-item" *ngIf="bitx == 'S'">
+      <form
+        class="rc-settings-item"
+        *ngIf="bitx == 'S'"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@radioprofilelabel" class="radio-config-label">Profile
+            <span
+              i18n="@@radioprofilelabel"
+              class="radio-config-label"
+            >Profile
               <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{radio.timeout}})</span>
             </span>
-            <hint [showHint]="false" [hint]="'radioprofile'"></hint>
+            <hint
+              [showHint]="false"
+              [hint]="'radioprofile'"
+            ></hint>
             <p *ngIf="radio.connection">{{radio.profile == 0 ? 'Data' : 'Voice'}}</p>
             <p i18n="@@radioprofilesubtitle">
               The radio profile defines the radio operational mode : VOICE for PTT voice calls or DATA for data
@@ -62,8 +87,16 @@
           </div>
           <div class="rc-setting-control">
             <ng-container>
-              <switch name="profile" keyA="Data" keyB="Voice" labelA="@@digitallabel" labelB="@@voiceLabel"
-                (switched)="changeProfile()" [enabled]="radio.connection ? false : true" [value]="radio.profile">
+              <switch
+                name="profile"
+                keyA="Data"
+                keyB="Voice"
+                labelA="@@digitallabel"
+                labelB="@@voiceLabel"
+                (switched)="changeProfile()"
+                [enabled]="radio.connection ? false : true"
+                [value]="radio.profile"
+              >
               </switch>
             </ng-container>
           </div>
@@ -71,14 +104,23 @@
       </form>
 
       <!-- Digital Voice -->
-      <form class="rc-settings-item" *ngIf="bitx == 'S' && radio.profile === 1">
+      <form
+        class="rc-settings-item"
+        *ngIf="bitx == 'S' && radio.profile === 1"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@radiodigitalvoicemode" class="radio-config-label">
+            <span
+              i18n="@@radiodigitalvoicemode"
+              class="radio-config-label"
+            >
               Digital voice
             </span>
-            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{digitalVoice}})</span>
-            <hint [showHint]="false" [hint]="'digitalvoice'"></hint>
+            <span *ngIf="radio.profile == 1 && radio.timeout > 0">({{radio.timeout}})</span>
+            <hint
+              [showHint]="false"
+              [hint]="'digitalvoice'"
+            ></hint>
             <p *ngIf="radio.connection">{{radio.p1_digital_voice ? 'ON' : 'OFF'}}</p>
             <p i18n="@@radiodigitalvoicesubtitle">
               Radio digital voice mode converts analog speech into digital data, allowing for clearer, more efficient,
@@ -89,8 +131,15 @@
             <ng-container *ngIf="!radio.connection">
               <span i18n="@@off">OFF</span>
               <div class="switch">
-                <input type="checkbox" name="digital" [checked]="radio.p1_digital_voice">
-                <span class="slider round" (click)="toggleDigitalVoice($event)"></span>
+                <input
+                  type="checkbox"
+                  name="digital"
+                  [checked]="radio.p1_digital_voice"
+                >
+                <span
+                  class="slider round"
+                  (click)="toggleDigitalVoice($event)"
+                ></span>
               </div>
               <span i18n="@@on">ON</span>
             </ng-container>
@@ -99,114 +148,214 @@
       </form>
 
       <!-- Data Frequency -->
-      <form #ffreq="ngForm" class="rc-settings-item" *ngIf="radio.profile == 0">
+      <form
+        #ffreq="ngForm"
+        class="rc-settings-item"
+        *ngIf="radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@changefrequency" class="radio-config-label">Data frequency</span>
-            <hint [showHint]="false" [hint]="'frequency'"></hint>
+            <span
+              i18n="@@changefrequency"
+              class="radio-config-label"
+            >Data frequency</span>
+            <hint
+              [showHint]="false"
+              [hint]="'frequency'"
+            ></hint>
             <p>{{radio.p0_freq}} kHz</p>
-            <p *ngIf="!isAdmin" i18n="@@advisechangedatafrequency">
+            <p
+              *ngIf="!isAdmin"
+              i18n="@@advisechangedatafrequency"
+            >
               <b>DO NOT</b> use this button <b>UNLESS</b> you have been asked by the manager to change the data
               transmission frequency of the radio.
             </p>
           </div>
           <div class="rc-setting-control">
-            <input type="number" [min]="freqmin" [max]="freqmax" name="frek" [(ngModel)]="p0_frek"
-              step="1" (focus)="p0_frekFocused = true" (blur)="p0_frekFocused = false">
-            <button type="button" (click)="confirmChange()" [disabled]="ffreq.invalid"
-              i18n="@@changefreqr0">change</button>
+            <input
+              type="number"
+              [min]="freqmin"
+              [max]="freqmax"
+              name="frek"
+              [(ngModel)]="p0_frek"
+              step="1"
+              (focus)="p0_frekFocused = true"
+              (blur)="p0_frekFocused = false"
+            >
+            <button
+              type="button"
+              (click)="confirmChange()"
+              [disabled]="ffreq.invalid"
+              i18n="@@changefreqr0"
+            >change</button>
           </div>
         </div>
-        <div class="overall alert" *ngIf="confirmSet">
+        <div
+          class="overall alert"
+          *ngIf="confirmSet"
+        >
           <div class="cv">
             <span i18n="@@areyousurechangesett">Are you sure you want to change radio settings?
               <br />
               This may cause the system to stop.
             </span>
             <br />
-            <button type="button" class="m-t-10" (click)="confirmChange()" i18n="@@cancelr0">cancel</button>
-            <button type="button" class="m-l-10" (click)="changeFrequency(ffreq, 0)" i18n="@@changer">change</button>
+            <button
+              type="button"
+              class="m-t-10"
+              (click)="confirmChange()"
+              i18n="@@cancelr0"
+            >cancel</button>
+            <button
+              type="button"
+              class="m-l-10"
+              (click)="changeFrequency(ffreq, 0)"
+              i18n="@@changer"
+            >change</button>
           </div>
         </div>
       </form>
 
       <!-- Voice Frequency -->
-      <form #fvoicefreq="ngForm" class="rc-settings-item" *ngIf="radio && bitx == 'S' && radio.profile == 1">
+      <form
+        #fvoicefreq="ngForm"
+        class="rc-settings-item"
+        *ngIf="radio && bitx == 'S' && radio.profile == 1"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@changevoicefrequency" class="radio-config-label">Voice frequency</span>
-            <hint [showHint]="false" [hint]="'voiceFrequency'"></hint>
+            <span
+              i18n="@@changevoicefrequency"
+              class="radio-config-label"
+            >Voice frequency</span>
+            <hint
+              [showHint]="false"
+              [hint]="'voiceFrequency'"
+            ></hint>
             <p>{{radio.p1_freq}} kHz</p>
           </div>
           <div class="rc-setting-control">
-            <input type="number" [min]="freqmin" [max]="freqmax" name="frek" [(ngModel)]="p1_frek"
-              step="1" (focus)="p1_frekFocused = true" (blur)="p1_frekFocused = false">
-            <button type="button" (click)="changeFrequency(fvoicefreq, 1)" [disabled]="fvoicefreq.invalid"
-              i18n="@@changevoicefreqr0">change</button>
+            <input
+              type="number"
+              [min]="freqmin"
+              [max]="freqmax"
+              name="frek"
+              [(ngModel)]="p1_frek"
+              step="1"
+              (focus)="p1_frekFocused = true"
+              (blur)="p1_frekFocused = false"
+            >
+            <button
+              type="button"
+              (click)="changeFrequency(fvoicefreq, 1)"
+              [disabled]="fvoicefreq.invalid"
+              i18n="@@changevoicefreqr0"
+            >change</button>
           </div>
         </div>
       </form>
 
       <!-- Data Mode -->
-      <form class="rc-settings-item" *ngIf="radio.profile == 0">
+      <form
+        class="rc-settings-item"
+        *ngIf="radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@changeradiomode" class="radio-config-label">Data Mode</span>
-            <hint [showHint]="false" hint="mode"></hint>
+            <span
+              i18n="@@changeradiomode"
+              class="radio-config-label"
+            >Data Mode</span>
+            <hint
+              [showHint]="false"
+              hint="mode"
+            ></hint>
             <p>{{radio.p0_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <switch i18n="" name="mode" keyA="USB" keyB="LSB" labelA="@@usb" labelB="@@lsb" (switched)="changeMode(0)"
-              [value]="radio.p0_mode == 'LSB' ? 1 : 0"></switch>
-            <!-- <div class="switch">
-              <input type="checkbox" name="mode" [checked]="modeSwitch">
-              <span class="slider round" (click)="changeMode($event, 0)" value="{{radio.p0_mode}}"
-                [checked]="modeSwitch"></span>
-            </div> -->
+            <switch
+              i18n=""
+              name="mode"
+              keyA="USB"
+              keyB="LSB"
+              labelA="@@usb"
+              labelB="@@lsb"
+              (switched)="changeMode(0)"
+              [value]="radio.p0_mode == 'LSB' ? 1 : 0"
+            ></switch>
           </div>
         </div>
       </form>
 
       <!-- Voice Mode -->
-      <form class="rc-settings-item" *ngIf="bitx == 'S' && radio.profile == 1">
+      <form
+        class="rc-settings-item"
+        *ngIf="bitx == 'S' && radio.profile == 1"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@voicemode" class="radio-config-label">Voice Mode</span>
-            <hint [showHint]="false" [hint]="'mode'"></hint>
+            <span
+              i18n="@@voicemode"
+              class="radio-config-label"
+            >Voice Mode</span>
+            <hint
+              [showHint]="false"
+              [hint]="'mode'"
+            ></hint>
             <p>{{radio.p1_mode}}</p>
           </div>
           <div class="rc-setting-control">
-            <switch i18n="" name="mode" keyA="USB" keyB="LSB" labelA="@@usb" labelB="@@lsb" (switched)="changeMode(1)"
-              [value]="radio.p1_mode == 'LSB' ? 1 : 0"></switch>
-            <!-- <span>USB</span>
-            <div class="switch">
-              <input type="checkbox" name="voicemode" [checked]="voiceModeSwitch" [disabled]="radio.digital === 1">
-              <span class="slider round" (click)="changeMode($event, 1)" value="{{radio.p1_mode}}"
-                [checked]="voiceModeSwitch"></span>
-            </div>
-            <span>LSB</span> -->
+            <switch
+              i18n=""
+              name="mode"
+              keyA="USB"
+              keyB="LSB"
+              labelA="@@usb"
+              labelB="@@lsb"
+              (switched)="changeMode(1)"
+              [value]="radio.p1_mode == 'LSB' ? 1 : 0"
+            ></switch>
           </div>
         </div>
       </form>
 
       <!-- PTT -->
-      <form #fptt="ngForm" class="rc-settings-item" *ngIf="isAdmin && radio.profile == 0">
+      <form
+        #fptt="ngForm"
+        class="rc-settings-item"
+        *ngIf="isAdmin && radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
             <span class="radio-config-label">PTT</span>
-            <hint [showHint]="false" [hint]="'ptt'"></hint>
+            <hint
+              [showHint]="false"
+              [hint]="'ptt'"
+            ></hint>
             <p>{{radio.tx == false ? 'OFF' : 'ON'}}</p>
           </div>
           <div *ngIf="!radio.connection">
             <span i18n="@@off">OFF</span>
             <label class="switch">
-              <input type="checkbox" name="ptt" [checked]="radio.tx" (change)="confirmChangePTT($event)">
-              <span class="slider round" *ngIf="isAdmin"></span>
+              <input
+                type="checkbox"
+                name="ptt"
+                [checked]="radio.tx"
+                (change)="confirmChangePTT($event)"
+              >
+              <span
+                class="slider round"
+                *ngIf="isAdmin"
+              ></span>
             </label>
             <span i18n="@@on">ON</span>
           </div>
         </div>
-        <div class="overall alert" *ngIf="confirmSendPTT">
+        <div
+          class="overall alert"
+          *ngIf="confirmSendPTT"
+        >
           <div class="cv">
             <span i18n="@@suresendpttmessage">
               Are you sure you want to send PTT?
@@ -214,23 +363,51 @@
               This can cause irreparable problems.
             </span>
             <div class="row m-t-10">
-              <button type="button" (click)="confirmChangePTT()" i18n="@@cancelsendptt">cancel</button>
-              <button type="button" (click)="changePtt(fptt)" i18n="@@sendptt" class="m-l-10">send PTT</button>
+              <button
+                type="button"
+                (click)="confirmChangePTT()"
+                i18n="@@cancelsendptt"
+              >cancel</button>
+              <button
+                type="button"
+                (click)="changePtt(fptt)"
+                i18n="@@sendptt"
+                class="m-l-10"
+              >send PTT</button>
             </div>
           </div>
         </div>
       </form>
 
       <!-- Protection Reset -->
-      <form #formProtection="ngForm" class="rc-settings-item" *ngIf="isAdmin && radio.profile == 0">
+      <form
+        #formProtection="ngForm"
+        class="rc-settings-item"
+        *ngIf="isAdmin && radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@radioprotectionlabel" class="radio-config-label">Protection</span>
-            <hint [showHint]="false" [hint]="'resetprotection'"></hint>
+            <span
+              i18n="@@radioprotectionlabel"
+              class="radio-config-label"
+            >Protection</span>
+            <hint
+              [showHint]="false"
+              [hint]="'resetprotection'"
+            ></hint>
           </div>
           <div class="rc-setting-control">
-            <button type="button" disabled *ngIf="!radio.protection">OFF</button>
-            <button type="button" (click)="resetProtection()" i18n="@resetprotectionbutton" *ngIf="radio.protection">
+            <button
+              type="button"
+              disabled
+              *ngIf="!radio.protection"
+            >OFF</button>
+            <button
+              type="button"
+              (click)="resetProtection()"
+              i18n="@resetprotectionbutton"
+              *ngIf="radio.protection"
+            >
               reset protection
             </button>
           </div>
@@ -238,30 +415,60 @@
       </form>
 
       <!-- Protection Threshold -->
-      <form #frefthreshold="ngForm" class="rc-settings-item" *ngIf="isAdmin && radio.profile == 0">
+      <form
+        #frefthreshold="ngForm"
+        class="rc-settings-item"
+        *ngIf="isAdmin && radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@prottheshold" class="radio-config-label">Protection activation threshold level</span>
-            <hint [showHint]="false" [hint]="'threshold'"></hint>
+            <span
+              i18n="@@prottheshold"
+              class="radio-config-label"
+            >Protection activation threshold level</span>
+            <hint
+              [showHint]="false"
+              [hint]="'threshold'"
+            ></hint>
             <p>{{refthreshold}}</p>
           </div>
           <div class="rc-setting-control">
-            <input type="number" [max]="1023" name="refthreshold" [(ngModel)]="refthreshold">
-            <button type="button" (click)="confirmChangeThreshold(frefthreshold)" [disabled]="frefthreshold.invalid"
-              i18n="@@changetre1">change</button>
+            <input
+              type="number"
+              [max]="1023"
+              name="refthreshold"
+              [(ngModel)]="refthreshold"
+            >
+            <button
+              type="button"
+              (click)="confirmChangeThreshold(frefthreshold)"
+              [disabled]="frefthreshold.invalid"
+              i18n="@@changetre1"
+            >change</button>
           </div>
         </div>
-        <div class="overall alert" *ngIf="confirmChangeProtection">
+        <div
+          class="overall alert"
+          *ngIf="confirmChangeProtection"
+        >
           <div class="cv">
             <span i18n="@@confirmthreshold">Are you sure you want to change radio protection threshold?
               <br />
               This may cause the system to stop and damage your radio.
             </span>
             <br />
-            <button type="button" class="m-t-10" (click)="confirmChangeThreshold()"
-              i18n="@@cancelrchangeprotection">cancel</button>
-            <button type="button" class="m-l-10" (click)="changeRefThreshold(frefthreshold)"
-              i18n="@@changeprotection">change</button>
+            <button
+              type="button"
+              class="m-t-10"
+              (click)="confirmChangeThreshold()"
+              i18n="@@cancelrchangeprotection"
+            >cancel</button>
+            <button
+              type="button"
+              class="m-l-10"
+              (click)="changeRefThreshold(frefthreshold)"
+              i18n="@@changeprotection"
+            >change</button>
           </div>
         </div>
       </form>
@@ -269,50 +476,97 @@
 
 
       <!-- Data Power Level -->
-      <form #dataFormPowerLevel="ngForm" class="rc-settings-item" *ngIf="isAdmin && radio.profile == 0">
+      <form
+        #dataFormPowerLevel="ngForm"
+        class="rc-settings-item"
+        *ngIf="isAdmin && radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@datapowerlevel" class="radio-config-label">Data Power Level</span>
-            <hint [showHint]="false" [hint]="'powerlevel'"></hint>
+            <span
+              i18n="@@datapowerlevel"
+              class="radio-config-label"
+            >Data Power Level</span>
+            <hint
+              [showHint]="false"
+              [hint]="'powerlevel'"
+            ></hint>
             <p>{{dataPowerLevel}}</p>
 
           </div>
           <div class="rc-setting-control rc-setting-control--full">
             <div class="slidercontainer">
-              <input type="range" min="0" max="100" step="2" class="slider-input"
-                [(ngModel)]="dataPowerLevel" name="dataPowerLevel"
-                (change)="updatePowerLevel(dataFormPowerLevel, 0)">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="2"
+                class="slider-input"
+                [(ngModel)]="dataPowerLevel"
+                name="dataPowerLevel"
+                (change)="updatePowerLevel(dataFormPowerLevel, 0)"
+              >
             </div>
           </div>
         </div>
       </form>
 
       <!-- Voice Power Level -->
-      <form #voiceFormPowerLevel="ngForm" class="rc-settings-item" *ngIf="radio.profile == 1">
+      <form
+        #voiceFormPowerLevel="ngForm"
+        class="rc-settings-item"
+        *ngIf="radio.profile == 1"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@voicepowerlevel" class="radio-config-label">Voice Power Level</span>
-            <hint [showHint]="false" [hint]="'powerlevel'"></hint>
+            <span
+              i18n="@@voicepowerlevel"
+              class="radio-config-label"
+            >Voice Power Level</span>
+            <hint
+              [showHint]="false"
+              [hint]="'powerlevel'"
+            ></hint>
             <p>{{voicePowerLevel}}%</p>
           </div>
           <div class="rc-setting-control rc-setting-control--full">
             <div class="slidercontainer">
-              <input type="range" min="0" max="100" step="2" class="slider-input"
-                [(ngModel)]="voicePowerLevel" name="voicePowerLevel" (change)="updatePowerLevel(voiceFormPowerLevel, 1)"
-                [disabled]="radio.digital === 1">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="2"
+                class="slider-input"
+                [(ngModel)]="voicePowerLevel"
+                name="voicePowerLevel"
+                (change)="updatePowerLevel(voiceFormPowerLevel, 1)"
+                [disabled]="radio.digital === 1"
+              >
             </div>
           </div>
         </div>
       </form>
 
       <!-- GPS Calibration -->
-      <form #fgps="ngForm" class="rc-settings-item" *ngIf="hasGps && bitx !== 'S' && isAdmin && radio.profile == 0">
+      <form
+        #fgps="ngForm"
+        class="rc-settings-item"
+        *ngIf="hasGps && bitx !== 'S' && isAdmin && radio.profile == 0"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@labelgpscalibration" class="radio-config-label">GPS Calibration</span>
+            <span
+              i18n="@@labelgpscalibration"
+              class="radio-config-label"
+            >GPS Calibration</span>
           </div>
           <div class="rc-setting-control">
-            <button type="button" name="gps" (click)="gpsStartCalibration()" i18n="@@startgpscalibration">
+            <button
+              type="button"
+              name="gps"
+              (click)="gpsStartCalibration()"
+              i18n="@@startgpscalibration"
+            >
               Start
             </button>
           </div>
@@ -320,80 +574,152 @@
       </form>
 
       <!-- Erase SD Card -->
-      <form #femergency="ngForm" class="rc-settings-item">
+      <form
+        #femergency="ngForm"
+        class="rc-settings-item"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@erasesdcardlabel" class="radio-config-label">Erase SD Card</span>
-            <p class="m-t-10" i18n="@@erasesdcardmessage" *ngIf="!isAdmin">
+            <span
+              i18n="@@erasesdcardlabel"
+              class="radio-config-label"
+            >Erase SD Card</span>
+            <p
+              class="m-t-10"
+              i18n="@@erasesdcardmessage"
+              *ngIf="!isAdmin"
+            >
               Use this button <b>only in dangerous or emergency situations.</b>
               It is going to erase all data from HERMES system.
             </p>
           </div>
           <div class="rc-setting-control">
-            <button type="button" class="danger" (click)="eraseSDCardConfirmation()" i18n="@@erasesdcardlabel">Erase SD
+            <button
+              type="button"
+              class="danger"
+              (click)="eraseSDCardConfirmation()"
+              i18n="@@erasesdcardlabel"
+            >Erase SD
               Card</button>
           </div>
         </div>
       </form>
       <!-- Serial Number -->
-      <form #fserial="ngForm" class="rc-settings-item">
+      <form
+        #fserial="ngForm"
+        class="rc-settings-item"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span i18n="@@seriallabel" class="radio-config-label">Serial number</span>
+            <span
+              i18n="@@seriallabel"
+              class="radio-config-label"
+            >Serial number</span>
             <p>{{serial}}</p>
           </div>
         </div>
       </form>
 
       <!-- Reboot -->
-      <form #freboot="ngForm" class="rc-settings-item" *ngIf="isAdmin">
+      <form
+        #freboot="ngForm"
+        class="rc-settings-item"
+        *ngIf="isAdmin"
+      >
         <div class="rc-setting">
           <div class="rc-setting-label">
-            <span class="radio-config-label" i18n="@@reboot">Reboot</span>
-            <hint [showHint]="false" [hint]="'reboot'"></hint>
+            <span
+              class="radio-config-label"
+              i18n="@@reboot"
+            >Reboot</span>
+            <hint
+              [showHint]="false"
+              [hint]="'reboot'"
+            ></hint>
           </div>
           <div class="rc-setting-control">
-            <button type="button" (click)="confirmReboot()" i18n="@@reboot">Reboot</button>
+            <button
+              type="button"
+              (click)="confirmReboot()"
+              i18n="@@reboot"
+            >Reboot</button>
           </div>
         </div>
       </form>
-      <div class="overall alert" [hidden]="restarting==false">
+      <div
+        class="overall alert"
+        [hidden]="restarting==false"
+      >
         <div class="cv">
           <span i18n="@@confirmreboot"> Are you sure you want to reboot the Hermes system?
             <br />
             This will stop messages transmission and reception.
             <br />
           </span>
-          <button type="button" (click)="cancelReboot()" class="m-t-10" i18n="@@cancels2">cancel</button>
-          <button type="button" class="m-l-10" (click)="reboot()" i18n="@@reboot1">Reboot</button>
+          <button
+            type="button"
+            (click)="cancelReboot()"
+            class="m-t-10"
+            i18n="@@cancels2"
+          >cancel</button>
+          <button
+            type="button"
+            class="m-l-10"
+            (click)="reboot()"
+            i18n="@@reboot1"
+          >Reboot</button>
         </div>
       </div>
 
-      <div class="overall alert" [hidden]="rebootingDownNow==false">
+      <div
+        class="overall alert"
+        [hidden]="rebootingDownNow==false"
+      >
         <span i18n="@@rebootingsystemlabel">Rebooting System</span>
-        <button type="button" class="m-t-10" (click)="reload()" i18n="@@closeerrorbuttonrebooting">
+        <button
+          type="button"
+          class="m-t-10"
+          (click)="reload()"
+          i18n="@@closeerrorbuttonrebooting"
+        >
           close
         </button>
       </div>
     </div>
 
     <!-- ALERTS -->
-    <div class="overall alert" *ngIf="reseting">
+    <div
+      class="overall alert"
+      *ngIf="reseting"
+    >
       <div class="cv">
         <span i18n="@@confirmreset">
           Are you sure you want to reset the radio to the default configuration?
         </span>
         <div class="row m-t-10">
-          <button type="button" i18n="@@cancelr" (click)="confirmReset()">
+          <button
+            type="button"
+            i18n="@@cancelr"
+            (click)="confirmReset()"
+          >
             cancel
           </button>
-          <button type="button" class="m-l-10" (click)="resetRadio()" *ngIf="isAdmin" i18n="@@reset1">
+          <button
+            type="button"
+            class="m-l-10"
+            (click)="resetRadio()"
+            *ngIf="isAdmin"
+            i18n="@@reset1"
+          >
             reset
           </button>
         </div>
       </div>
     </div>
-    <div class="overall alert" *ngIf="errorAlert==true">
+    <div
+      class="overall alert"
+      *ngIf="errorAlert==true"
+    >
       <div class="cv">
         <span i18n="@@errorchangingconfig">
           There was an error on changing configuration
@@ -402,22 +728,37 @@
           {{error}}
         </div>
         <div class="row m-t-10">
-          <button type="button" (click)="closeError()" i18n="@@closeerrorbutton">
+          <button
+            type="button"
+            (click)="closeError()"
+            i18n="@@closeerrorbutton"
+          >
             close
           </button>
         </div>
       </div>
     </div>
-    <div class="overall alert" *ngIf="gpsMessage">
+    <div
+      class="overall alert"
+      *ngIf="gpsMessage"
+    >
       <div class="cv">
         <span i18n="@@gpscalibrationsuccess">GPS Calibration successful</span>
-        <button type="button" class="m-t-10" (click)="closeGPSMessage()" i18n="@@closeerrorbuttongps">
+        <button
+          type="button"
+          class="m-t-10"
+          (click)="closeGPSMessage()"
+          i18n="@@closeerrorbuttongps"
+        >
           close
         </button>
       </div>
     </div>
 
-    <div class="overall alert" *ngIf="eraseSDCard">
+    <div
+      class="overall alert"
+      *ngIf="eraseSDCard"
+    >
       <div class="cv">
         <span i18n="@@confirmerasesdcardmessage">
           Are you sure that you want to start a Erase SD Card operation?
@@ -425,8 +766,17 @@
           It is going to erase all data from HERMES system.
         </span>
         <div class="row m-t-10">
-          <button type="button" i18n="@@cancel" (click)="eraseSDCardConfirmation()">cancel</button>
-          <button type="button" class="m-l-10 danger" (click)="callEraseSDCard()" i18n="@@confirmerasesdcardbutton">
+          <button
+            type="button"
+            i18n="@@cancel"
+            (click)="eraseSDCardConfirmation()"
+          >cancel</button>
+          <button
+            type="button"
+            class="m-l-10 danger"
+            (click)="callEraseSDCard()"
+            i18n="@@confirmerasesdcardbutton"
+          >
             confirm erase SD card
           </button>
         </div>

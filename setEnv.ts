@@ -8,17 +8,17 @@ const path = require('path')
 // Parse .env file without requiring the dotenv package
 const envFilePath = path.resolve(process.cwd(), '.env');
 if (fs.existsSync(envFilePath)) {
-    const envContent = fs.readFileSync(envFilePath, 'utf8');
-    envContent.split(/\r?\n/).forEach((line: string) => {
-        const match = line.match(/^([^=\s#][^=\s]*)\s*=\s*(.*?)(\s#.*)?$/);
-        if (match) {
-            const key = match[1].trim();
-            const value = match[2].trim().replace(/^(['"])(.*)\1$/, '$2');
-            if (process.env[key] === undefined) {
-                process.env[key] = value;
-            }
-        }
-    });
+  const envContent = fs.readFileSync(envFilePath, 'utf8');
+  envContent.split(/\r?\n/).forEach((line: string) => {
+    const match = line.match(/^([^=\s#][^=\s]*)\s*=\s*(.*?)(\s#.*)?$/);
+    if (match) {
+      const key = match[1].trim();
+      const value = match[2].trim().replace(/^(['"])(.*)\1$/, '$2');
+      if (process.env[key] === undefined) {
+        process.env[key] = value;
+      }
+    }
+  });
 }
 
 // `environment.ts` file structure
@@ -32,16 +32,17 @@ const envConfigFile = `export const environment = {
     gpsMap: '${process.env.GPS_MAP}',
     requireLogin: ${process.env.REQUIRE_LOGIN},
     emergencyEmail: '${process.env.EMERGENCY_EMAIL}',
-    localeId: '${process.env.LOCALE_ID}'
+    localeId: '${process.env.LOCALE_ID}',
+    radioDaemon: ${process.env.RADIO_DAEMON}
 };`;
 
 console.log('The file `environment.ts` will be written with the following content: \n');
 console.log(envConfigFile);
 
 fs.writeFile(targetPath, envConfigFile, function (err: NodeJS.ErrnoException | null) {
-    if (err) {
-        throw console.error(`Error while Angular environment.ts file generating: ${err} \n`);
-    } else {
-        console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`);
-    }
+  if (err) {
+    throw console.error(`Error while Angular environment.ts file generating: ${err} \n`);
+  } else {
+    console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`);
+  }
 });

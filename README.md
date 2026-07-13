@@ -64,6 +64,9 @@ Check and configure `.env` file with your parameters and run `npx ts-node setEnv
 - LOCALE_ID (string)
     - Configure the locale id for translation and style adaptations (eg. ar-styles.less)
 
+- RADIO_DAEMON (boolean: false)
+    - Configure radio daemon(RADIO_DAEMON = TRUE if using [HERMES Radio Daemon](https://github.com/Rhizomatica/hermes-radio-daemon))
+
 
 ## Development server
 

@@ -37,8 +37,9 @@ export class OperatorComponent implements OnInit, OnDestroy {
   currentLongitude!: null
   hasGps: boolean = GlobalConstants.hasGPS
   diskUsage: string = "0"
-  showGraph: boolean = false
+  showGraph: boolean = true
   private radioSubscription!: Subscription
+  radioDaemon: boolean = GlobalConstants.radioDaemon
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -52,10 +53,10 @@ export class OperatorComponent implements OnInit, OnDestroy {
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
-    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
-      this.showGraph = false
-    else
-      this.showGraph = true
+    // if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+    //   this.showGraph = false
+    // else
+    //   this.showGraph = true
   }
 
   public getSchedules(): void {

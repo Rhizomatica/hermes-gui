@@ -9,6 +9,8 @@ import { Radio } from 'src/app/interfaces/radio';
 import { SharedService } from 'src/app/_services/shared.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
 import { ThemeService } from 'src/app/_services/theme.service';
+import { RadioDaemonWebsocketService } from 'src/app/_services/radio-daemon-websocket.service';
+
 
 @Component({
   selector: 'app-home',
@@ -21,19 +23,25 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   constructor(
-     private authenticationService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private themeService: ThemeService,
     private router: Router,
     private utils: UtilsService,
     private sharedService: SharedService,
     private websocketService: WebsocketService,
+    private radioDaemonWebsocketService: RadioDaemonWebsocketService
   ) {
     this.checkBrowser(utils.detectBrowserName())
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
-    if (GlobalConstants.requireLogin && this.currentUser && !this.websocketService.messages) {
+
+    if (GlobalConstants.radioDaemon && !this.radioDaemonWebsocketService.connected$.getValue()) {
+      this.radioDaemonWebsocketService.startService();
+    }
+
+    if (!GlobalConstants.radioDaemon && !this.websocketService.messages) {
       this.websocketService.startService()
     }
 
