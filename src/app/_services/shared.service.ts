@@ -14,6 +14,10 @@ export class SharedService {
   constructor(private router: Router) { }
   utils = new UtilsService()
 
+  /** When true, the radio daemon WebSocket is the active data source and
+   *  the original system WebSocket should not feed radioObj. */
+  public daemonActive$ = new BehaviorSubject<boolean>(false);
+
   public radioObj = new BehaviorSubject<Radio>({
     p0_freq: '0',
     p1_freq: '0',
@@ -35,6 +39,7 @@ export class SharedService {
     p1_volume: 0,
     profile: 0,
     p1_freq_splited: [],
+    timeout_raw: 0,
     timeout: '0',
     datetime: new Date(),
     snr: '0',
@@ -47,7 +52,8 @@ export class SharedService {
     bytes_transmitted: 0,
     message: '',
     p0_digital_voice: false,
-    p1_digital_voice: false
+    p1_digital_voice: false,
+    s_meter: 0
   });
 
   public storedRadioObj = <Radio>({
@@ -71,6 +77,7 @@ export class SharedService {
     p1_volume: 0,
     profile: 0,
     p1_freq_splited: [],
+    timeout_raw: 0,
     timeout: '0',
     datetime: new Date(),
     snr: '0',
@@ -83,7 +90,8 @@ export class SharedService {
     bytes_transmitted: 0,
     message: '',
     p0_digital_voice: false,
-    p1_digital_voice: false
+    p1_digital_voice: false,
+    s_meter: 0
   });
 
   setRadioObjShared(data: Radio) {
@@ -118,6 +126,7 @@ export class SharedService {
     this.storedRadioObj.profile = newObj.profile == null ? this.storedRadioObj.profile : newObj.profile
     this.storedRadioObj.ptt = newObj.ptt == null ? this.storedRadioObj.ptt : newObj.ptt
     this.storedRadioObj.p1_freq_splited = this.utils.splitFrequency(this.storedRadioObj.p1_freq)
+    this.storedRadioObj.timeout_raw = newObj.timeout == null ? this.storedRadioObj.timeout_raw : parseInt(newObj.timeout)
     this.storedRadioObj.timeout = newObj.timeout == null ? this.storedRadioObj.timeout : this.utils.formatTimeCounter(newObj.timeout)
     this.storedRadioObj.datetime = newObj.datetime == null ? this.storedRadioObj.datetime : newObj.datetime
     this.storedRadioObj.snr = newObj.snr == null ? this.storedRadioObj.snr : this.utils.formatDecimal(newObj.snr)
@@ -132,6 +141,7 @@ export class SharedService {
     const previousDigital = this.storedRadioObj.p1_digital_voice
     this.storedRadioObj.p0_digital_voice = newObj.p0_digital_voice == null ? this.storedRadioObj.p0_digital_voice : newObj.p0_digital_voice
     this.storedRadioObj.p1_digital_voice = newObj.p1_digital_voice == null ? this.storedRadioObj.p1_digital_voice : newObj.p1_digital_voice
+    this.storedRadioObj.s_meter = newObj.s_meter == null ? this.storedRadioObj.s_meter : newObj.s_meter
 
   }
 

@@ -39,6 +39,7 @@ export class OperatorComponent implements OnInit, OnDestroy {
   diskUsage: string = "0"
   showGraph: boolean = false
   private radioSubscription!: Subscription
+  radioDaemon: boolean = GlobalConstants.radioDaemon
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -52,6 +53,7 @@ export class OperatorComponent implements OnInit, OnDestroy {
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
+    // the graphs cost the sBitx's own screen (a Raspberry Pi) too much
     if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
       this.showGraph = false
     else

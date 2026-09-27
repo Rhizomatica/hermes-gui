@@ -19,6 +19,7 @@ export interface Radio {
   p1_volume: number,
   profile: number,
   p1_freq_splited: Array<string> | null,
+  timeout_raw: number,
   timeout: string,
   datetime: Date,
   snr: string,
@@ -32,4 +33,5 @@ export interface Radio {
   message: string
   p0_digital_voice: boolean
   p1_digital_voice: boolean
+  s_meter: number
 }

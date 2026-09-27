@@ -1,21 +1,33 @@
 <div class="container sysadm home">
-    <div class="row">
-        <app-home-topbar [radio]="radio" [currentUser]="currentUser" [currentTheme]="currentTheme"
-            (toggleTheme)="toggle()" (logOut)="logOff()">
-        </app-home-topbar>
-        <div class="flexible m-t-25">
-            <a routerLink="{{radio.connection ? null : '/voice'}}" *ngIf="showVoiceCard && radio.p1_freq"
-                [style.opacity]="radio.connection ? '0.5' : '1'">
-                <div class="card {{(radio.connection) && ('disabled')}}">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Voice" src="assets/svg/waveform.svg">
-                    </div>
-                    <div class="card-title">
-                        <span i18n="@@voicecard">Voice</span> {{radio.p1_freq}} kHz
-                    </div>
-                </div>
-            </a>
-            <!-- <a routerLink="/chat">
+  <div class="row">
+    <app-home-topbar
+      [radio]="radio"
+      [currentUser]="currentUser"
+      [currentTheme]="currentTheme"
+      (toggleTheme)="toggle()"
+      (logOut)="logOff()"
+    >
+    </app-home-topbar>
+    <div class="flexible m-t-25">
+      <a
+        routerLink="{{radio.connection ? null : '/voice'}}"
+        *ngIf="showVoiceCard && radio.p1_freq"
+        [style.opacity]="radio.connection ? '0.5' : '1'"
+      >
+        <div class="card {{(radio.connection) && ('disabled')}}">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Voice"
+              src="assets/svg/waveform.svg"
+            >
+          </div>
+          <div class="card-title">
+            <span i18n="@@voicecard">Voice</span> {{radio.p1_freq}} kHz
+          </div>
+        </div>
+      </a>
+      <!-- <a routerLink="/chat">
                 <div class="card">
                     <div class="card-icon">
                         <img _ngcontent-dpr-c68="" title="Chat" src="assets/svg/comments.svg">
@@ -25,27 +37,41 @@
                     </div>
                 </div>
             </a> -->
-            <a routerLink="/messages">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Messages" src="assets/svg/message-text.svg">
-                    </div>
-                    <div class="card-title" i18n="@@messagescard">
-                        Messages
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/email">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Email" src="assets/svg/email.svg">
-                    </div>
-                    <div class="card-title" i18n="@@emailcard">
-                        E-mail
-                    </div>
-                </div>
-            </a>
-            <!-- <a routerLink="/sms">
+      <a routerLink="/messages">
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Messages"
+              src="assets/svg/message-text.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@messagescard"
+          >
+            Messages
+          </div>
+        </div>
+      </a>
+      <a routerLink="/email">
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Email"
+              src="assets/svg/email.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@emailcard"
+          >
+            E-mail
+          </div>
+        </div>
+      </a>
+      <!-- <a routerLink="/sms">
                 <div class="card">
                     <div class="card-icon">
                         <img _ngcontent-dpr-c68="" title="SMS" src="assets/svg/paper-plane.svg">
@@ -55,113 +81,213 @@
                     </div>
                 </div>
             </a> -->
-            <a routerLink="/operator">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Operator Panel" src="assets/svg/radio-handheld.svg">
-                    </div>
-                    <div class="card-title" i18n="@@operatorpanel">Operator Panel</div>
-                </div>
-            </a>
-            <a routerLink="/radio-config">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Radio configuration" src="assets/svg/radio.svg">
-                    </div>
-                    <div class="card-title" i18n="@@radioconfig">
-                        Radio configuration
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/user-list" *ngIf="!requireLogin || (requireLogin && admin)">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="User management" src="assets/svg/account-group.svg">
-                    </div>
-                    <div class="card-title" i18n="@@adminmanage">
-                        User management
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/message-config" *ngIf="admin">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Messages configuration" src="assets/svg/message-cog.svg">
-                    </div>
-                    <div class="card-title" i18n="@@messageadm">
-                        Messages configuration
-                    </div>
-                </div>
-            </a>
-            <a *ngIf="isGateway && admin" routerLink="/schedule">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Transmission schedule" src="assets/svg/clock-time-eight.svg">
-                    </div>
-                    <div class="card-title" i18n="@@scheduling">
-                        Transmission schedule
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/transmission" *ngIf="admin">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Transmission list"
-                            src="assets/svg/transmission-tower-export.svg">
-                    </div>
-                    <div class="card-title" i18n="@@transmissionlista">
-                        Transmission list
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/station-info" *ngIf="admin">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Stations information" src="assets/svg/transmission-tower.svg">
-                    </div>
-                    <div class="card-title" i18n="@@stationinformationcard">
-                        Stations information
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/wifi-manage" *ngIf="admin">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title=" Wi-Fi & Ethernet manager" src="assets/svg/wifi-cog.svg">
-                    </div>
-                    <div class="card-title" i18n="@@wifimanagercard">
-                        Wi-Fi & Ethernet manager
-                    </div>
-                </div>
-            </a>
-            <a routerLink="/gps" *ngIf="hasGPS">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="GPS" src="assets/svg/crosshairs-gps.svg">
-                    </div>
-                    <div class="card-title" i18n="@@gpsgeolocation">GPS Geolocation</div>
-                </div>
-            </a>
-            <a routerLink="/log" *ngIf="admin">
-                <div class="card">
-                    <div class="card-icon">
-                        <img _ngcontent-dpr-c68="" title="Detailed log" src="assets/svg/alert.svg">
-                    </div>
-                    <div class="card-title" i18n="@@detailedlog">
-                        Detailed log
-                    </div>
-                </div>
-            </a>
+      <a routerLink="/operator">
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Operator Panel"
+              src="assets/svg/radio-handheld.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@operatorpanel"
+          >Operator Panel</div>
         </div>
+      </a>
+      <a routerLink="/radio-config">
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Radio configuration"
+              src="assets/svg/radio.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@radioconfig"
+          >
+            Radio configuration
+          </div>
+        </div>
+      </a>
+      <a
+        routerLink="/user-list"
+        *ngIf="!requireLogin || (requireLogin && admin)"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="User management"
+              src="assets/svg/account-group.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@adminmanage"
+          >
+            User management
+          </div>
+        </div>
+      </a>
+      <a
+        routerLink="/message-config"
+        *ngIf="admin"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Messages configuration"
+              src="assets/svg/message-cog.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@messageadm"
+          >
+            Messages configuration
+          </div>
+        </div>
+      </a>
+      <a
+        *ngIf="isGateway && admin"
+        routerLink="/schedule"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Transmission schedule"
+              src="assets/svg/clock-time-eight.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@scheduling"
+          >
+            Transmission schedule
+          </div>
+        </div>
+      </a>
+      <a
+        routerLink="/transmission"
+        *ngIf="admin"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Transmission list"
+              src="assets/svg/transmission-tower-export.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@transmissionlista"
+          >
+            Transmission list
+          </div>
+        </div>
+      </a>
+      <a
+        routerLink="/station-info"
+        *ngIf="admin"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Stations information"
+              src="assets/svg/transmission-tower.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@stationinformationcard"
+          >
+            Stations information
+          </div>
+        </div>
+      </a>
+      <a
+        routerLink="/wifi-manage"
+        *ngIf="admin"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title=" Wi-Fi & Ethernet manager"
+              src="assets/svg/wifi-cog.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@wifimanagercard"
+          >
+            Wi-Fi & Ethernet manager
+          </div>
+        </div>
+      </a>
+      <a
+        routerLink="/gps"
+        *ngIf="hasGPS"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="GPS"
+              src="assets/svg/crosshairs-gps.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@gpsgeolocation"
+          >GPS Geolocation</div>
+        </div>
+      </a>
+      <a
+        routerLink="/log"
+        *ngIf="admin"
+      >
+        <div class="card">
+          <div class="card-icon">
+            <img
+              _ngcontent-dpr-c68=""
+              title="Detailed log"
+              src="assets/svg/alert.svg"
+            >
+          </div>
+          <div
+            class="card-title"
+            i18n="@@detailedlog"
+          >
+            Detailed log
+          </div>
+        </div>
+      </a>
     </div>
+  </div>
 </div>
-<div class="overall alert" *ngIf="alertBrowserXP">
-    <div class="cv">
-        <span i18n="@@alertbrowserxp">
-            To a better HERMES experience use the chromium/chrome browser
-        </span>
-        <button class="m-t-10" (click)="closeBrowserAlert()" i18n="@@closeerrorbutton">
-            close
-        </button>
-    </div>
+<div
+  class="overall alert"
+  *ngIf="alertBrowserXP"
+>
+  <div class="cv">
+    <span i18n="@@alertbrowserxp">
+      To a better HERMES experience use the chromium/chrome browser
+    </span>
+    <button
+      class="m-t-10"
+      (click)="closeBrowserAlert()"
+      i18n="@@closeerrorbutton"
+    >
+      close
+    </button>
+  </div>
 </div>

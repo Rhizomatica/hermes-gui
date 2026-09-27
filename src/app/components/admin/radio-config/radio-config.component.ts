@@ -92,7 +92,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     }
   }
 
-  changePtt() {
+  changePtt(_f?: any) {
 
     this.loading = true
     this.radioService.setRadioPTT(this.radio.tx == false ? 'ON' : 'OFF', this.dataModeProfileID).subscribe({
@@ -199,7 +199,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.confirmSet = !this.confirmSet
   }
 
-  confirmChangeThreshold() {
+  confirmChangeThreshold(_f?: any) {
     this.confirmChangeProtection = !this.confirmChangeProtection
   }
 
@@ -223,7 +223,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     });
   }
 
-  confirmChangePTT() {
+  confirmChangePTT(_event?: any) {
     if (this.radio.tx) {
       this.changePtt()
       return
@@ -479,7 +479,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
     this.getRadioStatus()
     this.getTimeoutConfig()
     this.getRadioPowerLevel()
-    this.isAdmin = this.currentUser?.admin
+    this.isAdmin = this.currentUser?.admin ?? false
 
     this.radioSubscription = this.sharedService.radioObj.subscribe(radio => {
       this.radio = radio;
@@ -497,6 +497,7 @@ export class RadioConfigComponent implements OnInit, OnDestroy {
 
     this.loading = false
   }
+
 
   ngOnDestroy(): void {
     this.radioSubscription?.unsubscribe()
