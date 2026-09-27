@@ -4,9 +4,10 @@ export const environment = {
     domain: 'estacao.hermes.radio',
     gateway: true,
     bitx: 'S',
-    hasGPS: true,
+    hasGPS: false,
     gpsMap: 'brazil',
-    requireLogin: false,
+    requireLogin: true,
     emergencyEmail: 'help@hermes.radio',
-    localeId: 'en-US'
+    localeId: 'en-US',
+    radioDaemon: true
 };

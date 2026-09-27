@@ -8,6 +8,7 @@ import { User } from '../../interfaces/user';
 import { RadioService } from '../../_services/radio.service';
 import { UtilsService } from '../../_services/utils.service';
 import { WebsocketService } from 'src/app/_services/websocket.service';
+import { RadioDaemonWebsocketService } from 'src/app/_services/radio-daemon-websocket.service';
 import { GlobalConstants } from 'src/app/global-constants';
 import { SharedService } from 'src/app/_services/shared.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
@@ -63,15 +64,26 @@ export class AppComponent implements OnInit, OnDestroy {
     private utils: UtilsService,
     private location: Location,
     private websocketService: WebsocketService,
+    private radioDaemonWebsocketService: RadioDaemonWebsocketService,
     private sharedService: SharedService,
     private idle: Idle,
-    // private keepalive: Keepalive, 
+    // private keepalive: Keepalive,
     private cd: ChangeDetectorRef,
     private theme: ThemeService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     this.startIdleDetector()
+  }
+
+  /** Start the radio's data source: the radio daemon's websocket when the
+   *  station runs hermes-radio-daemon (RADIO_DAEMON), else the
+   *  sbitx_controller's. Each start is a no-op while it is connected. */
+  startRadioWebsocket() {
+    if (GlobalConstants.radioDaemon)
+      this.radioDaemonWebsocketService.startService()
+    else if (!this.websocketService.messages)
+      this.websocketService.startService()
   }
 
   sendMsg() {
@@ -225,6 +237,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('⚚ HERMES RADIO ⚚');
+
     this.theme.init();
     this.loading = true
     this.checkRequireLogin()
@@ -243,15 +256,11 @@ export class AppComponent implements OnInit, OnDestroy {
         this.checkIsLoginPage()
         this.updateBreadcrumb()
 
-        if (!this.websocketService.messages) {
-          this.websocketService.startService()
-        }
+        this.startRadioWebsocket()
       }
     });
 
-    if (!this.websocketService.messages) {
-      this.websocketService.startService()
-    }
+    this.startRadioWebsocket()
   }
 
   importArabicStyles() {

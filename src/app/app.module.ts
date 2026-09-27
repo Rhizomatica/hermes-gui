@@ -67,6 +67,7 @@ import { environment } from '../environments/environment';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { RadioConnectionAlertComponent } from './components/utils/radio-connection-alert/radio-connection-alert.component';
+import { SpectrumGraphComponent } from './components/utils/spectrum-graph/spectrum-graph.component';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
@@ -116,7 +117,8 @@ registerLocaleData(localeAr);
         UserExistDirective,
         FilterPipe,
         UserListComponent,
-        RadioConnectionAlertComponent
+        RadioConnectionAlertComponent,
+        SpectrumGraphComponent
 
     ],
     bootstrap: [AppComponent],

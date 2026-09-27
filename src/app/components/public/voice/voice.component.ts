@@ -30,6 +30,7 @@ export class VoiceComponent implements OnInit {
   subject = new BehaviorSubject(this.radioService);
   voiceModeProfileID: number = 1
   isArabic: boolean = false
+  radioDaemon: boolean = GlobalConstants.radioDaemon
   toggleDigital: number = 0
   private radioSubscription!: Subscription
 
