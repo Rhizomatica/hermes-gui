@@ -37,7 +37,7 @@ export class OperatorComponent implements OnInit, OnDestroy {
   currentLongitude!: null
   hasGps: boolean = GlobalConstants.hasGPS
   diskUsage: string = "0"
-  showGraph: boolean = true
+  showGraph: boolean = false
   private radioSubscription!: Subscription
   radioDaemon: boolean = GlobalConstants.radioDaemon
 
@@ -53,10 +53,11 @@ export class OperatorComponent implements OnInit, OnDestroy {
     if (this.currentUser)
       this.admin = this.currentUser.admin
 
-    // if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
-    //   this.showGraph = false
-    // else
-    //   this.showGraph = true
+    // the graphs cost the sBitx's own screen (a Raspberry Pi) too much
+    if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())
+      this.showGraph = false
+    else
+      this.showGraph = true
   }
 
   public getSchedules(): void {

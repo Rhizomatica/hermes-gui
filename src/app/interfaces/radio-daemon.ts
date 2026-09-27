@@ -33,6 +33,8 @@ export interface RadioDaemonState {
   recording_rx: boolean;
   recording_tx: boolean;
   audio_sample_rate: number;
+  /** latched station message: UUCP transfer progress and the like */
+  message?: string;
   message_available: boolean;
   backend: string;
   digital_voice: boolean;

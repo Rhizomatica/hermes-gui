@@ -37,12 +37,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.admin = this.currentUser.admin
 
 
-    if (GlobalConstants.radioDaemon && !this.radioDaemonWebsocketService.connected$.getValue()) {
-      this.radioDaemonWebsocketService.startService();
-    }
-
-    if (!GlobalConstants.radioDaemon && !this.websocketService.messages) {
-      this.websocketService.startService()
+    if (GlobalConstants.requireLogin && this.currentUser) {
+      if (GlobalConstants.radioDaemon)
+        this.radioDaemonWebsocketService.startService()
+      else if (!this.websocketService.messages)
+        this.websocketService.startService()
     }
 
     if (this.utils.isItRuningLocal() && this.utils.isSBitxRadio())

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, interval, Subscription } from 'rxjs';
 import { GlobalConstants } from '../global-constants';
 import { RadioDaemonHello, RadioDaemonMessage, RadioDaemonState } from '../interfaces/radio-daemon';
 import { SharedService } from './shared.service';
 import { Radio } from '../interfaces/radio';
+import { RadioService } from './radio.service';
+import { ApiService } from './api.service';
 
 export interface SpectrumFrame {
   /** Sample rate in Hz */
@@ -35,9 +38,29 @@ export class RadioDaemonWebsocketService {
   private keepAliveSubscription: Subscription | null = null;
   private readonly keepAliveInterval = interval(9000);
 
-  constructor(private sharedService: SharedService) { }
+  /** The daemon reports the active profile only: the other one comes from
+   *  the API, when the active profile changes and every 30 s. */
+  private activeProfile: number | null = null;
+  private refreshSubscription: Subscription | null = null;
+  private readonly refreshInterval = interval(30000);
+
+  /** The station's clock, as the API reads it, and when it was read: the
+   *  daemon does not send the time the sbitx_controller did (the schedule
+   *  page shows it, and the schedules run on it). */
+  private stationClockBase: number | null = null;
+  private stationClockReadAt = 0;
+
+  constructor(
+    private sharedService: SharedService,
+    private radioService: RadioService,
+    private apiService: ApiService,
+    private http: HttpClient
+  ) { }
 
   startService(): void {
+    // the app and the home page both start it: one connection is enough
+    if (this.ws && (this.ws.readyState === WebSocket.CONNECTING || this.ws.readyState === WebSocket.OPEN))
+      return;
     console.log('Starting radio daemon websocket...');
     this.createConnection();
   }
@@ -65,22 +88,37 @@ export class RadioDaemonWebsocketService {
     return GlobalConstants.radioDaemonUrl
   }
 
+  /** Close a socket so that its late events cannot touch the state of the
+   *  connection that replaces it. */
+  private dropSocket(ws: WebSocket | null): void {
+    if (!ws) return;
+    ws.onopen = null;
+    ws.onmessage = null;
+    ws.onerror = null;
+    ws.onclose = null;
+    try { ws.close(); } catch (_) { }
+  }
+
   private createConnection(): void {
-    if (this.ws) {
-      try { this.ws.close(); } catch (_) { }
-    }
+    this.dropSocket(this.ws);
 
-    this.ws = new WebSocket(this.currentUrl);
-    this.ws.binaryType = 'arraybuffer';
+    const ws = new WebSocket(this.currentUrl);
+    ws.binaryType = 'arraybuffer';
+    this.ws = ws;
 
-    this.ws.onopen = () => {
+    ws.onopen = () => {
+      if (this.ws !== ws) return;
       console.log('Radio daemon websocket connected.');
       this.connected$.next(true);
       this.sharedService.daemonActive$.next(true);
       this.stopKeepAlive();
+      this.activeProfile = null;
+      this.readStationClock();
+      this.startRefresh();
     };
 
-    this.ws.onmessage = (event: MessageEvent) => {
+    ws.onmessage = (event: MessageEvent) => {
+      if (this.ws !== ws) return;
       if (event.data instanceof ArrayBuffer) {
         this.handleBinary(new Uint8Array(event.data));
         return;
@@ -102,17 +140,21 @@ export class RadioDaemonWebsocketService {
       }
     };
 
-    this.ws.onerror = () => {
+    ws.onerror = () => {
+      if (this.ws !== ws) return;
       console.warn('Radio daemon websocket error, scheduling reconnect...');
       this.connected$.next(false);
       this.sharedService.daemonActive$.next(false);
+      this.stopRefresh();
       this.keepWebSocketAlive();
     };
 
-    this.ws.onclose = () => {
+    ws.onclose = () => {
+      if (this.ws !== ws) return;
       console.log('Radio daemon websocket closed.');
       this.connected$.next(false);
       this.sharedService.daemonActive$.next(false);
+      this.stopRefresh();
       this.keepWebSocketAlive();
     };
   }
@@ -148,50 +190,123 @@ export class RadioDaemonWebsocketService {
   }
 
   /**
-   * Maps a RadioDaemonState message into the shared Radio object
-   * and pushes it to SharedService so the entire app receives the data
-   * from whichever daemon connection is selected.
+   * Maps a RadioDaemonState message into the shared Radio object.
+   *
+   * SharedService keeps a field's previous value when the new one is null
+   * or undefined, so only what the daemon actually reports is set here:
+   * the active profile's frequency, mode and digital voice (the other
+   * profile's come from the API), and nothing for the fields the daemon
+   * does not have (led) or did not send.
    */
   private feedSharedService(state: RadioDaemonState): void {
-    const radio: Radio = {
-      p0_freq: state.frequency ? String(state.frequency) : '0',
-      p1_freq: state.frequency ? String(state.frequency) : '0',
-      p0_mode: state.mode ?? '',
-      p1_mode: state.mode ?? '',
-      protection: state.protection ?? false,
-      tx: state.tx ?? false,
-      rx: !state.tx,
-      led: false,
-      fwd_raw: state.fwd ?? 0,
-      fwd_watts: String(state.fwd ?? 0),
-      swr: String(state.swr ?? 10),
-      ref_raw: state.ref_power ?? 0,
-      ref_watts: state.ref_power ?? 0,
-      connection: state.system_is_connected ?? false,
-      ptt: state.tx ?? false,
-      step: state.step_size ?? 0,
-      p0_volume: 0,
-      p1_volume: 0,
-      profile: state.profile ?? 0,
-      p1_freq_splited: null,
-      timeout_raw: state.timeout ?? 0,
-      timeout: String(state.timeout ?? '0'),
-      datetime: new Date(),
-      snr: String(state.snr ?? '0'),
-      snrHistory: [],
-      snrLength: 0,
-      bitrate: String(state.bitrate ?? '0'),
-      bitrateHistory: [],
-      bitrateLength: 0,
-      bytes_received: state.bytes_received ?? 0,
-      bytes_transmitted: state.bytes_transmitted ?? 0,
-      message: '',
-      p0_digital_voice: state.digital_voice ?? false,
-      p1_digital_voice: state.digital_voice ?? false,
-      s_meter: state.s_meter ?? 0
+    const profile = state.profile ?? 0;
+    const radio: Partial<Radio> = {
+      protection: state.protection,
+      tx: state.tx,
+      rx: state.tx == null ? undefined : !state.tx,
+      fwd_raw: state.fwd,
+      fwd_watts: state.fwd == null ? undefined : String(state.fwd),
+      swr: state.swr == null ? undefined : String(state.swr),
+      ref_raw: state.ref_power,
+      ref_watts: state.ref_power,
+      connection: state.system_is_connected,
+      ptt: state.tx,
+      step: state.step_size,
+      profile: profile,
+      timeout_raw: state.timeout,
+      timeout: state.timeout == null ? undefined : String(state.timeout),
+      datetime: this.stationClock() as any,
+      snr: state.snr == null ? undefined : String(state.snr),
+      bitrate: state.bitrate == null ? undefined : String(state.bitrate),
+      bytes_received: state.bytes_received,
+      bytes_transmitted: state.bytes_transmitted,
+      message: state.message,
+      s_meter: state.s_meter
     };
 
-    this.sharedService.setRadioObjShared(radio);
+    const freq = state.frequency == null ? undefined : String(state.frequency);
+    if (profile === 0) {
+      radio.p0_freq = freq;
+      radio.p0_mode = state.mode;
+      radio.p0_digital_voice = state.digital_voice;
+    } else {
+      radio.p1_freq = freq;
+      radio.p1_mode = state.mode;
+      radio.p1_digital_voice = state.digital_voice;
+    }
+
+    this.sharedService.setRadioObjShared(radio as Radio);
+
+    if (this.activeProfile !== profile) {
+      this.activeProfile = profile;
+      this.refreshInactiveProfile();
+    }
+  }
+
+  /** The profile the daemon is not reporting, from the API. */
+  private refreshInactiveProfile(): void {
+    if (this.activeProfile === null) return;
+    const other = this.activeProfile === 0 ? 1 : 0;
+
+    this.radioService.getRadioStatus(other).subscribe({
+      next: (res: any) => {
+        if (!res || this.activeProfile === other) return;
+        const radio: Partial<Radio> = other === 0
+          ? { p0_freq: res.freq, p0_mode: res.mode }
+          : { p1_freq: res.freq, p1_mode: res.mode };
+        this.sharedService.setRadioObjShared(radio as Radio);
+      },
+      error: () => { }
+    });
+
+    // the voice profile's digital voice (the API only has it for profile 1)
+    if (other === 1) {
+      this.http.get(`${GlobalConstants.apiURL}/radio/voice/digital`, { responseType: 'text' }).subscribe({
+        next: (res: string) => {
+          if (this.activeProfile === 1 || (res !== 'ON' && res !== 'OFF')) return;
+          this.sharedService.setRadioObjShared({ p1_digital_voice: res === 'ON' } as Radio);
+        },
+        error: () => { }
+      });
+    }
+  }
+
+  /** Read the station's clock ("dd/mm/yyyy hh:mm:ss", as the API gives it). */
+  private readStationClock(): void {
+    this.apiService.getStatus().subscribe({
+      next: (res: any) => {
+        const m = /^(\d{2})\/(\d{2})\/(\d{4}) (\d{2}):(\d{2}):(\d{2})$/.exec(res?.datetime ?? '');
+        if (!m) return;
+        this.stationClockBase = Date.UTC(+m[3], +m[2] - 1, +m[1], +m[4], +m[5], +m[6]);
+        this.stationClockReadAt = Date.now();
+      },
+      error: () => { }
+    });
+  }
+
+  /** The station's clock now, formatted as the sbitx_controller sent it;
+   *  undefined until it has been read (the previous value stays). */
+  private stationClock(): string | undefined {
+    if (this.stationClockBase === null) return undefined;
+    const t = new Date(this.stationClockBase + (Date.now() - this.stationClockReadAt));
+    const two = (n: number) => String(n).padStart(2, '0');
+    return `${two(t.getUTCDate())}/${two(t.getUTCMonth() + 1)}/${t.getUTCFullYear()} ` +
+      `${two(t.getUTCHours())}:${two(t.getUTCMinutes())}:${two(t.getUTCSeconds())}`;
+  }
+
+  private startRefresh(): void {
+    this.stopRefresh();
+    this.refreshSubscription = this.refreshInterval.subscribe(() => {
+      this.refreshInactiveProfile();
+      this.readStationClock();
+    });
+  }
+
+  private stopRefresh(): void {
+    if (this.refreshSubscription && !this.refreshSubscription.closed) {
+      this.refreshSubscription.unsubscribe();
+    }
+    this.refreshSubscription = null;
   }
 
   private keepWebSocketAlive(): void {
@@ -212,12 +327,10 @@ export class RadioDaemonWebsocketService {
 
   closeConnection(): void {
     this.stopKeepAlive();
-
-    if (this.ws) {
-      try { this.ws.close(); } catch (_) { }
-      this.ws = null;
-    }
-
+    this.stopRefresh();
+    this.dropSocket(this.ws);
+    this.ws = null;
     this.connected$.next(false);
+    this.sharedService.daemonActive$.next(false);
   }
 }

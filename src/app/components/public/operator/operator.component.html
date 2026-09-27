@@ -84,7 +84,7 @@
 
       <div
         class="data-graph"
-        *ngIf="showGraph"
+        *ngIf="radioDaemon && showGraph"
       >
         <div class="data-title">
           <span i18n="@@smeter">S-Meter Signal Strength</span>
@@ -102,7 +102,7 @@
       </div>
       <div
         class="data"
-        *ngIf="!showGraph"
+        *ngIf="radioDaemon && !showGraph"
       >
         <div class="data-title">
           <span i18n="@@smeter">S-Meter Signal Strength</span>
